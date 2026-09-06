@@ -116,3 +116,86 @@
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
+
+/* ---------------------------------------------------------------------------
+   Product rows
+
+   Measured off the reference: heading 65px left-aligned, arrows on the same
+   line at the right, vendor line 12px, title 16px semibold, struck price 11px,
+   sale price 18px, and a wide square button beneath.
+   --------------------------------------------------------------------------- */
+
+.collection .title-wrapper-with-link {
+  align-items: center;
+  margin-bottom: 3.2rem;
+}
+
+.collection .title-wrapper-with-link .title {
+  font-size: clamp(3.2rem, 4.6vw, 6.5rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: 0.01em;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+/* Arrows sit up on the heading line, as they do on the reference. */
+.collection slider-component .slider-buttons {
+  margin: 0;
+  padding: 0;
+  justify-content: flex-end;
+}
+
+.collection .card__content .caption-with-letter-spacing {
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  opacity: 1;
+}
+
+.collection .card__heading,
+.collection .card__heading.h5 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: normal;
+  margin-top: 0.4rem;
+}
+
+.collection .price {
+  font-size: 1.8rem;
+}
+
+.collection .price__sale .price-item--regular,
+.collection .price .price-item--regular s,
+.collection s.price-item--regular {
+  font-size: 1.1rem;
+  text-decoration: line-through;
+}
+
+.collection .price--on-sale .price-item--sale {
+  font-size: 1.8rem;
+  color: rgb(var(--color-sale-price, 166 57 75));
+}
+
+/* The row's own call to action: wide, square, spaced capitals. */
+.collection .collection__view-all {
+  margin-top: 4rem;
+  text-align: left;
+}
+
+.collection .collection__view-all .button {
+  min-width: 34rem;
+  min-height: 6.4rem;
+  font-size: 1.4rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 749px) {
+  .collection .collection__view-all .button {
+    width: 100%;
+    min-width: 0;
+  }
+}
