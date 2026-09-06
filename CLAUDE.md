@@ -27,9 +27,14 @@ Not a copy of that site; the same qualities, applied to a Bulgarian goldsmith.
 
 Rules that matter here:
 
-- **Nothing is written on top of an image.** No logo, no slogan, no badges, no "СРЕБРО 925".
-  Facts belong in the caption or the product description. This is the single most important
-  rule on the project — the owner's previous marketing broke it constantly.
+- **Nothing is burned into a photograph.** No logo, no slogan, no badges, no "СРЕБРО 925"
+  baked into the image file. Facts belong in the caption or the product description. This is
+  the single most important rule on the project — the owner's previous marketing broke it
+  constantly.
+  - **One deliberate exception:** the homepage hero. Its heading, subtitle and button are
+    live theme text laid over the photograph, centred, following moonmagic.com. Agreed
+    2026-09-06. The photograph itself still carries no baked-in text, and this stays the
+    only place on the site where words sit over an image.
 - **Restraint reads as expensive.** Empty space is the main luxury signal. When in doubt,
   remove rather than add.
 - **Gold comes from the photographs, not the interface.** The gold accent is muted and used
@@ -68,6 +73,16 @@ Rules that matter here:
   affects checkout or payments.
 - Legal pages, tax and company details are being handled with an accountant. Do not invent
   legal text and present it as ready to use.
+
+## Custom code
+
+Anything of ours that is not a Dawn setting lives in these two places:
+
+- `assets/cullinan.css` — our own stylesheet, loaded from `layout/theme.liquid` right after
+  `base.css`. Dawn's stylesheets stay untouched so the theme can still be upgraded. Holds the
+  hero button hover: solid fill that drops to transparent so the photograph shows through.
+- `sections/image-banner.liquid` — writing `[years]` in the hero heading or text renders the
+  number of years since `founded_year` (1991), so the count never goes stale.
 
 ## Current state
 

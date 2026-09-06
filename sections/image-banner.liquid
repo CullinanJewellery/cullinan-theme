@@ -30,6 +30,11 @@
 {%- endstyle -%}
 
 {%- liquid
+  # Years since the atelier opened, so the hero never goes stale.
+  # Write [years] in a heading or text block and it becomes the number.
+  assign founded_year = 1991
+  assign years_in_business = 'now' | date: '%Y' | minus: founded_year
+
   assign full_width = '100vw'
   assign widths = '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
 
@@ -124,11 +129,11 @@
               class="banner__heading inline-richtext {{ block.settings.heading_size }}"
               {{ block.shopify_attributes }}
             >
-              {{ block.settings.heading }}
+              {{ block.settings.heading | replace: '[years]', years_in_business }}
             </h2>
           {%- when 'text' -%}
             <div class="banner__text rte {{ block.settings.text_style }}" {{ block.shopify_attributes }}>
-              <p>{{ block.settings.text }}</p>
+              <p>{{ block.settings.text | replace: '[years]', years_in_business }}</p>
             </div>
           {%- when 'buttons' -%}
             <div

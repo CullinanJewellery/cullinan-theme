@@ -1,0 +1,35 @@
+/*
+  Cullinan — custom styles on top of Dawn.
+  Kept in one file so Dawn's own stylesheets stay untouched and upgradeable.
+*/
+
+/* ---------------------------------------------------------------------------
+   Hero buttons
+
+   The call to action over the hero photograph is a solid warm near-black
+   block. On hover the fill drops away entirely, so the photograph shows
+   through the button and only the outline and the label remain.
+   --------------------------------------------------------------------------- */
+
+.banner__buttons .button {
+  transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out,
+    box-shadow 0.35s ease-in-out;
+}
+
+.banner__buttons .button--primary::after,
+.banner__buttons .button--primary::before {
+  content: none;
+}
+
+.banner__buttons .button--primary {
+  background-color: rgb(var(--color-button));
+  color: rgb(var(--color-button-text));
+  box-shadow: inset 0 0 0 var(--buttons-border-width, 1px) rgba(var(--color-button), 0);
+}
+
+.banner__buttons .button--primary:hover,
+.banner__buttons .button--primary:focus-visible {
+  background-color: transparent;
+  color: rgb(var(--color-button));
+  box-shadow: inset 0 0 0 1px rgb(var(--color-button));
+}
