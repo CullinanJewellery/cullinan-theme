@@ -10,3 +10,6 @@ Thumbs.db
 .shopify
 node_modules
 *.zip
+# Scratch files from tooling
+.*.tmp.js
+.markup.tmp
