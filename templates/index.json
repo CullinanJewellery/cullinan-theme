@@ -14,7 +14,7 @@
           "type": "text",
           "settings": {
             "text": "Семейно ателие във Велико Търново от 1991 година.",
-            "text_style": "subtitle"
+            "text_style": "body"
           }
         },
         "buttons": {

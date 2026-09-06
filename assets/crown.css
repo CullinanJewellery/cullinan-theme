@@ -33,3 +33,86 @@
   color: rgb(var(--color-button));
   box-shadow: inset 0 0 0 1px rgb(var(--color-button));
 }
+
+/* ---------------------------------------------------------------------------
+   Announcement bar
+
+   Small, uppercase, widely spaced — a quiet band rather than a sentence.
+   --------------------------------------------------------------------------- */
+
+.announcement-bar__message {
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 1rem 0;
+}
+
+/* ---------------------------------------------------------------------------
+   Header
+
+   Wordmark and navigation both set in spaced capitals, the navigation smaller
+   and lighter than the name so the two read as different ranks.
+   --------------------------------------------------------------------------- */
+
+.header__heading,
+.header__heading-link .h2 {
+  font-size: 2rem;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.header__inline-menu .header__menu-item {
+  font-size: 1.25rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* Dawn underlines the current page. A thin rule sits better than a thick one. */
+.header__inline-menu .header__menu-item span {
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.5rem;
+}
+
+.header__inline-menu .header__menu-item:hover span {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.5rem;
+}
+
+/* ---------------------------------------------------------------------------
+   Hero
+
+   Large, airy, centred. The heading is allowed to wrap onto two lines — the
+   narrow measure is what gives it the shape the reference has.
+   --------------------------------------------------------------------------- */
+
+.banner__box {
+  max-width: 60rem;
+  padding: 0;
+}
+
+.banner__heading {
+  font-size: clamp(3.4rem, 5.6vw, 6.4rem);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin-bottom: 2.4rem;
+}
+
+.banner__text {
+  font-size: 1.7rem;
+  line-height: 1.6;
+  margin-bottom: 3.2rem;
+}
+
+.banner__buttons .button {
+  min-width: 26rem;
+  min-height: 5.6rem;
+  font-size: 1.3rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
