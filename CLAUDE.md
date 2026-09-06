@@ -108,8 +108,11 @@ Anything of ours that is not a Dawn setting lives in these two places:
 ## Current state
 
 - Design foundation applied (palette, type, spacing). Committed and live on the draft theme.
-- Homepage is still **Dawn's placeholder content** — mountains illustration, "Welcome to our
-  store", demo t-shirt products. All of it is to be replaced.
+- Homepage, working top to bottom: announcement bar, header and hero are built; the product
+  row is built; the atelier block and newsletter are still Dawn's defaults.
+- Dawn's placeholder illustration has been removed from the hero. An empty image slot now
+  renders as a flat stone band at full height, so adding the photograph later changes
+  nothing about the layout.
 - **No real products yet. No photography yet.** The homepage cannot be finished until the
   atelier photo session happens.
 - Bulgarian needs setting as the store's default language (currently English).

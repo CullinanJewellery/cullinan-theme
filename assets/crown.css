@@ -85,36 +85,54 @@
 /* ---------------------------------------------------------------------------
    Hero
 
-   Large, airy, centred. The heading is allowed to wrap onto two lines — the
-   narrow measure is what gives it the shape the reference has.
+   Measured off the reference at a 966px viewport: 65px heading on an 80px
+   line, 32px beneath it, an 874px content column, and a 486 x 72px button
+   with 2.2px tracking.
+
+   The image slot stays empty until the photography exists — no placeholder
+   graphic. The band holds its full height as flat stone, so adding the
+   photograph later changes nothing about the layout.
    --------------------------------------------------------------------------- */
 
+.banner__media--empty {
+  background-color: rgb(242 240 236);
+}
+
 .banner__box {
-  max-width: 60rem;
+  max-width: 87.4rem;
   padding: 0;
 }
 
 .banner__heading {
-  font-size: clamp(3.4rem, 5.6vw, 6.4rem);
+  font-size: clamp(3.4rem, 5.6vw, 6.5rem);
   font-weight: 400;
-  line-height: 1.08;
-  letter-spacing: 0.02em;
+  line-height: 1.23;
+  letter-spacing: 0.01em;
   text-transform: uppercase;
-  margin-bottom: 2.4rem;
+  margin-bottom: 3.2rem;
 }
 
 .banner__text {
-  font-size: 1.7rem;
+  font-size: 1.8rem;
   line-height: 1.6;
   margin-bottom: 3.2rem;
 }
 
 .banner__buttons .button {
-  min-width: 26rem;
-  min-height: 5.6rem;
-  font-size: 1.3rem;
-  letter-spacing: 0.14em;
+  min-width: min(48.6rem, 100%);
+  min-height: 7.2rem;
+  font-size: 2.2rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
+}
+
+@media screen and (max-width: 749px) {
+  .banner__buttons .button {
+    min-width: 100%;
+    min-height: 6rem;
+    font-size: 1.6rem;
+  }
 }
 
 /* ---------------------------------------------------------------------------
