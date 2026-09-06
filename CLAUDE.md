@@ -102,6 +102,13 @@ Anything of ours that is not a Dawn setting lives in these two places:
 - `assets/crown.css` — our own stylesheet, loaded from `layout/theme.liquid` right after
   `base.css`. Dawn's stylesheets stay untouched so the theme can still be upgraded. Holds the
   hero button hover: solid fill that drops to transparent so the photograph shows through.
+- **Visual mega menu.** `snippets/header-visual-menu.liquid`, wired into
+  `snippets/header-mega-menu.liquid` and `snippets/header-drawer.liquid`. Shopify menu items
+  cannot carry images, so the items are `visual_menu_item` blocks on the header section. Each
+  block names the top-level menu item it belongs to (matched on the title, case-insensitively,
+  because `handleize` is unreliable for Cyrillic). A menu item with matching blocks opens the
+  visual grid; one without keeps the text-column mega menu. Needs the header's desktop menu
+  type set to **Mega menu**.
 - `sections/image-banner.liquid` — writing `[years]` in the hero heading or text renders the
   number of years since `founded_year` (1991), so the count never goes stale.
 

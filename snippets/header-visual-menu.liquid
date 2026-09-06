@@ -1,0 +1,62 @@
+{% comment %}
+  Renders a visual grid of menu items for one top-level menu link.
+
+  Shopify menu items cannot carry images, so the items come from blocks on the
+  header section instead. A block belongs to a menu link when its "menu_item"
+  setting matches that link's title, compared case-insensitively.
+
+  Accepts:
+  - link: {Object} the top-level link object
+  - context: {String} 'mega' (default) or 'drawer'
+
+  Usage:
+  {% render 'header-visual-menu', link: link, context: 'mega' %}
+{% endcomment %}
+
+{%- liquid
+  assign menu_key = link.title | strip | downcase
+  assign grid_context = context | default: 'mega'
+-%}
+
+<ul
+  class="visual-menu visual-menu--{{ grid_context }}{% if grid_context == 'mega' %} mega-menu__list page-width{% endif %}"
+  role="list"
+>
+  {%- for block in section.blocks -%}
+    {%- if block.type == 'visual_menu_item' -%}
+      {%- assign block_key = block.settings.menu_item | strip | downcase -%}
+      {%- if block_key == menu_key and block_key != blank -%}
+        <li class="visual-menu__item" {{ block.shopify_attributes }}>
+          <a
+            href="{{ block.settings.link | default: '#' }}"
+            class="visual-menu__link link"
+          >
+            {%- if block.settings.image != blank -%}
+              {{
+                block.settings.image
+                | image_url: width: 120
+                | image_tag:
+                  class: 'visual-menu__image',
+                  widths: '40, 64, 80, 120',
+                  sizes: '40px',
+                  alt: ''
+              }}
+            {%- else -%}
+              {%- comment -%}
+                No photography yet. A plain filled circle keeps the row the same
+                shape it will be once an image is set, rather than collapsing.
+              {%- endcomment -%}
+              <span class="visual-menu__image visual-menu__image--empty" aria-hidden="true"></span>
+            {%- endif -%}
+            <span class="visual-menu__text">
+              <span class="visual-menu__name">{{ block.settings.label | escape }}</span>
+              {%- if block.settings.subtitle != blank -%}
+                <span class="visual-menu__subtitle">{{ block.settings.subtitle | escape }}</span>
+              {%- endif -%}
+            </span>
+          </a>
+        </li>
+      {%- endif -%}
+    {%- endif -%}
+  {%- endfor -%}
+</ul>

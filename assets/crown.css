@@ -234,3 +234,107 @@
     min-width: 0;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Visual mega menu
+
+   A second mega menu style: a grid of items that each carry a small image, a
+   name and an optional subtitle. Shopify menu items cannot hold images, so the
+   items are blocks on the header section, grouped by the top-level menu item
+   they name. A menu item with no matching blocks keeps the text-column mega
+   menu, which is untouched.
+   --------------------------------------------------------------------------- */
+
+.visual-menu {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  column-gap: 5.6rem;
+  row-gap: 3.2rem;
+  list-style: none;
+}
+
+.visual-menu--mega {
+  margin: 0 auto;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.visual-menu__item {
+  margin: 0;
+}
+
+.visual-menu__link {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  text-decoration: none;
+  color: rgb(var(--color-foreground));
+}
+
+.visual-menu__image {
+  flex: 0 0 auto;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 0;
+  box-shadow: none;
+}
+
+/* Stands in for a photograph that does not exist yet, so the row keeps its
+   shape instead of collapsing or showing a broken image. */
+.visual-menu__image--empty {
+  display: block;
+  background-color: rgb(242 240 236);
+}
+
+.visual-menu__text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.visual-menu__name {
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgb(var(--color-foreground));
+}
+
+.visual-menu__subtitle {
+  margin-top: 0.2rem;
+  font-size: 1.3rem;
+  font-style: italic;
+  font-weight: 400;
+  color: rgba(var(--color-foreground), 0.6);
+}
+
+/* Hover marks the name only — nothing moves, recolours or scales. */
+.visual-menu__link:hover .visual-menu__name {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+@media screen and (max-width: 989px) {
+  .visual-menu {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .visual-menu--drawer {
+    column-gap: 2.4rem;
+    padding: 1.2rem 0;
+  }
+
+  .visual-menu--drawer .visual-menu__image {
+    width: 3.2rem;
+    height: 3.2rem;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .visual-menu {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

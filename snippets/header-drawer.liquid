@@ -26,8 +26,20 @@
           <nav class="menu-drawer__navigation">
             <ul class="menu-drawer__menu has-submenu list-menu" role="list">
               {%- for link in section.settings.menu.links -%}
+                {%- liquid
+                  assign menu_key = link.title | strip | downcase
+                  assign visual_count = 0
+                  for block in section.blocks
+                    if block.type == 'visual_menu_item'
+                      assign block_key = block.settings.menu_item | strip | downcase
+                      if block_key == menu_key and block_key != blank
+                        assign visual_count = visual_count | plus: 1
+                      endif
+                    endif
+                  endfor
+                -%}
                 <li>
-                  {%- if link.links != blank -%}
+                  {%- if link.links != blank or visual_count > 0 -%}
                     <details id="Details-menu-drawer-menu-item-{{ forloop.index }}">
                       <summary
                         id="HeaderDrawer-{{ link.handle }}"
@@ -53,6 +65,12 @@
                             </span>
                             {{ link.title | escape }}
                           </button>
+                          {%- if visual_count > 0 -%}
+
+                            {%- render 'header-visual-menu', link: link, section: section, context: 'drawer' -%}
+
+                          {%- else -%}
+
                           <ul class="menu-drawer__menu list-menu" role="list" tabindex="-1">
                             {%- for childlink in link.links -%}
                               <li>
@@ -120,6 +138,7 @@
                               </li>
                             {%- endfor -%}
                           </ul>
+                          {%- endif -%}
                         </div>
                       </div>
                     </details>
