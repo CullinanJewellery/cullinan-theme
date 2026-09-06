@@ -478,3 +478,12 @@
 .banner__text {
   margin-bottom: 4rem;
 }
+
+/* Product with no photograph yet — the card holds its shape rather than
+   collapsing to text, so the grid stays even and nothing moves when the
+   photography arrives. Consistent with the hero and the atelier block. */
+.card__media--empty {
+  position: absolute;
+  inset: 0;
+  background-color: rgb(242 240 236);
+}
