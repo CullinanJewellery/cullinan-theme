@@ -1,0 +1,346 @@
+{{ 'section-atelier.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign has_video = false
+  if section.settings.video != blank or section.settings.video_url != blank
+    assign has_video = true
+  endif
+
+  assign poster = section.settings.poster | default: section.settings.video.preview_image
+  assign video_id = section.settings.video_url.id
+-%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="atelier page-width section-{{ section.id }}-padding atelier--media-{{ section.settings.media_position }}">
+    <div class="atelier__media-column">
+      <div class="atelier__media">
+        {%- if section.settings.video != blank -%}
+          {%- if poster != blank -%}
+            {{
+              poster
+              | image_url: width: 900
+              | image_tag:
+                class: 'atelier__poster',
+                widths: '400, 600, 900',
+                sizes: '(min-width: 990px) 45vw, 100vw',
+                alt: ''
+            }}
+          {%- endif -%}
+          <video
+            class="atelier__motion"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="none"
+            {% if poster != blank %}
+              poster="{{ poster | image_url: width: 900 }}"
+            {% endif %}
+            aria-hidden="true"
+            tabindex="-1"
+          >
+            {%- for source in section.settings.video.sources -%}
+              <source src="{{ source.url }}" type="{{ source.mime_type }}">
+            {%- endfor -%}
+          </video>
+
+        {%- elsif section.settings.video_url != blank -%}
+          {%- if poster != blank -%}
+            {{
+              poster
+              | image_url: width: 900
+              | image_tag:
+                class: 'atelier__poster',
+                widths: '400, 600, 900',
+                sizes: '(min-width: 990px) 45vw, 100vw',
+                alt: ''
+            }}
+          {%- endif -%}
+          {%- if section.settings.video_url.type == 'youtube' -%}
+            <iframe
+              class="atelier__motion"
+              src="https://www.youtube.com/embed/{{ video_id }}?autoplay=1&mute=1&controls=0&loop=1&playlist={{ video_id }}&playsinline=1&modestbranding=1"
+              allow="autoplay; encrypted-media"
+              aria-hidden="true"
+              tabindex="-1"
+              title=""
+            ></iframe>
+          {%- else -%}
+            <iframe
+              class="atelier__motion"
+              src="https://player.vimeo.com/video/{{ video_id }}?autoplay=1&muted=1&loop=1&background=1"
+              allow="autoplay; encrypted-media"
+              aria-hidden="true"
+              tabindex="-1"
+              title=""
+            ></iframe>
+          {%- endif -%}
+
+        {%- elsif section.settings.image != blank -%}
+          {{
+            section.settings.image
+            | image_url: width: 900
+            | image_tag:
+              class: 'atelier__poster',
+              widths: '400, 600, 900',
+              sizes: '(min-width: 990px) 45vw, 100vw',
+              alt: ''
+          }}
+
+        {%- else -%}
+          {%- comment -%}
+            Nothing set yet. A plain block at the right ratio — no placeholder
+            graphic, no icon, no instructional text.
+          {%- endcomment -%}
+          <span class="atelier__empty" aria-hidden="true"></span>
+        {%- endif -%}
+      </div>
+    </div>
+
+    <div class="atelier__text-column">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="atelier__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      {%- endif -%}
+
+      {%- if section.settings.heading != blank -%}
+        <h2 class="atelier__heading">{{ section.settings.heading | escape }}</h2>
+      {%- endif -%}
+
+      {%- if section.settings.paragraph != blank -%}
+        <div class="atelier__paragraph rte">{{ section.settings.paragraph }}</div>
+      {%- endif -%}
+
+      {%- liquid
+        assign fact_count = 0
+        if section.settings.fact_1_value != blank or section.settings.fact_1_label != blank
+          assign fact_count = fact_count | plus: 1
+        endif
+        if section.settings.fact_2_value != blank or section.settings.fact_2_label != blank
+          assign fact_count = fact_count | plus: 1
+        endif
+        if section.settings.fact_3_value != blank or section.settings.fact_3_label != blank
+          assign fact_count = fact_count | plus: 1
+        endif
+      -%}
+
+      {%- if fact_count > 0 -%}
+        <dl class="atelier__facts">
+          {%- for i in (1..3) -%}
+            {%- liquid
+              case i
+                when 1
+                  assign fact_value = section.settings.fact_1_value
+                  assign fact_label = section.settings.fact_1_label
+                when 2
+                  assign fact_value = section.settings.fact_2_value
+                  assign fact_label = section.settings.fact_2_label
+                when 3
+                  assign fact_value = section.settings.fact_3_value
+                  assign fact_label = section.settings.fact_3_label
+              endcase
+            -%}
+            {%- if fact_value != blank or fact_label != blank -%}
+              <div class="atelier__fact">
+                {%- if fact_value != blank -%}
+                  <dt class="atelier__fact-value">{{ fact_value | escape }}</dt>
+                {%- endif -%}
+                {%- if fact_label != blank -%}
+                  <dd class="atelier__fact-label">{{ fact_label | escape }}</dd>
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </dl>
+      {%- endif -%}
+
+      {%- comment -%}
+        The link renders only when it has somewhere to go — structure can exist
+        before content, navigation cannot.
+      {%- endcomment -%}
+      {%- if section.settings.link_label != blank and section.settings.link_url != blank -%}
+        <a class="atelier__link" href="{{ section.settings.link_url }}">
+          {{- section.settings.link_label | escape -}}
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{%- if has_video -%}
+  <script>
+    // The footage is decorative. Under prefers-reduced-motion nothing plays:
+    // the element is removed outright and the poster still is what remains.
+    (function () {
+      if (!window.matchMedia || !window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var section = document.currentScript.previousElementSibling;
+      if (!section) return;
+      section.querySelectorAll('.atelier__motion').forEach(function (el) {
+        el.remove();
+      });
+    })();
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Atelier",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "select",
+      "id": "media_position",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left",
+      "label": "Media side on desktop"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "default": "scheme-2",
+      "label": "Colour scheme"
+    },
+    {
+      "type": "header",
+      "content": "Media"
+    },
+    {
+      "type": "paragraph",
+      "content": "The slot is 4:5 portrait, for footage shot vertically. A video needs a poster image. Leave everything empty and a plain block is shown."
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Video"
+    },
+    {
+      "type": "video_url",
+      "id": "video_url",
+      "accept": ["youtube", "vimeo"],
+      "label": "Or an external video URL"
+    },
+    {
+      "type": "image_picker",
+      "id": "poster",
+      "label": "Poster image",
+      "info": "Required with a video. Also what is shown when the visitor prefers reduced motion."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Or a still image",
+      "info": "Used when no video is set."
+    },
+    {
+      "type": "header",
+      "content": "Text"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "default": "Ателието",
+      "label": "Eyebrow"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "default": "Правим бижутата на ръка, едно по едно",
+      "label": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "paragraph",
+      "default": "<p>Работим във Велико Търново от 1991 година. Всяко бижу минава през ръцете ни — от модела до последното полиране.</p>",
+      "label": "Paragraph"
+    },
+    {
+      "type": "header",
+      "content": "Facts"
+    },
+    {
+      "type": "text",
+      "id": "fact_1_value",
+      "default": "1991",
+      "label": "Fact 1 value"
+    },
+    {
+      "type": "text",
+      "id": "fact_1_label",
+      "default": "От година",
+      "label": "Fact 1 label"
+    },
+    {
+      "type": "text",
+      "id": "fact_2_value",
+      "default": "14К",
+      "label": "Fact 2 value"
+    },
+    {
+      "type": "text",
+      "id": "fact_2_label",
+      "default": "Злато",
+      "label": "Fact 2 label"
+    },
+    {
+      "type": "text",
+      "id": "fact_3_value",
+      "default": "Велико Търново",
+      "label": "Fact 3 value"
+    },
+    {
+      "type": "text",
+      "id": "fact_3_label",
+      "default": "Ателие",
+      "label": "Fact 3 label"
+    },
+    {
+      "type": "header",
+      "content": "Link"
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "default": "За ателието",
+      "label": "Link text"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Link",
+      "info": "The link stays hidden until a destination is set."
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 64
+    }
+  ],
+  "presets": [
+    {
+      "name": "Atelier"
+    }
+  ]
+}
+{% endschema %}

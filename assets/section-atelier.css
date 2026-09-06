@@ -1,0 +1,169 @@
+/*
+  Atelier section — the two-column band that carries the workshop story.
+
+  Nothing is ever laid over the media here. The heading, the facts and the link
+  all live in the text column.
+*/
+
+.atelier {
+  display: grid;
+  grid-template-columns: 45fr 55fr;
+  gap: 6.4rem;
+  align-items: center;
+}
+
+.atelier--media-right .atelier__media-column {
+  order: 2;
+}
+
+/* --- Media ---------------------------------------------------------------- */
+
+.atelier__media {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+}
+
+.atelier__poster,
+.atelier__motion,
+.atelier__empty {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.atelier__motion {
+  position: absolute;
+  inset: 0;
+  border: 0;
+}
+
+/* Shown until the footage exists. Deliberately plain — no graphic, no icon,
+   no instructional text. */
+.atelier__empty {
+  background-color: rgb(242 240 236);
+}
+
+/* The poster sits beneath the motion layer and is what remains when the
+   visitor prefers reduced motion, since the video is removed outright. */
+@media (prefers-reduced-motion: reduce) {
+  .atelier__motion {
+    display: none;
+  }
+}
+
+/* --- Text ----------------------------------------------------------------- */
+
+.atelier__text-column > :first-child {
+  margin-top: 0;
+}
+
+.atelier__eyebrow {
+  margin: 0;
+  font-size: 1.1rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(var(--color-foreground), 0.62);
+}
+
+.atelier__heading {
+  margin: 2rem 0 0;
+  font-size: clamp(1.8rem, 2.4vw, 2.6rem);
+  font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+
+.atelier__paragraph {
+  margin-top: 2.4rem;
+  max-width: 46ch;
+  font-size: 1.6rem;
+  line-height: 1.7;
+  color: rgba(var(--color-foreground), 0.62);
+}
+
+.atelier__paragraph > p {
+  margin: 0;
+}
+
+.atelier__paragraph > p + p {
+  margin-top: 1.6rem;
+}
+
+/* --- Facts ---------------------------------------------------------------- */
+
+.atelier__facts {
+  display: flex;
+  margin: 4rem 0 0;
+}
+
+.atelier__fact {
+  flex: 1 1 0;
+  padding: 0 2rem;
+}
+
+.atelier__fact:first-child {
+  padding-left: 0;
+}
+
+.atelier__fact:last-child {
+  padding-right: 0;
+}
+
+/* Hairlines between the facts rather than boxes around them. */
+.atelier__fact + .atelier__fact {
+  border-left: 1px solid rgba(var(--color-foreground), 0.15);
+}
+
+.atelier__fact-value {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 400;
+  line-height: 1.3;
+  color: rgb(var(--color-foreground));
+}
+
+.atelier__fact-label {
+  margin: 0.6rem 0 0;
+  font-size: 1.1rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(var(--color-foreground), 0.62);
+}
+
+/* --- Link ----------------------------------------------------------------- */
+
+.atelier__link {
+  display: inline-block;
+  margin-top: 4rem;
+  font-size: 1.4rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgb(var(--color-foreground));
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 6px;
+}
+
+/* --- Stacked -------------------------------------------------------------- */
+
+@media screen and (max-width: 989px) {
+  .atelier {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 3.2rem;
+  }
+
+  /* Media first whichever side it takes on desktop. */
+  .atelier--media-right .atelier__media-column {
+    order: 0;
+  }
+
+  .atelier__facts {
+    margin-top: 3.2rem;
+  }
+
+  .atelier__fact {
+    padding: 0 1.6rem;
+  }
+}

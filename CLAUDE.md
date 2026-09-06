@@ -102,6 +102,11 @@ Anything of ours that is not a Dawn setting lives in these two places:
 - `assets/crown.css` — our own stylesheet, loaded from `layout/theme.liquid` right after
   `base.css`. Dawn's stylesheets stay untouched so the theme can still be upgraded. Holds the
   hero button hover: solid fill that drops to transparent so the photograph shows through.
+- **Atelier section.** `sections/atelier.liquid` with `assets/section-atelier.css`. Our own
+  section, not a Dawn one. Two columns, 45/55, media side switchable. The media slot takes a
+  Shopify-hosted video, a YouTube/Vimeo URL or a still, always at 4:5 portrait. Video is
+  decorative and `aria-hidden` — every fact lives in the text. Under prefers-reduced-motion a
+  small inline script removes the video outright and the poster still is what remains.
 - **Visual mega menu.** `snippets/header-visual-menu.liquid`, wired into
   `snippets/header-mega-menu.liquid` and `snippets/header-drawer.liquid`. Shopify menu items
   cannot carry images, so the items are `visual_menu_item` blocks on the header section. Each

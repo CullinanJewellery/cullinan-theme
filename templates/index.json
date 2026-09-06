@@ -76,49 +76,23 @@
       }
     },
     "atelier": {
-      "type": "image-with-text",
-      "blocks": {
-        "caption": {
-          "type": "caption",
-          "settings": {
-            "caption": "Ателието",
-            "text_style": "caption-with-letter-spacing",
-            "text_size": "medium"
-          }
-        },
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "Семейна работилница от 1991 г.",
-            "heading_size": "h2"
-          }
-        },
-        "text": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Всяко бижу се ражда в нашето ателие във Велико Търново — от восъчния модел до последното полиране. Работим с 14-каратово злато и правим всеки модел на ръка, един по един.</p>",
-            "text_style": "body"
-          }
-        }
-      },
-      "block_order": [
-        "caption",
-        "heading",
-        "text"
-      ],
+      "type": "atelier",
       "settings": {
-        "height": "large",
-        "desktop_image_width": "medium",
-        "layout": "image_first",
-        "image_behavior": "none",
-        "content_layout": "no-overlap",
-        "desktop_content_position": "middle",
-        "desktop_content_alignment": "left",
-        "mobile_content_alignment": "left",
-        "section_color_scheme": "scheme-2",
+        "media_position": "left",
         "color_scheme": "scheme-2",
-        "padding_top": 52,
-        "padding_bottom": 52
+        "eyebrow": "Ателието",
+        "heading": "Правим бижутата на ръка, едно по едно",
+        "paragraph": "<p>Работим във Велико Търново от 1991 година. Всяко бижу минава през ръцете ни — от модела до последното полиране.</p>",
+        "fact_1_value": "1991",
+        "fact_1_label": "От година",
+        "fact_2_value": "14К",
+        "fact_2_label": "Злато",
+        "fact_3_value": "Велико Търново",
+        "fact_3_label": "Ателие",
+        "link_label": "За ателието",
+        "link_url": "",
+        "padding_top": 64,
+        "padding_bottom": 64
       }
     },
     "newsletter": {
