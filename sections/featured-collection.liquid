@@ -198,14 +198,22 @@
       {%- endif -%}
     </slider-component>
 
-    {%- if section.settings.show_view_all and more_in_collection -%}
+    {%- if section.settings.show_view_all and section.settings.collection != blank -%}
       <div class="center collection__view-all{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
         <a
           href="{{ section.settings.collection.url }}"
           class="{% if section.settings.view_all_style == 'link' %}link underlined-link{% elsif section.settings.view_all_style == 'solid' %}button{% else %}button button--secondary{% endif %}"
           aria-label="{{ 'sections.featured_collection.view_all_label' | t: collection_name: section.settings.collection.title | escape }}"
         >
-          {{ 'sections.featured_collection.view_all' | t }}
+          {%- if section.settings.view_all_label != blank -%}
+
+            {{- section.settings.view_all_label | escape -}}
+
+          {%- else -%}
+
+            {{- 'sections.featured_collection.view_all' | t -}}
+
+          {%- endif -%}
         </a>
       </div>
     {%- endif -%}
@@ -339,6 +347,14 @@
       "label": "t:sections.featured-collection.settings.show_view_all.label",
       "info": "t:sections.featured-collection.settings.show_view_all.info"
     },
+    {
+      "type": "text",
+      "id": "view_all_label",
+      "label": "Button text",
+      "info": "Leave empty to use the theme's default wording."
+
+    },
+
     {
       "type": "select",
       "id": "view_all_style",
