@@ -1,14 +1,17 @@
-# Cullinan Jewellery — Shopify theme
+# Crown Jewellery — Shopify theme
 
 ## The business
 
-Cullinan Jewellery (Бижутерия Кулинан) — handmade 14K gold jewellery, made in a family
+Crown Jewellery — handmade 14K gold jewellery, made in a family
 atelier in Veliko Tarnovo, Bulgaria, trading since 1991. There is a physical shop at
 бул. Васил Левски 21. Roughly 4,000 designs exist; only a curated ~50 will go online first.
 
 - Customers: mostly Bulgarian women aged 30–55, buying for themselves or as gifts.
   Local and regional first, wider Bulgaria second.
-- Instagram: @cullinan_jewellery.bg
+- Instagram: @cullinan_jewellery.bg (still the old handle — unchanged by the rename)
+- **Renamed to Crown Jewellery on 2026-09-06.** The old name was Cullinan Jewellery. The
+  GitHub repository, its remote and the Instagram handle still carry the old name; renaming
+  the repository would break the Shopify connection, so it stays.
 - Store currency: EUR. Customer-facing language: Bulgarian.
 - The old site (studio-cullinan.com, Zen Cart) is being replaced by this Shopify store.
 
@@ -78,7 +81,7 @@ Rules that matter here:
 
 Anything of ours that is not a Dawn setting lives in these two places:
 
-- `assets/cullinan.css` — our own stylesheet, loaded from `layout/theme.liquid` right after
+- `assets/crown.css` — our own stylesheet, loaded from `layout/theme.liquid` right after
   `base.css`. Dawn's stylesheets stay untouched so the theme can still be upgraded. Holds the
   hero button hover: solid fill that drops to transparent so the photograph shows through.
 - `sections/image-banner.liquid` — writing `[years]` in the hero heading or text renders the
@@ -92,4 +95,15 @@ Anything of ours that is not a Dawn setting lives in these two places:
 - **No real products yet. No photography yet.** The homepage cannot be finished until the
   atelier photo session happens.
 - Bulgarian needs setting as the store's default language (currently English).
+
+### Waiting on the Shopify admin
+
+These cannot be done from this repository — menus, collections and the store name are store
+data, not theme files:
+
+- **Store name** → Settings → Store details. Still reads Cullinan Jewellery. The header shows
+  `shop.name` until a logo image is uploaded, so the old name is on the site until this changes.
+- **Main menu** (Content → Menus → Main menu), in this order:
+  циркони · диаманти · най-продавани · пръстени · обеци · висулки · гривни
+- **Collections** to point those entries at — none exist yet.
 - Check that Jost renders Cyrillic correctly; if it falls back, swap the font.
