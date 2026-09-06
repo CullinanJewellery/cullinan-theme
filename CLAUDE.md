@@ -142,6 +142,11 @@ data, not theme files:
 - **Product Vendor field** carries the small line above the product title on the cards
   (where the reference prints the stone). Put the stone or material there — "Циркон",
   "Диамант", "14К злато" — not the brand name, or every card will read Crown Jewellery.
+- **Product metafield `custom.detail`** (single line text) carries the italic line beneath it,
+  where the reference prints a stone's meaning. Create it under Settings → Custom data →
+  Products. Cards hide the line when it is empty.
+- **Card swatches** come from a product option with swatches configured (Settings → Custom
+  data, or the option's swatch values). Up to five are shown.
 - **Product photography should be square.** The product rows are set to a square crop so the
   cards line up; anything shot to another shape will be cropped.
 - Check that Jost renders Cyrillic correctly; if it falls back, swap the font.

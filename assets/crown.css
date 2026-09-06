@@ -422,3 +422,40 @@
     display: none;
   }
 }
+
+/* --- Product card: detail line, swatches, discount ------------------------- */
+
+/* The italic line beneath the vendor, from the product's custom.detail
+   metafield. The reference puts a stone's meaning here. */
+.collection .card__detail {
+  font-size: 1.2rem;
+  font-style: italic;
+  line-height: 1.4;
+  color: rgba(var(--color-foreground), 0.7);
+}
+
+.collection .card__swatches {
+  display: flex;
+  gap: 0.6rem;
+  margin: 0.8rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.collection .card__swatch {
+  margin: 0;
+  line-height: 0;
+}
+
+.collection .card__swatch .swatch {
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+}
+
+/* How much is off, beside the sale price. */
+.collection .price-item--saved {
+  font-size: 1.3rem;
+  color: rgb(166 57 75);
+  margin-inline-start: 0.4rem;
+}

@@ -107,6 +107,18 @@
         <span class="price-item price-item--sale price-item--last">
           {{ money_price }}
         </span>
+
+        {%- comment -%}
+
+          How much is off, next to the sale price, the way the reference shows it.
+
+        {%- endcomment -%}
+
+        {%- if compare_at_price > price -%}
+          {%- assign saved_percent = compare_at_price | minus: price | times: 100.0 | divided_by: compare_at_price | round -%}
+          <span class="price-item price-item--saved">(-{{ saved_percent }}%)</span>
+
+        {%- endif -%}
       </div>
       {%- if product.selected_or_first_available_variant.unit_price_measurement -%}
         {% render 'unit-price', price: product.selected_or_first_available_variant.unit_price, measurement: product.selected_or_first_available_variant.unit_price_measurement %}
