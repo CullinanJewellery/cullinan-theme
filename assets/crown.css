@@ -120,17 +120,19 @@
 /* ---------------------------------------------------------------------------
    Product rows
 
-   Measured off the reference: heading 65px left-aligned, arrows on the same
-   line at the right, vendor line 12px, title 16px semibold, struck price 11px,
-   sale price 18px, and a wide square button beneath.
+   Measured off the reference: heading 65px left-aligned with the arrows on the
+   same line, vendor line 12px, title 16px semibold, struck price 11px against
+   an 18px sale price, and a wide square button beneath.
+
+   Note the hooks: the heading lives in .collection__title, NOT in the
+   .title-wrapper-with-link that other Dawn sections use.
    --------------------------------------------------------------------------- */
 
-.collection .title-wrapper-with-link {
-  align-items: center;
+.collection .collection__title {
   margin-bottom: 3.2rem;
 }
 
-.collection .title-wrapper-with-link .title {
+.collection .collection__title .title {
   font-size: clamp(3.2rem, 4.6vw, 6.5rem);
   font-weight: 400;
   line-height: 1.05;
@@ -139,11 +141,27 @@
   text-transform: uppercase;
 }
 
-/* Arrows sit up on the heading line, as they do on the reference. */
-.collection slider-component .slider-buttons {
-  margin: 0;
-  padding: 0;
-  justify-content: flex-end;
+/* Dawn renders the arrows centred below the grid. Lifting them into the space
+   the heading leaves behind puts them on the heading line, as the reference
+   has them, without moving them out of <slider-component> — its JS looks for
+   them among its own descendants. */
+@media screen and (min-width: 990px) {
+  .collection .collection__title--desktop-slider .title {
+    margin-bottom: 4rem;
+  }
+
+  .collection slider-component {
+    position: relative;
+  }
+
+  .collection slider-component .slider-buttons {
+    position: absolute;
+    right: 0;
+    bottom: calc(100% + 1.5rem);
+    justify-content: flex-end;
+    margin: 0;
+    padding: 0;
+  }
 }
 
 .collection .card__content .caption-with-letter-spacing {
@@ -167,7 +185,6 @@
 }
 
 .collection .price__sale .price-item--regular,
-.collection .price .price-item--regular s,
 .collection s.price-item--regular {
   font-size: 1.1rem;
   text-decoration: line-through;
@@ -175,7 +192,7 @@
 
 .collection .price--on-sale .price-item--sale {
   font-size: 1.8rem;
-  color: rgb(var(--color-sale-price, 166 57 75));
+  color: rgb(166 57 75);
 }
 
 /* The row's own call to action: wide, square, spaced capitals. */
