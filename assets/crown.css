@@ -459,3 +459,22 @@
   color: rgb(166 57 75);
   margin-inline-start: 0.4rem;
 }
+
+/* --- Hero spacing --------------------------------------------------------- */
+
+/*
+  Dawn spaces the hero box with adjacent-sibling margins: 2rem before the text,
+  2rem before the buttons, 1rem between anything else. Those stack on top of the
+  margins set above, which is what pushed the button away from the text it
+  belongs to. One system, not two — the margins above govern.
+*/
+.banner__box > * + *,
+.banner__box > * + .banner__text,
+.banner__box > * + .banner__buttons {
+  margin-top: 0;
+}
+
+/* Measured off the reference: 32px under the heading, 40px above the button. */
+.banner__text {
+  margin-bottom: 4rem;
+}
