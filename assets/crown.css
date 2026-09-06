@@ -338,3 +338,87 @@
     grid-template-columns: minmax(0, 1fr);
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Text-column mega menu
+
+   Measured off the reference: column headers in small capitals, items at 16px
+   on a 22.4px line with 6px between them, and the first item of a column set
+   bold. The image panel on the right is a mega_menu_promo block, since Shopify
+   menu items cannot carry images.
+   --------------------------------------------------------------------------- */
+
+.mega-menu__list {
+  gap: 2.4rem 4rem;
+  align-items: start;
+}
+
+/* Column header — the second-level link. */
+.mega-menu__link--level-2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 1.2rem;
+}
+
+/* Items within a column. */
+.mega-menu__list .list-unstyled .mega-menu__link {
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.4;
+  padding: 0.6rem 0;
+  text-transform: none;
+}
+
+/* The reference sets the first item of each column bold. */
+.mega-menu__list .list-unstyled > li:first-child .mega-menu__link {
+  font-weight: 700;
+}
+
+/* The image panel occupies the last two of Dawn's six grid columns. */
+.mega-menu__promo {
+  grid-column: 5 / -1;
+  grid-row: 1 / -1;
+}
+
+.mega-menu__promo-link {
+  display: block;
+  text-decoration: none;
+  color: rgb(var(--color-foreground));
+}
+
+.mega-menu__promo-image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 39 / 43;
+  object-fit: cover;
+}
+
+/* Stands in until the photography exists — flat, never a stock graphic. */
+.mega-menu__promo-image--empty {
+  background-color: rgb(242 240 236);
+}
+
+/* The label sits beneath the image, not across it — see the rule in CLAUDE.md.
+   The reference lays its label over the photograph; we do not. */
+.mega-menu__promo-label {
+  display: block;
+  margin-top: 1.2rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.mega-menu__promo-link:hover .mega-menu__promo-label {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+@media screen and (max-width: 1200px) {
+  .mega-menu__promo {
+    display: none;
+  }
+}

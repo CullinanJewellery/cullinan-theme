@@ -1,0 +1,50 @@
+{% comment %}
+  Renders the image panel that sits to the right of a mega menu's text columns.
+
+  Shopify menu items cannot carry images, so the panel comes from a
+  mega_menu_promo block on the header section, matched to a top-level menu link
+  by title.
+
+  Accepts:
+  - link: {Object} the top-level link object
+
+  Usage:
+  {% render 'header-mega-promo', link: link %}
+{% endcomment %}
+
+{%- liquid
+  assign menu_key = link.title | strip | downcase
+-%}
+
+{%- for block in section.blocks -%}
+  {%- if block.type == 'mega_menu_promo' -%}
+    {%- assign block_key = block.settings.menu_item | strip | downcase -%}
+    {%- if block_key == menu_key and block_key != blank -%}
+      <li class="mega-menu__promo" {{ block.shopify_attributes }}>
+        <a href="{{ block.settings.link | default: '#' }}" class="mega-menu__promo-link">
+          {%- if block.settings.image != blank -%}
+            {{
+              block.settings.image
+              | image_url: width: 800
+              | image_tag:
+                class: 'mega-menu__promo-image',
+                widths: '400, 600, 800',
+                sizes: '39rem',
+                alt: ''
+            }}
+          {%- else -%}
+            {%- comment -%}
+              No placeholder graphic. The panel holds its shape as flat colour
+              so the menu is finished before the photography exists.
+            {%- endcomment -%}
+            <span class="mega-menu__promo-image mega-menu__promo-image--empty" aria-hidden="true"></span>
+          {%- endif -%}
+          {%- if block.settings.label != blank -%}
+            <span class="mega-menu__promo-label">{{ block.settings.label | escape }}</span>
+          {%- endif -%}
+        </a>
+      </li>
+      {%- break -%}
+    {%- endif -%}
+  {%- endif -%}
+{%- endfor -%}
