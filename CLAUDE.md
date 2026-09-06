@@ -56,6 +56,10 @@ Rules that matter here:
 
 ## Working agreements
 
+- **Save the work as we go.** Every change is made as a real edit in the repository (not
+  described in chat), then committed with a clear message and pushed to `main` in the same
+  pass. No need to ask for the push. This keeps VS Code, GitHub and the Shopify draft theme
+  in step, so nothing is lost between sessions.
 - Customer-facing copy is written in **Bulgarian**. Code, comments and commit messages
   in English.
 - Product titles are descriptive, never catalogue codes. Old codes (e.g. `3353`) belong in
