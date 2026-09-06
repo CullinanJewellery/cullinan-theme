@@ -147,6 +147,11 @@ data, not theme files:
   Products. Cards hide the line when it is empty.
 - **Card swatches** come from a product option with swatches configured (Settings → Custom
   data, or the option's swatch values). Up to five are shown.
+- **Photographs** are staged in `photography/` (see its README for naming and shapes). That
+  folder is outside the theme directories, so Shopify never sees it, and the image files are
+  gitignored — git is for the theme, not a photo library. Shopify's Files library has no
+  folders, so filenames do that job: `prasten-3353-1.jpg` for catalogue, `theme-` prefix for
+  anything the theme editor uses. Latin letters only; Cyrillic filenames break in URLs.
 - **Product photography should be square.** The product rows are set to a square crop so the
   cards line up; anything shot to another shape will be cropped.
 - Check that Jost renders Cyrillic correctly; if it falls back, swap the font.

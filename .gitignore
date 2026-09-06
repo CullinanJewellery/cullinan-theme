@@ -13,3 +13,7 @@ node_modules
 # Scratch files from tooling
 .*.tmp.js
 .markup.tmp
+
+# Photography staging — the folder and its README are tracked, the pictures are not
+photography/*
+!photography/README.md
