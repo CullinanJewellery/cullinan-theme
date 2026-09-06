@@ -23,6 +23,24 @@ integration. **Pushing to `main` updates the theme in Shopify automatically.**
 The theme is currently **unpublished (draft)** and the store is private. Do not publish
 the theme or launch the store — that is the owner's decision, not an implementation step.
 
+## How we work
+
+Build in sections, top to bottom, one element per round. Homepage first — navigation, hero,
+then each section in the order a visitor scrolls past it. Only when the homepage is finished
+do we move to the templates: collection page, product page, cart, then the story pages.
+
+The reference is moonmagic.com. Go and look at it before building each element — study the
+structure, proportions, spacing, hierarchy and interaction. Take the patterns. Never take
+their code, their images or their words; we are building Crown Jewellery, and the pieces that
+make Crown Jewellery different (a workshop since 1991) are not on their site.
+
+Photography comes last. Build every image slot empty and make sure the layout holds when
+nothing is set. No placeholder graphics, no stock images, no AI-generated images anywhere.
+
+Never link to an empty collection. Structure can exist before content; navigation cannot.
+
+Each element gets a written specification before any code is written.
+
 ## Design direction
 
 The reference the owner chose is **moonmagic.com** — light, quiet, generous with space.
