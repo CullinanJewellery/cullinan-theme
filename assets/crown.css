@@ -503,7 +503,7 @@
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
-  align-items: start;
+  align-items: center;
   gap: 4rem;
   margin: 0;
   padding: 0;
@@ -522,6 +522,15 @@
 }
 
 .section-hero_facts-padding .multicolumn-card {
+  padding: 0;
+}
+
+/*
+  With no card background Dawn zeroes the info block's top, left and right
+  padding but leaves 2.5rem on the bottom. That dead space under the text and
+  none above it is what made the labels sit high in the band.
+*/
+.section-hero_facts-padding .multicolumn-card__info {
   padding: 0;
 }
 
