@@ -516,6 +516,15 @@
   padding: 0;
 }
 
+/* Dawn's heading margins were making the band taller than its content needs. */
+.section-hero_facts-padding .multicolumn-list__item h3 {
+  margin: 0;
+}
+
+.section-hero_facts-padding .multicolumn-card {
+  padding: 0;
+}
+
 @media screen and (max-width: 749px) {
   .section-hero_facts-padding .multicolumn-list {
     gap: 1.6rem;
