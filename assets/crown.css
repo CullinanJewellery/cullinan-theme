@@ -544,3 +544,25 @@
     line-height: 1.4;
   }
 }
+
+/* --- Product row: one content column -------------------------------------- */
+
+/*
+  Dawn gives the three parts of this section different horizontal boxes: the
+  heading gets .page-width, the grid gets .page-width-desktop (no max-width, no
+  padding) or .slider-component-desktop depending on how many products there
+  are, and the button got neither. So the three drifted apart, and which class
+  the grid lands on changes the moment the catalogue outgrows the row.
+
+  Pinning all three to the same box keeps the heading, the first card and the
+  button on one left edge whatever the product count.
+*/
+@media screen and (min-width: 990px) {
+  .collection > .collection__title,
+  .collection > slider-component,
+  .collection > .collection__view-all {
+    max-width: var(--page-width);
+    margin-inline: auto;
+    padding-inline: 5rem;
+  }
+}
