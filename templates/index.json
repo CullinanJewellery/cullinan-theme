@@ -276,7 +276,7 @@
           "type": "benefit",
           "settings": {
             "visual": "icon",
-            "icon": "gold-bar",
+            "icon": "gem",
             "image": "",
             "heading": "Проба 585 и 750",
             "subline": "14 и 18 карата злато."
@@ -286,7 +286,7 @@
           "type": "benefit",
           "settings": {
             "visual": "icon",
-            "icon": "hammer",
+            "icon": "certificate",
             "image": "",
             "heading": "Сертифицирани майстори",
             "subline": "Бижутата се изработват от златари с професионална квалификация."
@@ -306,7 +306,7 @@
           "type": "benefit",
           "settings": {
             "visual": "icon",
-            "icon": "delivery-van",
+            "icon": "box",
             "image": "",
             "heading": "Доставка с Еконт и Спиди",
             "subline": "До офис или адрес в цялата страна."
