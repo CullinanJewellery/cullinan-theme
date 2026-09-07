@@ -24,6 +24,11 @@
   focusable="false"
 >
   {%- case icon -%}
+    {%- when 'gold-bar' -%}
+      <path d="M4 18.5h16l-2-6.5H6z" vector-effect="non-scaling-stroke"/>
+      <path d="M6 12l1.6-3.5h8.8L18 12" vector-effect="non-scaling-stroke"/>
+      <path d="M9.5 15.5h5" vector-effect="non-scaling-stroke"/>
+
     {%- when 'gem' -%}
       <path d="M6 3h12l3.5 6L12 21 2.5 9z" vector-effect="non-scaling-stroke"/>
       <path d="M2.5 9h19" vector-effect="non-scaling-stroke"/>
@@ -35,9 +40,8 @@
       <path d="M9.5 7.2 12 3.5l2.5 3.7L12 10.5z" vector-effect="non-scaling-stroke"/>
 
     {%- when 'hammer' -%}
-      <path d="M14 4h7v5h-7z" vector-effect="non-scaling-stroke"/>
-      <path d="M14 6.5h-3" vector-effect="non-scaling-stroke"/>
-      <path d="M11 6.5 4 20" vector-effect="non-scaling-stroke"/>
+      <rect x="4" y="5.5" width="16" height="5" rx="0.5" vector-effect="non-scaling-stroke"/>
+      <path d="M12 10.5v10" vector-effect="non-scaling-stroke"/>
 
     {%- when 'map-pin' -%}
       <path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z" vector-effect="non-scaling-stroke"/>
