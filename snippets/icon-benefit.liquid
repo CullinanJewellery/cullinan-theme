@@ -40,8 +40,15 @@
       <path d="M9.5 7.2 12 3.5l2.5 3.7L12 10.5z" vector-effect="non-scaling-stroke"/>
 
     {%- when 'hammer' -%}
-      <rect x="4" y="5.5" width="16" height="5" rx="0.5" vector-effect="non-scaling-stroke"/>
-      <path d="M12 10.5v10" vector-effect="non-scaling-stroke"/>
+      {%- comment -%}
+        A jeweller's chasing hammer seen side on: flat striking face at the
+        left, a head rounding to the pein at the right, and a handle that
+        widens slightly towards the grip. Drawn and checked at 52px — a plain
+        rectangle read as a mallet, and an angular pein read as an arrow.
+      {%- endcomment -%}
+      <path d="M5 3.6h2.4v6.2H5z" vector-effect="non-scaling-stroke"/>
+      <path d="M7.4 4.6h6.2c1.5 0 2.4.7 2.4 2.1s-.9 2.1-2.4 2.1H7.4z" vector-effect="non-scaling-stroke"/>
+      <path d="M10.1 8.8h2.3l.5 11.6h-3.3z" vector-effect="non-scaling-stroke"/>
 
     {%- when 'map-pin' -%}
       <path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z" vector-effect="non-scaling-stroke"/>
