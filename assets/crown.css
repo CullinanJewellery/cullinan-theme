@@ -491,17 +491,20 @@
 /* --- The facts strip under the hero --------------------------------------- */
 
 /*
-  Dawn lays this out as four equal columns with the text centred inside each.
-  Because the four labels are very different lengths, equal columns produce
-  visibly unequal gaps between the words. Distributing the items themselves
-  puts the same space between each pair instead.
+  Dawn lays this out as equal columns with the text centred inside each. The
+  labels are different lengths, so equal columns give visibly unequal gaps
+  between the words — the gap is what the eye reads. Distributing the items
+  themselves puts the same space between each pair.
+
+  Three of them, on one row at every width. On a phone the type steps down and
+  each label wraps within its own column rather than the row breaking in two.
 */
 .section-hero_facts-padding .multicolumn-list {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   justify-content: space-between;
-  align-items: baseline;
-  gap: 2.4rem 4rem;
+  align-items: start;
+  gap: 4rem;
   margin: 0;
   padding: 0;
 }
@@ -515,8 +518,11 @@
 
 @media screen and (max-width: 749px) {
   .section-hero_facts-padding .multicolumn-list {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 2.4rem;
+    gap: 1.6rem;
+  }
+
+  .section-hero_facts-padding .multicolumn-list__item h3 {
+    font-size: 1.2rem;
+    line-height: 1.4;
   }
 }
