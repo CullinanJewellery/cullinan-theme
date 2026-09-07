@@ -135,7 +135,7 @@
         "c1": {
           "type": "column",
           "settings": {
-            "title": "14К злато",
+            "title": "Собствено производство",
             "text": "",
             "link_label": "",
             "link": ""
@@ -144,7 +144,7 @@
         "c2": {
           "type": "column",
           "settings": {
-            "title": "Ръчна изработка",
+            "title": "Първокласни метали",
             "text": "",
             "link_label": "",
             "link": ""
@@ -153,7 +153,7 @@
         "c3": {
           "type": "column",
           "settings": {
-            "title": "Собствено ателие",
+            "title": "Наследство",
             "text": "",
             "link_label": "",
             "link": ""
@@ -162,7 +162,7 @@
         "c4": {
           "type": "column",
           "settings": {
-            "title": "От 1991 г.",
+            "title": "Установени от 1991",
             "text": "",
             "link_label": "",
             "link": ""

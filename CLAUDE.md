@@ -128,6 +128,18 @@ Anything of ours that is not a Dawn setting lives in these two places:
 - **No real products yet. No photography yet.** The homepage cannot be finished until the
   atelier photo session happens.
 - Bulgarian needs setting as the store's default language (currently English).
+- **Unresolved: 14K or 18K?** The old site (studio-cullinan.com, "За нас") says the company
+  produces **eighteen** carat gold. The announcement bar and the atelier section currently say
+  14К. One of them is wrong and both are live. The homepage facts strip now says "Първокласни
+  метали", which sidesteps it, but the other two places still carry the claim.
+- **The old site is the best source for real copy.** It gives: founded 1991 as КУЛИНАН 96 ООД;
+  the business is *производство* not resale; stones certified by an appraiser qualified at HRD
+  Antwerp; diamonds, sapphires, emeralds, rubies; colour enamel; wholesale and retail; a shop
+  that also carries Italian imports; and a gold-buying service. Its categories are Дамски
+  бижута · Мъжки бижута · Брачни халки · Сребро, with пръстени, обици, гривни, висулки,
+  колиета, комплекти, брошки, мъжки аксесоари listed in the About text.
+- **Unresolved: is silver part of Crown Jewellery?** The old site sells silver (s3042, s1193com)
+  but its About page says the shop does not. Affects the menu and the facts strip.
 
 ### Waiting on the Shopify admin
 
