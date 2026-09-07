@@ -181,11 +181,99 @@
         "padding_top": 8,
         "padding_bottom": 8
       }
+    },
+    "image_marquee": {
+      "type": "image-marquee",
+      "blocks": {
+        "m1": {
+          "type": "image",
+          "settings": {
+            "image": "",
+            "alt": "",
+            "link": ""
+          }
+        },
+        "m2": {
+          "type": "image",
+          "settings": {
+            "image": "",
+            "alt": "",
+            "link": ""
+          }
+        },
+        "m3": {
+          "type": "image",
+          "settings": {
+            "image": "",
+            "alt": "",
+            "link": ""
+          }
+        },
+        "m4": {
+          "type": "image",
+          "settings": {
+            "image": "",
+            "alt": "",
+            "link": ""
+          }
+        },
+        "m5": {
+          "type": "image",
+          "settings": {
+            "image": "",
+            "alt": "",
+            "link": ""
+          }
+        },
+        "m6": {
+          "type": "image",
+          "settings": {
+            "image": "",
+            "alt": "",
+            "link": ""
+          }
+        },
+        "m7": {
+          "type": "image",
+          "settings": {
+            "image": "",
+            "alt": "",
+            "link": ""
+          }
+        },
+        "m8": {
+          "type": "image",
+          "settings": {
+            "image": "",
+            "alt": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "m1",
+        "m2",
+        "m3",
+        "m4",
+        "m5",
+        "m6",
+        "m7",
+        "m8"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "images_visible": 6,
+        "gap": 12,
+        "seconds_per_image": 4,
+        "padding_top": 8,
+        "padding_bottom": 18
+      }
     }
   },
   "order": [
     "hero_image",
     "hero_facts",
+    "image_marquee",
     "featured_collection",
     "atelier",
     "newsletter"

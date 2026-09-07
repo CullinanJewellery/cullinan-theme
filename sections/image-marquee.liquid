@@ -1,0 +1,187 @@
+{{ 'section-image-marquee.css' | asset_url | stylesheet_tag }}
+
+{%- comment -%}
+  A full-bleed band of square images that drifts sideways.
+
+  The reference does this with Swiper, stepping one slide every five seconds.
+  This is a CSS marquee instead — no library, and it stops properly under
+  prefers-reduced-motion. The track holds the same set of images twice and
+  slides exactly half its width, so the loop is seamless.
+
+  Each item carries its own trailing gap rather than the track using `gap`,
+  which is what makes translating by -50% land exactly on the repeat.
+{%- endcomment -%}
+
+{%- liquid
+  assign count = section.blocks.size
+  if count == 0
+    assign count = 1
+  endif
+  assign duration = count | times: section.settings.seconds_per_image
+-%}
+
+<div
+  class="marquee color-{{ section.settings.color_scheme }} gradient"
+  style="
+    --marquee-visible: {{ section.settings.images_visible }};
+    --marquee-gap: {{ section.settings.gap }}px;
+    --marquee-duration: {{ duration }}s;
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  "
+>
+  <div class="marquee__track">
+    {%- for pass in (1..2) -%}
+      <ul
+        class="marquee__set"
+        role="list"
+        {% if pass == 2 %}
+          aria-hidden="true"
+        {% endif %}
+      >
+        {%- for block in section.blocks -%}
+          <li class="marquee__item" {{ block.shopify_attributes }}>
+            {%- capture media -%}
+              {%- if block.settings.image != blank -%}
+                {{
+                  block.settings.image
+                  | image_url: width: 600
+                  | image_tag:
+                    class: 'marquee__image',
+                    widths: '200, 300, 400, 600',
+                    sizes: '30vw',
+                    alt: block.settings.alt
+                }}
+              {%- else -%}
+                {%- comment -%}
+                  No photograph yet. A flat square keeps the rhythm of the band
+                  so nothing shifts once the pictures arrive.
+                {%- endcomment -%}
+                <span class="marquee__image marquee__image--empty"></span>
+              {%- endif -%}
+            {%- endcapture -%}
+
+            {%- if block.settings.link != blank and pass == 1 -%}
+              <a class="marquee__link" href="{{ block.settings.link }}">{{ media }}</a>
+            {%- elsif block.settings.link != blank -%}
+              <span class="marquee__link" aria-hidden="true">{{ media }}</span>
+            {%- else -%}
+              {{ media }}
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Image marquee",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 24,
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "default": "scheme-1",
+      "label": "Colour scheme"
+    },
+    {
+      "type": "range",
+      "id": "images_visible",
+      "min": 3,
+      "max": 8,
+      "step": 1,
+      "label": "Images visible",
+      "default": 6
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Gap between images",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "seconds_per_image",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "unit": "s",
+      "label": "Seconds per image",
+      "info": "How long one image takes to cross its own width. Higher is slower.",
+      "default": 4
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 18
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "Square. Leave empty until the photography exists — a flat square is shown."
+        },
+        {
+          "type": "text",
+          "id": "alt",
+          "label": "Alt text",
+          "info": "Leave empty if the picture is decorative."
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image marquee",
+      "blocks": [
+        { "type": "image" },
+        { "type": "image" },
+        { "type": "image" },
+        { "type": "image" },
+        { "type": "image" },
+        { "type": "image" },
+        { "type": "image" },
+        { "type": "image" }
+      ]
+    }
+  ]
+}
+{% endschema %}

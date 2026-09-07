@@ -107,6 +107,12 @@ Anything of ours that is not a Dawn setting lives in these two places:
   Shopify-hosted video, a YouTube/Vimeo URL or a still, always at 4:5 portrait. Video is
   decorative and `aria-hidden` — every fact lives in the text. Under prefers-reduced-motion a
   small inline script removes the video outright and the poster still is what remains.
+- **Image marquee.** `sections/image-marquee.liquid` with
+  `assets/section-image-marquee.css`. Full-bleed band of square images drifting sideways,
+  under the facts strip. The reference uses Swiper; this is a CSS marquee instead — no
+  library, and it stops under prefers-reduced-motion. The track holds the same set twice and
+  translates by -50%; each item carries its own trailing margin rather than the track using
+  `gap`, which is what makes -50% land exactly on the repeat. Empty slots are flat squares.
 - **Visual mega menu.** `snippets/header-visual-menu.liquid`, wired into
   `snippets/header-mega-menu.liquid` and `snippets/header-drawer.liquid`. Shopify menu items
   cannot carry images, so the items are `visual_menu_item` blocks on the header section. Each

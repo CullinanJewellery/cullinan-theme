@@ -1,0 +1,81 @@
+/*
+  Image marquee — a full-bleed band of square images drifting sideways.
+
+  The track holds the same set twice and translates by exactly -50%, so the
+  loop is seamless. Each item carries its own trailing margin rather than the
+  track using `gap`; that keeps the two halves identical in width, which is
+  what makes -50% land precisely on the repeat.
+*/
+
+.marquee {
+  overflow: hidden;
+}
+
+.marquee__track {
+  display: flex;
+  width: max-content;
+  animation: marquee-drift var(--marquee-duration, 40s) linear infinite;
+}
+
+.marquee__set {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.marquee__item {
+  flex: 0 0 auto;
+  margin: 0 var(--marquee-gap, 12px) 0 0;
+  /*
+    Each item occupies its own width plus one gap, so the number visible across
+    the viewport is exactly the setting.
+  */
+  width: calc(100vw / var(--marquee-visible, 6) - var(--marquee-gap, 12px));
+}
+
+.marquee__link {
+  display: block;
+}
+
+.marquee__image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+/* Stands in until the photography exists — the band keeps its rhythm. */
+.marquee__image--empty {
+  background-color: rgb(242 240 236);
+}
+
+@keyframes marquee-drift {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Decorative motion. If the visitor would rather not have it, the band simply
+   sits still — the images stay, nothing else changes. */
+@media (prefers-reduced-motion: reduce) {
+  .marquee__track {
+    animation: none;
+  }
+}
+
+@media screen and (max-width: 989px) {
+  .marquee__item {
+    width: calc(100vw / 3 - var(--marquee-gap, 12px));
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .marquee__item {
+    width: calc(100vw / 2.2 - var(--marquee-gap, 12px));
+  }
+}
