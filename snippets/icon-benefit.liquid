@@ -1,0 +1,73 @@
+{% comment %}
+  Line icons for the benefits row.
+
+  Stroke only, no fill, currentColor. The stroke uses vector-effect
+  non-scaling-stroke so it stays 1.25px however large the icon is drawn — a
+  plain stroke-width would thicken as the 24-unit viewBox scales up to 52px.
+
+  Accepts:
+  - icon: {String} gem, ring, hammer, map-pin, engraving-pen, delivery-van,
+    box, return-arrow, certificate
+
+  Usage:
+  {% render 'icon-benefit', icon: block.settings.icon %}
+{% endcomment %}
+
+<svg
+  class="benefit__icon"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-hidden="true"
+  focusable="false"
+>
+  {%- case icon -%}
+    {%- when 'gem' -%}
+      <path d="M6 3h12l3.5 6L12 21 2.5 9z" vector-effect="non-scaling-stroke"/>
+      <path d="M2.5 9h19" vector-effect="non-scaling-stroke"/>
+      <path d="M9 3 6.5 9 12 21" vector-effect="non-scaling-stroke"/>
+      <path d="m15 3 2.5 6L12 21" vector-effect="non-scaling-stroke"/>
+
+    {%- when 'ring' -%}
+      <circle cx="12" cy="15" r="6.5" vector-effect="non-scaling-stroke"/>
+      <path d="M9.5 7.2 12 3.5l2.5 3.7L12 10.5z" vector-effect="non-scaling-stroke"/>
+
+    {%- when 'hammer' -%}
+      <path d="M14 4h7v5h-7z" vector-effect="non-scaling-stroke"/>
+      <path d="M14 6.5h-3" vector-effect="non-scaling-stroke"/>
+      <path d="M11 6.5 4 20" vector-effect="non-scaling-stroke"/>
+
+    {%- when 'map-pin' -%}
+      <path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z" vector-effect="non-scaling-stroke"/>
+      <circle cx="12" cy="10" r="2.5" vector-effect="non-scaling-stroke"/>
+
+    {%- when 'engraving-pen' -%}
+      <path d="M4 20.5 5.8 15 16.6 4.2a2.1 2.1 0 0 1 3 3L8.8 18z" vector-effect="non-scaling-stroke"/>
+      <path d="M15 5.8 18.2 9" vector-effect="non-scaling-stroke"/>
+      <path d="M5.8 15 8.8 18" vector-effect="non-scaling-stroke"/>
+
+    {%- when 'delivery-van' -%}
+      <path d="M2 5.5h11v10H2z" vector-effect="non-scaling-stroke"/>
+      <path d="M13 9h4l3.5 3.5v3H13z" vector-effect="non-scaling-stroke"/>
+      <circle cx="6.5" cy="17.5" r="2" vector-effect="non-scaling-stroke"/>
+      <circle cx="16.5" cy="17.5" r="2" vector-effect="non-scaling-stroke"/>
+
+    {%- when 'box' -%}
+      <path d="M3 7.5 12 3l9 4.5v9L12 21l-9-4.5z" vector-effect="non-scaling-stroke"/>
+      <path d="M3 7.5 12 12l9-4.5" vector-effect="non-scaling-stroke"/>
+      <path d="M12 12v9" vector-effect="non-scaling-stroke"/>
+
+    {%- when 'return-arrow' -%}
+      <path d="M3 10h12a5 5 0 0 1 0 10H8" vector-effect="non-scaling-stroke"/>
+      <path d="m7 6-4 4 4 4" vector-effect="non-scaling-stroke"/>
+
+    {%- when 'certificate' -%}
+      <rect x="3" y="4" width="18" height="12" rx="1" vector-effect="non-scaling-stroke"/>
+      <path d="M7 8h10" vector-effect="non-scaling-stroke"/>
+      <path d="M7 11.5h6" vector-effect="non-scaling-stroke"/>
+      <circle cx="16.5" cy="17" r="3.5" vector-effect="non-scaling-stroke"/>
+      <path d="m14.7 19.8-.7 3.2 2.5-1.5 2.5 1.5-.7-3.2" vector-effect="non-scaling-stroke"/>
+  {%- endcase -%}
+</svg>

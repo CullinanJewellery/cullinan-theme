@@ -107,6 +107,12 @@ Anything of ours that is not a Dawn setting lives in these two places:
   Shopify-hosted video, a YouTube/Vimeo URL or a still, always at 4:5 portrait. Video is
   decorative and `aria-hidden` — every fact lives in the text. Under prefers-reduced-motion a
   small inline script removes the video outright and the poster still is what remains.
+- **Benefits row.** `sections/icon-benefits.liquid` with `assets/section-icon-benefits.css`
+  and `snippets/icon-benefit.liquid`. Four short promises under the product row. Each block
+  takes either an uploaded image (contained, never cropped, no mask or border) or one of nine
+  built-in line icons. The icons carry `vector-effect="non-scaling-stroke"` so the line stays
+  1.25px however large they are drawn — a plain stroke-width would thicken as the 24-unit
+  viewBox scales to 52px.
 - **Image marquee.** `sections/image-marquee.liquid` with
   `assets/section-image-marquee.css`. Full-bleed band of square images drifting sideways,
   under the facts strip. The reference uses Swiper; this is a CSS marquee instead — no
@@ -134,10 +140,9 @@ Anything of ours that is not a Dawn setting lives in these two places:
 - **No real products yet. No photography yet.** The homepage cannot be finished until the
   atelier photo session happens.
 - Bulgarian needs setting as the store's default language (currently English).
-- **Unresolved: 14K or 18K?** The old site (studio-cullinan.com, "За нас") says the company
-  produces **eighteen** carat gold. The announcement bar and the atelier section currently say
-  14К. One of them is wrong and both are live. The homepage facts strip now says "Първокласни
-  метали", which sidesteps it, but the other two places still carry the claim.
+- **Settled 2026-09-07: both 14K and 18K.** The benefits row the owner wrote says "Проба 585
+  и 750 — 14 и 18 карата злато", so the range covers both. The announcement bar and the atelier
+  section still say 14К only, which understates it — worth widening when the copy is revised.
 - **The old site is the best source for real copy.** It gives: founded 1991 as КУЛИНАН 96 ООД;
   the business is *производство* not resale; stones certified by an appraiser qualified at HRD
   Antwerp; diamonds, sapphires, emeralds, rubies; colour enamel; wholesale and retail; a shop

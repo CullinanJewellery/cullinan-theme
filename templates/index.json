@@ -268,6 +268,62 @@
         "padding_top": 8,
         "padding_bottom": 18
       }
+    },
+    "benefits": {
+      "type": "icon-benefits",
+      "blocks": {
+        "b1": {
+          "type": "benefit",
+          "settings": {
+            "visual": "icon",
+            "icon": "gem",
+            "image": "",
+            "heading": "Проба 585 и 750",
+            "subline": "14 и 18 карата злато."
+          }
+        },
+        "b2": {
+          "type": "benefit",
+          "settings": {
+            "visual": "icon",
+            "icon": "hammer",
+            "image": "",
+            "heading": "Сертифицирани майстори",
+            "subline": "Бижутата се изработват от златари с професионална квалификация."
+          }
+        },
+        "b3": {
+          "type": "benefit",
+          "settings": {
+            "visual": "icon",
+            "icon": "engraving-pen",
+            "image": "",
+            "heading": "Гравиране по желание",
+            "subline": "Име, дата или послание."
+          }
+        },
+        "b4": {
+          "type": "benefit",
+          "settings": {
+            "visual": "icon",
+            "icon": "delivery-van",
+            "image": "",
+            "heading": "Доставка с Еконт и Спиди",
+            "subline": "До офис или адрес в цялата страна."
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ],
+      "settings": {
+        "color_scheme": "scheme-2",
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
     }
   },
   "order": [
@@ -275,6 +331,7 @@
     "hero_facts",
     "image_marquee",
     "featured_collection",
+    "benefits",
     "atelier",
     "newsletter"
   ]

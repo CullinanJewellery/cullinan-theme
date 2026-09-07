@@ -1,0 +1,145 @@
+{{ 'section-icon-benefits.css' | asset_url | stylesheet_tag }}
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div
+    class="benefits page-width"
+    style="
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    "
+  >
+    <ul class="benefits__grid" role="list">
+      {%- for block in section.blocks -%}
+        <li class="benefits__item" {{ block.shopify_attributes }}>
+          <div class="benefit__visual">
+            {%- if block.settings.visual == 'image' and block.settings.image != blank -%}
+              {%- comment -%}
+                Contained, never cropped — a photograph of gold or a stone has to
+                stay whole. No mask, no border.
+              {%- endcomment -%}
+              {{
+                block.settings.image
+                | image_url: width: 160
+                | image_tag: class: 'benefit__image', widths: '52, 104, 160', sizes: '52px', alt: ''
+              }}
+            {%- elsif block.settings.visual == 'icon' -%}
+              {% render 'icon-benefit', icon: block.settings.icon %}
+            {%- endif -%}
+          </div>
+
+          {%- if block.settings.heading != blank -%}
+            <h3 class="benefit__heading">{{ block.settings.heading | escape }}</h3>
+          {%- endif -%}
+
+          {%- if block.settings.subline != blank -%}
+            <p class="benefit__subline">{{ block.settings.subline | escape }}</p>
+          {%- endif -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Benefits row",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 8,
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "default": "scheme-2",
+      "label": "Colour scheme"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 64
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit",
+      "settings": [
+        {
+          "type": "select",
+          "id": "visual",
+          "options": [
+            { "value": "icon", "label": "Line icon" },
+            { "value": "image", "label": "Uploaded image" }
+          ],
+          "default": "icon",
+          "label": "Visual"
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "options": [
+            { "value": "gem", "label": "Gem" },
+            { "value": "ring", "label": "Ring" },
+            { "value": "hammer", "label": "Hammer" },
+            { "value": "map-pin", "label": "Map pin" },
+            { "value": "engraving-pen", "label": "Engraving pen" },
+            { "value": "delivery-van", "label": "Delivery van" },
+            { "value": "box", "label": "Box" },
+            { "value": "return-arrow", "label": "Return arrow" },
+            { "value": "certificate", "label": "Certificate" }
+          ],
+          "default": "gem",
+          "label": "Line icon"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "Used when Visual is set to Uploaded image. Shown whole, never cropped."
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        },
+        {
+          "type": "text",
+          "id": "subline",
+          "label": "Subline",
+          "info": "Hidden when empty."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Benefits row",
+      "blocks": [
+        { "type": "benefit" },
+        { "type": "benefit" },
+        { "type": "benefit" },
+        { "type": "benefit" }
+      ]
+    }
+  ]
+}
+{% endschema %}
