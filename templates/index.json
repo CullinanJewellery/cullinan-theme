@@ -92,7 +92,7 @@
         "fact_3_label": "Ателие",
         "link_label": "За ателието",
         "link_url": "",
-        "padding_top": 64,
+        "padding_top": 88,
         "padding_bottom": 64
       }
     },
@@ -276,7 +276,7 @@
           "type": "benefit",
           "settings": {
             "visual": "icon",
-            "icon": "gem",
+            "icon": "gold-bar",
             "image": "",
             "heading": "Проба 585 и 750",
             "subline": "14 и 18 карата злато."
