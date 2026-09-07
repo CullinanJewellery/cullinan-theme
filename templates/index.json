@@ -262,9 +262,9 @@
       ],
       "settings": {
         "color_scheme": "scheme-1",
-        "images_visible": 6,
+        "images_visible": 7,
         "gap": 12,
-        "seconds_per_image": 4,
+        "seconds_per_image": 6,
         "padding_top": 8,
         "padding_bottom": 18
       }
