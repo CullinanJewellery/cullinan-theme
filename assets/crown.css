@@ -104,7 +104,9 @@
 }
 
 .banner__heading {
-  font-size: clamp(3.4rem, 5.6vw, 6.5rem);
+  /* The floor has to sit below what the scaling asks for, or it wins on small
+     screens and the heading renders at its largest where there is least room. */
+  font-size: clamp(2.4rem, 7vw, 6.5rem);
   font-weight: 400;
   line-height: 1.23;
   letter-spacing: 0.01em;
@@ -127,11 +129,28 @@
   text-transform: uppercase;
 }
 
+/*
+  On a phone the hero text has to leave the photograph visible. Everything
+  tightens: the heading scales down, the lines close up, and the button stops
+  spanning the full width — a full-width black bar cuts the picture in half.
+*/
 @media screen and (max-width: 749px) {
+  .banner__heading {
+    margin-bottom: 2rem;
+    line-height: 1.15;
+  }
+
+  .banner__text {
+    font-size: 1.5rem;
+    line-height: 1.5;
+    margin-bottom: 2.8rem;
+  }
+
   .banner__buttons .button {
-    min-width: 100%;
-    min-height: 6rem;
-    font-size: 1.6rem;
+    min-width: auto;
+    min-height: 5rem;
+    padding: 0 3.2rem;
+    font-size: 1.3rem;
   }
 }
 
