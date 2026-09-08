@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero_image": {
@@ -47,23 +56,165 @@
         "show_text_below": false
       }
     },
+    "hero_facts": {
+      "type": "multicolumn",
+      "blocks": {
+        "c1": {
+          "type": "column",
+          "settings": {
+            "title": "<strong>СОБСТВЕНО ПРОИЗВОДСТВО</strong>",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "c2": {
+          "type": "column",
+          "settings": {
+            "title": "<strong>ПЪРВОКЛАСНИ МЕТАЛИ</strong>",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "c3": {
+          "type": "column",
+          "settings": {
+            "title": "<strong>СЕРТИФИЦИРАНИ ПРОДУКТИ</strong>",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "c4": {
+          "type": "column",
+          "settings": {
+            "title": "<strong>УСТАНОВЕНИ ОТ 2026</strong>",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4"
+      ],
+      "settings": {
+        "title": "",
+        "heading_size": "h2",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 4,
+        "column_alignment": "center",
+        "background_style": "none",
+        "color_scheme": "scheme-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    },
+    "image_marquee": {
+      "type": "image-marquee",
+      "blocks": {
+        "m1": {
+          "type": "image",
+          "settings": {
+            "alt": "",
+            "link": ""
+          }
+        },
+        "m2": {
+          "type": "image",
+          "settings": {
+            "alt": "",
+            "link": ""
+          }
+        },
+        "m3": {
+          "type": "image",
+          "settings": {
+            "alt": "",
+            "link": ""
+          }
+        },
+        "m4": {
+          "type": "image",
+          "settings": {
+            "alt": "",
+            "link": ""
+          }
+        },
+        "m5": {
+          "type": "image",
+          "settings": {
+            "alt": "",
+            "link": ""
+          }
+        },
+        "m6": {
+          "type": "image",
+          "settings": {
+            "alt": "",
+            "link": ""
+          }
+        },
+        "m7": {
+          "type": "image",
+          "settings": {
+            "alt": "",
+            "link": ""
+          }
+        },
+        "m8": {
+          "type": "image",
+          "settings": {
+            "alt": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "m1",
+        "m2",
+        "m3",
+        "m4",
+        "m5",
+        "m6",
+        "m7",
+        "m8"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "images_visible": 7,
+        "gap": 12,
+        "seconds_per_image": 6,
+        "padding_top": 8,
+        "padding_bottom": 18
+      }
+    },
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
+        "collection": "all",
+        "products_to_show": 8,
         "title": "Най-продавани",
         "heading_size": "h0",
         "description": "",
         "show_description": false,
         "description_style": "body",
-        "collection": "all",
-        "products_to_show": 8,
         "columns_desktop": 4,
-        "color_scheme": "scheme-1",
+        "enable_desktop_slider": true,
         "full_width": false,
         "show_view_all": true,
+        "view_all_label": "Вижте всички",
         "view_all_style": "solid",
-        "enable_desktop_slider": true,
-        "swipe_on_mobile": true,
+        "color_scheme": "scheme-1",
         "image_ratio": "square",
         "image_shape": "default",
         "show_secondary_image": true,
@@ -71,9 +222,61 @@
         "show_rating": false,
         "quick_add": "none",
         "columns_mobile": "2",
+        "swipe_on_mobile": true,
         "padding_top": 64,
-        "padding_bottom": 64,
-        "view_all_label": "Вижте всички"
+        "padding_bottom": 64
+      }
+    },
+    "benefits": {
+      "type": "icon-benefits",
+      "blocks": {
+        "b1": {
+          "type": "benefit",
+          "settings": {
+            "visual": "icon",
+            "icon": "gold-bar",
+            "heading": "Проба 585 и 750",
+            "subline": "14 и 18 карата злато."
+          }
+        },
+        "b2": {
+          "type": "benefit",
+          "settings": {
+            "visual": "icon",
+            "icon": "certificate",
+            "heading": "Сертифицирани майстори",
+            "subline": "Бижутата се изработват от златари с професионална квалификация."
+          }
+        },
+        "b3": {
+          "type": "benefit",
+          "settings": {
+            "visual": "icon",
+            "icon": "engraving-pen",
+            "heading": "Гравиране по желание",
+            "subline": "Име, дата или послание."
+          }
+        },
+        "b4": {
+          "type": "benefit",
+          "settings": {
+            "visual": "icon",
+            "icon": "box",
+            "heading": "Доставка с Еконт и Спиди",
+            "subline": "До офис или адрес в цялата страна."
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ],
+      "settings": {
+        "color_scheme": "scheme-2",
+        "padding_top": 64,
+        "padding_bottom": 64
       }
     },
     "atelier": {
@@ -81,6 +284,7 @@
       "settings": {
         "media_position": "left",
         "color_scheme": "scheme-1",
+        "video_url": "",
         "eyebrow": "Ателието",
         "heading": "Правим бижутата на ръка, едно по едно",
         "paragraph": "<p>Работим във Велико Търново от 1991 година. Всяко бижу минава през ръцете ни — от модела до последното полиране.</p>",
@@ -127,212 +331,6 @@
         "full_width": true,
         "padding_top": 56,
         "padding_bottom": 56
-      }
-    },
-    "hero_facts": {
-      "type": "multicolumn",
-      "blocks": {
-        "c1": {
-          "type": "column",
-          "settings": {
-            "title": "Собствено производство",
-            "text": "",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "c2": {
-          "type": "column",
-          "settings": {
-            "title": "Първокласни метали",
-            "text": "",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "c4": {
-          "type": "column",
-          "settings": {
-            "title": "Установени от 2026",
-            "text": "",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "c3": {
-          "type": "column",
-          "settings": {
-            "title": "Сертифицирани продукти",
-            "text": "",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "c1",
-        "c2",
-        "c3",
-        "c4"
-      ],
-      "settings": {
-        "title": "",
-        "heading_size": "h2",
-        "image_width": "full",
-        "image_ratio": "adapt",
-        "button_label": "",
-        "button_link": "",
-        "columns_desktop": 4,
-        "column_alignment": "center",
-        "background_style": "none",
-        "color_scheme": "scheme-1",
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
-        "padding_top": 20,
-        "padding_bottom": 20
-      }
-    },
-    "image_marquee": {
-      "type": "image-marquee",
-      "blocks": {
-        "m1": {
-          "type": "image",
-          "settings": {
-            "image": "",
-            "alt": "",
-            "link": ""
-          }
-        },
-        "m2": {
-          "type": "image",
-          "settings": {
-            "image": "",
-            "alt": "",
-            "link": ""
-          }
-        },
-        "m3": {
-          "type": "image",
-          "settings": {
-            "image": "",
-            "alt": "",
-            "link": ""
-          }
-        },
-        "m4": {
-          "type": "image",
-          "settings": {
-            "image": "",
-            "alt": "",
-            "link": ""
-          }
-        },
-        "m5": {
-          "type": "image",
-          "settings": {
-            "image": "",
-            "alt": "",
-            "link": ""
-          }
-        },
-        "m6": {
-          "type": "image",
-          "settings": {
-            "image": "",
-            "alt": "",
-            "link": ""
-          }
-        },
-        "m7": {
-          "type": "image",
-          "settings": {
-            "image": "",
-            "alt": "",
-            "link": ""
-          }
-        },
-        "m8": {
-          "type": "image",
-          "settings": {
-            "image": "",
-            "alt": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "m1",
-        "m2",
-        "m3",
-        "m4",
-        "m5",
-        "m6",
-        "m7",
-        "m8"
-      ],
-      "settings": {
-        "color_scheme": "scheme-1",
-        "images_visible": 7,
-        "gap": 12,
-        "seconds_per_image": 6,
-        "padding_top": 8,
-        "padding_bottom": 18
-      }
-    },
-    "benefits": {
-      "type": "icon-benefits",
-      "blocks": {
-        "b1": {
-          "type": "benefit",
-          "settings": {
-            "visual": "icon",
-            "icon": "gold-bar",
-            "image": "",
-            "heading": "Проба 585 и 750",
-            "subline": "14 и 18 карата злато."
-          }
-        },
-        "b2": {
-          "type": "benefit",
-          "settings": {
-            "visual": "icon",
-            "icon": "certificate",
-            "image": "",
-            "heading": "Сертифицирани майстори",
-            "subline": "Бижутата се изработват от златари с професионална квалификация."
-          }
-        },
-        "b3": {
-          "type": "benefit",
-          "settings": {
-            "visual": "icon",
-            "icon": "engraving-pen",
-            "image": "",
-            "heading": "Гравиране по желание",
-            "subline": "Име, дата или послание."
-          }
-        },
-        "b4": {
-          "type": "benefit",
-          "settings": {
-            "visual": "icon",
-            "icon": "box",
-            "image": "",
-            "heading": "Доставка с Еконт и Спиди",
-            "subline": "До офис или адрес в цялата страна."
-          }
-        }
-      },
-      "block_order": [
-        "b1",
-        "b2",
-        "b3",
-        "b4"
-      ],
-      "settings": {
-        "color_scheme": "scheme-2",
-        "padding_top": 64,
-        "padding_bottom": 64
       }
     }
   },
