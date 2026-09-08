@@ -139,6 +139,20 @@
   color: rgb(255 255 255);
 }
 
+/* The reference sets these larger over the picture than they would be beneath
+   it — 20px on the label, 19px on the line under it. */
+.mosaic__grid--caption-over .mosaic__label {
+  font-size: 1.8rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.mosaic__grid--caption-over .mosaic__subline {
+  margin-top: 0.8rem;
+  font-size: 1.5rem;
+  line-height: 1.4;
+}
+
 /* --- Narrower ------------------------------------------------------------- */
 
 @media screen and (max-width: 989px) {
@@ -161,6 +175,19 @@
 
   .mosaic__subline {
     font-size: 1.3rem;
+  }
+
+  /* As the reference does: on a phone the tile keeps its label only. */
+  .mosaic__grid--caption-over .mosaic__subline {
+    display: none;
+  }
+
+  .mosaic__grid--caption-over .mosaic__caption {
+    padding: 4rem 1.6rem 1.6rem;
+  }
+
+  .mosaic__grid--caption-over .mosaic__label {
+    font-size: 1.4rem;
   }
 }
 
