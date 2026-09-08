@@ -41,6 +41,29 @@ Never link to an empty collection. Structure can exist before content; navigatio
 
 Each element gets a written specification before any code is written.
 
+## Before you build
+
+Read the files you are about to change, and the ones that depend on them, before
+writing anything. Do not assume how something currently works — open it and look.
+
+When a task references the live site or moonmagic.com, open them and compare
+against what is actually there rather than working from memory or from a
+description.
+
+Before editing, state three things:
+1. What you found when you looked.
+2. What you intend to change, file by file.
+3. Any assumption you had to make to proceed.
+
+If the request is ambiguous, ask instead of guessing. A wrong assumption costs
+more time than a question does.
+
+After the change, say what you changed and what you deliberately did not change.
+
+Work at the level of detail this project deserves: this is a real shop that will
+take real money from real customers. Prefer reading one more file over guessing,
+and prefer asking one more question over rebuilding.
+
 ## Design direction
 
 The reference the owner chose is **moonmagic.com** — light, quiet, generous with space.
