@@ -491,20 +491,20 @@
 /* --- The facts strip under the hero --------------------------------------- */
 
 /*
-  Dawn lays this out as equal columns with the text centred inside each. The
-  labels are different lengths, so equal columns give visibly unequal gaps
-  between the words — the gap is what the eye reads. Distributing the items
-  themselves puts the same space between each pair.
+  No band behind it — the section sits on the page ground, so the three claims
+  read as a line of type rather than a filled strip. Centred as a group, small,
+  bold and in capitals.
 
-  Three of them, on one row at every width. On a phone the type steps down and
-  each label wraps within its own column rather than the row breaking in two.
+  Dawn lays the section out as equal columns with the text centred in each,
+  which gives unequal gaps between words of different lengths. Distributing the
+  items themselves and centring the group keeps the spacing even.
 */
 .section-hero_facts-padding .multicolumn-list {
   display: flex;
   flex-wrap: nowrap;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  gap: 4rem;
+  gap: 6.4rem;
   margin: 0;
   padding: 0;
 }
@@ -516,22 +516,26 @@
   padding: 0;
 }
 
-/* Dawn's heading margins were making the band taller than its content needs. */
-.section-hero_facts-padding .multicolumn-list__item h3 {
-  margin: 0;
-}
-
-.section-hero_facts-padding .multicolumn-card {
-  padding: 0;
-}
-
-/*
-  With no card background Dawn zeroes the info block's top, left and right
-  padding but leaves 2.5rem on the bottom. That dead space under the text and
-  none above it is what made the labels sit high in the band.
-*/
+/* With no card background Dawn zeroes the info block's top, left and right
+   padding but leaves 2.5rem on the bottom, which pushed the words upwards. */
+.section-hero_facts-padding .multicolumn-card,
 .section-hero_facts-padding .multicolumn-card__info {
   padding: 0;
+}
+
+.section-hero_facts-padding .multicolumn-list__item h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 989px) {
+  .section-hero_facts-padding .multicolumn-list {
+    gap: 3.2rem;
+  }
 }
 
 @media screen and (max-width: 749px) {
@@ -540,8 +544,8 @@
   }
 
   .section-hero_facts-padding .multicolumn-list__item h3 {
-    font-size: 1.2rem;
-    line-height: 1.4;
+    font-size: 1rem;
+    letter-spacing: 0.08em;
   }
 }
 
@@ -575,11 +579,6 @@
    above already carries the page, and bolding it makes it shout, which reads
    as cheaper rather than grander.
    --------------------------------------------------------------------------- */
-
-/* The three claims under the hero — present, not loud. */
-.section-hero_facts-padding .multicolumn-list__item h3 {
-  font-weight: 500;
-}
 
 /* The name of the thing, on a product card. */
 .collection .card__heading,
