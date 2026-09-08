@@ -191,6 +191,42 @@
   }
 }
 
+/*
+  Phones. Measured off the reference at 390px: one tile per row, running the
+  full width of the screen with no gutters, 390x240 — so 13:8 landscape rather
+  than a square — and a 7px gap. A square tile at half width is too small to
+  show a piece of jewellery; a full-width landscape one is not.
+*/
+@media screen and (max-width: 749px) {
+  .mosaic__grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 7px;
+    /* Cancels Dawn's page gutters so the tiles reach both edges. */
+    margin-inline: -1.5rem;
+  }
+
+  .mosaic__item--tall {
+    grid-row: auto;
+  }
+
+  .mosaic__item--tall .mosaic__media,
+  .mosaic__item--standard .mosaic__media {
+    aspect-ratio: 13 / 8;
+  }
+
+  .mosaic__grid--caption-over .mosaic__caption {
+    padding: 6rem 2rem 2rem;
+  }
+
+  .mosaic__grid--caption-over .mosaic__label {
+    font-size: 1.6rem;
+  }
+
+  .mosaic__grid--caption-below .mosaic__caption {
+    padding-inline: 1.5rem;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .mosaic__image,
   .mosaic__tile:hover .mosaic__image {
