@@ -39,9 +39,17 @@
 }
 
 /*
-  Below the point where four claims stop fitting, the type is sized against the
-  viewport so the row always lands on exactly one line. A fixed size cannot do
-  that when the longest claim is 22 characters.
+  Below the width where the claims stop fitting, the type is sized against the
+  viewport so the row always lands on one line with nothing cut off.
+
+  The floor matters as much as the scaling: an earlier version floored this at
+  0.85rem, which is larger than 2.1vw on any phone, so the scaling never took
+  effect and the last claim ran off the screen. The floor has to sit below the
+  smallest size the scaling will ask for.
+
+  Checked against the narrowest common phone, 320px: 2.05vw is 6.6px, the three
+  claims come to roughly 40em, so 264px of text plus 16px of gaps inside 296px
+  of available width.
 */
 @media screen and (max-width: 989px) {
   .hero-facts__row {
@@ -49,7 +57,14 @@
   }
 
   .hero-facts__item {
-    font-size: clamp(0.85rem, 2.1vw, 1.4rem);
-    letter-spacing: 0.06em;
+    font-size: clamp(0.6rem, 2.05vw, 1.4rem);
+    letter-spacing: 0.04em;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  /* Give the text back the width the gutters were taking. */
+  .hero-facts__row {
+    padding: 0 1.2rem;
   }
 }
