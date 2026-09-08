@@ -294,6 +294,88 @@
         "padding_top": 14,
         "padding_bottom": 14
       }
+    },
+    "category_mosaic": {
+      "type": "category-mosaic",
+      "blocks": {
+        "t1": {
+          "type": "tile",
+          "settings": {
+            "size": "tall",
+            "image": "",
+            "label": "Пръстени",
+            "subline": "Годежни, брачни и всекидневни.",
+            "link": ""
+          }
+        },
+        "t2": {
+          "type": "tile",
+          "settings": {
+            "size": "standard",
+            "image": "",
+            "label": "Обеци",
+            "subline": "Обеци за всеки ден и за повод.",
+            "link": ""
+          }
+        },
+        "t3": {
+          "type": "tile",
+          "settings": {
+            "size": "standard",
+            "image": "",
+            "label": "Висулки",
+            "subline": "Кръстове, сърца и знаци.",
+            "link": ""
+          }
+        },
+        "t4": {
+          "type": "tile",
+          "settings": {
+            "size": "tall",
+            "image": "",
+            "label": "Гривни",
+            "subline": "Плетени, синджирни и с висулка.",
+            "link": ""
+          }
+        },
+        "t5": {
+          "type": "tile",
+          "settings": {
+            "size": "standard",
+            "image": "",
+            "label": "Комплекти",
+            "subline": "Обеци и висулка в един стил.",
+            "link": ""
+          }
+        },
+        "t6": {
+          "type": "tile",
+          "settings": {
+            "size": "standard",
+            "image": "",
+            "label": "Брачни халки",
+            "subline": "Изработени по мярка.",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "t1",
+        "t2",
+        "t3",
+        "t4",
+        "t5",
+        "t6"
+      ],
+      "settings": {
+        "heading": "Разгледайте по категория",
+        "color_scheme": "scheme-1",
+        "caption_position": "below",
+        "scrim_opacity": 55,
+        "gap": 14,
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
     }
   },
   "order": [
@@ -301,6 +383,7 @@
     "hero_facts",
     "image_marquee",
     "featured_collection",
+    "category_mosaic",
     "benefits",
     "atelier",
     "newsletter"

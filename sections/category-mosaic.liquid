@@ -1,0 +1,233 @@
+{{ 'section-category-mosaic.css' | asset_url | stylesheet_tag }}
+
+{%- comment -%}
+  A mosaic of category tiles.
+
+  Layout follows the reference: four columns, with tall tiles spanning both
+  rows at each end and square tiles filling the middle. The order of the blocks
+  drives it — put a tall tile first and fourth and the grid falls into place,
+  because grid-auto-flow: dense backfills the squares around them.
+
+  Captions sit below the image by default rather than over it. See CLAUDE.md:
+  the hero is the only place words sit on a photograph, and a dark scrim across
+  the bottom of a gold photograph dulls the gold. Set "Caption position" to
+  "Over the image" for the reference's treatment.
+{%- endcomment -%}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.6 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.6 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="mosaic page-width section-{{ section.id }}-padding">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="mosaic__heading">{{ section.settings.heading | escape }}</h2>
+    {%- endif -%}
+
+    <ul
+      class="mosaic__grid mosaic__grid--caption-{{ section.settings.caption_position }}"
+      role="list"
+      style="--mosaic-gap: {{ section.settings.gap }}px; --mosaic-scrim: {{ section.settings.scrim_opacity | divided_by: 100.0 }};"
+    >
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign has_link = false
+          if block.settings.link != blank
+            assign has_link = true
+          endif
+        -%}
+        <li
+          class="mosaic__item mosaic__item--{{ block.settings.size }}"
+          {{ block.shopify_attributes }}
+        >
+          {%- capture tile -%}
+            <span class="mosaic__media">
+              {%- if block.settings.image != blank -%}
+                {{
+                  block.settings.image
+                  | image_url: width: 1200
+                  | image_tag:
+                    class: 'mosaic__image',
+                    widths: '400, 600, 900, 1200',
+                    sizes: '(min-width: 990px) 25vw, 50vw',
+                    alt: ''
+                }}
+              {%- else -%}
+                {%- comment -%}
+                  No photograph yet. A flat block at the tile's shape, so the
+                  mosaic reads as finished and nothing moves once images land.
+                {%- endcomment -%}
+                <span class="mosaic__image mosaic__image--empty"></span>
+              {%- endif -%}
+            </span>
+
+            {%- if block.settings.label != blank or block.settings.subline != blank -%}
+              <span class="mosaic__caption">
+                {%- if block.settings.label != blank -%}
+                  <span class="mosaic__label">{{ block.settings.label | escape }}</span>
+                {%- endif -%}
+                {%- if block.settings.subline != blank -%}
+                  <span class="mosaic__subline">{{ block.settings.subline | escape }}</span>
+                {%- endif -%}
+              </span>
+            {%- endif -%}
+          {%- endcapture -%}
+
+          {%- comment -%}
+            A tile with no destination is not a link. Structure can exist before
+            content; navigation cannot.
+          {%- endcomment -%}
+          {%- if has_link -%}
+            <a class="mosaic__tile" href="{{ block.settings.link }}">{{ tile }}</a>
+          {%- else -%}
+            <span class="mosaic__tile">{{ tile }}</span>
+          {%- endif -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Category mosaic",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 8,
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "default": "Разгледайте по категория",
+      "label": "Heading"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "default": "scheme-1",
+      "label": "Colour scheme"
+    },
+    {
+      "type": "select",
+      "id": "caption_position",
+      "options": [
+        { "value": "below", "label": "Below the image" },
+        { "value": "over", "label": "Over the image" }
+      ],
+      "default": "below",
+      "label": "Caption position",
+      "info": "Over the image needs a dark scrim to stay readable, which dulls gold photography. Below keeps the picture clean."
+    },
+    {
+      "type": "range",
+      "id": "scrim_opacity",
+      "min": 0,
+      "max": 90,
+      "step": 5,
+      "unit": "%",
+      "label": "Scrim strength",
+      "info": "Only used when the caption sits over the image.",
+      "default": 55
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Gap between tiles",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 64
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tile",
+      "name": "Tile",
+      "settings": [
+        {
+          "type": "select",
+          "id": "size",
+          "options": [
+            { "value": "standard", "label": "Square" },
+            { "value": "tall", "label": "Tall (two rows)" }
+          ],
+          "default": "standard",
+          "label": "Size",
+          "info": "Make the first and fourth tiles tall to get the reference's layout."
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "Leave empty until the photography exists — a flat tile is shown."
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label"
+        },
+        {
+          "type": "text",
+          "id": "subline",
+          "label": "Subline",
+          "info": "Hidden when empty."
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link",
+          "info": "Without a destination the tile is shown but is not a link."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Category mosaic",
+      "blocks": [
+        { "type": "tile", "settings": { "size": "tall" } },
+        { "type": "tile" },
+        { "type": "tile" },
+        { "type": "tile", "settings": { "size": "tall" } },
+        { "type": "tile" },
+        { "type": "tile" }
+      ]
+    }
+  ]
+}
+{% endschema %}

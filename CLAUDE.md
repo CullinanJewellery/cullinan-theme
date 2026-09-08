@@ -135,6 +135,13 @@ Anything of ours that is not a Dawn setting lives in these two places:
   Shopify-hosted video, a YouTube/Vimeo URL or a still, always at 4:5 portrait. Video is
   decorative and `aria-hidden` — every fact lives in the text. Under prefers-reduced-motion a
   small inline script removes the video outright and the poster still is what remains.
+- **Category mosaic.** `sections/category-mosaic.liquid` with
+  `assets/section-category-mosaic.css`. Four columns, tall tiles at each end spanning both
+  rows, squares between — the block order drives it, because `grid-auto-flow: dense`
+  backfills the squares around the tall ones. Captions sit **below** the image by default;
+  "Over the image" is a setting, not the default, because the reference's dark scrim dulls
+  gold photography and the hero is meant to be the only place words sit on a picture. Tiles
+  without a destination render as tiles, not links.
 - **Hero facts.** `sections/hero-facts.liquid` with `assets/section-hero-facts.css`. The
   short claims under the hero. Its own section, not Dawn's multicolumn — Dawn loads section
   stylesheets from inside the section, which puts them after `crown.css` in the document, so

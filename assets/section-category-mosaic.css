@@ -1,0 +1,173 @@
+/*
+  Category mosaic.
+
+  Measured off the reference at 1440px: four columns of 350px with a 14px gap,
+  tall tiles at each end spanning both rows, square tiles between them.
+
+  The block order drives the layout. grid-auto-flow: dense backfills the
+  squares around the tall tiles, so a tall tile first and fourth reproduces the
+  reference without any tile needing an explicit column.
+*/
+
+.mosaic__heading {
+  margin: 0 0 3.2rem;
+  font-size: clamp(2.6rem, 4vw, 5rem);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+.mosaic__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-flow: row dense;
+  gap: var(--mosaic-gap, 14px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.mosaic__item {
+  margin: 0;
+  min-width: 0;
+}
+
+.mosaic__item--tall {
+  grid-row: span 2;
+}
+
+.mosaic__tile {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-decoration: none;
+  color: rgb(var(--color-foreground));
+}
+
+/* --- The picture ---------------------------------------------------------- */
+
+.mosaic__media {
+  position: relative;
+  display: block;
+  flex: 1 1 auto;
+  overflow: hidden;
+}
+
+/* Square tiles hold a square. Tall tiles fill the two rows they span, so their
+   shape comes from the grid rather than a ratio. */
+.mosaic__item--standard .mosaic__media {
+  aspect-ratio: 1 / 1;
+}
+
+.mosaic__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Stands in until the photography exists. */
+.mosaic__image--empty {
+  background-color: rgb(242 240 236);
+}
+
+/* A photograph lifts very slightly on hover. Nothing else moves. */
+.mosaic__tile:hover .mosaic__image {
+  transform: scale(1.03);
+}
+
+.mosaic__image {
+  transition: transform 0.6s ease;
+}
+
+/* --- The caption ---------------------------------------------------------- */
+
+.mosaic__caption {
+  display: block;
+}
+
+.mosaic__label {
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.mosaic__subline {
+  display: block;
+  margin-top: 0.6rem;
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: rgba(var(--color-foreground), 0.62);
+}
+
+/* Below the image: the default. The picture stays clean and the words sit on
+   the page ground underneath it. */
+.mosaic__grid--caption-below .mosaic__caption {
+  padding-top: 1.4rem;
+}
+
+.mosaic__grid--caption-below .mosaic__tile:hover .mosaic__label {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+/* Over the image: the reference's treatment. Needs a scrim to stay readable,
+   which is why it is not the default. */
+.mosaic__grid--caption-over .mosaic__tile {
+  position: relative;
+}
+
+.mosaic__grid--caption-over .mosaic__caption {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 6rem 2.6rem 3.2rem;
+  background-image: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, var(--mosaic-scrim, 0.55)),
+    rgba(0, 0, 0, 0)
+  );
+}
+
+.mosaic__grid--caption-over .mosaic__label,
+.mosaic__grid--caption-over .mosaic__subline {
+  color: rgb(255 255 255);
+}
+
+/* --- Narrower ------------------------------------------------------------- */
+
+@media screen and (max-width: 989px) {
+  .mosaic__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* Every tile becomes a square, so the mosaic stays even when it halves. */
+  .mosaic__item--tall {
+    grid-row: auto;
+  }
+
+  .mosaic__item--tall .mosaic__media {
+    aspect-ratio: 1 / 1;
+  }
+
+  .mosaic__label {
+    font-size: 1.4rem;
+  }
+
+  .mosaic__subline {
+    font-size: 1.3rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mosaic__image,
+  .mosaic__tile:hover .mosaic__image {
+    transition: none;
+    transform: none;
+  }
+}
