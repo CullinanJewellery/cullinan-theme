@@ -566,3 +566,44 @@
     padding-inline: 5rem;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Weight
+
+   Bold is used where the eye needs an anchor and nowhere else. The display
+   headings are deliberately left at regular: a high-contrast serif at 40px and
+   above already carries the page, and bolding it makes it shout, which reads
+   as cheaper rather than grander.
+   --------------------------------------------------------------------------- */
+
+/* The three claims under the hero — present, not loud. */
+.section-hero_facts-padding .multicolumn-list__item h3 {
+  font-weight: 500;
+}
+
+/* The name of the thing, on a product card. */
+.collection .card__heading,
+.collection .card__heading.h5 {
+  font-weight: 600;
+}
+
+/* The number that decides a purchase. */
+.collection .price--on-sale .price-item--sale,
+.collection .price-item--saved {
+  font-weight: 600;
+}
+
+/* Each promise in the benefits row, against its muted subline. */
+.benefit__heading {
+  font-weight: 600;
+}
+
+/* The facts in the atelier block: 1991, 14К — numbers earn weight. */
+.atelier__fact-value {
+  font-weight: 600;
+}
+
+/* The atelier heading sat at 300, which a serif cannot carry. */
+.atelier__heading {
+  font-weight: 400;
+}

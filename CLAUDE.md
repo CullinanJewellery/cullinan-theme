@@ -74,7 +74,12 @@ Rules that matter here:
 | scheme-4 | `#8C6A2E` deep muted gold | `#FFFFFF` | Badges and accents only. |
 | scheme-5 | `#E7E1D6` warm sand | `#221F1C` | Feature blocks. |
 
-- Type: **Jost** for headings and body. Heading scale 95 (deliberately restrained).
+- Type: **Playfair Display** for headings, **Montserrat** for body. Heading scale 95
+  (deliberately restrained). Changed from Jost on 2026-09-08: Shopify's Jost carries no
+  Cyrillic, so every Bulgarian letter fell back to the visitor's system font while the digits
+  stayed in Jost — two faces inside one line. Both replacements have proper Cyrillic.
+- **Any future font must be checked for Cyrillic before it is set.** The tell-tale is a line
+  like "от 1991 година" where the digits look like a different typeface from the letters.
 - Page width 1400. Grid spacing 24 horizontal / 48 vertical — the generous gaps are
   intentional and should not be tightened.
 - Square corners throughout (buttons, badges, variant pills, cards). No rounded pills.
@@ -126,6 +131,10 @@ Anything of ours that is not a Dawn setting lives in these two places:
   because `handleize` is unreliable for Cyrillic). A menu item with matching blocks opens the
   visual grid; one without keeps the text-column mega menu. Needs the header's desktop menu
   type set to **Mega menu**.
+- **Weight.** `assets/crown.css` sets bold only where the eye needs an anchor: product card
+  titles, sale prices, benefit headings, the atelier fact values, and the three claims under
+  the hero. Display headings stay at regular on purpose — a high-contrast serif at 40px and up
+  already carries the page, and bolding it shouts.
 - `sections/image-banner.liquid` — writing `[years]` in the hero heading or text renders the
   number of years since `founded_year` (1991), so the count never goes stale.
 
@@ -177,4 +186,3 @@ data, not theme files:
   anything the theme editor uses. Latin letters only; Cyrillic filenames break in URLs.
 - **Product photography should be square.** The product rows are set to a square crop so the
   cards line up; anything shot to another shape will be cropped.
-- Check that Jost renders Cyrillic correctly; if it falls back, swap the font.
