@@ -281,19 +281,12 @@
           "settings": {
             "text": "<strong>СЕРТИФИЦИРАНИ ПРОДУКТИ</strong>"
           }
-        },
-        "f4": {
-          "type": "fact",
-          "settings": {
-            "text": "<strong>УСТАНОВЕНИ ОТ 2026</strong>"
-          }
         }
       },
       "block_order": [
         "f1",
         "f2",
-        "f3",
-        "f4"
+        "f3"
       ],
       "settings": {
         "color_scheme": "scheme-1",
