@@ -112,6 +112,13 @@ Anything of ours that is not a Dawn setting lives in these two places:
   Shopify-hosted video, a YouTube/Vimeo URL or a still, always at 4:5 portrait. Video is
   decorative and `aria-hidden` — every fact lives in the text. Under prefers-reduced-motion a
   small inline script removes the video outright and the poster still is what remains.
+- **Hero facts.** `sections/hero-facts.liquid` with `assets/section-hero-facts.css`. The
+  short claims under the hero. Its own section, not Dawn's multicolumn — Dawn loads section
+  stylesheets from inside the section, which puts them after `crown.css` in the document, so
+  overriding multicolumn meant winning a specificity fight on every rule. Measured off the
+  reference: a 1000px container rather than the full page width, items distributed across it,
+  and the type shrinking on narrow screens so four claims stay on one line instead of
+  wrapping or scrolling.
 - **Benefits row.** `sections/icon-benefits.liquid` with `assets/section-icon-benefits.css`
   and `snippets/icon-benefit.liquid`. Four short promises under the product row. Each block
   takes either an uploaded image (contained, never cropped, no mask or border) or one of nine

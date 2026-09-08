@@ -1,0 +1,55 @@
+/*
+  Hero facts — the short claims under the hero.
+
+  Proportions measured off the reference at 1440px and again at 390px:
+
+    desktop   1000px container, space-between, 9px gap, 14px type, 1.4px
+              tracking, 14px padding above and below
+    phone     full width with 20px gutters, same row, 9px type, 0.9px
+              tracking, 5px padding
+
+  The reference solves the phone by shrinking the type rather than wrapping or
+  scrolling — four claims stay on one line at every width. Ours does the same,
+  but the type is sized against the viewport because Bulgarian runs longer:
+  "СОБСТВЕНО ПРОИЗВОДСТВО" is 22 characters where "PREMIUM METALS" is 14.
+*/
+
+.hero-facts__row {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.9rem;
+  max-width: var(--hero-facts-max, 1000px);
+  margin: 0 auto;
+  padding: 0 2rem;
+  list-style: none;
+}
+
+.hero-facts__item {
+  flex: 0 1 auto;
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.1em;
+  text-align: center;
+  white-space: nowrap;
+  color: rgb(var(--color-foreground));
+}
+
+/*
+  Below the point where four claims stop fitting, the type is sized against the
+  viewport so the row always lands on exactly one line. A fixed size cannot do
+  that when the longest claim is 22 characters.
+*/
+@media screen and (max-width: 989px) {
+  .hero-facts__row {
+    gap: 0.8rem;
+  }
+
+  .hero-facts__item {
+    font-size: clamp(0.7rem, 1.6vw, 1.4rem);
+    letter-spacing: 0.06em;
+  }
+}

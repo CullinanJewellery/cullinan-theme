@@ -1,0 +1,122 @@
+{{ 'section-hero-facts.css' | asset_url | stylesheet_tag }}
+
+{%- comment -%}
+  The short claims under the hero.
+
+  Built as its own section rather than on Dawn's multicolumn. Dawn loads its
+  section stylesheets from inside the section, which puts them after crown.css
+  in the document, so overriding multicolumn meant winning a specificity fight
+  on every rule. This owns its markup instead.
+
+  Measured off the reference: a 1000px container, not the full page width, with
+  the items distributed across it.
+{%- endcomment -%}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.4 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.4 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="hero-facts section-{{ section.id }}-padding">
+    <ul
+      class="hero-facts__row"
+      role="list"
+      style="--hero-facts-max: {{ section.settings.container_width }}px;"
+    >
+      {%- for block in section.blocks -%}
+        {%- if block.settings.text != blank -%}
+          <li class="hero-facts__item" {{ block.shopify_attributes }}>
+            {{ block.settings.text }}
+          </li>
+        {%- endif -%}
+      {%- endfor -%}
+    </ul>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Hero facts",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "default": "scheme-1",
+      "label": "Colour scheme"
+    },
+    {
+      "type": "range",
+      "id": "container_width",
+      "min": 600,
+      "max": 1400,
+      "step": 50,
+      "unit": "px",
+      "label": "Row width",
+      "info": "Narrower than the page width keeps the claims together rather than spread across the screen.",
+      "default": 1000
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 14
+    }
+  ],
+  "blocks": [
+    {
+      "type": "fact",
+      "name": "Claim",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "text",
+          "label": "Text",
+          "info": "Keep it short. Four claims is the most that fits one line on a phone."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero facts",
+      "blocks": [
+        { "type": "fact" },
+        { "type": "fact" },
+        { "type": "fact" },
+        { "type": "fact" }
+      ]
+    }
+  ]
+}
+{% endschema %}
