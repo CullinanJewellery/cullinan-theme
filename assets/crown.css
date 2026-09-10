@@ -582,7 +582,13 @@
 
 /* Black, at the owner's instruction. This is the one place on the site that
    overrides the no-pure-black rule in CLAUDE.md. */
-.newsletter--crown {
+.newsletter__wrapper.newsletter--crown {
+  /* Redefining the scheme variables is what makes every child legible: the
+     section is still on a light scheme, so heading, paragraph and footnote
+     would otherwise be near-black text on a black band. */
+  --color-foreground: 245, 242, 238;
+  --color-background: 0, 0, 0;
+
   background: #000000;
   padding-top: 7rem;
   padding-bottom: 4rem;
@@ -652,7 +658,7 @@
 
 /* --- The button ----------------------------------------------------------- */
 
-.newsletter--crown .newsletter-form__button {
+.newsletter--crown .newsletter-form__button:not(:focus-visible):not(.focused) {
   position: static;
   flex: 0 0 auto;
   width: auto;
@@ -666,7 +672,7 @@
     box-shadow 0.35s ease-in-out;
 }
 
-.newsletter--crown .newsletter-form__button:hover,
+.newsletter--crown .newsletter-form__button:hover:not(.focused),
 .newsletter--crown .newsletter-form__button:focus-visible {
   background-color: transparent;
   color: rgb(231 225 214);
