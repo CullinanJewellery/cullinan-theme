@@ -584,7 +584,7 @@
 
 .section-newsletter-padding h2 {
   font-size: clamp(2.8rem, 4.4vw, 5.5rem);
-  font-weight: 700;
+  font-weight: 400;
   line-height: 1.1;
   letter-spacing: 0.02em;
   text-transform: uppercase;
@@ -601,13 +601,13 @@
 /* The form: a field and a solid button side by side, as the reference has it,
    rather than Dawn's arrow tucked inside the field. */
 .section-newsletter-padding .newsletter-form__field-wrapper {
-  max-width: 62rem;
+  max-width: 65rem;
   margin: 3.2rem auto 0;
 }
 
 .section-newsletter-padding .newsletter-form__field-wrapper .field {
   display: flex;
-  gap: 1.2rem;
+  gap: 1.4rem;
 }
 
 /*
@@ -638,8 +638,9 @@
   position: static;
   flex: 0 0 auto;
   width: auto;
+  min-width: 17.8rem;
   height: 5.6rem;
-  padding: 0 3.2rem;
+  padding: 0 2.4rem;
   background-color: rgb(231 225 214);
   color: rgb(34 31 28);
   transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out,
