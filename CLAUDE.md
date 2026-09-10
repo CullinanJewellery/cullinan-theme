@@ -105,6 +105,12 @@ Rules that matter here:
   like "от 1991 година" where the digits look like a different typeface from the letters.
 - Page width 1400. Grid spacing 24 horizontal / 40 vertical — the generous gaps are
   intentional and should not be tightened further.
+- **Never let `templates/index.json` depend on a section setting added in the same push.**
+  Shopify validates the template against the section schemas *it currently holds*, so a
+  template referencing a setting whose section file has not landed yet is rejected — every
+  time, on its own, and resetting does not help. Give the new setting a `default` in the
+  section schema and leave it out of the template instead. This cost several rounds on the
+  newsletter, where the section and the template were changed together.
 - **Theme settings have ranges, and Shopify rejects the whole file if any value is outside
   its range.** Heading scale was 95 and vertical grid spacing 48; the allowed ranges are
   100–150 and 4–40. Because of that `config/settings_data.json` was refused from the very

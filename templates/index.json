@@ -140,7 +140,6 @@
         "enable_desktop_slider": true,
         "full_width": false,
         "show_view_all": true,
-        "view_all_label": "Вижте всички",
         "view_all_style": "solid",
         "color_scheme": "scheme-1",
         "image_ratio": "square",
@@ -258,9 +257,7 @@
         "color_scheme": "scheme-3",
         "full_width": true,
         "padding_top": 70,
-        "padding_bottom": 40,
-        "button_label": "Абонирайте се",
-        "footnote": "Отписвате се с едно кликване."
+        "padding_bottom": 40
       }
     },
     "hero_facts": {
