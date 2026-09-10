@@ -97,14 +97,21 @@ Rules that matter here:
 | scheme-4 | `#8C6A2E` deep muted gold | `#FFFFFF` | Badges and accents only. |
 | scheme-5 | `#E7E1D6` warm sand | `#221F1C` | Feature blocks. |
 
-- Type: **Playfair Display** for headings, **Montserrat** for body. Heading scale 95
-  (deliberately restrained). Changed from Jost on 2026-09-08: Shopify's Jost carries no
+- Type: **Playfair Display** for headings, **Montserrat** for body. Heading scale 100
+  (100 is Dawn's minimum). Changed from Jost on 2026-09-08: Shopify's Jost carries no
   Cyrillic, so every Bulgarian letter fell back to the visitor's system font while the digits
   stayed in Jost — two faces inside one line. Both replacements have proper Cyrillic.
 - **Any future font must be checked for Cyrillic before it is set.** The tell-tale is a line
   like "от 1991 година" where the digits look like a different typeface from the letters.
-- Page width 1400. Grid spacing 24 horizontal / 48 vertical — the generous gaps are
-  intentional and should not be tightened.
+- Page width 1400. Grid spacing 24 horizontal / 40 vertical — the generous gaps are
+  intentional and should not be tightened further.
+- **Theme settings have ranges, and Shopify rejects the whole file if any value is outside
+  its range.** Heading scale was 95 and vertical grid spacing 48; the allowed ranges are
+  100–150 and 4–40. Because of that `config/settings_data.json` was refused from the very
+  first design commit until 2026-09-10, so the palette and fonts were never live — the site
+  ran Dawn's stock settings the whole time. Worse, a rejected file blocks **every** file in
+  that push ("0 succeeded, 1 failed"), so it also held back unrelated work. Check
+  `config/settings_schema.json` for min, max and step before setting any range value.
 - Square corners throughout (buttons, badges, variant pills, cards). No rounded pills.
 - No borders around media. Product cards sit on the page ground, not in grey boxes.
 
