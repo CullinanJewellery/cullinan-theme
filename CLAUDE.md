@@ -84,6 +84,9 @@ Rules that matter here:
 - **Gold comes from the photographs, not the interface.** The gold accent is muted and used
   sparingly (badges, small accents). Never gold gradients, never gold text on black.
 - **No pure white or pure black.** Both read cheap on screen.
+  - **One exception, at the owner's instruction (2026-09-10):** the newsletter band is
+    `#000000`, matching the reference. It is set in `assets/crown.css`, not by a colour
+    scheme, so nothing else on the site is affected.
 - Product photography should be worn on real people where possible — jewellery is impossible
   to judge for scale on a white background.
 

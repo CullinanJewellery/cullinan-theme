@@ -54,7 +54,8 @@
                   style="--animation-order: {{ forloop.index }};"
                 {% endif %}
               >
-                <div class="field">
+                <div class="newsletter-form__row">
+                  <div class="field">
                   <input
                     id="NewsletterForm--{{ section.id }}"
                     type="email"
@@ -78,6 +79,7 @@
                   <label class="field__label" for="NewsletterForm--{{ section.id }}">
                     {{ 'newsletter.label' | t }}
                   </label>
+                  </div>
                   <button
                     type="submit"
                     class="newsletter-form__button field__button"
