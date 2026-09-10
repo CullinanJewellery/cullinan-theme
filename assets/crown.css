@@ -564,3 +564,90 @@
 .atelier__heading {
   font-weight: 400;
 }
+
+/* --- Newsletter ----------------------------------------------------------- */
+
+/*
+  A dark band closing the page, measured off the reference at 1440px: 70px of
+  padding above and 40px below, a 55px heading with 20px under it, and the
+  paragraph at 22px on a 33px line, capped at 840px.
+
+  Everything is scoped to the section's own padding class, which Dawn puts on
+  the wrapper alongside the colour scheme. Dawn loads its newsletter CSS from
+  inside the section — after this file — so the extra class is what wins.
+*/
+.section-newsletter-padding .newsletter__wrapper,
+.newsletter__wrapper.section-newsletter-padding {
+  padding-top: 7rem;
+  padding-bottom: 4rem;
+}
+
+.section-newsletter-padding h2 {
+  font-size: clamp(2.8rem, 4.4vw, 5.5rem);
+  font-weight: 400;
+  line-height: 1.1;
+  margin-bottom: 2rem;
+}
+
+.section-newsletter-padding .newsletter__subheading {
+  max-width: 84rem;
+  margin: 0 auto;
+  font-size: 1.8rem;
+  line-height: 1.5;
+}
+
+/* The form: a field and a solid button side by side, as the reference has it,
+   rather than Dawn's arrow tucked inside the field. */
+.section-newsletter-padding .newsletter-form__field-wrapper {
+  max-width: 62rem;
+  margin: 3.2rem auto 0;
+}
+
+.section-newsletter-padding .newsletter-form__field-wrapper .field {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.section-newsletter-padding .field__input {
+  flex: 1 1 auto;
+  height: 5.6rem;
+}
+
+/* Out of the field and into the row, with a real fill behind it. */
+.section-newsletter-padding .newsletter-form__button {
+  position: static;
+  flex: 0 0 auto;
+  width: auto;
+  height: 5.6rem;
+  padding: 0 3.2rem;
+  background-color: rgb(var(--color-foreground));
+  color: rgb(var(--color-background));
+}
+
+.section-newsletter-padding .newsletter-form__button-label {
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* Dawn floats the label over the input; with a placeholder it is redundant. */
+.section-newsletter-padding .field__label {
+  display: none;
+}
+
+.section-newsletter-padding .newsletter__footnote {
+  margin: 1.6rem 0 0;
+  font-size: 1.3rem;
+  opacity: 0.72;
+}
+
+@media screen and (max-width: 749px) {
+  .section-newsletter-padding .newsletter-form__field-wrapper .field {
+    flex-direction: column;
+  }
+
+  .section-newsletter-padding .newsletter-form__button {
+    width: 100%;
+  }
+}

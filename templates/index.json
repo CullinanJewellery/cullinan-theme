@@ -234,14 +234,14 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "Останете в течение",
+            "heading": "Първи научавайте",
             "heading_size": "h2"
           }
         },
         "paragraph": {
           "type": "paragraph",
           "settings": {
-            "text": "<p>Нови модели и новини от ателието — няколко пъти в годината, без излишни писма.</p>"
+            "text": "<p>Нови модели, преди да стигнат до магазина, и новини от ателието. Няколко писма в годината — нищо повече.</p>"
           }
         },
         "email_form": {
@@ -255,10 +255,12 @@
         "email_form"
       ],
       "settings": {
-        "color_scheme": "scheme-5",
+        "color_scheme": "scheme-3",
         "full_width": true,
-        "padding_top": 56,
-        "padding_bottom": 56
+        "padding_top": 70,
+        "padding_bottom": 40,
+        "button_label": "Абонирайте се",
+        "footnote": "Отписвате се с едно кликване."
       }
     },
     "hero_facts": {

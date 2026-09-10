@@ -85,9 +85,17 @@
                     id="Subscribe"
                     aria-label="{{ 'newsletter.button_label' | t }}"
                   >
-                    <span class="svg-wrapper">
-                      {{- 'icon-arrow.svg' | inline_asset_content -}}
-                    </span>
+                    {%- if section.settings.button_label != blank -%}
+
+                      <span class="newsletter-form__button-label">{{ section.settings.button_label | escape }}</span>
+
+                    {%- else -%}
+
+                      <span class="svg-wrapper">
+                        {{- 'icon-arrow.svg' | inline_asset_content -}}
+                      </span>
+
+                    {%- endif -%}
                   </button>
                 </div>
                 {%- if form.errors -%}
@@ -113,6 +121,12 @@
                   {{- 'newsletter.success' | t }}
                 </h3>
               {%- endif -%}
+              {%- if section.settings.footnote != blank -%}
+
+                <p class="newsletter__footnote">{{ section.settings.footnote | escape }}</p>
+
+              {%- endif -%}
+
             {% endform %}
           </div>
       {%- endcase -%}
@@ -132,6 +146,18 @@
     {
       "type": "paragraph",
       "content": "t:sections.newsletter.settings.paragraph.content"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "info": "Leave empty to show the arrow instead."
+    },
+    {
+      "type": "text",
+      "id": "footnote",
+      "label": "Note under the form",
+      "info": "Hidden when empty."
     },
     {
       "type": "color_scheme",
