@@ -570,6 +570,10 @@
 /*
   The dark band that closes the page, built to match the reference.
 
+  Scoped on .newsletter--crown, a class the section adds itself. Do NOT build
+  selectors from section.id: in a JSON template it renders as the full Shopify
+  section id, so ".section-newsletter-padding" matches nothing at all.
+
   The submit button is a separate box beside the field, not inside it. Dawn
   puts the button inside .field, and .field draws its border around every
   child — so no amount of CSS makes a button in there read as its own box. The
@@ -578,13 +582,13 @@
 
 /* Black, at the owner's instruction. This is the one place on the site that
    overrides the no-pure-black rule in CLAUDE.md. */
-.newsletter__wrapper.section-newsletter-padding {
+.newsletter--crown {
   background: #000000;
   padding-top: 7rem;
   padding-bottom: 4rem;
 }
 
-.section-newsletter-padding h2 {
+.newsletter--crown h2 {
   font-size: clamp(2.8rem, 4.4vw, 5.5rem);
   font-weight: 400;
   line-height: 1.1;
@@ -593,7 +597,7 @@
   margin-bottom: 2rem;
 }
 
-.section-newsletter-padding .newsletter__subheading {
+.newsletter--crown .newsletter__subheading {
   max-width: 84rem;
   margin: 0 auto;
   font-size: 1.8rem;
@@ -602,19 +606,19 @@
 
 /* --- The form row --------------------------------------------------------- */
 
-.section-newsletter-padding .newsletter-form__field-wrapper {
+.newsletter--crown .newsletter-form__field-wrapper {
   max-width: 65rem;
   margin: 3.2rem auto 0;
 }
 
 /* Two boxes side by side: the field, then the button. */
-.section-newsletter-padding .newsletter-form__row {
+.newsletter--crown .newsletter-form__row {
   display: flex;
   align-items: stretch;
   gap: 1.4rem;
 }
 
-.section-newsletter-padding .newsletter-form__row .field {
+.newsletter--crown .newsletter-form__row .field {
   flex: 1 1 auto;
   min-width: 0;
 }
@@ -622,12 +626,12 @@
 /* The field's own box: a dark interior with a grey outline, as the reference
    has it. Dawn draws its outline with .field:after, which is neutralised here
    so the input carries its own border. */
-.section-newsletter-padding .field:after,
-.section-newsletter-padding .field:before {
+.newsletter--crown .field:after,
+.newsletter--crown .field:before {
   content: none;
 }
 
-.section-newsletter-padding .field__input {
+.newsletter--crown .field__input {
   height: 5.6rem;
   padding: 0 1.8rem;
   background-color: #333333;
@@ -636,19 +640,19 @@
   border-radius: 0;
 }
 
-.section-newsletter-padding .field__input::placeholder {
+.newsletter--crown .field__input::placeholder {
   color: #b9b9be;
   opacity: 1;
 }
 
 /* Dawn floats a label over the input; the placeholder already says it. */
-.section-newsletter-padding .field__label {
+.newsletter--crown .field__label {
   display: none;
 }
 
 /* --- The button ----------------------------------------------------------- */
 
-.section-newsletter-padding .newsletter-form__button {
+.newsletter--crown .newsletter-form__button {
   position: static;
   flex: 0 0 auto;
   width: auto;
@@ -662,32 +666,32 @@
     box-shadow 0.35s ease-in-out;
 }
 
-.section-newsletter-padding .newsletter-form__button:hover,
-.section-newsletter-padding .newsletter-form__button:focus-visible {
+.newsletter--crown .newsletter-form__button:hover,
+.newsletter--crown .newsletter-form__button:focus-visible {
   background-color: transparent;
   color: rgb(231 225 214);
   box-shadow: inset 0 0 0 1px rgb(231 225 214);
 }
 
-.section-newsletter-padding .newsletter-form__button-label {
+.newsletter--crown .newsletter-form__button-label {
   font-size: 1.3rem;
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
-.section-newsletter-padding .newsletter__footnote {
+.newsletter--crown .newsletter__footnote {
   margin: 1.6rem 0 0;
   font-size: 1.3rem;
   opacity: 0.72;
 }
 
 @media screen and (max-width: 749px) {
-  .section-newsletter-padding .newsletter-form__row {
+  .newsletter--crown .newsletter-form__row {
     flex-direction: column;
   }
 
-  .section-newsletter-padding .newsletter-form__button {
+  .newsletter--crown .newsletter-form__button {
     width: 100%;
   }
 }
