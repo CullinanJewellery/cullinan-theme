@@ -612,7 +612,10 @@
 
 /* --- The form row --------------------------------------------------------- */
 
-.newsletter--crown .newsletter-form__field-wrapper {
+/* newsletter-section.css caps this at 36rem with .newsletter__wrapper
+   .newsletter-form__field-wrapper — the same specificity as ours and loaded
+   later, so it needs one more class to beat. */
+.newsletter__wrapper.newsletter--crown .newsletter-form__field-wrapper {
   max-width: 65rem;
   margin: 3.2rem auto 0;
 }
