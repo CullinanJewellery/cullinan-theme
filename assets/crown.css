@@ -617,6 +617,20 @@
   margin: 3.2rem auto 0;
 }
 
+/* Dawn caps the form at 36rem above 750px, which left the field at 164px
+   against a 180px button. The reference gives the field 456px. */
+@media screen and (min-width: 750px) {
+  .newsletter--crown .newsletter-form {
+    max-width: 65rem;
+  }
+}
+
+/* Dawn reserves 5rem inside the input for the arrow it puts there. The button
+   is outside the field now, so that space is just a hole. */
+.newsletter--crown .newsletter-form__field-wrapper .field__input {
+  padding-right: 1.8rem;
+}
+
 /* Two boxes side by side: the field, then the button. */
 .newsletter--crown .newsletter-form__row {
   display: flex;
