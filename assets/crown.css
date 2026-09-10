@@ -626,15 +626,33 @@
   opacity: 1;
 }
 
-/* Out of the field and into the row, with a real fill behind it. */
+/*
+  Out of the field and into the row, with a real fill behind it.
+
+  Warm sand rather than the off-white the scheme's foreground would give: the
+  reference's button is a warm cream and a cool white beside it reads clinical.
+  This is scheme-5's background, so it is a colour we already own — not the
+  reference's own pink, which is their brand rather than a pattern to take.
+*/
 .section-newsletter-padding .newsletter-form__button {
   position: static;
   flex: 0 0 auto;
   width: auto;
   height: 5.6rem;
   padding: 0 3.2rem;
-  background-color: rgb(var(--color-foreground));
-  color: rgb(var(--color-background));
+  background-color: rgb(231 225 214);
+  color: rgb(34 31 28);
+  transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out,
+    box-shadow 0.35s ease-in-out;
+}
+
+/* The same hover the hero button has: the fill drops away and the outline and
+   label remain. One behaviour for the two calls to action on the page. */
+.section-newsletter-padding .newsletter-form__button:hover,
+.section-newsletter-padding .newsletter-form__button:focus-visible {
+  background-color: transparent;
+  color: rgb(231 225 214);
+  box-shadow: inset 0 0 0 1px rgb(231 225 214);
 }
 
 .section-newsletter-padding .newsletter-form__button-label {
