@@ -748,8 +748,21 @@
   text-decoration: none;
 }
 
+/*
+  The footer block is a flex row, so the text and the buttons sat side by side
+  rather than stacked. Wrapping them in one column settles it wherever the
+  footer puts the block.
+*/
+.footer__social {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.6rem;
+}
+
 .footer__social-intro {
-  margin-bottom: 1.6rem;
+  text-align: center;
+  max-width: 52ch;
 }
 
 .footer__social-heading {

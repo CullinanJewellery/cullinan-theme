@@ -243,17 +243,18 @@
           {%- endif -%}
 
           {%- if section.settings.show_social and has_social_icons -%}
-            {%- if section.settings.social_heading != blank or section.settings.social_text != blank -%}
-              <div class="footer__social-intro">
-                {%- if section.settings.social_heading != blank -%}
-                  <p class="footer__social-heading">{{ section.settings.social_heading | escape }}</p>
-                {%- endif -%}
-                {%- if section.settings.social_text != blank -%}
-                  <p class="footer__social-text">{{ section.settings.social_text | escape }}</p>
-                {%- endif -%}
-              </div>
-            {%- endif -%}
-            {%- render 'social-icons', class: 'footer__list-social' -%}
+            <div class="footer__social">
+              {%- if section.settings.social_heading != blank or section.settings.social_text != blank -%}
+                <div class="footer__social-intro">
+                  {%- if section.settings.social_heading != blank -%}
+                    <p class="footer__social-heading">{{ section.settings.social_heading | escape }}</p>
+                  {%- endif -%}
+                  {%- if section.settings.social_text != blank -%}
+                    <p class="footer__social-text">{{ section.settings.social_text | escape }}</p>
+                  {%- endif -%}
+                </div>
+              {%- endif -%}
+              {%- render 'social-icons', class: 'footer__list-social' -%}            </div>
           {%- endif -%}
         </div>
       </div>
@@ -478,7 +479,7 @@
       "type": "text",
       "id": "social_text",
       "label": "Line under that heading",
-      "default": "Нови модели и моменти от ателието."
+      "default": "Последвайте @cullinan_jewellery.bg за нови модели и снимки от работата в ателието."
     },
     {
       "type": "checkbox",
