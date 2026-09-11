@@ -727,6 +727,10 @@
   inside it. The padding stays, so the tap target grows with the icon.
 */
 .footer__list-social .list-social__link .icon {
+  /* The link is a flex row, so the icon is a flex item and was being shrunk
+     back to 20px however wide it was asked to be. flex: none stops that. */
+  flex: 0 0 auto;
   width: 2.6rem;
   height: 2.6rem;
+  min-width: 2.6rem;
 }
