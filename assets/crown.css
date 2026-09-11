@@ -734,3 +734,35 @@
   height: 2.6rem;
   min-width: 2.6rem;
 }
+
+/*
+  On desktop the social links become ghost buttons, the way the reference
+  styles its social calls to action: transparent, a hairline border, square
+  corners. Filling on hover is the inverse of the hero and newsletter buttons,
+  which drop their fill — the same idea read backwards, so the page has one
+  language for a button.
+
+  Phones keep the bare icons; a row of outlined boxes crowds a narrow footer.
+*/
+@media screen and (min-width: 750px) {
+  .footer__list-social {
+    gap: 1.2rem;
+  }
+
+  .footer__list-social .list-social__link {
+    width: 5rem;
+    height: 5rem;
+    padding: 0;
+    justify-content: center;
+    box-shadow: inset 0 0 0 1px rgba(var(--color-foreground), 0.5);
+    transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out,
+      box-shadow 0.35s ease-in-out;
+  }
+
+  .footer__list-social .list-social__link:hover,
+  .footer__list-social .list-social__link:focus-visible {
+    background-color: rgb(var(--color-foreground));
+    color: rgb(var(--color-background));
+    box-shadow: inset 0 0 0 1px rgb(var(--color-foreground));
+  }
+}
