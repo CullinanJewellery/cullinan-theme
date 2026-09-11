@@ -736,17 +736,18 @@
 }
 
 /*
-  On desktop the social links become word buttons, as the reference does:
-  transparent, a hairline border, square corners, the name in spaced capitals.
-  Measured off theirs — 300x81 at 22px with 2.2px tracking, so 0.1em — scaled
-  to something a footer can carry rather than a full-width marketing band.
+  On desktop the social links become ghost buttons carrying the icon and a
+  call to action, in the reference's style: transparent, a hairline border,
+  square corners, spaced capitals. Measured off theirs — 300x81 at 22px with
+  0.1em tracking — scaled to what a footer can carry.
 
-  The label is already in the markup; Dawn just hides it for screen readers, so
-  this reveals it and hides the icon instead. Its position is set with
-  !important, which is the one property that needs forcing.
-
-  Phones are untouched: bare icons, as they are now.
+  The label is hidden everywhere by default and revealed only here, so the
+  drawer and every narrow screen keep the bare icons they already have.
 */
+.list-social__label {
+  display: none;
+}
+
 @media screen and (min-width: 750px) {
   .footer__list-social {
     gap: 1.2rem;
@@ -756,29 +757,26 @@
     width: 26rem;
     height: 6.4rem;
     padding: 0;
+    gap: 1rem;
     justify-content: center;
     box-shadow: inset 0 0 0 1px rgba(var(--color-foreground), 0.5);
     transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out,
       box-shadow 0.35s ease-in-out;
   }
 
-  /* The word replaces the icon. */
   .footer__list-social .list-social__link .icon {
-    display: none;
+    width: 2rem;
+    height: 2rem;
+    min-width: 2rem;
   }
 
-  .footer__list-social .list-social__link .visually-hidden {
-    position: static !important;
-    overflow: visible;
-    width: auto;
-    height: auto;
-    margin: 0;
-    clip: auto;
-    white-space: nowrap;
-    font-size: 1.6rem;
+  .footer__list-social .list-social__label {
+    display: inline-block;
+    font-size: 1.4rem;
     font-weight: 500;
     letter-spacing: 0.1em;
     text-transform: uppercase;
+    white-space: nowrap;
   }
 
   .footer__list-social .list-social__link:hover,
