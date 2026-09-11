@@ -88,9 +88,29 @@
   into a 578px tower on a 390px screen.
 */
 @media screen and (max-width: 749px) {
+  /*
+    The reference's four-part look is not borders. Its items are tinted tiles
+    on a transparent section, with a 5px gap — so the page showing through the
+    gaps is what reads as white lines cutting the band into four. The vertical
+    breathing room comes from 30px of padding inside each tile, not the gap.
+  */
+  .benefits-band {
+    background: rgb(252 252 251);
+  }
+
+  .benefits {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
   .benefits__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 4rem 1.2rem;
+    gap: 5px;
+  }
+
+  .benefits__item {
+    background-color: rgb(242 240 236);
+    padding: 3rem 0.5rem;
   }
 
   .benefit__subline {
@@ -102,6 +122,5 @@
 @media screen and (max-width: 359px) {
   .benefits__grid {
     grid-template-columns: minmax(0, 1fr);
-    gap: 3.2rem;
   }
 }
