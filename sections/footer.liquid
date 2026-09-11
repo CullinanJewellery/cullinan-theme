@@ -243,6 +243,16 @@
           {%- endif -%}
 
           {%- if section.settings.show_social and has_social_icons -%}
+            {%- if section.settings.social_heading != blank or section.settings.social_text != blank -%}
+              <div class="footer__social-intro">
+                {%- if section.settings.social_heading != blank -%}
+                  <p class="footer__social-heading">{{ section.settings.social_heading | escape }}</p>
+                {%- endif -%}
+                {%- if section.settings.social_text != blank -%}
+                  <p class="footer__social-text">{{ section.settings.social_text | escape }}</p>
+                {%- endif -%}
+              </div>
+            {%- endif -%}
             {%- render 'social-icons', class: 'footer__list-social' -%}
           {%- endif -%}
         </div>
@@ -354,7 +364,7 @@
           "type": "paragraph",
           "content": "t:sections.footer.blocks.brand_information.settings.paragraph.content"
         },
-        {
+                {
           "type": "checkbox",
           "id": "show_social",
           "default": true,
@@ -457,6 +467,18 @@
       "default": true,
       "label": "t:sections.footer.settings.enable_follow_on_shop.label",
       "info": "t:sections.footer.settings.enable_follow_on_shop.info"
+    },
+    {
+      "type": "text",
+      "id": "social_heading",
+      "label": "Heading above the social buttons",
+      "default": "Вижте работата ни"
+    },
+    {
+      "type": "text",
+      "id": "social_text",
+      "label": "Line under that heading",
+      "default": "Нови модели и моменти от ателието."
     },
     {
       "type": "checkbox",
