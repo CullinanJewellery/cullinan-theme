@@ -114,6 +114,11 @@ Rules that matter here:
   time, on its own, and resetting does not help. Give the new setting a `default` in the
   section schema and leave it out of the template instead. This cost several rounds on the
   newsletter, where the section and the template were changed together.
+- **Range values must sit on the step, not just inside the range — in templates too.**
+  `padding_top: 70` looks harmless but Dawn's padding step is 4, so 70 is illegal and
+  `templates/index.json` was refused from 2026-09-10 until 2026-09-11 because of it. The
+  number came from measuring the reference without checking the step. Round to the step: 68
+  or 72, never 70.
 - **Theme settings have ranges, and Shopify rejects the whole file if any value is outside
   its range.** Heading scale was 95 and vertical grid spacing 48; the allowed ranges are
   100–150 and 4–40. Because of that `config/settings_data.json` was refused from the very
