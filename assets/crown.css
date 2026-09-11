@@ -718,3 +718,15 @@
     width: 100%;
   }
 }
+
+/* --- Footer social icons -------------------------------------------------- */
+
+/*
+  Dawn draws these at 20px, which is small for the only link out to the shop's
+  own accounts. The box is square and the glyph keeps its own proportions
+  inside it. The padding stays, so the tap target grows with the icon.
+*/
+.footer__list-social .list-social__link .icon {
+  width: 2.6rem;
+  height: 2.6rem;
+}
