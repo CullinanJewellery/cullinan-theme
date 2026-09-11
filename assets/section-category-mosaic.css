@@ -222,6 +222,19 @@
     font-size: 1.6rem;
   }
 
+  /*
+    The subline comes back on phones. It is hidden between 750 and 989px, where
+    tiles are two-up squares with no room, but here each tile runs the full
+    width at 390x240 and has height to spare. The reference hides it at every
+    width; this is a deliberate departure.
+  */
+  .mosaic__grid--caption-over .mosaic__subline {
+    display: block;
+    margin-top: 0.4rem;
+    font-size: 1.3rem;
+    line-height: 1.35;
+  }
+
   .mosaic__grid--caption-below .mosaic__caption {
     padding-inline: 1.5rem;
   }
