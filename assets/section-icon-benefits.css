@@ -78,14 +78,30 @@
 
 /* --- Narrower ------------------------------------------------------------- */
 
+/*
+  Two per row on phones, as the reference has it. Measured on theirs: items
+  190px wide, a 5px gap, and 30px of padding inside each one — so the breathing
+  room comes from the rows, not from a big uniform gap. A tight column gap with
+  a generous row gap does the same thing here.
+
+  Ours used to drop to a single column below 499px, which turned four items
+  into a 578px tower on a 390px screen.
+*/
 @media screen and (max-width: 749px) {
   .benefits__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 4rem 1.2rem;
+  }
+
+  .benefit__subline {
+    max-width: none;
   }
 }
 
-@media screen and (max-width: 499px) {
+/* Below this two columns genuinely cannot hold a heading. */
+@media screen and (max-width: 359px) {
   .benefits__grid {
     grid-template-columns: minmax(0, 1fr);
+    gap: 3.2rem;
   }
 }
