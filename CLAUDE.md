@@ -9,6 +9,9 @@ atelier in Veliko Tarnovo, Bulgaria, trading since 1991. There is a physical sho
 - Customers: mostly Bulgarian women aged 30–55, buying for themselves or as gifts.
   Local and regional first, wider Bulgaria second.
 - Instagram: @cullinan_jewellery.bg (still the old handle — unchanged by the rename)
+- Facebook: https://www.facebook.com/profile.php?id=61573474292352 — a numeric profile URL,
+  so it has no vanity name yet. Both links are theme settings, not code: Dawn renders each
+  social icon automatically once its URL is filled in.
 - **Renamed to Crown Jewellery on 2026-09-06.** The old name was Cullinan Jewellery. The
   GitHub repository, its remote and the Instagram handle still carry the old name; renaming
   the repository would break the Shopify connection, so it stays.
