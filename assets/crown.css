@@ -757,7 +757,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.6rem;
+  /* Clear air under the black band above, rather than the footer's own 36px
+     of padding doing all the work. */
+  margin-top: 4rem;
+  gap: 3.2rem;
+}
+
+@media screen and (max-width: 749px) {
+  .footer__social {
+    margin-top: 2.8rem;
+    gap: 2.4rem;
+  }
 }
 
 .footer__social-intro {
