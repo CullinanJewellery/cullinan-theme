@@ -1,8 +1,8 @@
-# Crown Jewellery — Shopify theme
+# Cullinan Jewellery — Shopify theme
 
 ## The business
 
-Crown Jewellery — handmade 14K gold jewellery, made in a family
+Cullinan Jewellery — handmade 14K and 18K gold jewellery, made in a family
 atelier in Veliko Tarnovo, Bulgaria, trading since 1991. There is a physical shop at
 бул. Васил Левски 21. Roughly 4,000 designs exist; only a curated ~50 will go online first.
 
@@ -12,9 +12,13 @@ atelier in Veliko Tarnovo, Bulgaria, trading since 1991. There is a physical sho
 - Facebook: https://www.facebook.com/profile.php?id=61573474292352 — a numeric profile URL,
   so it has no vanity name yet. Both links are theme settings, not code: Dawn renders each
   social icon automatically once its URL is filled in.
-- **Renamed to Crown Jewellery on 2026-09-06.** The old name was Cullinan Jewellery. The
-  GitHub repository, its remote and the Instagram handle still carry the old name; renaming
-  the repository would break the Shopify connection, so it stays.
+- **The name has changed three times and is back to Cullinan Jewellery (2026-09-12).**
+  Crown Jewellery from 2026-09-06, then Doncheff Jewellery, now Cullinan again. The
+  repository, its remote and the Instagram handle were never renamed, so they are correct
+  once more. The visible name comes from `shop.name` — a Shopify setting, not a theme file.
+  Internal code names (`assets/crown.css`, the `newsletter--crown` class) are from the Crown
+  spell and were deliberately left alone: they are identifiers, not customer-facing, and
+  renaming them a third time is churn with no visible gain.
 - Store currency: EUR. Customer-facing language: Bulgarian.
 - The old site (studio-cullinan.com, Zen Cart) is being replaced by this Shopify store.
 
@@ -227,8 +231,12 @@ Anything of ours that is not a Dawn setting lives in these two places:
 These cannot be done from this repository — menus, collections and the store name are store
 data, not theme files:
 
-- **Store name** → Settings → Store details. Still reads Cullinan Jewellery. The header shows
-  `shop.name` until a logo image is uploaded, so the old name is on the site until this changes.
+- **Store name** → Settings → Store details. Reads Doncheff Jewellery; it needs to go back to
+  Cullinan Jewellery. The header prints `shop.name` until a logo image is uploaded.
+- **The "За нас" page.** `templates/page.about.json` exists and is ready. Create the page under
+  Content → Pages, title "За нас", and pick the **page.about** template on it. Then add it to
+  the Main menu. The prose in it is drafted from the old site's own About text and is editable
+  in the theme editor.
 - **Main menu** (Content → Menus → Main menu), in this order:
   циркони · диаманти · най-продавани · пръстени · обеци · висулки · гривни
 - **Collections** to point those entries at — none exist yet.

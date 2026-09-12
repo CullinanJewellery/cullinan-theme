@@ -1,0 +1,67 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 12
+      }
+    },
+    "story": {
+      "type": "rich-text",
+      "blocks": {
+        "caption": {
+          "type": "caption",
+          "settings": {
+            "caption": "От 1991 година",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "medium"
+          }
+        },
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Семейно ателие във Велико Търново",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Кулинан е семейно ателие във Велико Търново. Работим от 1991 година, като Кулинан 96 ООД.</p><p>Произвеждаме златни бижута — пръстени, обеци, гривни, висулки, колиета, комплекти и брошки. Работим с 14- и 18-каратово злато, с диаманти, сапфири, изумруди и рубини, и с цветен емайл.</p><p>Скъпоценните камъни се оценяват от експерт с квалификация от HRD, Антверпен.</p><p>Магазинът ни е на бул. Васил Левски 21. Освен бижута наше производство, там ще намерите и внос от Италия. Изкупуваме и злато.</p>"
+          }
+        }
+      },
+      "block_order": ["caption", "heading", "text"],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
+    "atelier": {
+      "type": "atelier",
+      "settings": {
+        "media_position": "right",
+        "color_scheme": "scheme-2",
+        "eyebrow": "Ателието",
+        "heading": "От восъчния модел до последното полиране",
+        "paragraph": "<p>Всяко бижу минава през ръцете ни — от първия модел до последното полиране.</p>",
+        "fact_1_value": "1991",
+        "fact_1_label": "От година",
+        "fact_2_value": "14–18К",
+        "fact_2_label": "Злато",
+        "fact_3_value": "Велико Търново",
+        "fact_3_label": "Ателие",
+        "link_label": "",
+        "link_url": "",
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
+    }
+  },
+  "order": ["main", "story", "atelier"]
+}
