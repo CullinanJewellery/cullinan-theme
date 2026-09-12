@@ -38,8 +38,8 @@ do we move to the templates: collection page, product page, cart, then the story
 
 The reference is moonmagic.com. Go and look at it before building each element — study the
 structure, proportions, spacing, hierarchy and interaction. Take the patterns. Never take
-their code, their images or their words; we are building Crown Jewellery, and the pieces that
-make Crown Jewellery different (a workshop since 1991) are not on their site.
+their code, their images or their words; we are building Cullinan Jewellery, and the pieces that
+make Cullinan Jewellery different (a workshop since 1991) are not on their site.
 
 Photography comes last. Build every image slot empty and make sure the layout holds when
 nothing is set. No placeholder graphics, no stock images, no AI-generated images anywhere.
@@ -223,7 +223,7 @@ Anything of ours that is not a Dawn setting lives in these two places:
   that also carries Italian imports; and a gold-buying service. Its categories are Дамски
   бижута · Мъжки бижута · Брачни халки · Сребро, with пръстени, обици, гривни, висулки,
   колиета, комплекти, брошки, мъжки аксесоари listed in the About text.
-- **Unresolved: is silver part of Crown Jewellery?** The old site sells silver (s3042, s1193com)
+- **Unresolved: is silver part of Cullinan Jewellery?** The old site sells silver (s3042, s1193com)
   but its About page says the shop does not. Affects the menu and the facts strip.
 
 ### Waiting on the Shopify admin
@@ -242,7 +242,7 @@ data, not theme files:
 - **Collections** to point those entries at — none exist yet.
 - **Product Vendor field** carries the small line above the product title on the cards
   (where the reference prints the stone). Put the stone or material there — "Циркон",
-  "Диамант", "14К злато" — not the brand name, or every card will read Crown Jewellery.
+  "Диамант", "14К злато" — not the brand name, or every card will read Cullinan Jewellery.
 - **Product metafield `custom.detail`** (single line text) carries the italic line beneath it,
   where the reference prints a stone's meaning. Create it under Settings → Custom data →
   Products. Cards hide the line when it is empty.
