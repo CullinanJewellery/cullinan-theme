@@ -344,7 +344,7 @@
             "image": "",
             "label": "Комплекти",
             "subline": "Обеци и висулка в един стил.",
-            "link": ""
+            "link": "/collections/комплекти"
           }
         },
         "t6": {
@@ -352,9 +352,9 @@
           "settings": {
             "size": "standard",
             "image": "",
-            "label": "Брачни халки",
-            "subline": "Изработени по мярка.",
-            "link": ""
+            "label": "Диаманти",
+            "subline": "Бижута с диаманти.",
+            "link": "/collections/диаманти"
           }
         }
       },
