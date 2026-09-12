@@ -238,13 +238,39 @@
   text-align: left;
 }
 
+/*
+  The same button as the hero, and it has to behave like one. It was the only
+  call to action on the page left with Dawn's own treatment — a 0.1s box-shadow
+  flicker — while every other one fades its fill over 0.35s. Tracking comes back
+  to 0.1em to match the hero and the footer buttons too.
+
+  Dawn draws this button's border with ::before and ::after; those are dropped
+  so the fill can fall away cleanly to an outline.
+*/
+.collection .collection__view-all .button::before,
+.collection .collection__view-all .button::after {
+  content: none;
+}
+
 .collection .collection__view-all .button {
   min-width: 34rem;
   min-height: 6.4rem;
   font-size: 1.4rem;
   font-weight: 500;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
+  background-color: rgb(var(--color-button));
+  color: rgb(var(--color-button-text));
+  box-shadow: inset 0 0 0 1px rgba(var(--color-button), 0);
+  transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out,
+    box-shadow 0.35s ease-in-out;
+}
+
+.collection .collection__view-all .button:hover,
+.collection .collection__view-all .button:focus-visible {
+  background-color: transparent;
+  color: rgb(var(--color-button));
+  box-shadow: inset 0 0 0 1px rgb(var(--color-button));
 }
 
 @media screen and (max-width: 749px) {
