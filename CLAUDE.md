@@ -115,12 +115,24 @@ Rules that matter here:
   like "от 1991 година" where the digits look like a different typeface from the letters.
 - Page width 1400. Grid spacing 24 horizontal / 40 vertical — the generous gaps are
   intentional and should not be tightened further.
-- **Never let `templates/index.json` depend on a section setting added in the same push.**
+- **Never let a template depend on a section setting added in the same push.**
   Shopify validates the template against the section schemas *it currently holds*, so a
   template referencing a setting whose section file has not landed yet is rejected — every
   time, on its own, and resetting does not help. Give the new setting a `default` in the
   section schema and leave it out of the template instead. This cost several rounds on the
   newsletter, where the section and the template were changed together.
+- **Two pushes is not always enough — the validator lags behind the file.** On 2026-09-12
+  `main-page.liquid` gained a `show_title` checkbox in one push and `page.about.json` set it
+  to `false` in the next. The section file was confirmed live first, and the template was
+  still refused; it sat on the previous version for a quarter of an hour while every value
+  in it was legal. The same template re-pushed later synced in under ten seconds, unchanged
+  in substance. So the schema Shopify validates against catches up minutes after the file
+  does. Push the section, do something else, and reference the setting later.
+- **Read the padding a section renders, not the first number in it.** Dawn emits the mobile
+  rule first at `value × 0.75` and the desktop value inside a `min-width: 750px` query, so a
+  section set to 80 prints `padding-top: 60px` first. A sync check that greps the first match
+  reads a healthy push as a failure — which is exactly what happened above and is what sent
+  the diagnosis chasing a stalled pipeline that was never stalled.
 - **Range values must sit on the step, not just inside the range — in templates too.**
   `padding_top: 70` looks harmless but Dawn's padding step is 4, so 70 is illegal and
   `templates/index.json` was refused from 2026-09-10 until 2026-09-11 because of it. The
@@ -233,10 +245,12 @@ data, not theme files:
 
 - **Store name** → Settings → Store details. Reads Doncheff Jewellery; it needs to go back to
   Cullinan Jewellery. The header prints `shop.name` until a logo image is uploaded.
-- **The "За нас" page.** `templates/page.about.json` exists and is ready. Create the page under
-  Content → Pages, title "За нас", and pick the **page.about** template on it. Then add it to
-  the Main menu. The prose in it is drafted from the old site's own About text and is editable
-  in the theme editor.
+- **The "За нас" page — template not assigned.** The page exists and is in the Main menu,
+  but it is still on the default page template, so a visitor gets the title and nothing
+  else. Content → Pages → За нас, and under **Theme template** on the right pick
+  **page.about**, then Save. `?view=about` on the preview shows what it will look like.
+  The prose is drafted from the old site’s own About text and is editable in the theme
+  editor.
 - **Main menu** (Content → Menus → Main menu), in this order:
   циркони · диаманти · най-продавани · пръстени · обеци · висулки · гривни
 - **Collections** to point those entries at — none exist yet.
