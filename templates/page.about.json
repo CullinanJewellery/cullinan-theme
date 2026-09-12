@@ -3,9 +3,8 @@
     "main": {
       "type": "main-page",
       "settings": {
-        "show_title": false,
-        "padding_top": 0,
-        "padding_bottom": 0
+        "padding_top": 28,
+        "padding_bottom": 12
       }
     },
     "story": {
@@ -33,11 +32,7 @@
           }
         }
       },
-      "block_order": [
-        "caption",
-        "heading",
-        "text"
-      ],
+      "block_order": ["caption", "heading", "text"],
       "settings": {
         "desktop_content_position": "center",
         "content_alignment": "center",
@@ -68,9 +63,5 @@
       }
     }
   },
-  "order": [
-    "main",
-    "story",
-    "atelier"
-  ]
+  "order": ["main", "story", "atelier"]
 }
