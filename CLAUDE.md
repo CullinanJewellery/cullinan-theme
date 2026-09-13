@@ -270,9 +270,9 @@ Anything of ours that is not a Dawn setting lives in these two places:
     and visible in the editor: istoriya, dizain, materiali, vaprosi. A section added in the
     editor gets a random key, so a section id would be unreachable from a link.
   - The reference sends each of these links to a separate page; the owner wants them on one.
-  - Its icons live in `snippets/icon-benefit.liquid` with the rest: scroll (history), ring-tools
+  - Its icons live in `snippets/icon-benefit.liquid` with the rest: gem (inspiration: the Cullinan diamond), ring-tools
     (design — a ring with a stone and tweezers, after a picture the owner chose, drawn fresh),
-    gem (materials), question (questions). Every new icon is drawn in a preview and looked at
+    gold-bar (materials), question (questions); scroll stays in the snippet, unused. A crown was drawn for inspiration and removed at the owner’s request. Every new icon is drawn in a preview and looked at
     before it ships.
 - **Page title switch.** `sections/main-page.liquid` has a `show_title` checkbox, on by
   default. Templates that bring their own headline turn it off; `page.about` does.
@@ -280,10 +280,16 @@ Anything of ours that is not a Dawn setting lives in these two places:
 ## Current state
 
 - Design foundation applied (palette, type, spacing). Committed and live on the draft theme.
-- **За нас page** (2026-09-13): intro with four jump links, then Нашата история · Нашият
-  дизайн · Нашите материали as photograph-and-panel blocks, then Въпроси и отговори. Linked
+- **За нас page** (2026-09-13): intro with four jump links — Нашето вдъхновение · Нашият дизайн ·
+  Нашите материали · Въпроси и отговори — then photograph-and-panel blocks for Нашата история,
+  Нашето вдъхновение, Нашият дизайн and Нашите материали, then the questions. History keeps its
+  block but has no button: the owner did not want it as one. Linked
   from the top bar. All copy is drafted only from facts already on the site or on the old
   site. **At the owner’s instruction, nothing on it says the business is a family one.**
+  - **The inspiration block tells the Cullinan diamond’s story** (largest gem-quality diamond
+    ever found, 1905, over 3,100 carats, cut into stones for the British Crown Jewels) and calls
+    it the business’s inspiration. **The owner confirmed on 2026-09-13 that the name comes from
+    the diamond**, so the block says so outright. The diamond facts are public and were checked.
   - The questions answer only what is known: gold, engraving, delivery carriers, the shop.
     Returns, payment methods, warranty, opening hours and delivery prices wait for the
     owner — do not answer them from assumption.
