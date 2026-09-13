@@ -45,20 +45,24 @@
    Measured off the reference at 1440px: a 43px bar, messages at 14px in
    capitals with 0.2em tracking, links at 14px in normal case with 0.05em. It
    sets bar text in its body face rather than its display face, and so does
-   this -- Playfair in capitals at 12px was heavy and hard to read. Sizes sit a
-   step under the reference so the bar never outranks the navigation (12.5px).
+   this -- Playfair in capitals at 12px was heavy and hard to read.
+
+   Smaller than the reference at the owner's request (2026-09-13): the message
+   at 11px, and the bar 33px tall on desktop rather than 39px. Dawn floors the
+   message at 3.8rem and its arrows at 3.8rem, so both floors come down with it.
    The colour stays scheme-3's warm near-black, not the reference's #000.
    --------------------------------------------------------------------------- */
 
 .announcement-bar__message {
   font-family: var(--font-body-family);
   font-style: var(--font-body-style);
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 400;
   line-height: 1.4;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  padding: 1rem 0;
+  padding: 0.7rem 0;
+  min-height: 3.2rem;
   /* On phones every message takes two lines. Balanced, so none leaves a single
      word such as ЗЛАТО stranded on the second. */
   text-wrap: balance;
@@ -74,10 +78,6 @@
 }
 
 @media screen and (min-width: 990px) {
-  .announcement-bar__message {
-    font-size: 1.3rem;
-  }
-
   /* Dawn's grid has no slot for links. The empty localization column stays in
      the template so its wrapper still has somewhere to sit. */
   .utility-bar__grid--links {
@@ -104,6 +104,7 @@
   .utility-bar__grid--links .announcement-bar .slider-button {
     width: 3.2rem;
     min-width: 3.2rem;
+    height: 3.2rem;
     margin: 0;
   }
 
@@ -139,7 +140,7 @@
 
 .utility-bar__link {
   display: block;
-  padding: 1rem 1.2rem;
+  padding: 0.7rem 1.2rem;
   font-family: var(--font-body-family);
   font-size: 1.3rem;
   font-weight: 400;
