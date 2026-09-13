@@ -227,6 +227,9 @@ Anything of ours that is not a Dawn setting lives in these two places:
   from **one menu**, picked in Theme settings → Top bar; left empty, the menu with the handle
   `top-bar` is used. It is a theme setting rather than a section setting because the header
   section, which renders the drawer, cannot read the announcement bar’s settings.
+  - The **Top bar** menu exists (2026-09-13) and holds За нас, which is no longer in the Main
+    menu. Message 11px, bar 33px on desktop, both smaller than the reference at the owner’s
+    request; За нас stays 13px and underlines on hover.
   - The left-aligned layout only switches on when that menu has links; without them the bar
     keeps Dawn’s centred layout.
   - On phones the arrows hide only while the bar rotates by itself. Visitors who ask for
@@ -294,9 +297,6 @@ data, not theme files:
 
 - **Store name** → Settings → Store details. Reads Doncheff Jewellery; it needs to go back to
   Cullinan Jewellery. The header prints `shop.name` until a logo image is uploaded.
-- **Top bar menu.** Content → Menus → Add menu, titled **Top bar** so its handle is `top-bar`
-  (or pick any menu in Theme settings → Top bar). Add За нас to it, then remove За нас from
-  the Main menu — the page moves to the top bar, as the reference places its About link.
 - **Main menu** (Content → Menus → Main menu), in this order:
   циркони · диаманти · най-продавани · пръстени · обеци · висулки · гривни
 - **Collections** to point those entries at — none exist yet.
