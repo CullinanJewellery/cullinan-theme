@@ -7,7 +7,7 @@
 
   Accepts:
   - icon: {String} gem, ring, hammer, map-pin, engraving-pen, delivery-van,
-    box, return-arrow, certificate, clock, question, scroll, ring-tools
+    box, return-arrow, certificate, clock, question, scroll, ring-tools, crown
 
   Usage:
   {% render 'icon-benefit', icon: block.settings.icon %}
@@ -120,5 +120,17 @@
       <path d="M5.5 5.2h8" vector-effect="non-scaling-stroke"/>
       <path d="M17 3.5l2.5 9.5 2.5-9.5" vector-effect="non-scaling-stroke"/>
       <path d="M19.5 13v7.5" vector-effect="non-scaling-stroke"/>
+
+    {%- when 'crown' -%}
+      {%- comment -%}
+        A three-point crown with a pearl on each tip, for the inspiration link:
+        the Cullinan diamond was cut into stones for the British Crown Jewels.
+        Checked at 26px and 80px against a plainer crown without pearls.
+      {%- endcomment -%}
+      <path d="M4.5 9 8 13l4-6.5L16 13l3.5-4-1.5 8.5H6z" vector-effect="non-scaling-stroke"/>
+      <path d="M6 20.5h12" vector-effect="non-scaling-stroke"/>
+      <circle cx="4.5" cy="7.4" r="1" vector-effect="non-scaling-stroke"/>
+      <circle cx="12" cy="4.8" r="1" vector-effect="non-scaling-stroke"/>
+      <circle cx="19.5" cy="7.4" r="1" vector-effect="non-scaling-stroke"/>
   {%- endcase -%}
 </svg>
