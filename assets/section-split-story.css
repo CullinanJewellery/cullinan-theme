@@ -1,0 +1,85 @@
+/*
+  Split story -- a photograph on one half, text on a tinted panel on the other.
+*/
+
+.split-story {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.split-story__media {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+}
+
+.split-story__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* No photograph yet. Sand rather than the panel's stone, so the block still
+   reads as two halves. */
+.split-story__image--empty {
+  background-color: rgb(231 225 214);
+}
+
+.split-story__panel {
+  display: flex;
+  align-items: center;
+}
+
+.split-story__content {
+  width: 100%;
+  padding: 4.8rem 2rem 5.6rem;
+}
+
+.split-story__heading {
+  margin: 0;
+  font-size: clamp(3.2rem, 3.5vw, 5rem);
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+.split-story__lead {
+  margin: 2.4rem 0 0;
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: rgb(var(--color-foreground));
+}
+
+.split-story__body {
+  margin-top: 1.6rem;
+  font-size: 1.6rem;
+  line-height: 1.7;
+}
+
+.split-story__body > * {
+  margin: 0;
+}
+
+.split-story__body > * + * {
+  margin-top: 1.2rem;
+}
+
+@media screen and (min-width: 990px) {
+  .split-story {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .split-story__media {
+    aspect-ratio: 8 / 7;
+  }
+
+  .split-story--media-right .split-story__media {
+    order: 2;
+  }
+
+  .split-story__content {
+    max-width: 68rem;
+    padding: 6.4rem clamp(4rem, 7.4vw, 10.6rem);
+  }
+}

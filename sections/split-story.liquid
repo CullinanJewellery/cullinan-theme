@@ -1,0 +1,122 @@
+{{ 'section-split-story.css' | asset_url | stylesheet_tag }}
+
+{%- comment -%}
+  A story block: a photograph on one half and text on a tinted panel on the
+  other, across the full width of the screen. Consecutive blocks alternate
+  sides. Below 990px the photograph comes first and the text follows it.
+
+  Measured off the reference at 1440px: halves of 712 and 713px, a 629px row
+  (8:7 on the photograph), the text starting about 106px inside the panel, a
+  50px heading and 18px text. Its panel is tinted #F9F5F2; here the tint is a
+  colour scheme, stone by default.
+
+  The Anchor setting gives the block an id, so a jump link higher up the page
+  can scroll to it.
+{%- endcomment -%}
+
+<div
+  {% if section.settings.anchor != blank %}
+    id="{{ section.settings.anchor | strip | escape }}"
+  {% endif %}
+  class="split-story split-story--media-{{ section.settings.media_position }}"
+>
+  <div class="split-story__media">
+    {%- if section.settings.image != blank -%}
+      {{
+        section.settings.image
+        | image_url: width: 1800
+        | image_tag:
+          class: 'split-story__image',
+          widths: '600, 900, 1200, 1500, 1800',
+          sizes: '(min-width: 990px) 50vw, 100vw',
+          loading: 'lazy'
+      }}
+    {%- else -%}
+      {%- comment -%}
+        No photograph yet: a flat block at the photograph's shape, so nothing
+        moves when one is added.
+      {%- endcomment -%}
+      <span class="split-story__image split-story__image--empty"></span>
+    {%- endif -%}
+  </div>
+
+  <div class="split-story__panel color-{{ section.settings.color_scheme }} gradient">
+    <div class="split-story__content">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="split-story__heading">{{ section.settings.heading | escape }}</h2>
+      {%- endif -%}
+      {%- if section.settings.lead != blank -%}
+        <p class="split-story__lead">{{ section.settings.lead | escape }}</p>
+      {%- endif -%}
+      {%- if section.settings.body != blank -%}
+        <div class="split-story__body">{{ section.settings.body }}</div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Split story",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "anchor",
+      "label": "Anchor",
+      "info": "Latin letters, no spaces, e.g. istoriya. A jump link with the same target scrolls here."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image",
+      "info": "Leave empty until the photography exists. A flat block holds the space."
+    },
+    {
+      "type": "select",
+      "id": "media_position",
+      "label": "Image side",
+      "default": "left",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "info": "On phones the image always comes first."
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Panel colour scheme",
+      "default": "scheme-2"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "lead",
+      "label": "Lead line",
+      "info": "Bold, under the heading. Hidden when empty."
+    },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Text"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Split story"
+    }
+  ]
+}
+{% endschema %}

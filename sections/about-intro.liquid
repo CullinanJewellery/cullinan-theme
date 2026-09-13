@@ -1,0 +1,189 @@
+{{ 'section-about-intro.css' | asset_url | stylesheet_tag }}
+
+{%- comment -%}
+  The opening of the About page: a title, one line, and jump links that scroll
+  down to sections further on the same page.
+
+  A link's target is the Anchor set on the section it points to; split-story and
+  collapsible-content both carry one. The reference links each of these to a
+  separate page. The owner wants them all on one page.
+
+  Measured off the reference at 1440px: a 55px title, a 16px line under it, and
+  links 200 x 57px with 30px between them. Its links are rounded pills; these
+  are square, as everything on this site is.
+{%- endcomment -%}
+
+<div class="about-intro color-{{ section.settings.color_scheme }} gradient">
+  <div
+    class="about-intro__inner page-width"
+    style="--about-intro-pt: {{ section.settings.padding_top }}px; --about-intro-pb: {{ section.settings.padding_bottom }}px;"
+  >
+    {%- if section.settings.heading != blank -%}
+      <h1 class="about-intro__heading">{{ section.settings.heading | escape }}</h1>
+    {%- endif -%}
+
+    {%- if section.settings.text != blank -%}
+      <p class="about-intro__text">{{ section.settings.text | escape }}</p>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <nav class="about-intro__nav" aria-label="На тази страница">
+        <ul class="about-intro__links" role="list">
+          {%- for block in section.blocks -%}
+            {%- assign target = block.settings.target | strip -%}
+            {%- capture tile -%}
+              {%- if block.settings.icon != 'none' -%}
+                {%- render 'icon-benefit', icon: block.settings.icon -%}
+              {%- endif -%}
+              <span class="about-intro__label">{{ block.settings.label | escape }}</span>
+            {%- endcapture -%}
+            <li class="about-intro__item" {{ block.shopify_attributes }}>
+              {%- if target != blank -%}
+                <a class="about-intro__link focus-inset" href="#{{ target | escape }}">{{ tile }}</a>
+              {%- else -%}
+                <span class="about-intro__link">{{ tile }}</span>
+              {%- endif -%}
+            </li>
+          {%- endfor -%}
+        </ul>
+      </nav>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "About intro",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "За нас"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Text",
+      "info": "One line under the heading. Hidden when empty."
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Colour scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 64
+    }
+  ],
+  "blocks": [
+    {
+      "type": "jump_link",
+      "name": "Jump link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label"
+        },
+        {
+          "type": "text",
+          "id": "target",
+          "label": "Scrolls to anchor",
+          "info": "The Anchor of a section further down this page, e.g. istoriya. Latin letters, no spaces. Without one the tile is shown but is not a link."
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "default": "none",
+          "options": [
+            {
+              "value": "none",
+              "label": "None"
+            },
+            {
+              "value": "clock",
+              "label": "Clock"
+            },
+            {
+              "value": "engraving-pen",
+              "label": "Pen"
+            },
+            {
+              "value": "gem",
+              "label": "Gem"
+            },
+            {
+              "value": "question",
+              "label": "Question mark"
+            },
+            {
+              "value": "ring",
+              "label": "Ring"
+            },
+            {
+              "value": "certificate",
+              "label": "Certificate"
+            },
+            {
+              "value": "map-pin",
+              "label": "Map pin"
+            },
+            {
+              "value": "box",
+              "label": "Box"
+            },
+            {
+              "value": "delivery-van",
+              "label": "Delivery van"
+            },
+            {
+              "value": "gold-bar",
+              "label": "Gold bar"
+            },
+            {
+              "value": "hammer",
+              "label": "Hammer"
+            },
+            {
+              "value": "return-arrow",
+              "label": "Return arrow"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "About intro"
+    }
+  ]
+}
+{% endschema %}
