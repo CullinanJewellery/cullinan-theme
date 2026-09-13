@@ -235,6 +235,11 @@ Anything of ours that is not a Dawn setting lives in these two places:
   - On phones the arrows hide only while the bar rotates by itself. Visitors who ask for
     reduced motion keep them, because Dawn stops the rotation for them.
   - Bar text is Montserrat, not Playfair — the reference sets its bar in its body face.
+  - Messages (2026-09-13, written to the owner’s brief "whatever you think"): 14К и 18К злато
+    от семейно ателие · Гравираме име, дата или послание · Доставка с Еконт и Спиди. Built only
+    from facts the owner already published in the benefits row. No free delivery, returns or
+    cash-on-delivery promise until those policies exist. Each fits one line on a 360px phone at
+    11px (the longest measures 287px of 300); a longer message pushes the phone bar to two lines.
   - Social icons and the country/language selectors in the bar are off. Turning either on
     means revisiting the grid, which only has slots for the message and the links.
 - **Wordmark on phones.** Until a logo image is uploaded the header prints `shop.name` in
@@ -262,8 +267,8 @@ Anything of ours that is not a Dawn setting lives in these two places:
   atelier photo session happens.
 - Bulgarian needs setting as the store's default language (currently English).
 - **Settled 2026-09-07: both 14K and 18K.** The benefits row the owner wrote says "Проба 585
-  и 750 — 14 и 18 карата злато", so the range covers both. The announcement bar and the atelier
-  section still say 14К only, which understates it — worth widening when the copy is revised.
+  и 750 — 14 и 18 карата злато", so the range covers both. The atelier facts say 14–18К and,
+  since 2026-09-13, the announcement bar says 14К и 18К, so nothing on the site understates it.
 - **The old site is the best source for real copy.** It gives: founded 1991 as КУЛИНАН 96 ООД;
   the business is *производство* not resale; stones certified by an appraiser qualified at HRD
   Antwerp; diamonds, sapphires, emeralds, rubies; colour enamel; wholesale and retail; a shop
