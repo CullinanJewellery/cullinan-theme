@@ -37,15 +37,144 @@
 /* ---------------------------------------------------------------------------
    Announcement bar
 
-   Small, uppercase, widely spaced — a quiet band rather than a sentence.
+   The reference's pattern. Desktop: both arrows together on the left, the
+   message after them, and the top bar links on the right. Tablets and phones:
+   the message alone, centred, rotating by itself, while the links move to the
+   bottom of the menu drawer (snippets/header-drawer.liquid).
+
+   Measured off the reference at 1440px: a 43px bar, messages at 14px in
+   capitals with 0.2em tracking, links at 14px in normal case with 0.05em. It
+   sets bar text in its body face rather than its display face, and so does
+   this -- Playfair in capitals at 12px was heavy and hard to read. Sizes sit a
+   step under the reference so the bar never outranks the navigation (12.5px).
+   The colour stays scheme-3's warm near-black, not the reference's #000.
    --------------------------------------------------------------------------- */
 
 .announcement-bar__message {
+  font-family: var(--font-body-family);
+  font-style: var(--font-body-style);
   font-size: 1.2rem;
-  font-weight: 500;
-  letter-spacing: 0.14em;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   padding: 1rem 0;
+}
+
+/* Tablets and phones. The message rotates by itself, so the arrows only take
+   width from it. They stay for anyone who asked for reduced motion: Dawn stops
+   the rotation for them, and without arrows the second message is unreachable. */
+@media screen and (max-width: 989px) and (prefers-reduced-motion: no-preference) {
+  .announcement-bar-slider:has(> .slider[data-autoplay='true']) .slider-button {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .announcement-bar__message {
+    font-size: 1.3rem;
+  }
+
+  /* Dawn's grid has no slot for links. The empty localization column stays in
+     the template so its wrapper still has somewhere to sit. */
+  .utility-bar__grid--links {
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    grid-template-areas: 'announcements language-currency links';
+  }
+
+  .utility-bar__grid--links .announcement-bar,
+  .utility-bar__grid--links .announcement-bar__announcement,
+  .utility-bar__grid--links .announcement-bar__link {
+    justify-content: flex-start;
+  }
+
+  .utility-bar__grid--links .announcement-bar-slider {
+    width: 100%;
+  }
+
+  .utility-bar__grid--links .announcement-bar__message {
+    text-align: left;
+  }
+
+  /* Both arrows together ahead of the message. 32px targets are plenty for a
+     mouse; Dawn's 44px are sized for thumbs. */
+  .utility-bar__grid--links .announcement-bar .slider-button {
+    width: 3.2rem;
+    min-width: 3.2rem;
+    margin: 0;
+  }
+
+  .utility-bar__grid--links .announcement-bar .slider-button--prev {
+    order: 1;
+    /* Pulls the glyph back onto the gutter line the wordmark starts from. */
+    margin-left: -1rem;
+  }
+
+  .utility-bar__grid--links .announcement-bar .slider-button--next {
+    order: 2;
+  }
+
+  .utility-bar__grid--links .announcement-bar .slider {
+    order: 3;
+    padding-left: 1rem;
+  }
+}
+
+/* Top bar links. Hidden below 990px by Dawn's small-hide / medium-hide. */
+.utility-bar__links {
+  grid-area: links;
+  align-self: center;
+  margin-left: 3.2rem;
+}
+
+.utility-bar__links-list {
+  display: flex;
+  align-items: center;
+  /* Without this the last link's padding pushes its text in off the gutter. */
+  margin-right: -1.2rem;
+}
+
+.utility-bar__link {
+  display: block;
+  padding: 1rem 1.2rem;
+  font-family: var(--font-body-family);
+  font-size: 1.3rem;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  color: rgb(var(--color-foreground));
+  text-decoration: none;
+}
+
+.utility-bar__link:hover,
+.utility-bar__link[aria-current='page'] {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.4rem;
+}
+
+/* The same links in the menu drawer, quieter than the categories above them. */
+.menu-drawer__secondary {
+  margin: 2.4rem 3rem 0;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(var(--color-foreground), 0.08);
+}
+
+.menu-drawer__secondary-link {
+  display: block;
+  padding: 0.8rem 0;
+  font-size: 1.5rem;
+  color: rgba(var(--color-foreground), 0.75);
+  text-decoration: none;
+}
+
+.menu-drawer__secondary-link:hover,
+.menu-drawer__secondary-link[aria-current='page'] {
+  color: rgb(var(--color-foreground));
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.4rem;
 }
 
 /* ---------------------------------------------------------------------------

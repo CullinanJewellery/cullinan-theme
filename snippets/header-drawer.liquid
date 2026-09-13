@@ -157,6 +157,34 @@
                 </li>
               {%- endfor -%}
             </ul>
+            {%- comment -%}
+              The top bar's links. The bar hides them below 990px, where it has
+              no room, so they sit here under the categories instead. Same menu
+              as sections/announcement-bar.liquid resolves.
+            {%- endcomment -%}
+            {%- liquid
+              assign top_bar_menu = settings.top_bar_menu
+              if top_bar_menu == blank
+                assign top_bar_menu = linklists['top-bar']
+              endif
+            -%}
+            {%- if top_bar_menu.links.size > 0 -%}
+              <ul class="menu-drawer__secondary list-unstyled" role="list">
+                {%- for link in top_bar_menu.links -%}
+                  <li>
+                    <a
+                      href="{{ link.url }}"
+                      class="menu-drawer__secondary-link focus-inset"
+                      {% if link.current %}
+                        aria-current="page"
+                      {% endif %}
+                    >
+                      {{- link.title | escape -}}
+                    </a>
+                  </li>
+                {%- endfor -%}
+              </ul>
+            {%- endif -%}
           </nav>
           <div class="menu-drawer__utility-links">
             {%- if show_country_selector or show_language_selector -%}

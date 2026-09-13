@@ -12,6 +12,18 @@
   if section.blocks.size > 0
     assign announcement_bar = true
   endif
+
+  # Top bar links. Theme settings > Top bar picks the menu; left empty, the
+  # menu with the handle top-bar is used. snippets/header-drawer.liquid
+  # resolves the same menu for tablets and phones, where these are hidden.
+  assign top_bar_menu = settings.top_bar_menu
+  if top_bar_menu == blank
+    assign top_bar_menu = linklists['top-bar']
+  endif
+  assign has_top_bar_links = false
+  if top_bar_menu.links.size > 0
+    assign has_top_bar_links = true
+  endif
 -%}
 
 {% if social_icons %}
@@ -21,7 +33,7 @@
 <div
   class="utility-bar color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_line_separator and section.blocks.size > 0 %} utility-bar--bottom-border{% elsif section.settings.show_line_separator and section.settings.show_social and social_icons%} utility-bar--bottom-border-social-only{% endif %}{% if section.settings.enable_country_selector or section.settings.enable_language_selector %} header-localization{% endif %}"
 >
-  <div class="page-width utility-bar__grid{% if announcement_bar and language_country_selector or section.settings.show_social and social_icons %} utility-bar__grid--3-col{% elsif language_country_selector or section.settings.show_social and social_icons %} utility-bar__grid--2-col{% endif %}">
+  <div class="page-width utility-bar__grid{% if announcement_bar and language_country_selector or section.settings.show_social and social_icons %} utility-bar__grid--3-col{% elsif language_country_selector or section.settings.show_social and social_icons %} utility-bar__grid--2-col{% endif %}{% if has_top_bar_links %} utility-bar__grid--links{% endif %}">
     {%- if section.settings.show_social and social_icons -%}
       {%- render 'social-icons' -%}
     {%- endif -%}
@@ -159,6 +171,25 @@
         </localization-form>
       {%- endif -%}
     </div>
+    {%- if has_top_bar_links -%}
+      <nav class="utility-bar__links small-hide medium-hide" aria-label="Информация">
+        <ul class="utility-bar__links-list list-unstyled" role="list">
+          {%- for link in top_bar_menu.links -%}
+            <li>
+              <a
+                href="{{ link.url }}"
+                class="utility-bar__link focus-inset"
+                {% if link.current %}
+                  aria-current="page"
+                {% endif %}
+              >
+                {{- link.title | escape -}}
+              </a>
+            </li>
+          {%- endfor -%}
+        </ul>
+      </nav>
+    {%- endif -%}
   </div>
 </div>
 

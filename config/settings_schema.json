@@ -1360,6 +1360,21 @@
     ]
   },
   {
+    "name": "Top bar",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Links on the right of the announcement bar on desktop. On tablets and phones the bar has no room for them, so they move to the bottom of the menu drawer."
+      },
+      {
+        "type": "link_list",
+        "id": "top_bar_menu",
+        "label": "Menu",
+        "info": "Left empty, the menu with the handle top-bar is used."
+      }
+    ]
+  },
+  {
     "name": "t:settings_schema.search_input.name",
     "settings": [
       {
