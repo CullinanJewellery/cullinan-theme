@@ -63,6 +63,24 @@
   text-transform: uppercase;
 }
 
+/*
+  On phones the name gets the middle cell of Dawn's header grid: the viewport
+  minus about 235px of icons and gutters (measured 320 -> 85px, 360 -> 125px,
+  375 -> 140px, 390 -> 155px). At this tracking JEWELLERY needs 7.4 times the
+  font size, so at 20px it stops fitting below 390px and Dawn's word-break
+  splits it mid-word -- "JEWELLER / Y". The size follows the room instead, at
+  94% of the limit, and stops at 20px once there is enough.
+
+  No floor on purpose. A floor above what the room allows is exactly what
+  breaks it again on the narrowest screens.
+*/
+@media screen and (max-width: 749px) {
+  .header__heading,
+  .header__heading-link .h2 {
+    font-size: min(2rem, calc(12.7vw - 2.985rem));
+  }
+}
+
 .header__inline-menu .header__menu-item {
   font-size: 1.25rem;
   font-weight: 400;
