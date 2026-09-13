@@ -14,33 +14,6 @@
         "enable_language_selector": false
       },
       "blocks": {
-        "announcement-bar-0": {
-          "type": "announcement",
-          "settings": {
-            "text": "14К и 18К злато от семейно ателие",
-            "text_alignment": "center",
-            "color_scheme": "scheme-3",
-            "link": ""
-          }
-        },
-        "announcement-bar-1": {
-          "type": "announcement",
-          "settings": {
-            "text": "Гравираме име, дата или послание",
-            "text_alignment": "center",
-            "color_scheme": "scheme-3",
-            "link": ""
-          }
-        },
-        "announcement-bar-2": {
-          "type": "announcement",
-          "settings": {
-            "text": "Доставка с Еконт и Спиди",
-            "text_alignment": "center",
-            "color_scheme": "scheme-3",
-            "link": ""
-          }
-        },
         "announcement-bar-3": {
           "type": "announcement",
           "settings": {
@@ -48,20 +21,17 @@
             "link": ""
           }
         },
-        "announcement-bar-4": {
+        "announcement-bar-5": {
           "type": "announcement",
           "settings": {
-            "text": "Майсторство от 1991 г.",
+            "text": "Лична грижа за всеки клиент",
             "link": ""
           }
         }
       },
       "block_order": [
         "announcement-bar-3",
-        "announcement-bar-0",
-        "announcement-bar-4",
-        "announcement-bar-1",
-        "announcement-bar-2"
+        "announcement-bar-5"
       ]
     },
     "header": {
