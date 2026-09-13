@@ -61,7 +61,11 @@
   line-height: 1.4;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  padding: 0.7rem 0;
+  /* Deliberately uneven. The 3.2rem floor added its spare height below the
+     text, and capitals sit high in their line box anyway, so with even padding
+     the message rode 2px above the arrows' centre. 0.9 over 0.7 puts the middle
+     of the capitals level with the arrows, measured, at the same 32px. */
+  padding: 0.9rem 0 0.7rem;
   min-height: 3.2rem;
   /* On phones every message takes two lines. Balanced, so none leaves a single
      word such as ЗЛАТО stranded on the second. */

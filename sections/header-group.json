@@ -40,10 +40,26 @@
             "color_scheme": "scheme-3",
             "link": ""
           }
+        },
+        "announcement-bar-3": {
+          "type": "announcement",
+          "settings": {
+            "text": "Безупречно качество до детайла",
+            "link": ""
+          }
+        },
+        "announcement-bar-4": {
+          "type": "announcement",
+          "settings": {
+            "text": "Майсторство от 1991 г.",
+            "link": ""
+          }
         }
       },
       "block_order": [
+        "announcement-bar-3",
         "announcement-bar-0",
+        "announcement-bar-4",
         "announcement-bar-1",
         "announcement-bar-2"
       ]
