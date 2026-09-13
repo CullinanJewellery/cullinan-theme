@@ -133,6 +133,11 @@ Rules that matter here:
   section set to 80 prints `padding-top: 60px` first. A sync check that greps the first match
   reads a healthy push as a failure — which is exactly what happened above and is what sent
   the diagnosis chasing a stalled pipeline that was never stalled.
+- **Shopify serves CSS minified, so search it for tokens without spaces.** On 2026-09-13 a
+  check for `text-wrap: balance` in the served `crown.css` came back empty for eight
+  minutes, while the file had been live within seconds as `text-wrap:balance`. Class names
+  and values such as `12.7vw` survive minification; anything with a space after a colon
+  does not. Match `text-wrap: ?balance`, or a selector, not the source formatting.
 - **Range values must sit on the step, not just inside the range — in templates too.**
   `padding_top: 70` looks harmless but Dawn's padding step is 4, so 70 is illegal and
   `templates/index.json` was refused from 2026-09-10 until 2026-09-11 because of it. The
