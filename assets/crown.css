@@ -55,10 +55,13 @@
   font-style: var(--font-body-style);
   font-size: 1.2rem;
   font-weight: 400;
-  line-height: 1.5;
+  line-height: 1.4;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   padding: 1rem 0;
+  /* On phones every message takes two lines. Balanced, so none leaves a single
+     word such as ЗЛАТО stranded on the second. */
+  text-wrap: balance;
 }
 
 /* Tablets and phones. The message rotates by itself, so the arrows only take
