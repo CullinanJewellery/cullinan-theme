@@ -155,8 +155,10 @@
   text-decoration: none;
 }
 
-.utility-bar__link:hover,
-.utility-bar__link[aria-current='page'] {
+/* Underlined under the cursor only -- not on the page it points to, at the
+   owner's request (2026-09-13). aria-current stays in the markup for screen
+   readers; it just draws nothing. */
+.utility-bar__link:hover {
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.4rem;
@@ -177,8 +179,12 @@
   text-decoration: none;
 }
 
-.menu-drawer__secondary-link:hover,
+/* Same rule in the drawer: the current page reads darker, never underlined. */
 .menu-drawer__secondary-link[aria-current='page'] {
+  color: rgb(var(--color-foreground));
+}
+
+.menu-drawer__secondary-link:hover {
   color: rgb(var(--color-foreground));
   text-decoration: underline;
   text-decoration-thickness: 1px;
