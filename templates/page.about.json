@@ -8,61 +8,153 @@
         "padding_bottom": 0
       }
     },
-    "story": {
-      "type": "rich-text",
+    "intro": {
+      "type": "about-intro",
       "blocks": {
-        "caption": {
-          "type": "caption",
+        "link_history": {
+          "type": "jump_link",
           "settings": {
-            "caption": "От 1991 година",
-            "text_style": "caption-with-letter-spacing",
-            "text_size": "medium"
+            "label": "Нашата история",
+            "target": "istoriya",
+            "icon": "clock"
           }
         },
-        "heading": {
-          "type": "heading",
+        "link_design": {
+          "type": "jump_link",
           "settings": {
-            "heading": "Семейно ателие във Велико Търново",
-            "heading_size": "h1"
+            "label": "Нашият дизайн",
+            "target": "dizain",
+            "icon": "engraving-pen"
           }
         },
-        "text": {
-          "type": "text",
+        "link_materials": {
+          "type": "jump_link",
           "settings": {
-            "text": "<p>Кулинан е семейно ателие във Велико Търново. Работим от 1991 година, като Кулинан 96 ООД.</p><p>Произвеждаме златни бижута — пръстени, обеци, гривни, висулки, колиета, комплекти и брошки. Работим с 14- и 18-каратово злато, с диаманти, сапфири, изумруди и рубини, и с цветен емайл.</p><p>Скъпоценните камъни се оценяват от експерт с квалификация от HRD, Антверпен.</p><p>Магазинът ни е на бул. Васил Левски 21. Освен бижута наше производство, там ще намерите и внос от Италия. Изкупуваме и злато.</p>"
+            "label": "Нашите материали",
+            "target": "materiali",
+            "icon": "gem"
+          }
+        },
+        "link_faq": {
+          "type": "jump_link",
+          "settings": {
+            "label": "Въпроси и отговори",
+            "target": "vaprosi",
+            "icon": "question"
           }
         }
       },
-      "block_order": ["caption", "heading", "text"],
+      "block_order": [
+        "link_history",
+        "link_design",
+        "link_materials",
+        "link_faq"
+      ],
       "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
+        "heading": "За нас",
+        "text": "Всяко бижу разказва история. Ето и нашата.",
         "color_scheme": "scheme-1",
-        "full_width": true,
-        "padding_top": 80,
-        "padding_bottom": 40
+        "padding_top": 72,
+        "padding_bottom": 88
       }
     },
-    "atelier": {
-      "type": "atelier",
+    "history": {
+      "type": "split-story",
       "settings": {
-        "media_position": "right",
+        "anchor": "istoriya",
+        "media_position": "left",
         "color_scheme": "scheme-2",
-        "eyebrow": "Ателието",
-        "heading": "От восъчния модел до последното полиране",
-        "paragraph": "<p>Всяко бижу минава през ръцете ни — от първия модел до последното полиране.</p>",
-        "fact_1_value": "1991",
-        "fact_1_label": "От година",
-        "fact_2_value": "14–18К",
-        "fact_2_label": "Злато",
-        "fact_3_value": "Велико Търново",
-        "fact_3_label": "Ателие",
-        "link_label": "",
-        "link_url": "",
-        "padding_top": 64,
-        "padding_bottom": 64
+        "heading": "Нашата история",
+        "lead": "Започнахме през 1991 година във Велико Търново.",
+        "body": "<p>Над три десетилетия изработваме златни бижута в собствено ателие — пръстени, обеци, гривни, висулки, колиета и комплекти.</p><p>Днес ще ни намерите в магазина на бул. Васил Левски 21 във Велико Търново, а вече и онлайн, с доставка в цялата страна.</p>"
+      }
+    },
+    "design": {
+      "type": "split-story",
+      "settings": {
+        "anchor": "dizain",
+        "media_position": "right",
+        "color_scheme": "scheme-1",
+        "heading": "Нашият дизайн",
+        "lead": "Всяко бижу е изработено на ръка.",
+        "body": "<p>Изработват го златари с професионална квалификация, с внимание към всеки детайл — от модела до последното полиране.</p><p>По желание гравираме име, дата или послание — така бижуто става наистина ваше.</p><p>Онлайн започваме с подбрани модели, а колекцията ще продължи да расте.</p>"
+      }
+    },
+    "materials": {
+      "type": "split-story",
+      "settings": {
+        "anchor": "materiali",
+        "media_position": "left",
+        "color_scheme": "scheme-2",
+        "heading": "Нашите материали",
+        "lead": "Злато 14 и 18 карата — проба 585 и 750.",
+        "body": "<p>Освен със злато работим с диаманти, сапфири, изумруди и рубини, както и с цветен емайл.</p><p>Скъпоценните камъни се оценяват от експерт с квалификация от HRD Антверпен.</p>"
+      }
+    },
+    "faq": {
+      "type": "collapsible-content",
+      "blocks": {
+        "q_gold": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "От какво злато са бижутата?",
+            "icon": "none",
+            "row_content": "<p>От 14-каратово злато (проба 585) и 18-каратово злато (проба 750).</p>"
+          }
+        },
+        "q_engraving": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Може ли да гравирате бижу?",
+            "icon": "none",
+            "row_content": "<p>Да. По желание гравираме име, дата или послание.</p>"
+          }
+        },
+        "q_delivery": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Как доставяте поръчките?",
+            "icon": "none",
+            "row_content": "<p>С Еконт и Спиди — до офис или до адрес, в цялата страна.</p>"
+          }
+        },
+        "q_shop": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Мога ли да видя бижутата на живо?",
+            "icon": "none",
+            "row_content": "<p>Да, в магазина ни на бул. Васил Левски 21 във Велико Търново.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q_gold",
+        "q_engraving",
+        "q_delivery",
+        "q_shop"
+      ],
+      "settings": {
+        "anchor": "vaprosi",
+        "heading": "Въпроси и отговори",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "layout": "none",
+        "container_color_scheme": "scheme-2",
+        "color_scheme": "scheme-1",
+        "open_first_collapsible_row": false,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 80,
+        "padding_bottom": 96
       }
     }
   },
-  "order": ["main", "story", "atelier"]
+  "order": [
+    "main",
+    "intro",
+    "history",
+    "design",
+    "materials",
+    "faq"
+  ]
 }

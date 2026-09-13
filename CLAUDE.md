@@ -251,17 +251,37 @@ Anything of ours that is not a Dawn setting lives in these two places:
   (viewport minus about 235px of icons and gutters) and tops out at 20px; without that,
   JEWELLERY split mid-word on every phone narrower than 390px. The 235 assumes search,
   account and cart — adding a header icon, or a longer name, means measuring again.
+- **About page.** Rebuilt on 2026-09-13 on the reference’s About page, in
+  `templates/page.about.json`: an intro, three story blocks, then the questions.
+  - `sections/about-intro.liquid` with `assets/section-about-intro.css`: the title, one line,
+    and square jump-link tiles with line icons (two across on phones). Smooth scrolling is
+    switched on by that stylesheet, so only on pages that carry the section, and never under
+    reduced motion.
+  - `sections/split-story.liquid` with `assets/section-split-story.css`: a photograph on one
+    half and text on a tinted panel on the other, full width, measured off the reference
+    (8:7 photograph, text about 106px inside the panel, 50px heading). Image first on
+    phones. An empty image slot is a flat sand block, so it still reads against the stone
+    panel.
+  - **Jump links target Anchor settings**, not Shopify section ids. `split-story` has one, and
+    so does Dawn’s `sections/collapsible-content.liquid` (added for this). Anchors are Latin
+    and visible in the editor: istoriya, dizain, materiali, vaprosi. A section added in the
+    editor gets a random key, so a section id would be unreachable from a link.
+  - The reference sends each of these links to a separate page; the owner wants them on one.
+  - The clock and question-mark icons live in `snippets/icon-benefit.liquid` with the rest.
 - **Page title switch.** `sections/main-page.liquid` has a `show_title` checkbox, on by
   default. Templates that bring their own headline turn it off; `page.about` does.
 
 ## Current state
 
 - Design foundation applied (palette, type, spacing). Committed and live on the draft theme.
-- **За нас page is live on the draft theme** (2026-09-13): `templates/page.about.json` —
-  a story block drafted from the old site’s About text, then the atelier section. Linked
-  from the Main menu. Its atelier block repeats what the story above it already says
-  (1991 and Велико Търново three times each, "до последното полиране" twice back to
-  back) — raised with the owner, not yet rewritten.
+- **За нас page** (2026-09-13): intro with four jump links, then Нашата история · Нашият
+  дизайн · Нашите материали as photograph-and-panel blocks, then Въпроси и отговори. Linked
+  from the top bar. All copy is drafted only from facts already on the site or on the old
+  site. **At the owner’s instruction, nothing on it says the business is a family one.**
+  - The questions answer only what is known: gold, engraving, delivery carriers, the shop.
+    Returns, payment methods, warranty, opening hours and delivery prices wait for the
+    owner — do not answer them from assumption.
+  - No photographs yet; the three image halves are flat sand blocks.
 - Homepage, working top to bottom: announcement bar, header and hero are built; the product
   row is built; the atelier block and newsletter are still Dawn's defaults.
 - Dawn's placeholder illustration has been removed from the hero. An empty image slot now
