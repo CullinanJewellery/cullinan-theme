@@ -214,6 +214,21 @@ Anything of ours that is not a Dawn setting lives in these two places:
   already carries the page, and bolding it shouts.
 - `sections/image-banner.liquid` — writing `[years]` in the hero heading or text renders the
   number of years since `founded_year` (1991), so the count never goes stale.
+- **Top bar.** `sections/announcement-bar.liquid`, `snippets/header-drawer.liquid` and the
+  announcement block in `assets/crown.css`. Follows the reference: from 990px up (where the
+  inline menu starts) both arrows sit together on the left, the message follows left-aligned,
+  and utility links sit on the right. Below 990px the message is alone, centred and rotating,
+  and the links move to the bottom of the menu drawer under the categories. The links come
+  from **one menu**, picked in Theme settings → Top bar; left empty, the menu with the handle
+  `top-bar` is used. It is a theme setting rather than a section setting because the header
+  section, which renders the drawer, cannot read the announcement bar’s settings.
+  - The left-aligned layout only switches on when that menu has links; without them the bar
+    keeps Dawn’s centred layout.
+  - On phones the arrows hide only while the bar rotates by itself. Visitors who ask for
+    reduced motion keep them, because Dawn stops the rotation for them.
+  - Bar text is Montserrat, not Playfair — the reference sets its bar in its body face.
+  - Social icons and the country/language selectors in the bar are off. Turning either on
+    means revisiting the grid, which only has slots for the message and the links.
 - **Wordmark on phones.** Until a logo image is uploaded the header prints `shop.name` in
   spaced capitals. Below 750px its size follows the room Dawn’s header grid leaves it
   (viewport minus about 235px of icons and gutters) and tops out at 20px; without that,
@@ -274,6 +289,9 @@ data, not theme files:
 
 - **Store name** → Settings → Store details. Reads Doncheff Jewellery; it needs to go back to
   Cullinan Jewellery. The header prints `shop.name` until a logo image is uploaded.
+- **Top bar menu.** Content → Menus → Add menu, titled **Top bar** so its handle is `top-bar`
+  (or pick any menu in Theme settings → Top bar). Add За нас to it, then remove За нас from
+  the Main menu — the page moves to the top bar, as the reference places its About link.
 - **Main menu** (Content → Menus → Main menu), in this order:
   циркони · диаманти · най-продавани · пръстени · обеци · висулки · гривни
 - **Collections** to point those entries at — none exist yet.
