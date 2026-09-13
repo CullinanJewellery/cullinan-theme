@@ -151,6 +151,9 @@ Rules that matter here:
   that push ("0 succeeded, 1 failed"), so it also held back unrelated work. Check
   `config/settings_schema.json` for min, max and step before setting any range value.
 - Square corners throughout (buttons, badges, variant pills, cards). No rounded pills.
+  - **One exception, at the owner’s instruction (2026-09-13):** the jump links at the top of
+    the About page are rounded pills with each icon in an off-white circle, following the
+    reference. Every other control keeps square corners.
 - No borders around media. Product cards sit on the page ground, not in grey boxes.
 
 ## Working agreements
@@ -267,7 +270,10 @@ Anything of ours that is not a Dawn setting lives in these two places:
     and visible in the editor: istoriya, dizain, materiali, vaprosi. A section added in the
     editor gets a random key, so a section id would be unreachable from a link.
   - The reference sends each of these links to a separate page; the owner wants them on one.
-  - The clock and question-mark icons live in `snippets/icon-benefit.liquid` with the rest.
+  - Its icons live in `snippets/icon-benefit.liquid` with the rest: scroll (history), ring-tools
+    (design — a ring with a stone and tweezers, after a picture the owner chose, drawn fresh),
+    gem (materials), question (questions). Every new icon is drawn in a preview and looked at
+    before it ships.
 - **Page title switch.** `sections/main-page.liquid` has a `show_title` checkbox, on by
   default. Templates that bring their own headline turn it off; `page.about` does.
 

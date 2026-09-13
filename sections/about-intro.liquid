@@ -9,8 +9,9 @@
   separate page. The owner wants them all on one page.
 
   Measured off the reference at 1440px: a 55px title, a 16px line under it, and
-  links 200 x 57px with 30px between them. Its links are rounded pills; these
-  are square, as everything on this site is.
+  links 200 x 57px with 30px between them, each a rounded pill with its picture
+  in a 51px circle. Rounded here at the owner's request (2026-09-13), though
+  the rest of the site keeps square corners.
 {%- endcomment -%}
 
 <div class="about-intro color-{{ section.settings.color_scheme }} gradient">
@@ -33,7 +34,9 @@
             {%- assign target = block.settings.target | strip -%}
             {%- capture tile -%}
               {%- if block.settings.icon != 'none' -%}
-                {%- render 'icon-benefit', icon: block.settings.icon -%}
+                <span class="about-intro__icon">
+                  {%- render 'icon-benefit', icon: block.settings.icon -%}
+                </span>
               {%- endif -%}
               <span class="about-intro__label">{{ block.settings.label | escape }}</span>
             {%- endcapture -%}
@@ -126,6 +129,14 @@
             {
               "value": "none",
               "label": "None"
+            },
+            {
+              "value": "scroll",
+              "label": "Scroll"
+            },
+            {
+              "value": "ring-tools",
+              "label": "Ring and tools"
             },
             {
               "value": "clock",

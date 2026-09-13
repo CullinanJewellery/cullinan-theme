@@ -39,18 +39,27 @@
   list-style: none;
 }
 
-/* Square tiles on the stone, darkening to sand under the cursor. */
+/*
+  Pills, at the owner's request (2026-09-13): the one rounded control on a site
+  that otherwise keeps square corners. Stone, darkening to sand under the
+  cursor. The reference's pill is 57px with its picture in a 51px circle inset
+  4px; here the icon sits in an off-white circle the same way, with the stone
+  showing round it.
+*/
 .about-intro__link {
   display: flex;
   align-items: center;
   gap: 1.2rem;
   height: 100%;
   min-height: 5.6rem;
-  padding: 0 2.4rem;
+  padding: 0.4rem 2.4rem 0.4rem 0.4rem;
+  border-radius: 99rem;
   background-color: rgb(242 240 236);
   color: rgb(var(--color-foreground));
-  font-size: 1.4rem;
+  font-size: 1.5rem;
+  line-height: 1.25;
   letter-spacing: 0.02em;
+  text-align: left;
   text-decoration: none;
   transition: background-color 0.3s ease;
 }
@@ -59,8 +68,22 @@ a.about-intro__link:hover {
   background-color: rgb(231 225 214);
 }
 
-.about-intro__link .benefit__icon {
+/* A pill without an icon keeps even padding. */
+.about-intro__link:not(:has(.about-intro__icon)) {
+  padding-left: 2.4rem;
+}
+
+.about-intro__icon {
+  display: grid;
+  place-items: center;
   flex: none;
+  width: 4.8rem;
+  height: 4.8rem;
+  border-radius: 50%;
+  background-color: rgb(252 252 251);
+}
+
+.about-intro__icon .benefit__icon {
   width: 2.6rem;
   height: 2.6rem;
   stroke-width: 1.25px;
@@ -73,9 +96,8 @@ a.about-intro__link:hover {
   }
 }
 
-/* Phones: two across in equal tiles, the icon over the label, as the benefits
-   row sits on phones. The reference scrolls its links sideways instead, which
-   hides half of them. */
+/* Phones: two pills across, the label wrapping beside its circle. The
+   reference scrolls its pills sideways instead, which hides half of them. */
 @media screen and (max-width: 749px) {
   .about-intro__links {
     display: grid;
@@ -85,12 +107,19 @@ a.about-intro__link:hover {
   }
 
   .about-intro__link {
-    flex-direction: column;
-    justify-content: center;
     gap: 0.8rem;
-    min-height: 9.6rem;
-    padding: 1.6rem 1rem;
+    min-height: 5.2rem;
+    padding: 0.4rem 1.4rem 0.4rem 0.4rem;
     font-size: 1.3rem;
-    text-align: center;
+  }
+
+  .about-intro__icon {
+    width: 4.4rem;
+    height: 4.4rem;
+  }
+
+  .about-intro__icon .benefit__icon {
+    width: 2.4rem;
+    height: 2.4rem;
   }
 }
