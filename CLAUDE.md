@@ -214,10 +214,22 @@ Anything of ours that is not a Dawn setting lives in these two places:
   already carries the page, and bolding it shouts.
 - `sections/image-banner.liquid` — writing `[years]` in the hero heading or text renders the
   number of years since `founded_year` (1991), so the count never goes stale.
+- **Wordmark on phones.** Until a logo image is uploaded the header prints `shop.name` in
+  spaced capitals. Below 750px its size follows the room Dawn’s header grid leaves it
+  (viewport minus about 235px of icons and gutters) and tops out at 20px; without that,
+  JEWELLERY split mid-word on every phone narrower than 390px. The 235 assumes search,
+  account and cart — adding a header icon, or a longer name, means measuring again.
+- **Page title switch.** `sections/main-page.liquid` has a `show_title` checkbox, on by
+  default. Templates that bring their own headline turn it off; `page.about` does.
 
 ## Current state
 
 - Design foundation applied (palette, type, spacing). Committed and live on the draft theme.
+- **За нас page is live on the draft theme** (2026-09-13): `templates/page.about.json` —
+  a story block drafted from the old site’s About text, then the atelier section. Linked
+  from the Main menu. Its atelier block repeats what the story above it already says
+  (1991 and Велико Търново three times each, "до последното полиране" twice back to
+  back) — raised with the owner, not yet rewritten.
 - Homepage, working top to bottom: announcement bar, header and hero are built; the product
   row is built; the atelier block and newsletter are still Dawn's defaults.
 - Dawn's placeholder illustration has been removed from the hero. An empty image slot now
@@ -238,6 +250,23 @@ Anything of ours that is not a Dawn setting lives in these two places:
 - **Unresolved: is silver part of Cullinan Jewellery?** The old site sells silver (s3042, s1193com)
   but its About page says the shop does not. Affects the menu and the facts strip.
 
+### Assigning an alternate template
+
+The **Theme template** dropdown on a page, product or collection lists only the templates
+in the **published** theme — which is Horizon, not this one. A template that exists only
+here cannot be picked, however correct it is. The fix that does not publish anything: add
+a file of the same name to Horizon (Online Store → Themes → Horizon → Edit code →
+`templates`), filled with a copy of **Horizon’s own** default template, never ours —
+Horizon has none of our sections, so Shopify refuses our file there. Then pick the
+template on the resource and save. The choice is stored on the page itself, so this draft
+theme renders its own version straight away.
+
+- Done for `page.about` on 2026-09-13. Horizon now carries a `page.about.json` copied from
+  its `page.json`; leave it in place. Every alternate template still to come — product and
+  collection ones included — needs the same step.
+- Paste once. The first attempt pasted `page.json` twice, and because the file has no
+  trailing newline the join reads `}/*` — two documents in one file, "Invalid JSON".
+
 ### Waiting on the Shopify admin
 
 These cannot be done from this repository — menus, collections and the store name are store
@@ -245,12 +274,6 @@ data, not theme files:
 
 - **Store name** → Settings → Store details. Reads Doncheff Jewellery; it needs to go back to
   Cullinan Jewellery. The header prints `shop.name` until a logo image is uploaded.
-- **The "За нас" page — template not assigned.** The page exists and is in the Main menu,
-  but it is still on the default page template, so a visitor gets the title and nothing
-  else. Content → Pages → За нас, and under **Theme template** on the right pick
-  **page.about**, then Save. `?view=about` on the preview shows what it will look like.
-  The prose is drafted from the old site’s own About text and is editable in the theme
-  editor.
 - **Main menu** (Content → Menus → Main menu), in this order:
   циркони · диаманти · най-продавани · пръстени · обеци · висулки · гривни
 - **Collections** to point those entries at — none exist yet.
