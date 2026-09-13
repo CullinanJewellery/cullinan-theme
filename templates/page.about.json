@@ -16,7 +16,7 @@
           "settings": {
             "label": "Нашата история",
             "target": "istoriya",
-            "icon": "clock"
+            "icon": "scroll"
           }
         },
         "link_design": {
@@ -24,7 +24,7 @@
           "settings": {
             "label": "Нашият дизайн",
             "target": "dizain",
-            "icon": "engraving-pen"
+            "icon": "ring-tools"
           }
         },
         "link_materials": {
