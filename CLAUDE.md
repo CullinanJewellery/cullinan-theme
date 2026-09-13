@@ -235,9 +235,13 @@ Anything of ours that is not a Dawn setting lives in these two places:
   - On phones the arrows hide only while the bar rotates by itself. Visitors who ask for
     reduced motion keep them, because Dawn stops the rotation for them.
   - Bar text is Montserrat, not Playfair — the reference sets its bar in its body face.
-  - Messages (2026-09-13, written to the owner’s brief "whatever you think"): 14К и 18К злато
-    от семейно ателие · Гравираме име, дата или послание · Доставка с Еконт и Спиди. Built only
-    from facts the owner already published in the benefits row. No free delivery, returns or
+  - The message padding is uneven on purpose (0.9rem over 0.7rem): even padding left the capitals
+    2px above the arrows’ centre. Check with measured cap height, not the line box.
+  - Messages (2026-09-13), in rotation order: Безупречно качество до детайла · 14К и 18К злато
+    от семейно ателие · Майсторство от 1991 г. · Гравираме име, дата или послание · Доставка с
+    Еконт и Спиди. The first is the owner’s request for a line like the reference’s "premium
+    quality in every piece", in our own words; the rest are built only from facts the owner
+    already published in the benefits row. No free delivery, returns or
     cash-on-delivery promise until those policies exist. Each fits one line on a 360px phone at
     11px (the longest measures 287px of 300); a longer message pushes the phone bar to two lines.
   - Social icons and the country/language selectors in the bar are off. Turning either on
