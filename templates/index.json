@@ -248,6 +248,27 @@
         "padding_bottom": 64
       }
     },
+    "materials_teaser": {
+      "type": "atelier",
+      "settings": {
+        "media_position": "left",
+        "color_scheme": "scheme-1",
+        "video_url": "",
+        "eyebrow": "Нашите материали",
+        "heading": "Кое злато е за вас?",
+        "paragraph": "<p>Злато 14 или 18 карата, сребро и скъпоценни камъни — всеки материал има своя характер. Едни са за всеки ден, други — за бижу с особено значение.</p>",
+        "fact_1_value": "",
+        "fact_1_label": "",
+        "fact_2_value": "",
+        "fact_2_label": "",
+        "fact_3_value": "",
+        "fact_3_label": "",
+        "link_label": "Открийте разликата",
+        "link_url": "/pages/за-нас#materiali",
+        "padding_top": 24,
+        "padding_bottom": 64
+      }
+    },
     "newsletter": {
       "type": "newsletter",
       "blocks": {
@@ -407,6 +428,7 @@
     "benefits",
     "atelier",
     "design_teaser",
+    "materials_teaser",
     "newsletter"
   ]
 }

@@ -262,6 +262,11 @@ Anything of ours that is not a Dawn setting lives in these two places:
     button „Вижте как го правим“ to `/pages/за-нас#dizain`. Its top padding is 24, so the
     space between the two blocks is 88px, the same as above the first; the reference sets
     consecutive blocks like these close together, on alternating sides.
+  - **A third, for Нашите материали** (2026-09-14, at the owner’s request, picture on the left
+    again): key `materials_teaser`, „Кое злато е за вас?“, gold of 14 or 18 carats, silver and
+    stones, „Едни са за всеки ден, други — за бижу с особено значение.“ (the materials block
+    answers it: 14 carats for every day, 18 for pieces with special meaning), and a button
+    „Открийте разликата“ to `/pages/за-нас#materiali`. Top padding 24, like the second.
   - **Media on the right mirrors the columns** (55fr 45fr). Before, `order` alone moved the
     media into the wider track, so the right-hand version had a 680 × 850 picture against
     556 × 695 in the left-hand one.
@@ -417,8 +422,8 @@ Anything of ours that is not a Dawn setting lives in these two places:
     owner — do not answer them from assumption.
   - No photographs yet; the three image halves are flat sand blocks.
 - Homepage, working top to bottom: announcement bar, header and hero are built; the product
-  row is built; two atelier blocks now lead to the inspiration and design stories on За нас
-  (see Atelier section above); the newsletter is still Dawn's default.
+  row is built; three atelier blocks now lead to the inspiration, design and materials
+  stories on За нас (see Atelier section above); the newsletter is still Dawn's default.
 - Dawn's placeholder illustration has been removed from the hero. The empty image slot is an
   empty div, and Dawn's base.css hides every empty div (`div:empty { display: none }`). On
   phones crown.css shows it again as a flat stone square. **On desktop it is still hidden**,
