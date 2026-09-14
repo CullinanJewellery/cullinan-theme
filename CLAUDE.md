@@ -193,6 +193,10 @@ Rules that matter here:
   minutes, while the file had been live within seconds as `text-wrap:balance`. Class names
   and values such as `12.7vw` survive minification; anything with a space after a colon
   does not. Match `text-wrap: ?balance`, or a selector, not the source formatting.
+- **Preview links expire.** On 2026-09-14 the share link
+  (https://07prfzze1nr7klqc-107185537364.shopifypreview.com) started answering “This preview link
+  has expired”, so pushes could not be checked. Only the owner can make a new one: Online Store →
+  Themes → the draft theme → Preview → Share preview. Ask for it as soon as the old one fails.
 - **Wait for one push to reach the preview before sending the next.** Twice on 2026-09-14 a
   push that followed another within a minute never reached the theme, while the push before
   it synced at once: `templates/index.json` 13 seconds after a section push (still missing
@@ -429,6 +433,23 @@ Anything of ours that is not a Dawn setting lives in these two places:
     and stay in the snippet; a crown drawn for inspiration was removed at the owner’s request.
     Change an icon only when the owner asks for that icon. Every new icon is drawn in a
     preview and looked at beside its neighbours before it ships.
+- **Page banner.** `sections/page-banner.liquid` with `assets/section-page-banner.css`: a heading
+  (h1) and a few lines centred on a colour band, 400px tall on desktop and two thirds of that
+  on phones, measured off the reference’s contact banner. The reference lays those words over a
+  photograph; this has no image setting on purpose, since the homepage hero stays the only place
+  words sit on a picture.
+- **Contact methods.** `sections/contact-methods.liquid` with
+  `assets/section-contact-methods.css`, after the reference’s Contact Us page: rows of icon, title
+  and plus sign in a 1160px column (86px tall on desktop, a 1px rule under each closed row, 35px
+  icons, 20px titles), each opening onto a full-width tinted panel with words on the left and the
+  action on the right. Blocks: `form` (Shopify’s contact form, sent to the store email; one
+  only), `phone` (the number, and a call button dialled from it) and `link` (a button that stays
+  hidden without a link). Rows are `<details>`, so they need no JavaScript; the form block sits
+  inside the `{% form %}` so a sent or refused message comes back with its row open. The phone
+  field has no pattern: Dawn’s `[0-9\-]*` refuses +359 and spaces. Field names are Bulgarian
+  (Име, Телефон, Съобщение) so the store’s notification email reads in Bulgarian; only
+  `contact[email]` keeps Shopify’s name. Its icons, envelope and phone (a handset), were drawn
+  for it in `snippets/icon-benefit.liquid` and checked at 35px.
 - **Page title switch.** `sections/main-page.liquid` has a `show_title` checkbox, on by
   default. Templates that bring their own headline turn it off; `page.about` does.
 
@@ -460,6 +481,12 @@ Anything of ours that is not a Dawn setting lives in these two places:
     Returns, payment methods, warranty, opening hours and delivery prices wait for the
     owner — do not answer them from assumption.
   - No photographs yet; the three image halves are flat sand blocks.
+- **Контакти page** (2026-09-14, at the owner’s request, after the reference’s Contact Us):
+  `templates/page.contact.json` is the page banner („Как можем да помогнем?“, a line pointing to
+  Въпроси и отговори on За нас, the phone number) and two rows, Имейл with the contact form and
+  Телефон with +359 88 287 4895, the owner’s number. At the owner’s instruction there is no live
+  chat and no WhatsApp. No email address is shown and no opening hours: neither has been given.
+  The page and its place in the top bar are store data — see Waiting on the Shopify admin.
 - Homepage, working top to bottom: announcement bar, header and hero are built; the product
   row is built; three atelier blocks now lead to the inspiration, design and materials
   stories on За нас (see Atelier section above); the newsletter is still Dawn's default.
@@ -511,6 +538,10 @@ theme renders its own version straight away.
 These cannot be done from this repository — menus, collections and the store name are store
 data, not theme files:
 
+- **Контакти page**: Online Store → Pages → Add page, title „Контакти“, and in Theme template
+  choose `contact` (Horizon has its own `page.contact`, so the dropdown should list it; if it does
+  not, add one as described above). Then Content → Menus → Top bar → Add menu item „Контакти“,
+  linked to that page, placed after За нас. The theme renders the top bar links from that menu.
 - **Store name** → Settings → Store details. Reads Doncheff Jewellery; it needs to go back to
   Cullinan Jewellery. The header prints `shop.name` until a logo image is uploaded.
 - **Main menu** (Content → Menus → Main menu), in this order:

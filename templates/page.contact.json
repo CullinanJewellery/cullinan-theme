@@ -3,23 +3,60 @@
     "main": {
       "type": "main-page",
       "settings": {
-        "padding_top": 36,
-        "padding_bottom": 36
+        "show_title": false,
+        "padding_top": 0,
+        "padding_bottom": 0
       }
     },
-    "form": {
-      "type": "contact-form",
+    "banner": {
+      "type": "page-banner",
       "settings": {
-        "heading": "",
-        "heading_size": "h1",
+        "heading": "Как можем да помогнем?",
+        "text": "<p>Имате въпрос за бижу, размер или гравиране? Може би вече сме отговорили във <a href=\"/pages/за-нас#vaprosi\" title=\"Въпроси и отговори\">Въпроси и отговори</a>.</p><p>Ако не — пишете ни чрез формата по-долу или се обадете на +359 88 287 4895.</p>",
+        "color_scheme": "scheme-5",
+        "min_height": 400
+      }
+    },
+    "methods": {
+      "type": "contact-methods",
+      "blocks": {
+        "email": {
+          "type": "form",
+          "settings": {
+            "icon": "envelope",
+            "title": "Имейл",
+            "text": "<p>Изпратете ни съобщение и ще ви отговорим възможно най-скоро.</p>",
+            "button_label": "Изпратете",
+            "success_message": "Благодарим! Получихме съобщението ви и ще се свържем с вас възможно най-скоро.",
+            "error_message": "Моля, въведете валиден имейл адрес."
+          }
+        },
+        "phone": {
+          "type": "phone",
+          "settings": {
+            "icon": "phone",
+            "title": "Телефон",
+            "phone": "+359 88 287 4895",
+            "text": "<p>Предпочитате да поговорим? Обадете ни се.</p>",
+            "button_label": "Обадете се"
+          }
+        }
+      },
+      "block_order": [
+        "email",
+        "phone"
+      ],
+      "settings": {
         "color_scheme": "scheme-1",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "panel_color_scheme": "scheme-2",
+        "padding_top": 72,
+        "padding_bottom": 72
       }
     }
   },
   "order": [
     "main",
-    "form"
+    "banner",
+    "methods"
   ]
 }
