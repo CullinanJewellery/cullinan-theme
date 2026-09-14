@@ -106,7 +106,7 @@
     "settings": [
       {
         "type": "paragraph",
-        "content": "The site uses EB Garamond for headings and Inter for text, loaded from the theme's own files: the fonts in Shopify's library have no Bulgarian letters. The two font pickers below no longer change the site's fonts; the size sliders still work."
+        "content": "The site uses Jost for headings and text, loaded from the theme's own files: the fonts in Shopify's library, its Jost included, have no Bulgarian letters. The two font pickers below no longer change the site's font; the size sliders still work."
       },
       {
         "type": "header",
