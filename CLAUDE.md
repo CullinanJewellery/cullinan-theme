@@ -119,7 +119,7 @@ Rules that matter here:
 | scheme-4 | `#8C6A2E` deep muted gold | `#FFFFFF` | Badges and accents only. |
 | scheme-5 | `#E7E1D6` warm sand | `#221F1C` | Feature blocks. |
 | scheme-6 | `#F5F4F0` light greige | `#221F1C` | The reference’s band colour. Нашето вдъхновение on the homepage. |
-| scheme-7 | `#C9D4A3` matcha green | `#221F1C` | Нашите материали on the homepage. Owner’s choice, 2026-09-14. |
+| scheme-7 | `#D0DAAF` matcha green | `#221F1C` | Нашите материали on the homepage. Owner’s choice, lightened once, 2026-09-14. |
 
 - Type: **Jost** for everything since 2026-09-14: headings bold (700), text regular (400).
   The owner first chose EB Garamond with Inter (option D), then the same day asked for the
@@ -270,13 +270,14 @@ Anything of ours that is not a Dawn setting lives in these two places:
     „Открийте разликата“ to `/pages/за-нас#materiali`.
   - **Coloured bands** (2026-09-14, at the owner’s request, after the reference’s “Soulful
     jewelry” band): Нашето вдъхновение sits on scheme-6, the reference’s `#F5F4F0`, and
-    Нашите материали on scheme-7, matcha `#C9D4A3` (the owner chose it over a milkier
-    `#D8DFBF`). Нашият дизайн stays on the page ground, as the owner asked. With the bands
+    Нашите материали on scheme-7, matcha `#D0DAAF` (the owner first chose `#C9D4A3` over a
+    milkier `#D8DFBF`, then asked for it a bit lighter; the same hue, halfway between the
+    two). Нашият дизайн stays on the page ground, as the owner asked. With the bands
     marking the edges, all three have 88px above and below; when they shared one ground they
     had 88/64, 24/64 and 24/64, which would have left Нашият дизайн 24px under a band.
   - On any scheme but scheme-1, `section-atelier.css` shades the empty picture slot from the
     band colour (the stone block is 3 levels from `#F5F4F0`) and sets the eyebrow and
-    paragraph at 75% of the text colour instead of 62%: 62% is 3.9:1 on matcha, 75% is 5.6:1.
+    paragraph at 75% of the text colour instead of 62%: 62% is 4.0:1 on matcha, 75% is 5.8:1.
   - **A little page background at the outer edges** (the owner found the bands touching the
     benefits row and the newsletter): Space above 20 on Нашето вдъхновение and Space below 20
     on Нашите материали, 15px on phones. These are the section’s own margin settings, added
