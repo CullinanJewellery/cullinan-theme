@@ -117,6 +117,22 @@ Rules that matter here:
   stayed in Jost — two faces inside one line. Both replacements have proper Cyrillic.
 - **Any future font must be checked for Cyrillic before it is set.** The tell-tale is a line
   like "от 1991 година" where the digits look like a different typeface from the letters.
+- **Correction, 2026-09-14: no font in Shopify’s library carries Cyrillic.** Tested on the files
+  Shopify actually serves, not the originals: a temporary section read each font’s real file
+  through the Section Rendering API, and each file was loaded and measured against two
+  different fallbacks. Playfair Display and Montserrat, the fonts set, and Cormorant, EB
+  Garamond, Oranienbaum (a Cyrillic-first design), Tenor Sans, Manrope, Inter, Source Sans Pro
+  and Lora all render Latin and digits and not one Bulgarian letter. Shopify serves one file
+  per font with no Cyrillic part. So since 2026-09-08 every Bulgarian word has shown in the
+  visitor’s system fonts (Times New Roman for headings and Arial for text on Windows), and the
+  line above saying the replacements have proper Cyrillic was never true on Shopify. Choosing
+  another library font cannot fix it. The originals on Google Fonts do carry Cyrillic (checked
+  for all of the above plus Cormorant Garamond, Prata, Raleway and Forum, all SIL Open Font
+  License), so proper Bulgarian needs the font files in the theme’s own `assets/`, declared
+  with `@font-face`. Self-hosted rather than linked from Google, which would send every
+  visitor’s IP address to Google.
+  - The owner is choosing between four pairs, each shown on a miniature of the site in
+    Bulgarian: https://claude.ai/code/artifact/5976300a-b593-44d3-9036-34c2335af468
 - Page width 1400. Grid spacing 24 horizontal / 40 vertical — the generous gaps are
   intentional and should not be tightened further.
 - **Never let a template depend on a section setting added in the same push.**
