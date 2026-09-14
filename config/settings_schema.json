@@ -105,6 +105,10 @@
     "name": "t:settings_schema.typography.name",
     "settings": [
       {
+        "type": "paragraph",
+        "content": "The site uses EB Garamond for headings and Inter for text, loaded from the theme's own files: the fonts in Shopify's library have no Bulgarian letters. The two font pickers below no longer change the site's fonts; the size sliders still work."
+      },
+      {
         "type": "header",
         "content": "t:settings_schema.typography.settings.header__1.content"
       },
