@@ -277,6 +277,11 @@ Anything of ours that is not a Dawn setting lives in these two places:
   - On any scheme but scheme-1, `section-atelier.css` shades the empty picture slot from the
     band colour (the stone block is 3 levels from `#F5F4F0`) and sets the eyebrow and
     paragraph at 75% of the text colour instead of 62%: 62% is 3.9:1 on matcha, 75% is 5.6:1.
+  - **A little page background at the outer edges** (the owner found the bands touching the
+    benefits row and the newsletter): Space above 20 on Нашето вдъхновение and Space below 20
+    on Нашите материали, 15px on phones. These are the section’s own margin settings, added
+    for this; padding would have coloured the gap. The bands still meet the middle block, and
+    the reference leaves 20px between its own consecutive coloured blocks.
   - **Media on the right mirrors the columns** (55fr 45fr). Before, `order` alone moved the
     media into the wider track, so the right-hand version had a 680 × 850 picture against
     556 × 695 in the left-hand one.

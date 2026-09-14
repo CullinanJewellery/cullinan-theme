@@ -224,7 +224,8 @@
         "link_label": "Открийте историята",
         "link_url": "/pages/за-нас#vdahnovenie",
         "padding_top": 88,
-        "padding_bottom": 88
+        "padding_bottom": 88,
+        "margin_top": 20
       }
     },
     "design_teaser": {
@@ -266,7 +267,8 @@
         "link_label": "Открийте разликата",
         "link_url": "/pages/за-нас#materiali",
         "padding_top": 88,
-        "padding_bottom": 88
+        "padding_bottom": 88,
+        "margin_bottom": 20
       }
     },
     "newsletter": {
