@@ -16,7 +16,7 @@
           "settings": {
             "label": "Нашето вдъхновение",
             "target": "vdahnovenie",
-            "icon": "scroll"
+            "icon": "brilliant"
           }
         },
         "link_design": {
@@ -32,7 +32,7 @@
           "settings": {
             "label": "Нашите материали",
             "target": "materiali",
-            "icon": "gem"
+            "icon": "crystals"
           }
         },
         "link_faq": {
