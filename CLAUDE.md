@@ -94,6 +94,10 @@ Rules that matter here:
   - **One exception, at the owner's instruction (2026-09-10):** the newsletter band is
     `#000000`, matching the reference. It is set in `assets/crown.css`, not by a colour
     scheme, so nothing else on the site is affected.
+  - **Second exception, at the owner’s instruction (2026-09-14):** dark buttons are pure black
+     with pure white  text. Set as the button colours of schemes 1, 2 and 5 in
+    , so every dark button matches, and the cart count bubble with
+    them. The light buttons of schemes 3 and 4 and the newsletter’s sand button are unchanged.
 - Product photography should be worn on real people where possible — jewellery is impossible
   to judge for scale on a white background.
 

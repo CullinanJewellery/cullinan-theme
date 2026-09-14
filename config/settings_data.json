@@ -8,8 +8,8 @@
           "background": "#FCFCFB",
           "background_gradient": "",
           "text": "#221F1C",
-          "button": "#221F1C",
-          "button_label": "#FCFCFB",
+          "button": "#000000",
+          "button_label": "#FFFFFF",
           "secondary_button_label": "#221F1C",
           "shadow": "#221F1C"
         }
@@ -19,8 +19,8 @@
           "background": "#F2F0EC",
           "background_gradient": "",
           "text": "#221F1C",
-          "button": "#221F1C",
-          "button_label": "#F2F0EC",
+          "button": "#000000",
+          "button_label": "#FFFFFF",
           "secondary_button_label": "#221F1C",
           "shadow": "#221F1C"
         }
@@ -52,8 +52,8 @@
           "background": "#E7E1D6",
           "background_gradient": "",
           "text": "#221F1C",
-          "button": "#221F1C",
-          "button_label": "#E7E1D6",
+          "button": "#000000",
+          "button_label": "#FFFFFF",
           "secondary_button_label": "#221F1C",
           "shadow": "#221F1C"
         }
