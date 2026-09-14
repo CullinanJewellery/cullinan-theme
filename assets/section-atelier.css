@@ -53,6 +53,14 @@
   background-color: rgb(242 240 236);
 }
 
+/* On a tinted band -- any colour scheme but the page ground, scheme-1 -- the
+   stone block sinks into the background (on the reference's #F5F4F0 it is
+   3 levels apart, on scheme-2 identical), so the empty slot takes a shade of
+   whatever band it sits on instead. */
+:not(.color-scheme-1) > .atelier .atelier__empty {
+  background-color: rgba(var(--color-foreground), 0.06);
+}
+
 /* The poster sits beneath the motion layer and is what remains when the
    visitor prefers reduced motion, since the video is removed outright. */
 @media (prefers-reduced-motion: reduce) {
@@ -97,6 +105,14 @@
 
 .atelier__paragraph > p + p {
   margin-top: 1.6rem;
+}
+
+/* The muted text is 62% of the text colour: 4.6:1 on the page ground, but
+   3.9:1 on the matcha band (scheme-7). On a tinted band it is 75% instead,
+   5.6:1 on matcha and 6.8:1 on scheme-6. */
+:not(.color-scheme-1) > .atelier .atelier__eyebrow,
+:not(.color-scheme-1) > .atelier .atelier__paragraph {
+  color: rgba(var(--color-foreground), 0.75);
 }
 
 /* --- Facts ---------------------------------------------------------------- */
