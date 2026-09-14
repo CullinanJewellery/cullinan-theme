@@ -312,6 +312,11 @@ Anything of ours that is not a Dawn setting lives in these two places:
   Dawn halves the padding below 990px, so phones get 6px; there the two-line wordmark is the
   tallest thing in the bar, which measured 63px on a 375px phone (was 71). The name, menu text
   and icons kept their sizes. The reference’s bar is 59px at 1440px.
+  - **Centred on the capitals** (2026-09-14, the owner said the contents looked a little high).
+    The icons were centred, but capitals have no descenders, so the name sat 1.5px above centre
+    (1.9px on a phone) and the menu words 1.1px. `assets/crown.css` moves only the text: the
+    name 2px and the menu words 1px, as `position: relative` offsets on the text spans. Now
+    all within half a pixel of the icons. Re-measure if the font, its size or the bar changes.
 - **Wordmark on phones.** Until a logo image is uploaded the header prints `shop.name` in
   spaced capitals. Below 750px its size follows the room Dawn’s header grid leaves it
   (viewport minus about 235px of icons and gutters) and tops out at 20px; without that,

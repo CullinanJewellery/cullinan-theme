@@ -245,6 +245,25 @@
   text-underline-offset: 0.5rem;
 }
 
+/*
+  Header text centred on its capitals, not its line box (2026-09-14, at the
+  owner's request). Capitals have no descenders, so a centred line box leaves
+  them high: in the 68px bar the name sat 1.5px above the icons' centre (1.9px
+  on a 375px phone) and the menu 1.1px. Only the text moves; the icons were
+  centred already. An offset rather than padding, so no box changes size, and
+  on the text spans only: a positioned menu list or wrapper would become the
+  containing block of the mega menu dropdown.
+*/
+.header__heading-link .h2 {
+  position: relative;
+  top: 0.2rem;
+}
+
+.header__inline-menu .header__menu-item span {
+  position: relative;
+  top: 0.1rem;
+}
+
 /* ---------------------------------------------------------------------------
    Hero
 
