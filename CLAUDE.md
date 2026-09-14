@@ -233,6 +233,16 @@ Anything of ours that is not a Dawn setting lives in these two places:
   Shopify-hosted video, a YouTube/Vimeo URL or a still, always at 4:5 portrait. Video is
   decorative and `aria-hidden` — every fact lives in the text. Under prefers-reduced-motion a
   small inline script removes the video outright and the poster still is what remains.
+  - **On the homepage it no longer tells the atelier story** (2026-09-14, at the owner’s
+    request: keep the design, lead to the inspiration story). Eyebrow Нашето вдъхновение, the
+    question „Знаете ли откъде идва името ни?“, two sentences saying a diamond found in 1905
+    gave the business its name, without naming it, and a button „Открийте историята“ to
+    `/pages/за-нас#vdahnovenie` (percent-encoded in the template). The wax-model heading and
+    the three facts (1991, 14–18К, Велико Търново) were removed with the atelier story. The
+    section is still called Atelier in the editor and keeps its atelier defaults in the schema.
+  - The link has been a black button since then, styled like "view all" under the product row
+    (34rem × 6.4rem, 14px capitals, the fill drops to an outline on hover, full width on
+    phones). It still renders only when both its text and its link are set.
 - **Category mosaic.** `sections/category-mosaic.liquid` with
   `assets/section-category-mosaic.css`. Four columns, tall tiles at each end spanning both
   rows, squares between — the block order drives it, because `grid-auto-flow: dense`
@@ -385,7 +395,8 @@ Anything of ours that is not a Dawn setting lives in these two places:
     owner — do not answer them from assumption.
   - No photographs yet; the three image halves are flat sand blocks.
 - Homepage, working top to bottom: announcement bar, header and hero are built; the product
-  row is built; the atelier block and newsletter are still Dawn's defaults.
+  row is built; the atelier block now leads to the inspiration story on За нас (see Atelier
+  section above); the newsletter is still Dawn's default.
 - Dawn's placeholder illustration has been removed from the hero. The empty image slot is an
   empty div, and Dawn's base.css hides every empty div (`div:empty { display: none }`). On
   phones crown.css shows it again as a flat stone square. **On desktop it is still hidden**,
@@ -396,8 +407,9 @@ Anything of ours that is not a Dawn setting lives in these two places:
   atelier photo session happens.
 - Bulgarian needs setting as the store's default language (currently English).
 - **Settled 2026-09-07: both 14K and 18K.** The benefits row the owner wrote says "Проба 585
-  и 750 — 14 и 18 карата злато", so the range covers both. The atelier facts say 14–18К and,
-  since 2026-09-13, the announcement bar says 14К и 18К, so nothing on the site understates it.
+  и 750 — 14 и 18 карата злато", so the range covers both, and so does the materials block on
+  За нас. The atelier facts (14–18К) left the homepage on 2026-09-14 and the announcement bar
+  no longer names gold, so nothing on the site states a narrower range.
 - **The old site is the best source for real copy.** It gives: founded 1991 as КУЛИНАН 96 ООД;
   the business is *производство* not resale; stones certified by an appraiser qualified at HRD
   Antwerp; diamonds, sapphires, emeralds, rubies; colour enamel; wholesale and retail; a shop
