@@ -173,11 +173,13 @@
       {%- endif -%}
 
       {%- comment -%}
-        The link renders only when it has somewhere to go — structure can exist
-        before content, navigation cannot.
+        The button renders only when it has somewhere to go — structure can exist
+        before content, navigation cannot. A black button since 2026-09-14, when
+        the owner asked for one to lead to the inspiration story; it was a text
+        link until then.
       {%- endcomment -%}
       {%- if section.settings.link_label != blank and section.settings.link_url != blank -%}
-        <a class="atelier__link" href="{{ section.settings.link_url }}">
+        <a class="atelier__button button button--primary" href="{{ section.settings.link_url }}">
           {{- section.settings.link_label | escape -}}
         </a>
       {%- endif -%}
@@ -317,7 +319,7 @@
     },
     {
       "type": "header",
-      "content": "Link"
+      "content": "Button"
     },
     {
       "type": "text",
