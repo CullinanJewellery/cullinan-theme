@@ -12,6 +12,14 @@
   align-items: center;
 }
 
+/* Media on the right mirrors the columns as well. Moving the media with
+   `order` alone put it in the wider track: at 1440px a 680 x 850 photograph
+   against 556 x 695 in the left-hand version. The stacked rule further down
+   still wins below 990px: same specificity, later in the file. */
+.atelier--media-right {
+  grid-template-columns: 55fr 45fr;
+}
+
 .atelier--media-right .atelier__media-column {
   order: 2;
 }
