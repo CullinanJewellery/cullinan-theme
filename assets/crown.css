@@ -1069,3 +1069,49 @@
     box-shadow: inset 0 0 0 1px rgb(0 0 0);
   }
 }
+
+/*
+  Phones: the same outlined buttons, at the owner's request (2026-09-14) -- they
+  were bare icons below 750px. The reference keeps icons on phones; this is the
+  owner's call. Measured at 390px: the footer leaves 310px, and a button with its
+  icon and ПОСЛЕДВАЙТЕ НИ needs about 182px, so two do not fit side by side at a
+  readable size. They stack, full width up to 32rem, 52px tall like the phone
+  hero button, label and icon as on desktop.
+*/
+@media screen and (max-width: 749px) {
+  .footer__list-social {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    max-width: 32rem;
+    gap: 1.2rem;
+  }
+
+  .footer__list-social .list-social__item {
+    width: 100%;
+  }
+
+  .footer__list-social .list-social__link {
+    width: 100%;
+    height: 5.2rem;
+    padding: 0;
+    gap: 1.2rem;
+    justify-content: center;
+    box-shadow: inset 0 0 0 1px rgb(0 0 0);
+  }
+
+  .footer__list-social .list-social__link .icon {
+    width: 2.4rem;
+    height: 2.4rem;
+    min-width: 2.4rem;
+  }
+
+  .footer__list-social .list-social__label {
+    display: inline-block;
+    font-size: 1.4rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+}
