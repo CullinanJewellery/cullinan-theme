@@ -26,9 +26,11 @@
 
 /* --- Media ---------------------------------------------------------------- */
 
+/* Square since 2026-09-14, when the owner asked for smaller boxes on the
+   homepage; it was 4:5 portrait, for footage shot vertically. */
 .atelier__media {
   position: relative;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
 }
 

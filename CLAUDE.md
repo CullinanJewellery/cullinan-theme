@@ -245,7 +245,7 @@ Anything of ours that is not a Dawn setting lives in these two places:
   hero button hover: solid fill that drops to transparent so the photograph shows through.
 - **Atelier section.** `sections/atelier.liquid` with `assets/section-atelier.css`. Our own
   section, not a Dawn one. Two columns, 45/55, media side switchable. The media slot takes a
-  Shopify-hosted video, a YouTube/Vimeo URL or a still, always at 4:5 portrait. Video is
+  Shopify-hosted video, a YouTube/Vimeo URL or a still, always square (4:5 portrait until 2026-09-14). Video is
   decorative and `aria-hidden` — every fact lives in the text. Under prefers-reduced-motion a
   small inline script removes the video outright and the poster still is what remains.
   - **On the homepage it no longer tells the atelier story** (2026-09-14, at the owner’s
@@ -273,7 +273,9 @@ Anything of ours that is not a Dawn setting lives in these two places:
     Нашите материали on scheme-7, milky matcha `#D8DFBF` (the owner first picked the greener
     `#C9D4A3` over it, asked for lighter, saw `#D0DAAF`, then settled on this one). Нашият
     дизайн stays on the page ground, as the owner asked. With the bands
-    marking the edges, all three have 88px above and below; when they shared one ground they
+    marking the edges, all three have the same space above and below: 88px at first, 56px
+    since the owner asked for smaller boxes the same day (together with the square picture
+    slot, a block went from 871px to 668px tall at 1440px). When they shared one ground they
     had 88/64, 24/64 and 24/64, which would have left Нашият дизайн 24px under a band.
   - On any scheme but scheme-1, `section-atelier.css` shades the empty picture slot from the
     band colour (the stone block is 3 levels from `#F5F4F0`) and sets the eyebrow and

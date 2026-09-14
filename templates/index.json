@@ -223,8 +223,8 @@
         "fact_3_label": "",
         "link_label": "Открийте историята",
         "link_url": "/pages/за-нас#vdahnovenie",
-        "padding_top": 88,
-        "padding_bottom": 88,
+        "padding_top": 56,
+        "padding_bottom": 56,
         "margin_top": 20
       }
     },
@@ -245,8 +245,8 @@
         "fact_3_label": "",
         "link_label": "Вижте как го правим",
         "link_url": "/pages/за-нас#dizain",
-        "padding_top": 88,
-        "padding_bottom": 88
+        "padding_top": 56,
+        "padding_bottom": 56
       }
     },
     "materials_teaser": {
@@ -266,8 +266,8 @@
         "fact_3_label": "",
         "link_label": "Открийте разликата",
         "link_url": "/pages/за-нас#materiali",
-        "padding_top": 88,
-        "padding_bottom": 88,
+        "padding_top": 56,
+        "padding_bottom": 56,
         "margin_bottom": 20
       }
     },
