@@ -210,7 +210,7 @@
       "type": "atelier",
       "settings": {
         "media_position": "left",
-        "color_scheme": "scheme-1",
+        "color_scheme": "scheme-6",
         "video_url": "",
         "eyebrow": "Нашето вдъхновение",
         "heading": "Знаете ли откъде идва името ни?",
@@ -224,7 +224,7 @@
         "link_label": "Открийте историята",
         "link_url": "/pages/за-нас#vdahnovenie",
         "padding_top": 88,
-        "padding_bottom": 64
+        "padding_bottom": 88
       }
     },
     "design_teaser": {
@@ -244,15 +244,15 @@
         "fact_3_label": "",
         "link_label": "Вижте как го правим",
         "link_url": "/pages/за-нас#dizain",
-        "padding_top": 24,
-        "padding_bottom": 64
+        "padding_top": 88,
+        "padding_bottom": 88
       }
     },
     "materials_teaser": {
       "type": "atelier",
       "settings": {
         "media_position": "left",
-        "color_scheme": "scheme-1",
+        "color_scheme": "scheme-7",
         "video_url": "",
         "eyebrow": "Нашите материали",
         "heading": "Кое злато е за вас?",
@@ -265,8 +265,8 @@
         "fact_3_label": "",
         "link_label": "Открийте разликата",
         "link_url": "/pages/за-нас#materiali",
-        "padding_top": 24,
-        "padding_bottom": 64
+        "padding_top": 88,
+        "padding_bottom": 88
       }
     },
     "newsletter": {

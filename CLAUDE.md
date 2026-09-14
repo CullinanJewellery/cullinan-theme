@@ -103,8 +103,8 @@ Rules that matter here:
     `#000000`, matching the reference. It is set in `assets/crown.css`, not by a colour
     scheme, so nothing else on the site is affected.
   - **Second exception, at the owner’s instruction (2026-09-14):** dark buttons are pure black
-    `#000000` with pure white `#FFFFFF` text. Set as the button colours of schemes 1, 2 and 5 in
-    `config/settings_data.json`, so every dark button matches, and the cart count bubble with
+    `#000000` with pure white `#FFFFFF` text. Set as the button colours of schemes 1, 2, 5, 6
+    and 7 in `config/settings_data.json`, so every dark button matches, and the cart count bubble with
     them. The light buttons of schemes 3 and 4 and the newsletter’s sand button are unchanged.
 - Product photography should be worn on real people where possible — jewellery is impossible
   to judge for scale on a white background.
@@ -118,6 +118,8 @@ Rules that matter here:
 | scheme-3 | `#221F1C` warm near-black | `#F5F2EE` | Footer, dramatic bands. |
 | scheme-4 | `#8C6A2E` deep muted gold | `#FFFFFF` | Badges and accents only. |
 | scheme-5 | `#E7E1D6` warm sand | `#221F1C` | Feature blocks. |
+| scheme-6 | `#F5F4F0` light greige | `#221F1C` | The reference’s band colour. Нашето вдъхновение on the homepage. |
+| scheme-7 | `#C9D4A3` matcha green | `#221F1C` | Нашите материали on the homepage. Owner’s choice, 2026-09-14. |
 
 - Type: **Jost** for everything since 2026-09-14: headings bold (700), text regular (400).
   The owner first chose EB Garamond with Inter (option D), then the same day asked for the
@@ -259,14 +261,22 @@ Anything of ours that is not a Dawn setting lives in these two places:
   - **A second one, directly under it, leads to Нашият дизайн** (2026-09-14, at the owner’s
     request, picture on the right): section key `design_teaser`, eyebrow Нашият дизайн,
     „Как се ражда едно бижу?“, idea → model → 3D printer → „и това е само началото“, and a
-    button „Вижте как го правим“ to `/pages/за-нас#dizain`. Its top padding is 24, so the
-    space between the two blocks is 88px, the same as above the first; the reference sets
-    consecutive blocks like these close together, on alternating sides.
+    button „Вижте как го правим“ to `/pages/за-нас#dizain`. The reference sets consecutive
+    blocks like these on alternating sides.
   - **A third, for Нашите материали** (2026-09-14, at the owner’s request, picture on the left
     again): key `materials_teaser`, „Кое злато е за вас?“, gold of 14 or 18 carats, silver and
     stones, „Едни са за всеки ден, други — за бижу с особено значение.“ (the materials block
     answers it: 14 carats for every day, 18 for pieces with special meaning), and a button
-    „Открийте разликата“ to `/pages/за-нас#materiali`. Top padding 24, like the second.
+    „Открийте разликата“ to `/pages/за-нас#materiali`.
+  - **Coloured bands** (2026-09-14, at the owner’s request, after the reference’s “Soulful
+    jewelry” band): Нашето вдъхновение sits on scheme-6, the reference’s `#F5F4F0`, and
+    Нашите материали on scheme-7, matcha `#C9D4A3` (the owner chose it over a milkier
+    `#D8DFBF`). Нашият дизайн stays on the page ground, as the owner asked. With the bands
+    marking the edges, all three have 88px above and below; when they shared one ground they
+    had 88/64, 24/64 and 24/64, which would have left Нашият дизайн 24px under a band.
+  - On any scheme but scheme-1, `section-atelier.css` shades the empty picture slot from the
+    band colour (the stone block is 3 levels from `#F5F4F0`) and sets the eyebrow and
+    paragraph at 75% of the text colour instead of 62%: 62% is 3.9:1 on matcha, 75% is 5.6:1.
   - **Media on the right mirrors the columns** (55fr 45fr). Before, `order` alone moved the
     media into the wider track, so the right-hand version had a 680 × 850 picture against
     556 × 695 in the left-hand one.
