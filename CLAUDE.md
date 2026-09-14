@@ -106,8 +106,9 @@ Rules that matter here:
     `#000000` with pure white `#FFFFFF` text. Set as the button colours of schemes 1, 2 and 5 in
     `config/settings_data.json`, so every dark button matches, and the cart count bubble with
     them. The light buttons of schemes 3 and 4 and the newsletter’s sand button are unchanged.
-    Schemes 6 and 7, the homepage teaser bands, have moss-green buttons instead (`#3D5229`,
-    white labels), at the owner’s request the same day.
+    The homepage teaser bands have buttons in a dark shade of their own colour instead, with
+    white labels, at the owner’s request the same day: taupe `#5B5548` on scheme-6, moss green
+    `#3D5229` on scheme-7.
 - Product photography should be worn on real people where possible — jewellery is impossible
   to judge for scale on a white background.
 
@@ -120,7 +121,7 @@ Rules that matter here:
 | scheme-3 | `#221F1C` warm near-black | `#F5F2EE` | Footer, dramatic bands. |
 | scheme-4 | `#8C6A2E` deep muted gold | `#FFFFFF` | Badges and accents only. |
 | scheme-5 | `#E7E1D6` warm sand | `#221F1C` | Feature blocks. |
-| scheme-6 | `#F5F4F0` light greige | `#221F1C` | The reference’s band colour. Нашето вдъхновение on the homepage. Buttons `#3D5229`. |
+| scheme-6 | `#F5F4F0` light greige | `#221F1C` | The reference’s band colour. Нашето вдъхновение on the homepage. Buttons `#5B5548`. |
 | scheme-7 | `#D8DFBF` milky matcha | `#221F1C` | Нашите материали on the homepage. Owner’s choice, 2026-09-14. Buttons `#3D5229`. |
 
 - Type: **Jost** for everything since 2026-09-14: headings bold (700), text regular (400).
@@ -287,12 +288,15 @@ Anything of ours that is not a Dawn setting lives in these two places:
     on Нашите материали, 15px on phones. These are the section’s own margin settings, added
     for this; padding would have coloured the gap. The bands still meet the middle block, and
     the reference leaves 20px between its own consecutive coloured blocks.
-  - **Dark green buttons on the two bands** (2026-09-14, at the owner’s request; the middle block
-    keeps black): moss `#3D5229`, chosen on both bands over an olive `#4B5A2E` (read as khaki)
-    and a forest `#2E4128` (read as black), set as the button colour of schemes 6 and 7. The
-    hover is the same as on every other button: the fill drops away and a green outline and
-    label remain. White on the green is 8.6:1; the green label is 6.2:1 on matcha, 7.8:1 on
-    `#F5F4F0`.
+  - **Each band’s button is a dark shade of the band’s own colour** (2026-09-14, at the owner’s
+    request; the middle block keeps black). Matcha band: moss green `#3D5229`, chosen over an
+    olive `#4B5A2E` (read as khaki) and a forest `#2E4128` (read as black). Нашето вдъхновение:
+    taupe `#5B5548`, the band’s `#F5F4F0` made dark, chosen over a khaki `#6B6447` and a deeper
+    `#4A463E`. It briefly had the green as well, until the owner explained that the green was
+    the example of the idea, not a colour for both bands. Set as the button colour of schemes 7
+    and 6. The hover is the same as on every other button: the fill drops away and an outline
+    and label in the button colour remain. White is 8.6:1 on the green and 7.4:1 on the taupe;
+    the hover labels are 6.2:1 on matcha and 6.7:1 on `#F5F4F0`.
   - **Media on the right mirrors the columns** (55fr 45fr). Before, `order` alone moved the
     media into the wider track, so the right-hand version had a 680 × 850 picture against
     556 × 695 in the left-hand one.
