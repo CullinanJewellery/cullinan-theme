@@ -369,8 +369,11 @@ Anything of ours that is not a Dawn setting lives in these two places:
   that also carries Italian imports; and a gold-buying service. Its categories are Дамски
   бижута · Мъжки бижута · Брачни халки · Сребро, with пръстени, обици, гривни, висулки,
   колиета, комплекти, брошки, мъжки аксесоари listed in the About text.
-- **Unresolved: is silver part of Cullinan Jewellery?** The old site sells silver (s3042, s1193com)
-  but its About page says the shop does not. Affects the menu and the facts strip.
+- **Settled 2026-09-14: silver is sold too.** The owner confirmed it, and the history block on
+  За нас now says „от злато и сребро“. Other lines still name gold only and were left as they
+  are until the owner asks: the materials block („Злато 14 и 18 карата“), the first question
+  („От какво злато са бижутата?“) and the benefits row („14 и 18 карата злато“). No silver
+  fineness (e.g. 925) is stated anywhere yet — get it from the owner before writing one.
 
 ### Assigning an alternate template
 
