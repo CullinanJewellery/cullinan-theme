@@ -70,7 +70,7 @@
 .atelier__heading {
   margin: 2rem 0 0;
   font-size: clamp(1.8rem, 2.4vw, 2.6rem);
-  font-weight: 300;
+  font-weight: var(--font-heading-weight);
   line-height: 1.2;
   letter-spacing: normal;
 }

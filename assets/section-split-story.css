@@ -39,7 +39,7 @@
 .split-story__heading {
   margin: 0;
   font-size: clamp(3.2rem, 3.5vw, 5rem);
-  font-weight: 400;
+  font-weight: var(--font-heading-weight);
   line-height: 1.15;
 }
 

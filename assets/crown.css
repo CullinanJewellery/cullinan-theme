@@ -201,7 +201,7 @@
 .header__heading,
 .header__heading-link .h2 {
   font-size: 2rem;
-  font-weight: 400;
+  font-weight: var(--font-heading-weight);
   letter-spacing: 0.22em;
   text-transform: uppercase;
 }
@@ -268,7 +268,7 @@
   /* The floor has to sit below what the scaling asks for, or it wins on small
      screens and the heading renders at its largest where there is least room. */
   font-size: clamp(2.4rem, 7vw, 6.5rem);
-  font-weight: 400;
+  font-weight: var(--font-heading-weight);
   line-height: 1.23;
   letter-spacing: 0.01em;
   text-transform: uppercase;
@@ -332,7 +332,7 @@
 
 .collection .collection__title .title {
   font-size: clamp(3.2rem, 4.6vw, 6.5rem);
-  font-weight: 400;
+  font-weight: var(--font-heading-weight);
   line-height: 1.05;
   letter-spacing: 0.01em;
   text-align: left;
@@ -749,7 +749,7 @@
 
 /* The atelier heading sat at 300, which a serif cannot carry. */
 .atelier__heading {
-  font-weight: 400;
+  font-weight: var(--font-heading-weight);
 }
 
 /* --- Newsletter ----------------------------------------------------------- */
@@ -783,7 +783,7 @@
 
 .newsletter--crown h2 {
   font-size: clamp(2.8rem, 4.4vw, 5.5rem);
-  font-weight: 400;
+  font-weight: var(--font-heading-weight);
   line-height: 1.1;
   letter-spacing: 0.02em;
   text-transform: uppercase;
