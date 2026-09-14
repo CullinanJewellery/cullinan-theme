@@ -70,8 +70,24 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  /* At least 8:7, and as tall as the text beside it. A fixed 8:7 left the page
+     ground showing under the photograph whenever the text ran longer (137px
+     on the history block at 1440px). The pseudo-element holds the minimum
+     shape, the grid stretches the half to the row, and the photograph fills
+     whatever height that gives. */
   .split-story__media {
-    aspect-ratio: 8 / 7;
+    aspect-ratio: auto;
+  }
+
+  .split-story__media::before {
+    content: "";
+    display: block;
+    padding-top: 87.5%;
+  }
+
+  .split-story__image {
+    position: absolute;
+    inset: 0;
   }
 
   .split-story--media-right .split-story__media {

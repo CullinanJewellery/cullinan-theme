@@ -320,6 +320,11 @@ Anything of ours that is not a Dawn setting lives in these two places:
     (8:7 photograph, text about 106px inside the panel, 50px heading). Image first on
     phones. An empty image slot is a flat sand block, so it still reads against the stone
     panel.
+    - **From 990px the photograph half is at least 8:7 and as tall as the text beside it**
+      (2026-09-14, with the owner’s yes). It used to be fixed at 8:7, so a longer text left a
+      strip of page ground under the photograph: 137px on Нашата история at 1440px. A
+      photograph fills whatever height that gives and is cropped by `object-fit: cover`, so
+      it should keep its subject near the centre.
   - **Jump links target Anchor settings**, not Shopify section ids. `split-story` has one, and
     so does Dawn’s `sections/collapsible-content.liquid` (added for this). Anchors are Latin
     and visible in the editor: istoriya, dizain, materiali, vaprosi. A section added in the
@@ -349,6 +354,11 @@ Anything of ours that is not a Dawn setting lives in these two places:
     ever found, 1905, over 3,100 carats, cut into stones for the British Crown Jewels) and calls
     it the business’s inspiration. **The owner confirmed on 2026-09-13 that the name comes from
     the diamond**, so the block says so outright. The diamond facts are public and were checked.
+  - **The design block tells how a piece is made** (2026-09-14, at the owner’s request): the
+    atelier’s own 3D models, printed on a 3D printer and checked „с любов“, then gold or
+    silver, then finished by hand by the goldsmiths. The 3D printing is the owner’s fact; the
+    lead „Всяко бижу е изработено на ръка.“ stays because the finishing is by hand. No casting
+    method or design software is named — neither has been confirmed.
   - The questions answer only what is known: gold, engraving, delivery carriers, the shop.
     Returns, payment methods, warranty, opening hours and delivery prices wait for the
     owner — do not answer them from assumption.
