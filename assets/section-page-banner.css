@@ -1,0 +1,45 @@
+/*
+  Page banner -- a heading and a few lines, centred on a colour band.
+*/
+
+.page-banner {
+  display: flex;
+  align-items: center;
+}
+
+.page-banner__inner {
+  width: 100%;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  text-align: center;
+}
+
+.page-banner .page-banner__heading {
+  margin: 0;
+  font-size: clamp(2.4rem, 2.8vw, 4rem);
+  font-weight: var(--font-heading-weight);
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+.page-banner__text {
+  max-width: 56rem;
+  margin: 2rem auto 0;
+  font-size: 1.6rem;
+  line-height: 1.5;
+}
+
+.page-banner__text > * {
+  margin: 0;
+}
+
+.page-banner__text > * + * {
+  margin-top: 1.6rem;
+}
+
+.page-banner__text a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.3rem;
+}

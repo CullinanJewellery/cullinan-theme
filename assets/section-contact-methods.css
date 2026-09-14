@@ -1,0 +1,200 @@
+/*
+  Contact methods -- one row per way to reach the shop, each opening onto a
+  tinted panel. Measurements are in sections/contact-methods.liquid.
+*/
+
+.contact-methods__form {
+  display: block;
+}
+
+/* --- The row ------------------------------------------------------------- */
+
+.contact-methods__summary {
+  display: block;
+  padding: 0 2rem;
+  cursor: pointer;
+}
+
+.contact-methods__head {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  max-width: 116rem;
+  margin: 0 auto;
+  padding: 2.5rem 1rem;
+  border-bottom: 1px solid rgb(var(--color-foreground));
+}
+
+/* An open row runs straight into its panel, without the rule. */
+.contact-methods__item[open] .contact-methods__head {
+  border-bottom-color: transparent;
+}
+
+.contact-methods__icon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 2.8rem;
+  height: 2.8rem;
+}
+
+.contact-methods__icon .benefit__icon {
+  display: block;
+  width: 100%;
+  height: 100%;
+  stroke-width: 1.25px;
+  overflow: visible;
+}
+
+.contact-methods .contact-methods__title {
+  flex: 1;
+  margin: 0;
+  font-family: var(--font-body-family);
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: normal;
+}
+
+/* A plus drawn in two strokes; the upright one goes when the row is open. */
+.contact-methods__toggle {
+  position: relative;
+  flex: none;
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+.contact-methods__toggle::before,
+.contact-methods__toggle::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color: currentColor;
+  transform: translate(-50%, -50%);
+}
+
+.contact-methods__toggle::before {
+  width: 100%;
+  height: 0.15rem;
+}
+
+.contact-methods__toggle::after {
+  width: 0.15rem;
+  height: 100%;
+}
+
+.contact-methods__item[open] .contact-methods__toggle::after {
+  display: none;
+}
+
+/* --- The panel ----------------------------------------------------------- */
+
+.contact-methods__panel {
+  padding: 3.2rem 2rem;
+}
+
+.contact-methods__columns {
+  display: grid;
+  gap: 2.4rem;
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+.contact-methods__text {
+  font-size: 1.6rem;
+  line-height: 1.6;
+}
+
+.contact-methods__text > * {
+  margin: 0;
+}
+
+.contact-methods__text > * + * {
+  margin-top: 0.8rem;
+}
+
+.contact-methods__text .contact-methods__number {
+  font-size: 2rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.contact-methods__action .field + .field {
+  margin-top: 1.6rem;
+}
+
+.contact-methods__status {
+  margin: 0 0 1.6rem;
+  font-size: 1.5rem;
+  line-height: 1.5;
+}
+
+/* The reference's outlined button, square, filling on hover like the footer's
+   social buttons. It takes the panel scheme's button colour. */
+.contact-methods__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 6.4rem;
+  margin: 0;
+  padding: 0 2rem;
+  border: 0;
+  border-radius: 0;
+  background-color: transparent;
+  box-shadow: inset 0 0 0 1px rgb(var(--color-button));
+  color: rgb(var(--color-button));
+  font-family: var(--font-body-family);
+  font-size: 1.4rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out;
+}
+
+.contact-methods__action .field + .contact-methods__button {
+  margin-top: 2.4rem;
+}
+
+.contact-methods__button:hover,
+.contact-methods__button:focus-visible {
+  background-color: rgb(var(--color-button));
+  color: rgb(var(--color-button-text));
+}
+
+@media screen and (min-width: 750px) {
+  .contact-methods__summary {
+    padding: 0 4rem;
+  }
+
+  .contact-methods__head {
+    gap: 2rem;
+  }
+
+  .contact-methods__icon {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+
+  .contact-methods .contact-methods__title {
+    font-size: 2rem;
+  }
+
+  .contact-methods__panel {
+    padding: 4rem 4rem;
+  }
+
+  .contact-methods__columns {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: center;
+    gap: 0;
+  }
+
+  .contact-methods__text {
+    padding-right: 4rem;
+  }
+}

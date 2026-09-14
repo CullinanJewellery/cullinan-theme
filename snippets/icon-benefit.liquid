@@ -7,7 +7,8 @@
 
   Accepts:
   - icon: {String} gem, ring, hammer, map-pin, engraving-pen, delivery-van,
-    box, return-arrow, certificate, clock, question, scroll, ring-tools, brilliant, crystals
+    box, return-arrow, certificate, clock, question, scroll, ring-tools, brilliant, crystals,
+    envelope, phone
 
   Usage:
   {% render 'icon-benefit', icon: block.settings.icon %}
@@ -155,5 +156,20 @@
       <path d="M12 2.5l2.2 5.5v8L12 21.5" vector-effect="non-scaling-stroke"/>
       <path d="M7 8h10" vector-effect="non-scaling-stroke"/>
       <path d="M7 16h10" vector-effect="non-scaling-stroke"/>
+
+    {%- when 'envelope' -%}
+      {%- comment -%}
+        For the Контакти page. A rounded envelope with its flap; checked at 35px
+        beside a square-cornered one, which looked harder than the other icons.
+      {%- endcomment -%}
+      <rect x="3" y="5.5" width="18" height="13" rx="1.5" vector-effect="non-scaling-stroke"/>
+      <path d="M3.8 6.6 12 12.8l8.2-6.2" vector-effect="non-scaling-stroke"/>
+
+    {%- when 'phone' -%}
+      {%- comment -%}
+        For the Контакти page. A handset rather than a smartphone outline: checked
+        at 35px, the smartphone read as an app or a device, the handset as a call.
+      {%- endcomment -%}
+      <path d="M8.6 3.6 6.4 3.9c-1.3.2-2.2 1.4-2 2.7.9 6.7 6.1 11.9 12.8 12.8 1.3.2 2.5-.7 2.7-2l.3-2.2a1.3 1.3 0 0 0-.8-1.4l-2.6-1.1a1.3 1.3 0 0 0-1.5.4l-1 1.2a10 10 0 0 1-4.7-4.7l1.2-1a1.3 1.3 0 0 0 .4-1.5L10 4.4a1.3 1.3 0 0 0-1.4-.8z" vector-effect="non-scaling-stroke"/>
   {%- endcase -%}
 </svg>

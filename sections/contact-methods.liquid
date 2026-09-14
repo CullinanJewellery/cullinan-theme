@@ -1,0 +1,401 @@
+{{ 'section-contact-methods.css' | asset_url | stylesheet_tag }}
+
+{%- comment -%}
+  Ways to reach the shop, one row each, after the reference's contact page: an
+  icon, a title and a plus sign. A row opens onto a tinted panel with a few
+  words on the left and the action on the right -- a button, or, for the form
+  block, the contact form itself, where the reference's button opens its help
+  desk. Shopify's contact form sends the message to the store's email.
+
+  Measured off the reference at 1440px: rows in a 1160px column, 86px tall
+  (25px above and below the title), a 1px rule under each closed row, 35px
+  icons and 20px titles; the panel spans the page on a light tint, 40px above
+  and below, with two 400px columns. On a 375px phone the rows are 84px.
+
+  Rows are <details>, so they open without JavaScript, each on its own. The
+  form block sits inside the form, so after a message is sent, or refused,
+  the page comes back with that row open and the status showing.
+{%- endcomment -%}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="contact-methods color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
+  {%- for block in section.blocks -%}
+    {%- capture summary -%}
+      <summary class="contact-methods__summary">
+        <span class="contact-methods__head">
+          {%- if block.settings.icon != 'none' -%}
+            <span class="contact-methods__icon">{% render 'icon-benefit', icon: block.settings.icon %}</span>
+          {%- endif -%}
+          <h2 class="contact-methods__title">{{ block.settings.title | escape }}</h2>
+          <span class="contact-methods__toggle" aria-hidden="true"></span>
+        </span>
+      </summary>
+    {%- endcapture -%}
+
+    {%- case block.type -%}
+      {%- when 'form' -%}
+        {%- form 'contact', id: 'ContactForm', class: 'contact-methods__form' -%}
+          <details
+            class="contact-methods__item"
+            {{ block.shopify_attributes }}
+            {% if form.posted_successfully? or form.errors %}
+              open
+            {% endif %}
+          >
+            {{ summary }}
+            <div class="contact-methods__panel color-{{ section.settings.panel_color_scheme }} gradient">
+              <div class="contact-methods__columns">
+                {%- if block.settings.text != blank -%}
+                  <div class="contact-methods__text rte">{{ block.settings.text }}</div>
+                {%- endif -%}
+                <div class="contact-methods__action">
+                  {%- if form.posted_successfully? -%}
+                    <p class="contact-methods__status" role="status" tabindex="-1" autofocus>
+                      {{- block.settings.success_message | escape -}}
+                    </p>
+                  {%- elsif form.errors -%}
+                    <p class="contact-methods__status" role="alert" tabindex="-1" autofocus>
+                      {{- block.settings.error_message | escape -}}
+                    </p>
+                  {%- endif -%}
+
+                  <div class="field">
+                    <input
+                      class="field__input"
+                      type="text"
+                      id="ContactForm-name"
+                      name="contact[Име]"
+                      autocomplete="name"
+                      placeholder="Име"
+                    >
+                    <label class="field__label" for="ContactForm-name">Име</label>
+                  </div>
+
+                  <div class="field">
+                    <input
+                      class="field__input"
+                      type="email"
+                      id="ContactForm-email"
+                      name="contact[email]"
+                      autocomplete="email"
+                      spellcheck="false"
+                      autocapitalize="off"
+                      required
+                      aria-required="true"
+                      value="{{ form.email }}"
+                      placeholder="Имейл"
+                      {% if form.errors contains 'email' %}
+                        aria-invalid="true"
+                      {% endif %}
+                    >
+                    <label class="field__label" for="ContactForm-email">Имейл <span aria-hidden="true">*</span></label>
+                  </div>
+
+                  {%- comment -%}
+                    No pattern: Dawn's [0-9\-]* refuses +359 and spaces, the way
+                    most Bulgarian customers write a number.
+                  {%- endcomment -%}
+                  <div class="field">
+                    <input
+                      class="field__input"
+                      type="tel"
+                      id="ContactForm-phone"
+                      name="contact[Телефон]"
+                      autocomplete="tel"
+                      placeholder="Телефон"
+                    >
+                    <label class="field__label" for="ContactForm-phone">Телефон</label>
+                  </div>
+
+                  <div class="field">
+                    <textarea
+                      class="text-area field__input"
+                      id="ContactForm-body"
+                      name="contact[Съобщение]"
+                      rows="5"
+                      placeholder="Съобщение"
+                    ></textarea>
+                    <label class="field__label" for="ContactForm-body">Съобщение</label>
+                  </div>
+
+                  <button type="submit" class="contact-methods__button">
+                    {{- block.settings.button_label | escape -}}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </details>
+        {%- endform -%}
+
+      {%- when 'phone' -%}
+        {%- liquid
+          assign dial = block.settings.phone | remove: ' ' | remove: '-' | remove: '(' | remove: ')' | remove: '.'
+        -%}
+        <details class="contact-methods__item" {{ block.shopify_attributes }}>
+          {{ summary }}
+          <div class="contact-methods__panel color-{{ section.settings.panel_color_scheme }} gradient">
+            <div class="contact-methods__columns">
+              <div class="contact-methods__text rte">
+                {%- if block.settings.phone != blank -%}
+                  <p class="contact-methods__number">{{ block.settings.phone | escape }}</p>
+                {%- endif -%}
+                {{ block.settings.text }}
+              </div>
+              {%- if dial != blank and block.settings.button_label != blank -%}
+                <div class="contact-methods__action">
+                  <a class="contact-methods__button" href="tel:{{ dial }}">
+                    {{- block.settings.button_label | escape -}}
+                  </a>
+                </div>
+              {%- endif -%}
+            </div>
+          </div>
+        </details>
+
+      {%- when 'link' -%}
+        <details class="contact-methods__item" {{ block.shopify_attributes }}>
+          {{ summary }}
+          <div class="contact-methods__panel color-{{ section.settings.panel_color_scheme }} gradient">
+            <div class="contact-methods__columns">
+              {%- if block.settings.text != blank -%}
+                <div class="contact-methods__text rte">{{ block.settings.text }}</div>
+              {%- endif -%}
+              {%- comment -%} Only with somewhere to go: navigation cannot come before content. {%- endcomment -%}
+              {%- if block.settings.button_label != blank and block.settings.button_link != blank -%}
+                <div class="contact-methods__action">
+                  <a class="contact-methods__button" href="{{ block.settings.button_link }}">
+                    {{- block.settings.button_label | escape -}}
+                  </a>
+                </div>
+              {%- endif -%}
+            </div>
+          </div>
+        </details>
+    {%- endcase -%}
+  {%- endfor -%}
+</div>
+
+{% schema %}
+{
+  "name": "Contact methods",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Colour scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "color_scheme",
+      "id": "panel_color_scheme",
+      "label": "Colour scheme of an open row",
+      "default": "scheme-2"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 72
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 72
+    }
+  ],
+  "blocks": [
+    {
+      "type": "form",
+      "name": "Contact form",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "envelope", "label": "Envelope" },
+            { "value": "phone", "label": "Phone" },
+            { "value": "map-pin", "label": "Map pin" },
+            { "value": "clock", "label": "Clock" },
+            { "value": "question", "label": "Question mark" },
+            { "value": "engraving-pen", "label": "Engraving pen" },
+            { "value": "delivery-van", "label": "Delivery van" },
+            { "value": "box", "label": "Box" },
+            { "value": "gem", "label": "Gem" },
+            { "value": "ring", "label": "Ring" }
+          ],
+          "default": "envelope"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Имейл"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Изпратете ни съобщение и ще ви отговорим възможно най-скоро.</p>"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button",
+          "default": "Изпратете"
+        },
+        {
+          "type": "text",
+          "id": "success_message",
+          "label": "Message after sending",
+          "default": "Благодарим! Получихме съобщението ви и ще се свържем с вас възможно най-скоро."
+        },
+        {
+          "type": "text",
+          "id": "error_message",
+          "label": "Message when the email is missing or wrong",
+          "default": "Моля, въведете валиден имейл адрес."
+        }
+      ]
+    },
+    {
+      "type": "phone",
+      "name": "Phone",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "envelope", "label": "Envelope" },
+            { "value": "phone", "label": "Phone" },
+            { "value": "map-pin", "label": "Map pin" },
+            { "value": "clock", "label": "Clock" },
+            { "value": "question", "label": "Question mark" },
+            { "value": "engraving-pen", "label": "Engraving pen" },
+            { "value": "delivery-van", "label": "Delivery van" },
+            { "value": "box", "label": "Box" },
+            { "value": "gem", "label": "Gem" },
+            { "value": "ring", "label": "Ring" }
+          ],
+          "default": "phone"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Телефон"
+        },
+        {
+          "type": "text",
+          "id": "phone",
+          "label": "Phone number",
+          "info": "As customers should read it, e.g. +359 88 123 4567. The call button dials it."
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button",
+          "default": "Обадете се"
+        }
+      ]
+    },
+    {
+      "type": "link",
+      "name": "Link",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "envelope", "label": "Envelope" },
+            { "value": "phone", "label": "Phone" },
+            { "value": "map-pin", "label": "Map pin" },
+            { "value": "clock", "label": "Clock" },
+            { "value": "question", "label": "Question mark" },
+            { "value": "engraving-pen", "label": "Engraving pen" },
+            { "value": "delivery-van", "label": "Delivery van" },
+            { "value": "box", "label": "Box" },
+            { "value": "gem", "label": "Gem" },
+            { "value": "ring", "label": "Ring" }
+          ],
+          "default": "map-pin"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Магазин"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link",
+          "info": "The button stays hidden until it has a link."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Contact methods",
+      "blocks": [
+        {
+          "type": "form"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
