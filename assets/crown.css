@@ -331,6 +331,13 @@
     aspect-ratio: 1 / 1;
   }
 
+  /* Dawn's base.css hides every empty div (div:empty), and the photo slot is one
+     until a photograph is set, so on phones it collapsed to nothing. Shown here
+     as a flat square in the stone of banner__media--empty. */
+  .banner.banner--mobile-bottom .banner__media--empty {
+    display: block;
+  }
+
   .banner.banner--mobile-bottom .banner__box {
     padding: 1.2rem 2rem 4rem;
   }
