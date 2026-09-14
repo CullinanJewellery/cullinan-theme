@@ -86,6 +86,14 @@ Rules that matter here:
     live theme text laid over the photograph, centred, following moonmagic.com. Agreed
     2026-09-06. The photograph itself still carries no baked-in text, and this stays the
     only place on the site where words sit over an image.
+    - **On phones the words sit below the photograph** (2026-09-14, at the owner’s request,
+      as the reference does): the hero’s own "content below image on mobile" setting is on.
+      The photo slot is a full-width square, then the heading, text and a full-width black
+      button on a sand panel (the hero’s colour scheme is scheme-5, which only paints on
+      phones; the desktop box stays transparent). Measured to the reference at 390px: 16px
+      text, a 350 x 52 button with 16px capitals, 10px and 20px between the parts. The rules
+      are in the phone hero block of `assets/crown.css`, one class more specific than
+      Dawn’s, because Dawn’s stylesheet loads after ours.
 - **Restraint reads as expensive.** Empty space is the main luxury signal. When in doubt,
   remove rather than add.
 - **Gold comes from the photographs, not the interface.** The gold accent is muted and used
@@ -343,9 +351,12 @@ Anything of ours that is not a Dawn setting lives in these two places:
   - No photographs yet; the three image halves are flat sand blocks.
 - Homepage, working top to bottom: announcement bar, header and hero are built; the product
   row is built; the atelier block and newsletter are still Dawn's defaults.
-- Dawn's placeholder illustration has been removed from the hero. An empty image slot now
-  renders as a flat stone band at full height, so adding the photograph later changes
-  nothing about the layout.
+- Dawn's placeholder illustration has been removed from the hero. The empty image slot is an
+  empty div, and Dawn's base.css hides every empty div (`div:empty { display: none }`). On
+  phones crown.css shows it again as a flat stone square. **On desktop it is still hidden**,
+  so the hero there is off-white rather than the stone band this note used to promise; the
+  layout holds either way, since the banner keeps its height. Not changed — the owner has
+  not asked about the desktop hero.
 - **No real products yet. No photography yet.** The homepage cannot be finished until the
   atelier photo session happens.
 - Bulgarian needs setting as the store's default language (currently English).
