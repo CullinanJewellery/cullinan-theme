@@ -359,6 +359,12 @@ Anything of ours that is not a Dawn setting lives in these two places:
     silver, then finished by hand by the goldsmiths. The 3D printing is the owner’s fact; the
     lead „Всяко бижу е изработено на ръка.“ stays because the finishing is by hand. No casting
     method or design software is named — neither has been confirmed.
+  - **The materials block** (expanded 2026-09-14 at the owner’s request) explains what proba
+    585 and 750 mean (58,5% and 75% pure gold), 14 carats as the harder gold for every day and
+    18 as the purer one, silver, the four stones and their hardness (diamond first, sapphire
+    and ruby next), enamel, and HRD Antwerp as one of the leading diamond institutes. Beyond the
+    old site’s facts it uses only general public ones. The enamel is not described as fired:
+    whether it is vitreous or cold enamel has not been confirmed.
   - The questions answer only what is known: gold, engraving, delivery carriers, the shop.
     Returns, payment methods, warranty, opening hours and delivery prices wait for the
     owner — do not answer them from assumption.
@@ -383,11 +389,12 @@ Anything of ours that is not a Dawn setting lives in these two places:
   that also carries Italian imports; and a gold-buying service. Its categories are Дамски
   бижута · Мъжки бижута · Брачни халки · Сребро, with пръстени, обици, гривни, висулки,
   колиета, комплекти, брошки, мъжки аксесоари listed in the About text.
-- **Settled 2026-09-14: silver is sold too.** The owner confirmed it, and the history block on
-  За нас now says „от злато и сребро“. Other lines still name gold only and were left as they
-  are until the owner asks: the materials block („Злато 14 и 18 карата“), the first question
-  („От какво злато са бижутата?“) and the benefits row („14 и 18 карата злато“). No silver
-  fineness (e.g. 925) is stated anywhere yet — get it from the owner before writing one.
+- **Settled 2026-09-14: silver is sold too.** The owner confirmed it. On За нас the history
+  block says „от злато и сребро“, the design block „злато или сребро“, and the materials block
+  names silver in its lead and gives it a paragraph (at the owner’s request, the same day).
+  Still gold only, left until the owner asks: the first question („От какво злато са
+  бижутата?“) and the benefits row („14 и 18 карата злато“). No silver fineness (e.g. 925) is
+  stated anywhere yet — get it from the owner before writing one.
 
 ### Assigning an alternate template
 
