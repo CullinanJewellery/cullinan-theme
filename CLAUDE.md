@@ -237,7 +237,7 @@ Anything of ours that is not a Dawn setting lives in these two places:
     request: keep the design, lead to the inspiration story). Eyebrow Нашето вдъхновение, the
     question „Знаете ли откъде идва името ни?“, two sentences saying a diamond found in 1905
     gave the business its name, without naming it, and a button „Открийте историята“ to
-    `/pages/за-нас#vdahnovenie` (percent-encoded in the template). The wax-model heading and
+    `/pages/за-нас#vdahnovenie`. The wax-model heading and
     the three facts (1991, 14–18К, Велико Търново) were removed with the atelier story. The
     section is still called Atelier in the editor and keeps its atelier defaults in the schema.
   - The link has been a black button since then, styled like "view all" under the product row
