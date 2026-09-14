@@ -315,6 +315,51 @@
   }
 }
 
+/*
+  Phones, with "content below image on mobile" switched on, as the homepage hero
+  has it since 2026-09-14 at the owner's request. The reference stacks its hero
+  on a phone: the photograph alone, full width, then the words on a tinted panel.
+  Measured at 390px: a 390 x 394 photograph (square), the heading just under it,
+  16px text on a 20px line, and a full-width black button, 350 x 52, 16px
+  capitals. Nothing sits on the picture here, so the button can span the width.
+*/
+@media screen and (max-width: 749px) {
+  /* Dawn fixes the photo at 39rem with (0,4,0) and loads after this file, so
+     these selectors carry one class more than the rule each one answers. */
+  .banner.banner--mobile-bottom:not(.banner--adapt) .banner__media.media {
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+
+  .banner.banner--mobile-bottom .banner__box {
+    padding: 1.2rem 2rem 4rem;
+  }
+
+  /* Every gap set here, instead of Dawn's margins stacking on ours. */
+  .banner.banner--mobile-bottom .banner__box > .banner__heading {
+    margin: 0;
+  }
+
+  .banner.banner--mobile-bottom .banner__box > .banner__text {
+    margin: 1rem 0 0;
+    font-size: 1.6rem;
+    line-height: 1.3;
+  }
+
+  .banner.banner--mobile-bottom .banner__box > .banner__buttons {
+    width: 100%;
+    max-width: none;
+    margin: 2rem 0 0;
+  }
+
+  .banner.banner--mobile-bottom .banner__buttons .button {
+    width: 100%;
+    min-height: 5.2rem;
+    padding: 0 1.6rem;
+    font-size: 1.6rem;
+  }
+}
+
 /* ---------------------------------------------------------------------------
    Product rows
 
