@@ -57,8 +57,14 @@
 
 .benefit__heading {
   margin: 1.4rem 0 0;
+  /* A small capital label, so the text face (Inter), not the heading face: EB
+     Garamond in capitals at 13px reads thin. Same treatment as the facts strip
+     under the hero and the labels on the board the owner chose. 600 is the
+     weight crown.css always meant these to have; this rule used to undo it. */
+  font-family: var(--font-body-family);
+  font-style: var(--font-body-style);
   font-size: 1.3rem;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.4;
   letter-spacing: 0.1em;
   text-transform: uppercase;
