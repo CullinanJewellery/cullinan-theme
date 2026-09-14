@@ -225,7 +225,7 @@
         "link_url": "/pages/за-нас#vdahnovenie",
         "padding_top": 56,
         "padding_bottom": 56,
-        "margin_top": 20
+        "margin_top": 40
       }
     },
     "design_teaser": {
@@ -268,7 +268,7 @@
         "link_url": "/pages/за-нас#materiali",
         "padding_top": 56,
         "padding_bottom": 56,
-        "margin_bottom": 20
+        "margin_bottom": 40
       }
     },
     "newsletter": {

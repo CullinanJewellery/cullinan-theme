@@ -283,11 +283,12 @@ Anything of ours that is not a Dawn setting lives in these two places:
   - On any scheme but scheme-1, `section-atelier.css` shades the empty picture slot from the
     band colour (the stone block is 3 levels from `#F5F4F0`) and sets the eyebrow and
     paragraph at 75% of the text colour instead of 62%: 62% is 4.1:1 on matcha, 75% is 6.0:1.
-  - **A little page background at the outer edges** (the owner found the bands touching the
-    benefits row and the newsletter): Space above 20 on Нашето вдъхновение and Space below 20
-    on Нашите материали, 15px on phones. These are the section’s own margin settings, added
-    for this; padding would have coloured the gap. The bands still meet the middle block, and
-    the reference leaves 20px between its own consecutive coloured blocks.
+  - **Page background at the outer edges** (the owner found the bands touching the benefits row
+    and the newsletter): Space above 40 on Нашето вдъхновение and Space below 40 on Нашите
+    материали, 30px on phones. It was 20 (15 on phones) at first, “just a little”, until the
+    owner asked for more the same day. These are the section’s own margin settings, added for
+    this; padding would have coloured the gap. The bands still meet the middle block, and the
+    reference leaves 20px between its own consecutive coloured blocks.
   - **Each band’s button is a dark shade of the band’s own colour** (2026-09-14, at the owner’s
     request; the middle block keeps black). Matcha band: moss green `#3D5229`, chosen over an
     olive `#4B5A2E` (read as khaki) and a forest `#2E4128` (read as black). Нашето вдъхновение:
