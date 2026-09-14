@@ -188,6 +188,13 @@ Rules that matter here:
   minutes, while the file had been live within seconds as `text-wrap:balance`. Class names
   and values such as `12.7vw` survive minification; anything with a space after a colon
   does not. Match `text-wrap: ?balance`, or a selector, not the source formatting.
+- **Write links in templates in plain Cyrillic, not percent-encoded.** On 2026-09-14
+  `templates/index.json` with the button link `/pages/%D0%B7%D0%B0-%D0%BD%D0%B0%D1%81#vdahnovenie`
+  had not reached the theme after four and a half minutes, while the section pushed seconds
+  before it synced at once. Re-sent as `/pages/за-нас#vdahnovenie`, it was live within
+  seconds. Whether Shopify refused the encoded form or dropped that sync is not known; the
+  plain form is the one proven to work, and the category tiles’ `/collections/пръстени` links
+  use it too. A `#anchor` on the end is accepted.
 - **Range values must sit on the step, not just inside the range — in templates too.**
   `padding_top: 70` looks harmless but Dawn's padding step is 4, so 70 is illegal and
   `templates/index.json` was refused from 2026-09-10 until 2026-09-11 because of it. The
