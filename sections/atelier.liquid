@@ -4,6 +4,10 @@
   The padding class has to be defined here, the way Dawn's own sections do it.
   Without this the class resolves to nothing and the section has no padding at
   all, so it sits flush against whatever is above it.
+
+  Padding is space inside the colour band; the margin is page background outside
+  it, for a band that would otherwise touch another coloured section. Both are
+  printed at 0.75 on phones.
 {%- endcomment -%}
 {%- style -%}
   .section-{{ section.id }}-padding {
@@ -11,10 +15,20 @@
     padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
   }
 
+  .section-{{ section.id }}-margin {
+    margin-top: {{ section.settings.margin_top | times: 0.75 | round: 0 }}px;
+    margin-bottom: {{ section.settings.margin_bottom | times: 0.75 | round: 0 }}px;
+  }
+
   @media screen and (min-width: 750px) {
     .section-{{ section.id }}-padding {
       padding-top: {{ section.settings.padding_top }}px;
       padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+
+    .section-{{ section.id }}-margin {
+      margin-top: {{ section.settings.margin_top }}px;
+      margin-bottom: {{ section.settings.margin_bottom }}px;
     }
   }
 {%- endstyle -%}
@@ -29,7 +43,7 @@
   assign video_id = section.settings.video_url.id
 -%}
 
-<div class="color-{{ section.settings.color_scheme }} gradient">
+<div class="color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-margin">
   <div class="atelier page-width section-{{ section.id }}-padding atelier--media-{{ section.settings.media_position }}">
     <div class="atelier__media-column">
       <div class="atelier__media">
@@ -356,6 +370,34 @@
       "unit": "px",
       "label": "Padding bottom",
       "default": 64
+    },
+    {
+      "type": "header",
+      "content": "Space outside"
+    },
+    {
+      "type": "paragraph",
+      "content": "Page background above and below the section, outside its colour. Use it where a coloured section would touch another coloured section."
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Space above",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Space below",
+      "default": 0
     }
   ],
   "presets": [
