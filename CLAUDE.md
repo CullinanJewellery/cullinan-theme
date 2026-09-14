@@ -308,9 +308,10 @@ Anything of ours that is not a Dawn setting lives in these two places:
     means revisiting the grid, which only has slots for the message and the links.
 - **Header height.** The header section’s padding is 12px top and bottom (Dawn’s default is
   20), set in `sections/header-group.json`, at the owner’s request for a smaller bar
-  (2026-09-14). From 990px the bar is 68px (was 84); Dawn halves the padding below 990px, so
-  phones get 56px (was 64). The name, menu text and icons kept their sizes; the icons’ 44px
-  tap areas set the floor. The reference’s bar is 59px at 1440px.
+  (2026-09-14). From 990px the bar is 68px (was 84): 12 + the icons’ 44px tap areas + 12.
+  Dawn halves the padding below 990px, so phones get 6px; there the two-line wordmark is the
+  tallest thing in the bar, which measured 63px on a 375px phone (was 71). The name, menu text
+  and icons kept their sizes. The reference’s bar is 59px at 1440px.
 - **Wordmark on phones.** Until a logo image is uploaded the header prints `shop.name` in
   spaced capitals. Below 750px its size follows the room Dawn’s header grid leaves it
   (viewport minus about 235px of icons and gutters) and tops out at 20px; without that,
