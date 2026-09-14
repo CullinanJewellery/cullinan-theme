@@ -111,24 +111,28 @@ Rules that matter here:
 | scheme-4 | `#8C6A2E` deep muted gold | `#FFFFFF` | Badges and accents only. |
 | scheme-5 | `#E7E1D6` warm sand | `#221F1C` | Feature blocks. |
 
-- Type: **EB Garamond** for headings, at 500, and **Inter** for everything else, since
-  2026-09-14. The owner chose them (option D) from four pairs shown on a miniature of the
-  site. Heading scale 100 (100 is Dawn's minimum). History: Jost until 2026-09-08, then
-  Playfair Display and Montserrat, neither of which ever showed a Bulgarian letter on
-  Shopify (see the correction below).
-  - **Self-hosted, not from the font library.** `snippets/theme-fonts.liquid` declares twelve
-    woff2 files in `assets/` (upright and italic, each split into Cyrillic, Latin and extended
-    Latin, from Google Fonts under the SIL Open Font License) with `unicode-range`, preloads the
-    upright Cyrillic and Latin files, and overrides Dawn's `--font-*` variables. It is rendered
-    after the `{% endstyle %}` in `layout/theme.liquid`, `layout/password.liquid` and
-    `templates/gift_card.liquid`, none of which load library fonts any more.
-  - Family names end in "Theme" ("EB Garamond Theme", "Inter Theme") so a Latin-only library
-    copy of the same font can never be matched instead.
-  - The Typography font pickers in the theme editor name the two fonts but no longer change
-    anything; a note in the editor says so. The size sliders still work.
-  - EB Garamond files cover weights 400–600 and Inter 300–700, which is every weight the CSS
-    uses. A heavier weight means new files.
-  - **Changing a font later:** get the Cyrillic, Latin and extended Latin woff2 files from
+- Type: **Jost** for everything since 2026-09-14: headings bold (700), text regular (400).
+  The owner first chose EB Garamond with Inter (option D), then the same day asked for the
+  font of hestiahome.bg (option E). hestiahome loads Shopify’s Jost, so its Bulgarian
+  actually shows in the visitor’s system font (Arial on Windows); the owner was shown real
+  Jost with Cyrillic beside that Arial look, and chose real Jost. Heading scale 100 (100 is
+  Dawn’s minimum). History: Shopify’s Jost until 2026-09-08, then Playfair Display and
+  Montserrat, then EB Garamond and Inter for part of a day. Before 2026-09-14 no Bulgarian
+  letter ever showed in the chosen font (see the correction below).
+  - **Self-hosted, not from the font library.** `snippets/theme-fonts.liquid` declares six
+    woff2 files in `assets/`, `font-jost-{normal,italic}-{cyrillic,latin,latin-ext}.woff2`,
+    from Google Fonts under the SIL Open Font License, with `unicode-range`. It preloads the
+    upright Cyrillic and Latin files (about 37 KB together) and overrides Dawn’s `--font-*`
+    variables. It is rendered after the `{% endstyle %}` in `layout/theme.liquid`,
+    `layout/password.liquid` and `templates/gift_card.liquid`, none of which load library
+    fonts any more. The EB Garamond and Inter files were removed when Jost went in.
+  - The family name is "Jost Theme", so Shopify’s Latin-only "Jost" can never be matched
+    instead.
+  - The Typography font pickers in the theme editor name Jost but no longer change anything;
+    a note in the editor says so. The size sliders still work.
+  - The files cover weights 300–700, which is every weight the CSS uses. A heavier weight
+    means new files.
+  - **Changing the font later:** get the Cyrillic, Latin and extended Latin woff2 files from
     Google Fonts, replace them in `assets/`, and update the snippet. Picking a font in the
     editor will not do it.
 - **Any future font must be checked for Cyrillic before it is set.** The tell-tale is a line
@@ -147,9 +151,10 @@ Rules that matter here:
   License), so proper Bulgarian needs the font files in the theme’s own `assets/`, declared
   with `@font-face`. Self-hosted rather than linked from Google, which would send every
   visitor’s IP address to Google.
-  - Resolved the same day: the owner chose option D from four pairs shown on a miniature of
-    the site (https://claude.ai/code/artifact/5976300a-b593-44d3-9036-34c2335af468), and it
-    is installed as above. Bulgarian was re-tested in both fonts at every weight used.
+  - Resolved the same day, on a comparison page showing each option on a miniature of the
+    site (https://claude.ai/code/artifact/5976300a-b593-44d3-9036-34c2335af468): option D
+    first, then option E, Jost, which is installed as above. Bulgarian was re-tested in Jost
+    at 300, 400, 600 and 700.
 - Page width 1400. Grid spacing 24 horizontal / 40 vertical — the generous gaps are
   intentional and should not be tightened further.
 - **Never let a template depend on a section setting added in the same push.**
@@ -255,10 +260,10 @@ Anything of ours that is not a Dawn setting lives in these two places:
   type set to **Mega menu**.
 - **Weight.** `assets/crown.css` sets bold only where the eye needs an anchor: product card
   titles, sale prices, benefit headings, the atelier fact values, and the three claims under
-  the hero. Display headings are medium (500), as on the board the owner chose. Every heading
-  rule reads `--font-heading-weight` instead of a number, so the weight is set once, in
-  `snippets/theme-fonts.liquid`. They were pinned at regular while the heading face was
-  Playfair Display.
+  the hero. Headings are bold (700), as on the board the owner chose. Every heading rule reads
+  `--font-heading-weight` instead of a number, so the weight is set once, in
+  `snippets/theme-fonts.liquid`. Product card titles and benefit headings stay at 600; the
+  benefit headings use the text face’s variables, as small capital labels do.
 - `sections/image-banner.liquid` — writing `[years]` in the hero heading or text renders the
   number of years since `founded_year` (1991), so the count never goes stale.
 - **Top bar.** `sections/announcement-bar.liquid`, `snippets/header-drawer.liquid` and the
@@ -276,10 +281,10 @@ Anything of ours that is not a Dawn setting lives in these two places:
     keeps Dawn’s centred layout.
   - On phones the arrows hide only while the bar rotates by itself. Visitors who ask for
     reduced motion keep them, because Dawn stops the rotation for them.
-  - Bar text is the body face (Inter), not the heading face — the reference sets its bar in its body face.
+  - Bar text uses the body face variables, not the heading ones — the reference sets its bar in its body face.
   - The message padding is uneven on purpose (0.9rem over 0.7rem): even padding left the capitals
     2px above the arrows’ centre. Check with measured cap height, not the line box. Re-measured
-    after the switch to Inter: still level.
+    after each font change, most recently to Jost: still level.
   - Two messages, as the owner chose on 2026-09-13: Безупречно качество до детайла · Лична
     грижа за всеки клиент. The first is the reference’s "premium quality in every piece" idea
     in our own words; the second is the owner’s "грижа за клиентите", made personal. Earlier
@@ -294,6 +299,8 @@ Anything of ours that is not a Dawn setting lives in these two places:
   (viewport minus about 235px of icons and gutters) and tops out at 20px; without that,
   JEWELLERY split mid-word on every phone narrower than 390px. The 235 assumes search,
   account and cart — adding a header icon, or a longer name, means measuring again.
+  Re-measured with Jost at 700: JEWELLERY takes 120px of the 125px available at 360px and
+  81px of 85px at 320px. It fits, but a wider or heavier face, or more tracking, would not.
 - **About page.** Rebuilt on 2026-09-13 on the reference’s About page, in
   `templates/page.about.json`: an intro, three story blocks, then the questions.
   - `sections/about-intro.liquid` with `assets/section-about-intro.css`: the title, one line,
