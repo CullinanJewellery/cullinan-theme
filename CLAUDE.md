@@ -250,6 +250,15 @@ Anything of ours that is not a Dawn setting lives in these two places:
   - The link has been a black button since then, styled like "view all" under the product row
     (34rem × 6.4rem, 14px capitals, the fill drops to an outline on hover, full width on
     phones). It still renders only when both its text and its link are set.
+  - **A second one, directly under it, leads to Нашият дизайн** (2026-09-14, at the owner’s
+    request, picture on the right): section key `design_teaser`, eyebrow Нашият дизайн,
+    „Как се ражда едно бижу?“, idea → model → 3D printer → „и това е само началото“, and a
+    button „Вижте как го правим“ to `/pages/за-нас#dizain`. Its top padding is 24, so the
+    space between the two blocks is 88px, the same as above the first; the reference sets
+    consecutive blocks like these close together, on alternating sides.
+  - **Media on the right mirrors the columns** (55fr 45fr). Before, `order` alone moved the
+    media into the wider track, so the right-hand version had a 680 × 850 picture against
+    556 × 695 in the left-hand one.
 - **Category mosaic.** `sections/category-mosaic.liquid` with
   `assets/section-category-mosaic.css`. Four columns, tall tiles at each end spanning both
   rows, squares between — the block order drives it, because `grid-auto-flow: dense`
@@ -402,8 +411,8 @@ Anything of ours that is not a Dawn setting lives in these two places:
     owner — do not answer them from assumption.
   - No photographs yet; the three image halves are flat sand blocks.
 - Homepage, working top to bottom: announcement bar, header and hero are built; the product
-  row is built; the atelier block now leads to the inspiration story on За нас (see Atelier
-  section above); the newsletter is still Dawn's default.
+  row is built; two atelier blocks now lead to the inspiration and design stories on За нас
+  (see Atelier section above); the newsletter is still Dawn's default.
 - Dawn's placeholder illustration has been removed from the hero. The empty image slot is an
   empty div, and Dawn's base.css hides every empty div (`div:empty { display: none }`). On
   phones crown.css shows it again as a flat stone square. **On desktop it is still hidden**,

@@ -227,6 +227,27 @@
         "padding_bottom": 64
       }
     },
+    "design_teaser": {
+      "type": "atelier",
+      "settings": {
+        "media_position": "right",
+        "color_scheme": "scheme-1",
+        "video_url": "",
+        "eyebrow": "Нашият дизайн",
+        "heading": "Как се ражда едно бижу?",
+        "paragraph": "<p>Всяко наше бижу започва като идея. Превръщаме я в модел, отпечатваме го на 3D принтер и го оглеждаме от всеки ъгъл — и това е само началото.</p>",
+        "fact_1_value": "",
+        "fact_1_label": "",
+        "fact_2_value": "",
+        "fact_2_label": "",
+        "fact_3_value": "",
+        "fact_3_label": "",
+        "link_label": "Вижте как го правим",
+        "link_url": "/pages/за-нас#dizain",
+        "padding_top": 24,
+        "padding_bottom": 64
+      }
+    },
     "newsletter": {
       "type": "newsletter",
       "blocks": {
@@ -385,6 +406,7 @@
     "category_mosaic",
     "benefits",
     "atelier",
+    "design_teaser",
     "newsletter"
   ]
 }
