@@ -191,6 +191,24 @@
       </nav>
     {%- endif -%}
   </div>
+
+  {%- comment -%}
+    The bar is sticky with the header (assets/crown.css), and the header sticks
+    right under it. This keeps --announcement-bar-height equal to the bar: at
+    first paint, and whenever its height changes -- a message wrapping to two
+    lines on a narrow phone, or the theme editor.
+  {%- endcomment -%}
+  <script>
+    (function () {
+      var section = document.currentScript && document.currentScript.closest('.shopify-section');
+      if (!section) return;
+      var setHeight = function () {
+        document.documentElement.style.setProperty('--announcement-bar-height', section.offsetHeight + 'px');
+      };
+      setHeight();
+      if ('ResizeObserver' in window) new ResizeObserver(setHeight).observe(section);
+    })();
+  </script>
 </div>
 
 {% schema %}

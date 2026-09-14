@@ -192,6 +192,36 @@
 }
 
 /* ---------------------------------------------------------------------------
+   Sticky top bar and header
+
+   Both stay on screen while the page scrolls, down and up, as on the
+   reference, where the bar and the menu share one sticky wrapper at the top
+   (2026-09-14, at the owner's request). Dawn renders them as two sections, so
+   the bar sticks at the top and the header -- set to Always sticky in
+   sections/header-group.json -- sticks right under it, at the height a small
+   script in sections/announcement-bar.liquid keeps in --announcement-bar-height.
+   The sibling selector puts the header back at the top if the bar is removed.
+   Once positioned, the bar section takes Dawn's z-index 4 for header-group
+   sections, one above the header's 3.
+   --------------------------------------------------------------------------- */
+
+.announcement-bar-section.shopify-section-group-header-group {
+  position: sticky;
+  top: 0;
+}
+
+.announcement-bar-section ~ .section-header.shopify-section-header-sticky {
+  top: var(--announcement-bar-height, 0px);
+}
+
+/* Jump links (the About page, the homepage teaser buttons) and keyboard focus
+   stop below the sticky bar and header instead of under them. --header-height
+   is Dawn's, set by its sticky header script. */
+html {
+  scroll-padding-top: calc(var(--announcement-bar-height, 0px) + var(--header-height, 0px));
+}
+
+/* ---------------------------------------------------------------------------
    Header
 
    Wordmark and navigation both set in spaced capitals, the navigation smaller

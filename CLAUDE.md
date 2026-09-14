@@ -374,6 +374,14 @@ Anything of ours that is not a Dawn setting lives in these two places:
     11px (the longest measures 287px of 300); a longer message pushes the phone bar to two lines.
   - Social icons and the country/language selectors in the bar are off. Turning either on
     means revisiting the grid, which only has slots for the message and the links.
+  - **The bar and the header stay on screen while scrolling, down and up** (2026-09-14, at the
+    owner’s request; the reference does the same). The header is set to Always sticky in
+    `sections/header-group.json` (it was “on scroll up”, which hid it going down). The bar
+    sticks at the top through `assets/crown.css`, and the header sticks right under it at
+    `--announcement-bar-height`, which an inline script at the end of
+    `sections/announcement-bar.liquid` measures and keeps current. `html` gets
+    `scroll-padding-top` of bar plus header, so jump links (the About page buttons, the
+    homepage teaser buttons) stop below them instead of under them.
 - **Header height.** The header section’s padding is 12px top and bottom (Dawn’s default is
   20), set in `sections/header-group.json`, at the owner’s request for a smaller bar
   (2026-09-14). From 990px the bar is 68px (was 84): 12 + the icons’ 44px tap areas + 12.
