@@ -325,10 +325,14 @@ Anything of ours that is not a Dawn setting lives in these two places:
     and visible in the editor: istoriya, dizain, materiali, vaprosi. A section added in the
     editor gets a random key, so a section id would be unreachable from a link.
   - The reference sends each of these links to a separate page; the owner wants them on one.
-  - Its icons live in `snippets/icon-benefit.liquid` with the rest: scroll (inspiration — first drawn for history, kept when that button became inspiration), ring-tools
-    (design — a ring with a stone and tweezers, after a picture the owner chose, drawn fresh),
-    gem (materials), question (questions). The owner asked for the icons to stay as they are; a crown drawn for inspiration was removed at their request. Every new icon is drawn in a preview and looked at
-    before it ships.
+  - Its icons live in `snippets/icon-benefit.liquid` with the rest: brilliant (inspiration — a
+    round brilliant from above, for the Cullinan diamond), ring-tools (design — a ring with a
+    stone and tweezers, after a picture the owner chose, drawn fresh), crystals (materials —
+    **one** crystal since 2026-09-14, at the owner’s request; the value keeps its plural name
+    because the template stores it), question (questions). Scroll and gem were used before
+    and stay in the snippet; a crown drawn for inspiration was removed at the owner’s request.
+    Change an icon only when the owner asks for that icon. Every new icon is drawn in a
+    preview and looked at beside its neighbours before it ships.
 - **Page title switch.** `sections/main-page.liquid` has a `show_title` checkbox, on by
   default. Templates that bring their own headline turn it off; `page.about` does.
 
