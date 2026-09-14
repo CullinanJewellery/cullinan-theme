@@ -272,6 +272,10 @@ Anything of ours that is not a Dawn setting lives in these two places:
   `--font-heading-weight` instead of a number, so the weight is set once, in
   `snippets/theme-fonts.liquid`. Product card titles and benefit headings stay at 600; the
   benefit headings use the text face’s variables, as small capital labels do.
+  - **The header menu categories are 600** (2026-09-14, at the owner’s request for bold), the
+    desktop inline menu only. 700 was tried beside the wordmark and outweighed the shop name.
+    The phone drawer and the mega menu links keep their weight — the owner asked about the
+    menu in the header bar.
 - `sections/image-banner.liquid` — writing `[years]` in the hero heading or text renders the
   number of years since `founded_year` (1991), so the count never goes stale.
 - **Top bar.** `sections/announcement-bar.liquid`, `snippets/header-drawer.liquid` and the
