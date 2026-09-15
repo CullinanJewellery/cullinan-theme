@@ -149,9 +149,6 @@
           <div class="contact-methods__panel color-{{ section.settings.panel_color_scheme }} gradient">
             <div class="contact-methods__columns">
               <div class="contact-methods__text rte">
-                {%- if block.settings.phone != blank -%}
-                  <p class="contact-methods__number">{{ block.settings.phone | escape }}</p>
-                {%- endif -%}
                 {{ block.settings.text }}
               </div>
               {%- if dial != blank and block.settings.button_label != blank -%}

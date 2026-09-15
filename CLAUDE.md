@@ -534,8 +534,9 @@ Anything of ours that is not a Dawn setting lives in these two places:
   and plus sign in a 1160px column (86px tall on desktop, a 1px rule under each closed row, 35px
   icons, 20px titles), each opening onto a full-width tinted panel with words on the left and the
   action on the right. Blocks: `form` (Shopify’s contact form, sent to the store email; one
-  only), `phone` (the number, and a call button dialled from it) and `link` (a button that stays
-  hidden without a link). Rows are `<details>`, so they need no JavaScript; the form block sits
+  only), `phone` (a call button dialled from the number, which is not shown as text -- see
+  Контакти under Current state) and `link` (a button that stays hidden without a link). Rows
+  are `<details>`, so they need no JavaScript; the form block sits
   inside the `{% form %}` so a sent or refused message comes back with its row open. The phone
   field has no pattern: Dawn’s `[0-9\-]*` refuses +359 and spaces. Field names are Bulgarian
   (Име, Телефон, Съобщение) so the store’s notification email reads in Bulgarian; only
@@ -578,7 +579,14 @@ Anything of ours that is not a Dawn setting lives in these two places:
   Към всеки подхождаме лично и с внимание…“, the owner’s idea in polished words, 2026-09-15; it
   replaced a line with the form and the phone number, at the owner’s request) and two rows,
   Имейл with the contact form and
-  Телефон with +359 88 287 4895, the owner’s number.
+  Телефон, calling +359 88 287 4895 -- the owner’s number, still the block’s `phone` setting
+  and still what the „Обадете се“ button dials, just not printed as text any more.
+  - **The number no longer shown, at the owner’s request** (2026-09-15): only the call button
+    remains under Телефон; `sections/contact-methods.liquid` no longer prints
+    `block.settings.phone` above it. The line above the button also changed, since it used to
+    say „Обадете ни се“ (call us) right next to the number itself: now „Предпочитате да
+    поговорим? Ще се радваме да чуем от вас.“, which doesn’t depend on the number being on
+    the page.
   - **The banner picture** was uploaded by the owner on 2026-09-15 in the theme editor:
     `ChatGPT_Image_Sep_15_2026_12_04_20_PM.png`, 2048 × 768, a pale blush marble with rosy-brown
     veins, veil 0, made with ChatGPT; the owner uses AI pictures on the site (see How we work).
