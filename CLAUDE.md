@@ -129,7 +129,7 @@ Rules that matter here:
 | scheme-5 | `#E7E1D6` warm sand | `#221F1C` | Feature blocks. |
 | scheme-6 | `#F5F4F0` light greige | `#221F1C` | The reference’s band colour. Нашето вдъхновение on the homepage. Buttons `#5B5548`. |
 | scheme-7 | `#D8DFBF` milky matcha | `#221F1C` | Нашите материали on the homepage. Owner’s choice, 2026-09-14. Buttons `#3D5229`. |
-| scheme-8 | `#F1E3DC` marble blush | `#221F1C` | Контакти footer: Facebook/Instagram hover, matched to the banner picture (2026-09-15). Black buttons. |
+| scheme-8 | `#F1E3DC` marble blush | `#221F1C` | Контакти: open-row panels and the footer’s Facebook/Instagram hover, matched to the banner picture (2026-09-15). Black buttons. |
 
 - Type: **Jost** for everything since 2026-09-14: headings bold (700), text regular (400).
   The owner first chose EB Garamond with Inter (option D), then the same day asked for the
@@ -545,14 +545,15 @@ Anything of ours that is not a Dawn setting lives in these two places:
   - **The banner picture** was uploaded by the owner on 2026-09-15 in the theme editor:
     `ChatGPT_Image_Sep_15_2026_12_04_20_PM.png`, 2048 × 768, a pale blush marble with rosy-brown
     veins, veil 0, made with ChatGPT; the owner uses AI pictures on the site (see How we work).
-  - **The open rows, matched and then reverted** (the owner’s request, 2026-09-15): the panels
-    were set to scheme-8, `#F1E3DC` — the marble’s base colour, the median of the lighter 70% of
-    pixels in the part the banner shows — then the whole open row, title line included. Seeing it
-    live, the owner didn’t like the colour and asked for moonmagic.com’s own Contact Us page
-    instead: checked there, a row is never coloured, open or closed, and only the panel gets a
-    barely-there neutral tint (`rgb(247, 248, 249)`, a shade off white). Reverted to match: rows
-    carry no colour scheme again, and the panel is back on scheme-2, the section’s own default,
-    as it was before this detour. scheme-8 stays defined, now only for the footer note below.
+  - **The open rows: moonmagic’s pattern, our own colour** (the owner’s request, 2026-09-15):
+    first the panels were coloured scheme-8, `#F1E3DC` — the marble’s base colour, the median of
+    the lighter 70% of pixels in the part the banner shows — then the whole open row, title line
+    included. The owner didn’t like the whole row coloured and pointed to moonmagic.com’s own
+    Contact Us page: there a row is never coloured, open or closed, and only the panel carries a
+    tint. That structure is what changed — `contact-methods__item` carries no colour scheme, only
+    `contact-methods__panel` does — but the colour itself stayed ours: the owner asked for
+    scheme-8 back, not moonmagic’s own neutral grey. So the title line sits on the page ground
+    whether a row is open or shut, and an open row’s panel is the marble’s blush.
   - **The footer on Контакти** (the owner’s request, 2026-09-15): above the Facebook and
     Instagram buttons it says „Пишете ни и тук“ / „Изпратете ни съобщение във Facebook или
     Instagram — ще ви отговорим и там.“ instead of „Вижте работата ни“ and its line, and the
