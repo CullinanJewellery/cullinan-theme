@@ -1289,13 +1289,17 @@ html {
   On Контакти the buttons fill with the page's blush instead of black (2026-09-15,
   at the owner's request): --footer-social-hover, which sections/footer.liquid sets
   from scheme-8 on the contact template only -- the colour of the open Имейл and
-  Телефон rows. The words and the outline stay black, which reads on the pale fill.
-  One class more than the hover rules above, so it wins on phones and desktop alike.
+  Телефон rows. The outline is the same blush as the fill, so the box reads as one
+  solid piece of colour with no seam. The owner then asked for the icon and the
+  word to be the same family of colour too, just dark enough to stand out: a rosy
+  brown at the blush's own hue (20°) and a third of its lightness, in the veins'
+  own colour rather than plain black. One class more than the hover rules above,
+  so it wins on phones and desktop alike.
 */
 .footer__social--contact .footer__list-social .list-social__link:hover,
 .footer__social--contact .footer__list-social .list-social__link:active,
 .footer__social--contact .footer__list-social .list-social__link:focus-visible {
   background-color: rgb(var(--footer-social-hover, 0, 0, 0));
-  color: rgb(0 0 0);
-  box-shadow: inset 0 0 0 1px rgb(0 0 0);
+  color: #634536;
+  box-shadow: inset 0 0 0 1px rgb(var(--footer-social-hover, 0, 0, 0));
 }
