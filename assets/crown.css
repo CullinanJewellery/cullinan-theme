@@ -994,6 +994,48 @@ html {
   padding-bottom: 3rem;
 }
 
+/*
+  A background picture behind the whole band, at the owner's request
+  (2026-09-15) -- a fourth place words sit over an image, after the hero,
+  the Контакти banner and its footer (see Design direction in CLAUDE.md).
+  Empty until the owner uploads one, so the band looks and behaves exactly
+  as before either way. The wrapper is already position: relative (Dawn's
+  own .content-container rule), and, unlike the footer's picture, needs no
+  100vw breakout: full_width leaves .newsletter__wrapper unwrapped in any
+  page-width, so inset: 0 already reaches the true edges.
+
+  The veil defaults to 30%, not the 0% the banner and footer start at: this
+  band's text is fixed to off-white above, not a colour scheme the owner
+  can match to their photo, so a bare picture risks illegible text until
+  they tune the veil down for a darker photo of their own.
+*/
+.newsletter__media {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.newsletter__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.newsletter__media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: #000000;
+  opacity: var(--newsletter-veil, 0);
+}
+
+.newsletter--picture > :not(.newsletter__media) {
+  position: relative;
+  z-index: 1;
+}
+
 .newsletter--crown h2 {
   font-size: clamp(2.2rem, 3.6vw, 4rem);
   font-weight: var(--font-heading-weight);

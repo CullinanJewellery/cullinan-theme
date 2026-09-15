@@ -16,7 +16,26 @@
 {%- endstyle -%}
 
 <div class="newsletter center {% if section.settings.full_width == false %}newsletter--narrow page-width{% endif %}">
-  <div class="newsletter__wrapper newsletter--crown color-{{ section.settings.color_scheme }} gradient content-container isolate{% if section.settings.full_width %} content-container--full-width{% endif %} section-{{ section.id }}-padding">
+  <div class="newsletter__wrapper newsletter--crown color-{{ section.settings.color_scheme }} gradient content-container isolate{% if section.settings.full_width %} content-container--full-width{% endif %} section-{{ section.id }}-padding{% if section.settings.background_image != blank %} newsletter--picture{% endif %}"
+    {%- if section.settings.background_image != blank -%}
+      style="--newsletter-veil: {{ section.settings.overlay_opacity | divided_by: 100.0 }};"
+    {%- endif -%}
+  >
+    {%- if section.settings.background_image != blank -%}
+      {%- comment -%}
+        Decorative: the heading and text carry the meaning, so the alt is empty,
+        same as the Контакти banner and its footer picture (2026-09-15, at the
+        owner's request -- a fourth place words sit over an image, see Design
+        direction in CLAUDE.md).
+      {%- endcomment -%}
+      <div class="newsletter__media">
+        {{
+          section.settings.background_image
+          | image_url: width: 3000
+          | image_tag: widths: '750, 1100, 1500, 1920, 2400, 3000', sizes: '100vw', alt: '', loading: 'lazy'
+        }}
+      </div>
+    {%- endif -%}
     {%- for block in section.blocks -%}
       {%- case block.type -%}
         {%- when '@app' -%}
@@ -174,6 +193,23 @@
       "id": "full_width",
       "default": true,
       "label": "t:sections.newsletter.settings.full_width.label"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background picture",
+      "info": "Covers the black band, with the heading, text and form over it. Empty by default -- upload your own."
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 0,
+      "max": 90,
+      "step": 10,
+      "unit": "%",
+      "label": "Veil over the picture",
+      "info": "Black, laid over the picture, for when the words need help.",
+      "default": 30
     },
     {
       "type": "header",

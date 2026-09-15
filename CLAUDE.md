@@ -87,7 +87,7 @@ Rules that matter here:
   - **One deliberate exception:** the homepage hero. Its heading, subtitle and button are
     live theme text laid over the photograph, centred, following moonmagic.com. Agreed
     2026-09-06. The photograph itself still carries no baked-in text. (No longer the only
-    such place -- two more exceptions follow below.)
+    such place -- three more exceptions follow below.)
     - **On phones the words sit below the photograph** (2026-09-14, at the owner’s request,
       as the reference does): the hero’s own "content below image on mobile" setting is on.
       The photo slot is a full-width square, then the heading, text and a full-width black
@@ -104,8 +104,11 @@ Rules that matter here:
     Контакти -- the heading, the line and the Facebook/Instagram buttons (see Контакти under
     Current state below) sit over a background picture once one is uploaded, full-bleed to the
     page’s own edges like the banner above it. Two tries got this wrong first: a background
-    only as wide as the column, then a strip between the words and the buttons. No other place
-    gets words over an image.
+    only as wide as the column, then a strip between the words and the buttons.
+  - **Fourth exception, at the owner’s instruction (2026-09-15):** the homepage newsletter band
+    (see Newsletter under Custom code below) -- its heading, text and form sit over a
+    background picture once one is uploaded, the same way. No other place gets words over an
+    image.
 - **Restraint reads as expensive.** Empty space is the main luxury signal. When in doubt,
   remove rather than add.
 - **Gold comes from the photographs, not the interface.** The gold accent is muted and used
@@ -118,6 +121,16 @@ Rules that matter here:
       text”). The band’s own padding, the heading and paragraph, and the field/button
       themselves all came down together, roughly a fifth off each -- not just the outer
       padding. All in the same `.newsletter--crown` rules in `assets/crown.css`.
+    - **A background picture, at the owner’s request, same day** (“make the black box a
+      picture placer”): `sections/newsletter.liquid` gained a **Background picture** and a
+      **Veil over the picture** (0–90%, default **30%**, not the 0% the Контакти banner and
+      its footer start at -- this band’s text is fixed to off-white, not a colour scheme the
+      owner can match to their photo, so a bare picture risks illegible text until they tune
+      the veil down for a darker photo of their own). Empty until the owner uploads one, so
+      the band looks and behaves exactly as before either way. `.newsletter__wrapper` is
+      already `position: relative` (Dawn’s own `.content-container` rule) and, `full_width`
+      leaving it outside any `page-width`, needs no breakout trick to reach the true edges --
+      unlike the footer’s picture, which does.
   - **Second exception, at the owner’s instruction (2026-09-14):** dark buttons are pure black
     `#000000` with pure white `#FFFFFF` text. Set as the button colours of schemes 1, 2 and 5 in
     `config/settings_data.json`, so every dark button matches, and the cart count bubble with
