@@ -1303,3 +1303,46 @@ html {
   color: #634536;
   box-shadow: inset 0 0 0 1px rgb(var(--footer-social-hover, 0, 0, 0));
 }
+
+/*
+  A background picture behind the Контакти social block, at the owner's
+  request (2026-09-15) -- a third place words sit over an image, after the
+  hero and the Контакти banner. Empty until the owner uploads one (theme
+  editor -> Footer -> Social buttons on the Контакти page), so the block
+  looks and behaves exactly as before either way. The picture sits behind
+  the heading, the line and the buttons; --footer-social-veil, set from the
+  section's own range setting, lays the page's own background over it when
+  the words need help, the same mechanism as the Контакти banner's veil.
+*/
+.footer__social--picture {
+  position: relative;
+  overflow: hidden;
+  padding: 4rem 2rem;
+}
+
+.footer__social-media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.footer__social-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.footer__social-media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: rgb(var(--color-background));
+  opacity: var(--footer-social-veil, 0);
+}
+
+.footer__social--picture .footer__social-intro,
+.footer__social--picture .footer__list-social {
+  position: relative;
+  z-index: 1;
+}
