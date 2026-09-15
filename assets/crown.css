@@ -194,29 +194,53 @@
 /* ---------------------------------------------------------------------------
    Sticky top bar and header
 
-   Both stay on screen while the page scrolls, down and up, as on the
-   reference, where the bar and the menu share one sticky wrapper at the top
-   (2026-09-14, at the owner's request). Dawn renders them as two sections, so
-   the bar sticks at the top and the header -- set to Always sticky in
-   sections/header-group.json -- sticks right under it, at the height a small
-   script in sections/announcement-bar.liquid keeps in --announcement-bar-height.
-   The sibling selector puts the header back at the top if the bar is removed.
-   Once positioned, the bar section takes Dawn's z-index 4 for header-group
-   sections, one above the header's 3.
+   Both sit at the top of the screen and slide away while the visitor reads
+   down the page (2026-09-15, at the owner's request; on 2026-09-14 they stayed
+   on screen all the time, as on the reference). Scrolling down they wait
+   150px, "not in the moment but a little later", then slide up together;
+   scrolling up they come back after 10px. The script at the end of
+   sections/announcement-bar.liquid decides and sets html.sticky-bars-hidden,
+   and keeps both on screen while a menu, dropdown or the search is open, or
+   while keyboard focus is in them.
+
+   Dawn renders the bar and the header as two sections, so the bar sticks at
+   the top and the header -- Always sticky in sections/header-group.json, which
+   keeps Dawn's own hide-on-scroll out of the way -- sticks right under it, at
+   --announcement-bar-height. Hidden, each moves up by the height of both, so
+   they travel as one. The sibling selector puts the header back at the top if
+   the bar is removed. Once positioned, the bar section takes Dawn's z-index 4
+   for header-group sections, one above the header's 3.
    --------------------------------------------------------------------------- */
 
 .announcement-bar-section.shopify-section-group-header-group {
   position: sticky;
   top: 0;
+  transition: top 0.3s ease-out;
 }
 
 .announcement-bar-section ~ .section-header.shopify-section-header-sticky {
   top: var(--announcement-bar-height, 0px);
+  transition: top 0.3s ease-out;
+}
+
+html.sticky-bars-hidden .announcement-bar-section.shopify-section-group-header-group {
+  top: calc(-1 * (var(--announcement-bar-height, 0px) + var(--header-height, 0px)));
+}
+
+html.sticky-bars-hidden .announcement-bar-section ~ .section-header.shopify-section-header-sticky {
+  top: calc(-1 * var(--header-height, 0px));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .announcement-bar-section.shopify-section-group-header-group,
+  .announcement-bar-section ~ .section-header.shopify-section-header-sticky {
+    transition: none;
+  }
 }
 
 /* Jump links (the About page, the homepage teaser buttons) and keyboard focus
-   stop below the sticky bar and header instead of under them. --header-height
-   is Dawn's, set by its sticky header script. */
+   stop below the bar and header instead of under them. --header-height is
+   Dawn's name; the bar's script keeps it measured. */
 html {
   scroll-padding-top: calc(var(--announcement-bar-height, 0px) + var(--header-height, 0px));
 }
@@ -338,6 +362,42 @@ html {
   stroke: currentColor;
   stroke-width: 0.9;
   stroke-linejoin: round;
+}
+
+/*
+  Phones: a more compact bar (2026-09-15, at the owner's request), 47px
+  instead of 57 -- the reference's is 46px at 375px. The logo is 112px wide
+  instead of filling its 140px cell, the icons 17px instead of 20 (the bag,
+  drawn inside a 40-unit box, 37.4px instead of 44), their tap areas 40px
+  instead of 44, and 3px above and below instead of Dawn's 6. The black bar
+  above is unchanged. Each selector carries .header to beat Dawn's rules, and
+  .header-wrapper beats the padding header.liquid prints after this file.
+*/
+@media screen and (max-width: 749px) {
+  .header-wrapper .header {
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+  }
+
+  .header .header__heading-logo-wrapper {
+    width: 11.2rem;
+  }
+
+  .header .header__icon,
+  .header .header__icon .svg-wrapper {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  .header .header__icon .icon {
+    width: 1.7rem;
+    height: 1.7rem;
+  }
+
+  .header .header__icon--cart .icon {
+    width: 3.74rem;
+    height: 3.74rem;
+  }
 }
 
 /* ---------------------------------------------------------------------------

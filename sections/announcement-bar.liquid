@@ -194,19 +194,95 @@
 
   {%- comment -%}
     The bar is sticky with the header (assets/crown.css), and the header sticks
-    right under it. This keeps --announcement-bar-height equal to the bar: at
-    first paint, and whenever its height changes -- a message wrapping to two
-    lines on a narrow phone, or the theme editor.
+    right under it. This keeps --announcement-bar-height equal to the bar and
+    --header-height (Dawn's name, which Dawn measures only once) equal to the
+    header, whenever either changes: a message wrapping to two lines, a phone
+    turned sideways, the theme editor.
+
+    It also hides both while the visitor scrolls down and brings them back
+    when they scroll up (2026-09-15, at the owner's request). html gets
+    sticky-bars-hidden after 150px of scrolling down, and loses it after 10px
+    up, at the top of the page, or when keyboard focus comes into either bar.
+    Nothing hides while a menu, dropdown or the search is open.
   {%- endcomment -%}
   <script>
     (function () {
       var section = document.currentScript && document.currentScript.closest('.shopify-section');
       if (!section) return;
+      var root = document.documentElement;
+      var HIDE_AFTER = 150;
+      var SHOW_AFTER = 10;
+      var header = null;
+
       var setHeight = function () {
-        document.documentElement.style.setProperty('--announcement-bar-height', section.offsetHeight + 'px');
+        root.style.setProperty('--announcement-bar-height', section.offsetHeight + 'px');
       };
       setHeight();
       if ('ResizeObserver' in window) new ResizeObserver(setHeight).observe(section);
+
+      var findHeader = function () {
+        if (header) return header;
+        header = document.querySelector('.section-header');
+        if (header && 'ResizeObserver' in window) {
+          new ResizeObserver(function () {
+            root.style.setProperty('--header-height', header.offsetHeight + 'px');
+          }).observe(header);
+        }
+        return header;
+      };
+      document.addEventListener('DOMContentLoaded', findHeader);
+
+      var lastY = window.scrollY;
+      var down = 0;
+      var up = 0;
+      var ticking = false;
+
+      var busy = function () {
+        if (!header) return false;
+        if (header.querySelector('details[open]')) return true;
+        var active = document.activeElement;
+        return !!(active && active !== document.body && (header.contains(active) || section.contains(active)));
+      };
+
+      var update = function () {
+        ticking = false;
+        findHeader();
+        var max = root.scrollHeight - window.innerHeight;
+        var y = Math.max(0, Math.min(window.scrollY, max));
+        var delta = y - lastY;
+        lastY = y;
+        if (delta > 0) {
+          down += delta;
+          up = 0;
+        } else if (delta < 0) {
+          up -= delta;
+          down = 0;
+        }
+        var hidden = root.classList.contains('sticky-bars-hidden');
+        var bars = section.offsetHeight + (header ? header.offsetHeight : 0);
+        if (!hidden && down >= HIDE_AFTER && y > bars && !busy()) {
+          root.classList.add('sticky-bars-hidden');
+        } else if (hidden && (up >= SHOW_AFTER || y <= bars)) {
+          root.classList.remove('sticky-bars-hidden');
+        }
+      };
+
+      window.addEventListener(
+        'scroll',
+        function () {
+          if (ticking) return;
+          ticking = true;
+          requestAnimationFrame(update);
+        },
+        { passive: true }
+      );
+
+      document.addEventListener('focusin', function (event) {
+        findHeader();
+        if (section.contains(event.target) || (header && header.contains(event.target))) {
+          root.classList.remove('sticky-bars-hidden');
+        }
+      });
     })();
   </script>
 </div>

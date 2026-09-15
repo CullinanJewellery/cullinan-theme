@@ -383,12 +383,21 @@ Anything of ours that is not a Dawn setting lives in these two places:
     11px (the longest measures 287px of 300); a longer message pushes the phone bar to two lines.
   - Social icons and the country/language selectors in the bar are off. Turning either on
     means revisiting the grid, which only has slots for the message and the links.
-  - **The bar and the header stay on screen while scrolling, down and up** (2026-09-14, at the
-    owner’s request; the reference does the same). The header is set to Always sticky in
-    `sections/header-group.json` (it was “on scroll up”, which hid it going down). The bar
-    sticks at the top through `assets/crown.css`, and the header sticks right under it at
-    `--announcement-bar-height`, which an inline script at the end of
-    `sections/announcement-bar.liquid` measures and keeps current. `html` gets
+  - **The bar and the header slide away scrolling down and come back scrolling up**
+    (2026-09-15, at the owner’s request: “not in the moment I scroll but a little bit later”).
+    From 2026-09-14 they stayed on screen all the time, as the reference’s do. The script at
+    the end of `sections/announcement-bar.liquid` sets `html.sticky-bars-hidden` after 150px of
+    scrolling down (and past the bars’ own height), and clears it after 10px up, near the top,
+    or when keyboard focus comes into either bar; nothing hides while a `details` in the
+    header is open (menu drawer, mega menu dropdown, search). `assets/crown.css` then moves both
+    up by their combined height in 0.3s (no animation under reduced motion). Tested on the
+    preview at 375 and 1440px: nothing at 120–140px, both fully off screen after 150px, back on
+    a 15–40px scroll up, kept while the search was open.
+    - The header stays Always sticky in `sections/header-group.json` (it was “on scroll up”
+      before 2026-09-14), which keeps Dawn’s own hide-on-scroll out of the way; ours hides the
+      bar with it. The bar sticks at the top and the header right under it at
+      `--announcement-bar-height`. The same script measures it, and `--header-height` too, with
+      ResizeObservers, because Dawn measures the header only once. `html` gets
     `scroll-padding-top` of bar plus header, so jump links (the About page buttons, the
     homepage teaser buttons) stop below them instead of under them.
 - **Header height.** The header section’s padding is 12px top and bottom (Dawn’s default is
@@ -397,6 +406,12 @@ Anything of ours that is not a Dawn setting lives in these two places:
   Dawn halves the padding below 990px, so phones get 6px; there the two-line wordmark is the
   tallest thing in the bar, which measured 63px on a 375px phone (was 71). The name, menu text
   and icons kept their sizes. The reference’s bar is 59px at 1440px.
+  - **Phones are more compact since 2026-09-15** (the owner’s request, the black bar left as it
+    was): 47px on a 375px phone instead of 57, against the reference’s 46. Below 750px
+    `assets/crown.css` sets the logo 112px wide (it filled a 140px cell), the icons 17px instead
+    of 20 (the bag 37.4px instead of 44 — it is drawn inside a 40-unit box), their tap areas
+    40px instead of 44, and 3px above and below instead of 6. Tablets from 750px keep Dawn’s
+    sizes.
   - **Centred on the capitals** (2026-09-14, the owner said the contents looked a little high).
     The icons were centred, but capitals have no descenders, so the name sat 1.5px above centre
     (1.9px on a phone) and the menu words 1.1px. `assets/crown.css` moves only the text: the
