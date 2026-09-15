@@ -344,10 +344,11 @@ Anything of ours that is not a Dawn setting lives in these two places:
   `--font-heading-weight` instead of a number, so the weight is set once, in
   `snippets/theme-fonts.liquid`. Product card titles and benefit headings stay at 600; the
   benefit headings use the text face’s variables, as small capital labels do.
-  - **The header menu categories are 600** (2026-09-14, at the owner’s request for bold), the
-    desktop inline menu only. 700 was tried beside the wordmark and outweighed the shop name.
-    The phone drawer and the mega menu links keep their weight — the owner asked about the
-    menu in the header bar.
+  - **The header menu categories are 700** (since 2026-09-15; the desktop inline menu only).
+    They were 600 from 2026-09-14, when 700 beside the spaced-capital wordmark outweighed the
+    shop name; once the name became a logo image the owner asked for them bold again. The
+    phone drawer and the mega menu links keep their weight — the owner asked about the menu
+    in the header bar.
 - `sections/image-banner.liquid` — writing `[years]` in the hero heading or text renders the
   number of years since `founded_year` (1991), so the count never goes stale.
 - **Top bar.** `sections/announcement-bar.liquid`, `snippets/header-drawer.liquid` and the
@@ -397,7 +398,23 @@ Anything of ours that is not a Dawn setting lives in these two places:
     (1.9px on a phone) and the menu words 1.1px. `assets/crown.css` moves only the text: the
     name 2px and the menu words 1px, as `position: relative` offsets on the text spans. Now
     all within half a pixel of the icons. Re-measure if the font, its size or the bar changes.
-- **Wordmark on phones.** Until a logo image is uploaded the header prints `shop.name` in
+  - **With the logo image** (2026-09-15: the owner uploaded `cullinan-logo-900.png`, 900 × 237,
+    at a logo width of 180 in Theme settings; Shopify committed it to `config/settings_data.json`).
+    Dawn pads the logo’s link by 0.75rem, which made the bar 87px; `assets/crown.css` drops the
+    padding above and below when the link holds a logo (`:has()`), so the bar is 72px on desktop
+    (12 + the 47px logo + 12, plus the 1px rule) and 57px on a 375px phone, where the logo is
+    140px wide. The owner asked for the smaller box.
+    - The logo’s tall C and ll fill its top half and the body of “ullinan” sits lower, its
+      centre about 10px below the image’s middle (measured on the PNG’s own pixels). Menu words
+      centred on the box read high beside it, so with a logo they sit 8px lower (the dropdown
+      caret with them), chosen by eye from 1, 5, 8 and 10px. The icons stay centred on the bar.
+    - Header icons are bolder at the owner’s request: a 0.9 stroke in the icon colour round
+      Dawn’s filled outlines (search, account, cart, and the menu button on phones), about 1px
+      more. 0.5 was too close to before; 0.9 keeps the bag’s handle and the magnifier open.
+    - All of this was measured in a local mock-up built from the theme’s real stylesheets and
+      the logo file, because the preview link had expired. Check it on the preview when there
+      is a new link.
+- **Wordmark on phones.** (Only without a logo image — one has been set since 2026-09-15.) Until a logo image is uploaded the header prints `shop.name` in
   spaced capitals. Below 750px its size follows the room Dawn’s header grid leaves it
   (viewport minus about 235px of icons and gutters) and tops out at 20px; without that,
   JEWELLERY split mid-word on every phone narrower than 390px. The 235 assumes search,

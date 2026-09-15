@@ -254,11 +254,12 @@ html {
   }
 }
 
-/* Bold at the owner's request (2026-09-14). 600 rather than 700: it reads as
-   bold at this size, and 700 made the categories heavier than the shop name. */
+/* Bold at the owner's request. 600 from 2026-09-14, when 700 outweighed the
+   spaced-capital shop name beside it; 700 since 2026-09-15, when the name
+   became a logo image and the owner asked for the words bold again. */
 .header__inline-menu .header__menu-item {
   font-size: 1.25rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -292,6 +293,51 @@ html {
 .header__inline-menu .header__menu-item span {
   position: relative;
   top: 0.1rem;
+}
+
+/*
+  With the logo image (2026-09-15, cullinan-logo-900.png, 900 x 237 at 180px
+  wide). Dawn pads the logo's link by 0.75rem all round, which made the bar
+  87px tall; without the padding above and below it is 72px again: 12px, the
+  47px logo, 12px. Scoped with :has() so the spaced-capital name, should the
+  logo ever be removed, keeps its padding.
+*/
+.header__heading-link:has(.header__heading-logo) {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/*
+  The script logo's tall C and ll fill its top half, and the body of
+  “ullinan” sits in the lower half, its centre about 10px below the
+  image's middle (measured on the image's own pixels). Menu words centred on the
+  box read high beside it, so they sit 8px lower, on the lettering, which
+  looked centred in a side-by-side check of 1, 5, 8 and 10px (2026-09-15, at
+  the owner's request). The caret of a menu item with a dropdown follows. The
+  icons, at the far end, stay centred on the bar. Re-measure if the logo, its
+  width or the menu size changes.
+*/
+.header__heading-link:has(.header__heading-logo) ~ .header__inline-menu .header__menu-item span,
+.header__heading:has(.header__heading-logo) ~ .header__inline-menu .header__menu-item span {
+  top: 0.8rem;
+}
+
+.header__heading-link:has(.header__heading-logo) ~ .header__inline-menu .header__menu-item .icon-caret,
+.header__heading:has(.header__heading-logo) ~ .header__inline-menu .header__menu-item .icon-caret {
+  margin-top: 0.8rem;
+}
+
+/*
+  Bolder header icons -- search, account, cart, and the menu button on phones
+  (2026-09-15, at the owner's request). Dawn draws them as filled outlines
+  about 1px thick; a stroke of the same colour round each shape adds about 1px
+  more. Checked side by side at 0.5 and 0.9: 0.9 reads as bold without closing
+  the bag's handle or the magnifier's ring.
+*/
+.header__icon .svg-wrapper svg path {
+  stroke: currentColor;
+  stroke-width: 0.9;
+  stroke-linejoin: round;
 }
 
 /* ---------------------------------------------------------------------------
