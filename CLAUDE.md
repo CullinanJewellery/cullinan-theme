@@ -592,10 +592,20 @@ Anything of ours that is not a Dawn setting lives in these two places:
       banner’s own veil. `.footer__social-media` breaks out of `footer__content-top`’s
       `page-width` with `left: 50%` and a translate, since `inset: 0` alone -- correct for the
       page banner, which isn’t nested in a `page-width` -- only reached the column here.
-      `100vw` also counts the scrollbar `100%` of the page doesn’t, which scrolled the page
-      itself sideways by the scrollbar’s width until `html` and `body` both took
-      `overflow-x: hidden` -- harmless, since nothing on the site scrolls the page sideways
-      on purpose.
+      `100vw` also counts the scrollbar `100%` of the page doesn’t, so the box overshot the
+      true right edge by the scrollbar’s width and scrolled the whole page sideways by that
+      much. Fixed on `html` and `body` at first (`overflow-x: hidden` on both, since body
+      scrolled on its own regardless of html’s overflow) -- **and that broke the sticky
+      header and top bar site-wide**, found from the owner’s report that scrolling up no
+      longer brought the bar back. Setting `overflow-x` to anything but `visible` forces the
+      *used* value of `overflow-y` to `auto` too (the CSS overflow spec’s rule for a mismatched
+      pair), quietly turning `body` into a scroll container of its own; `.section-header`’s
+      `position: sticky` (`sections/header.liquid`) sticks to the nearest such ancestor, not
+      necessarily the true viewport, so it stuck to a box that never itself scrolls and never
+      moved. Fixed properly by scoping `overflow-x: hidden` to `.footer` instead -- the only
+      element that actually overflows -- so `html` and `body` keep their default `overflow-y`
+      and the header’s stickiness is unaffected. **Lesson: never set `overflow-x` on `html` or
+      `body` on this site; scope it to whatever specific element is overflowing.**
     - **Closer to Имейл/Телефон, and Dawn’s own seams removed** (the owner’s request,
       2026-09-15): the row under Телефон left a second line right after its own, which was
       Dawn’s default hairline across the top of every footer -- gone on Контакти only, and

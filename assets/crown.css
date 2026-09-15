@@ -1321,13 +1321,20 @@ html {
   100vw counts the scrollbar that 100% of the page doesn't, so the box
   overshoots by the scrollbar's own width (measured 8px on the preview) --
   a few pixels past the true right edge, enough to make the page scroll
-  sideways by that much. html alone didn't stop it -- body scrolls on its
-  own regardless of html's overflow -- so both carry overflow-x: hidden,
-  the standard fix, harmless here since nothing on the site scrolls the
-  page horizontally on purpose.
+  sideways by that much.
+
+  Fixed on html and body at first, which broke the sticky header and top
+  bar site-wide (2026-09-15, found from the owner's report that scrolling
+  up no longer brought the bar back): setting overflow-x anything but
+  visible forces the used value of overflow-y to auto too, on both, per
+  the CSS overflow spec, which quietly turns body into a scroll container
+  of its own -- and .section-header's position: sticky sticks to the
+  nearest such ancestor, not necessarily the real viewport, so it stuck to
+  a box that never itself scrolls and never moved. Scoped to footer
+  instead, the only element that actually overflows, html and body stay
+  their default overflow-y and the header stickiness is unaffected.
 */
-html,
-body {
+.footer {
   overflow-x: hidden;
 }
 
