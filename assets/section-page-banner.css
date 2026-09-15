@@ -73,9 +73,10 @@
   On phones the reference's own contact banner sets its words left, not centred
   (2026-09-15, at the owner's request, checked on moonmagic.com/pages/contact-us
   at 375px: centred from 750px up, left below it, same as the hero's own phone
-  treatment elsewhere on the site). The text also runs smaller there, 14px
-  against the desktop 16px, and shorter (see the banner's text setting) --
-  both, at the owner's request: shorter wording and a smaller size.
+  treatment elsewhere on the site). The text also runs smaller there, 12px
+  against the desktop 16px (14px, then smaller again at the owner's request:
+  the size, not the words -- the wording is shortened too, see the banner's
+  text setting, but that was a separate, earlier request).
 */
 @media screen and (max-width: 749px) {
   .page-banner__inner {
@@ -84,6 +85,6 @@
 
   .page-banner__text {
     margin-left: 0;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
   }
 }

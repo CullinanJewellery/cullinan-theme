@@ -499,7 +499,8 @@ Anything of ours that is not a Dawn setting lives in these two places:
   - **Shorter wording, and smaller on phones** (2026-09-15). The two lines under the heading
     are trimmed -- the FAQ pointer drops “Може би вече сме отговорили”, the customer-care line
     drops its closing clause -- on every screen, since it's one shared text setting. On top of
-    that, the phone rule sets `.page-banner__text` to 14px against the desktop 16px.
+    that, the phone rule sets `.page-banner__text` to 12px against the desktop 16px: 14px at
+    first, then smaller again the same day, at the owner’s request -- the size, not the words.
 - **Contact methods.** `sections/contact-methods.liquid` with
   `assets/section-contact-methods.css`, after the reference’s Contact Us page: rows of icon, title
   and plus sign in a 1160px column (86px tall on desktop, a 1px rule under each closed row, 35px
