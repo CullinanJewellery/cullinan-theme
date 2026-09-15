@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -14,6 +23,8 @@
         "heading": "Как можем да помогнем?",
         "text": "<p>Имате въпрос за бижу, размер или гравиране? Може би вече сме отговорили във <a href=\"/pages/за-нас#vaprosi\" title=\"Въпроси и отговори\">Въпроси и отговори</a>.</p><p>За нас грижата за клиента е най-важна. Към всеки подхождаме лично и с внимание — от първия въпрос до момента, в който бижуто е във вашите ръце.</p>",
         "color_scheme": "scheme-5",
+        "image": "shopify://shop_images/ChatGPT_Image_Sep_15_2026_11_52_21_AM.png",
+        "overlay_opacity": 0,
         "min_height": 400
       }
     },
