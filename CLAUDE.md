@@ -519,7 +519,10 @@ Anything of ours that is not a Dawn setting lives in these two places:
   - No photographs yet; the three image halves are flat sand blocks.
 - **Контакти page** (2026-09-14, at the owner’s request, after the reference’s Contact Us):
   `templates/page.contact.json` is the page banner („Как можем да помогнем?“, a line pointing to
-  Въпроси и отговори on За нас, the phone number) and two rows, Имейл with the contact form and
+  Въпроси и отговори on За нас, and one on customer care: „За нас грижата за клиента е най-важна.
+  Към всеки подхождаме лично и с внимание…“, the owner’s idea in polished words, 2026-09-15; it
+  replaced a line with the form and the phone number, at the owner’s request) and two rows,
+  Имейл with the contact form and
   Телефон with +359 88 287 4895, the owner’s number. At the owner’s instruction there is no live
   chat and no WhatsApp. No email address is shown and no opening hours: neither has been given.
   The page already existed: Shopify’s default “Contact” page, `/pages/contact`, on the contact
