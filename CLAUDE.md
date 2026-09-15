@@ -42,7 +42,9 @@ their code, their images or their words; we are building Cullinan Jewellery, and
 make Cullinan Jewellery different (a workshop since 1991) are not on their site.
 
 Photography comes last. Build every image slot empty and make sure the layout holds when
-nothing is set. No placeholder graphics, no stock images, no AI-generated images anywhere.
+nothing is set. No placeholder graphics and no stock images. **AI-generated pictures are
+allowed:** the owner decided on 2026-09-15 to use them (the Контакти banner’s marble is one),
+replacing the earlier “no AI-generated images anywhere”. The owner chooses and uploads them.
 
 Never link to an empty collection. Structure can exist before content; navigation cannot.
 
@@ -489,8 +491,7 @@ Anything of ours that is not a Dawn setting lives in these two places:
   applies the focal point set in Shopify’s Files. A **Veil over the picture** (0–90%, default 0)
   lays the colour scheme’s background over it when the words need help; the scheme also sets
   the words’ colour, so a dark picture wants a dark scheme. With no picture the band is the
-  scheme’s colour, as before. No picture is chosen by us: stock and AI images are not allowed,
-  so the owner uploads their own.
+  scheme’s colour, as before. The owner chooses and uploads the picture.
 - **Contact methods.** `sections/contact-methods.liquid` with
   `assets/section-contact-methods.css`, after the reference’s Contact Us page: rows of icon, title
   and plus sign in a 1160px column (86px tall on desktop, a 1px rule under each closed row, 35px
@@ -543,11 +544,19 @@ Anything of ours that is not a Dawn setting lives in these two places:
   Телефон with +359 88 287 4895, the owner’s number.
   - **The banner picture** was uploaded by the owner on 2026-09-15 in the theme editor:
     `ChatGPT_Image_Sep_15_2026_12_04_20_PM.png`, 2048 × 768, a pale blush marble with rosy-brown
-    veins, veil 0. Its file name says ChatGPT made it; the project’s no-AI-images rule was pointed
-    out to the owner, and keeping or replacing it is the owner’s call.
+    veins, veil 0, made with ChatGPT; the owner uses AI pictures on the site (see How we work).
   - **The open rows match it** (the owner’s request, same day): the panels use scheme-8,
     `#F1E3DC`, the marble’s base colour — the median of the lighter 70% of pixels in the part the
     banner shows, which leaves the veins out. A different picture means measuring again.
+    Since 2026-09-15 the whole open row is that colour, its title line included: each `details`
+    carries the panel’s colour scheme, and a closed row is set back to transparent.
+  - **The footer on Контакти** (the owner’s request, 2026-09-15): above the Facebook and
+    Instagram buttons it says „Пишете ни и тук“ / „Изпратете ни съобщение във Facebook или
+    Instagram — ще ви отговорим и там.“ instead of „Вижте работата ни“ and its line, and the
+    buttons fill with scheme-8’s blush on hover or tap instead of black, words and outline
+    black. `sections/footer.liquid` switches on `template.suffix == 'contact'`; the two
+    texts are footer settings (Social buttons on the Контакти page) with those defaults, and
+    the colour is read from scheme-8 into `--footer-social-hover`. Other pages are unchanged.
   At the owner’s instruction there is no live
   chat and no WhatsApp. No email address is shown and no opening hours: neither has been given.
   The page already existed: Shopify’s default “Contact” page, `/pages/contact`, on the contact

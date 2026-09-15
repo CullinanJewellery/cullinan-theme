@@ -30,6 +30,13 @@
   border-bottom-color: transparent;
 }
 
+/* Each row carries the panel's colour scheme, so an open row -- its title line
+   and its panel -- is one block of that colour (2026-09-15, at the owner's
+   request). A closed row keeps the page ground. */
+.contact-methods .contact-methods__item:not([open]) {
+  background-color: transparent;
+}
+
 .contact-methods__icon {
   display: grid;
   place-items: center;

@@ -49,7 +49,7 @@
       {%- when 'form' -%}
         {%- form 'contact', id: 'ContactForm', class: 'contact-methods__form' -%}
           <details
-            class="contact-methods__item"
+            class="contact-methods__item color-{{ section.settings.panel_color_scheme }}"
             {{ block.shopify_attributes }}
             {% if form.posted_successfully? or form.errors %}
               open
@@ -144,7 +144,7 @@
         {%- liquid
           assign dial = block.settings.phone | remove: ' ' | remove: '-' | remove: '(' | remove: ')' | remove: '.'
         -%}
-        <details class="contact-methods__item" {{ block.shopify_attributes }}>
+        <details class="contact-methods__item color-{{ section.settings.panel_color_scheme }}" {{ block.shopify_attributes }}>
           {{ summary }}
           <div class="contact-methods__panel color-{{ section.settings.panel_color_scheme }} gradient">
             <div class="contact-methods__columns">
@@ -166,7 +166,7 @@
         </details>
 
       {%- when 'link' -%}
-        <details class="contact-methods__item" {{ block.shopify_attributes }}>
+        <details class="contact-methods__item color-{{ section.settings.panel_color_scheme }}" {{ block.shopify_attributes }}>
           {{ summary }}
           <div class="contact-methods__panel color-{{ section.settings.panel_color_scheme }} gradient">
             <div class="contact-methods__columns">

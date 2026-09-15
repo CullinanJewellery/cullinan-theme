@@ -1284,3 +1284,18 @@ html {
     white-space: nowrap;
   }
 }
+
+/*
+  On Контакти the buttons fill with the page's blush instead of black (2026-09-15,
+  at the owner's request): --footer-social-hover, which sections/footer.liquid sets
+  from scheme-8 on the contact template only -- the colour of the open Имейл and
+  Телефон rows. The words and the outline stay black, which reads on the pale fill.
+  One class more than the hover rules above, so it wins on phones and desktop alike.
+*/
+.footer__social--contact .footer__list-social .list-social__link:hover,
+.footer__social--contact .footer__list-social .list-social__link:active,
+.footer__social--contact .footer__list-social .list-social__link:focus-visible {
+  background-color: rgb(var(--footer-social-hover, 0, 0, 0));
+  color: rgb(0 0 0);
+  box-shadow: inset 0 0 0 1px rgb(0 0 0);
+}

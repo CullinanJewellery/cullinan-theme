@@ -243,14 +243,46 @@
           {%- endif -%}
 
           {%- if section.settings.show_social and has_social_icons -%}
-            <div class="footer__social">
-              {%- if section.settings.social_heading != blank or section.settings.social_text != blank -%}
+            {%- comment -%}
+              On the Контакти page (the contact template) the owner wants the words
+              above the buttons to say people can write to us there too, and the
+              buttons to fill with that page's blush on hover (2026-09-15): the
+              background of scheme-8, the colour of the open Имейл and Телефон rows.
+              Everywhere else the footer is unchanged.
+            {%- endcomment -%}
+            {%- liquid
+              assign social_heading = section.settings.social_heading
+              assign social_text = section.settings.social_text
+              assign social_class = ''
+              assign social_hover = ''
+              if template.suffix == 'contact'
+                if section.settings.social_heading_contact != blank
+                  assign social_heading = section.settings.social_heading_contact
+                endif
+                if section.settings.social_text_contact != blank
+                  assign social_text = section.settings.social_text_contact
+                endif
+                assign social_class = ' footer__social--contact'
+                for scheme in settings.color_schemes
+                  if scheme.id == 'scheme-8'
+                    assign social_hover = scheme.settings.background.red | append: ', ' | append: scheme.settings.background.green | append: ', ' | append: scheme.settings.background.blue
+                  endif
+                endfor
+              endif
+            -%}
+            <div
+              class="footer__social{{ social_class }}"
+              {% if social_hover != '' %}
+                style="--footer-social-hover: {{ social_hover }};"
+              {% endif %}
+            >
+              {%- if social_heading != blank or social_text != blank -%}
                 <div class="footer__social-intro">
-                  {%- if section.settings.social_heading != blank -%}
-                    <p class="footer__social-heading">{{ section.settings.social_heading | escape }}</p>
+                  {%- if social_heading != blank -%}
+                    <p class="footer__social-heading">{{ social_heading | escape }}</p>
                   {%- endif -%}
-                  {%- if section.settings.social_text != blank -%}
-                    <p class="footer__social-text">{{ section.settings.social_text | escape }}</p>
+                  {%- if social_text != blank -%}
+                    <p class="footer__social-text">{{ social_text | escape }}</p>
                   {%- endif -%}
                 </div>
               {%- endif -%}
@@ -480,6 +512,18 @@
       "id": "social_text",
       "label": "Line under that heading",
       "default": "Последвайте @cullinan_jewellery.bg за нови модели и снимки от работата в ателието."
+    },
+    {
+      "type": "text",
+      "id": "social_heading_contact",
+      "label": "Heading above the social buttons on the Контакти page",
+      "default": "Пишете ни и тук"
+    },
+    {
+      "type": "text",
+      "id": "social_text_contact",
+      "label": "Line under it on the Контакти page",
+      "default": "Изпратете ни съобщение във Facebook или Instagram — ще ви отговорим и там."
     },
     {
       "type": "checkbox",
