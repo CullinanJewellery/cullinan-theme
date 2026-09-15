@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero_image": {
@@ -45,6 +54,40 @@
         "stack_images_on_mobile": false,
         "mobile_content_alignment": "center",
         "show_text_below": true
+      }
+    },
+    "hero_facts": {
+      "type": "hero-facts",
+      "blocks": {
+        "f1": {
+          "type": "fact",
+          "settings": {
+            "text": "<strong>СОБСТВЕНО ПРОИЗВОДСТВО</strong>"
+          }
+        },
+        "f2": {
+          "type": "fact",
+          "settings": {
+            "text": "<strong>ПЪРВОКЛАСНИ МЕТАЛИ</strong>"
+          }
+        },
+        "f3": {
+          "type": "fact",
+          "settings": {
+            "text": "<strong>СЕРТИФИЦИРАНИ ПРОДУКТИ</strong>"
+          }
+        }
+      },
+      "block_order": [
+        "f1",
+        "f2",
+        "f3"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "container_width": 1000,
+        "padding_top": 14,
+        "padding_bottom": 14
       }
     },
     "image_marquee": {
@@ -140,6 +183,7 @@
         "enable_desktop_slider": true,
         "full_width": false,
         "show_view_all": true,
+        "view_all_label": "Вижте всички",
         "view_all_style": "solid",
         "color_scheme": "scheme-1",
         "image_ratio": "square",
@@ -150,6 +194,82 @@
         "quick_add": "none",
         "columns_mobile": "2",
         "swipe_on_mobile": true,
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
+    },
+    "category_mosaic": {
+      "type": "category-mosaic",
+      "blocks": {
+        "t1": {
+          "type": "tile",
+          "settings": {
+            "size": "tall",
+            "label": "Пръстени",
+            "subline": "Носи се всеки ден, помни се завинаги.",
+            "link": "/collections/пръстени"
+          }
+        },
+        "t2": {
+          "type": "tile",
+          "settings": {
+            "size": "standard",
+            "label": "Обеци",
+            "subline": "Леки, а променят целия вид.",
+            "link": "/collections/обеци"
+          }
+        },
+        "t3": {
+          "type": "tile",
+          "settings": {
+            "size": "standard",
+            "label": "Висулки",
+            "subline": "Нещо лично, близо до сърцето.",
+            "link": "/collections/висулки"
+          }
+        },
+        "t4": {
+          "type": "tile",
+          "settings": {
+            "size": "tall",
+            "label": "Гривни",
+            "subline": "Улавя светлината при всяко движение.",
+            "link": "/collections/гривни"
+          }
+        },
+        "t5": {
+          "type": "tile",
+          "settings": {
+            "size": "standard",
+            "label": "Комплекти",
+            "subline": "Завършеният вид, за който ви питат.",
+            "link": "/collections/комплекти"
+          }
+        },
+        "t6": {
+          "type": "tile",
+          "settings": {
+            "size": "standard",
+            "label": "Диаманти",
+            "subline": "Блясък, който не избледнява.",
+            "link": "/collections/диаманти"
+          }
+        }
+      },
+      "block_order": [
+        "t1",
+        "t2",
+        "t3",
+        "t4",
+        "t5",
+        "t6"
+      ],
+      "settings": {
+        "heading": "Разгледайте по категория",
+        "color_scheme": "scheme-1",
+        "caption_position": "over",
+        "scrim_opacity": 55,
+        "gap": 14,
         "padding_top": 64,
         "padding_bottom": 64
       }
@@ -225,7 +345,8 @@
         "link_url": "/pages/за-нас#vdahnovenie",
         "padding_top": 56,
         "padding_bottom": 56,
-        "margin_top": 40
+        "margin_top": 40,
+        "margin_bottom": 0
       }
     },
     "design_teaser": {
@@ -246,7 +367,9 @@
         "link_label": "Вижте как го правим",
         "link_url": "/pages/за-нас#dizain",
         "padding_top": 56,
-        "padding_bottom": 56
+        "padding_bottom": 56,
+        "margin_top": 0,
+        "margin_bottom": 0
       }
     },
     "materials_teaser": {
@@ -268,6 +391,7 @@
         "link_url": "/pages/за-нас#materiali",
         "padding_top": 56,
         "padding_bottom": 56,
+        "margin_top": 0,
         "margin_bottom": 40
       }
     },
@@ -298,126 +422,14 @@
         "email_form"
       ],
       "settings": {
+        "button_label": "Абонирайте се",
+        "footnote": "Отписвате се с едно кликване.",
         "color_scheme": "scheme-3",
         "full_width": true,
+        "background_image": "shopify://shop_images/ChatGPT_Image_Sep_15_2026_10_26_21_PM.png",
+        "overlay_opacity": 30,
         "padding_top": 72,
         "padding_bottom": 40
-      }
-    },
-    "hero_facts": {
-      "type": "hero-facts",
-      "blocks": {
-        "f1": {
-          "type": "fact",
-          "settings": {
-            "text": "<strong>СОБСТВЕНО ПРОИЗВОДСТВО</strong>"
-          }
-        },
-        "f2": {
-          "type": "fact",
-          "settings": {
-            "text": "<strong>ПЪРВОКЛАСНИ МЕТАЛИ</strong>"
-          }
-        },
-        "f3": {
-          "type": "fact",
-          "settings": {
-            "text": "<strong>СЕРТИФИЦИРАНИ ПРОДУКТИ</strong>"
-          }
-        }
-      },
-      "block_order": [
-        "f1",
-        "f2",
-        "f3"
-      ],
-      "settings": {
-        "color_scheme": "scheme-1",
-        "container_width": 1000,
-        "padding_top": 14,
-        "padding_bottom": 14
-      }
-    },
-    "category_mosaic": {
-      "type": "category-mosaic",
-      "blocks": {
-        "t1": {
-          "type": "tile",
-          "settings": {
-            "size": "tall",
-            "image": "",
-            "label": "Пръстени",
-            "subline": "Носи се всеки ден, помни се завинаги.",
-            "link": "/collections/пръстени"
-          }
-        },
-        "t2": {
-          "type": "tile",
-          "settings": {
-            "size": "standard",
-            "image": "",
-            "label": "Обеци",
-            "subline": "Леки, а променят целия вид.",
-            "link": "/collections/обеци"
-          }
-        },
-        "t3": {
-          "type": "tile",
-          "settings": {
-            "size": "standard",
-            "image": "",
-            "label": "Висулки",
-            "subline": "Нещо лично, близо до сърцето.",
-            "link": "/collections/висулки"
-          }
-        },
-        "t4": {
-          "type": "tile",
-          "settings": {
-            "size": "tall",
-            "image": "",
-            "label": "Гривни",
-            "subline": "Улавя светлината при всяко движение.",
-            "link": "/collections/гривни"
-          }
-        },
-        "t5": {
-          "type": "tile",
-          "settings": {
-            "size": "standard",
-            "image": "",
-            "label": "Комплекти",
-            "subline": "Завършеният вид, за който ви питат.",
-            "link": "/collections/комплекти"
-          }
-        },
-        "t6": {
-          "type": "tile",
-          "settings": {
-            "size": "standard",
-            "image": "",
-            "label": "Диаманти",
-            "subline": "Блясък, който не избледнява.",
-            "link": "/collections/диаманти"
-          }
-        }
-      },
-      "block_order": [
-        "t1",
-        "t2",
-        "t3",
-        "t4",
-        "t5",
-        "t6"
-      ],
-      "settings": {
-        "heading": "Разгледайте по категория",
-        "color_scheme": "scheme-1",
-        "caption_position": "over",
-        "scrim_opacity": 55,
-        "gap": 14,
-        "padding_top": 64,
-        "padding_bottom": 64
       }
     }
   },
