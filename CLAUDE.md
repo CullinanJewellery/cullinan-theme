@@ -587,6 +587,16 @@ Anything of ours that is not a Dawn setting lives in these two places:
     say „Обадете ни се“ (call us) right next to the number itself: now „Предпочитате да
     поговорим? Ще се радваме да чуем от вас.“, which doesn’t depend on the number being on
     the page.
+    - **That left the text looking stranded, so its position changed too** (same request,
+      the owner left the exact fix to us): `align-items: center` on `.contact-methods__columns`
+      had centred Имейл’s two-line text against its own 379px form -- centred, but 164px of
+      empty space above and below, aligned with nothing on either side. `align-items: start`
+      lines it up with the top of the form (or the button, on Телефон, where the two sides are
+      close enough in height that this barely shows) instead of floating in the middle.
+      `.contact-methods__text` also gained `text-align: center`, so the lines centre over each
+      other rather than ragged-right; the 4rem gap between the two columns moved from the
+      text’s own one-sided `padding-right` to the grid’s own `gap`, so the now-centred text
+      isn’t pushed off centre by padding on only one side.
   - **The banner picture** was uploaded by the owner on 2026-09-15 in the theme editor:
     `ChatGPT_Image_Sep_15_2026_12_04_20_PM.png`, 2048 × 768, a pale blush marble with rosy-brown
     veins, veil 0, made with ChatGPT; the owner uses AI pictures on the site (see How we work).
