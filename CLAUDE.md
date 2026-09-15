@@ -214,6 +214,12 @@ Rules that matter here:
   seconds. GitHub had every commit; Shopify never applied the second push, and a dropped file
   stays stale until it changes again. So when a change needs two pushes (see the validator
   lag above), check the first on the preview before sending the second.
+  - **Seeing the first push live is not enough; leave two minutes.** A third drop on 2026-09-15:
+    `templates/page.contact.json` went out 58 seconds after a `config/settings_data.json` push that
+    was already live on the preview, and still never arrived; the same file re-sent on its own
+    69 seconds later landed at once. Whatever Shopify is still doing with a push, the preview
+    does not show it. Wait two minutes between pushes, and re-send with a byte change if a file
+    has not landed after 40 seconds.
   - The first re-send also changed the button link from percent-encoded
     (`/pages/%D0%B7%D0%B0-%D0%BD%D0%B0%D1%81#vdahnovenie`) to plain Cyrillic
     (`/pages/за-нас#vdahnovenie`), on the guess that the encoding was refused. The second drop
