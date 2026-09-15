@@ -1321,11 +1321,13 @@ html {
   100vw counts the scrollbar that 100% of the page doesn't, so the box
   overshoots by the scrollbar's own width (measured 8px on the preview) --
   a few pixels past the true right edge, enough to make the page scroll
-  sideways by that much. html's own overflow-x below is the standard fix,
-  harmless here since nothing on the site scrolls the page horizontally on
-  purpose.
+  sideways by that much. html alone didn't stop it -- body scrolls on its
+  own regardless of html's overflow -- so both carry overflow-x: hidden,
+  the standard fix, harmless here since nothing on the site scrolls the
+  page horizontally on purpose.
 */
-html {
+html,
+body {
   overflow-x: hidden;
 }
 
