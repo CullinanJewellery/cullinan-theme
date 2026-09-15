@@ -87,7 +87,7 @@ Rules that matter here:
   - **One deliberate exception:** the homepage hero. Its heading, subtitle and button are
     live theme text laid over the photograph, centred, following moonmagic.com. Agreed
     2026-09-06. The photograph itself still carries no baked-in text. (No longer the only
-    such place -- one more exception follows below.)
+    such place -- two more exceptions follow below.)
     - **On phones the words sit below the photograph** (2026-09-14, at the owner’s request,
       as the reference does): the hero’s own "content below image on mobile" setting is on.
       The photo slot is a full-width square, then the heading, text and a full-width black
@@ -99,8 +99,13 @@ Rules that matter here:
   - **Second exception, at the owner’s instruction (2026-09-15):** the Контакти page banner
     („Как можем да помогнем?“). The owner asked for a picture behind it, as on the reference’s
     contact page, so its heading and text sit over a background picture once one is uploaded.
-    The picture itself still carries no text. No other place gets words over an image -- the
-    footer’s own Контакти picture, below, is a strip of its own, not a background behind words.
+    The picture itself still carries no text.
+  - **Third exception, at the owner’s instruction (2026-09-15):** the footer’s social block on
+    Контакти -- the heading, the line and the Facebook/Instagram buttons (see Контакти under
+    Current state below) sit over a background picture once one is uploaded, full-bleed to the
+    page’s own edges like the banner above it. Two tries got this wrong first: a background
+    only as wide as the column, then a strip between the words and the buttons. No other place
+    gets words over an image.
 - **Restraint reads as expensive.** Empty space is the main luxury signal. When in doubt,
   remove rather than add.
 - **Gold comes from the photographs, not the interface.** The gold accent is muted and used
@@ -578,11 +583,15 @@ Anything of ours that is not a Dawn setting lives in these two places:
     black. `sections/footer.liquid` switches on `template.suffix == 'contact'`; the two
     texts are footer settings (Social buttons on the Контакти page) with those defaults, and
     the colour is read from scheme-8 into `--footer-social-hover`. Other pages are unchanged.
-    - **A picture strip, at the owner’s request** (2026-09-15): the block can also carry a
-      full-width picture between the text and the buttons -- not behind them, which was tried
-      first and was not what the owner meant. Empty until the owner uploads one (theme editor
-      → Footer → Picture between the text and the buttons on the Контакти page). A plain
-      3:1 strip, `object-fit: cover`, in normal flow -- no veil, since nothing sits on it.
+    - **A background picture, at the owner’s request** (2026-09-15): the block can also carry
+      one behind the heading, the line and the buttons, full-bleed to the page’s own edges --
+      like the page banner above it, not just as wide as the column (the first try) and not a
+      strip between the words and the buttons (the second). Empty until the owner uploads one
+      (theme editor → Footer → Background picture behind the social block on the Контакти
+      page). A **Veil over that picture** (0–90%, default 0) works the same way as the page
+      banner’s own veil. `.footer__social-media` breaks out of `footer__content-top`’s
+      `page-width` with `left: 50%` and a translate, since `inset: 0` alone -- correct for the
+      page banner, which isn’t nested in a `page-width` -- only reached the column here.
   At the owner’s instruction there is no live
   chat and no WhatsApp. No email address is shown and no opening hours: neither has been given.
   The page already existed: Shopify’s default “Contact” page, `/pages/contact`, on the contact

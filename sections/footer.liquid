@@ -248,11 +248,12 @@
               above the buttons to say people can write to us there too, and the
               buttons to fill with that page's blush on hover (2026-09-15): the
               background of scheme-8, the colour of the open Имейл and Телефон rows.
-              Since the same day the block can also carry a picture, as a full-width
-              strip between the words and the buttons -- not a background behind them,
-              which was tried first and was not what the owner meant. Empty until the
-              owner uploads one, so the block looks exactly as before either way.
-              Everywhere else the footer is unchanged.
+              Since the same day the block can also carry a background picture, full-bleed
+              to the page's own edges and behind the words, the same as the Контакти banner
+              above it (two tries got this wrong first: a background only as wide as the
+              column, then a strip between the words and the buttons -- neither was what the
+              owner meant). Empty until the owner uploads one, so the block looks exactly as
+              before either way. Everywhere else the footer is unchanged.
             {%- endcomment -%}
             {%- liquid
               assign social_heading = section.settings.social_heading
@@ -260,6 +261,7 @@
               assign social_class = ''
               assign social_hover = ''
               assign social_image = blank
+              assign social_veil = 0
               if template.suffix == 'contact'
                 if section.settings.social_heading_contact != blank
                   assign social_heading = section.settings.social_heading_contact
@@ -269,6 +271,10 @@
                 endif
                 assign social_class = ' footer__social--contact'
                 assign social_image = section.settings.social_image_contact
+                assign social_veil = section.settings.social_image_overlay_contact
+                if social_image != blank
+                  assign social_class = social_class | append: ' footer__social--picture'
+                endif
                 for scheme in settings.color_schemes
                   if scheme.id == 'scheme-8'
                     assign social_hover = scheme.settings.background.red | append: ', ' | append: scheme.settings.background.green | append: ', ' | append: scheme.settings.background.blue
@@ -278,10 +284,19 @@
             -%}
             <div
               class="footer__social{{ social_class }}"
-              {% if social_hover != '' %}
-                style="--footer-social-hover: {{ social_hover }};"
+              {% if social_hover != '' or social_image != blank %}
+                style="--footer-social-hover: {{ social_hover }}; --footer-social-veil: {{ social_veil | divided_by: 100.0 }};"
               {% endif %}
             >
+              {%- if social_image != blank -%}
+                <div class="footer__social-media">
+                  {{
+                    social_image
+                    | image_url: width: 1500
+                    | image_tag: widths: '375, 550, 750, 1100, 1500', sizes: '100vw', alt: '', loading: 'lazy'
+                  }}
+                </div>
+              {%- endif -%}
               {%- if social_heading != blank or social_text != blank -%}
                 <div class="footer__social-intro">
                   {%- if social_heading != blank -%}
@@ -290,15 +305,6 @@
                   {%- if social_text != blank -%}
                     <p class="footer__social-text">{{ social_text | escape }}</p>
                   {%- endif -%}
-                </div>
-              {%- endif -%}
-              {%- if social_image != blank -%}
-                <div class="footer__social-media">
-                  {{
-                    social_image
-                    | image_url: width: 1500
-                    | image_tag: widths: '375, 550, 750, 1100, 1500', sizes: '100vw', alt: '', loading: 'lazy'
-                  }}
                 </div>
               {%- endif -%}
               {%- render 'social-icons', class: 'footer__list-social' -%}
@@ -544,8 +550,19 @@
     {
       "type": "image_picker",
       "id": "social_image_contact",
-      "label": "Picture between the text and the buttons on the Контакти page",
-      "info": "A full-width strip, empty by default -- upload your own."
+      "label": "Background picture behind the social block on the Контакти page",
+      "info": "Full-bleed to the page's own edges, like the page banner above it. Empty by default -- upload your own."
+    },
+    {
+      "type": "range",
+      "id": "social_image_overlay_contact",
+      "min": 0,
+      "max": 90,
+      "step": 10,
+      "unit": "%",
+      "label": "Veil over that picture",
+      "info": "The colour scheme's background laid over the picture, for when the words need help.",
+      "default": 0
     },
     {
       "type": "checkbox",

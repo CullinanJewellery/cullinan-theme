@@ -1305,19 +1305,33 @@ html {
 }
 
 /*
-  A picture strip between the words and the buttons on Контакти, at the
-  owner's request (2026-09-15) -- a full-width band, not a background
-  behind them (tried first; not what the owner meant). Empty until the
-  owner uploads one (theme editor -> Footer -> Picture between the text
-  and the buttons on the Контакти page), so the block looks and behaves
-  exactly as before either way. A third place words sit near a picture on
-  the site, after the hero and the Контакти banner, though here nothing
-  sits on top of it.
+  A background picture behind the Контакти social block, full-bleed to the
+  page's own edges like the Контакти banner above it -- at the owner's
+  request (2026-09-15; two tries got this wrong first, see the comment in
+  sections/footer.liquid). Empty until the owner uploads one, so the block
+  looks and behaves exactly as before either way. A third place words sit
+  over an image on the site, after the hero and the Контакти banner.
+
+  The block sits inside footer__content-top's page-width, so the picture
+  cannot just be inset: 0 -- that would only be as wide as the column, the
+  first attempt's mistake. left: 50% plus the translate centres a 100vw box
+  on the viewport regardless of the parent's own width, the same trick a
+  full-bleed row would need anywhere else nested inside page-width.
 */
+.footer__social--picture {
+  position: relative;
+  padding: 4rem 2rem;
+}
+
 .footer__social-media {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
   overflow: hidden;
-  aspect-ratio: 3 / 1;
-  margin: 2.4rem 0;
+  z-index: 0;
 }
 
 .footer__social-media img {
@@ -1325,4 +1339,18 @@ html {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.footer__social-media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: rgb(var(--color-background));
+  opacity: var(--footer-social-veil, 0);
+}
+
+.footer__social--picture .footer__social-intro,
+.footer__social--picture .footer__list-social {
+  position: relative;
+  z-index: 1;
 }
