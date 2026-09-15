@@ -197,6 +197,10 @@ Rules that matter here:
   (https://07prfzze1nr7klqc-107185537364.shopifypreview.com) started answering “This preview link
   has expired”, so pushes could not be checked. Only the owner can make a new one: Online Store →
   Themes → the draft theme → Preview → Share preview. Ask for it as soon as the old one fails.
+  The owner sent a new one on 2026-09-15: https://o9kwivtmudx0bw6x-107185537364.shopifypreview.com.
+  Until a new link arrives, a local mock-up from the theme’s real stylesheets (served by a
+  throwaway Node server, never committed) is a usable stand-in for layout; it was exact to the
+  pixel for the header once the new link allowed a comparison.
 - **Wait for one push to reach the preview before sending the next.** Twice on 2026-09-14 a
   push that followed another within a minute never reached the theme, while the push before
   it synced at once: `templates/index.json` 13 seconds after a section push (still missing
@@ -411,9 +415,9 @@ Anything of ours that is not a Dawn setting lives in these two places:
     - Header icons are bolder at the owner’s request: a 0.9 stroke in the icon colour round
       Dawn’s filled outlines (search, account, cart, and the menu button on phones), about 1px
       more. 0.5 was too close to before; 0.9 keeps the bag’s handle and the magnifier open.
-    - All of this was measured in a local mock-up built from the theme’s real stylesheets and
-      the logo file, because the preview link had expired. Check it on the preview when there
-      is a new link.
+    - Measured first in a local mock-up, while the preview link was expired, then confirmed on
+      the new preview the same day: a 72px bar, 12px above and below the logo, the menu words at
+      700 and 6.9px below the bar’s centre on their capitals, the icons at a 0.9 stroke.
 - **Wordmark on phones.** (Only without a logo image — one has been set since 2026-09-15.) Until a logo image is uploaded the header prints `shop.name` in
   spaced capitals. Below 750px its size follows the room Dawn’s header grid leaves it
   (viewport minus about 235px of icons and gutters) and tops out at 20px; without that,
@@ -503,7 +507,11 @@ Anything of ours that is not a Dawn setting lives in these two places:
   Въпроси и отговори on За нас, the phone number) and two rows, Имейл with the contact form and
   Телефон with +359 88 287 4895, the owner’s number. At the owner’s instruction there is no live
   chat and no WhatsApp. No email address is shown and no opening hours: neither has been given.
-  The page and its place in the top bar are store data — see Waiting on the Shopify admin.
+  The page already existed: Shopify’s default “Contact” page, `/pages/contact`, on the contact
+  template, so it showed the new layout as soon as the template synced (checked on the preview
+  2026-09-15: every measurement as built, the link to Въпроси и отговори intact, the form posting
+  to `/contact`, the call button dialling +359882874895). No test message was sent. Its title
+  and its place in the top bar are store data — see Waiting on the Shopify admin.
 - Homepage, working top to bottom: announcement bar, header and hero are built; the product
   row is built; three atelier blocks now lead to the inspiration, design and materials
   stories on За нас (see Atelier section above); the newsletter is still Dawn's default.
@@ -555,10 +563,11 @@ theme renders its own version straight away.
 These cannot be done from this repository — menus, collections and the store name are store
 data, not theme files:
 
-- **Контакти page**: Online Store → Pages → Add page, title „Контакти“, and in Theme template
-  choose `contact` (Horizon has its own `page.contact`, so the dropdown should list it; if it does
-  not, add one as described above). Then Content → Menus → Top bar → Add menu item „Контакти“,
-  linked to that page, placed after За нас. The theme renders the top bar links from that menu.
+- **Контакти page**: it exists as Shopify’s default “Contact” page (`/pages/contact`, contact
+  template). Online Store → Pages → Contact: rename the title to „Контакти“ (it shows in the
+  browser tab; the page body hides it) and leave the template and the handle as they are. Then
+  Content → Menus → Top bar → Add menu item „Контакти“, linked to that page, placed after За нас.
+  The theme renders the top bar links from that menu.
 - **Store name** → Settings → Store details. Reads Doncheff Jewellery; it needs to go back to
   Cullinan Jewellery. The header prints `shop.name` until a logo image is uploaded.
 - **Main menu** (Content → Menus → Main menu), in this order:
