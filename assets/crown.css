@@ -1390,6 +1390,19 @@ html {
 }
 
 /*
+  Still too much space above it after the last round, at the owner's request
+  (2026-09-15): most of the gap between Телефон and this block turned out to
+  be Dawn's own footer padding-top (36px) plus its own block spacing, not
+  anything of ours, so contact-methods' own padding couldn't reach it.
+  Pulling the block up with a negative margin is the scoped fix -- the
+  footer's `padding_top` setting is site-wide, and lowering it would move
+  every page's footer, not just Контакти's.
+*/
+.footer__social--contact {
+  margin-top: -4rem;
+}
+
+/*
   Dawn puts a hairline across the top of every footer, and another above its
   bottom row (language, currency, payment icons) -- on Контакти, right below
   the Имейл/Телефон rows' own last underline, it read as one seam too many

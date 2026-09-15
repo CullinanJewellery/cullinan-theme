@@ -647,6 +647,11 @@ Anything of ours that is not a Dawn setting lives in these two places:
       same kind of seam. The accordion rows’ own underlines are untouched everywhere. Contact
       methods’ **Padding bottom** also came down from 72 to 32, so the social block starts
       sooner after Телефон.
+    - **Still too much space, so the block itself moved up** (the owner’s request, same day):
+      most of the gap turned out to be Dawn’s own footer `padding_top` (36px) plus its own
+      block spacing above the social markup, which contact-methods’ own padding could never
+      reach. `.footer__social--contact` carries `margin-top: -4rem` now, scoped to Контакти
+      rather than lowering the footer’s `padding_top` setting, which is site-wide.
   At the owner’s instruction there is no live
   chat and no WhatsApp. No email address is shown and no opening hours: neither has been given.
   The page already existed: Shopify’s default “Contact” page, `/pages/contact`, on the contact
