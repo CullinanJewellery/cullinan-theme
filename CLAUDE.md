@@ -492,6 +492,10 @@ Anything of ours that is not a Dawn setting lives in these two places:
   lays the colour scheme’s background over it when the words need help; the scheme also sets
   the words’ colour, so a dark picture wants a dark scheme. With no picture the band is the
   scheme’s colour, as before. The owner chooses and uploads the picture.
+  - **Left-aligned on phones** (2026-09-15, at the owner’s request: “like there but on a phone”).
+    Checked moonmagic.com’s own contact banner at 375px: it centres the words from 750px up and
+    sets them left below that, not centred. Ours now does the same -- a phone-only rule in
+    `section-page-banner.css`, the band and picture unchanged either way.
 - **Contact methods.** `sections/contact-methods.liquid` with
   `assets/section-contact-methods.css`, after the reference’s Contact Us page: rows of icon, title
   and plus sign in a 1160px column (86px tall on desktop, a 1px rule under each closed row, 35px

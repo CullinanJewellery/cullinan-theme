@@ -68,3 +68,19 @@
   text-decoration-thickness: 1px;
   text-underline-offset: 0.3rem;
 }
+
+/*
+  On phones the reference's own contact banner sets its words left, not centred
+  (2026-09-15, at the owner's request, checked on moonmagic.com/pages/contact-us
+  at 375px: centred from 750px up, left below it, same as the hero's own phone
+  treatment elsewhere on the site).
+*/
+@media screen and (max-width: 749px) {
+  .page-banner__inner {
+    text-align: left;
+  }
+
+  .page-banner__text {
+    margin-left: 0;
+  }
+}
