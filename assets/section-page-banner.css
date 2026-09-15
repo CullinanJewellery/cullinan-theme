@@ -74,8 +74,8 @@
   (2026-09-15, at the owner's request, checked on moonmagic.com/pages/contact-us
   at 375px: centred from 750px up, left below it, same as the hero's own phone
   treatment elsewhere on the site). The text also runs smaller there, 14px
-  against the desktop 16px -- tried shortening the words instead, but the
-  owner asked for the same words, just smaller, so the wording is unchanged.
+  against the desktop 16px, and shorter (see the banner's text setting) --
+  both, at the owner's request: shorter wording and a smaller size.
 */
 @media screen and (max-width: 749px) {
   .page-banner__inner {
