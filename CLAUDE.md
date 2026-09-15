@@ -364,7 +364,8 @@ Anything of ours that is not a Dawn setting lives in these two places:
   `top-bar` is used. It is a theme setting rather than a section setting because the header
   section, which renders the drawer, cannot read the announcement bar’s settings.
   - The **Top bar** menu exists (2026-09-13) and holds За нас, which is no longer in the Main
-    menu. Message 11px, bar 33px on desktop, both smaller than the reference at the owner’s
+    menu, and since 2026-09-15 Контакти after it. Message 11px, bar 33px on desktop, both
+    smaller than the reference at the owner’s
     request; За нас stays 13px and underlines on hover.
   - The left-aligned layout only switches on when that menu has links; without them the bar
     keeps Dawn’s centred layout.
@@ -528,8 +529,9 @@ Anything of ours that is not a Dawn setting lives in these two places:
   The page already existed: Shopify’s default “Contact” page, `/pages/contact`, on the contact
   template, so it showed the new layout as soon as the template synced (checked on the preview
   2026-09-15: every measurement as built, the link to Въпроси и отговори intact, the form posting
-  to `/contact`, the call button dialling +359882874895). No test message was sent. Its title
-  and its place in the top bar are store data — see Waiting on the Shopify admin.
+  to `/contact`, the call button dialling +359882874895). No test message was sent. The owner
+  renamed it „Контакти“ and added it to the Top bar menu after За нас on 2026-09-15 (store data,
+  done in the admin; the handle stays `contact`).
 - Homepage, working top to bottom: announcement bar, header and hero are built; the product
   row is built; three atelier blocks now lead to the inspiration, design and materials
   stories on За нас (see Atelier section above); the newsletter is still Dawn's default.
@@ -581,11 +583,6 @@ theme renders its own version straight away.
 These cannot be done from this repository — menus, collections and the store name are store
 data, not theme files:
 
-- **Контакти page**: it exists as Shopify’s default “Contact” page (`/pages/contact`, contact
-  template). Online Store → Pages → Contact: rename the title to „Контакти“ (it shows in the
-  browser tab; the page body hides it) and leave the template and the handle as they are. Then
-  Content → Menus → Top bar → Add menu item „Контакти“, linked to that page, placed after За нас.
-  The theme renders the top bar links from that menu.
 - **Store name** → Settings → Store details. Reads Doncheff Jewellery; it needs to go back to
   Cullinan Jewellery. The header prints `shop.name` until a logo image is uploaded.
 - **Main menu** (Content → Menus → Main menu), in this order:
