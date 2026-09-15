@@ -1,86 +1,16 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "current": {
-    "logo_width": 160,
-    "customer_account_menu": "customer-account-main-menu",
-    "color_schemes": {
-      "scheme-1": {
-        "settings": {
-          "background": "#FCFCFB",
-          "background_gradient": "",
-          "text": "#221F1C",
-          "button": "#000000",
-          "button_label": "#FFFFFF",
-          "secondary_button_label": "#221F1C",
-          "shadow": "#221F1C"
-        }
-      },
-      "scheme-2": {
-        "settings": {
-          "background": "#F2F0EC",
-          "background_gradient": "",
-          "text": "#221F1C",
-          "button": "#000000",
-          "button_label": "#FFFFFF",
-          "secondary_button_label": "#221F1C",
-          "shadow": "#221F1C"
-        }
-      },
-      "scheme-3": {
-        "settings": {
-          "background": "#221F1C",
-          "background_gradient": "",
-          "text": "#F5F2EE",
-          "button": "#F5F2EE",
-          "button_label": "#221F1C",
-          "secondary_button_label": "#F5F2EE",
-          "shadow": "#000000"
-        }
-      },
-      "scheme-4": {
-        "settings": {
-          "background": "#8C6A2E",
-          "background_gradient": "",
-          "text": "#FFFFFF",
-          "button": "#FFFFFF",
-          "button_label": "#8C6A2E",
-          "secondary_button_label": "#FFFFFF",
-          "shadow": "#221F1C"
-        }
-      },
-      "scheme-5": {
-        "settings": {
-          "background": "#E7E1D6",
-          "background_gradient": "",
-          "text": "#221F1C",
-          "button": "#000000",
-          "button_label": "#FFFFFF",
-          "secondary_button_label": "#221F1C",
-          "shadow": "#221F1C"
-        }
-      },
-      "scheme-6": {
-        "settings": {
-          "background": "#F5F4F0",
-          "background_gradient": "",
-          "text": "#221F1C",
-          "button": "#5B5548",
-          "button_label": "#FFFFFF",
-          "secondary_button_label": "#221F1C",
-          "shadow": "#221F1C"
-        }
-      },
-      "scheme-7": {
-        "settings": {
-          "background": "#D8DFBF",
-          "background_gradient": "",
-          "text": "#221F1C",
-          "button": "#3D5229",
-          "button_label": "#FFFFFF",
-          "secondary_button_label": "#221F1C",
-          "shadow": "#221F1C"
-        }
-      }
-    },
+    "logo": "shopify://shop_images/cullinan-logo-900.png",
+    "logo_width": 180,
     "type_header_font": "jost_n7",
     "heading_scale": 100,
     "type_body_font": "jost_n4",
@@ -179,14 +109,14 @@
     "brand_headline": "",
     "brand_description": "<p></p>",
     "brand_image_width": 100,
-    "social_twitter_link": "",
     "social_facebook_link": "https://www.facebook.com/profile.php?id=61573474292352",
-    "social_pinterest_link": "",
     "social_instagram_link": "https://www.instagram.com/cullinan_jewellery.bg/",
-    "social_tiktok_link": "",
-    "social_tumblr_link": "",
-    "social_snapchat_link": "",
     "social_youtube_link": "",
+    "social_tiktok_link": "",
+    "social_twitter_link": "",
+    "social_snapchat_link": "",
+    "social_pinterest_link": "",
+    "social_tumblr_link": "",
     "social_vimeo_link": "",
     "predictive_search_enabled": true,
     "predictive_search_show_vendor": false,
@@ -197,6 +127,7 @@
     "show_cart_note": false,
     "cart_drawer_collection": "",
     "cart_color_scheme": "scheme-1",
+    "customer_account_menu": "customer-account-main-menu",
     "sections": {
       "main-password-header": {
         "type": "main-password-header",
@@ -208,6 +139,86 @@
         "type": "main-password-footer",
         "settings": {
           "color_scheme": "scheme-1"
+        }
+      }
+    },
+    "content_for_index": [],
+    "color_schemes": {
+      "scheme-1": {
+        "settings": {
+          "background": "#fcfcfb",
+          "background_gradient": "",
+          "text": "#221f1c",
+          "button": "#000000",
+          "button_label": "#ffffff",
+          "secondary_button_label": "#221f1c",
+          "shadow": "#221f1c"
+        }
+      },
+      "scheme-2": {
+        "settings": {
+          "background": "#f2f0ec",
+          "background_gradient": "",
+          "text": "#221f1c",
+          "button": "#000000",
+          "button_label": "#ffffff",
+          "secondary_button_label": "#221f1c",
+          "shadow": "#221f1c"
+        }
+      },
+      "scheme-3": {
+        "settings": {
+          "background": "#221f1c",
+          "background_gradient": "",
+          "text": "#f5f2ee",
+          "button": "#f5f2ee",
+          "button_label": "#221f1c",
+          "secondary_button_label": "#f5f2ee",
+          "shadow": "#000000"
+        }
+      },
+      "scheme-4": {
+        "settings": {
+          "background": "#8c6a2e",
+          "background_gradient": "",
+          "text": "#ffffff",
+          "button": "#ffffff",
+          "button_label": "#8c6a2e",
+          "secondary_button_label": "#ffffff",
+          "shadow": "#221f1c"
+        }
+      },
+      "scheme-5": {
+        "settings": {
+          "background": "#e7e1d6",
+          "background_gradient": "",
+          "text": "#221f1c",
+          "button": "#000000",
+          "button_label": "#ffffff",
+          "secondary_button_label": "#221f1c",
+          "shadow": "#221f1c"
+        }
+      },
+      "scheme-6": {
+        "settings": {
+          "background": "#f5f4f0",
+          "background_gradient": "",
+          "text": "#221f1c",
+          "button": "#5b5548",
+          "button_label": "#ffffff",
+          "secondary_button_label": "#221f1c",
+          "shadow": "#221f1c"
+        }
+      },
+      "scheme-7": {
+        "settings": {
+          "background": "#d8dfbf",
+          "background_gradient": "",
+          "text": "#221f1c",
+          "button": "#3d5229",
+          "button_label": "#ffffff",
+          "secondary_button_label": "#221f1c",
+          "shadow": "#221f1c"
         }
       }
     }
