@@ -77,14 +77,23 @@
   against the desktop 16px (14px, then smaller again at the owner's request:
   the size, not the words -- the wording is shortened too, see the banner's
   text setting, but that was a separate, earlier request).
+
+  The owner then pointed at the reference's own spacing and position and asked
+  for the same. Measured there at 375px: the words sit 20px from the edge, not
+  page-width's own 15px -- which also lines up the heading with the 20px the
+  Имейл/Телефон rows already use below it -- and 35px separates the heading
+  from the line under it, not page-width's default gap.
 */
 @media screen and (max-width: 749px) {
   .page-banner__inner {
     text-align: left;
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 
   .page-banner__text {
     margin-left: 0;
+    margin-top: 3.5rem;
     font-size: 1.2rem;
   }
 }

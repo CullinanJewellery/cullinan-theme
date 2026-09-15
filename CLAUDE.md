@@ -501,6 +501,11 @@ Anything of ours that is not a Dawn setting lives in these two places:
     drops its closing clause -- on every screen, since it's one shared text setting. On top of
     that, the phone rule sets `.page-banner__text` to 12px against the desktop 16px: 14px at
     first, then smaller again the same day, at the owner’s request -- the size, not the words.
+  - **Spacing and position matched to the reference too** (2026-09-15). Measured
+    moonmagic.com’s own contact banner at 375px: its words sit 20px from the edge, not
+    `page-width`’s own 15px, and 35px separates its heading from the line under it. Ours now
+    does the same on phones -- the 20px also lines the heading up with the 20px the
+    Имейл/Телефон rows already use below it, which the two hadn’t matched before.
 - **Contact methods.** `sections/contact-methods.liquid` with
   `assets/section-contact-methods.css`, after the reference’s Contact Us page: rows of icon, title
   and plus sign in a 1160px column (86px tall on desktop, a 1px rule under each closed row, 35px
