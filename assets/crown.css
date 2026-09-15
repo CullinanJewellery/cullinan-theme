@@ -1317,7 +1317,18 @@ html {
   first attempt's mistake. left: 50% plus the translate centres a 100vw box
   on the viewport regardless of the parent's own width, the same trick a
   full-bleed row would need anywhere else nested inside page-width.
+
+  100vw counts the scrollbar that 100% of the page doesn't, so the box
+  overshoots by the scrollbar's own width (measured 8px on the preview) --
+  a few pixels past the true right edge, enough to make the page scroll
+  sideways by that much. html's own overflow-x below is the standard fix,
+  harmless here since nothing on the site scrolls the page horizontally on
+  purpose.
 */
+html {
+  overflow-x: hidden;
+}
+
 .footer__social--picture {
   position: relative;
   padding: 4rem 2rem;
