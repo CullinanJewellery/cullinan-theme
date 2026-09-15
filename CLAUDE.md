@@ -127,6 +127,7 @@ Rules that matter here:
 | scheme-5 | `#E7E1D6` warm sand | `#221F1C` | Feature blocks. |
 | scheme-6 | `#F5F4F0` light greige | `#221F1C` | The reference’s band colour. Нашето вдъхновение on the homepage. Buttons `#5B5548`. |
 | scheme-7 | `#D8DFBF` milky matcha | `#221F1C` | Нашите материали on the homepage. Owner’s choice, 2026-09-14. Buttons `#3D5229`. |
+| scheme-8 | `#F1E3DC` marble blush | `#221F1C` | Open rows on Контакти, matched to the banner picture (2026-09-15). Black buttons. |
 
 - Type: **Jost** for everything since 2026-09-14: headings bold (700), text regular (400).
   The owner first chose EB Garamond with Inter (option D), then the same day asked for the
@@ -533,9 +534,15 @@ Anything of ours that is not a Dawn setting lives in these two places:
   Към всеки подхождаме лично и с внимание…“, the owner’s idea in polished words, 2026-09-15; it
   replaced a line with the form and the phone number, at the owner’s request) and two rows,
   Имейл with the contact form and
-  Телефон with +359 88 287 4895, the owner’s number. The banner’s background picture slot is
-  empty until the owner uploads a photo (theme editor → Контакти page → Page banner →
-  Background picture); until then it shows the sand colour. At the owner’s instruction there is no live
+  Телефон with +359 88 287 4895, the owner’s number.
+  - **The banner picture** was uploaded by the owner on 2026-09-15 in the theme editor:
+    `ChatGPT_Image_Sep_15_2026_12_04_20_PM.png`, 2048 × 768, a pale blush marble with rosy-brown
+    veins, veil 0. Its file name says ChatGPT made it; the project’s no-AI-images rule was pointed
+    out to the owner, and keeping or replacing it is the owner’s call.
+  - **The open rows match it** (the owner’s request, same day): the panels use scheme-8,
+    `#F1E3DC`, the marble’s base colour — the median of the lighter 70% of pixels in the part the
+    banner shows, which leaves the veins out. A different picture means measuring again.
+  At the owner’s instruction there is no live
   chat and no WhatsApp. No email address is shown and no opening hours: neither has been given.
   The page already existed: Shopify’s default “Contact” page, `/pages/contact`, on the contact
   template, so it showed the new layout as soon as the template synced (checked on the preview
