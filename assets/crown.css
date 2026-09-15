@@ -974,6 +974,10 @@ html {
   puts the button inside .field, and .field draws its border around every
   child — so no amount of CSS makes a button in there read as its own box. The
   section template moves it out into .newsletter-form__row instead.
+
+  Smaller throughout, at the owner's request (2026-09-15): the band's own
+  padding, the heading and paragraph, and the field/button themselves --
+  roughly a fifth off every size and gap here, not just the outer padding.
 */
 
 /* Black, at the owner's instruction. This is the one place on the site that
@@ -986,23 +990,23 @@ html {
   --color-background: 0, 0, 0;
 
   background: #000000;
-  padding-top: 7rem;
-  padding-bottom: 4rem;
+  padding-top: 5rem;
+  padding-bottom: 3rem;
 }
 
 .newsletter--crown h2 {
-  font-size: clamp(2.8rem, 4.4vw, 5.5rem);
+  font-size: clamp(2.2rem, 3.6vw, 4rem);
   font-weight: var(--font-heading-weight);
   line-height: 1.1;
   letter-spacing: 0.02em;
   text-transform: uppercase;
-  margin-bottom: 2rem;
+  margin-bottom: 1.4rem;
 }
 
 .newsletter--crown .newsletter__subheading {
   max-width: 84rem;
   margin: 0 auto;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   line-height: 1.5;
 }
 
@@ -1013,7 +1017,7 @@ html {
    later, so it needs one more class to beat. */
 .newsletter__wrapper.newsletter--crown .newsletter-form__field-wrapper {
   max-width: 65rem;
-  margin: 3.2rem auto 0;
+  margin: 2.2rem auto 0;
 }
 
 /* Dawn caps the form at 36rem above 750px, which left the field at 164px
@@ -1051,8 +1055,8 @@ html {
 }
 
 .newsletter--crown .field__input {
-  height: 5.6rem;
-  padding: 0 1.8rem;
+  height: 4.6rem;
+  padding: 0 1.6rem;
   background-color: #333333;
   color: #ffffff;
   border: 1px solid #5a5a5f;
@@ -1075,9 +1079,9 @@ html {
   position: static;
   flex: 0 0 auto;
   width: auto;
-  min-width: 17.8rem;
-  height: 5.6rem;
-  padding: 0 2.4rem;
+  min-width: 15rem;
+  height: 4.6rem;
+  padding: 0 2rem;
   background-color: rgb(231 225 214);
   color: rgb(0 0 0);
   border: 0;
@@ -1093,15 +1097,15 @@ html {
 }
 
 .newsletter--crown .newsletter-form__button-label {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
 .newsletter--crown .newsletter__footnote {
-  margin: 1.6rem 0 0;
-  font-size: 1.3rem;
+  margin: 1.2rem 0 0;
+  font-size: 1.2rem;
   opacity: 0.72;
 }
 

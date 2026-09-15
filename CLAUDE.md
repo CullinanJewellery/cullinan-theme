@@ -114,6 +114,10 @@ Rules that matter here:
   - **One exception, at the owner's instruction (2026-09-10):** the newsletter band is
     `#000000`, matching the reference. It is set in `assets/crown.css`, not by a colour
     scheme, so nothing else on the site is affected.
+    - **Smaller throughout** (2026-09-15, at the owner’s request: “everything, even the
+      text”). The band’s own padding, the heading and paragraph, and the field/button
+      themselves all came down together, roughly a fifth off each -- not just the outer
+      padding. All in the same `.newsletter--crown` rules in `assets/crown.css`.
   - **Second exception, at the owner’s instruction (2026-09-14):** dark buttons are pure black
     `#000000` with pure white `#FFFFFF` text. Set as the button colours of schemes 1, 2 and 5 in
     `config/settings_data.json`, so every dark button matches, and the cart count bubble with
