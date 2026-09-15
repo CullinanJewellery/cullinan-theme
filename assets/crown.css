@@ -1333,7 +1333,23 @@ body {
 
 .footer__social--picture {
   position: relative;
-  padding: 4rem 2rem;
+  padding: 2rem 2rem 4rem;
+}
+
+/*
+  Dawn puts a hairline across the top of every footer, and another above its
+  bottom row (language, currency, payment icons) -- on Контакти, right below
+  the Имейл/Телефон rows' own last underline, it read as one seam too many
+  (the owner's request, 2026-09-15). Contact-only: the row underlines that
+  are actually part of the accordion stay everywhere, this session's own
+  work is untouched, and no other page's footer changes.
+*/
+.footer:has(.footer__social--contact) {
+  border-top: none;
+}
+
+.footer:has(.footer__social--contact) .footer__content-bottom {
+  border-top: none;
 }
 
 .footer__social-media {

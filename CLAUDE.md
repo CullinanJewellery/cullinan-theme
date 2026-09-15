@@ -592,6 +592,17 @@ Anything of ours that is not a Dawn setting lives in these two places:
       banner’s own veil. `.footer__social-media` breaks out of `footer__content-top`’s
       `page-width` with `left: 50%` and a translate, since `inset: 0` alone -- correct for the
       page banner, which isn’t nested in a `page-width` -- only reached the column here.
+      `100vw` also counts the scrollbar `100%` of the page doesn’t, which scrolled the page
+      itself sideways by the scrollbar’s width until `html` and `body` both took
+      `overflow-x: hidden` -- harmless, since nothing on the site scrolls the page sideways
+      on purpose.
+    - **Closer to Имейл/Телефон, and Dawn’s own seams removed** (the owner’s request,
+      2026-09-15): the row under Телефон left a second line right after its own, which was
+      Dawn’s default hairline across the top of every footer -- gone on Контакти only, and
+      the one above the footer’s bottom row (language, currency, payment icons) with it, the
+      same kind of seam. The accordion rows’ own underlines are untouched everywhere. Contact
+      methods’ **Padding bottom** also came down from 72 to 32, so the social block starts
+      sooner after Телефон.
   At the owner’s instruction there is no live
   chat and no WhatsApp. No email address is shown and no opening hours: neither has been given.
   The page already existed: Shopify’s default “Contact” page, `/pages/contact`, on the contact
