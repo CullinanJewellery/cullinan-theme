@@ -1,10 +1,13 @@
 {{ 'section-page-banner.css' | asset_url | stylesheet_tag }}
 
 {%- comment -%}
-  A page's opening band: a heading and a few lines, centred on a colour band.
-  Built for the Контакти page after the reference's contact banner. The
-  reference lays those words over a photograph; here the band is a colour,
-  since the homepage hero stays the only place words sit on a picture.
+  A page's opening band: a heading and a few lines, centred. Built for the
+  Контакти page after the reference's contact banner, which lays those words
+  over a picture. At first this was a colour band only; since 2026-09-15 the
+  band takes a background picture, at the owner's instruction -- the second
+  place on the site where words sit over an image, after the homepage hero.
+  The picture carries no words of its own. Without one the band keeps its
+  colour scheme's colour, so the layout holds before the photograph exists.
 
   Measured off the reference at 1440px: a 400px band with a 40px heading and
   16px text. On a 375px phone the band is 259px, which the 0.65 below follows.
@@ -13,6 +16,7 @@
 {%- style -%}
   .section-{{ section.id }}-banner {
     min-height: {{ section.settings.min_height | times: 0.65 | round: 0 }}px;
+    --page-banner-veil: {{ section.settings.overlay_opacity | divided_by: 100.0 }};
   }
 
   @media screen and (min-width: 750px) {
@@ -23,6 +27,26 @@
 {%- endstyle -%}
 
 <div class="page-banner section-{{ section.id }}-banner color-{{ section.settings.color_scheme }} gradient">
+  {%- if section.settings.image != blank -%}
+    {%- comment -%}
+      Decorative: the heading and text carry the meaning, so the alt is empty.
+      image_tag applies the picture's focal point, set in Shopify's Files, as
+      object-position, which decides the crop on a narrow phone.
+    {%- endcomment -%}
+    <div class="page-banner__media">
+      {{
+        section.settings.image
+        | image_url: width: 3000
+        | image_tag:
+          class: 'page-banner__image',
+          widths: '750, 1100, 1500, 1920, 2400, 3000',
+          sizes: '100vw',
+          alt: '',
+          loading: 'eager',
+          fetchpriority: 'high'
+      }}
+    </div>
+  {%- endif -%}
   <div class="page-banner__inner page-width">
     {%- if section.settings.heading != blank -%}
       <h1 class="page-banner__heading">{{ section.settings.heading | escape }}</h1>
@@ -57,7 +81,25 @@
       "type": "color_scheme",
       "id": "color_scheme",
       "label": "Colour scheme",
+      "info": "Sets the words' colour, the veil's colour, and the band's colour when there is no picture.",
       "default": "scheme-5"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Background picture",
+      "info": "Covers the band, with the heading and text over it. A calm, light picture keeps dark words readable; for a dark one choose a dark colour scheme."
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 0,
+      "max": 90,
+      "step": 10,
+      "unit": "%",
+      "label": "Veil over the picture",
+      "info": "The colour scheme's background laid over the picture, for when the words are hard to read.",
+      "default": 0
     },
     {
       "type": "range",

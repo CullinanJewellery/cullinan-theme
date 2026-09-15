@@ -1,13 +1,38 @@
 /*
-  Page banner -- a heading and a few lines, centred on a colour band.
+  Page banner -- a heading and a few lines, centred on a colour band or over a background picture.
 */
 
 .page-banner {
+  position: relative;
   display: flex;
   align-items: center;
 }
 
+/* The background picture fills the band, cropped rather than stretched. */
+.page-banner__media {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.page-banner__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* A veil of the colour scheme's background, 0 unless the editor asks for it. */
+.page-banner__media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: rgb(var(--color-background));
+  opacity: var(--page-banner-veil, 0);
+}
+
 .page-banner__inner {
+  position: relative;
   width: 100%;
   padding-top: 4rem;
   padding-bottom: 4rem;

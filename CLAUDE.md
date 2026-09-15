@@ -94,6 +94,10 @@ Rules that matter here:
       text, a 350 x 52 button with 16px capitals, 10px and 20px between the parts. The rules
       are in the phone hero block of `assets/crown.css`, one class more specific than
       Dawn’s, because Dawn’s stylesheet loads after ours.
+  - **Second exception, at the owner’s instruction (2026-09-15):** the Контакти page banner
+    („Как можем да помогнем?“). The owner asked for a picture behind it, as on the reference’s
+    contact page, so its heading and text sit over a background picture once one is uploaded.
+    The picture itself still carries no text. No other place gets words over an image.
 - **Restraint reads as expensive.** Empty space is the main luxury signal. When in doubt,
   remove rather than add.
 - **Gold comes from the photographs, not the interface.** The gold accent is muted and used
@@ -471,10 +475,15 @@ Anything of ours that is not a Dawn setting lives in these two places:
     Change an icon only when the owner asks for that icon. Every new icon is drawn in a
     preview and looked at beside its neighbours before it ships.
 - **Page banner.** `sections/page-banner.liquid` with `assets/section-page-banner.css`: a heading
-  (h1) and a few lines centred on a colour band, 400px tall on desktop and two thirds of that
-  on phones, measured off the reference’s contact banner. The reference lays those words over a
-  photograph; this has no image setting on purpose, since the homepage hero stays the only place
-  words sit on a picture.
+  (h1) and a few lines centred on a band, 400px tall on desktop and two thirds of that on phones,
+  measured off the reference’s contact banner. Since 2026-09-15 it takes a **Background picture**
+  (the owner’s instruction; see the second exception under Design direction), cropped to cover
+  the band, decorative (empty alt), loaded eagerly as the first thing on the page; `image_tag`
+  applies the focal point set in Shopify’s Files. A **Veil over the picture** (0–90%, default 0)
+  lays the colour scheme’s background over it when the words need help; the scheme also sets
+  the words’ colour, so a dark picture wants a dark scheme. With no picture the band is the
+  scheme’s colour, as before. No picture is chosen by us: stock and AI images are not allowed,
+  so the owner uploads their own.
 - **Contact methods.** `sections/contact-methods.liquid` with
   `assets/section-contact-methods.css`, after the reference’s Contact Us page: rows of icon, title
   and plus sign in a 1160px column (86px tall on desktop, a 1px rule under each closed row, 35px
@@ -524,7 +533,9 @@ Anything of ours that is not a Dawn setting lives in these two places:
   Към всеки подхождаме лично и с внимание…“, the owner’s idea in polished words, 2026-09-15; it
   replaced a line with the form and the phone number, at the owner’s request) and two rows,
   Имейл with the contact form and
-  Телефон with +359 88 287 4895, the owner’s number. At the owner’s instruction there is no live
+  Телефон with +359 88 287 4895, the owner’s number. The banner’s background picture slot is
+  empty until the owner uploads a photo (theme editor → Контакти page → Page banner →
+  Background picture); until then it shows the sand colour. At the owner’s instruction there is no live
   chat and no WhatsApp. No email address is shown and no opening hours: neither has been given.
   The page already existed: Shopify’s default “Contact” page, `/pages/contact`, on the contact
   template, so it showed the new layout as soon as the template synced (checked on the preview
