@@ -555,8 +555,10 @@ Anything of ours that is not a Dawn setting lives in these two places:
     scheme-8 back, not moonmagic’s own neutral grey. So the title line sits on the page ground
     whether a row is open or shut, and an open row’s panel is the marble’s blush.
   - **The footer on Контакти** (the owner’s request, 2026-09-15): above the Facebook and
-    Instagram buttons it says „Пишете ни и тук“ / „Изпратете ни съобщение във Facebook или
-    Instagram — ще ви отговорим и там.“ instead of „Вижте работата ни“ and its line, and the
+    Instagram buttons it says „Ще ни намерите и там“ / „Можете да ни пишете и във Facebook или
+    Instagram — ще ви отговорим възможно най-скоро.“ instead of „Вижте работата ни“ and its line
+    (the first wording, „Пишете ни и тук“ / „...ще ви отговорим и там.“, read awkwardly to the
+    owner, who asked for better copy the same day), and the
     buttons fill with scheme-8’s blush on hover or tap instead of black, words and outline
     black. `sections/footer.liquid` switches on `template.suffix == 'contact'`; the two
     texts are footer settings (Social buttons on the Контакти page) with those defaults, and
