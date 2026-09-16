@@ -118,6 +118,15 @@ Rules that matter here:
     image.
 - **Restraint reads as expensive.** Empty space is the main luxury signal. When in doubt,
   remove rather than add.
+- **The words should feel the way the layout already does: feminine and strong, at ease
+  rather than trying hard** (the owner’s direction, 2026-09-16, after looking at what women
+  post on TikTok under things like #feminineenergy: quiet confidence, self-possession, never
+  performing for approval). Not new copy for parts of the site that don’t have any yet --
+  applied to our own existing text as we touch it, and to whatever we write from here on.
+  „Блясък без усилие“ (the homepage heading) is the model: short, sure of itself, no
+  exclamation marks, nothing sold hard. First applied 2026-09-16 to the hero’s own subtitle,
+  „Не се сваля. Ръчна изработка.“, replacing „Бижута, които не се свалят. Ръчна изработка.“ --
+  same two facts (doesn’t come off, handmade), tightened to match the heading’s rhythm.
 - **Gold comes from the photographs, not the interface.** The gold accent is muted and used
   sparingly (badges, small accents). Never gold gradients, never gold text on black.
 - **No pure white or pure black.** Both read cheap on screen.
