@@ -416,6 +416,25 @@ html {
   background-color: rgb(242 240 236);
 }
 
+/*
+  A background video for the hero, at the owner's request (2026-09-16).
+  .banner__media is already Dawn's own .media (base.css): position: relative
+  there, and *every* direct child already gets position: absolute and 100%
+  width/height from Dawn's own ".media > *" rule -- only object-fit (which
+  Dawn's own rule sets for img specifically, not video or iframe) is ours to
+  add, the same way sections/atelier.liquid's own video does it.
+*/
+.banner__media-motion {
+  object-fit: cover;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .banner__media-motion {
+    display: none;
+  }
+}
+
 .banner__box {
   max-width: 87.4rem;
   padding: 0;

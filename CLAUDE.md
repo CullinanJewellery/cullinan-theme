@@ -103,6 +103,20 @@ Rules that matter here:
       БЕЗ ДА СЕ СТАРАЕТЕ“ read as an awkward, translated-sounding two-clause construction (the
       owner’s words: “doesn’t sound right”, the idea itself was fine) -- now „БЛЯСЪК БЕЗ
       УСИЛИЕ“, the same promise in one punchier phrase, which suits the smaller size better too.
+    - **A background video too, 2026-09-16, at the owner’s request** (“why can’t I put video,
+      I can upload just photo” -- about this section, though first fixed on the newsletter by
+      mistake, since that one had just gained the same feature). Dawn’s own `image-banner` had
+      never taken video, only `image` and a second `image_2` for a split-screen banner. Added
+      **Video** and **Or an external video URL** (YouTube/Vimeo) -- no separate poster field,
+      unlike the atelier blocks and the newsletter: this section already has an `image`, which
+      just doubles as the poster when a video is set. A video takes over the whole banner
+      rather than combining with `image_2`; `.banner__media` is already Dawn’s own `.media`
+      (`base.css`), which already gives every direct child `position: absolute` and full
+      width/height, so only `object-fit` (Dawn’s own rule covers `img`, not `video` or
+      `iframe`) needed adding, in `assets/crown.css`. Same reduced-motion handling as the
+      atelier blocks: a script removes `.banner__media-motion` under
+      `prefers-reduced-motion`, backed by a CSS rule that hides it even before the script
+      runs.
   - **Second exception, at the owner’s instruction (2026-09-15):** the Контакти page banner
     („Как можем да помогнем?“). The owner asked for a picture behind it, as on the reference’s
     contact page, so its heading and text sit over a background picture once one is uploaded.
