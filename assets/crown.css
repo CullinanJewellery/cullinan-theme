@@ -1016,11 +1016,31 @@ html {
   z-index: 0;
 }
 
-.newsletter__media img {
+.newsletter__media img,
+.newsletter__media video,
+.newsletter__media iframe {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+/*
+  A background video, at the owner's request (2026-09-16) -- same choice as the
+  homepage atelier blocks: Shopify-hosted, or a YouTube/Vimeo URL. The poster
+  image sits under it in normal flow (filling the box on its own already);
+  the video/iframe layers on top of that same box.
+*/
+.newsletter__media-motion {
+  position: absolute;
+  inset: 0;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .newsletter__media-motion {
+    display: none;
+  }
 }
 
 .newsletter__media::after {

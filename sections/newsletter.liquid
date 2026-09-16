@@ -15,25 +15,105 @@
   }
 {%- endstyle -%}
 
+{%- liquid
+  assign has_bg_video = false
+  if section.settings.background_video != blank or section.settings.background_video_url != blank
+    assign has_bg_video = true
+  endif
+  assign has_bg_media = has_bg_video
+  if section.settings.background_image != blank
+    assign has_bg_media = true
+  endif
+  assign bg_poster = section.settings.background_poster | default: section.settings.background_video.preview_image
+  assign bg_video_id = section.settings.background_video_url.id
+-%}
+
 <div class="newsletter center {% if section.settings.full_width == false %}newsletter--narrow page-width{% endif %}">
-  <div class="newsletter__wrapper newsletter--crown color-{{ section.settings.color_scheme }} gradient content-container isolate{% if section.settings.full_width %} content-container--full-width{% endif %} section-{{ section.id }}-padding{% if section.settings.background_image != blank %} newsletter--picture{% endif %}"
-    {%- if section.settings.background_image != blank -%}
+  <div class="newsletter__wrapper newsletter--crown color-{{ section.settings.color_scheme }} gradient content-container isolate{% if section.settings.full_width %} content-container--full-width{% endif %} section-{{ section.id }}-padding{% if has_bg_media %} newsletter--picture{% endif %}"
+    {%- if has_bg_media -%}
       style="--newsletter-veil: {{ section.settings.overlay_opacity | divided_by: 100.0 }};"
     {%- endif -%}
   >
-    {%- if section.settings.background_image != blank -%}
+    {%- if has_bg_media -%}
       {%- comment -%}
         Decorative: the heading and text carry the meaning, so the alt is empty,
         same as the Контакти banner and its footer picture (2026-09-15, at the
         owner's request -- a fourth place words sit over an image, see Design
-        direction in CLAUDE.md).
+        direction in CLAUDE.md). A background video was added 2026-09-16, at the
+        owner's request, the same Shopify-hosted-or-YouTube/Vimeo choice as the
+        homepage atelier blocks (sections/atelier.liquid) -- see the reduced-motion
+        script below, which follows that same section's own pattern.
       {%- endcomment -%}
       <div class="newsletter__media">
-        {{
-          section.settings.background_image
-          | image_url: width: 3000
-          | image_tag: widths: '750, 1100, 1500, 1920, 2400, 3000', sizes: '100vw', alt: '', loading: 'lazy'
-        }}
+        {%- if section.settings.background_video != blank -%}
+          {%- if bg_poster != blank -%}
+            {{
+              bg_poster
+              | image_url: width: 3000
+              | image_tag:
+                class: 'newsletter__media-poster',
+                widths: '750, 1100, 1500, 1920, 2400, 3000',
+                sizes: '100vw',
+                alt: '',
+                loading: 'lazy'
+            }}
+          {%- endif -%}
+          <video
+            class="newsletter__media-motion"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="none"
+            {% if bg_poster != blank %}
+              poster="{{ bg_poster | image_url: width: 1920 }}"
+            {% endif %}
+            aria-hidden="true"
+            tabindex="-1"
+          >
+            {%- for source in section.settings.background_video.sources -%}
+              <source src="{{ source.url }}" type="{{ source.mime_type }}">
+            {%- endfor -%}
+          </video>
+        {%- elsif section.settings.background_video_url != blank -%}
+          {%- if bg_poster != blank -%}
+            {{
+              bg_poster
+              | image_url: width: 3000
+              | image_tag:
+                class: 'newsletter__media-poster',
+                widths: '750, 1100, 1500, 1920, 2400, 3000',
+                sizes: '100vw',
+                alt: '',
+                loading: 'lazy'
+            }}
+          {%- endif -%}
+          {%- if section.settings.background_video_url.type == 'youtube' -%}
+            <iframe
+              class="newsletter__media-motion"
+              src="https://www.youtube.com/embed/{{ bg_video_id }}?autoplay=1&mute=1&controls=0&loop=1&playlist={{ bg_video_id }}&playsinline=1&modestbranding=1"
+              allow="autoplay; encrypted-media"
+              aria-hidden="true"
+              tabindex="-1"
+              title=""
+            ></iframe>
+          {%- else -%}
+            <iframe
+              class="newsletter__media-motion"
+              src="https://player.vimeo.com/video/{{ bg_video_id }}?autoplay=1&muted=1&loop=1&background=1"
+              allow="autoplay; encrypted-media"
+              aria-hidden="true"
+              tabindex="-1"
+              title=""
+            ></iframe>
+          {%- endif -%}
+        {%- else -%}
+          {{
+            section.settings.background_image
+            | image_url: width: 3000
+            | image_tag: widths: '750, 1100, 1500, 1920, 2400, 3000', sizes: '100vw', alt: '', loading: 'lazy'
+          }}
+        {%- endif -%}
       </div>
     {%- endif -%}
     {%- for block in section.blocks -%}
@@ -155,6 +235,22 @@
   </div>
 </div>
 
+{%- if has_bg_video -%}
+  <script>
+    // The footage is decorative. Under prefers-reduced-motion nothing plays:
+    // the element is removed outright and the poster still is what remains.
+    // Same pattern as sections/atelier.liquid.
+    (function () {
+      if (!window.matchMedia || !window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var section = document.currentScript.previousElementSibling;
+      if (!section) return;
+      section.querySelectorAll('.newsletter__media-motion').forEach(function (el) {
+        el.remove();
+      });
+    })();
+  </script>
+{%- endif -%}
+
 {% schema %}
 {
   "name": "t:sections.newsletter.name",
@@ -195,10 +291,31 @@
       "label": "t:sections.newsletter.settings.full_width.label"
     },
     {
+      "type": "paragraph",
+      "content": "Covers the black band, with the heading, text and form over it. A video needs a poster image. Leave everything empty and the band stays plain black."
+    },
+    {
+      "type": "video",
+      "id": "background_video",
+      "label": "Background video"
+    },
+    {
+      "type": "video_url",
+      "id": "background_video_url",
+      "accept": ["youtube", "vimeo"],
+      "label": "Or an external video URL"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_poster",
+      "label": "Poster image for the video",
+      "info": "Required with a video. Also what is shown when the visitor prefers reduced motion."
+    },
+    {
       "type": "image_picker",
       "id": "background_image",
-      "label": "Background picture",
-      "info": "Covers the black band, with the heading, text and form over it. Empty by default -- upload your own."
+      "label": "Or a background picture",
+      "info": "Used when no video is set. Empty by default -- upload your own."
     },
     {
       "type": "range",
@@ -207,8 +324,8 @@
       "max": 90,
       "step": 10,
       "unit": "%",
-      "label": "Veil over the picture",
-      "info": "Black, laid over the picture, for when the words need help.",
+      "label": "Veil over the picture or video",
+      "info": "Black, laid over it, for when the words need help.",
       "default": 30
     },
     {

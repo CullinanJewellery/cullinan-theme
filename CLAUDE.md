@@ -147,6 +147,16 @@ Rules that matter here:
       already `position: relative` (Dawn’s own `.content-container` rule) and, `full_width`
       leaving it outside any `page-width`, needs no breakout trick to reach the true edges --
       unlike the footer’s picture, which does.
+    - **A background video too, at the owner’s request** (2026-09-16: “why can’t I put video,
+      I can upload just photo”). Added **Background video** and **Or an external video URL**
+      (YouTube/Vimeo) settings plus a **Poster image for the video**, the same three fields
+      and the same priority -- video, then video URL, then the still picture -- as the
+      homepage atelier blocks (`sections/atelier.liquid`), including that section’s own
+      reduced-motion handling: a small script removes `.newsletter__media-motion` under
+      `prefers-reduced-motion`, backed by a CSS rule that hides it even before the script
+      runs. The owner’s own uploaded picture keeps working exactly as before -- its setting
+      is still `background_image`, only relabelled “Or a background picture”, and now used
+      only when no video is set.
   - **Second exception, at the owner’s instruction (2026-09-14):** dark buttons are pure black
     `#000000` with pure white `#FFFFFF` text. Set as the button colours of schemes 1, 2 and 5 in
     `config/settings_data.json`, so every dark button matches, and the cart count bubble with
