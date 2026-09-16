@@ -756,9 +756,27 @@ data, not theme files:
 
 - **Store name** → Settings → Store details. Reads Doncheff Jewellery; it needs to go back to
   Cullinan Jewellery. The header prints `shop.name` until a logo image is uploaded.
-- **Main menu** (Content → Menus → Main menu), in this order:
-  циркони · диаманти · най-продавани · пръстени · обеци · висулки · гривни
-- **Collections** to point those entries at — none exist yet.
+- **Main menu** (Content → Menus → Main menu). As of 2026-09-16 it holds six flat items:
+  Пръстени · Обеци · Висулки · Комплекти · Гривни · Диаманти.
+  - **Stones go a level down** (the owner’s decision, 2026-09-16, asked for as “like a
+    collection but under the main one”). Диаманти should stop sitting beside Пръстени and
+    Обеци as a seventh product type; instead a parent item (Камъни, or whatever the owner
+    names it) carries Циркони, Диаманти and any stone added later as its children. Nested
+    menus need no theme work: Dawn renders the dropdown, and the visual mega menu falls back
+    to the text-column one for any item without `visual_menu_item` blocks (see Visual mega
+    menu under Custom code).
+- **Collections.** Six exist as of 2026-09-16: Висулки, Гривни, Диаманти, Комплекти, Обеци,
+  Пръстени. **Циркони does not** (`/collections/циркони` 404s) and has to be created before
+  anything links to it -- see the no-empty-collection rule under How we work.
+- **Stone filters inside the product-type collections** (the owner’s decision, 2026-09-16,
+  wanted alongside the submenu above: narrow by stone within Пръстени, Обеци and so on).
+  The theme is already done here -- `templates/collection.json` has `enable_filtering: true`
+  with the horizontal filter bar, and the bar renders. What is missing is store data: every
+  product needs the stone on it (a tag, or the `custom.detail`-style metafield), and the
+  filter itself has to be turned on in the free **Search & Discovery** app under
+  Filters. Until then the bar only offers Shopify’s own Availability and Price, which is
+  what a collection page shows today. Those two also still read in English, because that is
+  still the store’s default language (see the Bulgarian note above).
 - **Product Vendor field** carries the small line above the product title on the cards
   (where the reference prints the stone). Put the stone or material there — "Циркон",
   "Диамант", "14К злато" — not the brand name, or every card will read Cullinan Jewellery.
