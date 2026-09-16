@@ -96,10 +96,13 @@ Rules that matter here:
       text, a 350 x 52 button with 16px capitals, 10px and 20px between the parts. The rules
       are in the phone hero block of `assets/crown.css`, one class more specific than
       Dawn’s, because Dawn’s stylesheet loads after ours.
-    - **Heading smaller, 2026-09-16, at the owner’s request:** „ЗА ДА БЛЕСТИТЕ, БЕЗ ДА СЕ
-      СТАРАЕТЕ“ was set to Dawn’s `h0`, one step below the largest of its five preset sizes
-      (52px desktop / 40px phone at this theme’s heading scale). Now `h1`, one step down
-      again (40px desktop / 30px phone) -- Dawn’s own preset dropdown, not a custom size.
+    - **Heading smaller and reworded, 2026-09-16, at the owner’s request:** it was Dawn’s `h0`,
+      one step below the largest of its five preset sizes (52px desktop / 40px phone at this
+      theme’s heading scale); now `h1`, one step down again (40px desktop / 30px phone) --
+      Dawn’s own preset dropdown, not a custom size. The words changed too: „ЗА ДА БЛЕСТИТЕ,
+      БЕЗ ДА СЕ СТАРАЕТЕ“ read as an awkward, translated-sounding two-clause construction (the
+      owner’s words: “doesn’t sound right”, the idea itself was fine) -- now „БЛЯСЪК БЕЗ
+      УСИЛИЕ“, the same promise in one punchier phrase, which suits the smaller size better too.
   - **Second exception, at the owner’s instruction (2026-09-15):** the Контакти page banner
     („Как можем да помогнем?“). The owner asked for a picture behind it, as on the reference’s
     contact page, so its heading and text sit over a background picture once one is uploaded.
