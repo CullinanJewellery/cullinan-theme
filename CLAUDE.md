@@ -612,9 +612,22 @@ Anything of ours that is not a Dawn setting lives in these two places:
     -- Контакти’s own Телефон/Имейл rows are unchanged, still no email row there specifically,
     since that was a separate, more deliberate decision about that page’s two rows.
   - **Facebook and Instagram needed no change.** `show_social: true` already renders both,
-    directly under this block (`render 'social-icons'` in `sections/footer.liquid`) -- the
-    reference’s own grouping of newsletter, contact and social together was already true here
-    once the newsletter box was turned on.
+    directly under this block (`render 'social-icons'` in `sections/footer.liquid`).
+  - **Stacked into one centred column, at the owner’s follow-up request** ("I want it to look
+    like theirs"): Dawn’s own footer puts the newsletter box and the social block side by side
+    from 750px up (`.footer-block--newsletter { display: flex }`, no direction set, so a row),
+    not stacked as the reference has them. `assets/crown.css` forces `flex-direction: column`
+    and centres it -- scoped under `.footer` on every selector to out-specify
+    `section-footer.css`’s own rules, which load inline inside the section and so land after
+    crown.css in the document: the same fight already noted on the hero facts section, and the
+    same fix.
+  - **The setting and its value landed several minutes apart**, the validator-lag lesson above
+    applied to a sections-group file for the first time: `contact_email` (the schema) and
+    `footer-group.json` setting it to the real address were pushed together, and the address
+    did not render for a few minutes even after the schema push was confirmed live elsewhere.
+    Fixed the same way as the lesson prescribes -- re-sent `footer-group.json` on its own (a
+    harmless key reorder for a real byte change) once the schema had had time to catch up, and
+    it synced within seconds.
   - **The country and language selectors were deliberately left alone.** The owner said not to
     add “the other thing” under the reference’s own contact line, which is its country/currency
     picker -- but ours already sits in a separate part of the footer entirely
