@@ -1427,6 +1427,18 @@ html {
   }
 }
 
+/* On Контакти the social block comes first in the footer, right under the
+   Телефон row; the columns after it get clear air below its picture. */
+.footer .footer__social + .footer__blocks-wrapper {
+  margin-top: 5rem;
+}
+
+@media screen and (max-width: 749px) {
+  .footer .footer__social + .footer__blocks-wrapper {
+    margin-top: 3.2rem;
+  }
+}
+
 @media screen and (min-width: 750px) {
   .footer__list-social {
     gap: 1.2rem;

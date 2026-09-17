@@ -49,7 +49,85 @@
     or section.settings.enable_follow_on_shop
   -%}
     {%- unless only_empty_brand -%}
+      {%- capture footer_social -%}
+        {%- if section.settings.show_social and has_social_icons -%}
+          {%- comment -%}
+            On the Контакти page (the contact template) the owner wants the words
+            above the buttons to say people can write to us there too, and the
+            buttons to fill with that page's blush on hover (2026-09-15): the
+            background of scheme-8, the colour of the open Имейл and Телефон rows.
+            Since the same day the block can also carry a background picture, full-bleed
+            to the page's own edges and behind the words, the same as the Контакти banner
+            above it (two tries got this wrong first: a background only as wide as the
+            column, then a strip between the words and the buttons -- neither was what the
+            owner meant). Empty until the owner uploads one, so the block looks exactly as
+            before either way. Everywhere else the footer is unchanged.
+
+            Captured here because it prints in one of two places. On Контакти it comes
+            first in the footer, straight under the Телефон row as the owner tuned it
+            (2026-09-15), with the link columns and the newsletter box after it; everywhere
+            else it keeps its place under the newsletter box (2026-09-17).
+          {%- endcomment -%}
+          {%- liquid
+            assign social_heading = section.settings.social_heading
+            assign social_text = section.settings.social_text
+            assign social_class = ''
+            assign social_hover = ''
+            assign social_image = blank
+            assign social_veil = 0
+            if template.suffix == 'contact'
+              if section.settings.social_heading_contact != blank
+                assign social_heading = section.settings.social_heading_contact
+              endif
+              if section.settings.social_text_contact != blank
+                assign social_text = section.settings.social_text_contact
+              endif
+              assign social_class = ' footer__social--contact'
+              assign social_image = section.settings.social_image_contact
+              assign social_veil = section.settings.social_image_overlay_contact
+              if social_image != blank
+                assign social_class = social_class | append: ' footer__social--picture'
+              endif
+              for scheme in settings.color_schemes
+                if scheme.id == 'scheme-8'
+                  assign social_hover = scheme.settings.background.red | append: ', ' | append: scheme.settings.background.green | append: ', ' | append: scheme.settings.background.blue
+                endif
+              endfor
+            endif
+          -%}
+          <div
+            class="footer__social{{ social_class }}"
+            {% if social_hover != '' or social_image != blank %}
+              style="--footer-social-hover: {{ social_hover }}; --footer-social-veil: {{ social_veil | divided_by: 100.0 }};"
+            {% endif %}
+          >
+            {%- if social_image != blank -%}
+              <div class="footer__social-media">
+                {{
+                  social_image
+                  | image_url: width: 1500
+                  | image_tag: widths: '375, 550, 750, 1100, 1500', sizes: '100vw', alt: '', loading: 'lazy'
+                }}
+              </div>
+            {%- endif -%}
+            {%- if social_heading != blank or social_text != blank -%}
+              <div class="footer__social-intro">
+                {%- if social_heading != blank -%}
+                  <p class="footer__social-heading">{{ social_heading | escape }}</p>
+                {%- endif -%}
+                {%- if social_text != blank -%}
+                  <p class="footer__social-text">{{ social_text | escape }}</p>
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+            {%- render 'social-icons', class: 'footer__list-social' -%}
+          </div>
+        {%- endif -%}
+      {%- endcapture -%}
       <div class="footer__content-top page-width">
+        {%- if template.suffix == 'contact' -%}
+          {{- footer_social -}}
+        {%- endif -%}
         {%- if section.blocks.size > 0 -%}
           {%- liquid
             if section.blocks.size == 9
@@ -314,74 +392,9 @@
             </div>
           {%- endif -%}
 
-          {%- if section.settings.show_social and has_social_icons -%}
-            {%- comment -%}
-              On the Контакти page (the contact template) the owner wants the words
-              above the buttons to say people can write to us there too, and the
-              buttons to fill with that page's blush on hover (2026-09-15): the
-              background of scheme-8, the colour of the open Имейл and Телефон rows.
-              Since the same day the block can also carry a background picture, full-bleed
-              to the page's own edges and behind the words, the same as the Контакти banner
-              above it (two tries got this wrong first: a background only as wide as the
-              column, then a strip between the words and the buttons -- neither was what the
-              owner meant). Empty until the owner uploads one, so the block looks exactly as
-              before either way. Everywhere else the footer is unchanged.
-            {%- endcomment -%}
-            {%- liquid
-              assign social_heading = section.settings.social_heading
-              assign social_text = section.settings.social_text
-              assign social_class = ''
-              assign social_hover = ''
-              assign social_image = blank
-              assign social_veil = 0
-              if template.suffix == 'contact'
-                if section.settings.social_heading_contact != blank
-                  assign social_heading = section.settings.social_heading_contact
-                endif
-                if section.settings.social_text_contact != blank
-                  assign social_text = section.settings.social_text_contact
-                endif
-                assign social_class = ' footer__social--contact'
-                assign social_image = section.settings.social_image_contact
-                assign social_veil = section.settings.social_image_overlay_contact
-                if social_image != blank
-                  assign social_class = social_class | append: ' footer__social--picture'
-                endif
-                for scheme in settings.color_schemes
-                  if scheme.id == 'scheme-8'
-                    assign social_hover = scheme.settings.background.red | append: ', ' | append: scheme.settings.background.green | append: ', ' | append: scheme.settings.background.blue
-                  endif
-                endfor
-              endif
-            -%}
-            <div
-              class="footer__social{{ social_class }}"
-              {% if social_hover != '' or social_image != blank %}
-                style="--footer-social-hover: {{ social_hover }}; --footer-social-veil: {{ social_veil | divided_by: 100.0 }};"
-              {% endif %}
-            >
-              {%- if social_image != blank -%}
-                <div class="footer__social-media">
-                  {{
-                    social_image
-                    | image_url: width: 1500
-                    | image_tag: widths: '375, 550, 750, 1100, 1500', sizes: '100vw', alt: '', loading: 'lazy'
-                  }}
-                </div>
-              {%- endif -%}
-              {%- if social_heading != blank or social_text != blank -%}
-                <div class="footer__social-intro">
-                  {%- if social_heading != blank -%}
-                    <p class="footer__social-heading">{{ social_heading | escape }}</p>
-                  {%- endif -%}
-                  {%- if social_text != blank -%}
-                    <p class="footer__social-text">{{ social_text | escape }}</p>
-                  {%- endif -%}
-                </div>
-              {%- endif -%}
-              {%- render 'social-icons', class: 'footer__list-social' -%}
-            </div>
-          {%- endif -%}
+          {%- unless template.suffix == 'contact' -%}
+            {{- footer_social -}}
+          {%- endunless -%}
         </div>
       </div>
     {%- endunless -%}
