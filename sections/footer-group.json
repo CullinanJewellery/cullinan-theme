@@ -43,7 +43,18 @@
           "type": "link_column",
           "settings": {
             "heading": "Колекции",
-            "menu": "main-menu"
+            "link_1_label": "Пръстени",
+            "link_1": "/collections/пръстени",
+            "link_2_label": "Обеци",
+            "link_2": "/collections/обеци",
+            "link_3_label": "Висулки",
+            "link_3": "/collections/висулки",
+            "link_4_label": "Комплекти",
+            "link_4": "/collections/комплекти",
+            "link_5_label": "Гривни",
+            "link_5": "/collections/гривни",
+            "link_6_label": "Камъни",
+            "link_6": "/collections/камъни"
           }
         }
       },
