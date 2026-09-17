@@ -1273,6 +1273,26 @@ html {
   color: rgba(var(--color-foreground), 0.68);
 }
 
+/* The owner asked for this block to look like the reference's own footer:
+   the newsletter box, the contact line and the social buttons stacked in one
+   centred column, not Dawn's own side-by-side row from 750px up. */
+@media screen and (min-width: 750px) {
+  .footer-block--newsletter {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-block__newsletter,
+  .footer-block__newsletter:not(:only-child) {
+    margin-right: 0;
+    text-align: center;
+  }
+
+  .footer-block__newsletter:not(:only-child) .footer__newsletter {
+    justify-content: center;
+  }
+}
+
 /* The contact line between the newsletter box and the social buttons. */
 .footer__contact-email {
   margin: 1.6rem 0 0;
