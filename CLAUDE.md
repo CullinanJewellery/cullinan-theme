@@ -394,35 +394,15 @@ Anything of ours that is not a Dawn setting lives in these two places:
   "Over the image" is a setting, not the default, because the reference's dark scrim dulls
   gold photography and the hero is meant to be the only place words sit on a picture. Tiles
   without a destination render as tiles, not links.
-  - **Reused for a second homepage instance, "Разгледайте по камък"** (2026-09-17, at the
-    owner’s request, after moonmagic.com’s own end-of-homepage section): the owner pointed to
-    the reference’s "FIND YOUR STONE" row -- a strip of loose-gemstone photos, each captioned
-    with an invented “meaning” (Blue Sapphire = Loyalty, Moonstone = Intuition) in the site’s
-    crystal-healing voice. Cullinan makes no such claims about any stone, so only the pattern
-    was taken, not the words: browsing jewellery by stone, given a home of its own on the
-    homepage. It is the same section type as the first mosaic (`stones_mosaic` in
-    `templates/index.json`, `type: category-mosaic`) rather than a new one -- exactly how
-    `atelier.liquid` already runs three times under different keys. All eight tiles are
-    `standard` (no stone is more important than another, unlike Пръстени/Гривни’s tall
-    corners), and captions sit **below** the image on this instance -- the first mosaic’s own
-    instance is set to “Over the image” in the live template (the owner’s own choice, made in
-    the theme editor; left as it is), but this rule’s reasoning is exactly why the new one
-    does not copy that setting.
-    - **The eight stones, and their order, come from the by-collection count above**: Циркони,
-      Диаманти (linked to `/collections/диаманти`, the only one that exists), Перли, Сапфири,
-      Оникс, Рубини, Изумруди, Опал. The other seven render as tiles with no link, the section’s
-      own established behaviour, since none of those collections exist yet -- see Collections
-      under Waiting on the Shopify admin. A tile’s link fills in the moment its collection does.
-    - **The subline under each name is one honest, physical line, not a claimed meaning**:
-      e.g. Опал “Дъга от цветове в един камък” (its real play-of-colour), Сапфири “Дълбок цвят
-      до диаманта” (nearly every sapphire piece on the old site is set with diamonds). Диаманти
-      reuses the exact line already on its tile in the first mosaic, rather than a second,
-      conflicting line for the same collection.
-    - Placed right before the newsletter band, after Нашите материали -- “at the end of the
-      homepage”, as the owner asked, while still ahead of the closing subscribe band, matching
-      where the reference’s own equivalent sections sit (well before its final newsletter
-      block too). Needs no margin setting of its own: materials_teaser’s existing
-      `margin_bottom: 40` already clears the matcha band underneath it.
+  - **A wrong guess, tried and reverted, 2026-09-17.** The owner asked for something like
+    moonmagic.com's end-of-homepage "collections, everything about moonstone, let us help
+    you" -- read as its mid-page "FIND YOUR STONE" marketing row, so a second instance of
+    this section shipped on the homepage (`stones_mosaic`, eight stone tiles). Wrong: the
+    owner meant the reference's **footer**, specifically what sits under its newsletter
+    signup ("look under their join the inner circle"), and had sent a picture of it that
+    this pass never saw. Reverted the same day -- `templates/index.json` is back to exactly
+    the state above, no `stones_mosaic` key, no entry in `order`. See Footer link columns
+    under Custom code for what the reference actually shows there.
 - **Hero facts.** `sections/hero-facts.liquid` with `assets/section-hero-facts.css`. The
   short claims under the hero. Its own section, not Dawn's multicolumn — Dawn loads section
   stylesheets from inside the section, which puts them after `crown.css` in the document, so
@@ -615,6 +595,23 @@ Anything of ours that is not a Dawn setting lives in these two places:
   for it in `snippets/icon-benefit.liquid` and checked at 35px.
 - **Page title switch.** `sections/main-page.liquid` has a `show_title` checkbox, on by
   default. Templates that bring their own headline turn it off; `page.about` does.
+- **Footer link columns -- found, not yet built (2026-09-17).** The owner asked for
+  something like the reference's footer, under its newsletter signup. What is actually there
+  (read from the live DOM, `footer` element): four columns -- **Let Us Help You** (FAQ, Help
+  Center, Contact Us, Shipping, Returns, Quality & Designs, Jewelry Care & Meaning Guide, Ring
+  Size Guide, Terms and Conditions), **Everything about Moonstone** (five of their own blog
+  posts about their signature stone), **Collections** (Shop All, Rings, Bundles, Moonstone
+  Jewelry, Necklaces, Earrings, Shop Our Instagram), and a fourth block pairing the email
+  signup with the contact email and social links. Dawn's own `sections/footer.liquid` already
+  supports exactly this -- a `link_list` block per column, each with its own free-text
+  `heading` and a `menu` picker (`sections/footer-group.json` currently has none set). No new
+  section or code is needed, only: the Bulgarian heading for each column, which links belong
+  in each, and which Shopify menu backs each one -- the "Colecции" column, for instance, could
+  simply point at the existing Main menu rather than needing a new one. `Помощ`-style links
+  (FAQ, delivery, returns) mostly do not exist yet as pages here (see Working agreements on
+  not inventing policy text), and there is no blog for a Moonstone-style education column, so
+  the equivalent third column is more likely За нас’s own anchors. Waiting on the owner’s
+  picture and a decision on wording before building this.
 
 ## Current state
 
