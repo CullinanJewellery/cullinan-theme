@@ -816,6 +816,15 @@ data, not theme files:
     hand-picked products together. If the owner’s admin still has the old model and Диаманти
     was made manual, it cannot take a condition: make it again as a smart collection under the
     same name, so `/collections/диаманти` (the homepage tile’s link) keeps working.
+  - **Type-by-stone collections** („Пръстени с циркони“ and so on; the owner asked for the full
+    list 2026-09-17): 33 combinations, the ones the by-collection count under Current state
+    finds -- 10 for Пръстени, 8 for Висулки, 7 each for Обеци and Комплекти, 1 for Гривни.
+    Names use the plural for циркони, диаманти, перли, сапфири (със), рубини, изумруди and the
+    singular for оникс, опал, топаз, цитрин. Each fills itself with Match all conditions:
+    Product type is equal to the type, and Tag includes the stone, so every product needs its
+    Product type set (Пръстени, Обеци, Висулки, Гривни, Комплекти). A main menu item that gains
+    these as children stops being a link (see Main menu above), so each such list needs a
+    „Всички …“ first child.
 - **Stone filters inside the product-type collections** (the owner’s decision, 2026-09-16,
   wanted alongside the submenu above: narrow by stone within Пръстени, Обеци and so on).
   The theme is already done here -- `templates/collection.json` has `enable_filtering: true`
