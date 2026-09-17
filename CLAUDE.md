@@ -392,6 +392,35 @@ Anything of ours that is not a Dawn setting lives in these two places:
   "Over the image" is a setting, not the default, because the reference's dark scrim dulls
   gold photography and the hero is meant to be the only place words sit on a picture. Tiles
   without a destination render as tiles, not links.
+  - **Reused for a second homepage instance, "Разгледайте по камък"** (2026-09-17, at the
+    owner’s request, after moonmagic.com’s own end-of-homepage section): the owner pointed to
+    the reference’s "FIND YOUR STONE" row -- a strip of loose-gemstone photos, each captioned
+    with an invented “meaning” (Blue Sapphire = Loyalty, Moonstone = Intuition) in the site’s
+    crystal-healing voice. Cullinan makes no such claims about any stone, so only the pattern
+    was taken, not the words: browsing jewellery by stone, given a home of its own on the
+    homepage. It is the same section type as the first mosaic (`stones_mosaic` in
+    `templates/index.json`, `type: category-mosaic`) rather than a new one -- exactly how
+    `atelier.liquid` already runs three times under different keys. All eight tiles are
+    `standard` (no stone is more important than another, unlike Пръстени/Гривни’s tall
+    corners), and captions sit **below** the image on this instance -- the first mosaic’s own
+    instance is set to “Over the image” in the live template (the owner’s own choice, made in
+    the theme editor; left as it is), but this rule’s reasoning is exactly why the new one
+    does not copy that setting.
+    - **The eight stones, and their order, come from the by-collection count above**: Циркони,
+      Диаманти (linked to `/collections/диаманти`, the only one that exists), Перли, Сапфири,
+      Оникс, Рубини, Изумруди, Опал. The other seven render as tiles with no link, the section’s
+      own established behaviour, since none of those collections exist yet -- see Collections
+      under Waiting on the Shopify admin. A tile’s link fills in the moment its collection does.
+    - **The subline under each name is one honest, physical line, not a claimed meaning**:
+      e.g. Опал “Дъга от цветове в един камък” (its real play-of-colour), Сапфири “Дълбок цвят
+      до диаманта” (nearly every sapphire piece on the old site is set with diamonds). Диаманти
+      reuses the exact line already on its tile in the first mosaic, rather than a second,
+      conflicting line for the same collection.
+    - Placed right before the newsletter band, after Нашите материали -- “at the end of the
+      homepage”, as the owner asked, while still ahead of the closing subscribe band, matching
+      where the reference’s own equivalent sections sit (well before its final newsletter
+      block too). Needs no margin setting of its own: materials_teaser’s existing
+      `margin_bottom: 40` already clears the matcha band underneath it.
 - **Hero facts.** `sections/hero-facts.liquid` with `assets/section-hero-facts.css`. The
   short claims under the hero. Its own section, not Dawn's multicolumn — Dawn loads section
   stylesheets from inside the section, which puts them after `crown.css` in the document, so

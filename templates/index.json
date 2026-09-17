@@ -396,6 +396,102 @@
         "margin_bottom": 40
       }
     },
+    "stones_mosaic": {
+      "type": "category-mosaic",
+      "blocks": {
+        "s1": {
+          "type": "tile",
+          "settings": {
+            "size": "standard",
+            "label": "Циркони",
+            "subline": "Искрящи, в почти всеки цвят.",
+            "link": ""
+          }
+        },
+        "s2": {
+          "type": "tile",
+          "settings": {
+            "size": "standard",
+            "label": "Диаманти",
+            "subline": "Блясък, който не избледнява.",
+            "link": "/collections/диаманти"
+          }
+        },
+        "s3": {
+          "type": "tile",
+          "settings": {
+            "size": "standard",
+            "label": "Перли",
+            "subline": "Мека светлина, класическа елегантност.",
+            "link": ""
+          }
+        },
+        "s4": {
+          "type": "tile",
+          "settings": {
+            "size": "standard",
+            "label": "Сапфири",
+            "subline": "Дълбок цвят до диаманта.",
+            "link": ""
+          }
+        },
+        "s5": {
+          "type": "tile",
+          "settings": {
+            "size": "standard",
+            "label": "Оникс",
+            "subline": "Плътно черно, с характер.",
+            "link": ""
+          }
+        },
+        "s6": {
+          "type": "tile",
+          "settings": {
+            "size": "standard",
+            "label": "Рубини",
+            "subline": "Наситено червено, за специалните моменти.",
+            "link": ""
+          }
+        },
+        "s7": {
+          "type": "tile",
+          "settings": {
+            "size": "standard",
+            "label": "Изумруди",
+            "subline": "Дълбоко зелено, рядко срещано.",
+            "link": ""
+          }
+        },
+        "s8": {
+          "type": "tile",
+          "settings": {
+            "size": "standard",
+            "label": "Опал",
+            "subline": "Дъга от цветове в един камък.",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "s5",
+        "s6",
+        "s7",
+        "s8"
+      ],
+      "settings": {
+        "heading": "Разгледайте по камък",
+        "color_scheme": "scheme-1",
+        "caption_position": "below",
+        "scrim_opacity": 55,
+        "gap": 14,
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
+    },
     "newsletter": {
       "type": "newsletter",
       "blocks": {
@@ -445,6 +541,7 @@
     "atelier",
     "design_teaser",
     "materials_teaser",
+    "stones_mosaic",
     "newsletter"
   ]
 }
