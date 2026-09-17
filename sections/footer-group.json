@@ -13,6 +13,45 @@
   "sections": {
     "footer": {
       "type": "footer",
+      "blocks": {
+        "help": {
+          "type": "link_column",
+          "settings": {
+            "heading": "Нека ви помогнем",
+            "link_1_label": "Контакти",
+            "link_1": "/pages/contact",
+            "link_2_label": "Въпроси и отговори",
+            "link_2": "/pages/за-нас#vaprosi",
+            "show_email": true
+          }
+        },
+        "about": {
+          "type": "link_column",
+          "settings": {
+            "heading": "Всичко за нас",
+            "link_1_label": "Нашата история",
+            "link_1": "/pages/за-нас#istoriya",
+            "link_2_label": "Нашето вдъхновение",
+            "link_2": "/pages/за-нас#vdahnovenie",
+            "link_3_label": "Нашият дизайн",
+            "link_3": "/pages/за-нас#dizain",
+            "link_4_label": "Нашите материали",
+            "link_4": "/pages/за-нас#materiali"
+          }
+        },
+        "collections": {
+          "type": "link_column",
+          "settings": {
+            "heading": "Колекции",
+            "menu": "main-menu"
+          }
+        }
+      },
+      "block_order": [
+        "help",
+        "about",
+        "collections"
+      ],
       "settings": {
         "color_scheme": "scheme-1",
         "newsletter_enable": true,
