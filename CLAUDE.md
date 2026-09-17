@@ -401,8 +401,9 @@ Anything of ours that is not a Dawn setting lives in these two places:
     owner meant the reference's **footer**, specifically what sits under its newsletter
     signup ("look under their join the inner circle"), and had sent a picture of it that
     this pass never saw. Reverted the same day -- `templates/index.json` is back to exactly
-    the state above, no `stones_mosaic` key, no entry in `order`. See Footer newsletter and
-    contact line under Custom code for what was actually built once the request was clear.
+    the state above, no `stones_mosaic` key, no entry in `order`. See Footer: link columns,
+    newsletter box, contact email under Custom code for what was built once the request was
+    clear.
 - **Hero facts.** `sections/hero-facts.liquid` with `assets/section-hero-facts.css`. The
   short claims under the hero. Its own section, not Dawn's multicolumn — Dawn loads section
   stylesheets from inside the section, which puts them after `crown.css` in the document, so
@@ -595,55 +596,53 @@ Anything of ours that is not a Dawn setting lives in these two places:
   for it in `snippets/icon-benefit.liquid` and checked at 35px.
 - **Page title switch.** `sections/main-page.liquid` has a `show_title` checkbox, on by
   default. Templates that bring their own headline turn it off; `page.about` does.
-- **Footer newsletter and contact line** (2026-09-17, at the owner’s request, after the
-  reference’s footer: a newsletter box, a "Contact Us: [email]" line, then Facebook and
-  Instagram). Three small changes, all in Dawn’s own footer, no new section:
-  - `sections/footer-group.json` sets `newsletter_enable: true` (was `false` -- the footer’s
-    own email signup had never been turned on) with its own heading, „Абонирайте се за
-    бюлетина“, distinct from the homepage newsletter band’s „Първи научавайте“ even though
-    both are the same feature -- the reference has both an end-of-page CTA and a small footer
-    one too, so this is not a duplicate to remove.
-  - **A new setting, `contact_email`** (`sections/footer.liquid`), the owner’s real address,
-    `cullinanjewellery.bg@gmail.com`: a plain „Пишете ни: [email]“ line (`.footer__contact-email`
-    in `assets/crown.css`, styled like the social block’s own line beneath it), rendered right
-    after the newsletter box and before the social buttons -- the reference’s own order -- and
-    hidden whenever the setting is empty, like every other optional line in this footer.
-    **Updates the Контакти page note below: an email is now shown, site-wide, in the footer**
-    -- Контакти’s own Телефон/Имейл rows are unchanged, still no email row there specifically,
-    since that was a separate, more deliberate decision about that page’s two rows.
-  - **Facebook and Instagram needed no change.** `show_social: true` already renders both,
-    directly under this block (`render 'social-icons'` in `sections/footer.liquid`).
-  - **Stacked into one centred column, at the owner’s follow-up request** ("I want it to look
-    like theirs"): Dawn’s own footer puts the newsletter box and the social block side by side
-    from 750px up (`.footer-block--newsletter { display: flex }`, no direction set, so a row),
-    not stacked as the reference has them. `assets/crown.css` forces `flex-direction: column`
-    and centres it -- scoped under `.footer` on every selector to out-specify
-    `section-footer.css`’s own rules, which load inline inside the section and so land after
-    crown.css in the document: the same fight already noted on the hero facts section, and the
-    same fix.
-  - **The setting and its value landed several minutes apart**, the validator-lag lesson above
-    applied to a sections-group file for the first time: `contact_email` (the schema) and
-    `footer-group.json` setting it to the real address were pushed together, and the address
-    did not render for a few minutes even after the schema push was confirmed live elsewhere.
-    Fixed the same way as the lesson prescribes -- re-sent `footer-group.json` on its own (a
-    harmless key reorder for a real byte change) once the schema had had time to catch up, and
-    it synced within seconds.
-  - **The country and language selectors were deliberately left alone.** The owner said not to
-    add “the other thing” under the reference’s own contact line, which is its country/currency
-    picker -- but ours already sits in a separate part of the footer entirely
-    (`footer__content-bottom`, below the policies and copyright), not attached to this block,
-    so nothing needed removing or guarding against.
-  - **Still open: the reference’s other three footer columns**, read from its live DOM --
-    **Let Us Help You** (FAQ, Help Center, Contact Us, Shipping, Returns, Quality & Designs,
-    Jewelry Care & Meaning Guide, Ring Size Guide, Terms), **Everything about Moonstone** (five
-    of their own blog posts about their signature stone), and **Collections** (Shop All, Rings,
-    Bundles, Moonstone Jewelry, Necklaces, Earrings, Shop Our Instagram). Not built: no picture
-    arrived to confirm wording, most of the “Помощ”-style links (delivery, returns) do not exist
-    here as pages yet, and there is no blog for a Moonstone-style education column -- За нас’s
-    own anchors are the likelier equivalent. Dawn’s footer already supports this natively (a
-    `link_list` block per column, free-text `heading`, a `menu` picker), so building it later is
-    just menus and wording, no new code -- the “Colecции” column, for one, could simply point at
-    the existing Main menu.
+- **Footer: link columns, newsletter box, contact email** (2026-09-17, at the owner’s request,
+  after the reference’s footer). Two wrong reads came first (see the reverted homepage stones
+  section above, then a round that built only the newsletter and email and left the columns
+  out, reading “the other thing under this i don’t want” as the columns -- it meant the
+  reference’s country picker). What stands now:
+  - **Three link columns**, a new `link_column` block in `sections/footer.liquid`: a heading,
+    a menu or up to six label/link pairs (a pair missing either half prints nothing), and
+    “Show the contact email at the end”. Set in `sections/footer-group.json`:
+    **Нека ви помогнем** (Контакти, Въпроси и отговори, then the email), **Всичко за нас** (the
+    four За нас stories by anchor: istoriya, vdahnovenie, dizain, materiali), **Колекции**
+    (Пръстени, Обеци, Висулки, Комплекти, Гривни, Камъни -- the Main menu’s six, in its order).
+    The reference’s Shipping, Returns, Ring Size Guide and Terms have no pages here yet, so
+    they are not listed; add them as pairs once the pages exist.
+  - **Laid out as the reference does, measured at 1440 and 375px.** From 750px: columns about
+    24rem wide, centred as a group, 8rem apart from 990px (4rem below that), small spaced
+    capitals for headings and links (13px, 600 / 400, 0.1em / 0.08em), links in the full text
+    colour. Below 750px each column is a closed `<details>` row with a caret and a hairline
+    between rows. The links print twice in the markup, once per layout, and CSS hides one --
+    no script. The address keeps lower case. All in `assets/crown.css`, scoped under `.footer`
+    to beat `section-footer.css`, which loads inline inside the section, after crown.css.
+  - **Колекции lists its links by hand, not from the Main menu.** Pointed at `main-menu` it
+    printed the menu’s parent items as links, and two of them carry tag filters:
+    Пръстени → `/collections/пръстени/Пръстени` and Камъни → `/collections/камъни/Диамнати`
+    (a misspelt tag). Dawn’s header never showed those two URLs -- a parent item only opens
+    its dropdown -- but once products exist each would list only pieces with that tag, and
+    none for the misspelt one. See Main menu under Waiting on the Shopify admin; once fixed,
+    the column can pick the menu again and follow it.
+  - **The newsletter box**: `newsletter_enable: true` (it had never been on), heading
+    „Абонирайте се за бюлетина“, distinct from the homepage band’s „Първи научавайте“ -- the
+    reference also has both. From 750px Dawn sets the box and the social buttons side by side;
+    crown.css stacks them in one centred column, as the reference’s own footer stacks them.
+  - **The contact email** is the footer setting `contact_email`,
+    `cullinanjewellery.bg@gmail.com`, shown only in a column that ticks the option (Нека ви
+    помогнем). It sat between the newsletter box and the social buttons for one round; the
+    owner wanted it under the help column instead.
+  - **On Контакти the social block still comes first**, right under the Телефон row, with the
+    columns and the newsletter box after it (5rem between, 3.2rem on phones). Everywhere else it
+    stays under the newsletter box. The block is captured once in `footer.liquid` and printed in
+    one place or the other by `template.suffix`. Without this, the block’s -2rem pull-up
+    dragged its picture 10px over the newsletter field, and everything above pushed it some
+    400px from Телефон, undoing the 2026-09-15 tuning.
+  - **Facebook, Instagram, the country and language selectors: unchanged.** The selectors
+    already sit in `footer__content-bottom`, not under the email, so nothing needed removing.
+  - **Pushed in two steps on purpose**: the block type first, the blocks minutes later. The
+    same-push validator lag (lessons above) hit this footer once earlier the same day, when
+    `contact_email` and its value went out together and the value did not render until
+    `footer-group.json` was re-sent on its own.
 
 ## Current state
 
@@ -759,7 +758,7 @@ Anything of ours that is not a Dawn setting lives in these two places:
   chat and no WhatsApp. No opening hours have been given. **No email row on this page
   specifically** -- Имейл links to the contact form, not an address -- though the site does
   now show one, site-wide, in the footer (`cullinanjewellery.bg@gmail.com`, added
-  2026-09-17; see Footer newsletter and contact line under Custom code).
+  2026-09-17; see Footer: link columns, newsletter box, contact email under Custom code).
   The page already existed: Shopify’s default “Contact” page, `/pages/contact`, on the contact
   template, so it showed the new layout as soon as the template synced (checked on the preview
   2026-09-15: every measurement as built, the link to Въпроси и отговори intact, the form posting
@@ -861,6 +860,13 @@ data, not theme files:
       and in the phone drawer (`snippets/header-drawer.liquid`) an item with children renders
       as a `<summary>` that only opens its list. So the Камъни collection (every piece with a
       stone) is reachable from the menu only through a first child, „Всички камъни“.
+    - **Two parent items link to tag-filtered addresses** (found 2026-09-17 through the
+      footer’s Колекции column): Пръстени → `/collections/пръстени/Пръстени` (the collection
+      filtered to the tag „Пръстени“) and Камъни → `/collections/камъни/Диамнати` (filtered to
+      „Диамнати“, a misspelling of Диаманти). Harmless in the header, where a parent never
+      shows its link, but wrong anywhere the menu prints as links. Fix in Content → Menus →
+      Main menu: point each at its plain collection with no tag. The footer column lists its
+      links by hand until then.
 - **Collections.** Six exist as of 2026-09-16: Висулки, Гривни, Диаманти, Комплекти, Обеци,
   Пръстени. **Циркони does not** (`/collections/циркони` 404s) and has to be created before
   anything links to it -- see the no-empty-collection rule under How we work.
