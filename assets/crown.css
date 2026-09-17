@@ -1297,19 +1297,134 @@ html {
   }
 }
 
-/* The contact line between the newsletter box and the social buttons. */
-.footer__contact-email {
-  margin: 1.6rem 0 0;
-  font-size: 1.4rem;
-  line-height: 1.5;
-  text-align: center;
-  color: rgba(var(--color-foreground), 0.68);
+/*
+  Footer link columns (Нека ви помогнем, Всичко за нас, Колекции), after the
+  reference's footer, measured at 1440px: headings and links both small spaced
+  capitals, columns about 200px wide. Here the columns sit centred as a group,
+  over the centred newsletter box and social buttons. Every selector is scoped
+  under .footer to out-specify section-footer.css, which loads after crown.css.
+
+  Each column prints its links twice: a heading and list for a computer, and a
+  <details> row for a phone, as the reference folds them. CSS shows one.
+*/
+.footer .footer-links__toggle {
+  display: none;
 }
 
-.footer__contact-email a {
+.footer .footer-links__heading {
+  margin: 0 0 1.4rem;
+  font-family: var(--font-body-family);
+  font-style: var(--font-body-style);
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.footer .footer-links__list .list-menu__item--link {
+  display: inline-block;
+  padding: 0.6rem 0;
+  font-size: 1.3rem;
+  line-height: 1.5;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: rgb(var(--color-foreground));
-  text-decoration: underline;
-  text-underline-offset: 3px;
+}
+
+.footer .footer-links__list--static > li:first-child .list-menu__item--link {
+  padding-top: 0;
+}
+
+/* An address in capitals reads wrong; the reference keeps its own lower case. */
+.footer .footer-links__list .footer-links__email {
+  text-transform: none;
+  letter-spacing: 0.02em;
+  overflow-wrap: anywhere;
+}
+
+@media screen and (min-width: 750px) {
+  .footer .footer__blocks-wrapper {
+    justify-content: center;
+    column-gap: 4rem;
+  }
+
+  .footer .footer__blocks-wrapper > .footer-block--links.grid__item {
+    flex: 0 1 24rem;
+    width: auto;
+    max-width: none;
+  }
+
+  .footer .footer-links__list--static > li {
+    display: block;
+    margin-right: 0;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .footer .footer__blocks-wrapper {
+    column-gap: 8rem;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .footer .footer-links__heading,
+  .footer .footer-links__list--static {
+    display: none;
+  }
+
+  .footer .footer-block--links.grid__item {
+    margin: 0;
+  }
+
+  .footer .footer-links__toggle {
+    display: block;
+    border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.15);
+  }
+
+  .footer .footer-block--links:first-child .footer-links__toggle {
+    border-top: 0.1rem solid rgba(var(--color-foreground), 0.15);
+  }
+
+  .footer .footer-links__summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.6rem;
+    padding: 1.8rem 0;
+    font-size: 1.3rem;
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .footer .footer-links__summary .icon-caret {
+    position: static;
+    flex: none;
+    width: 1rem;
+    height: 0.6rem;
+    transition: transform 0.2s ease;
+  }
+
+  .footer .footer-links__toggle[open] .icon-caret {
+    transform: rotate(180deg);
+  }
+
+  .footer .footer-links__toggle .footer-links__list {
+    margin: 0;
+    padding: 0 0 1.4rem;
+  }
+
+  .footer .footer-links__toggle .list-menu__item--link {
+    padding: 0.8rem 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer .footer-links__summary .icon-caret {
+    transition: none;
+  }
 }
 
 @media screen and (min-width: 750px) {

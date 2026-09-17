@@ -68,14 +68,15 @@
           >
             {%- for block in section.blocks -%}
               <div
-                class="footer-block grid__item{% if block.type == 'link_list' %} footer-block--menu{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                class="footer-block grid__item{% if block.type == 'link_list' %} footer-block--menu{% endif %}{% if block.type == 'link_column' %} footer-block--links{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
                 {{ block.shopify_attributes }}
                 {% if settings.animations_reveal_on_scroll %}
                   data-cascade
                   style="--animation-order: {{ forloop.index }};"
                 {% endif %}
               >
-                {%- if block.settings.heading != blank -%}
+                {%- comment -%} A link column prints its own heading twice, once per layout. {%- endcomment -%}
+                {%- if block.settings.heading != blank and block.type != 'link_column' -%}
                   <h2 class="footer-block__heading inline-richtext">{{- block.settings.heading -}}</h2>
                 {%- endif -%}
 
@@ -100,6 +101,77 @@
                           </li>
                         {%- endfor -%}
                       </ul>
+                    {%- endif -%}
+                  {%- when 'link_column' -%}
+                    {%- comment -%}
+                      After the reference's footer (2026-09-17, the owner's request): a
+                      heading over a short list of links, side by side on a computer and
+                      folded into a row that opens on a phone. The same links print twice,
+                      once for each layout, and CSS hides the one that does not apply, so
+                      no script is needed. Links come from a menu when one is chosen,
+                      otherwise from the six label/link pairs; a pair missing either half
+                      prints nothing. The contact email is the footer's own setting, so it
+                      is written in one place wherever it shows.
+                    {%- endcomment -%}
+                    {%- capture column_links -%}
+                      {%- if block.settings.menu != blank -%}
+                        {%- for link in block.settings.menu.links -%}
+                          <li>
+                            <a
+                              href="{{ link.url }}"
+                              class="link link--text list-menu__item list-menu__item--link{% if link.active %} list-menu__item--active{% endif %}"
+                            >
+                              {{- link.title | escape -}}
+                            </a>
+                          </li>
+                        {%- endfor -%}
+                      {%- else -%}
+                        {%- for i in (1..6) -%}
+                          {%- liquid
+                            assign label_key = 'link_' | append: i | append: '_label'
+                            assign url_key = 'link_' | append: i
+                            assign link_label = block.settings[label_key]
+                            assign link_url = block.settings[url_key]
+                          -%}
+                          {%- if link_label != blank and link_url != blank -%}
+                            <li>
+                              <a href="{{ link_url }}" class="link link--text list-menu__item list-menu__item--link">
+                                {{- link_label | escape -}}
+                              </a>
+                            </li>
+                          {%- endif -%}
+                        {%- endfor -%}
+                      {%- endif -%}
+                      {%- if block.settings.show_email and section.settings.contact_email != blank -%}
+                        <li>
+                          <a
+                            href="mailto:{{ section.settings.contact_email | escape }}"
+                            class="link link--text list-menu__item list-menu__item--link footer-links__email"
+                          >
+                            {{- section.settings.contact_email | escape -}}
+                          </a>
+                        </li>
+                      {%- endif -%}
+                    {%- endcapture -%}
+                    {%- assign column_links = column_links | strip -%}
+                    {%- if column_links != blank -%}
+                      <div class="footer-links">
+                        {%- if block.settings.heading != blank -%}
+                          <h2 class="footer-block__heading footer-links__heading">{{ block.settings.heading | escape }}</h2>
+                        {%- endif -%}
+                        <ul class="footer-block__details-content list-unstyled footer-links__list footer-links__list--static">
+                          {{ column_links }}
+                        </ul>
+                        <details class="footer-links__toggle">
+                          <summary class="footer-links__summary">
+                            <span>{{ block.settings.heading | escape }}</span>
+                            {{- 'icon-caret.svg' | inline_asset_content -}}
+                          </summary>
+                          <ul class="list-unstyled footer-links__list">
+                            {{ column_links }}
+                          </ul>
+                        </details>
+                      </div>
                     {%- endif -%}
                   {%- when 'brand_information' -%}
                     <div class="footer-block__brand-info">
@@ -234,18 +306,6 @@
                 {%- endif -%}
               {%- endform -%}
             </div>
-          {%- endif -%}
-
-          {%- comment -%}
-            The reference's footer, under its own newsletter box, has a plain
-            "Contact Us: [email]" line before its social links. The owner gave a
-            real address for this on 2026-09-17 -- hidden whenever it is blank,
-            same as every other optional line in this footer.
-          {%- endcomment -%}
-          {%- if section.settings.contact_email != blank -%}
-            <p class="footer__contact-email">
-              Пишете ни: <a href="mailto:{{ section.settings.contact_email }}">{{ section.settings.contact_email }}</a>
-            </p>
           {%- endif -%}
 
           {%- if shop.features.follow_on_shop? and section.settings.enable_follow_on_shop -%}
@@ -424,6 +484,98 @@
       ]
     },
     {
+      "type": "link_column",
+      "name": "Link column",
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "A heading over a short list of links: side by side on a computer, folded into a row that opens on a phone."
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Menu",
+          "info": "Optional. When a menu is chosen, its links are shown and the links below are ignored."
+        },
+        {
+          "type": "header",
+          "content": "Links"
+        },
+        {
+          "type": "text",
+          "id": "link_1_label",
+          "label": "Link 1 text"
+        },
+        {
+          "type": "url",
+          "id": "link_1",
+          "label": "Link 1"
+        },
+        {
+          "type": "text",
+          "id": "link_2_label",
+          "label": "Link 2 text"
+        },
+        {
+          "type": "url",
+          "id": "link_2",
+          "label": "Link 2"
+        },
+        {
+          "type": "text",
+          "id": "link_3_label",
+          "label": "Link 3 text"
+        },
+        {
+          "type": "url",
+          "id": "link_3",
+          "label": "Link 3"
+        },
+        {
+          "type": "text",
+          "id": "link_4_label",
+          "label": "Link 4 text"
+        },
+        {
+          "type": "url",
+          "id": "link_4",
+          "label": "Link 4"
+        },
+        {
+          "type": "text",
+          "id": "link_5_label",
+          "label": "Link 5 text"
+        },
+        {
+          "type": "url",
+          "id": "link_5",
+          "label": "Link 5"
+        },
+        {
+          "type": "text",
+          "id": "link_6_label",
+          "label": "Link 6 text"
+        },
+        {
+          "type": "url",
+          "id": "link_6",
+          "label": "Link 6"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_email",
+          "default": false,
+          "label": "Show the contact email at the end",
+          "info": "The address itself is set in the footer's own settings, under Contact."
+        }
+      ]
+    },
+    {
       "type": "brand_information",
       "name": "t:sections.footer.blocks.brand_information.name",
       "settings": [
@@ -543,7 +695,7 @@
       "type": "text",
       "id": "contact_email",
       "label": "Contact email shown in the footer",
-      "info": "Sits under the newsletter box, above the social buttons. Hidden when empty."
+      "info": "Shown at the end of any link column with \"Show the contact email at the end\" ticked. Hidden when empty."
     },
     {
       "type": "text",
