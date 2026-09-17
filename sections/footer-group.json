@@ -15,9 +15,10 @@
       "type": "footer",
       "settings": {
         "color_scheme": "scheme-1",
-        "newsletter_enable": false,
-        "newsletter_heading": "Subscribe to our emails",
+        "newsletter_enable": true,
+        "newsletter_heading": "Абонирайте се за бюлетина",
         "enable_follow_on_shop": true,
+        "contact_email": "cullinanjewellery.bg@gmail.com",
         "social_heading": "Вижте работата ни",
         "social_text": "Последвайте @cullinan_jewellery.bg за нови модели и снимки от работата в ателието.",
         "social_heading_contact": "Ще ни намерите и там",

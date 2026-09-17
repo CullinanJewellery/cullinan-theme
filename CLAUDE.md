@@ -401,8 +401,8 @@ Anything of ours that is not a Dawn setting lives in these two places:
     owner meant the reference's **footer**, specifically what sits under its newsletter
     signup ("look under their join the inner circle"), and had sent a picture of it that
     this pass never saw. Reverted the same day -- `templates/index.json` is back to exactly
-    the state above, no `stones_mosaic` key, no entry in `order`. See Footer link columns
-    under Custom code for what the reference actually shows there.
+    the state above, no `stones_mosaic` key, no entry in `order`. See Footer newsletter and
+    contact line under Custom code for what was actually built once the request was clear.
 - **Hero facts.** `sections/hero-facts.liquid` with `assets/section-hero-facts.css`. The
   short claims under the hero. Its own section, not Dawn's multicolumn — Dawn loads section
   stylesheets from inside the section, which puts them after `crown.css` in the document, so
@@ -595,23 +595,42 @@ Anything of ours that is not a Dawn setting lives in these two places:
   for it in `snippets/icon-benefit.liquid` and checked at 35px.
 - **Page title switch.** `sections/main-page.liquid` has a `show_title` checkbox, on by
   default. Templates that bring their own headline turn it off; `page.about` does.
-- **Footer link columns -- found, not yet built (2026-09-17).** The owner asked for
-  something like the reference's footer, under its newsletter signup. What is actually there
-  (read from the live DOM, `footer` element): four columns -- **Let Us Help You** (FAQ, Help
-  Center, Contact Us, Shipping, Returns, Quality & Designs, Jewelry Care & Meaning Guide, Ring
-  Size Guide, Terms and Conditions), **Everything about Moonstone** (five of their own blog
-  posts about their signature stone), **Collections** (Shop All, Rings, Bundles, Moonstone
-  Jewelry, Necklaces, Earrings, Shop Our Instagram), and a fourth block pairing the email
-  signup with the contact email and social links. Dawn's own `sections/footer.liquid` already
-  supports exactly this -- a `link_list` block per column, each with its own free-text
-  `heading` and a `menu` picker (`sections/footer-group.json` currently has none set). No new
-  section or code is needed, only: the Bulgarian heading for each column, which links belong
-  in each, and which Shopify menu backs each one -- the "Colecции" column, for instance, could
-  simply point at the existing Main menu rather than needing a new one. `Помощ`-style links
-  (FAQ, delivery, returns) mostly do not exist yet as pages here (see Working agreements on
-  not inventing policy text), and there is no blog for a Moonstone-style education column, so
-  the equivalent third column is more likely За нас’s own anchors. Waiting on the owner’s
-  picture and a decision on wording before building this.
+- **Footer newsletter and contact line** (2026-09-17, at the owner’s request, after the
+  reference’s footer: a newsletter box, a "Contact Us: [email]" line, then Facebook and
+  Instagram). Three small changes, all in Dawn’s own footer, no new section:
+  - `sections/footer-group.json` sets `newsletter_enable: true` (was `false` -- the footer’s
+    own email signup had never been turned on) with its own heading, „Абонирайте се за
+    бюлетина“, distinct from the homepage newsletter band’s „Първи научавайте“ even though
+    both are the same feature -- the reference has both an end-of-page CTA and a small footer
+    one too, so this is not a duplicate to remove.
+  - **A new setting, `contact_email`** (`sections/footer.liquid`), the owner’s real address,
+    `cullinanjewellery.bg@gmail.com`: a plain „Пишете ни: [email]“ line (`.footer__contact-email`
+    in `assets/crown.css`, styled like the social block’s own line beneath it), rendered right
+    after the newsletter box and before the social buttons -- the reference’s own order -- and
+    hidden whenever the setting is empty, like every other optional line in this footer.
+    **Updates the Контакти page note below: an email is now shown, site-wide, in the footer**
+    -- Контакти’s own Телефон/Имейл rows are unchanged, still no email row there specifically,
+    since that was a separate, more deliberate decision about that page’s two rows.
+  - **Facebook and Instagram needed no change.** `show_social: true` already renders both,
+    directly under this block (`render 'social-icons'` in `sections/footer.liquid`) -- the
+    reference’s own grouping of newsletter, contact and social together was already true here
+    once the newsletter box was turned on.
+  - **The country and language selectors were deliberately left alone.** The owner said not to
+    add “the other thing” under the reference’s own contact line, which is its country/currency
+    picker -- but ours already sits in a separate part of the footer entirely
+    (`footer__content-bottom`, below the policies and copyright), not attached to this block,
+    so nothing needed removing or guarding against.
+  - **Still open: the reference’s other three footer columns**, read from its live DOM --
+    **Let Us Help You** (FAQ, Help Center, Contact Us, Shipping, Returns, Quality & Designs,
+    Jewelry Care & Meaning Guide, Ring Size Guide, Terms), **Everything about Moonstone** (five
+    of their own blog posts about their signature stone), and **Collections** (Shop All, Rings,
+    Bundles, Moonstone Jewelry, Necklaces, Earrings, Shop Our Instagram). Not built: no picture
+    arrived to confirm wording, most of the “Помощ”-style links (delivery, returns) do not exist
+    here as pages yet, and there is no blog for a Moonstone-style education column -- За нас’s
+    own anchors are the likelier equivalent. Dawn’s footer already supports this natively (a
+    `link_list` block per column, free-text `heading`, a `menu` picker), so building it later is
+    just menus and wording, no new code -- the “Colecции” column, for one, could simply point at
+    the existing Main menu.
 
 ## Current state
 
@@ -724,7 +743,10 @@ Anything of ours that is not a Dawn setting lives in these two places:
       `-2rem` is what shipped, a 56px gap. Measured live with a temporary inline override
       before either push, once the first guess (a stale 116px reading) turned out off.
   At the owner’s instruction there is no live
-  chat and no WhatsApp. No email address is shown and no opening hours: neither has been given.
+  chat and no WhatsApp. No opening hours have been given. **No email row on this page
+  specifically** -- Имейл links to the contact form, not an address -- though the site does
+  now show one, site-wide, in the footer (`cullinanjewellery.bg@gmail.com`, added
+  2026-09-17; see Footer newsletter and contact line under Custom code).
   The page already existed: Shopify’s default “Contact” page, `/pages/contact`, on the contact
   template, so it showed the new layout as soon as the template synced (checked on the preview
   2026-09-15: every measurement as built, the link to Въпроси и отговори intact, the form posting

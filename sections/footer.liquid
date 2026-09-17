@@ -236,6 +236,18 @@
             </div>
           {%- endif -%}
 
+          {%- comment -%}
+            The reference's footer, under its own newsletter box, has a plain
+            "Contact Us: [email]" line before its social links. The owner gave a
+            real address for this on 2026-09-17 -- hidden whenever it is blank,
+            same as every other optional line in this footer.
+          {%- endcomment -%}
+          {%- if section.settings.contact_email != blank -%}
+            <p class="footer__contact-email">
+              Пишете ни: <a href="mailto:{{ section.settings.contact_email }}">{{ section.settings.contact_email }}</a>
+            </p>
+          {%- endif -%}
+
           {%- if shop.features.follow_on_shop? and section.settings.enable_follow_on_shop -%}
             <div class="footer__follow-on-shop">
               {{ shop | login_button: action: 'follow' }}
@@ -522,6 +534,16 @@
       "default": true,
       "label": "t:sections.footer.settings.enable_follow_on_shop.label",
       "info": "t:sections.footer.settings.enable_follow_on_shop.info"
+    },
+    {
+      "type": "header",
+      "content": "Contact"
+    },
+    {
+      "type": "text",
+      "id": "contact_email",
+      "label": "Contact email shown in the footer",
+      "info": "Sits under the newsletter box, above the social buttons. Hidden when empty."
     },
     {
       "type": "text",

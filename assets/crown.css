@@ -1273,6 +1273,21 @@ html {
   color: rgba(var(--color-foreground), 0.68);
 }
 
+/* The contact line between the newsletter box and the social buttons. */
+.footer__contact-email {
+  margin: 1.6rem 0 0;
+  font-size: 1.4rem;
+  line-height: 1.5;
+  text-align: center;
+  color: rgba(var(--color-foreground), 0.68);
+}
+
+.footer__contact-email a {
+  color: rgb(var(--color-foreground));
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 @media screen and (min-width: 750px) {
   .footer__list-social {
     gap: 1.2rem;
