@@ -725,6 +725,20 @@ Anything of ours that is not a Dawn setting lives in these two places:
   that also carries Italian imports; and a gold-buying service. Its categories are Дамски
   бижута · Мъжки бижута · Брачни халки · Сребро, with пръстени, обици, гривни, висулки,
   колиета, комплекти, брошки, мъжки аксесоари listed in the About text.
+- **Which stones the business actually uses** (checked 2026-09-17, at the owner’s request: all
+  2,038 products on the old site, read title and description, plus the public Instagram and
+  Facebook). Counted without the sentence nearly every product repeats („Бижу, което сме показали
+  тук с циркон, можем да изработим с диамант, сапфир, изумруд, топаз, рубин и др.“): циркони about
+  530 (almost all gold; white, and pink, red, yellow, green, violet) · диаманти about 90 (gold only,
+  and the old site says pieces with diamonds are made in 18K) · перли about 55 · сапфири about 17 ·
+  рубини about a dozen · оникс 13 (mostly men’s rings) · изумруди 8 · опал 5 (one set) · цитрин 1 ·
+  топаз 1 · емайл 4 · камея 1. About 1,180 products have no stone at all. Silver rarely has one
+  (15 of 817: pearls, zirconia, pink stones). Sapphires, rubies and emeralds nearly always sit with
+  diamonds, mostly in white gold. Instagram, June–August 2026, shows rubies in rose gold and a
+  diamond engagement ring. So the About text’s „диаманти, сапфири, изумруди и рубини“ leaves out
+  the two stones used most, zirconia and pearls. Which stones reach the menu depends on the first
+  ~50 products online: never a stone with no products behind it. The owner’s own Instagram calls
+  the silver 925 (posts of 2026-06-26 and 2026-07-08); still confirm before the site says so.
 - **Settled 2026-09-14: silver is sold too.** The owner confirmed it. On За нас the history
   block says „от злато и сребро“, the design block „злато или сребро“, and the materials block
   names silver in its lead and gives it a paragraph (at the owner’s request, the same day).
