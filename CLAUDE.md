@@ -774,21 +774,42 @@ data, not theme files:
   Пръстени · Обеци · Висулки · Комплекти · Гривни · Диаманти.
   - **Stones go a level down** (the owner’s decision, 2026-09-16, asked for as “like a
     collection but under the main one”). Диаманти should stop sitting beside Пръстени and
-    Обеци as a seventh product type; instead a parent item (Камъни, or whatever the owner
-    names it) carries Циркони, Диаманти and any stone added later as its children. Nested
-    menus need no theme work: Dawn renders the dropdown, and the visual mega menu falls back
-    to the text-column one for any item without `visual_menu_item` blocks (see Visual mega
-    menu under Custom code).
+    Обеци as a seventh product type; instead a parent item carries every stone as its
+    children. **Named Камъни and holding all the stones, confirmed 2026-09-17** (the owner:
+    visitors reach a stone either that way or through the filters). Nested menus need no
+    theme work: Dawn renders the dropdown, and the visual mega menu falls back to the
+    text-column one for any item without `visual_menu_item` blocks (none are set; see Visual
+    mega menu under Custom code).
+    - **A parent item is not itself a link.** On desktop (`snippets/header-mega-menu.liquid`)
+      and in the phone drawer (`snippets/header-drawer.liquid`) an item with children renders
+      as a `<summary>` that only opens its list. So the Камъни collection (every piece with a
+      stone) is reachable from the menu only through a first child, „Всички камъни“.
 - **Collections.** Six exist as of 2026-09-16: Висулки, Гривни, Диаманти, Комплекти, Обеци,
   Пръстени. **Циркони does not** (`/collections/циркони` 404s) and has to be created before
   anything links to it -- see the no-empty-collection rule under How we work.
+  - **The stone collections to create** (sent to the owner 2026-09-17, from the old-site count
+    under Current state): Камъни, matching any stone tag, then one per stone in order of how
+    many pieces the old site has -- Циркони, Диаманти (exists), Перли, Сапфири, Рубини, Оникс,
+    Изумруди, Опал, and Топаз and Цитрин with one piece each. Each fills itself from a product
+    **tag** in the singular (Циркон, Диамант, Перла, Сапфир, Рубин, Оникс, Изумруд, Опал, Топаз,
+    Цитрин): condition Tag includes the word. Tags rather than a metafield because a piece often
+    has two stones (the rubies, sapphires and emeralds nearly all sit with diamonds), and
+    Shopify’s collection conditions take only single-value metafields, not lists; the same tag
+    feeds the filter below, so each stone is entered once per product. Enamel and the cameo are
+    not stones and stay out. Creating the collections early is harmless; a stone goes into the
+    menu only once a tagged product is online.
+  - Shopify is replacing manual and smart collections with one model that takes conditions and
+    hand-picked products together. If the owner’s admin still has the old model and Диаманти
+    was made manual, it cannot take a condition: make it again as a smart collection under the
+    same name, so `/collections/диаманти` (the homepage tile’s link) keeps working.
 - **Stone filters inside the product-type collections** (the owner’s decision, 2026-09-16,
   wanted alongside the submenu above: narrow by stone within Пръстени, Обеци and so on).
   The theme is already done here -- `templates/collection.json` has `enable_filtering: true`
   with the horizontal filter bar, and the bar renders. What is missing is store data: every
-  product needs the stone on it (a tag, or the `custom.detail`-style metafield), and the
-  filter itself has to be turned on in the free **Search & Discovery** app under
-  Filters. Until then the bar only offers Shopify’s own Availability and Price, which is
+  product needs its stone tags (the same tags that fill the stone collections above), and a
+  **Tags** filter has to be added in the free **Search & Discovery** app under Filters,
+  renamed „Камък“; the app can rename a filter and hide values, so a tag that is not a stone
+  stays out of it. Until then the bar only offers Shopify’s own Availability and Price, which is
   what a collection page shows today. Those two also still read in English, because that is
   still the store’s default language (see the Bulgarian note above).
 - **Product Vendor field** carries the small line above the product title on the cards
