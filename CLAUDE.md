@@ -729,16 +729,30 @@ Anything of ours that is not a Dawn setting lives in these two places:
   2,038 products on the old site, read title and description, plus the public Instagram and
   Facebook). Counted without the sentence nearly every product repeats („Бижу, което сме показали
   тук с циркон, можем да изработим с диамант, сапфир, изумруд, топаз, рубин и др.“): циркони about
-  530 (almost all gold; white, and pink, red, yellow, green, violet) · диаманти about 90 (gold only,
-  and the old site says pieces with diamonds are made in 18K) · перли about 55 · сапфири about 17 ·
-  рубини about a dozen · оникс 13 (mostly men’s rings) · изумруди 8 · опал 5 (one set) · цитрин 1 ·
-  топаз 1 · емайл 4 · камея 1. About 1,180 products have no stone at all. Silver rarely has one
+  535 (almost all gold; white, and pink, red, yellow, green, violet) · диаманти about 85 (gold only,
+  and the old site says pieces with diamonds are made in 18K) · перли 55 · сапфири 17 · оникс 13
+  (mostly men’s rings) · рубини 12 · изумруди 8 · опал 5 (one set) · цитрин 1 · топаз 1 · емайл 4 ·
+  камея 1 (the recount below; the first pass said about 90 diamonds and 530 zirconia). About 1,200
+  products have no stone at all. Silver rarely has one
   (15 of 817: pearls, zirconia, pink stones). Sapphires, rubies and emeralds nearly always sit with
   diamonds, mostly in white gold. Instagram, June–August 2026, shows rubies in rose gold and a
   diamond engagement ring. So the About text’s „диаманти, сапфири, изумруди и рубини“ leaves out
   the two stones used most, zirconia and pearls. Which stones reach the menu depends on the first
   ~50 products online: never a stone with no products behind it. The owner’s own Instagram calls
   the silver 925 (posts of 2026-06-26 and 2026-07-08); still confirm before the site says so.
+  - **By collection** (recounted the same day at the owner’s request, with each doubtful match
+    checked by eye: zirconia “в цвят сапфир” or “наподобяващ изумруд”, “циркон или диамант”
+    options, „без украса от камъни или перли“ and Latin look-alike letters inside Bulgarian words
+    all accounted for). Old-site categories folded into the store’s collections:
+    - **Пръстени**, 736 pieces: Циркон 250 · Диамант 40 · Перла 13 · Оникс 11 · Сапфир 9 · Рубин
+      3 · Изумруд 2 · Опал, Топаз, Цитрин 1 each. Годежни: Циркон 26 · Диамант 25 · Сапфир 4 ·
+      Изумруд 1. Мъжки: Циркон 22 · Оникс 9 · Топаз 1. Брачни халки: none.
+    - **Обеци**, 421: Циркон 115 · Диамант 19 · Перла 18 · Сапфир 3 · Рубин 3 · Изумруд 2 · Опал 1.
+    - **Висулки**, 598 with медальони, кръстчета and кръстове: Циркон 125 · Диамант 20 · Перла 15 ·
+      Сапфир 4 · Рубин 3 · Изумруд 3 · Оникс 2 · Опал 1.
+    - **Комплекти**, 183: Циркон 38 · Перла 8 · Диамант 5 · Рубин 3 · Опал 2 · Сапфир 1 · Изумруд 1.
+    - **Гривни**, 77: Циркон 4, nothing else.
+    - Silver of every kind, 817: Циркон 8 · Перла 7. About 170 pieces say only „камъче“.
 - **Settled 2026-09-14: silver is sold too.** The owner confirmed it. On За нас the history
   block says „от злато и сребро“, the design block „злато или сребро“, and the materials block
   names silver in its lead and gives it a paragraph (at the owner’s request, the same day).
@@ -789,7 +803,7 @@ data, not theme files:
   anything links to it -- see the no-empty-collection rule under How we work.
   - **The stone collections to create** (sent to the owner 2026-09-17, from the old-site count
     under Current state): Камъни, matching any stone tag, then one per stone in order of how
-    many pieces the old site has -- Циркони, Диаманти (exists), Перли, Сапфири, Рубини, Оникс,
+    many pieces the old site has -- Циркони, Диаманти (exists), Перли, Сапфири, Оникс, Рубини,
     Изумруди, Опал, and Топаз and Цитрин with one piece each. Each fills itself from a product
     **tag** in the singular (Циркон, Диамант, Перла, Сапфир, Рубин, Оникс, Изумруд, Опал, Топаз,
     Цитрин): condition Tag includes the word. Tags rather than a metafield because a piece often
@@ -809,7 +823,10 @@ data, not theme files:
   product needs its stone tags (the same tags that fill the stone collections above), and a
   **Tags** filter has to be added in the free **Search & Discovery** app under Filters,
   renamed „Камък“; the app can rename a filter and hide values, so a tag that is not a stone
-  stays out of it. Until then the bar only offers Shopify’s own Availability and Price, which is
+  stays out of it. Filters are store-wide, but a collection lists only the values its own
+  products carry (Shopify’s Search & Discovery help: “Only filter values that apply to
+  products of a collection or search result display”), so nothing is set per collection:
+  Гривни will simply offer Циркон alone. Until then the bar only offers Shopify’s own Availability and Price, which is
   what a collection page shows today. Those two also still read in English, because that is
   still the store’s default language (see the Bulgarian note above).
 - **Product Vendor field** carries the small line above the product title on the cards
