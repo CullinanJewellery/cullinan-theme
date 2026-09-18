@@ -1574,11 +1574,21 @@ html {
   }
 
   .footer__social:not(.footer__social--contact) .footer__list-social .list-social__item {
-    flex: 1 1 0;
-    width: auto;
+    /*
+      An li keeps display: list-item even as a flex child, and flex-grow
+      does not distribute space over it correctly here -- both items
+      rendered full width instead of sharing the row. Desktop's own
+      26rem-wide .list-social__link already sidesteps this by sizing the
+      link explicitly rather than the flex item; doing the same here,
+      an explicit width rather than flex: 1 1 0.
+    */
+    display: block;
+    flex: none;
+    width: calc(50% - 0.4rem);
   }
 
   .footer__social:not(.footer__social--contact) .footer__list-social .list-social__link {
+    width: 100%;
     height: 4.4rem;
     padding: 0 1rem;
     gap: 0.8rem;
