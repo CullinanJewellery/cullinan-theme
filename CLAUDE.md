@@ -678,6 +678,10 @@ Anything of ours that is not a Dawn setting lives in these two places:
       them (up from `0.8rem`), left-aligned like the text above instead of filling the row:
       Харесайте ни and Последвайте ни now measure their own two different widths (138px and
       159px, since the words differ), with visible air on the right rather than edge to edge.
+      **Superseded a few hours later** by the fuller measurement-matching pass below (still
+      natural width and left-aligned, but 13px not 11px, `nowrap` added, the gap changed
+      again) -- see "Rebuilt to match the reference's own real measurements" under Social
+      follow section, further down.
   - **The country and language selectors: unchanged.** They sit in `footer__content-bottom`,
     a separate part of the footer entirely, untouched by any of the moves above.
   - **Pushed in three rounds.** The block type first, its content minutes later (a same-push
@@ -719,9 +723,39 @@ Anything of ours that is not a Dawn setting lives in these two places:
     и там” block shares every one of these classes, and the owner did not mention it, it
     keeps its original size and colour. Phone sizing, already tuned so the two buttons share
     one row, was left alone too -- this request did not mention phones.
-  - **The heading up once more the same day, 18px → 20px**, at the owner’s follow-up ("a
-    little bit bigger" again) -- see On phones, below, for that same day’s phone-button
-    changes.
+  - **Rebuilt to match the reference's own real measurements, still the same day**, at the
+    owner’s explicit request after three smaller nudges (14→18→20px) still weren’t what they
+    meant: “I want them to look the same on phone and on computer as moonmagic.” Measured
+    moonmagic.com properly this time, at both 375 and 1440px, rather than the phone-only
+    screenshot read the first phone pass was based on:
+    - **Their heading is 35px on a phone, 55px on a computer — both centred there, except
+      the phone, which is left**, exactly matching what our own phone treatment already had.
+      Ours: 3.4rem phone, 5rem desktop, tracking eased from 0.1em to 0.06em since Cyrillic
+      capitals need more room per letter than their own words at the same size.
+    - **Their text is 14px / 16px** — ours now matches exactly.
+    - **Their buttons are natural width from padding around the label, not a fixed box** --
+      155px each at 375px (6px/13.8px padding, 16px label, 25px gap), 300×81px at 1440px
+      (22px/20px padding, 22px label, 20px gap). Desktop now matches almost exactly (`width`
+      and `height` changed from a fixed 28rem/7rem to `auto`, `padding: 2.2rem 2rem`, label
+      2.2rem) since desktop has room to spare. Phone needed a real compromise: at their exact
+      16px, ПОСЛЕДВАЙТЕ НИ (longer than either of their words) needs 385px against the 345px
+      this block has at 375px -- 13px, tighter padding (0.4rem) and a 1.6rem gap is the
+      closest fit that still leaves margin (313px used).
+    - **Two bugs surfaced fixing this, both since corrected:**
+      1. The first phone pass was tuned against a JS clone of the button, not the real
+         rendered element, and estimated 338px of 345px available -- a 7px margin real font
+         rendering erased. Dawn’s own `.list-social` carries `flex-wrap: wrap`
+         (`component-list-social.css`), never overridden here, so going over silently
+         dropped the second button onto its own row instead of overflowing visibly -- which
+         is what the owner then saw and reported (“they are cut” / stacked again). Fixed by
+         testing against the live elements directly and adding `flex-wrap: nowrap`, so a
+         sizing mistake now shows up as visible overflow instead of a silent wrap.
+      2. `.footer__social-intro`’s own `max-width: 52ch` (unscoped, pre-existing) resolves
+         against the surrounding body-text size regardless of the heading inside it, about
+         499px -- it never grew when the heading became 5rem, so “ВИЖТЕ РАБОТАТА НИ” (582px
+         needed) wrapped to two lines on a computer too, which the reference’s own heading
+         does not (only its phone version wraps). Widened to `64rem` for this block on
+         desktop only.
   - **The gap to the newsletter band matched to the gap above this section**, at the owner’s
     request ("the exact same space we have with the section above"). Materials_teaser’s own
     `margin_bottom` (40) plus this section’s `padding_top` (48) makes 88px above; to match it
