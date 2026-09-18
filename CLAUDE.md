@@ -633,12 +633,20 @@ Anything of ours that is not a Dawn setting lives in these two places:
   - **The contact email** is the footer setting `contact_email`,
     `cullinanjewellery.bg@gmail.com`, shown only in a column that ticks the option (Нека ви
     помогнем).
-  - **The Facebook/Instagram block is first in the footer on every page** (2026-09-18, at the
-    owner’s request: it had drifted below the newsletter box and the columns, opening a gap
-    under Първи научавайте that was not there before). Captured once as `footer_social` in
-    `footer.liquid` and printed first, before the row of columns -- straight under Първи
-    научавайте on the homepage, under Телефон on Контакти as tuned on 2026-09-15 (16px, the
-    -2rem pull-up unchanged). The row of columns follows it (5rem below, 3.2rem on phones).
+  - **The Facebook/Instagram block is first in the footer, homepage and Контакти only**
+    (2026-09-18, in two steps at the owner’s request: first it had drifted below the
+    newsletter box and the columns, opening a gap under Първи научавайте that was not there
+    before; moved back to first -- then the owner said it should not be on every page at
+    all, only home and Контакти, keeping Контакти’s own version as it is). Captured once as
+    `footer_social` in `footer.liquid`, printed only `if template.name == 'index' or
+    template.suffix == 'contact'` -- `template.name` is `'index'` only on the homepage, the
+    same kind of check `template.suffix == 'contact'` already makes for Контакти’s own
+    heading, text and picture. Straight under Първи научавайте on the homepage; under
+    Телефон on Контакти as tuned on 2026-09-15 (16px, the -2rem pull-up unchanged). On every
+    other page the block is simply absent -- the newsletter box and the row of columns are
+    still there, just without it above them (5rem of clear air was scoped to
+    `.footer__social + .footer__blocks-wrapper`, so it only ever applied where the block
+    exists anyway; nothing to adjust when it is missing).
   - **The country and language selectors: unchanged.** They sit in `footer__content-bottom`,
     a separate part of the footer entirely, untouched by any of the moves above.
   - **Pushed in three rounds.** The block type first, its content minutes later (a same-push
