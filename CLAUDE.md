@@ -178,6 +178,11 @@ Rules that matter here:
     The homepage teaser bands have buttons in a dark shade of their own colour instead, with
     white labels, at the owner’s request the same day: taupe `#5B5548` on scheme-6, moss green
     `#3D5229` on scheme-7.
+  - **Third exception, at the owner’s instruction (2026-09-18):** the homepage’s Social follow
+    heading and text, „Вижте работата ни“ and the line under it, are pure black `#000000`
+    instead of the theme’s own near-black `#221F1C` -- the owner’s own complaint, “the color
+    is not black... the blackest color.” Scoped to the homepage’s own block; see Social follow
+    section under Custom code.
 - Product photography should be worn on real people where possible — jewellery is impossible
   to judge for scale on a white background.
 
@@ -692,6 +697,16 @@ Anything of ours that is not a Dawn setting lives in these two places:
     same heading, text and background picture as before.
   - **Pushed in two steps**, the section itself first and `templates/index.json`’s reference
     to it a couple of minutes later, per the same-push validator lag noted above.
+  - **Bigger, and pure black, at the owner’s request the same day.** „Вижте работата ни“ and
+    the line under it are now `rgb(0 0 0)` -- a deliberate exception to “no pure white or
+    pure black” (Design direction), the same as the newsletter band and the dark buttons --
+    and a size up (14px → 18px heading, 14px → 15px text). The Facebook/Instagram buttons
+    grew with their icons and labels on desktop (26rem/6.4rem/2.4rem/1.4rem →
+    28rem/7rem/2.6rem/1.5rem). All scoped to
+    `.footer__social:not(.footer__social--contact)` -- since Контакти’s own “Ще ни намерите
+    и там” block shares every one of these classes, and the owner did not mention it, it
+    keeps its original size and colour. Phone sizing, already tuned so the two buttons share
+    one row, was left alone too -- this request did not mention phones.
 
 ## Current state
 
