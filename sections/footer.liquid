@@ -208,7 +208,15 @@
       {%- endcapture -%}
       {%- assign footer_subscribe = footer_subscribe | strip -%}
       <div class="footer__content-top page-width">
-        {{- footer_social -}}
+        {%- comment -%}
+          Homepage and Контакти only (2026-09-18, at the owner's request: it had
+          spread to every page). template.name is 'index' only on the homepage;
+          template.suffix is 'contact' only on Контакти, the same check already
+          used above to give that page its own heading, text and picture.
+        {%- endcomment -%}
+        {%- if template.name == 'index' or template.suffix == 'contact' -%}
+          {{- footer_social -}}
+        {%- endif -%}
         {%- if section.blocks.size > 0 or footer_subscribe != blank -%}
           {%- liquid
             if section.blocks.size == 9
