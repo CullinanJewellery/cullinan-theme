@@ -670,6 +670,14 @@ Anything of ours that is not a Dawn setting lives in these two places:
       because it sizes `.list-social__link` with an explicit `width: 26rem` rather than
       flex-grow; the phone fix does the same -- `width: calc(50% - 0.4rem)` and
       `display: block` on the `<li>`, `width: 100%` on the link inside it.
+    - **Stretched to a forced half-width read as "too long", so it is natural width now**
+      (2026-09-18, the same day, at the owner’s follow-up: "cut some of the boxes... make
+      the illusion that there is space"). `calc(50% - 0.4rem)` gave each button about 169px
+      at 375px, well past the 138px its own content needs -- the stretch itself was the
+      complaint. `width: auto` on both the `<li>` and the link, a real `1.6rem` gap between
+      them (up from `0.8rem`), left-aligned like the text above instead of filling the row:
+      Харесайте ни and Последвайте ни now measure their own two different widths (138px and
+      159px, since the words differ), with visible air on the right rather than edge to edge.
   - **The country and language selectors: unchanged.** They sit in `footer__content-bottom`,
     a separate part of the footer entirely, untouched by any of the moves above.
   - **Pushed in three rounds.** The block type first, its content minutes later (a same-push
@@ -689,8 +697,12 @@ Anything of ours that is not a Dawn setting lives in these two places:
   colours) applies unchanged; the section’s own CSS file holds exactly one override,
   zeroing `.footer__social`’s own `margin-top` (written for clearing the newsletter band from
   inside the footer’s padding), since the section’s own padding does that job here instead.
-  Defaults match what was live in the footer: heading „Вижте работата ни“, text „Последвайте
-  @cullinan_jewellery.bg…“, scheme-1, 48px padding.
+  Started matching what was live in the footer: heading „Вижте работата ни“, text
+  „Последвайте @cullinan_jewellery.bg…“, scheme-1, 48px padding top and bottom -- padding
+  bottom came down to 16px the same day (`templates/index.json`, not the schema default, so
+  it is explicit there now along with the other settings), closing the gap to the newsletter
+  band to exactly match the gap above this section; see the padding-matching note further
+  down under this heading.
   - **Homepage only.** `sections/footer.liquid` no longer prints its own copy of this block
     when `template.name == 'index'` -- only `template.suffix == 'contact'` still does, so
     Контакти is completely unaffected: same position (first in the footer, under Телефон),
@@ -707,6 +719,16 @@ Anything of ours that is not a Dawn setting lives in these two places:
     и там” block shares every one of these classes, and the owner did not mention it, it
     keeps its original size and colour. Phone sizing, already tuned so the two buttons share
     one row, was left alone too -- this request did not mention phones.
+  - **The heading up once more the same day, 18px → 20px**, at the owner’s follow-up ("a
+    little bit bigger" again) -- see On phones, below, for that same day’s phone-button
+    changes.
+  - **The gap to the newsletter band matched to the gap above this section**, at the owner’s
+    request ("the exact same space we have with the section above"). Materials_teaser’s own
+    `margin_bottom` (40) plus this section’s `padding_top` (48) makes 88px above; to match it
+    below, this section’s own `padding_bottom` came down from its 48px default to 16, so
+    16 + newsletter’s own `padding_top` (72) makes 88px too. Both scale identically on phones
+    (all three values × 0.75), so 66px matches 66px there as well. Only this section’s own
+    setting changed -- materials_teaser and newsletter are untouched.
 
 ## Current state
 
