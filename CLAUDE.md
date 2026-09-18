@@ -633,26 +633,25 @@ Anything of ours that is not a Dawn setting lives in these two places:
   - **The contact email** is the footer setting `contact_email`,
     `cullinanjewellery.bg@gmail.com`, shown only in a column that ticks the option (Нека ви
     помогнем).
-  - **The Facebook/Instagram block is first in the footer, homepage and Контакти only**
-    (2026-09-18, in two steps at the owner’s request: first it had drifted below the
-    newsletter box and the columns, opening a gap under Първи научавайте that was not there
-    before; moved back to first -- then the owner said it should not be on every page at
-    all, only home and Контакти, keeping Контакти’s own version as it is). Captured once as
-    `footer_social` in `footer.liquid`, printed only `if template.name == 'index' or
-    template.suffix == 'contact'` -- `template.name` is `'index'` only on the homepage, the
-    same kind of check `template.suffix == 'contact'` already makes for Контакти’s own
-    heading, text and picture. Straight under Първи научавайте on the homepage; under
-    Телефон on Контакти as tuned on 2026-09-15 (16px, the -2rem pull-up unchanged). On every
-    other page the block is simply absent -- the newsletter box and the row of columns are
-    still there, just without it above them (5rem of clear air was scoped to
-    `.footer__social + .footer__blocks-wrapper`, so it only ever applied where the block
-    exists anyway; nothing to adjust when it is missing).
+  - **The Facebook/Instagram block, homepage: three moves in one day (2026-09-18).** First it
+    drifted below the newsletter box and the columns; moved back to first in the footer. Then
+    the owner said it should not be on every page, only home and Контакти -- printed only
+    `if template.name == 'index' or template.suffix == 'contact'`. Then the owner asked for
+    the homepage's own copy to sit **before** Първи научавайте rather than after it, between
+    it and Кое злато е за вас -- a position the footer itself can never reach, since the
+    footer only ever renders after every homepage section. So it is no longer part of the
+    footer on the homepage at all: see **Social follow section** below. `template.name ==
+    'index'` came back out of the condition above it, leaving `if template.suffix ==
+    'contact'` -- Контакти’s copy is unaffected, still first in the footer, still under
+    Телефон, still with its own heading, text and picture, exactly as tuned on 2026-09-15.
   - **On phones, the homepage's own block sits side by side like the reference's**
     (2026-09-18, at the owner’s request: “you can see that on moonmagic on phone in their
     homepage” -- checked at 375px: left-aligned heading and text, two labelled buttons side
     by side, not centred and stacked full-width as this block had been since 2026-09-14).
     Кontакти keeps that stacked, centred treatment; the new rules are scoped to
-    `.footer__social:not(.footer__social--contact)`, phones only.
+    `.footer__social:not(.footer__social--contact)`, phones only, with no `.footer` ancestor
+    required -- which is exactly why they still apply unchanged now that this markup also
+    renders from the Social follow section rather than only from the footer.
     - **Two labelled buttons need smaller type to share the row.** Measured live at 375px:
       the block has 295px to work with, an 8px gap leaves 143.5px per button, and our longer
       label, ПОСЛЕДВАЙТЕ НИ, needs 146px at the stacked size (14px) -- more than the whole
@@ -673,6 +672,26 @@ Anything of ours that is not a Dawn setting lives in these two places:
     `contact_email` and its value went out together); the newsletter-into-the-row move and the
     social-block-first move landed together the next day, once the owner had seen the columns
     and asked for both.
+- **Social follow section.** `sections/social-follow.liquid` with
+  `assets/section-social-follow.css` (2026-09-18, at the owner’s request, so the homepage’s
+  Facebook/Instagram block could sit between Кое злато е за вас and Първи научавайте --
+  before the newsletter section, a position the footer itself can never reach, since the
+  footer always renders after every homepage section, not between two of them). Own its own
+  heading, text, colour scheme and padding settings, but reuses the footer’s own markup and
+  classes wholesale for everything else -- `.footer__social`, `.footer__social-intro`,
+  `.footer__social-heading`, `.footer__social-text`, `render 'social-icons'` -- so every rule
+  already tuned for this block (desktop button sizing, the side-by-side phone layout, hover
+  colours) applies unchanged; the section’s own CSS file holds exactly one override,
+  zeroing `.footer__social`’s own `margin-top` (written for clearing the newsletter band from
+  inside the footer’s padding), since the section’s own padding does that job here instead.
+  Defaults match what was live in the footer: heading „Вижте работата ни“, text „Последвайте
+  @cullinan_jewellery.bg…“, scheme-1, 48px padding.
+  - **Homepage only.** `sections/footer.liquid` no longer prints its own copy of this block
+    when `template.name == 'index'` -- only `template.suffix == 'contact'` still does, so
+    Контакти is completely unaffected: same position (first in the footer, under Телефон),
+    same heading, text and background picture as before.
+  - **Pushed in two steps**, the section itself first and `templates/index.json`’s reference
+    to it a couple of minutes later, per the same-push validator lag noted above.
 
 ## Current state
 
