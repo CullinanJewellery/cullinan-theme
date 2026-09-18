@@ -77,7 +77,7 @@
         "social_image_overlay_contact": 0,
         "show_social": true,
         "enable_country_selector": true,
-        "enable_language_selector": true,
+        "enable_language_selector": false,
         "payment_enable": true,
         "show_policy": true,
         "margin_top": 0,
