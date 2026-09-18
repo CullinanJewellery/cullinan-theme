@@ -623,26 +623,29 @@ Anything of ours that is not a Dawn setting lives in these two places:
     its dropdown -- but once products exist each would list only pieces with that tag, and
     none for the misspelt one. See Main menu under Waiting on the Shopify admin; once fixed,
     the column can pick the menu again and follow it.
-  - **The newsletter box**: `newsletter_enable: true` (it had never been on), heading
-    „Абонирайте се за бюлетина“, distinct from the homepage band’s „Първи научавайте“ -- the
-    reference also has both. From 750px Dawn sets the box and the social buttons side by side;
-    crown.css stacks them in one centred column, as the reference’s own footer stacks them.
+  - **The newsletter box is the first column in the row**, beside Нека ви помогнем
+    (2026-09-18, at the owner’s request -- it first shipped stacked below the row instead).
+    Captured as `footer_subscribe` in `footer.liquid` and printed as the row’s first grid
+    item, so it shares the row’s width, gap and centring; its heading is restyled to the
+    columns’ own small spaced capitals instead of Dawn’s larger heading-face default.
+    `newsletter_enable: true` (it had never been on), heading „Абонирайте се за бюлетина“,
+    distinct from the homepage band’s „Първи научавайте“ -- the reference also has both.
   - **The contact email** is the footer setting `contact_email`,
     `cullinanjewellery.bg@gmail.com`, shown only in a column that ticks the option (Нека ви
-    помогнем). It sat between the newsletter box and the social buttons for one round; the
-    owner wanted it under the help column instead.
-  - **On Контакти the social block still comes first**, right under the Телефон row, with the
-    columns and the newsletter box after it (5rem between, 3.2rem on phones). Everywhere else it
-    stays under the newsletter box. The block is captured once in `footer.liquid` and printed in
-    one place or the other by `template.suffix`. Without this, the block’s -2rem pull-up
-    dragged its picture 10px over the newsletter field, and everything above pushed it some
-    400px from Телефон, undoing the 2026-09-15 tuning.
-  - **Facebook, Instagram, the country and language selectors: unchanged.** The selectors
-    already sit in `footer__content-bottom`, not under the email, so nothing needed removing.
-  - **Pushed in two steps on purpose**: the block type first, the blocks minutes later. The
-    same-push validator lag (lessons above) hit this footer once earlier the same day, when
-    `contact_email` and its value went out together and the value did not render until
-    `footer-group.json` was re-sent on its own.
+    помогнем).
+  - **The Facebook/Instagram block is first in the footer on every page** (2026-09-18, at the
+    owner’s request: it had drifted below the newsletter box and the columns, opening a gap
+    under Първи научавайте that was not there before). Captured once as `footer_social` in
+    `footer.liquid` and printed first, before the row of columns -- straight under Първи
+    научавайте on the homepage, under Телефон on Контакти as tuned on 2026-09-15 (16px, the
+    -2rem pull-up unchanged). The row of columns follows it (5rem below, 3.2rem on phones).
+  - **The country and language selectors: unchanged.** They sit in `footer__content-bottom`,
+    a separate part of the footer entirely, untouched by any of the moves above.
+  - **Pushed in three rounds.** The block type first, its content minutes later (a same-push
+    validator lag, as the lessons above describe, hit this footer once already that day when
+    `contact_email` and its value went out together); the newsletter-into-the-row move and the
+    social-block-first move landed together the next day, once the owner had seen the columns
+    and asked for both.
 
 ## Current state
 
