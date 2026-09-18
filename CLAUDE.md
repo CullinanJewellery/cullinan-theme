@@ -756,6 +756,24 @@ Anything of ours that is not a Dawn setting lives in these two places:
          needed) wrapped to two lines on a computer too, which the reference’s own heading
          does not (only its phone version wraps). Widened to `64rem` for this block on
          desktop only.
+  - **Turned back down a round later, at the owner’s request: the reference-matched size
+    read as too big, and the two buttons should match each other rather than the reference’s
+    own natural-width difference.** Three changes:
+    - **Heading smaller**: 3.4rem → 2.4rem phone, 5rem → 3.2rem desktop.
+    - **Both buttons the same fixed size**, not natural width per label: Харесайте ни
+      (Facebook, the shorter word) sized up to Последвайте ни (Instagram)’s own size, since
+      Instagram needs the most room -- `16rem` on phone (was 137px vs 160px natural), `30rem`
+      on desktop (was 253px vs 295px natural). The phone label also came down from 13px to
+      12px: fixing the box at exactly Instagram’s own natural width left zero slack for its
+      own text, the same kind of margin the wrap bug above came from.
+    - **On phones only, the pair moved from left-aligned-together to opposite ends of the
+      row** (`justify-content: space-between`), at the owner’s own description -- one button
+      “in the left corner” with the normal page gutter to the edge, the other its mirror on
+      the right, and the space between them clearly bigger than that gutter (about 25px
+      against ~15px). Desktop keeps its existing centred-as-a-pair layout; this was
+      phone-only, matching what the owner described.
+    All still scoped to `.footer__social:not(.footer__social--contact)` -- Кontакти
+    unaffected throughout, checked again after this round.
   - **The gap to the newsletter band matched to the gap above this section**, at the owner’s
     request ("the exact same space we have with the section above"). Materials_teaser’s own
     `margin_bottom` (40) plus this section’s `padding_top` (48) makes 88px above; to match it
