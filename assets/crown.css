@@ -1315,6 +1315,20 @@ html {
   .footer__social:not(.footer__social--contact) .footer__social-text {
     font-size: 1.6rem;
   }
+
+  /*
+    .footer__social-intro's own max-width: 52ch (unscoped, above) resolves
+    against the surrounding body-text size (~16px), about 499px, whatever
+    the heading inside it is set to -- it never grew with the heading's own
+    5rem. At 50px "ВИЖТЕ РАБОТАТА НИ" needs 582px, so it wrapped to two
+    lines here too, which the reference's own desktop heading does not:
+    unwanted, unlike the same wrap on a phone, which matches the
+    reference's own big-headline behaviour there. Widened for this block
+    only, with room to spare.
+  */
+  .footer__social:not(.footer__social--contact) .footer__social-intro {
+    max-width: 64rem;
+  }
 }
 
 /* The newsletter box sits in the same row as the link columns, first, next to
