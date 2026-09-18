@@ -1635,10 +1635,17 @@ html {
   own "measurement and positioning" -- several smaller nudges before this
   still read as a guess rather than a match). At their exact 16px, 20px
   icon and 25px gap, ПОСЛЕДВАЙТЕ НИ (longer than either of their words)
-  measures 385px total against the 345px this block has at 375px --
-  30px over. Measured down from there: 14px with tighter padding (5px not
-  6px) and a 20px gap fits at 338px, the closest match that does not
-  overflow. The label is still read as words, not shrunk to icons only,
+  measures 385px total against the 345px this block has at 375px -- 30px
+  over. 13px with tighter padding (4px not 6px) and a 1.6rem gap measures
+  313px on the real page, a real 32px of slack rather than the first,
+  much tighter fit this shipped with -- a clone-based estimate had put
+  14px at 338px, close enough on paper that ordinary font-rendering
+  variance in the real page pushed it over anyway, and Dawn's own
+  .list-social carries `flex-wrap: wrap` (component-list-social.css),
+  never overridden before now, so going over silently wrapped the second
+  button onto its own row instead of visibly overflowing -- forced to
+  nowrap below so sizing mistakes show up as overflow, not a silent
+  wrap. The label is still read as words, not shrunk to icons only,
   which the owner turned down for phones in 2026-09-14.
 */
 @media screen and (max-width: 749px) {
@@ -1652,11 +1659,22 @@ html {
 
   .footer__social:not(.footer__social--contact) .footer__list-social {
     flex-direction: row;
+    /*
+      Dawn's own .list-social sets flex-wrap: wrap (component-list-social.css),
+      never overridden until now. With auto-width buttons that wrap silently
+      dropped the second button onto its own row the moment real rendering
+      (not the clone-based estimate this was tuned against) came in a few
+      pixels over -- the actual bug behind "they are cut but not next to
+      each other". nowrap forces them to stay on one row; the sizing below
+      is chosen to fit comfortably rather than exactly, so normal font
+      rendering variance can't trigger this again.
+    */
+    flex-wrap: nowrap;
     align-items: stretch;
     justify-content: flex-start;
     width: 100%;
     max-width: none;
-    gap: 2rem;
+    gap: 1.6rem;
   }
 
   .footer__social:not(.footer__social--contact) .footer__list-social .list-social__item {
@@ -1676,7 +1694,7 @@ html {
   .footer__social:not(.footer__social--contact) .footer__list-social .list-social__link {
     width: auto;
     height: auto;
-    padding: 1.4rem 0.5rem;
+    padding: 1.4rem 0.4rem;
     gap: 0.8rem;
   }
 
@@ -1687,8 +1705,8 @@ html {
   }
 
   .footer__social:not(.footer__social--contact) .footer__list-social .list-social__label {
-    font-size: 1.4rem;
-    letter-spacing: 0.04em;
+    font-size: 1.3rem;
+    letter-spacing: 0.02em;
   }
 }
 
