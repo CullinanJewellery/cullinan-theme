@@ -774,6 +774,20 @@ Anything of ours that is not a Dawn setting lives in these two places:
       phone-only, matching what the owner described.
     All still scoped to `.footer__social:not(.footer__social--contact)` -- Кontакти
     unaffected throughout, checked again after this round.
+  - **The boxes a little bigger again, one round later** -- box size only, icon and label
+    left exactly as they were. Desktop had no constraint to work around: `30rem → 32rem`,
+    padding `2.2rem 2rem → 2.4rem 2.2rem`. Phone did: the owner’s own previous request set
+    the middle gap to stay clearly bigger than the page’s 15px gutter, and that gap is
+    `345px available − both boxes` under `justify-content: space-between` -- so width had
+    almost no room to give without eating back into it. `16rem → 16.2rem` (160px → 162px)
+    keeps the gap at 21px, still clearly over 15px; the visible size increase instead came
+    from height, padding `1.4rem → 1.8rem` top/bottom (50px → 58px tall).
+    - **“Center them by the icons”, checked rather than assumed**: the icon and label were
+      already on the same vertical centre line before this round (both 24.8px within the
+      50px box) and stayed so after it (28.8px within 58px on a phone, 43.8px within 88px on
+      a computer) -- `align-items: center` and `justify-content: center` on the link already
+      do this and re-centre automatically as the box resizes, so nothing needed changing for
+      that part of the request specifically.
   - **The gap to the newsletter band matched to the gap above this section**, at the owner’s
     request ("the exact same space we have with the section above"). Materials_teaser’s own
     `margin_bottom` (40) plus this section’s `padding_top` (48) makes 88px above; to match it
