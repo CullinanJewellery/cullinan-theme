@@ -1,0 +1,119 @@
+{{ 'section-social-follow.css' | asset_url | stylesheet_tag }}
+
+{%- comment -%}
+  The Facebook/Instagram follow block, as its own section (2026-09-18, at the
+  owner's request: it sat first in the footer, but the owner wants it as a
+  section of its own between Първи научавайте (the newsletter band) and Кое
+  злато е за вас (materials_teaser), i.e. before the newsletter rather than
+  after it).
+
+  Reuses the footer's own markup and classes verbatim -- .footer__social,
+  .footer__social-intro, .footer__social-heading, .footer__social-text, and
+  the social-icons snippet with .footer__list-social -- so every rule already
+  tuned for this block (button sizing on desktop, the side-by-side phone
+  layout, hover colours) applies here unchanged. Only the outer wrapper and
+  its padding are new; see section-social-follow.css for the one override
+  that undoes the footer's own spacing in favour of this section's own.
+
+  This section is not used on Контакти: that page keeps its own version
+  inside the footer, with its own heading, text and background picture --
+  see sections/footer.liquid.
+{%- endcomment -%}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+{%- liquid
+  assign has_social_icons = true
+  if settings.social_facebook_link == blank and settings.social_instagram_link == blank and settings.social_youtube_link == blank and settings.social_tiktok_link == blank and settings.social_twitter_link == blank and settings.social_pinterest_link == blank and settings.social_snapchat_link == blank and settings.social_tumblr_link == blank and settings.social_vimeo_link == blank
+    assign has_social_icons = false
+  endif
+-%}
+
+{%- if has_social_icons -%}
+  <div class="color-{{ section.settings.color_scheme }} gradient">
+    <div class="social-follow page-width section-{{ section.id }}-padding">
+      <div class="footer__social">
+        {%- if section.settings.heading != blank or section.settings.text != blank -%}
+          <div class="footer__social-intro">
+            {%- if section.settings.heading != blank -%}
+              <p class="footer__social-heading">{{ section.settings.heading | escape }}</p>
+            {%- endif -%}
+            {%- if section.settings.text != blank -%}
+              <p class="footer__social-text">{{ section.settings.text | escape }}</p>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+        {%- render 'social-icons', class: 'footer__list-social' -%}
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Social follow",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "default": "scheme-1",
+      "label": "Colour scheme"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "default": "Вижте работата ни",
+      "label": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "default": "Последвайте @cullinan_jewellery.bg за нови модели и снимки от работата в ателието.",
+      "label": "Text"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 48
+    }
+  ],
+  "presets": [
+    {
+      "name": "Social follow"
+    }
+  ]
+}
+{% endschema %}

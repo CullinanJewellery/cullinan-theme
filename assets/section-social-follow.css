@@ -1,0 +1,18 @@
+/*
+  This section reuses the footer's own .footer__social markup and styling
+  wholesale -- see assets/crown.css for the heading, text, button and phone
+  rules, all still tuned exactly as built for the footer. The only thing
+  that does not carry over is .footer__social's own margin-top: it was
+  written to clear the newsletter's black band from inside the footer's own
+  padding; here the section's own padding does that job instead, so it is
+  zeroed to avoid doubling the space.
+*/
+.social-follow .footer__social {
+  margin-top: 0;
+}
+
+@media screen and (max-width: 749px) {
+  .social-follow .footer__social {
+    margin-top: 0;
+  }
+}
