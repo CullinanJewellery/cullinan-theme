@@ -1554,15 +1554,19 @@ html {
     295px against 253px for the shorter one. 30rem covers both with a
     little to spare either way. Кontакти keeps the fixed 26rem/6.4rem size
     above, untouched.
+
+    Boxes a little bigger again the next round, at the owner's request --
+    width and padding only, icon and label left at their own size. No
+    room constraint here the way phone has, so this one just grew.
   */
   .footer__social:not(.footer__social--contact) .footer__list-social {
     gap: 2rem;
   }
 
   .footer__social:not(.footer__social--contact) .footer__list-social .list-social__link {
-    width: 30rem;
+    width: 32rem;
     height: auto;
-    padding: 2.2rem 2rem;
+    padding: 2.4rem 2.2rem;
   }
 
   .footer__social:not(.footer__social--contact) .footer__list-social .list-social__link .icon {
@@ -1726,10 +1730,21 @@ html {
       same size, Харесайте ни (Facebook) matched to Последвайте ни
       (Instagram), which needs the most room: natural width measured 160px
       against 137px for the shorter one.
+
+      A little bigger again the next round, at the owner's request -- but
+      width has almost no room to give here, unlike desktop: the owner's
+      own previous request set the middle gap to be clearly bigger than
+      the page's own 15px gutter (space-between, both boxes fixed width,
+      so gap = 345px available minus both boxes). Going past about 162px
+      a side would shrink that gap back down near the gutter's own size,
+      undoing that. So this grew in height instead, where there is no such
+      ceiling: padding top/bottom 1.4rem -> 1.8rem (height 50px -> ~58px),
+      width only 16rem -> 16.2rem (162px), keeping the gap at 21px --
+      still clearly more than the 15px gutter, just 4px less than before.
     */
-    width: 16rem;
+    width: 16.2rem;
     height: auto;
-    padding: 1.4rem 0.4rem;
+    padding: 1.8rem 0.4rem;
     gap: 0.8rem;
   }
 
