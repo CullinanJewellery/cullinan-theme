@@ -396,6 +396,10 @@
         "margin_bottom": 40
       }
     },
+    "social_follow": {
+      "type": "social-follow",
+      "settings": {}
+    },
     "newsletter": {
       "type": "newsletter",
       "blocks": {
@@ -445,6 +449,7 @@
     "atelier",
     "design_teaser",
     "materials_teaser",
+    "social_follow",
     "newsletter"
   ]
 }
