@@ -117,6 +117,16 @@ Rules that matter here:
       atelier blocks: a script removes `.banner__media-motion` under
       `prefers-reduced-motion`, backed by a CSS rule that hides it even before the script
       runs.
+    - **The phone panel is pink, not sand, since 2026-09-18** (the owner’s instruction, after
+      looking at moonmagic’s own phone homepage): `#F3E1DB`, measured directly off
+      moonmagic.com as `rgb(243, 225, 219)`. Scheme-5’s own sand (`#E7E1D6`) is unchanged in
+      `config/settings_data.json` -- the override sits in `assets/crown.css`, phone only, on
+      `.banner__box` itself, since scheme-5 is a shared token and the desktop box stays
+      transparent regardless. The same pink was reused, at the owner’s request the same day,
+      for the image marquee directly below it and the footer’s link-column band further down
+      the page (see Image marquee and Footer: link columns... under Custom code) -- the owner
+      pointed to moonmagic’s own equivalents of both and asked for one continuous colour
+      moving down the page on a phone.
   - **Second exception, at the owner’s instruction (2026-09-15):** the Контакти page banner
     („Как можем да помогнем?“). The owner asked for a picture behind it, as on the reference’s
     contact page, so its heading and text sit over a background picture once one is uploaded.
@@ -428,6 +438,10 @@ Anything of ours that is not a Dawn setting lives in these two places:
   library, and it stops under prefers-reduced-motion. The track holds the same set twice and
   translates by -50%; each item carries its own trailing margin rather than the track using
   `gap`, which is what makes -50% land exactly on the repeat. Empty slots are flat squares.
+  - **Pink background on phones, 2026-09-18, at the owner’s instruction:** the same `#F3E1DB`
+    as the hero panel above it (see the phone hero note under Design direction), so the two
+    bands read as one colour on the way down the page. `.marquee` in its own CSS file, phone
+    only; scheme-1 (`#FCFCFB`), the site’s own default ground, is untouched.
 - **Visual mega menu.** `snippets/header-visual-menu.liquid`, wired into
   `snippets/header-mega-menu.liquid` and `snippets/header-drawer.liquid`. Shopify menu items
   cannot carry images, so the items are `visual_menu_item` blocks on the header section. Each
@@ -682,13 +696,39 @@ Anything of ours that is not a Dawn setting lives in these two places:
       natural width and left-aligned, but 13px not 11px, `nowrap` added, the gap changed
       again) -- see "Rebuilt to match the reference's own real measurements" under Social
       follow section, further down.
-  - **The country and language selectors: unchanged.** They sit in `footer__content-bottom`,
-    a separate part of the footer entirely, untouched by any of the moves above.
+  - **The country and language selectors, in `footer__content-bottom`, a separate part of the
+    footer entirely: untouched by any of the moves above, at first.** **The language one is
+    off since 2026-09-18** (the owner's own instruction, asked in passing while the pink below
+    was being built: "you can also remove the language thing which appears at the end").
+    `enable_language_selector: false` in `sections/footer-group.json` -- Dawn's own toggle, so
+    nothing was removed from the liquid or the CSS. It wasn't doing much work anyway: it only
+    ever showed "Language / English", never a second language to switch to, since Bulgarian is
+    still not the store's default (see Current state). The country selector is untouched --
+    the owner named only the language one -- and it still shows nothing on its own, since only
+    one market is set up; `enable_country_selector` stays `true` for whenever that changes.
   - **Pushed in three rounds.** The block type first, its content minutes later (a same-push
     validator lag, as the lessons above describe, hit this footer once already that day when
     `contact_email` and its value went out together); the newsletter-into-the-row move and the
     social-block-first move landed together the next day, once the owner had seen the columns
     and asked for both.
+  - **A pink background behind the whole group, and a fixed separator line, 2026-09-18 (the
+    owner's instruction, after looking at moonmagic's own footer accordion on a phone).**
+    `#F3E1DB` -- the same pink as the hero panel and the image marquee above it on the page
+    (see the phone hero note under Design direction) -- on `.footer__blocks-wrapper` in
+    `assets/crown.css`, phone only. The wrapper already sits inside `page-width`, so this
+    reaches the same left/right inset moonmagic's own accordion keeps rather than a full-bleed
+    band; moonmagic's own equivalent is in fact plain white on a phone, measured directly
+    (`rgb(255, 255, 255)`) -- the owner's own instruction was to reuse our pink regardless, not
+    to match that colour, so that is what shipped.
+    - **A hairline was missing above Нека ви помогнем, and the fix uncovered why.** moonmagic
+      draws a line between every one of its own accordion rows, including before its own
+      newsletter box; ours only ever drew one after each link column. The rule meant to put a
+      line above the first column read `.footer-block--links:first-child`, written when the
+      link columns really were the first blocks in the row -- but the newsletter box became
+      the row's actual first grid item on 2026-09-17 (see above), so `:first-child` has matched
+      nothing since then and that line has been silently missing for a day. Fixed by giving the
+      newsletter box itself a trailing hairline instead (`.footer-block--subscribe`), which
+      reaches the same line and does not care which block order comes first.
 - **Social follow section.** `sections/social-follow.liquid` with
   `assets/section-social-follow.css` (2026-09-18, at the owner’s request, so the homepage’s
   Facebook/Instagram block could sit between Кое злато е за вас and Първи научавайте --
