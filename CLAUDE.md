@@ -647,6 +647,25 @@ Anything of ours that is not a Dawn setting lives in these two places:
     still there, just without it above them (5rem of clear air was scoped to
     `.footer__social + .footer__blocks-wrapper`, so it only ever applied where the block
     exists anyway; nothing to adjust when it is missing).
+  - **On phones, the homepage's own block sits side by side like the reference's**
+    (2026-09-18, at the owner’s request: “you can see that on moonmagic on phone in their
+    homepage” -- checked at 375px: left-aligned heading and text, two labelled buttons side
+    by side, not centred and stacked full-width as this block had been since 2026-09-14).
+    Кontакти keeps that stacked, centred treatment; the new rules are scoped to
+    `.footer__social:not(.footer__social--contact)`, phones only.
+    - **Two labelled buttons need smaller type to share the row.** Measured live at 375px:
+      the block has 295px to work with, an 8px gap leaves 143.5px per button, and our longer
+      label, ПОСЛЕДВАЙТЕ НИ, needs 146px at the stacked size (14px) -- more than the whole
+      budget for one button, let alone two. At 11px with tighter letter-spacing (0.06em vs
+      0.1em) it needs 138px, and the icon and gaps came down with it (2rem icon, 0.8rem
+      gaps) to stay in proportion. The label is still words, not shrunk to icons only, which
+      the owner turned down here in 2026-09-14.
+    - **`flex: 1 1 0` did not share the row -- both buttons rendered full width.** An `<li>`
+      keeps `display: list-item` even as a flex child, and this rendering path does not
+      grow it correctly from a zero flex-basis. Dawn’s own desktop version never hits this,
+      because it sizes `.list-social__link` with an explicit `width: 26rem` rather than
+      flex-grow; the phone fix does the same -- `width: calc(50% - 0.4rem)` and
+      `display: block` on the `<li>`, `width: 100%` on the link inside it.
   - **The country and language selectors: unchanged.** They sit in `footer__content-bottom`,
     a separate part of the footer entirely, untouched by any of the moves above.
   - **Pushed in three rounds.** The block type first, its content minutes later (a same-push
