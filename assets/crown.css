@@ -1296,7 +1296,9 @@ html {
   wraps to two lines too).
 */
 .footer__social:not(.footer__social--contact) .footer__social-heading {
-  font-size: 3.4rem;
+  /* 3.4rem at first, matching the reference's own 35px exactly; brought back
+     down at the owner's request the next round -- too big. */
+  font-size: 2.4rem;
   letter-spacing: 0.06em;
   color: rgb(0 0 0);
 }
@@ -1309,7 +1311,8 @@ html {
 
 @media screen and (min-width: 750px) {
   .footer__social:not(.footer__social--contact) .footer__social-heading {
-    font-size: 5rem;
+    /* 5rem at first, matching the reference's own 55px; same request, same reason. */
+    font-size: 3.2rem;
   }
 
   .footer__social:not(.footer__social--contact) .footer__social-text {
@@ -1539,24 +1542,25 @@ html {
   }
 
   /*
-    Sized and positioned like the reference's own desktop buttons, on the
-    homepage only (2026-09-18, at the owner's explicit request for the
-    reference's own "measurement and positioning"): measured on
-    moonmagic.com at 1440px, its two buttons are 300 x 81px, natural width
-    from 22px/20px padding around a 22px label, a 20px gap between them,
-    centred as a pair -- not a fixed width forced equal regardless of what
-    the label says, which is what 28rem/7rem still was. Auto width and
-    height (from padding) replace the fixed 28rem/7rem here; the pair still
-    centres via .footer__social's own align-items: center, since the row
-    now shrinks to its own two-button width instead of stretching to 100%.
-    Кontакти keeps the fixed 26rem/6.4rem size above, untouched.
+    Sized like the reference's own desktop buttons, on the homepage only
+    (2026-09-18, at the owner's explicit request for the reference's own
+    "measurement and positioning"): measured on moonmagic.com at 1440px,
+    its two buttons are 300 x 81px, natural width from 22px/20px padding
+    around a 22px label, a 20px gap between them, centred as a pair.
+
+    Fixed at 30rem, not auto, the next round -- the owner wants both
+    buttons the same size, Харесайте ни (Facebook) matched to Последвайте
+    ни (Instagram), which needs the most room: natural width measured
+    295px against 253px for the shorter one. 30rem covers both with a
+    little to spare either way. Кontакти keeps the fixed 26rem/6.4rem size
+    above, untouched.
   */
   .footer__social:not(.footer__social--contact) .footer__list-social {
     gap: 2rem;
   }
 
   .footer__social:not(.footer__social--contact) .footer__list-social .list-social__link {
-    width: auto;
+    width: 30rem;
     height: auto;
     padding: 2.2rem 2rem;
   }
@@ -1685,10 +1689,21 @@ html {
     */
     flex-wrap: nowrap;
     align-items: stretch;
-    justify-content: flex-start;
+    /*
+      Both buttons the same fixed width now (below), so space-between puts
+      one at the row's own left edge and the other at its right edge --
+      mirrored, each the same distance from its own side as the page's own
+      gutter already keeps everything else, with the leftover space
+      becoming one gap in the middle. At 16rem a side with ~345px to work
+      with, that middle gap is about 25px, bigger than the page's own
+      gutter -- at the owner's request: one button "in the left corner"
+      with normal space to the edge, the other "mirror" on the right, the
+      gap between them "bigger than the to the corner" gap.
+    */
+    justify-content: space-between;
     width: 100%;
     max-width: none;
-    gap: 1.6rem;
+    gap: 0;
   }
 
   .footer__social:not(.footer__social--contact) .footer__list-social .list-social__item {
@@ -1706,7 +1721,13 @@ html {
   }
 
   .footer__social:not(.footer__social--contact) .footer__list-social .list-social__link {
-    width: auto;
+    /*
+      Fixed at 16rem, not auto, at the owner's request -- both buttons the
+      same size, Харесайте ни (Facebook) matched to Последвайте ни
+      (Instagram), which needs the most room: natural width measured 160px
+      against 137px for the shorter one.
+    */
+    width: 16rem;
     height: auto;
     padding: 1.4rem 0.4rem;
     gap: 0.8rem;
@@ -1719,7 +1740,12 @@ html {
   }
 
   .footer__social:not(.footer__social--contact) .footer__list-social .list-social__label {
-    font-size: 1.3rem;
+    /*
+      13px measured exactly to Последвайте ни's own natural width (160px in
+      160px) -- zero slack, the same mistake that broke the row once
+      already. 12px leaves a real 9px of room inside the same fixed box.
+    */
+    font-size: 1.2rem;
     letter-spacing: 0.02em;
   }
 }
