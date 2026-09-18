@@ -788,13 +788,21 @@ Anything of ours that is not a Dawn setting lives in these two places:
       a computer) -- `align-items: center` and `justify-content: center` on the link already
       do this and re-centre automatically as the box resizes, so nothing needed changing for
       that part of the request specifically.
-  - **The gap to the newsletter band matched to the gap above this section**, at the owner’s
-    request ("the exact same space we have with the section above"). Materials_teaser’s own
-    `margin_bottom` (40) plus this section’s `padding_top` (48) makes 88px above; to match it
-    below, this section’s own `padding_bottom` came down from its 48px default to 16, so
-    16 + newsletter’s own `padding_top` (72) makes 88px too. Both scale identically on phones
-    (all three values × 0.75), so 66px matches 66px there as well. Only this section’s own
-    setting changed -- materials_teaser and newsletter are untouched.
+  - **The gap to the newsletter band matched to the gap above this section, twice.** First
+    try (the owner’s request, "the exact same space we have with the section above"):
+    materials_teaser’s own `margin_bottom` (40) plus this section’s `padding_top` (48) makes
+    88px above; to match it below, `padding_bottom` came down from its 48px default to 16, so
+    16 + newsletter’s own `padding_top` (72) also makes 88 -- equal on paper, at both
+    breakpoints (× 0.75 throughout). Still read as “too close” to the owner, because the two
+    88s are not equal in what actually shows: above, all 88px sits on the light page ground
+    before Вижте работата ни starts; below, only 16px was light ground before hitting the
+    newsletter’s own black band -- the other 72px is the newsletter’s own padding, inside the
+    black band, which never reads as space *between* sections at all. Fixed by matching the
+    light-ground gap directly instead of the padding sum: `padding_bottom` raised to 88,
+    matching the 88px light gap above exactly (66 on phones, same scaling both share).
+    Newsletter’s own `padding_top` (72, black) is untouched -- now genuinely extra room
+    inside its own band, not doing double duty as the visible gap. Only this section’s own
+    setting changed either time -- materials_teaser and newsletter are untouched.
 
 ## Current state
 
