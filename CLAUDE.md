@@ -268,8 +268,8 @@ Rules that matter here:
   has expired”, so pushes could not be checked. Only the owner can make a new one: Online Store →
   Themes → the draft theme → Preview → Share preview. Ask for it as soon as the old one fails.
   The owner sent a new one on 2026-09-15: https://o9kwivtmudx0bw6x-107185537364.shopifypreview.com
-  (also since expired), then another on 2026-09-17:
-  https://ge05t2atx6nu8sn2-107185537364.shopifypreview.com.
+  (since expired), then on 2026-09-17: https://ge05t2atx6nu8sn2-107185537364.shopifypreview.com
+  (since expired), then on 2026-09-18: https://n2mxxuoi0yunt4ur-107185537364.shopifypreview.com.
   Until a new link arrives, a local mock-up from the theme’s real stylesheets (served by a
   throwaway Node server, never committed) is a usable stand-in for layout; it was exact to the
   pixel for the header once the new link allowed a comparison.
