@@ -398,7 +398,13 @@
     },
     "social_follow": {
       "type": "social-follow",
-      "settings": {}
+      "settings": {
+        "color_scheme": "scheme-1",
+        "heading": "Вижте работата ни",
+        "text": "Последвайте @cullinan_jewellery.bg за нови модели и снимки от работата в ателието.",
+        "padding_top": 48,
+        "padding_bottom": 16
+      }
     },
     "newsletter": {
       "type": "newsletter",
