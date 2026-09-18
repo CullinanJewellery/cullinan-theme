@@ -79,3 +79,18 @@
     width: calc(100vw / 2.2 - var(--marquee-gap, 12px));
   }
 }
+
+/*
+  Phone-only background, at the owner's instruction (2026-09-18): the same
+  pink as the hero panel above it -- #F3E1DB, moonmagic's own phone hero
+  colour, measured on their site as rgb(243, 225, 219) -- so the two bands
+  read as one continuous colour moving down the page on a phone. See
+  assets/crown.css for the hero's own rule and the footer link columns,
+  which carry the same colour further down the page. Scheme-1 itself
+  (#FCFCFB) is untouched, since it is the whole site's default ground.
+*/
+@media screen and (max-width: 749px) {
+  .marquee {
+    background-color: #F3E1DB;
+  }
+}

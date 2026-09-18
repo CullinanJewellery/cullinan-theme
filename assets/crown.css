@@ -543,6 +543,24 @@ html {
   }
 }
 
+/*
+  The phone panel's own background, at the owner's instruction (2026-09-18):
+  moonmagic's own phone hero sits on a pink, measured directly on their site
+  as rgb(243, 225, 219) / #F3E1DB. Scheme-5's own sand (#E7E1D6, set in
+  config/settings_data.json) is left exactly as it is -- overridden here,
+  phone only, rather than repainted at the scheme level, since scheme-5 is a
+  shared token other blocks may use later and the desktop box stays
+  transparent either way (banner--desktop-transparent, from show_text_box).
+  The same pink is reused for the image marquee below it and the footer's
+  link-column band further down -- see assets/section-image-marquee.css and
+  the footer link columns further down in this file.
+*/
+@media screen and (max-width: 749px) {
+  .banner.banner--mobile-bottom .banner__box {
+    background-color: #F3E1DB;
+  }
+}
+
 /* ---------------------------------------------------------------------------
    Product rows
 
@@ -1446,8 +1464,29 @@ html {
     border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.15);
   }
 
-  .footer .footer-block--links:first-child .footer-links__toggle {
-    border-top: 0.1rem solid rgba(var(--color-foreground), 0.15);
+  /*
+    The newsletter box became this row's actual first grid item (2026-09-18,
+    the note above the .footer-subscribe__heading rule) and this used to read
+    .footer-block--links:first-child -- which nothing matches any more, so no
+    line ever separated the box from Нека ви помогнем. A trailing hairline on
+    the box itself reaches the same line and keeps working regardless of
+    which block order comes first.
+  */
+  .footer .footer-block--subscribe {
+    padding-bottom: 1.8rem;
+    border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.15);
+  }
+
+  /*
+    A background colour behind the whole group, at the owner's instruction
+    (2026-09-18): moonmagic's own equivalent footer block carries one too,
+    and the owner asked for the same pink used on the hero and the image
+    marquee above it on the page -- #F3E1DB. The wrapper already sits inside
+    page-width, so this reaches the same left/right inset moonmagic's own
+    accordion keeps, not a full-bleed band.
+  */
+  .footer .footer__blocks-wrapper {
+    background-color: #F3E1DB;
   }
 
   .footer .footer-links__summary {
