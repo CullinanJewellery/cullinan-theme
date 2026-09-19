@@ -1474,19 +1474,45 @@ html {
 
 /*
   No fill colour any more -- removed at the owner's request (2026-09-19),
-  a day after it shipped full-bleed. In its place, two hairlines, top and
+  a day after it shipped full-bleed. In its place, two lines, top and
   bottom, "not touching the corners" (i.e. not full-bleed like the colour
   was -- the wrapper's own page-width inset is what keeps them short of the
   viewport's true edges) and explicitly no side lines, so it reads as a
   loose frame around the group rather than a drawn box. Padding keeps each
   line clear of the text next to it, since a hairline sitting flush against
   a heading or the last link reads as a mistake, not a frame.
+
+  Pink and short, a moment later, at the owner's request ("the same pink we
+  used for the section with the moving pictures" -- the image marquee's own
+  flat colour, #F3E1DB -- "and small small"). A `border` can only ever be as
+  long as the element carrying it, so a genuinely short line needs its own
+  small, fixed-width box instead: a ::before and ::after, centred with
+  left: 50%/translateX, 4rem wide, replacing the full-width border-top and
+  border-bottom this rule used to set directly.
 */
 .footer .footer__blocks-wrapper {
-  border-top: 0.1rem solid rgba(var(--color-foreground), 0.15);
-  border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.15);
+  position: relative;
   padding-top: 3.2rem;
   padding-bottom: 3.2rem;
+}
+
+.footer .footer__blocks-wrapper::before,
+.footer .footer__blocks-wrapper::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4rem;
+  height: 0.1rem;
+  background-color: #F3E1DB;
+}
+
+.footer .footer__blocks-wrapper::before {
+  top: 0;
+}
+
+.footer .footer__blocks-wrapper::after {
+  bottom: 0;
 }
 
 @media screen and (min-width: 750px) {
