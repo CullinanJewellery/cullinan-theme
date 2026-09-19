@@ -1473,42 +1473,20 @@ html {
 }
 
 /*
-  Full-bleed structure for the link-columns group's own background, at the
-  owner's request (2026-09-19: "touch the corners of the website like the
-  section above it" -- the newsletter band, which reaches the true edges
-  because full_width takes it outside page-width entirely, a Dawn section
-  setting this footer block has no equivalent of, since it sits inside
-  footer__content-top's own page-width). Not scoped to a breakpoint -- both
-  the phone colour and the computer gradient further down (search
-  .footer__blocks-wrapper::before) sit on the same ::before this creates.
-
-  Same breakout this theme already uses for the Контакти picture
-  (.footer__social-media, further down): left: 50% plus a 100vw width and a
-  translate centre a full-viewport box regardless of the parent's own
-  padding. .footer's own overflow-x: hidden (set for that exact picture)
-  already contains the few pixels the 100vw box overshoots for the
-  scrollbar, so nothing new was needed there. The columns and the newsletter
-  form themselves are lifted to position: relative with z-index: 1 so they
-  keep reading above the colour rather than under it.
+  No fill colour any more -- removed at the owner's request (2026-09-19),
+  a day after it shipped full-bleed. In its place, two hairlines, top and
+  bottom, "not touching the corners" (i.e. not full-bleed like the colour
+  was -- the wrapper's own page-width inset is what keeps them short of the
+  viewport's true edges) and explicitly no side lines, so it reads as a
+  loose frame around the group rather than a drawn box. Padding keeps each
+  line clear of the text next to it, since a hairline sitting flush against
+  a heading or the last link reads as a mistake, not a frame.
 */
 .footer .footer__blocks-wrapper {
-  position: relative;
-}
-
-.footer .footer__blocks-wrapper::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  width: 100vw;
-  transform: translateX(-50%);
-  z-index: 0;
-}
-
-.footer .footer__blocks-wrapper > * {
-  position: relative;
-  z-index: 1;
+  border-top: 0.1rem solid rgba(var(--color-foreground), 0.15);
+  border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.15);
+  padding-top: 3.2rem;
+  padding-bottom: 3.2rem;
 }
 
 @media screen and (min-width: 750px) {
@@ -1563,18 +1541,6 @@ html {
     border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.15);
   }
 
-  /*
-    A background colour behind the whole group, at the owner's instruction
-    (2026-09-18): moonmagic's own equivalent footer block carries one too,
-    and the owner asked for the same pink used on the hero and the image
-    marquee above it on the page -- #F3E1DB. Full-bleed since the next day
-    -- see the full-bleed structural rule further up this file, right after
-    .footer-links__email -- so only the colour itself is set here.
-  */
-  .footer .footer__blocks-wrapper::before {
-    background-color: #F3E1DB;
-  }
-
   .footer .footer-links__summary {
     display: flex;
     align-items: center;
@@ -1607,25 +1573,6 @@ html {
 
   .footer .footer-links__toggle .list-menu__item--link {
     padding: 0.8rem 0;
-  }
-}
-
-/*
-  The same background on a computer, at the owner's instruction (2026-09-19),
-  matching the hero and the marquee's own desktop rule (both in this file /
-  assets/section-image-marquee.css): moonmagic's own desktop footer is plain
-  white behind its four columns, same as their accordion on a phone, and
-  columns lie flat with no line between them once nothing is collapsed to
-  separate -- so nothing changes here for the separator line part of the
-  original request, only the background colour, reused again for the same
-  reason it was reused on a phone. Full-bleed since the next day, on the
-  same ::before the phone rule paints (see the full-bleed structural rule
-  above, right after .footer-links__email) -- so only the colour differs
-  between the two breakpoints.
-*/
-@media screen and (min-width: 750px) {
-  .footer .footer__blocks-wrapper::before {
-    background: linear-gradient(180deg, #FFE8E0 0%, #F3E1DB 100%);
   }
 }
 
