@@ -1383,12 +1383,18 @@ html {
 
 /* The newsletter box sits in the same row as the link columns, first, next to
    Нека ви помогнем (2026-09-17, at the owner's request). Its own heading
-   matches theirs rather than Dawn's larger heading-face default. */
+   matches theirs rather than Dawn's larger heading-face default.
+
+   Smaller since 2026-09-19, at the owner's request ("the text to be
+   small... small small") -- 1.3rem down to 1rem, along with the link
+   column headings and links themselves (see .footer-links__heading and
+   .footer-links__list below), so the whole group reads at the same
+   smaller size together. */
 .footer .footer-subscribe__heading {
   margin: 0 0 1.4rem;
   font-family: var(--font-body-family);
   font-style: var(--font-body-style);
-  font-size: 1.3rem;
+  font-size: 1rem;
   font-weight: 600;
   line-height: 1.4;
   letter-spacing: 0.1em;
@@ -1444,7 +1450,7 @@ html {
   margin: 0 0 1.4rem;
   font-family: var(--font-body-family);
   font-style: var(--font-body-style);
-  font-size: 1.3rem;
+  font-size: 1rem;
   font-weight: 600;
   line-height: 1.4;
   letter-spacing: 0.1em;
@@ -1454,7 +1460,7 @@ html {
 .footer .footer-links__list .list-menu__item--link {
   display: inline-block;
   padding: 0.6rem 0;
-  font-size: 1.3rem;
+  font-size: 1rem;
   line-height: 1.5;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -1482,37 +1488,18 @@ html {
   line clear of the text next to it, since a hairline sitting flush against
   a heading or the last link reads as a mistake, not a frame.
 
-  Pink and short, a moment later, at the owner's request ("the same pink we
-  used for the section with the moving pictures" -- the image marquee's own
-  flat colour, #F3E1DB -- "and small small"). A `border` can only ever be as
-  long as the element carrying it, so a genuinely short line needs its own
-  small, fixed-width box instead: a ::before and ::after, centred with
-  left: 50%/translateX, 4rem wide, replacing the full-width border-top and
-  border-bottom this rule used to set directly.
+  Pink, at the owner's request, the same day: the image marquee's own flat
+  colour, #F3E1DB. (A short, centred version of these lines was tried right
+  after this, on a misreading of "make it small small" as being about the
+  lines -- the owner meant the column text, not the lines, so that version
+  was reverted back to this same full-width border-top/border-bottom; see
+  the text-size rules below instead.)
 */
 .footer .footer__blocks-wrapper {
-  position: relative;
+  border-top: 0.1rem solid #F3E1DB;
+  border-bottom: 0.1rem solid #F3E1DB;
   padding-top: 3.2rem;
   padding-bottom: 3.2rem;
-}
-
-.footer .footer__blocks-wrapper::before,
-.footer .footer__blocks-wrapper::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 4rem;
-  height: 0.1rem;
-  background-color: #F3E1DB;
-}
-
-.footer .footer__blocks-wrapper::before {
-  top: 0;
-}
-
-.footer .footer__blocks-wrapper::after {
-  bottom: 0;
 }
 
 @media screen and (min-width: 750px) {
@@ -1573,7 +1560,7 @@ html {
     justify-content: space-between;
     gap: 1.6rem;
     padding: 1.8rem 0;
-    font-size: 1.3rem;
+    font-size: 1rem;
     font-weight: 600;
     line-height: 1.4;
     letter-spacing: 0.1em;
