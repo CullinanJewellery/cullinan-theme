@@ -127,6 +127,21 @@ Rules that matter here:
       the page (see Image marquee and Footer: link columns... under Custom code) -- the owner
       pointed to moonmagic’s own equivalents of both and asked for one continuous colour
       moving down the page on a phone.
+    - **The computer version is a gradient, not a flat colour, since 2026-09-19** (the owner’s
+      instruction: “do it for computer now”, continuing the phone pass above). Checked
+      moonmagic.com at 1440px rather than assuming their desktop hero just scales up the phone
+      one -- it does not: two ring photographs sit as decoration over a full-width band, not
+      one full-bleed photo, and that band is `linear-gradient(180deg, #FFE8E0 0%, #F3E1DB
+      100%)`, measured directly (`rgb(255, 232, 224)` to `rgb(243, 225, 219)`), not the flat
+      pink their phone uses. Our own desktop hero keeps its own structure -- one photograph,
+      text over it, `.banner__box` transparent by Dawn’s own rule so a photo shows through
+      (`banner--desktop-transparent`, from `show_text_box: false`) -- so the gradient goes on
+      `.banner` itself instead of `.banner__box`: `.banner__media` is Dawn’s own `position:
+      absolute; inset: 0` (`assets/section-image-banner.css`), so it will cover this
+      completely on its own once a real desktop photograph is uploaded, the same way it
+      already hides the plain off-white ground today. Nothing to revisit then. The same
+      gradient was reused on the marquee and the footer link-column band at the same
+      breakpoint, matching the phone pass reusing the same flat pink on both.
   - **Second exception, at the owner’s instruction (2026-09-15):** the Контакти page banner
     („Как можем да помогнем?“). The owner asked for a picture behind it, as on the reference’s
     contact page, so its heading and text sit over a background picture once one is uploaded.
@@ -442,6 +457,10 @@ Anything of ours that is not a Dawn setting lives in these two places:
     as the hero panel above it (see the phone hero note under Design direction), so the two
     bands read as one colour on the way down the page. `.marquee` in its own CSS file, phone
     only; scheme-1 (`#FCFCFB`), the site’s own default ground, is untouched.
+    - **The same on a computer, 2026-09-19:** the hero's own desktop gradient
+      (`linear-gradient(180deg, #FFE8E0 0%, #F3E1DB 100%)`), not the flat phone colour, so this
+      band still reads as "the exact same colour" as the hero at each size it was asked to
+      match, the same rule the hero note explains in full.
 - **Visual mega menu.** `snippets/header-visual-menu.liquid`, wired into
   `snippets/header-mega-menu.liquid` and `snippets/header-drawer.liquid`. Shopify menu items
   cannot carry images, so the items are `visual_menu_item` blocks on the header section. Each
@@ -729,6 +748,15 @@ Anything of ours that is not a Dawn setting lives in these two places:
       nothing since then and that line has been silently missing for a day. Fixed by giving the
       newsletter box itself a trailing hairline instead (`.footer-block--subscribe`), which
       reaches the same line and does not care which block order comes first.
+    - **The same background on a computer, 2026-09-19, no separator lines to add there.**
+      Checked moonmagic's own desktop footer at 1440px: the four columns lie flat, side by
+      side, no accordion and no line between them, because nothing is collapsed at that width
+      to need separating -- the hairlines only ever meant "this row is closed, here's the next
+      one." `.footer__blocks-wrapper` gets the hero's own desktop gradient
+      (`linear-gradient(180deg, #FFE8E0 0%, #F3E1DB 100%)`) at the same `min-width: 750px`
+      breakpoint, matching the flat pink reused on a phone -- but the separator-line half of
+      the original request has nothing to do here, since moonmagic itself has nothing there
+      either.
 - **Social follow section.** `sections/social-follow.liquid` with
   `assets/section-social-follow.css` (2026-09-18, at the owner’s request, so the homepage’s
   Facebook/Instagram block could sit between Кое злато е за вас and Първи научавайте --
