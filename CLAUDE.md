@@ -865,6 +865,12 @@ Anything of ours that is not a Dawn setting lives in these two places:
       a computer) -- `align-items: center` and `justify-content: center` on the link already
       do this and re-centre automatically as the box resizes, so nothing needed changing for
       that part of the request specifically.
+  - **Back down again, computer only, 2026-09-19, at the owner's request** ("make the buttons
+    smaller just for computer... for a phone stay how they are"). Undoes the bump above
+    exactly -- `32rem → 30rem`, padding `2.4rem 2.2rem → 2.2rem 2rem` -- back to what this
+    block measured as before it. Icon and label untouched, same distinction both sizing
+    rounds have kept throughout. The phone rule is a separate `max-width: 749px` block
+    entirely and nothing in it changed; checked live afterwards, still 162px/58px tall.
   - **The gap to the newsletter band matched to the gap above this section, twice.** First
     try (the owner’s request, "the exact same space we have with the section above"):
     materials_teaser’s own `margin_bottom` (40) plus this section’s `padding_top` (48) makes
