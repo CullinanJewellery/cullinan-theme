@@ -197,6 +197,19 @@
                   </h3>
                 {%- endif -%}
               {%- endform -%}
+              {%- if section.settings.newsletter_show_email and section.settings.contact_email != blank -%}
+                <p class="footer-subscribe__email">
+                  {%- if section.settings.newsletter_email_label != blank -%}
+                    {{ section.settings.newsletter_email_label | escape }}
+                  {%- endif %}
+                  <a
+                    href="mailto:{{ section.settings.contact_email | escape }}"
+                    class="link link--text footer-subscribe__email-link"
+                  >
+                    {{- section.settings.contact_email | escape -}}
+                  </a>
+                </p>
+              {%- endif -%}
             </div>
           {%- endif -%}
 
@@ -707,6 +720,18 @@
       "label": "t:sections.footer.settings.newsletter_heading.label"
     },
     {
+      "type": "checkbox",
+      "id": "newsletter_show_email",
+      "default": true,
+      "label": "Show the contact email under the newsletter form"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_email_label",
+      "default": "Свържете се с нас:",
+      "label": "Label before the email under the newsletter form"
+    },
+    {
       "type": "header",
       "content": "t:sections.footer.settings.header__9.content"
     },
@@ -725,7 +750,7 @@
       "type": "text",
       "id": "contact_email",
       "label": "Contact email shown in the footer",
-      "info": "Shown at the end of any link column with \"Show the contact email at the end\" ticked. Hidden when empty."
+      "info": "Shown at the end of any link column with \"Show the contact email at the end\" ticked, and under the newsletter form if that's ticked too. Hidden when empty."
     },
     {
       "type": "text",

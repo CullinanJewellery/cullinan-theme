@@ -1395,6 +1395,24 @@ html {
   text-transform: uppercase;
 }
 
+/*
+  The contact email moved here from Нека ви помогнем's own list, at the
+  owner's request (2026-09-19: move it under the newsletter box and add a
+  label -- "Свържете се с нас:", the section's own newsletter_email_label
+  setting). Smaller than the footer's own 13px link text, per the same
+  request ("make the text smaller"): it reads as a small aside under the
+  form rather than another link in a column.
+*/
+.footer .footer-subscribe__email {
+  margin: 1.2rem 0 0;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+.footer .footer-subscribe__email-link {
+  overflow-wrap: anywhere;
+}
+
 @media screen and (min-width: 750px) {
   .footer .footer__blocks-wrapper > .footer-block--subscribe.grid__item {
     flex: 0 1 26rem;

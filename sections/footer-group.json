@@ -22,7 +22,7 @@
             "link_1": "/pages/contact",
             "link_2_label": "Въпроси и отговори",
             "link_2": "/pages/за-нас#vaprosi",
-            "show_email": true
+            "show_email": false
           }
         },
         "about": {
