@@ -561,6 +561,35 @@ html {
   }
 }
 
+/*
+  The same pink on a computer, at the owner's instruction (2026-09-19): "do it
+  for computer now", after the phone version above. Checked moonmagic.com at
+  1440px first, since their desktop hero is a genuinely different thing from
+  their phone one, not just a wider version of it -- two ring photographs sit
+  as decoration on top of a full-width band, rather than one full-bleed photo
+  with the words below it. That band is not flat like the phone one: it is a
+  top-to-bottom gradient, measured directly as
+  linear-gradient(rgb(255, 232, 224) 0%, rgb(243, 225, 219) 100%) / #FFE8E0 to
+  #F3E1DB.
+
+  Our own desktop hero keeps its own structure -- one photograph, text over it,
+  `.banner__box` transparent by Dawn's own rule so the photo shows through
+  (`banner--desktop-transparent`, from show_text_box: false; see the Design
+  direction note on the hero). Reproducing moonmagic's inset-photo layout
+  would be a new section design, not a colour change, so this stays scoped to
+  what was actually asked: a background where the hero currently has none.
+  It goes on `.banner` itself, not `.banner__box` -- `.banner__media` is
+  Dawn's own `position: absolute; inset: 0` (section-image-banner.css), so
+  once a real desktop photograph is uploaded it will cover this completely on
+  its own, the same way it hides the off-white ground today. Nothing to
+  revisit then.
+*/
+@media screen and (min-width: 750px) {
+  .banner.banner--mobile-bottom {
+    background: linear-gradient(180deg, #FFE8E0 0%, #F3E1DB 100%);
+  }
+}
+
 /* ---------------------------------------------------------------------------
    Product rows
 
@@ -1521,6 +1550,22 @@ html {
 
   .footer .footer-links__toggle .list-menu__item--link {
     padding: 0.8rem 0;
+  }
+}
+
+/*
+  The same background on a computer, at the owner's instruction (2026-09-19),
+  matching the hero and the marquee's own desktop rule (both in this file /
+  assets/section-image-marquee.css): moonmagic's own desktop footer is plain
+  white behind its four columns, same as their accordion on a phone, and
+  columns lie flat with no line between them once nothing is collapsed to
+  separate -- so nothing changes here for the separator line part of the
+  original request, only the background colour, reused again for the same
+  reason it was reused on a phone.
+*/
+@media screen and (min-width: 750px) {
+  .footer .footer__blocks-wrapper {
+    background: linear-gradient(180deg, #FFE8E0 0%, #F3E1DB 100%);
   }
 }
 

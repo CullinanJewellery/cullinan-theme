@@ -94,3 +94,16 @@
     background-color: #F3E1DB;
   }
 }
+
+/*
+  The same background on a computer, at the owner's instruction (2026-09-19),
+  matching the hero's own desktop rule exactly (assets/crown.css): moonmagic's
+  desktop hero is a gradient, not the flat pink their phone one uses, so this
+  band stays "the exact same colour" as the hero at both sizes rather than
+  flattening it out here.
+*/
+@media screen and (min-width: 750px) {
+  .marquee {
+    background: linear-gradient(180deg, #FFE8E0 0%, #F3E1DB 100%);
+  }
+}
