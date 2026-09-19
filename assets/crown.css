@@ -1454,6 +1454,45 @@ html {
   overflow-wrap: anywhere;
 }
 
+/*
+  Full-bleed structure for the link-columns group's own background, at the
+  owner's request (2026-09-19: "touch the corners of the website like the
+  section above it" -- the newsletter band, which reaches the true edges
+  because full_width takes it outside page-width entirely, a Dawn section
+  setting this footer block has no equivalent of, since it sits inside
+  footer__content-top's own page-width). Not scoped to a breakpoint -- both
+  the phone colour and the computer gradient further down (search
+  .footer__blocks-wrapper::before) sit on the same ::before this creates.
+
+  Same breakout this theme already uses for the Контакти picture
+  (.footer__social-media, further down): left: 50% plus a 100vw width and a
+  translate centre a full-viewport box regardless of the parent's own
+  padding. .footer's own overflow-x: hidden (set for that exact picture)
+  already contains the few pixels the 100vw box overshoots for the
+  scrollbar, so nothing new was needed there. The columns and the newsletter
+  form themselves are lifted to position: relative with z-index: 1 so they
+  keep reading above the colour rather than under it.
+*/
+.footer .footer__blocks-wrapper {
+  position: relative;
+}
+
+.footer .footer__blocks-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  z-index: 0;
+}
+
+.footer .footer__blocks-wrapper > * {
+  position: relative;
+  z-index: 1;
+}
+
 @media screen and (min-width: 750px) {
   .footer .footer__blocks-wrapper {
     justify-content: center;
@@ -1510,11 +1549,11 @@ html {
     A background colour behind the whole group, at the owner's instruction
     (2026-09-18): moonmagic's own equivalent footer block carries one too,
     and the owner asked for the same pink used on the hero and the image
-    marquee above it on the page -- #F3E1DB. The wrapper already sits inside
-    page-width, so this reaches the same left/right inset moonmagic's own
-    accordion keeps, not a full-bleed band.
+    marquee above it on the page -- #F3E1DB. Full-bleed since the next day
+    -- see the full-bleed structural rule further up this file, right after
+    .footer-links__email -- so only the colour itself is set here.
   */
-  .footer .footer__blocks-wrapper {
+  .footer .footer__blocks-wrapper::before {
     background-color: #F3E1DB;
   }
 
@@ -1561,10 +1600,13 @@ html {
   columns lie flat with no line between them once nothing is collapsed to
   separate -- so nothing changes here for the separator line part of the
   original request, only the background colour, reused again for the same
-  reason it was reused on a phone.
+  reason it was reused on a phone. Full-bleed since the next day, on the
+  same ::before the phone rule paints (see the full-bleed structural rule
+  above, right after .footer-links__email) -- so only the colour differs
+  between the two breakpoints.
 */
 @media screen and (min-width: 750px) {
-  .footer .footer__blocks-wrapper {
+  .footer .footer__blocks-wrapper::before {
     background: linear-gradient(180deg, #FFE8E0 0%, #F3E1DB 100%);
   }
 }
