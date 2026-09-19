@@ -743,11 +743,11 @@ Anything of ours that is not a Dawn setting lives in these two places:
     owner's instruction, after looking at moonmagic's own footer accordion on a phone).**
     `#F3E1DB` -- the same pink as the hero panel and the image marquee above it on the page
     (see the phone hero note under Design direction) -- on `.footer__blocks-wrapper` in
-    `assets/crown.css`, phone only. The wrapper already sits inside `page-width`, so this
-    reaches the same left/right inset moonmagic's own accordion keeps rather than a full-bleed
-    band; moonmagic's own equivalent is in fact plain white on a phone, measured directly
-    (`rgb(255, 255, 255)`) -- the owner's own instruction was to reuse our pink regardless, not
-    to match that colour, so that is what shipped.
+    `assets/crown.css`, phone only. The wrapper sits inside `page-width`, so this first shipped
+    at the same left/right inset moonmagic's own accordion keeps rather than a full-bleed band
+    (made full-bleed the next day -- see below); moonmagic's own equivalent is in fact plain
+    white on a phone, measured directly (`rgb(255, 255, 255)`) -- the owner's own instruction
+    was to reuse our pink regardless, not to match that colour, so that is what shipped.
     - **A hairline was missing above Нека ви помогнем, and the fix uncovered why.** moonmagic
       draws a line between every one of its own accordion rows, including before its own
       newsletter box; ours only ever drew one after each link column. The rule meant to put a
@@ -766,6 +766,20 @@ Anything of ours that is not a Dawn setting lives in these two places:
       breakpoint, matching the flat pink reused on a phone -- but the separator-line half of
       the original request has nothing to do here, since moonmagic itself has nothing there
       either.
+    - **Made full-bleed the next day, at the owner's request** ("touch the corners of the
+      website like the section above it" -- the newsletter band, which reaches the true edges
+      because `full_width` takes it outside `page-width` entirely, a Dawn section setting this
+      footer block has no equivalent of). Same breakout this theme already uses for the
+      Контакти footer picture (`.footer__social-media`): the colour moved off the wrapper
+      itself onto a `::before`, `left: 50%` plus a `100vw` width and a translate to centre a
+      full-viewport box regardless of the parent's own padding, at both breakpoints (the phone
+      colour and the computer gradient both now paint that same pseudo-element, not the
+      wrapper). `.footer`'s own `overflow-x: hidden` (set for that exact picture, see Контакти
+      under Current state) already contains the few pixels the `100vw` box overshoots for the
+      scrollbar, so nothing new was needed there. The columns and the newsletter form
+      themselves are lifted to `position: relative; z-index: 1` so they keep reading above the
+      colour rather than under it. Checked live afterwards at 375, 1440 and on Контакти: no
+      horizontal scroll anywhere, the sticky header unaffected.
 - **Social follow section.** `sections/social-follow.liquid` with
   `assets/section-social-follow.css` (2026-09-18, at the owner’s request, so the homepage’s
   Facebook/Instagram block could sit between Кое злато е за вас and Първи научавайте --
