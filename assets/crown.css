@@ -1642,15 +1642,23 @@ html {
     Boxes a little bigger again the next round, at the owner's request --
     width and padding only, icon and label left at their own size. No
     room constraint here the way phone has, so this one just grew.
+
+    Back down again, computer only, at the owner's request (2026-09-19:
+    "make the buttons smaller just for computer... for a phone stay how
+    they are") -- undoes that last bump exactly, 32rem/2.4rem 2.2rem back
+    to the 30rem/2.2rem 2rem this block had before it. Icon and label are
+    still untouched, the same distinction the last two rounds both kept;
+    the phone rule further down is a separate block entirely and nothing
+    in it changed.
   */
   .footer__social:not(.footer__social--contact) .footer__list-social {
     gap: 2rem;
   }
 
   .footer__social:not(.footer__social--contact) .footer__list-social .list-social__link {
-    width: 32rem;
+    width: 30rem;
     height: auto;
-    padding: 2.4rem 2.2rem;
+    padding: 2.2rem 2rem;
   }
 
   .footer__social:not(.footer__social--contact) .footer__list-social .list-social__link .icon {
