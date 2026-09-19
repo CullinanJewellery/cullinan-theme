@@ -804,6 +804,15 @@ Anything of ours that is not a Dawn setting lives in these two places:
       flush against the text "will look bad". Checked live on the homepage, on a phone, and on
       Контакти: both lines inset from the edges, generous space either side of them, no
       horizontal scroll.
+    - **Pink and much shorter, a moment later, at the owner's request** ("the same pink we
+      used for the section with the moving pictures... small small"). The image marquee's own
+      flat colour, `#F3E1DB` (`assets/section-image-marquee.css`), and 4rem wide rather than
+      the wrapper's own full width -- a `border` can only ever run the full length of the
+      element carrying it, so a genuinely short line needs its own small box instead. Swapped
+      `border-top`/`border-bottom` for a centred `::before` and `::after`, each
+      `width: 4rem; height: 0.1rem`, positioned with `left: 50%` and a translate the same way
+      the earlier full-bleed background was centred. The `3.2rem` padding above and below is
+      untouched -- only the line itself changed, not the space around it.
 - **Social follow section.** `sections/social-follow.liquid` with
   `assets/section-social-follow.css` (2026-09-18, at the owner’s request, so the homepage’s
   Facebook/Instagram block could sit between Кое злато е за вас and Първи научавайте --
