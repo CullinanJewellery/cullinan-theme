@@ -871,6 +871,18 @@ Anything of ours that is not a Dawn setting lives in these two places:
     block measured as before it. Icon and label untouched, same distinction both sizing
     rounds have kept throughout. The phone rule is a separate `max-width: 749px` block
     entirely and nothing in it changed; checked live afterwards, still 162px/58px tall.
+  - **Smaller again a moment later, and this time the box alone had nothing left to give.**
+    Measured live against the real button before touching anything (Последвайте ни, the
+    longer label, set to `width: max-content` temporarily): 30rem left it only 295px of
+    natural content in a 300px box, 5px of slack. Shrinking the box further with icon, label
+    and padding held fixed would have clipped or wrapped it -- the exact bug the phone version
+    hit earlier in this same section (see the two-bugs note above) -- so this round shrank
+    all four together instead, each candidate checked live the same way before picking one:
+    label `2.2rem → 1.8rem`, icon `2.6rem → 2.2rem`, gap `1.2rem → 1rem`, padding
+    `2.2rem 2rem → 1.8rem 1.6rem`, box `30rem → 26rem`. That combination measures 244px
+    natural against a 260px box -- 16px of slack, more headroom than any round before it, so
+    there's real room left if "smaller" comes up again. Phone untouched, still 162px/58px,
+    checked live again after this round too.
   - **The gap to the newsletter band matched to the gap above this section, twice.** First
     try (the owner’s request, "the exact same space we have with the section above"):
     materials_teaser’s own `margin_bottom` (40) plus this section’s `padding_top` (48) makes
