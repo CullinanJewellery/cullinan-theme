@@ -461,6 +461,15 @@ Anything of ours that is not a Dawn setting lives in these two places:
       (`linear-gradient(180deg, #FFE8E0 0%, #F3E1DB 100%)`), not the flat phone colour, so this
       band still reads as "the exact same colour" as the hero at each size it was asked to
       match, the same rule the hero note explains in full.
+    - **Padding evened out the same day, at the owner's request ("centre the pictures by the
+      box").** `padding_top: 8` and `padding_bottom: 18` (the schema's own defaults, carried
+      through unchanged since the section was built) were invisible while the band had no
+      background of its own -- once it did, the 10px gap between them made the row read as
+      pushed toward the top rather than centred. Both now `12`, in `templates/index.json`.
+      This section sets its padding as a plain inline style with no mobile/desktop split
+      (unlike a Dawn section's own `{% style %}` block, which halves the value under
+      `max-width: 749px`), so 12px is the true, same gap above and below the pictures at
+      every screen width, not a value that scales.
 - **Visual mega menu.** `snippets/header-visual-menu.liquid`, wired into
   `snippets/header-mega-menu.liquid` and `snippets/header-drawer.liquid`. Shopify menu items
   cannot carry images, so the items are `visual_menu_item` blocks on the header section. Each
