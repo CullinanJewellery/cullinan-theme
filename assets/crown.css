@@ -1650,25 +1650,39 @@ html {
     still untouched, the same distinction the last two rounds both kept;
     the phone rule further down is a separate block entirely and nothing
     in it changed.
+
+    Smaller again the same day, and this time the box alone had nowhere
+    left to give: measured live against the real button (Последвайте ни,
+    the longer label, temporarily set to max-content), 30rem left it only
+    295px of natural content against a 300px box -- 5px of slack. Shrinking
+    further meant shrinking what's inside it too, so icon, label, gap and
+    padding all came down together this round, proportionally, checked the
+    same way at each candidate size before picking one: label 2.2rem →
+    1.8rem, icon 2.6rem → 2.2rem, gap 1.2rem → 1rem, padding
+    2.2rem 2rem → 1.8rem 1.6rem. That combination measures 244px natural;
+    26rem gives it 16px of slack, more headroom than any round before it
+    has had, so a future "smaller" has real room to work with without
+    tripping the same wrap Dawn's own flex-wrap caused on a phone earlier.
   */
   .footer__social:not(.footer__social--contact) .footer__list-social {
     gap: 2rem;
   }
 
   .footer__social:not(.footer__social--contact) .footer__list-social .list-social__link {
-    width: 30rem;
+    width: 26rem;
     height: auto;
-    padding: 2.2rem 2rem;
+    padding: 1.8rem 1.6rem;
+    gap: 1rem;
   }
 
   .footer__social:not(.footer__social--contact) .footer__list-social .list-social__link .icon {
-    width: 2.6rem;
-    height: 2.6rem;
-    min-width: 2.6rem;
+    width: 2.2rem;
+    height: 2.2rem;
+    min-width: 2.2rem;
   }
 
   .footer__social:not(.footer__social--contact) .footer__list-social .list-social__label {
-    font-size: 2.2rem;
+    font-size: 1.8rem;
     letter-spacing: 0.06em;
   }
 }
