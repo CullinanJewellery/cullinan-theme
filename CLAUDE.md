@@ -691,6 +691,19 @@ Anything of ours that is not a Dawn setting lives in these two places:
     depends on a setting landing in the same push as its schema. Site-wide, same as the
     columns themselves -- checked live on Контакти too, which shows the same email in the
     same place.
+    - **Kept to one line and shrunk to fit, at the owner's request** ("put it on the same
+      row... make the text match the length of the box above it, even if smaller"; also "make
+      the whole text with capital letters" for the label). `white-space: nowrap` stops the
+      label and the email folding onto two rows; the label is capitalised
+      (`text-transform: uppercase` on `.footer-subscribe__email`) while the email itself stays
+      lower case (`text-transform: none` on `.footer-subscribe__email-link`), the same "an
+      address in capitals reads wrong" rule the link-column copy already followed. Sized by
+      measuring the real text live rather than guessing: at 260px, this theme's own newsletter
+      form width on a computer, 1.1rem needed 274px (over) and 0.9rem needs 244px (comfortable
+      margin, and even more of one on a phone, where the form is 295px wide). Caught a real bug
+      doing this: the email link had its own fixed 14px from elsewhere in the theme that never
+      inherited the paragraph's font-size at all -- fixed with `font-size: inherit` on
+      `.footer-subscribe__email-link`.
   - **The Facebook/Instagram block, homepage: three moves in one day (2026-09-18).** First it
     drifted below the newsletter box and the columns; moved back to first in the footer. Then
     the owner said it should not be on every page, only home and Контакти -- printed only
@@ -818,6 +831,19 @@ Anything of ours that is not a Dawn setting lives in these two places:
       `.footer-links__heading`, `.footer-links__list .list-menu__item--link`,
       `.footer-links__summary` -- all four share the size so the whole group reads consistently
       smaller together). Checked live afterwards on the homepage, on a phone, and on Контакти.
+    - **Thicker, and every other line in the section repainted the same pink, one more round
+      later, at the owner's request** ("bigger and longer"; "for a phone make all lines that
+      are in this section the same pink"). The outer top/bottom border: `0.1rem` to `0.2rem`,
+      still full-width and inside `page-width`. The phone accordion's own row dividers
+      (`.footer-links__toggle`'s `border-bottom`, previously
+      `rgba(var(--color-foreground), 0.15)`) are `#F3E1DB` now too -- the only other lines
+      this section has, since desktop's flat columns have none (see the "no separator lines to
+      add there" note above).
+    - **The hairline under the newsletter box removed, same round, at the owner's request**
+      ("remove the line under the email" -- the email prints inside that same block now, see
+      above). `.footer-block--subscribe`'s own `border-bottom` (added originally to replace
+      the dead `:first-child` selector) is gone; its `padding-bottom` stays, so there is still
+      air before Нека ви помогнем, just no drawn line there any more.
 - **Social follow section.** `sections/social-follow.liquid` with
   `assets/section-social-follow.css` (2026-09-18, at the owner’s request, so the homepage’s
   Facebook/Instagram block could sit between Кое злато е за вас and Първи научавайте --
