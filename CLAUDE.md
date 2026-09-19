@@ -790,7 +790,20 @@ Anything of ours that is not a Dawn setting lives in these two places:
       scrollbar, so nothing new was needed there. The columns and the newsletter form
       themselves are lifted to `position: relative; z-index: 1` so they keep reading above the
       colour rather than under it. Checked live afterwards at 375, 1440 and on Контакти: no
-      horizontal scroll anywhere, the sticky header unaffected.
+      horizontal scroll anywhere, the sticky header unaffected. **Removed the same day** -- see
+      below.
+    - **Fill colour dropped entirely, replaced with two hairlines, same day, at the owner's
+      request.** The `::before`, its full-bleed breakout and the `position: relative`/
+      `z-index` rules it needed are all gone -- nothing left to paint a colour onto, so no
+      reason to keep the structure. In its place, a plain `border-top` and `border-bottom` on
+      `.footer__blocks-wrapper` itself, explicitly no side lines ("don't put corner lines"),
+      short of the viewport's true edges once again since the wrapper sits inside `page-width`
+      the same way it did before the fill colour ever existed ("lines that are not touching
+      the corners"). `3.2rem` of padding top and bottom keeps each line clear of the heading
+      above it and the last link below it -- the owner's explicit worry that a line sitting
+      flush against the text "will look bad". Checked live on the homepage, on a phone, and on
+      Контакти: both lines inset from the edges, generous space either side of them, no
+      horizontal scroll.
 - **Social follow section.** `sections/social-follow.liquid` with
   `assets/section-social-follow.css` (2026-09-18, at the owner’s request, so the homepage’s
   Facebook/Instagram block could sit between Кое злато е за вас and Първи научавайте --
