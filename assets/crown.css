@@ -1408,14 +1408,31 @@ html {
   setting). Smaller than the footer's own 13px link text, per the same
   request ("make the text smaller"): it reads as a small aside under the
   form rather than another link in a column.
+
+  Kept to one line and shrunk to fit the form's own width, a round later,
+  at the owner's request ("put it on the same row... make the text match
+  the length of the box above it, even if smaller"). white-space: nowrap
+  stops the label and the email folding onto two lines; measured live
+  against the real text (label capitalised, as it now is) at 260px, this
+  theme's own newsletter form width on a computer: 1.1rem needed 274px,
+  over budget, 0.9rem needs 244px, comfortably under with room to spare
+  (mobile has more width again -- 295px against the same 244px -- so one
+  size works at both). The label itself is capitals now too ("Свържете се
+  с нас" made whole-word capital letters, at the owner's request);
+  overflow-wrap: anywhere stays on as a last-resort escape if a much
+  longer email is ever entered, not the thing doing the fitting here.
 */
 .footer .footer-subscribe__email {
   margin: 1.2rem 0 0;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   line-height: 1.5;
+  white-space: nowrap;
+  text-transform: uppercase;
 }
 
 .footer .footer-subscribe__email-link {
+  font-size: inherit;
+  text-transform: none;
   overflow-wrap: anywhere;
 }
 
@@ -1494,10 +1511,13 @@ html {
   lines -- the owner meant the column text, not the lines, so that version
   was reverted back to this same full-width border-top/border-bottom; see
   the text-size rules below instead.)
+
+  Thicker, a round later, at the owner's request ("bigger and longer") --
+  0.1rem to 0.2rem. Still full-width, inside page-width, no side lines.
 */
 .footer .footer__blocks-wrapper {
-  border-top: 0.1rem solid #F3E1DB;
-  border-bottom: 0.1rem solid #F3E1DB;
+  border-top: 0.2rem solid #F3E1DB;
+  border-bottom: 0.2rem solid #F3E1DB;
   padding-top: 3.2rem;
   padding-bottom: 3.2rem;
 }
@@ -1536,9 +1556,12 @@ html {
     margin: 0;
   }
 
+  /* Pink since 2026-09-19, at the owner's request ("make all lines that are
+     in this section the same pink") -- matches the outer top/bottom border
+     above, rgba(var(--color-foreground), 0.15) before this. */
   .footer .footer-links__toggle {
     display: block;
-    border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.15);
+    border-bottom: 0.1rem solid #F3E1DB;
   }
 
   /*
@@ -1546,12 +1569,16 @@ html {
     the note above the .footer-subscribe__heading rule) and this used to read
     .footer-block--links:first-child -- which nothing matches any more, so no
     line ever separated the box from Нека ви помогнем. A trailing hairline on
-    the box itself reaches the same line and keeps working regardless of
-    which block order comes first.
+    the box itself reached the same line and kept working regardless of
+    which block order came first.
+
+    Removed again, at the owner's request (2026-09-19: "remove the line
+    under the email" -- the email now prints inside this same block, under
+    the newsletter form). The padding stays, so there is still air before
+    Нека ви помогнем; only the line itself is gone.
   */
   .footer .footer-block--subscribe {
     padding-bottom: 1.8rem;
-    border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.15);
   }
 
   .footer .footer-links__summary {
