@@ -678,8 +678,19 @@ Anything of ours that is not a Dawn setting lives in these two places:
     `newsletter_enable: true` (it had never been on), heading „Абонирайте се за бюлетина“,
     distinct from the homepage band’s „Първи научавайте“ -- the reference also has both.
   - **The contact email** is the footer setting `contact_email`,
-    `cullinanjewellery.bg@gmail.com`, shown only in a column that ticks the option (Нека ви
-    помогнем).
+    `cullinanjewellery.bg@gmail.com`, shown only in a column that ticks the option -- or, since
+    2026-09-19, under the newsletter box instead (see below).
+  - **Moved under the newsletter box, with a label, smaller, 2026-09-19, at the owner's
+    request.** It no longer sits in Нека ви помогнем's own list (`show_email: false` there
+    now, in `sections/footer-group.json`); it prints under Абонирайте се за бюлетина's form
+    instead, introduced by a label -- „Свържете се с нас:“, the section's own new
+    `newsletter_email_label` setting -- and set smaller than the footer's usual 13px link text
+    (1.1rem, `.footer-subscribe__email` in `assets/crown.css`). A second new setting,
+    `newsletter_show_email`, gates whether it shows there at all; both default in the schema
+    (`sections/footer.liquid`) rather than being written into `footer-group.json`, so nothing
+    depends on a setting landing in the same push as its schema. Site-wide, same as the
+    columns themselves -- checked live on Контакти too, which shows the same email in the
+    same place.
   - **The Facebook/Instagram block, homepage: three moves in one day (2026-09-18).** First it
     drifted below the newsletter box and the columns; moved back to first in the footer. Then
     the owner said it should not be on every page, only home and Контакти -- printed only
