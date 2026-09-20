@@ -10,18 +10,14 @@
    entirely, so the photograph shows through the button and only the outline
    and the label remain.
 
-   A full pill, at the owner's instruction (2026-09-20: "like in
-   hestiahome.bg"). Checked their own hero buttons directly rather than
-   guessing a radius: 41px border-radius on a 62px-tall button -- comfortably
-   more than half the height, a true stadium shape at any height, not a
-   softened rectangle. 999px here does the same regardless of this button's
-   own height, which is Dawn's own square-corner default everywhere else on
-   the site (buttons_radius: 0, config/settings_data.json) -- untouched, so
-   only this one button changes shape, not every button on the theme.
+   Its pill shape (2026-09-20, "like in hestiahome.bg") used to be a
+   hardcoded 999px here on its own. Since 2026-09-20 every button on the
+   site shares the same pill via the theme's own buttons_radius setting (see
+   Design direction), so the hardcode came out -- this rule no longer needs
+   to say anything about shape at all, only the hover behaviour.
    --------------------------------------------------------------------------- */
 
 .banner__buttons .button {
-  border-radius: 999px;
   transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out,
     box-shadow 0.35s ease-in-out;
 }
