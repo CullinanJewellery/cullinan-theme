@@ -534,6 +534,21 @@ Anything of ours that is not a Dawn setting lives in these two places:
       `getBoundingClientRect()` on the wrapper against the inner `.banner`. Fixed with
       `[id^="shopify-section-"][id$="__silver_teaser"]`, anchored so only the wrapper's id
       (which starts with "shopify-section-") matches, not the banner's own.
+  - **Cut corners on the picture, at the owner's request (2026-09-21)** ("just straight
+    lines that cut the corners and then the pink background appears" -- offered a choice
+    between small clips, larger clips and an inset picture; the owner wanted the straight
+    diagonal cut, size otherwise left to us). `clip-path: polygon(...)` on `.banner__media`
+    cuts a straight 4rem diagonal off each of the four corners, revealing `.banner`'s own
+    gradient underneath in the four triangles -- `.banner__media` is Dawn's own `position:
+    absolute; inset: 0` sitting over that gradient, so nothing else needed changing. Desktop
+    only (`min-width: 750px`): on a phone the image is stacked above the text panel on
+    `.banner`'s plain scheme-5 colour, not the pink, which belongs to `.banner__box`
+    specifically (see the phone hero note under Design direction) -- cutting corners there
+    would reveal the wrong tone. Dormant until a photograph is set: `.banner__media` is
+    still Dawn's own empty div, hidden entirely on desktop the same way the hero's own is
+    (see Current state), so there is nothing to clip yet -- checked by temporarily forcing a
+    background on the live element in the browser rather than waiting for a real photo, and
+    the four pink triangles render correctly once it has something to cut.
 - **Category mosaic.** `sections/category-mosaic.liquid` with
   `assets/section-category-mosaic.css`. Four columns, tall tiles at each end spanning both
   rows, squares between — the block order drives it, because `grid-auto-flow: dense`
