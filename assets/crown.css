@@ -1270,9 +1270,12 @@ html {
 }
 
 /*
-  Social buttons in the reference's style: transparent, hairline border, square
-  corners, the icon beside a call to action. Dawn's .link class underlines
-  every one of these, which a button must not have.
+  Social buttons in the reference's style: transparent, hairline border, the
+  icon beside a call to action. Dawn's .link class underlines every one of
+  these, which a button must not have. Square corners until 2026-09-20; now a
+  pill like every other button on the site (see Design direction) -- these
+  never used the shared .button class Dawn's own buttons_radius governs, so
+  they needed their own border-radius line here to follow along.
 */
 .list-social__label {
   display: none;
@@ -1280,6 +1283,7 @@ html {
 
 .footer__list-social .list-social__link {
   text-decoration: none;
+  border-radius: var(--buttons-radius);
   /* True black, like the site's other dark buttons (owner, 2026-09-14). */
   color: rgb(0 0 0);
 }

@@ -132,8 +132,11 @@
   line-height: 1.5;
 }
 
-/* The reference's outlined button, square, filling on hover like the footer's
-   social buttons. It takes the panel scheme's button colour. */
+/* The reference's outlined button, filling on hover like the footer's
+   social buttons. It takes the panel scheme's button colour. A pill since
+   2026-09-20, like every other button on the site (see Design direction) --
+   this one never used Dawn's own .button class, so it needed its own
+   border-radius line rather than following buttons_radius automatically. */
 .contact-methods__button {
   display: flex;
   align-items: center;
@@ -143,7 +146,7 @@
   margin: 0;
   padding: 0 2rem;
   border: 0;
-  border-radius: 0;
+  border-radius: var(--buttons-radius);
   background-color: transparent;
   box-shadow: inset 0 0 0 1px rgb(var(--color-button));
   color: rgb(var(--color-button));
