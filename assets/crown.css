@@ -707,13 +707,13 @@ html {
   own `clamp(1.8rem, 2.4vw, 2.6rem)` already uses for Нашето вдъхновение
   and the other teaser blocks just below it. Asked to come up once more
   minutes later -- "big... just not like it was at the start", the start
-  being `h1`'s own `4rem` (40px) before any of this -- so `3.2rem`: bigger
-  than the atelier ceiling this was capped at a moment ago, but a clear
-  step short of the original hero-matched size.
+  being `h1`'s own `4rem` (40px) before any of this -- so `3.2rem`. Read as
+  "a little bit bigger" than it should be a moment later, so eased back to
+  `3rem` -- still past the atelier ceiling, just not by as much.
 */
 @media screen and (min-width: 750px) {
   [id^="shopify-section-"][id$="__silver_teaser"] .banner__heading.h2 {
-    font-size: 3.2rem;
+    font-size: 3rem;
   }
 }
 

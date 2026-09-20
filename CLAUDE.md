@@ -589,7 +589,19 @@ Anything of ours that is not a Dawn setting lives in these two places:
     was at the start" -- the start being `h1`'s own `4rem` (40px), what this heading had
     before any of the sizing this section describes. `3.2rem`: past the atelier heading's
     own ceiling (asked for and given deliberately this time, not tied to it by coincidence
-    the way the button sizing was), but a clear step short of the original.
+    the way the button sizing was), but a clear step short of the original. **Eased back to
+    `3rem`** minutes later still ("I think it is a little bit bigger [than it should be]")
+    -- still past the atelier ceiling, just not by as much.
+  - **Content re-centred onto the picture, same round.** `desktop_content_position` moved
+    from `middle-left` to `middle-center` and `desktop_content_alignment` from `left` to
+    `center` (`templates/index.json`, plain Dawn settings, no CSS needed). Left-aligned made
+    sense while the picture was full-bleed behind it, matching moonmagic's own layout for
+    this section -- but once the picture became the centred, inset rectangle above, the
+    text stayed pinned to the banner's left edge, landing over the picture's own left
+    portion instead of following it. The owner asked for the text and button to sit "where
+    is the picture" -- centring both settings puts the whole content block over the middle
+    of that inset picture instead, matching where it now actually is rather than
+    moonmagic's original layout for a full-bleed image this section no longer has.
 - **Category mosaic.** `sections/category-mosaic.liquid` with
   `assets/section-category-mosaic.css`. Four columns, tall tiles at each end spanning both
   rows, squares between — the block order drives it, because `grid-auto-flow: dense`
