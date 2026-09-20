@@ -516,6 +516,13 @@ Anything of ours that is not a Dawn setting lives in these two places:
     `.banner__media--empty`, square via the same `aspect-ratio: 1/1` rule `crown.css` already
     gives any `banner--mobile-bottom` instance. Nothing new to build for this; it came free
     with the section type.
+  - **Space above it, added 2026-09-21 at the owner's request** ("space between the two
+    sections because they look connected"): it sat flush against the benefits row, scheme-2's
+    stone touching this section's own pink/gradient with no gap. `image-banner` has no
+    margin setting the way `atelier` does, so `assets/crown.css` adds it instead, scoped to
+    `[id*="__silver_teaser"]` -- Shopify wraps every section in `#shopify-section-{id}`
+    regardless of type, so this reaches only this banner, not the hero or any other
+    image-banner instance. 40px desktop, 30px on phones.
 - **Category mosaic.** `sections/category-mosaic.liquid` with
   `assets/section-category-mosaic.css`. Four columns, tall tiles at each end spanning both
   rows, squares between — the block order drives it, because `grid-auto-flow: dense`

@@ -596,6 +596,27 @@ html {
   }
 }
 
+/*
+  Space above the silver banner, at the owner's request (2026-09-21): it sat
+  flush against the benefits row above it, scheme-2's stone touching this
+  section's own pink/gradient with no gap, so the two read as one connected
+  block. The same "page background between two coloured sections" job the
+  atelier blocks do with their own margin_top/margin_bottom settings --
+  image-banner has no such field, so it goes here instead. Scoped to this
+  section's own id: Shopify always wraps a section in #shopify-section-{id}
+  regardless of section type, so this reaches the silver banner specifically
+  without touching any other image-banner instance (the hero included).
+*/
+[id*="__silver_teaser"] {
+  margin-top: 3rem;
+}
+
+@media screen and (min-width: 750px) {
+  [id*="__silver_teaser"] {
+    margin-top: 4rem;
+  }
+}
+
 /* ---------------------------------------------------------------------------
    Product rows
 
