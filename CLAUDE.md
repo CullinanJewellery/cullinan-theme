@@ -301,7 +301,8 @@ Rules that matter here:
   (since expired), then on 2026-09-17: https://ge05t2atx6nu8sn2-107185537364.shopifypreview.com
   (since expired), then on 2026-09-18: https://n2mxxuoi0yunt4ur-107185537364.shopifypreview.com
   (since expired as of 2026-09-20 -- confirmed by fetching it directly: it now serves Shopify's
-  own generic "store-preview-expired" page, not the theme). Until a new link arrives, a local
+  own generic "store-preview-expired" page, not the theme), then the same day:
+  https://f1vudq0of3d7tk3j-107185537364.shopifypreview.com. Until a new link arrives, a local
   mock-up from the theme’s real stylesheets (served by a
   throwaway Node server, never committed) is a usable stand-in for layout; it was exact to the
   pixel for the header once the new link allowed a comparison.
