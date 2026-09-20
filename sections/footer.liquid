@@ -250,17 +250,14 @@
               data-cascade
             {% endif %}
           >
-            {%- if footer_subscribe != blank -%}
-              <div
-                class="footer-block grid__item footer-block--subscribe{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-                {% if settings.animations_reveal_on_scroll %}
-                  data-cascade
-                  style="--animation-order: 0;"
-                {% endif %}
-              >
-                {{ footer_subscribe }}
-              </div>
-            {%- endif -%}
+            {%- comment -%}
+              The newsletter box prints last, at the owner's request
+              (2026-09-20: "move the абонирайте се за бюлетина... in the
+              right, I don't like it in the left side"), after moonmagic's
+              own footer -- JOIN OUR NEWSLETTER sits on the far right there
+              too, last of its columns. Used to print first, before this
+              loop, when it sat beside Нека ви помогнем (2026-09-18).
+            {%- endcomment -%}
             {%- for block in section.blocks -%}
               <div
                 class="footer-block grid__item{% if block.type == 'link_list' %} footer-block--menu{% endif %}{% if block.type == 'link_column' %} footer-block--links{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
@@ -423,6 +420,17 @@
                 {%- endcase -%}
               </div>
             {%- endfor -%}
+            {%- if footer_subscribe != blank -%}
+              <div
+                class="footer-block grid__item footer-block--subscribe{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                {% if settings.animations_reveal_on_scroll %}
+                  data-cascade
+                  style="--animation-order: {{ section.blocks.size | plus: 1 }};"
+                {% endif %}
+              >
+                {{ footer_subscribe }}
+              </div>
+            {%- endif -%}
           </div>
         {%- endif -%}
 
