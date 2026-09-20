@@ -549,15 +549,22 @@ Anything of ours that is not a Dawn setting lives in these two places:
     (see Current state), so there is nothing to clip yet -- checked by temporarily forcing a
     background on the live element in the browser rather than waiting for a real photo, and
     the four pink triangles render correctly once it has something to cut.
-  - **Heading and button both sized down, at the owner's request (2026-09-21):** "the big
-    text smaller and the button smaller too." Heading `heading_size` moved from `h1` to
-    `h2` -- Dawn's own preset dropdown, its smallest, the same mechanism the hero's own
-    heading uses. The button has no such setting: it always reads `.banner__buttons .button`
-    from crown.css, shared with the hero, so a smaller size is scoped to this section's id
-    instead, the same anchored selector as its margin and clip-path above -- `min-height`
-    7.2rem to 5.6rem, `font-size` 2.2rem to 1.6rem, `min-width` ceiling 48.6rem to 36rem.
-    Desktop only, matching those two overrides: the phone button already has its own
-    smaller size from the mobile-bottom rules, untouched by this.
+  - **Heading sized down, at the owner's request (2026-09-21):** "the big text smaller and
+    the button smaller too." `heading_size` moved from `h1` to `h2` -- Dawn's own preset
+    dropdown, its smallest, the same mechanism the hero's own heading uses.
+  - **The button, sized down then back up, same day.** It has no `heading_size`-style
+    setting of its own: it always reads `.banner__buttons .button` from crown.css, shared
+    with the hero, so its size is scoped to this section's id instead, the same anchored
+    selector as the margin and clip-path above -- desktop only, matching those two; the
+    phone button already has its own smaller, separately-tuned size from the mobile-bottom
+    rules, untouched throughout. First shrunk with the heading, from the hero's own
+    7.2rem/2.2rem/48.6rem-cap to 5.6rem/1.6rem/36rem. Read as too small a moment later, so
+    sized back up to a midpoint between those two attempts -- 6.6rem/1.9rem/42rem -- and
+    checked against `.atelier .atelier__button` in Нашето вдъхновение just below it
+    (6.4rem/1.4rem/34rem, `section-atelier.css`), since the owner asked for "bigger, but
+    not that much bigger than the one in the section under it." The plain midpoint tied
+    that button's height exactly (6.4 = 6.4), so the height came up slightly further, to
+    read as clearly, if modestly, bigger in all three dimensions rather than equal in one.
 - **Category mosaic.** `sections/category-mosaic.liquid` with
   `assets/section-category-mosaic.css`. Four columns, tall tiles at each end spanning both
   rows, squares between — the block order drives it, because `grid-auto-flow: dense`

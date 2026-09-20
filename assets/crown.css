@@ -659,21 +659,29 @@ html {
 }
 
 /*
-  Smaller button on the silver banner, at the owner's request (2026-09-21:
-  "the big text smaller and the button smaller too"). The heading is
-  Dawn's own preset dropdown (`heading_size` moved from h1 to h2, its
-  smallest), but the button has no such setting -- it always reads
-  `.banner__buttons .button` from crown.css, shared with the hero -- so
-  this scopes a smaller size to this section's id the same way its margin
-  and clip-path above do, leaving the hero's own button untouched. Desktop
-  only, matching those two: the phone button already has its own smaller,
-  separately-tuned size from the mobile-bottom rules above.
+  The silver banner's own button size, at the owner's request (2026-09-21).
+  The button has no `heading_size`-style setting -- it always reads
+  `.banner__buttons .button` from crown.css, shared with the hero -- so a
+  size scoped to this section's id, the same way its margin and clip-path
+  above do, leaving the hero's own button untouched. Desktop only: the
+  phone button already has its own smaller, separately-tuned size from the
+  mobile-bottom rules above.
+
+  Shrunk once already (7.2rem/2.2rem/48.6rem cap, the hero's own size, down
+  to 5.6rem/1.6rem/36rem). Sized up again the same day, to a midpoint
+  between those two attempts (6.6rem/1.9rem/42rem) -- and checked against
+  `.atelier .atelier__button` just below it in Нашето вдъхновение
+  (6.4rem/1.4rem/34rem, `section-atelier.css`), since the owner asked for
+  "bigger, but not that much bigger than the one in the section under it."
+  The midpoint alone tied its height exactly (6.4 = 6.4), so the height
+  came up slightly further to read as clearly, if modestly, bigger in all
+  three dimensions rather than equal in one of them.
 */
 @media screen and (min-width: 750px) {
   [id^="shopify-section-"][id$="__silver_teaser"] .banner__buttons .button {
-    min-width: min(36rem, 100%);
-    min-height: 5.6rem;
-    font-size: 1.6rem;
+    min-width: min(42rem, 100%);
+    min-height: 6.6rem;
+    font-size: 1.9rem;
   }
 }
 
