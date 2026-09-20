@@ -144,10 +144,10 @@ Rules that matter here:
       breakpoint, matching the phone pass reusing the same flat pink on both.
     - **The button itself changed shape and colour, 2026-09-20, at the owner's instruction**
       ("like in hestiahome.bg" for the shape; "very dark" shade of the background for the
-      colour). See Square corners throughout and the second dark-buttons exception under
-      Design direction above for the full detail -- a full pill (`border-radius: 999px`,
-      `.banner__buttons .button` in `assets/crown.css`) and `#391D13`, a very dark shade of
-      this same pink, replacing pure black as scheme-5's own button colour.
+      colour). See Square corners (now a full pill, site-wide, not just this button) and the
+      second dark-buttons exception under Design direction above for the full detail --
+      `#391D13`, a very dark shade of this same pink, replacing pure black as scheme-5's own
+      button colour.
   - **Second exception, at the owner’s instruction (2026-09-15):** the Контакти page banner
     („Как можем да помогнем?“). The owner asked for a picture behind it, as on the reference’s
     contact page, so its heading and text sit over a background picture once one is uploaded.
@@ -352,16 +352,34 @@ Rules that matter here:
   ran Dawn's stock settings the whole time. Worse, a rejected file blocks **every** file in
   that push ("0 succeeded, 1 failed"), so it also held back unrelated work. Check
   `config/settings_schema.json` for min, max and step before setting any range value.
-- Square corners throughout (buttons, badges, variant pills, cards). No rounded pills.
-  - **One exception, at the owner’s instruction (2026-09-13):** the jump links at the top of
-    the About page are rounded pills with each icon in an off-white circle, following the
-    reference. Every other control keeps square corners.
-  - **Second exception, at the owner’s instruction (2026-09-20):** the homepage hero's own
-    button, „Разгледайте колекцията“, is a full pill -- „like in hestiahome.bg“, checked
-    directly (41px radius on their own 62px-tall button, comfortably a stadium shape at any
-    height). `border-radius: 999px` on `.banner__buttons .button` in `assets/crown.css`,
-    scoped to this one button; the theme's own `buttons_radius` setting (0) is untouched, so
-    every other button on the site keeps its square corners, checked live afterwards.
+- **Square corners on badges, variant pills and cards. Buttons are a full pill, site-wide,
+  since 2026-09-20.** Started as one button: the homepage hero's own „Разгледайте колекцията“,
+  at the owner's instruction ("like in hestiahome.bg"), checked directly (41px radius on their
+  own 62px-tall button, comfortably a stadium shape at any height) and shipped as a hardcoded
+  `border-radius: 999px` scoped to just `.banner__buttons .button`. Widened the same day, at
+  the owner's own follow-up ("all the buttons in every section... this is for every page"),
+  to every button on the site except Първи научавайте's own -- the theme's own `buttons_radius`
+  setting moved from `0` to `40` (`config/settings_data.json`), the maximum
+  `config/settings_schema.json` allows; 40px fully rounds any button up to 80px tall, which
+  covers every button on this site, so it reads as a true pill everywhere rather than a
+  softened rectangle. The hero's own hardcoded 999px came back out of `assets/crown.css` once
+  the shared setting covered it too.
+  - **Two custom buttons the shared setting couldn't reach, caught the same day.** Dawn's
+    `buttons_radius` only ever touches its own `.button` class; two of this project's own
+    button styles are built without it and needed their own `border-radius: var(--buttons-
+    radius)` line added by hand: `.contact-methods__button` (Контакти: Изпратете, Обадете се,
+    and the link block -- was explicitly `border-radius: 0`, a deliberate square choice at the
+    time) and `.footer__list-social .list-social__link` (the Facebook/Instagram buttons, used
+    by the footer on Контакти and by the homepage's Social follow section -- had no
+    border-radius at all before, defaulting to square). Both now follow the same shared
+    setting as every other button.
+  - **Пъpви научавайте's own button was never going to move, and needed no exclusion rule.**
+    It's built from Dawn's `.field__button` (an input-group button), never the `.button` class
+    `buttons_radius` governs -- confirmed live, still square after the site-wide change.
+  - **One exception before any of this, at the owner’s instruction (2026-09-13):** the jump
+    links at the top of the About page are rounded pills with each icon in an off-white
+    circle, following the reference -- already pills before the button-wide change, unaffected
+    by it either way.
 - No borders around media. Product cards sit on the page ground, not in grey boxes.
 
 ## Working agreements
