@@ -1018,6 +1018,27 @@ Anything of ours that is not a Dawn setting lives in these two places:
     Newsletter’s own `padding_top` (72, black) is untouched -- now genuinely extra room
     inside its own band, not doing double duty as the visible gap. Only this section’s own
     setting changed either time -- materials_teaser and newsletter are untouched.
+  - **Facebook and Instagram in their own brand colours, 2026-09-20, at the owner's
+    request** ("the button of Facebook to blue... when you put the cursor on it to be blue";
+    "maybe other colour" for Instagram, left to our judgement to "look good"). New
+    `list-social__link--facebook` / `--instagram` modifier classes on the two links in
+    `snippets/social-icons.liquid` (harmless everywhere; a Dawn snippet, touched only to add
+    a class name, not to restructure it) -- coloured only within
+    `.footer__social:not(.footer__social--contact)`, the same scope every other homepage-only
+    rule for this markup already uses, so Контакти's own blush treatment is untouched. Both
+    icons are drawn with `fill="currentColor"` (`assets/icon-facebook.svg`,
+    `assets/icon-instagram.svg`), so setting `color` recolours the glyph along with the label.
+    - **Facebook**: `#1877F2`, their own blue, as the outline/icon/label at rest; fills the
+      same blue with white text on hover -- literally what was asked, nothing invented.
+    - **Instagram has no single official colour** -- its mark is a gradient -- so resting
+      state takes a colour from partway through that real gradient (`#C13584`, a
+      magenta-pink) and hover fills with the gradient itself
+      (`linear-gradient(45deg, #833AB4 0%, #E1306C 50%, #FD1D1D 100%)`), the most
+      recognisable "Instagram" cue there is. Checked contrast against white at each stop
+      before picking them -- purple 6.5:1, pink 4.3:1, red 3.9:1 -- and dropped the
+      gradient's own bright orange/yellow tail, which only reads 2.75:1, for a deeper red at
+      that end instead. Checked live on the homepage (both colours, both hover states) and on
+      Контакти (unaffected, still black) at 375 and 1440px.
 
 ## Current state
 
