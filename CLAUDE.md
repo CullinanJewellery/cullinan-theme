@@ -480,9 +480,36 @@ Anything of ours that is not a Dawn setting lives in these two places:
   short claims under the hero. Its own section, not Dawn's multicolumn — Dawn loads section
   stylesheets from inside the section, which puts them after `crown.css` in the document, so
   overriding multicolumn meant winning a specificity fight on every rule. Measured off the
-  reference: a 1000px container rather than the full page width, items distributed across it,
-  and the type shrinking on narrow screens so four claims stay on one line instead of
-  wrapping or scrolling.
+  reference: a 1000px container rather than the full page width, items distributed across it.
+  Three claims shipped at first (Собствено производство, Първокласни метали, Сертифицирани
+  продукти) though the section was always built for four -- `max_blocks: 6`, a four-block
+  preset, and the block's own info text ("Four claims is the most that fits one line on a
+  phone") all said so from the start.
+  - **A fourth claim, Наложен платеж, added 2026-09-20 at the owner's request** -- settling,
+    for this claim at least, the "no cash-on-delivery promise until that policy exists"
+    caution logged under Top bar. Adding it exposed that the phone sizing had never actually
+    had four claims tested against it: the three-claim row already used its full 375px width
+    exactly (`scrollWidth == clientWidth`, confirmed live, zero spare room), so a fourth claim
+    of any length was always going to overflow.
+  - **Two rounds of retuning the existing shrink-to-fit formula still wasn't enough.** The
+    original approach sized type with `clamp(0.5rem, 1.75vw, 1.4rem)` and `white-space:
+    nowrap`, forcing every claim onto one line at any width by shrinking the type against the
+    viewport. Retuned once (1.6vw, smaller gap) and still measured only 3px of margin at
+    375px once checked against the real rendered row -- the same margin-free edge that caused
+    the overflow in the first place. Retuned again (1.55vw) for 16px of real margin, but by
+    then it was clear the whole approach had no comfortable floor: even an unreadable 5.8px
+    still didn't clear 375px by much.
+  - **Rebuilt to wrap instead of shrink, same day, at the owner's request to go look at how
+    moonmagic actually does it.** Checked moonmagic.com on a phone directly rather than
+    continuing to retune: their own equivalent (GIA Certified Gems / Premium Metals / Global
+    Community / Established 2016) does not shrink text to force one line at all. It holds a
+    fixed 9px and lets any claim wrap onto a second line within its own column -- the row
+    stays one row of columns throughout; only an individual column's own words wrap. Replaced
+    the `clamp()` formula below 989px with a fixed `font-size: 0.9rem` (matching moonmagic's
+    9px exactly) and `white-space: normal` in place of `nowrap`. Checked live afterward: every
+    claim wraps to two lines at 375px with 16px of margin to spare, and sits back on one line
+    by 768px, where there is already enough room without wrapping. Desktop (990px+) was never
+    touched by any of this -- it already fit at the flat `1.4rem` size throughout.
 - **Benefits row.** `sections/icon-benefits.liquid` with `assets/section-icon-benefits.css`
   and `snippets/icon-benefit.liquid`. Four short promises under the product row. Each block
   takes either an uploaded image (contained, never cropped, no mask or border) or one of nine
@@ -557,7 +584,9 @@ Anything of ours that is not a Dawn setting lives in these two places:
     in our own words; the second is the owner’s "грижа за клиентите", made personal. Earlier
     lines (14К и 18К злато, engraving, Еконт и Спиди, Майсторство от 1991 г.) were removed at
     the owner’s request, not for being wrong. No free delivery, returns or
-    cash-on-delivery promise until those policies exist. Each fits one line on a 360px phone at
+    cash-on-delivery promise until those policies exist -- cash on delivery is now confirmed,
+    2026-09-20, but as a hero-facts claim (Наложен платеж) rather than a top-bar message; see
+    Hero facts under Custom code. Each fits one line on a 360px phone at
     11px (the longest measures 287px of 300); a longer message pushes the phone bar to two lines.
   - Social icons and the country/language selectors in the bar are off. Turning either on
     means revisiting the grid, which only has slots for the message and the links.
