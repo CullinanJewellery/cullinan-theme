@@ -459,6 +459,51 @@ Anything of ours that is not a Dawn setting lives in these two places:
   - **Media on the right mirrors the columns** (55fr 45fr). Before, `order` alone moved the
     media into the wider track, so the right-hand version had a 680 × 850 picture against
     556 × 695 in the left-hand one.
+  - **A fourth instance, for the shop's own silver, sits right after the benefits row
+    instead of after the other three** (2026-09-20, at the owner's request: "make under it
+    a section like in moonmagic theirs is their stone their story our is going to be for
+    our silver we put rhodium"). Key `silver_teaser`, between `benefits` and `atelier` in
+    `templates/index.json`'s `order`.
+    - **Read moonmagic's own section first, per "Before you build."** Their "THEIR STONE.
+      THEIR STORY." block (`.hp-multi-hero`, below their icon-benefits row -- the same
+      position relative to benefits this one now takes) is not their atelier-style
+      two-column card: it's a full-bleed photograph with the heading, a line and a button
+      laid straight over it, white text on desktop, and on a phone the photo sits on top
+      with the words on a solid blush panel underneath (`rgb(242, 217, 209)`, effectively
+      the same pink already used site-wide here as `#F3E1DB`). Confirmed by reading the
+      rendered DOM and computed styles directly, not assumed from the name alone.
+    - **Built as a fourth `atelier` block instead of a second text-over-photo banner.**
+      Cloning moonmagic's own mechanic would mean live theme text laid over a photograph a
+      fifth time -- but CLAUDE.md names exactly four such places (the hero, the Контакти
+      banner, the Контакти footer social block, the newsletter band) and the newsletter
+      entry says outright "No other place gets words over an image." The owner asked for a
+      section "like" moonmagic's, not explicitly for a new exception to that rule, so this
+      takes the pattern -- one dedicated block making the case for a specific material,
+      ending in one strong button -- through the component already built for exactly that
+      job, rather than the photo-banner mechanic itself. Per "Take the patterns. Never take
+      their code" under How we work.
+    - **Copy is original, built from confirmed facts only.** Rhodium plating is the owner's
+      own new fact, given directly in this request, the same standing as 925 for silver's
+      fineness the same day (see Benefits row and Current state). Eyebrow „Нашето сребро“,
+      matching the „Нашето/Нашия/Нашите …“ naming the other three already use; heading
+      „Защо среброто ни блести по-дълго?“; paragraph explains the plating in one sentence
+      (a precious metal, adds shine and durability -- general public knowledge about
+      rhodium, the same kind of general fact the About page's materials block already
+      leans on) and closes on the site's own effortless register, echoing „Блясък без
+      усилие“: „Резултат: сияние, което остава, без излишни грижи.“ Button „Разгледайте
+      среброто“, to `/collections/all` -- no silver-specific collection exists yet (see
+      Waiting on the Shopify admin), so this points where the hero's own button already
+      does rather than to something narrower that doesn't exist.
+    - **`media_position: right`, `color_scheme: scheme-2`.** Right alternates cleanly into
+      the existing right/left/right rhythm of design_teaser and materials_teaser below it;
+      scheme-2 (soft stone) is unused elsewhere on the homepage, cool and quiet rather than
+      competing with a warm-gold band, and already carries a black button with white label
+      in `config/settings_data.json` -- the same pure-black group schemes 1 and 2 already
+      belong to, so it needed no button-colour decision of its own.
+    - **Spacing carried over from `atelier`, not reinvented.** `margin_top: 40` (was
+      `atelier`'s own, when it was the first of these blocks right after benefits) now
+      clears the benefits row the same way; `atelier`'s own `margin_top` still clears this
+      new block by the same 40px, so nothing downstream needed retuning.
 - **Category mosaic.** `sections/category-mosaic.liquid` with
   `assets/section-category-mosaic.css`. Four columns, tall tiles at each end spanning both
   rows, squares between — the block order drives it, because `grid-auto-flow: dense`
@@ -1205,8 +1250,9 @@ Anything of ours that is not a Dawn setting lives in these two places:
   renamed it „Контакти“ and added it to the Top bar menu after За нас on 2026-09-15 (store data,
   done in the admin; the handle stays `contact`).
 - Homepage, working top to bottom: announcement bar, header and hero are built; the product
-  row is built; three atelier blocks now lead to the inspiration, design and materials
-  stories on За нас (see Atelier section above); the newsletter is still Dawn's default.
+  row is built; a silver/rhodium teaser sits right after the benefits row, then three more
+  atelier blocks lead to the inspiration, design and materials stories on За нас (see
+  Atelier section above); the newsletter is still Dawn's default.
 - Dawn's placeholder illustration has been removed from the hero. The empty image slot is an
   empty div, and Dawn's base.css hides every empty div (`div:empty { display: none }`). On
   phones crown.css shows it again as a flat stone square. **On desktop it is still hidden**,

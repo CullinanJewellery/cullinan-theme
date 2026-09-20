@@ -334,6 +334,29 @@
         "padding_bottom": 36
       }
     },
+    "silver_teaser": {
+      "type": "atelier",
+      "settings": {
+        "media_position": "right",
+        "color_scheme": "scheme-2",
+        "video_url": "",
+        "eyebrow": "Нашето сребро",
+        "heading": "Защо среброто ни блести по-дълго?",
+        "paragraph": "<p>Всяко сребърно бижу получава родиево покритие — благороден метал, който добавя блясък и трайност. Резултат: сияние, което остава, без излишни грижи.</p>",
+        "fact_1_value": "",
+        "fact_1_label": "",
+        "fact_2_value": "",
+        "fact_2_label": "",
+        "fact_3_value": "",
+        "fact_3_label": "",
+        "link_label": "Разгледайте среброто",
+        "link_url": "/collections/all",
+        "padding_top": 56,
+        "padding_bottom": 56,
+        "margin_top": 40,
+        "margin_bottom": 0
+      }
+    },
     "atelier": {
       "type": "atelier",
       "settings": {
@@ -459,6 +482,7 @@
     "featured_collection",
     "category_mosaic",
     "benefits",
+    "silver_teaser",
     "atelier",
     "design_teaser",
     "materials_teaser",
