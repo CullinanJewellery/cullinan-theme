@@ -77,12 +77,19 @@
           "settings": {
             "text": "<strong>СЕРТИФИЦИРАНИ ПРОДУКТИ</strong>"
           }
+        },
+        "f4": {
+          "type": "fact",
+          "settings": {
+            "text": "<strong>НАЛОЖЕН ПЛАТЕЖ</strong>"
+          }
         }
       },
       "block_order": [
         "f1",
         "f2",
-        "f3"
+        "f3",
+        "f4"
       ],
       "settings": {
         "color_scheme": "scheme-1",
