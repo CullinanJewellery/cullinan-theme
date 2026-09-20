@@ -658,6 +658,25 @@ html {
   }
 }
 
+/*
+  Smaller button on the silver banner, at the owner's request (2026-09-21:
+  "the big text smaller and the button smaller too"). The heading is
+  Dawn's own preset dropdown (`heading_size` moved from h1 to h2, its
+  smallest), but the button has no such setting -- it always reads
+  `.banner__buttons .button` from crown.css, shared with the hero -- so
+  this scopes a smaller size to this section's id the same way its margin
+  and clip-path above do, leaving the hero's own button untouched. Desktop
+  only, matching those two: the phone button already has its own smaller,
+  separately-tuned size from the mobile-bottom rules above.
+*/
+@media screen and (min-width: 750px) {
+  [id^="shopify-section-"][id$="__silver_teaser"] .banner__buttons .button {
+    min-width: min(36rem, 100%);
+    min-height: 5.6rem;
+    font-size: 1.6rem;
+  }
+}
+
 /* ---------------------------------------------------------------------------
    Product rows
 
