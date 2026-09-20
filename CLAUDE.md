@@ -142,6 +142,12 @@ Rules that matter here:
       already hides the plain off-white ground today. Nothing to revisit then. The same
       gradient was reused on the marquee and the footer link-column band at the same
       breakpoint, matching the phone pass reusing the same flat pink on both.
+    - **The button itself changed shape and colour, 2026-09-20, at the owner's instruction**
+      ("like in hestiahome.bg" for the shape; "very dark" shade of the background for the
+      colour). See Square corners throughout and the second dark-buttons exception under
+      Design direction above for the full detail -- a full pill (`border-radius: 999px`,
+      `.banner__buttons .button` in `assets/crown.css`) and `#391D13`, a very dark shade of
+      this same pink, replacing pure black as scheme-5's own button colour.
   - **Second exception, at the owner’s instruction (2026-09-15):** the Контакти page banner
     („Как можем да помогнем?“). The owner asked for a picture behind it, as on the reference’s
     contact page, so its heading and text sit over a background picture once one is uploaded.
@@ -199,10 +205,19 @@ Rules that matter here:
   - **Second exception, at the owner’s instruction (2026-09-14):** dark buttons are pure black
     `#000000` with pure white `#FFFFFF` text. Set as the button colours of schemes 1, 2 and 5 in
     `config/settings_data.json`, so every dark button matches, and the cart count bubble with
-    them. The light buttons of schemes 3 and 4 and the newsletter’s sand button are unchanged.
+    them (the bubble reads `--color-button` from the header’s own scheme, 3/1, not scheme-5 --
+    unaffected by anything scheme-5 does). The light buttons of schemes 3 and 4 and the
+    newsletter’s sand button are unchanged.
     The homepage teaser bands have buttons in a dark shade of their own colour instead, with
     white labels, at the owner’s request the same day: taupe `#5B5548` on scheme-6, moss green
     `#3D5229` on scheme-7.
+    - **Scheme-5 left this group, 2026-09-20, at the owner’s instruction.** Its button is now
+      `#391D13`, a very dark shade of the hero’s own pink (`#F3E1DB`, hue 15° dropped from 91%
+      to 15% lightness) -- the same “dark shade of the band’s own colour” pattern as the
+      taupe/moss-green buttons above, just darker, since the owner asked for “very dark”
+      specifically here. Schemes 1 and 2 keep pure black; scheme-5 is otherwise only the
+      Контакти page banner, which has no button, so nothing else changed. White label text
+      keeps excellent contrast, 15.4:1.
   - **Third exception, at the owner’s instruction (2026-09-18):** the homepage’s Social follow
     heading and text, „Вижте работата ни“ and the line under it, are pure black `#000000`
     instead of the theme’s own near-black `#221F1C` -- the owner’s own complaint, “the color
@@ -341,6 +356,12 @@ Rules that matter here:
   - **One exception, at the owner’s instruction (2026-09-13):** the jump links at the top of
     the About page are rounded pills with each icon in an off-white circle, following the
     reference. Every other control keeps square corners.
+  - **Second exception, at the owner’s instruction (2026-09-20):** the homepage hero's own
+    button, „Разгледайте колекцията“, is a full pill -- „like in hestiahome.bg“, checked
+    directly (41px radius on their own 62px-tall button, comfortably a stadium shape at any
+    height). `border-radius: 999px` on `.banner__buttons .button` in `assets/crown.css`,
+    scoped to this one button; the theme's own `buttons_radius` setting (0) is untouched, so
+    every other button on the site keeps its square corners, checked live afterwards.
 - No borders around media. Product cards sit on the page ground, not in grey boxes.
 
 ## Working agreements
