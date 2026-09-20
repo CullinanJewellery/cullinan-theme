@@ -516,6 +516,16 @@ Anything of ours that is not a Dawn setting lives in these two places:
   built-in line icons. The icons carry `vector-effect="non-scaling-stroke"` so the line stays
   1.25px however large they are drawn — a plain stroke-width would thicken as the 24-unit
   viewBox scales to 52px.
+  - **Silver added to the gold-bar claim, 2026-09-20, at the owner's request** ("add the text
+    however you like it because I don't know how to add the right words for this"). Heading
+    stays „Проба 585 и 750“ -- gold's own certification numbers, still accurate on their own
+    -- and the subline gets „, а също и сребро“ appended rather than folded into the same
+    clause: carats are a gold-specific unit, and tacking "и сребро" straight onto "14 и 18
+    карата злато" would read as if silver shared that measurement too. No silver fineness
+    stated (see Current state) -- only that it's sold, confirmed 2026-09-14. The subline has
+    no `nowrap`/width ceiling the way hero-facts did (`max-width: 40ch`, built to wrap across
+    a couple of lines already), so the longer text needed no layout changes -- checked live
+    regardless.
 - **Image marquee.** `sections/image-marquee.liquid` with
   `assets/section-image-marquee.css`. Full-bleed band of square images drifting sideways,
   under the facts strip. The reference uses Swiper; this is a CSS marquee instead — no
@@ -1243,8 +1253,10 @@ Anything of ours that is not a Dawn setting lives in these two places:
 - **Settled 2026-09-14: silver is sold too.** The owner confirmed it. On За нас the history
   block says „от злато и сребро“, the design block „злато или сребро“, and the materials block
   names silver in its lead and gives it a paragraph (at the owner’s request, the same day).
-  Still gold only, left until the owner asks: the first question („От какво злато са
-  бижутата?“) and the benefits row („14 и 18 карата злато“). No silver fineness (e.g. 925) is
+  The benefits row mentioned only gold until 2026-09-20, when the owner asked for silver to be
+  added there too ("add the text however you like it") -- „Проба 585 и 750“ / „14 и 18 карата
+  злато, а също и сребро.“ (see Benefits row under Custom code). Still gold only: the first
+  question on За нас („От какво злато са бижутата?“). No silver fineness (e.g. 925) is
   stated anywhere yet — get it from the owner before writing one.
 
 ### Assigning an alternate template
