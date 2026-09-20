@@ -494,16 +494,30 @@ Anything of ours that is not a Dawn setting lives in these two places:
       среброто“, to `/collections/all` -- no silver-specific collection exists yet (see
       Waiting on the Shopify admin), so this points where the hero's own button already
       does rather than to something narrower that doesn't exist.
-    - **`media_position: right`, `color_scheme: scheme-2`.** Right alternates cleanly into
-      the existing right/left/right rhythm of design_teaser and materials_teaser below it;
-      scheme-2 (soft stone) is unused elsewhere on the homepage, cool and quiet rather than
-      competing with a warm-gold band, and already carries a black button with white label
-      in `config/settings_data.json` -- the same pure-black group schemes 1 and 2 already
-      belong to, so it needed no button-colour decision of its own.
+    - **`media_position: right`.** Alternates cleanly into the existing right/left/right
+      rhythm of design_teaser and materials_teaser below it.
     - **Spacing carried over from `atelier`, not reinvented.** `margin_top: 40` (was
       `atelier`'s own, when it was the first of these blocks right after benefits) now
       clears the benefits row the same way; `atelier`'s own `margin_top` still clears this
       new block by the same 40px, so nothing downstream needed retuning.
+    - **Background and button repainted to match the hero, minutes later, at the owner's
+      request** ("make the background color and the button color the same as section
+      Блясък без усилие"). `color_scheme` moved from its first choice, scheme-2, to
+      scheme-5 -- the hero's own scheme -- which hands the button its exact colour for
+      free: `.atelier .atelier__button` already reads `--color-button` /
+      `--color-button-text` from whichever scheme wraps it (`assets/section-atelier.css`),
+      the same mechanism the taupe and moss-green teaser buttons already rely on, so no new
+      button rule was needed. The background needed one: scheme-5's own token is a flat
+      sand (`#E7E1D6`), and the hero's real pink-on-phone/gradient-on-desktop look is a
+      crown.css override scoped to `.banner`, which this section's `.atelier` markup never
+      touches. Reproduced instead in `section-atelier.css`, scoped to
+      `.section-silver_teaser-margin` (this section's own stable id, not `color-scheme-5`
+      generally) -- the same reasoning the hero's own pink note already gives for keeping
+      it off the shared scheme: something else may use scheme-5 later without wanting this
+      background too. Same two values as the hero, at the same 750px breakpoint: flat
+      `#F3E1DB` below it, `linear-gradient(180deg, #FFE8E0 0%, #F3E1DB 100%)` above --
+      applied to the whole band at both sizes, since (unlike the hero) this section never
+      lays text over its media, so it has no transparent-box state to preserve.
 - **Category mosaic.** `sections/category-mosaic.liquid` with
   `assets/section-category-mosaic.css`. Four columns, tall tiles at each end spanning both
   rows, squares between — the block order drives it, because `grid-auto-flow: dense`
