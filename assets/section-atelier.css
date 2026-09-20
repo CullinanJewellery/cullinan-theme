@@ -20,16 +20,24 @@
   the background does not: scheme-5's own token is a flat sand (#E7E1D6),
   and the hero's pink/gradient look is a crown.css override scoped to
   .banner, which this section's own .atelier markup never touches. Scoped
-  to this section's own stable id rather than to color-scheme-5 generally,
-  the same reasoning the hero's own pink note gives: scheme-5 is a shared
-  token something else may use later without wanting this background too.
+  to this section's own id rather than to color-scheme-5 generally, the
+  same reasoning the hero's own pink note gives: scheme-5 is a shared token
+  something else may use later without wanting this background too.
+
+  A section defined inline in a JSON template does not render section.id
+  as the bare key from that file -- Shopify prefixes it with the template's
+  own id, e.g. section-template--30829123502420__silver_teaser-margin, not
+  section-silver_teaser-margin. That prefix is internal and can differ
+  between environments, so this matches on the stable suffix instead of
+  hardcoding it -- caught by checking the class Shopify actually served,
+  not assumed from how sections/atelier.liquid names its own class.
 */
-.section-silver_teaser-margin {
+[class*="__silver_teaser-margin"] {
   background: #F3E1DB;
 }
 
 @media screen and (min-width: 750px) {
-  .section-silver_teaser-margin {
+  [class*="__silver_teaser-margin"] {
     background: linear-gradient(180deg, #FFE8E0 0%, #F3E1DB 100%);
   }
 }

@@ -510,14 +510,23 @@ Anything of ours that is not a Dawn setting lives in these two places:
       button rule was needed. The background needed one: scheme-5's own token is a flat
       sand (`#E7E1D6`), and the hero's real pink-on-phone/gradient-on-desktop look is a
       crown.css override scoped to `.banner`, which this section's `.atelier` markup never
-      touches. Reproduced instead in `section-atelier.css`, scoped to
-      `.section-silver_teaser-margin` (this section's own stable id, not `color-scheme-5`
-      generally) -- the same reasoning the hero's own pink note already gives for keeping
-      it off the shared scheme: something else may use scheme-5 later without wanting this
-      background too. Same two values as the hero, at the same 750px breakpoint: flat
-      `#F3E1DB` below it, `linear-gradient(180deg, #FFE8E0 0%, #F3E1DB 100%)` above --
-      applied to the whole band at both sizes, since (unlike the hero) this section never
-      lays text over its media, so it has no transparent-box state to preserve.
+      touches. Reproduced instead in `section-atelier.css`, scoped to this section's own id
+      rather than to `color-scheme-5` generally -- the same reasoning the hero's own pink
+      note already gives for keeping it off the shared scheme. Same two values as the hero,
+      at the same 750px breakpoint: flat `#F3E1DB` below it,
+      `linear-gradient(180deg, #FFE8E0 0%, #F3E1DB 100%)` above -- applied to the whole band
+      at both sizes, since (unlike the hero) this section never lays text over its media,
+      so it has no transparent-box state to preserve.
+      - **First attempt used the wrong class and silently did nothing.** Written as
+        `.section-silver_teaser-margin`, matching how `sections/atelier.liquid` names its
+        own class from `section.id` -- but a section defined inline in a JSON template
+        does not render `section.id` as that bare key. Shopify prefixes it with the
+        template's own id (checked on the served CSS:
+        `section-template--30829123502420__silver_teaser-margin`), so the selector never
+        matched anything and the push looked clean while doing nothing. That prefix is
+        internal and not something to hardcode, so the fix matches on the stable suffix
+        instead: `[class*="__silver_teaser-margin"]`. Caught only by reading the CSS
+        Shopify actually served, not by reading the source back.
 - **Category mosaic.** `sections/category-mosaic.liquid` with
   `assets/section-category-mosaic.css`. Four columns, tall tiles at each end spanning both
   rows, squares between — the block order drives it, because `grid-auto-flow: dense`
