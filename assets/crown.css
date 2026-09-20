@@ -685,6 +685,27 @@ html {
   }
 }
 
+/*
+  The heading smaller still, at the owner's request (2026-09-21, quoting
+  the heading text directly). `heading_size` was already moved to `h2`,
+  Dawn's smallest preset (`.h2 { font-size: calc(var(--font-heading-scale)
+  * 2.4rem) }` on desktop, `base.css`) -- with no smaller preset to drop
+  to, this goes below the preset floor with a scoped override instead.
+  Needs both classes (`.banner__heading.h2`) to reliably beat `.h2` alone,
+  since a plain `.banner__heading` selector already exists above under
+  Hero (its own `clamp()` rule, written before per-block heading sizes
+  existed and evidently no longer the one winning the cascade -- the h1/h2
+  presets are what the hero's own sizing history was actually measured
+  against). Desktop only, matching every other override on this section;
+  2rem is what `.h2` itself already renders on a phone, so this brings
+  desktop down to meet it rather than inventing a third size.
+*/
+@media screen and (min-width: 750px) {
+  [id^="shopify-section-"][id$="__silver_teaser"] .banner__heading.h2 {
+    font-size: 2rem;
+  }
+}
+
 /* ---------------------------------------------------------------------------
    Product rows
 

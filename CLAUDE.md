@@ -565,6 +565,16 @@ Anything of ours that is not a Dawn setting lives in these two places:
     not that much bigger than the one in the section under it." The plain midpoint tied
     that button's height exactly (6.4 = 6.4), so the height came up slightly further, to
     read as clearly, if modestly, bigger in all three dimensions rather than equal in one.
+  - **The heading, smaller again, minutes later** (the owner quoted the heading text
+    directly and asked for it smaller). `h2` was already Dawn's smallest preset, so there
+    was nowhere lower to move the dropdown -- this goes below the preset floor instead,
+    scoped to the section id as usual. Needed both classes,
+    `.banner__heading.h2` -- a plain `.banner__heading` selector already exists under the
+    Hero exception above (its own `clamp()` rule, written before per-block heading sizes
+    existed), and matching only that would have tied it rather than won, since the h1/h2
+    presets are what the hero's sizing history was actually measured and built against, not
+    the older clamp(). Set to `2rem`, desktop only -- what `.h2` itself already renders on a
+    phone, so desktop now matches it instead of sitting at its own separate size.
 - **Category mosaic.** `sections/category-mosaic.liquid` with
   `assets/section-category-mosaic.css`. Four columns, tall tiles at each end spanning both
   rows, squares between — the block order drives it, because `grid-auto-flow: dense`
