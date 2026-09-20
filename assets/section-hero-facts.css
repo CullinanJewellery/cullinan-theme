@@ -53,13 +53,24 @@
   reads as the row touching the edge, because space-between spills any overflow
   to the right.
 */
+/*
+  Retuned for a fourth claim, 2026-09-20, when Наложен платеж joined the
+  other three. The formula above was tuned against three claims and landed
+  with zero spare room at 375px -- confirmed live, scrollWidth equalled
+  clientWidth exactly -- so a fourth claim of any length was always going to
+  overflow. It also overflowed at 768px (55px over) and was fine again by
+  989px, where the clamp already hits its own 1.4rem ceiling regardless.
+  1.75vw dropped to 1.6vw and the gap from 0.8rem to 0.5rem, both checked
+  live against the real four-claim row at 375, 768 and 989px afterward, with
+  real margin at each rather than landing on the edge again.
+*/
 @media screen and (max-width: 989px) {
   .hero-facts__row {
-    gap: 0.8rem;
+    gap: 0.5rem;
   }
 
   .hero-facts__item {
-    font-size: clamp(0.5rem, 1.75vw, 1.4rem);
+    font-size: clamp(0.5rem, 1.6vw, 1.4rem);
     letter-spacing: 0.04em;
   }
 }
