@@ -299,8 +299,10 @@ Rules that matter here:
   Themes → the draft theme → Preview → Share preview. Ask for it as soon as the old one fails.
   The owner sent a new one on 2026-09-15: https://o9kwivtmudx0bw6x-107185537364.shopifypreview.com
   (since expired), then on 2026-09-17: https://ge05t2atx6nu8sn2-107185537364.shopifypreview.com
-  (since expired), then on 2026-09-18: https://n2mxxuoi0yunt4ur-107185537364.shopifypreview.com.
-  Until a new link arrives, a local mock-up from the theme’s real stylesheets (served by a
+  (since expired), then on 2026-09-18: https://n2mxxuoi0yunt4ur-107185537364.shopifypreview.com
+  (since expired as of 2026-09-20 -- confirmed by fetching it directly: it now serves Shopify's
+  own generic "store-preview-expired" page, not the theme). Until a new link arrives, a local
+  mock-up from the theme’s real stylesheets (served by a
   throwaway Node server, never committed) is a usable stand-in for layout; it was exact to the
   pixel for the header once the new link allowed a comparison.
 - **Wait for one push to reach the preview before sending the next.** Twice on 2026-09-14 a
