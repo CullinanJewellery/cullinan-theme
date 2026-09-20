@@ -630,31 +630,34 @@ html {
 }
 
 /*
-  Cut corners on the silver banner's own picture, at the owner's request
-  (2026-09-21): straight diagonal lines at each corner, so the section's
-  own gradient shows through as four small triangles once a photograph is
-  set. `.banner__media` is Dawn's own `position: absolute; inset: 0`
-  (`assets/section-image-banner.css`), sitting over `.banner`'s own
-  gradient background, so clipping it is enough -- nothing needed on the
-  gradient itself.
+  Cut the silver banner's own picture on the left and right, so the
+  section's own gradient shows through -- `.banner__media` is Dawn's own
+  `position: absolute; inset: 0` (`assets/section-image-banner.css`),
+  sitting over `.banner`'s own gradient background, so clipping it is
+  enough, nothing needed on the gradient itself.
+
+  Started as a diagonal cut at all four corners (2026-09-21), then
+  replaced the same day at the owner's own correction: not the corners --
+  a plain straight vertical line on the left and a mirrored one on the
+  right, top and bottom left uncut, brought in from the true edges toward
+  the centre but stopping well short of it. `inset()` with 0 on the
+  top/bottom sides does exactly that: it crops the left and right only,
+  leaving a plain rectangle, narrower and centred, no diagonal anywhere.
+  18% leaves the middle 64% of the width showing.
 
   Desktop only. On a phone the image sits in its own square above the text
   panel, stacked rather than layered, on `.banner`'s plain scheme-5 colour
   -- the pink there belongs to `.banner__box` specifically (see the phone
   hero note under Design direction), not the image above it, so cutting
-  this box's corners on a phone would reveal a mismatched sand tone instead
-  of the pink the owner asked to see.
+  this box on a phone would reveal a mismatched sand tone instead of the
+  pink the owner asked to see.
 
   Scoped to this section's own id, anchored the same way as its margin
   above, so the hero's own picture is untouched.
 */
 @media screen and (min-width: 750px) {
   [id^="shopify-section-"][id$="__silver_teaser"] .banner__media {
-    clip-path: polygon(
-      4rem 0, calc(100% - 4rem) 0, 100% 4rem,
-      100% calc(100% - 4rem), calc(100% - 4rem) 100%, 4rem 100%,
-      0 calc(100% - 4rem), 0 4rem
-    );
+    clip-path: inset(0 18% 0 18%);
   }
 }
 
@@ -698,16 +701,19 @@ html {
   was actually measured against). Desktop only, matching every other
   override on this section.
 
-  First set to `2rem` (what `.h2` itself already renders on a phone),
-  then asked to come back up -- capped at `2.6rem`, the owner's own
-  caution not to make it too big, landing on the same upper bound
-  `.atelier__heading`'s own `clamp(1.8rem, 2.4vw, 2.6rem)` already uses
-  for Нашето вдъхновение and the other teaser blocks just below it, so
-  this heading tops out no bigger than theirs.
+  First set to `2rem` (what `.h2` itself already renders on a phone), then
+  asked to come back up -- capped at `2.6rem`, the owner's own caution not
+  to make it too big, landing on the same upper bound `.atelier__heading`'s
+  own `clamp(1.8rem, 2.4vw, 2.6rem)` already uses for Нашето вдъхновение
+  and the other teaser blocks just below it. Asked to come up once more
+  minutes later -- "big... just not like it was at the start", the start
+  being `h1`'s own `4rem` (40px) before any of this -- so `3.2rem`: bigger
+  than the atelier ceiling this was capped at a moment ago, but a clear
+  step short of the original hero-matched size.
 */
 @media screen and (min-width: 750px) {
   [id^="shopify-section-"][id$="__silver_teaser"] .banner__heading.h2 {
-    font-size: 2.6rem;
+    font-size: 3.2rem;
   }
 }
 
