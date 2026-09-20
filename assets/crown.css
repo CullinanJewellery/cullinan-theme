@@ -602,17 +602,29 @@ html {
   section's own pink/gradient with no gap, so the two read as one connected
   block. The same "page background between two coloured sections" job the
   atelier blocks do with their own margin_top/margin_bottom settings --
-  image-banner has no such field, so it goes here instead. Scoped to this
-  section's own id: Shopify always wraps a section in #shopify-section-{id}
-  regardless of section type, so this reaches the silver banner specifically
-  without touching any other image-banner instance (the hero included).
+  image-banner has no such field, so it goes here instead.
+
+  Two different elements carry "silver_teaser" in their id: Dawn's own
+  #shopify-section-{id} wrapper (the section's real boundary -- what the
+  theme editor highlights) and, inside it, #Banner-{id} on the .banner div
+  itself. A first attempt matched on `[id*="__silver_teaser"]`, which caught
+  both -- the margin landed on the inner #Banner- div instead of the
+  wrapper, leaving a 40px strip inside the wrapper's own box, above the
+  visible pink, that only ever showed the page's own off-white background.
+  Invisible on the plain preview since that colour is already close to the
+  page ground, but it meant the section's true edges (what the editor
+  outlines) sat 40px above where the pink actually starts -- caught from the
+  owner's own report of background colour showing at the corners on
+  desktop. Anchored to `^` + `$` here so only the wrapper's id (which starts
+  with "shopify-section-") matches, not the banner's own (which starts with
+  "Banner-").
 */
-[id*="__silver_teaser"] {
+[id^="shopify-section-"][id$="__silver_teaser"] {
   margin-top: 3rem;
 }
 
 @media screen and (min-width: 750px) {
-  [id*="__silver_teaser"] {
+  [id^="shopify-section-"][id$="__silver_teaser"] {
     margin-top: 4rem;
   }
 }

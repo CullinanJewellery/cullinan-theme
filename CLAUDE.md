@@ -519,10 +519,21 @@ Anything of ours that is not a Dawn setting lives in these two places:
   - **Space above it, added 2026-09-21 at the owner's request** ("space between the two
     sections because they look connected"): it sat flush against the benefits row, scheme-2's
     stone touching this section's own pink/gradient with no gap. `image-banner` has no
-    margin setting the way `atelier` does, so `assets/crown.css` adds it instead, scoped to
-    `[id*="__silver_teaser"]` -- Shopify wraps every section in `#shopify-section-{id}`
-    regardless of type, so this reaches only this banner, not the hero or any other
-    image-banner instance. 40px desktop, 30px on phones.
+    margin setting the way `atelier` does, so `assets/crown.css` adds it instead. 40px
+    desktop, 30px on phones.
+    - **First attempt matched two elements instead of one, and the margin landed on the
+      wrong one.** Scoped to `[id*="__silver_teaser"]` on the reasoning that Shopify wraps
+      every section in `#shopify-section-{id}` regardless of type -- true, but Dawn *also*
+      puts `#Banner-{id}` on the `.banner` div itself, and both ids contain
+      `__silver_teaser`. The margin landed on the inner `#Banner-` div, leaving a 40px strip
+      *inside* the outer wrapper's own box, above the visible pink, showing the page's own
+      off-white background -- invisible on the plain preview since that colour sits close to
+      the page ground, but it meant the section's true boundary (what the theme editor
+      highlights) sat 40px above where the pink actually starts. Caught from the owner's own
+      report of background colour showing at the corners on desktop, confirmed by comparing
+      `getBoundingClientRect()` on the wrapper against the inner `.banner`. Fixed with
+      `[id^="shopify-section-"][id$="__silver_teaser"]`, anchored so only the wrapper's id
+      (which starts with "shopify-section-") matches, not the banner's own.
 - **Category mosaic.** `sections/category-mosaic.liquid` with
   `assets/section-category-mosaic.css`. Four columns, tall tiles at each end spanning both
   rows, squares between — the block order drives it, because `grid-auto-flow: dense`
