@@ -1948,6 +1948,51 @@ html {
 }
 
 /*
+  Facebook and Instagram in their own brand colours, homepage only, at the
+  owner's request (2026-09-20: "the button of Facebook to blue... when you
+  put the cursor on it to be blue"). Кontакти keeps the blush treatment
+  above, untouched -- scoped the same way every other homepage-only rule for
+  this markup already is (.footer__social:not(.footer__social--contact)).
+  Both icons are drawn with fill="currentColor" (assets/icon-facebook.svg,
+  assets/icon-instagram.svg), so setting color also recolours the glyph, not
+  just the label.
+*/
+.footer__social:not(.footer__social--contact) .list-social__link--facebook {
+  color: #1877f2;
+  box-shadow: inset 0 0 0 1px #1877f2;
+}
+
+.footer__social:not(.footer__social--contact) .list-social__link--facebook:hover,
+.footer__social:not(.footer__social--contact) .list-social__link--facebook:active,
+.footer__social:not(.footer__social--contact) .list-social__link--facebook:focus-visible {
+  background-color: #1877f2;
+  color: #ffffff;
+  box-shadow: inset 0 0 0 1px #1877f2;
+}
+
+/*
+  Instagram has no single official colour of its own -- its mark is a
+  gradient -- so resting state takes a colour from partway through that
+  gradient (a magenta-pink) and hover fills with the gradient itself, the
+  most recognisable "Instagram" cue there is. Checked contrast against white
+  at each stop before picking them (purple 6.5:1, pink 4.3:1, red 3.9:1) --
+  dropped the gradient's own bright orange/yellow tail, which only reads
+  2.75:1, in favour of a deeper red at that end.
+*/
+.footer__social:not(.footer__social--contact) .list-social__link--instagram {
+  color: #c13584;
+  box-shadow: inset 0 0 0 1px #c13584;
+}
+
+.footer__social:not(.footer__social--contact) .list-social__link--instagram:hover,
+.footer__social:not(.footer__social--contact) .list-social__link--instagram:active,
+.footer__social:not(.footer__social--contact) .list-social__link--instagram:focus-visible {
+  background: linear-gradient(45deg, #833ab4 0%, #e1306c 50%, #fd1d1d 100%);
+  color: #ffffff;
+  box-shadow: none;
+}
+
+/*
   A background picture behind the Контакти social block, full-bleed to the
   page's own edges like the Контакти banner above it -- at the owner's
   request (2026-09-15; two tries got this wrong first, see the comment in
