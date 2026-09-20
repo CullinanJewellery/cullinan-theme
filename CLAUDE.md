@@ -159,8 +159,16 @@ Rules that matter here:
     only as wide as the column, then a strip between the words and the buttons.
   - **Fourth exception, at the owner’s instruction (2026-09-15):** the homepage newsletter band
     (see Newsletter under Custom code below) -- its heading, text and form sit over a
-    background picture once one is uploaded, the same way. No other place gets words over an
-    image.
+    background picture once one is uploaded, the same way.
+  - **Fifth exception, at the owner’s instruction (2026-09-21):** a second homepage banner,
+    „Нашето сребро. Нашият блясък.“, right after the benefits row. First built as a small
+    two-column atelier-style card with the picture kept apart from the words, specifically to
+    avoid a fifth exception here (see Atelier section under Custom code for that reasoning,
+    superseded by this one) -- then rebuilt this way once the owner compared it against
+    moonmagic's own equivalent section directly and asked for the picture placement to match:
+    on moonmagic, the photograph is the entire section, edge to edge, with the heading, text
+    and button laid straight over it, not a separate box beside the words. See Silver banner
+    under Custom code for the implementation.
 - **Restraint reads as expensive.** Empty space is the main luxury signal. When in doubt,
   remove rather than add.
 - **The words should feel the way the layout already does: feminine and strong, at ease
@@ -459,74 +467,55 @@ Anything of ours that is not a Dawn setting lives in these two places:
   - **Media on the right mirrors the columns** (55fr 45fr). Before, `order` alone moved the
     media into the wider track, so the right-hand version had a 680 × 850 picture against
     556 × 695 in the left-hand one.
-  - **A fourth instance, for the shop's own silver, sits right after the benefits row
-    instead of after the other three** (2026-09-20, at the owner's request: "make under it
-    a section like in moonmagic theirs is their stone their story our is going to be for
-    our silver we put rhodium"). Key `silver_teaser`, between `benefits` and `atelier` in
-    `templates/index.json`'s `order`.
-    - **Read moonmagic's own section first, per "Before you build."** Their "THEIR STONE.
-      THEIR STORY." block (`.hp-multi-hero`, below their icon-benefits row -- the same
-      position relative to benefits this one now takes) is not their atelier-style
-      two-column card: it's a full-bleed photograph with the heading, a line and a button
-      laid straight over it, white text on desktop, and on a phone the photo sits on top
-      with the words on a solid blush panel underneath (`rgb(242, 217, 209)`, effectively
-      the same pink already used site-wide here as `#F3E1DB`). Confirmed by reading the
-      rendered DOM and computed styles directly, not assumed from the name alone.
-    - **Built as a fourth `atelier` block instead of a second text-over-photo banner.**
-      Cloning moonmagic's own mechanic would mean live theme text laid over a photograph a
-      fifth time -- but CLAUDE.md names exactly four such places (the hero, the Контакти
-      banner, the Контакти footer social block, the newsletter band) and the newsletter
-      entry says outright "No other place gets words over an image." The owner asked for a
-      section "like" moonmagic's, not explicitly for a new exception to that rule, so this
-      takes the pattern -- one dedicated block making the case for a specific material,
-      ending in one strong button -- through the component already built for exactly that
-      job, rather than the photo-banner mechanic itself. Per "Take the patterns. Never take
-      their code" under How we work.
-    - **Copy is original, built from confirmed facts only.** Rhodium plating is the owner's
-      own new fact, given directly in this request, the same standing as 925 for silver's
-      fineness the same day (see Benefits row and Current state). Eyebrow „Нашето сребро“,
-      matching the „Нашето/Нашия/Нашите …“ naming the other three already use; heading
-      „Защо среброто ни блести по-дълго?“; paragraph explains the plating in one sentence
-      (a precious metal, adds shine and durability -- general public knowledge about
-      rhodium, the same kind of general fact the About page's materials block already
-      leans on) and closes on the site's own effortless register, echoing „Блясък без
-      усилие“: „Резултат: сияние, което остава, без излишни грижи.“ Button „Разгледайте
-      среброто“, to `/collections/all` -- no silver-specific collection exists yet (see
-      Waiting on the Shopify admin), so this points where the hero's own button already
-      does rather than to something narrower that doesn't exist.
-    - **`media_position: right`.** Alternates cleanly into the existing right/left/right
-      rhythm of design_teaser and materials_teaser below it.
-    - **Spacing carried over from `atelier`, not reinvented.** `margin_top: 40` (was
-      `atelier`'s own, when it was the first of these blocks right after benefits) now
-      clears the benefits row the same way; `atelier`'s own `margin_top` still clears this
-      new block by the same 40px, so nothing downstream needed retuning.
-    - **Background and button repainted to match the hero, minutes later, at the owner's
-      request** ("make the background color and the button color the same as section
-      Блясък без усилие"). `color_scheme` moved from its first choice, scheme-2, to
-      scheme-5 -- the hero's own scheme -- which hands the button its exact colour for
-      free: `.atelier .atelier__button` already reads `--color-button` /
-      `--color-button-text` from whichever scheme wraps it (`assets/section-atelier.css`),
-      the same mechanism the taupe and moss-green teaser buttons already rely on, so no new
-      button rule was needed. The background needed one: scheme-5's own token is a flat
-      sand (`#E7E1D6`), and the hero's real pink-on-phone/gradient-on-desktop look is a
-      crown.css override scoped to `.banner`, which this section's `.atelier` markup never
-      touches. Reproduced instead in `section-atelier.css`, scoped to this section's own id
-      rather than to `color-scheme-5` generally -- the same reasoning the hero's own pink
-      note already gives for keeping it off the shared scheme. Same two values as the hero,
-      at the same 750px breakpoint: flat `#F3E1DB` below it,
-      `linear-gradient(180deg, #FFE8E0 0%, #F3E1DB 100%)` above -- applied to the whole band
-      at both sizes, since (unlike the hero) this section never lays text over its media,
-      so it has no transparent-box state to preserve.
-      - **First attempt used the wrong class and silently did nothing.** Written as
-        `.section-silver_teaser-margin`, matching how `sections/atelier.liquid` names its
-        own class from `section.id` -- but a section defined inline in a JSON template
-        does not render `section.id` as that bare key. Shopify prefixes it with the
-        template's own id (checked on the served CSS:
-        `section-template--30829123502420__silver_teaser-margin`), so the selector never
-        matched anything and the push looked clean while doing nothing. That prefix is
-        internal and not something to hardcode, so the fix matches on the stable suffix
-        instead: `[class*="__silver_teaser-margin"]`. Caught only by reading the CSS
-        Shopify actually served, not by reading the source back.
+  - **A fourth instance, for the shop's own silver, tried and superseded the same day
+    (2026-09-20–21).** Briefly lived here as `silver_teaser`, right after the benefits row,
+    styled to match the hero (scheme-5, its gradient background, its dark button) but with
+    the picture still kept in its own box beside the words, deliberately short of a fifth
+    "words over a photo" exception (see Design direction). The owner then compared it
+    against moonmagic's own equivalent section directly and asked for the picture placement
+    to match, which this component's two-column structure cannot do -- moonmagic lays its
+    words straight over a full-bleed photograph, not beside it. Rebuilt as a second
+    `image-banner` instance instead; see Silver banner under Custom code.
+- **Silver banner.** A second `image-banner` instance, key `silver_teaser`, right after the
+  benefits row (`templates/index.json`). No new template or stylesheet: `sections/image-
+  banner.liquid` is Dawn's own, unchanged, and every hero rule in `assets/crown.css` is
+  already scoped to shared classes (`.banner`, `.banner--mobile-bottom`, `color-scheme-5`)
+  rather than to the hero's own section id -- so a second instance on the same colour scheme
+  picks up the pink phone panel, the desktop gradient and the dark `#391D13` button for free,
+  exactly like the owner asked for on the atelier attempt this one replaced, now doubly true
+  since it is genuinely the same mechanic rather than a lookalike.
+  - **Built this way at the owner's explicit instruction (2026-09-21),** after comparing our
+    first attempt (see the reverted atelier note under Atelier section) against moonmagic's
+    own "THEIR STONE. THEIR STORY." section directly: its photograph is the entire section,
+    measured edge to edge with the section's own bounding box, with the heading, text and
+    button laid straight over the left half of it -- not a separate picture box beside the
+    words. Offered the choice between keeping our picture and text apart (the standing "no
+    other place gets words over an image" rule) or matching moonmagic's own placement as a
+    fifth named exception; the owner chose to match it.
+  - **Settings copy the hero's where the mechanic is the same, and moonmagic's own layout
+    where this section actually differs from our hero.** `color_scheme: scheme-5`,
+    `show_text_below: true`, `image_overlay_opacity: 0` -- all as the hero has them. But
+    `desktop_content_position: middle-left`, `desktop_content_alignment: left` and
+    `mobile_content_alignment: left`, not the hero's own centred settings: moonmagic's own
+    text for this specific section sits left-aligned at both sizes (confirmed on their phone
+    layout too, not assumed from the desktop reading alone), where our hero is centred
+    because it was tuned to moonmagic's own *hero*, a different section with its own
+    alignment. `image_height: medium` and `image_behavior: none`, calmer and shorter than the
+    hero's `large`/`zoom-in`, so the two full-bleed banners on one homepage read as related
+    rather than identical.
+  - **Copy, kept from the first attempt.** Heading „НАШЕТО СРЕБРО. НАШИЯТ БЛЯСЪК.“, two
+    parallel short phrases echoing moonmagic's own "THEIR STONE. THEIR STORY." rhythm without
+    its words; subtitle „Родиево покритие за траен блясък. Без излишни грижи.“, naming the
+    shop's rhodium plating (the owner's own new fact, given when this section was first
+    requested) in the same two-clause cadence as the hero's own „Не се сваля. Ръчна
+    изработка.“ Button „Разгледайте среброто“, to `/collections/all` -- no silver-specific
+    collection exists yet (see Waiting on the Shopify admin), so it points where the hero's
+    own button already does rather than to something narrower that doesn't exist.
+  - **The empty image slot behaves exactly as the hero's does:** Dawn's `div:empty` rule
+    hides it until a photograph is set, shown again on phones as the flat stone square from
+    `.banner__media--empty`, square via the same `aspect-ratio: 1/1` rule `crown.css` already
+    gives any `banner--mobile-bottom` instance. Nothing new to build for this; it came free
+    with the section type.
 - **Category mosaic.** `sections/category-mosaic.liquid` with
   `assets/section-category-mosaic.css`. Four columns, tall tiles at each end spanning both
   rows, squares between — the block order drives it, because `grid-auto-flow: dense`
@@ -1273,9 +1262,10 @@ Anything of ours that is not a Dawn setting lives in these two places:
   renamed it „Контакти“ and added it to the Top bar menu after За нас on 2026-09-15 (store data,
   done in the admin; the handle stays `contact`).
 - Homepage, working top to bottom: announcement bar, header and hero are built; the product
-  row is built; a silver/rhodium teaser sits right after the benefits row, then three more
-  atelier blocks lead to the inspiration, design and materials stories on За нас (see
-  Atelier section above); the newsletter is still Dawn's default.
+  row is built; a second hero-style banner for the shop's own silver sits right after the
+  benefits row (see Silver banner above), then three atelier blocks lead to the inspiration,
+  design and materials stories on За нас (see Atelier section above); the newsletter is
+  still Dawn's default.
 - Dawn's placeholder illustration has been removed from the hero. The empty image slot is an
   empty div, and Dawn's base.css hides every empty div (`div:empty { display: none }`). On
   phones crown.css shows it again as a flat stone square. **On desktop it is still hidden**,
