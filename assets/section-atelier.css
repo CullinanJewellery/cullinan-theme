@@ -185,8 +185,22 @@
   background-color: rgb(var(--color-button));
   color: rgb(var(--color-button-text));
   box-shadow: inset 0 0 0 1px rgba(var(--color-button), 0);
+}
+
+/*
+  `:not(.button--tertiary)` is purely for specificity, not because a
+  tertiary button is ever used here -- this element also carries Dawn's
+  own `.button` class, so turning on the site-wide hover-lift animation
+  (2026-09-21, see Buttons lift up on hover under Design tokens) added
+  Dawn's own `.animate--hover-vertical-lift .button:not(.button--tertiary)
+  { transition: transform ... }` in base.css at (0,3,0), above this rule's
+  original (0,2,0), and it silently replaced the transition below instead
+  of adding to it. Matching that specificity wins it back; `transform`
+  joins the list so the lift animates smoothly instead of snapping.
+*/
+.atelier .atelier__button:not(.button--tertiary) {
   transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out,
-    box-shadow 0.35s ease-in-out;
+    box-shadow 0.35s ease-in-out, transform 0.2s cubic-bezier(0, 0, 0.3, 1);
 }
 
 .atelier .atelier__button:hover,

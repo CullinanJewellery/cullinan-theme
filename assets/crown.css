@@ -80,11 +80,23 @@
    site shares the same pill via the theme's own buttons_radius setting (see
    Design direction), so the hardcode came out -- this rule no longer needs
    to say anything about shape at all, only the hover behaviour.
+
+   `:not(.button--tertiary)` added 2026-09-21, purely for specificity, not
+   because a tertiary button is ever used here. Turning on the site-wide
+   hover-lift animation (see Buttons lift up on hover under Design tokens)
+   added Dawn's own `.animate--hover-vertical-lift .button:not(.button--
+   tertiary) { transition: transform ... }` in base.css, at (0,3,0) --
+   higher than this rule's own (0,2,0) -- so it silently replaced this
+   `transition` entirely instead of adding to it, and the colour fade on
+   hover stopped animating. Matching Dawn's own specificity, one class
+   short of a rewrite, wins it back (crown.css loads after base.css, so
+   equal specificity now resolves to this rule); `transform` joins the
+   list so the lift itself animates smoothly too, rather than snapping.
    --------------------------------------------------------------------------- */
 
-.banner__buttons .button {
+.banner__buttons .button:not(.button--tertiary) {
   transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out,
-    box-shadow 0.35s ease-in-out;
+    box-shadow 0.35s ease-in-out, transform 0.2s cubic-bezier(0, 0, 0.3, 1);
 }
 
 .banner__buttons .button--primary::after,
@@ -1012,8 +1024,16 @@ html {
   background-color: rgb(var(--color-button));
   color: rgb(var(--color-button-text));
   box-shadow: inset 0 0 0 1px rgba(var(--color-button), 0);
+  /* transform added 2026-09-21, alongside turning on the site-wide
+     hover-lift animation (see Buttons lift up on hover under Design
+     tokens): this selector is already as specific as Dawn's own lift
+     rule in base.css (three classes each), and crown.css loads after
+     base.css, so it already won the transition property outright rather
+     than losing it the way the hero's and the atelier's own rules did --
+     but without transform in the list, the lift itself would have
+     snapped into place instead of animating smoothly. */
   transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out,
-    box-shadow 0.35s ease-in-out;
+    box-shadow 0.35s ease-in-out, transform 0.2s cubic-bezier(0, 0, 0.3, 1);
 }
 
 .collection .collection__view-all .button:hover,

@@ -494,6 +494,28 @@ Rules that matter here:
     from this same unmodified Dawn mechanism. Worth flagging if the owner ever wants button
     lift without card lift, since that would need overriding Dawn's own rule rather than
     just the setting.
+  - **A real regression surfaced checking this live, and is now fixed.** Dawn's own lift
+    rule (`.animate--hover-vertical-lift .button:not(.button--tertiary) { transition:
+    transform ... }`, `base.css`) sits at specificity (0,3,0). Two of this project's own
+    button transitions -- the hero/silver banner's (`.banner__buttons .button`) and the
+    atelier teasers' (`.atelier .atelier__button`) -- were only (0,2,0), so Dawn's rule
+    silently *replaced* their `transition` property instead of adding to it, and their
+    colour fade on hover stopped animating (confirmed live: `getComputedStyle` showed only
+    `transform` in the transition list, `background-color`/`color`/`box-shadow` gone).
+    Fixed by adding the same `:not(.button--tertiary)` Dawn's own rule uses -- not because a
+    tertiary button ever appears here, purely to match its specificity -- and folding
+    `transform` into each rule's own transition list so the lift animates smoothly too,
+    rather than snapping. "View all" under the product row (`.collection .collection__view-
+    all .button`) was already three classes deep and had already won this fight via source
+    order (crown.css loads after base.css), but still needed `transform` added to its own
+    list for the same smooth-lift reason. Checked live after the fix: all three fade color
+    over 0.35s and lift over 0.2s together, matching hestiahome.bg's own combined feel.
+  - **The Контакти contact-methods buttons get no lift at all, left that way.** They never
+    carry Dawn's `.button` class (built by hand, see Contact methods under Custom code), so
+    Dawn's rule was never going to reach them regardless of specificity -- not a bug, just a
+    gap this change doesn't close. Adding lift there would mean writing a bespoke transform/
+    transition pair rather than flipping the shared setting, which is out of scope for what
+    was asked here.
 - No borders around media. Product cards sit on the page ground, not in grey boxes.
 
 ## Working agreements
