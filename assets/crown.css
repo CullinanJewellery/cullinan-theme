@@ -1588,6 +1588,33 @@ html {
   }
 }
 
+/*
+  Bigger on a computer only, at the owner's request -- the field and the
+  button matched at 4.6rem tall purely because both happened to be set to
+  the same number, not because of the row's own `align-items: stretch`
+  (that only stretches a child whose own cross-axis size is auto, and both
+  already had an explicit height), so both need raising together here or
+  the button would go back to sitting shorter than the field. The button's
+  label comes up slightly too, so it doesn't look small inside the bigger
+  box. Phone is untouched -- it already stacks the two full-width, unlike
+  this side-by-side row.
+*/
+@media screen and (min-width: 750px) {
+  .newsletter--crown .field__input {
+    height: 5.6rem;
+  }
+
+  .newsletter--crown .newsletter-form__button:not(:focus-visible):not(.focused) {
+    height: 5.6rem;
+    min-width: 18rem;
+    padding: 0 2.4rem;
+  }
+
+  .newsletter--crown .newsletter-form__button-label {
+    font-size: 1.3rem;
+  }
+}
+
 /* --- Footer social icons -------------------------------------------------- */
 
 /*

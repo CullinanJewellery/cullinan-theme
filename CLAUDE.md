@@ -210,6 +210,16 @@ Rules that matter here:
       runs. The owner’s own uploaded picture keeps working exactly as before -- its setting
       is still `background_image`, only relabelled “Or a background picture”, and now used
       only when no video is set.
+    - **The field and button bigger again, computer only, 2026-09-21, at the owner's
+      request.** Both had been `4.6rem` tall since the smaller-throughout pass above, and
+      matched each other only because they happened to share that one number -- the row's
+      own `align-items: stretch` never actually enforced it (stretch only governs a child
+      whose own cross-axis size is `auto`, and both already set an explicit height) -- so
+      raising just one without the other would have left them uneven again. Both now
+      `5.6rem`, the button's own `min-width` `15rem` to `18rem` and padding `0 2rem` to
+      `0 2.4rem`, and its label `1.2rem` to `1.3rem` so the text doesn't look small inside
+      the bigger box. Phone is untouched: it already stacks the field and button full-width
+      in a column, not the side-by-side row this change reaches.
   - **Second exception, at the owner’s instruction (2026-09-14):** dark buttons are pure black
     `#000000` with pure white `#FFFFFF` text. Set as the button colours of schemes 1, 2 and 5 in
     `config/settings_data.json`, so every dark button matches, and the cart count bubble with
