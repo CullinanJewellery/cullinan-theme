@@ -560,19 +560,31 @@ Anything of ours that is not a Dawn setting lives in these two places:
   - **Heading sized down, at the owner's request (2026-09-21):** "the big text smaller and
     the button smaller too." `heading_size` moved from `h1` to `h2` -- Dawn's own preset
     dropdown, its smallest, the same mechanism the hero's own heading uses.
-  - **The button, sized down then back up, same day.** It has no `heading_size`-style
-    setting of its own: it always reads `.banner__buttons .button` from crown.css, shared
-    with the hero, so its size is scoped to this section's id instead, the same anchored
-    selector as the margin and clip-path above -- desktop only, matching those two; the
-    phone button already has its own smaller, separately-tuned size from the mobile-bottom
-    rules, untouched throughout. First shrunk with the heading, from the hero's own
-    7.2rem/2.2rem/48.6rem-cap to 5.6rem/1.6rem/36rem. Read as too small a moment later, so
-    sized back up to a midpoint between those two attempts -- 6.6rem/1.9rem/42rem -- and
-    checked against `.atelier .atelier__button` in Нашето вдъхновение just below it
-    (6.4rem/1.4rem/34rem, `section-atelier.css`), since the owner asked for "bigger, but
-    not that much bigger than the one in the section under it." The plain midpoint tied
-    that button's height exactly (6.4 = 6.4), so the height came up slightly further, to
-    read as clearly, if modestly, bigger in all three dimensions rather than equal in one.
+  - **The button, sized down, then up, then matched to moonmagic exactly and the override
+    removed altogether.** It has no `heading_size`-style setting of its own: it always reads
+    `.banner__buttons .button` from crown.css, shared with the hero. First shrunk with the
+    heading, from the hero's own 7.2rem/2.2rem/48.6rem-cap to 5.6rem/1.6rem/36rem. Read as
+    too small a moment later, so sized back up to a midpoint between those two attempts --
+    6.6rem/1.9rem/42rem -- and checked against `.atelier .atelier__button` in Нашето
+    вдъхновение just below it (6.4rem/1.4rem/34rem, `section-atelier.css`), since the owner
+    asked for "bigger, but not that much bigger than the one in the section under it." The
+    plain midpoint tied that button's height exactly (6.4 = 6.4), so the height came up
+    slightly further, to read as clearly, if modestly, bigger in all three dimensions rather
+    than equal in one.
+    - **Superseded by matching moonmagic directly, computer, tablet and phone.** Measured
+      moonmagic's own "THEIR STONE. THEIR STORY." button (the same section this banner is
+      modelled on) at 1440, 768 and 375px: 72px tall, 22px type, ~485px wide from 768px up
+      -- one size for both tablet and desktop, no separate tablet size at all -- then 52px
+      tall, 16px type, full width below that, the breakpoint sitting somewhere between 700
+      and 768px. That is exactly `.banner__buttons .button`'s own existing default
+      (`min-height: 7.2rem; font-size: 2.2rem; min-width: min(48.6rem, 100%)`) and the
+      `banner--mobile-bottom` phone override (`min-height: 5.2rem; font-size: 1.6rem`) --
+      the phone rule's own comment already records it as measured against moonmagic's
+      *hero* when first written, and this confirms moonmagic uses the same size in both
+      places. Both shared rules were already an exact match, so every scoped override this
+      section had for width/height/font-size came back out entirely -- the fix was to stop
+      overriding, not to add a third size. `border-radius: 0` (the square-corner override)
+      is untouched; shape was never part of this sizing question.
   - **Square corners on this one button, at the owner's request** ("the button form to be
     rectangular like in section Първи научавайте, but just the form" -- the shape, not its
     colour or size). That button was never a pill to begin with: it's Dawn's own

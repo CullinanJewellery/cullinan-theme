@@ -709,31 +709,29 @@ html {
 }
 
 /*
-  The silver banner's own button size, at the owner's request (2026-09-21).
-  The button has no `heading_size`-style setting -- it always reads
-  `.banner__buttons .button` from crown.css, shared with the hero -- so a
-  size scoped to this section's id, the same way its margin and clip-path
-  above do, leaving the hero's own button untouched. Desktop only: the
-  phone button already has its own smaller, separately-tuned size from the
-  mobile-bottom rules above.
+  The silver banner's own button size -- tuned twice on 2026-09-21 (shrunk
+  to 5.6rem/1.6rem/36rem, then sized up to a midpoint at 6.6rem/1.9rem/42rem
+  against `.atelier .atelier__button`'s own size in Нашето вдъхновение) --
+  and then removed entirely, once the owner asked to match moonmagic's own
+  button size directly, across computer, tablet and phone.
 
-  Shrunk once already (7.2rem/2.2rem/48.6rem cap, the hero's own size, down
-  to 5.6rem/1.6rem/36rem). Sized up again the same day, to a midpoint
-  between those two attempts (6.6rem/1.9rem/42rem) -- and checked against
-  `.atelier .atelier__button` just below it in Нашето вдъхновение
-  (6.4rem/1.4rem/34rem, `section-atelier.css`), since the owner asked for
-  "bigger, but not that much bigger than the one in the section under it."
-  The midpoint alone tied its height exactly (6.4 = 6.4), so the height
-  came up slightly further to read as clearly, if modestly, bigger in all
-  three dimensions rather than equal in one of them.
+  Measured moonmagic's own "THEIR STONE. THEIR STORY." button (the same
+  section this banner is modelled on) at 1440px, 768px and 375px: 72px
+  tall, 22px type, ~485px wide from 768px up -- one size for both tablet
+  and desktop, no separate tablet size at all -- then 52px tall, 16px type,
+  full width below that, the breakpoint sitting somewhere between 700 and
+  768px. That is exactly `.banner__buttons .button`'s own existing default
+  (`min-height: 7.2rem; font-size: 2.2rem; min-width: min(48.6rem, 100%)`,
+  above under Hero) and the `banner--mobile-bottom` phone override just
+  below it (`min-height: 5.2rem; font-size: 1.6rem`) -- the phone rule's
+  own comment already records it as measured against moonmagic's *hero*
+  when that rule was first written, and this new measurement of "THEIR
+  STONE"'s own button confirms moonmagic uses the same button size in both
+  places. Either way, both shared rules were already an exact match, so
+  the fix is to have no override at all: removing the scoped rule here
+  lets this section's button fall through to them, at exactly the sizes
+  moonmagic itself uses at every width.
 */
-@media screen and (min-width: 750px) {
-  [id^="shopify-section-"][id$="__silver_teaser"] .banner__buttons .button {
-    min-width: min(42rem, 100%);
-    min-height: 6.6rem;
-    font-size: 1.9rem;
-  }
-}
 
 /*
   Square corners on this one button, at the owner's request: the same
