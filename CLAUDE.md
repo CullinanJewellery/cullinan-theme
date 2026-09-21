@@ -615,6 +615,16 @@ Anything of ours that is not a Dawn setting lives in these two places:
     `.banner`'s full width (`.banner__content` is `width: 100%` there too), so the two stay
     in sync if the cut size ever changes again without needing two numbers kept in step by
     hand.
+  - **The empty slot shown on desktop too, at the owner's request** ("make the picture
+    different colour... so I can see it" -- to judge the cut and its position live, without
+    waiting for a real photograph). Not a new placeholder graphic: `.banner__media--empty`
+    already carries its own flat colour (`rgb(242 240 236)`, the same one every empty media
+    slot on the site uses) -- Dawn's own `div:empty { display: none }` (`base.css`) is only
+    ever what hides it, the same rule that keeps the hero's own desktop slot invisible (see
+    Current state). Overridden here, scoped to this section only, so the hero and every
+    other banner stay exactly as they were. Self-removing once a real photo is set: Dawn
+    only adds the `--empty` class when there is no image, so nothing here needs undoing by
+    hand then.
 - **Category mosaic.** `sections/category-mosaic.liquid` with
   `assets/section-category-mosaic.css`. Four columns, tall tiles at each end spanning both
   rows, squares between — the block order drives it, because `grid-auto-flow: dense`

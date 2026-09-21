@@ -684,6 +684,25 @@ html {
 }
 
 /*
+  The empty picture slot shown on desktop too, at the owner's request, so
+  the cut and its position can be judged live without waiting for a real
+  photograph. Not a new placeholder graphic: `.banner__media--empty`
+  already has its own flat colour above (`rgb(242 240 236)`, the same one
+  every other empty media slot on the site uses) -- Dawn's own `div:empty
+  { display: none }` (`base.css`) is just what hides it, the same rule
+  that keeps the hero's own desktop slot invisible (see Current state).
+  This overrides that, scoped to this section only, so the hero and every
+  other banner stay exactly as they were. Self-removing once a real photo
+  is set: Dawn only adds the `--empty` class when there is no image, so
+  nothing here needs undoing by hand then.
+*/
+@media screen and (min-width: 750px) {
+  [id^="shopify-section-"][id$="__silver_teaser"] .banner__media--empty {
+    display: block;
+  }
+}
+
+/*
   The silver banner's own button size, at the owner's request (2026-09-21).
   The button has no `heading_size`-style setting -- it always reads
   `.banner__buttons .button` from crown.css, shared with the hero -- so a
