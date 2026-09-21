@@ -4,6 +4,47 @@
 */
 
 /* ---------------------------------------------------------------------------
+   Default buttons
+
+   Every button that has no more specific size of its own -- Add to Cart,
+   Buy Now, quick add, and any other plain Dawn button. The marketing
+   buttons below (hero, silver banner) and the atelier/view-all/
+   contact-methods family further down each already carry their own more
+   specific selector, so this rule never reaches them.
+
+   Matched to moonmagic's own product page at the owner's request to match
+   moonmagic's button sizes everywhere, computer, tablet and phone.
+   Measured their "Add to Bag" button on a product page directly: about
+   22px type and 55px tall from 990px up, their own desktop-only tier --
+   768px already drops to the smaller size there, unlike the marketing
+   banner buttons, which share one size from 750px up -- then about 18px
+   type and 50px tall below that, tablet and phone sharing one size. The
+   990px split matches Dawn's own breakpoint already used elsewhere on
+   this site (the header's inline menu switches there too), rather than
+   introducing a new one.
+
+   Untested against a real Add to Cart button live: the store has no
+   products yet (see Current state), so this is correct in the CSS but
+   unverified in that exact context until one exists.
+   --------------------------------------------------------------------------- */
+
+.button,
+.shopify-challenge__button,
+.customer button {
+  min-height: 5rem;
+  font-size: 1.8rem;
+}
+
+@media screen and (min-width: 990px) {
+  .button,
+  .shopify-challenge__button,
+  .customer button {
+    min-height: 5.5rem;
+    font-size: 2.2rem;
+  }
+}
+
+/* ---------------------------------------------------------------------------
    Hero buttons
 
    The call to action over the hero photograph. On hover the fill drops away

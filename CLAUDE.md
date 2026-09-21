@@ -388,6 +388,39 @@ Rules that matter here:
     links at the top of the About page are rounded pills with each icon in an off-white
     circle, following the reference -- already pills before the button-wide change, unaffected
     by it either way.
+- **Button sizes matched to moonmagic, site-wide, computer/tablet/phone, since 2026-09-21.**
+  The owner asked for every button on the site to match moonmagic's own sizes, at the owner's
+  explicit choice of the broadest reading over just the marketing/banner buttons. What this
+  covers, in practice:
+  - **The marketing CTAs (hero, silver banner) already matched moonmagic exactly** before
+    this request -- see Silver banner under Custom code for that research (moonmagic's
+    "THEIR STONE. THEIR STORY." button: 72px/22px from 768px up, one size for tablet and
+    desktop both, 52px/16px below that). Nothing to change there.
+  - **Every other plain button (Add to Cart, Buy Now, quick add, and any button with no
+    more specific size of its own) is now matched too**, in `assets/crown.css` under
+    "Default buttons" at the very top of the file: `.button`/`.shopify-challenge__button`/
+    `.customer button` get `min-height: 5rem; font-size: 1.8rem` by default, rising to
+    `5.5rem`/`2.2rem` from `min-width: 990px`. Measured moonmagic's own product page "Add to
+    Bag" button directly (a moonstone ring): about 55px/22px from 990px up -- their own
+    desktop-only tier here, unlike the marketing buttons, since 768px already showed the
+    smaller size -- then about 50px/18px below that, tablet and phone sharing one size. The
+    990px split reuses a breakpoint this theme already treats as a tablet/desktop line (the
+    header's inline menu also switches there), rather than inventing a new one. Scoped to
+    the base classes only, so it never overrides the marketing buttons or the family below,
+    which each have a more specific selector of their own.
+    - **Unverified live in its real context**: the store has no products yet (see Current
+      state), so there is no live Add to Cart button to check this against. Confirmed
+      correct in the served CSS; a real visual check waits for real products.
+  - **The atelier/view-all/contact-methods family (6.4rem/1.4rem/34rem -- `.atelier
+    .atelier__button`, `.collection .collection__view-all .button`,
+    `.contact-methods__button`) was deliberately left as it is.** These three were built to
+    match *each other*, not moonmagic, and moonmagic has no clean equivalent to this
+    specific role: not a hero-style full-bleed CTA, not a product Add to Cart -- checked
+    their homepage for a comparable "view all" style button under a product row or
+    carousel and found only plain navigation links (Shop All, in their mega menu and
+    footer), never styled as a button. Rather than inventing a match against something
+    moonmagic doesn't actually have, this family keeps its own established, internally
+    consistent size.
 - No borders around media. Product cards sit on the page ground, not in grey boxes.
 
 ## Working agreements
