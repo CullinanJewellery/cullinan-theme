@@ -680,11 +680,12 @@ html {
   picture's left edge. Moved further left minutes later, at the owner's
   request -- `4%`, no longer tied to the cut: the text now starts inside
   the pink margin, left of the picture itself, rather than flush with it.
-  Nudged again right after ("a little bit more") to `2%`.
+  Nudged again right after ("a little bit more") to `2%`, then once more
+  ("a little bit closer") to `1%`.
 */
 @media screen and (min-width: 750px) {
   [id^="shopify-section-"][id$="__silver_teaser"] .banner__content {
-    padding-left: 2%;
+    padding-left: 1%;
   }
 }
 

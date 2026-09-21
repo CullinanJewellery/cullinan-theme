@@ -620,7 +620,8 @@ Anything of ours that is not a Dawn setting lives in these two places:
     `10%` to `4%`, so the text now starts inside the pink margin, to the left of the picture
     itself, rather than flush with its edge. The clip-path's own `10%` is untouched; the two
     values were only ever meant to stay equal while that made the text line up with the
-    picture, not permanently coupled. **Nudged again** ("a little bit more") to `2%`.
+    picture, not permanently coupled. **Nudged again** ("a little bit more") to `2%`, then
+    once more ("a little bit closer") to `1%`.
   - **The empty slot shown on desktop too, at the owner's request** ("make the picture
     different colour... so I can see it" -- to judge the cut and its position live, without
     waiting for a real photograph). Not a new placeholder graphic: `.banner__media--empty`
