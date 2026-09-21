@@ -231,6 +231,18 @@ Rules that matter here:
     instead of the theme’s own near-black `#221F1C` -- the owner’s own complaint, “the color
     is not black... the blackest color.” Scoped to the homepage’s own block; see Social follow
     section under Custom code.
+- **The muted, restrained palette has one deliberate exception: the homepage hero's own
+  button, since 2026-09-21.** At the owner's explicit instruction ("change the color to
+  something bright that is going to make the eye look first at this button... i don't care
+  if in the md file is written that we are not doing that we are doing it") -- acknowledged
+  as overriding this whole section, not just one line of it, so logged as an exception here
+  rather than quietly changed. `#E63946`, a vivid imperial red, replacing scheme-5's own
+  dark `#391D13` for this one button only -- the silver banner, sharing the same markup and
+  scheme, keeps the dark colour. Implemented as a scoped `--color-button`/`--color-button-text`
+  override in the "Hero buttons" section of `assets/crown.css`, on `.banner__box` specifically
+  (that's where `.color-scheme-5` actually redeclares those variables, checked live rather
+  than assumed -- an override on the outer section wrapper would have sat further from the
+  button than that redeclaration and lost silently, with no visible effect at all).
 - Product photography should be worn on real people where possible — jewellery is impossible
   to judge for scale on a white background.
 
@@ -442,6 +454,21 @@ Rules that matter here:
       `1.4rem` inherited unchanged onto a full-width phone button. Given one new phone-only
       override apiece, all three the same: `5.8rem`/`1.3rem`. Desktop and tablet keep
       `6.4rem`/`1.4rem` for all three, unchanged.
+  - **Sized down once more a few minutes later, with the hero named as an exception this
+    time** ("make them a little bit smaller but now also don't touch the section button of
+    БЛЯСЪК БЕЗ УСИЛИЕ"). Since the previous round had moved the hero's own button off its
+    exact moonmagic measurement (above), the owner drew the line there rather than shrinking
+    it further:
+    - **Default buttons**: `4.6rem`/`1.6rem` to `4.2rem`/`1.4rem` (tablet/desktop untouched).
+    - **The hero's own phone button is pinned at its previous round's size, `4.8rem`/
+      `1.4rem`, and does not move again.** The shared rule it used to come from
+      (`.banner.banner--mobile-bottom .banner__buttons .button`) is left exactly as it was
+      for the hero's sake; the silver banner, which shared that same rule, gets a new, more
+      specific override instead so it can keep shrinking without moving the hero --
+      `4.4rem`/`1.2rem`, scoped to the silver banner's own section id like its other
+      overrides.
+    - **The atelier teaser buttons, view-all, and contact-methods buttons**: `5.8rem`/
+      `1.3rem` to `5.4rem`/`1.2rem`, all three together, same as the round before.
 - No borders around media. Product cards sit on the page ground, not in grey boxes.
 
 ## Working agreements

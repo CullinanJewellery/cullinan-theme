@@ -203,11 +203,13 @@
     margin-top: 3.2rem;
     /* A little smaller on a phone, at the owner's request, matching the
        same reduction given to every other button family on the site
-       except the two social-icon blocks and Първи научавайте. Desktop
-       keeps its own 6.4rem/1.4rem, shared with "view all" under the
-       product row and the Контакти contact-methods buttons. */
-    min-height: 5.8rem;
-    font-size: 1.3rem;
+       except the hero, the two social-icon blocks and Първи научавайте.
+       Desktop keeps its own 6.4rem/1.4rem, shared with "view all" under
+       the product row and the Контакти contact-methods buttons. Sized
+       down once more a few minutes later, matching that same second
+       round everywhere else it applied. */
+    min-height: 5.4rem;
+    font-size: 1.2rem;
   }
 }
 

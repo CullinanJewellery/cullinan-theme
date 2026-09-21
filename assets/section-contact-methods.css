@@ -172,11 +172,13 @@
 
 /* A little smaller on a phone, at the owner's request, matching the
    atelier teaser buttons and "view all" under the product row -- all
-   three share this button's own 6.4rem/1.4rem on tablet and desktop. */
+   three share this button's own 6.4rem/1.4rem on tablet and desktop.
+   Sized down once more a few minutes later, matching that same second
+   round everywhere else it applied. */
 @media screen and (max-width: 749px) {
   .contact-methods__button {
-    min-height: 5.8rem;
-    font-size: 1.3rem;
+    min-height: 5.4rem;
+    font-size: 1.2rem;
   }
 }
 

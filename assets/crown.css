@@ -34,6 +34,13 @@
    at all, so untouched either way) and Първи научавайте (Dawn's
    `.field__button`, also never `.button`). Tablet and desktop are
    unchanged here.
+
+   Sized down once more, phones only, minutes later ("make them a little
+   bit smaller"). This rule never reached the hero or silver banner
+   anyway (they read `.banner__buttons .button`, more specific), so the
+   owner's request to leave the hero's own button untouched this round
+   needed no change here -- see Hero buttons below for the silver
+   banner's further reduction and the hero's own exclusion.
    --------------------------------------------------------------------------- */
 
 .button,
@@ -47,8 +54,8 @@
   .button,
   .shopify-challenge__button,
   .customer button {
-    min-height: 4.6rem;
-    font-size: 1.6rem;
+    min-height: 4.2rem;
+    font-size: 1.4rem;
   }
 }
 
@@ -96,6 +103,46 @@
   background-color: transparent;
   color: rgb(var(--color-button));
   box-shadow: inset 0 0 0 1px rgb(var(--color-button));
+}
+
+/*
+  The hero's own button, in a bright colour, at the owner's explicit
+  instruction: "change the color to something bright that is going to
+  make the eye look first at this button... i don't care if in the md
+  file is written that we are not doing that we are doing it." This is a
+  deliberate, acknowledged exception to two standing rules at once --
+  "gold comes from the photographs, not the interface" and "no pure white
+  or pure black" don't apply here since this isn't gold or black/white,
+  but more broadly the whole muted, restrained palette under Design
+  direction. Documented as an exception rather than quietly changing the
+  rule itself, since the owner overrode it for this one button, not for
+  buttons generally.
+
+  `#E63946`, a vivid imperial red -- warm enough not to fight the hero's
+  own pink/gradient background outright, but far more saturated than
+  anything else on the page, so it reads as the one thing asking to be
+  clicked. White label text keeps strong contrast (about 4:1). Set as a
+  scoped override of `--color-button`/`--color-button-text` rather than
+  hardcoding new rules, so the existing base and hover styles above (built
+  entirely from those two variables) pick it up without needing their own
+  copies -- the hover state's fill-to-outline behaviour carries over
+  unchanged, just in red instead of scheme-5's own `#391D13`.
+
+  Scoped to `.banner__box` inside the hero's own section id, not the
+  section wrapper itself -- checked live first rather than assumed:
+  `--color-button` is actually redeclared by `.color-scheme-5`, and that
+  class sits on `.banner__box` (a div nested inside `.banner`), not on
+  the outer `#shopify-section-…` wrapper or on `.banner` itself. An
+  override on the wrapper would have sat further from the button than
+  that redeclaration and lost silently, with no visible effect at all.
+  Matching `.banner__box` directly, with the same higher-specificity id
+  anchor as everywhere else on this file, wins over `.color-scheme-5`
+  instead. The silver banner shares the same markup and scheme-5, but a
+  different section id, so it keeps its own dark colour untouched.
+*/
+[id^="shopify-section-"][id$="__hero_image"] .banner__box {
+  --color-button: 230, 57, 70;
+  --color-button-text: 255, 255, 255;
 }
 
 /* ---------------------------------------------------------------------------
@@ -615,6 +662,21 @@ html {
 }
 
 /*
+  The silver banner's own phone button, smaller still, at the owner's
+  request ("make them a little bit smaller... but don't touch the section
+  button of Блясък без усилие"). The rule just above is shared with the
+  hero, so it stays exactly as it was for the hero's sake; this adds a
+  more specific override reaching only the silver banner, anchored the
+  same way as its other overrides further down this file.
+*/
+@media screen and (max-width: 749px) {
+  [id^="shopify-section-"][id$="__silver_teaser"] .banner__buttons .button {
+    min-height: 4.4rem;
+    font-size: 1.2rem;
+  }
+}
+
+/*
   The phone panel's own background, at the owner's instruction (2026-09-18):
   moonmagic's own phone hero sits on a pink, measured directly on their site
   as rgb(243, 225, 219) / #F3E1DB. Scheme-5's own sand (#E7E1D6, set in
@@ -967,9 +1029,11 @@ html {
     min-width: 0;
     /* A little smaller on a phone, at the owner's request, matching the
        atelier teaser buttons and every other button family on the site
-       except the two social-icon blocks and Първи научавайте. */
-    min-height: 5.8rem;
-    font-size: 1.3rem;
+       except the hero, the two social-icon blocks and Първи научавайте.
+       Sized down once more a few minutes later, matching that same
+       second round everywhere else it applied. */
+    min-height: 5.4rem;
+    font-size: 1.2rem;
   }
 }
 
