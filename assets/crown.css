@@ -736,6 +736,21 @@ html {
 }
 
 /*
+  Square corners on this one button, at the owner's request: the same
+  rectangular shape Първи научавайте's own button already has -- not its
+  colour or size, just the shape. That button was never a pill in the
+  first place (it's Dawn's `.field__button`, an input-group button with no
+  `border-radius` of its own at all, never the site-wide pill setting's
+  `.button` class -- see Square corners under Design tokens), so matching
+  it here just means overriding `--buttons-radius` back to 0 for this one
+  button specifically, not touching the site-wide setting or any other
+  button on the page.
+*/
+[id^="shopify-section-"][id$="__silver_teaser"] .banner__buttons .button {
+  border-radius: 0;
+}
+
+/*
   The heading's own size, tuned twice more the same day. `heading_size`
   was already moved to `h2`, Dawn's smallest preset (`.h2 { font-size:
   calc(var(--font-heading-scale) * 2.4rem) }` on desktop, `base.css`) --

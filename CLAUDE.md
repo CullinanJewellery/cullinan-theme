@@ -573,6 +573,15 @@ Anything of ours that is not a Dawn setting lives in these two places:
     not that much bigger than the one in the section under it." The plain midpoint tied
     that button's height exactly (6.4 = 6.4), so the height came up slightly further, to
     read as clearly, if modestly, bigger in all three dimensions rather than equal in one.
+  - **Square corners on this one button, at the owner's request** ("the button form to be
+    rectangular like in section Първи научавайте, but just the form" -- the shape, not its
+    colour or size). That button was never a pill to begin with: it's Dawn's own
+    `.field__button` (an input-group button, `base.css`), which carries no `border-radius`
+    at all, never the `.button` class the site-wide pill setting governs (see Square corners
+    under Design tokens) -- so matching its shape here means overriding `--buttons-radius`
+    back to `0` for this one button specifically. No breakpoint restriction, unlike the
+    other overrides on this section: shape isn't tied to the desktop-only layout the way the
+    cut and the repositioned text are, so it applies at every width.
   - **The heading, smaller again, then partway back up, minutes apart** (the owner quoted
     the heading text directly, asked for it smaller, then for it bigger again with the
     caution "don't make it too big"). `h2` was already Dawn's smallest preset, so there was
