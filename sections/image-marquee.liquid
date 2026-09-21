@@ -59,6 +59,16 @@
                 {%- endcomment -%}
                 <span class="marquee__image marquee__image--empty"></span>
               {%- endif -%}
+              {%- comment -%}
+                The picture sits smaller than its item on purpose, so a caption
+                fits underneath it, the way the reference's own carousel does --
+                its version bakes the words into the photograph itself, which
+                this project's own rule against burned-in text rules out, so
+                this is a real caption instead. The line always renders, with
+                its own reserved height, even blank: nothing to shift once the
+                owner has a photograph and a caption to give it.
+              {%- endcomment -%}
+              <span class="marquee__caption">{{ block.settings.caption | escape }}</span>
             {%- endcapture -%}
 
             {%- if block.settings.link != blank and pass == 1 -%}
@@ -159,6 +169,12 @@
           "id": "alt",
           "label": "Alt text",
           "info": "Leave empty if the picture is decorative."
+        },
+        {
+          "type": "text",
+          "id": "caption",
+          "label": "Caption",
+          "info": "A short line under the picture, e.g. a stone or material. Leave empty for now."
         },
         {
           "type": "url",

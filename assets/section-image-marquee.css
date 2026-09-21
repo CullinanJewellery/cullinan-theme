@@ -38,12 +38,42 @@
   display: block;
 }
 
+/*
+  The picture sits smaller than its own item, at the owner's request, so a
+  caption fits underneath it -- the reference's own equivalent (a Swiper
+  carousel just above its facts strip) does this by baking the words into
+  the photograph itself, which this project's "nothing burned into a
+  photograph" rule rules out (see Design direction), so the picture shrinks
+  instead and a real caption goes below it. 84% of the item's own width,
+  centred, keeps the drift feeling continuous rather than opening a gap
+  between neighbours the way a narrower item would.
+*/
 .marquee__image {
   display: block;
-  width: 100%;
+  width: 84%;
+  margin: 0 auto;
   aspect-ratio: 1 / 1;
   object-fit: cover;
   border-radius: 0;
+}
+
+/*
+  Always rendered, even blank, with its own reserved line height -- so
+  nothing shifts once the owner has a photograph and a caption to give it.
+  Centred under the now-smaller picture, in the same small-capitals style
+  the other short labels on the site use (the facts strip, the atelier
+  eyebrows).
+*/
+.marquee__caption {
+  display: block;
+  min-height: 1.7rem;
+  margin-top: 0.8rem;
+  font-size: 1.1rem;
+  line-height: 1.7rem;
+  letter-spacing: 0.08em;
+  text-align: center;
+  text-transform: uppercase;
+  color: rgba(var(--color-foreground), 0.75);
 }
 
 /* Stands in until the photography exists — the band keeps its rhythm. */

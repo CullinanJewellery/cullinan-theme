@@ -896,6 +896,33 @@ Anything of ours that is not a Dawn setting lives in these two places:
       (unlike a Dawn section's own `{% style %}` block, which halves the value under
       `max-width: 749px`), so 12px is the true, same gap above and below the pictures at
       every screen width, not a value that scales.
+  - **Pictures made smaller, with a caption line added below each, 2026-09-21, at the
+    owner's request** ("make the pictures smaller so we can put text like moonmagic did").
+    Checked moonmagic's own equivalent directly first, per "Before you build": it isn't a
+    marquee at all but a Swiper carousel sitting just above its own facts strip (confirmed
+    live -- `.hero-banner__carousel`, `swiper-slide hero-banner__slide`), and its "text"
+    (things like "10 YEARS OF MOON MAGIC") turned out to be baked directly into the
+    photograph file itself, not live theme text -- exactly what "nothing is burned into a
+    photograph" (Design direction, the single most important rule on the project) rules out
+    here. So the outcome is copied -- a smaller picture with a caption -- not the mechanism:
+    `.marquee__image` comes down from `width: 100%` to `84%`, centred, and a new
+    `.marquee__caption` line renders under every picture, in the block's own new `caption`
+    text setting (`sections/image-marquee.liquid`).
+    - **Renders even when blank, on purpose, with its own reserved `min-height`.** No
+      caption text exists yet -- "we are not putting any text right now because we don't
+      have pictures" -- so every block's `caption` setting stays empty in
+      `templates/index.json` for now, same as every other empty image slot on the site.
+      Reserving the line's height regardless means nothing in the band will shift or resize
+      once the owner has photographs and captions to give them; structure before content,
+      the same rule the collections and the About page's own empty photo halves already
+      follow.
+    - **84%, not moonmagic's own much smaller gem-icon proportions.** Checked a second
+      moonmagic pattern too -- their "Designed to Mean More" row (small round gem swatches,
+      each about 57% picture to 43% caption+spacing by height) -- as the nearest *real*
+      image-plus-live-caption pairing on their site, since the carousel itself offered none.
+      Shrinking this project's own full-width photography that far would have read as icon
+      chips rather than jewellery photography, so 84% keeps the pictures the main subject
+      and the caption a short line underneath, not a coin flip between the two.
 - **Visual mega menu.** `snippets/header-visual-menu.liquid`, wired into
   `snippets/header-mega-menu.liquid` and `snippets/header-drawer.liquid`. Shopify menu items
   cannot carry images, so the items are `visual_menu_item` blocks on the header section. Each
