@@ -615,6 +615,12 @@ Anything of ours that is not a Dawn setting lives in these two places:
     `.banner`'s full width (`.banner__content` is `width: 100%` there too), so the two stay
     in sync if the cut size ever changes again without needing two numbers kept in step by
     hand.
+  - **Moved further left again, no longer tied to the cut.** The owner asked for the text
+    and button moved further left still -- `padding-left` came down from the picture-matched
+    `10%` to `4%`, so the text now starts inside the pink margin, to the left of the picture
+    itself, rather than flush with its edge. The clip-path's own `10%` is untouched; the two
+    values were only ever meant to stay equal while that made the text line up with the
+    picture, not permanently coupled.
   - **The empty slot shown on desktop too, at the owner's request** ("make the picture
     different colour... so I can see it" -- to judge the cut and its position live, without
     waiting for a real photograph). Not a new placeholder graphic: `.banner__media--empty`

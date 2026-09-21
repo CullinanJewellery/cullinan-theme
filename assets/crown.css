@@ -672,14 +672,18 @@ html {
   left side (`.banner__content { padding: 5rem }`, Dawn's own fixed gutter,
   `assets/section-image-banner.css`) -- landing well to the left of where
   the picture above now actually starts. This overrides just the left
-  side, to the same 10% the clip-path above uses, so the two line up: both
-  percentages resolve against the same box, `.banner`'s own full width
-  (`.banner__content` is `width: 100%`), so one value keeps them in sync if
-  the cut ever changes again.
+  side instead: both percentages resolve against the same box (`.banner`'s
+  own full width; `.banner__content` is `width: 100%` too), so one value
+  keeps the two in sync.
+
+  Started matched to the clip-path's own 10%, landing exactly on the
+  picture's left edge. Moved further left minutes later, at the owner's
+  request -- `4%`, no longer tied to the cut: the text now starts inside
+  the pink margin, left of the picture itself, rather than flush with it.
 */
 @media screen and (min-width: 750px) {
   [id^="shopify-section-"][id$="__silver_teaser"] .banner__content {
-    padding-left: 10%;
+    padding-left: 4%;
   }
 }
 
