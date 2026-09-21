@@ -643,7 +643,9 @@ html {
   the centre but stopping well short of it. `inset()` with 0 on the
   top/bottom sides does exactly that: it crops the left and right only,
   leaving a plain rectangle, narrower and centred, no diagonal anywhere.
-  18% leaves the middle 64% of the width showing.
+  Started at 18% a side (the middle 64% showing), brought down to 10% a
+  side minutes later at the owner's request to make the cut smaller -- the
+  middle 80% now shows.
 
   Desktop only. On a phone the image sits in its own square above the text
   panel, stacked rather than layered, on `.banner`'s plain scheme-5 colour
@@ -657,7 +659,27 @@ html {
 */
 @media screen and (min-width: 750px) {
   [id^="shopify-section-"][id$="__silver_teaser"] .banner__media {
-    clip-path: inset(0 18% 0 18%);
+    clip-path: inset(0 10% 0 10%);
+  }
+}
+
+/*
+  The text and button moved back to the left, at the owner's request, but
+  aligned to the picture's own left edge rather than the banner's true
+  edge -- `desktop_content_position`/`desktop_content_alignment` are back
+  to `middle-left`/`left` in `templates/index.json`, which by itself would
+  put `.banner__content`'s own flex box flush against the banner's true
+  left side (`.banner__content { padding: 5rem }`, Dawn's own fixed gutter,
+  `assets/section-image-banner.css`) -- landing well to the left of where
+  the picture above now actually starts. This overrides just the left
+  side, to the same 10% the clip-path above uses, so the two line up: both
+  percentages resolve against the same box, `.banner`'s own full width
+  (`.banner__content` is `width: 100%`), so one value keeps them in sync if
+  the cut ever changes again.
+*/
+@media screen and (min-width: 750px) {
+  [id^="shopify-section-"][id$="__silver_teaser"] .banner__content {
+    padding-left: 10%;
   }
 }
 

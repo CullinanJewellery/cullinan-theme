@@ -544,7 +544,9 @@ Anything of ours that is not a Dawn setting lives in these two places:
     and bottom left uncut, brought in toward the centre but stopping well short of it.
     `clip-path: inset(0 18% 0 18%)` does this instead: zero inset on the top/bottom sides
     crops only the left and right, leaving a plain rectangle, narrower and centred, no
-    diagonal anywhere -- 18% leaves the middle 64% of the width showing. Either way,
+    diagonal anywhere -- 18% leaves the middle 64% of the width showing (**brought down to
+    10% a side minutes later**, at the owner's request to make the cut smaller -- the middle
+    80% shows now). Either way,
     `.banner__media` is Dawn's own `position: absolute; inset: 0` sitting over `.banner`'s
     own gradient, so clipping it is enough; nothing else needed changing. Desktop only
     (`min-width: 750px`): on a phone the image is stacked above the text panel on
@@ -602,6 +604,17 @@ Anything of ours that is not a Dawn setting lives in these two places:
     is the picture" -- centring both settings puts the whole content block over the middle
     of that inset picture instead, matching where it now actually is rather than
     moonmagic's original layout for a full-bleed image this section no longer has.
+  - **Back to the left minutes later, but aligned to the picture's own edge, not the
+    banner's.** The owner asked for the text and button "in the left of the picture" --
+    `desktop_content_position`/`desktop_content_alignment` moved back to `middle-left`/
+    `left`, but Dawn's own left position by itself would land the content flush against
+    `.banner__content`'s fixed `padding: 5rem` gutter (`assets/section-image-banner.css`),
+    well to the left of where the (now 10%-inset) picture actually starts. A scoped
+    `padding-left: 10%` on `.banner__content` overrides just that one side to match the
+    clip-path's own inset exactly -- both percentages resolve against the same box,
+    `.banner`'s full width (`.banner__content` is `width: 100%` there too), so the two stay
+    in sync if the cut size ever changes again without needing two numbers kept in step by
+    hand.
 - **Category mosaic.** `sections/category-mosaic.liquid` with
   `assets/section-category-mosaic.css`. Four columns, tall tiles at each end spanning both
   rows, squares between — the block order drives it, because `grid-auto-flow: dense`
