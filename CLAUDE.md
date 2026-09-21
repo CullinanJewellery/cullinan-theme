@@ -853,6 +853,25 @@ Anything of ours that is not a Dawn setting lives in these two places:
     claim wraps to two lines at 375px with 16px of margin to spare, and sits back on one line
     by 768px, where there is already enough room without wrapping. Desktop (990px+) was never
     touched by any of this -- it already fit at the flat `1.4rem` size throughout.
+  - **Pink/gradient background added, 2026-09-21, at the owner's request to look at how
+    moonmagic really does the whole hero-through-marquee area and match it.** Checked
+    directly rather than assumed: on moonmagic this strip and the picture row below it are
+    not separate coloured bands at all -- both sit inside the *same* section as the hero
+    itself (`section.hero-banner.hero-banner--gradient`, confirmed live), on one continuous
+    `linear-gradient(rgb(255,232,224) 0%, rgb(243,225,219) 100%)` that runs the section's
+    whole 854px height; the hero's own photo simply covers it further up, the same technique
+    already used here (see the hero's own gradient note above). Ours are three separate
+    Shopify sections (`hero_image`, `hero_facts`, `image_marquee`), so one literal continuous
+    gradient element isn't possible the way it is in one `<section>` -- but this section was
+    the one gap in an otherwise shared colour: the hero and the marquee already reuse the
+    identical pink/gradient tokens, while this one sat on plain scheme-1 between them,
+    reading as two seams (pink, then off-white, then pink again) instead of one continuous
+    flow. Given a stable `hero-facts-band` class on its own outer wrapper (it had none before
+    -- only the dynamic `color-{{ scheme }}` class, which `.marquee` and `.banner` already
+    have their own equivalent of), then the exact same two rules the hero and the marquee
+    already carry: flat `#F3E1DB` below 750px, `linear-gradient(180deg, #FFE8E0 0%, #F3E1DB
+    100%)` from 750px up. Scheme-1's own dark text is untouched -- the marquee already proves
+    that combination reads fine on this same pink.
 - **Benefits row.** `sections/icon-benefits.liquid` with `assets/section-icon-benefits.css`
   and `snippets/icon-benefit.liquid`. Four short promises under the product row. Each block
   takes either an uploaded image (contained, never cropped, no mask or border) or one of nine
