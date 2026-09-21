@@ -469,6 +469,31 @@ Rules that matter here:
       overrides.
     - **The atelier teaser buttons, view-all, and contact-methods buttons**: `5.8rem`/
       `1.3rem` to `5.4rem`/`1.2rem`, all three together, same as the round before.
+- **Buttons lift up on hover, site-wide, since 2026-09-21** ("lets make them move up like in
+  hestiahome.bg... except for Първи научавайте"). Checked hestiahome.bg directly rather than
+  guessing at the mechanism: its own custom stylesheet gates the effect behind an
+  `.animate--hover-vertical-lift` class, and that class and its rules
+  (`transform: translateY(-.25rem)` on hover, back to `translateY(0)` on active) already
+  exist in **our own Dawn `base.css`, unused** -- this is a stock Dawn feature, not something
+  hestiahome built, just switched on there and off here. Turned on the same way: the theme
+  setting `animations_hover_elements` moved from `none` to `vertical-lift` in
+  `config/settings_data.json` (Dawn's own options are `default`, `vertical-lift`, `3d-lift`;
+  `layout/theme.liquid` adds the class to `<body>` from this setting). No custom CSS needed.
+  - **Първи научавайте needed no exclusion rule, the same way the two social-icon blocks
+    didn't for the sizing round above.** Checked its markup directly
+    (`sections/newsletter.liquid`, `sections/email-signup-banner.liquid`,
+    `sections/footer.liquid`): its button's class is `newsletter-form__button field__button`
+    -- never `.button` -- and Dawn's lift rule only ever targets `.button` (plus
+    `.shopify-challenge__button`, `.customer button`, `.shopify-payment-button__button`), so
+    it was already outside the rule's reach before this setting existed.
+  - **One bundled side effect worth knowing about**: Dawn's own `.animate--hover-vertical-lift`
+    also lifts product cards on hover (`.card-wrapper:hover .card--card { transform:
+    translateY(-.75rem) }`), the same single setting covering both -- stock Dawn has no
+    separate toggle for "buttons only." Not asked for specifically, but a standard,
+    complementary e-commerce pattern, and hestiahome.bg's own site gets the same pairing
+    from this same unmodified Dawn mechanism. Worth flagging if the owner ever wants button
+    lift without card lift, since that would need overriding Dawn's own rule rather than
+    just the setting.
 - No borders around media. Product cards sit on the page ground, not in grey boxes.
 
 ## Working agreements
