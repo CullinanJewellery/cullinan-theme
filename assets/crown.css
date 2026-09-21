@@ -2142,6 +2142,49 @@ html {
 }
 
 /*
+  Вижте работата ни and Ще ни намерите и там lift on hover too, at the
+  owner's request, matching the same site-wide hover-lift the .button
+  class now has (see Buttons lift up on hover under Design tokens). These
+  two are never `.button` -- confirmed when that setting first went on,
+  which is exactly why they needed no exclusion rule then -- so Dawn's own
+  `.animate--hover-vertical-lift` mechanism never reaches them regardless
+  of the setting, and the lift has to be built by hand.
+
+  Scoped to `.footer__social .footer__list-social .list-social__link`
+  rather than the bare class: `render 'social-icons'` (snippets/social-
+  icons.liquid) also backs Dawn's own stock footer "brand" block and, in
+  principle, the announcement bar and menu drawer (see the settings that
+  keep those two off, under Top bar) -- none of those sit inside
+  `.footer__social`, so this reaches only the two named sections and nothing
+  dormant elsewhere that might use the same class later. `.footer__social`
+  alone covers both: the Контакти variant is `.footer__social--contact`,
+  still a `.footer__social` element.
+
+  Same values as the .button lift: translateY(-0.25rem) on hover,
+  back to 0 on active, so it reads as the same interaction site-wide
+  rather than a slightly different one just for these two buttons. Added
+  to focus-visible too, unlike Dawn's own hover-only button rule, since
+  these buttons already pair hover with focus-visible for their colour
+  change (see the two rules above) and keyboard focus deserves the same
+  feedback a mouse gets.
+*/
+.footer__social .footer__list-social .list-social__link {
+  transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out,
+    box-shadow 0.35s ease-in-out, transform 0.2s cubic-bezier(0, 0, 0.3, 1);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .footer__social .footer__list-social .list-social__link:hover,
+  .footer__social .footer__list-social .list-social__link:focus-visible {
+    transform: translateY(-0.25rem);
+  }
+
+  .footer__social .footer__list-social .list-social__link:active {
+    transform: translateY(0);
+  }
+}
+
+/*
   Homepage only, side by side like the reference's own phone footer
   (2026-09-18, at the owner's request: "you can see that on moonmagic on
   phone in their homepage") -- Контакти keeps the stacked treatment above.

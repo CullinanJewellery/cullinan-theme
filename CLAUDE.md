@@ -510,12 +510,23 @@ Rules that matter here:
     order (crown.css loads after base.css), but still needed `transform` added to its own
     list for the same smooth-lift reason. Checked live after the fix: all three fade color
     over 0.35s and lift over 0.2s together, matching hestiahome.bg's own combined feel.
-  - **The Контакти contact-methods buttons get no lift at all, left that way.** They never
-    carry Dawn's `.button` class (built by hand, see Contact methods under Custom code), so
-    Dawn's rule was never going to reach them regardless of specificity -- not a bug, just a
-    gap this change doesn't close. Adding lift there would mean writing a bespoke transform/
-    transition pair rather than flipping the shared setting, which is out of scope for what
-    was asked here.
+  - **Вижте работата ни and Ще ни намерите и там added by hand, minutes later, at the
+    owner's own follow-up request.** Neither is `.button` either (`.list-social__link`,
+    confirmed above), so they needed the bespoke transform/transition pair the note below
+    once called out of scope -- built after all, once actually asked for. Same values as the
+    `.button` lift (`translateY(-0.25rem)` on hover, back to `0` on active), scoped to
+    `.footer__social .footer__list-social .list-social__link` rather than the bare class:
+    `render 'social-icons'` (`snippets/social-icons.liquid`) also backs Dawn's own stock
+    footer "brand" block and, in principle, the announcement bar and menu drawer (both kept
+    off, see Top bar) -- none of those sit inside `.footer__social`, so this reaches only
+    the two named sections. `.footer__social` alone covers both, since Контакти's own
+    `.footer__social--contact` is still a `.footer__social` element. Added to
+    `:focus-visible` too, unlike Dawn's own hover-only rule, since these two already pair
+    hover with focus-visible for their colour change.
+  - **The Контакти contact-methods buttons still get no lift at all, left that way.** They
+    never carry Dawn's `.button` class either (built by hand, see Contact methods under
+    Custom code), but the owner named the two social blocks specifically here, not this one
+    -- so it stays as the one remaining gap unless asked for.
 - No borders around media. Product cards sit on the page ground, not in grey boxes.
 
 ## Working agreements
