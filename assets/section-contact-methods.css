@@ -170,6 +170,16 @@
   color: rgb(var(--color-button-text));
 }
 
+/* A little smaller on a phone, at the owner's request, matching the
+   atelier teaser buttons and "view all" under the product row -- all
+   three share this button's own 6.4rem/1.4rem on tablet and desktop. */
+@media screen and (max-width: 749px) {
+  .contact-methods__button {
+    min-height: 5.8rem;
+    font-size: 1.3rem;
+  }
+}
+
 @media screen and (min-width: 750px) {
   .contact-methods__summary {
     padding: 0 4rem;

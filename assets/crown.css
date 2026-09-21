@@ -26,6 +26,14 @@
    Untested against a real Add to Cart button live: the store has no
    products yet (see Current state), so this is correct in the CSS but
    unverified in that exact context until one exists.
+
+   Sized down a little further on phones only, at the owner's request
+   ("a little bit smaller... for a phone"), across every button family on
+   the site except the two social-icon blocks (Ще ни намерите и там,
+   Вижте работата ни -- built from `.list-social__link`, never `.button`
+   at all, so untouched either way) and Първи научавайте (Dawn's
+   `.field__button`, also never `.button`). Tablet and desktop are
+   unchanged here.
    --------------------------------------------------------------------------- */
 
 .button,
@@ -33,6 +41,15 @@
 .customer button {
   min-height: 5rem;
   font-size: 1.8rem;
+}
+
+@media screen and (max-width: 749px) {
+  .button,
+  .shopify-challenge__button,
+  .customer button {
+    min-height: 4.6rem;
+    font-size: 1.6rem;
+  }
 }
 
 @media screen and (min-width: 990px) {
@@ -532,9 +549,9 @@ html {
 
   .banner__buttons .button {
     min-width: auto;
-    min-height: 5rem;
+    min-height: 4.6rem;
     padding: 0 3.2rem;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
   }
 }
 
@@ -545,6 +562,13 @@ html {
   Measured at 390px: a 390 x 394 photograph (square), the heading just under it,
   16px text on a 20px line, and a full-width black button, 350 x 52, 16px
   capitals. Nothing sits on the picture here, so the button can span the width.
+
+  The button's own 52px/16px above was this exact moonmagic measurement --
+  sized down anyway to 48px/14px at the owner's later request to shrink
+  every phone button "a little bit smaller" except the two social-icon
+  blocks and Първи научавайте (see Default buttons at the top of this
+  file), so this one moves slightly off the moonmagic-matched figure on
+  purpose.
 */
 @media screen and (max-width: 749px) {
   /* Dawn fixes the photo at 39rem with (0,4,0) and loads after this file, so
@@ -584,9 +608,9 @@ html {
 
   .banner.banner--mobile-bottom .banner__buttons .button {
     width: 100%;
-    min-height: 5.2rem;
+    min-height: 4.8rem;
     padding: 0 1.6rem;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
   }
 }
 
@@ -941,6 +965,11 @@ html {
   .collection .collection__view-all .button {
     width: 100%;
     min-width: 0;
+    /* A little smaller on a phone, at the owner's request, matching the
+       atelier teaser buttons and every other button family on the site
+       except the two social-icon blocks and Първи научавайте. */
+    min-height: 5.8rem;
+    font-size: 1.3rem;
   }
 }
 

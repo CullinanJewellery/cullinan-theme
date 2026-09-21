@@ -421,6 +421,27 @@ Rules that matter here:
     footer), never styled as a button. Rather than inventing a match against something
     moonmagic doesn't actually have, this family keeps its own established, internally
     consistent size.
+  - **All sized down a little further on phones only, minutes later, at the owner's
+    request** ("make it a little bit smaller the buttons in every section except for Ще ни
+    намерите и там and Първи научавайте и Вижте работата ни for a phone"). Excluded because
+    neither is a `.button` at all: the two social-icon blocks are `.list-social__link`, and
+    Първи научавайте is Dawn's own `.field__button` -- both already outside every rule
+    below, so no exclusion selector was actually needed, just leaving them alone.
+    - **Default buttons** (Add to Cart etc., under Default buttons at the top of
+      `assets/crown.css`): `4.6rem`/`1.6rem` on phones only, tablet's `5rem`/`1.8rem` and
+      desktop's `5.5rem`/`2.2rem` untouched.
+    - **Hero and silver banner** (`.banner.banner--mobile-bottom .banner__buttons .button`):
+      `5.2rem`/`1.6rem` to `4.8rem`/`1.4rem`. This one was an exact moonmagic measurement
+      (350×52px, 16px capitals, from the hero's own build) -- this request moves it
+      slightly off that figure on purpose, since the owner asked for every phone button
+      smaller without naming an exception for it.
+    - **The atelier teaser buttons, "view all" under the product row, and the Контакти
+      contact-methods buttons** (`.atelier .atelier__button`, `.collection
+      .collection__view-all .button`, `.contact-methods__button`) -- previously the only
+      family with *no* phone-specific size at all, just their shared desktop `6.4rem`/
+      `1.4rem` inherited unchanged onto a full-width phone button. Given one new phone-only
+      override apiece, all three the same: `5.8rem`/`1.3rem`. Desktop and tablet keep
+      `6.4rem`/`1.4rem` for all three, unchanged.
 - No borders around media. Product cards sit on the page ground, not in grey boxes.
 
 ## Working agreements
