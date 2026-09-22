@@ -22,6 +22,18 @@
   ceiling, and reads closer to the reference besides.
 */
 
+/*
+  container_width (the row's own max-width) is what actually drives the
+  gap between claims on a computer: `justify-content: space-between`
+  spreads the leftover room in the row across the gaps between items, so a
+  wider row means more spread. Raised 1000px to 1150px, 2026-09-22 at the
+  owner's request ("make the gap between the text bigger for computer"),
+  which took the desktop gap from 33px to about 83px at 1440px. Below
+  roughly 1190px (this max-width plus the row's own horizontal padding)
+  the viewport itself is the tighter constraint, not this value, which is
+  why the request named "for a phone" separately -- see the media query
+  below for that half of it.
+*/
 .hero-facts__row {
   display: flex;
   flex-wrap: nowrap;
@@ -55,9 +67,20 @@
   at 375px (16px of margin to spare) and stays on one line by 768px, where
   there's already enough room without wrapping at all.
 */
+/*
+  Below 990px the row's own width is capped by the viewport, not
+  container_width, so the desktop fix above (a wider max-width) reaches
+  nothing here -- at 375px the four claims plus their gaps already fill
+  the row almost exactly, leaving space-between nothing free to distribute,
+  so this explicit gap is the real, binding value on a phone. Raised
+  0.9rem to 1.2rem, 2026-09-22 at the owner's request ("for a phone a
+  little bit bigger"). The row already wraps individual claims onto a
+  second line at this width by design (see the note above), so the extra
+  3px per gap only means slightly earlier wrapping, not overflow.
+*/
 @media screen and (max-width: 989px) {
   .hero-facts__row {
-    gap: 0.9rem;
+    gap: 1.2rem;
   }
 
   .hero-facts__item {
