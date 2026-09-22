@@ -72,8 +72,20 @@
     `.marquee__frame`'s own margin-top (2.5rem, above) is separate from
     this padding and still holds real pink space above it, so this was
     safe to zero out rather than leave at some smaller fraction.
+
+    Left/right widened again, to 1.9rem, at the owner's request to make
+    the box "square... for a phone and for a computer" (the phone override
+    below moves the same way). With vertical padding at 0, the box's own
+    height is fixed chrome only -- `.marquee__frame`'s margin-top plus
+    `.marquee__caption`'s own margin-top and min-height, 38px total at any
+    breakpoint, since none of those three values change with screen width.
+    Squaring the box means solving `item width - 2 x padding + 38 = item
+    width`, which cancels the item's own width out of the equation
+    entirely: padding = 19px (1.9rem) makes the box a perfect square
+    whatever its width happens to be -- the same one fix for a 230px
+    desktop card and a 144px phone card alike, checked live at both.
   */
-  padding: 0 1.2rem;
+  padding: 0 1.9rem;
   background-color: #F3E1DB;
   /*
     Each item occupies its own width plus one gap, so the number visible across
@@ -252,7 +264,15 @@
 @media screen and (max-width: 749px) {
   .marquee__item {
     width: calc(100vw / 2.435 - var(--marquee-gap, 24px));
-    padding: 0 0.8rem;
+    /*
+      0.8rem widened to 1.9rem alongside the base rule above, to square
+      the box here too. A happy match with the fix just above this one:
+      the item's own width (144px, tuned to moonmagic's card size) never
+      moves when padding changes, so 1.9rem lands this box at 144px tall
+      as well -- a perfect square at exactly the width already chosen for
+      an unrelated reason.
+    */
+    padding: 0 1.9rem;
   }
 }
 

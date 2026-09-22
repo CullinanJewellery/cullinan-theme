@@ -1160,6 +1160,23 @@ Anything of ours that is not a Dawn setting lives in these two places:
       - The tablet divisor (`100vw / 3`) and every desktop measurement (6 per row,
         already matched to moonmagic's own desktop carousel) were untouched throughout --
         this was a phone-only request both times.
+      - **The box squared off properly, computer and phone both, at the owner's
+        request** ("maybe for a phone and for a computer we need to make the background
+        boxes square"). With vertical padding at 0 (the "cut more more" round), the
+        box's own height above the frame is fixed chrome only -- `.marquee__frame`'s
+        margin-top plus `.marquee__caption`'s margin-top and min-height, 38px total,
+        unchanged at any breakpoint. Squaring the box means solving `item width - 2 x
+        padding + 38 = item width`, which cancels the item's own width out of the
+        equation entirely: `padding: 19px` (1.9rem) makes the box a perfect square
+        whatever its own width happens to be, so the same one value fixes desktop
+        (1.2rem to 1.9rem) and phone (0.8rem to 1.9rem) both -- checked live at each,
+        230x230px and 144x144px. Tablet, sharing the base rule with no override of its
+        own, becomes square too as a direct consequence, not a separate fix. On phone
+        this also happens to match the item's own width (144px) already tuned to
+        moonmagic's card size in the round just above, so the two requests landed on
+        the same number without needing to be reconciled by hand. The picture inside
+        (81% of a now-smaller frame) shrinks a little as a result, the same trade the
+        left/right widening made on desktop earlier in this section.
   `snippets/header-mega-menu.liquid` and `snippets/header-drawer.liquid`. Shopify menu items
   cannot carry images, so the items are `visual_menu_item` blocks on the header section. Each
   block names the top-level menu item it belongs to (matched on the title, case-insensitively,
