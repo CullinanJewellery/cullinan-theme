@@ -63,9 +63,19 @@
   display: block;
 }
 
+/*
+  Smaller than its own box and centred in it, 2026-09-22 at the owner's
+  request ("make the pictures smaller and center them by the background
+  boxes they are in"). The pink now lives on each item's own box rather
+  than the shared band (see the note on .marquee__item above), so shrinking
+  the picture reveals that box's own background as a deliberate frame
+  around it -- not the unwanted band-colour margin the same shrink caused
+  the first time it was tried, back when the band still carried the colour.
+*/
 .marquee__image {
   display: block;
-  width: 100%;
+  width: 84%;
+  margin: 0 auto;
   aspect-ratio: 1 / 1;
   object-fit: cover;
   border-radius: 0;

@@ -979,6 +979,19 @@ Anything of ours that is not a Dawn setting lives in these two places:
       100vw, split six ways instead of eight) and lands exactly six of them corner to
       corner, without needing to touch the gap value itself. `gap` stays `24`, untouched
       by this round.
+    - **The picture itself shrunk again and centred in its box, minutes later, at the
+      owner's request** ("make the pictures smaller and center them by the background
+      boxes they are in"). `.marquee__image` moves from `width: 100%` to `width: 84%;
+      margin: 0 auto`, so it sits inset and centred within its own item's padded content
+      area rather than filling it edge to edge. This is the same 84% this project tried
+      once before and reverted the same day -- but the reason for that revert no longer
+      applies: back then the pink lived on the shared band, so shrinking the picture
+      revealed the band's own colour as an unwanted margin around a plain photograph.
+      Now the pink lives on each item's own box (the round just above this one), so the
+      same shrink instead reveals that box's own background as a deliberate frame around
+      a smaller picture -- which is what was asked for this time. The empty-slot
+      placeholder (`.marquee__image--empty`) shares the same class, so it shrinks and
+      centres the same way with nothing further to build.
   `snippets/header-mega-menu.liquid` and `snippets/header-drawer.liquid`. Shopify menu items
   cannot carry images, so the items are `visual_menu_item` blocks on the header section. Each
   block names the top-level menu item it belongs to (matched on the title, case-insensitively,
