@@ -1083,6 +1083,8 @@ Anything of ours that is not a Dawn setting lives in these two places:
         own internal padding instead, the other reading of "make it bigger," would have
         left the boxes' own outer edges -- and the gap between them -- exactly where they
         already were, so it would not have produced the effect the owner described.
+      - **Cut again, minutes later** ("cut more"). `gap` 10 to 4, same setting, same
+        formula -- the boxes sit closer together still and grow a little more with it.
   `snippets/header-mega-menu.liquid` and `snippets/header-drawer.liquid`. Shopify menu items
   cannot carry images, so the items are `visual_menu_item` blocks on the header section. Each
   block names the top-level menu item it belongs to (matched on the title, case-insensitively,
