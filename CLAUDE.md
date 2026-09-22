@@ -1071,6 +1071,28 @@ Anything of ours that is not a Dawn setting lives in these two places:
         margin-top (2.5rem) is a separate rule and still holds real pink space above the
         picture regardless of this padding, so the frame doesn't actually sit flush
         against the box's top edge even at 0.
+      - **Both the picture and the box squared off, minutes later, at the owner's
+        request** ("make the picture and the background color more like a square").
+        Measured live first (1440px, 6 per row): the box read 230×256px (ratio 1.11,
+        taller than wide), the picture 161×173px (ratio 1.08) -- both a little
+        elongated, not dramatically so, since the earlier padding cuts had already done
+        most of that work.
+        - **The picture**: `width: 78%; height: 84%` averages to `81%` each, with
+          `aspect-ratio: 1 / 1` back in place of the separate height now that the two
+          match -- a true square again, at roughly the same overall size as before
+          (the midpoint of the two, not a new arbitrary number).
+        - **The box**: its remaining height above the square frame is exactly two fixed
+          quantities that are kept equal to each other on purpose (`.marquee__frame`'s
+          own margin-top, sized to match `.marquee__caption`'s margin-top + min-height,
+          so the picture's top/bottom balance never breaks -- see both notes). Shrinking
+          the box without breaking that balance meant shrinking both sides of that
+          equality together: caption `margin-top` 0.8rem to 0.2rem (its `min-height`
+          stays at 1.7rem, since that is the room the caption's own future text needs to
+          stay legible, not spacing to cut), and frame `margin-top` 2.5rem to 1.9rem to
+          match the caption's new, smaller total footprint (0.2 + 1.7). This is the same
+          padding-not-margin-top principle the earlier "cut more" rounds already
+          established, applied to the one place margin-top *could* move without
+          reopening the imbalance it was built to close.
       - **Left and right split apart from top and bottom for the first time, minutes
         later, at the owner's own follow-up** ("make the left and right sides of the
         background boxes bigger"). `padding: 0.3rem` (0.2rem on phones) becomes

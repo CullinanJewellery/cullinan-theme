@@ -116,15 +116,21 @@
     box... same space up and down from the background lines"). The frame
     itself is centred top-to-bottom within its own square, so without this
     the picture sat closer to the top edge than the bottom one -- the
-    caption below the frame (margin-top 0.8rem + min-height 1.7rem, fixed
-    at every breakpoint) ate into the space below without anything matching
-    it above. 2.5rem is exactly that caption footprint, so it cancels out
-    regardless of screen width or how many images are visible per row: the
-    frame's own top/bottom insets are already equal to each other (both
-    5% of the same square), so only this fixed caption-sized gap needed
-    adding to balance the two.
+    caption below the frame (margin-top + min-height, fixed at every
+    breakpoint) ate into the space below without anything matching it
+    above. This value is always kept exactly equal to that caption
+    footprint, so it cancels out regardless of screen width or how many
+    images are visible per row: the frame's own top/bottom insets are
+    already equal to each other (both half of the same square), so only
+    this fixed caption-sized gap needed adding to balance the two.
+
+    2.5rem at first (against the caption's original 0.8rem margin-top +
+    1.7rem min-height). Brought down to 1.9rem when the caption's own
+    margin-top came down too (see the note there), at the owner's request
+    to make the box "more like a square" -- kept matched to the new
+    0.2rem + 1.7rem total so the balance holds at the smaller size.
   */
-  margin-top: 2.5rem;
+  margin-top: 1.9rem;
 }
 
 /*
@@ -158,11 +164,17 @@
   each dimension down the same 6 points that separates them (84 to 78,
   90 to 84) so the shape -- a little taller than wide -- stays exactly the
   one just settled on, just smaller.
+
+  Squared off again, minutes later, at the owner's request ("make the
+  picture and the background color more like a square"): width and height
+  meet in the middle, at their average, 81% each -- aspect-ratio: 1 / 1
+  comes back in place of a separate height now that they match, the same
+  pattern this rule used before the two were ever split apart.
 */
 .marquee__image {
   display: block;
-  width: 78%;
-  height: 84%;
+  width: 81%;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
   border-radius: 0;
 }
@@ -173,11 +185,19 @@
   Centred under the now-smaller picture, in the same small-capitals style
   the other short labels on the site use (the facts strip, the atelier
   eyebrows).
+
+  margin-top trimmed from 0.8rem to 0.2rem, 2026-09-22 at the owner's
+  request to make the box "more like a square" -- min-height stays at
+  1.7rem untouched, since that's the room the caption's own text needs to
+  render on one legible line, not decorative spacing to cut. `.marquee__
+  frame`'s own margin-top (above) is kept matched to this rule's total
+  footprint (margin-top + min-height) whenever either changes, so the
+  picture's balanced top/bottom spacing survives this cut intact.
 */
 .marquee__caption {
   display: block;
   min-height: 1.7rem;
-  margin-top: 0.8rem;
+  margin-top: 0.2rem;
   font-size: 1.1rem;
   line-height: 1.7rem;
   letter-spacing: 0.08em;
