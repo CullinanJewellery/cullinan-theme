@@ -25,26 +25,38 @@
 }
 
 /*
-  Each a separate card now, at the owner's explicit correction (2026-09-22):
-  not full-bleed photographs sharing the band's own background, but its own
-  boxed background -- off-white (`#FCFCFB`, scheme-1's own token, never
-  pure white) with room inside for the picture and the caption both, and a
-  real gap to its neighbours so the band's own pink shows through between
-  boxes rather than the boxes touching. `box-sizing: border-box` keeps the
-  padding inside the width this item already calculates, so the seamless
-  -50% loop (both track halves still exactly equal width) is unaffected.
+  Each a separate card, its own boxed background, with room inside for the
+  picture and the caption both, and a real gap to its neighbours so the
+  page's own ground shows through between boxes rather than the boxes
+  touching. `box-sizing: border-box` keeps the padding inside the width
+  this item already calculates, so the seamless -50% loop (both track
+  halves still exactly equal width) is unaffected.
+
+  The pink itself moved here from the band, at the owner's request
+  (2026-09-22: "remove the pink box behind them and put the same on the
+  background boxes"). It was the band's own background before (see the
+  hero's own pink note under Design direction for where this colour comes
+  from) -- the band is now plain (scheme-1's own off-white shows in the
+  gaps instead), and each picture's own box carries the pink that used to
+  sit behind all of them at once.
 */
 .marquee__item {
   flex: 0 0 auto;
   box-sizing: border-box;
   margin: 0 var(--marquee-gap, 24px) 0 0;
   padding: 1.4rem;
-  background-color: #FCFCFB;
+  background-color: #F3E1DB;
   /*
     Each item occupies its own width plus one gap, so the number visible across
     the viewport is exactly the setting.
   */
   width: calc(100vw / var(--marquee-visible, 6) - var(--marquee-gap, 24px));
+}
+
+@media screen and (min-width: 750px) {
+  .marquee__item {
+    background: linear-gradient(180deg, #FFE8E0 0%, #F3E1DB 100%);
+  }
 }
 
 .marquee__link {
@@ -114,29 +126,9 @@
 }
 
 /*
-  Phone-only background, at the owner's instruction (2026-09-18): the same
-  pink as the hero panel above it -- #F3E1DB, moonmagic's own phone hero
-  colour, measured on their site as rgb(243, 225, 219) -- so the two bands
-  read as one continuous colour moving down the page on a phone. See
-  assets/crown.css for the hero's own rule and the footer link columns,
-  which carry the same colour further down the page. Scheme-1 itself
-  (#FCFCFB) is untouched, since it is the whole site's default ground.
+  The band itself carried this same pink/gradient from 2026-09-18 (phone)
+  and 2026-09-19 (desktop) until 2026-09-22, when the owner asked for it
+  moved onto each picture's own box instead (see the note on .marquee__item
+  above) -- the band is plain now, scheme-1's own off-white showing through
+  the gaps between boxes.
 */
-@media screen and (max-width: 749px) {
-  .marquee {
-    background-color: #F3E1DB;
-  }
-}
-
-/*
-  The same background on a computer, at the owner's instruction (2026-09-19),
-  matching the hero's own desktop rule exactly (assets/crown.css): moonmagic's
-  desktop hero is a gradient, not the flat pink their phone one uses, so this
-  band stays "the exact same colour" as the hero at both sizes rather than
-  flattening it out here.
-*/
-@media screen and (min-width: 750px) {
-  .marquee {
-    background: linear-gradient(180deg, #FFE8E0 0%, #F3E1DB 100%);
-  }
-}

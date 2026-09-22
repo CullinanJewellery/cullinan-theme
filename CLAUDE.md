@@ -953,9 +953,18 @@ Anything of ours that is not a Dawn setting lives in these two places:
     (both track halves have to stay exactly equal width for that to land cleanly).
     `images_visible` moved from `7` to `8` (Dawn's own schema maximum) for the "smaller"
     part of the request, and `gap` from `12` to `24` (`templates/index.json`) so the space
-    between boxes reads clearly rather than as a thin seam. The band's own pink/gradient
-    background (above) still does real work here: it's what shows through in the gaps
-    between the now-separate white boxes, rather than being redundant with them.
+    between boxes reads clearly rather than as a thin seam. At this point the band's own
+    pink/gradient background (above) still did real work: it showed through in the gaps
+    between the now-separate white boxes.
+    - **The pink swapped from the band onto the boxes themselves, minutes later** ("remove
+      the pink box behind them and put the same on the background boxes for the
+      pictures"). `.marquee` itself lost its own background rules entirely (both the phone
+      flat colour and the desktop gradient, added 2026-09-18/19); `.marquee__item` picked
+      up the exact same two values instead of its own off-white -- `#F3E1DB` flat below
+      750px, `linear-gradient(180deg, #FFE8E0 0%, #F3E1DB 100%)` above it. The band is
+      plain now, so scheme-1's own off-white ground shows in the gaps between boxes
+      instead of the pink; the pink itself moved with the boxes rather than being removed
+      from the page.
 - **Visual mega menu.** `snippets/header-visual-menu.liquid`, wired into
   `snippets/header-mega-menu.liquid` and `snippets/header-drawer.liquid`. Shopify menu items
   cannot carry images, so the items are `visual_menu_item` blocks on the header section. Each
