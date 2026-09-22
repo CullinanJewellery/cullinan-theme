@@ -66,9 +66,11 @@
     `templates/index.json`, reverted there), then corrected ("i was talking
     about the background up and down line like we did before") to mean
     this value, the box's own top/bottom padding, same as every earlier
-    "cut more" in this section. 0.3rem to 0.15rem; left and right untouched.
+    "cut more" in this section. 0.3rem to 0.15rem, then 0.15rem to 0.08rem
+    minutes later still ("cut more now"); left and right untouched
+    throughout.
   */
-  padding: 0.15rem 1.2rem;
+  padding: 0.08rem 1.2rem;
   background-color: #F3E1DB;
   /*
     Each item occupies its own width plus one gap, so the number visible across
@@ -212,7 +214,7 @@
 @media screen and (max-width: 749px) {
   .marquee__item {
     width: calc(100vw / 2.2 - var(--marquee-gap, 24px));
-    padding: 0.1rem 0.8rem;
+    padding: 0.05rem 0.8rem;
   }
 }
 

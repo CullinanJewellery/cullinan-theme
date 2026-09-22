@@ -1063,6 +1063,8 @@ Anything of ours that is not a Dawn setting lives in these two places:
         padding 0.3rem to 0.15rem (0.2rem to 0.1rem on phones); left and right (1.2rem,
         0.8rem) untouched, since this "cut more" was always about the box's own height,
         never its width.
+      - **Cut again, minutes later** ("cut more now"). Vertical padding 0.15rem to 0.08rem
+        (0.1rem to 0.05rem on phones); left and right still untouched.
       - **Left and right split apart from top and bottom for the first time, minutes
         later, at the owner's own follow-up** ("make the left and right sides of the
         background boxes bigger"). `padding: 0.3rem` (0.2rem on phones) becomes
