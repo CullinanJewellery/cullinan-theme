@@ -80,6 +80,22 @@
   justify-content: center;
   width: 100%;
   aspect-ratio: 1 / 1;
+  /*
+    Pushes the picture down so its distance from the box's own top edge
+    matches its distance from the bottom edge, 2026-09-22 at the owner's
+    request ("the pictures... are too close to the line of the background
+    box... same space up and down from the background lines"). The frame
+    itself is centred top-to-bottom within its own square, so without this
+    the picture sat closer to the top edge than the bottom one -- the
+    caption below the frame (margin-top 0.8rem + min-height 1.7rem, fixed
+    at every breakpoint) ate into the space below without anything matching
+    it above. 2.5rem is exactly that caption footprint, so it cancels out
+    regardless of screen width or how many images are visible per row: the
+    frame's own top/bottom insets are already equal to each other (both
+    5% of the same square), so only this fixed caption-sized gap needed
+    adding to balance the two.
+  */
+  margin-top: 2.5rem;
 }
 
 /*

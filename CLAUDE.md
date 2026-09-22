@@ -1022,6 +1022,20 @@ Anything of ours that is not a Dawn setting lives in these two places:
         square baseline to 84%, height stays at 90%, so the picture now reads a little
         taller than it is wide -- the side margins widen to 8% each instead of narrowing,
         top and bottom still 5%.
+      - **Pushed down to balance the top and bottom gap against the box's own edges,
+        minutes later, at the owner's request** ("the pictures... are too close to the
+        line of the background box... I want pictures to have the same space up and down
+        from the background lines"). The frame centres the picture within its own square,
+        top-to-bottom insets equal to each other -- but the caption sitting below the
+        frame (0.8rem margin-top plus a 1.7rem reserved line, fixed at every breakpoint)
+        meant the box's true bottom edge sat further from the picture than its top edge
+        did. `margin-top: 2.5rem` on `.marquee__frame` closes that gap exactly: 2.5rem is
+        the caption's own footprint (0.8 + 1.7), so it cancels out regardless of viewport
+        width or how many images share a row, since the frame's own equal top/bottom
+        insets never needed touching -- only the fixed part outside the frame was
+        unbalanced. The item's own box grows taller by the same 2.5rem as a result, which
+        is the direct, necessary effect of moving the picture down rather than a side
+        effect to work around.
   `snippets/header-mega-menu.liquid` and `snippets/header-drawer.liquid`. Shopify menu items
   cannot carry images, so the items are `visual_menu_item` blocks on the header section. Each
   block names the top-level menu item it belongs to (matched on the title, case-insensitively,
