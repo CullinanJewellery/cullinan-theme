@@ -47,15 +47,15 @@
   /*
     Trimmed from 1.4rem, 2026-09-22 at the owner's request ("the box is
     long... cut a little bit of the box down and up so it can look...
-    not too long and not too short"), then again minutes later ("cut
-    more") to 0.6rem. Padding is one shared value for every side, so
-    cutting it shortens the box's own top and bottom edges by the same
-    amount it shortens each -- unlike .marquee__frame's own margin-top
-    (above), which only ever sits on one side, reducing padding here keeps
-    the picture's equal top/bottom spacing intact (both shrink together)
+    not too long and not too short"), then twice more ("cut more") down
+    to 0.3rem. Padding is one shared value for every side, so cutting it
+    shortens the box's own top and bottom edges by the same amount it
+    shortens each -- unlike .marquee__frame's own margin-top (above),
+    which only ever sits on one side, reducing padding here keeps the
+    picture's equal top/bottom spacing intact (both shrink together)
     while genuinely bringing the box's overall height down.
   */
-  padding: 0.6rem;
+  padding: 0.3rem;
   background-color: #F3E1DB;
   /*
     Each item occupies its own width plus one gap, so the number visible across
@@ -135,11 +135,16 @@
   down past the 90% square baseline to 84%, height stays at 90%, so the
   picture now reads a little taller than it is wide inside its still-square
   frame -- the side margins widen to 8% each, top and bottom stay at 5%.
+
+  Scaled down again as a pair, minutes later ("make the picture smaller"),
+  each dimension down the same 6 points that separates them (84 to 78,
+  90 to 84) so the shape -- a little taller than wide -- stays exactly the
+  one just settled on, just smaller.
 */
 .marquee__image {
   display: block;
-  width: 84%;
-  height: 90%;
+  width: 78%;
+  height: 84%;
   object-fit: cover;
   border-radius: 0;
 }
@@ -194,7 +199,7 @@
 @media screen and (max-width: 749px) {
   .marquee__item {
     width: calc(100vw / 2.2 - var(--marquee-gap, 24px));
-    padding: 0.4rem;
+    padding: 0.2rem;
   }
 }
 

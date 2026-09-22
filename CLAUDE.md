@@ -1050,6 +1050,15 @@ Anything of ours that is not a Dawn setting lives in these two places:
         0.6rem (0.75rem to 0.4rem on phones) -- the same lever as the round above, for the
         same reason: it is the one value that shortens the box's top and bottom equally
         without disturbing the picture's own balanced spacing.
+      - **Cut again, and the picture sized down too, in the same request** ("cut more and
+        make the picture smaller"). Padding: 0.6rem to 0.3rem (0.4rem to 0.2rem on
+        phones), same lever, same reasoning. The picture itself: width and height both
+        down the same 6 points that already separated them (84% to 78%, 90% to 84%), so
+        the shape settled on two rounds ago -- a little taller than wide -- stays exactly
+        the same, just smaller. `.marquee__frame`'s own margin-top (2.5rem) needed no
+        recalculating: it only depends on the frame being a flex-centred square and the
+        caption's own fixed footprint, neither of which this change touches, so the
+        picture's equal top/bottom spacing is untouched by resizing it.
   `snippets/header-mega-menu.liquid` and `snippets/header-drawer.liquid`. Shopify menu items
   cannot carry images, so the items are `visual_menu_item` blocks on the header section. Each
   block names the top-level menu item it belongs to (matched on the title, case-insensitively,
