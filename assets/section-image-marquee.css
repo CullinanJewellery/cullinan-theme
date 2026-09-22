@@ -235,24 +235,23 @@
 }
 
 /*
-  2.2 widened to 1.84, 2026-09-22 at the owner's request ("match the size
-  of the moving pictures section on a phone with moonmagic"). Measured
-  moonmagic's own phone carousel directly at 375px rather than guessing:
-  their slide is a bare, full-bleed 144x144px image with a 10px gap, no
-  box or caption -- their picture IS their slide. Ours never can be
-  exactly that (the pink box and the reserved caption line are this
-  project's own deliberate departure from moonmagic's baked-in-text
-  carousel, see the note on .marquee__image below), so "match the size"
-  means matching the one number that's actually comparable: how big the
-  photograph itself reads on screen. Working backward from a 144px target
-  through this item's own math (image is 81% of the frame, the frame is
-  the item's width minus 2 x 0.8rem of padding) gives an item width of
-  about 194px, which this divisor produces at 375px with the existing
-  10px gap -- checked live afterward at 144px almost exactly.
+  2.2 first widened to 1.84, 2026-09-22 at the owner's request ("match the
+  size of the moving pictures section on a phone with moonmagic"), by
+  working backward from moonmagic's own 144px slide to the item width that
+  would put *this project's own photograph* at 144px inside its box. Wrong:
+  checked live afterward with a screenshot, at the owner's report that this
+  didn't look like a match at all -- our own box and caption overhead made
+  the resulting card about 194px wide, well past moonmagic's 144px slide,
+  so barely 1.8 cards fit on screen where theirs shows about 2.4. "Size"
+  meant the size of the card as a whole -- the one visual unit a viewer
+  actually compares row to row -- not the photograph pixel-for-pixel
+  inside it. Corrected to 2.435, which puts the item itself at 144px to
+  match moonmagic's slide width directly; the picture inside stays at its
+  own established 81%, unrelated to this fix.
 */
 @media screen and (max-width: 749px) {
   .marquee__item {
-    width: calc(100vw / 1.84 - var(--marquee-gap, 24px));
+    width: calc(100vw / 2.435 - var(--marquee-gap, 24px));
     padding: 0 0.8rem;
   }
 }
