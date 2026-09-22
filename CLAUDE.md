@@ -1009,6 +1009,14 @@ Anything of ours that is not a Dawn setting lives in these two places:
         the size of the pictures a little bit"). The frame is what holds the box's
         footprint (the fix just above), so this only narrows the pink margin evenly on all
         four sides -- the boxes themselves stay exactly the size they already were.
+      - **Widened left and right only, minutes later, at the owner's own follow-up**
+        ("lets strech in the left and the right side a little bit"). Width and height
+        split apart for the first time here -- width to 96%, height staying at the 90%
+        the square version already had -- so the picture reads as a little wider than
+        tall inside its still-square frame, with the side margins narrowing to 2% each
+        while top and bottom stay at 5%. `aspect-ratio: 1 / 1` came back out of
+        `.marquee__image`, since fixing both width and height already determines the box
+        completely and a square ratio no longer describes it.
   `snippets/header-mega-menu.liquid` and `snippets/header-drawer.liquid`. Shopify menu items
   cannot carry images, so the items are `visual_menu_item` blocks on the header section. Each
   block names the top-level menu item it belongs to (matched on the title, case-insensitively,

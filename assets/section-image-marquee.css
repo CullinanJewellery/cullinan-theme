@@ -97,11 +97,20 @@
   ("stretch up the size of the pictures a little bit") -- the frame itself
   is untouched, so the pink margin just narrows evenly on all four sides
   rather than the box changing size.
+
+  Widened again minutes later, left and right only ("lets strech in the
+  left and the right side a little bit"): width alone moves to 96%, height
+  stays at the 90% the square version already had, so the picture is now a
+  little wider than it is tall inside its still-square frame -- the side
+  margins narrow to 2% each, top and bottom stay at 5%. Two explicit
+  percentages replace aspect-ratio: 1 / 1 here, since a fixed width and a
+  fixed height together already determine the box completely and a square
+  ratio no longer describes it.
 */
 .marquee__image {
   display: block;
-  width: 90%;
-  aspect-ratio: 1 / 1;
+  width: 96%;
+  height: 90%;
   object-fit: cover;
   border-radius: 0;
 }
