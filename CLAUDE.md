@@ -965,7 +965,20 @@ Anything of ours that is not a Dawn setting lives in these two places:
       plain now, so scheme-1's own off-white ground shows in the gaps between boxes
       instead of the pink; the pink itself moved with the boxes rather than being removed
       from the page.
-- **Visual mega menu.** `snippets/header-visual-menu.liquid`, wired into
+    - **Six per row, bigger boxes, minutes later, at the owner's own count.** "when they
+      move one by one they are 6, and they are touching the corners... make 6 pictures
+      with backgrounds to fit there... fix the size of the pictures and make the
+      background boxes bigger, look how moonmagic did it." Checked moonmagic's own
+      carousel again, precisely this time: at 1440px it shows exactly 6 slides, the first
+      starting flush at the viewport's left edge and the last ending flush at the right --
+      edge to edge to both corners, the same full-bleed the marquee already has, just at a
+      different count than the `images_visible: 8` this section had just been turned up
+      to. Moved back to `6` (`templates/index.json`) -- since each item's own width
+      formula (`100vw / images_visible - gap`) already cancels the gap out of the row's
+      total footprint, this alone both makes each box bigger (a bigger slice of the same
+      100vw, split six ways instead of eight) and lands exactly six of them corner to
+      corner, without needing to touch the gap value itself. `gap` stays `24`, untouched
+      by this round.
   `snippets/header-mega-menu.liquid` and `snippets/header-drawer.liquid`. Shopify menu items
   cannot carry images, so the items are `visual_menu_item` blocks on the header section. Each
   block names the top-level menu item it belongs to (matched on the title, case-insensitively,
