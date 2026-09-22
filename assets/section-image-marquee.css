@@ -182,10 +182,19 @@
   meet in the middle, at their average, 81% each -- aspect-ratio: 1 / 1
   comes back in place of a separate height now that they match, the same
   pattern this rule used before the two were ever split apart.
+
+  Sized up again, minutes later, at the owner's request ("we need to make
+  the pictures bigger for a phone if that is possible", then "a little
+  bit bigger" and "and maybe for a computer too" once asked): 81% to 87%,
+  one universal value again rather than a phone-only override, the same 6
+  points as the last couple of size steps this rule went through. Squaring
+  the box (`.marquee__item`, above) fixed the frame's own size to the
+  item's width regardless of padding, so this is now the only lever left
+  for a bigger picture at any breakpoint -- the box itself does not move.
 */
 .marquee__image {
   display: block;
-  width: 81%;
+  width: 87%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
   border-radius: 0;

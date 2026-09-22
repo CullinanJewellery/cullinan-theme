@@ -1177,6 +1177,14 @@ Anything of ours that is not a Dawn setting lives in these two places:
         the same number without needing to be reconciled by hand. The picture inside
         (81% of a now-smaller frame) shrinks a little as a result, the same trade the
         left/right widening made on desktop earlier in this section.
+      - **The picture sized up again, minutes later, refined twice in the same round**
+        ("we need to make the pictures bigger for a phone if that is possible", then "a
+        little bit bigger" and "and maybe for a computer too"). 81% to 87%, one
+        universal value again rather than a phone-specific one, since the follow-up
+        asked for computer too. With the box now square (fixed to the item's own width
+        regardless of padding, see the note just above), the picture's own percentage of
+        the frame is the only remaining lever for a bigger picture at any breakpoint --
+        the box itself does not move either way.
   `snippets/header-mega-menu.liquid` and `snippets/header-drawer.liquid`. Shopify menu items
   cannot carry images, so the items are `visual_menu_item` blocks on the header section. Each
   block names the top-level menu item it belongs to (matched on the title, case-insensitively,
