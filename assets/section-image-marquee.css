@@ -24,33 +24,33 @@
   list-style: none;
 }
 
+/*
+  Each a separate card now, at the owner's explicit correction (2026-09-22):
+  not full-bleed photographs sharing the band's own background, but its own
+  boxed background -- off-white (`#FCFCFB`, scheme-1's own token, never
+  pure white) with room inside for the picture and the caption both, and a
+  real gap to its neighbours so the band's own pink shows through between
+  boxes rather than the boxes touching. `box-sizing: border-box` keeps the
+  padding inside the width this item already calculates, so the seamless
+  -50% loop (both track halves still exactly equal width) is unaffected.
+*/
 .marquee__item {
   flex: 0 0 auto;
-  margin: 0 var(--marquee-gap, 12px) 0 0;
+  box-sizing: border-box;
+  margin: 0 var(--marquee-gap, 24px) 0 0;
+  padding: 1.4rem;
+  background-color: #FCFCFB;
   /*
     Each item occupies its own width plus one gap, so the number visible across
     the viewport is exactly the setting.
   */
-  width: calc(100vw / var(--marquee-visible, 6) - var(--marquee-gap, 12px));
+  width: calc(100vw / var(--marquee-visible, 6) - var(--marquee-gap, 24px));
 }
 
 .marquee__link {
   display: block;
 }
 
-/*
-  Full width again, at the owner's correction (2026-09-22): shrinking this
-  to 84% (2026-09-21, to leave room for a caption) revealed the item's own
-  background as a margin around every picture, reading as a coloured box
-  around each one -- not what moonmagic does. Checked their own carousel
-  slides directly this time rather than assuming: `imgRect.width` equals
-  `slideRect.width` exactly, edge to edge, and the slide itself has no
-  background colour at all (`rgba(0,0,0,0)`) -- what looks like a coloured
-  box on some of their slides is baked into that specific photograph file,
-  not a CSS background behind it. The picture stays full width; the
-  caption below still reserves its own space without needing to shrink
-  the image to make room.
-*/
 .marquee__image {
   display: block;
   width: 100%;
@@ -102,13 +102,14 @@
 
 @media screen and (max-width: 989px) {
   .marquee__item {
-    width: calc(100vw / 3 - var(--marquee-gap, 12px));
+    width: calc(100vw / 3 - var(--marquee-gap, 24px));
   }
 }
 
 @media screen and (max-width: 749px) {
   .marquee__item {
-    width: calc(100vw / 2.2 - var(--marquee-gap, 12px));
+    width: calc(100vw / 2.2 - var(--marquee-gap, 24px));
+    padding: 1rem;
   }
 }
 

@@ -939,6 +939,23 @@ Anything of ours that is not a Dawn setting lives in these two places:
       their own slides is baked into that specific photograph file, not a CSS background
       behind it. Put back to `width: 100%`; the caption below still reserves its own space
       without needing to shrink the picture to make room for it.
+  - **Rebuilt as separate boxed cards, minutes later, at the owner's own explicit
+    correction.** The previous round had it backwards: the owner wanted each picture
+    *smaller* still, but sitting in *its own* background box with room for the caption
+    inside it, and real space between one box and the next -- "the background boxes are
+    not connected to others... they have space between [them] like in moonmagic." Rather
+    than the whole band sharing one continuous background with plain photographs on top
+    (the fix two rounds above), `.marquee__item` itself now carries the box: off-white
+    `#FCFCFB` (scheme-1's own token, never pure white), `padding: 1.4rem` (`1rem` on a
+    phone) so the picture and caption both sit inset from the box's own edges, and
+    `box-sizing: border-box` so that padding stays inside the width this item already
+    calculates rather than growing it, which would have thrown off the seamless -50% loop
+    (both track halves have to stay exactly equal width for that to land cleanly).
+    `images_visible` moved from `7` to `8` (Dawn's own schema maximum) for the "smaller"
+    part of the request, and `gap` from `12` to `24` (`templates/index.json`) so the space
+    between boxes reads clearly rather than as a thin seam. The band's own pink/gradient
+    background (above) still does real work here: it's what shows through in the gaps
+    between the now-separate white boxes, rather than being redundant with them.
 - **Visual mega menu.** `snippets/header-visual-menu.liquid`, wired into
   `snippets/header-mega-menu.liquid` and `snippets/header-drawer.liquid`. Shopify menu items
   cannot carry images, so the items are `visual_menu_item` blocks on the header section. Each
