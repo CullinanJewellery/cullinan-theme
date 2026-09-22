@@ -202,16 +202,16 @@
   frame's own vertical margin than its horizontal one, unevenly.
 
   Sized up once more, minutes later ("now we can maybe make the pictures
-  a little bit bigger"): both dimensions up 4 points (87 to 91, 93 to 97),
-  keeping them close to the same gap apart as before. On a phone this
-  leaves the picture only a couple of pixels short of the frame's own
-  edge top-to-bottom -- tight, but still a visible pink line all round,
-  checked live rather than assumed.
+  a little bit bigger") -- then corrected the same round ("i wanted just
+  the pictures to get bigger and just on phone bring it back for
+  computer"): the bump to 91%/97% was meant for phone only. This base
+  rule (desktop and tablet) goes back to 87%/93%; the phone-only size
+  moves to its own override below, in the max-width: 749px query.
 */
 .marquee__image {
   display: block;
-  width: 91%;
-  height: 97%;
+  width: 87%;
+  height: 93%;
   object-fit: cover;
   border-radius: 0;
 }
@@ -298,6 +298,19 @@
       an unrelated reason.
     */
     padding: 0 1.9rem;
+  }
+
+  /*
+    Phone-only, at the owner's request ("i wanted just the pictures to get
+    bigger and just on phone"): the base rule above stays at 87%/93%,
+    matched to computer and tablet; this override alone carries the bigger
+    91%/97% size, leaving only a couple of pixels of pink margin against
+    the frame's own edge on a phone specifically -- checked live already
+    when this size was first tried (before it was known to be phone-only).
+  */
+  .marquee__image {
+    width: 91%;
+    height: 97%;
   }
 }
 

@@ -1200,6 +1200,12 @@ Anything of ours that is not a Dawn setting lives in these two places:
         rather than assumed, since 97% height leaves only a couple of pixels of margin
         on a phone specifically -- confirmed still a visible pink line all round, not
         touching the frame's own edge.
+      - **Corrected the same round -- phone only, not computer too** ("i wanted just the
+        pictures to get bigger and just on phone bring it back for computer"). The base
+        rule (computer and tablet) goes back to 87%/93%; the 91%/97% size moves into its
+        own override inside the phone's own `max-width: 749px` query, alongside that
+        query's item-width and padding rules. The live check done for 91%/97% a moment
+        earlier still holds -- it was measured on a phone in the first place.
   `snippets/header-mega-menu.liquid` and `snippets/header-drawer.liquid`. Shopify menu items
   cannot carry images, so the items are `visual_menu_item` blocks on the header section. Each
   block names the top-level menu item it belongs to (matched on the title, case-insensitively,
