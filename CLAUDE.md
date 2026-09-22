@@ -350,7 +350,12 @@ Rules that matter here:
   https://f1vudq0of3d7tk3j-107185537364.shopifypreview.com. Until a new link arrives, a local
   mock-up from the theme’s real stylesheets (served by a
   throwaway Node server, never committed) is a usable stand-in for layout; it was exact to the
-  pixel for the header once the new link allowed a comparison.
+  pixel for the header once the new link allowed a comparison. Later replaced (exact date not
+  recorded) by https://otepvnbsv6hilfde-107185537364.shopifypreview.com, used throughout the
+  image-marquee and hero-facts work on 2026-09-22, then that one replaced the same day by
+  https://a83q69mv3t9zni67-107185537364.shopifypreview.com -- the owner asked for every check
+  from here on to use this link specifically ("everytime you are done check the preview
+  link"), so use this one until told otherwise, not just whichever one happens to still work.
 - **Wait for one push to reach the preview before sending the next.** Twice on 2026-09-14 a
   push that followed another within a minute never reached the theme, while the push before
   it synced at once: `templates/index.json` 13 seconds after a section push (still missing
