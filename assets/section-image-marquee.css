@@ -200,11 +200,18 @@
   (its own size is tied to the item's width regardless of what the
   picture inside it does), so a taller picture just eats further into the
   frame's own vertical margin than its horizontal one, unevenly.
+
+  Sized up once more, minutes later ("now we can maybe make the pictures
+  a little bit bigger"): both dimensions up 4 points (87 to 91, 93 to 97),
+  keeping them close to the same gap apart as before. On a phone this
+  leaves the picture only a couple of pixels short of the frame's own
+  edge top-to-bottom -- tight, but still a visible pink line all round,
+  checked live rather than assumed.
 */
 .marquee__image {
   display: block;
-  width: 87%;
-  height: 93%;
+  width: 91%;
+  height: 97%;
   object-fit: cover;
   border-radius: 0;
 }

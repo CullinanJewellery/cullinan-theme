@@ -1194,6 +1194,12 @@ Anything of ours that is not a Dawn setting lives in these two places:
         which this edit touches -- so the box stays exactly the square it already was;
         only the margin inside the frame gets uneven again, tighter top-to-bottom than
         side-to-side.
+      - **Sized up once more, minutes later** ("now we can maybe make the pictures a
+        little bit bigger"). Both dimensions up 4 points, 87 to 91 and 93 to 97,
+        keeping roughly the same gap between them as the previous round. Checked live
+        rather than assumed, since 97% height leaves only a couple of pixels of margin
+        on a phone specifically -- confirmed still a visible pink line all round, not
+        touching the frame's own edge.
   `snippets/header-mega-menu.liquid` and `snippets/header-drawer.liquid`. Shopify menu items
   cannot carry images, so the items are `visual_menu_item` blocks on the header section. Each
   block names the top-level menu item it belongs to (matched on the title, case-insensitively,
