@@ -1125,6 +1125,27 @@ Anything of ours that is not a Dawn setting lives in these two places:
         0.3rem), not this gap setting at all. `gap` went back to `10`, its last
         explicitly-requested value, and the actual cut landed on `.marquee__item`'s own
         vertical padding instead -- see the note there.
+      - **The phone-only width divisor matched to moonmagic directly, at the owner's
+        request** ("match the size of the moving pictures section on a phone with
+        moonmagic"). Measured moonmagic's own phone carousel at 375px rather than
+        assuming it scales down from the desktop version already measured for the
+        six-per-row fix above: a bare, full-bleed `swiper-slide`, `width: 144px;
+        margin-right: 10px` inline, holding nothing but a plain `<img>` -- no box, no
+        caption, the picture IS the slide. This item's own 10px gap already matched
+        theirs exactly, by coincidence of an earlier, unrelated round; the real mismatch
+        was size -- this project's own picture measured 117px against their 144px. Since
+        the pink box and reserved caption line are this project's own deliberate
+        departure from moonmagic's carousel (see the caption note on `.marquee__image`
+        below for why -- their carousel bakes its own text into the photograph, which
+        this project's core rule against burned-in text rules out here), matching "the
+        same box width" wasn't the right target; matching how big the photograph itself
+        reads on screen was. Worked backward through this item's own math (image = 81%
+        of the frame; frame = item width minus 2 x 0.8rem padding) to the item width
+        that puts the picture at 144px, then to the divisor that produces it at 375px
+        with the existing 10px gap: 2.2 to 1.84. Checked live afterward: 144px almost
+        exactly. The tablet divisor (`100vw / 3`) and every desktop measurement (6 per
+        row, already matched to moonmagic's own desktop carousel) are untouched -- this
+        was a phone-only request.
   `snippets/header-mega-menu.liquid` and `snippets/header-drawer.liquid`. Shopify menu items
   cannot carry images, so the items are `visual_menu_item` blocks on the header section. Each
   block names the top-level menu item it belongs to (matched on the title, case-insensitively,

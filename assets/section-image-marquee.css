@@ -234,9 +234,25 @@
   }
 }
 
+/*
+  2.2 widened to 1.84, 2026-09-22 at the owner's request ("match the size
+  of the moving pictures section on a phone with moonmagic"). Measured
+  moonmagic's own phone carousel directly at 375px rather than guessing:
+  their slide is a bare, full-bleed 144x144px image with a 10px gap, no
+  box or caption -- their picture IS their slide. Ours never can be
+  exactly that (the pink box and the reserved caption line are this
+  project's own deliberate departure from moonmagic's baked-in-text
+  carousel, see the note on .marquee__image below), so "match the size"
+  means matching the one number that's actually comparable: how big the
+  photograph itself reads on screen. Working backward from a 144px target
+  through this item's own math (image is 81% of the frame, the frame is
+  the item's width minus 2 x 0.8rem of padding) gives an item width of
+  about 194px, which this divisor produces at 375px with the existing
+  10px gap -- checked live afterward at 144px almost exactly.
+*/
 @media screen and (max-width: 749px) {
   .marquee__item {
-    width: calc(100vw / 2.2 - var(--marquee-gap, 24px));
+    width: calc(100vw / 1.84 - var(--marquee-gap, 24px));
     padding: 0 0.8rem;
   }
 }
