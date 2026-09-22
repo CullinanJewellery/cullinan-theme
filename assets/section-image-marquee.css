@@ -44,7 +44,17 @@
   flex: 0 0 auto;
   box-sizing: border-box;
   margin: 0 var(--marquee-gap, 24px) 0 0;
-  padding: 1.4rem;
+  /*
+    Trimmed from 1.4rem, 2026-09-22 at the owner's request ("the box is
+    long... cut a little bit of the box down and up so it can look...
+    not too long and not too short"). Padding is one shared value for
+    every side, so cutting it shortens the box's own top and bottom edges
+    by the same amount it shortens each -- unlike .marquee__frame's own
+    margin-top (above), which only ever sits on one side, reducing padding
+    here keeps the picture's equal top/bottom spacing intact (both shrink
+    together) while genuinely bringing the box's overall height down.
+  */
+  padding: 1rem;
   background-color: #F3E1DB;
   /*
     Each item occupies its own width plus one gap, so the number visible across
@@ -183,7 +193,7 @@
 @media screen and (max-width: 749px) {
   .marquee__item {
     width: calc(100vw / 2.2 - var(--marquee-gap, 24px));
-    padding: 1rem;
+    padding: 0.75rem;
   }
 }
 

@@ -1036,6 +1036,16 @@ Anything of ours that is not a Dawn setting lives in these two places:
         unbalanced. The item's own box grows taller by the same 2.5rem as a result, which
         is the direct, necessary effect of moving the picture down rather than a side
         effect to work around.
+      - **The box shortened again minutes later, at the owner's request** ("the box is
+        long... cut a little bit of the box down and up so it can look... not too long
+        and not too short"). `.marquee__item`'s own padding comes down from 1.4rem to
+        1rem (0.75rem on phones, was 1rem) -- padding is one shared value for every side,
+        so trimming it shortens the box's top and bottom by the same amount rather than
+        just one side, keeping the picture's equal top/bottom spacing from the round above
+        intact while genuinely reducing how tall the box reads. `.marquee__frame`'s own
+        margin-top (2.5rem, the fix that balanced the picture against the caption) was
+        deliberately left alone -- touching it instead would have reopened the very
+        top/bottom imbalance just closed.
   `snippets/header-mega-menu.liquid` and `snippets/header-drawer.liquid`. Shopify menu items
   cannot carry images, so the items are `visual_menu_item` blocks on the header section. Each
   block names the top-level menu item it belongs to (matched on the title, case-insensitively,
