@@ -92,10 +92,15 @@
   the bottom -- the pink lives on each item's own box (see the note on
   .marquee__item above), not the picture, which is what makes that margin
   read as a deliberate frame rather than leftover band colour.
+
+  84% at first, sized up to 90% minutes later at the owner's request
+  ("stretch up the size of the pictures a little bit") -- the frame itself
+  is untouched, so the pink margin just narrows evenly on all four sides
+  rather than the box changing size.
 */
 .marquee__image {
   display: block;
-  width: 84%;
+  width: 90%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
   border-radius: 0;

@@ -1005,6 +1005,10 @@ Anything of ours that is not a Dawn setting lives in these two places:
         axes by the frame's own flex rules -- so the box's height never moves regardless of
         how small the picture gets, and the pink shows as an even margin on all four sides
         instead of pooling at the bottom.
+      - **Sized up from 84% to 90%, minutes later, at the owner's request** ("stretch up
+        the size of the pictures a little bit"). The frame is what holds the box's
+        footprint (the fix just above), so this only narrows the pink margin evenly on all
+        four sides -- the boxes themselves stay exactly the size they already were.
   `snippets/header-mega-menu.liquid` and `snippets/header-drawer.liquid`. Shopify menu items
   cannot carry images, so the items are `visual_menu_item` blocks on the header section. Each
   block names the top-level menu item it belongs to (matched on the title, case-insensitively,
