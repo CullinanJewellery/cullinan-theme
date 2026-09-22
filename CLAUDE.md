@@ -1046,6 +1046,10 @@ Anything of ours that is not a Dawn setting lives in these two places:
         margin-top (2.5rem, the fix that balanced the picture against the caption) was
         deliberately left alone -- touching it instead would have reopened the very
         top/bottom imbalance just closed.
+      - **Cut further still, minutes later** ("cut more"). Padding down again, 1rem to
+        0.6rem (0.75rem to 0.4rem on phones) -- the same lever as the round above, for the
+        same reason: it is the one value that shortens the box's top and bottom equally
+        without disturbing the picture's own balanced spacing.
   `snippets/header-mega-menu.liquid` and `snippets/header-drawer.liquid`. Shopify menu items
   cannot carry images, so the items are `visual_menu_item` blocks on the header section. Each
   block names the top-level menu item it belongs to (matched on the title, case-insensitively,
