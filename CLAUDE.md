@@ -1059,6 +1059,16 @@ Anything of ours that is not a Dawn setting lives in these two places:
         recalculating: it only depends on the frame being a flex-centred square and the
         caption's own fixed footprint, neither of which this change touches, so the
         picture's equal top/bottom spacing is untouched by resizing it.
+      - **Left and right split apart from top and bottom for the first time, minutes
+        later, at the owner's own follow-up** ("make the left and right sides of the
+        background boxes bigger"). `padding: 0.3rem` (0.2rem on phones) becomes
+        `padding: 0.3rem 1.2rem` (`0.2rem 0.8rem` on phones) -- the CSS two-value
+        shorthand, top/bottom then left/right -- so the vertical trimming from the last
+        few rounds stays exactly as tuned while the sides alone grow. `.marquee__frame`
+        is 100% of whatever width the padding leaves it, so widening the sides narrows
+        the frame (and the picture inside it) a little in exchange for more visible pink
+        -- the item's own outer width, set separately by the images-per-row formula, does
+        not move.
   `snippets/header-mega-menu.liquid` and `snippets/header-drawer.liquid`. Shopify menu items
   cannot carry images, so the items are `visual_menu_item` blocks on the header section. Each
   block names the top-level menu item it belongs to (matched on the title, case-insensitively,
