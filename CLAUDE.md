@@ -1069,6 +1069,20 @@ Anything of ours that is not a Dawn setting lives in these two places:
         the frame (and the picture inside it) a little in exchange for more visible pink
         -- the item's own outer width, set separately by the images-per-row formula, does
         not move.
+      - **The gap between boxes cut, minutes later, at the owner's own follow-up** ("go in
+        the preview and see how it is also make it more bigger so the gap between the
+        background color gets closer"). Checked the live preview first, at 1440px, per
+        the owner's own instruction -- confirmed the padding change above had landed
+        (0.3rem 1.2rem, a 33px pink side margin around a 192px frame) before touching
+        anything else. `gap`, the setting that becomes `--marquee-gap` (both the item's
+        own trailing margin and the subtracted term in its width formula), came down from
+        24 to 10 in `templates/index.json` -- one change that does both things the owner
+        asked for at once, since the item's own width formula (`100vw / images_visible -
+        gap`) means a smaller gap directly shrinks the visible space between boxes *and*
+        grows each box, without needing a separate change to either. Widening the item's
+        own internal padding instead, the other reading of "make it bigger," would have
+        left the boxes' own outer edges -- and the gap between them -- exactly where they
+        already were, so it would not have produced the effect the owner described.
   `snippets/header-mega-menu.liquid` and `snippets/header-drawer.liquid`. Shopify menu items
   cannot carry images, so the items are `visual_menu_item` blocks on the header section. Each
   block names the top-level menu item it belongs to (matched on the title, case-insensitively,
