@@ -191,11 +191,20 @@
   the box (`.marquee__item`, above) fixed the frame's own size to the
   item's width regardless of padding, so this is now the only lever left
   for a bigger picture at any breakpoint -- the box itself does not move.
+
+  Stretched taller again, minutes later ("make now the pictures a little
+  bit longer"), the same reading "longer" was given earlier in this
+  session (the box's own height, not its width). Width stays at 87%;
+  height alone rises to 93%, splitting the two apart again the same way
+  the very first width/height split did. The frame stays a fixed square
+  (its own size is tied to the item's width regardless of what the
+  picture inside it does), so a taller picture just eats further into the
+  frame's own vertical margin than its horizontal one, unevenly.
 */
 .marquee__image {
   display: block;
   width: 87%;
-  aspect-ratio: 1 / 1;
+  height: 93%;
   object-fit: cover;
   border-radius: 0;
 }

@@ -1185,6 +1185,15 @@ Anything of ours that is not a Dawn setting lives in these two places:
         regardless of padding, see the note just above), the picture's own percentage of
         the frame is the only remaining lever for a bigger picture at any breakpoint --
         the box itself does not move either way.
+      - **Stretched taller, minutes later** ("make now the pictures a little bit
+        longer" -- "longer" read the same way as earlier in this session, meaning taller
+        rather than wider), confirmed the same round ("don't change the background boxes
+        they stay the same"). Width stays 87%; height alone rises to 93%, the same kind
+        of split the picture's very first width/height divergence used. The frame is
+        untouched -- its own size is tied to the item's width and padding, neither of
+        which this edit touches -- so the box stays exactly the square it already was;
+        only the margin inside the frame gets uneven again, tighter top-to-bottom than
+        side-to-side.
   `snippets/header-mega-menu.liquid` and `snippets/header-drawer.liquid`. Shopify menu items
   cannot carry images, so the items are `visual_menu_item` blocks on the header section. Each
   block names the top-level menu item it belongs to (matched on the title, case-insensitively,
