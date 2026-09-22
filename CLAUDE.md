@@ -253,6 +253,15 @@ Rules that matter here:
   (that's where `.color-scheme-5` actually redeclares those variables, checked live rather
   than assumed -- an override on the outer section wrapper would have sat further from the
   button than that redeclaration and lost silently, with no visible effect at all).
+- **The hero's own button is a rectangle, not a pill, since 2026-09-22** ("make the button
+  in section БЛЯСЪК БЕЗ УСИЛИЕ with a rectangle form and don't change the size"). A second
+  deliberate, scoped exception to the site-wide pill (see Square corners under Design
+  tokens) -- `border-radius: 0` on `.banner__buttons .button`, scoped to the hero's own
+  section id in `assets/crown.css`, the same technique the silver banner's own button used
+  for its own square shape (see Silver banner under Custom code). Nothing else about the
+  button changed: no width, height, padding or font-size touched, only the corner. The
+  silver banner shares this exact markup and colour scheme but a different section id, so
+  its own button stays a pill, untouched.
 - Product photography should be worn on real people where possible — jewellery is impossible
   to judge for scale on a white background.
 

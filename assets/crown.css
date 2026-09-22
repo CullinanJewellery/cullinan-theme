@@ -157,6 +157,22 @@
   --color-button-text: 255, 255, 255;
 }
 
+/*
+  Square corners on this one button only, at the owner's instruction
+  ("make the button in section БЛЯСЪК БЕЗ УСИЛИЕ with a rectangle form and
+  don't change the size"): every other button on the site, including the
+  silver banner's own (which shares this exact markup and colour scheme),
+  stays the site-wide pill from `buttons_radius` -- see Square corners
+  under Design tokens. `border-radius: 0` on its own is enough; nothing
+  here touches width, height, padding or font-size, so the button's size
+  is exactly what it already was. Same technique the silver banner's own
+  button used for the same shape (see its own note further down), scoped
+  to the hero's own section id instead so only this button is affected.
+*/
+[id^="shopify-section-"][id$="__hero_image"] .banner__buttons .button {
+  border-radius: 0;
+}
+
 /* ---------------------------------------------------------------------------
    Announcement bar
 
