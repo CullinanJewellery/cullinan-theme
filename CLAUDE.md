@@ -1065,6 +1065,12 @@ Anything of ours that is not a Dawn setting lives in these two places:
         never its width.
       - **Cut again, minutes later** ("cut more now"). Vertical padding 0.15rem to 0.08rem
         (0.1rem to 0.05rem on phones); left and right still untouched.
+      - **Cut all the way to zero, minutes later** ("cut more more"). Vertical padding
+        0.08rem to 0 (0.05rem to 0 on phones) -- left and right (1.2rem, 0.8rem) still
+        untouched. Zero here is safe rather than cramped: `.marquee__frame`'s own
+        margin-top (2.5rem) is a separate rule and still holds real pink space above the
+        picture regardless of this padding, so the frame doesn't actually sit flush
+        against the box's top edge even at 0.
       - **Left and right split apart from top and bottom for the first time, minutes
         later, at the owner's own follow-up** ("make the left and right sides of the
         background boxes bigger"). `padding: 0.3rem` (0.2rem on phones) becomes
