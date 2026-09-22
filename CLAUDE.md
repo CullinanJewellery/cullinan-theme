@@ -1059,6 +1059,10 @@ Anything of ours that is not a Dawn setting lives in these two places:
         recalculating: it only depends on the frame being a flex-centred square and the
         caption's own fixed footprint, neither of which this change touches, so the
         picture's equal top/bottom spacing is untouched by resizing it.
+      - **Cut once more, after the gap-setting detour above got sorted out.** Vertical
+        padding 0.3rem to 0.15rem (0.2rem to 0.1rem on phones); left and right (1.2rem,
+        0.8rem) untouched, since this "cut more" was always about the box's own height,
+        never its width.
       - **Left and right split apart from top and bottom for the first time, minutes
         later, at the owner's own follow-up** ("make the left and right sides of the
         background boxes bigger"). `padding: 0.3rem` (0.2rem on phones) becomes
@@ -1083,8 +1087,14 @@ Anything of ours that is not a Dawn setting lives in these two places:
         own internal padding instead, the other reading of "make it bigger," would have
         left the boxes' own outer edges -- and the gap between them -- exactly where they
         already were, so it would not have produced the effect the owner described.
-      - **Cut again, minutes later** ("cut more"). `gap` 10 to 4, same setting, same
-        formula -- the boxes sit closer together still and grow a little more with it.
+      - **A "cut more" misread minutes later, corrected the same round.** Read at first as
+        the same gap setting, taking it from 10 to 4 -- then corrected ("what i meant is
+        not to cut more of the space between the background color boxes... I was talking
+        about the background up and down line like we did before"): the owner meant the
+        vertical padding thread from a few rounds up (Trimmed from 1.4rem... down to
+        0.3rem), not this gap setting at all. `gap` went back to `10`, its last
+        explicitly-requested value, and the actual cut landed on `.marquee__item`'s own
+        vertical padding instead -- see the note there.
   `snippets/header-mega-menu.liquid` and `snippets/header-drawer.liquid`. Shopify menu items
   cannot carry images, so the items are `visual_menu_item` blocks on the header section. Each
   block names the top-level menu item it belongs to (matched on the title, case-insensitively,
