@@ -1017,6 +1017,11 @@ Anything of ours that is not a Dawn setting lives in these two places:
         while top and bottom stay at 5%. `aspect-ratio: 1 / 1` came back out of
         `.marquee__image`, since fixing both width and height already determines the box
         completely and a square ratio no longer describes it.
+      - **Corrected minutes later -- the opposite of what had just shipped** ("i wanted a
+        smaller left and right sorry for what i write"). Width comes down past the 90%
+        square baseline to 84%, height stays at 90%, so the picture now reads a little
+        taller than it is wide -- the side margins widen to 8% each instead of narrowing,
+        top and bottom still 5%.
   `snippets/header-mega-menu.liquid` and `snippets/header-drawer.liquid`. Shopify menu items
   cannot carry images, so the items are `visual_menu_item` blocks on the header section. Each
   block names the top-level menu item it belongs to (matched on the title, case-insensitively,

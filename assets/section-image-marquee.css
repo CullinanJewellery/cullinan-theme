@@ -98,18 +98,20 @@
   is untouched, so the pink margin just narrows evenly on all four sides
   rather than the box changing size.
 
-  Widened again minutes later, left and right only ("lets strech in the
-  left and the right side a little bit"): width alone moves to 96%, height
-  stays at the 90% the square version already had, so the picture is now a
-  little wider than it is tall inside its still-square frame -- the side
-  margins narrow to 2% each, top and bottom stay at 5%. Two explicit
-  percentages replace aspect-ratio: 1 / 1 here, since a fixed width and a
-  fixed height together already determine the box completely and a square
-  ratio no longer describes it.
+  Width and height split apart here for the first time, since a fixed
+  width and a fixed height together already determine the box completely
+  and aspect-ratio: 1 / 1 no longer describes it once they differ.
+
+  First widened, left and right, on a misreading -- corrected minutes
+  later ("i wanted a smaller left and right sorry for what i write"): the
+  owner meant the opposite of the first attempt above. Width comes back
+  down past the 90% square baseline to 84%, height stays at 90%, so the
+  picture now reads a little taller than it is wide inside its still-square
+  frame -- the side margins widen to 8% each, top and bottom stay at 5%.
 */
 .marquee__image {
   display: block;
-  width: 96%;
+  width: 84%;
   height: 90%;
   object-fit: cover;
   border-radius: 0;
