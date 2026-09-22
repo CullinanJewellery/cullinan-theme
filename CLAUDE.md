@@ -1389,6 +1389,68 @@ Anything of ours that is not a Dawn setting lives in these two places:
   for it in `snippets/icon-benefit.liquid` and checked at 35px.
 - **Page title switch.** `sections/main-page.liquid` has a `show_title` checkbox, on by
   default. Templates that bring their own headline turn it off; `page.about` does.
+- **Product page** (2026-09-22, at the owner's request: sizes, grams, stone, quality and
+  details, shipping and returns, shop the look, reviews, Instagram, you may also like --
+  "go in moon magic and see what they have when open their product"). Built on Dawn's own
+  `main-product`, reordered to the reference's own order, with one block of our own.
+  - **What the reference actually does**, measured directly at 1440 and 375px rather than
+    from memory. Its buy box runs: title and price (was-price struck, a discount
+    percentage, a badge) → a two-line description with a read-more → the option groups,
+    each a "Choose your …" label above the chosen value in capitals and a row of pills,
+    with a SIZE GUIDE link on the size row → a delivery line ("MADE-TO-ORDER: ARRIVES IN
+    8-18 WORKING DAYS") → a stock line ("ONLY A FEW PIECES LEFT") → ADD TO BAG → three
+    accordions → a row of five trust icons. Below the product: Shop The Look, Customer
+    Reviews (Judge.me), See It Styled On Instagram (the paid Foursixty app), You May Also
+    Like. The phone keeps the same order, stacked, and adds a sticky purchase bar at the
+    bottom; its gallery is 335 x 435 at 375px.
+  - **Its "Quality & Details" panel is the model for ours**, and holds exactly what the
+    owner asked for: a short spec list (material, stone, stone size, cut, stone weight in
+    carats, **metal weight in grams**, certification) above prose about quality and
+    warranty that is identical on every product.
+  - **`product_specs`, our own block on `sections/main-product.liquid`.** Prints that spec
+    list from **product metafields** rather than from anything typed into the description,
+    so every product renders the same rows in the same order and the same words: Метал,
+    Проба, Тегло (г), Камък, Брой камъни, Размер на камъка, Тегло на камъка (ct),
+    Шлифовка. Each row renders only when its metafield is filled, the list only when at
+    least one is, and the whole accordion only when either the list or its own text has
+    something in it -- so a product with nothing set shows nothing at all rather than an
+    empty drawer. Shared prose sits under the list, as richtext or from a page, so one
+    page can serve every product. Styled in `assets/crown.css` as a definition list, label
+    in the site's usual small spaced capitals, value in normal case, a hairline between
+    rows but not after the last.
+  - **Dawn's own `collapsible_tab` is now guarded the same way** -- it renders nothing
+    when it has neither text nor a page, where Dawn's own version always draws the
+    heading. That is what lets Доставка и връщане exist in the template before the shop's
+    delivery and returns policy does (the owner's own choice when asked: "build the
+    accordion empty"), without showing a visitor a heading that opens onto nothing.
+    "Structure can exist before content" (How we work) -- but a control that does nothing
+    is the one thing that rule rules out.
+  - **Block order** in `templates/product.json`, following the reference: rating → vendor
+    → title → price → description → size picker → quantity → stock message → Add to cart →
+    Качество и детайли → За камъка → Доставка и връщане → Подхождат си → share. Then
+    Може да ви хареса и (Dawn's own `related-products`) below.
+    - **Quantity and share are kept even though the reference has neither.** They were
+      already in the template and the owner did not ask for them to go; removing them
+      would be changing something next to what was asked. Worth offering, not assuming.
+  - **What is deliberately not built yet, and why.**
+    - **Size guide**: Dawn's `popup` block draws its link whether or not a page is behind
+      it, so adding it before a Таблица с размери page exists would put a button on the
+      page that opens onto nothing. It goes in the moment the page does -- one line in the
+      template. The size picker itself already works: the ring product's own variants are
+      54-60, the millimetre circumference, which is the right system for Bulgaria.
+    - **Reviews**: the owner chose Judge.me's free plan (2026-09-22). The theme side is
+      already done -- Dawn's `rating` block reads `product.metafields.reviews.rating`,
+      which Judge.me writes, and prints nothing until there are reviews, and the card
+      rating on Може да ви хареса и is switched on for the same reason. The review list
+      itself arrives as the app's own block once it is installed.
+    - **Instagram**: deferred by the owner's own choice the same day -- there are no
+      product photographs yet and no customer pictures of pieces being worn, and a thin
+      feed reads worse than none.
+    - **Shop the look** uses Dawn's `complementary` block, which is curated per product
+      through the free Search & Discovery app (the same app the stone filters already
+      need). It sits in the buy box column rather than full width under the product as the
+      reference's does; the data is the same either way, and moving it to its own
+      full-width row is a small follow-up if the owner wants the reference's placement.
 - **Footer: link columns, newsletter box, contact email** (2026-09-17, at the owner’s request,
   after the reference’s footer). Two wrong reads came first (see the reverted homepage stones
   section above, then a round that built only the newsletter and email and left the columns
@@ -2021,6 +2083,58 @@ data, not theme files:
 - **Product metafield `custom.detail`** (single line text) carries the italic line beneath it,
   where the reference prints a stone's meaning. Create it under Settings → Custom data →
   Products. Cards hide the line when it is empty.
+- **The product page's own metafields** (2026-09-22, for the `product_specs` block -- see
+  Product page under Custom code). All under Settings → Custom data → Products, namespace
+  and key exactly as written, or the row will not print. Every one is optional on any given
+  product; a row appears only when it is filled, so the page never shows an empty label.
+
+  | Key | Type | Example | Prints as |
+  |---|---|---|---|
+  | `custom.metal` | Single line text | 14К жълто злато | Метал |
+  | `custom.proba` | Single line text | 585 | Проба |
+  | `custom.weight_g` | Decimal | 2.4 | Тегло — 2.4 г |
+  | `custom.stone` | Single line text | Циркон | Камък |
+  | `custom.stone_count` | Integer | 3 | Брой камъни |
+  | `custom.stone_size` | Single line text | 4 мм | Размер на камъка |
+  | `custom.stone_weight_ct` | Decimal | 0.25 | Тегло на камъка — 0.25 ct |
+  | `custom.cut` | Single line text | Брилянтна | Шлифовка |
+
+  The first four are the ones the owner asked for by name and matter most; the rest only
+  apply to pieces with a real stone. Adding a row later means one more `if` in
+  `sections/main-product.liquid`, not a rebuild.
+- **Pages the product page waits on.** Each is a plain Shopify page whose content is then
+  pointed at from the theme editor, so one page serves every product:
+  - **Качество и детайли** — the shared prose under the spec list (what the quality means,
+    that pieces are made in the workshop, any guarantee). Set on the Specification list
+    block, under "Or a page".
+  - **За камъка** — what the stones are. The accordion stays invisible until this exists.
+  - **Доставка и връщане** — delivery time, delivery price, carriers, the return window and
+    the warranty. **Blocked on the owner and the accountant; not to be written from
+    assumption** (see Legal pages under Working agreements). The accordion stays invisible
+    until it exists, by design.
+  - **Таблица с размери** — the ring size guide. Once it exists, a `popup` block goes on the
+    template beside the size picker; until then there is deliberately no link (Dawn draws
+    the link whether or not a page is behind it).
+- **Judge.me** (free plan, the owner's choice 2026-09-22) for reviews. Installing it is all
+  that is needed on the theme's side for the stars: Dawn's `rating` block and the product
+  cards both read `product.metafields.reviews.rating`, which the app writes. The review list
+  itself is the app's own block, dragged into the product template in the theme editor.
+- **The four products that exist are test data, not real listings** (checked 2026-09-22):
+  Пръстен с верижка, Обеци, Висулка плочка, Гривна с червен конец. Every one needs work
+  before the page can be judged on anything but layout:
+  - **Price is €0,00 on all four**, so every one shows as Sold out.
+  - **Vendor reads "Crown Jewellery" on all four** — the old shop name, and the wrong field
+    entirely: Vendor prints above the product title, where the stone or metal belongs (see
+    Product Vendor field above). Right now every card and every product page says
+    Crown Jewellery.
+  - **No tags at all**, so the stone collections and the Камък filter have nothing to work
+    from (see Stone filters above).
+  - **Product type** is empty on three and "earings" on the fourth — misspelt, and in
+    English. The type-by-stone collections need it set to Пръстени, Обеци, Висулки, Гривни
+    or Комплекти.
+  - **Descriptions are one word** ("Пръстен", "Обеци") or empty.
+  - Ring sizes are already right: 54-60, the millimetre circumference. One variant reads
+    "54 55", which looks like a typo for 54.
 - **Card swatches** come from a product option with swatches configured (Settings → Custom
   data, or the option's swatch values). Up to five are shown.
 - **Photographs** are staged in `photography/` (see its README for naming and shapes). That
