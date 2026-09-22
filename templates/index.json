@@ -94,8 +94,8 @@
       "settings": {
         "color_scheme": "scheme-1",
         "container_width": 1150,
-        "padding_top": 14,
-        "padding_bottom": 14
+        "padding_top": 24,
+        "padding_bottom": 24
       }
     },
     "image_marquee": {
