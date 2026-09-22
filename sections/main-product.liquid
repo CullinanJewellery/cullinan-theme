@@ -228,6 +228,99 @@
                       </div>
                     </details>
                   </div>
+                {%- when 'product_specs' -%}
+                  {%- comment -%}
+                    Our own block, not Dawn's. The facts a jewellery buyer asks for --
+                    metal, fineness, weight in grams, stone, stone size and cut -- kept
+                    as product metafields rather than typed into the description, so
+                    every product renders them identically and they can be filtered on
+                    later. Modelled on the reference's own "Quality & Details" panel,
+                    which lists exactly these as a short spec list above shared prose.
+
+                    Every row renders only when its metafield is filled, and the list
+                    itself only when at least one is -- so a product with nothing set
+                    shows the accordion's own text alone, and a product with nothing at
+                    all shows no accordion. Same "structure before content" rule the
+                    empty image slots follow everywhere else on the site.
+                  {%- endcomment -%}
+                  {%- liquid
+                    assign m = product.metafields.custom
+                    assign has_specs = false
+                    if m.metal != blank or m.proba != blank or m.weight_g != blank or m.stone != blank or m.stone_count != blank or m.stone_size != blank or m.stone_weight_ct != blank or m.cut != blank
+                      assign has_specs = true
+                    endif
+                  -%}
+                  {%- if has_specs or block.settings.content != blank or block.settings.page != blank -%}
+                    <div class="product__accordion accordion quick-add-hidden" {{ block.shopify_attributes }}>
+                      <details id="Details-{{ block.id }}-{{ section.id }}" {% if block.settings.open_by_default %}open{% endif %}>
+                        <summary>
+                          <div class="summary__title">
+                            {% render 'icon-accordion', icon: block.settings.icon %}
+                            <h2 class="h4 accordion__title inline-richtext">
+                              {{ block.settings.heading | default: block.settings.page.title | escape }}
+                            </h2>
+                          </div>
+                          {{- 'icon-caret.svg' | inline_asset_content -}}
+                        </summary>
+                        <div class="accordion__content rte" id="ProductAccordion-{{ block.id }}-{{ section.id }}">
+                          {%- if has_specs -%}
+                            <dl class="product-specs">
+                              {%- if m.metal != blank -%}
+                                <div class="product-specs__row">
+                                  <dt class="product-specs__label">Метал</dt>
+                                  <dd class="product-specs__value">{{ m.metal | escape }}</dd>
+                                </div>
+                              {%- endif -%}
+                              {%- if m.proba != blank -%}
+                                <div class="product-specs__row">
+                                  <dt class="product-specs__label">Проба</dt>
+                                  <dd class="product-specs__value">{{ m.proba | escape }}</dd>
+                                </div>
+                              {%- endif -%}
+                              {%- if m.weight_g != blank -%}
+                                <div class="product-specs__row">
+                                  <dt class="product-specs__label">Тегло</dt>
+                                  <dd class="product-specs__value">{{ m.weight_g }} г</dd>
+                                </div>
+                              {%- endif -%}
+                              {%- if m.stone != blank -%}
+                                <div class="product-specs__row">
+                                  <dt class="product-specs__label">Камък</dt>
+                                  <dd class="product-specs__value">{{ m.stone | escape }}</dd>
+                                </div>
+                              {%- endif -%}
+                              {%- if m.stone_count != blank -%}
+                                <div class="product-specs__row">
+                                  <dt class="product-specs__label">Брой камъни</dt>
+                                  <dd class="product-specs__value">{{ m.stone_count }}</dd>
+                                </div>
+                              {%- endif -%}
+                              {%- if m.stone_size != blank -%}
+                                <div class="product-specs__row">
+                                  <dt class="product-specs__label">Размер на камъка</dt>
+                                  <dd class="product-specs__value">{{ m.stone_size | escape }}</dd>
+                                </div>
+                              {%- endif -%}
+                              {%- if m.stone_weight_ct != blank -%}
+                                <div class="product-specs__row">
+                                  <dt class="product-specs__label">Тегло на камъка</dt>
+                                  <dd class="product-specs__value">{{ m.stone_weight_ct }} ct</dd>
+                                </div>
+                              {%- endif -%}
+                              {%- if m.cut != blank -%}
+                                <div class="product-specs__row">
+                                  <dt class="product-specs__label">Шлифовка</dt>
+                                  <dd class="product-specs__value">{{ m.cut | escape }}</dd>
+                                </div>
+                              {%- endif -%}
+                            </dl>
+                          {%- endif -%}
+                          {{ block.settings.content }}
+                          {{ block.settings.page.content }}
+                        </div>
+                      </details>
+                    </div>
+                  {%- endif -%}
                 {%- when 'quantity_selector' -%}
                   <div
                     id="Quantity-Form-{{ section.id }}"
@@ -1219,6 +1312,56 @@
           "type": "page",
           "id": "page",
           "label": "t:sections.main-product.blocks.collapsible_tab.settings.page.label"
+        }
+      ]
+    },
+    {
+      "type": "product_specs",
+      "name": "Specification list",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Prints the product's own metal, fineness, weight, stone, stone size and cut from its metafields, then whatever is written below. Each line appears only when that metafield is filled in on the product."
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "default": "Качество и детайли",
+          "label": "Heading"
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "check_mark", "label": "Check mark" },
+            { "value": "star", "label": "Star" },
+            { "value": "heart", "label": "Heart" },
+            { "value": "ruler", "label": "Ruler" },
+            { "value": "truck", "label": "Truck" },
+            { "value": "return", "label": "Return" }
+          ],
+          "default": "none",
+          "label": "Icon"
+        },
+        {
+          "type": "checkbox",
+          "id": "open_by_default",
+          "default": false,
+          "label": "Open by default"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Text under the list",
+          "info": "The same on every product — what your quality means, how a piece is made, any guarantee. Leave empty until it is written."
+        },
+        {
+          "type": "page",
+          "id": "page",
+          "label": "Or a page",
+          "info": "Its content prints under the list, so one page can serve every product."
         }
       ]
     },

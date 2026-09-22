@@ -2513,3 +2513,65 @@ html {
   z-index: 1;
 }
 
+/* ---------------------------------------------------------------------------
+   Product page: specification list
+
+   The facts a jewellery buyer asks for -- metal, fineness, weight in grams,
+   stone, its size and cut -- inside the product's first accordion, above
+   whatever shared text sits under it. Modelled on the reference's own
+   "Quality & Details" panel, which lists exactly these as a short spec list
+   before its prose.
+
+   A definition list rather than a table: label and value are a pair, not a
+   grid, and `dl` says so to a screen reader without needing row or column
+   headers that this content doesn't really have. Each row is its own div so
+   the pair can share one flex line -- a bare dt/dd pair cannot, since they
+   are siblings rather than children of a row.
+
+   The label sits in the same small spaced capitals the rest of the site uses
+   for short labels (the facts strip, the atelier eyebrows, the footer
+   columns); the value keeps normal case, since "14К жълто злато" and "0,25 ct"
+   read wrong shouting. A hairline under each row but not the last, so the
+   list reads as a list without boxing itself in.
+   --------------------------------------------------------------------------- */
+
+.product-specs {
+  margin: 0 0 1.6rem;
+  padding: 0;
+}
+
+.product-specs:last-child {
+  margin-bottom: 0;
+}
+
+.product-specs__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.6rem;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 0.9rem 0;
+  border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.1);
+}
+
+.product-specs__row:last-child {
+  border-bottom: 0;
+}
+
+.product-specs__label {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(var(--color-foreground), 0.7);
+}
+
+.product-specs__value {
+  margin: 0;
+  font-size: 1.4rem;
+  line-height: 1.4;
+  text-align: right;
+  color: rgb(var(--color-foreground));
+}
+
