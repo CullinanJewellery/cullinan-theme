@@ -42,31 +42,39 @@
         {%- for block in section.blocks -%}
           <li class="marquee__item" {{ block.shopify_attributes }}>
             {%- capture media -%}
-              {%- if block.settings.image != blank -%}
-                {{
-                  block.settings.image
-                  | image_url: width: 600
-                  | image_tag:
-                    class: 'marquee__image',
-                    widths: '200, 300, 400, 600',
-                    sizes: '30vw',
-                    alt: block.settings.alt
-                }}
-              {%- else -%}
-                {%- comment -%}
-                  No photograph yet. A flat square keeps the rhythm of the band
-                  so nothing shifts once the pictures arrive.
-                {%- endcomment -%}
-                <span class="marquee__image marquee__image--empty"></span>
-              {%- endif -%}
               {%- comment -%}
-                The picture sits smaller than its item on purpose, so a caption
-                fits underneath it, the way the reference's own carousel does --
-                its version bakes the words into the photograph itself, which
-                this project's own rule against burned-in text rules out, so
-                this is a real caption instead. The line always renders, with
-                its own reserved height, even blank: nothing to shift once the
-                owner has a photograph and a caption to give it.
+                The frame is always the item's full width, a square -- it sets
+                the box's footprint, not the picture inside it, so shrinking or
+                growing the picture below never changes how tall the item
+                itself renders.
+              {%- endcomment -%}
+              <span class="marquee__frame">
+                {%- if block.settings.image != blank -%}
+                  {{
+                    block.settings.image
+                    | image_url: width: 600
+                    | image_tag:
+                      class: 'marquee__image',
+                      widths: '200, 300, 400, 600',
+                      sizes: '30vw',
+                      alt: block.settings.alt
+                  }}
+                {%- else -%}
+                  {%- comment -%}
+                    No photograph yet. A flat square keeps the rhythm of the band
+                    so nothing shifts once the pictures arrive.
+                  {%- endcomment -%}
+                  <span class="marquee__image marquee__image--empty"></span>
+                {%- endif -%}
+              </span>
+              {%- comment -%}
+                A caption fits below the frame, the way the reference's own
+                carousel does -- its version bakes the words into the
+                photograph itself, which this project's own rule against
+                burned-in text rules out, so this is a real caption instead.
+                The line always renders, with its own reserved height, even
+                blank: nothing to shift once the owner has a photograph and a
+                caption to give it.
               {%- endcomment -%}
               <span class="marquee__caption">{{ block.settings.caption | escape }}</span>
             {%- endcapture -%}

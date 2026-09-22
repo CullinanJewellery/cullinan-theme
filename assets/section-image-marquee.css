@@ -64,18 +64,38 @@
 }
 
 /*
-  Smaller than its own box and centred in it, 2026-09-22 at the owner's
-  request ("make the pictures smaller and center them by the background
-  boxes they are in"). The pink now lives on each item's own box rather
-  than the shared band (see the note on .marquee__item above), so shrinking
-  the picture reveals that box's own background as a deliberate frame
-  around it -- not the unwanted band-colour margin the same shrink caused
-  the first time it was tried, back when the band still carried the colour.
+  A fixed square at the item's own full width -- the frame, not the picture
+  inside it, is what sets the box's footprint. Added 2026-09-22 after a
+  first attempt shrank .marquee__image directly (width: 84%; margin: 0
+  auto): that made the item's own rendered height shrink along with the
+  picture, since nothing else there was holding the old size, and read as
+  "the background boxes changed" even though .marquee__item's own CSS
+  never did. This wrapper is the fix -- it alone determines the square the
+  item hangs its height on, so the picture inside can shrink or grow freely
+  without ever moving the box.
+*/
+.marquee__frame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+}
+
+/*
+  Smaller than its own frame and centred on both axes, 2026-09-22 at the
+  owner's request ("make the pictures smaller and center them by the
+  background boxes they are in", then "i want it to be in the middle"
+  after a first pass centred it side to side only with margin: 0 auto).
+  The frame's own flex centring places it in the middle on every side, so
+  the pink shows as an even margin all round rather than a wider gap at
+  the bottom -- the pink lives on each item's own box (see the note on
+  .marquee__item above), not the picture, which is what makes that margin
+  read as a deliberate frame rather than leftover band colour.
 */
 .marquee__image {
   display: block;
   width: 84%;
-  margin: 0 auto;
   aspect-ratio: 1 / 1;
   object-fit: cover;
   border-radius: 0;

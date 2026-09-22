@@ -981,17 +981,30 @@ Anything of ours that is not a Dawn setting lives in these two places:
       by this round.
     - **The picture itself shrunk again and centred in its box, minutes later, at the
       owner's request** ("make the pictures smaller and center them by the background
-      boxes they are in"). `.marquee__image` moves from `width: 100%` to `width: 84%;
-      margin: 0 auto`, so it sits inset and centred within its own item's padded content
-      area rather than filling it edge to edge. This is the same 84% this project tried
-      once before and reverted the same day -- but the reason for that revert no longer
-      applies: back then the pink lived on the shared band, so shrinking the picture
-      revealed the band's own colour as an unwanted margin around a plain photograph.
-      Now the pink lives on each item's own box (the round just above this one), so the
-      same shrink instead reveals that box's own background as a deliberate frame around
-      a smaller picture -- which is what was asked for this time. The empty-slot
-      placeholder (`.marquee__image--empty`) shares the same class, so it shrinks and
-      centres the same way with nothing further to build.
+      boxes they are in"). First tried as `.marquee__image` alone, `width: 100%` to
+      `width: 84%; margin: 0 auto` -- the same 84% this project tried once before and
+      reverted, but this time the reason for that revert no longer applied: back then the
+      pink lived on the shared band, so shrinking the picture revealed the band's own
+      colour as an unwanted margin around a plain photograph, where now the pink lives on
+      each item's own box (the round just above this one), so the same shrink instead
+      reveals that box's own background as a deliberate frame.
+      - **Corrected minutes later, on two counts at once** ("why did you change the
+        background boxes i said just the picture ones... i want it to be in the middle").
+        The first attempt shrank `.marquee__image` directly, and since nothing else in the
+        item was holding the old size, the item's own rendered height shrank right along
+        with the picture -- the boxes visibly changed even though `.marquee__item`'s own
+        CSS never did, because it has no fixed height of its own; it simply hugs whatever
+        its content measures. `margin: 0 auto` also only ever centred the picture side to
+        side, leaving it flush near the top with all the freed space pooling underneath,
+        next to the caption, rather than centred on both axes. Fixed both at once with a
+        new wrapper, `.marquee__frame` (`sections/image-marquee.liquid`,
+        `assets/section-image-marquee.css`): a fixed square at the item's own full width,
+        `display: flex; align-items: center; justify-content: center`, holding the exact
+        footprint the picture used to hold alone. `.marquee__image` (or the empty
+        placeholder, which shares its class) sits inside at `width: 84%`, centred on both
+        axes by the frame's own flex rules -- so the box's height never moves regardless of
+        how small the picture gets, and the pink shows as an even margin on all four sides
+        instead of pooling at the bottom.
   `snippets/header-mega-menu.liquid` and `snippets/header-drawer.liquid`. Shopify menu items
   cannot carry images, so the items are `visual_menu_item` blocks on the header section. Each
   block names the top-level menu item it belongs to (matched on the title, case-insensitively,
