@@ -73,24 +73,3 @@
     padding: 0 1.6rem;
   }
 }
-
-/*
-  The same pink the hero and the image marquee already share, closing the
-  one gap in that continuity -- see the note in hero-facts.liquid. Same two
-  values, same breakpoint, as assets/crown.css's own hero rule and
-  assets/section-image-marquee.css's own marquee rule: flat on a phone,
-  moonmagic's own gradient on a computer. Scheme-1's own text colour
-  (dark, near-black) is untouched and already reads fine on this pink --
-  the marquee proves the same combination already, on the same scheme.
-*/
-@media screen and (max-width: 749px) {
-  .hero-facts-band {
-    background-color: #F3E1DB;
-  }
-}
-
-@media screen and (min-width: 750px) {
-  .hero-facts-band {
-    background: linear-gradient(180deg, #FFE8E0 0%, #F3E1DB 100%);
-  }
-}

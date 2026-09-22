@@ -10,19 +10,6 @@
 
   Measured off the reference: a 1000px container, not the full page width, with
   the items distributed across it.
-
-  `hero-facts-band` on the outer wrapper, added 2026-09-21: on moonmagic this
-  strip and the picture row below it (see Image marquee under Custom code)
-  are not separate bands at all -- both sit inside the same section as the
-  hero itself, on one continuous gradient that runs the whole height (the
-  hero's own photo just covers it further up). Ours are three separate
-  sections, so the exact same gradient can't literally continue between them
-  the way a single element's background can -- but this section was the one
-  gap in an otherwise shared colour: the hero and the marquee already reuse
-  the identical pink/gradient tokens (see the phone hero note under Design
-  direction), while this one sat on plain scheme-1 between them, breaking
-  the flow with two seams instead of none. See assets/section-hero-facts.css
-  for the actual colours.
 {%- endcomment -%}
 
 {%- style -%}
@@ -39,7 +26,7 @@
   }
 {%- endstyle -%}
 
-<div class="hero-facts-band color-{{ section.settings.color_scheme }} gradient">
+<div class="color-{{ section.settings.color_scheme }} gradient">
   <div class="hero-facts section-{{ section.id }}-padding">
     <ul
       class="hero-facts__row"

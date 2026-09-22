@@ -853,25 +853,15 @@ Anything of ours that is not a Dawn setting lives in these two places:
     claim wraps to two lines at 375px with 16px of margin to spare, and sits back on one line
     by 768px, where there is already enough room without wrapping. Desktop (990px+) was never
     touched by any of this -- it already fit at the flat `1.4rem` size throughout.
-  - **Pink/gradient background added, 2026-09-21, at the owner's request to look at how
-    moonmagic really does the whole hero-through-marquee area and match it.** Checked
-    directly rather than assumed: on moonmagic this strip and the picture row below it are
-    not separate coloured bands at all -- both sit inside the *same* section as the hero
-    itself (`section.hero-banner.hero-banner--gradient`, confirmed live), on one continuous
-    `linear-gradient(rgb(255,232,224) 0%, rgb(243,225,219) 100%)` that runs the section's
-    whole 854px height; the hero's own photo simply covers it further up, the same technique
-    already used here (see the hero's own gradient note above). Ours are three separate
-    Shopify sections (`hero_image`, `hero_facts`, `image_marquee`), so one literal continuous
-    gradient element isn't possible the way it is in one `<section>` -- but this section was
-    the one gap in an otherwise shared colour: the hero and the marquee already reuse the
-    identical pink/gradient tokens, while this one sat on plain scheme-1 between them,
-    reading as two seams (pink, then off-white, then pink again) instead of one continuous
-    flow. Given a stable `hero-facts-band` class on its own outer wrapper (it had none before
-    -- only the dynamic `color-{{ scheme }}` class, which `.marquee` and `.banner` already
-    have their own equivalent of), then the exact same two rules the hero and the marquee
-    already carry: flat `#F3E1DB` below 750px, `linear-gradient(180deg, #FFE8E0 0%, #F3E1DB
-    100%)` from 750px up. Scheme-1's own dark text is untouched -- the marquee already proves
-    that combination reads fine on this same pink.
+  - **A pink/gradient background, tried and reverted the same day.** Added briefly
+    (2026-09-21) after finding that moonmagic's own facts strip and picture row aren't
+    separate coloured bands at all -- both sit inside the *same* section as their hero,
+    on one continuous gradient that covers the whole thing, their hero's own photo just
+    covering it further up. Reverted the next day at the owner's own instruction ("why did
+    you put a background on the text above the moving pictures, remove it") -- this section
+    goes back to plain `color_scheme` with no background override, no `hero-facts-band`
+    class. The finding about moonmagic's own structure stays true; the owner just didn't
+    want it applied here.
 - **Benefits row.** `sections/icon-benefits.liquid` with `assets/section-icon-benefits.css`
   and `snippets/icon-benefit.liquid`. Four short promises under the product row. Each block
   takes either an uploaded image (contained, never cropped, no mask or border) or one of nine
@@ -915,16 +905,15 @@ Anything of ours that is not a Dawn setting lives in these two places:
       (unlike a Dawn section's own `{% style %}` block, which halves the value under
       `max-width: 749px`), so 12px is the true, same gap above and below the pictures at
       every screen width, not a value that scales.
-  - **Pictures made smaller, with a caption line added below each, 2026-09-21, at the
-    owner's request** ("make the pictures smaller so we can put text like moonmagic did").
-    Checked moonmagic's own equivalent directly first, per "Before you build": it isn't a
-    marquee at all but a Swiper carousel sitting just above its own facts strip (confirmed
-    live -- `.hero-banner__carousel`, `swiper-slide hero-banner__slide`), and its "text"
-    (things like "10 YEARS OF MOON MAGIC") turned out to be baked directly into the
-    photograph file itself, not live theme text -- exactly what "nothing is burned into a
-    photograph" (Design direction, the single most important rule on the project) rules out
-    here. So the outcome is copied -- a smaller picture with a caption -- not the mechanism:
-    `.marquee__image` comes down from `width: 100%` to `84%`, centred, and a new
+  - **A caption line added below each picture, 2026-09-21, at the owner's request**
+    ("make the pictures smaller so we can put text like moonmagic did"). Checked moonmagic's
+    own equivalent directly first, per "Before you build": it isn't a marquee at all but a
+    Swiper carousel sitting just above its own facts strip (confirmed live --
+    `.hero-banner__carousel`, `swiper-slide hero-banner__slide`), and its "text" (things
+    like "10 YEARS OF MOON MAGIC") turned out to be baked directly into the photograph file
+    itself, not live theme text -- exactly what "nothing is burned into a photograph"
+    (Design direction, the single most important rule on the project) rules out here. So
+    the outcome is copied -- a picture with a caption -- not the mechanism: a new
     `.marquee__caption` line renders under every picture, in the block's own new `caption`
     text setting (`sections/image-marquee.liquid`).
     - **Renders even when blank, on purpose, with its own reserved `min-height`.** No
@@ -935,13 +924,21 @@ Anything of ours that is not a Dawn setting lives in these two places:
       once the owner has photographs and captions to give them; structure before content,
       the same rule the collections and the About page's own empty photo halves already
       follow.
-    - **84%, not moonmagic's own much smaller gem-icon proportions.** Checked a second
-      moonmagic pattern too -- their "Designed to Mean More" row (small round gem swatches,
-      each about 57% picture to 43% caption+spacing by height) -- as the nearest *real*
-      image-plus-live-caption pairing on their site, since the carousel itself offered none.
-      Shrinking this project's own full-width photography that far would have read as icon
-      chips rather than jewellery photography, so 84% keeps the pictures the main subject
-      and the caption a short line underneath, not a coin flip between the two.
+    - **The picture itself was shrunk to 84% width to make room, then put back to 100% the
+      next day.** First try brought `.marquee__image` down from `width: 100%` to `84%`,
+      centred -- checked against moonmagic's own smaller "Designed to Mean More" gem-icon
+      row for proportion (about 57% picture to 43% caption+spacing there), landing on 84%
+      since shrinking this project's own jewellery photography that far would have read as
+      icon chips. But shrinking the *width* left the item's own background showing as a
+      margin around every picture, reading as a coloured box around each one -- not what
+      moonmagic does, and not what was asked. The owner caught this directly ("every
+      picture now have a background, they are like boxes around them... not like
+      [moonmagic's]"). Checked moonmagic's real carousel slides again to be sure rather than
+      guessing a third time: `imgRect.width` equals `slideRect.width` exactly, edge to edge,
+      and the slide itself has no background colour at all -- the coloured look on some of
+      their own slides is baked into that specific photograph file, not a CSS background
+      behind it. Put back to `width: 100%`; the caption below still reserves its own space
+      without needing to shrink the picture to make room for it.
 - **Visual mega menu.** `snippets/header-visual-menu.liquid`, wired into
   `snippets/header-mega-menu.liquid` and `snippets/header-drawer.liquid`. Shopify menu items
   cannot carry images, so the items are `visual_menu_item` blocks on the header section. Each

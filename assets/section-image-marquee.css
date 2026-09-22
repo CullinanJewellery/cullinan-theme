@@ -39,19 +39,21 @@
 }
 
 /*
-  The picture sits smaller than its own item, at the owner's request, so a
-  caption fits underneath it -- the reference's own equivalent (a Swiper
-  carousel just above its facts strip) does this by baking the words into
-  the photograph itself, which this project's "nothing burned into a
-  photograph" rule rules out (see Design direction), so the picture shrinks
-  instead and a real caption goes below it. 84% of the item's own width,
-  centred, keeps the drift feeling continuous rather than opening a gap
-  between neighbours the way a narrower item would.
+  Full width again, at the owner's correction (2026-09-22): shrinking this
+  to 84% (2026-09-21, to leave room for a caption) revealed the item's own
+  background as a margin around every picture, reading as a coloured box
+  around each one -- not what moonmagic does. Checked their own carousel
+  slides directly this time rather than assuming: `imgRect.width` equals
+  `slideRect.width` exactly, edge to edge, and the slide itself has no
+  background colour at all (`rgba(0,0,0,0)`) -- what looks like a coloured
+  box on some of their slides is baked into that specific photograph file,
+  not a CSS background behind it. The picture stays full width; the
+  caption below still reserves its own space without needing to shrink
+  the image to make room.
 */
 .marquee__image {
   display: block;
-  width: 84%;
-  margin: 0 auto;
+  width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
   border-radius: 0;
