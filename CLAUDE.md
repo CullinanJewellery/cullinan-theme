@@ -1939,7 +1939,11 @@ Anything of ours that is not a Dawn setting lives in these two places:
   layout holds either way, since the banner keeps its height. Not changed — the owner has
   not asked about the desktop hero.
 - **No real products yet. No photography yet.** The homepage cannot be finished until the
-  atelier photo session happens.
+  atelier photo session happens. Four test products appeared by 2026-09-22 (Пръстен с
+  верижка, Обеци, Висулка плочка, Гривна с червен конец) — enough to build and check the
+  product page against, but all priced at €0,00, all with the vendor still reading Crown
+  Jewellery, none tagged and none really described. See the last entry under Waiting on the
+  Shopify admin for what each one needs.
 - Bulgarian needs setting as the store's default language (currently English).
 - **Settled 2026-09-07: both 14K and 18K.** The benefits row the owner wrote says "Проба 585
   и 750 — 14 и 18 карата злато", so the range covers both, and so does the materials block on
