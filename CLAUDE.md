@@ -2163,8 +2163,22 @@ data, not theme files:
   - **Descriptions are one word** ("Пръстен", "Обеци") or empty.
   - Ring sizes are already right: 54-60, the millimetre circumference. One variant reads
     "54 55", which looks like a typo for 54.
-- **Card swatches** come from a product option with swatches configured (Settings → Custom
-  data, or the option's swatch values). Up to five are shown.
+- **Gold-colour swatches don't appear yet because no product has a colour option at all**
+  (confirmed live 2026-09-25: Пръстен с верижка's only option is Ring size). The theme side
+  needs nothing — `templates/product.json` already sets the variant picker's `swatch_shape`
+  to `circle`, and `snippets/card-product.liquid` already loops up to five swatches from
+  `option.values.first.swatch` onto the card; both are stock Dawn mechanics, unmodified,
+  reading straight from Shopify's own per-value swatch data. An option with values but no
+  swatch assigned still renders — as a plain text pill, not a coloured circle
+  (`product-variant-picker.liquid` only switches to swatch rendering when at least one value
+  has one). **Fix, per product, in the Shopify Admin — no theme file involved:** Products →
+  the product → Options → add an option (e.g. Цвят) → add only the tones that design is
+  actually offered in (e.g. Жълто злато, Бяло злато, Розово злато) → click each value → Edit
+  swatch → choose a preset colour (Shopify's library includes metallics) or upload an image.
+  A preset colour is a fine stand-in before real photography exists; swapping it for a
+  photographed texture later is an admin-only change. Saving auto-generates the variant grid
+  (Ring size × Цвят), and price/inventory can be set per combination from there. Up to five
+  swatches show on a card, comfortably more than three gold tones need.
 - **Photographs** are staged in `photography/` (see its README for naming and shapes). That
   folder is outside the theme directories, so Shopify never sees it, and the image files are
   gitignored — git is for the theme, not a photo library. Shopify's Files library has no
