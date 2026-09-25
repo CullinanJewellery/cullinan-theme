@@ -1824,6 +1824,48 @@ html {
   overflow-wrap: anywhere;
 }
 
+/*
+  A small icon-and-label row under the email, matching moonmagic's own
+  minimal pattern for this exact spot (checked their footer DOM directly,
+  2026-09-25) -- plain inline links, not the bigger heading-plus-buttons
+  block this project already builds elsewhere (.footer__social). Deliberately
+  its own scoped rules rather than reusing .footer__list-social's sizing:
+  that chain draws pill buttons with borders and padding, which would look
+  like a second, competing social block right under the first one's own
+  markup pattern rather than the quiet aside moonmagic's own version reads
+  as. `list-social__label` is `display: none` by default (the icon-only
+  style everywhere else on the site); scoped back on here only.
+*/
+.footer .footer-subscribe__social {
+  display: flex;
+  gap: 1.2rem;
+  margin: 1.2rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.footer .footer-subscribe__social .list-social__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: rgb(var(--color-foreground));
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.footer .footer-subscribe__social .icon {
+  width: 1.4rem;
+  height: 1.4rem;
+  min-width: 1.4rem;
+  flex: 0 0 auto;
+}
+
+.footer .footer-subscribe__social .list-social__label {
+  display: inline;
+}
+
 @media screen and (min-width: 750px) {
   .footer .footer__blocks-wrapper > .footer-block--subscribe.grid__item {
     flex: 0 1 26rem;
@@ -1834,6 +1876,31 @@ html {
 
   .footer .footer-block--subscribe .newsletter-form__field-wrapper {
     max-width: 100%;
+  }
+
+  /*
+    The divider between the link columns and this box, at the owner's
+    request (2026-09-25: "the straight line between Колекции and
+    Абонирайте се за бюлетина"). Checked moonmagic's own footer directly
+    rather than guessing: it draws two 1px vertical lines in a dusty
+    rgb(230, 186, 185) -- one before its own three nav columns, a second
+    right where its newsletter column begins, the exact equivalent of this
+    gap. Ours has no block before the nav columns, so only the second
+    line applies. Reuses this footer's own pink (#F3E1DB) rather than
+    moonmagic's literal colour, matching every other line already in this
+    section. padding-left is half of .footer__blocks-wrapper's own
+    column-gap at each breakpoint (4rem, then 8rem from 990px), so the
+    line centres in the gap instead of sitting flush against the box.
+  */
+  .footer .footer__blocks-wrapper > .footer-block--subscribe.grid__item {
+    border-left: 1px solid #F3E1DB;
+    padding-left: 2rem;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .footer .footer__blocks-wrapper > .footer-block--subscribe.grid__item {
+    padding-left: 4rem;
   }
 }
 

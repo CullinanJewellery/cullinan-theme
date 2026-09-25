@@ -210,6 +210,20 @@
                   </a>
                 </p>
               {%- endif -%}
+              {%- comment -%}
+                A small icon-and-label pair, moonmagic's own pattern for this
+                exact spot (2026-09-25, checked their footer DOM directly):
+                Facebook and Instagram sit inside their newsletter column,
+                under the email line, as plain inline links -- not the bigger
+                heading-plus-buttons block this project already has elsewhere
+                on the page (footer__social, its own separate thing, left
+                untouched). Reuses snippets/social-icons.liquid, the same
+                markup every other social link on the site already renders
+                from, with its own scoped class so it stays minimal here.
+              {%- endcomment -%}
+              {%- if has_social_icons -%}
+                {%- render 'social-icons', class: 'footer-subscribe__social' -%}
+              {%- endif -%}
             </div>
           {%- endif -%}
 
