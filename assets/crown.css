@@ -1847,9 +1847,21 @@ html {
   border-top here does the same job, and being a plain block-level <ul>
   (flex governs only its own children) it already spans the column's full
   width without needing a separate element.
+
+  Right-aligned, a round later at the owner's request ("make the icons go
+  right not in the left side"). This <ul> also carries Dawn's own
+  `list-social` class, whose base rule already right-aligns via
+  `justify-content: flex-end` -- checked live and confirmed that alone was
+  already doing it at 1440px, but leaving the behaviour to an unstated,
+  inherited default is fragile (silently reversed the moment that base
+  rule changes), so it's set explicitly here instead. This project's
+  colour and shape were already the plain, single-colour, no-button-box
+  look moonmagic's own icons use (checked both live), so "cleaner like
+  moonmagic" reads as this positioning, not the icon artwork itself.
 */
 .footer .footer-subscribe__social {
   display: flex;
+  justify-content: flex-end;
   gap: 1.6rem;
   align-items: center;
   margin: 1.2rem 0 0;
