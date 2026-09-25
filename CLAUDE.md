@@ -41,6 +41,27 @@ structure, proportions, spacing, hierarchy and interaction. Take the patterns. N
 their code, their images or their words; we are building Cullinan Jewellery, and the pieces that
 make Cullinan Jewellery different (a workshop since 1991) are not on their site.
 
+**The standing formula, put plainly by the owner (2026-09-25): moonmagic's own design
+principles + Cullinan's own requirements + the specific things borrowed from hestiahome.bg =
+Cullinan's own design system.** In practice, that means building any new section checks all
+three, not moonmagic alone:
+- **moonmagic.com** — the default lens for structure, spacing, proportions and layout
+  behaviour, per the paragraph above.
+- **hestiahome.bg** — a second, narrower reference, already the source for specific things
+  (the pill button shape, the hover-lift animation, the Jost typeface). Worth checking
+  whenever a new element touches buttons, motion or type specifically, even though it isn't
+  the default reference for layout the way moonmagic is.
+- **Cullinan's own requirements** — the constraints neither reference has to deal with:
+  Bulgarian copy and Cyrillic type, the no-burned-in-photograph rule, EUR pricing, and
+  whatever the owner states as a fact about the business. These aren't a source to check
+  once; they're a filter every borrowed pattern has to survive.
+
+The Design System artifact (a claude.ai canvas link, ask the owner or check recent memory
+for the URL) records the result of this formula per decision — colour, type, button and
+layout choices each tagged moonmagic / hestiahome.bg / our own call — and gets a new entry
+in the same pass as this file whenever a new section adds a token-level decision worth
+tracking, not saved up for later.
+
 Photography comes last. Build every image slot empty and make sure the layout holds when
 nothing is set. No placeholder graphics and no stock images. **AI-generated pictures are
 allowed:** the owner decided on 2026-09-15 to use them (the Контакти banner’s marble is one),
