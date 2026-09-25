@@ -222,18 +222,31 @@
       {%- assign footer_subscribe = footer_subscribe | strip -%}
       <div class="footer__content-top page-width">
         {%- comment -%}
-          Контакти only. This block used to also render on the homepage
-          (2026-09-18 at first), until the owner asked for it there to sit
-          between Първи научавайте and Кое злато е за вас instead -- i.e.
-          before the newsletter section rather than after it in the footer.
-          It's now sections/social-follow.liquid on the homepage, and
-          template.name == 'index' has gone from this condition so the
-          footer does not print it there a second time. Контакти keeps its
-          own version here unchanged, with its own heading, text and picture.
+          Every page except the homepage (2026-09-25, at the owner's request --
+          "the section that appears in every page at the end, the design is not
+          the same": confirmed live that this block rendered on Контакти only,
+          leaving За нас, every product page and every collection page with no
+          social block in the footer at all). moonmagic's own footer is
+          identical on every page it appears on, so the fix is to make this the
+          default everywhere rather than an exception on one page. Контакти
+          keeps its own heading, text, hover colour and background picture --
+          the branch inside footer_social still gates those on
+          template.suffix == 'contact', unchanged.
+
+          The homepage alone stays excluded here: it already carries its own
+          copy of this same markup higher up the page, in
+          sections/social-follow.liquid, at a position (before Първи
+          научавайте) the footer itself can never reach -- printing it again
+          here would be a second copy on the same page. That history is why
+          this was contact-only before: the homepage used to render it here
+          too (2026-09-18), until the owner asked for it moved up the page
+          instead, and the fix at the time narrowed the condition to
+          `template.suffix == 'contact'` rather than to "not index", missing
+          every other template in the process.
         {%- endcomment -%}
-        {%- if template.suffix == 'contact' -%}
+        {%- unless template.name == 'index' -%}
           {{- footer_social -}}
-        {%- endif -%}
+        {%- endunless -%}
         {%- if section.blocks.size > 0 or footer_subscribe != blank -%}
           {%- liquid
             if section.blocks.size == 9
