@@ -2163,22 +2163,35 @@ data, not theme files:
   - **Descriptions are one word** ("Пръстен", "Обеци") or empty.
   - Ring sizes are already right: 54-60, the millimetre circumference. One variant reads
     "54 55", which looks like a typo for 54.
-- **Gold-colour swatches don't appear yet because no product has a colour option at all**
-  (confirmed live 2026-09-25: Пръстен с верижка's only option is Ring size). The theme side
-  needs nothing — `templates/product.json` already sets the variant picker's `swatch_shape`
-  to `circle`, and `snippets/card-product.liquid` already loops up to five swatches from
-  `option.values.first.swatch` onto the card; both are stock Dawn mechanics, unmodified,
-  reading straight from Shopify's own per-value swatch data. An option with values but no
-  swatch assigned still renders — as a plain text pill, not a coloured circle
-  (`product-variant-picker.liquid` only switches to swatch rendering when at least one value
-  has one). **Fix, per product, in the Shopify Admin — no theme file involved:** Products →
-  the product → Options → add an option (e.g. Цвят) → add only the tones that design is
-  actually offered in (e.g. Жълто злато, Бяло злато, Розово злато) → click each value → Edit
-  swatch → choose a preset colour (Shopify's library includes metallics) or upload an image.
-  A preset colour is a fine stand-in before real photography exists; swapping it for a
-  photographed texture later is an admin-only change. Saving auto-generates the variant grid
-  (Ring size × Цвят), and price/inventory can be set per combination from there. Up to five
-  swatches show on a card, comfortably more than three gold tones need.
+- **Gold-colour swatches: fixed on Пръстен с верижка, confirmed live 2026-09-25.** The gap
+  was store data, not the theme — `templates/product.json` already had the variant picker's
+  `swatch_shape` set to `circle`, and `snippets/card-product.liquid` already looped up to
+  five swatches from `option.values.first.swatch` onto the card; both stock Dawn mechanics,
+  reading straight from Shopify's own per-value swatch data. The owner added a real **Color**
+  option in the Shopify Admin (Products → the product → Options), using Shopify's own
+  Color-metaobject swatch type, with three entries — Gold `#D49A06`, Rose gold `#B76E79`,
+  White `#FFFFFF` — each with a real colour assigned. Confirmed live: three coloured circles
+  render both on the product page's own variant picker and on its collection card.
+  - **Still to do, the same way, on every other product**: only Пръстен с верижка has the
+    Color option live. Гривна с червен конец still shows just Jewelry material (Gold/Silver,
+    no Color option at all yet) — the Rose gold entry's "2 references" in the Admin means the
+    entry is linked to that product in the editor, but the option itself was never saved
+    there. Обеци and Висулка плочка have neither.
+  - **Two open questions for the owner, not ours to decide:**
+    - **`Jewelry material` (values Gold/Silver/Metal, English, no swatches) now sits
+      alongside the new Color option on Пръстен с верижка** — reads like Shopify's own
+      unedited category-suggested option (added when the product's Category was set to
+      "Rings in Jewelry"), never customised. It overlaps with what Color now covers and its
+      English placeholder values would confuse a Bulgarian customer if left as-is. Worth
+      deciding per product: delete it, or repurpose it for something Color doesn't cover
+      (e.g. проба/fineness, 14К/18К/сребро) rather than the metal's colour.
+    - **The Color entries' own Label text is English** (`Gold`, `Rose gold`, `White`) and
+      shows to customers as-is on the storefront ("Color: Gold"). Customer-facing copy on
+      this site is Bulgarian throughout (Working agreements). The entry editor showed a
+      `Display name` field next to `Label`, which may allow a Bulgarian-only override without
+      touching the shared entry's own Label — or this can go through **Translate & Adapt**
+      (already in the Admin's own sidebar), which localizes metaobject entries per market.
+      Needs the owner to set it, since it's inside the Admin.
 - **Photographs** are staged in `photography/` (see its README for naming and shapes). That
   folder is outside the theme directories, so Shopify never sees it, and the image files are
   gitignored — git is for the theme, not a photo library. Shopify's Files library has no
