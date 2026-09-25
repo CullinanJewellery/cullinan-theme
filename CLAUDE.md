@@ -386,6 +386,9 @@ Rules that matter here:
   https://a83q69mv3t9zni67-107185537364.shopifypreview.com -- the owner asked for every check
   from here on to use this link specifically ("everytime you are done check the preview
   link"), so use this one until told otherwise, not just whichever one happens to still work.
+  That one expired by 2026-09-25 (confirmed by fetching it directly: HTTP 410, Shopify's own
+  generic "sell online" landing page in place of the theme) and was replaced the same day by
+  https://h6stv2mlmbvp65ou-107185537364.shopifypreview.com.
 - **Wait for one push to reach the preview before sending the next.** Twice on 2026-09-14 a
   push that followed another within a minute never reached the theme, while the push before
   it synced at once: `templates/index.json` 13 seconds after a section push (still missing
