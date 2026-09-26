@@ -543,6 +543,17 @@ Rules that matter here:
     from this same unmodified Dawn mechanism. Worth flagging if the owner ever wants button
     lift without card lift, since that would need overriding Dawn's own rule rather than
     just the setting.
+    - **That is exactly what happened, 2026-09-26** ("when you put the cursor on them they go
+      up and they zoom... i don't want that", about the homepage product row). The setting
+      stays on, so buttons still lift; only the card half of Dawn's own rule is switched off
+      in `assets/crown.css`, reusing base.css's own selectors since crown.css loads after it.
+      The **zoom** was a second, unrelated effect from `component-card.css` -- a
+      `scale(1.03)` on the card image above 990px. That file loads from inside each section,
+      so it lands *after* crown.css; the override adds `.product-card-wrapper` purely to win
+      on specificity, not to narrow what it reaches. Checked live at 1440px with a real
+      hover: the card's own transform and the image's are both `none`, while Вижте всички
+      still lifts `-2.5px`. Dawn's second-image-on-hover fade is untouched -- a separate
+      section setting (`show_secondary_image`) the owner didn't ask about.
   - **A real regression surfaced checking this live, and is now fixed.** Dawn's own lift
     rule (`.animate--hover-vertical-lift .button:not(.button--tertiary) { transition:
     transform ... }`, `base.css`) sits at specificity (0,3,0). Two of this project's own
