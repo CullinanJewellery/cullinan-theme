@@ -1272,6 +1272,29 @@ html {
   color: rgba(var(--color-foreground), 0.7);
 }
 
+/* Product cards stay still on hover: no lift, no zoom.
+
+   The lift comes from the theme-wide animations_hover_elements setting, which
+   stays on for buttons (asked for, after hestiahome.bg). Dawn has no separate
+   toggle for cards, so the card half of its own rule is switched off here --
+   same selectors as base.css, and crown.css loads after it. */
+.animate--hover-vertical-lift .card-wrapper:hover .card--card,
+.animate--hover-vertical-lift .card-wrapper:hover .card--standard .card__inner,
+.animate--hover-vertical-lift .card-wrapper:active .card--card,
+.animate--hover-vertical-lift .card-wrapper:active .card--standard .card__inner {
+  transform: none;
+}
+
+/* The zoom is component-card.css's own scale(1.03), desktop only. That file
+   loads from inside each section, so after crown.css -- `.product-card-wrapper`
+   is added purely to out-specify it rather than to narrow what it reaches. */
+@media screen and (min-width: 990px) {
+  .card-wrapper.product-card-wrapper:hover .media.media--hover-effect > img:first-child:only-child,
+  .card-wrapper.product-card-wrapper:hover .media.media--hover-effect > img + img {
+    transform: none;
+  }
+}
+
 card-swatches {
   display: contents;
 }
