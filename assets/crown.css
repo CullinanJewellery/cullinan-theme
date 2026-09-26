@@ -979,8 +979,10 @@ html {
   }
 }
 
+/* 1.4rem matches the stone line on moonmagic's own product cards, measured at
+   1440px. The tracking stays ours -- only the size was asked for. */
 .collection .card__content .caption-with-letter-spacing {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-weight: 400;
   letter-spacing: 0.04em;
   text-transform: none;
@@ -1332,7 +1334,7 @@ card-swatches {
 
 .collection .card__swatches {
   display: flex;
-  gap: 0.6rem;
+  gap: 1rem;
   margin: 0.8rem 0 0;
   padding: 0;
   list-style: none;
@@ -1359,10 +1361,21 @@ card-swatches {
   border-radius: 50%;
 }
 
+/* 3.4rem with a 1rem gap is moonmagic's own swatch size, measured on their
+   bestseller cards at 1440px. Phones get a smaller one: their cards are half
+   the width, so 34px would eat a fifth of the card. Not matched to moonmagic's
+   own phone size, which hasn't been measured -- say the word and it can be. */
 .collection .card__swatch .swatch {
-  width: 1.6rem;
-  height: 1.6rem;
+  width: 2.4rem;
+  height: 2.4rem;
   border-radius: 50%;
+}
+
+@media screen and (min-width: 750px) {
+  .collection .card__swatch .swatch {
+    width: 3.4rem;
+    height: 3.4rem;
+  }
 }
 
 .collection .card__swatch button[aria-pressed="true"] .swatch {
