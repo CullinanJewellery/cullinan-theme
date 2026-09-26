@@ -1475,6 +1475,49 @@ Anything of ours that is not a Dawn setting lives in these two places:
       need). It sits in the buy box column rather than full width under the product as the
       reference's does; the data is the same either way, and moving it to its own
       full-width row is a small follow-up if the owner wants the reference's placement.
+- **Card swatches: picking a colour swaps the card's own photo and price, 2026-09-26, at the
+  owner's request** ("go in moonmagic and see how it is done" — their own Best Sellers row, where
+  picking a swatch under the card swaps that card's own photograph and price instantly). Checked
+  moonmagic live rather than guessing at the mechanism: clicking their own swatch does swap the
+  photo and price with no page reload, confirmed by clicking one directly (a gold ring's photo
+  and price both changed to the silver variant's). Our own card swatches (added earlier for the
+  card, see Waiting on the Shopify admin) were static — real circles, but purely decorative,
+  confirmed by reading `snippets/card-product.liquid` before touching it, per "Before you build."
+  - **Each swatch is now a real `<button>`** carrying its own variant's price, compare-at price
+    and image (a full responsive srcset, not one fixed size) as data attributes — all read
+    straight from Shopify's own `option_value.variant`, nothing duplicated by hand. A new
+    `<card-swatches>` custom element (`assets/card-swatches.js`, following this theme's existing
+    plain-JS component pattern, e.g. `price-per-item.js`) wraps the card's `.card` div (`display:
+    contents`, so it adds no layout box of its own) and, on click, swaps the image and re-writes
+    the text inside Dawn's own already-rendered `.price__regular`/`.price__sale` markup, toggling
+    `price--on-sale`/`price--sold-out` — reusing Dawn's existing sale-badge CSS exactly rather
+    than reimplementing it.
+  - **A colour with no photo of its own yet leaves the current picture alone**, rather than
+    showing a blank slot — checked live: every colour on both Пръстен с верижка and Гривна с
+    червен конец currently shares the same one placeholder photo (`hasImage: false` on every
+    swatch, read via `dataset`), so nothing visibly swaps yet on either product. The swap
+    mechanism itself was confirmed working regardless, by temporarily forcing distinct fake
+    image/price data onto a button in the live page and clicking it: the photo, the price text
+    and the pressed ring all updated correctly. A real difference will show once photography
+    gives each colour its own image.
+  - **The card already carries a full-card link overlay** (`.card__heading a::after`, Dawn's own
+    "click anywhere on the card" pattern) — a swatch button sitting under it would have its
+    clicks silently swallowed by that overlay and navigate to the product page instead. Fixed
+    with `position: relative; z-index: 1` on the button, the exact technique Dawn's own
+    `.quick-add` (`assets/quick-add.css`) already uses to escape the same overlay — found by
+    reading that file rather than guessing at a z-index value.
+  - **Loaded once per section, not once per card.** `card-swatches.js` sits next to
+    `component-card.css` (the file every section that renders `card-product.liquid` already
+    loads once), the same way `quick-add.js` already does — in `featured-collection.liquid`,
+    `main-collection-product-grid.liquid`, `related-products.liquid`, `main-search.liquid`,
+    `collage.liquid` and the complementary block in `main-product.liquid`. This reaches every
+    product listing on the site (collections, the homepage's own product row, search, "you may
+    also like"), not just `/collections/all`, matching the owner's own instruction that this
+    should apply "for all the products not just for this one."
+  - **Found in passing while verifying this live**: Гривна с червен конец now has its own Color
+    option live too (Rose gold, Gold, Silver, White) — it did not the last time this file was
+    checked; the owner must have finished saving it since. Обеци and Висулка плочка still have
+    none; see Gold-colour swatches under Waiting on the Shopify admin.
 - **Footer: link columns, newsletter box, contact email** (2026-09-17, at the owner’s request,
   after the reference’s footer). Two wrong reads came first (see the reverted homepage stones
   section above, then a round that built only the newsletter and email and left the columns
@@ -2172,11 +2215,10 @@ data, not theme files:
   Color-metaobject swatch type, with three entries — Gold `#D49A06`, Rose gold `#B76E79`,
   White `#FFFFFF` — each with a real colour assigned. Confirmed live: three coloured circles
   render both on the product page's own variant picker and on its collection card.
-  - **Still to do, the same way, on every other product**: only Пръстен с верижка has the
-    Color option live. Гривна с червен конец still shows just Jewelry material (Gold/Silver,
-    no Color option at all yet) — the Rose gold entry's "2 references" in the Admin means the
-    entry is linked to that product in the editor, but the option itself was never saved
-    there. Обеци and Висулка плочка have neither.
+  - **Still to do, the same way, on the remaining products.** Гривна с червен конец has since
+    gained its own Color option too (Rose gold, Gold, Silver, White — confirmed live
+    2026-09-26), so it and Пръстен с верижка are both done now. Обеци and Висулка плочка still
+    have no Color option at all.
   - **Two open questions for the owner, not ours to decide:**
     - **`Jewelry material` (values Gold/Silver/Metal, English, no swatches) now sits
       alongside the new Color option on Пръстен с верижка** — reads like Shopify's own
