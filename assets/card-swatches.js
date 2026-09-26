@@ -8,55 +8,22 @@ if (!customElements.get('card-swatches')) {
 
         this.image = this.querySelector('.card__media img');
         this.price = this.querySelector('.price');
-        this.card = this.querySelector('.card');
-        this.selected = this.buttons.find((button) => button.getAttribute('aria-pressed') === 'true') || null;
-
-        if (this.image) {
-          this.initialImage = { src: this.image.src, srcset: this.image.srcset, alt: this.image.alt };
-        }
-        if (this.price) {
-          this.initialPrice = this.capturePriceState();
-        }
 
         this.buttons.forEach((button) => {
           button.addEventListener('click', this.onSwatchClick.bind(this, button));
-          button.addEventListener('mouseenter', this.onSwatchPreview.bind(this, button));
-          button.addEventListener('focus', this.onSwatchPreview.bind(this, button));
-        });
-
-        // Revert on leaving the whole card, not the swatch itself -- otherwise moving
-        // the cursor up from a tiny swatch to actually look at the picture it just
-        // changed reverts it before it can be seen.
-        if (this.card) {
-          this.card.addEventListener('mouseleave', this.onSwatchRevert.bind(this));
-        }
-        this.addEventListener('focusout', (event) => {
-          if (!this.contains(event.relatedTarget)) this.onSwatchRevert();
         });
       }
 
       onSwatchClick(button, event) {
         event.preventDefault();
-        this.selected = button;
+        if (button.getAttribute('aria-pressed') === 'true') return;
+
         this.buttons.forEach((other) => {
           other.setAttribute('aria-pressed', other === button ? 'true' : 'false');
         });
+
         this.applyImage(button);
         this.applyPrice(button);
-      }
-
-      onSwatchPreview(button) {
-        this.applyImage(button);
-        this.applyPrice(button);
-      }
-
-      onSwatchRevert() {
-        if (this.selected) {
-          this.applyImage(this.selected);
-          this.applyPrice(this.selected);
-        } else {
-          this.restoreInitial();
-        }
       }
 
       applyImage(button) {
@@ -84,45 +51,6 @@ if (!customElements.get('card-swatches')) {
 
         const saved = this.price.querySelector('.price__sale .price-item--saved');
         if (saved) saved.textContent = onSale ? `(-${button.dataset.savedPercent}%)` : '';
-      }
-
-      restoreInitial() {
-        if (this.image && this.initialImage) {
-          this.image.src = this.initialImage.src;
-          this.image.srcset = this.initialImage.srcset;
-          this.image.alt = this.initialImage.alt;
-        }
-        if (this.price && this.initialPrice) {
-          this.restorePriceState(this.initialPrice);
-        }
-      }
-
-      capturePriceState() {
-        return {
-          onSale: this.price.classList.contains('price--on-sale'),
-          soldOut: this.price.classList.contains('price--sold-out'),
-          regular: this.price.querySelector('.price__regular .price-item--regular')?.textContent,
-          saleCompare: this.price.querySelector('.price__sale s.price-item--regular')?.textContent,
-          saleCurrent: this.price.querySelector('.price__sale .price-item--sale')?.textContent,
-          saved: this.price.querySelector('.price__sale .price-item--saved')?.textContent,
-        };
-      }
-
-      restorePriceState(state) {
-        this.price.classList.toggle('price--on-sale', state.onSale);
-        this.price.classList.toggle('price--sold-out', state.soldOut);
-
-        const regular = this.price.querySelector('.price__regular .price-item--regular');
-        if (regular && state.regular != null) regular.textContent = state.regular;
-
-        const saleCompare = this.price.querySelector('.price__sale s.price-item--regular');
-        if (saleCompare && state.saleCompare != null) saleCompare.textContent = state.saleCompare;
-
-        const saleCurrent = this.price.querySelector('.price__sale .price-item--sale');
-        if (saleCurrent && state.saleCurrent != null) saleCurrent.textContent = state.saleCurrent;
-
-        const saved = this.price.querySelector('.price__sale .price-item--saved');
-        if (saved && state.saved != null) saved.textContent = state.saved;
       }
     }
   );
