@@ -9,13 +9,18 @@ if (!customElements.get('card-swatches')) {
         this.image = this.querySelector('.card__media img');
         this.price = this.querySelector('.price');
 
+        // Hovering a swatch picks it, same as clicking, and the picture stays on
+        // that colour afterwards -- the owner asked to be able to move the cursor
+        // away and still see the colour they landed on.
         this.buttons.forEach((button) => {
-          button.addEventListener('click', this.onSwatchClick.bind(this, button));
+          button.addEventListener('click', this.onSwatchPick.bind(this, button));
+          button.addEventListener('mouseenter', this.onSwatchPick.bind(this, button));
+          button.addEventListener('focus', this.onSwatchPick.bind(this, button));
         });
       }
 
-      onSwatchClick(button, event) {
-        event.preventDefault();
+      onSwatchPick(button, event) {
+        if (event) event.preventDefault();
         if (button.getAttribute('aria-pressed') === 'true') return;
 
         this.buttons.forEach((other) => {

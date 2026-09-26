@@ -1285,13 +1285,38 @@ html {
   transform: none;
 }
 
-/* The zoom is component-card.css's own scale(1.03), desktop only. That file
-   loads from inside each section, so after crown.css -- `.product-card-wrapper`
-   is added purely to out-specify it rather than to narrow what it reaches. */
+/* Hover on a card is split by zone, at the owner's request: the picture swaps
+   to the second photo, the swatches swap to their own colour's photo (in
+   card-swatches.js), and the text between them does nothing at all.
+
+   Dawn fires its second-photo swap from `.card-wrapper:hover`, which covers the
+   whole card, title and price included -- so hovering the text changed the
+   picture too. The first pair of rules cancels that; the second pair re-fires it
+   from the picture itself. component-card.css loads from inside each section, so
+   after crown.css: `.product-card-wrapper` is added purely to out-specify it,
+   and the re-fire sits after the cancel so it wins when both match.
+
+   The zoom (component-card.css's own scale(1.03)) stays off either way. */
 @media screen and (min-width: 990px) {
   .card-wrapper.product-card-wrapper:hover .media.media--hover-effect > img:first-child:only-child,
   .card-wrapper.product-card-wrapper:hover .media.media--hover-effect > img + img {
     transform: none;
+  }
+
+  .card-wrapper.product-card-wrapper:hover .media.media--hover-effect > img:first-child:not(:only-child) {
+    opacity: 1;
+  }
+
+  .card-wrapper.product-card-wrapper:hover .media.media--hover-effect > img + img {
+    opacity: 0;
+  }
+
+  .card-wrapper.product-card-wrapper .media.media--hover-effect:hover > img:first-child:not(:only-child) {
+    opacity: 0;
+  }
+
+  .card-wrapper.product-card-wrapper .media.media--hover-effect:hover > img + img {
+    opacity: 1;
   }
 }
 
