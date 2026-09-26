@@ -8,6 +8,7 @@ if (!customElements.get('card-swatches')) {
 
         this.image = this.querySelector('.card__media img');
         this.price = this.querySelector('.price');
+        this.card = this.querySelector('.card');
         this.selected = this.buttons.find((button) => button.getAttribute('aria-pressed') === 'true') || null;
 
         if (this.image) {
@@ -21,8 +22,16 @@ if (!customElements.get('card-swatches')) {
           button.addEventListener('click', this.onSwatchClick.bind(this, button));
           button.addEventListener('mouseenter', this.onSwatchPreview.bind(this, button));
           button.addEventListener('focus', this.onSwatchPreview.bind(this, button));
-          button.addEventListener('mouseleave', this.onSwatchRevert.bind(this));
-          button.addEventListener('blur', this.onSwatchRevert.bind(this));
+        });
+
+        // Revert on leaving the whole card, not the swatch itself -- otherwise moving
+        // the cursor up from a tiny swatch to actually look at the picture it just
+        // changed reverts it before it can be seen.
+        if (this.card) {
+          this.card.addEventListener('mouseleave', this.onSwatchRevert.bind(this));
+        }
+        this.addEventListener('focusout', (event) => {
+          if (!this.contains(event.relatedTarget)) this.onSwatchRevert();
         });
       }
 
