@@ -8,6 +8,8 @@ if (!customElements.get('card-swatches')) {
 
         this.image = this.querySelector('.card__media img');
         this.price = this.querySelector('.price');
+        this.card = this.querySelector('.card');
+        this.media = this.querySelector('.card__media');
 
         // Hovering a swatch picks it, same as clicking, and the picture stays on
         // that colour afterwards -- the owner asked to be able to move the cursor
@@ -16,6 +18,31 @@ if (!customElements.get('card-swatches')) {
           button.addEventListener('click', this.onSwatchPick.bind(this, button));
           button.addEventListener('mouseenter', this.onSwatchPick.bind(this, button));
           button.addEventListener('focus', this.onSwatchPick.bind(this, button));
+        });
+
+        this.watchPointerOverMedia();
+      }
+
+      // Dawn's card carries a stretched link overlay (.card__heading a::after,
+      // covering the whole card so anywhere on it is clickable), which sits over
+      // the picture and swallows its hover -- `.card__media:hover` never matches.
+      // So the pointer is measured against the picture's own box instead, and the
+      // card is marked for the CSS that swaps to the second photo.
+      watchPointerOverMedia() {
+        if (!this.card || !this.media) return;
+
+        this.card.addEventListener('mousemove', (event) => {
+          const box = this.media.getBoundingClientRect();
+          const over =
+            event.clientX >= box.left &&
+            event.clientX <= box.right &&
+            event.clientY >= box.top &&
+            event.clientY <= box.bottom;
+          this.card.classList.toggle('card--over-media', over);
+        });
+
+        this.card.addEventListener('mouseleave', () => {
+          this.card.classList.remove('card--over-media');
         });
       }
 

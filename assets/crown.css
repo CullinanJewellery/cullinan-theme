@@ -1292,9 +1292,15 @@ html {
    Dawn fires its second-photo swap from `.card-wrapper:hover`, which covers the
    whole card, title and price included -- so hovering the text changed the
    picture too. The first pair of rules cancels that; the second pair re-fires it
-   from the picture itself. component-card.css loads from inside each section, so
-   after crown.css: `.product-card-wrapper` is added purely to out-specify it,
-   and the re-fire sits after the cancel so it wins when both match.
+   only while the pointer is genuinely over the picture. component-card.css loads
+   from inside each section, so after crown.css: `.product-card-wrapper` is added
+   purely to out-specify it, and the re-fire sits after the cancel so it wins
+   when both match.
+
+   The re-fire keys off `.card--over-media`, set by card-swatches.js, not off
+   `:hover` on the picture -- Dawn's stretched link overlay (.card__heading
+   a::after) lies over the whole card and swallows the picture's own hover, so
+   `.card__media:hover` never matches at all.
 
    The zoom (component-card.css's own scale(1.03)) stays off either way. */
 @media screen and (min-width: 990px) {
@@ -1311,11 +1317,11 @@ html {
     opacity: 0;
   }
 
-  .card-wrapper.product-card-wrapper .media.media--hover-effect:hover > img:first-child:not(:only-child) {
+  .card-wrapper.product-card-wrapper .card--over-media .media.media--hover-effect > img:first-child:not(:only-child) {
     opacity: 0;
   }
 
-  .card-wrapper.product-card-wrapper .media.media--hover-effect:hover > img + img {
+  .card-wrapper.product-card-wrapper .card--over-media .media.media--hover-effect > img + img {
     opacity: 1;
   }
 }
