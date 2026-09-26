@@ -388,7 +388,8 @@ Rules that matter here:
   link"), so use this one until told otherwise, not just whichever one happens to still work.
   That one expired by 2026-09-25 (confirmed by fetching it directly: HTTP 410, Shopify's own
   generic "sell online" landing page in place of the theme) and was replaced the same day by
-  https://h6stv2mlmbvp65ou-107185537364.shopifypreview.com.
+  https://h6stv2mlmbvp65ou-107185537364.shopifypreview.com, then replaced again on 2026-09-26 by
+  https://tto3ltyatcwhjqvp-107185537364.shopifypreview.com -- use this one now.
 - **Wait for one push to reach the preview before sending the next.** Twice on 2026-09-14 a
   push that followed another within a minute never reached the theme, while the push before
   it synced at once: `templates/index.json` 13 seconds after a section push (still missing
