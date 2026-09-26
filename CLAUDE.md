@@ -1519,6 +1519,31 @@ Anything of ours that is not a Dawn setting lives in these two places:
     option live too (Rose gold, Gold, Silver, White) — it did not the last time this file was
     checked; the owner must have finished saving it since. Обеци and Висулка плочка still have
     none; see Gold-colour swatches under Waiting on the Shopify admin.
+  - **Moved to sit right under the card's title, 2026-09-26, at the owner's request** ("under
+    the title... before you open them"), instead of after the vendor line and the
+    `custom.detail` line. Also added a hover/keyboard-focus preview, at the owner's own
+    explicit instruction ("when you put your cursor on them the color should change again") --
+    checked moonmagic's own bestseller swatches first regardless, per "Before you build":
+    dispatching a real hover on their swatch left their image and price completely unchanged,
+    so this is the owner's own call, not something borrowed from the reference. Hovering (or
+    focusing) a swatch now previews its photo/price without changing the selection; leaving
+    reverts to whichever swatch is actually selected, or the card's original photo if nothing
+    has been picked yet.
+  - **A real, pre-existing bug surfaced once swatches moved somewhere this visible: they were
+    never actually rendering at their intended size anywhere except `/collections/all`.**
+    Found live on the homepage's own product row (Най-продавани): the swatch buttons and their
+    data were all correct, but every swatch measured 0×0 in the DOM. `component-swatch.css` --
+    the stylesheet that gives `.swatch` its `display: block` sizing -- is only ever loaded by
+    `main-product.liquid`, `featured-product.liquid` and `facets.liquid` (the collection
+    filter sidebar). `/collections/all` only ever looked right by accident, because its own
+    template has `enable_filtering: true`, so `facets.liquid` happens to pull that stylesheet
+    in as a side effect, unrelated to the card swatches themselves. The homepage row,
+    related-products, search results and collage never had a reason to load it, so their
+    swatches have never actually been visible since the card-swatch feature was first built --
+    not something this session broke, just never caught until swatches sat somewhere this
+    visible. Fixed by loading `component-swatch.css` directly in every section that can render
+    `card-product.liquid`'s swatches (next to `card-swatches.js`), so the feature no longer
+    depends on an unrelated section loading it first.
 - **Footer: link columns, newsletter box, contact email** (2026-09-17, at the owner’s request,
   after the reference’s footer). Two wrong reads came first (see the reverted homepage stones
   section above, then a round that built only the newsletter and email and left the columns
