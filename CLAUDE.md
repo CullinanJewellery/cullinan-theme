@@ -552,8 +552,33 @@ Rules that matter here:
       so it lands *after* crown.css; the override adds `.product-card-wrapper` purely to win
       on specificity, not to narrow what it reaches. Checked live at 1440px with a real
       hover: the card's own transform and the image's are both `none`, while Вижте всички
-      still lifts `-2.5px`. Dawn's second-image-on-hover fade is untouched -- a separate
-      section setting (`show_secondary_image`) the owner didn't ask about.
+      still lifts `-2.5px`.
+    - **Hover on a card is then split into three zones, same day, at the owner's request**
+      ("i want when you put the cursor on the picture ... the picture to change to the other
+      picture and when you put the cursor on the colors that are in circle below the text to
+      change to the picture color"): the **picture** swaps to the product's second photo
+      (Dawn's own `show_secondary_image`), a **swatch** swaps to that colour's own photo, and
+      the **text** between them does nothing. Dawn fires its second-photo swap from
+      `.card-wrapper:hover`, which covers the whole card including the title -- that whole-card
+      firing was what the owner was reacting to.
+      - **The obvious fix doesn't work, and the reason is worth keeping.** Rescoping the swap
+        to `.card__media:hover` never matches at all: Dawn's card carries a **stretched link
+        overlay** (`.card__heading a::after`, `inset: 0`, so the whole card is clickable) that
+        lies over the picture and swallows its hover. Confirmed live -- hovering the photo
+        reports the `<a>` as the deepest hovered element, not the media div. That is very
+        likely why Dawn keys off the wrapper in the first place. So `card-swatches.js`
+        measures the pointer against the picture's own bounding box on `mousemove` and
+        toggles `.card--over-media` on the card, which `crown.css` keys off instead. Clicks
+        are untouched -- the overlay still takes them, so the whole card still opens the
+        product.
+      - **Swatch hover came back here, after being removed two commits earlier.** What the
+        owner disliked then was the whole-card swap firing at the same time, not the swatch
+        behaviour itself. It now *picks* the colour outright rather than previewing it, so
+        moving the cursor away leaves the picture on the colour landed on -- answering the
+        earlier "i cant see the color that i pick". Click still does the same thing.
+      - Checked live at 1440px with real hovers, all three zones: picture → second photo
+        (opacities 0/1), text → nothing (card hovered, photo unchanged), swatch → that
+        colour's photo and its own pressed ring, with the second photo staying hidden.
   - **A real regression surfaced checking this live, and is now fixed.** Dawn's own lift
     rule (`.animate--hover-vertical-lift .button:not(.button--tertiary) { transition:
     transform ... }`, `base.css`) sits at specificity (0,3,0). Two of this project's own
