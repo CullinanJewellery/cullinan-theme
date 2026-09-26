@@ -1521,14 +1521,19 @@ Anything of ours that is not a Dawn setting lives in these two places:
     none; see Gold-colour swatches under Waiting on the Shopify admin.
   - **Moved to sit right under the card's title, 2026-09-26, at the owner's request** ("under
     the title... before you open them"), instead of after the vendor line and the
-    `custom.detail` line. Also added a hover/keyboard-focus preview, at the owner's own
-    explicit instruction ("when you put your cursor on them the color should change again") --
-    checked moonmagic's own bestseller swatches first regardless, per "Before you build":
-    dispatching a real hover on their swatch left their image and price completely unchanged,
-    so this is the owner's own call, not something borrowed from the reference. Hovering (or
-    focusing) a swatch now previews its photo/price without changing the selection; leaving
-    reverts to whichever swatch is actually selected, or the card's original photo if nothing
-    has been picked yet.
+    `custom.detail` line.
+  - **A hover/keyboard-focus preview was added, then removed the same day.** First added at
+    the owner's own explicit instruction ("when you put your cursor on them the color should
+    change again"). Once live, the owner reported it reverting before a shopper could actually
+    look at the new photo -- the revert was bound to leaving the tiny swatch itself, so moving
+    the cursor up to the picture triggered it. Fixed once (bound the revert to leaving the
+    whole card instead, so the preview held while the cursor moved onto the picture) -- but the
+    owner then asked for hover to do nothing at all, matching moonmagic exactly: checked
+    moonmagic's own rings collection page directly with a **real** click and a real hover
+    (a synthetic `dispatchEvent` can't trigger genuine `:hover` matching, which is why an
+    earlier check of this looked inconclusive) -- their swatches never respond to hover, only
+    to a click, which then swaps the photo and price and stays that way. `card-swatches.js` is
+    back to a plain click handler; nothing happens on hover or focus any more.
   - **A real, pre-existing bug surfaced once swatches moved somewhere this visible: they were
     never actually rendering at their intended size anywhere except `/collections/all`.**
     Found live on the homepage's own product row (Най-продавани): the swatch buttons and their
