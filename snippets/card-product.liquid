@@ -43,6 +43,7 @@
 
   <product-component view-event-payload="{{ card_product | standard_event_data: 'view', context: product_view_context | escape }}">
     <div class="card-wrapper product-card-wrapper underline-links-hover">
+      <card-swatches>
       <div
         class="
           card card--{{ settings.card_style }}
@@ -186,16 +187,69 @@
 
               {%- comment -%}
                 Swatches for the first option that has them, using Dawn's own
-                swatch snippet — Dawn ships it but never uses it on cards.
+                swatch snippet. Each is a real button: picking one swaps this
+                card's own photo and price to that colour's variant, live, no
+                page reload — the way moonmagic.com's own bestseller cards do.
               {%- endcomment -%}
               {%- for option in card_product.options_with_values -%}
                 {%- if option.values.first.swatch != blank -%}
                   <ul class="card__swatches" role="list">
                     {%- for value in option.values limit: 5 -%}
                       {%- if value.swatch != blank -%}
+                        {%- liquid
+                          assign swatch_variant = value.variant
+                          assign swatch_media = null
+                          assign swatch_pressed = false
+                          assign swatch_money_price = ''
+                          assign swatch_compare_money = ''
+                          assign swatch_saved_percent = 0
+                          if swatch_variant
+                            assign swatch_media = swatch_variant.featured_media
+                            assign swatch_money_price = swatch_variant.price | money
+                            if settings.currency_code_enabled
+                              assign swatch_money_price = swatch_variant.price | money_with_currency
+                            endif
+                            if swatch_variant.compare_at_price > swatch_variant.price
+                              assign swatch_compare_money = swatch_variant.compare_at_price | money
+                              if settings.currency_code_enabled
+                                assign swatch_compare_money = swatch_variant.compare_at_price | money_with_currency
+                              endif
+                              assign swatch_saved_percent = swatch_variant.compare_at_price | minus: swatch_variant.price | times: 100.0 | divided_by: swatch_variant.compare_at_price | round
+                            endif
+                          endif
+                          if swatch_media and card_product.featured_media and swatch_media.id == card_product.featured_media.id
+                            assign swatch_pressed = true
+                          endif
+                        -%}
                         <li class="card__swatch">
-                          {% render 'swatch', swatch: value.swatch %}
-                          <span class="visually-hidden">{{ value.name }}</span>
+                          <button
+                            type="button"
+                            aria-pressed="{{ swatch_pressed }}"
+                            aria-label="{{ value.name }}"
+                            {%- if swatch_variant %}
+                              data-variant-id="{{ swatch_variant.id }}"
+                              data-price="{{ swatch_money_price }}"
+                              data-compare-at-price="{{ swatch_compare_money }}"
+                              data-saved-percent="{{ swatch_saved_percent }}"
+                              data-available="{{ swatch_variant.available }}"
+                            {%- endif %}
+                            {%- if swatch_media %}
+                              data-image-src="{{ swatch_media | image_url: width: 533 }}"
+                              data-image-srcset="
+                                {%- if swatch_media.width >= 165 -%}{{ swatch_media | image_url: width: 165 }} 165w,{%- endif -%}
+                                {%- if swatch_media.width >= 360 -%}{{ swatch_media | image_url: width: 360 }} 360w,{%- endif -%}
+                                {%- if swatch_media.width >= 533 -%}{{ swatch_media | image_url: width: 533 }} 533w,{%- endif -%}
+                                {%- if swatch_media.width >= 720 -%}{{ swatch_media | image_url: width: 720 }} 720w,{%- endif -%}
+                                {%- if swatch_media.width >= 940 -%}{{ swatch_media | image_url: width: 940 }} 940w,{%- endif -%}
+                                {%- if swatch_media.width >= 1066 -%}{{ swatch_media | image_url: width: 1066 }} 1066w,{%- endif -%}
+                                {{ swatch_media | image_url }} {{ swatch_media.width }}w
+                              "
+                              data-image-alt="{{ swatch_media.alt | escape }}"
+                            {%- endif %}
+                          >
+                            {% render 'swatch', swatch: value.swatch %}
+                            <span class="visually-hidden">{{ value.name }}</span>
+                          </button>
                         </li>
                       {%- endif -%}
                     {%- endfor -%}
@@ -605,6 +659,7 @@
           </div>
         </div>
       </div>
+      </card-swatches>
     </div>
   </product-component>
 {%- else -%}

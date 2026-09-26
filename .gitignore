@@ -17,3 +17,6 @@ node_modules
 # Photography staging — the folder and its README are tracked, the pictures are not
 photography/*
 !photography/README.md
+
+# Claude Code — personal, project-scoped plugin config (not shared with the team)
+.claude/settings.local.json

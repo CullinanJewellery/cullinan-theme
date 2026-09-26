@@ -1272,6 +1272,10 @@ html {
   color: rgba(var(--color-foreground), 0.7);
 }
 
+card-swatches {
+  display: contents;
+}
+
 .collection .card__swatches {
   display: flex;
   gap: 0.6rem;
@@ -1285,10 +1289,37 @@ html {
   line-height: 0;
 }
 
+/* The button sits above the card's own full-card link overlay
+   (.card__heading a::after) the same way Dawn's own .quick-add does:
+   position: relative + z-index: 1. Without it, clicks would fall
+   through to the product page instead of picking the swatch. */
+.collection .card__swatch button {
+  position: relative;
+  z-index: 1;
+  display: block;
+  padding: 0.3rem;
+  margin: -0.3rem;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
 .collection .card__swatch .swatch {
   width: 1.6rem;
   height: 1.6rem;
   border-radius: 50%;
+}
+
+.collection .card__swatch button[aria-pressed="true"] .swatch {
+  box-shadow:
+    0 0 0 0.1rem rgb(var(--color-background)),
+    0 0 0 0.2rem rgba(var(--color-foreground), 0.6);
+}
+
+.collection .card__swatch button:focus-visible {
+  outline: 0.2rem solid rgba(var(--color-foreground), 0.6);
+  outline-offset: 0.1rem;
 }
 
 /* How much is off, beside the sale price. */
