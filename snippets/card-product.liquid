@@ -170,26 +170,14 @@
               </a>
             </h3>
             <div class="card-information">
-              {%- if show_vendor -%}
-                <span class="visually-hidden">{{ 'accessibility.vendor' | t }}</span>
-                <div class="caption-with-letter-spacing light">{{ card_product.vendor }}</div>
-              {%- endif -%}
-
-              {%- comment -%}
-                The italic line under the vendor. The reference carries a stone's
-                meaning there; ours carries the product's custom.detail metafield.
-                Hidden entirely when that metafield is empty.
-              {%- endcomment -%}
-              {%- assign card_detail = card_product.metafields.custom.detail.value -%}
-              {%- if card_detail != blank -%}
-                <div class="card__detail">{{ card_detail }}</div>
-              {%- endif -%}
-
               {%- comment -%}
                 Swatches for the first option that has them, using Dawn's own
-                swatch snippet. Each is a real button: picking one swaps this
-                card's own photo and price to that colour's variant, live, no
-                page reload — the way moonmagic.com's own bestseller cards do.
+                swatch snippet. Right under the title, before the vendor line
+                or anything else — the owner's own instruction, so a shopper
+                sees the colour choice before opening the product. Each is a
+                real button: picking one swaps this card's own photo and
+                price to that colour's variant, live, no page reload — the
+                way moonmagic.com's own bestseller cards do.
               {%- endcomment -%}
               {%- for option in card_product.options_with_values -%}
                 {%- if option.values.first.swatch != blank -%}
@@ -257,6 +245,21 @@
                   {%- break -%}
                 {%- endif -%}
               {%- endfor -%}
+
+              {%- if show_vendor -%}
+                <span class="visually-hidden">{{ 'accessibility.vendor' | t }}</span>
+                <div class="caption-with-letter-spacing light">{{ card_product.vendor }}</div>
+              {%- endif -%}
+
+              {%- comment -%}
+                The italic line under the vendor. The reference carries a stone's
+                meaning there; ours carries the product's custom.detail metafield.
+                Hidden entirely when that metafield is empty.
+              {%- endcomment -%}
+              {%- assign card_detail = card_product.metafields.custom.detail.value -%}
+              {%- if card_detail != blank -%}
+                <div class="card__detail">{{ card_detail }}</div>
+              {%- endif -%}
 
               <span class="caption-large light">{{ block.settings.description | escape }}</span>
 
