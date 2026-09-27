@@ -1348,22 +1348,37 @@ html {
   }
 }
 
-/* Най-продавани keeps moonmagic's own 30px spacing between cards, measured on
-   their bestseller carousel at 1440px.
+/* Най-продавани is a carousel, like moonmagic's own bestseller row, with its
+   30px card spacing measured there at 1440px.
 
-   It is no longer a slider (2026-09-27): as a slider it deliberately showed a
-   sliver of the next card, and with only four products that meant the fourth
-   was permanently cut in half -- "the forth picture it is cut a little bit,
-   make the whole picture show". A plain four-column grid shows all four whole
-   at any width instead, and the card width now falls out of the grid rather
-   than being pinned, so nothing can overflow the row again.
+   It was briefly turned into a plain four-column grid (2026-09-27) to stop the
+   fourth card showing as a half-width sliver, then put back: that sliver is
+   exactly what moonmagic's own carousel does, and the owner asked for the
+   slider back ("make the slider like moonmagic"). The sliver is the carousel
+   telling you there is more to scroll to, not a layout fault.
 
-   The gap override no longer names `slider--desktop`, since that class is gone
-   with the slider; `--grid-desktop-horizontal-spacing` is Dawn's own variable,
-   so setting it here is enough. */
+   The card width is the one thing that must not follow Dawn here. Dawn sizes a
+   desktop slider item as a *proportion* of the container
+   (`(100% - first-item margin) / N - spacing * …`, component-slider.css), so
+   it shows N whole cards and a sliver at every screen width, however wide.
+   moonmagic's slides are a *fixed* width instead, which is why a wider screen
+   shows more of their cards whole and ours never did -- the owner spotted this
+   ("theirs do not cut the forth picture").
+
+   So the width is set to an exact quarter of the row, minus the three gaps
+   between four cards: four whole cards at any desktop width, no sliver, with
+   the carousel and its arrows still in place for when there are more than four
+   products. component-slider.css loads from inside the section, so after
+   crown.css: the two attribute selectors are what out-specify it. The card
+   carries no horizontal padding, so the card width is the picture width. */
 @media screen and (min-width: 990px) {
-  [id^="shopify-section-"][id$="__featured_collection"] .product-grid {
+  [id^="shopify-section-"][id$="__featured_collection"] .product-grid.slider--desktop {
     --grid-desktop-horizontal-spacing: 3rem;
+    --desktop-margin-left-first-item: 0rem;
+  }
+
+  [id^="shopify-section-"][id$="__featured_collection"] .slider--desktop .grid__item {
+    width: calc((100% - 9rem) / 4);
   }
 }
 
