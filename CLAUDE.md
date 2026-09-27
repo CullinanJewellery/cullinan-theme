@@ -1522,6 +1522,35 @@ Anything of ours that is not a Dawn setting lives in these two places:
       need). It sits in the buy box column rather than full width under the product as the
       reference's does; the data is the same either way, and moving it to its own
       full-width row is a small follow-up if the owner wants the reference's placement.
+- **Най-продавани sized to moonmagic's own bestseller carousel, 2026-09-26/27**, at the
+  owner's request ("make in this section bigger the pictures of the products their text and
+  the circles with colors to match moonmagic", then "the pictures should be with the size
+  that moonmagic has and the spacing between them should be the same"). Measured their row at
+  1440px: **380 x 380 pictures, 30px between them, full-bleed with a 20px side gutter**, card
+  title 16px/600, stone line 14px, price 18px, swatches 34 x 34 with a 10px gap, and a
+  **SHOP BESTSELLERS button of 486 x 72, 22px, weight 500, 2.2px tracking**.
+  - **Title and price already matched.** The vendor line went 12px → 14px (size only, the
+    tracking stays ours) and the swatches 16px → 34px with the gap 6px → 10px, both in
+    `assets/crown.css` and both card-level, so they apply wherever product cards render.
+    Phones keep a smaller 24px swatch -- their cards are half the width, where 34px would eat
+    a fifth of the card; moonmagic's own phone swatch has not been measured, so that tier is
+    our judgement, not a match.
+  - **Two failed attempts at the picture size before the real cause was found.** Moving the
+    row from 4 columns to 3 got it from 307px to 351px and no further, and made the whole row
+    longer -- which is what the owner objected to ("i said to make the picture boxes bigger
+    you make the length bigger"). The column count can never land on a specific width here,
+    for two reasons: the row was confined to `page-width`, and Dawn sizes a desktop slider
+    item by a peek formula (`(100% - first-item margin) / 3 - spacing * 4`,
+    `component-slider.css`), so the width falls out of that formula rather than being
+    settable. Fixed by taking the section `full_width` and setting the item width and gap
+    directly -- `38rem` wide, `3rem` gap, scoped to this section's own id at 990px up, two
+    attribute selectors deep because `component-slider.css` loads from inside the section and
+    so lands after `crown.css`. The card carries no horizontal padding, so the card width *is*
+    the picture width. Confirmed live: 380 x 380 and 30px, exact on both.
+  - **One small difference left on purpose**: the outer gutter is 28px against moonmagic's
+    20px (Dawn's own full-width container contributes 13px and its first-item rule 15px).
+    Forcing it to 20 means a hardcoded number that would drift with the scrollbar and
+    viewport; the spacing the owner actually asked about -- between the cards -- is exact.
 - **Card swatches: picking a colour swaps the card's own photo and price, 2026-09-26, at the
   owner's request** ("go in moonmagic and see how it is done" — their own Best Sellers row, where
   picking a swatch under the card swaps that card's own photograph and price instantly). Checked
