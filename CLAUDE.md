@@ -1565,16 +1565,24 @@ Anything of ours that is not a Dawn setting lives in these two places:
     while the same formula here would not clamp at all now that this section is full-width.
     So the view-all's own `min-width` is set to that rendered `37.5rem` directly. Confirmed
     live: both 375 x 72.
-  - **The desktop slider is off since 2026-09-27, and the row is a plain four-column grid.**
-    A Dawn slider deliberately shows a sliver of the next card, so with exactly four
-    products the fourth was permanently cut in half ("the forth picture it is cut a little
-    bit, make the whole picture show"). `enable_desktop_slider: false` and
-    `columns_desktop: 4`; the card width is no longer pinned in `crown.css` either, so it
-    falls out of the grid and the row cannot overflow at any width. Checked live at 1440 and
-    1200px: four whole cards both times, 326px and 266px, 30px gaps kept throughout, nothing
-    clipped. The pictures are a little smaller than the 34rem of the round before as a
-    direct consequence -- four whole cards in the same width means narrower cards than three
-    and a peek.
+  - **The fourth card was cut, and the cause was structural, not a size to tune** ("the
+    forth picture it is cut a little bit, make the whole picture show"). Dawn sizes a
+    desktop slider item as a **proportion of its container** (`(100% - first-item margin) /
+    N - spacing * …`, `component-slider.css`), so it shows N whole cards and a sliver at
+    **every** screen width, however wide -- no amount of resizing could ever stop it
+    cutting. moonmagic's own slides are a **fixed width**, so a wider screen simply shows
+    more of theirs whole. The owner is the one who spotted the difference ("theirs do not
+    cut the forth picture") after a first attempt had assumed their carousel cut its fourth
+    card the same way ours did; at 1440 it does, which is why the measurement taken there
+    was misleading.
+    - **Tried and reverted first**: turning the desktop slider off for a plain four-column
+      grid. That did stop the cutting, but threw the carousel away with it, and the owner
+      asked for it back ("make the slider like moonmagic").
+    - **What stands**: the slider stays on, and `crown.css` pins the item width to an exact
+      quarter of the row minus the three gaps -- `calc((100% - 9rem) / 4)`. Four whole cards
+      at any desktop width, no sliver, arrows still there for when there are more than four
+      products. Checked live at 1440 and 1920: four cards, 328px, 30px gaps, nothing clipped
+      at either.
   - **The section's Heading size setting does nothing, and never did.** Moving it h0 → h1
     changed the markup but not the rendered size, because `crown.css` carries
     `.collection .collection__title .title` with its own `clamp()` -- three classes deep and
