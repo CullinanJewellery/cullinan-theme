@@ -124,6 +124,15 @@ Rules that matter here:
       БЕЗ ДА СЕ СТАРАЕТЕ“ read as an awkward, translated-sounding two-clause construction (the
       owner’s words: “doesn’t sound right”, the idea itself was fine) -- now „БЛЯСЪК БЕЗ
       УСИЛИЕ“, the same promise in one punchier phrase, which suits the smaller size better too.
+      - **Correction, 2026-09-27: it was never actually rendering at 40px.** `.banner__heading`
+        in `assets/crown.css` carries its own unscoped `clamp()`, which ties Dawn's `.h1`/`.h2`
+        presets on specificity (one class each) and loads after `base.css`, so it wins by
+        source order regardless of which preset the section picks -- the same silent-override
+        pattern later found on the collection title and the category-mosaic heading. Measured
+        live: the heading had been rendering at 65px the whole time, not 40px, from this clamp
+        (`clamp(2.4rem, 7vw, 6.5rem)`), completely undisturbed by the h0 → h1 change above.
+        Cut smaller at the owner's request the same day -- see Hero heading under Custom code
+        for the current values.
     - **A background video too, 2026-09-16, at the owner’s request** (“why can’t I put video,
       I can upload just photo” -- about this section, though first fixed on the newsletter by
       mistake, since that one had just gained the same feature). Dawn’s own `image-banner` had
@@ -1305,6 +1314,13 @@ Anything of ours that is not a Dawn setting lives in these two places:
     in the header bar.
 - `sections/image-banner.liquid` — writing `[years]` in the hero heading or text renders the
   number of years since `founded_year` (1991), so the count never goes stale.
+- **Hero heading.** `.banner__heading` in `assets/crown.css` carries its own unscoped
+  `clamp()`, not the section's Heading size preset -- see the 2026-09-27 correction under
+  Design direction for how that was found. Current values, cut a little smaller at the
+  owner's request the same day: `clamp(2.1rem, 6.2vw, 5.7rem)`, down from `clamp(2.4rem,
+  7vw, 6.5rem)`. Read live at 1440px as 57px (was 65px). The silver banner's own heading is
+  unaffected regardless of what this clamp says -- its own scoped override
+  (`.banner__heading.h2`, `min-width: 750px`) sets an explicit `3rem` that wins over it.
 - **Top bar.** `sections/announcement-bar.liquid`, `snippets/header-drawer.liquid` and the
   announcement block in `assets/crown.css`. Follows the reference: from 990px up (where the
   inline menu starts) both arrows sit together on the left, the message follows left-aligned,
