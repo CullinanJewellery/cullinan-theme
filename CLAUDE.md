@@ -1551,6 +1551,28 @@ Anything of ours that is not a Dawn setting lives in these two places:
     20px (Dawn's own full-width container contributes 13px and its first-item rule 15px).
     Forcing it to 20 means a hardcoded number that would drift with the scrollbar and
     viewport; the spacing the owner actually asked about -- between the cards -- is exact.
+  - **Then scaled back down, 2026-09-27, once the exact match was live and read as too
+    big.** Pictures 38rem → 34rem, vendor line 1.4rem → 1.3rem, heading 65px → 40px, and
+    the swatches cut hard rather than nudged ("not a little bit smaller, make them
+    smaller"): 3.4rem → 2rem on a computer, 2.4rem → 1.8rem on a phone, gap 1rem → 0.8rem,
+    so they now sit well under moonmagic's own 34px rather than near it. The section's
+    measurements are therefore **no longer a moonmagic match** -- they are the owner's own
+    sizes, arrived at by stepping back from one.
+  - **Вижте всички matched to Разгледайте среброто instead of to moonmagic**, at the
+    owner's request ("i want it to be the same size"). Both were already 72px tall at 22px;
+    only the width differed, and for a reason worth keeping: the silver banner's button
+    declares `min-width: min(48.6rem, 100%)`, and its container clamps that to **375px**,
+    while the same formula here would not clamp at all now that this section is full-width.
+    So the view-all's own `min-width` is set to that rendered `37.5rem` directly. Confirmed
+    live: both 375 x 72.
+  - **The section's Heading size setting does nothing, and never did.** Moving it h0 → h1
+    changed the markup but not the rendered size, because `crown.css` carries
+    `.collection .collection__title .title` with its own `clamp()` -- three classes deep and
+    loaded after `base.css`, so it beats Dawn's h0/h1/h2 presets outright for every
+    collection section. Found by listing every matched `font-size` rule on the live element
+    rather than trusting that the setting had landed. The clamp is what to edit: capped at
+    `4rem` now (floor `2.6rem`), down from `6.5rem`/`3.2rem`. It is shared with the
+    collection pages, so their titles came down with it.
 - **Card swatches: picking a colour swaps the card's own photo and price, 2026-09-26, at the
   owner's request** ("go in moonmagic and see how it is done" — their own Best Sellers row, where
   picking a swatch under the card swaps that card's own photograph and price instantly). Checked
