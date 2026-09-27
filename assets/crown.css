@@ -581,8 +581,18 @@ html {
 
 .banner__heading {
   /* The floor has to sit below what the scaling asks for, or it wins on small
-     screens and the heading renders at its largest where there is least room. */
-  font-size: clamp(2.4rem, 7vw, 6.5rem);
+     screens and the heading renders at its largest where there is least room.
+
+     This clamp, not the hero's own Heading size preset, is what actually
+     governs the rendered size -- it ties Dawn's .h1/.h2 on specificity (one
+     class each) and crown.css loads after base.css, so it wins by source
+     order regardless of which preset is picked. CLAUDE.md's own history
+     recorded the hero heading as 40px from the h1 preset; measured live,
+     it was actually rendering at 65px from this clamp, and had been the
+     whole time -- corrected there in the same pass as this resize. Cut a
+     little smaller here, 6.5rem to 5.7rem, at the owner's request; the
+     floor and the scaling factor come down with it in proportion. */
+  font-size: clamp(2.1rem, 6.2vw, 5.7rem);
   font-weight: var(--font-heading-weight);
   line-height: 1.23;
   letter-spacing: 0.01em;
