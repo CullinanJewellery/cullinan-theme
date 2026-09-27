@@ -1048,25 +1048,24 @@ html {
   content: none;
 }
 
-/* Height and type come from moonmagic's own SHOP BESTSELLERS button under
-   their bestseller row, measured at 1440px: 72px tall, 22px, weight 500,
-   2.2px tracking (which 0.1em at 22px reproduces exactly). CLAUDE.md
-   previously recorded this button as having no moonmagic equivalent -- that
-   was wrong; their bestseller row has exactly this button.
-
-   The width does NOT follow them. Theirs is 486 wide, and at that width the
-   owner read it as far bigger than the silver banner's Разгледайте среброто
-   and asked for the two to match. That one declares `min(48.6rem, 100%)`, so
-   its container clamps it to 375px -- the same formula here would not clamp,
-   since this section is full-width, so the rendered 375px is set directly.
-   The phone rule below keeps its own smaller size, untouched. */
+/* Matched to moonmagic's own SHOP BESTSELLERS, then to Разгледайте среброто
+   (see the git history on this rule for both), and now sized against neither:
+   the owner asked for it "a little bit bigger" than Вижте как го правим
+   (`.atelier .atelier__button`, 34rem/6.4rem/1.4rem, section-atelier.css)
+   instead -- clearly bigger in all three dimensions, not by a lot, the same
+   "bigger but not that much bigger" idiom already used once before for the
+   silver banner's own button against that same atelier button. Square
+   corners at the owner's request too -- `border-radius: 0` overriding the
+   site-wide pill, the same technique the hero and silver banner buttons use
+   for their own square shape. The phone rule below keeps its own size. */
 .collection .collection__view-all .button {
-  min-width: 37.5rem;
-  min-height: 7.2rem;
-  font-size: 2.2rem;
+  min-width: 36rem;
+  min-height: 6.8rem;
+  font-size: 1.5rem;
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  border-radius: 0;
   background-color: rgb(var(--color-button));
   color: rgb(var(--color-button-text));
   box-shadow: inset 0 0 0 1px rgba(var(--color-button), 0);
