@@ -904,6 +904,25 @@ html {
 }
 
 /*
+  The silver banner's own desktop size, at the owner's request: the same
+  size as Вижте всички under Най-продавани (36rem/6.8rem/1.5rem,
+  .collection .collection__view-all .button). The shared rule above
+  (`.banner__buttons .button`, 48.6rem/7.2rem/2.2rem) is still what the hero's
+  own button reads, so this stays a scoped override reaching only the silver
+  banner, the same technique its border-radius and phone-size overrides
+  already use. 750px up, matching where the shared rule itself starts
+  applying -- the phone-only override just above this one, and the section's
+  own square corners, are both untouched.
+*/
+@media screen and (min-width: 750px) {
+  [id^="shopify-section-"][id$="__silver_teaser"] .banner__buttons .button {
+    min-width: 36rem;
+    min-height: 6.8rem;
+    font-size: 1.5rem;
+  }
+}
+
+/*
   The heading's own size, tuned twice more the same day. `heading_size`
   was already moved to `h2`, Dawn's smallest preset (`.h2 { font-size:
   calc(var(--font-heading-scale) * 2.4rem) }` on desktop, `base.css`) --
