@@ -482,6 +482,16 @@ Rules that matter here:
     footer), never styled as a button. Rather than inventing a match against something
     moonmagic doesn't actually have, this family keeps its own established, internally
     consistent size.
+    - **Wrong about the view-all one, corrected 2026-09-27.** moonmagic does have exactly
+      this button: **SHOP BESTSELLERS**, directly under their own bestseller row -- the same
+      role and the same position as our Вижте всички under Най-продавани. The check above
+      looked for "plain navigation links" and missed it. Measured at 1440px: **486 x 72,
+      22px, weight 500, 2.2px tracking**. `.collection .collection__view-all .button` now
+      matches exactly (48.6rem / 7.2rem / 2.2rem, `letter-spacing: 0.1em` reproducing their
+      2.2px at that size), confirmed live on every value. The phone rule keeps its own
+      smaller size, and the atelier and contact-methods buttons are untouched -- they still
+      have no moonmagic equivalent, so the family is no longer internally consistent by
+      design: the one with a real reference now follows it.
   - **All sized down a little further on phones only, minutes later, at the owner's
     request** ("make it a little bit smaller the buttons in every section except for Ще ни
     намерите и там and Първи научавайте и Вижте работата ни for a phone"). Excluded because
