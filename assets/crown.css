@@ -1348,29 +1348,22 @@ html {
   }
 }
 
-/* Най-продавани, sized to moonmagic's own bestseller carousel, measured at
-   1440px: 380 x 380 pictures, 30px between them, running full-bleed with a
-   20px side gutter rather than inside a centred container -- their first
-   picture starts 20px from the viewport edge, which is why ours came out
-   smaller while it was confined to page-width.
+/* Най-продавани keeps moonmagic's own 30px spacing between cards, measured on
+   their bestseller carousel at 1440px.
 
-   Dawn sizes a desktop slider item by a peek formula
-   (`(100% - first-item margin) / 3 - spacing * 4`, component-slider.css), so
-   the column count alone can never land on a specific picture width. The width
-   is fixed here instead, and the gap with it. component-slider.css loads from
-   inside the section, so after crown.css -- the two attribute selectors are
-   what out-specify it. The card carries no horizontal padding of its own, so
-   the card width *is* the picture width. */
+   It is no longer a slider (2026-09-27): as a slider it deliberately showed a
+   sliver of the next card, and with only four products that meant the fourth
+   was permanently cut in half -- "the forth picture it is cut a little bit,
+   make the whole picture show". A plain four-column grid shows all four whole
+   at any width instead, and the card width now falls out of the grid rather
+   than being pinned, so nothing can overflow the row again.
+
+   The gap override no longer names `slider--desktop`, since that class is gone
+   with the slider; `--grid-desktop-horizontal-spacing` is Dawn's own variable,
+   so setting it here is enough. */
 @media screen and (min-width: 990px) {
-  [id^="shopify-section-"][id$="__featured_collection"] .product-grid.slider--desktop {
+  [id^="shopify-section-"][id$="__featured_collection"] .product-grid {
     --grid-desktop-horizontal-spacing: 3rem;
-    --desktop-margin-left-first-item: 2rem;
-  }
-
-  /* 34rem, not moonmagic's own 38rem: the owner asked for the pictures a
-     little smaller than the exact match once they were live. */
-  [id^="shopify-section-"][id$="__featured_collection"] .slider--desktop.grid--3-col-desktop .grid__item {
-    width: 34rem;
   }
 }
 
