@@ -1565,6 +1565,16 @@ Anything of ours that is not a Dawn setting lives in these two places:
     while the same formula here would not clamp at all now that this section is full-width.
     So the view-all's own `min-width` is set to that rendered `37.5rem` directly. Confirmed
     live: both 375 x 72.
+  - **The desktop slider is off since 2026-09-27, and the row is a plain four-column grid.**
+    A Dawn slider deliberately shows a sliver of the next card, so with exactly four
+    products the fourth was permanently cut in half ("the forth picture it is cut a little
+    bit, make the whole picture show"). `enable_desktop_slider: false` and
+    `columns_desktop: 4`; the card width is no longer pinned in `crown.css` either, so it
+    falls out of the grid and the row cannot overflow at any width. Checked live at 1440 and
+    1200px: four whole cards both times, 326px and 266px, 30px gaps kept throughout, nothing
+    clipped. The pictures are a little smaller than the 34rem of the round before as a
+    direct consequence -- four whole cards in the same width means narrower cards than three
+    and a peek.
   - **The section's Heading size setting does nothing, and never did.** Moving it h0 → h1
     changed the markup but not the rendered size, because `crown.css` carries
     `.collection .collection__title .title` with its own `clamp()` -- three classes deep and
