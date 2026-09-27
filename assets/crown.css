@@ -979,10 +979,11 @@ html {
   }
 }
 
-/* 1.4rem matches the stone line on moonmagic's own product cards, measured at
-   1440px. The tracking stays ours -- only the size was asked for. */
+/* 1.4rem matched the stone line on moonmagic's own product cards, measured at
+   1440px; 1.3rem is the owner's own step down from that once it was live. The
+   tracking stays ours -- only the size was ever asked for. */
 .collection .card__content .caption-with-letter-spacing {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   font-weight: 400;
   letter-spacing: 0.04em;
   text-transform: none;
@@ -1032,14 +1033,20 @@ html {
   content: none;
 }
 
-/* Matched to moonmagic's own SHOP BESTSELLERS button, measured under their
-   bestseller row at 1440px: 486 x 72, 22px, weight 500, 2.2px tracking (which
-   0.1em at 22px reproduces exactly). CLAUDE.md previously recorded this button
-   as having no moonmagic equivalent to match -- that was wrong; their
-   bestseller row has exactly this button, it just hadn't been looked for.
+/* Height and type come from moonmagic's own SHOP BESTSELLERS button under
+   their bestseller row, measured at 1440px: 72px tall, 22px, weight 500,
+   2.2px tracking (which 0.1em at 22px reproduces exactly). CLAUDE.md
+   previously recorded this button as having no moonmagic equivalent -- that
+   was wrong; their bestseller row has exactly this button.
+
+   The width does NOT follow them. Theirs is 486 wide, and at that width the
+   owner read it as far bigger than the silver banner's Разгледайте среброто
+   and asked for the two to match. That one declares `min(48.6rem, 100%)`, so
+   its container clamps it to 375px -- the same formula here would not clamp,
+   since this section is full-width, so the rendered 375px is set directly.
    The phone rule below keeps its own smaller size, untouched. */
 .collection .collection__view-all .button {
-  min-width: 48.6rem;
+  min-width: 37.5rem;
   min-height: 7.2rem;
   font-size: 2.2rem;
   font-weight: 500;
@@ -1353,8 +1360,10 @@ html {
     --desktop-margin-left-first-item: 2rem;
   }
 
+  /* 34rem, not moonmagic's own 38rem: the owner asked for the pictures a
+     little smaller than the exact match once they were live. */
   [id^="shopify-section-"][id$="__featured_collection"] .slider--desktop.grid--3-col-desktop .grid__item {
-    width: 38rem;
+    width: 34rem;
   }
 }
 
@@ -1364,7 +1373,7 @@ card-swatches {
 
 .collection .card__swatches {
   display: flex;
-  gap: 1rem;
+  gap: 0.8rem;
   margin: 0.8rem 0 0;
   padding: 0;
   list-style: none;
@@ -1391,20 +1400,21 @@ card-swatches {
   border-radius: 50%;
 }
 
-/* 3.4rem with a 1rem gap is moonmagic's own swatch size, measured on their
-   bestseller cards at 1440px. Phones get a smaller one: their cards are half
-   the width, so 34px would eat a fifth of the card. Not matched to moonmagic's
-   own phone size, which hasn't been measured -- say the word and it can be. */
+/* moonmagic's own swatch is 34px with a 10px gap, measured on their bestseller
+   cards at 1440px. That was matched exactly and then cut back hard at the
+   owner's request once it was live ("not a little bit smaller, make them
+   smaller") -- 2rem on a computer, 1.8rem on a phone, deliberately well under
+   the reference rather than near it. */
 .collection .card__swatch .swatch {
-  width: 2.4rem;
-  height: 2.4rem;
+  width: 1.8rem;
+  height: 1.8rem;
   border-radius: 50%;
 }
 
 @media screen and (min-width: 750px) {
   .collection .card__swatch .swatch {
-    width: 3.4rem;
-    height: 3.4rem;
+    width: 2rem;
+    height: 2rem;
   }
 }
 
