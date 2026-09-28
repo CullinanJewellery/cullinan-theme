@@ -6,6 +6,8 @@
   - option: {Object} current product_option object.
   - block: {Object} block object.
   - picker_type: {String} type of picker to dispay
+  - twin: {Object, optional} the hidden colour option this option stands in for
+    (Cullinan, see product-variant-picker.liquid). Nil for every other option.
 
 
   Usage:
@@ -39,6 +41,61 @@
     endif
   -%}
 
+  {% comment %}
+    Cullinan: when this option stands in for a hidden colour option, find the colour
+    this value belongs to (the one whose name it contains), so the id of both can be
+    sent together, and work out sold-out state for that exact pair.
+
+    Shopify's own `value.available` looks at the selected values of the options before
+    this one -- and the hidden colour comes before the material -- so with one colour
+    selected it would mark every other material as sold out, even where the matching
+    colour-and-material variant is in stock. So the variants are checked directly: this
+    value together with its own colour, and the selected values of every other
+    visible option that comes before it.
+  {% endcomment %}
+  {%- liquid
+    assign twin_value = null
+    if twin
+      assign value_name_down = value.name | downcase
+      for twin_candidate in twin.values
+        assign twin_name_down = twin_candidate.name | downcase
+        if twin_name_down != blank and value_name_down contains twin_name_down
+          assign twin_value = twin_candidate
+        endif
+      endfor
+    endif
+
+    if twin_value
+      assign option_disabled = true
+      assign value_index = option.position | minus: 1
+      assign twin_index = twin.position | minus: 1
+      for variant_candidate in product.variants
+        unless variant_candidate.available
+          continue
+        endunless
+        if variant_candidate.options[value_index] != value.name
+          continue
+        endif
+        if variant_candidate.options[twin_index] != twin_value.name
+          continue
+        endif
+        assign selection_matches = true
+        for earlier_option in product.options_with_values
+          if earlier_option.position < option.position and earlier_option.position != twin.position
+            assign earlier_index = earlier_option.position | minus: 1
+            if variant_candidate.options[earlier_index] != earlier_option.selected_value.name
+              assign selection_matches = false
+            endif
+          endif
+        endfor
+        if selection_matches
+          assign option_disabled = false
+          break
+        endif
+      endfor
+    endif
+  -%}
+
   {%- capture input_id -%}
     {{ section.id }}-{{ option.position }}-{{ forloop.index0 -}}
   {%- endcapture -%}
@@ -49,7 +106,7 @@
 
   {%- capture input_dataset -%}
     data-product-url="{{ value.product_url }}"
-    data-option-value-id="{{ value.id }}"
+    data-option-value-id="{{ value.id }}{% if twin_value %},{{ twin_value.id }}{% endif %}"
     data-option-name="{{ option.name | escape }}"
   {%- endcapture -%}
 

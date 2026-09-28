@@ -9,6 +9,81 @@
   {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
 {% endcomment %}
 {%- unless product.has_only_default_variant -%}
+  {% comment %}
+    Cullinan: a colour option that only mirrors a material option is not drawn.
+
+    The option with swatches exists so the product cards can show colour circles. On
+    the product page the shopper chooses the material, in words, and the colour follows
+    from it -- drawn as well, the two rows would say the same thing twice.
+
+    An option with swatches is skipped only when another option, without swatches,
+    covers it exactly: every value of that option contains exactly one colour name, and
+    every colour name sits inside at least one value ("жълто злато" inside "14К жълто
+    злато"). Anything short of that draws both rows as Dawn does, so a choice can never
+    become unreachable, and a product with a colour option alone keeps its picker.
+
+    The skipped option is still part of every variant, so it cannot just be left out of
+    the request: Shopify would fill it with its first value and a shopper choosing rose
+    gold could be sent a variant whose colour says yellow. product-variant-options.liquid
+    sends the matching colour's id together with each visible value instead (`twin`).
+  {% endcomment %}
+  {%- liquid
+    assign hidden_option = null
+    assign shown_option = null
+
+    for candidate in product.options_with_values
+      assign candidate_swatches = candidate.values | map: 'swatch' | compact | size
+      if candidate_swatches > 0
+        assign hidden_option = candidate
+        break
+      endif
+    endfor
+
+    if hidden_option
+      for candidate in product.options_with_values
+        if shown_option
+          break
+        endif
+        assign candidate_swatches = candidate.values | map: 'swatch' | compact | size
+        if candidate.position == hidden_option.position or candidate_swatches > 0
+          continue
+        endif
+
+        assign pairing_ok = true
+        for candidate_value in candidate.values
+          assign candidate_name = candidate_value.name | downcase
+          assign name_matches = 0
+          for hidden_value in hidden_option.values
+            assign hidden_name = hidden_value.name | downcase
+            if hidden_name != blank and candidate_name contains hidden_name
+              assign name_matches = name_matches | plus: 1
+            endif
+          endfor
+          if name_matches != 1
+            assign pairing_ok = false
+          endif
+        endfor
+
+        for hidden_value in hidden_option.values
+          assign hidden_name = hidden_value.name | downcase
+          assign name_found = false
+          for candidate_value in candidate.values
+            assign candidate_name = candidate_value.name | downcase
+            if hidden_name != blank and candidate_name contains hidden_name
+              assign name_found = true
+            endif
+          endfor
+          unless name_found
+            assign pairing_ok = false
+          endunless
+        endfor
+
+        if pairing_ok
+          assign shown_option = candidate
+        endif
+      endfor
+    endif
+  -%}
   <variant-selects
     id="variant-selects-{{ section.id }}"
     data-section="{{ section.id }}"
@@ -22,9 +97,17 @@
     {{ block.shopify_attributes }}
   >
     {%- for option in product.options_with_values -%}
+      {%- if shown_option and option.position == hidden_option.position -%}
+        {%- continue -%}
+      {%- endif -%}
       {%- liquid
         assign swatch_count = option.values | map: 'swatch' | compact | size
         assign picker_type = block.settings.picker_type
+
+        assign twin = null
+        if shown_option and option.position == shown_option.position
+          assign twin = hidden_option
+        endif
 
         if swatch_count > 0 and block.settings.swatch_shape != 'none'
           if block.settings.picker_type == 'dropdown'
@@ -46,7 +129,8 @@
             product: product,
             option: option,
             block: block,
-            picker_type: picker_type
+            picker_type: picker_type,
+            twin: twin
           %}
         </fieldset>
       {%- elsif picker_type == 'button' -%}
@@ -56,7 +140,8 @@
             product: product,
             option: option,
             block: block,
-            picker_type: picker_type
+            picker_type: picker_type,
+            twin: twin
           %}
         </fieldset>
       {%- else -%}
@@ -83,7 +168,8 @@
                 product: product,
                 option: option,
                 block: block,
-                picker_type: picker_type
+                picker_type: picker_type,
+                twin: twin
               %}
             </select>
             <span class="svg-wrapper">
