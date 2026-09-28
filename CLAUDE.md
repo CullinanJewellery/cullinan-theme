@@ -1618,6 +1618,43 @@ Anything of ours that is not a Dawn setting lives in these two places:
       the variants.
     - **The cart, checkout and emails still list every option**, so a line reads "58 / жълто
       злато / 14К жълто злато". Not touched, not asked about.
+  - **Размери and Материал на бижуто redesigned, 2026-09-28, at the owner's request** ("i
+      don't like it and i want it to look luxury and professional"). Dawn's own pill picker
+      (`component-product-variant-picker.css`) is plain e-commerce default: a hairline
+      10%-opacity border at rest, inverting to a solid black block on selection. Checked
+      moonmagic.com's own size/metal picker live rather than guessing (their Harlow moonstone
+      ring): idle boxes carry a transparent border the same width as selected, so nothing
+      shifts on interaction; a faint neutral fill (`rgb(248,248,248)` there) tells a box from
+      the page without drawing the eye; selecting one draws a crisp dark outline rather than
+      inverting to a filled block, a quieter confirmation; and "Choose your size" sits above
+      the row with a separate "SIZE: 7" readout beside it, confirming the pick even once the
+      chosen box has wrapped onto a second row out of the eye's first pass.
+    - **Corners untouched.** Variant pills stay square site-wide (Square corners under Design
+      tokens); only Dawn's fill and border treatment changed here, never the shape -- moonmagic
+      itself was not a reason to depart from that rule, and nothing else asked to.
+    - **The eyebrow-plus-value legend is this page's own existing convention, not a new one.**
+      Styled to match `.product-specs__label`/`.product-specs__value` directly above this in
+      the same file: small spaced capitals (1.2rem/600/uppercase/0.08em/70% opacity) for the
+      label, plain case at full strength for the value -- a label that shouts and a value that
+      does not read as the same panel rather than a different one a few pixels below it. The
+      value itself is Dawn's own mechanism (`data-selected-value`, already used by the swatch
+      picker's own legend); `product-variant-picker.liquid`'s button-type legend gained the
+      same span, so Размери and Материал на бижуто now confirm the current pick exactly as a
+      swatch-type option already would.
+    - **Scoped to `.product`**, the product page's own outer wrapper -- `.product-form__input
+      --pill` renders nowhere else live (featured-product carries the same picker but sits on
+      no template). The `.product` ancestor also wins a real fight, not just scopes one:
+      Dawn's own rules here load from inside the section, after crown.css, so the extra class
+      is what wins on specificity rather than leaving it to load order.
+    - **Tested against the one state this test data actually has -- everything sold out --
+      and against a simulated in-stock state.** Every variant on this product is disabled
+      (see Waiting on the Shopify admin), so the selected pill is always also disabled;
+      checked live: a soft ring (`rgba(fg,0.35)` border) marks it as the pick without the
+      confidence of a real, buyable one, strikethrough intact. To see the crisp, in-stock
+      look -- the one real customers will mostly meet -- every radio's `disabled` was cleared
+      in the browser only (not persisted, the same trick already used once for the empty hero
+      slot): idle boxes read as a quiet grey field, the selected one a crisp outline with
+      bolded text, at 1440 and 375px, no overflow either width.
   - **What is deliberately not built yet, and why.**
     - **Size guide**: Dawn's `popup` block draws its link whether or not a page is behind
       it, so adding it before a Таблица с размери page exists would put a button on the
