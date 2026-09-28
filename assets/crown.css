@@ -1570,11 +1570,19 @@ card-swatches {
 
   Keyed to `.collection--full-width`, the class the section adds from the same
   setting that adds `slider-component-full-width`, so the two cannot come apart.
-  Same specificity as the rule above and later in the file, so it wins.
+
+  `.collection` is repeated on purpose. Dawn's template-collection.css carries
+  `.collection__title.title-wrapper--self-padded-tablet-down { padding: 0 5rem }`
+  from 990px up, the same specificity as `.collection--full-width >
+  .collection__title` -- and it loads from inside the section, after this file,
+  so on a tie it wins. The first push of this rule lost to it: the button and
+  the cards moved, the heading did not (59.6px against 27.5px live), and a test
+  made by injecting the rule at the end of the page hid it. Three classes beat
+  it whatever the load order.
 */
 @media screen and (min-width: 750px) {
-  .collection--full-width > .collection__title,
-  .collection--full-width > .collection__view-all {
+  .collection.collection--full-width > .collection__title,
+  .collection.collection--full-width > .collection__view-all {
     padding-inline: 1.5rem;
   }
 }
