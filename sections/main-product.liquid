@@ -604,6 +604,11 @@
                   {%- endcomment -%}
                   {%- if block.settings.label != blank or block.settings.text != blank -%}
                     <p class="product-delivery-note" {{ block.shopify_attributes }}>
+                      {%- if block.settings.show_icon -%}
+                        <span class="product-delivery-note__icon" aria-hidden="true">
+                          {{- 'icon-truck.svg' | inline_asset_content -}}
+                        </span>
+                      {%- endif -%}
                       {%- if block.settings.label != blank -%}
                         <span class="product-delivery-note__label">
                           {{- block.settings.label | escape -}}
@@ -1058,6 +1063,12 @@
           "content": "A short line above Add to cart. The label is bold, the text after it is not. Both print in small capitals. Leave both empty and nothing renders."
         },
         {
+          "type": "checkbox",
+          "id": "show_icon",
+          "label": "Show the delivery icon",
+          "default": true
+        },
+        {
           "type": "text",
           "id": "label",
           "label": "Bold label",
@@ -1067,7 +1078,8 @@
           "type": "text",
           "id": "text",
           "label": "Text after it",
-          "info": "The shop's own delivery time, e.g. Доставка до 5-7 работни дни. Left empty on purpose until that is confirmed."
+          "info": "Replace with the shop's own delivery time when it is settled, e.g. Доставка до 5-7 работни дни.",
+          "default": "Доставка с Еконт и Спиди"
         }
       ]
     },
