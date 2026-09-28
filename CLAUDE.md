@@ -1684,14 +1684,24 @@ Anything of ours that is not a Dawn setting lives in these two places:
       off and Dawn switches the class to `button--primary`.
     - **Square corners here are the third deliberate exception to the site-wide pill**, after
       the hero's and the silver banner's.
-    - **Hover keeps this site's own convention, not moonmagic's.** The fill drops away to an
-      outline with a black label, as the hero, silver banner, atelier and view-all buttons
-      all do, rather than importing moonmagic's blush pink -- their pink is their brand, and
-      every other call to action here already speaks the outline language. `transform` stays
-      in the transition list so the site-wide hover-lift animates instead of snapping (the
-      lesson under Buttons lift up on hover). Checked live: background transparent, label
-      black, 1px inset outline, `translateY(-2.5px)`. **The pink is a one-line change if the
-      owner ever wants it.**
+    - **Hover fills with moonmagic's own pink, at the owner's request the same day** ("make
+      the hover pink like moonmagic"). It first shipped with this site's own convention --
+      the fill dropping away to an outline, as the hero, silver banner, atelier and view-all
+      buttons all do -- and the pink was offered alongside it; the owner took the pink. So
+      **this is the one button on the site that answers a hover by filling with colour
+      instead of emptying out.** `#E6BAB9`, read straight off their own
+      `.button--add-to-cart:hover` rule, not guessed at.
+      - **Their pink exactly; the label ours.** moonmagic keeps a white label on that pink,
+        which measures **1.74:1** -- below the 2.75:1 this project already turned down once,
+        when the Instagram gradient's bright orange tail was dropped for a deeper red (see
+        Social follow). So the label is the site's own near-black instead, **9.44:1**, which
+        also keeps the no-pure-black rule. White is one line away if the owner wants the
+        literal match.
+      - Timing stays this site's own 0.35s rather than moonmagic's languid 0.8s -- only the
+        colour was asked for. `transform` stays in the transition list so the site-wide
+        hover-lift animates instead of snapping (the lesson under Buttons lift up on hover).
+        Checked live with a real hover: `rgb(230,186,185)`, near-black label,
+        `translateY(-2.5px)`.
     - **Disabled is left to Dawn's own `opacity: 0.5`**, which renders the black fill as a
       mid grey with a pale label -- close to moonmagic's own flat grey disabled state with no
       rule of its own. Worth knowing while every test variant is sold out: **grey is the
