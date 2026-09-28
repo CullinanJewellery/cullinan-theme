@@ -1543,6 +1543,27 @@ Anything of ours that is not a Dawn setting lives in these two places:
     - **Quantity and share are kept even though the reference has neither.** They were
       already in the template and the owner did not ask for them to go; removing them
       would be changing something next to what was asked. Worth offering, not assuming.
+  - **Options are words on the product page and circles on the cards, 2026-09-28**, at the
+    owner's request ("when i open ... the ring i want the colors to not show i want to show
+    the materials ... 14k yellow gold, 14k rose gold, 14k white gold"). The variant picker
+    block in `templates/product.json` moved from `swatch_shape: circle` to `none` -- Dawn's
+    own setting -- so the Color option is drawn as text pills exactly like Ring size (36px
+    tall, 14px, square corners) instead of colour circles. Checked live: no `.swatch`
+    element left in the picker, and picking a pill still sets `?variant=`, the picker state
+    and the variant's own photo.
+    - **The cards were not touched.** `snippets/card-product.liquid` draws its own circles
+      from the same Color entries and never reads `swatch_shape`, which is what the owner
+      wants: circles before a product is opened, words after. One option feeds both -- the
+      entries' colours make the circles, their names make the words.
+    - **The words are Shopify data, not theme text.** The pills print the option's values,
+      so they read Gold / White / Rose gold until the Color entries are renamed in the Admin
+      (see Waiting on the Shopify admin). Deliberately not forced from the theme: a Liquid
+      mapping would show „14К жълто злато“ on the page and "Gold" in the cart, the checkout
+      and every order email.
+    - **The row's heading still reads "Color"**, the option's own name. Not asked about, so
+      left alone. An option linked to a category attribute may not be renameable in the
+      Admin; if it should read Материал, that is a small theme relabel, or a Translate &
+      Adapt entry once Bulgarian is a store language.
   - **What is deliberately not built yet, and why.**
     - **Size guide**: Dawn's `popup` block draws its link whether or not a page is behind
       it, so adding it before a Таблица с размери page exists would put a button on the
@@ -2449,26 +2470,30 @@ data, not theme files:
   option in the Shopify Admin (Products → the product → Options), using Shopify's own
   Color-metaobject swatch type, with three entries — Gold `#D49A06`, Rose gold `#B76E79`,
   White `#FFFFFF` — each with a real colour assigned. Confirmed live: three coloured circles
-  render both on the product page's own variant picker and on its collection card.
+  render both on the product page's own variant picker and on its collection card. (Since
+  2026-09-28 only the card keeps its circles; the product page draws the same option as
+  text pills -- see Options are words on the product page under Product page.)
   - **Still to do, the same way, on the remaining products.** Гривна с червен конец has since
     gained its own Color option too (Rose gold, Gold, Silver, White — confirmed live
     2026-09-26), so it and Пръстен с верижка are both done now. Обеци and Висулка плочка still
     have no Color option at all.
   - **Two open questions for the owner, not ours to decide:**
-    - **`Jewelry material` (values Gold/Silver/Metal, English, no swatches) now sits
-      alongside the new Color option on Пръстен с верижка** — reads like Shopify's own
-      unedited category-suggested option (added when the product's Category was set to
-      "Rings in Jewelry"), never customised. It overlaps with what Color now covers and its
-      English placeholder values would confuse a Bulgarian customer if left as-is. Worth
-      deciding per product: delete it, or repurpose it for something Color doesn't cover
-      (e.g. проба/fineness, 14К/18К/сребро) rather than the metal's colour.
-    - **The Color entries' own Label text is English** (`Gold`, `Rose gold`, `White`) and
-      shows to customers as-is on the storefront ("Color: Gold"). Customer-facing copy on
-      this site is Bulgarian throughout (Working agreements). The entry editor showed a
-      `Display name` field next to `Label`, which may allow a Bulgarian-only override without
-      touching the shared entry's own Label — or this can go through **Translate & Adapt**
-      (already in the Admin's own sidebar), which localizes metaobject entries per market.
-      Needs the owner to set it, since it's inside the Admin.
+    - **`Jewelry material` is gone from Пръстен с верижка** (checked live 2026-09-28: the
+      page has only Ring size and Color), so the overlap this bullet used to worry about --
+      Shopify's unedited, English, swatch-less category option sitting beside Color -- is
+      settled. Worth a glance at the other products if they get options of their own.
+    - **The Color entries' names are English and now show as words** (`Gold`, `White`,
+      `Rose gold`, plus `Silver` on the bracelet). Since 2026-09-28 the product page prints
+      them as text pills, and the cart, checkout and emails always did. The owner chose the
+      Bulgarian names on 2026-09-28: **„14К жълто злато“, „14К розово злато“,
+      „14К бяло злато“**. They have to be set in the Admin, because the theme only prints
+      what Shopify holds: the Color entries under Content → Metaobjects → Color (or through
+      the Color option on the product), each entry's Label. The entry editor also showed a
+      `Display name` field next to `Label`; which of the two the storefront prints has not
+      been confirmed, so check the page after the first rename. **The entries are shared by
+      every product that uses them** -- the ring and the bracelet both use Gold, Rose gold
+      and White -- so a piece in 18K needs its own entry („18К жълто злато“), not a rename
+      of these. **Translate & Adapt** is the alternative once Bulgarian is a store language.
 - **Photographs** are staged in `photography/` (see its README for naming and shapes). That
   folder is outside the theme directories, so Shopify never sees it, and the image files are
   gitignored — git is for the theme, not a photo library. Shopify's Files library has no
