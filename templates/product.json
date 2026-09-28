@@ -44,7 +44,8 @@
           "settings": {
             "heading": "Качество и детайли",
             "icon": "none",
-            "open_by_default": false
+            "open_by_default": false,
+            "content": "<p>Всяко бижу се изработва на ръка в собственото ни ателие във Велико Търново, където работим от 1991 година.<\/p><p>Работим със злато 585 и 750 проба и сребро 925 проба с родиево покритие за траен блясък. Камъните се подбират и оценяват от специалист с квалификация от HRD Antwerp.<\/p>"
           }
         },
         "stone_tab": {
@@ -58,7 +59,8 @@
           "type": "collapsible_tab",
           "settings": {
             "heading": "Доставка и връщане",
-            "icon": "truck"
+            "icon": "truck",
+            "content": "<p>Изпращаме с Еконт и Спиди до цялата страна.<\/p><p>Всяко бижу се изработва по поръчка.<\/p><p>За условията за връщане, моля свържете се с нас.<\/p>"
           }
         },
         "complementary": {
@@ -118,10 +120,11 @@
       }
     },
     "related-products": {
-      "type": "related-products",
+      "type": "featured-collection",
       "settings": {
-        "heading": "Може да ви хареса и",
+        "title": "Може да ви хареса и",
         "heading_size": "h2",
+        "collection": "all",
         "products_to_show": 4,
         "columns_desktop": 4,
         "color_scheme": "scheme-1",
@@ -130,7 +133,12 @@
         "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": true,
+        "enable_desktop_slider": false,
+        "full_width": false,
+        "show_view_all": false,
         "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "quick_add": "none",
         "padding_top": 36,
         "padding_bottom": 28
       }
