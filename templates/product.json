@@ -29,9 +29,6 @@
             "swatch_shape": "none"
           }
         },
-        "quantity_selector": {
-          "type": "quantity_selector"
-        },
         "inventory": {
           "type": "inventory",
           "settings": {
@@ -94,7 +91,6 @@
         "price",
         "description",
         "variant_picker",
-        "quantity_selector",
         "inventory",
         "buy_buttons",
         "specs",
