@@ -1717,6 +1717,40 @@ Anything of ours that is not a Dawn setting lives in these two places:
       rule of its own. Worth knowing while every test variant is sold out: **grey is the
       state this page actually shows today**, and the solid black only appears once something
       is in stock.
+  - **The buy box matched to moonmagic's own type scale, 2026-09-28** ("their section is
+    with smaller text and everything is smaller but with good proportions, make that way").
+    Measured both at 1440, line by line:
+
+    | | moonmagic | ours before | ours now |
+    |---|---|---|---|
+    | title | 24 / 700 | **40 / 700** | 24 / 700 |
+    | price | 22 / 400 | **18 / 400** | 22 / 400 |
+    | description | 14 / 400 | 16 / 400 | 14 / 400 |
+    | button | 22 / 700 | 22 / 700 | 22 / 700 |
+
+    - **Size was not the whole story -- the order was.** On moonmagic the title and the price
+      sit within 2px of each other, so the price carries real weight beside the name. Ours
+      had a 40px title against an 18px price, so the title shouted and the price disappeared,
+      which is what made everything under it look like an afterthought. **The title came down
+      16 points and the price went up 4**: not a uniform shrink, which is what "good
+      proportions" was actually pointing at.
+    - **The option labels were left alone**: already smaller than moonmagic's (12 against 14)
+      and carrying this site's own small-capitals treatment, matched to the specs list below
+      them. The button was already 22/700 and is untouched -- worth saying plainly, since the
+      same message asked for the button to shrink too and it is already their size.
+  - **The made-to-order line above the button, 2026-09-28** ("we need to add Made-to-order:
+    Arrives in 12-22 working days that they have"). A new `delivery_note` block on
+    `sections/main-product.liquid`: a bold label and plain text after it, 12px uppercase at
+    0.1em tracking, 43px above the button -- all measured off theirs, including the gap.
+    - **The delivery time itself ships empty, on purpose.** moonmagic's "12-22 working days"
+      is *their* promise; a Veliko Tarnovo workshop shipping inside Bulgaria is a different
+      business, and Working agreements rules out inventing a delivery window. The label
+      defaults to „Изработка по поръчка:“, which is simply true, and the text beside it is a
+      setting for the owner to fill with the shop's real figure.
+    - Guarded like the collapsible tabs: with both fields empty it renders nothing at all.
+    - Pushed in two steps, section then template, per the validator lag -- and the gap fix
+      after it was **dropped by Shopify** and needed a byte-change re-send, the fourth time
+      that has happened.
     - **The buy column widened toward moonmagic's, 2026-09-28** ("lets make the button the
       same size as moonmagic"). The button is full-width in both layouts, so its width is
       its column's width. Measured at 1440 -- **theirs: gallery 835.5, gap 45, button 432,
