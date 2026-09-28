@@ -29,6 +29,9 @@
             "swatch_shape": "none"
           }
         },
+        "delivery_note": {
+          "type": "delivery_note"
+        },
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
@@ -83,6 +86,7 @@
         "price",
         "description",
         "variant_picker",
+        "delivery_note",
         "buy_buttons",
         "specs",
         "stone_tab",
