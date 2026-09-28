@@ -1655,6 +1655,54 @@ Anything of ours that is not a Dawn setting lives in these two places:
       in the browser only (not persisted, the same trick already used once for the empty hero
       slot): idle boxes read as a quiet grey field, the selected one a crisp outline with
       bolded text, at 1440 and 375px, no overflow either width.
+  - **Add to cart matched to moonmagic's own ADD TO BAG, 2026-09-28**, at the owner's
+      request ("lets make now the button add to bag like in moonmagic"). Measured their
+      button live at three widths on the Harlow ring: **1440 → 432 x 54.6, 22px/700, 2.2px
+      tracking; 768 → 713 x 48.6, 18px/700, 1.8px; 375 → 335 x 55, 18px/700, 1.8px** --
+      uppercase throughout, black fill, white label, `border-radius: 1px` (a square corner in
+      all but name). Their hover swaps the fill to their own blush pink; their disabled state
+      goes flat grey.
+    - **Two of the three sizes already matched, and that is not a coincidence.** The Default
+      buttons block at the top of `assets/crown.css` was measured off this very button back
+      on 2026-09-21, when the store had no products to check it against -- its own note said
+      so. Confirmed live now: 55px/22px above 990 and 50px/18px between are right. That stale
+      "unverified" note has been corrected in place.
+    - **The phone tier is the one that moved**, 4.2rem/1.4rem to 5.5rem/1.8rem, and only for
+      this button. It had been shrunk in the owner's own site-wide "smaller phone buttons"
+      pass; this request named moonmagic for this button specifically, so it follows
+      moonmagic instead. Every other phone button keeps the smaller size.
+    - **What actually changed**: the shape (41px pill → square), the weight (400 → 700), the
+      tracking (1px → 0.1em), the caps, and the fill.
+    - **The fill, and why no hex is typed in.** Dawn hands this button `button--secondary`
+      whenever the dynamic checkout button is shown (`snippets/buy-buttons.liquid`), and
+      `.button--secondary` repoints `--color-button`/`--color-button-text` at the pale
+      secondary pair -- which is the whole reason it rendered as a washed-out outline pill.
+      Setting those two back to **`inherit`** hands them to whatever the section's own colour
+      scheme says, and scheme-1's own button pair is already `#000` on `#FFF` (the named
+      pure-black exception under Design direction). So the black is the scheme's, not a
+      literal, and it still resolves correctly if the express-checkout button is ever turned
+      off and Dawn switches the class to `button--primary`.
+    - **Square corners here are the third deliberate exception to the site-wide pill**, after
+      the hero's and the silver banner's.
+    - **Hover keeps this site's own convention, not moonmagic's.** The fill drops away to an
+      outline with a black label, as the hero, silver banner, atelier and view-all buttons
+      all do, rather than importing moonmagic's blush pink -- their pink is their brand, and
+      every other call to action here already speaks the outline language. `transform` stays
+      in the transition list so the site-wide hover-lift animates instead of snapping (the
+      lesson under Buttons lift up on hover). Checked live: background transparent, label
+      black, 1px inset outline, `translateY(-2.5px)`. **The pink is a one-line change if the
+      owner ever wants it.**
+    - **Disabled is left to Dawn's own `opacity: 0.5`**, which renders the black fill as a
+      mid grey with a pale label -- close to moonmagic's own flat grey disabled state with no
+      rule of its own. Worth knowing while every test variant is sold out: **grey is the
+      state this page actually shows today**, and the solid black only appears once something
+      is in stock.
+    - **moonmagic has no express-checkout button at all** -- ADD TO BAG is the only button in
+      their buy box, and the accordions follow straight after. Ours still shows Shopify's
+      purple "Buy with shop" pill directly beneath, which now reads louder than the black
+      button it sits under. Not touched: it is a payments-flow question (`show_dynamic_checkout`
+      on the buy-buttons block), and Working agreements says to ask before touching anything
+      that affects checkout. Offered to the owner.
   - **What is deliberately not built yet, and why.**
     - **Size guide**: Dawn's `popup` block draws its link whether or not a page is behind
       it, so adding it before a Таблица с размери page exists would put a button on the
@@ -2571,13 +2619,22 @@ data, not theme files:
   - **The two open questions that stood here were settled by the owner in the Admin on
     2026-09-28, their own way** (the English `Jewelry material` option, and the English Color
     entry names). Where it stands, read live that day:
-    - **Пръстен с верижка has three options and 63 variants** (7 sizes × 3 × 3):
-      **Размери** (54 55, 56, 55, 57, 58, 59, 60); **Цветове на златото**, the option with
-      swatches, values жълто злато / бяло злато / розово злато, which feeds the card circles;
-      and **Материал на бижуто**, values 14К жълто злато / 14К бяло злато / 14К розово злато,
-      which is what the product page shows. The owner added the material option after the
-      page showed the colour words twice, and asked for the colour section to be hidden --
-      see Colour option hidden under Product page.
+    - **Пръстен с верижка has three options and 84 variants** (7 sizes × 3 × 4), renamed and
+      extended by the owner in the Admin later on 2026-09-28: **изберете вашия размер**
+      (54 55, 56, 55, 57, 58, 59, 60); **Цветове на златото**, the option with swatches,
+      values жълто злато / бяло злато / розово злато, which feeds the card circles; and
+      **Изберете вашия метал**, values 14К жълто злато / 14К бяло злато / 14К розово злато /
+      **925 сребро**. The owner added the material option after the page showed the colour
+      words twice, and asked for the colour section to be hidden -- see Colour option hidden
+      under Product page.
+      - **The colour row is visible again, and that is the rule working, not breaking.**
+        Hiding it requires every material value to contain exactly one colour name; `925
+        сребро` contains none of the three gold colours, so the pairing fails and both rows
+        draw, exactly as designed ("anything short of an exact cover draws both rows, so a
+        choice can never become unreachable"). **To hide it again**: add a silver value to
+        Цветове на златото whose name sits inside `925 сребро` -- `сребро` -- so all four
+        materials map to a colour. Removing `925 сребро` from this ring works too. Either is
+        Admin work, no theme change.
     - **Гривна с червен конец has 8 variants and English option names still**: `Jewelry
       material` (14К жълто злато | Silver) and `Color` (розово злато | жълто злато | Silver |
       бяло злато). Its material list lacks розово and бяло, so the product page cannot hide

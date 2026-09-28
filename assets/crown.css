@@ -23,9 +23,12 @@
    this site (the header's inline menu switches there too), rather than
    introducing a new one.
 
-   Untested against a real Add to Cart button live: the store has no
-   products yet (see Current state), so this is correct in the CSS but
-   unverified in that exact context until one exists.
+   Verified live on a real product page 2026-09-28, once test products
+   existed: 55px/22px above 990 and 50px/18px between both match
+   moonmagic's own ADD TO BAG exactly (54.6px/22px and 48.6px/18px there).
+   The note that used to sit here calling this unverified is settled. The
+   phone tier is the one that no longer matches, deliberately -- see Add to
+   cart at the end of this file.
 
    Sized down a little further on phones only, at the owner's request
    ("a little bit smaller... for a phone"), across every button family on
