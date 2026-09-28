@@ -1754,6 +1754,18 @@ Anything of ours that is not a Dawn setting lives in these two places:
       **`locales/en.default.json`** now carry Bulgarian: `add_to_cart`, `sold_out`,
       `unavailable`. A stopgap on the words a customer actually reads; `bg.json` takes over
       untouched the moment Bulgarian is published.
+    - **The delivery line holds one row, and the reason it did not is worth keeping.** It
+      broke onto a second row by **four pixels** -- 429px of content against a 425px column
+      -- because Bulgarian capitals run far longer than moonmagic's English: our two halves
+      measure 191px and 202px on their own against their whole short line. Not a wrapping
+      bug, just a language that does not fit the same box. 1.1rem with a 0.6rem gap brings
+      it to 394 of 425; phones go to 0.9rem with a 1.6rem icon, 318 of 345. Checked at both.
+    - **The truck is stroked, and both halves of the text are bold**, at the owner's request
+      ("make the truck bold it looks bad like that, also make the text like that"). Dawn
+      draws `icon-truck.svg` as filled shapes with **no stroke at all**, which is why it read
+      as frail beside bold capitals -- it now carries `stroke-width: 0.8` in its own colour,
+      the same fix the header icons already use. moonmagic bolds only its label and leaves
+      the delivery time regular, so bolding both is deliberately not their treatment.
     - **The delivery line has its truck and is no longer half empty.** A `show_icon` setting
       renders `icon-truck.svg` (Dawn's own) before the words, and the text defaults to
       „Доставка с Еконт и Спиди“ -- the carriers the old site names, true without inventing
