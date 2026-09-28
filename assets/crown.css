@@ -3128,3 +3128,29 @@ card-swatches {
   box-shadow: inset 0 0 0 1px #e6bab9;
 }
 
+/*
+  The button's width is its column's width -- it is full-width in moonmagic's
+  layout and in ours -- so matching their button meant matching their column.
+  Measured at 1440: their buy column and their button are both 432px, ours were
+  both 415px. Everything else about the two buttons already matched exactly
+  (55px tall, 22px/700, 0.1em tracking, square), so width was the whole of the
+  difference the owner was looking at.
+
+  Dawn sizes this column at 35% of the grid (`.product--large:not(.product--no-
+  media) .product__info-wrapper`, section-main-product.css, from 990px up) and
+  then takes a 4rem gutter out of it: 35% of the 1300px content box is 455, less
+  40 is the 415 we had. 36.3% gives 472, less 40 is 432 -- their number. The
+  gutter is untouched, so the 17px comes out of the photograph column rather
+  than out of the space between the two, which would have tightened a gap this
+  project deliberately keeps generous.
+
+  The photograph column goes 845 to 828 as a result, a 2% change, and that is
+  the only other thing on the page this moves.
+*/
+@media screen and (min-width: 990px) {
+  .product--large:not(.product--no-media) .product__info-wrapper {
+    max-width: 36.3%;
+    width: calc(36.3% - var(--grid-desktop-horizontal-spacing) / 2);
+  }
+}
+
