@@ -3049,11 +3049,12 @@ card-swatches {
    to `button--primary`.
 
    Dawn draws this button's border with ::after; dropped, as the hero, silver
-   banner and view-all buttons all drop theirs, so the fill can fall cleanly
-   away to an outline on hover -- this site's own hover convention for every
-   call to action, kept here rather than importing moonmagic's pink. `transform`
-   stays in the transition list so the site-wide hover-lift still animates
-   instead of snapping (see Buttons lift up on hover under Design tokens).
+   banner and view-all buttons all drop theirs, so this rule owns the fill
+   outright. It first took the site's own hover -- fill drops away to an
+   outline -- and then moonmagic's pink instead, at the owner's request the
+   same day; see the hover rule at the end of this block. `transform` stays in
+   the transition list so the site-wide hover-lift still animates instead of
+   snapping (see Buttons lift up on hover under Design tokens).
 
    Disabled is left to Dawn's own `opacity: 0.5`, which over this off-white
    ground renders the black fill as a mid grey with a pale label -- close to
@@ -3102,10 +3103,28 @@ card-swatches {
   }
 }
 
+/*
+  Hover: moonmagic's own pink, at the owner's request (2026-09-28, after being
+  offered it) -- `#E6BAB9`, read straight off their `.button--add-to-cart:hover`
+  rule. This is the one button on the site that does not answer a hover by
+  dropping its fill to an outline; it fills with colour instead, as theirs does.
+
+  Their own label stays white on that pink, which measures **1.74:1** -- below
+  the 2.75:1 this project already turned down once, when the Instagram
+  gradient's orange tail was dropped for a deeper red (see the Facebook and
+  Instagram colours under Social follow). So the pink is theirs exactly and the
+  label is ours: the site's near-black at **9.44:1**, which also keeps the
+  "no pure black" rule. White is a one-line change if the owner wants the
+  literal match.
+
+  Timing stays this site's own 0.35s rather than moonmagic's languid 0.8s --
+  only the colour was asked for. `transform` is already in the transition list
+  above, so the hover-lift still animates with it.
+*/
 .product .product-form__submit.button:not([disabled]):hover,
 .product .product-form__submit.button:not([disabled]):focus-visible {
-  background-color: transparent;
-  color: rgb(var(--color-button));
-  box-shadow: inset 0 0 0 1px rgb(var(--color-button));
+  background-color: #e6bab9;
+  color: rgb(var(--color-foreground));
+  box-shadow: inset 0 0 0 1px #e6bab9;
 }
 
