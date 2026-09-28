@@ -414,6 +414,18 @@ Rules that matter here:
     69 seconds later landed at once. Whatever Shopify is still doing with a push, the preview
     does not show it. Wait two minutes between pushes, and re-send with a byte change if a file
     has not landed after 40 seconds.
+    - **Waiting is not a cure, either.** A fourth drop on 2026-09-28: `crown.css` went out
+      about four minutes after a push that had been live within a second, GitHub had the
+      commit, and the served file stayed on its old `?v=` for over five minutes. The same file
+      re-sent with one word changed in a comment landed in seven seconds. So poll for 40
+      seconds, then re-send -- do not keep waiting. Poll in chunks of about 30 seconds: a
+      single browser-tool call is cut off at 45.
+  - **Test a CSS override at the start of `<head>`, not the end of the page.** Dawn's section
+    stylesheets load from inside the section, after `crown.css`, so a rule that only ties a
+    Dawn rule on specificity loses on order. A test that injects the rule at the end of the
+    body always comes last and always wins, which is how the heading inset (see Най-продавани)
+    passed its check and then failed live. Put the test `<style>` first in `<head>`, the
+    worst position a real rule can have, so that only specificity can make it win.
   - The first re-send also changed the button link from percent-encoded
     (`/pages/%D0%B7%D0%B0-%D0%BD%D0%B0%D1%81#vdahnovenie`) to plain Cyrillic
     (`/pages/за-нас#vdahnovenie`), on the guess that the encoding was refused. The second drop
@@ -1596,10 +1608,19 @@ Anything of ours that is not a Dawn setting lives in these two places:
       grid. That did stop the cutting, but threw the carousel away with it, and the owner
       asked for it back ("make the slider like moonmagic").
     - **What stands**: the slider stays on, and `crown.css` pins the item width to an exact
-      quarter of the row minus the three gaps -- `calc((100% - 9rem) / 4)`. Four whole cards
-      at any desktop width, no sliver, arrows still there for when there are more than four
-      products. Checked live at 1440 and 1920: four cards, 328px, 30px gaps, nothing clipped
-      at either.
+      quarter of the row minus the gaps and the row's own inset -- `calc((100% - 12rem) / 4)`,
+      the three 3rem gaps plus 1.5rem either side (see the correction just below). Four whole
+      cards at any desktop width, no sliver, arrows still there for when there are more than
+      four products.
+    - **Wrong as first written, corrected 2026-09-28.** It was `calc((100% - 9rem) / 4)` and
+      the note here said "checked live at 1440 and 1920: nothing clipped". That check compared
+      the fourth card with the viewport, not with the row. The row's first card sits 1.5rem in
+      (`component-slider.css`), which `9rem` ignores, so the fourth card ended at 1427.5px
+      against a row ending at 1412.5px (`scrollWidth` 1430 against `clientWidth` 1400) and the
+      row's overflow clipped 15px of it -- the very thing the owner had asked twice to fix.
+      Cards are 320px at 1440 now, not 327.5, with 1.5rem left on both sides. **When checking
+      for clipping, compare against the scroll container's own right edge, and compare
+      `scrollWidth` with `clientWidth`.**
   - **The section's Heading size setting does nothing, and never did.** Moving it h0 → h1
     changed the markup but not the rendered size, because `crown.css` carries
     `.collection .collection__title .title` with its own `clamp()` -- three classes deep and
@@ -1608,6 +1629,46 @@ Anything of ours that is not a Dawn setting lives in these two places:
     rather than trusting that the setting had landed. The clamp is what to edit: capped at
     `4rem` now (floor `2.6rem`), down from `6.5rem`/`3.2rem`. It is shared with the
     collection pages, so their titles came down with it.
+  - **Heading and Вижте всички moved onto the first picture's left edge, 2026-09-28**, at the
+    owner's request ("the title and the buttons have to be in the left of the first picture
+    ... they are not position okay"). They sat 35px further in than the picture from 750px up.
+    Measured live before touching anything: 62.5px against 27.5px at 1440, 50 against 15 at
+    1024, and at 768 the button alone (the heading was already on 15 through Dawn's own tablet
+    padding). Under 750px all three were already on 15.
+    - **Cause: same box, different inset.** The "Product row: one content column" rule in
+      `crown.css` pinned the heading, the slider and the button to one box and gave all three
+      `padding-inline: 5rem`. But Dawn's `template-collection.css` zeroes the slider's own
+      padding (`.collection slider-component:not(.page-width-desktop)`, one class more
+      specific, so it wins), and a full-width row's first card is inset only `1.5rem`
+      (`component-slider.css`, `.slider-component-full-width .slider--desktop
+      .slider__slide:first-child`). So the picture was on 1.5rem and the words on 5rem.
+    - **Fix**: `padding-inline: 1.5rem` on `.collection.collection--full-width >
+      .collection__title` and `> .collection__view-all`, from 750px up, right under the rule
+      it corrects. Keyed to `.collection--full-width`, which the section adds from the same
+      setting that adds `slider-component-full-width`, so the two cannot come apart. Live at
+      1440: heading, picture and button all on 27.5px (12.5px page margin + 15px inset);
+      267.5 at 1920; 15 at 1200, 1005, 768 and 375.
+    - **`.collection` is repeated in the selector on purpose, and the first push lost
+      without it.** Dawn's `.collection__title.title-wrapper--self-padded-tablet-down {
+      padding: 0 5rem }` (`template-collection.css`, from 990px up) ties on specificity with
+      `.collection--full-width > .collection__title` and loads from inside the section, after
+      `crown.css`, so it won on order: the button and cards moved and the heading stayed on
+      59.6px. The test before that push had injected the rule at the end of the page, which
+      hid the loss. Three classes beat it whichever way the files load.
+    - **Optical alignment on the heading.** A capital does not fill its box: Jost 700's Н, Р,
+      К, Ц and В leave 0.063em before the stem (3px at 46px), so with the box flush the
+      *visible* letter still sat 3px in from the picture. `margin-left: -0.063em` on this
+      section's heading only puts the letter itself flush (27.6px against 27.5px, measured
+      with canvas `actualBoundingBoxLeft`). Б and П leave 0.078em and Д 0.031em, so a title
+      starting with another letter is at most a pixel off. A text nudge, not a layout change.
+    - **Side effect worth knowing about: the arrows are inactive with four products.** The
+      fourth-card fix above means all four fit, so both arrows are disabled -- Dawn's own
+      `isSlideVisible` check working as it should. Before, they nudged the row by the clipped
+      15px and looked alive. The counter still reads "1 / 2", Dawn counting pages from a
+      floored `slidesPerPage`; both settle once there are more than four products.
+    - **Not touched**: the arrows' own position (`right: 0` of the row, 15px outside the last
+      picture's edge -- not asked about), the tablet and phone card sizes, and anything else
+      on the page.
 - **Card swatches: picking a colour swaps the card's own photo and price, 2026-09-26, at the
   owner's request** ("go in moonmagic and see how it is done" — their own Best Sellers row, where
   picking a swatch under the card swaps that card's own photograph and price instantly). Checked
