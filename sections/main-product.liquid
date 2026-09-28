@@ -595,6 +595,27 @@
                     block: block,
                     product_form_id: product_form_id
                   %}
+                {%- when 'delivery_note' -%}
+                  {%- comment -%}
+                    Cullinan: the made-to-order line above the button, after moonmagic's own
+                    (bold label, regular text after it, both 12px uppercase). Renders nothing
+                    when both fields are empty, the same guard the collapsible tabs use, so
+                    it can sit in the template before the shop has a delivery time to state.
+                  {%- endcomment -%}
+                  {%- if block.settings.label != blank or block.settings.text != blank -%}
+                    <p class="product-delivery-note" {{ block.shopify_attributes }}>
+                      {%- if block.settings.label != blank -%}
+                        <span class="product-delivery-note__label">
+                          {{- block.settings.label | escape -}}
+                        </span>
+                      {%- endif -%}
+                      {%- if block.settings.text != blank -%}
+                        <span class="product-delivery-note__text">
+                          {{- block.settings.text | escape -}}
+                        </span>
+                      {%- endif -%}
+                    </p>
+                  {%- endif -%}
                 {%- when 'buy_buttons' -%}
                   {%- render 'buy-buttons',
                     block: block,
@@ -1024,6 +1045,29 @@
             }
           ],
           "default": "circle"
+        }
+      ]
+    },
+    {
+      "type": "delivery_note",
+      "name": "Delivery note",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "A short line above Add to cart. The label is bold, the text after it is not. Both print in small capitals. Leave both empty and nothing renders."
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Bold label",
+          "default": "Изработка по поръчка:"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text after it",
+          "info": "The shop's own delivery time, e.g. Доставка до 5-7 работни дни. Left empty on purpose until that is confirmed."
         }
       ]
     },
