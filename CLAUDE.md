@@ -611,6 +611,17 @@ Rules that matter here:
       - Checked live at 1440px with real hovers, all three zones: picture → second photo
         (opacities 0/1), text → nothing (card hovered, photo unchanged), swatch → that
         colour's photo and its own pressed ring, with the second photo staying hidden.
+      - **Re-checked 2026-09-28 after a QA pass wrongly called the picture hover broken.**
+        It was not: the swap works. Two things made it look dead. Only one of the four test
+        products (Пръстен с верижка) has a second photo, so hovering the other three shows
+        nothing by design. And the test pane produced **no animation frames** (a
+        `requestAnimationFrame` counter read 0 over 600ms), so the 0.4s opacity transition sat
+        at 0% progress and `getComputedStyle` kept returning its start value however long the
+        wait -- which also made every "the rule is not taking effect" experiment inconclusive.
+        Finishing the transitions by hand (`getAnimations().forEach(a => a.finish())`) then
+        gave first photo 0, second photo 1; a real hover on the picture set `card--over-media`
+        and a real hover on the title cleared it. **Where a value is behind a transition,
+        finish the animations before reading it, or check that frames are running first.**
   - **A real regression surfaced checking this live, and is now fixed.** Dawn's own lift
     rule (`.animate--hover-vertical-lift .button:not(.button--tertiary) { transition:
     transform ... }`, `base.css`) sits at specificity (0,3,0). Two of this project's own
