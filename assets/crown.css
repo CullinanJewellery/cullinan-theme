@@ -3129,28 +3129,41 @@ card-swatches {
 }
 
 /*
-  The button's width is its column's width -- it is full-width in moonmagic's
-  layout and in ours -- so matching their button meant matching their column.
-  Measured at 1440: their buy column and their button are both 432px, ours were
-  both 415px. Everything else about the two buttons already matched exactly
-  (55px tall, 22px/700, 0.1em tracking, square), so width was the whole of the
-  difference the owner was looking at.
+  The button is full-width in moonmagic's layout and in ours, so its width is
+  its column's width and matching their button meant matching their column.
+  Everything else about the two already matched exactly -- 55px tall, 22px/700,
+  0.1em tracking, square -- so width was the whole of the difference.
 
-  Dawn sizes this column at 35% of the grid (`.product--large:not(.product--no-
-  media) .product__info-wrapper`, section-main-product.css, from 990px up) and
-  then takes a 4rem gutter out of it: 35% of the 1300px content box is 455, less
-  40 is the 415 we had. 36.3% gives 472, less 40 is 432 -- their number. The
-  gutter is untouched, so the 17px comes out of the photograph column rather
-  than out of the space between the two, which would have tightened a gap this
-  project deliberately keeps generous.
+  Measured at 1440, their product page is: gallery 835.5, gap 45, buy column
+  and button 432, which totals 1312.5. Ours was: gallery 845, gap 40, column
+  415, totalling 1300. **Their content box is 12px wider than ours**, and our
+  1400 page width is a site-wide token, so all three numbers cannot match at
+  once -- something has to give.
 
-  The photograph column goes 845 to 828 as a result, a 2% change, and that is
-  the only other thing on the page this moves.
+  Dawn sizes this column at 35% of the grid and takes a 4rem gutter out of it
+  (`.product--large:not(.product--no-media) .product__info-wrapper`,
+  section-main-product.css, 990px up): 35% of 1300 is 455, less 40 is 415.
+  Two ways to widen the button from there, and the one that looks obvious is
+  the worse one:
+    - cutting the gutter to 2.3rem hits 432 exactly, but drops the gap to 23px
+      when moonmagic's own is 45 -- matching the button by moving away from
+      them on the gap, and leaving our gallery 10px wider than theirs too;
+    - 36.6% takes it from the gallery instead: the button goes to 425.4 and the
+      gallery to 835, within half a pixel of their 835.5, with the 40px gutter
+      left alone.
+  So 36.6% matches two of the three numbers and lands the third within 7px,
+  where the exact-button option matched one and missed the other two. The
+  remaining 7px is the 12px of page width we do not have.
+
+  Note the doubled `.product`: Dawn's own rule here is three classes, the same
+  as this one, and section-main-product.css loads from inside the section --
+  after crown.css -- so an equal-specificity rule loses on source order. The
+  first version of this block was written without it and silently did nothing.
 */
 @media screen and (min-width: 990px) {
-  .product--large:not(.product--no-media) .product__info-wrapper {
-    max-width: 36.3%;
-    width: calc(36.3% - var(--grid-desktop-horizontal-spacing) / 2);
+  .product.product--large:not(.product--no-media) .product__info-wrapper {
+    max-width: 36.6%;
+    width: calc(36.6% - var(--grid-desktop-horizontal-spacing) / 2);
   }
 }
 
