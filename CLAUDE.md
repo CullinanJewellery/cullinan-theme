@@ -1697,12 +1697,19 @@ Anything of ours that is not a Dawn setting lives in these two places:
       rule of its own. Worth knowing while every test variant is sold out: **grey is the
       state this page actually shows today**, and the solid black only appears once something
       is in stock.
-    - **moonmagic has no express-checkout button at all** -- ADD TO BAG is the only button in
-      their buy box, and the accordions follow straight after. Ours still shows Shopify's
-      purple "Buy with shop" pill directly beneath, which now reads louder than the black
-      button it sits under. Not touched: it is a payments-flow question (`show_dynamic_checkout`
-      on the buy-buttons block), and Working agreements says to ask before touching anything
-      that affects checkout. Offered to the owner.
+    - **The express-checkout button was removed the same day, at the owner's own
+      instruction** ("remove the buy with shop button"), after they were shown that
+      moonmagic's buy box holds ADD TO BAG and nothing else. `show_dynamic_checkout` is
+      `false` on the buy-buttons block in `templates/product.json`, which drops Shopify's
+      purple "Buy with shop" pill and the "More payment options" link under it. Asked first
+      rather than assumed, per Working agreements -- but **nothing about checkout itself
+      changed**: the cart's own checkout button is untouched and no payment method is
+      affected, only the product page's express shortcut. One setting to put back.
+      - **Dawn swaps the Add to cart class from `button--secondary` to `button--primary`
+        when this is off**, which is exactly the case the `inherit` trick above was written
+        for: the button stays black, because its colours come from the colour scheme rather
+        than from the secondary pair. Confirmed live -- `button--primary`, still 55px,
+        18px/700, square, black.
   - **What is deliberately not built yet, and why.**
     - **Size guide**: Dawn's `popup` block draws its link whether or not a page is behind
       it, so adding it before a Таблица с размери page exists would put a button on the
