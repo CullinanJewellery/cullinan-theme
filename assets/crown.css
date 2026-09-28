@@ -2905,3 +2905,108 @@ card-swatches {
   color: rgb(var(--color-foreground));
 }
 
+/* ---------------------------------------------------------------------------
+   Product options: Размери, Материал на бижуто
+
+   Dawn's own pill picker (component-product-variant-picker.css) is plain
+   e-commerce default: a hairline 10%-opacity border at rest and a hard
+   invert to a solid black block on selection -- fine for Dawn's own reference
+   theme, but loud for a small in-page choice sitting right under the price of
+   a handmade piece, and generic against the rest of this page (owner, 2026-09-
+   28: "i don't like it ... i want it to look luxury and professional").
+
+   Researched rather than guessed at, per "Before you build": moonmagic.com's
+   own size/metal picker (their Harlow moonstone ring, checked live), measured
+   directly rather than assumed --
+     - the idle box carries no visible border at all, only a transparent one
+       the same width as the selected state, so nothing shifts on interaction;
+     - a faint neutral fill (rgb(248,248,248) there) tells the boxes apart
+       from the page without drawing the eye;
+     - selecting one does not invert to a filled block -- it draws a crisp
+       dark outline and leaves the fill alone, a quieter confirmation that
+       reads as considered rather than as a button being pressed;
+     - "Choose your size" sits above the row as its own small heading, and a
+       separate "SIZE: 7" readout beside it confirms the pick even when the
+       chosen box has wrapped onto a second row out of the eye's first pass.
+   Corners stay square: variant pills are square site-wide (see Square
+   corners under Design tokens), and this file makes no exception here --
+   only Dawn's fill and border treatment change, never the shape.
+
+   The eyebrow-plus-value pairing is our own product page's existing
+   convention, not a new one: the same small spaced capitals as
+   `.product-specs__label` just above this block, paired with a plain-case
+   value the way `.product-specs__value` is -- a label that shouts and a
+   value that does not read as the same panel rather than a different one a
+   few pixels below it. The value itself is Dawn's own mechanism
+   (`data-selected-value`), already used by its swatch picker; the button
+   picker's own legend just gained the same span (product-variant-picker.liquid)
+   so Размери and Материал на бижуто confirm the current pick exactly as
+   Цвят/Color would have.
+
+   Scoped to `.product`, this page's own outer wrapper (sections/main-
+   product.liquid) -- `.product-form__input--pill` renders nowhere else live
+   (featured-product carries the same picker but is not placed on any
+   template), so this reaches only the two rows it was asked about. The
+   `.product` ancestor also does real work beyond scoping: Dawn's own rules
+   here live in component-product-variant-picker.css, loaded from inside
+   the section and so after crown.css in the document -- the extra class is
+   what wins the fight on specificity rather than leaving it to load order.
+   --------------------------------------------------------------------------- */
+
+.product .product-form__input--pill legend.form__label {
+  margin: 0 0 1rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(var(--color-foreground), 0.7);
+}
+
+/* The confirmed pick reads like product-specs' own value: plain case, full
+   strength, no tracking -- the answer, not another label. */
+.product .product-form__input--pill legend.form__label [data-selected-value] {
+  font-weight: 400;
+  letter-spacing: normal;
+  text-transform: none;
+  color: rgb(var(--color-foreground));
+}
+
+.product .product-form__input--pill input[type='radio'] + label {
+  margin: 0.7rem 0.8rem 0.8rem 0;
+  padding: 1.3rem 2.4rem;
+  background-color: rgba(var(--color-foreground), 0.04);
+  border-color: transparent;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.product .product-form__input--pill input[type='radio'] + label:hover {
+  background-color: rgba(var(--color-foreground), 0.04);
+  border-color: rgba(var(--color-foreground), 0.35);
+}
+
+.product .product-form__input--pill input[type='radio']:checked + label {
+  background-color: rgb(var(--color-background));
+  border-color: rgb(var(--color-foreground));
+  color: rgb(var(--color-foreground));
+  font-weight: 600;
+}
+
+.product .product-form__input--pill input[type='radio']:disabled + label,
+.product .product-form__input--pill input[type='radio'].disabled + label {
+  background-color: rgba(var(--color-foreground), 0.025);
+  border-color: transparent;
+  color: rgba(var(--color-foreground), 0.35);
+  cursor: not-allowed;
+}
+
+/* A sold-out value that is still the shopper's selection (the only state
+   there is to check against today -- every test variant is out of stock, see
+   Waiting on the Shopify admin): a soft ring says "this was the pick" without
+   the confident weight of a real, buyable one. */
+.product .product-form__input--pill input[type='radio'].disabled:checked + label,
+.product .product-form__input--pill input[type='radio']:disabled:checked + label {
+  border-color: rgba(var(--color-foreground), 0.35);
+  color: rgba(var(--color-foreground), 0.55);
+  font-weight: 400;
+}
+
