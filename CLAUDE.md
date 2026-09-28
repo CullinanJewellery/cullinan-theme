@@ -2613,19 +2613,22 @@ data, not theme files:
   cards both read `product.metafields.reviews.rating`, which the app writes. The review list
   itself is the app's own block, dragged into the product template in the theme editor.
 - **Stock is not counted: the pieces are made to order** (the owner's decision, 2026-09-28,
-  "i don't want my products to have quantity"). Every variant of Пръстен с верижка was
-  created with **Track quantity on and a quantity of 0**, which is the only reason the page
-  reads SOLD OUT -- Shopify refuses to sell a tracked variant at zero. Nothing in the theme
-  causes it and nothing in the theme can fix it.
-  - **Turn Track quantity off** per variant (product → Variants → a variant → the Inventory
-    card), or for all of them at once by selecting every variant and using **Bulk edit**.
-    An untracked variant is always buyable, which is what a workshop making each piece by
-    hand actually wants -- and what moonmagic does too ("MADE-TO-ORDER: ARRIVES IN 8-18
-    WORKING DAYS"). The alternative, if a count is ever wanted, is to leave tracking on and
-    tick **Continue selling when out of stock**.
-  - **The "Out of stock" line above the button goes on its own** once tracking is off: it is
-    Dawn's `inventory` block, which prints nothing for an unmanaged variant. No theme change
-    needed for that either.
+  "i don't want my products to have quantity"). Every variant of Пръстен с верижка had
+  **Track quantity on and a quantity of 0**, which was the only reason the page read SOLD
+  OUT -- Shopify refuses to sell a tracked variant at zero. Nothing in the theme caused it
+  and nothing in the theme could fix it.
+  - **Settled the same day in the Admin, and all 112 variants are buyable now.** The owner
+    took the second route rather than the first: tracking is still on
+    (`inventory_management: shopify`) with **Continue selling when out of stock** ticked,
+    so nothing is ever blocked. Turning Track quantity off entirely is the other way, and
+    is what moonmagic's own made-to-order model amounts to. Either is fine; this one keeps
+    a count if a count is ever wanted.
+  - **The stock status line was removed from the theme too**, at the owner's request ("i
+    want to remove the in stock") -- Dawn's `inventory` block, out of `templates/product
+    .json`. It would have printed nothing for an untracked variant anyway, but removing the
+    block means the page never talks about stock levels in either direction, whatever the
+    Admin setting is. The button still says Sold out when a variant genuinely cannot be
+    bought; that is the buy-buttons block, untouched.
   - **112 variants on one ring, and 84 of them unreachable.** 7 sizes × 4 colours × 4 metals,
     where the colour option exists only to feed the card swatches and is hidden on the
     product page. Only the combinations whose colour and metal name the same gold can be
