@@ -998,6 +998,14 @@ html {
    homepage section rather than raising the shared clamp. */
 [id^="shopify-section-"][id$="__featured_collection"] .collection__title .title {
   font-size: clamp(3rem, 3.6vw, 4.6rem);
+  /* Optical alignment, 2026-09-28: the heading's box already starts on the
+     first picture's left edge, but a capital does not fill its box -- Jost
+     700's Н, Р, К, Ц and В all leave 0.063em (measured: 3px at this size)
+     before the stem, so the visible letter sat 3px in from the picture and
+     the button. Pulling the box back by that much puts the letter itself
+     flush. In em so it follows the clamp above at every width. Б and П leave
+     0.078em and Д 0.031em, so another first letter is at most a pixel off. */
+  margin-left: -0.063em;
 }
 
 /* Dawn renders the arrows centred below the grid. Lifting them into the space
@@ -1406,7 +1414,18 @@ html {
    the carousel and its arrows still in place for when there are more than four
    products. component-slider.css loads from inside the section, so after
    crown.css: the two attribute selectors are what out-specify it. The card
-   carries no horizontal padding, so the card width is the picture width. */
+   carries no horizontal padding, so the card width is the picture width.
+
+   Corrected 2026-09-28: the width was `(100% - 9rem) / 4`, which fits four cards
+   and three gaps exactly but forgets that the first card sits 1.5rem in from the
+   row's left edge (component-slider.css, `.slider-component-full-width
+   .slider--desktop .slider__slide:first-child`). So the fourth card ended 15px
+   past the row and the row clipped it -- 1427.5px against a row ending at
+   1412.5px at 1440, `scrollWidth` 1430 against `clientWidth` 1400. The earlier
+   "nothing clipped" check compared the card with the viewport instead of the
+   row. The row now leaves the same 1.5rem on the right as on the left, so the
+   width is `(100% - 12rem) / 4`: the three 3rem gaps plus 1.5rem either side.
+   320px cards at 1440, where they were 327.5px. */
 @media screen and (min-width: 990px) {
   [id^="shopify-section-"][id$="__featured_collection"] .product-grid.slider--desktop {
     --grid-desktop-horizontal-spacing: 3rem;
@@ -1414,7 +1433,7 @@ html {
   }
 
   [id^="shopify-section-"][id$="__featured_collection"] .slider--desktop .grid__item {
-    width: calc((100% - 9rem) / 4);
+    width: calc((100% - 12rem) / 4);
   }
 }
 
@@ -1534,6 +1553,29 @@ card-swatches {
     max-width: var(--page-width);
     margin-inline: auto;
     padding-inline: 5rem;
+  }
+}
+
+/*
+  Corrected 2026-09-28: one box is not one edge. A full-width row's first card
+  sits 1.5rem inside the box (component-slider.css, `.slider-component-full-width
+  .slider--desktop .slider__slide:first-child`), because Dawn zeroes the
+  slider's own padding (template-collection.css, `.collection slider-component:
+  not(.page-width-desktop)`, one class more specific than the rule above, so it
+  wins). The heading and the button kept the 5rem inset above, which put them
+  35px further in than the first picture -- the owner: "not position okay".
+  Measured live: 62.5px against 27.5px at 1440, 50 against 15 at 1024, and at
+  768 the button alone (50 against 15; the heading was already on 15 through its
+  own tablet padding). Under 750px all three were already on 15.
+
+  Keyed to `.collection--full-width`, the class the section adds from the same
+  setting that adds `slider-component-full-width`, so the two cannot come apart.
+  Same specificity as the rule above and later in the file, so it wins.
+*/
+@media screen and (min-width: 750px) {
+  .collection--full-width > .collection__title,
+  .collection--full-width > .collection__view-all {
+    padding-inline: 1.5rem;
   }
 }
 
