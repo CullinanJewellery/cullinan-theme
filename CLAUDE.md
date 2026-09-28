@@ -1540,9 +1540,19 @@ Anything of ours that is not a Dawn setting lives in these two places:
     → title → price → description → size picker → quantity → stock message → Add to cart →
     Качество и детайли → За камъка → Доставка и връщане → Подхождат си → share. Then
     Може да ви хареса и (Dawn's own `related-products`) below.
-    - **Quantity and share are kept even though the reference has neither.** They were
-      already in the template and the owner did not ask for them to go; removing them
-      would be changing something next to what was asked. Worth offering, not assuming.
+    - **Share is kept even though the reference has neither it nor a quantity box.** It was
+      already in the template and the owner did not ask for it to go; removing it would be
+      changing something next to what was asked. Worth offering, not assuming.
+      - **The quantity selector went on 2026-09-28**, at the owner's own request ("i don't
+        want my products to have quantity"), which is what this note meant by worth
+        offering. The `quantity_selector` block and its `block_order` entry are both out of
+        `templates/product.json`. With no quantity input in the form, Shopify takes one --
+        the right default for pieces made to order. The cart still lets a customer change
+        the number there; untouched, and not asked about.
+      - **The request was ambiguous and was asked about rather than guessed.** "Quantity"
+        could have meant this box or Shopify's own stock counting, which is what was making
+        every variant read SOLD OUT -- two different fixes in two different places. The
+        owner wanted both.
   - **Options are words on the product page and circles on the cards, 2026-09-28**, at the
     owner's request ("when i open ... the ring i want the colors to not show i want to show
     the materials ... 14k yellow gold, 14k rose gold, 14k white gold"). The variant picker
@@ -2602,6 +2612,26 @@ data, not theme files:
   that is needed on the theme's side for the stars: Dawn's `rating` block and the product
   cards both read `product.metafields.reviews.rating`, which the app writes. The review list
   itself is the app's own block, dragged into the product template in the theme editor.
+- **Stock is not counted: the pieces are made to order** (the owner's decision, 2026-09-28,
+  "i don't want my products to have quantity"). Every variant of Пръстен с верижка was
+  created with **Track quantity on and a quantity of 0**, which is the only reason the page
+  reads SOLD OUT -- Shopify refuses to sell a tracked variant at zero. Nothing in the theme
+  causes it and nothing in the theme can fix it.
+  - **Turn Track quantity off** per variant (product → Variants → a variant → the Inventory
+    card), or for all of them at once by selecting every variant and using **Bulk edit**.
+    An untracked variant is always buyable, which is what a workshop making each piece by
+    hand actually wants -- and what moonmagic does too ("MADE-TO-ORDER: ARRIVES IN 8-18
+    WORKING DAYS"). The alternative, if a count is ever wanted, is to leave tracking on and
+    tick **Continue selling when out of stock**.
+  - **The "Out of stock" line above the button goes on its own** once tracking is off: it is
+    Dawn's `inventory` block, which prints nothing for an unmanaged variant. No theme change
+    needed for that either.
+  - **112 variants on one ring, and 84 of them unreachable.** 7 sizes × 4 colours × 4 metals,
+    where the colour option exists only to feed the card swatches and is hidden on the
+    product page. Only the combinations whose colour and metal name the same gold can be
+    chosen, so **28 would do the same job**. Every inventory decision above is four times
+    the work because of it. Worth collapsing into one metal option carrying the swatches
+    before real products are loaded -- offered to the owner 2026-09-28, not yet answered.
 - **The four products that exist are test data, not real listings** (checked 2026-09-22):
   Пръстен с верижка, Обеци, Висулка плочка, Гривна с червен конец. Every one needs work
   before the page can be judged on anything but layout:
