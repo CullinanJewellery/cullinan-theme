@@ -1578,7 +1578,7 @@ card-swatches {
   so on a tie it wins. The first push of this rule lost to it: the button and
   the cards moved, the heading did not (59.6px against 27.5px live), and a test
   made by injecting the rule at the end of the page hid it. Three classes beat
-  it whatever the load order.
+  it in whichever order the files load.
 */
 @media screen and (min-width: 750px) {
   .collection.collection--full-width > .collection__title,
