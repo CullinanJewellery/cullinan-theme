@@ -1563,7 +1563,61 @@ Anything of ours that is not a Dawn setting lives in these two places:
     - **The row's heading still reads "Color"**, the option's own name. Not asked about, so
       left alone. An option linked to a category attribute may not be renameable in the
       Admin; if it should read Материал, that is a small theme relabel, or a Translate &
-      Adapt entry once Bulgarian is a store language.
+      Adapt entry once Bulgarian is a store language. (Overtaken the same day: the owner
+      renamed the options in Bulgarian themselves, and then asked for the colour row to go --
+      see the next entry.)
+  - **The colour option is hidden on the product page when a material option covers it,
+    2026-09-28**, at the owner's request ("when you open a product i don't want the color ...
+    section to be seen"). The ring showed Цветове на златото and Материал на бижуто side by
+    side, the same gold twice. `snippets/product-variant-picker.liquid` now skips the option
+    with swatches when another option covers it exactly, and `snippets/product-variant-
+    options.liquid` does the rest.
+    - **Why not just hide the row.** A hidden option is still part of every variant, and
+      Shopify fills an option it is not sent with that option's **first** value. Tested live:
+      asking for size 56 and 14К розово злато alone returned "56 / жълто злато / 14К розово
+      злато" -- an order line reading yellow beside rose. Hiding the row and nothing else
+      would have shipped that.
+    - **The rule.** The option with swatches (the first, if several) is skipped only if
+      another option **without** swatches covers it exactly: every value of that option
+      contains exactly one colour name (case-insensitive containment -- "жълто злато" inside
+      "14К жълто злато"), and every colour name sits inside at least one value. Anything less
+      draws every row as Dawn does: a colour with no material, a name contained twice, a
+      product with a colour option alone. So a choice can never become unreachable. 14К and
+      18К pieces sharing one colour circle pair correctly too (both contain "жълто злато").
+    - **Both ids travel together.** Each visible value renders `data-option-value-id=
+      "materialId,colourId"`. Dawn's `selectedOptionValues` (`global.js`) maps that attribute
+      per checked input and `product-info.js` joins the results with commas into
+      `option_values=`, so the request carries all three ids and Shopify resolves the exact
+      matching variant. No script of ours -- one attribute. The order of the ids does not
+      matter (three orders tried live).
+    - **Sold-out state is worked out from the variants, not from Shopify's flag.** Shopify
+      documents `product_option_value.available` as: given the selected values of the
+      *earlier* options, does this value have a purchasable combination among the later ones.
+      The hidden colour comes before the material, so with one colour selected every other
+      material would read as sold out even with its matching variant in stock (the offline
+      test shows exactly that: `SOLD OUT | SOLD OUT | avail`). The options snippet looks for
+      an available variant carrying the value together with its own colour and the selected
+      values of the visible earlier options instead. A variant stocked with the wrong colour
+      never makes a material look available.
+    - **Tested two ways.** Offline, with liquidjs and mock products built to Shopify's
+      documented drop semantics (kept in the scratchpad, not committed): 28 checks -- the ring
+      with nothing in stock, matching pairs in stock, one material only, a mismatched variant
+      only, material listed before colour, the bracelet with an incomplete and a complete
+      material list, sizes plus colour alone, ambiguous names, 14К with 18К, the dropdown and
+      the circle pickers. And live, with real clicks: a material → "54 55 / розово злато /
+      14К розово злато", a size → "58 / бяло злато / 14К бяло злато", yellow again → "58 /
+      жълто злато / 14К жълто злато", the order form's variant id equal to the selected
+      variant each time. At 375px: two rows, no horizontal overflow.
+    - **What has to stay true in the Admin.** The colour names appear inside the material
+      names. Stock, price and photos sit on the variants where colour and material name the
+      **same gold**, since those are the only ones a shopper can land on; the other six in
+      nine are never chosen from the page. Three options make 63 variants a ring where 21
+      would do. **Worth offering**: one material option that carries the swatches (entries
+      named 14К жълто злато and so on, the option named Материал на бижуто) gives the same
+      page and the same card circles with no hidden option, no matching rule and a third of
+      the variants.
+    - **The cart, checkout and emails still list every option**, so a line reads "58 / жълто
+      злато / 14К жълто злато". Not touched, not asked about.
   - **What is deliberately not built yet, and why.**
     - **Size guide**: Dawn's `popup` block draws its link whether or not a page is behind
       it, so adding it before a Таблица с размери page exists would put a button on the
@@ -2477,23 +2531,27 @@ data, not theme files:
     gained its own Color option too (Rose gold, Gold, Silver, White — confirmed live
     2026-09-26), so it and Пръстен с верижка are both done now. Обеци and Висулка плочка still
     have no Color option at all.
-  - **Two open questions for the owner, not ours to decide:**
-    - **`Jewelry material` is gone from Пръстен с верижка** (checked live 2026-09-28: the
-      page has only Ring size and Color), so the overlap this bullet used to worry about --
-      Shopify's unedited, English, swatch-less category option sitting beside Color -- is
-      settled. Worth a glance at the other products if they get options of their own.
-    - **The Color entries' names are English and now show as words** (`Gold`, `White`,
-      `Rose gold`, plus `Silver` on the bracelet). Since 2026-09-28 the product page prints
-      them as text pills, and the cart, checkout and emails always did. The owner chose the
-      Bulgarian names on 2026-09-28: **„14К жълто злато“, „14К розово злато“,
-      „14К бяло злато“**. They have to be set in the Admin, because the theme only prints
-      what Shopify holds: the Color entries under Content → Metaobjects → Color (or through
-      the Color option on the product), each entry's Label. The entry editor also showed a
-      `Display name` field next to `Label`; which of the two the storefront prints has not
-      been confirmed, so check the page after the first rename. **The entries are shared by
-      every product that uses them** -- the ring and the bracelet both use Gold, Rose gold
-      and White -- so a piece in 18K needs its own entry („18К жълто злато“), not a rename
-      of these. **Translate & Adapt** is the alternative once Bulgarian is a store language.
+  - **The two open questions that stood here were settled by the owner in the Admin on
+    2026-09-28, their own way** (the English `Jewelry material` option, and the English Color
+    entry names). Where it stands, read live that day:
+    - **Пръстен с верижка has three options and 63 variants** (7 sizes × 3 × 3):
+      **Размери** (54 55, 56, 55, 57, 58, 59, 60); **Цветове на златото**, the option with
+      swatches, values жълто злато / бяло злато / розово злато, which feeds the card circles;
+      and **Материал на бижуто**, values 14К жълто злато / 14К бяло злато / 14К розово злато,
+      which is what the product page shows. The owner added the material option after the
+      page showed the colour words twice, and asked for the colour section to be hidden --
+      see Colour option hidden under Product page.
+    - **Гривна с червен конец has 8 variants and English option names still**: `Jewelry
+      material` (14К жълто злато | Silver) and `Color` (розово злато | жълто злато | Silver |
+      бяло злато). Its material list lacks розово and бяло, so the product page cannot hide
+      the colour row there (hiding it would strand two colours) and shows both rows. Adding
+      `14К розово злато` and `14К бяло злато` to Jewelry material makes the row hide itself,
+      with no code change.
+    - **Обеци and Висулка плочка still have no options at all.**
+    - **The entries are shared by every product that uses them.** A piece in 18K needs its
+      own entries („18К жълто злато“), not a rename of these. **Translate & Adapt** is the
+      way to Bulgarian option names once Bulgarian is a store language; until then the names
+      are whatever is typed in the Admin.
 - **Photographs** are staged in `photography/` (see its README for naming and shapes). That
   folder is outside the theme directories, so Shopify never sees it, and the image files are
   gitignored — git is for the theme, not a photo library. Shopify's Files library has no
