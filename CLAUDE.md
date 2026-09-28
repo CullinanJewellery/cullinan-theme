@@ -1717,6 +1717,34 @@ Anything of ours that is not a Dawn setting lives in these two places:
       rule of its own. Worth knowing while every test variant is sold out: **grey is the
       state this page actually shows today**, and the solid black only appears once something
       is in stock.
+    - **The buy column widened toward moonmagic's, 2026-09-28** ("lets make the button the
+      same size as moonmagic"). The button is full-width in both layouts, so its width is
+      its column's width. Measured at 1440 -- **theirs: gallery 835.5, gap 45, button 432,
+      total 1312.5; ours was: gallery 845, gap 40, button 415, total 1300.** Their content
+      box is 12px wider than ours and 1400 is a site-wide page-width token, so all three
+      numbers cannot match at once.
+      - **Everything except width already matched exactly** -- 55px tall, 22px/700, 0.1em
+        tracking, square -- so width was the whole of what the owner was looking at.
+      - **The obvious lever was the wrong one.** Cutting Dawn's 4rem gutter to 2.3rem hits
+        432 exactly, but drops the gap to 23px against moonmagic's own 45 and leaves the
+        gallery 10px wider than theirs: matching the button by moving away from them on two
+        other numbers. Dawn's 35% column going to **36.6%** takes the width from the gallery
+        instead -- button 425.4, gallery 834.6 against their 835.5, gutter untouched. Two of
+        three matched and the third within 7px. Live and checked.
+      - **The first version of the rule did nothing at all**, and the reason is the one this
+        file keeps relearning: it was written at Dawn's own specificity
+        (`.product--large:not(.product--no-media) .product__info-wrapper`, three classes) and
+        `section-main-product.css` loads from inside the section, after crown.css, so it lost
+        on source order. Doubling `.product` fixed it. **Measure after pushing, not before.**
+    - **Shopify's own Bulgarian for Add to cart does not fit this button**, found before the
+      store language was switched rather than after. `locales/bg.json` ships
+      „Добавяне към количката“, which needs 378px of label against 355px of room at 22px, and
+      310 against 285 on a phone -- it would have wrapped to two lines the moment Bulgarian
+      went live. Shortened to **„Добави в количката“** in the theme's own `bg.json`, one
+      string changed and the rest of the file byte-identical (a re-serialised copy reordered
+      keys and was thrown away). 306px at 22px now, comfortable at both sizes. **The wording
+      is the owner's to confirm** -- they are the native speaker; „В количката“ is shorter
+      still if the button ever needs it.
     - **The express-checkout button was removed the same day, at the owner's own
       instruction** ("remove the buy with shop button"), after they were shown that
       moonmagic's buy box holds ADD TO BAG and nothing else. `show_dynamic_checkout` is
