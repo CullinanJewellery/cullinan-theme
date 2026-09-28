@@ -1839,6 +1839,23 @@ Anything of ours that is not a Dawn setting lives in these two places:
       panel from being complete.
     - **За камъка stays invisible**, correctly: it has no text yet either, and nobody asked
       for it.
+    - **Качество и детайли expanded the same day** ("talk about more for the gold and you can
+      keep it clean or something like that"). The gold now gets its own paragraph -- 585 is
+      14 carats and 58,5% pure, the harder alloy for every day; 750 is 18 carats and 75%
+      pure, deeper in colour and softer, for a piece with particular meaning -- which is the
+      same explanation the materials block on За нас already gives, so the two pages agree.
+      Then silver 925 with rhodium plating, the HRD Antwerp appraisal, and a four-line care
+      list: store apart, take it off for swimming and housework, keep it from perfume and
+      cleaning products, wipe with a soft cloth. **Care is general jewellery advice, not a
+      policy claim**, so none of it waits on the accountant the way the returns half does.
+    - **Доставка и връщане lost its truck icon** the same day, at the owner's request. The
+      truck above the button is a different thing and stays -- that one was asked for by
+      name.
+  - **Share is gone from the buy box, 2026-09-29**, at the owner's request. It had been kept
+    on 2026-09-22 only because it was already in the template and nobody had asked -- the
+    note there said it was "worth offering, not assuming", and this is the answer. moonmagic
+    has none either. Quantity went the day before for the same reason, so the buy box now
+    holds exactly what the reference's does.
   - **„Може да ви хареса и" never appeared, and it was not a theme fault, 2026-09-29.**
     Shopify's own recommendations return **zero** for this product -- checked directly on
     both the `related` and `complementary` intents. The reason: the ring is the **only**
