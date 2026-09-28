@@ -1824,6 +1824,35 @@ Anything of ours that is not a Dawn setting lives in these two places:
         for: the button stays black, because its colours come from the colour scheme rather
         than from the secondary pair. Confirmed live -- `button--primary`, still 55px,
         18px/700, square, black.
+  - **The two accordions show, 2026-09-29** ("make the quality and shipping dropdowns
+    show"). They had been in the template since 2026-09-22 and rendered nothing the whole
+    time, because this section's own guard hides a tab with no text behind it -- working as
+    designed, but the owner could not see them.
+    - **Качество и детайли** now carries: handmade in the Veliko Tarnovo workshop since
+      1991, gold 585 and 750 and silver 925 with rhodium plating, stones appraised by an HRD
+      Antwerp qualified specialist. **Every one of those is a fact already recorded in this
+      file** -- nothing written from assumption.
+    - **Доставка и връщане** carries only what is known: Еконт and Спиди, made to order, and
+      an invitation to ask about returns. **The delivery window, the delivery price, the
+      return period and the warranty are still missing** and are deliberately not invented
+      (Legal pages, under Working agreements). That is the one thing still blocking this
+      panel from being complete.
+    - **За камъка stays invisible**, correctly: it has no text yet either, and nobody asked
+      for it.
+  - **„Може да ви хареса и" never appeared, and it was not a theme fault, 2026-09-29.**
+    Shopify's own recommendations return **zero** for this product -- checked directly on
+    both the `related` and `complementary` intents. The reason: the ring is the **only**
+    product in its collection, and the store has no orders, so the algorithm has nothing to
+    work from. Dawn's `related-products` section can only ever show what that API returns, so
+    it rendered an empty wrapper.
+    - **Swapped for a `featured-collection` row over `all`**, same heading, same card style,
+      which shows real products today. It can go back to `related-products` in one line once
+      the catalogue is real and orders exist -- worth doing then, since recommendations beat
+      a fixed row for 4,000 designs.
+    - **`sections/featured-collection.liquid` gained a guard** so the row never lists the
+      product the visitor is already on: the page's own `product.id` is captured **before**
+      the loop, which reuses the name `product` for each card and would otherwise shadow it.
+      Nil on every other template, so the homepage row is untouched.
   - **What is deliberately not built yet, and why.**
     - **Size guide**: Dawn's `popup` block draws its link whether or not a page is behind
       it, so adding it before a Таблица с размери page exists would put a button on the
