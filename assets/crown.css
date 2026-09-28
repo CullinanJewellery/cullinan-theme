@@ -3010,3 +3010,99 @@ card-swatches {
   font-weight: 400;
 }
 
+/* ---------------------------------------------------------------------------
+   Add to cart, matched to moonmagic's own ADD TO BAG
+
+   Measured live on their Harlow ring at three widths (2026-09-28), owner's
+   request ("like in moonmagic"):
+     1440  432 x 54.6, 22px/700, 2.2px tracking (0.1em), uppercase
+     768   713 x 48.6, 18px/700, 1.8px tracking (0.1em), uppercase
+     375   335 x 55,   18px/700, 1.8px tracking (0.1em), uppercase
+   Black fill, white label, `border-radius: 1px` -- a square corner in all but
+   name. Their hover swaps the fill to their own blush pink and their disabled
+   state goes flat grey.
+
+   Our own sizes already matched at desktop and tablet: the Default buttons
+   block at the top of this file was measured off this very button back when
+   the store had no products to check it against (its own note says so), and
+   it lands on 55px/22px above 990 and 50px/18px between. Only the phone tier
+   differed -- 4.2rem/1.4rem there, from the owner's own later pass shrinking
+   phone buttons site-wide -- so this is the one size that moves, and it moves
+   because this request named moonmagic for this button specifically. Every
+   other phone button keeps the smaller size.
+
+   What actually changes, then: the shape, the weight, the tracking, the caps,
+   and the fill.
+
+   The fill is the interesting one. Dawn hands this button `button--secondary`
+   whenever the dynamic checkout button is shown (buy-buttons.liquid), and
+   `.button--secondary` repoints `--color-button`/`--color-button-text` at the
+   pale secondary pair -- which is why it renders as an outline today. Setting
+   them to `inherit` hands them back to whatever the section's own colour
+   scheme says, and scheme-1's own button pair is already #000 on #FFF (the
+   named pure-black exception under Design direction). So the black comes from
+   the scheme, not from a hex typed in here, and it still resolves correctly if
+   the express-checkout button is ever turned off and Dawn switches the class
+   to `button--primary`.
+
+   Dawn draws this button's border with ::after; dropped, as the hero, silver
+   banner and view-all buttons all drop theirs, so the fill can fall cleanly
+   away to an outline on hover -- this site's own hover convention for every
+   call to action, kept here rather than importing moonmagic's pink. `transform`
+   stays in the transition list so the site-wide hover-lift still animates
+   instead of snapping (see Buttons lift up on hover under Design tokens).
+
+   Disabled is left to Dawn's own `opacity: 0.5`, which over this off-white
+   ground renders the black fill as a mid grey with a pale label -- close to
+   moonmagic's own flat grey disabled state without a rule of its own. Worth
+   knowing while every test variant is sold out: grey IS the state this page
+   shows today.
+
+   Square corners here are the third deliberate exception to the site-wide
+   pill, after the hero's and the silver banner's.
+   --------------------------------------------------------------------------- */
+
+.product .product-form__submit.button::before,
+.product .product-form__submit.button::after {
+  content: none;
+}
+
+.product .product-form__submit.button {
+  /* hand the scheme's own primary button colours back to a button Dawn
+     demoted to `button--secondary` -- see the note above */
+  --color-button: inherit;
+  --color-button-text: inherit;
+
+  min-height: 5.5rem;
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 0;
+  background-color: rgb(var(--color-button));
+  color: rgb(var(--color-button-text));
+  box-shadow: inset 0 0 0 1px rgba(var(--color-button), 0);
+  transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out,
+    box-shadow 0.35s ease-in-out, transform 0.2s cubic-bezier(0, 0, 0.3, 1);
+}
+
+@media screen and (min-width: 750px) and (max-width: 989px) {
+  .product .product-form__submit.button {
+    min-height: 5rem;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .product .product-form__submit.button {
+    min-height: 5.5rem;
+    font-size: 2.2rem;
+  }
+}
+
+.product .product-form__submit.button:not([disabled]):hover,
+.product .product-form__submit.button:not([disabled]):focus-visible {
+  background-color: transparent;
+  color: rgb(var(--color-button));
+  box-shadow: inset 0 0 0 1px rgb(var(--color-button));
+}
+
