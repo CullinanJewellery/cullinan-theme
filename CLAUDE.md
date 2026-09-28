@@ -1738,6 +1738,26 @@ Anything of ours that is not a Dawn setting lives in these two places:
       and carrying this site's own small-capitals treatment, matched to the specs list below
       them. The button was already 22/700 and is untouched -- worth saying plainly, since the
       same message asked for the button to shrink too and it is already their size.
+  - **Three corrections the next day, 2026-09-29, after the owner had to ask twice.** Worth
+    recording as a lesson, not just a change: each had been answered with an explanation
+    instead of an edit.
+    - **The button is smaller and no longer matches moonmagic**, deliberately: 48px/16px on
+      desktop, 44px/14px below, down from their 55px/22px. It had been left at their size
+      twice on the reasoning that it already matched the reference. It did -- but the owner
+      asked for smaller, and **the owner's instruction outranks the reference** (How we work).
+      The label shrinks with the box so its proportion inside holds, and so the Bulgarian
+      label, twice the length of "ADD TO BAG", fits.
+    - **The button label is Bulgarian now without waiting for the store language.** The right
+      fix is still Settings → Languages, which only the owner can do, and `bg.json` has been
+      ready all along -- but pointing at that three times while the most important button on
+      the site read "Add to cart" was not a fix. The three button strings in
+      **`locales/en.default.json`** now carry Bulgarian: `add_to_cart`, `sold_out`,
+      `unavailable`. A stopgap on the words a customer actually reads; `bg.json` takes over
+      untouched the moment Bulgarian is published.
+    - **The delivery line has its truck and is no longer half empty.** A `show_icon` setting
+      renders `icon-truck.svg` (Dawn's own) before the words, and the text defaults to
+      „Доставка с Еконт и Спиди“ -- the carriers the old site names, true without inventing
+      the delivery window that is still unsettled. Both remain settings.
   - **The made-to-order line above the button, 2026-09-28** ("we need to add Made-to-order:
     Arrives in 12-22 working days that they have"). A new `delivery_note` block on
     `sections/main-product.liquid`: a bold label and plain text after it, 12px uppercase at
