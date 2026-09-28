@@ -3225,7 +3225,7 @@ card-swatches {
 
 .product .product-delivery-note {
   /* 3.4rem, not a round number: it puts 43px between this line and the button,
-     which is moonmagic's own gap, measured. 16px left 25. */
+     which is moonmagic's own gap, measured. 1.6rem left only 25. */
   margin: 0 0 3.4rem;
   font-size: 1.2rem;
   line-height: 1.4;
