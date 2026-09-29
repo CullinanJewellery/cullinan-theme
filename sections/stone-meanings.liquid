@@ -1,0 +1,167 @@
+{{ 'section-stone-meanings.css' | asset_url | stylesheet_tag }}
+
+{%- comment -%}
+  The stones, each with a word for what it is.
+
+  After moonmagic's own "DESIGNED TO MEAN MORE" row, measured there: a picture of
+  the loose stone, a meaning in capitals above the stone's name, each linking to
+  that stone's own collection. Theirs is a Swiper carousel because they carry
+  eighteen stones; ours is a plain wrapping row, because six fit on one line and
+  a row that holds still reads calmer than one that moves -- see "Restraint reads
+  as expensive" in CLAUDE.md.
+
+  A stone with no link renders as a tile rather than a link, so the section can
+  ship before the stone collections exist. Never link to an empty collection.
+{%- endcomment -%}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.6 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.6 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="stones page-width section-{{ section.id }}-padding">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="stones__heading">{{ section.settings.heading | escape }}</h2>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <ul class="stones__grid" role="list">
+        {%- for block in section.blocks -%}
+          <li class="stones__item" {{ block.shopify_attributes }}>
+            {%- capture stone_tile -%}
+              <span class="stones__media">
+                {%- if block.settings.image != blank -%}
+                  {{
+                    block.settings.image
+                    | image_url: width: 600
+                    | image_tag:
+                      class: 'stones__image',
+                      loading: 'lazy',
+                      widths: '200, 300, 400, 600',
+                      sizes: '(min-width: 990px) 200px, (min-width: 750px) 30vw, 42vw',
+                      alt: block.settings.image.alt | default: block.settings.name
+                  }}
+                {%- else -%}
+                  <span class="stones__image stones__image--empty"></span>
+                {%- endif -%}
+              </span>
+              {%- if block.settings.meaning != blank -%}
+                <span class="stones__meaning">{{ block.settings.meaning | escape }}</span>
+              {%- endif -%}
+              {%- if block.settings.name != blank -%}
+                <span class="stones__name">{{ block.settings.name | escape }}</span>
+              {%- endif -%}
+            {%- endcapture -%}
+
+            {%- if block.settings.link != blank -%}
+              <a class="stones__tile" href="{{ block.settings.link }}">{{ stone_tile }}</a>
+            {%- else -%}
+              <span class="stones__tile">{{ stone_tile }}</span>
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Stones",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 8,
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Всеки камък има значение"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Colour scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Space above",
+      "default": 72
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Space below",
+      "default": 72
+    }
+  ],
+  "blocks": [
+    {
+      "type": "stone",
+      "name": "Stone",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Picture of the stone",
+          "info": "Leave empty until the photography exists — a flat tile is shown."
+        },
+        {
+          "type": "text",
+          "id": "meaning",
+          "label": "Word above the name",
+          "info": "One word. Printed in capitals."
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Stone"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link",
+          "info": "Leave empty until that stone's collection exists and has products in it. Without a destination the tile is shown but is not a link."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Stones",
+      "blocks": [
+        { "type": "stone", "settings": { "meaning": "Блясък", "name": "Циркон" } },
+        { "type": "stone", "settings": { "meaning": "Завинаги", "name": "Диамант" } },
+        { "type": "stone", "settings": { "meaning": "Класика", "name": "Перла" } },
+        { "type": "stone", "settings": { "meaning": "Дълбочина", "name": "Сапфир" } },
+        { "type": "stone", "settings": { "meaning": "Страст", "name": "Рубин" } },
+        { "type": "stone", "settings": { "meaning": "Рядкост", "name": "Изумруд" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,133 @@
+/*
+  The stones row.
+
+  Measured off moonmagic's own "DESIGNED TO MEAN MORE" carousel at 1440px: items
+  240 x 330 with 20px between them, a picture of the loose stone above a meaning
+  in capitals (28px/500) and the stone's name under it (26px/400), the section
+  heading 65px and centred.
+
+  Two deliberate departures:
+
+  - **A row, not a carousel.** Theirs moves because they carry eighteen stones.
+    Six fit on one line here, and a row that holds still is calmer -- "restraint
+    reads as expensive". Nothing to swipe, nothing to miss.
+  - **Smaller type.** Their 28/26 sits under a 65px heading; this site's own
+    headings came down hard on 2026-09-27 (see the collection title clamp), and
+    28px would shout beside them. The meaning takes the small spaced capitals
+    this site already uses for a label everywhere else, and the stone's name the
+    size of a card title.
+*/
+
+.stones__heading {
+  margin: 0 0 4.8rem;
+  font-size: clamp(2.4rem, 3.2vw, 4rem);
+  font-weight: var(--font-heading-weight);
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.stones__grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 4rem 2rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.stones__item {
+  margin: 0;
+  min-width: 0;
+}
+
+.stones__tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+  text-decoration: none;
+  color: rgb(var(--color-foreground));
+}
+
+/* --- The stone itself ------------------------------------------------------ */
+
+.stones__media {
+  display: block;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.stones__image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+}
+
+/* Stands in until the photography exists -- the same flat tone every empty
+   slot on this site uses, never a placeholder graphic. */
+.stones__image--empty {
+  background-color: rgb(242 240 236);
+}
+
+/* --- The words ------------------------------------------------------------- */
+
+.stones__meaning {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  line-height: 1.3;
+  text-transform: uppercase;
+  color: rgba(var(--color-foreground), 0.7);
+}
+
+.stones__name {
+  display: block;
+  margin-top: 0.6rem;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+/* A stone that links says so on hover, the same way a mosaic tile does. */
+a.stones__tile:hover .stones__name {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+/* --- Narrower -------------------------------------------------------------- */
+
+@media screen and (max-width: 989px) {
+  .stones__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 4rem 2rem;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .stones__heading {
+    margin-bottom: 3.2rem;
+  }
+
+  .stones__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 3.2rem 1.6rem;
+  }
+
+  .stones__media {
+    margin-bottom: 1.4rem;
+  }
+
+  .stones__meaning {
+    font-size: 1.1rem;
+  }
+
+  .stones__name {
+    font-size: 1.4rem;
+  }
+}
