@@ -981,6 +981,50 @@ Anything of ours that is not a Dawn setting lives in these two places:
     40px heading, 3 columns between, 2 columns and 164px squares at 375px, no overflow at
     either width, and no tile is a link. Sits between Най-продавани and Разгледайте по
     категория as intended.
+  - **The six pictures exist, made with ChatGPT by the owner and uploaded 2026-09-29**
+    (`ChatGPT_Image_Sep_29_2026_07_4*.png`, transparent PNGs, which is what
+    `photography/README.md` asked for). They reached the repository as Shopify's own
+    commit `ac8598a`, not through this session.
+    - **So pull before editing `templates/index.json`.** The local copy was one commit
+      behind when the rework below started; editing and pushing without pulling would have
+      wiped all six `image` settings. Anything the owner sets in the theme editor arrives
+      this way. `git fetch` first, every time, before touching a template.
+  - **Reworked 2026-09-29, at the owner's request** ("we need a background like moonmagic
+    and we need to make the pictures smaller also the text should not be that down of the
+    picture look at theirs and we need a space between the stones and also why can't i
+    click on them"). moonmagic's own row was re-measured at 1440 rather than reusing the
+    numbers taken when this section was built.
+    - **The band colour is theirs exactly, and was already a token here.**
+      `rgb(245, 244, 240)` is `#F5F4F0` -- **scheme-6**, taken off their own band when the
+      atelier teasers were built on 2026-09-14. So matching them cost one setting,
+      `color_scheme` scheme-1 to scheme-6 in `templates/index.json`, and no new colour.
+    - **The pictures were rendering 200 x 600, and that single bug caused two of the four
+      complaints.** `image_tag` writes `width="600" height="600"` on the img; that height
+      attribute is a presentational hint, and `.stones__image` set `width: 100%` but never
+      `height`, so **both dimensions were definite and `aspect-ratio` was ignored
+      outright**. The stone was drawn `object-fit: contain` inside a 200 x 600 box, so it
+      floated small in the middle with the words at the bottom -- "smaller pictures" and
+      "the text should not be that down" were one fault, not two. `height: auto` is the
+      whole fix. **An `aspect-ratio` on an `<img>` does nothing unless one dimension is
+      `auto`**, and Shopify always writes both attributes.
+    - **Picture size is theirs in absolute terms, not in proportion.** Theirs renders
+      120 x 120 inside a 240px item -- half its width. Ours is a fixed `12rem`, so a wider
+      screen gives more air round the stone rather than a bigger stone; `10rem` on a phone.
+    - **The gap is bigger than theirs on purpose.** moonmagic leaves only 20px between
+      items, but their picture is half an item wide, so about 140px of air actually shows
+      between one stone and the next -- the gap value alone was never what reads. Column
+      gap `2rem` to `4rem` (phone `1.6rem` to `2.4rem`), which puts 103px between pictures
+      at 1440 where they had nearly touched.
+    - **All six tiles link now.** Every stone collection exists -- checked live rather than
+      assumed, since this file still said Циркони 404s: циркони, диаманти, перли, сапфири,
+      рубини, изумруди all answer 200. **Циркони and Диаманти have products; the other four
+      are empty** until the stone tags are set in the Admin. That stretches "never link to
+      an empty collection", deliberately and at the owner's direct request -- nothing
+      404s, and the store is still a private draft, so no customer can meet a dead end
+      before the tags land.
+    - **Checked live at 1440 and 375**: band `rgb(245,244,240)`, picture 120 x 120 (100 on
+      a phone), 20px from picture to text, 103px between pictures, no overflow at either
+      width, and a real click on Циркон lands on `/collections/циркони` with its products.
 
 - **Hero facts.** `sections/hero-facts.liquid` with `assets/section-hero-facts.css`. The
   short claims under the hero. Its own section, not Dawn's multicolumn — Dawn loads section
@@ -2729,9 +2773,16 @@ data, not theme files:
       shows its link, but wrong anywhere the menu prints as links. Fix in Content → Menus →
       Main menu: point each at its plain collection with no tag. The footer column lists its
       links by hand until then.
-- **Collections.** Six exist as of 2026-09-16: Висулки, Гривни, Диаманти, Комплекти, Обеци,
-  Пръстени. **Циркони does not** (`/collections/циркони` 404s) and has to be created before
-  anything links to it -- see the no-empty-collection rule under How we work.
+- **Collections.** Six existed as of 2026-09-16: Висулки, Гривни, Диаманти, Комплекти,
+  Обеци, Пръстени.
+  - **Largely done by 2026-09-29**, checked live on the preview rather than assumed. Every
+    stone collection answers 200 now -- Камъни, Циркони, Диаманти, Перли, Сапфири, Рубини,
+    Изумруди, Оникс, Опал -- and many type-by-stone ones exist too (Висулки с циркони,
+    Комплекти с перли, Обеци с диаманти and so on), plus Дамски, Мъжки and Аксесоари.
+    **What is missing is products**: only Циркони, Диаманти and Камъни hold any, because
+    the stone tags are still not set on the four test products. So the collections are real
+    but mostly empty, and the no-empty-collection rule under How we work is now a question
+    of **tagging**, not of creating anything.
   - **The stone collections to create** (sent to the owner 2026-09-17, from the old-site count
     under Current state): Камъни, matching any stone tag, then one per stone in order of how
     many pieces the old site has -- Циркони, Диаманти (exists), Перли, Сапфири, Оникс, Рубини,

@@ -130,8 +130,9 @@ a.stones__tile:hover .stones__name {
     gap: 3.2rem 2.4rem;
   }
 
-  /* 10rem of a ~164px cell is the same share of its item that moonmagic's own
-     80px picture takes of its 110px one on a phone. */
+  /* 10rem of the 160px cell two columns leave at 375px -- 62%, a little tighter
+     than the 73% moonmagic's own 80px picture takes of its 110px item, because
+     the wider gap above takes its width out of the cell. */
   .stones__media {
     width: 10rem;
     margin-bottom: 1.4rem;
