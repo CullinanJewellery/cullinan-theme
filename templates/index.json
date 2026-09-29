@@ -283,9 +283,9 @@
       "settings": {
         "heading": "Всеки камък има значение",
         "color_scheme": "scheme-6",
-        "button_link": "/collections/камъни",
         "padding_top": 72,
-        "padding_bottom": 72
+        "padding_bottom": 72,
+        "button_link": "/collections/камъни"
       }
     },
     "category_mosaic": {
