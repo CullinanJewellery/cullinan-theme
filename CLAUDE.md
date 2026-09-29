@@ -937,6 +937,42 @@ Anything of ours that is not a Dawn setting lives in these two places:
     the state above, no `stones_mosaic` key, no entry in `order`. See Footer: link columns,
     newsletter box, contact email under Custom code for what was built once the request was
     clear.
+- **Stones row.** `sections/stone-meanings.liquid` with `assets/section-stone-meanings.css`
+  (2026-09-29, at the owner's request: a homepage section "like moonmagic: DESIGNED TO MEAN
+  MORE but for our store"). Measured theirs at 1440 first: a Swiper carousel of items 240 x
+  330, 20px apart, each a picture of the **loose stone** above a meaning in capitals
+  (28px/500) and the stone's name under it (26px/400), each linking to that stone's own
+  collection, under a 65px centred heading.
+  - **Six stones, and the count is the whole argument.** The owner asked the right question
+    -- all of them, or only some? -- and answered it from the old-site audit under Current
+    state: Циркон ~535, Диамант ~85, Перла 55, Сапфир 17, Оникс 13, Рубин 12, Изумруд 8,
+    Опал 5, Цитрин 1, Топаз 1. Shipped: **Циркон, Диамант, Перла, Сапфир, Рубин, Изумруд**.
+    Оникс is left out as almost all men's rings, a different customer from the site's own;
+    Опал, Цитрин and Топаз because a shopper who clicks a stone and finds one ring learns
+    the shop is smaller than it looks, which is the opposite of what the section is for.
+  - **Each stone gets one word**, not moonmagic's spiritual meanings (Intuition, Strength):
+    Блясък/Циркон, Завинаги/Диамант, Класика/Перла, Дълбочина/Сапфир, Страст/Рубин,
+    Рядкост/Изумруд. Plain character rather than crystal mysticism, which would read as
+    borrowed on a classical goldsmith -- and Блясък echoes the hero's own „Блясък без усилие“.
+  - **Two departures from theirs.** A plain wrapping row, not a carousel: theirs moves
+    because they carry eighteen stones, six fit on one line here, and a row that holds still
+    reads calmer (Restraint reads as expensive). And smaller type -- their 28/26 sits under a
+    65px heading, while this site's own headings came down hard on 2026-09-27, so the meaning
+    takes the small spaced capitals used for every other label here and the name a card
+    title's size.
+  - **No links, on purpose.** The stone collections do not exist yet (only Диаманти, see
+    Waiting on the Shopify admin), so every block's `link` is empty and a tile without a
+    destination renders as a tile rather than a link -- the same guard the category mosaic
+    uses. **Never link to an empty collection.** Worth knowing when they are created: the
+    old-site counts are for 2,038 products, and only ~50 go online first, so what sits behind
+    each stone at launch will be a fraction of the numbers above.
+  - **Placed where moonmagic places theirs**, checked on their homepage rather than guessed:
+    hero → bestsellers → DESIGNED TO MEAN MORE → shop by category. Here that is between
+    Най-продавани and Разгледайте по категория.
+  - Pushed in two steps, section then template, per the validator lag. **Unverified live**:
+    the preview link expired the same day, so the layout is built to the measurements but
+    has not been seen.
+
 - **Hero facts.** `sections/hero-facts.liquid` with `assets/section-hero-facts.css`. The
   short claims under the hero. Its own section, not Dawn's multicolumn — Dawn loads section
   stylesheets from inside the section, which puts them after `crown.css` in the document, so
