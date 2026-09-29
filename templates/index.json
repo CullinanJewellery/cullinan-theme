@@ -501,6 +501,12 @@
     },
     "stones": {
       "type": "stone-meanings",
+      "settings": {
+        "heading": "Всеки камък има значение",
+        "color_scheme": "scheme-1",
+        "padding_top": 72,
+        "padding_bottom": 72
+      },
       "blocks": {
         "zircon": {
           "type": "stone",
@@ -552,13 +558,7 @@
         "sapphire",
         "ruby",
         "emerald"
-      ],
-      "settings": {
-        "heading": "Всеки камък има значение",
-        "color_scheme": "scheme-1",
-        "padding_top": 72,
-        "padding_bottom": 72
-      }
+      ]
     }
   },
   "order": [
