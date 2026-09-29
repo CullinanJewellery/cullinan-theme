@@ -54,6 +54,29 @@
   text-align: center;
   text-decoration: none;
   color: rgb(var(--color-foreground));
+  transition: transform 0.2s cubic-bezier(0, 0, 0.3, 1);
+}
+
+/* The stone and its words grow together on hover. moonmagic has no hover rule
+   here at all -- theirs grow because the carousel scales whichever slide is
+   centred (`swiper-slide-active > a { transform: scale(1.25) }`, 1.15 on a
+   phone). The outcome is copied and the trigger is ours; 1.15 is the gentler of
+   their two numbers, which is what "a little bit bigger" asked for. A transform
+   does not move its neighbours, so no stone shifts when another one grows. */
+a.stones__tile:hover,
+a.stones__tile:focus-visible {
+  transform: scale(1.15);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stones__tile {
+    transition: none;
+  }
+
+  a.stones__tile:hover,
+  a.stones__tile:focus-visible {
+    transform: none;
+  }
 }
 
 /* --- The stone itself ------------------------------------------------------ */
@@ -94,7 +117,11 @@
   letter-spacing: 0.08em;
   line-height: 1.3;
   text-transform: uppercase;
-  color: rgba(var(--color-foreground), 0.7);
+  /* Both lines are pure black at the owner's request -- the fourth named
+     exception to "no pure white or pure black", after the newsletter band, the
+     dark buttons and the Social follow heading. The theme's own text colour is
+     #221F1C, and the meaning sat at 70% of it on top of that. */
+  color: #000000;
 }
 
 .stones__name {
@@ -103,6 +130,7 @@
   font-size: 1.6rem;
   font-weight: 400;
   line-height: 1.3;
+  color: #000000;
 }
 
 /* A stone that links says so on hover, the same way a mosaic tile does. */
@@ -110,6 +138,46 @@ a.stones__tile:hover .stones__name {
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 4px;
+}
+
+/* --- The button ------------------------------------------------------------ */
+
+/* moonmagic closes this row with FIND YOUR STONE: 380 x 72, 22px/500 with 2.2px
+   of tracking, square, centred, 20px under the stones.
+
+   Ours is sized to Вижте всички under Най-продавани instead of to theirs --
+   36rem x 6.8rem at 1.5rem. Same page, same job, and the owner has already tuned
+   that one, so the homepage's two row-closing buttons match each other rather
+   than one following moonmagic and one not. Square for that same reason: its
+   sibling is. The gap above is ours too; their 20px hangs under a 330px-tall
+   item where our row is half that. */
+.stones__cta {
+  margin-top: 4rem;
+  text-align: center;
+}
+
+.stones .stones__button {
+  min-width: 36rem;
+  min-height: 6.8rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 0;
+  background-color: rgb(var(--color-button));
+  color: rgb(var(--color-button-text));
+  box-shadow: inset 0 0 0 1px rgba(var(--color-button), 0);
+  /* transform is in the list so the site-wide hover-lift animates rather than
+     snapping -- the same reason the view-all button carries it. */
+  transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out,
+    box-shadow 0.35s ease-in-out, transform 0.2s cubic-bezier(0, 0, 0.3, 1);
+}
+
+.stones .stones__button:hover,
+.stones .stones__button:focus-visible {
+  background-color: transparent;
+  color: rgb(var(--color-button));
+  box-shadow: inset 0 0 0 1px rgb(var(--color-button));
 }
 
 /* --- Narrower -------------------------------------------------------------- */
@@ -120,29 +188,74 @@ a.stones__tile:hover .stones__name {
   }
 }
 
+/* --- Phone: moonmagic's own one-line scroller -------------------------------
+
+   On a phone theirs is not the grid it becomes higher up -- it is a swiped row
+   of 110px items about three wide, picture 80px, both lines 16px. Matched here
+   at the owner's request, with the browser doing the scrolling instead of
+   Swiper: the same "copy the outcome, not the library" call the marquee already
+   makes. Six stones no longer fit one screen, and the stone sitting half off the
+   right edge is what says the row moves.
+   -------------------------------------------------------------------------- */
+
 @media screen and (max-width: 749px) {
   .stones__heading {
     margin-bottom: 3.2rem;
   }
 
   .stones__grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 3.2rem 2.4rem;
+    display: flex;
+    grid-template-columns: none;
+    gap: 2rem;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    /* Out to the page edges and back in again, so a stone can sit half off the
+       screen as theirs does while the first still starts on the gutter.
+       page-width is 1.5rem a side at this width. */
+    margin-inline: -1.5rem;
+    padding-inline: 1.5rem;
   }
 
-  /* 10rem of the 160px cell two columns leave at 375px -- 62%, a little tighter
-     than the 73% moonmagic's own 80px picture takes of its 110px item, because
-     the wider gap above takes its width out of the cell. */
+  .stones__grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* moonmagic's own 110px item */
+  .stones__item {
+    flex: 0 0 11rem;
+    scroll-snap-align: start;
+  }
+
+  .stones__tile {
+    justify-content: flex-start;
+  }
+
+  /* their 80px picture, 10px under it */
   .stones__media {
-    width: 10rem;
-    margin-bottom: 1.4rem;
+    width: 8rem;
+    margin-bottom: 1rem;
   }
 
+  /* both lines 16px, as theirs are; the tracking stays ours */
   .stones__meaning {
-    font-size: 1.1rem;
+    font-size: 1.6rem;
   }
 
   .stones__name {
-    font-size: 1.4rem;
+    margin-top: 0.5rem;
+    font-size: 1.6rem;
+  }
+
+  .stones__cta {
+    margin-top: 3.2rem;
+  }
+
+  .stones .stones__button {
+    width: 100%;
+    min-width: 0;
+    min-height: 5.4rem;
+    font-size: 1.2rem;
   }
 }

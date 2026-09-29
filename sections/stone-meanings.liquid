@@ -72,6 +72,22 @@
         {%- endfor -%}
       </ul>
     {%- endif -%}
+
+    {%- comment -%}
+      moonmagic closes this row with FIND YOUR STONE, centred under the stones.
+      Ours is sized to match Вижте всички under Най-продавани instead of to theirs:
+      same page, same job, and the owner already tuned that one.
+
+      It renders only when it has somewhere to go -- structure can exist before
+      content, navigation cannot.
+    {%- endcomment -%}
+    {%- if section.settings.button_label != blank and section.settings.button_link != blank -%}
+      <div class="stones__cta">
+        <a class="stones__button button button--primary" href="{{ section.settings.button_link }}">
+          {{ section.settings.button_label | escape }}
+        </a>
+      </div>
+    {%- endif -%}
   </div>
 </div>
 
@@ -93,6 +109,18 @@
       "id": "color_scheme",
       "label": "Colour scheme",
       "default": "scheme-1"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button text",
+      "default": "Открийте своя камък"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link",
+      "info": "The button stays hidden until a destination is set."
     },
     {
       "type": "header",
