@@ -1,10 +1,11 @@
 /*
   The stones row.
 
-  Measured off moonmagic's own "DESIGNED TO MEAN MORE" carousel at 1440px: items
-  240 x 330 with 20px between them, a picture of the loose stone above a meaning
-  in capitals (28px/500) and the stone's name under it (26px/400), the section
-  heading 65px and centred.
+  Measured off moonmagic's own "DESIGNED TO MEAN MORE" carousel at 1440px: a
+  section on #F5F4F0, items 240 x 330 with 20px between them, the picture of the
+  loose stone 120 x 120 (half the item's width) with 20px under it, then a
+  meaning in capitals (28px/500) and the stone's name (26px/400, 10px under the
+  meaning).
 
   Two deliberate departures:
 
@@ -31,7 +32,10 @@
 .stones__grid {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 4rem 2rem;
+  /* moonmagic leaves 20px between items, but their picture is only half an
+     item wide, so ~140px of air actually shows between one stone and the next.
+     Ours is 4rem for the same reason: the gap alone is not what reads. */
+  gap: 4rem;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -54,15 +58,23 @@
 
 /* --- The stone itself ------------------------------------------------------ */
 
+/* 12rem matches moonmagic's own rendered picture exactly (120px). Fixed rather
+   than a share of the cell, as theirs is, so a wider screen shows more space
+   around the stone rather than a bigger stone. */
 .stones__media {
   display: block;
-  width: 100%;
-  margin-bottom: 2rem;
+  width: 12rem;
+  max-width: 100%;
+  margin: 0 auto 2rem;
 }
 
 .stones__image {
   display: block;
   width: 100%;
+  /* Without this the height="600" attribute Shopify writes on the img counts as
+     a definite height, which makes the browser ignore aspect-ratio entirely --
+     the stones rendered 200 x 600 and pushed the words far below the picture. */
+  height: auto;
   aspect-ratio: 1 / 1;
   object-fit: contain;
 }
@@ -105,7 +117,6 @@ a.stones__tile:hover .stones__name {
 @media screen and (max-width: 989px) {
   .stones__grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 4rem 2rem;
   }
 }
 
@@ -116,10 +127,13 @@ a.stones__tile:hover .stones__name {
 
   .stones__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 3.2rem 1.6rem;
+    gap: 3.2rem 2.4rem;
   }
 
+  /* 10rem of a ~164px cell is the same share of its item that moonmagic's own
+     80px picture takes of its 110px one on a phone. */
   .stones__media {
+    width: 10rem;
     margin-bottom: 1.4rem;
   }
 

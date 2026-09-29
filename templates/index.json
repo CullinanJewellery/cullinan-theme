@@ -223,7 +223,7 @@
             "image": "shopify://shop_images/ChatGPT_Image_Sep_29_2026_07_43_02_PM.png",
             "meaning": "Блясък",
             "name": "Циркон",
-            "link": ""
+            "link": "/collections/циркони"
           }
         },
         "diamond": {
@@ -232,7 +232,7 @@
             "image": "shopify://shop_images/ChatGPT_Image_Sep_29_2026_07_44_01_PM.png",
             "meaning": "Завинаги",
             "name": "Диамант",
-            "link": ""
+            "link": "/collections/диаманти"
           }
         },
         "pearl": {
@@ -241,7 +241,7 @@
             "image": "shopify://shop_images/ChatGPT_Image_Sep_29_2026_07_44_05_PM.png",
             "meaning": "Класика",
             "name": "Перла",
-            "link": ""
+            "link": "/collections/перли"
           }
         },
         "sapphire": {
@@ -250,7 +250,7 @@
             "image": "shopify://shop_images/ChatGPT_Image_Sep_29_2026_07_44_09_PM.png",
             "meaning": "Дълбочина",
             "name": "Сапфир",
-            "link": ""
+            "link": "/collections/сапфири"
           }
         },
         "ruby": {
@@ -259,7 +259,7 @@
             "image": "shopify://shop_images/ChatGPT_Image_Sep_29_2026_07_44_14_PM.png",
             "meaning": "Страст",
             "name": "Рубин",
-            "link": ""
+            "link": "/collections/рубини"
           }
         },
         "emerald": {
@@ -268,7 +268,7 @@
             "image": "shopify://shop_images/ChatGPT_Image_Sep_29_2026_07_44_18_PM.png",
             "meaning": "Рядкост",
             "name": "Изумруд",
-            "link": ""
+            "link": "/collections/изумруди"
           }
         }
       },
@@ -282,7 +282,7 @@
       ],
       "settings": {
         "heading": "Всеки камък има значение",
-        "color_scheme": "scheme-1",
+        "color_scheme": "scheme-6",
         "padding_top": 72,
         "padding_bottom": 72
       }
