@@ -498,6 +498,67 @@
         "padding_top": 72,
         "padding_bottom": 40
       }
+    },
+    "stones": {
+      "type": "stone-meanings",
+      "blocks": {
+        "zircon": {
+          "type": "stone",
+          "settings": {
+            "meaning": "Блясък",
+            "name": "Циркон"
+          }
+        },
+        "diamond": {
+          "type": "stone",
+          "settings": {
+            "meaning": "Завинаги",
+            "name": "Диамант"
+          }
+        },
+        "pearl": {
+          "type": "stone",
+          "settings": {
+            "meaning": "Класика",
+            "name": "Перла"
+          }
+        },
+        "sapphire": {
+          "type": "stone",
+          "settings": {
+            "meaning": "Дълбочина",
+            "name": "Сапфир"
+          }
+        },
+        "ruby": {
+          "type": "stone",
+          "settings": {
+            "meaning": "Страст",
+            "name": "Рубин"
+          }
+        },
+        "emerald": {
+          "type": "stone",
+          "settings": {
+            "meaning": "Рядкост",
+            "name": "Изумруд"
+          }
+        }
+      },
+      "block_order": [
+        "zircon",
+        "diamond",
+        "pearl",
+        "sapphire",
+        "ruby",
+        "emerald"
+      ],
+      "settings": {
+        "heading": "Всеки камък има значение",
+        "color_scheme": "scheme-1",
+        "padding_top": 72,
+        "padding_bottom": 72
+      }
     }
   },
   "order": [
@@ -505,6 +566,7 @@
     "hero_facts",
     "image_marquee",
     "featured_collection",
+    "stones",
     "category_mosaic",
     "benefits",
     "silver_teaser",
