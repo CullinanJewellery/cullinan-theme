@@ -399,7 +399,10 @@ Rules that matter here:
   generic "sell online" landing page in place of the theme) and was replaced the same day by
   https://h6stv2mlmbvp65ou-107185537364.shopifypreview.com, then replaced again on 2026-09-26 by
   https://tto3ltyatcwhjqvp-107185537364.shopifypreview.com, then replaced again on 2026-09-27 by
-  https://33dxf8xm5v7ugt12-107185537364.shopifypreview.com -- use this one now.
+  https://33dxf8xm5v7ugt12-107185537364.shopifypreview.com, which expired mid-session on
+  2026-09-29 (Shopify served its own "This preview link has expired" page in place of the
+  theme), and was replaced the same day by
+  https://8vn93bqbu3rdym1e-107185537364.shopifypreview.com -- use this one now.
 - **Wait for one push to reach the preview before sending the next.** Twice on 2026-09-14 a
   push that followed another within a minute never reached the theme, while the push before
   it synced at once: `templates/index.json` 13 seconds after a section push (still missing
@@ -969,9 +972,15 @@ Anything of ours that is not a Dawn setting lives in these two places:
   - **Placed where moonmagic places theirs**, checked on their homepage rather than guessed:
     hero → bestsellers → DESIGNED TO MEAN MORE → shop by category. Here that is between
     Най-продавани and Разгледайте по категория.
-  - Pushed in two steps, section then template, per the validator lag. **Unverified live**:
-    the preview link expired the same day, so the layout is built to the measurements but
-    has not been seen.
+  - Pushed in two steps, section then template, per the validator lag -- and **the template
+    push was dropped**, the fifth time that has happened: the homepage kept serving twelve
+    sections with no `stones` key while GitHub had the commit and the tree was clean. Re-sent
+    with the section object's keys reordered (same content, different bytes) and it landed in
+    four seconds.
+  - **Checked live on the new preview link**: 6 columns at 1440 with 200px square slots and a
+    40px heading, 3 columns between, 2 columns and 164px squares at 375px, no overflow at
+    either width, and no tile is a link. Sits between Най-продавани and Разгледайте по
+    категория as intended.
 
 - **Hero facts.** `sections/hero-facts.liquid` with `assets/section-hero-facts.css`. The
   short claims under the hero. Its own section, not Dawn's multicolumn — Dawn loads section
@@ -1818,8 +1827,9 @@ Anything of ours that is not a Dawn setting lives in these two places:
       - **Filled 2026-09-29, by the owner**: „Изработка по поръчка: Доставка 5-20 работни
         дни“. Written without „до“ before the range -- a range already carries its own
         bounds, and the shorter string is what keeps the line on one row, which the longer
-        wording misses by a pixel or two at 11px in a 425px column. **Unverified live**:
-        the preview link expired the same day, so the fit is calculated, not measured.
+        wording misses by a pixel or two at 11px in a 425px column. **Since measured on the
+        new link and the calculation held**: 399.5px of 425.4 at 1440 and 322 of 345 at
+        375px, one row at both.
     - Guarded like the collapsible tabs: with both fields empty it renders nothing at all.
     - Pushed in two steps, section then template, per the validator lag -- and the gap fix
       after it was **dropped by Shopify** and needed a byte-change re-send, the fourth time
