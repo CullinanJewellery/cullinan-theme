@@ -1870,6 +1870,15 @@ Anything of ours that is not a Dawn setting lives in these two places:
       product the visitor is already on: the page's own `product.id` is captured **before**
       the loop, which reuses the name `product` for each card and would otherwise shadow it.
       Nil on every other template, so the homepage row is untouched.
+    - **Retitled and given room, 2026-09-29** ("chage the title and make space betwen the
+      sections"). The two sections were **touching** -- a measured gap of 0, with only the
+      product section's 12px and this row's 36px of padding between the last accordion and
+      the heading. Top padding to 80 and bottom to 56, both on Dawn's step of 4, giving 100px
+      of real separation, in line with the section breaks used on the homepage.
+    - **The title is „Може да ви хареса“**, without the trailing „и“ it had. The owner then
+      said "keep the title how it is" -- read as a revert and started to undo, then corrected
+      ("no don't sorry"): it meant keep the new one. Nothing had been pushed, so the live
+      site never moved; the working file was simply discarded back to the committed state.
   - **What is deliberately not built yet, and why.**
     - **Size guide**: Dawn's `popup` block draws its link whether or not a page is behind
       it, so adding it before a Таблица с размери page exists would put a button on the
