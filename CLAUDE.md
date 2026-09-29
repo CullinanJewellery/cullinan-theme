@@ -1025,6 +1025,62 @@ Anything of ours that is not a Dawn setting lives in these two places:
     - **Checked live at 1440 and 375**: band `rgb(245,244,240)`, picture 120 x 120 (100 on
       a phone), 20px from picture to text, 103px between pictures, no overflow at either
       width, and a real click on Циркон lands on `/collections/циркони` with its products.
+  - **Four more changes the same day, at the owner’s request** ("i want the text under
+    the picture to be black and also when i put my mouse cursor on some of the stones no
+    matter who i want the picture and the text to become a little bit bigger, also for a
+    phone wets make it like moonmagic and i want the button that we missed to put").
+    - **Both lines are pure black**, the fourth named exception to "no pure white or pure
+      black" after the newsletter band, the dark buttons and the Social follow heading. The
+      meaning had been sitting at 70% of the theme’s own near-black `#221F1C` on top of
+      that, so it was the furthest thing from black on the page.
+    - **Hover grows the stone and its words together, `scale(1.15)`.** moonmagic has **no
+      hover rule on these tiles at all** -- theirs grow because the carousel scales
+      whichever slide is centred (`.swiper-slide-active > a { transform: scale(1.25) }`,
+      `1.15` on a phone, `transition: all .1s`). So the outcome is copied and the trigger
+      is ours; 1.15 is the gentler of their own two numbers, which is what "a little bit
+      bigger" asked for. A transform does not move its neighbours, so no stone shifts when
+      another one grows. Off entirely under `prefers-reduced-motion`.
+    - **The phone is their scroller now, not our two-column grid.** Below their tablet
+      breakpoint theirs is a swiped row: items 110px, picture 80px, both lines 16px,
+      section padding 35/30, about three visible. Ours matches all of that but the item
+      width, with the browser scrolling rather than Swiper -- the same "copy the outcome,
+      not the library" call the marquee already makes. Six stones no longer fit one screen;
+      the stone sitting half off the right edge is what says the row moves.
+      - **Their 110px item cannot hold a Bulgarian word.** ДЪЛБОЧИНА measures 119px at
+        their own 16px, and it is one word, so `width: 100%` cannot wrap it and
+        `overflow-wrap` would only break it mid-word. Their own meanings are two words that
+        do wrap ("Rainbow Moonstone"), which is why 110px works there. So the choice was
+        their type size or their item width: **12.5rem**, keeping the type size, which is
+        the part that shows. Three of theirs fit 375px against two and most of a third here.
+      - The two lines also take `width: 100%` now. The tile is a centred flex column, so
+        each line had been sizing to its own content and hanging outside the item instead
+        of filling it -- invisible at 11px, obvious at 16.
+    - **The button we had missed.** moonmagic closes this row with **FIND YOUR STONE**,
+      380 x 72 at 22px/500 with 2.2px of tracking, square, black, centred, 20px under the
+      stones, pointing at their whole catalogue. Ours is sized to **Вижте всички under
+      Най-продавани** instead -- same page, same job of closing a row, and the owner has
+      already tuned that one, so the homepage’s two row-closing buttons match each other
+      rather than one following moonmagic and one not. Confirmed live: both 360 x 68 at
+      15px/500, both square.
+      - It is **taupe `#5B5548`, not black**, and that is this project’s own rule rather
+        than a decision taken here: the section sits on scheme-6 and the button reads
+        `var(--color-button)`, which scheme-6 sets to the dark shade of its own band colour
+        (see the coloured bands under Atelier section). Нашето вдъхновение’s button is the
+        same taupe for the same reason.
+      - Label „Открийте своя камък", their rhythm in our own words; link
+        `/collections/камъни`, every piece with a stone -- the nearest thing this store has
+        to the whole-catalogue link theirs points at, and one of the only three stone
+        collections that actually holds products.
+      - **Two pushes, and the second was dropped** -- the sixth time. The section carrying
+        the new settings went first, with a label default and no link, so the button stayed
+        hidden; the template setting the link followed several minutes later, was still
+        missing after 48 seconds, and landed in under four once re-sent with the settings
+        keys reordered.
+    - **Checked live at 1440 and 375**: both lines `rgb(0,0,0)`; a real hover on Сапфир
+      gives `matrix(1.15, ...)` on that tile alone, with every neighbour’s left edge
+      unmoved; the phone row scrolls 880 of 375 with no word spilling its item and no page
+      overflow; the button 360 x 68 on a computer and full-width 345 x 54 on a phone, both
+      pointing at Камъни.
 
 - **Hero facts.** `sections/hero-facts.liquid` with `assets/section-hero-facts.css`. The
   short claims under the hero. Its own section, not Dawn's multicolumn — Dawn loads section
@@ -2035,6 +2091,12 @@ Anything of ours that is not a Dawn setting lives in these two places:
     while the same formula here would not clamp at all now that this section is full-width.
     So the view-all's own `min-width` is set to that rendered `37.5rem` directly. Confirmed
     live: both 375 x 72.
+    - **Out of date as written, found 2026-09-29.** `assets/crown.css` actually carries
+      `min-width: 36rem; min-height: 6.8rem; font-size: 1.5rem` and `border-radius: 0` for
+      this button -- **360 x 68 at 15px, and square, not a pill**, measured live. Whoever
+      changed it did not record it here. **Read the file for this button’s real size, not
+      this note**; the stones button was matched to the live values, which is the only
+      reason the two agree.
   - **The fourth card was cut, and the cause was structural, not a size to tune** ("the
     forth picture it is cut a little bit, make the whole picture show"). Dawn sizes a
     desktop slider item as a **proportion of its container** (`(100% - first-item margin) /
