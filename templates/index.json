@@ -105,6 +105,7 @@
           "type": "image",
           "settings": {
             "alt": "",
+            "caption": "",
             "link": ""
           }
         },
@@ -112,6 +113,7 @@
           "type": "image",
           "settings": {
             "alt": "",
+            "caption": "",
             "link": ""
           }
         },
@@ -119,6 +121,7 @@
           "type": "image",
           "settings": {
             "alt": "",
+            "caption": "",
             "link": ""
           }
         },
@@ -126,6 +129,7 @@
           "type": "image",
           "settings": {
             "alt": "",
+            "caption": "",
             "link": ""
           }
         },
@@ -133,6 +137,7 @@
           "type": "image",
           "settings": {
             "alt": "",
+            "caption": "",
             "link": ""
           }
         },
@@ -140,6 +145,7 @@
           "type": "image",
           "settings": {
             "alt": "",
+            "caption": "",
             "link": ""
           }
         },
@@ -147,6 +153,7 @@
           "type": "image",
           "settings": {
             "alt": "",
+            "caption": "",
             "link": ""
           }
         },
@@ -154,6 +161,7 @@
           "type": "image",
           "settings": {
             "alt": "",
+            "caption": "",
             "link": ""
           }
         }
@@ -204,6 +212,79 @@
         "swipe_on_mobile": true,
         "padding_top": 64,
         "padding_bottom": 64
+      }
+    },
+    "stones": {
+      "type": "stone-meanings",
+      "blocks": {
+        "zircon": {
+          "type": "stone",
+          "settings": {
+            "image": "shopify://shop_images/ChatGPT_Image_Sep_29_2026_07_43_02_PM.png",
+            "meaning": "Блясък",
+            "name": "Циркон",
+            "link": ""
+          }
+        },
+        "diamond": {
+          "type": "stone",
+          "settings": {
+            "image": "shopify://shop_images/ChatGPT_Image_Sep_29_2026_07_44_01_PM.png",
+            "meaning": "Завинаги",
+            "name": "Диамант",
+            "link": ""
+          }
+        },
+        "pearl": {
+          "type": "stone",
+          "settings": {
+            "image": "shopify://shop_images/ChatGPT_Image_Sep_29_2026_07_44_05_PM.png",
+            "meaning": "Класика",
+            "name": "Перла",
+            "link": ""
+          }
+        },
+        "sapphire": {
+          "type": "stone",
+          "settings": {
+            "image": "shopify://shop_images/ChatGPT_Image_Sep_29_2026_07_44_09_PM.png",
+            "meaning": "Дълбочина",
+            "name": "Сапфир",
+            "link": ""
+          }
+        },
+        "ruby": {
+          "type": "stone",
+          "settings": {
+            "image": "shopify://shop_images/ChatGPT_Image_Sep_29_2026_07_44_14_PM.png",
+            "meaning": "Страст",
+            "name": "Рубин",
+            "link": ""
+          }
+        },
+        "emerald": {
+          "type": "stone",
+          "settings": {
+            "image": "shopify://shop_images/ChatGPT_Image_Sep_29_2026_07_44_18_PM.png",
+            "meaning": "Рядкост",
+            "name": "Изумруд",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "zircon",
+        "diamond",
+        "pearl",
+        "sapphire",
+        "ruby",
+        "emerald"
+      ],
+      "settings": {
+        "heading": "Всеки камък има значение",
+        "color_scheme": "scheme-1",
+        "padding_top": 72,
+        "padding_bottom": 72
       }
     },
     "category_mosaic": {
@@ -498,67 +579,6 @@
         "padding_top": 72,
         "padding_bottom": 40
       }
-    },
-    "stones": {
-      "type": "stone-meanings",
-      "settings": {
-        "heading": "Всеки камък има значение",
-        "color_scheme": "scheme-1",
-        "padding_top": 72,
-        "padding_bottom": 72
-      },
-      "blocks": {
-        "zircon": {
-          "type": "stone",
-          "settings": {
-            "meaning": "Блясък",
-            "name": "Циркон"
-          }
-        },
-        "diamond": {
-          "type": "stone",
-          "settings": {
-            "meaning": "Завинаги",
-            "name": "Диамант"
-          }
-        },
-        "pearl": {
-          "type": "stone",
-          "settings": {
-            "meaning": "Класика",
-            "name": "Перла"
-          }
-        },
-        "sapphire": {
-          "type": "stone",
-          "settings": {
-            "meaning": "Дълбочина",
-            "name": "Сапфир"
-          }
-        },
-        "ruby": {
-          "type": "stone",
-          "settings": {
-            "meaning": "Страст",
-            "name": "Рубин"
-          }
-        },
-        "emerald": {
-          "type": "stone",
-          "settings": {
-            "meaning": "Рядкост",
-            "name": "Изумруд"
-          }
-        }
-      },
-      "block_order": [
-        "zircon",
-        "diamond",
-        "pearl",
-        "sapphire",
-        "ruby",
-        "emerald"
-      ]
     }
   },
   "order": [

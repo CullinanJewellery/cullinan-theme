@@ -1,10 +1,20 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
       "type": "main-product",
       "blocks": {
         "rating": {
-          "type": "rating"
+          "type": "rating",
+          "settings": {}
         },
         "vendor": {
           "type": "text",
@@ -14,13 +24,16 @@
           }
         },
         "title": {
-          "type": "title"
+          "type": "title",
+          "settings": {}
         },
         "price": {
-          "type": "price"
+          "type": "price",
+          "settings": {}
         },
         "description": {
-          "type": "description"
+          "type": "description",
+          "settings": {}
         },
         "variant_picker": {
           "type": "variant_picker",
@@ -69,12 +82,12 @@
         "complementary": {
           "type": "complementary",
           "settings": {
-            "product_list_limit": 4,
             "block_heading": "Подхождат си",
             "make_collapsible_row": true,
             "icon": "none",
-            "enable_quick_add": false,
-            "pagination_style": "counter"
+            "product_list_limit": 4,
+            "pagination_style": "counter",
+            "enable_quick_add": false
           }
         }
       },
@@ -95,13 +108,13 @@
       "settings": {
         "enable_sticky_info": true,
         "color_scheme": "scheme-1",
-        "media_position": "left",
-        "gallery_layout": "stacked",
         "media_size": "large",
         "constrain_to_viewport": true,
         "media_fit": "contain",
-        "image_zoom": "lightbox",
+        "gallery_layout": "stacked",
         "mobile_thumbnails": "hide",
+        "media_position": "left",
+        "image_zoom": "lightbox",
         "hide_variants": true,
         "enable_video_looping": false,
         "padding_top": 36,
@@ -118,23 +131,23 @@
     "related-products": {
       "type": "featured-collection",
       "settings": {
-        "title": "Може да ви хареса",
-        "heading_size": "h2",
         "collection": "all",
         "products_to_show": 4,
+        "title": "Може да ви хареса",
+        "heading_size": "h2",
         "columns_desktop": 4,
+        "enable_desktop_slider": false,
+        "full_width": false,
+        "show_view_all": false,
         "color_scheme": "scheme-1",
         "image_ratio": "square",
         "image_shape": "default",
         "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": true,
-        "enable_desktop_slider": false,
-        "full_width": false,
-        "show_view_all": false,
+        "quick_add": "none",
         "columns_mobile": "2",
         "swipe_on_mobile": true,
-        "quick_add": "none",
         "padding_top": 80,
         "padding_bottom": 56
       }
