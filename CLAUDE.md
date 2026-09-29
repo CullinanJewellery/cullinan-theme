@@ -1779,6 +1779,11 @@ Anything of ours that is not a Dawn setting lives in these two places:
       business, and Working agreements rules out inventing a delivery window. The label
       defaults to „Изработка по поръчка:“, which is simply true, and the text beside it is a
       setting for the owner to fill with the shop's real figure.
+      - **Filled 2026-09-29, by the owner**: „Изработка по поръчка: Доставка 5-20 работни
+        дни“. Written without „до“ before the range -- a range already carries its own
+        bounds, and the shorter string is what keeps the line on one row, which the longer
+        wording misses by a pixel or two at 11px in a 425px column. **Unverified live**:
+        the preview link expired the same day, so the fit is calculated, not measured.
     - Guarded like the collapsible tabs: with both fields empty it renders nothing at all.
     - Pushed in two steps, section then template, per the validator lag -- and the gap fix
       after it was **dropped by Shopify** and needed a byte-change re-send, the fourth time
@@ -1832,11 +1837,10 @@ Anything of ours that is not a Dawn setting lives in these two places:
       1991, gold 585 and 750 and silver 925 with rhodium plating, stones appraised by an HRD
       Antwerp qualified specialist. **Every one of those is a fact already recorded in this
       file** -- nothing written from assumption.
-    - **Доставка и връщане** carries only what is known: Еконт and Спиди, made to order, and
-      an invitation to ask about returns. **The delivery window, the delivery price, the
-      return period and the warranty are still missing** and are deliberately not invented
-      (Legal pages, under Working agreements). That is the one thing still blocking this
-      panel from being complete.
+    - **Доставка и връщане** carries the carriers, and since 2026-09-29 the shop's own
+      **delivery window and return period**, both given by the owner: доставка 5-20 работни
+      дни, връщане до 14 дни. **The delivery price and the warranty are still missing** and
+      are deliberately not invented (Legal pages, under Working agreements).
     - **За камъка stays invisible**, correctly: it has no text yet either, and nobody asked
       for it.
     - **Качество и детайли expanded the same day** ("talk about more for the gold and you can
