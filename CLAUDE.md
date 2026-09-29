@@ -304,7 +304,7 @@ Rules that matter here:
 | scheme-3 | `#221F1C` warm near-black | `#F5F2EE` | Footer, dramatic bands. |
 | scheme-4 | `#8C6A2E` deep muted gold | `#FFFFFF` | Badges and accents only. |
 | scheme-5 | `#E7E1D6` warm sand | `#221F1C` | Feature blocks. |
-| scheme-6 | `#F5F4F0` light greige | `#221F1C` | The reference’s band colour. Нашето вдъхновение on the homepage. Buttons `#5B5548`. |
+| scheme-6 | `#F5F4F0` light greige | `#221F1C` | The reference’s band colour, and measured off their own band again for the stones row on 2026-09-29. Нашето вдъхновение and Всеки камък има значение on the homepage. Buttons `#5B5548`. |
 | scheme-7 | `#D8DFBF` milky matcha | `#221F1C` | Нашите материали on the homepage. Owner’s choice, 2026-09-14. Buttons `#3D5229`. |
 | scheme-8 | `#F1E3DC` marble blush | `#221F1C` | Контакти: open-row panels and the footer’s Facebook/Instagram hover, matched to the banner picture (2026-09-15). Black buttons. |
 
