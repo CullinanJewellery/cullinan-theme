@@ -112,6 +112,9 @@ a.stones__tile:focus-visible {
 
 .stones__meaning {
   display: block;
+  /* The tile is a centred flex column, so without this each line sizes to its
+     own content and a long word hangs outside the item instead of filling it. */
+  width: 100%;
   font-size: 1.2rem;
   font-weight: 600;
   letter-spacing: 0.08em;
@@ -126,6 +129,7 @@ a.stones__tile:focus-visible {
 
 .stones__name {
   display: block;
+  width: 100%;
   margin-top: 0.6rem;
   font-size: 1.6rem;
   font-weight: 400;
@@ -222,9 +226,14 @@ a.stones__tile:hover .stones__name {
     display: none;
   }
 
-  /* moonmagic's own 110px item */
+  /* moonmagic's item is 110px, and ours has to be wider: their meanings are two
+     words that wrap ("Rainbow Moonstone"), ours are single Bulgarian words that
+     cannot. ДЪЛБОЧИНА measures 119px at their own 16px, so a 110px item would
+     have it hanging out of both sides. 12.5rem keeps their type size, which is
+     the part that shows, and pays for it in item width. Three of theirs fit a
+     375px screen against two and most of a third here. */
   .stones__item {
-    flex: 0 0 11rem;
+    flex: 0 0 12.5rem;
     scroll-snap-align: start;
   }
 
