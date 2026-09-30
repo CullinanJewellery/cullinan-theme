@@ -950,6 +950,18 @@ Anything of ours that is not a Dawn setting lives in these two places:
       would have been invisible. It takes scheme-5's sand `#E7E1D6` instead, scoped to this
       section. Temporary by nature: Dawn only adds `--empty` when there is no image, so it
       goes by itself once a photograph is set.
+    - **Settled: the content sits on the opposite side from the banner above it**
+      (2026-09-30, the owner, after two rounds of it moving). That is what moonmagic does --
+      THEIR STONE. THEIR STORY. left, NEW ARRIVALS right -- and it is the point of the pair:
+      the mirror is what stops two full-bleed bands reading as one repeated thing.
+      `desktop_content_position: middle-right`, with the silver banner's own 1% inset
+      **mirrored to `padding-right`** so it sits the same distance from its own edge.
+      Confirmed live at 1440: silver heading 27px from the left, new arrivals 27px from the
+      right, `flex-start` against `flex-end`.
+      - **The cost of getting this wrong was three rounds on one setting.** The first build
+        had it right, off moonmagic; it moved left on a request that read as "build it like
+        the silver banner", and came back. **When a section is explicitly modelled on a
+        reference pair, check the pair before moving one of them.**
     - **Checked live at 1440**: silver keeps the pink gradient, new arrivals paints
       `rgb(242,240,236)`; both carry `inset(0px 10%)`; both have `justify-content: flex-start`
       with heading and button at left 26.8; and the slot reads `rgb(231,225,214)` against the
@@ -2780,6 +2792,13 @@ Anything of ours that is not a Dawn setting lives in these two places:
       `rgba(var(--color-foreground), 0.15)`) are `#F3E1DB` now too -- the only other lines
       this section has, since desktop's flat columns have none (see the "no separator lines to
       add there" note above).
+    - **The two full-width lines above and below the columns are gone, 2026-09-30**, at
+      the owner's request -- / off ;
+      its 3.2rem padding stays, so the air is there without a drawn line. The column
+      headings and links went 1rem to 1.2rem the same round, and the Facebook/Instagram
+      icons under the newsletter box moved to the **left** of their own line
+      (, reversing the right-alignment set earlier).
+      „Свържете се с нас“ and the address keep their 0.9rem, named as unchanged.
     - **The hairline under the newsletter box removed, same round, at the owner's request**
       ("remove the line under the email" -- the email prints inside that same block now, see
       above). `.footer-block--subscribe`'s own `border-bottom` (added originally to replace
