@@ -923,6 +923,49 @@ Anything of ours that is not a Dawn setting lives in these two places:
     other banner stay exactly as they were. Self-removing once a real photo is set: Dawn
     only adds the `--empty` class when there is no image, so nothing here needs undoing by
     hand then.
+- **New arrivals banner.** A third `image-banner` instance, key `new_arrivals`, directly under
+  the silver banner (`templates/index.json`), added 2026-09-30 at the owner's request ("lets
+  make a section under НАШЕТО СРЕБРО. НАШИЯТ БЛЯСЪК. but like moonmagic NEW ARRIVELS").
+  - **Their NEW ARRIVALS is not a product row, which is what checking first settled.** It and
+    THEIR STONE. THEIR STORY. are the **same component** -- both `homepage_multi_hero`, both
+    1425 x 570, a full-bleed photograph with white text laid over it. Since the silver banner
+    was already built from THEIR STONE, this needed **no new section, stylesheet or setting**:
+    a third instance of `image-banner` and nothing else.
+  - **The two of theirs differ on purpose, and so do ours.** Measured at 1440: NEW ARRIVALS
+    puts its content on the **right** where THEIR STONE sits left, and **drops the subtitle
+    entirely** -- heading and button, nothing else. Mirroring the sibling that way is what
+    keeps two full-bleed bands from reading as one repeated thing. Ours does both:
+    `desktop_content_position: middle-right` against the silver banner's `middle-left`, and
+    no `text` block at all. Confirmed live -- content at left 895.5 against the silver
+    banner's 26.8, `justify-content: flex-end` against `flex-start`.
+  - **The button links to `/collections/all?sort_by=created-descending`**, checked on the
+    preview before it was used: HTTP 200, the sort dropdown comes back with
+    `created-descending` selected, and the order genuinely differs from the default
+    (title-ascending). A destination that means what "new" says and **can never be empty**,
+    which no collection this store could make today would manage. Theirs points at a curated
+    `/pages/featured/new-arrivals`; that is worth swapping to once such a page exists.
+  - **Copy**: „НОВО ПРИ НАС“ rather than a literal rendering of New Arrivals, and „Вижте
+    новото“ on the button so it does not echo „Разгледайте среброто“ directly above it.
+  - **Square corners, the fourth scoped exception to the site-wide pill** after the hero, the
+    silver banner and Add to cart. Both of moonmagic's stacked banners measure
+    `border-radius: 0`, and ours sit one directly above the other, so a pill on the lower one
+    read as an accident. It joins the silver banner's existing rule rather than getting one
+    of its own.
+  - **Flush against the silver banner, no gap**, matching their own stack -- two sections of
+    the same family reading as a pair. `image-banner` has no margin setting, so if a gap is
+    ever wanted it is the scoped rule the silver banner already uses for its own top margin.
+  - **Three differences from its sibling left deliberately open**, since the owner asked for
+    moonmagic rather than for a match to the banner above: the heading is **57px against the
+    silver banner's 30px** (this one takes `.banner__heading`'s shared clamp; that one was
+    tuned down by hand over several rounds), the button is **72 x 22 against 68 x 15** (this
+    one is moonmagic's exact size; that one was matched to Вижте всички at the owner's
+    request), and **both bands are scheme-5**, where moonmagic gives its two different
+    grounds (`#f2d9d1` and `#faf8f4`). A photograph covers the ground on both once one is
+    uploaded, so the last only shows until then.
+  - **The served stylesheet strips quotes out of attribute selectors.** A check for
+    `[id$="__new_arrivals"]` in the live CSS came back empty while the rule was already there
+    as `[id$=__new_arrivals]`, and it read as a dropped push. The existing lesson about
+    searching minified CSS without spaces extends to **quotes**: match the bare token.
 - **Category mosaic.** `sections/category-mosaic.liquid` with
   `assets/section-category-mosaic.css`. Four columns, tall tiles at each end spanning both
   rows, squares between — the block order drives it, because `grid-auto-flow: dense`
