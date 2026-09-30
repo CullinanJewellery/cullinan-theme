@@ -1135,6 +1135,46 @@ Anything of ours that is not a Dawn setting lives in these two places:
       it instantly: the handler fires and asks for the right number. On a real phone, where
       frames run, both work. **When a check depends on scrolling or a transition, confirm
       frames are running first -- otherwise a working feature reads as broken.**
+  - **Rebuilt as a centred carousel, 2026-09-30, from the owner's own report of using it on
+    a real phone** ("when i scroll with my finger i am catching all of them and they are
+    moving up and donw ... i want them to not move like that just to the left and the right";
+    "the one int the middle that apear to get big like we said with the text down on the
+    picture"; "i don't want the arrows to stop ... when i go to the last of the stones i cant
+    go to the like in moonmagic"). moonmagic's own carousel was read from its live Swiper
+    instance this time rather than from its CSS alone: **`loop: true`, `centeredSlides: true`,
+    `slidesPerView: "auto"`, `spaceBetween: 20`** -- which is all three complaints at once,
+    and confirms the owner was comparing against the real thing.
+    - **The finger dragged the row diagonally**, because a scroll container leaves the
+      browser free to read a swipe as a page scroll. `touch-action: pan-x` on the track pins
+      it to one axis. One line, and the whole of that complaint.
+    - **The middle stone grows now, words and all.** Their CSS scales whichever slide carries
+      `swiper-slide-active` -- `scale(1.15)` on a phone, `1.25` on a computer. Ours toggles
+      `.stones__item--centred` from one measurement, *which stone's centre is nearest the
+      track's centre*, so a finger and the arrows can never disagree about which one is the
+      middle. The row snaps to centre rather than to the left edge to match.
+      - The first and last stone need a lead-in to be able to reach the middle at all:
+        `margin-inline: calc((100% - 12.5rem) / 2)` on each. The percentage resolves against
+        the **track's own content width**, so it stays right whatever room the arrows leave
+        -- 76px at 375px, measured live.
+      - **The scaled stone would have been clipped, and the reason is a spec rule worth
+        keeping.** `overflow-x: auto` forces the *used* value of `overflow-y` to `auto` too
+        (the same rule that broke the sticky header on Контакти), so the track is a scrollport
+        that clips top and bottom as well as the sides -- and a `transform: scale` grows past
+        its own box without making the box any bigger. `padding-block: 1.8rem` inside the
+        track is the room it grows into. Checked: the grown stone sits **7.8px inside** the
+        track on both sides, with no vertical overflow at all.
+    - **The arrows never stop.** Theirs loop, so ours wraps: `(index + direction + n) % n`,
+      and the whole `disabled` treatment is gone, style and all. Walked live through all six
+      and past the end -- Циркон, Диамант, Перла, Сапфир, Рубин, Изумруд, **Циркон** -- and
+      backwards off the first lands on Изумруд.
+    - **More room, which the growing stone needs**: the band's own padding 72 to 88 (53px on
+      a phone), on top of the track's own 1.8rem. This is the "make the background colour
+      bigger" half of the request; the track padding is the "more space for the picture" half.
+    - **Checked live at 375**: `touch-action: pan-x`, `scroll-snap-type: x mandatory`,
+      `scroll-snap-align: center`, the centred tile at `matrix(1.15, ...)` with every other
+      one at `none`, the centred stone **exactly** centred (0px off), neither arrow disabled,
+      and no page overflow. The arrow steps had to be run instantly to be seen at all --
+      the pane still produces no animation frames, per the lesson above.
 
 - **Hero facts.** `sections/hero-facts.liquid` with `assets/section-hero-facts.css`. The
   short claims under the hero. Its own section, not Dawn's multicolumn — Dawn loads section
