@@ -249,6 +249,14 @@ a.stones__tile:hover .stones__name {
     transition: opacity 0.2s ease-in-out;
   }
 
+  /* The media query's display:flex above is an author rule, so it beats the
+     UA's own [hidden] { display: none } and the attribute stops hiding
+     anything. Without this the arrows would show on a phone whenever the
+     script has not run -- and do nothing when tapped. */
+  .stones__arrow[hidden] {
+    display: none;
+  }
+
   .stones__arrow svg {
     width: 2rem;
     height: 2rem;
