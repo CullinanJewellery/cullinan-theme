@@ -20,22 +20,59 @@
     padding-bottom: {{ section.settings.padding_bottom | times: 0.6 | round: 0 }}px;
   }
 
+  .section-{{ section.id }}-margin {
+    margin-top: {{ section.settings.margin_top | times: 0.75 | round: 0 }}px;
+    margin-bottom: {{ section.settings.margin_bottom | times: 0.75 | round: 0 }}px;
+  }
+
   @media screen and (min-width: 750px) {
     .section-{{ section.id }}-padding {
       padding-top: {{ section.settings.padding_top }}px;
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
+
+    .section-{{ section.id }}-margin {
+      margin-top: {{ section.settings.margin_top }}px;
+      margin-bottom: {{ section.settings.margin_bottom }}px;
+    }
   }
 {%- endstyle -%}
 
-<div class="color-{{ section.settings.color_scheme }} gradient">
+{%- comment -%}
+  The margin goes on this outer div, the one that paints the band, and the
+  padding on the inner one -- the same split the atelier bands use. Padding here
+  would only make the greige taller; it is the margin that lets the page's own
+  ground show above and below, which is what reads as space between sections.
+{%- endcomment -%}
+<div class="color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-margin">
   <div class="stones page-width section-{{ section.id }}-padding">
     {%- if section.settings.heading != blank -%}
       <h2 class="stones__heading">{{ section.settings.heading | escape }}</h2>
     {%- endif -%}
 
     {%- if section.blocks.size > 0 -%}
-      <ul class="stones__grid" role="list">
+      {%- comment -%}
+        The viewport is a plain block on a computer, where the grid lays out six
+        across and nothing scrolls. On a phone it becomes the row moonmagic has:
+        the track between two arrows, swiped with a finger or stepped with them.
+        The arrows are hidden above 750px and carry aria-hidden until the script
+        finds a track that actually overflows, so a keyboard never reaches a
+        control that does nothing.
+      {%- endcomment -%}
+      <div class="stones__viewport">
+        <button
+          type="button"
+          class="stones__arrow stones__arrow--prev"
+          aria-label="{{ 'sections.slider.previous_slide' | t | default: 'Предишни' }}"
+          aria-controls="StonesTrack-{{ section.id }}"
+          hidden
+        >
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+            <path d="M15 4 7 12l8 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+
+      <ul class="stones__grid" id="StonesTrack-{{ section.id }}" role="list">
         {%- for block in section.blocks -%}
           <li class="stones__item" {{ block.shopify_attributes }}>
             {%- capture stone_tile -%}
@@ -71,6 +108,19 @@
           </li>
         {%- endfor -%}
       </ul>
+
+        <button
+          type="button"
+          class="stones__arrow stones__arrow--next"
+          aria-label="{{ 'sections.slider.next_slide' | t | default: 'Следващи' }}"
+          aria-controls="StonesTrack-{{ section.id }}"
+          hidden
+        >
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+            <path d="M9 4l8 8-8 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
     {%- endif -%}
 
     {%- comment -%}
@@ -90,6 +140,62 @@
     {%- endif -%}
   </div>
 </div>
+
+{%- comment -%}
+  The arrows. The track is a plain CSS scroll container, so a finger already
+  works with no script at all -- this only adds the two buttons for anyone who
+  would rather tap than swipe, and reveals them only when the track really does
+  overflow, which on a computer it never does.
+
+  Scrolls by one item plus its gap, measured off the live elements rather than
+  hardcoded, so it keeps stepping correctly if the item width is ever retuned.
+{%- endcomment -%}
+<script>
+  (function () {
+    var root = document.getElementById('shopify-section-{{ section.id }}');
+    if (!root) return;
+
+    var track = root.querySelector('.stones__grid');
+    var prev = root.querySelector('.stones__arrow--prev');
+    var next = root.querySelector('.stones__arrow--next');
+    if (!track || !prev || !next) return;
+
+    function step() {
+      var item = track.querySelector('.stones__item');
+      if (!item) return track.clientWidth;
+      var gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+      return item.getBoundingClientRect().width + gap;
+    }
+
+    function scrollable() {
+      return track.scrollWidth - track.clientWidth > 1;
+    }
+
+    function update() {
+      var on = scrollable();
+      [prev, next].forEach(function (button) {
+        button.hidden = !on;
+      });
+      if (!on) return;
+      // 1px of slack: a scroll position can land a fraction short of either end
+      prev.disabled = track.scrollLeft <= 1;
+      next.disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 1;
+    }
+
+    function go(direction) {
+      var smooth = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      track.scrollBy({ left: direction * step(), behavior: smooth ? 'smooth' : 'auto' });
+    }
+
+    prev.addEventListener('click', function () { go(-1); });
+    next.addEventListener('click', function () { go(1); });
+    track.addEventListener('scroll', update, { passive: true });
+    if ('ResizeObserver' in window) new ResizeObserver(update).observe(track);
+    window.addEventListener('resize', update);
+
+    update();
+  })();
+</script>
 
 {% schema %}
 {
@@ -124,7 +230,32 @@
     },
     {
       "type": "header",
-      "content": "Padding"
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Space above the band",
+      "info": "Page background above the coloured band, so it does not touch the section above it.",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Space below the band",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Padding inside the band"
     },
     {
       "type": "range",
