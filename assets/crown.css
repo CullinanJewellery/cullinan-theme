@@ -912,7 +912,16 @@ html {
   button specifically, not touching the site-wide setting or any other
   button on the page.
 */
-[id^="shopify-section-"][id$="__silver_teaser"] .banner__buttons .button {
+/*
+  НОВО ПРИ НАС joins it, 2026-09-30. Both of moonmagic's own stacked banners
+  carry a square button -- measured `border-radius: 0` on THEIR STONE. THEIR
+  STORY. and on NEW ARRIVALS alike -- and ours sit one directly above the
+  other, so a pill on the lower one read as an accident rather than a choice.
+  This is the fourth scoped exception to the site-wide pill, after the hero,
+  the silver banner and Add to cart.
+*/
+[id^="shopify-section-"][id$="__silver_teaser"] .banner__buttons .button,
+[id^="shopify-section-"][id$="__new_arrivals"] .banner__buttons .button {
   border-radius: 0;
 }
 
