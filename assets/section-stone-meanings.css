@@ -219,34 +219,44 @@ a.stones__tile:hover .stones__name {
     margin-bottom: 3.2rem;
   }
 
-  /* moonmagic flanks its track with a prev and a next; ours does the same, and
-     the track sits between them rather than bleeding to the page edges as it
-     did before they existed. Two whole stones fit at 375px where a bleeding
-     track showed two and most of a third -- the room the arrows take. */
+  /* moonmagic's arrows sit OUTSIDE the track, in the page gutter, so the track
+     keeps nearly the whole screen: theirs is 335 of 375, which is 3.05 times
+     one 110px stone. Arrows that take their width out of the track instead
+     left ours at 277 of 375 -- 2.22 stones -- and that ratio is the whole
+     reason the neighbours were being cut in half. Absolute now, so making them
+     bigger costs the track nothing. */
   .stones__viewport {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.2rem;
+    display: block;
+    position: relative;
   }
 
   .stones__arrow {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex: 0 0 auto;
-    width: 3.2rem;
+    position: absolute;
+    z-index: 1;
+    width: 3.6rem;
     /* A real tap target, taller than the chevron it draws. */
-    height: 4.4rem;
-    /* The picture is 8rem tall at the top of each stone, so its centre is 4rem
-       down; half this button is 2.2rem. The arrow lands on the picture rather
-       than on the words below it. */
-    margin-top: 1.8rem;
+    height: 4.8rem;
+    /* Centred on the picture rather than on the whole card: the track's own
+       1.8rem of padding, then half of the 8rem picture, less half this button. */
+    top: calc(1.8rem + 4rem - 2.4rem);
     padding: 0;
     border: 0;
     background: none;
-    color: rgb(var(--color-foreground));
+    /* moonmagic's own arrows are pure black, measured rgb(0, 0, 0) -- the same
+       exception the two lines under each stone already make. */
+    color: #000000;
     cursor: pointer;
-    transition: opacity 0.2s ease-in-out;
+  }
+
+  .stones__arrow--prev {
+    left: 0;
+  }
+
+  .stones__arrow--next {
+    right: 0;
   }
 
   /* The media query's display:flex above is an author rule, so it beats the
@@ -257,15 +267,14 @@ a.stones__tile:hover .stones__name {
     display: none;
   }
 
+  /* moonmagic draws its own at 30px; 2.8rem is the same weight of mark. */
   .stones__arrow svg {
-    width: 2rem;
-    height: 2rem;
+    width: 2.8rem;
+    height: 2.8rem;
   }
 
   .stones__grid {
     display: flex;
-    flex: 1 1 auto;
-    min-width: 0;
     grid-template-columns: none;
     gap: 2rem;
     overflow-x: auto;
@@ -288,11 +297,11 @@ a.stones__tile:hover .stones__name {
      resolves against the track's own content width, so it stays correct
      whatever the arrows leave. */
   .stones__item:first-child {
-    margin-inline-start: calc((100% - 12.5rem) / 2);
+    margin-inline-start: calc((100% - 11rem) / 2);
   }
 
   .stones__item:last-child {
-    margin-inline-end: calc((100% - 12.5rem) / 2);
+    margin-inline-end: calc((100% - 11rem) / 2);
   }
 
   /* The stone in the middle grows, words and all -- moonmagic scales whichever
@@ -308,12 +317,12 @@ a.stones__tile:hover .stones__name {
 
   /* moonmagic's item is 110px, and ours has to be wider: their meanings are two
      words that wrap ("Rainbow Moonstone"), ours are single Bulgarian words that
-     cannot. ДЪЛБОЧИНА measures 119px at their own 16px, so a 110px item would
-     have it hanging out of both sides. 12.5rem keeps their type size, which is
-     the part that shows, and pays for it in item width. Three of theirs fit a
-     375px screen against two and most of a third here. */
+     cannot. This was 12.5rem for a while, to hold ДЪЛБОЧИНА at their own 16px
+     -- but a stone that wide left the track only 2.22 stones across instead of
+     their 3.05, which is what cut the neighbours in half. 11rem is their exact
+     item, and the type came down to 14px to fit inside it instead. */
   .stones__item {
-    flex: 0 0 12.5rem;
+    flex: 0 0 11rem;
     scroll-snap-align: center;
   }
 
@@ -321,20 +330,24 @@ a.stones__tile:hover .stones__name {
     justify-content: flex-start;
   }
 
-  /* their 80px picture, 10px under it */
+  /* their 80px picture, 10px under it -- 73% of the item, exactly as theirs is */
   .stones__media {
     width: 8rem;
     margin-bottom: 1rem;
   }
 
-  /* both lines 16px, as theirs are; the tracking stays ours */
+  /* 14px, not their 16px, and the item width is why. ДЪЛБОЧИНА is one
+     unbreakable word: it measures 119px at 16px, so it cannot live in a 110px
+     stone, and a wider stone is what was cutting its neighbours in half. At
+     14px it is about 104px and fits with room to spare. Their own meanings are
+     two words that wrap, so they never had to choose. */
   .stones__meaning {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
   }
 
   .stones__name {
     margin-top: 0.5rem;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
   }
 
   .stones__cta {
