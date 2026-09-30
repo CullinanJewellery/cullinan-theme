@@ -1081,6 +1081,60 @@ Anything of ours that is not a Dawn setting lives in these two places:
       unmoved; the phone row scrolls 880 of 375 with no word spilling its item and no page
       overflow; the button 360 x 68 on a computer and full-width 345 x 54 on a phone, both
       pointing at Камъни.
+  - **Space around the band, and arrows on the phone row, 2026-09-30** ("add more space
+    betwen the section that is above the one we edit and the one that is down on this
+    section we edit they are to close to each other"; "on a phone for this section the
+    stones are either with a finger or with arrows they have one in the left and one in
+    right"). The same message confirmed the button stays a rectangle -- it already was,
+    `border-radius: 0`, measured live; nothing changed for that.
+    - **The sections were touching at exactly 0px, and this section's own 72px padding
+      could never have fixed it.** Padding here sits *inside* the greige, so it only makes
+      the band taller -- the same trap the Social follow gap fell into against the black
+      newsletter band. What reads as space between sections is the page's own ground, and
+      only a margin shows that. So the margin goes on the outer div that paints the band
+      and the padding stays on the inner one, which is exactly the split the atelier bands
+      already use (`.section-{id}-margin` beside `.section-{id}-padding`).
+      **40px, 30px on phones** -- the atelier's own proven pair for this same problem, not
+      a new number. Both are range settings with `default: 40`, so the template needed no
+      second push. Confirmed live: 40px of page ground above and below at 1440.
+    - **The arrows are moonmagic's own structure**: a prev and a next flanking the track,
+      phone only, hidden above 750px. The track is still a plain CSS scroll container, so a
+      finger already worked with no script at all -- the script only adds the tapping, steps
+      by one item plus its gap measured off the live elements rather than a hardcoded
+      number, disables an arrow at each end, and honours `prefers-reduced-motion`.
+      - **They stay `hidden` until the script finds a track that really overflows**, so a
+        keyboard never reaches a control that does nothing and a computer never shows them.
+      - **The `hidden` attribute did not actually hide them at first, and the reason is
+        worth keeping.** The phone rule sets `display: flex` on `.stones__arrow`, and an
+        author rule beats the UA stylesheet's own `[hidden] { display: none }` -- so the
+        attribute silently stopped hiding anything, and without JavaScript the arrows would
+        have shown on a phone and done nothing when tapped. Fixed with an explicit
+        `.stones__arrow[hidden] { display: none }` inside the same query. **An author
+        `display` anywhere on an element cancels `hidden`.**
+      - **The track no longer bleeds to the page edges on a phone**, since the arrows take
+        that room: the track is 277px of 345 and shows **two whole stones**, where the
+        bleeding version showed two and most of a third. A direct, accepted cost of the
+        arrows rather than something to work around.
+      - The arrow sits **exactly on the picture's centre line**, not the card's: the
+        picture is 8rem at the top of each stone, so a 4.4rem button needs `margin-top:
+        1.8rem` to line up. Measured live, 1661.3 against 1661.3. moonmagic puts its own at
+        the item's middle, which on theirs lands beside the words -- a deliberate
+        departure, since ours reads as aimed at the stones.
+    - **Checked live at 1440 and 375.** Desktop: 40px of light ground both sides, arrows
+      `display: none`, the grid still six across with nothing scrolling. Phone: arrows
+      32 x 44, prev correctly disabled at the start, two whole stones, no page overflow,
+      and a real click on next asked for **exactly 145px** -- the 125px item plus its 20px
+      gap.
+    - **The arrows could not be seen working in the preview pane, and that is the pane, not
+      the code.** It produced **zero animation frames** over 500ms (the artifact already
+      recorded under Buttons lift up on hover). Smooth scrolling is frame-driven, so
+      `scrollBy({behavior: "smooth"})` never advanced, while an instant scroll moved the
+      track 145px at once. **Scroll events are frame-driven too**, so the `scroll` listener
+      that re-enables the opposite arrow never fired either, which is why prev stayed
+      disabled after a step. Proven by wrapping `scrollBy` to record its argument and run
+      it instantly: the handler fires and asks for the right number. On a real phone, where
+      frames run, both work. **When a check depends on scrolling or a transition, confirm
+      frames are running first -- otherwise a working feature reads as broken.**
 
 - **Hero facts.** `sections/hero-facts.liquid` with `assets/section-hero-facts.css`. The
   short claims under the hero. Its own section, not Dawn's multicolumn — Dawn loads section
