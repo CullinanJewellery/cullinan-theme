@@ -974,9 +974,42 @@ Anything of ours that is not a Dawn setting lives in these two places:
         atelier carries its margin on the inner element that paints the band, not on the
         `#shopify-section-` wrapper, so the wrapper starts flush while the colour starts 40px
         later. **Measure the painted element, which is the thing the eye sees.**
-  - **One difference from its sibling stands, and only until photography**: both bands are
-    scheme-5, where moonmagic gives its two different grounds (`#f2d9d1` and `#faf8f4`). A
-    photograph covers the ground on both, so this shows only while the slots are empty.
+    - **Its own background, 2026-09-30** ("make the background different like moonmagic").
+      Theirs do not share a ground: THEIR STONE. THEIR STORY. is a blush `#f2d9d1` and NEW
+      ARRIVALS a neutral `#faf8f4`, so the move is **from colour to neutral**. Ours makes the
+      same one -- scheme-5's pink gradient to **scheme-2**, soft stone `#F2F0EC`.
+      - **scheme-2 rather than the nearer-looking scheme-6.** `#F5F4F0` is almost exactly
+        their `#faf8f4`, five points a channel -- but Нашето вдъхновение directly below is
+        already scheme-6, so matching their hex would only have moved the sameness one
+        section down. scheme-2 is also the token this theme already designates for
+        alternating sections, so nothing new is invented. The run reads stone, pink, stone,
+        greige.
+      - It brings a **black button** where the silver banner keeps its dark brown, which is
+        what moonmagic does too: their two banner buttons differ in colour as well, black on
+        the blush and white on the neutral.
+    - **Changing the colour scheme did not change the background, and the reason matters.**
+      Both pink rules in `crown.css` are keyed to **`.banner.banner--mobile-bottom`, not to
+      scheme-5** -- so every banner whose words sit below the picture on a phone was taking
+      the pink whatever its scheme said. Switching this section to scheme-2 moved its button
+      to black and left the ground exactly as it was. **The colour scheme was never what
+      decided it**, which the comment above those rules did not say.
+      - The **phone** override hands the box back to its own scheme
+        (`background-color: rgb(var(--color-background))`), which works because Dawn puts the
+        `color-scheme-*` class on `.banner__box` -- the pink there is an override of a
+        background the box already had.
+      - The **desktop** one cannot do the same. The scheme class is on the box, not on
+        `.banner`, so `--color-background` read at `.banner` is the page's own value, not the
+        section's -- confirmed live, `252,252,251` on the banner against `242,240,236` on the
+        box. It carries scheme-2's colour **literally**, exactly as the rule above it carries
+        the pink literally. **Change that hex if this section's scheme ever changes.**
+    - **Checked live at 1440 and 375.** Desktop: silver keeps the gradient and its `#391D13`
+      button, new arrivals paints `rgb(242,240,236)` with a black one, headings both 30px and
+      buttons both 360 x 68. Phone: panels genuinely differ, pink `rgb(243,225,219)` against
+      stone `rgb(242,240,236)`, buttons both 335 x 44, headings both 23.25px, no overflow.
+    - **One cosmetic thing, and only until photography**: on a phone the empty picture slot
+      is the same stone as this section's own panel now, so the slot is invisible there --
+      where on the silver banner it still reads as a square against the pink. A real
+      photograph ends it.
   - **The served stylesheet strips quotes out of attribute selectors.** A check for
     `[id$="__new_arrivals"]` in the live CSS came back empty while the rule was already there
     as `[id$=__new_arrivals]`, and it read as a dropped push. The existing lesson about
