@@ -1175,6 +1175,42 @@ Anything of ours that is not a Dawn setting lives in these two places:
       one at `none`, the centred stone **exactly** centred (0px off), neither arrow disabled,
       and no page overflow. The arrow steps had to be run instantly to be seen at all --
       the pane still produces no animation frames, per the lesson above.
+  - **The neighbours were being cut in half, and the cause was a ratio, not a size**
+    (2026-09-30, the owner: "the pictures that are next to the middle stones are getting cut
+    i don't like it that way make it like moonmagic and and make the arrows a little bit
+    bigger and black"). Measured theirs at 375px rather than guessing: container **335 of
+    375**, item **110**, so **3.05 stones across**, and the neighbours either side show about
+    84%. Ours was a 277px track against a 125px stone -- **2.22** -- and at that ratio a
+    neighbour has nowhere to be except half off the edge. It showed **45%**.
+    - **Two things had taken the width, and both were ours.** The arrows were sized out of
+      the track, where **moonmagic's sit outside it, in a gutter of their own**; and the
+      stone was 12.5rem, held there only so ДЪЛБОЧИНА could stay at their 16px.
+    - **The fix is their structure.** `.stones__viewport` leaves `page-width`
+      (`margin-inline: -1.5rem`) and comes back in by the arrow's own width
+      (`padding-inline: 2.6rem`), so the row runs the full screen, the arrows have a gutter
+      and the track is what is inset -- 323px. The stone is **10.6rem**, which puts the ratio
+      at **3.05, exactly theirs**. Checked live: neighbours **83%** against their 84%, and
+      neither arrow overlaps the track by a single pixel.
+    - **A wrong first attempt, caught from a screenshot rather than from the numbers.**
+      Making the arrows `position: absolute` over a full-width track fixed the ratio (3.14,
+      neighbours 89%) and every measurement passed -- but it put a black chevron **on top of
+      a stone**, which is not what moonmagic does and looked it. The geometry was right and
+      the picture was wrong. **Take the screenshot even when the measurements agree.**
+    - **Their type gave way, not their geometry.** The phone meaning and name go 16px to
+      **14px**, with the meaning's tracking halved to `0.04em`. ДЪЛБОЧИНА is one unbreakable
+      word -- 119px at their 16px -- so it cannot live in a 110px stone, and their own
+      meanings are two words that wrap, so they never had to choose. Two points of type
+      against a ratio that was visibly wrong is the right way round. Confirmed live: no
+      meaning spills its stone.
+    - **The arrows are bigger and pure black**: a 26px chevron against their own 30px mark,
+      up from 20px, in `#000000` measured as `rgb(0, 0, 0)` off theirs -- the same black the
+      two lines under each stone already use. The button is 26 x 48, narrow because that is
+      the gutter's width and tall because that is where the tap area comes from; moonmagic's
+      own is 20 x 30.
+    - **Checked live at 375**: ratio 3.05, track 323 against a 106px stone, Диамант 83% /
+      Перла 100% / Сапфир 83%, arrow overlap 0 on both sides, arrows `rgb(0, 0, 0)` and still
+      exactly on the picture's centre line, nothing spilling, no page overflow. Confirmed by
+      eye as well as by measurement.
 
 - **Hero facts.** `sections/hero-facts.liquid` with `assets/section-hero-facts.css`. The
   short claims under the hero. Its own section, not Dawn's multicolumn — Dawn loads section
