@@ -931,13 +931,37 @@ Anything of ours that is not a Dawn setting lives in these two places:
     1425 x 570, a full-bleed photograph with white text laid over it. Since the silver banner
     was already built from THEIR STONE, this needed **no new section, stylesheet or setting**:
     a third instance of `image-banner` and nothing else.
-  - **The two of theirs differ on purpose, and so do ours.** Measured at 1440: NEW ARRIVALS
-    puts its content on the **right** where THEIR STONE sits left, and **drops the subtitle
-    entirely** -- heading and button, nothing else. Mirroring the sibling that way is what
-    keeps two full-bleed bands from reading as one repeated thing. Ours does both:
-    `desktop_content_position: middle-right` against the silver banner's `middle-left`, and
-    no `text` block at all. Confirmed live -- content at left 895.5 against the silver
-    banner's 26.8, `justify-content: flex-end` against `flex-start`.
+  - **Content on the right, then back to the left, and the colour the thing that carries the
+    difference** (2026-09-30). It first shipped mirroring moonmagic, whose NEW ARRIVALS sits
+    right where THEIR STONE sits left, with no subtitle -- measured at 1440, content at left
+    895.5 against the silver banner's 26.8. The owner then asked for the whole section to be
+    built like the silver banner instead: "i want the color to be different and the section to
+    be design to the same just the buttons and text up to be in the left how you made it".
+    - **So it is the silver banner's design in a different colour**, which is still the move
+      moonmagic makes between its own two stacked banners -- their grounds differ (blush
+      `#f2d9d1`, neutral `#faf8f4`) while the layout does not. `desktop_content_position` back
+      to `middle-left`, and the **same picture cut** (`clip-path: inset(0 10% 0 10%)`), the
+      **same visible empty slot**, and the **same 1% text inset** as the silver banner. Each
+      one joins that banner's own existing rule rather than getting a duplicate, so the two
+      cannot drift apart.
+    - **The cut needed one thing the silver banner does not.** The shared empty-slot colour is
+      `rgb(242 240 236)` -- which is `#F2F0EC`, **exactly scheme-2's own background** -- so on
+      this band the placeholder and the ground would have matched to the pixel and the cut
+      would have been invisible. It takes scheme-5's sand `#E7E1D6` instead, scoped to this
+      section. Temporary by nature: Dawn only adds `--empty` when there is no image, so it
+      goes by itself once a photograph is set.
+    - **Checked live at 1440**: silver keeps the pink gradient, new arrivals paints
+      `rgb(242,240,236)`; both carry `inset(0px 10%)`; both have `justify-content: flex-start`
+      with heading and button at left 26.8; and the slot reads `rgb(231,225,214)` against the
+      band rather than matching it. Confirmed by eye as well.
+    - **A script wrote itself into `crown.css`, and the reason is worth keeping.** The edit
+      script read its input with `process.argv[1]` -- correct under `node -e`, where the first
+      argument really is `argv[1]`, but **wrong for a script file, where `argv[1]` is the
+      script's own path and the first argument is `argv[2]`**. So the stylesheet got a block of
+      JavaScript spliced into it. Caught by the brace count run straight after, then
+      `git checkout --` on both files and redone from the last commit. **Count braces after
+      every scripted CSS edit**, and prefer checking the count outside comments -- the plain
+      count had been passing on comment text alone.
   - **The button links to `/collections/all?sort_by=created-descending`**, checked on the
     preview before it was used: HTTP 200, the sort dropdown comes back with
     `created-descending` selected, and the order genuinely differs from the default
