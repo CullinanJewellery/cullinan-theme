@@ -186,10 +186,19 @@
     // at the old and new positions is identical, so nothing appears to happen.
     function shift(delta) {
       if (!delta) return;
+      // A fold swaps which DOM element sits in the middle for an identical one.
+      // With transitions live, both then animate -- the old one shrinking out of
+      // 1.15 while the new one grows into it -- so the stone visibly dips for a
+      // fifth of a second. Killing the transition for the one frame the swap
+      // takes is what makes the fold invisible rather than merely silent.
+      track.classList.add('stones__grid--stepping');
       track.style.scrollSnapType = 'none';
       track.scrollLeft += delta;
       void track.offsetHeight;
       track.style.scrollSnapType = '';
+      markCentred(centredIndex());
+      void track.offsetHeight;
+      track.classList.remove('stones__grid--stepping');
     }
 
     // moonmagic runs Swiper with loop: true, so their row has no last stone --
@@ -296,9 +305,12 @@
       if (target < 0 || target > items.length - 1) return;
       var smooth = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       centreOn(items[target], smooth);
-      // Scroll events are frame-driven, so mark the new centre straight away
-      // rather than waiting for one to arrive.
-      markCentred(target);
+      // The new centre is deliberately NOT marked here. The scroll handler does
+      // it as the row moves, so a stone grows on its way into the middle --
+      // exactly what a finger already does. Marking it up front made the two
+      // fight: for the first half of the animation the old stone is still the
+      // one nearest the centre, so the handler flipped the class straight back,
+      // and the stone scaled up, down, and up again. That was the jump.
     }
 
     prev.addEventListener('click', function () { go(-1); });

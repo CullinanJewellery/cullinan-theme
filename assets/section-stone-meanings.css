@@ -271,6 +271,14 @@ a.stones__tile:hover .stones__name {
        exception the two lines under each stone already make. */
     color: #000000;
     cursor: pointer;
+    /* A second tap on a phone was being read as a double-tap: the browser's own
+       zoom gesture, plus a selection and a grey highlight box on the button.
+       manipulation keeps the tap and drops the gesture, which also removes the
+       old 300ms wait before the click lands. */
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-select: none;
+    user-select: none;
   }
 
   .stones__arrow--prev {
@@ -331,6 +339,13 @@ a.stones__tile:hover .stones__name {
      a finger and for the arrows, so both feel identical. */
   .stones__item--centred .stones__tile {
     transform: scale(1.15);
+  }
+
+  /* Held for the single frame a fold takes, while the centred class moves from
+     one stone to its identical copy. Without it both ends animate and the
+     stone dips out of size and back. */
+  .stones__grid--stepping .stones__tile {
+    transition: none;
   }
 
   .stones__grid::-webkit-scrollbar {
