@@ -3012,6 +3012,38 @@ Anything of ours that is not a Dawn setting lives in these two places:
       - It overlaps the buy box on purpose in two places -- care is also in Качество и
         детайли, and delivery and returns in Доставка и връщане. The owner asked for the
         whole section rather than a trimmed one.
+    - **The ring size answer was corrected twice the same day, and the second time it was
+      researched.** First version: invented -- millimetres, and a diameter times 3.14
+      method, neither of which the owner had ever said. The owner corrected it ("we are
+      not working in millimeters ... we are working with the europe sizes ... 51 52 53"),
+      then again ("i tell you to look for information then write also don't tell them to
+      come in our shop they can do it in every shop for jewellery write it more
+      professional, i found the name it is a ring sizer").
+      - **Current answer**: European numbers like 52, 53, 54; a **ring sizer** -- a set of
+        numbered sample rings any jeweller uses -- tried on the finger the piece will be
+        worn on; the right size passes the knuckle with light resistance and sits
+        comfortably, neither falling off nor pinching; a wider band fits tighter, so size up
+        when between two; measure late in the day, when fingers are not cold. No shop
+        invitation and no at-home method, since the owner gave neither. Heading is now
+        "Как да определя", not "Как да разбера".
+      - **Sources**: Brilliant Earth, David Yurman and Dean Davidson for the knuckle, light
+        resistance and width advice; Capino.bg for the European scale.
+      - **One fact worth knowing that the owner may not expect**: European ring numbers
+        **are** the finger's inner circumference in millimetres -- Capino.bg's sizing
+        table labels its first column "Обиколка на пръста (мм)" -- so size 54 is 54 mm. The
+        owner's "not millimetres" is about how the shop works (numbered sample rings, not a
+        ruler), which is right, and the copy therefore never mentions millimetres at all.
+      - **Lesson**: the first version was written from assumption when the instruction was
+        to look for information. Research before writing customer-facing copy.
+    - **Истински ли са камъните removed** from both copies at the owner's request, same
+      day. Seven rows remain.
+    - **More space above Може да ви хареса on every product page**, same day: the row's own
+      top padding is capped at 100 by the schema and was 80, so it goes to 100 and the
+      product section's bottom padding goes 12 to 32. Measured from the last line of
+      content to the heading that is about 112px before and 152px after; 120 when measured
+      from the product section's own bottom edge, which includes its padding. Confirmed on
+      two products, the ring and the bracelet. It lives in `templates/product.json`, so it
+      applies to every product.
   - No photographs yet; the three image halves are flat sand blocks.
 - **Контакти page** (2026-09-14, at the owner’s request, after the reference’s Contact Us):
   `templates/page.contact.json` is the page banner („Как можем да помогнем?“, a line pointing to
