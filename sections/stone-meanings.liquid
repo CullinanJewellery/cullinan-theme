@@ -160,15 +160,28 @@
     var next = root.querySelector('.stones__arrow--next');
     if (!track || !prev || !next) return;
 
-    function step() {
-      var item = track.querySelector('.stones__item');
-      if (!item) return track.clientWidth;
-      var gap = parseFloat(getComputedStyle(track).columnGap) || 0;
-      return item.getBoundingClientRect().width + gap;
-    }
+    var items = [].slice.call(track.querySelectorAll('.stones__item'));
+    if (!items.length) return;
 
     function scrollable() {
       return track.scrollWidth - track.clientWidth > 1;
+    }
+
+    // Which stone is nearest the middle of the track right now. The scaling is
+    // keyed off this rather than off a scroll position, so a finger and the
+    // arrows land on exactly the same answer.
+    function centredIndex() {
+      var middle = track.scrollLeft + track.clientWidth / 2;
+      var best = 0;
+      var bestGap = Infinity;
+      items.forEach(function (item, i) {
+        var gap = Math.abs(item.offsetLeft + item.offsetWidth / 2 - middle);
+        if (gap < bestGap) {
+          bestGap = gap;
+          best = i;
+        }
+      });
+      return best;
     }
 
     function update() {
@@ -176,15 +189,30 @@
       [prev, next].forEach(function (button) {
         button.hidden = !on;
       });
-      if (!on) return;
-      // 1px of slack: a scroll position can land a fraction short of either end
-      prev.disabled = track.scrollLeft <= 1;
-      next.disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 1;
+      if (!on) {
+        items.forEach(function (item) { item.classList.remove('stones__item--centred'); });
+        return;
+      }
+      var centre = centredIndex();
+      items.forEach(function (item, i) {
+        item.classList.toggle('stones__item--centred', i === centre);
+      });
     }
 
+    // moonmagic runs Swiper with loop: true, so their arrows never stop -- the
+    // one after the last stone is the first again. Ours wraps the same way
+    // rather than disabling at an end.
     function go(direction) {
+      var target = (centredIndex() + direction + items.length) % items.length;
+      var item = items[target];
+      var left = item.offsetLeft - (track.clientWidth - item.offsetWidth) / 2;
       var smooth = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      track.scrollBy({ left: direction * step(), behavior: smooth ? 'smooth' : 'auto' });
+      track.scrollTo({ left: left, behavior: smooth ? 'smooth' : 'auto' });
+      // Scroll events are frame-driven, so mark the new centre straight away
+      // rather than waiting for one to arrive.
+      items.forEach(function (el, i) {
+        el.classList.toggle('stones__item--centred', i === target);
+      });
     }
 
     prev.addEventListener('click', function () { go(-1); });

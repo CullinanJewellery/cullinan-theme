@@ -262,11 +262,6 @@ a.stones__tile:hover .stones__name {
     height: 2rem;
   }
 
-  .stones__arrow[disabled] {
-    opacity: 0.25;
-    cursor: default;
-  }
-
   .stones__grid {
     display: flex;
     flex: 1 1 auto;
@@ -274,9 +269,37 @@ a.stones__tile:hover .stones__name {
     grid-template-columns: none;
     gap: 2rem;
     overflow-x: auto;
-    scroll-snap-type: x proximity;
+    /* Snap to the middle, not the left edge: the centred stone is the one that
+       grows, so it has to come to rest in the centre. */
+    scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
+    /* A finger on this row pans it sideways and nothing else. Without this the
+       browser was free to read a swipe as a page scroll, so the stones moved up
+       and down under the finger instead of just left and right. */
+    touch-action: pan-x;
+    /* overflow-x: auto forces overflow-y to auto as well, so this scrollport
+       clips top and bottom too -- and the centred stone grows past its own box.
+       This is the room it grows into; without it the big stone is cut off. */
+    padding-block: 1.8rem;
+  }
+
+  /* Room for the first and last stone to reach the middle. The percentage
+     resolves against the track's own content width, so it stays correct
+     whatever the arrows leave. */
+  .stones__item:first-child {
+    margin-inline-start: calc((100% - 12.5rem) / 2);
+  }
+
+  .stones__item:last-child {
+    margin-inline-end: calc((100% - 12.5rem) / 2);
+  }
+
+  /* The stone in the middle grows, words and all -- moonmagic scales whichever
+     slide is centred by 1.15 on a phone, and the class is set the same way for
+     a finger and for the arrows, so both feel identical. */
+  .stones__item--centred .stones__tile {
+    transform: scale(1.15);
   }
 
   .stones__grid::-webkit-scrollbar {
@@ -291,7 +314,7 @@ a.stones__tile:hover .stones__name {
      375px screen against two and most of a third here. */
   .stones__item {
     flex: 0 0 12.5rem;
-    scroll-snap-align: start;
+    scroll-snap-align: center;
   }
 
   .stones__tile {
