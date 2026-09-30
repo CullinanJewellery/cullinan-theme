@@ -766,6 +766,39 @@ html {
 }
 
 /*
+  НОВО ПРИ НАС opts out of both pinks, 2026-09-30, at the owner's request to
+  make its background different the way moonmagic's is. Their two stacked
+  banners do not share a ground: THEIR STONE. THEIR STORY. is a blush #f2d9d1
+  and NEW ARRIVALS a neutral #faf8f4, so the move is from colour to neutral.
+
+  The two rules above are keyed to `banner--mobile-bottom`, not to scheme-5, so
+  every banner whose words sit below the picture on a phone was taking the pink
+  whatever its colour scheme said. That is why switching this section to
+  scheme-2 moved its button to black and left the background exactly as it was.
+
+  The phone rule hands the box back to its own scheme, which works because Dawn
+  puts the `color-scheme-*` class on `.banner__box` -- the pink above is an
+  override of a background the box already had.
+
+  The desktop one cannot do the same. The scheme class is on the box, not on
+  `.banner`, so `--color-background` read there is the page's own value, not
+  this section's. It carries scheme-2's colour literally instead, exactly as
+  the rule above carries the pink literally. **If this section's colour scheme
+  is ever changed in the editor, this hex has to change with it.**
+*/
+@media screen and (max-width: 749px) {
+  [id^="shopify-section-"][id$="__new_arrivals"] .banner.banner--mobile-bottom .banner__box {
+    background-color: rgb(var(--color-background));
+  }
+}
+
+@media screen and (min-width: 750px) {
+  [id^="shopify-section-"][id$="__new_arrivals"] .banner.banner--mobile-bottom {
+    background: #F2F0EC;
+  }
+}
+
+/*
   Space above the silver banner, at the owner's request (2026-09-21): it sat
   flush against the benefits row above it, scheme-2's stone touching this
   section's own pink/gradient with no gap, so the two read as one connected
