@@ -2982,9 +2982,34 @@ Anything of ours that is not a Dawn setting lives in these two places:
     and ruby next), enamel, and HRD Antwerp as one of the leading diamond institutes. Beyond the
     old site’s facts it uses only general public ones. The enamel is not described as fired:
     whether it is vitreous or cold enamel has not been confirmed.
-  - The questions answer only what is known: gold, engraving, delivery carriers, the shop.
-    Returns, payment methods, warranty, opening hours and delivery prices wait for the
-    owner — do not answer them from assumption.
+  - **The questions were rebuilt 2026-09-30, at the owner's request**: "remove От какво
+    злато са бижутата and Може ли да правите гравюри keep the other ones and add something
+    that will really help someone with the products i sell". Those two went; Как доставяте
+    поръчките and Мога ли да видя бижутата на живо stayed untouched.
+    - **Six added, in the order a buyer needs them** -- choosing, then making and sending,
+      then seeing it in person: Как да разбера своя размер на пръстена (millimetre sizes,
+      and the two ways to measure), Истински ли са камъните (HRD Antwerp, and which stones
+      the shop works with), Ще потъмнее ли среброто (925 with rhodium plating), Как да се
+      грижа за бижуто си (the same four care lines the product page carries), Колко време
+      отнема изработката (made to order, 5-20 working days), Мога ли да върна бижу (14
+      days). Eight rows in all.
+    - **Every answer is a fact already in this file.** Nothing is said about the delivery
+      price, the warranty, or whether rhodium can be re-plated -- none of those is settled,
+      and the last one in particular reads like a service promise if stated loosely.
+      The gold question went, so 585 against 750 is no longer answered here; it is still
+      explained in Нашите материали directly above on the same page, and in Качество и
+      детайли on the product page.
+    - **The same section now ends the product page too** ("add this when we open some
+      product to see it"), after Може да ви хареса. Confirmed live on Пръстен с верижка:
+      eight rows, the heading, and the first one opens on the right answer.
+      - **It is a second, independent copy.** Shopify block content lives in the template,
+        so `templates/page.about.json` and `templates/product.json` each hold their own
+        set -- **a change to one has to be made to the other**, or the two drift. Pointing
+        both at one Shopify page is not an option: a `collapsible_row` takes a page per
+        row, not per section, which would mean eight pages.
+      - It overlaps the buy box on purpose in two places -- care is also in Качество и
+        детайли, and delivery and returns in Доставка и връщане. The owner asked for the
+        whole section rather than a trimmed one.
   - No photographs yet; the three image halves are flat sand blocks.
 - **Контакти page** (2026-09-14, at the owner’s request, after the reference’s Contact Us):
   `templates/page.contact.json` is the page banner („Как можем да помогнем?“, a line pointing to
