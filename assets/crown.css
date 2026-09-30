@@ -711,7 +711,8 @@ html {
   same way as its other overrides further down this file.
 */
 @media screen and (max-width: 749px) {
-  [id^="shopify-section-"][id$="__silver_teaser"] .banner__buttons .button {
+  [id^="shopify-section-"][id$="__silver_teaser"] .banner__buttons .button,
+  [id^="shopify-section-"][id$="__new_arrivals"] .banner__buttons .button {
     min-height: 4.4rem;
     font-size: 1.2rem;
   }
@@ -787,12 +788,21 @@ html {
   with "shopify-section-") matches, not the banner's own (which starts with
   "Banner-").
 */
-[id^="shopify-section-"][id$="__silver_teaser"] {
+/*
+  НОВО ПРИ НАС takes the same gap, 2026-09-30. The owner has now asked for
+  space three separate times where two sections met flush, so 40px with 30px
+  on phones is the standing value on this site rather than a decision to be
+  retaken per section. Two banners of the same family still read as a pair
+  with it; without it they read as one long band.
+*/
+[id^="shopify-section-"][id$="__silver_teaser"],
+[id^="shopify-section-"][id$="__new_arrivals"] {
   margin-top: 3rem;
 }
 
 @media screen and (min-width: 750px) {
-  [id^="shopify-section-"][id$="__silver_teaser"] {
+  [id^="shopify-section-"][id$="__silver_teaser"],
+  [id^="shopify-section-"][id$="__new_arrivals"] {
     margin-top: 4rem;
   }
 }
@@ -937,7 +947,8 @@ html {
   own square corners, are both untouched.
 */
 @media screen and (min-width: 750px) {
-  [id^="shopify-section-"][id$="__silver_teaser"] .banner__buttons .button {
+  [id^="shopify-section-"][id$="__silver_teaser"] .banner__buttons .button,
+  [id^="shopify-section-"][id$="__new_arrivals"] .banner__buttons .button {
     min-width: 36rem;
     min-height: 6.8rem;
     font-size: 1.5rem;
@@ -968,7 +979,8 @@ html {
   `3rem` -- still past the atelier ceiling, just not by as much.
 */
 @media screen and (min-width: 750px) {
-  [id^="shopify-section-"][id$="__silver_teaser"] .banner__heading.h2 {
+  [id^="shopify-section-"][id$="__silver_teaser"] .banner__heading.h2,
+  [id^="shopify-section-"][id$="__new_arrivals"] .banner__heading.h2 {
     font-size: 3rem;
   }
 }
