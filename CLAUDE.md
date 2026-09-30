@@ -2385,7 +2385,9 @@ Anything of ours that is not a Dawn setting lives in these two places:
       it, so adding it before a Таблица с размери page exists would put a button on the
       page that opens onto nothing. It goes in the moment the page does -- one line in the
       template. The size picker itself already works: the ring product's own variants are
-      54-60, the millimetre circumference, which is the right system for Bulgaria.
+      54-60, European ring numbers (the owner's own words: "we are working with the europe
+      sizes for example 50 51 52 53"), not millimetres -- an earlier version of this note said
+      millimetres and was wrong.
     - **Reviews**: the owner chose Judge.me's free plan (2026-09-22). The theme side is
       already done -- Dawn's `rating` block reads `product.metafields.reviews.rating`,
       which Judge.me writes, and prints nothing until there are reviews, and the card
@@ -2987,8 +2989,8 @@ Anything of ours that is not a Dawn setting lives in these two places:
     that will really help someone with the products i sell". Those two went; Как доставяте
     поръчките and Мога ли да видя бижутата на живо stayed untouched.
     - **Six added, in the order a buyer needs them** -- choosing, then making and sending,
-      then seeing it in person: Как да разбера своя размер на пръстена (millimetre sizes,
-      and the two ways to measure), Истински ли са камъните (HRD Antwerp, and which stones
+      then seeing it in person: Как да разбера своя размер на пръстена (European ring numbers, tried on in the shop with numbered sample rings; no
+      at-home method is given, because the owner has not supplied one), Истински ли са камъните (HRD Antwerp, and which stones
       the shop works with), Ще потъмнее ли среброто (925 with rhodium plating), Как да се
       грижа за бижуто си (the same four care lines the product page carries), Колко време
       отнема изработката (made to order, 5-20 working days), Мога ли да върна бижу (14
@@ -3344,7 +3346,7 @@ data, not theme files:
     English. The type-by-stone collections need it set to Пръстени, Обеци, Висулки, Гривни
     or Комплекти.
   - **Descriptions are one word** ("Пръстен", "Обеци") or empty.
-  - Ring sizes are already right: 54-60, the millimetre circumference. One variant reads
+  - Ring sizes are already right: 54-60, European ring numbers. One variant reads
     "54 55", which looks like a typo for 54.
 - **Gold-colour swatches: fixed on Пръстен с верижка, confirmed live 2026-09-25.** The gap
   was store data, not the theme — `templates/product.json` already had the variant picker's
