@@ -160,11 +160,89 @@
     var next = root.querySelector('.stones__arrow--next');
     if (!track || !prev || !next) return;
 
-    var items = [].slice.call(track.querySelectorAll('.stones__item'));
-    if (!items.length) return;
+    var originals = [].slice.call(track.querySelectorAll('.stones__item'));
+    if (!originals.length) return;
+
+    var items = originals.slice();
+    var clones = [];
+    var setWidth = 0;
+    var settle;
 
     function scrollable() {
       return track.scrollWidth - track.clientWidth > 1;
+    }
+
+    function looped() {
+      return clones.length > 0;
+    }
+
+    // Where the first real stone sits when it is the centred one.
+    function home() {
+      var first = originals[0];
+      return first.offsetLeft - (track.clientWidth - first.offsetWidth) / 2;
+    }
+
+    // Move the scroll position without the snap engine fighting it. The content
+    // at the old and new positions is identical, so nothing appears to happen.
+    function shift(delta) {
+      if (!delta) return;
+      track.style.scrollSnapType = 'none';
+      track.scrollLeft += delta;
+      void track.offsetHeight;
+      track.style.scrollSnapType = '';
+    }
+
+    // moonmagic runs Swiper with loop: true, so their row has no last stone --
+    // the first simply follows it. Swiper does that by duplicating slides, and
+    // so does this: one whole set before the real stones and one after. The
+    // scroll position is then stepped back by exactly one set whenever it
+    // drifts out of the middle, which is invisible because what sits either
+    // side is the same six stones.
+    function buildLoop() {
+      if (looped()) return;
+      var before = document.createDocumentFragment();
+      var after = document.createDocumentFragment();
+
+      originals.forEach(function (item) {
+        [before, after].forEach(function (frag) {
+          var clone = item.cloneNode(true);
+          // A copy is scenery, not a second link to the same collection.
+          clone.setAttribute('aria-hidden', 'true');
+          clone.classList.add('stones__item--clone');
+          clone.removeAttribute('id');
+          var link = clone.querySelector('a');
+          if (link) link.setAttribute('tabindex', '-1');
+          frag.appendChild(clone);
+          clones.push(clone);
+        });
+      });
+
+      track.insertBefore(before, track.firstChild);
+      track.appendChild(after);
+      items = [].slice.call(track.querySelectorAll('.stones__item'));
+      setWidth = items[originals.length].offsetLeft - items[0].offsetLeft;
+      centreOn(originals[0], false);
+    }
+
+    function teardownLoop() {
+      if (!looped()) return;
+      clones.forEach(function (clone) {
+        if (clone.parentNode) clone.parentNode.removeChild(clone);
+      });
+      clones = [];
+      items = originals.slice();
+      setWidth = 0;
+    }
+
+    // Fold any position back to within half a set of home, in one assignment
+    // rather than a loop, so a long fling needs no repeated correcting.
+    function normalise() {
+      if (!looped() || !setWidth) return;
+      var base = home();
+      var drift = track.scrollLeft - base;
+      var folded = ((drift % setWidth) + setWidth) % setWidth;
+      if (folded > setWidth / 2) folded -= setWidth;
+      shift(base + folded - track.scrollLeft);
     }
 
     // Which stone is nearest the middle of the track right now. The scaling is
@@ -184,40 +262,52 @@
       return best;
     }
 
+    function markCentred(index) {
+      items.forEach(function (item, i) {
+        item.classList.toggle('stones__item--centred', i === index);
+      });
+    }
+
+    function centreOn(item, smooth) {
+      var left = item.offsetLeft - (track.clientWidth - item.offsetWidth) / 2;
+      track.scrollTo({ left: left, behavior: smooth ? 'smooth' : 'auto' });
+    }
+
     function update() {
       var on = scrollable();
       [prev, next].forEach(function (button) {
         button.hidden = !on;
       });
       if (!on) {
+        teardownLoop();
         items.forEach(function (item) { item.classList.remove('stones__item--centred'); });
         return;
       }
-      var centre = centredIndex();
-      items.forEach(function (item, i) {
-        item.classList.toggle('stones__item--centred', i === centre);
-      });
+      buildLoop();
+      markCentred(centredIndex());
     }
 
-    // moonmagic runs Swiper with loop: true, so their arrows never stop -- the
-    // one after the last stone is the first again. Ours wraps the same way
-    // rather than disabling at an end.
     function go(direction) {
-      var target = (centredIndex() + direction + items.length) % items.length;
-      var item = items[target];
-      var left = item.offsetLeft - (track.clientWidth - item.offsetWidth) / 2;
+      var target = centredIndex() + direction;
+      if (target < 0 || target > items.length - 1) return;
       var smooth = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      track.scrollTo({ left: left, behavior: smooth ? 'smooth' : 'auto' });
+      centreOn(items[target], smooth);
       // Scroll events are frame-driven, so mark the new centre straight away
       // rather than waiting for one to arrive.
-      items.forEach(function (el, i) {
-        el.classList.toggle('stones__item--centred', i === target);
-      });
+      markCentred(target);
     }
 
     prev.addEventListener('click', function () { go(-1); });
     next.addEventListener('click', function () { go(1); });
-    track.addEventListener('scroll', update, { passive: true });
+
+    track.addEventListener('scroll', function () {
+      markCentred(centredIndex());
+      // Only ever step the position once the row has come to rest: doing it
+      // mid-gesture or mid-animation is what makes a looped carousel stutter.
+      clearTimeout(settle);
+      settle = setTimeout(normalise, 140);
+    }, { passive: true });
+
     if ('ResizeObserver' in window) new ResizeObserver(update).observe(track);
     window.addEventListener('resize', update);
 
