@@ -288,6 +288,10 @@
     }
 
     function go(direction) {
+      // A tap is a discrete thing, at rest, so fold home before stepping.
+      // Leaving it to the debounce lets a fast tapper outrun the fold and
+      // walk off the end of the clones, where the row stops dead.
+      normalise();
       var target = centredIndex() + direction;
       if (target < 0 || target > items.length - 1) return;
       var smooth = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
