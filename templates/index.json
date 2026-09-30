@@ -464,6 +464,46 @@
         "show_text_below": true
       }
     },
+    "new_arrivals": {
+      "type": "image-banner",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "НОВО ПРИ НАС",
+            "heading_size": "h2"
+          }
+        },
+        "buttons": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Вижте новото",
+            "button_link_1": "/collections/all?sort_by=created-descending",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "buttons"
+      ],
+      "settings": {
+        "video_url": "",
+        "image_overlay_opacity": 0,
+        "image_height": "medium",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-right",
+        "desktop_content_alignment": "left",
+        "show_text_box": false,
+        "color_scheme": "scheme-5",
+        "stack_images_on_mobile": false,
+        "mobile_content_alignment": "left",
+        "show_text_below": true
+      }
+    },
     "atelier": {
       "type": "atelier",
       "settings": {
@@ -591,6 +631,7 @@
     "category_mosaic",
     "benefits",
     "silver_teaser",
+    "new_arrivals",
     "atelier",
     "design_teaser",
     "materials_teaser",
