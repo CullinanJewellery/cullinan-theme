@@ -74,8 +74,21 @@
    centred (`swiper-slide-active > a { transform: scale(1.25) }`, 1.15 on a
    phone). The outcome is copied and the trigger is ours; 1.15 is the gentler of
    their two numbers, which is what "a little bit bigger" asked for. A transform
-   does not move its neighbours, so no stone shifts when another one grows. */
-a.stones__tile:hover,
+   does not move its neighbours, so no stone shifts when another one grows.
+
+   Only where a real pointer exists. A touch screen fires :hover on a tap, and
+   on iOS it stays fired until something else is tapped -- so this rule, written
+   unscoped, meant catching ANY stone on a phone made it grow. That is a
+   different thing from the middle one growing, which is what was asked for and
+   which lives in the phone block further down. */
+@media (hover: hover) {
+  a.stones__tile:hover {
+    transform: scale(1.15);
+  }
+}
+
+/* Keyboard focus only -- :focus-visible does not match a tap, so this is safe
+   to leave at every width. */
 a.stones__tile:focus-visible {
   transform: scale(1.15);
 }
