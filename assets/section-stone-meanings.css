@@ -228,6 +228,12 @@ a.stones__tile:hover .stones__name {
   .stones__viewport {
     display: block;
     position: relative;
+    /* Out of page-width and back in again by the arrow's own width, which is
+       exactly moonmagic's structure: the row runs the full screen, the arrows
+       live in a gutter of their own, and the track sits between them. Laying
+       the arrows over the track instead put a chevron on top of a stone. */
+    margin-inline: -1.5rem;
+    padding-inline: 2.6rem;
   }
 
   .stones__arrow {
@@ -236,7 +242,10 @@ a.stones__tile:hover .stones__name {
     justify-content: center;
     position: absolute;
     z-index: 1;
-    width: 3.6rem;
+    /* The gutter's own width, so the chevron never reaches a stone.
+       moonmagic's is 20px; this is wider, and taller than it is wide, which is
+       where the tap area comes from. */
+    width: 2.6rem;
     /* A real tap target, taller than the chevron it draws. */
     height: 4.8rem;
     /* Centred on the picture rather than on the whole card: the track's own
@@ -269,8 +278,8 @@ a.stones__tile:hover .stones__name {
 
   /* moonmagic draws its own at 30px; 2.8rem is the same weight of mark. */
   .stones__arrow svg {
-    width: 2.8rem;
-    height: 2.8rem;
+    width: 2.6rem;
+    height: 2.6rem;
   }
 
   .stones__grid {
@@ -297,11 +306,11 @@ a.stones__tile:hover .stones__name {
      resolves against the track's own content width, so it stays correct
      whatever the arrows leave. */
   .stones__item:first-child {
-    margin-inline-start: calc((100% - 11rem) / 2);
+    margin-inline-start: calc((100% - 10.6rem) / 2);
   }
 
   .stones__item:last-child {
-    margin-inline-end: calc((100% - 11rem) / 2);
+    margin-inline-end: calc((100% - 10.6rem) / 2);
   }
 
   /* The stone in the middle grows, words and all -- moonmagic scales whichever
@@ -322,7 +331,7 @@ a.stones__tile:hover .stones__name {
      their 3.05, which is what cut the neighbours in half. 11rem is their exact
      item, and the type came down to 14px to fit inside it instead. */
   .stones__item {
-    flex: 0 0 11rem;
+    flex: 0 0 10.6rem;
     scroll-snap-align: center;
   }
 
@@ -343,6 +352,10 @@ a.stones__tile:hover .stones__name {
      two words that wrap, so they never had to choose. */
   .stones__meaning {
     font-size: 1.4rem;
+    /* ДЪЛБОЧИНА is 104px at 14px with the 0.08em the rest of the site uses,
+       which is more than this stone is wide. Half the tracking buys 5px and
+       it fits with room over. */
+    letter-spacing: 0.04em;
   }
 
   .stones__name {
