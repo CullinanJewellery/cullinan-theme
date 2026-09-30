@@ -1250,6 +1250,28 @@ Anything of ours that is not a Dawn setting lives in these two places:
         code**: `ResizeObserver` callbacks and `resize` events are frame-driven like
         everything else, and it produces no frames. Dispatching one `resize` by hand tore
         them down immediately. Worth knowing before reading that as a bug again.
+  - **A tap grew a stone on a phone, and that was a bug rather than the thing that was
+    asked for** (2026-09-30, the owner: "i don't like it when when i catch for example one of
+    the stones(this is just for a phone) to get bigger"). The hover rule had been written
+    **unscoped**, so it applied at every width -- and a touch screen fires `:hover` on a tap,
+    which on iOS then stays fired until something else is tapped. So catching any stone made
+    it grow and stay grown, which is a different thing entirely from the middle one growing.
+    - **Gated behind `@media (hover: hover)`**, the capability rather than a width, so a
+      touch laptop behaves correctly too and a narrow desktop window keeps its hover.
+      `:focus-visible` stays at every width -- it never matches a tap, only keyboard focus.
+    - **The centred growth is untouched**, since that is what the owner asked for a round
+      earlier: it lives in the phone block and is driven by which stone is nearest the centre
+      of the track, never by touching one.
+    - **Checked on a real touch profile**, not just a narrow window: the preview pane's mobile
+      preset reports `maxTouchPoints: 5` with `(hover: hover)` and `(pointer: fine)` both
+      false, and on it the `:hover` scale rule is **not in the active stylesheet at all** --
+      nothing can grow a stone on tap -- while Циркон, the centred one, still reads
+      `matrix(1.15, ...)` and every other stone `none`. At 1440 with `maxTouchPoints: 0` a
+      real hover on Рубин gives `matrix(1.15, ...)` and every other stone `none`, so the
+      pointer behaviour is unchanged.
+    - **`a.stones__tile:hover .stones__name` still underlines on tap**, since it has the same
+      defect and was deliberately left alone -- the owner named the growing, not the
+      underline. One line to gate it the same way if it ever bothers them.
 
 - **Hero facts.** `sections/hero-facts.liquid` with `assets/section-hero-facts.css`. The
   short claims under the hero. Its own section, not Dawn's multicolumn — Dawn loads section
