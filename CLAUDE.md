@@ -1922,6 +1922,25 @@ Anything of ours that is not a Dawn setting lives in these two places:
     - Measured first in a local mock-up, while the preview link was expired, then confirmed on
       the new preview the same day: a 72px bar, 12px above and below the logo, the menu words at
       700 and 6.9px below the bar’s centre on their capitals, the icons at a 0.9 stroke.
+- **A bold pink line under the header's search, profile and bag icons on hover, 2026-10-01**
+  ("i want it to underline in bold pink line"). A 3px `::after` in **`#E6BAB9`**, moonmagic's
+  own pink and this site's existing hover pink, that grows out from the middle with
+  `scaleX`, so nothing in the bar moves. **Not `#F3E1DB`**: the footer's paler pink would be
+  nearly invisible as a line that thin on the off-white bar.
+  - Each icon is a 44px box with the glyph centred, so the line sits 3px up from the bottom of
+    the box, clear of all three -- the bag is drawn larger than the other two and ends lower.
+  - **The profile icon is `position: static` by default**, so it had to be made relative or
+    the line would have attached to the page instead of the icon.
+  - Gated behind `@media (hover: hover)` so a tap on a phone does not leave a line stuck
+    under an icon, the same defect found on the stones row. The menu button is excluded: the
+    owner named three icons and it only exists on phones.
+  - Checked live with a real hover: the bag reads `scaleX(1)`, 3px, `rgb(230,186,185)`, and
+    the other two `scaleX(0)`.
+  - **The stylesheet push was dropped once more** -- the seventh time. Still the old `?v=`
+    after over a minute; one word changed in a comment and it landed at once. **My check for
+    it also misfired first**: I searched the served CSS for `e6bab9` and found it, but that
+    colour was already there twice from the add-to-cart hover, so a match proved nothing.
+    Search for something only the new rule contains.
 - **Wordmark on phones.** (Only without a logo image — one has been set since 2026-09-15.) Until a logo image is uploaded the header prints `shop.name` in
   spaced capitals. Below 750px its size follows the room Dawn’s header grid leaves it
   (viewport minus about 235px of icons and gutters) and tops out at 20px; without that,
@@ -3044,6 +3063,23 @@ Anything of ours that is not a Dawn setting lives in these two places:
       from the product section's own bottom edge, which includes its padding. Confirmed on
       two products, the ring and the bracelet. It lives in `templates/product.json`, so it
       applies to every product.
+    - **The ring size question shows only on rings, 2026-10-01** ("make it appear just for
+      rings and in За нас"). A FAQ row cannot be conditional by itself, so
+      `sections/collapsible-content.liquid` gained an optional **Show only for this product
+      type or collection** setting on each row. Empty, the row always shows -- which is every
+      row on the About page, where `product` is nil. Filled, on a product page it shows only
+      when the product's type, or the title or handle of a collection it belongs to, matches
+      (compared lower-cased, so Cyrillic case does not matter).
+      - **Both are checked because product types are empty on this store** -- all four test
+        products read `type: ""` except one misspelt "earings" -- while collections are real:
+        the ring is in Пръстени and the bracelet in Гривни. A product type will work as soon
+        as the owner sets one, and is what the type-by-stone collections need anyway.
+      - Set to `Пръстени` on the product page's ring size row only. **Live on all four test
+        products**: the ring shows seven rows and the bracelet, earrings and pendant six,
+        and the About page keeps all seven.
+      - **Real rings must be in the Пръстени collection, or have Product type Пръстени**, or
+        the row will silently not show on them. Worth knowing when real products are loaded.
+      - Pushed in two steps, section then template, per the validator lag.
   - No photographs yet; the three image halves are flat sand blocks.
 - **Контакти page** (2026-09-14, at the owner’s request, after the reference’s Contact Us):
   `templates/page.contact.json` is the page banner („Как можем да помогнем?“, a line pointing to
