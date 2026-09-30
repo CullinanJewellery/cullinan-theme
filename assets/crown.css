@@ -505,6 +505,51 @@ html {
   stroke-width: 0.9;
   stroke-linejoin: round;
 }
+/*
+  A bold pink line under the search, profile and bag icons on hover, at the
+  owner's request (2026-10-01). #E6BAB9 is moonmagic's own pink, read off their
+  Add to bag hover and already this site's hover pink; the footer's paler
+  #F3E1DB would be close to invisible as a 3px line on the off-white bar.
+
+  Drawn as a pseudo-element that grows out from the middle, so nothing in the
+  bar moves and no extra markup is needed. Each icon is a 44px box with its
+  glyph centred, so the line sits 3px up from the bottom of that box, clear of
+  all three glyphs -- the bag is drawn larger than the other two and ends lower.
+  The profile icon is position: static by default and has to be made relative
+  or the line would attach to the page instead of the icon.
+
+  Only where a real pointer exists, so a tap on a phone does not leave a line
+  stuck under an icon (see the hover rule on the stones row). The menu button
+  is left out: the owner named three icons and it only exists on phones.
+*/
+.header .header__icon:not(.header__icon--menu) {
+  position: relative;
+}
+
+.header .header__icon:not(.header__icon--menu)::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0.3rem;
+  width: 2.4rem;
+  height: 0.3rem;
+  background: #E6BAB9;
+  transform: translateX(-50%) scaleX(0);
+  transition: transform 0.2s ease-in-out;
+  pointer-events: none;
+}
+
+@media (hover: hover) {
+  .header .header__icon:not(.header__icon--menu):hover::after {
+    transform: translateX(-50%) scaleX(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header .header__icon:not(.header__icon--menu)::after {
+    transition: none;
+  }
+}
 
 /*
   Phones: a more compact bar (2026-09-15, at the owner's request), 47px
