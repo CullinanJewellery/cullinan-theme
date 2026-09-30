@@ -869,7 +869,8 @@ html {
   above, so the hero's own picture is untouched.
 */
 @media screen and (min-width: 750px) {
-  [id^="shopify-section-"][id$="__silver_teaser"] .banner__media {
+  [id^="shopify-section-"][id$="__silver_teaser"] .banner__media,
+  [id^="shopify-section-"][id$="__new_arrivals"] .banner__media {
     clip-path: inset(0 10% 0 10%);
   }
 }
@@ -895,7 +896,8 @@ html {
   ("a little bit closer") to `1%`.
 */
 @media screen and (min-width: 750px) {
-  [id^="shopify-section-"][id$="__silver_teaser"] .banner__content {
+  [id^="shopify-section-"][id$="__silver_teaser"] .banner__content,
+  [id^="shopify-section-"][id$="__new_arrivals"] .banner__content {
     padding-left: 1%;
   }
 }
@@ -914,8 +916,19 @@ html {
   nothing here needs undoing by hand then.
 */
 @media screen and (min-width: 750px) {
-  [id^="shopify-section-"][id$="__silver_teaser"] .banner__media--empty {
+  [id^="shopify-section-"][id$="__silver_teaser"] .banner__media--empty,
+  [id^="shopify-section-"][id$="__new_arrivals"] .banner__media--empty {
     display: block;
+  }
+
+  /* On this band the slot also needs a tone of its own, or the cut cannot be
+     seen at all: .banner__media--empty is rgb(242 240 236) everywhere on the
+     site, which is #F2F0EC -- exactly scheme-2's own background -- so the
+     placeholder and the ground would match to the pixel. Sand is scheme-5's
+     own token rather than a new colour, and Dawn only adds --empty when there
+     is no image, so this disappears by itself once a photograph is set. */
+  [id^="shopify-section-"][id$="__new_arrivals"] .banner__media--empty {
+    background-color: #E7E1D6;
   }
 }
 
