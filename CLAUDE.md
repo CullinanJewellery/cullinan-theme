@@ -951,17 +951,32 @@ Anything of ours that is not a Dawn setting lives in these two places:
     `border-radius: 0`, and ours sit one directly above the other, so a pill on the lower one
     read as an accident. It joins the silver banner's existing rule rather than getting one
     of its own.
-  - **Flush against the silver banner, no gap**, matching their own stack -- two sections of
-    the same family reading as a pair. `image-banner` has no margin setting, so if a gap is
-    ever wanted it is the scoped rule the silver banner already uses for its own top margin.
-  - **Three differences from its sibling left deliberately open**, since the owner asked for
-    moonmagic rather than for a match to the banner above: the heading is **57px against the
-    silver banner's 30px** (this one takes `.banner__heading`'s shared clamp; that one was
-    tuned down by hand over several rounds), the button is **72 x 22 against 68 x 15** (this
-    one is moonmagic's exact size; that one was matched to Вижте всички at the owner's
-    request), and **both bands are scheme-5**, where moonmagic gives its two different
-    grounds (`#f2d9d1` and `#faf8f4`). A photograph covers the ground on both once one is
-    uploaded, so the last only shows until then.
+  - **It matches the silver banner exactly, and it has the gap** -- both corrected within the
+    hour, at the owner's own prompt ("make the heading and button the same size as the silver
+    banner also what did i tell you about the space between the sections").
+    - **Heading and button read what the silver banner reads, at every width**: 3rem heading
+      from 750px up, a 36rem x 6.8rem button at 1.5rem, 4.4rem at 1.2rem on phones. Each one
+      **joins the silver banner's own existing rule** rather than getting a duplicate set, so
+      the two cannot drift apart when either is next tuned. Confirmed live at 1440 and 375:
+      identical heading size and identical button box on both.
+    - **The gap was the real mistake, and it was a mistake of process rather than of taste.**
+      This shipped flush against the silver banner, matching moonmagic's own stack, with the
+      difference merely flagged for the owner to notice. But space where two sections meet
+      had already been asked for three separate times -- the benefits row against the silver
+      banner, the atelier bands against their neighbours, and the stones band against both of
+      its own -- always answered with the same 40px, 30px on phones. **That makes it a
+      standing value on this site, not a decision to retake per section.** Flagging a known
+      answer instead of applying it is what the owner was pointing at.
+    - Measured after the fix, on what actually paints rather than on the section wrappers:
+      benefits to silver **40**, silver to new arrivals **40**, new arrivals to atelier
+      **40**; 30 / 30 / 30 on a phone. The whole run down that part of the page is even.
+      - **Wrapper-to-wrapper would have reported the last gap as 0 and it is not.** The
+        atelier carries its margin on the inner element that paints the band, not on the
+        `#shopify-section-` wrapper, so the wrapper starts flush while the colour starts 40px
+        later. **Measure the painted element, which is the thing the eye sees.**
+  - **One difference from its sibling stands, and only until photography**: both bands are
+    scheme-5, where moonmagic gives its two different grounds (`#f2d9d1` and `#faf8f4`). A
+    photograph covers the ground on both, so this shows only while the slots are empty.
   - **The served stylesheet strips quotes out of attribute selectors.** A check for
     `[id$="__new_arrivals"]` in the live CSS came back empty while the rule was already there
     as `[id$=__new_arrivals]`, and it read as a dropped push. The existing lesson about
