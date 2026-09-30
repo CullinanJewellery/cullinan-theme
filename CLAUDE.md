@@ -1272,6 +1272,39 @@ Anything of ours that is not a Dawn setting lives in these two places:
     - **`a.stones__tile:hover .stones__name` still underlines on tap**, since it has the same
       defect and was deliberately left alone -- the owner named the growing, not the
       underline. One line to gate it the same way if it ever bothers them.
+  - **The size change on an arrow tap was not smooth, and there were two causes**
+    (2026-09-30, the owner: "i can double click for some reason on the arrows and there is a
+    big with them i click on them the pictures size doesn't change smoothly").
+    - **The tap and the scroll handler were fighting over the same class.** `go()` marked the
+      new centre up front, and the scroll handler marks it too as the row moves. For the
+      first half of the animation the **old** stone is still the one nearest the centre, so
+      the handler flipped the class straight back -- the stone scaled up, down, and up again.
+      The tap marks nothing now; the scroll handler alone drives it, so a stone grows on its
+      way into the middle, which is what a finger already did. **The two paths feel the same
+      because they are now literally the same path.**
+      - The pre-marking had been added so the arrows could be *tested* in a preview pane that
+        produces no frames. **A workaround for the test environment had become a defect in
+        the real one** -- worth remembering before doing that again.
+    - **A fold swapped the centred stone for an identical copy with transitions live**, so
+      both ends animated -- the old shrinking out of 1.15 while the new grew into it -- and
+      the stone dipped out of size and back for a fifth of a second. `shift()` now holds a
+      `stones__grid--stepping` class across the swap, which sets `transition: none` on the
+      tiles for that one frame.
+    - **The double-tap is the browser's own zoom gesture**, with a selection and a grey
+      highlight box on top. `touch-action: manipulation` on the arrows keeps the tap and
+      drops the gesture -- and removes the old 300ms wait before a click lands -- with
+      `-webkit-tap-highlight-color: transparent` and `user-select: none` for the rest.
+    - **Checked live at 375, using the frameless pane as the instrument rather than fighting
+      it.** A transition that never advances keeps reporting its *start* value, so a dip
+      shows up as `scale(1)` that never recovers. Parked hard at the end of the clones, one
+      tap folds 2142 to 756 and the newly centred stone reads **`matrix(1.15, ...)`
+      immediately** -- which is only possible with the transition suppressed. The stepping
+      class is cleaned up afterwards, snap is back to `x mandatory`, exactly one stone
+      carries the centred class, and the arrows report `touch-action: manipulation` with
+      `user-select: none`.
+    - **What the pane still cannot show**: the actual smoothness of the crossfade during an
+      arrow's own scroll, since nothing animates there. The cause was read off the code and
+      the fix reasoned from it -- worth a look on a real phone.
 
 - **Hero facts.** `sections/hero-facts.liquid` with `assets/section-hero-facts.css`. The
   short claims under the hero. Its own section, not Dawn's multicolumn — Dawn loads section
