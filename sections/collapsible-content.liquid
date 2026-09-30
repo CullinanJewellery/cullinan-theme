@@ -75,6 +75,31 @@
           {% endif %}
           <div class="grid__item">
             {%- for block in section.blocks -%}
+              {%- comment -%}
+                A row can be limited to one kind of product. Empty, it always shows -- which
+                is every row on a page template, where there is no product at all. Filled,
+                on a product page it shows only when the product's type, or the title or
+                handle of a collection it belongs to, matches. Both are checked because
+                product types are still empty on this store while collections are not.
+              {%- endcomment -%}
+              {%- liquid
+                assign show_row = true
+                assign only_for = block.settings.only_for | strip | downcase
+                if only_for != blank and product
+                  assign show_row = false
+                  assign product_type_lower = product.type | downcase
+                  if product_type_lower == only_for
+                    assign show_row = true
+                  endif
+                  for product_collection in product.collections
+                    assign collection_title_lower = product_collection.title | downcase
+                    if collection_title_lower == only_for or product_collection.handle == only_for
+                      assign show_row = true
+                    endif
+                  endfor
+                endif
+              -%}
+              {%- if show_row -%}
               <div
                 class="accordion{% if section.settings.layout == 'row' %} content-container color-{{ section.settings.container_color_scheme }} gradient{% endif %}"
                 {{ block.shopify_attributes }}
@@ -103,6 +128,7 @@
                   </div>
                 </details>
               </div>
+              {%- endif -%}
             {%- endfor -%}
           </div>
         </div>
@@ -307,6 +333,12 @@
           "id": "heading",
           "default": "t:sections.collapsible_content.blocks.collapsible_row.settings.heading.default",
           "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.heading.label"
+        },
+        {
+          "type": "text",
+          "id": "only_for",
+          "label": "Show only for this product type or collection",
+          "info": "Leave empty to show on every product. Type the exact name, for example Пръстени, and the row appears only on products of that type or in that collection."
         },
         {
           "type": "select",
