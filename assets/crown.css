@@ -896,9 +896,15 @@ html {
   ("a little bit closer") to `1%`.
 */
 @media screen and (min-width: 750px) {
-  [id^="shopify-section-"][id$="__silver_teaser"] .banner__content,
-  [id^="shopify-section-"][id$="__new_arrivals"] .banner__content {
+  [id^="shopify-section-"][id$="__silver_teaser"] .banner__content {
     padding-left: 1%;
+  }
+
+  /* НОВО ПРИ НАС mirrors it: moonmagic puts NEW ARRIVALS on the opposite
+     side from the banner above it, so the same 1% inset is measured from
+     the right edge here instead of the left. */
+  [id^="shopify-section-"][id$="__new_arrivals"] .banner__content {
+    padding-right: 1%;
   }
 }
 
@@ -2091,7 +2097,7 @@ card-swatches {
   margin: 0 0 1.4rem;
   font-family: var(--font-body-family);
   font-style: var(--font-body-style);
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: 600;
   line-height: 1.4;
   letter-spacing: 0.1em;
@@ -2170,7 +2176,7 @@ card-swatches {
 */
 .footer .footer-subscribe__social {
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   gap: 1.6rem;
   align-items: center;
   margin: 1.2rem 0 0;
@@ -2255,7 +2261,7 @@ card-swatches {
   margin: 0 0 1.4rem;
   font-family: var(--font-body-family);
   font-style: var(--font-body-style);
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: 600;
   line-height: 1.4;
   letter-spacing: 0.1em;
@@ -2265,7 +2271,7 @@ card-swatches {
 .footer .footer-links__list .list-menu__item--link {
   display: inline-block;
   padding: 0.6rem 0;
-  font-size: 1rem;
+  font-size: 1.2rem;
   line-height: 1.5;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -2304,8 +2310,6 @@ card-swatches {
   0.1rem to 0.2rem. Still full-width, inside page-width, no side lines.
 */
 .footer .footer__blocks-wrapper {
-  border-top: 0.2rem solid #F3E1DB;
-  border-bottom: 0.2rem solid #F3E1DB;
   padding-top: 3.2rem;
   padding-bottom: 3.2rem;
 }
@@ -2375,7 +2379,7 @@ card-swatches {
     justify-content: space-between;
     gap: 1.6rem;
     padding: 1.8rem 0;
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-weight: 600;
     line-height: 1.4;
     letter-spacing: 0.1em;
