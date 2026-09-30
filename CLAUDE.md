@@ -2793,11 +2793,11 @@ Anything of ours that is not a Dawn setting lives in these two places:
       this section has, since desktop's flat columns have none (see the "no separator lines to
       add there" note above).
     - **The two full-width lines above and below the columns are gone, 2026-09-30**, at
-      the owner's request -- / off ;
-      its 3.2rem padding stays, so the air is there without a drawn line. The column
-      headings and links went 1rem to 1.2rem the same round, and the Facebook/Instagram
-      icons under the newsletter box moved to the **left** of their own line
-      (, reversing the right-alignment set earlier).
+      the owner's request -- `border-top` and `border-bottom` off
+      `.footer__blocks-wrapper`; its 3.2rem padding stays, so the air is there without a
+      drawn line. The column headings and links went 1rem to 1.2rem the same round, and
+      the Facebook/Instagram icons under the newsletter box moved to the **left** of their
+      own line (`justify-content: flex-start`, reversing the right-alignment set earlier).
       „Свържете се с нас“ and the address keep their 0.9rem, named as unchanged.
     - **The hairline under the newsletter box removed, same round, at the owner's request**
       ("remove the line under the email" -- the email prints inside that same block now, see
