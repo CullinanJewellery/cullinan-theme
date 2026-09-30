@@ -1211,6 +1211,45 @@ Anything of ours that is not a Dawn setting lives in these two places:
       Перла 100% / Сапфир 83%, arrow overlap 0 on both sides, arrows `rgb(0, 0, 0)` and still
       exactly on the picture's centre line, nothing spilling, no page overflow. Confirmed by
       eye as well as by measurement.
+  - **A real circle, not a jump back to the start** (2026-09-30, the owner: "if you look at
+    their section and go to their last stone they don't hava an end it just apears the first
+    one it is like a circle that isn't ending"). The arrows already wrapped, but **wrapping
+    is a jump**: the row scrolled the whole way back to the beginning and you watched it go.
+    moonmagic has no last stone at all -- their Swiper runs `loop: true`, which duplicates
+    slides, so the first simply follows the last, for a finger as much as for the arrows.
+    - **So this duplicates them too**: one whole set of six before the real stones and one
+      after, cloned in JavaScript rather than in Liquid so the six-column grid on a computer
+      never sees them. Built only when the row is actually a scroller, and torn down again if
+      it stops being one.
+      - **The copies are scenery**: `aria-hidden`, and their links given `tabindex="-1"`, so
+        every stone is still announced and reachable exactly once. The real ones keep no
+        tabindex at all.
+    - **The position is folded back to within half a set of home whenever it drifts**, which
+      is invisible because what sits either side is the same six stones. Done in one
+      assignment (`((d % setW) + setW) % setW`, then take the shorter way round) rather than
+      by stepping in a loop, so even a long fling needs a single correction.
+    - **Two things keep it from juddering.** The fold waits until the row is at rest --
+      debounced 140ms after the last scroll event, never mid-gesture or mid-animation. And
+      `scroll-snap-type` is switched off for the one frame the position moves, so the snap
+      engine cannot fight the step; confirmed live that it is put back to `x mandatory`
+      afterwards rather than left off.
+    - **A bug found by walking it fourteen times, not by reading it.** A tap is discrete and
+      at rest, so leaving it to that debounce was wrong: tapping faster than 140ms outran the
+      fold and walked straight off the end of the clones, where the row **stopped dead on the
+      last stone** -- exactly the fault being fixed. `go()` now folds first, then steps.
+      **Walk a looped carousel further than one lap before believing it.**
+    - **Checked live at 375**: 6 real stones and 12 clones; twenty fast taps forward run
+      Циркон · Диамант · Перла · Сапфир · Рубин · Изумруд · Циркон … three times round with
+      **zero stalls**, and twenty back the same. Parked hard against the very end of the
+      clones, one tap folds to home **still showing the same stone**, so the fold cannot be
+      seen, and it keeps going from there.
+    - **Checked live at 1440**: a fresh desktop load builds no clones at all -- six stones,
+      six columns, arrows `display: none` -- and resizing a real window from narrow to wide
+      tears them down, 18 items back to 6 with the centred class cleared.
+      - The preview pane showed clones left over on a computer, which is **the pane, not the
+        code**: `ResizeObserver` callbacks and `resize` events are frame-driven like
+        everything else, and it produces no frames. Dispatching one `resize` by hand tore
+        them down immediately. Worth knowing before reading that as a bug again.
 
 - **Hero facts.** `sections/hero-facts.liquid` with `assets/section-hero-facts.css`. The
   short claims under the hero. Its own section, not Dawn's multicolumn — Dawn loads section
