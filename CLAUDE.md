@@ -3256,8 +3256,8 @@ Anything of ours that is not a Dawn setting lives in these two places:
     Judge.me's paid plan (its corner and layout options are paid; its five colour settings
     are free but are one more Admin job): the title centred, 24px bold, in the questions'
     own voice; the button black, square, small capitals, 4.8rem, emptying to an outline on
-    hover and tap like every other button; the stars the muted gold `#8C6A2E` (scheme-4,
-    "accents only", and a star is one); black words; square corners; and the
+    hover and tap like every other button; the stars our pink `#E6BAB9` (muted gold `#8C6A2E`,
+    scheme-4's, until 2026-10-01 -- see Pink stars, below); black words; square corners; and the
     "no items found" line hidden while the invitation is showing, since it says the same
     thing worse. Checked at 1440 and 375: no overflow, title and button on the page centre.
     - **How it reaches the widget, measured rather than assumed.** The new widget
@@ -3284,6 +3284,65 @@ Anything of ours that is not a Dawn setting lives in these two places:
       the same lesson as under Buttons lift up on hover.
     - **Escape did not close the form** in the pane (it stayed open), so the page was
       reloaded instead, which discards it. Nothing was submitted at any point.
+  - **Pink stars, smaller, and the form's own wording, 2026-10-01** (the owner: "make the stars
+    pink but the pink we use, also make them a little bit smaller like moonmagic, and the text a
+    little bit smaller, and change the text something like theirs but without the Already loved
+    by 600,000+ women worldwide"). **A reading, not a certainty**: that phrase is on neither
+    moonmagic's product page nor their widget but in their **write-a-review form** -- title
+    "Love it? Tell us why", intro "Already loved by 600,000+ women worldwide - now we'd love to
+    know how your piece makes you feel." So "the text" was taken to mean the form's words, and
+    "the stars" every star Judge.me and Dawn draw.
+    - **The pink is `#E6BAB9`**, the pink the site already uses on the Add to cart hover and the
+      header icons (moonmagic's own, `rgb(230, 186, 185)` on their stars), replacing gold. Changed
+      at its source -- the two star variables, the form's star rule, the histogram bar -- not
+      with a new rule, which would have tied the old one on specificity and lost on order.
+    - **"Smaller like moonmagic" came out as smaller than moonmagic.** Measured on both at 1440
+      and 375: the two forms are the same size -- title 24px, intro 16px, product name 18px, stars
+      48px -- because it is the same Judge.me form. Ours read bigger for two reasons that were
+      ours: the site's 0.6px letter-spacing, which the form inherits from `<body>` and theirs
+      does not (reset with `letter-spacing: normal`), and a long Bulgarian title that wrapped to
+      two lines on a phone. So the sizes went down a step rather than to a match: stars 48px to
+      40px (their box and gap with them, so the row and its "Слаб" / "Отличен" labels stay lined
+      up), title 22px, intro 15px, product name 16px.
+    - **The widget is sized in em from its own root, so one value does the lot**: text 1em,
+      .875em and .75em, headings 1.25em and 1.5em, the stars 1.5em on a card and .8em in the
+      summary. `font-size: 1.5rem` on `.jm-review-widget`, down from 16px. Read live: the root
+      is 15px and the sizes resolve to 15, 13.1, 11.3, 18.8 and 22.5px. The title "Отзиви от
+      клиенти" keeps its own 24px.
+    - **The words are swapped, not set.** Judge.me draws the form's title and intro as plain
+      text with no setting for them in the theme, so they change the way its own injected
+      styles change its other strings: the original is hidden (`visibility: hidden` with
+      `font-size: 0`, so it takes no room and a screen reader does not read both) and the new
+      line is a `::before`. Scoped to the first page of the form only
+      (`__page--review-form-intro`), because the later pages use the same `__title` class for
+      their own headings. „Харесва ли ви? Кажете ни защо“ and „Ще се радваме да научим какво ви
+      кара да се чувствате с вашето бижу.“ -- the invitation kept, the 600,000+ claim dropped,
+      since no such number exists here. Fails soft like the rest: if Judge.me renames those
+      classes, the rule stops matching and its own Bulgarian comes back.
+    - **Dawn's own stars as well** -- the rating under the product title and on the cards,
+      which Dawn draws itself from the `reviews.rating` metafield Judge.me writes: pink, and
+      17px to 15px on the product, 14px to 12px on a card. They print only once a product has a
+      rating, so this was written ahead of the first review.
+    - **Checked live.** Desktop form, page 1: title 22px with the new words, intro 15px on one
+      line, stars 43 x 40 in `rgb(230, 186, 185)`. Page 2, reached by picking five stars: none of
+      the new wording on it, the same pink stars at 40px, product name 16px, field label 14px.
+      375px: the form fills the screen, the title is one line and the intro two, the stars are
+      centred (62px either side), and the page is exactly 375 wide. A mock Dawn rating dropped
+      into the live DOM (never committed): product 15px, card 12px, both pink in the gradient.
+    - **Not looked at, and cannot be yet**: the review cards and the summary stars, which exist
+      only once a real review does. The em sizes above say what they will measure, not what
+      they look like -- still **to be looked at when the first review arrives**.
+    - **Left alone, not asked about**: the form's own body text is Judge.me's `#333`, not the
+      black the widget's words were set to.
+    - **Lessons from the checking.** Shopify's minifier writes non-ASCII `content` strings as
+      hex escapes, so a search of the served stylesheet for „Харесва“ came back empty while the
+      rule was live (`\425\430\440...`) -- the same family as the spaces and quotes noted
+      under Shopify serves CSS minified; read the computed `::before` content instead.
+      Judge.me's stars are `<button class="jdgm-star">`, so `.click()` on the fifth moves the
+      form to page 2, which a coordinate click could not do while screenshots timed out. And
+      in a standard product card the rating lives in `.card-information` (hyphen);
+      `.card__information` (underscore) is a zero-width box, so a mock placed there measured a
+      star 0px wide and read like a bug that was not one.
 
 ## Current state
 
