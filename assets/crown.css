@@ -3534,3 +3534,169 @@ card-swatches {
   font-weight: 700;
 }
 
+
+/* ---------------------------------------------------------------------------
+   Customer reviews (Judge.me), 2026-10-01
+
+   The owner installed Judge.me on its free plan and added its Review Widget as
+   a section under the product (the `apps` section in templates/product.json,
+   which Shopify wrote back to the repository). Judge.me's own look is its
+   default: a 20px regular title at the left, a teal button with soft corners,
+   teal stars, and -- under the invitation to write the first review -- a line
+   saying "no items found". This takes what a visitor sees to the rest of the
+   page: a centred heading in the questions' own voice, a black square button like
+   Add to cart and the Social band, stars in scheme-4's muted gold (#8C6A2E),
+   pure black words. Done in the theme alone, so none of it needs Judge.me's paid
+   plan: its corner and layout options are paid, and its colour settings are free
+   but would have been one more Admin job for the owner.
+
+   How each piece is reached, measured on the live page rather than assumed:
+   - the new widget (`.jm-review-widget`) takes its colours from custom
+     properties written as an INLINE style on its own root, which no ordinary
+     rule can beat; `!important` in a stylesheet does;
+   - the older parts (stars, histogram bars, the verified badge, the write-a-
+     review form) take a hard-coded #108474 from <style> blocks Judge.me injects
+     after this file, so they are overridden by selector, with `body` in front
+     to out-specify them without another `!important`;
+   - everything is scoped to Judge.me's own class names, so it reaches nothing
+     else on the site. If Judge.me renames a class the rule stops matching and
+     that piece falls back to the colours chosen in Judge.me's admin: the page
+     degrades, it does not break.
+
+   Not styled blind: the review cards, the star summary and the photo strip only
+   exist once a real review does. They read the variables below and are to be
+   looked at when the first one arrives.
+   --------------------------------------------------------------------------- */
+
+:root {
+  --jdgm-primary-color: #000000 !important;
+  --jdgm-secondary-color: rgba(0, 0, 0, 0.08) !important;
+  --jdgm-star-color: #8c6a2e !important;
+  --jdgm-write-review-text-color: #ffffff !important;
+  --jdgm-write-review-bg-color: #000000 !important;
+  --jdgm-paginate-color: #000000 !important;
+  --jdgm-reviewer-name-color: #000000 !important;
+}
+
+.jm-review-widget {
+  --jm-review-widget-star-and-histogram-color: #8c6a2e !important;
+  --jm-review-widget-button-color: #000000 !important;
+  --jm-review-widget-button-text-color: #ffffff !important;
+  --jm-review-widget-text-color: #000000 !important;
+  /* Dates and "helpful?": lighter on purpose, but darker than Judge.me's #7B7B7B,
+     which is 4.1:1 on this page's ground; #595959 is 7:1. */
+  --jm-review-widget-lighter-text-color: #595959 !important;
+  --jm-widget-primary-color: #000000 !important;
+  --jm-widget-border-radius: 0 !important;
+  --jm-review-widget-form-button-color: #000000 !important;
+  --jm-review-widget-form-button-text-color: #ffffff !important;
+  --jm-review-widget-form-text-color: #000000 !important;
+}
+
+/* The title: 24px bold like the questions' heading, not Judge.me's 20px regular.
+   The extra `.jm-text` is needed -- Judge.me's own `.jm-text[data-v-...]` rule
+   ties a two-class selector and loads after this file. */
+.jm-review-widget .jm-text.jm-review-widget-minimal-header__title {
+  font-size: 2.4rem;
+  font-weight: 700;
+  letter-spacing: 0.025em;
+  line-height: 1.25;
+}
+
+/* Centred only while there is nothing under it but the invitation. Once a review
+   exists the header becomes Judge.me's own row of title, button and filters. */
+.jm-review-widget .jm-review-widget__header:has(.jm-no-reviews-state) > .jm-cluster:first-child {
+  display: block;
+  text-align: center;
+}
+
+/* The empty list says "no items found" right under "be the first to write a
+   review", which says the same thing worse. Hidden only while that invitation is
+   showing: a filter that matches nothing has no invitation and keeps its line. */
+.jm-review-widget:has(.jm-no-reviews-state) .jdgm-empty-state {
+  display: none;
+}
+
+/* Write a review: black, square, small capitals -- the Add to cart treatment,
+   4.8rem tall. The fill drops to an outline and the button lifts, as on every
+   other button here; a tap reports :hover, so phones get it too. */
+.jm-review-widget .jm-button.jm-button--primary {
+  min-height: 4.8rem;
+  padding: 0 3.2rem;
+  border-radius: 0;
+  font-family: inherit;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background-color: var(--jm-review-widget-button-color);
+  color: var(--jm-review-widget-button-text-color);
+  border: 1px solid var(--jm-review-widget-button-color);
+  transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out,
+    transform 0.2s cubic-bezier(0, 0, 0.3, 1);
+}
+
+.jm-review-widget .jm-button.jm-button--primary:hover,
+.jm-review-widget .jm-button.jm-button--primary:focus-visible {
+  background-color: transparent;
+  color: var(--jm-review-widget-button-color);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .jm-review-widget .jm-button.jm-button--primary:hover,
+  .jm-review-widget .jm-button.jm-button--primary:focus-visible {
+    transform: translateY(-0.25rem);
+  }
+
+  .jm-review-widget .jm-button.jm-button--primary:active {
+    transform: translateY(0);
+  }
+}
+
+/* Stars, histogram bars and the verified badge: hard-coded #108474 in Judge.me's
+   injected styles. Gold for the stars, black for the badge. */
+body .jdgm-star,
+body .jdgm-preview-badge .jdgm-star,
+body .jdgm-histogram .jdgm-star,
+body .jdgm-write-review-modal .jdgm-write-review-modal__stars .jdgm-star,
+body .jdgm-write-review-modal .jdgm-write-review-modal__other-product-stars .jdgm-star {
+  color: #8c6a2e;
+}
+
+body .jdgm-histogram__bar-content {
+  background-color: #8c6a2e;
+}
+
+body .jdgm-rev__buyer-badge.jdgm-rev__buyer-badge,
+body .jdgm-rev[data-verified-buyer=true] .jdgm-rev__icon.jdgm-rev__icon:after {
+  color: #ffffff;
+  background-color: #000000;
+}
+
+/* The write-a-review form: its buttons, chips, checkbox and focus ring, black. */
+body .jdgm-write-review-modal .jdgm-write-review-modal__nav-btn,
+body .jdgm-write-review-modal .jdgm-write-review-modal__btn--contact-us {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+body .jdgm-write-review-modal .jdgm-write-review-modal__btn--leave-review {
+  color: #000000;
+  border-color: #000000;
+}
+
+body .jdgm-write-review-modal .jdgm-write-review-modal__btn--leave-review:hover,
+body .jdgm-write-review-modal .jdgm-write-review-modal__chip-input:checked + .jdgm-write-review-modal__chip-label,
+body .jdgm-write-review-modal .jdgm-write-review-modal__chip-label:hover {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+body .jdgm-write-review-modal .jdgm-write-review-modal__checkbox-input:checked + .jdgm-write-review-modal__checkbox-custom {
+  border-color: #000000;
+  background-color: #000000;
+}
+
+body .jdgm-write-review-modal .jdgm-write-review-modal__field-input:focus {
+  border-color: #000000;
+}
