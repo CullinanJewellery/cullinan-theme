@@ -2218,6 +2218,12 @@ card-swatches {
   colour and shape were already the plain, single-colour, no-button-box
   look moonmagic's own icons use (checked both live), so "cleaner like
   moonmagic" reads as this positioning, not the icon artwork itself.
+
+  Left-aligned on a computer since 2026-09-30 (the owner: the icons belong at the
+  left of the line above them), so the right-alignment described above no longer
+  holds there. Centred on a phone since 2026-10-01 ("for a phone i want the
+  instagram and the facebook icons to be centered not aligned in the left") --
+  the rule for that is the phone block right after the .icon rule below.
 */
 .footer .footer-subscribe__social {
   display: flex;
@@ -2242,6 +2248,12 @@ card-swatches {
   height: 2.4rem;
   min-width: 2.4rem;
   flex: 0 0 auto;
+}
+
+@media screen and (max-width: 749px) {
+  .footer .footer-subscribe__social {
+    justify-content: center;
+  }
 }
 
 @media screen and (min-width: 750px) {
@@ -2332,6 +2344,42 @@ card-swatches {
   text-transform: none;
   letter-spacing: 0.02em;
   overflow-wrap: anywhere;
+}
+
+/*
+  All of the footer's text in pure black, at the owner's request (2026-10-01:
+  "the footer needs the text to be all in black"), another named exception to
+  "no pure white or pure black" beside the newsletter band, the dark buttons,
+  the homepage social heading and the stones row. Measured first: the headings
+  and links were the scheme's near-black (#221F1C, rgb(34, 31, 28)), and the
+  label above the email, the Email field label and the whole bottom row
+  (copyright, policies) 75% of it, which reads as grey.
+
+  Dawn sets those at one or two classes in section-footer.css, which loads from
+  inside the section and so after this file; every selector here is three
+  classes deep, or carries :hover, so none of them loses on order.
+
+  Left alone on purpose: the blue and magenta Facebook/Instagram button labels
+  (the owner asked for those colours, 2026-09-20), the icons, the black
+  newsletter band above the footer, and every hairline.
+*/
+.footer .footer-subscribe__heading,
+.footer .footer-links__heading,
+.footer .footer-links__summary,
+.footer .footer-links__summary span,
+.footer .footer-links__list .list-menu__item--link,
+.footer .footer-links__list .list-menu__item--link:hover,
+.footer .footer-subscribe__email,
+.footer .footer-subscribe__email-link,
+.footer .footer-subscribe__email-link:hover,
+.footer .footer-block--subscribe .field__label,
+.footer .footer-block--subscribe .field__input,
+.footer .copyright__content,
+.footer .copyright__content a,
+.footer .copyright__content a:hover,
+.footer__social--contact .footer__social-heading,
+.footer__social--contact .footer__social-text {
+  color: rgb(0 0 0);
 }
 
 /*
