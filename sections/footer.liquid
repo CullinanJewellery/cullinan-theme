@@ -257,8 +257,15 @@
           instead, and the fix at the time narrowed the condition to
           `template.suffix == 'contact'` rather than to "not index", missing
           every other template in the process.
+
+          Product pages are the other exception (2026-10-01, at the owner's request:
+          "when we open a product Вижте работата ни section is there but i don't want
+          it like that ... for the products i want it like section See It Styled On
+          Instagram"). They carry sections/social-band.liquid instead, set in
+          templates/product.json, so printing this copy as well would put the block
+          on the page twice.
         {%- endcomment -%}
-        {%- unless template.name == 'index' -%}
+        {%- unless template.name == 'index' or template.name == 'product' -%}
           {{- footer_social -}}
         {%- endunless -%}
         {%- if section.blocks.size > 0 or footer_subscribe != blank -%}

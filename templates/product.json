@@ -236,12 +236,23 @@
         "padding_top": 80,
         "padding_bottom": 56
       }
+    },
+    "social_band": {
+      "type": "social-band",
+      "settings": {
+        "color_scheme": "scheme-2",
+        "heading": "Вижте работата ни",
+        "text": "Последвайте @cullinan_jewellery.bg за нови модели и снимки от работата в ателието.",
+        "padding_top": 72,
+        "padding_bottom": 72
+      }
     }
   },
   "order": [
     "main",
     "disclosures",
     "related-products",
-    "faq"
+    "faq",
+    "social_band"
   ]
 }
