@@ -271,10 +271,11 @@ Rules that matter here:
     instead of the theme’s own near-black `#221F1C` -- the owner’s own complaint, “the color
     is not black... the blackest color.” Scoped to the homepage’s own block; see Social follow
     section under Custom code.
-  - **Fourth and fifth, 2026-09-29 and 2026-10-01**: the stones row's two lines (see Stones
-    row) and, at the owner's instruction ("the footer needs the text to be all in black"),
+  - **Fourth, fifth and sixth, 2026-09-29 and 2026-10-01**: the stones row's two lines (see
+    Stones row); at the owner's instruction ("the footer needs the text to be all in black")
     every piece of the footer's text plus the Social band's heading and line (see Footer:
-    link columns and Social band under Custom code).
+    link columns and Social band under Custom code); and, the same day ("make the text
+    black"), all the text in the product page's buy box (see Product page under Custom code).
 - **The muted, restrained palette has one deliberate exception: the homepage hero's own
   button, since 2026-09-21.** At the owner's explicit instruction ("change the color to
   something bright that is going to make the eye look first at this button... i don't care
@@ -1437,6 +1438,20 @@ Anything of ours that is not a Dawn setting lives in these two places:
       arrow's own scroll, since nothing animates there. The cause was read off the code and
       the fix reasoned from it -- worth a look on a real phone.
 
+  - **A pill inside the rectangle on hover and tap, 2026-10-01** (the owner's screenshot:
+    "when i put my finger on it is getting white but it stays a rectangle button and one with
+    corners that are curve ... the same for a phone and computer"). The button is square
+    (`border-radius: 0`, since 2026-09-30) but Dawn draws a button's border with `::before`
+    and `::after`, and the site-wide pill setting rounds both (41px and 40px). The fill hides
+    them at rest; once it drops away on hover or under a finger, the curved ring shows inside
+    the square outline. Вижте всички and Add to cart switch both pseudo-elements off for
+    exactly this reason (`content: none`), and the stones button was copied from the first
+    without that rule. Added to `section-stone-meanings.css`.
+    - **The other square buttons were read first and are fine**: the hero, silver banner and
+      new arrivals buttons are all `.banner__buttons .button--primary`, which already drops
+      both pseudo-elements, so this was the only one.
+    - **Live, with a real hover**: a transparent square with a 1px taupe outline, lifted
+      `-2.5px`, and both pseudo-elements compute `content: none`.
 - **Hero facts.** `sections/hero-facts.liquid` with `assets/section-hero-facts.css`. The
   short claims under the hero. Its own section, not Dawn's multicolumn — Dawn loads section
   stylesheets from inside the section, which puts them after `crown.css` in the document, so
@@ -2058,7 +2073,9 @@ Anything of ours that is not a Dawn setting lives in these two places:
   - **Block order** in `templates/product.json`, following the reference: rating → vendor
     → title → price → description → size picker → quantity → stock message → Add to cart →
     Качество и детайли → За камъка → Доставка и връщане → Подхождат си → share. Then
-    Може да ви хареса и (Dawn's own `related-products`) below.
+    Може да ви хареса и (Dawn's own `related-products`) below. **Since 2026-10-01 the
+    description comes before the price**, and the metal option is drawn before the size --
+    see Buy box reordered, below.
     - **Share is kept even though the reference has neither it nor a quantity box.** It was
       already in the template and the owner did not ask for it to go; removing it would be
       changing something next to what was asked. Worth offering, not assuming.
@@ -2424,6 +2441,55 @@ Anything of ours that is not a Dawn setting lives in these two places:
       need). It sits in the buy box column rather than full width under the product as the
       reference's does; the data is the same either way, and moving it to its own
       full-width row is a small follow-up if the owner wants the reference's placement.
+  - **Buy box reordered, metal before size, black text, 2026-10-01** ("i want the size for
+    the rings to exchange with choosing you materials and the description i want it to be
+    over the price and and to not have that much space betwen the price and the tittle this
+    for the products and make the text balck"). The block order above is no longer current:
+    the description sits before the price.
+    - **Metal before size.** `snippets/product-variant-picker.liquid` draws its options in
+      two passes -- the ones whose name contains метал, материал, metal or material first,
+      then the rest, each pass in the product's own order. That order lives in the Admin
+      (size, colour, metal on the ring), so the theme reorders what it draws rather than
+      asking the owner to drag options there. Only the page changes: the radios keep their
+      own ids, the request to Shopify is built from the ids, and the cart, checkout and
+      emails still list the options in the Admin's order. A product with no such option
+      draws as before, and the bracelet (material, then colour) is unchanged. The dropdown
+      picker's ids use `option.position` now, since the loop index restarts on the second
+      pass.
+      - **Tested offline first**, with the earlier liquidjs harness and mock products
+        (scratchpad, not committed): the old checks with their order assertions swapped,
+        plus six new ones -- ring with and without the colour option, the bracelet, a size
+        alone, three options, unique dropdown ids -- 36 of 36.
+      - **And live**: the legends read the metal, then the size; choosing rose gold and then
+        size 56 gave "54 55 / розово злато / 14К розово злато" and "56 / розово злато /
+        14К розово злато", with the URL and the form's variant id following each choice.
+    - **Description above the price, and a tight top.** `description` moved ahead of `price`
+      in `templates/product.json`, so the box reads title, a line or two about the piece,
+      the price, then the options. Dawn's 1.5rem above and below every block (2.5rem on the
+      description) became 0.8rem from title to description and 1.4rem from description to
+      price. The tax line still tucks under the price: Dawn's -1.4rem needs the price
+      block's own 1.5rem below it, so only that block's top margin was zeroed. Live at
+      1440: title ends 183, description 191-216, price 230, tax 269-290, options 310.
+      - **The sentence was ambiguous, and this is a reading, not a certainty.** "Description
+        over the price" and "not that much space between the price and the title" cannot
+        both hold with the description between them. Taken as: description directly under
+        the title, price under it, every gap in that top group tight. If the owner meant the
+        description above the title, or the old order with only the title-to-price gap
+        closed, each is a one-line change to `block_order`.
+    - **The whole buy box is black.** Measured first, with the animations finished: the
+      title, price, option values, delivery line and accordion headings were `#221F1C`, and
+      the vendor line, tax line, description, option legends, accordion text and spec labels
+      were 70-75% of it. `--color-foreground` is set to black on `.product__info-container`
+      and `color` with it (a custom property does not change text that has already
+      computed its colour); the alpha-based ones are listed by name. 39 visible text nodes
+      in the column, every one `rgb(0, 0, 0)` except the white Add to cart label.
+      **Scope is the buy box, the right-hand column.** The related row and the questions
+      were not asked about and are unchanged; the footer went black the round before.
+      - **The frameless pane bit again**: the first reading after injecting the rule still
+        showed the idle option pills near-black, because their 0.2s colour transition never
+        advances there. Finishing the animations by hand
+        (`document.getAnimations().forEach(a => a.finish())`) read them black. The lesson
+        is already under Buttons lift up on hover.
 - **Най-продавани sized to moonmagic's own bestseller carousel, 2026-09-26/27**, at the
   owner's request ("make in this section bigger the pictures of the products their text and
   the circles with colors to match moonmagic", then "the pictures should be with the size
@@ -3045,8 +3111,9 @@ Anything of ours that is not a Dawn setting lives in these two places:
     22px label in one measurement and 300 x 52 with a 16px label in another, minutes apart in
     the same pane, so no size was copied from it. The owner tuned the homepage block over
     several rounds and asked for it smaller than moonmagic's more than once, so the heading
-    is 3.2rem (2.4rem on a phone), the line 1.6rem / 1.4rem, the buttons 26rem x 6.8rem on a
-    computer and 16.2rem x 5.8rem side by side on a phone. What changes is the ground, the
+    is 3.2rem (2.4rem on a phone), the line 1.6rem / 1.4rem, the buttons 30rem x 6.8rem on a
+    computer and up to 17rem x 6.2rem side by side on a phone (26rem and 16.2rem x 5.8rem
+    until the owner asked for them stretched, 2026-10-01). What changes is the ground, the
     colour and the shape:
     - **Ground scheme-2, soft stone `#F2F0EC`** -- their grey is 243 against its 242, and it
       is the token this theme already uses for alternating bands. 72px of padding, 54px on a
@@ -3055,14 +3122,25 @@ Anything of ours that is not a Dawn setting lives in these two places:
       the same approach as Add to cart, so it follows the scheme if that is ever changed.
     - **Square corners are the fifth scoped exception to the site-wide pill**, after the
       hero, the silver banner, new arrivals and Add to cart.
-    - **Hover** is the fill dropping to an outline plus the site's usual `translateY(-0.25rem)`
-      lift, gated behind `@media (hover: hover)` so a tap does not leave a button stuck
-      outlined when the visitor comes back from Instagram. Keyboard focus gets the same.
+    - **Hover, tap and focus** are the fill dropping to an outline plus the site's usual
+      `translateY(-0.25rem)` lift. **It first waited for a real pointer** (`@media (hover:
+      hover)`) so a tap would not leave a button stuck outlined when the visitor comes back
+      from Instagram, and the owner found the effect dead on a phone ("black thing becomes
+      white like our others button is not working", 2026-10-01). The other buttons on the
+      site do not wait, so this one stopped waiting: `:hover`, `:active` and
+      `:focus-visible` are listed together, and a tap reports :hover. The stuck-outlined
+      risk that made it wait is the same one every other button here already carries.
     - **Heading and line are pure black**, the same named exception the homepage block has.
-  - **The words are the homepage block's own** („Вижте работата ни“ and the Instagram line),
-    because the owner asked for the section's look and "just the buttons and the text", not
-    new copy. Both are settings on the section. moonmagic's line is a follower count; ours
-    has no such number and none is invented.
+  - **The words, 2026-10-01.** They were the homepage block's own („Вижте работата ни“ and the
+    Instagram line) until the owner asked for text "like something similar or the same" as
+    moonmagic's and left the choice to us ("you can write something like over 2000 people in
+    social media"). Now **„Вижте го в Instagram“**, after their "See It Styled On Instagram"
+    -- "see it on Instagram", not "see it worn", since the feed has no customer pictures of
+    worn pieces and the heading should not promise them -- and **„Над 2000 души ни следват в
+    социалните мрежи.“**, after their "Over 1.9 million followers on social media can't be
+    wrong", calmer on purpose: no "can't be wrong", nothing sold hard. **The 2000 is the
+    owner's own figure, not one we counted**, so the line is a setting to keep honest as the
+    number grows. Both are settings on the section, and its schema defaults.
   - **It sits last on the product page, where the footer's copy used to print**, in
     `templates/product.json` after the questions. moonmagic puts theirs between the product
     and its recommendations (see Product page under Custom code); not moved, because the
@@ -3075,12 +3153,28 @@ Anything of ours that is not a Dawn setting lives in these two places:
     minutes later. Both landed within ten seconds: no lag and no dropped push this time.
   - **Narrow phones, 2026-10-01.** Two fixed 16.2rem buttons need about 336px and the page
     leaves `100vw - 3rem`, so a 360px phone left them 6px apart and a 320px phone would
-    have overflowed. Each button is `min(16.2rem, 50vw - 2.3rem)` now: unchanged at 375px
-    (162px, 21px apart) and 157px with 16px between at 360px. Under 360px the pair stacks
+    have overflowed. Each button was `min(16.2rem, 50vw - 2.3rem)` then (162px at 375px,
+    157px at 360px); today's numbers are under the stretch below. Under 360px the pair stacks
     at full width (290px at 320px) instead of overflowing. Checked live at 375, 360 and 320
     with no horizontal overflow and every label inside its button. **The homepage block has
     the same two-fixed-buttons layout and was never looked at below 375px; by the same
     arithmetic it overflows at 320px.** Not changed, since the owner asked for products only.
+  - **Stretched, reworded, and the tap effect, 2026-10-01** ("i want the text to be like
+    something similar or the same ... also the buttons they you can strech them a little bit
+    and the efect on a phone where black thing becomes white like our others button is not
+    working").
+    - **Buttons stretched**: 26rem to **30rem** on a computer, which is moonmagic's own 300px
+      for these two buttons, height unchanged at 6.8rem. On a phone two buttons side by side
+      leave only a few pixels to give, so it is `min(17rem, 50vw - 2.1rem)` wide and 6.2rem
+      tall -- **167 x 62 at 375px with 12px between** (was 162 x 58 and 21px), most of the
+      stretch going into the height. 159px wide at 360px; under 360px they stack as before.
+    - **The tap effect** is under Hover, tap and focus above. Checked on the pane's touch
+      profile (`maxTouchPoints: 5`, `(hover: hover)` false): a real hover on Харесайте ни
+      gives a transparent fill, a black label, the 1px outline and `translateY(-2.5px)`,
+      and the neighbouring button stays solid.
+    - **Checked live**: at 1440 the band is 316 tall, the heading and the line each on one
+      line, the buttons 300 x 68 and 20px apart; at 375 the buttons are 167 x 62, 12px apart,
+      both labels inside their boxes, no horizontal overflow.
   - **Checked live.** All four test products show the band once and the footer's copy not at
     all; the homepage, collection, About and Контакти pages are unchanged (the footer's copy
     once each, the homepage its own section once). At 1440 the band is 1425 x 340 on
