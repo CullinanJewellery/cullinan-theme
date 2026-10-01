@@ -21,7 +21,13 @@
 
   The element starts `hidden` and the script reveals it, padding and all, only when
   there is at least one other product -- so a first-time visitor sees the page exactly
-  as before, and without JavaScript nothing changes either.
+  as before, and without JavaScript nothing changes either. moonmagic's does the same:
+  on the first product a visitor opens, their row is empty and takes no room.
+
+  In the theme editor alone it shows even with nothing to show -- empty picture slots
+  and a line saying when visitors see it -- so the section can be seen and selected
+  there (2026-10-01: the owner, looking for it, found nothing). `request.design_mode`
+  is only true inside the editor, so no visitor and no preview link ever sees this.
 
   Cards are a picture and a title, like theirs, not this theme's full product card:
   that one carries swatches, a price and hover behaviour that cannot be rebuilt from
@@ -45,6 +51,9 @@
 <recently-viewed
   class="recently-viewed color-{{ section.settings.color_scheme }} gradient"
   data-max="{{ section.settings.max_products }}"
+  {%- if request.design_mode %}
+    data-design-mode
+  {%- endif %}
   {%- if product %}
     data-handle="{{ product.handle | escape }}"
     data-title="{{ product.title | escape }}"
@@ -83,6 +92,12 @@
         </button>
       </div>
     </div>
+    {%- if request.design_mode -%}
+      <p class="recently-viewed__note" hidden>
+        Само в редактора: тук посетителят вижда продуктите, които е разгледал преди този.
+        Секцията се показва, след като е отворил поне още един продукт.
+      </p>
+    {%- endif -%}
     <ul class="recently-viewed__track" role="list"></ul>
   </div>
 </recently-viewed>

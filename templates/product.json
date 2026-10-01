@@ -195,105 +195,6 @@
         "include_margins": true
       }
     },
-    "faq": {
-      "type": "collapsible-content",
-      "blocks": {
-        "q_size": {
-          "type": "collapsible_row",
-          "settings": {
-            "heading": "Как да определя своя размер на пръстена?",
-            "only_for": "Пръстени",
-            "icon": "none",
-            "row_content": "<p>Размерите ни са европейски номера — например 52, 53, 54. Ако знаете своя размер, просто го изберете.</p><p>Най-сигурният начин да го определите е с <strong>ring sizer</strong> — комплект пробни пръстени с номера, който се използва във всеки бижутерски магазин. Пробвайте го на пръста, на който ще носите бижуто: подходящият размер минава през кокалчето с лека съпротива и стои удобно — нито пада, нито стиска.</p><p>Имайте предвид, че по-широкият пръстен ляга по-плътно от тънкия. Ако се колебаете между два размера, при по-широк модел изберете по-големия. Най-точно е да пробвате в края на деня, когато пръстите не са студени.</p>",
-            "page": ""
-          }
-        },
-        "q_silver": {
-          "type": "collapsible_row",
-          "settings": {
-            "heading": "Ще потъмнее ли среброто?",
-            "only_for": "",
-            "icon": "none",
-            "row_content": "<p>Среброто ни е 925 проба с родиево покритие. Родият пази блясъка и забавя потъмняването.</p><p>При ежедневно носене покритието постепенно се изтърква, затова е добре да сваляте бижуто преди плуване и домакинска работа.</p>",
-            "page": ""
-          }
-        },
-        "q_care": {
-          "type": "collapsible_row",
-          "settings": {
-            "heading": "Как да се грижа за бижуто си?",
-            "only_for": "",
-            "icon": "none",
-            "row_content": "<ul><li>Съхранявайте го отделно от другите бижута, за да остане без драскотини.</li><li>Свалете го преди плуване, спорт и домакинска работа.</li><li>Избягвайте контакт с парфюм, козметика и почистващи препарати.</li><li>Почиствайте го с мека кърпа, а при нужда — с хладка вода и капка сапун.</li></ul>",
-            "page": ""
-          }
-        },
-        "q_madetoorder": {
-          "type": "collapsible_row",
-          "settings": {
-            "heading": "Колко време отнема изработката?",
-            "only_for": "",
-            "icon": "none",
-            "row_content": "<p>Всяко бижу се изработва по поръчка в ателието ни във Велико Търново. Доставката отнема между 5 и 20 работни дни.</p>",
-            "page": ""
-          }
-        },
-        "q_delivery": {
-          "type": "collapsible_row",
-          "settings": {
-            "heading": "Как доставяте поръчките?",
-            "only_for": "",
-            "icon": "none",
-            "row_content": "<p>С Еконт и Спиди — до офис или до адрес, в цялата страна.</p>",
-            "page": ""
-          }
-        },
-        "q_returns": {
-          "type": "collapsible_row",
-          "settings": {
-            "heading": "Мога ли да върна бижу?",
-            "only_for": "",
-            "icon": "none",
-            "row_content": "<p>Да, до 14 дни от получаването. Пишете ни и ще ви насочим.</p>",
-            "page": ""
-          }
-        },
-        "q_shop": {
-          "type": "collapsible_row",
-          "settings": {
-            "heading": "Мога ли да видя бижутата на живо?",
-            "only_for": "",
-            "icon": "none",
-            "row_content": "<p>Да, в магазина ни на бул. Васил Левски 21 във Велико Търново.</p>",
-            "page": ""
-          }
-        }
-      },
-      "block_order": [
-        "q_size",
-        "q_silver",
-        "q_care",
-        "q_madetoorder",
-        "q_delivery",
-        "q_returns",
-        "q_shop"
-      ],
-      "settings": {
-        "anchor": "",
-        "caption": "",
-        "heading": "Въпроси и отговори",
-        "heading_size": "h2",
-        "heading_alignment": "center",
-        "layout": "none",
-        "container_color_scheme": "scheme-2",
-        "color_scheme": "scheme-1",
-        "open_first_collapsible_row": false,
-        "image_ratio": "adapt",
-        "desktop_layout": "image_second",
-        "padding_top": 80,
-        "padding_bottom": 56
-      }
-    },
     "social_band": {
       "type": "social-band",
       "settings": {
@@ -311,7 +212,6 @@
     "17908484248f2d50d1",
     "disclosures",
     "related-products",
-    "faq",
     "social_band"
   ]
 }

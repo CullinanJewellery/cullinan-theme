@@ -88,11 +88,30 @@
       }
 
       const shown = list.filter((item) => !current || item.h !== current.h).slice(0, max);
-      if (!shown.length) return;
+      if (!shown.length) {
+        // only inside the theme editor: empty slots and a note, so the section can be
+        // seen and selected there before anything has been browsed
+        if (!('designMode' in this.dataset)) return;
+        for (let index = 0; index < Math.min(max, 4); index += 1) this.track.append(this.placeholder());
+        const note = this.querySelector('.recently-viewed__note');
+        if (note) note.hidden = false;
+        this.hidden = false;
+        this.setupArrows();
+        return;
+      }
 
       shown.forEach((item) => this.track.append(this.card(item)));
       this.hidden = false;
       this.setupArrows();
+    }
+
+    placeholder() {
+      const li = document.createElement('li');
+      li.className = 'recently-viewed__item';
+      const media = document.createElement('div');
+      media.className = 'recently-viewed__media';
+      li.append(media);
+      return li;
     }
 
     card(item) {

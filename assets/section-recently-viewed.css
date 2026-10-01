@@ -44,6 +44,15 @@ recently-viewed[hidden],
   text-transform: uppercase;
 }
 
+/* Inside the theme editor only, when nothing has been browsed yet. */
+.recently-viewed__note {
+  margin: -1.6rem 0 2.4rem;
+  max-width: 60rem;
+  font-size: 1.3rem;
+  line-height: 1.5;
+  color: rgba(var(--color-foreground), 0.7);
+}
+
 .recently-viewed__buttons {
   display: flex;
   margin-left: auto;

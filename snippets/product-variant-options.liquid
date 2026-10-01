@@ -5,7 +5,8 @@
   - product: {Object} product object.
   - option: {Object} current product_option object.
   - block: {Object} block object.
-  - picker_type: {String} type of picker to dispay
+  - picker_type: {String} type of picker to dispay ('menu' is Cullinan's: radios
+    drawn as the rows of a drop-down list, see product-variant-picker.liquid)
   - twin: {Object, optional} the hidden colour option this option stands in for
     (Cullinan, see product-variant-picker.liquid). Nil for every other option.
 
@@ -155,6 +156,48 @@
     <label for="{{ input_id }}">
       {{ value -}}
       {{ label_unavailable }}
+    </label>
+  {%- elsif picker_type == 'menu' -%}
+    {%- liquid
+      assign menu_dot_source = value
+      if twin_value
+        assign menu_dot_source = twin_value
+      endif
+      assign menu_dot = null
+      if menu_dot_source.swatch.image
+        assign menu_dot = menu_dot_source.swatch.image | image_url: width: 50 | prepend: 'url(' | append: ')'
+      elsif menu_dot_source.swatch.color
+        assign menu_dot = 'rgb(' | append: menu_dot_source.swatch.color.rgb | append: ')'
+      endif
+    -%}
+    <input
+      type="radio"
+      id="{{ input_id }}"
+      name="{{ input_name | escape }}"
+      value="{{ escaped_value }}"
+      form="{{ product_form_id }}"
+      {% if value.selected %}
+        checked
+      {% endif %}
+      {% if option_disabled %}
+        class="disabled"
+      {% endif %}
+      {% if menu_dot %}
+        data-option-dot="{{ menu_dot }}"
+      {% endif %}
+      {{ input_dataset }}
+    >
+    <label for="{{ input_id }}" class="option-menu__item">
+      <span
+        class="option-menu__dot"
+        {% if menu_dot %}
+          style="--option-dot: {{ menu_dot }};"
+        {% else %}
+          hidden
+        {% endif %}
+      ></span>
+      <span class="option-menu__name">{{ value }}</span>
+      {{- label_unavailable -}}
     </label>
   {%- elsif picker_type == 'dropdown' or picker_type == 'swatch_dropdown' -%}
     <option

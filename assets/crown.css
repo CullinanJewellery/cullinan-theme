@@ -3146,7 +3146,8 @@ card-swatches {
    what wins the fight on specificity rather than leaving it to load order.
    --------------------------------------------------------------------------- */
 
-.product .product-form__input--pill legend.form__label {
+.product .product-form__input--pill legend.form__label,
+.product .product-form__input--menu legend.form__label {
   margin: 0 0 1rem;
   font-size: 1.2rem;
   font-weight: 600;
@@ -3457,6 +3458,7 @@ card-swatches {
 .product .product__info-container .accordion__content,
 .product .product__info-container .accordion__content *,
 .product .product__info-container .product-form__input--pill legend.form__label,
+.product .product__info-container .product-form__input--menu legend.form__label,
 .product .product__info-container .product-specs__label {
   color: rgb(0 0 0);
 }
@@ -3924,4 +3926,175 @@ body .jdgm-write-review-modal .jdgm-write-review-modal__field-group--review-body
   visibility: visible;
   font-size: 1.4rem;
   line-height: 1.5;
+}
+
+/* ---------------------------------------------------------------------------
+   The metal option as a drop-down menu (2026-10-01)
+
+   The owner, after moonmagic's "Choose your metal": "i just like the design of
+   moon magic, we can keep the text and what appears, but i want the buttons to
+   be the same size, or you can make them not buttons but something else where
+   you choose the metal, and this is going to be with drop down menu". The four
+   metal buttons were four different widths (175, 157, 173 and 133px at 1440).
+
+   moonmagic, measured on their Harlow ring at 1440: "Choose your metal" in 14px
+   above a row as wide as the buy column -- a 66px picture of the ring in that
+   metal, "MATERIAL: 925 STERLING SILVER" in 14px capitals, an arrow at the far
+   right -- which opens a panel from the side with a tile per metal. Ours keeps
+   the row and makes the list drop down under it, as asked: one box as wide as
+   the column showing the current metal, which opens a list of the metals.
+
+   What is ours, not theirs:
+   - the text stays ours: the legend is the option's own name, in the same small
+     capitals as the size legend under it, and the box shows the metal's own
+     name with no "Material:" prefix;
+   - there is no photograph to put in the row yet, so a dot of the metal's
+     colour stands in for it -- the colour set on the option's swatches in the
+     Admin, the same circles the product cards show. A metal with no colour set
+     simply has no dot;
+   - the box is a field, not a bare row: a 1px black border round it, 4.8rem
+     tall like Add to cart, the current metal in 600 like a chosen size pill.
+     Without a picture, a borderless row would read as a line of text rather
+     than as something to press;
+   - square corners, like every pill on this page.
+
+   The list is the option's own radio buttons, laid out as rows: the chosen one
+   in 600 with a tick at the right, a sold-out one struck through. It hangs over
+   the size row below rather than pushing it down, with the box's border round
+   it and a soft shadow so the two read as one object over the page. The
+   behaviour -- closing, Escape, the keyboard -- is in assets/option-menu.js.
+   --------------------------------------------------------------------------- */
+
+option-menu {
+  display: block;
+  position: relative;
+  margin: 0.7rem 0 0.8rem;
+}
+
+.product .option-menu__summary {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  min-height: 4.8rem;
+  padding: 1rem 4.8rem 1rem 1.6rem;
+  border: 0.1rem solid rgb(var(--color-foreground));
+  background-color: rgb(var(--color-background));
+  color: rgb(var(--color-foreground));
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
+  line-height: 1.2;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 0.2s ease;
+}
+
+@media (hover: hover) {
+  .product .option-menu__summary:hover {
+    background-color: rgba(var(--color-foreground), 0.03);
+  }
+}
+
+.product .option-menu__summary .icon-caret {
+  right: 1.8rem;
+  top: calc(50% - 0.3rem);
+  height: 0.6rem;
+  transition: transform 0.2s ease;
+}
+
+.product .option-menu[open] > .option-menu__summary .icon-caret {
+  transform: rotate(180deg);
+}
+
+.product .option-menu__dot {
+  flex: 0 0 auto;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+  background: var(--option-dot, transparent) center / cover no-repeat;
+  box-shadow: inset 0 0 0 0.1rem rgba(var(--color-foreground), 0.18);
+}
+
+/* An author `display` cancels `hidden`; say it. */
+.product .option-menu__dot[hidden] {
+  display: none;
+}
+
+.product .option-menu__list {
+  position: absolute;
+  top: calc(100% - 0.1rem);
+  left: 0;
+  right: 0;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  padding: 0.4rem 0;
+  border: 0.1rem solid rgb(var(--color-foreground));
+  background-color: rgb(var(--color-background));
+  box-shadow: 0 1.2rem 2.4rem rgba(var(--color-foreground), 0.08);
+}
+
+.product .option-menu__item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  min-height: 4.4rem;
+  margin: 0;
+  padding: 1rem 4.8rem 1rem 1.6rem;
+  color: rgb(var(--color-foreground));
+  font-size: 1.4rem;
+  font-weight: 400;
+  letter-spacing: 0.1rem;
+  line-height: 1.2;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 0.2s ease;
+}
+
+@media (hover: hover) {
+  .product .option-menu__item:hover {
+    background-color: rgba(var(--color-foreground), 0.04);
+  }
+}
+
+.product .option-menu__list input[type='radio']:checked + .option-menu__item {
+  font-weight: 600;
+}
+
+.product .option-menu__list input[type='radio']:checked + .option-menu__item::after {
+  content: '';
+  position: absolute;
+  right: 1.9rem;
+  top: 50%;
+  width: 0.5rem;
+  height: 1rem;
+  border-right: 0.15rem solid currentColor;
+  border-bottom: 0.15rem solid currentColor;
+  transform: translateY(-60%) rotate(45deg);
+}
+
+.product .option-menu__list input[type='radio']:focus-visible + .option-menu__item {
+  background-color: rgba(var(--color-foreground), 0.06);
+  outline: 0.2rem solid rgb(var(--color-foreground));
+  outline-offset: -0.2rem;
+}
+
+/* Sold out, as the pills say it: struck through and greyed, still choosable --
+   Dawn then shows the button as sold out. */
+.product .option-menu__list input[type='radio'].disabled + .option-menu__item {
+  color: rgba(var(--color-foreground), 0.4);
+}
+
+.product .option-menu__list input[type='radio'].disabled + .option-menu__item .option-menu__name {
+  text-decoration: line-through;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .product .option-menu__summary,
+  .product .option-menu__summary .icon-caret,
+  .product .option-menu__item {
+    transition: none;
+  }
 }

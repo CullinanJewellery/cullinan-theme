@@ -142,6 +142,11 @@
             assign picker_type = 'swatch'
           endif
         endif
+
+        assign use_menu = false
+        if is_material and picker_type == 'button' and option.values.size > 1
+          assign use_menu = true
+        endif
       -%}
       {%- if picker_type == 'swatch' -%}
         <fieldset class="js product-form__input product-form__input--swatch">
@@ -158,6 +163,74 @@
             picker_type: picker_type,
             twin: twin
           %}
+        </fieldset>
+      {%- elsif use_menu -%}
+        {%- comment -%}
+          Cullinan: the metal or material as a drop-down menu instead of a row of
+          buttons of four different widths (2026-10-01, the owner, after
+          moonmagic's "Choose your metal": "i want the buttons to be the same size,
+          or you can make them not buttons but something else ... with drop down
+          menu"). The legend keeps the option's own name; the box under it shows the
+          current choice, the way moonmagic's row does, and opens the list.
+
+          The list is the option's own radio inputs, so <variant-selects> reads and
+          sends them exactly as it does the pills (`fieldset input:checked`) and
+          Dawn's `[data-selected-value]` update lands in the box. <option-menu>
+          (assets/option-menu.js) only adds what a menu needs on top: closing on a
+          pick, on Escape and on a click outside, and keeping keyboard focus in
+          place across Dawn's re-render of the whole picker. Without the script it
+          is still a working <details>.
+
+          The dot is the colour this value stands for: its own swatch, or the hidden
+          colour option's swatch when this option stands in for it (`twin`).
+        {%- endcomment -%}
+        {%- liquid
+          assign menu_dot = null
+          assign menu_dot_source = option.selected_value
+          if twin
+            assign selected_down = option.selected_value.name | downcase
+            for twin_candidate in twin.values
+              assign twin_down = twin_candidate.name | downcase
+              if twin_down != blank and selected_down contains twin_down
+                assign menu_dot_source = twin_candidate
+              endif
+            endfor
+          endif
+          if menu_dot_source.swatch.image
+            assign menu_dot = menu_dot_source.swatch.image | image_url: width: 50 | prepend: 'url(' | append: ')'
+          elsif menu_dot_source.swatch.color
+            assign menu_dot = 'rgb(' | append: menu_dot_source.swatch.color.rgb | append: ')'
+          endif
+        -%}
+        <fieldset class="js product-form__input product-form__input--menu">
+          <legend class="form__label">{{ option.name }}</legend>
+          <option-menu data-key="{{ section.id }}-{{ option.position }}">
+            <details class="option-menu">
+              <summary class="option-menu__summary">
+                <span
+                  class="option-menu__dot"
+                  {% if menu_dot %}
+                    style="--option-dot: {{ menu_dot }};"
+                  {% else %}
+                    hidden
+                  {% endif %}
+                ></span>
+                <span class="option-menu__current" data-selected-value>
+                  {{- option.selected_value -}}
+                </span>
+                {{- 'icon-caret.svg' | inline_asset_content -}}
+              </summary>
+              <div class="option-menu__list">
+                {% render 'product-variant-options',
+                  product: product,
+                  option: option,
+                  block: block,
+                  picker_type: 'menu',
+                  twin: twin
+                %}
+              </div>
+            </details>
+          </option-menu>
         </fieldset>
       {%- elsif picker_type == 'button' -%}
         <fieldset class="js product-form__input product-form__input--pill">
