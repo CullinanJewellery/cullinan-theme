@@ -1,0 +1,152 @@
+{{ 'component-slider.css' | asset_url | stylesheet_tag }}
+{{ 'section-recently-viewed.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'recently-viewed.js' | asset_url }}" defer="defer"></script>
+
+{%- comment -%}
+  "You Recently Viewed", after moonmagic's own row of that name (2026-10-01, at the
+  owner's request: "add like moonmagic section You Recently Viewed above Отзиви от
+  клиенти"). Theirs sits directly above their Customer Reviews: a heading, then a row
+  of square pictures each with the stone and the name under it -- no price -- the
+  product you are on left out, arrows at the top right that appear only when the row
+  overflows. It keeps what you looked at in the visitor's own browser and draws the
+  row from that, with nothing fetched, and shows nothing at all until there is
+  something to show.
+
+  Ours does the same, in assets/recently-viewed.js. This section puts the current
+  product's handle, title, address and picture on the element; the script adds it to
+  a short list in localStorage (the most recent twelve), then draws every product on
+  the list except the current one. Written once here and read by the script, so it
+  works on any template that carries the section: on a page with no product it
+  records nothing and only shows the list.
+
+  The element starts `hidden` and the script reveals it, padding and all, only when
+  there is at least one other product -- so a first-time visitor sees the page exactly
+  as before, and without JavaScript nothing changes either.
+
+  Cards are a picture and a title, like theirs, not this theme's full product card:
+  that one carries swatches, a price and hover behaviour that cannot be rebuilt from
+  four stored strings, and moonmagic does not show them here either.
+{%- endcomment -%}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<recently-viewed
+  class="recently-viewed color-{{ section.settings.color_scheme }} gradient"
+  data-max="{{ section.settings.max_products }}"
+  {%- if product %}
+    data-handle="{{ product.handle | escape }}"
+    data-title="{{ product.title | escape }}"
+    data-url="{{ product.url }}"
+    {%- if product.featured_media %}
+      data-image="{{ product.featured_media.preview_image | image_url }}"
+    {%- endif -%}
+  {%- endif %}
+  hidden
+>
+  <div class="recently-viewed__inner page-width section-{{ section.id }}-padding">
+    <div class="recently-viewed__header">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="recently-viewed__heading">{{ section.settings.heading | escape }}</h2>
+      {%- endif -%}
+      <div class="recently-viewed__buttons" hidden>
+        <button
+          type="button"
+          class="slider-button slider-button--prev"
+          name="previous"
+          aria-label="{{ 'general.slider.previous_slide' | t }}"
+        >
+          <span class="svg-wrapper">
+            {{- 'icon-caret.svg' | inline_asset_content -}}
+          </span>
+        </button>
+        <button
+          type="button"
+          class="slider-button slider-button--next"
+          name="next"
+          aria-label="{{ 'general.slider.next_slide' | t }}"
+        >
+          <span class="svg-wrapper">
+            {{- 'icon-caret.svg' | inline_asset_content -}}
+          </span>
+        </button>
+      </div>
+    </div>
+    <ul class="recently-viewed__track" role="list"></ul>
+  </div>
+</recently-viewed>
+
+{% schema %}
+{
+  "name": "Recently viewed",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Shows the products this visitor opened before the one they are on. It stays hidden, and takes no room, until they have opened another product, so it is empty in the editor until you browse the preview first."
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "default": "Наскоро разгледани",
+      "label": "Heading"
+    },
+    {
+      "type": "range",
+      "id": "max_products",
+      "min": 2,
+      "max": 12,
+      "step": 1,
+      "default": 8,
+      "label": "Most products to show"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "default": "scheme-1",
+      "label": "Colour scheme"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 72
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 40
+    }
+  ],
+  "presets": [
+    {
+      "name": "Recently viewed"
+    }
+  ]
+}
+{% endschema %}

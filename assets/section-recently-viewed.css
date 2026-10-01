@@ -1,0 +1,132 @@
+/*
+  Recently viewed (sections/recently-viewed.liquid, assets/recently-viewed.js),
+  2026-10-01, after moonmagic's "You Recently Viewed".
+
+  Measured on theirs at 1440px: a 65px heading at the left page gutter, 45px above a
+  row of 400px slides each holding a 380px square picture with the stone name (14px)
+  and the title (16px, 600) under it, no price, arrows at the top right on the
+  heading's row. Ours takes the row's structure and the card's two-line shape, and
+  this site's own sizes for the rest: the heading is the collection-title clamp
+  (crown.css, `.collection .collection__title .title`: 26px to 40px, capitals) so it
+  reads as the sibling of "Може да ви хареса" below it, and the cards sit on the same
+  four-across, 24px grid, so the two rows share their edges.
+
+  Four across from 990px and two below, whole cards only -- the row scrolls by one
+  card, with arrows that exist only when the cards do not all fit.
+*/
+
+recently-viewed {
+  display: block;
+}
+
+/* An author `display` anywhere cancels `hidden`, so say it. The element is hidden
+   until the script has something to show, and the arrows until the row overflows. */
+recently-viewed[hidden],
+.recently-viewed__buttons[hidden] {
+  display: none;
+}
+
+.recently-viewed__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 3.2rem;
+}
+
+.recently-viewed__heading {
+  margin: 0;
+  font-size: clamp(2.6rem, 3.2vw, 4rem);
+  font-weight: var(--font-heading-weight);
+  line-height: 1.05;
+  letter-spacing: 0.01em;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.recently-viewed__buttons {
+  display: flex;
+  margin-left: auto;
+}
+
+.recently-viewed__track {
+  --recently-viewed-gap: var(--grid-mobile-horizontal-spacing, 1.2rem);
+  --recently-viewed-columns: 2;
+  display: flex;
+  gap: var(--recently-viewed-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+}
+
+.recently-viewed__track::-webkit-scrollbar {
+  display: none;
+}
+
+@media screen and (min-width: 750px) {
+  .recently-viewed__track {
+    --recently-viewed-gap: var(--grid-desktop-horizontal-spacing, 2.4rem);
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .recently-viewed__track {
+    --recently-viewed-columns: 4;
+  }
+}
+
+.recently-viewed__item {
+  flex: 0 0
+    calc(
+      (100% - (var(--recently-viewed-columns) - 1) * var(--recently-viewed-gap)) /
+        var(--recently-viewed-columns)
+    );
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  scroll-snap-align: start;
+}
+
+.recently-viewed__link {
+  display: block;
+  color: rgb(var(--color-foreground));
+  text-decoration: none;
+}
+
+/* A square slot that holds its shape whether or not a picture is set: a product
+   with no photograph yet is a flat tint, like every other empty slot on the site. */
+.recently-viewed__media {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background-color: rgba(var(--color-foreground), 0.06);
+}
+
+.recently-viewed__image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.recently-viewed__title {
+  margin: 1.2rem 0 0;
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: normal;
+}
+
+@media (hover: hover) {
+  .recently-viewed__link:hover .recently-viewed__title {
+    text-decoration: underline;
+    text-underline-offset: 0.3rem;
+  }
+}

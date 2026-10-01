@@ -3887,3 +3887,41 @@ body .jdgm-write-review-modal .jdgm-write-review-modal__page--review-form-intro 
 .product .product__info-container > .rating-wrapper + .product__title {
   margin-top: 0.4rem;
 }
+
+/* ---------------------------------------------------------------------------
+   The review field's label says "Препоръчително" when the field is optional
+   (2026-10-01)
+
+   The owner: "in the section Отзиви от клиенти make Съдържание на отзива
+   (Препоръчително)". Judge.me labels the review text field "(Задължително)" and
+   makes it required; it becomes optional through Judge.me's own setting
+   (Settings > Widgets > Write a Review > Flow > Review content > "Enable quick
+   star ratings", on the free plan), which the theme cannot reach. So this swaps
+   the label only while the field really is optional, i.e. while its textarea has
+   no `required` attribute -- a label that said "recommended" over a field the
+   form then refuses to send empty would be worse than the wording it replaces.
+   Required, the rule does not match and Judge.me's own label shows; optional,
+   it reads the owner's words whatever Judge.me's own wording is.
+
+   The original is hidden and the new line is a ::before at the label's own
+   size and line height (14px / 1.5, measured), the same swap as the form's
+   title and intro above. Tested on moonmagic's own form, which is the same
+   Judge.me markup, by toggling `required` on the textarea: required leaves the
+   label alone, optional swaps it with the label's box the same height, required
+   again restores it. Not seen on this store's own form, whose setting is the
+   owner's to switch.
+   --------------------------------------------------------------------------- */
+
+body .jdgm-write-review-modal .jdgm-write-review-modal__field-group--review-body:has(textarea:not([required])) .jdgm-write-review-modal__field-label {
+  visibility: hidden;
+  font-size: 0;
+  line-height: 0;
+}
+
+body .jdgm-write-review-modal .jdgm-write-review-modal__field-group--review-body:has(textarea:not([required])) .jdgm-write-review-modal__field-label::before {
+  content: 'Съдържание на отзива (Препоръчително)';
+  display: block;
+  visibility: visible;
+  font-size: 1.4rem;
+  line-height: 1.5;
+}
