@@ -2432,8 +2432,8 @@ Anything of ours that is not a Dawn setting lives in these two places:
       already done -- Dawn's `rating` block reads `product.metafields.reviews.rating`,
       which Judge.me writes, and prints nothing until there are reviews, and the card
       rating on Може да ви хареса и is switched on for the same reason. The review list
-      itself arrives as the app's own **section** once it is installed (checked against
-      Judge.me's own help, 2026-10-01 -- see Judge.me under Waiting on the Shopify admin).
+      itself is the app's own **section**, installed and placed on 2026-10-01 -- see
+      Customer reviews (Judge.me) under Custom code.
     - **Instagram**: deferred by the owner's own choice the same day -- there are no
       product photographs yet and no customer pictures of pieces being worn, and a thin
       feed reads worse than none.
@@ -3206,6 +3206,59 @@ Anything of ours that is not a Dawn setting lives in these two places:
     horizontal overflow. A real hover on Харесайте ни gives a transparent fill, a black
     label, the 1px outline and `translateY(-2.5px)` with the icon unscaled.
 
+- **Customer reviews (Judge.me).** The owner installed Judge.me on its free plan and added its
+  Review Widget on 2026-10-01 ("i did what you said"), by the steps given under Judge.me in
+  Waiting on the Shopify admin. Shopify wrote three commits back; pulled before touching
+  anything.
+  - **What Shopify wrote**: in `config/settings_data.json` two app embeds, both on -- Judge.me
+    Reviews and **Reviews in Cart Drawer** (the second was never asked for; harmless while
+    there are no reviews, and the owner was told they could switch it off). In
+    `templates/product.json` a new `apps` section with the `review_widget` block, **placed
+    right after `main`**, so the reviews sit directly under the product and above Може да ви
+    хареса -- moonmagic's order is product, Shop The Look, Customer Reviews, Instagram, You
+    May Also Like. Shopify also normalised a lot of the template: every setting the
+    sections carry but the file had left to defaults is written out now (`page: ""`,
+    `only_for: ""`, `anchor: ""` and so on). Harmless, and it is why that diff is long. **The
+    block's own `review_data: sample_data` is editor-only**: Judge.me's help says sample
+    reviews appear in the theme editor and never on the live store, and the preview page
+    showed the real empty state, not sample reviews.
+  - **What a visitor sees today**: nothing but an invitation -- Judge.me's own Bulgarian,
+    "Отзиви от клиенти", "Бъдете първият, който ще напише отзив", a button. There are no
+    reviews, and none are to be invented. The review form works end to end and is in
+    Bulgarian too (checked live by opening it, picking a star, and closing it unsent).
+  - **Styled in `assets/crown.css`, at the end, in the theme alone** -- so none of it needs
+    Judge.me's paid plan (its corner and layout options are paid; its five colour settings
+    are free but are one more Admin job): the title centred, 24px bold, in the questions'
+    own voice; the button black, square, small capitals, 4.8rem, emptying to an outline on
+    hover and tap like every other button; the stars the muted gold `#8C6A2E` (scheme-4,
+    "accents only", and a star is one); black words; square corners; and the
+    "no items found" line hidden while the invitation is showing, since it says the same
+    thing worse. Checked at 1440 and 375: no overflow, title and button on the page centre.
+    - **How it reaches the widget, measured rather than assumed.** The new widget
+      (`.jm-review-widget`) takes its colours from custom properties written as an inline
+      style on its own root, which no ordinary rule beats -- `!important` on the property
+      in a stylesheet does. The older parts (stars, histogram bars, the verified badge, the
+      write-a-review form) take a hard-coded `#108474` from style blocks Judge.me injects
+      after crown.css, so those are overridden by selector with `body` in front, which
+      out-specifies them without another `!important`. The title needed `.jm-text.` as well:
+      Judge.me's own `.jm-text[data-v-...]` ties a two-class selector and loads later.
+    - **Fragile on purpose, and it fails soft.** Everything is scoped to Judge.me's own class
+      names (`jm-*`, `jdgm-*`), which are Judge.me's to rename. If one changes, that rule
+      stops matching and the piece falls back to the colours set in Judge.me's admin: the
+      page degrades, it does not break. **Judge.me's admin colour settings are overridden**
+      here, so changing them there will do nothing; change them in this file.
+    - **Not styled, because there was nothing to look at**: the review cards, the star
+      summary, the photo strip and the filters exist only once a real review does. They
+      read the variables above and are **to be looked at when the first review arrives**.
+      The header is centred only while the invitation shows (`:has(.jm-no-reviews-state)`);
+      with reviews it becomes Judge.me's own row of title, button and filters, left as it
+      draws itself.
+    - **The frameless pane showed the form half-faded** (the modal's fade never advanced),
+      which looked like a styling fault. Finishing the animations by hand showed it fine;
+      the same lesson as under Buttons lift up on hover.
+    - **Escape did not close the form** in the pane (it stayed open), so the page was
+      reloaded instead, which discards it. Nothing was submitted at any point.
+
 ## Current state
 
 - Design foundation applied (palette, type, spacing). Committed and live on the draft theme.
@@ -3604,11 +3657,14 @@ data, not theme files:
   that is needed on the theme's side for the stars: Dawn's `rating` block and the product
   cards both read `product.metafields.reviews.rating`, which the app writes. The review list
   itself is the app's own section, added in the theme editor.
-  - **Still not installed, 2026-10-01**, when the owner asked "can we add customers reviews":
-    no trace of it on the live product page. **Installing an app is the owner's to do** --
-    it happens in the Admin and grants the app access to the store -- and nothing in this
-    repository can stand in for it.
-  - **The steps, checked against Judge.me's own help rather than from memory**: install
+  - **Installed 2026-10-01** after the owner asked "can we add customers reviews" and, first,
+    hesitated over paying ("i need to pay for this i think it is not a good idea to do that
+    now"). Judge.me's Forever Free plan is $0 with no end date; its 15-day trial is of the
+    paid Awesome plan ($15/month) and was declined. **Installing an app is the owner's to
+    do** -- it happens in the Admin and grants the app access to the store. See Customer
+    reviews (Judge.me) under Custom code for what was written back and how it is styled.
+  - **The steps the owner followed, checked against Judge.me's own help rather than from
+    memory**: install
     Judge.me Product Reviews from the Shopify App Store on the free plan; then, in the
     theme editor of **this draft theme** (cullinan theme/main, not the published Horizon),
     turn on the **Judge.me** app embed (the third icon in the left bar, App embeds); then
@@ -3617,14 +3673,13 @@ data, not theme files:
     stars and "Write a review" button. Judge.me also writes Shopify's standard
     `reviews.rating` and `reviews.rating_count` metafields, which is what our `rating` block
     and the cards read.
-  - **After the owner saves**, Shopify commits the template and `config/settings_data.json`
-    back to GitHub. Pull before touching either, then place the widget and style it to
-    match. moonmagic's own order is product > Shop The Look > Customer Reviews > See It
-    Styled On Instagram > You May Also Like.
-  - **No app block goes into the template before the app is installed.** Its type carries the
-    app's own extension id (`shopify://apps/...`), which is not known here, and a template
-    naming a block Shopify cannot resolve risks being refused whole, the same way an
-    out-of-range setting is.
+  - **Shopify commits the template and `config/settings_data.json` back to GitHub when the
+    owner saves.** Pull before touching either -- done here, and the three commits arrived
+    as a fast-forward.
+  - **No app block went into the template by hand**, and none should: its type carries the
+    app's own extension id (`shopify://apps/judge-me-reviews/blocks/review_widget/...`),
+    which only the theme editor writes, and a template naming a block Shopify cannot
+    resolve risks being refused whole.
   - **Nothing will show until real customers write reviews**, or the owner imports real ones.
     None are to be invented to fill it.
 - **Stock is not counted: the pieces are made to order** (the owner's decision, 2026-09-28,
