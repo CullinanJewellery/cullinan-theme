@@ -131,6 +131,10 @@
         "padding_bottom": 32
       }
     },
+    "recently_viewed": {
+      "type": "recently-viewed",
+      "settings": {}
+    },
     "disclosures": {
       "type": "disclosures",
       "settings": {
@@ -303,6 +307,7 @@
   },
   "order": [
     "main",
+    "recently_viewed",
     "17908484248f2d50d1",
     "disclosures",
     "related-products",

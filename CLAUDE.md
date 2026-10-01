@@ -3418,6 +3418,106 @@ Anything of ours that is not a Dawn setting lives in these two places:
       in a standard product card the rating lives in `.card-information` (hyphen);
       `.card__information` (underscore) is a zero-width box, so a mock placed there measured a
       star 0px wide and read like a bug that was not one.
+  - **The text field's label, „Съдържание на отзива (Препоръчително)“, 2026-10-01** (the owner:
+    "in the section Отзиви от клиенти make Съдържание на отзива (Препоръчително)"). Judge.me
+    labels it „(Задължително)“ and makes it required. **That is not moonmagic's doing either**:
+    their own form reads "Review content (Required)" with `required` on the textarea, so this
+    is the owner's wording, not a match.
+    - **The theme cannot make the field optional.** Judge.me does, through its own setting --
+      Settings > Widgets > Write a Review > Flow > Review content > **Enable quick star
+      ratings**, available on the free plan (its help centre: "the Review content field
+      remains visible in the review form but becomes optional", customers "not required to
+      write a comment"). That one is the owner's to switch, in Judge.me's admin.
+    - **So the label is swapped only while the field really is optional**: a rule keyed to
+      `.jdgm-write-review-modal__field-group--review-body:has(textarea:not([required]))`,
+      hiding the original and drawing the owner's words as a `::before` at the label's own
+      14px / 1.5, the same swap as the form's title and intro. A label saying "recommended"
+      over a field the form then refuses to send empty would be worse than the wording it
+      replaces. Required, the rule does not match and Judge.me's own label shows.
+    - **Tested on moonmagic's form, which is the same Judge.me markup**, by injecting the rule
+      and toggling `required` on the textarea: required leaves the label alone, optional
+      swaps it with the label's box the same 40px, required again restores it.
+    - **Not known, and not seen on this store**: whether Judge.me drops `required` itself when
+      quick star ratings is on (its docs say the field becomes optional, not how), and what
+      its own label says then. If the owner switches it on and the label still reads
+      „Задължително“, the textarea is still `required` and the setting did not do what the
+      docs say -- look at the form's textarea before touching the CSS.
+- **Recently viewed.** `sections/recently-viewed.liquid` with `assets/section-recently-viewed.css`
+  and `assets/recently-viewed.js` (2026-10-01, at the owner's request: "add like moonmagic
+  section You Recently Viewed above Отзиви от клиенти"). It sits on the product page right
+  after the product and before the reviews (`templates/product.json`).
+  - **moonmagic's, measured on their site at 1440px after opening five products.** The
+    section is `#product-section-recently-viewed`, directly above Customer Reviews -- the
+    owner's requested position is theirs. A 65px / 400 heading at the 20px gutter with 45px
+    under it, then a Swiper of 400px slides, each a 380px square picture (10px of slide
+    either side), the stone name in 14px and the title in 16px / 600 under it, **no price**.
+    The product you are on is left out. Arrows (27 x 40) sit at the top right on the
+    heading's row and lock when there is nothing to scroll; the section has 60px above and
+    80px below. Their fourth card is cut at the edge at 1440, as their carousel does. They
+    keep the list in localStorage (`recently_viewed_bg`: id, title, stones, featured image)
+    and draw it in the browser, with nothing fetched.
+  - **Ours does the same, with this site's own sizes.** On a product page the section puts the
+    current product's handle, title, address and picture on a `<recently-viewed>` element;
+    the script keeps the most recent twelve in localStorage (`cullinan_recently_viewed`),
+    current first and never twice, and draws every product on the list except the current
+    one, up to the section's **Most products to show** (8, range 2-12). Nothing is sent
+    anywhere and nothing is fetched. On a template with no product it records nothing and
+    only shows the list.
+    - **Hidden until there is something to show.** The element starts `hidden`, padding and
+      all, and the script reveals it only when at least one other product is on the list, so
+      a first visit and a visit without JavaScript both show the page exactly as before.
+      `recently-viewed[hidden]` and `.recently-viewed__buttons[hidden]` carry explicit
+      `display: none`, because the element and the buttons both have a `display` of their own
+      and an author `display` cancels `hidden` (the stones arrows had the same fault).
+      **In the theme editor it is invisible until the preview has been browsed**, for the
+      same reason; the section's own help text says so.
+    - **A picture and a title, like theirs, not this theme's product card.** The card carries
+      swatches, a price and hover behaviour that four stored strings cannot rebuild, and
+      moonmagic shows none of them here. No price, as theirs. The heading is the collection-
+      title clamp from `crown.css` (26px to 40px, capitals) so it reads as the sibling of
+      „Може да ви хареса“ below the reviews, and the row is four across from 990px and two
+      below on the same 24px grid (12px on a phone), so the two rows share their edges. Whole
+      cards only, never cut; it scrolls by one card and its arrows -- Dawn's own
+      `.slider-button`, so they match the other rows -- exist only when the cards do not all
+      fit. Picture slots are square and a product with no photograph is a flat tint.
+    - **The wording is ours**: „Наскоро разгледани“ for their "You Recently Viewed", a section
+      setting. The owner named no wording.
+    - **On a phone moonmagic shows one large card and a peek of the next; ours shows two whole
+      cards.** Measured on theirs at 375px: 284px slides (a 269px picture), 51px of the next
+      one showing, a 35px heading wrapping to two lines at the 20px gutter with 30px under it,
+      arrows 27 x 30 at the right of the heading's row, 60px above the section. Ours keeps
+      the two-across every other product row on this site uses on a phone, and the owner has
+      twice preferred whole cards to cut ones, so the choice was made rather than copied.
+      **One value switches it**: `--recently-viewed-columns: 1.25` on `.recently-viewed__track`
+      in its base rule (which is the phone's) gives one card and a quarter of the next, the width being
+      `(100% - (columns - 1) * gap) / columns`.
+    - **Everything read back from storage is treated as untrusted**, since it lives in the
+      visitor's browser: titles go in as text, an address must be a path on this shop (never
+      `//host` or a scheme), a picture must come from this shop or Shopify's CDN, and an
+      entry that fails is dropped and the list rewritten without it. Shopify serves a
+      shop's pictures from `cdn.shopify.com` or from the shop's own domain under `/cdn/shop/`,
+      and the preview and the live shop differ in which, so both pass.
+    - **Privacy**: what is stored (handle, title, address, picture URL) stays in the visitor's
+      browser and goes nowhere. Whether the cookie and privacy text should mention it is a
+      question for the accountant, like every other legal wording here; none was written.
+    - **Pushed in two steps**, the section and its two files first, the template that names
+      it later: a template can only reference a section Shopify already holds. There is no
+      sync status anywhere -- the repository is public and carries no statuses or checks
+      from Shopify -- so the only way to know the template landed is the preview.
+    - **Tested in a local mock** (the real `base.css`, `component-slider.css`,
+      `section-recently-viewed.css`, `crown.css` and the real script, the section rendered by
+      liquidjs, test pictures generated by the throwaway server) at 1440 and 375px: four
+      whole 307px cards on a 24px grid with a 1300px row; arrows stepping 331px a card, the
+      previous one disabled at the start and the next at the end, with clicks past the end
+      doing nothing; two products and no arrows; a first visit hidden with the current
+      product stored; tampered storage (a `javascript:` address, a `//evil` address and
+      junk entries dropped and the stored list rewritten without them, a foreign picture
+      dropped but its card kept); an HTML-looking title rendered as literal text with no
+      script run; a page with no product showing the list and recording nothing; two 166px
+      cards, a 12px gap and no sideways scroll at 375. **Not seen on the live page.**
+      The pane runs no animation frames, so the arrows were driven with
+      `prefers-reduced-motion` faked on `matchMedia` (instant scroll) and a hand-fired
+      `scroll` event, the lesson already under Stones row.
 
 ## Current state
 
