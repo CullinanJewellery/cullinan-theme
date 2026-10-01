@@ -407,7 +407,15 @@ Rules that matter here:
   https://33dxf8xm5v7ugt12-107185537364.shopifypreview.com, which expired mid-session on
   2026-09-29 (Shopify served its own "This preview link has expired" page in place of the
   theme), and was replaced the same day by
-  https://8vn93bqbu3rdym1e-107185537364.shopifypreview.com -- use this one now.
+  https://8vn93bqbu3rdym1e-107185537364.shopifypreview.com, which expired on 2026-10-01
+  (HTTP 410, Shopify's own "This preview link has expired" page; found when a check of the
+  product page came back as the generic sell-online landing page). No replacement had
+  arrived when the product page work below was pushed, so **that push is unverified live**:
+  ask the owner for a new link first thing, then look.
+  - **A local mock needs http, not file://.** The pane opens a `file://` page as a static
+    snapshot and refuses its page tools ("This tab shows a local file"). Serve the mock
+    over http with `preview_start` and a temporary `.claude/launch.json` pointing at a
+    throwaway Node server (untracked; delete it afterwards, and never `git add` it).
 - **Wait for one push to reach the preview before sending the next.** Twice on 2026-09-14 a
   push that followed another within a minute never reached the theme, while the push before
   it synced at once: `templates/index.json` 13 seconds after a section push (still missing
@@ -2491,6 +2499,69 @@ Anything of ours that is not a Dawn setting lives in these two places:
         advances there. Finishing the animations by hand
         (`document.getAnimations().forEach(a => a.finish())`) read them black. The lesson
         is already under Buttons lift up on hover.
+  - **Stars above the title in place of the vendor line, care in its own accordion, shorter
+    quality text, 2026-10-01** (the owner: "remove cullinan jewellery that is appearing above
+    the title, i don't want that on my products, put the stars there, if there is no review
+    they will just stay not full with color like we did for the section Отзиви от клиенти";
+    "i don't want this text Всяко бижу се изработва на ръка ..."; "make this one another drop
+    down text like the others" about the care list; "make this shorter" about the gold,
+    silver and stones text). **The order now is** rating, title, description, price, the
+    options (metal, then size), the delivery line, Add to cart, Качество и детайли, Грижа за
+    бижуто, За камъка (still empty, so hidden), Доставка и връщане, Подхождат си.
+    - **The line above the title was the `vendor` block**, a `text` block printing
+      `{{ product.vendor }}` -- the Vendor field, which reads the shop's own name on every
+      product. Out of `templates/product.json` with its `block_order` entry. **"On my
+      products" was read as the product page.** The homepage product row prints the vendor
+      too (`show_vendor` is true there alone), but **below** the title and the swatches, not
+      above it (`snippets/card-product.liquid`), so it was left alone: one setting if that
+      was meant as well.
+    - **The stars take its place, and exist from the first day.** The rating block was
+      already first in the box, but Dawn's version prints nothing until `reviews.rating`
+      exists (Judge.me writes it with the first review), so today it drew nothing. It now
+      draws five **empty** stars when there is no rating (`sections/main-product.liquid`, an
+      `else` branch; `role="img"`, label „Все още няма отзиви“), and a rated product renders
+      exactly as before, stars and count.
+      - **"Not full with colour" is Judge.me's own empty star**: the pink drawn as an
+        outline, which is what the review form shows before a star is picked and what
+        moonmagic's do (their `jdgm--off` glyph, put beside the filled ones on their page
+        to look at it). So the unfilled part of the row is an outline in the star colour
+        instead of Dawn's 15% grey track, and the filled part is the same pink, solid: one
+        glyph for both, `-webkit-text-stroke: 0.08em` (1.2px at 15px) on the glyphs Dawn
+        already clips its gradient to, the track side of that gradient transparent. A
+        half-filled star is one star, not two shapes.
+      - **Scoped to the buy box's own rating** through `.rating-wrapper`, which exists on
+        that block alone, so the cards in the Подхождат си row (inside `.product` too) keep
+        Dawn's grey remainder. Cards show nothing until rated, so there is nothing to
+        compare today; matching them once reviews exist is one selector.
+      - **moonmagic puts its stars above the title too**: Judge.me's badge, 16px stars on a
+        20px pitch, pink, "1217 reviews" beside them, its box and the title's within 2px of
+        each other. Ours are 15px, the size the owner asked for earlier the same day, with
+        the count beside them once there is one.
+      - **Space.** Dawn's 1.5rem above every block after the first left the stars floating
+        clear of the title. The wrapper is a flex row as tall as the stars and the title
+        takes 0.4rem: 4px between the stars' box and the title's (5px with a count, whose
+        caption is taller), about 12px from the stars to the capitals.
+    - **Качество и детайли**: the "handmade since 1991" sentence is out ("i don't want this
+      text"). The rest is cut to about half: gold is 585 (14 carats) or 750 (18), 585 the
+      harder and for every day, 750 a richer colour for a piece with particular meaning;
+      silver is 925 with rhodium plating that keeps its shine; stones are appraised by a
+      specialist qualified at HRD Antwerp. **Dropped**: the 58,5% and 75% (the number is
+      already the purity in parts per thousand), 750 being the softer, rhodium "protecting
+      from tarnishing", and the stones being "selected". Every fact left is one that
+      За нас already states.
+    - **Грижа за бижуто is its own accordion**, a `collapsible_tab` straight after Качество
+      и детайли, holding the four care lines exactly as they were live (the template script
+      refused to run unless the list matched byte for byte). Placed there because that is
+      where the text came from; the owner named no position. General jewellery advice, so it
+      waits on nobody.
+    - **Checked without the preview.** The rating block's Liquid rendered by liquidjs for no
+      metafield, an empty one, no reviews object and a rated product (7 checks, harness in
+      the scratchpad, not committed). The stylesheets in a local mock at 1440 and 375px, with
+      the real `base.css`, `component-rating.css`, `section-main-product.css` and
+      `crown.css` and the markup produced by the real Liquid: four states (none, 3, 4.5 and
+      5 of 5), 15px stars, pink, a 1.2px outline, a half star drawn as one star, no sideways
+      scroll at 375. **Not seen on the live page**, and the form's new intro line was not
+      seen either: it is one string in the same stylesheet.
 - **Най-продавани sized to moonmagic's own bestseller carousel, 2026-09-26/27**, at the
   owner's request ("make in this section bigger the pictures of the products their text and
   the circles with colors to match moonmagic", then "the pictures should be with the size
@@ -3315,9 +3386,13 @@ Anything of ours that is not a Dawn setting lives in these two places:
       `font-size: 0`, so it takes no room and a screen reader does not read both) and the new
       line is a `::before`. Scoped to the first page of the form only
       (`__page--review-form-intro`), because the later pages use the same `__title` class for
-      their own headings. „Харесва ли ви? Кажете ни защо“ and „Ще се радваме да научим какво ви
-      кара да се чувствате с вашето бижу.“ -- the invitation kept, the 600,000+ claim dropped,
-      since no such number exists here. Fails soft like the rest: if Judge.me renames those
+      their own headings. „Харесва ли ви? Кажете ни защо“ and, first, „Ще се радваме да научим
+      какво ви кара да се чувствате с вашето бижу.“ -- the invitation kept, the 600,000+ claim
+      dropped, since no such number exists here. **The intro line was replaced the same day**,
+      at the owner's request ("change the text to something else"), with „Вашето мнение помага
+      на други да изберат с увереност.“ -- a reason to write one rather than a request for a
+      feeling, short and calm like the rest; the wording is ours and one string in
+      `crown.css` if another is wanted. Fails soft like the rest: if Judge.me renames those
       classes, the rule stops matching and its own Bulgarian comes back.
     - **Dawn's own stars as well** -- the rating under the product title and on the cards,
       which Dawn draws itself from the `reviews.rating` metafield Judge.me writes: pink, and
