@@ -2823,7 +2823,10 @@ card-swatches {
       width only 16rem -> 16.2rem (162px), keeping the gap at 21px --
       still clearly more than the 15px gutter, just 4px less than before.
     */
-    width: 16.2rem;
+    /* Never so wide that the pair stops fitting with 1.6rem between them: the page
+       leaves 100vw - 3rem, so 50vw - 2.3rem each. 162px at 375px as before, 157px
+       at 360px. Below 360px the pair stacks (the block further down). */
+    width: min(16.2rem, calc(50vw - 2.3rem));
     height: auto;
     padding: 1.8rem 0.4rem;
     gap: 0.8rem;
@@ -2843,6 +2846,29 @@ card-swatches {
     */
     font-size: 1.2rem;
     letter-spacing: 0.02em;
+  }
+}
+
+/*
+  Phones narrower than 360px (2026-10-01, found by a sweep of the pages at 320px,
+  not reported by the owner): two fixed 16.2rem buttons need 324px and a 320px
+  phone leaves 290, so the homepage stretched to 354px wide and scrolled sideways.
+  The same arithmetic as the Social band on product pages. Under 360px the pair
+  stacks at the full width instead. 360px and up are untouched except for the
+  shrink above, which only bites between 360 and 366px.
+*/
+@media screen and (max-width: 359px) {
+  .footer__social:not(.footer__social--contact) .footer__list-social {
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  .footer__social:not(.footer__social--contact) .footer__list-social .list-social__item {
+    width: 100%;
+  }
+
+  .footer__social:not(.footer__social--contact) .footer__list-social .list-social__link {
+    width: 100%;
   }
 }
 

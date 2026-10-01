@@ -96,3 +96,17 @@
     padding: 0 1.6rem;
   }
 }
+
+/*
+  Phones narrower than 360px (2026-10-01, found by a sweep of the pages at 320px,
+  not reported by the owner). The four claims at a fixed 9px need about 290px even
+  with every claim wrapped, and a 320px phone leaves 288 inside the gutters, so the
+  homepage stretched to 354px wide and scrolled sideways. Here the row may take a
+  second line, two claims a line and centred. 360px and up are untouched.
+*/
+@media screen and (max-width: 359px) {
+  .hero-facts__row {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
