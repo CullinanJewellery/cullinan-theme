@@ -3159,8 +3159,34 @@ Anything of ours that is not a Dawn setting lives in these two places:
     157px at 360px); today's numbers are under the stretch below. Under 360px the pair stacks
     at full width (290px at 320px) instead of overflowing. Checked live at 375, 360 and 320
     with no horizontal overflow and every label inside its button. **The homepage block has
-    the same two-fixed-buttons layout and was never looked at below 375px; by the same
-    arithmetic it overflows at 320px.** Not changed, since the owner asked for products only.
+    the same two-fixed-buttons layout, and by the same arithmetic it overflowed at 320px --
+    confirmed by the sweep below, and fixed the same day once the owner had said to go ahead
+    with whatever else was worth doing (see Narrow phones, sweep).**
+  - **Narrow phones, sweep, 2026-10-01** (the owner, after reviews were done: "okay do the
+    things you want to do"). Nothing else was waiting on the owner, so the work went into a
+    regression sweep of everything shipped that day: the homepage, a product, the
+    collection, За нас and Контакти, at 320, 360, 375, 768 and 1440px, looking for sideways
+    scroll, plus the console on the product page.
+    - **Only one thing failed: the homepage at 320px**, where the layout stretched to 354px.
+      Two causes, both the arithmetic of fixed widths against a 288-290px column: the **hero
+      facts strip** (four claims at a fixed 9px need about 290px even fully wrapped) and the
+      **homepage Facebook/Instagram block** (two fixed 16.2rem buttons need 324px).
+    - **Fixed for widths under 360px only.** The facts strip may take a second line, two
+      claims a line, centred (`section-hero-facts.css`). The social block's buttons are
+      `min(16.2rem, 50vw - 2.3rem)` and stack at full width under 360px (`crown.css`, beside
+      the block's own phone rules). Measured after: 320px is exactly 320 wide, the facts in
+      two rows and the buttons 290 x 58 stacked; 360px is unchanged except the buttons are
+      157px with 16px between; 375px is untouched (162px buttons at 15 and 198, the facts in
+      one row).
+    - **A trap in the measuring, worth keeping.** The pane's mobile profile does not clip
+      an overflowing page: it widens the layout viewport to fit, so `innerWidth` read 354
+      and a check of "anything past `innerWidth`" found nothing wrong. Compare
+      `scrollWidth` with the width that was **requested**, not with `innerWidth`.
+    - **Clean everywhere else**: 360px on all five pages, 768px on all five, 1440px on the
+      homepage, product and collection. The console shows only Shopify's own noise on a
+      private preview (the privacy banner and account menu scripts failing to reach their
+      server, and the 400s and 404s that go with them); a search of it for Judge.me, our
+      stylesheet and scripts, and for uncaught errors came back empty.
   - **Stretched, reworded, and the tap effect, 2026-10-01** ("i want the text to be like
     something similar or the same ... also the buttons they you can strech them a little bit
     and the efect on a phone where black thing becomes white like our others button is not
