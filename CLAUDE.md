@@ -3492,11 +3492,14 @@ Anything of ours that is not a Dawn setting lives in these two places:
       in its base rule (which is the phone's) gives one card and a quarter of the next, the width being
       `(100% - (columns - 1) * gap) / columns`.
     - **Everything read back from storage is treated as untrusted**, since it lives in the
-      visitor's browser: titles go in as text, an address must be a path on this shop (never
-      `//host` or a scheme), a picture must come from this shop or Shopify's CDN, and an
-      entry that fails is dropped and the list rewritten without it. Shopify serves a
-      shop's pictures from `cdn.shopify.com` or from the shop's own domain under `/cdn/shop/`,
-      and the preview and the live shop differ in which, so both pass.
+      visitor's browser: titles go in as text; an entry whose address is not a path on this
+      shop (`//host` or any scheme) is dropped, and on a product page the stored list is
+      rewritten without it; a picture must be https (or the page's own protocol) and come
+      from this shop's own host, any `shopify.com` host, or a `/cdn/shop/` path, or the card
+      is drawn without it. **Which host Shopify uses for this shop's pictures was not
+      checked** (the preview link was expired), which is why all three pass; the path
+      allowance is the loose one, accepted because only a script already running on this
+      shop could have written the list.
     - **Privacy**: what is stored (handle, title, address, picture URL) stays in the visitor's
       browser and goes nowhere. Whether the cookie and privacy text should mention it is a
       question for the accountant, like every other legal wording here; none was written.

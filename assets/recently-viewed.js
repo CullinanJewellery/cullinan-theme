@@ -10,8 +10,9 @@
 
   Everything stored is treated as untrusted when it is read back -- it lives in the
   visitor's browser, where anything can have changed it -- so titles go in as text,
-  addresses must be paths on this shop, and a picture must come from this shop or
-  Shopify's CDN.
+  an entry whose address is not a path on this shop is dropped, and a picture is
+  used only from this shop's host, a shopify.com host or a /cdn/shop/ path (the card
+  is drawn without one otherwise).
 */
 
 (() => {
