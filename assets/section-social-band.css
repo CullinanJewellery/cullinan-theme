@@ -81,13 +81,15 @@
   justify-content: center;
   gap: 0.8rem;
   /*
-    16.2rem, but never so wide that the pair stops fitting with 1.6rem between
-    them: the page leaves 100vw - 3rem, so each button gets at most
-    50vw - 2.3rem. At 375px that is 164px and the button stays 162px; at 360px
-    it is 157px. Below 360px the pair stacks instead (the block further down).
+    Up to 17rem (stretched from 16.2rem, 2026-10-01: "strech them a little bit"),
+    but never so wide that the pair stops fitting with 1.2rem between them: the
+    page leaves 100vw - 3rem, so each button gets at most 50vw - 2.1rem. At 375px
+    that is 166px; at 360px, 159px. Below 360px the pair stacks instead (the
+    block further down). Two buttons side by side leave only a few pixels to
+    give on a phone, so the rest of the stretch is in the height.
   */
-  width: min(16.2rem, calc(50vw - 2.3rem));
-  min-height: 5.8rem;
+  width: min(17rem, calc(50vw - 2.1rem));
+  min-height: 6.2rem;
   padding: 0 0.4rem;
   text-decoration: none;
   border-radius: 0;
@@ -141,33 +143,26 @@
 
 /*
   The fill drops away to an outline, the label going to the button colour:
-  moonmagic's own hover, and this site's. Under a real pointer only, so a tap
-  on a phone does not leave a button stuck outlined when the visitor comes
-  back from Instagram. Keyboard focus gets the same, at every width.
+  moonmagic's own hover, and this site's. On a phone a tap reports :hover (and
+  :active while the finger is down), so all three are listed -- the owner
+  found the effect dead on a phone ("black becomes white like our other
+  buttons is not working", 2026-10-01). It first waited for a real pointer
+  (`@media (hover: hover)`) so a tap would not leave a button stuck outlined
+  after coming back from Instagram; the other buttons on the site do not wait,
+  and the owner wants this one to behave like them.
 */
+.social-band .social-band__buttons .list-social__link:hover,
+.social-band .social-band__buttons .list-social__link:active,
 .social-band .social-band__buttons .list-social__link:focus-visible {
   background-color: transparent;
   color: rgb(var(--color-button));
   box-shadow: inset 0 0 0 1px rgb(var(--color-button));
 }
 
-@media (hover: hover) {
-  .social-band .social-band__buttons .list-social__link:hover {
-    background-color: transparent;
-    color: rgb(var(--color-button));
-    box-shadow: inset 0 0 0 1px rgb(var(--color-button));
-  }
-}
-
 /* The same lift as every other button on the site (-0.25rem, back to 0 pressed). */
 @media (prefers-reduced-motion: no-preference) {
+  .social-band .social-band__buttons .list-social__link:hover,
   .social-band .social-band__buttons .list-social__link:focus-visible {
-    transform: translateY(-0.25rem);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) and (hover: hover) {
-  .social-band .social-band__buttons .list-social__link:hover {
     transform: translateY(-0.25rem);
   }
 
@@ -201,9 +196,11 @@
     width: auto;
   }
 
+  /* 30rem, stretched from 26rem (2026-10-01: "strech them a little bit") --
+     moonmagic's own 300px for these two buttons. Height unchanged. */
   .social-band .social-band__buttons .list-social__link {
     gap: 1rem;
-    width: 26rem;
+    width: 30rem;
     min-height: 6.8rem;
     padding: 0 1.6rem;
   }

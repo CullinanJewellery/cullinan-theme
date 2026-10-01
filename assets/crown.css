@@ -3378,6 +3378,78 @@ card-swatches {
 .product .product__description {
   font-size: 1.4rem;
 }
+/* ---------------------------------------------------------------------------
+   Buy box: the words in black, and a tighter top
+
+   The owner (2026-10-01): "the description ... over the price and ... not to
+   have that much space between the price and the title ... and make the text
+   black".
+
+   Order. `description` now sits before `price` in templates/product.json, so the
+   top of the buy box reads title, a line or two about the piece, the price, and
+   then the options. Only that order moved; no block was added or removed.
+
+   Space. Dawn gives every block 1.5rem above and below (`.product__info-
+   container > * + *`), the description 2.5rem and the title 1.5rem under it, so
+   the top of the box was a column of 15-25px gaps. Here the title sits 0.8rem
+   above the description and the description 1.4rem above the price. The price
+   block is the unclassed wrapper Dawn puts around it, so it is reached by its id
+   prefix. Dawn pulls the tax line up under the price with `.product__tax`'s own
+   -1.4rem, which only works while the price block keeps its 1.5rem below it, so
+   that margin is left alone and only the block's top is zeroed; the tax line
+   takes 2rem under it before the options begin.
+
+   Black. Measured first, with the animations finished: the title, the price, the
+   option values, the delivery line and the accordion headings were the scheme's
+   near-black #221F1C, and the vendor line, the tax line, the description, the
+   option legends, the accordion text and the spec labels were 70-75% of it,
+   which reads as grey. `--color-foreground` is set to black on the whole column,
+   which turns every rule that reads it at full strength black at once (the
+   hairlines and pill fills that read it as rgba() become black-based, which is
+   not visible); `color` is set on it too, because a custom property does not
+   change text that inherits a colour already computed. The 70-75% ones are
+   listed by name, since 75% of black is still grey.
+
+   Left alone: the Add to cart label (white on its black button) and a sold-out
+   pill, which says so by being grey. Everything else in the column -- accordion
+   text, the specs list and the delivery line included -- is black.
+
+   `.product` ahead of every selector for the usual reason: Dawn's own rules load
+   from inside the section, after this file, and the extra class wins them on
+   specificity instead of on order.
+   --------------------------------------------------------------------------- */
+
+.product .product__info-container {
+  --color-foreground: 0, 0, 0;
+  color: rgb(0 0 0);
+}
+
+.product .product__info-container .product__text,
+.product .product__info-container .product__tax,
+.product .product__info-container .product__description,
+.product .product__info-container .product__description *,
+.product .product__info-container .accordion__content,
+.product .product__info-container .accordion__content *,
+.product .product__info-container .product-form__input--pill legend.form__label,
+.product .product__info-container .product-specs__label {
+  color: rgb(0 0 0);
+}
+
+.product .product__title {
+  margin-bottom: 0.8rem;
+}
+
+.product .product__info-container .product__description {
+  margin: 0 0 1.4rem;
+}
+
+.product .product__info-container > [id^='price-'] {
+  margin-top: 0;
+}
+
+.product .product__info-container .product__tax {
+  margin-bottom: 2rem;
+}
 
 /* ---------------------------------------------------------------------------
    The made-to-order line above the button

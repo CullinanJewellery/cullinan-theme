@@ -95,8 +95,8 @@
         "rating",
         "vendor",
         "title",
-        "price",
         "description",
+        "price",
         "variant_picker",
         "delivery_note",
         "buy_buttons",
@@ -241,8 +241,8 @@
       "type": "social-band",
       "settings": {
         "color_scheme": "scheme-2",
-        "heading": "Вижте работата ни",
-        "text": "Последвайте @cullinan_jewellery.bg за нови модели и снимки от работата в ателието.",
+        "heading": "Вижте го в Instagram",
+        "text": "Над 2000 души ни следват в социалните мрежи.",
         "padding_top": 72,
         "padding_bottom": 72
       }

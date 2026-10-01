@@ -185,6 +185,20 @@ a.stones__tile:hover .stones__name {
   text-align: center;
 }
 
+/*
+  Dawn draws a button's border with ::before and ::after, and the site-wide
+  pill setting rounds both to 40px. The fill falls away on hover and under a
+  finger, and what is left is that curved ring sitting inside this button's
+  own square outline -- a pill inside a rectangle (2026-10-01, the owner's
+  screenshot; the same on a phone and a computer). Вижте всички and Add to
+  cart, which this block was copied from, switch both off for exactly this
+  reason; the copy missed that rule.
+*/
+.stones .stones__button::before,
+.stones .stones__button::after {
+  content: none;
+}
+
 .stones .stones__button {
   min-width: 36rem;
   min-height: 6.8rem;

@@ -96,8 +96,34 @@
     {% # theme-check-enable %}
     {{ block.shopify_attributes }}
   >
+    {%- comment -%}
+      Cullinan: the metal or material is chosen first, the size after it
+      (2026-10-01, the owner: the ring size and "choosing your materials" swap).
+      Shopify draws options in the order the product lists them -- size, colour,
+      metal on the ring -- and that order lives in the Admin, so the theme draws
+      the options twice, once for the ones whose name says metal or material and
+      once for the rest, each pass in the product's own order. Nothing but the
+      order on the page changes: the radios still carry their own ids, which is
+      all the request to Shopify is built from, and the cart, checkout and emails
+      list the options in the Admin's order as before. A product with no such
+      option draws exactly as it did.
+    {%- endcomment -%}
+    {%- for pass in (1..2) -%}
     {%- for option in product.options_with_values -%}
       {%- if shown_option and option.position == hidden_option.position -%}
+        {%- continue -%}
+      {%- endif -%}
+      {%- liquid
+        assign option_name_lower = option.name | downcase
+        assign is_material = false
+        if option_name_lower contains 'метал' or option_name_lower contains 'материал' or option_name_lower contains 'metal' or option_name_lower contains 'material'
+          assign is_material = true
+        endif
+      -%}
+      {%- if pass == 1 and is_material == false -%}
+        {%- continue -%}
+      {%- endif -%}
+      {%- if pass == 2 and is_material -%}
         {%- continue -%}
       {%- endif -%}
       {%- liquid
@@ -151,7 +177,7 @@
         </fieldset>
       {%- else -%}
         <div class="product-form__input product-form__input--dropdown">
-          <label class="form__label" for="Option-{{ section.id }}-{{ forloop.index0 }}">
+          <label class="form__label" for="Option-{{ section.id }}-{{ option.position }}">
             {{ option.name }}
           </label>
           <div class="select">
@@ -164,7 +190,7 @@
               </span>
             {%- endif -%}
             <select
-              id="Option-{{ section.id }}-{{ forloop.index0 }}"
+              id="Option-{{ section.id }}-{{ option.position }}"
               class="select__select"
               name="options[{{ option.name | escape }}]"
               form="{{ product_form_id }}"
@@ -183,6 +209,7 @@
           </div>
         </div>
       {%- endif -%}
+    {%- endfor -%}
     {%- endfor -%}
 
     <script type="application/json" data-selected-variant>
