@@ -9,8 +9,9 @@
   Sizes are the homepage block's own (social-follow), not theirs: the owner
   tuned those over several rounds and asked for them smaller than moonmagic's
   more than once, so this band sits in the same family -- heading 3.2rem /
-  2.4rem, line 1.6rem / 1.4rem, buttons 26rem wide on a computer and 16.2rem
-  side by side on a phone. What changes is the ground, the colour and the
+  2.4rem, line 1.6rem / 1.4rem. The buttons started at the homepage block's
+  26rem and 16.2rem too and were stretched to 30rem on a computer and up to
+  17rem on a phone (2026-10-01). What changes is the ground, the colour and the
   shape: scheme-2's stone, the scheme's own black button, square corners.
 
   Pure black for the words, the same named exception the homepage block has
@@ -20,11 +21,18 @@
   component-list-social.css loads from the footer, after this file, and its
   rules are one class each.
 */
+/*
+  The gap is the space between the words and the buttons. 2.4rem / 3.2rem at
+  first; 3.6rem / 4.8rem since the owner asked for "a little bit more space
+  between the text and the button" (2026-10-01). moonmagic leaves about 50px on
+  a phone and 60px on a computer between their line and their buttons, so this
+  is a step toward theirs rather than all the way.
+*/
 .social-band__inner {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 2.4rem;
+  gap: 3.6rem;
 }
 
 .social-band__intro {
@@ -174,7 +182,7 @@
 @media screen and (min-width: 750px) {
   .social-band__inner {
     align-items: center;
-    gap: 3.2rem;
+    gap: 4.8rem;
   }
 
   .social-band__intro {
