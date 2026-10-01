@@ -630,6 +630,14 @@
                     show_pickup_availability: true
                   -%}
                 {%- when 'rating' -%}
+                  {%- comment -%}
+                    Unlike Dawn's own, this never prints nothing. Without a rating yet
+                    (Judge.me writes the metafield with the first review) it draws the
+                    five stars empty -- outlines only, see crown.css -- the way Judge.me
+                    draws its own before a star is picked, so the top of the buy box
+                    keeps its row of stars from the first day. 2026-10-01, at the owner's
+                    request: the stars take the place of the vendor line above the title.
+                  {%- endcomment -%}
                   {%- if product.metafields.reviews.rating.value != blank -%}
                     <div class="rating-wrapper">
                       {% liquid
@@ -665,6 +673,16 @@
                           {{ 'accessibility.total_reviews' | t -}}
                         </span>
                       </p>
+                    </div>
+                  {%- else -%}
+                    <div class="rating-wrapper" {{ block.shopify_attributes }}>
+                      <div class="rating rating--empty" role="img" aria-label="Все още няма отзиви">
+                        <span
+                          aria-hidden="true"
+                          class="rating-star"
+                          style="--rating: 0; --rating-max: 5; --rating-decimal: 0;"
+                        ></span>
+                      </div>
                     </div>
                   {%- endif -%}
                 {%- when 'complementary' -%}

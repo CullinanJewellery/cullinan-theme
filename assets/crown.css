@@ -3796,7 +3796,7 @@ body .jdgm-write-review-modal .jdgm-write-review-modal__page--review-form-intro 
 }
 
 body .jdgm-write-review-modal .jdgm-write-review-modal__page--review-form-intro .jdgm-write-review-modal__intro::before {
-  content: 'Ще се радваме да научим какво ви кара да се чувствате с вашето бижу.';
+  content: 'Вашето мнение помага на други да изберат с увереност.';
   display: block;
   visibility: visible;
   font-size: 1.5rem;
@@ -3806,7 +3806,7 @@ body .jdgm-write-review-modal .jdgm-write-review-modal__page--review-form-intro 
 /* ---------------------------------------------------------------------------
    Dawn's own review stars, in the same pink (2026-10-01)
 
-   The rating under the product title and on the product cards is Dawn's, not
+   The rating above the product title and on the product cards is Dawn's, not
    Judge.me's: it reads the `reviews.rating` metafield Judge.me writes and draws
    its own stars, black by default (the scheme's foreground, and black outright
    in the buy box since the same day). It prints nothing until a product has a
@@ -3829,4 +3829,61 @@ body .jdgm-write-review-modal .jdgm-write-review-modal__page--review-form-intro 
 .card-wrapper .rating .rating-star {
   --letter-spacing: 0.6;
   --font-size: 1.2;
+}
+
+/* ---------------------------------------------------------------------------
+   Stars above the product title, empty until there is a review (2026-10-01)
+
+   The owner: "remove Cullinan Jewellery that is appearing above the title, I
+   don't want that on my products -- put the stars there; if there is no review
+   they will just stay not full with colour, like we did for the section Отзиви
+   от клиенти".
+
+   The line above the title was the `vendor` block, which prints the product's
+   Vendor field -- the shop's own name on every product -- and is gone from
+   templates/product.json. The rating block was already first in the box, but
+   Dawn's version prints nothing until a product has a rating, so it now draws
+   five empty stars instead (sections/main-product.liquid).
+
+   "Not full with colour" is what Judge.me does to its own stars before one is
+   picked in the review form -- the same pink, drawn as an outline, and
+   moonmagic's are the same. So the unfilled part of the row is an outline in
+   the star colour instead of Dawn's 15% grey track, and the filled part is the
+   same pink, solid. One glyph for both, so a half-filled star is one star and
+   not two shapes. The outline is `-webkit-text-stroke` on the glyphs Dawn
+   already clips its gradient to; the track side of that gradient is
+   transparent.
+
+   Only the buy box's own rating. `.rating-wrapper` exists on that block alone,
+   which keeps the rule off the cards in the "Подхождат си" row that also sit
+   inside `.product`. The cards were not asked about and keep Dawn's grey
+   remainder; they show nothing until rated anyway.
+
+   Space. Dawn gives every block after the first 1.5rem above it, and the
+   wrapper was a line of body text round an inline star, so the stars floated
+   well clear of the title. The wrapper is a flex row now, as tall as the stars
+   (the review count joins it on the same line once there is one), and the title
+   takes 0.4rem instead of 1.5rem.
+   --------------------------------------------------------------------------- */
+
+.product .rating-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  line-height: 1;
+}
+
+.product .rating-wrapper .rating-star::before {
+  background: linear-gradient(
+    90deg,
+    var(--color-rating-star) var(--percent),
+    transparent var(--percent)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-stroke: 0.08em var(--color-rating-star);
+}
+
+.product .product__info-container > .rating-wrapper + .product__title {
+  margin-top: 0.4rem;
 }
