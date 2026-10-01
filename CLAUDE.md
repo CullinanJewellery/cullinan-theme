@@ -3073,6 +3073,14 @@ Anything of ours that is not a Dawn setting lives in these two places:
   - **Pushed in two steps** per the validator lag -- the section, its stylesheet and the
     footer text change first, then the template and the footer condition two and a half
     minutes later. Both landed within ten seconds: no lag and no dropped push this time.
+  - **Narrow phones, 2026-10-01.** Two fixed 16.2rem buttons need about 336px and the page
+    leaves `100vw - 3rem`, so a 360px phone left them 6px apart and a 320px phone would
+    have overflowed. Each button is `min(16.2rem, 50vw - 2.3rem)` now: unchanged at 375px
+    (162px, 21px apart) and 157px with 16px between at 360px. Under 360px the pair stacks
+    at full width (290px at 320px) instead of overflowing. Checked live at 375, 360 and 320
+    with no horizontal overflow and every label inside its button. **The homepage block has
+    the same two-fixed-buttons layout and was never looked at below 375px; by the same
+    arithmetic it overflows at 320px.** Not changed, since the owner asked for products only.
   - **Checked live.** All four test products show the band once and the footer's copy not at
     all; the homepage, collection, About and Контакти pages are unchanged (the footer's copy
     once each, the homepage its own section once). At 1440 the band is 1425 x 340 on
