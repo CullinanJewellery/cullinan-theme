@@ -2432,7 +2432,8 @@ Anything of ours that is not a Dawn setting lives in these two places:
       already done -- Dawn's `rating` block reads `product.metafields.reviews.rating`,
       which Judge.me writes, and prints nothing until there are reviews, and the card
       rating on Може да ви хареса и is switched on for the same reason. The review list
-      itself arrives as the app's own block once it is installed.
+      itself arrives as the app's own **section** once it is installed (checked against
+      Judge.me's own help, 2026-10-01 -- see Judge.me under Waiting on the Shopify admin).
     - **Instagram**: deferred by the owner's own choice the same day -- there are no
       product photographs yet and no customer pictures of pieces being worn, and a thin
       feed reads worse than none.
@@ -3140,7 +3141,8 @@ Anything of ours that is not a Dawn setting lives in these two places:
     социалните мрежи.“**, after their "Over 1.9 million followers on social media can't be
     wrong", calmer on purpose: no "can't be wrong", nothing sold hard. **The 2000 is the
     owner's own figure, not one we counted**, so the line is a setting to keep honest as the
-    number grows. Both are settings on the section, and its schema defaults.
+    number grows. Both are settings on the section, and its schema defaults. **The heading
+    changed again the same day**, to „Присъединете се към нас“ -- see More space above the buttons, below.
   - **It sits last on the product page, where the footer's copy used to print**, in
     `templates/product.json` after the questions. moonmagic puts theirs between the product
     and its recommendations (see Product page under Custom code); not moved, because the
@@ -3175,6 +3177,25 @@ Anything of ours that is not a Dawn setting lives in these two places:
     - **Checked live**: at 1440 the band is 316 tall, the heading and the line each on one
       line, the buttons 300 x 68 and 20px apart; at 375 the buttons are 167 x 62, 12px apart,
       both labels inside their boxes, no horizontal overflow.
+  - **More space above the buttons, and a heading that names no platform, 2026-10-01** ("make
+    a little bit more space between the text and the button and also i don't want to say to
+    see it in instagra and facebook something different even if you have to change the text
+    just the first one the second is good").
+    - **The gap** between the words and the buttons is 4.8rem on a computer and 3.6rem on a
+      phone (was 3.2rem / 2.4rem). moonmagic leaves about 60px and 50px there, so this is a
+      step toward theirs rather than all the way, which is what "a little bit" asked for.
+      **"The text and the button" was read as this band**, the section the rest of the
+      sentence is about; the delivery line above Add to cart is the other candidate.
+    - **The heading is „Присъединете се към нас“**, replacing „Вижте го в Instagram“: the band
+      carries a Facebook button as well, so a heading about one platform was wrong for it.
+      It names neither; it is an invitation that the line under it, unchanged, answers
+      with the follower count. **A no-break space joins „Присъединете“ and „се“**, so a phone
+      that wraps the heading keeps the reflexive particle with its verb instead of
+      starting the second line with it; the schema default writes it as `\u00a0` so it
+      stays visible in the source.
+    - **Checked live**: at 1440 the heading is one line (518px), 48px from the line to the
+      buttons, the band 332 tall. At 375 the heading breaks „Присъединете се“ / „към нас“,
+      36px from the line to the buttons, the band 295 tall, no horizontal overflow.
   - **Checked live.** All four test products show the band once and the footer's copy not at
     all; the homepage, collection, About and Контакти pages are unchanged (the footer's copy
     once each, the homepage its own section once). At 1440 the band is 1425 x 340 on
@@ -3582,7 +3603,30 @@ data, not theme files:
 - **Judge.me** (free plan, the owner's choice 2026-09-22) for reviews. Installing it is all
   that is needed on the theme's side for the stars: Dawn's `rating` block and the product
   cards both read `product.metafields.reviews.rating`, which the app writes. The review list
-  itself is the app's own block, dragged into the product template in the theme editor.
+  itself is the app's own section, added in the theme editor.
+  - **Still not installed, 2026-10-01**, when the owner asked "can we add customers reviews":
+    no trace of it on the live product page. **Installing an app is the owner's to do** --
+    it happens in the Admin and grants the app access to the store -- and nothing in this
+    repository can stand in for it.
+  - **The steps, checked against Judge.me's own help rather than from memory**: install
+    Judge.me Product Reviews from the Shopify App Store on the free plan; then, in the
+    theme editor of **this draft theme** (cullinan theme/main, not the published Horizon),
+    turn on the **Judge.me** app embed (the third icon in the left bar, App embeds); then
+    open Products > Default product, **Add section > Apps > Review Widget**, and save. The
+    widget is a section, not a block inside the product information, and carries its own
+    stars and "Write a review" button. Judge.me also writes Shopify's standard
+    `reviews.rating` and `reviews.rating_count` metafields, which is what our `rating` block
+    and the cards read.
+  - **After the owner saves**, Shopify commits the template and `config/settings_data.json`
+    back to GitHub. Pull before touching either, then place the widget and style it to
+    match. moonmagic's own order is product > Shop The Look > Customer Reviews > See It
+    Styled On Instagram > You May Also Like.
+  - **No app block goes into the template before the app is installed.** Its type carries the
+    app's own extension id (`shopify://apps/...`), which is not known here, and a template
+    naming a block Shopify cannot resolve risks being refused whole, the same way an
+    out-of-range setting is.
+  - **Nothing will show until real customers write reviews**, or the owner imports real ones.
+    None are to be invented to fill it.
 - **Stock is not counted: the pieces are made to order** (the owner's decision, 2026-09-28,
   "i don't want my products to have quantity"). Every variant of Пръстен с верижка had
   **Track quantity on and a quantity of 0**, which was the only reason the page read SOLD
