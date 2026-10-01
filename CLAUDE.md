@@ -271,6 +271,10 @@ Rules that matter here:
     instead of the theme’s own near-black `#221F1C` -- the owner’s own complaint, “the color
     is not black... the blackest color.” Scoped to the homepage’s own block; see Social follow
     section under Custom code.
+  - **Fourth and fifth, 2026-09-29 and 2026-10-01**: the stones row's two lines (see Stones
+    row) and, at the owner's instruction ("the footer needs the text to be all in black"),
+    every piece of the footer's text plus the Social band's heading and line (see Footer:
+    link columns and Social band under Custom code).
 - **The muted, restrained palette has one deliberate exception: the homepage hero's own
   button, since 2026-09-21.** At the owner's explicit instruction ("change the color to
   something bright that is going to make the eye look first at this button... i don't care
@@ -2825,6 +2829,33 @@ Anything of ours that is not a Dawn setting lives in these two places:
       above). `.footer-block--subscribe`'s own `border-bottom` (added originally to replace
       the dead `:first-child` selector) is gone; its `padding-bottom` stays, so there is still
       air before Нека ви помогнем, just no drawn line there any more.
+  - **All footer text is pure black, and the phone icons are centred, 2026-10-01** ("the
+    footer needs the text to be all in black also for a phone i want the instagram and the
+    facebook icons to be centered not aligned in the left"). Measured first rather than
+    assumed: the headings and links were the scheme's near-black `#221F1C`, and four groups
+    were 75% of it, which reads as grey -- the label above the email, the Email field label,
+    the phone accordion titles, and the whole bottom row (copyright, Powered by Shopify,
+    Privacy policy, Cookie preferences). One rule in `assets/crown.css`, right after the
+    link-column rules, sets them all to `rgb(0 0 0)`: the fifth named exception to "no pure
+    black", after the newsletter band, the dark buttons, the homepage social heading and the
+    stones row.
+    - **Three classes deep, with `:hover` variants.** Dawn's own colours for these sit in
+      `section-footer.css`, which loads from inside the section and so after `crown.css`;
+      its `.footer-block__details-content .list-menu__item--link:hover` ties a plain
+      three-class rule on specificity and would have turned a hovered link back to
+      near-black.
+    - **Left alone on purpose**: the blue and magenta Facebook/Instagram button labels (asked
+      for on 2026-09-20; they still print in the footer on collection, About and every page
+      but the homepage and products), the icons, every hairline, and the black newsletter
+      band above the footer, which is a separate section. The Контакти social heading and
+      line are in the rule: they had been the scheme's near-black and 68% of it.
+    - **The icons under the newsletter box are centred on a phone**
+      (`justify-content: center` inside `max-width: 749px`); a computer keeps them at the
+      left of their line. Measured at 375: 98px either side of the pair. The comment above
+      that rule still said right-aligned, true until 2026-09-30, and now says what holds.
+    - **Checked live**: 28 visible text nodes in the footer at 1440 and again at 375 (the
+      phone accordions opened first so their links were measured too), every one
+      `rgb(0, 0, 0)` except the two brand-coloured button labels; 28 of 28 on Контакти.
 - **Social follow section.** `sections/social-follow.liquid` with
   `assets/section-social-follow.css` (2026-09-18, at the owner’s request, so the homepage’s
   Facebook/Instagram block could sit between Кое злато е за вас and Първи научавайте --
@@ -2843,10 +2874,13 @@ Anything of ours that is not a Dawn setting lives in these two places:
   it is explicit there now along with the other settings), closing the gap to the newsletter
   band to exactly match the gap above this section; see the padding-matching note further
   down under this heading.
-  - **Homepage only.** `sections/footer.liquid` no longer prints its own copy of this block
-    when `template.name == 'index'` -- only `template.suffix == 'contact'` still does, so
-    Контакти is completely unaffected: same position (first in the footer, under Телефон),
-    same heading, text and background picture as before.
+  - **Homepage only.** `sections/footer.liquid` does not print its own copy of this block
+    on the homepage (`template.name == 'index'`), which carries this section instead.
+    **Out of date as first written here**: this note said only `template.suffix == 'contact'`
+    still printed the footer's copy. Since 2026-09-25 the footer prints it on every page but
+    the homepage, and since 2026-10-01 product pages are skipped too (see Social band below).
+    Контакти keeps its own heading, text and background picture, first in the footer under
+    Телефон.
   - **Pushed in two steps**, the section itself first and `templates/index.json`’s reference
     to it a couple of minutes later, per the same-push validator lag noted above.
   - **Bigger, and pure black, at the owner’s request the same day.** „Вижте работата ни“ and
@@ -2978,6 +3012,76 @@ Anything of ours that is not a Dawn setting lives in these two places:
       gradient's own bright orange/yellow tail, which only reads 2.75:1, for a deeper red at
       that end instead. Checked live on the homepage (both colours, both hover states) and on
       Контакти (unaffected, still black) at 375 and 1440px.
+
+- **Social band.** `sections/social-band.liquid` with `assets/section-social-band.css`
+  (2026-10-01, at the owner's request: "when we open a product Вижте работата ни section is
+  there but i don't want it like that, it can stay like this just for the homepage ... for
+  the products i want it like section See It Styled On Instagram but just the buttons and
+  the text i don't want the pictures down").
+  - **What printed it on product pages was the footer, not the product template.**
+    `sections/footer.liquid` has printed its copy of the block on every page except the
+    homepage since 2026-09-25, so a product page ended with the same blue and magenta pill
+    buttons on the plain ground that every collection and About page ends with. (The
+    "Homepage only" note under Social follow section said otherwise for a week; corrected
+    in place.)
+  - **Their section, measured on a Harlow ring page at 1440 and 375.** A full-width ground
+    `rgb(243, 243, 243)` with 80px of padding (30px on a phone); a heading 55px, regular,
+    centred (35px and left-aligned on a phone); a 22px line under it (14px on a phone);
+    then two **solid black square buttons with the icon beside the label**, LIKE US and
+    FOLLOW US, about 23px apart, side by side on a phone too (158px each, 20px apart, where
+    their labels wrap to two lines -- ours deliberately do not). Under that comes the picture
+    row, which is what the owner does not want. **Their hover drops the fill to a
+    transparent button with a black label and a black 1px outline** -- confirmed with a real
+    hover -- which is exactly what every button on this site already does, so nothing was
+    invented for it.
+  - **Its own section, not a variant of the homepage one.** The footer's markup and classes
+    carry the pill shape and the brand colours the owner asked for on the homepage block, and
+    this band wants neither, so reusing them meant overriding most of what they say. The
+    homepage keeps `social-follow` untouched ("it can stay like this just for the
+    homepage"). The new section takes its own settings (colour scheme, heading, line,
+    padding) and renders the `social-icons` snippet under its own class, so the two links
+    still come from the one pair of theme settings.
+  - **Sizes are the homepage block's, not moonmagic's.** Their button read 300 x 81 with a
+    22px label in one measurement and 300 x 52 with a 16px label in another, minutes apart in
+    the same pane, so no size was copied from it. The owner tuned the homepage block over
+    several rounds and asked for it smaller than moonmagic's more than once, so the heading
+    is 3.2rem (2.4rem on a phone), the line 1.6rem / 1.4rem, the buttons 26rem x 6.8rem on a
+    computer and 16.2rem x 5.8rem side by side on a phone. What changes is the ground, the
+    colour and the shape:
+    - **Ground scheme-2, soft stone `#F2F0EC`** -- their grey is 243 against its 242, and it
+      is the token this theme already uses for alternating bands. 72px of padding, 54px on a
+      phone.
+    - **Black from the scheme, not a typed hex** (`--color-button` / `--color-button-text`),
+      the same approach as Add to cart, so it follows the scheme if that is ever changed.
+    - **Square corners are the fifth scoped exception to the site-wide pill**, after the
+      hero, the silver banner, new arrivals and Add to cart.
+    - **Hover** is the fill dropping to an outline plus the site's usual `translateY(-0.25rem)`
+      lift, gated behind `@media (hover: hover)` so a tap does not leave a button stuck
+      outlined when the visitor comes back from Instagram. Keyboard focus gets the same.
+    - **Heading and line are pure black**, the same named exception the homepage block has.
+  - **The words are the homepage block's own** („Вижте работата ни“ and the Instagram line),
+    because the owner asked for the section's look and "just the buttons and the text", not
+    new copy. Both are settings on the section. moonmagic's line is a follower count; ours
+    has no such number and none is invented.
+  - **It sits last on the product page, where the footer's copy used to print**, in
+    `templates/product.json` after the questions. moonmagic puts theirs between the product
+    and its recommendations (see Product page under Custom code); not moved, because the
+    owner asked for a different look, not a different position. It is an ordinary section,
+    so it can be dragged in the theme editor.
+  - **The footer skips it on product pages**: `unless template.name == 'index' or
+    template.name == 'product'`, so a product page never shows both.
+  - **Pushed in two steps** per the validator lag -- the section, its stylesheet and the
+    footer text change first, then the template and the footer condition two and a half
+    minutes later. Both landed within ten seconds: no lag and no dropped push this time.
+  - **Checked live.** All four test products show the band once and the footer's copy not at
+    all; the homepage, collection, About and Контакти pages are unchanged (the footer's copy
+    once each, the homepage its own section once). At 1440 the band is 1425 x 340 on
+    `rgb(242, 240, 236)`, heading 32px on one line, the line on two, buttons 260 x 68 black
+    with a 0px radius, the pair centred and 20px apart. At 375 it is 270 tall, heading 24px,
+    buttons 162 x 58 at the two ends of the row (left edges 15px and 198px), both labels
+    fitting with room to spare (93px and 115px of text in 162px boxes), and no
+    horizontal overflow. A real hover on Харесайте ни gives a transparent fill, a black
+    label, the 1px outline and `translateY(-2.5px)` with the icon unscaled.
 
 ## Current state
 
