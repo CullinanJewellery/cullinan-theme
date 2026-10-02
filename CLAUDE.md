@@ -2654,8 +2654,9 @@ Anything of ours that is not a Dawn setting lives in these two places:
       the three 3rem gaps plus 1.5rem either side (see the correction just below). Four whole
       cards at any desktop width, no sliver, arrows still there for when there are more than
       four products.
-    - **Superseded 2026-10-02: three whole cards, `calc((100% - 9rem) / 3)`, 436.7px at 1440**
-      -- same rule, one fewer card; see Every product picture bigger under Product gallery.
+    - **Superseded 2026-10-02: three whole cards, 392px at 1440** (28% of the row, the gap
+      taking what is left, 97px) -- first 436.7px, then a little smaller the same day; see
+      Every product picture bigger under Product gallery.
     - **Wrong as first written, corrected 2026-09-28.** It was `calc((100% - 9rem) / 4)` and
       the note here said "checked live at 1440 and 1920: nothing clipped". That check compared
       the fourth card with the viewport, not with the row. The row's first card sits 1.5rem in
@@ -3665,10 +3666,11 @@ Anything of ours that is not a Dawn setting lives in these two places:
     bug to fix in the theme; told to the owner rather than guessed at either way.
 - **Product gallery.** The block at the end of `assets/crown.css` ("The product gallery:
   moonmagic's seamless square mosaic"), `assets/gallery-dots.js`,
-  `snippets/product-media-gallery.liquid`, one line in `sections/main-product.liquid` and one
-  setting in `templates/product.json` (2026-10-02, the owner: "when we open a product i want
+  `snippets/product-media-gallery.liquid`, one line in `sections/main-product.liquid` and two
+  settings in `templates/product.json` (2026-10-02, the owner: "when we open a product i want
   the section with the pictures of the product to be like moonmagic" -- and, in the same
-  message, "make every picture product bigger", see Every product picture bigger below).
+  message, "make every picture product bigger", which turned out to be about something else,
+  see Every product picture bigger below).
   - **moonmagic's gallery, measured on the Harlow ring page at 1440, 1024, 768 and 375px**
     rather than from memory. From 1024px up it is a two-column mosaic of **square tiles with
     no gap at all**: 361.5px each at 1440, 723px of picture in a 1200px container, the buy box
@@ -3680,29 +3682,43 @@ Anything of ours that is not a Dawn setting lives in these two places:
     current one, `#C1C1C6` for the rest, 29px apart) with a thin arrow at each end (the first
     one dimmed at the start) and a small expand icon at the bottom-left of the picture. A click
     opens a full-screen white lightbox: a vertical strip of 100px thumbnails on the left, the
-    picture 720px square (the window height less 180) and CLOSE at the top right.
-  - **Every product they have is `first-slide-standard` with 14 to 50 pictures** (read off ten
-    ring pages), so a plain mosaic always fills their column. Ours have one to a handful: the
-    ring has four uploaded and shows two once variant pictures are hidden. Two photographs in
-    a plain mosaic would be one short row beside a buy box twice as tall, so **the first
-    picture runs the full width of the column and the rest pair up under it** -- Dawn's own
-    "Stacked" layout, which this page already used, and the same idea as the larger first slide
-    their own theme offers. Switching the first tile to a standard one (every tile 417px) is
-    the Gallery layout setting, "2 columns"; the CSS already covers both.
-  - **What it is now.** At 1440: the first picture 834.6px square, the rest 417.3px squares in
-    pairs, no gap anywhere; the buy box unchanged (425.4px, sticky). Every photograph is a
-    square tile cropped to cover, whatever shape it was shot in -- a 3:4 photograph loses 12.5%
-    off the top and bottom, a 4:3 one 12.5% off each side, and the focal point set in Shopify's
-    Files decides which part stays. That is the standing "photography should be square" rule
-    applied to the page, as the cards already do. Before: a 547 x 730 picture centred in the
-    column with the next at 405 x 574 and 40px between rows.
-    - **The one setting that changed is `constrain_to_viewport`**, true to false: fitting a
-      picture to the window height is the opposite of a square tile. `gallery_layout`,
-      `media_fit` and the rest of the section are as they were. The stylesheet also forces the
-      tile square when that setting is switched back on, so it can never half-work.
+    picture 720px square (the window height less 180) and CLOSE at the top right. **Every
+    product they have is `first-slide-standard` with 14 to 50 pictures** (read off ten ring
+    pages), so a plain mosaic always fills their column.
+  - **What it is now.** Dawn's own "2 columns" layout, and the stylesheet makes every tile a
+    square and removes the gaps. At 1440, a product with two pictures (the ring) is one row of
+    two 417.3px squares beside the buy box, which is unchanged (425.4px, sticky); at 1024 the
+    tiles are 291.8px (theirs 282.9); at 768 one column of 326.5px squares in the half of the
+    page the gallery sits in; on a phone every picture is a full-bleed 375px square. **A product
+    with a single picture on a computer is drawn exactly as it was before any of this**: fitted
+    to the window height and uncropped -- the pendant 547.5 x 730, the bracelet 834.6 x 625.9,
+    read live. Every photograph in a mosaic is cropped to its tile whatever shape it was shot
+    in (a 3:4 one loses 12.5% off the top and bottom, a 4:3 one 12.5% off each side), and the
+    focal point set in Shopify's Files decides which part stays.
+  - **The first pass was too big, and was undone the same evening.** It made the first picture
+    run the full width of the column (835px at 1440, Dawn's "Stacked" layout) on the reasoning
+    that ours have one to a handful of photographs where theirs have 14 to 50, so a plain
+    mosaic of two would be one short row beside a buy box twice as tall. The owner: "i was
+    talking about just the products picture when you see them at the some section or in
+    rings not when you open them and their picture to be bigger". The "bigger" had been about
+    the cards, not the product page, and the pictures on a product page had become much
+    bigger than they were (547 x 730 to 835 x 835) without being asked for. **The cost of the
+    short row is real and accepted**: with two pictures the left column is 417px tall beside a
+    765px buy box, which fills as photographs are added. "Stacked" is still one setting away
+    (Gallery layout) and the stylesheet still covers it, if a large first picture is ever
+    wanted.
+  - **The two settings.** `gallery_layout` is `columns` (it was `stacked`) and
+    `constrain_to_viewport` is `true` (it was `false` for the first pass and `true` before
+    that, so net unchanged from before the gallery work). Fitting a picture to the window
+    height is what a lone picture needs and the opposite of a tile, so the tiles switch it off
+    for themselves: full width, square.
     - **Dawn's `--ratio-percent` is the lever**, not the images: `.media` is a padding-top box
-      sized from it, and `.product .product-media-container.media-type-image` sets it to 100%.
-      Video and 3D keep Dawn's own shape and still take a full row.
+      sized from it, and `.product .product__media-item:not(:only-child)
+      .product-media-container.media-type-image` sets it to 100% from 750px up. The `:not(
+      :only-child)` is the whole difference between a mosaic and a lone picture. Video and 3D
+      keep Dawn's own shape and still take a full row. On a phone the rule has no `:not`, so a
+      lone picture is a full-bleed square there too; `.global-media-settings` is in that
+      selector only to out-specify Dawn's width rule, which ties the plain version.
     - **Phones: one full-bleed square per screen.** Dawn gives each slide 100% less 3rem and a
       1.5rem lead-in so the next one peeks; that and the 5px of focus padding top and bottom are
       cancelled, so a slide is exactly the screen wide (375px at 375, a 375px scroll step). The
@@ -3723,48 +3739,65 @@ Anything of ours that is not a Dawn setting lives in these two places:
       no gap, a full-bleed slide and a scrolling list would all clip.
     - **Left as Dawn's, on purpose**: the lightbox (it shows every picture at its own shape,
       uncropped, which is right for looking closely -- theirs adds a thumbnail strip), the
-      phone slider's scrolling, the tablet layout from 750 to 989px (the gallery in the half
-      column, pictures stacked as 326px squares at 768 -- theirs stacks the gallery above the
-      buy box as a slider there), and **the sticky purchase bar on a phone** (theirs has a size
+      phone slider's scrolling, and **the sticky purchase bar on a phone** (theirs has a size
       picker and ADD TO BAG fixed to the bottom of the screen; not asked about, not built).
-  - **Checked, in two ways.** First on an offline copy of the live page: `curl` with a cookie
-    jar fetches the preview's real HTML (the pane could not post to a local server, curl
-    needed nothing), a small Node script points its stylesheets and scripts at the repo's own
-    working copies, and a throwaway server serves them -- the unchanged copy matched the live
-    page to the pixel (547.5 x 730 and 405.3 x 573.7) before anything was changed. On it, at
-    1440 / 1024 / 768 / 375: 834.6 / 583.6 / 326.5 / 375px first pictures, 417.3 / 291.8
-    tiles pairing with no gap, five extra tiles pairing correctly, the dots following
-    Dawn's own `currentPage` and the count following slides added and removed. Then live,
-    after the push: the same numbers at 1440 and 375, `scrollWidth` equal to the width asked
-    for, the dots 6px in `rgb(34, 31, 28)` and a quarter of it, the arrows 44px boxes at both
-    ends, the first dimmed, and a hand-fired scroll event moving the lit dot and the arrows'
-    state. **The pane produces no animation frames and no scroll events**, so the slider was
-    moved with `scrollLeft` plus a dispatched `scroll`, the lesson already under Stones row.
+      The tablet layout from 750 to 989px stacks the pictures in the half column, as it did
+      (theirs puts the gallery above the buy box as a slider there).
+  - **Checked, in two ways, both rounds.** First on an offline copy of the live page: `curl`
+    with a cookie jar fetches the preview's real HTML (the pane could not post to a local
+    server, curl needed nothing), a small Node script points its stylesheets and scripts at
+    the repo's own working copies, and a throwaway server serves them -- the unchanged copy
+    matched the live page to the pixel (547.5 x 730 and 405.3 x 573.7) before anything was
+    changed. A second script patches the markup to what a template change will print (the
+    layout class, the fit-to-height class), so a setting can be tried before it is pushed.
+    On it, round two: the ring as two 417.3px tiles and the pendant at 547.5 x 730 at 1440;
+    291.8px tiles at 1024; one 326.5px column at 768; full-bleed 375px squares on a phone for
+    both. **The phone check caught a real miss**: with fit-to-height back on, Dawn narrows a
+    contained tile to its own ratio (a 309px square in a 375px slide), and the first version
+    of the phone rule tied that rule on specificity and lost on load order -- the fix is the
+    extra class above, not a re-test of the same thing. Then live, after the push: the same
+    numbers at 1440 and 375, `scrollWidth` equal to the width asked for. **The pane produces
+    no animation frames and no scroll events**, so the slider was moved with `scrollLeft` plus
+    a dispatched `scroll`, the lesson already under Stones row.
   - **Every product picture bigger, 2026-10-02** ("make every picture product bigger", sent
-    with the gallery request). **A reading, not a certainty**: taken as every product card
-    picture, since "when we open a product" follows as a separate clause for the gallery.
-    Real photographs had just gone into the cards, and the pieces read small in them -- the
-    earlier step back from moonmagic's 380px to 340px (2026-09-27) was taken with empty
-    slots. moonmagic's own collection grid is three across (308px, beside a sidebar) and its
-    rows show 380px slides, so three across is the reference's own count.
-    - **Three across from 990px, everywhere a product picture is a card**: collections and
-      search (`columns_desktop` 4 to 3 in `templates/collection.json` and `search.json`),
-      the related row on a product page (the same setting in `templates/product.json`),
-      Наскоро разгледани (`--recently-viewed-columns`, `section-recently-viewed.css`) and the
-      homepage row. At 1440 the pictures went 307 to **417.3px**, and the homepage's 320 to
-      **436.7px** (`calc((100% - 9rem) / 3)` in `crown.css`, three whole cards, the fourth
-      one arrow away). Measured live on all five.
+    with the gallery request). **Read as the cards, which turned out to be right and then
+    needed a smaller number**: the owner, later the same day, "okay maybe make the products
+    pictures a little bit smaller and i was talking about just the products picture when you
+    see them at the some section or in rings". Sections are the homepage row and the related
+    and recently viewed rows; "in rings" is a collection page. Real photographs had just gone
+    into the cards and the pieces read small in them.
+    - **Three across from 990px, but not as wide as the first try.** Four across (307px in
+      collections, 320 on the homepage) was too small; three across edge to edge (417px, and
+      437 on the homepage) was a little too big. Whole cards leave no size between those two
+      counts -- three cards fill the row, and a fourth that shows even partly is the cut card
+      the owner has objected to twice -- so the difference goes into the gaps: **each card is
+      30% of the row and the other 10% is two equal gaps** (collections, search, the related
+      row and Наскоро разгледани), so the first card stays on the left edge and the last on the
+      right at any width. 390px cards and 65px gaps at 1440 (row 1300), 272.7px and 45px at
+      1024. The homepage carousel keeps its own edges (first card 27.5px from the left, the
+      heading and button on the same line, the arrows where they were): **a card is 28% of the
+      row, 392px, and the gap is 8% less 1.5rem, 97px**, which makes three cards plus the two
+      1.5rem insets fill the 1400px row exactly. The gap goes in Dawn's spacing variable rather
+      than straight into `column-gap` because Dawn's end-of-row spacer subtracts the same
+      variable from its own margin; measured with the row scrolled to its end, the last card
+      sits 15px from the right edge, as the first does from the left.
+    - **Where**: `assets/crown.css` ("Collections, search and the related row", before
+      `card-swatches`, and the homepage row rule beside "Най-продавани is a carousel"),
+      `assets/section-recently-viewed.css` (`--recently-viewed-gap: 5%`, so its own width
+      formula lands on 30%), and `columns_desktop: 3` in `templates/collection.json`,
+      `search.json` and `product.json` (the related row). Measured live on all five.
     - **Phones and tablets are untouched**: phones stay two across at 168px (moonmagic's own
       collection grid is two across at 174px), tablets were already three.
-    - **To go back, one place each**: the three `columns_desktop` values, the one custom
-      property, and `9rem / 3` to `12rem / 4` in the homepage rule. If "every picture product"
-      meant the pictures on the product page itself, those changed too, in the entry above.
-  - **Worth knowing, not changed.** The owner's uploads are 1086px wide, so the 835px first
-    picture is 1670 device pixels on a retina screen and will look soft there: about 1700px
-    wide is what that tile wants. And **two of the test photographs carry the Cullinan logo and
+    - **The sizes the owner has now seen**: 307 and 320 (four across), 417 and 437 (three
+      across, edge to edge), 390 and 392 (now). moonmagic's own: 308 in a collection (beside a
+      sidebar) and 380 in a row. **To change it, one number**: 30% and 5% for the grids, 28%
+      and 8% for the homepage; both come out as whole-card rows at any width.
+  - **Worth knowing, not changed.** **Two of the test photographs carry the Cullinan logo and
     a slogan burned into the picture** (the bracelet, and the ring's second photograph), which
     is the project's own first rule; flagged to the owner, not touched -- the pictures are
-    theirs to choose.
+    theirs to choose. The square crop of that second photograph cuts the top of its logo, which
+    is the 12.5% above. Sources are 1086px wide, enough for a 417px tile even at twice the
+    pixel density.
 
 ## Current state
 
