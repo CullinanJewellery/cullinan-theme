@@ -4098,17 +4098,22 @@ option-menu {
    the [motion] like theirs['] minus."
 
    Two sites, two different things taken from each, checked directly rather
-   than guessed:
+   than guessed -- and the first pass checked the wrong page on the first
+   of the two (see the correction below).
 
-   - moonmagic's own product-page accordions (Quality & Details, Shipping &
-     Returns) are an off-canvas drawer, not a disclosure at all -- their own
-     FAQ page is the real match. It draws a plain downward chevron next to
-     each question (a Font Awesome glyph via ::after, confirmed as two
-     straight strokes meeting at a point, not a plus). Its own CSS *would*
-     rotate that chevron 180deg on open
-     (`.shogun-panel-heading--open::after`), but the open row's class never
-     actually carries that modifier live, so in practice their own chevron
-     never animates at all -- only the shape was worth taking from them.
+   - moonmagic's own arrow is the one on their product page's own dropdown
+     ("Choose your metal", the same row the metal menu above is modelled
+     on) -- not their FAQ page, which was the first thing checked here and
+     is a different icon (a borrowed Font Awesome glyph, not theirs). The
+     real one, `.variant__optiongroup--menu__arrow.icon-mm-arrow` -- "mm"
+     for Moon Magic, their own drawn glyph, not a stock one -- opens their
+     own side panel, so it points sideways rather than down; the shape is
+     what carries over, not the orientation. Measured by rendering the
+     actual glyph (font `moonmagic-icons`, codepoint e967) to a canvas and
+     reading the dark pixels rather than eyeballing a screenshot: a vertex
+     at one corner and two arms of equal length (194px and 191px) meeting
+     it at a shared 43.75deg off the horizontal midline -- a plain
+     two-stroke chevron, each arm a near-exact 44deg.
 
    - hestiahome.bg's own accordion icon (`.hh-accordion__summary .hh-
      accordion__icon`, their product page's Размери / Описание / Доставка и
@@ -4122,19 +4127,20 @@ option-menu {
      pointed at.
 
    Our own shape is a chevron, not a plus, so neither bar starts horizontal
-   at rest -- both have to rotate home, not just one. Each bar is 65% of
-   the box's own width, pivoting at its own outer corner (transform-origin:
-   left/right center) through +/-40deg; closed, the two meet at the box's
-   centre, reproducing Dawn's own icon-caret.svg (its path data is a
-   precise two-segment 45deg chevron) a little wider so it still reaches
-   the centre at this site's smaller icon sizes without the strokes
-   crowding each other. Open, both rotate to 0deg -- flat, overlapping
-   across the full width -- landing on exactly the kind of line
-   hestiahome's own minus sits on. A first, naive attempt (50%-wide bars at
-   45deg, tried in a throwaway local test before this touched a real
-   template) falls 15% short of the centre and reads as two separated
-   ticks, not a chevron -- the width has to be long enough, at whatever
-   angle is chosen, to actually reach the middle.
+   at rest -- both have to rotate home, not just one. Each bar pivots at
+   its own outer corner (transform-origin: left/right center) through
+   +/-44deg, matching moonmagic's own glyph almost exactly; closed, the two
+   meet at the box's centre, which at this angle needs each bar to be
+   69.5% of the box's own width (50 / cos(44deg)) rather than a plain half
+   -- a first, naive attempt (50%-wide bars, tried in a throwaway local
+   test before this touched a real template) falls 15% short of the centre
+   at 45deg and reads as two separated ticks, not a chevron. Open, both
+   rotate to 0deg -- flat, overlapping across the full width -- landing on
+   exactly the kind of line hestiahome's own minus sits on. The same test
+   also carried Dawn's own icon-caret.svg angle (45deg, its path data is a
+   precise two-segment chevron) for comparison -- close enough to
+   moonmagic's own 43.75deg that either would have read fine at this size,
+   but the measured value is what shipped.
 
    Markup: snippets/icon-accordion-caret.liquid, a box and two bare wings.
    It carries no position or size of its own -- every site already has
@@ -4167,7 +4173,7 @@ option-menu {
 .cj-caret__wing {
   position: absolute;
   top: calc(50% - 0.075rem);
-  width: 65%;
+  width: 69.5%;
   height: 0.15rem;
   background-color: currentColor;
   transition: transform 0.2s ease;
@@ -4176,13 +4182,13 @@ option-menu {
 .cj-caret__wing--left {
   left: 0;
   transform-origin: left center;
-  transform: rotate(40deg);
+  transform: rotate(44deg);
 }
 
 .cj-caret__wing--right {
   right: 0;
   transform-origin: right center;
-  transform: rotate(-40deg);
+  transform: rotate(-44deg);
 }
 
 details[open] .cj-caret__wing {
