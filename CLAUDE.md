@@ -2562,6 +2562,24 @@ Anything of ours that is not a Dawn setting lives in these two places:
       5 of 5), 15px stars, pink, a 1.2px outline, a half star drawn as one star, no sideways
       scroll at 375. **Not seen on the live page**, and the form's new intro line was not
       seen either: it is one string in the same stylesheet.
+  - **Доставка и връщане moved first, and a Начини на плащане accordion added,
+    2026-10-02** (the owner: "move доставка и връщане to be first ... i need there a
+    payment info for a second ... the other ones can be how they are"). The order is
+    now: Доставка и връщане, Начини на плащане, Качество и детайли, Грижа за бижуто,
+    За камъка (still empty, so still hidden) -- the last three keep the relative order
+    they already had.
+    - **Начини на плащане states the one payment fact already public on the site**:
+      „Приемаме наложен платеж — плащате в брой при получаване на пратката.“ Наложен
+      платеж is already a hero-facts claim (see Hero facts under Custom code), so this
+      restates a fact already live, not a new one. **Card or bank-transfer details are
+      not confirmed** -- whether Shopify Payments or any other provider is even turned
+      on for this store has not come up -- so none are claimed here, the same
+      structure-before-content pattern Доставка и връщане's own missing price and
+      warranty already follow. A plain `collapsible_tab`, so it hides itself if its own
+      text is ever cleared.
+    - **Not touched**: anything in Settings > Payments, and anything about checkout --
+      this is static accordion text, the same as every other collapsible_tab on the
+      page, not a change to what the store can actually accept.
 - **Най-продавани sized to moonmagic's own bestseller carousel, 2026-09-26/27**, at the
   owner's request ("make in this section bigger the pictures of the products their text and
   the circles with colors to match moonmagic", then "the pictures should be with the size
@@ -3442,6 +3460,93 @@ Anything of ours that is not a Dawn setting lives in these two places:
       its own label says then. If the owner switches it on and the label still reads
       „Задължително“, the textarea is still `required` and the setting did not do what the
       docs say -- look at the form's textarea before touching the CSS.
+- **Accordion arrow.** `snippets/icon-accordion-caret.liquid` with the wing geometry in
+  `assets/crown.css` (2026-10-02, the owner: "for every drop down menu i want the arrows
+  to be arrows that look like moon magic and i want it when you click on it to become a
+  minus but the arrow lines to go in the line where is the minus, like they disappear in
+  the line ... you can check hestiahome.bg and see how theirs are moving when you open
+  them, but theirs is first with plus and then minus -- ours are going to be like i said,
+  like moonmagic arrows, the [motion] like theirs['] minus"). Replaces Dawn's own
+  `icon-caret.svg` wherever a real content accordion opens on the site.
+  - **The first pass checked the wrong page, and the owner caught it mid-build**: "i said
+    that i want moonmagic arrow like on their drop down menu for the products". moonmagic's
+    own PRODUCT-PAGE accordions (Quality & Details, Shipping & Returns) are an off-canvas
+    drawer, not a disclosure at all, so the first pass took the shape from their FAQ page
+    instead -- a plain chevron, but a borrowed Font Awesome glyph, not theirs. The real
+    one is on "Choose your metal" (the same row the metal menu above is modelled on):
+    `.variant__optiongroup--menu__arrow.icon-mm-arrow` -- "mm" for Moon Magic, their own
+    drawn icon, confirmed by its own distinct codepoint in the same icon font the FAQ
+    glyph also happens to live in. It points sideways, since it opens their own side
+    panel, not down -- only the shape carries over, not the orientation.
+  - **Measured by rendering the glyph itself, not by eye.** Drew the actual character
+    (font `moonmagic-icons`, codepoint e967) to a canvas at a large size and read the dark
+    pixels directly: a vertex and two arms of equal length (194px and 191px) meeting it at
+    a shared **43.75deg** off the horizontal -- a plain two-stroke chevron, nothing
+    stylised. Rounded to 44deg.
+  - **hestiahome.bg's own accordion icon** (`.hh-accordion__icon`, their product page's
+    Размери / Описание / Доставка и плащане rows), read from its computed style: two 1.5px
+    bars, one fixed horizontal, the other at `rotate(90deg)` closed and `rotate(0deg)`
+    open -- a plus that becomes a minus by the moving bar rotating flat onto the fixed
+    one. That rotating, not vanishing, is the "lines disappear into the line" motion the
+    owner pointed at.
+  - **Our own shape is a chevron, not a plus, so neither bar starts horizontal at rest --
+    both have to rotate home.** Each bar pivots at its own outer corner through ±44deg,
+    matching moonmagic's own glyph almost exactly; closed, the two meet at the box's
+    centre, which at this angle needs each bar at 69.5% of the box's own width
+    (50 / cos(44deg)) rather than a plain half. Open, both rotate to 0deg -- flat,
+    overlapping across the full width, landing on one continuous line. **A first, naive
+    attempt (50%-wide bars at 45deg) falls 15% short of the centre and reads as two
+    separated ticks, not a chevron** -- caught in an isolated local test (candidate
+    angle/width pairs, zoomed 5x and at real size) before any of this reached a real
+    template; that same test also carried Dawn's own icon-caret.svg angle (its path data
+    is a precise two-segment 45deg chevron) for comparison, close enough to moonmagic's
+    own 43.75deg that either would have read fine at this size, but the measured value is
+    what shipped.
+  - **Every real accordion on the site, and what was deliberately left out.** Touched:
+    the product page's own `collapsible_tab` and `product_specs` blocks (Доставка и
+    връщане, Начини на плащане, Качество и детайли, Грижа за бижуто, За камъка), За
+    нас's own FAQ (`sections/collapsible-content.liquid`, which shares Dawn's
+    `.accordion` wrapper with the product blocks), the footer's phone link-column
+    accordion, Контакти's `contact-methods` rows, and the metal picker's own drop-down
+    menu (`option-menu`, built the previous round) -- the phrase "every drop down menu"
+    was read to include that one too, not just FAQ-style content accordions, since the
+    whole message opened by discussing it. **Left alone, as functional controls rather
+    than content disclosures**: native `<select>` dropdown arrows (including the
+    variant picker's own `dropdown` mode, unused on this site today), the header's
+    navigation menus and drawer, pagination, every slider/carousel's prev-next arrows
+    (including this section's own, and the Recently viewed row's), and the cart drawer's
+    own disclosures (a checkout-adjacent area, left untouched out of caution rather than
+    checked and excluded). Worth asking about if the owner wants it wider.
+  - **The snippet carries no position or size of its own.** Every site already had both
+    for the icon that used to sit there, so the default call keeps the class
+    `icon-caret` precisely so each site's own existing rule (Dawn's generic `summary
+    .icon-caret`, the footer's own, the metal menu's own) keeps placing and sizing the
+    box unchanged -- only the SVG inside it changed, plus a cancellation of each site's
+    own old `transform: rotate(180deg)` on open (which would otherwise spin the two
+    wings as a rigid unit instead of letting them flatten), each one matching or beating
+    the specificity of the rule it replaces rather than trusting load order, the same
+    approach used everywhere else in this file.
+    - **Контакти is the one call that passes `bare: true`.** Its own
+      `.contact-methods__toggle` has never carried class `icon-caret`, and must not
+      start now: Dawn's generic `summary .icon-caret` rule would otherwise reach in and
+      reposition it (confirmed by specificity: `summary .icon-caret` at (0,1,1) beats a
+      bare `.contact-methods__toggle` at (0,1,0) regardless of load order). So this one
+      call carries only `cj-caret`, kept its own existing 1.6rem square box exactly as
+      it was, and lost its old hand-drawn plus/minus (`::before`/`::after`) entirely.
+    - **The footer needed one real fix, not just a markup swap.** Its own `.icon-caret`
+      was `position: static`, which would have stopped the wings (`position: absolute`)
+      from positioning against it at all -- changed to `position: relative`, the one
+      edit in this round that was a genuine bug fix rather than a swap.
+  - **Checked in a local mock** (the real `base.css`, `component-accordion.css`,
+    `section-contact-methods.css` and `crown.css`, the real snippet output, built markup
+    matching each site's own structure exactly) at 1440 and 375px, every one of the five
+    sites, both states: the wings' own computed transform reads
+    `matrix(0.7193, ±0.6947, ∓0.6947, 0.7193, 0, 0)` closed (cos/sin of exactly 44°) and
+    `matrix(1, 0, 0, 1, 0, 0)` open on both bars, while each site's own icon wrapper
+    reads `transform: none` in both states -- the wings animate, the box does not. A
+    screenshot confirms a clean chevron and a clean solid minus with no visible gap or
+    seam, including in Контакти's own square (not 1.667-ratio) box. **Not seen on the
+    live preview.**
 - **Recently viewed.** `sections/recently-viewed.liquid` with `assets/section-recently-viewed.css`
   and `assets/recently-viewed.js` (2026-10-01, at the owner's request: "add like moonmagic
   section You Recently Viewed above Отзиви от клиенти"). It sits on the product page right
@@ -3521,6 +3626,18 @@ Anything of ours that is not a Dawn setting lives in these two places:
       The pane runs no animation frames, so the arrows were driven with
       `prefers-reduced-motion` faked on `matchMedia` (instant scroll) and a hand-fired
       `scroll` event, the lesson already under Stones row.
+  - **Visible in the theme editor even with nothing browsed, 2026-10-01** (undocumented
+    until now). `request.design_mode` draws four empty picture slots and a one-line note
+    in Bulgarian instead of returning early, so the section can be seen and selected
+    there; no visitor and no preview link ever sees this, only the editor itself.
+  - **"Appears just for a phone", 2026-10-02 (the owner, on the live preview) -- checked,
+    and it is not a code restriction.** Opened the ring, then Обеци, directly on the
+    preview at 1440px: the row showed with a real photo, same as at 375px, `hidden`
+    false, nothing in the CSS gates it to any width. The list lives in
+    `localStorage`, which is **per browser, per device** -- if the owner browsed on a
+    phone, that phone's own storage has the list; a desktop browser (or a different
+    phone) has an empty one of its own until two products are opened there too. Not a
+    bug to fix in the theme; told to the owner rather than guessed at either way.
 
 ## Current state
 
