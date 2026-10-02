@@ -16,7 +16,9 @@
 
   It was four across until 2026-10-02 (the owner: "make every picture product
   bigger"), when every product listing on the site went to three across from
-  990px: 417px pictures at 1440 where they were 307px.
+  990px, and a little smaller the same day at the owner's request: each card is
+  30% of the row and the other 10% is two equal gaps, so 390px pictures 65px
+  apart at 1440, where they were 307px (four across) and briefly 417px.
 */
 
 recently-viewed {
@@ -87,8 +89,12 @@ recently-viewed[hidden],
 }
 
 @media screen and (min-width: 990px) {
+  /* A percentage gap, so the width formula below lands on exactly 30%:
+     (100% - 2 x 5%) / 3. The script measures its scroll step off the cards'
+     own offsets, so a gap that is not a fixed length does not matter to it. */
   .recently-viewed__track {
     --recently-viewed-columns: 3;
+    --recently-viewed-gap: 5%;
   }
 }
 

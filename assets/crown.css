@@ -1550,19 +1550,44 @@ html {
 
    Three whole cards, not four, since 2026-10-02 (the owner: "make every picture
    product bigger", once real photographs were in the cards and the pieces looked
-   small in them). The same rule with a different count: the two 3rem gaps plus
-   1.5rem either side leave 9rem, so the width is (100% - 9rem) / 3 -- 436.7px at
-   1440, where it was 320. Still whole cards and still a carousel; with four
-   products the fourth is one arrow away, as it will be for the other four to six
-   once the row is full. */
+   small in them). First as the same rule with a different count -- the two 3rem
+   gaps plus 1.5rem either side leave 9rem, so (100% - 9rem) / 3, 436.7px at
+   1440, where it was 320 -- and then smaller the same day ("maybe make the
+   products pictures a little bit smaller"): a card is 28% of the row, 392px at
+   1440, and the gap is whatever is left once three cards and the two 1.5rem
+   insets are taken out, so three cards still fill the row edge to edge and the
+   fourth still starts past its end. That is (100% - 3rem - 3 x 28%) / 2, which
+   is 8% less 1.5rem: 97px at 1440. The gap goes in the spacing variable, not
+   straight into column-gap, because Dawn's end-of-row spacer takes the same
+   variable off its own margin and would otherwise leave a wider space after the
+   last card than before the first. Still whole cards and still a carousel; with
+   four products the fourth is one arrow away. */
 @media screen and (min-width: 990px) {
   [id^="shopify-section-"][id$="__featured_collection"] .product-grid.slider--desktop {
-    --grid-desktop-horizontal-spacing: 3rem;
+    --grid-desktop-horizontal-spacing: calc(8% - 1.5rem);
     --desktop-margin-left-first-item: 0rem;
   }
 
   [id^="shopify-section-"][id$="__featured_collection"] .slider--desktop .grid__item {
-    width: calc((100% - 9rem) / 3);
+    width: 28%;
+  }
+}
+
+/* Collections, search and the related row on a product page: three cards across
+   from 990px, each 30% of the row with the other 10% split into two equal gaps,
+   so the first card sits on the left edge and the last on the right at any width
+   -- 390px cards and 65px gaps at 1440, where they were 417 and 24 (and 307 with
+   four across before 2026-10-02: first bigger, then a little smaller again at
+   the owner's request). The homepage row is a carousel and has its own rule
+   above; Dawn's own width for a three-column grid is a third less its gaps. */
+@media screen and (min-width: 990px) {
+  .grid.product-grid.grid--3-col-desktop:not(.slider--desktop) {
+    column-gap: 5%;
+  }
+
+  .grid.product-grid.grid--3-col-desktop:not(.slider--desktop) > .grid__item {
+    width: 30%;
+    max-width: 30%;
   }
 }
 
@@ -4255,11 +4280,18 @@ details[open] .cj-caret__wing {
      apart) with a thin arrow at each end, and a small expand icon at the
      bottom-left of the picture.
    - Every one of their products has "first-slide-standard" and 14 to 50
-     pictures, so a plain mosaic always fills the column. Ours have one to a
-     handful, so the first picture runs the full width of the column instead
-     (Dawn's own "Stacked" layout, which is what this page already used), and
-     the rest pair up under it. Two photographs in a plain two-column mosaic
-     would have been a single short row beside a buy box twice as tall.
+     pictures, so a plain mosaic always fills the column.
+
+   Corrected the same day, at the owner's request ("not when you open them and
+   their picture to be bigger"). The first pass ran the first picture the full
+   width of the column (835px at 1440, Dawn's "Stacked" layout) because ours
+   have one to a handful of photographs and a plain mosaic of two would be one
+   short row. That made the pictures on a product page much bigger than they
+   had been, which was never asked for: the "bigger" was about the cards in the
+   rows and collections. So the gallery is the plain mosaic now -- every tile
+   the same size, as moonmagic's -- and a product with a single picture is
+   drawn exactly as it was before any of this (fitted to the window height,
+   uncropped). "Stacked" is still one setting away, and still works.
 
    What is Dawn's own and left alone: the layout switch at 750 and 990px, the
    slider's scrolling and snapping (a swipe is native, so there is no
@@ -4273,16 +4305,42 @@ details[open] .cj-caret__wing {
 
 /* Every photograph is a square tile, whatever shape it was shot in; cover
    crops it to fit (the focal point set in Files still applies). Video and 3D
-   keep Dawn's own shape. */
-.product .product-media-container.media-type-image {
-  --ratio-percent: 100%;
+   keep Dawn's own shape.
+
+   That holds on a phone always, where a slide is a full-bleed square, and on a
+   computer wherever there is more than one picture to tile. A lone picture on a
+   computer is left exactly as Dawn draws it: fitted to the window height and
+   uncropped, which is how it looked before the mosaic. "Fit media to the screen
+   height" is on in the template for that reason, and it would otherwise narrow
+   a contained tile to its own ratio and cap it below square, so the tiles
+   switch it off for themselves: full width, square. (`.global-media-settings` is
+   on every tile and is only there to out-specify Dawn's own width rule, which
+   ties a plain `.product .product-media-container.media-type-image` and loads
+   later.) */
+@media screen and (max-width: 749px) {
+  .product .product-media-container.media-type-image.global-media-settings {
+    --ratio-percent: 100%;
+    width: 100%;
+    max-width: 100%;
+    margin-inline: 0;
+  }
+
+  .product .product-media-container.constrain-height.media-type-image .media {
+    padding-top: 100%;
+  }
 }
 
-/* "Fit media to the screen height" would cap a tile below square on a short
-   window; it is off in the template, and this keeps it from mattering if it is
-   ever switched back on. */
-.product .product-media-container.constrain-height.media-type-image .media {
-  padding-top: 100%;
+@media screen and (min-width: 750px) {
+  .product .product__media-item:not(:only-child) .product-media-container.media-type-image {
+    --ratio-percent: 100%;
+    width: 100%;
+    max-width: 100%;
+    margin-inline: 0;
+  }
+
+  .product .product__media-item:not(:only-child) .product-media-container.constrain-height.media-type-image .media {
+    padding-top: 100%;
+  }
 }
 
 /* No gap between tiles, in the mosaic or between slides. */
@@ -4304,17 +4362,23 @@ details[open] .cj-caret__wing {
   .product .product__media-list {
     margin-bottom: 0;
   }
+}
 
-  /* Two columns means exactly half each; Dawn takes half of the gap off both,
-     which with no gap would leave a hole on the right of every row. */
-  .product--columns .product__media-list .product__media-item:not(.product__media-item--single):not(:only-child) {
+/* Two columns means exactly half each; Dawn takes half of the gap off both,
+   which with no gap would leave a hole on the right of every row. The same
+   for "Stacked", whose first picture and videos keep their own full-width rule. */
+@media screen and (min-width: 990px) {
+  .product--columns .product__media-list .product__media-item:not(.product__media-item--single):not(:only-child),
+  .product--stacked .product__media-list .product__media-item {
     max-width: 50%;
   }
 }
 
-@media screen and (min-width: 990px) {
-  .product--stacked .product__media-list .product__media-item {
-    max-width: 50%;
+/* On a tablet the gallery sits in half the page, where Dawn's "2 columns" would
+   make two tiles of 160px; one column, as "Stacked" already does. */
+@media screen and (min-width: 750px) and (max-width: 989px) {
+  .product--columns .product__media-list .product__media-item:not(.product__media-item--single):not(:only-child) {
+    max-width: 100%;
   }
 }
 
