@@ -1750,8 +1750,8 @@ card-swatches {
    as cheaper rather than grander.
    --------------------------------------------------------------------------- */
 
-/* The name of the thing, on a product card. Semi-bold until 2026-10-03; it reads
-   the heading token now like every other title. */
+/* The name of the thing, on a product card. Semi-bold (600) until 2026-10-03; it
+   reads the heading token now like every other title. */
 .collection .card__heading,
 .collection .card__heading.h5 {
   font-weight: var(--font-heading-weight);
@@ -3652,8 +3652,8 @@ card-swatches {
   font-size: 1.5rem;
 }
 
-/* The title: 24px in the questions' heading weight (regular since 2026-10-03,
-   bold before), not Judge.me's 20px. The extra `.jm-text` is needed -- Judge.me's
+/* The title: 24px in the questions' heading weight (the heading token, 550 since
+   2026-10-03, bold before), not Judge.me's 20px. The extra `.jm-text` is needed -- Judge.me's
    own `.jm-text[data-v-...]` rule ties a two-class selector and loads after this
    file. */
 .jm-review-widget .jm-text.jm-review-widget-minimal-header__title {
@@ -3913,6 +3913,75 @@ body .jdgm-write-review-modal .jdgm-write-review-modal__page--review-form-intro 
 
 .product .product__info-container > .rating-wrapper + .product__title {
   margin-top: 0.4rem;
+}
+
+/* ---------------------------------------------------------------------------
+   Breadcrumb at the top of the buy box (2026-10-03)
+
+   The owner: "when you open a product they have this Home / Moonstone Pearl
+   Ring - Heirloom above the reviews start, the right is for the title of the
+   product and the left is to go back in the home page -- can we do that for
+   ours".
+
+   moonmagic's, measured on a product page at 1440 and 1024: a nav at the very
+   top of the buy box column (it sits inside their sticky `.product__shop`, so it
+   travels with the box), 12px in capitals with 1.2px of tracking on a 16px line,
+   9.6px of padding above it. "Home" is a link to the home page and the name after
+   the slash is the page you are on. It never wraps: `nowrap` with an ellipsis, so
+   a long name is cut rather than broken onto a second line. And it is `display:
+   none` below 992px, so a tablet and a phone have no breadcrumb at all; ours
+   switches on at 990px, this theme's own line between tablet and computer.
+
+   Colour. Theirs is a grey link and a black name; here both are black, because
+   the owner has asked for every word of the buy box in black (see "Buy box: the
+   words in black" above). The link still reads as one: it underlines on hover and
+   on keyboard focus, where theirs turns from grey to black.
+
+   Space. The block after it -- the stars -- would take Dawn's 1.5rem above itself
+   (`.product__info-container > * + *`), and on a phone, where the breadcrumb is
+   hidden, that would push the whole box 15px lower than it has always started.
+   So that margin is zeroed at every width and the gap lives on the breadcrumb
+   itself, which exists only where it shows: 1.6rem, so the row of stars still sits
+   close to the title under it, as the owner asked on 2026-10-01.
+
+   The padding is 9.6px, theirs: they wrote 0.6rem on a 16px root, and this
+   theme's root is 10px, so the same number would only be 6px.
+   --------------------------------------------------------------------------- */
+
+.product .product__info-container > .product-breadcrumb + * {
+  margin-top: 0;
+}
+
+.product-breadcrumb {
+  display: none;
+}
+
+@media screen and (min-width: 990px) {
+  .product .product__info-container > .product-breadcrumb {
+    display: block;
+    margin: 0 0 1.6rem;
+    padding: 0.96rem 0 0;
+    overflow: hidden;
+    color: rgb(0 0 0);
+    font-size: 1.2rem;
+    letter-spacing: 0.1em;
+    line-height: 1.6rem;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .product-breadcrumb a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .product-breadcrumb a:hover,
+  .product-breadcrumb a:focus-visible {
+    text-decoration: underline;
+    text-decoration-thickness: 0.1rem;
+    text-underline-offset: 0.3rem;
+  }
 }
 
 /* ---------------------------------------------------------------------------

@@ -1,9 +1,11 @@
 {%- comment -%}
   The site's font: Jost, for headings and text alike, the owner's choice on
   2026-09-14 (option E, after seeing it on hestiahome.bg). Headings were bold
-  (700) until 2026-10-03, when the owner asked for every title to be regular:
-  the one number below, --font-heading-weight, now says 400, and every title
-  in the theme reads it.
+  (700) until 2026-10-03, when the owner asked for every title to be regular
+  and then, the same evening, for "50% of" the bold back: the one number
+  below, --font-heading-weight, now says 550, halfway between regular (400)
+  and bold (700), and every title in the theme reads it. The files are
+  variable (font-weight: 300 700 below), so 550 is drawn as 550.
 
   Loaded from the theme's own files, not Shopify's font library. Every font file
   Shopify hosts is Latin-only -- Shopify's Jost included -- so with a library
@@ -93,11 +95,13 @@
     --font-body-weight: 400;
     --font-body-weight-bold: 700;
 
-    /* Regular since 2026-10-03 (the owner: "for all the titles lets make them
-       not bold"); 700 from 2026-09-14. Every title reads this, so flipping it
-       flips them all. Buttons, prices, menu items and form labels do not. */
+    /* 550 since 2026-10-03: the owner first asked for no bold titles ("for all
+       the titles lets make them not bold", 400), then for half the bold back
+       ("i like 50% of it"); 700 from 2026-09-14 until then. Every title reads
+       this, so changing it changes them all. Buttons, prices, menu items and
+       form labels do not. */
     --font-heading-family: "Jost Theme", "Segoe UI", Arial, sans-serif;
     --font-heading-style: normal;
-    --font-heading-weight: 400;
+    --font-heading-weight: 550;
   }
 </style>

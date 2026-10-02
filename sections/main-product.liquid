@@ -90,6 +90,22 @@
           >
             {%- assign product_form_id = 'product-form-' | append: section.id -%}
 
+            {%- if section.settings.show_breadcrumb -%}
+              {%- comment -%}
+                Home / the product's name, the very first thing in the buy box, above the
+                stars -- moonmagic's own placement and wording (2026-10-03, the owner:
+                "can we do that for ours"). The left half goes back to the home page, the
+                right half is the page you are on. Computer only: assets/crown.css hides it
+                below 990px, as theirs is hidden below 992px. Not a block, so the template
+                needs nothing; the two settings below carry defaults.
+              {%- endcomment -%}
+              <nav class="product-breadcrumb" aria-label="Навигационна пътека">
+                <a href="{{ routes.root_url }}">{{ section.settings.breadcrumb_home_label | default: 'Начало' | escape }}</a>
+                <span class="product-breadcrumb__divider" aria-hidden="true">/</span>
+                <span aria-current="page">{{ product.title | escape }}</span>
+              </nav>
+            {%- endif -%}
+
             {%- for block in section.blocks -%}
               {%- case block.type -%}
                 {%- when '@app' -%}
@@ -2386,6 +2402,19 @@
       "id": "enable_sticky_info",
       "default": true,
       "label": "t:sections.main-product.settings.enable_sticky_info.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_breadcrumb",
+      "default": true,
+      "label": "Show the breadcrumb above the product title",
+      "info": "Home / the product's name, at the top of the buy box. Shown from 990px up."
+    },
+    {
+      "type": "text",
+      "id": "breadcrumb_home_label",
+      "default": "Начало",
+      "label": "Breadcrumb: the word that goes to the home page"
     },
     {
       "type": "color_scheme",
