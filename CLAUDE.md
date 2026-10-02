@@ -2628,6 +2628,25 @@ Anything of ours that is not a Dawn setting lives in these two places:
     - **Not touched**: anything in Settings > Payments, and anything about checkout --
       this is static accordion text, the same as every other collapsible_tab on the
       page, not a change to what the store can actually accept.
+  - **More room between the options, the made-to-order line and the button, 2026-10-03** (the
+    owner, about "the section Home / Moonstone Pearl Ring - Heirloom": "make more space between
+    the stones and button and the text above"). **A reading, not a certainty**: nothing on this
+    page is "the stones" -- moonmagic's buy box has a "Choose your gemstone" row, ours has none --
+    so the size boxes were taken for them, "the button" for Add to cart and "the text above" for
+    the made-to-order line.
+    - **Measured at 1440 before touching it**: the last row of size boxes 23px above the line,
+      the line 34px above the button, the button 25px above the first accordion. Now **40px and
+      40px**, the button's 25px untouched, at every width. moonmagic's own gaps there are tighter
+      than ours were (about 10px each), so this is the owner's taste, not a match.
+    - **Where**: `variant-selects` takes `margin-bottom: 3.2rem` (the 8px inside the last row of
+      boxes brings it to 40) and `.product-delivery-note` `margin-bottom: 4rem`, both in
+      `assets/crown.css`. The first sits on the options rather than on the line, so it holds
+      with or without a delivery line.
+    - **If another gap was meant**, these are the candidates, all left as they were: the size boxes
+      themselves (13px between boxes, 15px between rows), the legend above them (17px), and the top
+      of the box (16px from the breadcrumb to the stars, 4px from the stars to the title).
+    - **Checked live at 1440 and 375**: 40px and 40px, the made-to-order line still one row, the
+      page exactly as wide as the screen.
 - **Най-продавани sized to moonmagic's own bestseller carousel, 2026-09-26/27**, at the
   owner's request ("make in this section bigger the pictures of the products their text and
   the circles with colors to match moonmagic", then "the pictures should be with the size
@@ -2828,6 +2847,53 @@ Anything of ours that is not a Dawn setting lives in these two places:
     visible. Fixed by loading `component-swatch.css` directly in every section that can render
     `card-product.liquid`'s swatches (next to `card-swatches.js`), so the feature no longer
     depends on an unrelated section loading it first.
+  - **Which variant a circle stands for, 2026-10-03** (the owner: "the colors that are on the
+    products under the title the rose gold color and the silver don't change to the color i put
+    fix that so they can work like the others"). Read off the live page, the ring's circles were
+    wired like this: yellow gold to the yellow photograph, white gold to the white one, **rose
+    gold to the yellow photograph** and **silver to nothing**. Clicking rose "changed" the picture
+    to the one already showing, silver did nothing, and both yellow and rose looked selected at
+    load.
+    - **Cause.** `value.variant`, the variant Shopify hands a swatch, is the first variant that
+      carries the colour **with the first value of every other option**. The ring has three
+      options -- size, colour, metal -- so rose got "54 55 / розово злато / 14К жълто злато",
+      which carries the yellow-gold photograph, and silver got "54 55 / Сребро / 14К жълто
+      злато", which carries none. The photographs sit on the variants where **the metal names
+      the same gold** (the ones a shopper lands on by choosing a metal), not on these.
+    - **Fix, `snippets/card-product.liquid`.** A circle takes the variant where **another
+      option's value contains the colour's name** (`розово злато` inside `14К розово злато`,
+      `Сребро` inside `925 сребро`, case-insensitive) -- the pairing
+      `snippets/product-variant-picker.liquid` already uses to hide the colour row. Its photograph
+      comes, in order, from: that variant; the first such variant of another size that has one;
+      failing both, the photograph **every** variant of that metal shares, when they all agree on
+      one. Price, availability and the variant id follow the paired variant. A product with no such
+      second option (a colour alone, or a colour and a size) gets `value.variant` exactly as before.
+      Only one circle can start pressed.
+    - **Silver shows the white-metal photograph, and that is a fallback, not data.** No variant
+      that says "Сребро" has a picture. The two that say "925 сребро" (with the yellow and the
+      white colour, first size) both carry the white-metal render, so that is what silver shows.
+      The first rule wins the moment a picture is linked to "54 55 / Сребро / 925 сребро".
+    - **Tested offline first, on the owner's own data**: the live product JSON of the ring and
+      the bracelet fed to the real snippet through liquidjs (the harness is in the scratchpad,
+      not committed). The old snippet reproduced the live cards -- the four variant ids identical
+      to the live page, rose on the yellow photograph, silver on none, yellow and rose both pressed
+      -- so the mock models Shopify's choice. The new one gives yellow, white and rose their own
+      photographs and silver the white-metal one; 13 checks, including a colour alone, a colour and
+      a size, donors that disagree, and a pair that has its photograph only on another size. Then
+      live: the homepage, the collection page and a product's related row print the same four
+      circles, and a real click on each, on the homepage, swaps the card's photograph to the right
+      one and presses only that circle.
+    - **The product page has the same gap, and it is data, not theme.** A shopper who picks rose
+      gold, white gold or silver there lands on the exact paired variant, and **only the first size
+      (54 55) has a photograph on its rose and white pairs, and no silver variant has one**. Real
+      clicks confirmed it: "56 / розово злато / 14К розово злато", "56 / бяло злато / 14К бяло
+      злато" and "56 / Сребро / 925 сребро" carry no photograph, so choosing them at sizes 56-60
+      leaves the gallery on whatever it showed. The owner put the photographs on the variants
+      with the first metal (`14К жълто злато`), from when colour alone drove them. The fix is in
+      the Admin (link each photograph to its paired variants, all seven sizes), or a theme
+      fallback if the owner would rather not: **not built, not asked.**
+    - **The bracelet's circles do nothing, and should not**: eight variants, one photograph, none
+      of them assigned.
 - **Footer: link columns, newsletter box, contact email** (2026-09-17, at the owner’s request,
   after the reference’s footer). Two wrong reads came first (see the reverted homepage stones
   section above, then a round that built only the newsletter and email and left the columns
@@ -3973,7 +4039,8 @@ Anything of ours that is not a Dawn setting lives in these two places:
     lives on the breadcrumb itself (1.6rem, so the stars still sit close to the title as the
     owner asked on 2026-10-01), which exists only where it shows. Measured on the live page:
     the stars sit at offset 0 from the top of the buy box at 375 and 989px, and 16px under the
-    breadcrumb from 990px.
+    breadcrumb from 990px. **That check was incomplete: see the correction at the end of this
+    entry.**
   - **Checked on a local copy first, then live**, the same method as under Product gallery. At
     1440: the nav at x 937.1, the buy box's own left edge, 425.4 wide and 25.6 tall (9.6 + 16),
     12px / 1.2px / uppercase / black / nowrap, the stars 16px under it, so the buy box's top is
@@ -3986,6 +4053,16 @@ Anything of ours that is not a Dawn setting lives in these two places:
     here). The page said `:hover` was false until then. A viewport of about 1000 x 640 fills
     the frame well enough to read a screenshot by eye.
 
+  - **Correction, 2026-10-03: the breadcrumb had silently widened the stars-to-title gap from 4px
+    to 15px**, on a computer and on a phone. The rating block used to be the box's first child,
+    which Dawn gives no margins; with the breadcrumb ahead of it, Dawn's `.product__info-container
+    > * + *` gave it 1.5rem below as well, and that margin collapsed over the title's 0.4rem. The
+    first version of the "a phone must start where it always did" rule zeroed only the block's
+    **top** margin, and the check that went with it measured only the top (the stars at offset 0),
+    so the claim above that the stars "still sit close to the title" was wrong by 11px. Found
+    measuring the next request; `.product-breadcrumb + .rating-wrapper` now zeroes the bottom
+    margin too, and the live page measures 4px again at 1440 and 375. **Lesson: when a block stops
+    being the first child, check both of its margins, and measure the gap on both sides.**
 
 ## Current state
 
