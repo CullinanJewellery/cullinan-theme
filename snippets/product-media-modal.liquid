@@ -1,5 +1,16 @@
 {% comment %}
-  Renders a product media modal. Also see 'product-media-gallery'
+  Renders the product zoom viewer. Also see 'product-media-gallery'.
+
+  Dawn's own version is a scrolling column of every picture at full width.
+  This one follows moonmagic's: a white screen, one picture at a time, a strip
+  of thumbnails on the left from 990px up (a thin progress bar under the picture
+  below that), and CLOSE at the top right. The thumbnails and the bar are built
+  by assets/product-modal.js each time the viewer opens, from whatever pictures
+  are in the content below, because product-info.js swaps that content when a
+  variant is chosen. Styled in assets/component-product-viewer.css.
+
+  It is not given Dawn's `media-modal` class, which makes ModalDialog close on any
+  click anywhere; the viewer closes itself from the empty space round the picture.
 
   Accepts:
   - product: {Object} Product liquid object
@@ -9,7 +20,7 @@
   {% render 'product-media-modal' %}
 {% endcomment %}
 
-<product-modal id="ProductModal-{{ section.id }}" class="product-media-modal media-modal">
+<product-modal id="ProductModal-{{ section.id }}" class="product-media-modal">
   <div
     class="product-media-modal__dialog color-{{ section.settings.color_scheme }} gradient"
     role="dialog"
@@ -23,35 +34,46 @@
       class="product-media-modal__toggle"
       aria-label="{{ 'accessibility.close' | t }}"
     >
-      {{ 'icon-close.svg' | inline_asset_content }}
+      <span class="product-media-modal__toggle-label">Затвори</span>
+      <span class="product-media-modal__toggle-icon" aria-hidden="true"></span>
     </button>
 
-    <div
-      class="product-media-modal__content color-{{ section.settings.color_scheme }} gradient"
-      role="document"
-      aria-label="{{ 'products.modal.label' | t }}"
-      tabindex="0"
-    >
-      {%- liquid
-        if product.selected_or_first_available_variant.featured_media != null
-          assign media = product.selected_or_first_available_variant.featured_media
-          render 'product-media', media: media, loop: section.settings.enable_video_looping, variant_image: section.settings.hide_variants
-        endif
-      -%}
-
-      {%- for media in product.media -%}
-        {%- liquid
-          if section.settings.hide_variants and variant_images contains media.src or variant_images contains media.id
-            assign variant_image = true
-          else
-            assign variant_image = false
-          endif
-
-          unless media.id == product.selected_or_first_available_variant.featured_media.id
-            render 'product-media', media: media, loop: section.settings.enable_video_looping, variant_image: variant_image
-          endunless
-        -%}
-      {%- endfor -%}
+    <div class="product-media-modal__thumbs" hidden>
+      <button type="button" class="product-media-modal__thumbs-arrow product-media-modal__thumbs-arrow--up" aria-label="Предишни снимки" hidden></button>
+      <div class="product-media-modal__thumb-list"></div>
+      <button type="button" class="product-media-modal__thumbs-arrow product-media-modal__thumbs-arrow--down" aria-label="Следващи снимки" hidden></button>
     </div>
+
+    <div class="product-media-modal__stage">
+      <div
+        class="product-media-modal__content color-{{ section.settings.color_scheme }} gradient"
+        role="document"
+        aria-label="{{ 'products.modal.label' | t }}"
+      >
+        {%- liquid
+          if product.selected_or_first_available_variant.featured_media != null
+            assign media = product.selected_or_first_available_variant.featured_media
+            render 'product-media', media: media, loop: section.settings.enable_video_looping, variant_image: section.settings.hide_variants
+          endif
+        -%}
+
+        {%- for media in product.media -%}
+          {%- liquid
+            if section.settings.hide_variants and variant_images contains media.src or variant_images contains media.id
+              assign variant_image = true
+            else
+              assign variant_image = false
+            endif
+
+            unless media.id == product.selected_or_first_available_variant.featured_media.id
+              render 'product-media', media: media, loop: section.settings.enable_video_looping, variant_image: variant_image
+            endunless
+          -%}
+        {%- endfor -%}
+      </div>
+    </div>
+
+    <div class="product-media-modal__progress" aria-hidden="true" hidden><span></span></div>
+    <div class="product-media-modal__status visually-hidden" role="status" aria-live="polite"></div>
   </div>
 </product-modal>

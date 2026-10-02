@@ -93,7 +93,7 @@
 .mosaic__label {
   display: block;
   font-size: 1.6rem;
-  font-weight: 600;
+  font-weight: var(--font-heading-weight);
   line-height: 1.3;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -146,7 +146,7 @@
    it — 20px on the label, 19px on the line under it. */
 .mosaic__grid--caption-over .mosaic__label {
   font-size: 1.8rem;
-  font-weight: 500;
+  font-weight: var(--font-heading-weight);
   letter-spacing: 0.02em;
 }
 

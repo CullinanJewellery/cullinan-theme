@@ -1,0 +1,404 @@
+/*
+  The product zoom viewer, after moonmagic's (2026-10-03, the owner: "when you open them
+  and click on their pictures to zoom or whatever it is lets make it like moonmagic it
+  looks way better").
+
+  moonmagic's, measured on a product page at 1440, 1024, 768 and 375px:
+  - A full-screen white layer that fades in over 0.3s (cubic-bezier(0, 0, 0.2, 1)) while the
+    content slides up 15% into place, and fades out while it slides up 10% more.
+  - From 1200px: a vertical strip of 100px square thumbnails, 20px apart, 30px from the left
+    edge, as tall as the picture, with a 100 x 28 arrow bar above and below that dims at each end;
+    no marker on the current thumbnail. The picture fills the rest, `contain`, in a box the
+    window's height less 180px (less 100px under 1200), and cross-fades over 0.3s between pictures.
+  - Under 992px: no strip; the picture runs the full width and a 4px progress bar, 90% wide, sits
+    under it (a black segment 1/N of the track on a 10% black track). Swipe to change.
+  - CLOSE at the top right, 40px in from the edge and 20px down: the word at 16px, capitals, and a
+    cross drawn as two 2px lines.
+
+  Ours is the same, with three departures: the strip starts at 990px (this theme's own line
+  between tablet and computer, and below 1200 theirs has no way to change picture with a mouse);
+  the word is Bulgarian; and the ground is the page's own off-white, not pure white.
+
+  Every rule is prefixed `product-modal.product-media-modal` so it beats Dawn's single-class rules
+  in section-main-product.css, which loads before this file but ties on a two-class selector.
+*/
+
+/* --- the layer ------------------------------------------------------------- */
+
+product-modal.product-media-modal {
+  --viewer-gap: 6rem;
+  --viewer-height: calc(100vh - 2 * var(--viewer-gap));
+  background-color: rgb(var(--color-background));
+  pointer-events: none;
+  /* closing: fade out, and only then drop out of sight and behind the page */
+  transition: opacity 0.3s cubic-bezier(0, 0, 0.2, 1), visibility 0s linear 0.3s, z-index 0s linear 0.3s;
+}
+
+@supports (height: 100dvh) {
+  product-modal.product-media-modal {
+    --viewer-height: calc(100dvh - 2 * var(--viewer-gap));
+  }
+}
+
+product-modal.product-media-modal[open] {
+  pointer-events: auto;
+  transition: opacity 0.3s cubic-bezier(0, 0, 0.2, 1), visibility 0s, z-index 0s;
+}
+
+@media screen and (min-width: 990px) {
+  product-modal.product-media-modal {
+    --viewer-gap: 5rem;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  product-modal.product-media-modal {
+    --viewer-gap: 9rem;
+  }
+}
+
+product-modal.product-media-modal .product-media-modal__dialog {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  box-sizing: border-box;
+  height: 100%;
+  padding: 0;
+}
+
+@media screen and (min-width: 990px) {
+  product-modal.product-media-modal .product-media-modal__dialog {
+    padding: 0 3rem;
+  }
+}
+
+@keyframes product-viewer-in {
+  from {
+    transform: translateY(15%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes product-viewer-out {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-10%);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  product-modal.product-media-modal[open] .product-media-modal__dialog {
+    animation: product-viewer-in 0.3s cubic-bezier(0, 0, 0.2, 1);
+  }
+
+  product-modal.product-media-modal.is-closing .product-media-modal__dialog {
+    animation: product-viewer-out 0.3s cubic-bezier(0, 0, 0.2, 1) forwards;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  product-modal.product-media-modal,
+  product-modal.product-media-modal[open] {
+    transition: none;
+  }
+}
+
+/* --- CLOSE ----------------------------------------------------------------- */
+
+product-modal.product-media-modal .product-media-modal__toggle {
+  position: absolute;
+  top: 2rem;
+  right: 4rem;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: auto;
+  height: 4rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  color: rgb(var(--color-foreground));
+  font: inherit;
+  font-size: 1.6rem;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+product-modal.product-media-modal .product-media-modal__toggle:hover {
+  color: rgb(var(--color-foreground));
+  opacity: 0.7;
+}
+
+/* The cross is two 2px lines, 40px long, at 45 degrees: 28px across. Its centre sits 20px in from
+   the right edge of the button, as on moonmagic's. */
+.product-media-modal__toggle-icon {
+  position: relative;
+  flex: none;
+  width: 2.8rem;
+  height: 2.8rem;
+  margin: 0 0.6rem 0 1.2rem;
+}
+
+.product-media-modal__toggle-icon::before,
+.product-media-modal__toggle-icon::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 4rem;
+  height: 0.2rem;
+  background-color: currentColor;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.product-media-modal__toggle-icon::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+/* --- the strip of thumbnails (computer) ------------------------------------ */
+
+product-modal.product-media-modal .product-media-modal__thumbs {
+  display: none;
+  position: relative;
+  flex: none;
+  box-sizing: border-box;
+  width: 10rem;
+  height: var(--viewer-height);
+  padding: 3.8rem 0;
+}
+
+@media screen and (min-width: 990px) {
+  product-modal.product-media-modal .product-media-modal__thumbs:not([hidden]) {
+    display: block;
+  }
+}
+
+.product-media-modal__thumb-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  height: 100%;
+  overflow-y: auto;
+  scroll-snap-type: y proximity;
+  scrollbar-width: none;
+}
+
+.product-media-modal__thumb-list::-webkit-scrollbar {
+  display: none;
+}
+
+.product-media-modal__thumb {
+  position: relative;
+  flex: none;
+  width: 10rem;
+  height: 10rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  scroll-snap-align: start;
+  cursor: pointer;
+}
+
+.product-media-modal__thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-media-modal__thumb:focus-visible,
+.product-media-modal__thumbs-arrow:focus-visible,
+.product-media-modal__toggle:focus-visible {
+  outline: 0.2rem solid rgb(var(--color-foreground));
+  outline-offset: 0.3rem;
+}
+
+/* A play mark on a video's thumbnail. */
+.product-media-modal__thumb--video::before,
+.product-media-modal__thumb--video::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.product-media-modal__thumb--video::before {
+  width: 3.6rem;
+  height: 3.6rem;
+  border-radius: 50%;
+  background-color: rgb(var(--color-background));
+  transform: translate(-50%, -50%);
+}
+
+.product-media-modal__thumb--video::after {
+  border-style: solid;
+  border-width: 0.7rem 0 0.7rem 1.2rem;
+  border-color: transparent transparent transparent rgb(var(--color-foreground));
+  transform: translate(-35%, -50%);
+}
+
+/* The arrow bars above and below: a light grey bar with a chevron, dimmed at each end. */
+.product-media-modal__thumbs-arrow {
+  position: absolute;
+  left: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 2.8rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background-color: rgba(var(--color-foreground), 0.05);
+  color: rgb(var(--color-foreground));
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.product-media-modal__thumbs-arrow--up {
+  top: 0;
+}
+
+.product-media-modal__thumbs-arrow--down {
+  bottom: 0;
+}
+
+.product-media-modal__thumbs-arrow::before {
+  content: '';
+  width: 0.9rem;
+  height: 0.9rem;
+  border-top: 0.15rem solid currentColor;
+  border-left: 0.15rem solid currentColor;
+}
+
+.product-media-modal__thumbs-arrow--up::before {
+  transform: translateY(0.25rem) rotate(45deg);
+}
+
+.product-media-modal__thumbs-arrow--down::before {
+  transform: translateY(-0.25rem) rotate(225deg);
+}
+
+.product-media-modal__thumbs-arrow[disabled] {
+  opacity: 0.2;
+  cursor: default;
+}
+
+.product-media-modal__thumbs-arrow[hidden] {
+  display: none;
+}
+
+/* --- the picture ----------------------------------------------------------- */
+
+product-modal.product-media-modal .product-media-modal__stage {
+  position: relative;
+  flex: 1 1 auto;
+  min-width: 0;
+  height: var(--viewer-height);
+  /* a horizontal swipe belongs to the viewer; pinching to zoom still belongs to the browser */
+  touch-action: pan-y pinch-zoom;
+}
+
+product-modal.product-media-modal .product-media-modal__content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-height: none;
+  padding: 0;
+  overflow: hidden;
+  background: none;
+}
+
+/* Every picture lies on top of the others, each at full size and invisible; the one that is `active`
+   is shown, and the change between two is a cross-fade. Only the current picture and the ones either
+   side are drawn at all (`is-near`), so the rest are not downloaded until the visitor gets near them. */
+product-modal.product-media-modal .product-media-modal__content > * {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  transition: opacity 0.3s cubic-bezier(0, 0, 0.2, 1);
+}
+
+product-modal.product-media-modal .product-media-modal__content > .is-near,
+product-modal.product-media-modal .product-media-modal__content > .is-leaving,
+product-modal.product-media-modal .product-media-modal__content > .active {
+  display: block;
+}
+
+product-modal.product-media-modal .product-media-modal__content > .active {
+  z-index: 1;
+  opacity: 1;
+}
+
+product-modal.product-media-modal .product-media-modal__content > img {
+  object-fit: contain;
+}
+
+/* A video or a 3D model brings its own height from an inline padding-top; here it fills the box. */
+product-modal.product-media-modal .product-media-modal__content > deferred-media,
+product-modal.product-media-modal .product-media-modal__content > .product-media-modal__model product-model {
+  padding-top: 0 !important;
+}
+
+product-modal.product-media-modal .product-media-modal__content .deferred-media__poster img {
+  object-fit: contain;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  product-modal.product-media-modal .product-media-modal__content > * {
+    transition: none;
+  }
+}
+
+/* --- the progress bar (phone and tablet) ----------------------------------- */
+
+.product-media-modal__progress {
+  display: none;
+  position: absolute;
+  left: 5%;
+  bottom: 2.4rem;
+  width: 90%;
+  height: 0.4rem;
+  border-radius: 1rem;
+  background-color: rgba(var(--color-foreground), 0.1);
+  overflow: hidden;
+}
+
+@media screen and (max-width: 989px) {
+  .product-media-modal__progress:not([hidden]) {
+    display: block;
+  }
+}
+
+.product-media-modal__progress > span {
+  display: block;
+  width: calc(100% / var(--viewer-count, 1));
+  height: 100%;
+  border-radius: 1rem;
+  background-color: rgb(var(--color-foreground));
+  transform: translateX(calc(var(--viewer-index, 0) * 100%));
+  transition: transform 0.3s cubic-bezier(0, 0, 0.2, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .product-media-modal__progress > span {
+    transition: none;
+  }
+}

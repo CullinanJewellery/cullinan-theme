@@ -1166,7 +1166,7 @@ html {
 .collection .card__heading,
 .collection .card__heading.h5 {
   font-size: 1.6rem;
-  font-weight: 600;
+  font-weight: var(--font-heading-weight);
   letter-spacing: normal;
   margin-top: 0.4rem;
 }
@@ -1750,10 +1750,11 @@ card-swatches {
    as cheaper rather than grander.
    --------------------------------------------------------------------------- */
 
-/* The name of the thing, on a product card. */
+/* The name of the thing, on a product card. Semi-bold until 2026-10-03; it reads
+   the heading token now like every other title. */
 .collection .card__heading,
 .collection .card__heading.h5 {
-  font-weight: 600;
+  font-weight: var(--font-heading-weight);
 }
 
 /* The number that decides a purchase. */
@@ -1764,7 +1765,7 @@ card-swatches {
 
 /* Each promise in the benefits row, against its muted subline. */
 .benefit__heading {
-  font-weight: 600;
+  font-weight: var(--font-heading-weight);
 }
 
 /* The facts in the atelier block: 1991, 14К — numbers earn weight. */
@@ -2089,7 +2090,7 @@ card-swatches {
 .footer__social-heading {
   margin: 0;
   font-size: 1.4rem;
-  font-weight: 600;
+  font-weight: var(--font-heading-weight);
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
@@ -2176,7 +2177,7 @@ card-swatches {
   font-family: var(--font-body-family);
   font-style: var(--font-body-style);
   font-size: 1.2rem;
-  font-weight: 600;
+  font-weight: var(--font-heading-weight);
   line-height: 1.4;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -2352,7 +2353,7 @@ card-swatches {
   font-family: var(--font-body-family);
   font-style: var(--font-body-style);
   font-size: 1.2rem;
-  font-weight: 600;
+  font-weight: var(--font-heading-weight);
   line-height: 1.4;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -2506,7 +2507,7 @@ card-swatches {
     gap: 1.6rem;
     padding: 1.8rem 0;
     font-size: 1.2rem;
-    font-weight: 600;
+    font-weight: var(--font-heading-weight);
     line-height: 1.4;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -3651,12 +3652,13 @@ card-swatches {
   font-size: 1.5rem;
 }
 
-/* The title: 24px bold like the questions' heading, not Judge.me's 20px regular.
-   The extra `.jm-text` is needed -- Judge.me's own `.jm-text[data-v-...]` rule
-   ties a two-class selector and loads after this file. */
+/* The title: 24px in the questions' heading weight (regular since 2026-10-03,
+   bold before), not Judge.me's 20px. The extra `.jm-text` is needed -- Judge.me's
+   own `.jm-text[data-v-...]` rule ties a two-class selector and loads after this
+   file. */
 .jm-review-widget .jm-text.jm-review-widget-minimal-header__title {
   font-size: 2.4rem;
-  font-weight: 700;
+  font-weight: var(--font-heading-weight);
   letter-spacing: 0.025em;
   line-height: 1.25;
 }
