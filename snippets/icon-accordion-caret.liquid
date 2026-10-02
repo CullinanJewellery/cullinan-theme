@@ -1,0 +1,40 @@
+{% comment %}
+  Cullinan: an accordion's own open/close arrow -- two bars that meet as a
+  chevron at rest and rotate flat into a single line (a minus) once the
+  <details> around them opens. See "The accordion arrow" in assets/crown.css
+  for the shape and motion this was built against (moonmagic.com's own
+  chevron, hestiahome.bg's own plus-to-minus motion), and the notes below
+  for why each call site is shaped the way it is.
+
+  Renders only the box and its two wings -- it carries no position or size of
+  its own, because every site already has both for whatever icon used to sit
+  there (Dawn's own `summary .icon-caret`, the footer's own, the metal menu's
+  own, Контакти's own .contact-methods__toggle). The default output keeps the
+  class "icon-caret" precisely so those rules keep applying unchanged; only
+  Контакти needs `bare: true`, since its own toggle has never carried that
+  class and must not start now (Dawn's generic `summary .icon-caret` rule
+  would otherwise reach in and reposition it).
+
+  Accepts:
+  - bare: {Boolean, optional} true to leave the "icon-caret" class off the
+    outer box, for a site whose own wrapper already positions and sizes it.
+  - extra_class: {String, optional} classes to add alongside the default, e.g.
+    a site's own existing toggle class.
+
+  Usage:
+    {% render 'icon-accordion-caret' %}
+    {% render 'icon-accordion-caret', bare: true, extra_class: 'contact-methods__toggle' %}
+{% endcomment %}
+{%- liquid
+  assign outer_class = 'cj-caret'
+  unless bare
+    assign outer_class = outer_class | append: ' icon-caret'
+  endunless
+  if extra_class
+    assign outer_class = outer_class | append: ' ' | append: extra_class
+  endif
+-%}
+<span class="{{ outer_class }}" aria-hidden="true">
+  <span class="cj-caret__wing cj-caret__wing--left"></span>
+  <span class="cj-caret__wing cj-caret__wing--right"></span>
+</span>

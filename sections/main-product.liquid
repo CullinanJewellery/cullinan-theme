@@ -233,7 +233,7 @@
                               {{ block.settings.heading | default: block.settings.page.title | escape }}
                             </h2>
                           </div>
-                          {{- 'icon-caret.svg' | inline_asset_content -}}
+                          {% render 'icon-accordion-caret' %}
                         </summary>
                         <div class="accordion__content rte" id="ProductAccordion-{{ block.id }}-{{ section.id }}">
                           {{ block.settings.content }}
@@ -274,7 +274,7 @@
                               {{ block.settings.heading | default: block.settings.page.title | escape }}
                             </h2>
                           </div>
-                          {{- 'icon-caret.svg' | inline_asset_content -}}
+                          {% render 'icon-accordion-caret' %}
                         </summary>
                         <div class="accordion__content rte" id="ProductAccordion-{{ block.id }}-{{ section.id }}">
                           {%- if has_specs -%}

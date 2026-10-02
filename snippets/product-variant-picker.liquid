@@ -218,7 +218,7 @@
                 <span class="option-menu__current" data-selected-value>
                   {{- option.selected_value -}}
                 </span>
-                {{- 'icon-caret.svg' | inline_asset_content -}}
+                {% render 'icon-accordion-caret' %}
               </summary>
               <div class="option-menu__list">
                 {% render 'product-variant-options',

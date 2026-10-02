@@ -87,6 +87,15 @@
             "page": ""
           }
         },
+        "payment_tab": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Начини на плащане",
+            "icon": "none",
+            "content": "<p>Приемаме наложен платеж — плащате в брой при получаване на пратката.</p>",
+            "page": ""
+          }
+        },
         "complementary": {
           "type": "complementary",
           "settings": {
@@ -109,10 +118,11 @@
         "variant_picker",
         "delivery_note",
         "buy_buttons",
+        "shipping_tab",
+        "payment_tab",
         "specs",
         "care_tab",
         "stone_tab",
-        "shipping_tab",
         "complementary"
       ],
       "settings": {

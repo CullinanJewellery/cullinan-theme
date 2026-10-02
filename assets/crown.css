@@ -2480,15 +2480,10 @@ card-swatches {
   }
 
   .footer .footer-links__summary .icon-caret {
-    position: static;
+    position: relative;
     flex: none;
     width: 1rem;
     height: 0.6rem;
-    transition: transform 0.2s ease;
-  }
-
-  .footer .footer-links__toggle[open] .icon-caret {
-    transform: rotate(180deg);
   }
 
   .footer .footer-links__toggle .footer-links__list {
@@ -2501,11 +2496,6 @@ card-swatches {
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .footer .footer-links__summary .icon-caret {
-    transition: none;
-  }
-}
 
 /* On Контакти the social block comes first in the footer, right under the
    Телефон row; the columns after it get clear air below its picture. */
@@ -3999,12 +3989,8 @@ option-menu {
   right: 1.8rem;
   top: calc(50% - 0.3rem);
   height: 0.6rem;
-  transition: transform 0.2s ease;
 }
 
-.product .option-menu[open] > .option-menu__summary .icon-caret {
-  transform: rotate(180deg);
-}
 
 .product .option-menu__dot {
   flex: 0 0 auto;
@@ -4097,4 +4083,134 @@ option-menu {
   .product .option-menu__item {
     transition: none;
   }
+}
+
+/* ---------------------------------------------------------------------------
+   The accordion arrow: moonmagic's own shape, hestiahome's own motion
+   (2026-10-02)
+
+   The owner: "for every drop down menu i want the arrows to be arrows that
+   look like moon magic and i want it when you click on it to become a
+   minus but the arrow lines to go in the line where is the minus, like
+   they disappear in the line ... you can check hestiahome.bg and see how
+   theirs are moving when you open them, but theirs is first with plus and
+   then minus -- ours are going to be like i said, like moonmagic arrows,
+   the [motion] like theirs['] minus."
+
+   Two sites, two different things taken from each, checked directly rather
+   than guessed:
+
+   - moonmagic's own product-page accordions (Quality & Details, Shipping &
+     Returns) are an off-canvas drawer, not a disclosure at all -- their own
+     FAQ page is the real match. It draws a plain downward chevron next to
+     each question (a Font Awesome glyph via ::after, confirmed as two
+     straight strokes meeting at a point, not a plus). Its own CSS *would*
+     rotate that chevron 180deg on open
+     (`.shogun-panel-heading--open::after`), but the open row's class never
+     actually carries that modifier live, so in practice their own chevron
+     never animates at all -- only the shape was worth taking from them.
+
+   - hestiahome.bg's own accordion icon (`.hh-accordion__summary .hh-
+     accordion__icon`, their product page's Размери / Описание / Доставка и
+     плащане rows), read from its computed style directly: two 1.5px bars,
+     one fixed horizontal (::before), the other (::after) at
+     matrix(0,1,-1,0,0,0) -- rotate(90deg) -- closed, and
+     matrix(1,0,0,1,0,0) -- rotate(0deg) -- open. Closed is a plus (one bar
+     horizontal, one vertical); open is their rotating bar landing flat on
+     top of the fixed one, reading as a single minus. That rotating -- not
+     vanishing -- is the "lines disappear into the line" motion the owner
+     pointed at.
+
+   Our own shape is a chevron, not a plus, so neither bar starts horizontal
+   at rest -- both have to rotate home, not just one. Each bar is 65% of
+   the box's own width, pivoting at its own outer corner (transform-origin:
+   left/right center) through +/-40deg; closed, the two meet at the box's
+   centre, reproducing Dawn's own icon-caret.svg (its path data is a
+   precise two-segment 45deg chevron) a little wider so it still reaches
+   the centre at this site's smaller icon sizes without the strokes
+   crowding each other. Open, both rotate to 0deg -- flat, overlapping
+   across the full width -- landing on exactly the kind of line
+   hestiahome's own minus sits on. A first, naive attempt (50%-wide bars at
+   45deg, tried in a throwaway local test before this touched a real
+   template) falls 15% short of the centre and reads as two separated
+   ticks, not a chevron -- the width has to be long enough, at whatever
+   angle is chosen, to actually reach the middle.
+
+   Markup: snippets/icon-accordion-caret.liquid, a box and two bare wings.
+   It carries no position or size of its own -- every site already has
+   both, for the icon that used to sit there (Dawn's own `summary .icon-
+   caret`, the footer's own, the metal menu's own, Контакти's own
+   .contact-methods__toggle) -- and its default output keeps the class
+   "icon-caret" specifically so those rules keep applying unchanged.
+   Контакти is the one exception: its own .contact-methods__toggle has
+   never carried "icon-caret" and must not start now, since Dawn's own
+   `summary .icon-caret` rule would then reach into it and reposition it,
+   so that one call passes `bare: true` and only "cj-caret" goes on.
+
+   The wing rule below is a plain `details[open] .cj-caret__wing`
+   selector, which does not care what wraps it, so one pair of rules
+   reaches every site. What differs per site is only cancelling that
+   site's own pre-existing whole-icon rotate(180deg) -- Dawn's own (product
+   accordions and За нас's FAQ, both inside ".accordion"), the footer's own,
+   and the metal menu's own (removed above, since that one was this file's
+   own to begin with) -- since rotating the box as a rigid unit would spin
+   the two wings together rather than letting them flatten into the line.
+   Each cancellation matches or beats the specificity of the rule it
+   replaces, the same approach used throughout this file, rather than
+   leaving it to load order.
+   --------------------------------------------------------------------------- */
+
+.cj-caret {
+  position: relative;
+}
+
+.cj-caret__wing {
+  position: absolute;
+  top: calc(50% - 0.075rem);
+  width: 65%;
+  height: 0.15rem;
+  background-color: currentColor;
+  transition: transform 0.2s ease;
+}
+
+.cj-caret__wing--left {
+  left: 0;
+  transform-origin: left center;
+  transform: rotate(40deg);
+}
+
+.cj-caret__wing--right {
+  right: 0;
+  transform-origin: right center;
+  transform: rotate(-40deg);
+}
+
+details[open] .cj-caret__wing {
+  transform: rotate(0deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cj-caret__wing {
+    transition: none;
+  }
+}
+
+/* Product accordions (Качество и детайли, Грижа за бижуто, Доставка и
+   връщане, Начини на плащане, За камъка) and За нас's own FAQ rows both sit
+   inside Dawn's ".accordion" wrapper and share its own caret rule
+   (component-accordion.css); neither one ever set a width (only a
+   height), relying on the old SVG's own intrinsic ratio to fill in the
+   rest, which a plain span cannot do on its own. */
+.accordion .icon-caret.cj-caret {
+  width: 1rem;
+}
+
+.accordion details[open] > summary .icon-caret.cj-caret {
+  transform: none;
+}
+
+/* The metal menu's own box, missing the same width Dawn's SVG used to fill
+   in from its height alone. */
+.product .option-menu__summary .icon-caret.cj-caret {
+  width: 1rem;
 }

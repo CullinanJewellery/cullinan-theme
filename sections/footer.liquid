@@ -391,7 +391,7 @@
                         <details class="footer-links__toggle">
                           <summary class="footer-links__summary">
                             <span>{{ block.settings.heading | escape }}</span>
-                            {{- 'icon-caret.svg' | inline_asset_content -}}
+                            {% render 'icon-accordion-caret' %}
                           </summary>
                           <ul class="list-unstyled footer-links__list">
                             {{ column_links }}

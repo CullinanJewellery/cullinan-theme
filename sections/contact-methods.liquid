@@ -40,7 +40,7 @@
             <span class="contact-methods__icon">{% render 'icon-benefit', icon: block.settings.icon %}</span>
           {%- endif -%}
           <h2 class="contact-methods__title">{{ block.settings.title | escape }}</h2>
-          <span class="contact-methods__toggle" aria-hidden="true"></span>
+          {% render 'icon-accordion-caret', bare: true, extra_class: 'contact-methods__toggle' %}
         </span>
       </summary>
     {%- endcapture -%}
