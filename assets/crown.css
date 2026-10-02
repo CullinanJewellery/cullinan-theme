@@ -3517,9 +3517,11 @@ card-swatches {
    --------------------------------------------------------------------------- */
 
 .product .product-delivery-note {
-  /* 3.4rem, not a round number: it puts 43px between this line and the button,
-     which is moonmagic's own gap, measured. 1.6rem left only 25. */
-  margin: 0 0 3.4rem;
+  /* 4rem: 40px between this line and the button, the same as between the options
+     above it and this line (see the variant-selects rule below). It was 3.4rem
+     (34px) until 2026-10-03, which itself had been chosen to match a gap
+     measured on moonmagic; the owner asked for more room here. */
+  margin: 0 0 4rem;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -3535,6 +3537,18 @@ card-swatches {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: rgb(var(--color-foreground));
+}
+
+/* The options -- metal and size -- are a group of their own, and the line above the
+   button and the button itself are another (2026-10-03, the owner: "make more space
+   between the stones and button and the text above"). Dawn leaves 1.5rem under the
+   options, which with the 8px inside the last row of size boxes read as 23px between
+   the boxes and the made-to-order line; 3.2rem makes it 40px, the same as the 40px
+   between that line and the button, so the three pieces sit evenly apart. It sits on
+   the options rather than on the line so it holds whatever follows them, with or
+   without the delivery line. */
+.product .product__info-container > variant-selects {
+  margin-bottom: 3.2rem;
 }
 
 /* Phones have a narrower column again, and the same line has to hold one row
@@ -3950,6 +3964,15 @@ body .jdgm-write-review-modal .jdgm-write-review-modal__page--review-form-intro 
 
 .product .product__info-container > .product-breadcrumb + * {
   margin-top: 0;
+}
+
+/* The rating, which used to be the first block and so had no margin at all, keeps
+   none below it either. Without this it took Dawn's 1.5rem there once the
+   breadcrumb stood in front of it, which silently widened the gap to the title from
+   the 0.4rem set above to 15px, on a phone as much as on a computer (found
+   2026-10-03; the first version of this block zeroed only the top). */
+.product .product__info-container > .product-breadcrumb + .rating-wrapper {
+  margin-bottom: 0;
 }
 
 .product-breadcrumb {

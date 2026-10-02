@@ -178,9 +178,30 @@
                 real button: picking one swaps this card's own photo and
                 price to that colour's variant, live, no page reload — the
                 way moonmagic.com's own bestseller cards do.
+
+                Which variant a circle stands for (2026-10-03, the owner: the rose
+                gold and the silver circles did not change the photo "like the
+                others"). Shopify's own `value.variant` is the first variant that
+                carries the colour, with the first value of every other option --
+                on the ring that is "first size / rose gold / 14К жълто злато", a
+                variant that has the yellow-gold photograph, so the rose circle
+                "changed" the picture to the one already showing; and the silver
+                one a variant with no photograph at all. Here a circle takes the
+                variant where ANOTHER option names the same colour ("розово злато"
+                inside "14К розово злато"): the one a shopper lands on by choosing
+                that material on the product page, the same pairing
+                snippets/product-variant-picker.liquid hides the colour row for.
+                Its photograph, or the first such variant's of another size that
+                has one; failing that, the photograph every variant of that
+                material shares, when they agree on one (no variant says "Сребро"
+                and has a photograph, but the ones that say "925 сребро" do). A
+                product with no such second option gets Shopify's variant, exactly
+                as before. Price, availability and the variant id follow the paired
+                variant too.
               {%- endcomment -%}
               {%- for option in card_product.options_with_values -%}
                 {%- if option.values.first.swatch != blank -%}
+                  {%- assign card_pressed_taken = false -%}
                   <ul class="card__swatches" role="list">
                     {%- for value in option.values limit: 5 -%}
                       {%- if value.swatch != blank -%}
@@ -191,8 +212,78 @@
                           assign swatch_money_price = ''
                           assign swatch_compare_money = ''
                           assign swatch_saved_percent = 0
-                          if swatch_variant
+
+                          assign colour_down = value.name | downcase
+                          assign colour_slot = option.position | minus: 1
+                          assign twin_slot = -1
+                          assign twin_name = ''
+                          if colour_down != blank
+                            for twin_option in card_product.options_with_values
+                              if twin_slot >= 0
+                                break
+                              endif
+                              if twin_option.position == option.position
+                                continue
+                              endif
+                              assign twin_swatches = twin_option.values | map: 'swatch' | compact | size
+                              if twin_swatches > 0
+                                continue
+                              endif
+                              for twin_value in twin_option.values
+                                assign twin_value_down = twin_value.name | downcase
+                                if twin_value_down contains colour_down
+                                  assign twin_slot = twin_option.position | minus: 1
+                                  assign twin_name = twin_value.name
+                                  break
+                                endif
+                              endfor
+                            endfor
+                          endif
+
+                          assign twin_first = null
+                          assign twin_first_with_media = null
+                          if twin_slot >= 0
+                            for candidate in card_product.variants
+                              if candidate.options[colour_slot] == value.name and candidate.options[twin_slot] == twin_name
+                                unless twin_first
+                                  assign twin_first = candidate
+                                endunless
+                                if candidate.featured_media
+                                  assign twin_first_with_media = candidate
+                                  break
+                                endif
+                              endif
+                            endfor
+                          endif
+
+                          if twin_first
+                            assign swatch_variant = twin_first
+                          endif
+                          if twin_first_with_media
+                            assign swatch_media = twin_first_with_media.featured_media
+                          elsif swatch_variant
                             assign swatch_media = swatch_variant.featured_media
+                          endif
+
+                          if swatch_media == null and twin_slot >= 0
+                            assign donor_media = null
+                            assign donors_agree = true
+                            for candidate in card_product.variants
+                              if candidate.options[twin_slot] == twin_name and candidate.featured_media
+                                if donor_media == null
+                                  assign donor_media = candidate.featured_media
+                                elsif donor_media.id != candidate.featured_media.id
+                                  assign donors_agree = false
+                                  break
+                                endif
+                              endif
+                            endfor
+                            if donor_media and donors_agree
+                              assign swatch_media = donor_media
+                            endif
+                          endif
+
+                          if swatch_variant
                             assign swatch_money_price = swatch_variant.price | money
                             if settings.currency_code_enabled
                               assign swatch_money_price = swatch_variant.price | money_with_currency
@@ -205,8 +296,9 @@
                               assign swatch_saved_percent = swatch_variant.compare_at_price | minus: swatch_variant.price | times: 100.0 | divided_by: swatch_variant.compare_at_price | round
                             endif
                           endif
-                          if swatch_media and card_product.featured_media and swatch_media.id == card_product.featured_media.id
+                          if swatch_media and card_product.featured_media and swatch_media.id == card_product.featured_media.id and card_pressed_taken == false
                             assign swatch_pressed = true
+                            assign card_pressed_taken = true
                           endif
                         -%}
                         <li class="card__swatch">
