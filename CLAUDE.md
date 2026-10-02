@@ -2055,7 +2055,8 @@ Anything of ours that is not a Dawn setting lives in these two places:
     accordions → a row of five trust icons. Below the product: Shop The Look, Customer
     Reviews (Judge.me), See It Styled On Instagram (the paid Foursixty app), You May Also
     Like. The phone keeps the same order, stacked, and adds a sticky purchase bar at the
-    bottom; its gallery is 335 x 435 at 375px.
+    bottom; its gallery is a full-bleed 375px square slider at 375px (the 335 x 435 recorded here
+    until 2026-10-02 was its image block, dots row and gutters included -- see Product gallery).
   - **Its "Quality & Details" panel is the model for ours**, and holds exactly what the
     owner asked for: a short spec list (material, stone, stone size, cut, stone weight in
     carats, **metal weight in grams**, certification) above prose about quality and
@@ -2339,6 +2340,12 @@ Anything of ours that is not a Dawn setting lives in these two places:
       total 1312.5; ours was: gallery 845, gap 40, button 415, total 1300.** Their content
       box is 12px wider than ours and 1400 is a site-wide page-width token, so all three
       numbers cannot match at once.
+      - **Correction, 2026-10-02: "gallery 835.5" was the gallery's right edge, not its width.**
+        Re-measured on the gallery's own boxes: at 1440 their pictures run from x=112.5 to
+        835.5, **723px of gallery**, in a 1200px container (112.5 either side of a 1425px
+        layout); the buy box is 432px after a 45px gutter. So the 432 and the 45 stand, and
+        what they were compared against was 723, not 835. Ours is wider than theirs because
+        our content box is (1300 against 1200), which is also why our tiles are bigger.
       - **Everything except width already matched exactly** -- 55px tall, 22px/700, 0.1em
         tracking, square -- so width was the whole of what the owner was looking at.
       - **The obvious lever was the wrong one.** Cutting Dawn's 4rem gutter to 2.3rem hits
@@ -2647,6 +2654,8 @@ Anything of ours that is not a Dawn setting lives in these two places:
       the three 3rem gaps plus 1.5rem either side (see the correction just below). Four whole
       cards at any desktop width, no sliver, arrows still there for when there are more than
       four products.
+    - **Superseded 2026-10-02: three whole cards, `calc((100% - 9rem) / 3)`, 436.7px at 1440**
+      -- same rule, one fewer card; see Every product picture bigger under Product gallery.
     - **Wrong as first written, corrected 2026-09-28.** It was `calc((100% - 9rem) / 4)` and
       the note here said "checked live at 1440 and 1920: nothing clipped". That check compared
       the fourth card with the viewport, not with the row. The row's first card sits 1.5rem in
@@ -3547,6 +3556,21 @@ Anything of ours that is not a Dawn setting lives in these two places:
     screenshot confirms a clean chevron and a clean solid minus with no visible gap or
     seam, including in Контакти's own square (not 1.667-ratio) box. **Not seen on the
     live preview.**
+  - **Smoother, 2026-10-02** (the owner: "make the change of the arrows to the minus
+    smoother"). The wings moved for 0.2s on the plain `ease` curve, which reads as a swap
+    rather than a movement. The timing was read off hestiahome's own icon this time
+    (`.hh-accordion__icon::after`, computed style): `transform 0.4s cubic-bezier(0.22, 1,
+    0.36, 1)` -- an ease-out-quint, twice as long, that covers 40% of the turn in the first
+    tenth of the time and then settles for the rest. Their panel does not animate either (a
+    plain `<details>`), so the arrow is the only thing moving there, as here. The
+    reduced-motion rule (no transition) is untouched.
+    - **Checked**: on a local copy of the live page with the real stylesheet, opening a
+      `<details>` starts a running 400ms `transform` animation on the wing with exactly that
+      curve, and the wing ends on `matrix(1, 0, 0, 1, 0, 0)`.
+    - **Not seen moving**: the preview pane produces no animation frames, so the smoothness
+      itself is judged from the numbers, not by eye. If it still reads abrupt, the start is
+      the part to soften -- a curve with a gentler first half, such as `cubic-bezier(0.4, 0,
+      0.2, 1)` -- not the length.
 - **Recently viewed.** `sections/recently-viewed.liquid` with `assets/section-recently-viewed.css`
   and `assets/recently-viewed.js` (2026-10-01, at the owner's request: "add like moonmagic
   section You Recently Viewed above Отзиви от клиенти"). It sits on the product page right
@@ -3580,7 +3604,8 @@ Anything of ours that is not a Dawn setting lives in these two places:
       swatches, a price and hover behaviour that four stored strings cannot rebuild, and
       moonmagic shows none of them here. No price, as theirs. The heading is the collection-
       title clamp from `crown.css` (26px to 40px, capitals) so it reads as the sibling of
-      „Може да ви хареса“ below the reviews, and the row is four across from 990px and two
+      „Може да ви хареса“ below the reviews, and the row is three across from 990px (four until
+      2026-10-02, see Every product picture bigger under Product gallery) and two
       below on the same 24px grid (12px on a phone), so the two rows share their edges. Whole
       cards only, never cut; it scrolls by one card and its arrows -- Dawn's own
       `.slider-button`, so they match the other rows -- exist only when the cards do not all
@@ -3638,6 +3663,108 @@ Anything of ours that is not a Dawn setting lives in these two places:
     phone, that phone's own storage has the list; a desktop browser (or a different
     phone) has an empty one of its own until two products are opened there too. Not a
     bug to fix in the theme; told to the owner rather than guessed at either way.
+- **Product gallery.** The block at the end of `assets/crown.css` ("The product gallery:
+  moonmagic's seamless square mosaic"), `assets/gallery-dots.js`,
+  `snippets/product-media-gallery.liquid`, one line in `sections/main-product.liquid` and one
+  setting in `templates/product.json` (2026-10-02, the owner: "when we open a product i want
+  the section with the pictures of the product to be like moonmagic" -- and, in the same
+  message, "make every picture product bigger", see Every product picture bigger below).
+  - **moonmagic's gallery, measured on the Harlow ring page at 1440, 1024, 768 and 375px**
+    rather than from memory. From 1024px up it is a two-column mosaic of **square tiles with
+    no gap at all**: 361.5px each at 1440, 723px of picture in a 1200px container, the buy box
+    432px (36%) after a 45px gutter. The buy box (`.product__shop`) is `position: sticky; top:
+    90px`, so it stays in view while the mosaic scrolls past. Their pictures are `object-fit:
+    fill` on square sources: every photograph they upload is already square. At 768px it is a
+    slider at the page's width; at 375px a **full-bleed 375px square, one slide per screen and
+    no peek**, a cross-fade between slides, and under it a row of **6px dots** (black for the
+    current one, `#C1C1C6` for the rest, 29px apart) with a thin arrow at each end (the first
+    one dimmed at the start) and a small expand icon at the bottom-left of the picture. A click
+    opens a full-screen white lightbox: a vertical strip of 100px thumbnails on the left, the
+    picture 720px square (the window height less 180) and CLOSE at the top right.
+  - **Every product they have is `first-slide-standard` with 14 to 50 pictures** (read off ten
+    ring pages), so a plain mosaic always fills their column. Ours have one to a handful: the
+    ring has four uploaded and shows two once variant pictures are hidden. Two photographs in
+    a plain mosaic would be one short row beside a buy box twice as tall, so **the first
+    picture runs the full width of the column and the rest pair up under it** -- Dawn's own
+    "Stacked" layout, which this page already used, and the same idea as the larger first slide
+    their own theme offers. Switching the first tile to a standard one (every tile 417px) is
+    the Gallery layout setting, "2 columns"; the CSS already covers both.
+  - **What it is now.** At 1440: the first picture 834.6px square, the rest 417.3px squares in
+    pairs, no gap anywhere; the buy box unchanged (425.4px, sticky). Every photograph is a
+    square tile cropped to cover, whatever shape it was shot in -- a 3:4 photograph loses 12.5%
+    off the top and bottom, a 4:3 one 12.5% off each side, and the focal point set in Shopify's
+    Files decides which part stays. That is the standing "photography should be square" rule
+    applied to the page, as the cards already do. Before: a 547 x 730 picture centred in the
+    column with the next at 405 x 574 and 40px between rows.
+    - **The one setting that changed is `constrain_to_viewport`**, true to false: fitting a
+      picture to the window height is the opposite of a square tile. `gallery_layout`,
+      `media_fit` and the rest of the section are as they were. The stylesheet also forces the
+      tile square when that setting is switched back on, so it can never half-work.
+    - **Dawn's `--ratio-percent` is the lever**, not the images: `.media` is a padding-top box
+      sized from it, and `.product .product-media-container.media-type-image` sets it to 100%.
+      Video and 3D keep Dawn's own shape and still take a full row.
+    - **Phones: one full-bleed square per screen.** Dawn gives each slide 100% less 3rem and a
+      1.5rem lead-in so the next one peeks; that and the 5px of focus padding top and bottom are
+      cancelled, so a slide is exactly the screen wide (375px at 375, a 375px scroll step). The
+      expand icon moves from the top-left to the bottom-left, as theirs. Below 750px only.
+    - **The dots are `<gallery-dots>`** (`assets/gallery-dots.js`). It scrolls nothing: Dawn's
+      `<slider-component>` already scrolls, snaps and knows the current slide (`currentPage`,
+      and a `slideChanged` event), so this only draws it. Liquid prints one dot per slide so the
+      row exists before any script; the script keeps the count right when a variant change adds
+      or removes a slide (a MutationObserver on the list) and lights the right one. Dawn's
+      "1 / 4" counter stays in the markup, visually hidden, for its own script and for a screen
+      reader. The arrows are Dawn's, pushed to the two ends of the row and sized 9 x 15px like
+      moonmagic's (Dawn's is a speck); the dots are 6px, 29px apart, the text colour and a
+      quarter of it, not their cool grey -- ours stay in the warm family of the page.
+    - **A slide, not a cross-fade.** Dawn's slider is a native scroll-snap row, which is what a
+      finger is best at; a fade would mean replacing it. The owner sees dots, arrows and a
+      full-bleed square, which is the part of theirs that reads.
+    - **Keyboard focus is drawn inside the tile.** Dawn draws it 5px outside, which a tile with
+      no gap, a full-bleed slide and a scrolling list would all clip.
+    - **Left as Dawn's, on purpose**: the lightbox (it shows every picture at its own shape,
+      uncropped, which is right for looking closely -- theirs adds a thumbnail strip), the
+      phone slider's scrolling, the tablet layout from 750 to 989px (the gallery in the half
+      column, pictures stacked as 326px squares at 768 -- theirs stacks the gallery above the
+      buy box as a slider there), and **the sticky purchase bar on a phone** (theirs has a size
+      picker and ADD TO BAG fixed to the bottom of the screen; not asked about, not built).
+  - **Checked, in two ways.** First on an offline copy of the live page: `curl` with a cookie
+    jar fetches the preview's real HTML (the pane could not post to a local server, curl
+    needed nothing), a small Node script points its stylesheets and scripts at the repo's own
+    working copies, and a throwaway server serves them -- the unchanged copy matched the live
+    page to the pixel (547.5 x 730 and 405.3 x 573.7) before anything was changed. On it, at
+    1440 / 1024 / 768 / 375: 834.6 / 583.6 / 326.5 / 375px first pictures, 417.3 / 291.8
+    tiles pairing with no gap, five extra tiles pairing correctly, the dots following
+    Dawn's own `currentPage` and the count following slides added and removed. Then live,
+    after the push: the same numbers at 1440 and 375, `scrollWidth` equal to the width asked
+    for, the dots 6px in `rgb(34, 31, 28)` and a quarter of it, the arrows 44px boxes at both
+    ends, the first dimmed, and a hand-fired scroll event moving the lit dot and the arrows'
+    state. **The pane produces no animation frames and no scroll events**, so the slider was
+    moved with `scrollLeft` plus a dispatched `scroll`, the lesson already under Stones row.
+  - **Every product picture bigger, 2026-10-02** ("make every picture product bigger", sent
+    with the gallery request). **A reading, not a certainty**: taken as every product card
+    picture, since "when we open a product" follows as a separate clause for the gallery.
+    Real photographs had just gone into the cards, and the pieces read small in them -- the
+    earlier step back from moonmagic's 380px to 340px (2026-09-27) was taken with empty
+    slots. moonmagic's own collection grid is three across (308px, beside a sidebar) and its
+    rows show 380px slides, so three across is the reference's own count.
+    - **Three across from 990px, everywhere a product picture is a card**: collections and
+      search (`columns_desktop` 4 to 3 in `templates/collection.json` and `search.json`),
+      the related row on a product page (the same setting in `templates/product.json`),
+      Наскоро разгледани (`--recently-viewed-columns`, `section-recently-viewed.css`) and the
+      homepage row. At 1440 the pictures went 307 to **417.3px**, and the homepage's 320 to
+      **436.7px** (`calc((100% - 9rem) / 3)` in `crown.css`, three whole cards, the fourth
+      one arrow away). Measured live on all five.
+    - **Phones and tablets are untouched**: phones stay two across at 168px (moonmagic's own
+      collection grid is two across at 174px), tablets were already three.
+    - **To go back, one place each**: the three `columns_desktop` values, the one custom
+      property, and `9rem / 3` to `12rem / 4` in the homepage rule. If "every picture product"
+      meant the pictures on the product page itself, those changed too, in the entry above.
+  - **Worth knowing, not changed.** The owner's uploads are 1086px wide, so the 835px first
+    picture is 1670 device pixels on a retina screen and will look soft there: about 1700px
+    wide is what that tile wants. And **two of the test photographs carry the Cullinan logo and
+    a slogan burned into the picture** (the bracelet, and the ring's second photograph), which
+    is the project's own first rule; flagged to the owner, not touched -- the pictures are
+    theirs to choose.
 
 ## Current state
 
@@ -3851,6 +3978,12 @@ Anything of ours that is not a Dawn setting lives in these two places:
   product page against, but all priced at €0,00, all with the vendor still reading Crown
   Jewellery, none tagged and none really described. See the last entry under Waiting on the
   Shopify admin for what each one needs.
+  - **Test photographs exist since about 2026-10-01**, uploaded by the owner (AI renders and
+    one lifestyle picture): the ring has four, two of them shown once variant pictures are
+    hidden, and the pendant, earrings and bracelet one each. All 3:4 portrait (1086 x 1448)
+    except the bracelet, 4:3. The ring is priced at €200,00 now; the other three are still
+    €0,00. "No photography yet" above is out of date; the layout holds either way. See
+    Product gallery under Custom code for what this did to the product page.
 - Bulgarian needs setting as the store's default language (currently English).
 - **Settled 2026-09-07: both 14K and 18K.** The benefits row the owner wrote says "Проба 585
   и 750 — 14 и 18 карата злато", so the range covers both, and so does the materials block on
@@ -4152,4 +4285,6 @@ data, not theme files:
   folders, so filenames do that job: `prasten-3353-1.jpg` for catalogue, `theme-` prefix for
   anything the theme editor uses. Latin letters only; Cyrillic filenames break in URLs.
 - **Product photography should be square.** The product rows are set to a square crop so the
-  cards line up; anything shot to another shape will be cropped.
+  cards line up; anything shot to another shape will be cropped. Since 2026-10-02 the
+  product page's own gallery crops to squares too (see Product gallery under Custom code),
+  so the owner's 3:4 uploads lose 12.5% top and bottom there.
