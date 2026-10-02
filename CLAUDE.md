@@ -313,8 +313,9 @@ Rules that matter here:
 | scheme-7 | `#D8DFBF` milky matcha | `#221F1C` | Нашите материали on the homepage. Owner’s choice, 2026-09-14. Buttons `#3D5229`. |
 | scheme-8 | `#F1E3DC` marble blush | `#221F1C` | Контакти: open-row panels and the footer’s Facebook/Instagram hover, matched to the banner picture (2026-09-15). Black buttons. |
 
-- Type: **Jost** for everything since 2026-09-14: headings regular (400 since 2026-10-03, bold
-  700 before -- see Weight under Custom code), text regular (400).
+- Type: **Jost** for everything since 2026-09-14: headings at 550 since 2026-10-03 (halfway
+  between regular and bold; 700 before that, and 400 for part of that day -- see Weight under
+  Custom code), text regular (400).
   The owner first chose EB Garamond with Inter (option D), then the same day asked for the
   font of hestiahome.bg (option E). hestiahome loads Shopify’s Jost, so its Bulgarian
   actually shows in the visitor’s system font (Arial on Windows); the owner was shown real
@@ -1862,8 +1863,9 @@ Anything of ours that is not a Dawn setting lives in these two places:
     shop name; once the name became a logo image the owner asked for them bold again. The
     phone drawer and the mega menu links keep their weight — the owner asked about the menu
     in the header bar.
-  - **Titles are regular (400) since 2026-10-03** (the owner: "for all the titles lets make
-    them not bold"). `--font-heading-weight` went from 700 to 400 in
+  - **Titles are 550 since 2026-10-03: regular first, then halfway back** (the owner: "for all
+    the titles lets make them not bold", then the same evening the halfway note below).
+    `--font-heading-weight` went from 700 to 400 and then to 550 in
     `snippets/theme-fonts.liquid`, which flips every `h1` to `h6`, every `.h0` to `.h5` and
     everything Dawn builds on them. **Fourteen rules that carried a number of their own now read
     the token too** (eleven were 600, two 500, one 700), so they follow it from here on: product
@@ -1883,6 +1885,21 @@ Anything of ours that is not a Dawn setting lives in these two places:
       and 375: the token reads 400; every heading, card title, accordion title and footer
       heading reads 400; the only things at 500 or more on the homepage are the header menu,
       the stones' meanings and the Facebook button's label; no page overflows sideways.
+      (That was at 400; the numbers that follow are at 550.)
+    - **Halfway back, the same evening** ("i want it back but can we make it not that bold i
+      like 50% of it"). **A reading, not a certainty**: "the title" was taken as every title
+      (it is one setting, so nothing narrower could be asked of it), and "50%" as the midpoint
+      between regular 400 and bold 700, **550**. The font files are variable (`font-weight: 300
+      700` in `snippets/theme-fonts.liquid`), so 550 is drawn as 550 and not snapped to 500 or
+      600: the same Cyrillic and Latin strings set at seven weights get steadily wider (the
+      Cyrillic one at 48px is 748px at 400, 785 at 500, 798 at 550, 811 at 600, 839 at 700) and
+      550 sits strictly between its neighbours. The fourteen rules that already read the token
+      needed nothing; they followed. **To move it, one number**: 500 is a third of the way, 600
+      two thirds.
+    - **Checked live at 1440 and 375**: the token reads 550; the product title, accordion
+      titles, card titles, footer headings and the social band's heading all read 550, and Add
+      to cart and the header menu are still 700; the home, collection, За нас and Контакти pages
+      measure exactly 375 wide with no sideways overflow.
 - `sections/image-banner.liquid` — writing `[years]` in the hero heading or text renders the
   number of years since `founded_year` (1991), so the count never goes stale.
 - **Hero heading.** `.banner__heading` in `assets/crown.css` carries its own unscoped
@@ -3912,6 +3929,62 @@ Anything of ours that is not a Dawn setting lives in these two places:
       of a phone on a preview link never shows the bar, so measure it.
     - **Not seen**: the 0.3s fade and slide, since the pane produces no animation frames.
       Animations were finished by hand (`document.getAnimations().forEach(a => a.finish())`).
+
+- **Product breadcrumb.** `sections/main-product.liquid` (the markup, printed before the block
+  loop, and two settings) and `assets/crown.css` ("Breadcrumb at the top of the buy box"),
+  2026-10-03, the owner: "when you open a product they have this Home / Moonstone Pearl Ring -
+  Heirloom above the reviews start, the right is for the title of product and the left is to go
+  back in the home page can we do that for ours".
+  - **moonmagic's, measured on that very product at 1440 and 1024px and read from its own
+    stylesheet.** "Above the reviews start" is above the review **stars**: the breadcrumb is the
+    first thing in the buy box column, inside their sticky `.product__shop`, so it travels with
+    the box. A `nav` with a link ("Home", to the home page), a `/` and the product's name as
+    plain text: 12px in capitals, 1.2px of tracking, a 16px line, 9.6px of padding above it
+    (their `0.6rem` on a 16px root), `white-space: nowrap` with an ellipsis, so a long name is
+    cut rather than wrapped. The link and the slash are `#929292` (the link goes black on
+    hover), the name black. **It is `display: none` below 992px**: a tablet and a phone have no
+    breadcrumb at all.
+  - **Ours is the same shape**: "Начало / Пръстен с верижка", at the top of the buy box above
+    the stars, 12px capitals, 0.1em tracking, 16px line, 9.6px above (written `0.96rem`, since
+    this theme's root is 10px, where their `0.6rem` would be 6px), one line with an ellipsis
+    (checked with an 89-character name at 990px: still one line, the box and the page not
+    widened). The link goes to `routes.root_url`, the name carries `aria-current="page"`, the
+    slash is `aria-hidden`, and the nav is labelled „Навигационна пътека“. **Shown from 990px**,
+    this theme's own tablet/computer line, not their 992.
+  - **Black, not their grey.** The link and the slash are black here, because the owner has
+    asked for every word of the buy box in black (see Buy box reordered, metal before size,
+    black text, 2026-10-01); moonmagic's `#929292` link is 3.0:1 on this page ground in any
+    case. The link still reads as one: it underlines on hover and on keyboard focus, where
+    theirs goes grey to black. **Worth asking, not assumed**: if the owner wants their grey
+    link it is one colour, and 60% black (5.7:1) would pass contrast where `#929292` does not.
+  - **No template change, and no block.** The nav is printed by the section itself, first
+    inside `.product__info-container`, behind `show_breadcrumb` (default on), with the word for
+    home as `breadcrumb_home_label` (default „Начало“). Both defaults live in the schema, so
+    `templates/product.json` never mentions them and the push needed no second step -- the
+    validator lag under Design tokens is about a template naming something the section does
+    not hold yet. The owner can switch it off in the theme editor (the product page's section
+    settings) but cannot move it: it is always first, which is where theirs is. It is a
+    separate piece from the Stars-above-the-title note above: the rating block is still the
+    first *block*.
+  - **A phone must start where it always did.** Dawn gives every block after the first 1.5rem
+    above it (`.product__info-container > * + *`), so with a hidden breadcrumb ahead of it the
+    stars would have taken 15px of margin on a phone and the whole box would have sat 15px
+    lower. The block after the breadcrumb has its top margin zeroed at every width, and the gap
+    lives on the breadcrumb itself (1.6rem, so the stars still sit close to the title as the
+    owner asked on 2026-10-01), which exists only where it shows. Measured on the live page:
+    the stars sit at offset 0 from the top of the buy box at 375 and 989px, and 16px under the
+    breadcrumb from 990px.
+  - **Checked on a local copy first, then live**, the same method as under Product gallery. At
+    1440: the nav at x 937.1, the buy box's own left edge, 425.4 wide and 25.6 tall (9.6 + 16),
+    12px / 1.2px / uppercase / black / nowrap, the stars 16px under it, so the buy box's top is
+    41.6px taller than before; at 990 a 273px column; at 375 hidden with no overflow. A real
+    hover on „Начало“ gives a 1px underline 3px under the text.
+  - **A trap in the hover check.** `computer` hover with a `ref` goes to CSS-pixel coordinates,
+    which missed: with a viewport emulated larger than the pane, the screenshot frame shows the
+    page at about 0.28 of its size, anchored top-left (408 x 253 of the 800 x 500 frame at
+    1440 x 900), so the hover has to go to **frame coordinates read off a screenshot** (273, 45
+    here). The page said `:hover` was false until then. A viewport of about 1000 x 640 fills
+    the frame well enough to read a screenshot by eye.
 
 
 ## Current state
