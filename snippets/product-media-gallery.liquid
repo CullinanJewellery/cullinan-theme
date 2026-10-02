@@ -137,10 +137,21 @@
         </span>
       </button>
       <div class="slider-counter caption">
-        <span class="slider-counter--current">1</span>
-        <span aria-hidden="true"> / </span>
-        <span class="visually-hidden">{{ 'general.slider.of' | t }}</span>
-        <span class="slider-counter--total">{{ media_count }}</span>
+        {%- comment -%}
+          The numbers stay for Dawn's script and for a screen reader; what is seen is
+          the row of dots, as on moonmagic (assets/gallery-dots.js keeps it in step).
+        {%- endcomment -%}
+        <span class="visually-hidden">
+          <span class="slider-counter--current">1</span>
+          <span aria-hidden="true"> / </span>
+          <span class="visually-hidden">{{ 'general.slider.of' | t }}</span>
+          <span class="slider-counter--total">{{ media_count }}</span>
+        </span>
+        <gallery-dots class="gallery-dots" aria-hidden="true">
+          {%- for dot in (1..media_count) -%}
+            <span class="gallery-dots__dot{% if forloop.first %} is-active{% endif %}"></span>
+          {%- endfor -%}
+        </gallery-dots>
       </div>
       <button
         type="button"

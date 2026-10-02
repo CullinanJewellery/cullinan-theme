@@ -1546,7 +1546,15 @@ html {
    "nothing clipped" check compared the card with the viewport instead of the
    row. The row now leaves the same 1.5rem on the right as on the left, so the
    width is `(100% - 12rem) / 4`: the three 3rem gaps plus 1.5rem either side.
-   320px cards at 1440, where they were 327.5px. */
+   320px cards at 1440, where they were 327.5px.
+
+   Three whole cards, not four, since 2026-10-02 (the owner: "make every picture
+   product bigger", once real photographs were in the cards and the pieces looked
+   small in them). The same rule with a different count: the two 3rem gaps plus
+   1.5rem either side leave 9rem, so the width is (100% - 9rem) / 3 -- 436.7px at
+   1440, where it was 320. Still whole cards and still a carousel; with four
+   products the fourth is one arrow away, as it will be for the other four to six
+   once the row is full. */
 @media screen and (min-width: 990px) {
   [id^="shopify-section-"][id$="__featured_collection"] .product-grid.slider--desktop {
     --grid-desktop-horizontal-spacing: 3rem;
@@ -1554,7 +1562,7 @@ html {
   }
 
   [id^="shopify-section-"][id$="__featured_collection"] .slider--desktop .grid__item {
-    width: calc((100% - 12rem) / 4);
+    width: calc((100% - 9rem) / 3);
   }
 }
 
@@ -4166,6 +4174,14 @@ option-menu {
    leaving it to load order.
    --------------------------------------------------------------------------- */
 
+/* Timing, 2026-10-02 (the owner: "make the change of the arrows to the minus
+   smoother"). It was 0.2s with the plain ease curve, which snapped. hestiahome
+   is the reference for motion here, so the numbers are read straight off its
+   own icon (.hh-accordion__icon::after, computed style): transform 0.4s
+   cubic-bezier(0.22, 1, 0.36, 1) -- twice as long, and a curve that
+   decelerates hard, so the bars settle into the line instead of stopping on
+   it. Their panel does not animate either (a plain details), so the arrow is
+   the only thing moving there, same as here. */
 .cj-caret {
   position: relative;
 }
@@ -4176,7 +4192,7 @@ option-menu {
   width: 69.5%;
   height: 0.15rem;
   background-color: currentColor;
-  transition: transform 0.2s ease;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .cj-caret__wing--left {
@@ -4219,4 +4235,158 @@ details[open] .cj-caret__wing {
    in from its height alone. */
 .product .option-menu__summary .icon-caret.cj-caret {
   width: 1rem;
+}
+
+/* ---------------------------------------------------------------------------
+   The product gallery: moonmagic's seamless square mosaic (2026-10-02)
+
+   The owner: "when we open a product i want the section with the pictures of
+   the product to be like moonmagic."
+
+   moonmagic's gallery, measured on a product page (the Harlow moonstone ring)
+   at 1440, 1024, 768 and 375px rather than from memory:
+   - From 1024px up it is a two-column mosaic of SQUARE tiles with no gap at
+     all between them, in a column 64% of the 1200px content (723px of picture
+     at 1440, tiles of 361.5px), against a buy box of 36% and a 45px gutter.
+     The buy box is sticky, so it stays in view while the mosaic scrolls past.
+   - Below 768px it is a slider: one full-bleed square (375px wide at 375, no
+     peek of the next one), a cross-fade between slides, a row of 6px dots
+     underneath (black for the current one, a pale grey for the rest, 29px
+     apart) with a thin arrow at each end, and a small expand icon at the
+     bottom-left of the picture.
+   - Every one of their products has "first-slide-standard" and 14 to 50
+     pictures, so a plain mosaic always fills the column. Ours have one to a
+     handful, so the first picture runs the full width of the column instead
+     (Dawn's own "Stacked" layout, which is what this page already used), and
+     the rest pair up under it. Two photographs in a plain two-column mosaic
+     would have been a single short row beside a buy box twice as tall.
+
+   What is Dawn's own and left alone: the layout switch at 750 and 990px, the
+   slider's scrolling and snapping (a swipe is native, so there is no
+   cross-fade), the arrows' behaviour, the lightbox and the zoom icon's
+   position on a computer. Everything below only changes shape and spacing.
+
+   Specificity: Dawn's section stylesheet loads from inside the section, after
+   this file, so every rule here carries `.product` and at least one more class
+   than the rule it replaces.
+   --------------------------------------------------------------------------- */
+
+/* Every photograph is a square tile, whatever shape it was shot in; cover
+   crops it to fit (the focal point set in Files still applies). Video and 3D
+   keep Dawn's own shape. */
+.product .product-media-container.media-type-image {
+  --ratio-percent: 100%;
+}
+
+/* "Fit media to the screen height" would cap a tile below square on a short
+   window; it is off in the template, and this keeps it from mattering if it is
+   ever switched back on. */
+.product .product-media-container.constrain-height.media-type-image .media {
+  padding-top: 100%;
+}
+
+/* No gap between tiles, in the mosaic or between slides. */
+.product .product__media-list {
+  gap: 0;
+}
+
+.product .product__media-list.slider {
+  margin-bottom: 0;
+}
+
+/* Keyboard focus is drawn inside the tile. Dawn draws it 5px outside, which a
+   tile with no gap around it, a full-bleed slide and a scrolling list all clip. */
+.product .product__media-toggle:focus-visible:after {
+  box-shadow: inset 0 0 0 0.3rem rgb(var(--color-background)), inset 0 0 0 0.5rem rgba(var(--color-foreground), 0.5);
+}
+
+@media screen and (min-width: 750px) {
+  .product .product__media-list {
+    margin-bottom: 0;
+  }
+
+  /* Two columns means exactly half each; Dawn takes half of the gap off both,
+     which with no gap would leave a hole on the right of every row. */
+  .product--columns .product__media-list .product__media-item:not(.product__media-item--single):not(:only-child) {
+    max-width: 50%;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .product--stacked .product__media-list .product__media-item {
+    max-width: 50%;
+  }
+}
+
+/* One slide per screen, flush to both edges. Dawn's peek gives each slide
+   100% less 3rem and a 1.5rem lead-in so the next one shows at the right. */
+@media screen and (max-width: 749px) {
+  .product .product__media-list.grid--peek.slider {
+    scroll-padding-left: 0;
+  }
+
+  .product .product__media-list.grid--peek.slider::after {
+    display: none;
+  }
+
+  .product .product__media-list.grid--peek.slider .product__media-item {
+    width: 100%;
+    margin-left: 0;
+    padding: 0;
+  }
+
+  /* The expand icon at the bottom-left of the picture, as on moonmagic. */
+  .product .product__media-icon {
+    top: auto;
+    bottom: 1.2rem;
+  }
+
+  /* The row under the picture: an arrow at each end, the dots between. Dawn
+     centres all three together; this pushes the arrows to the edges. */
+  .product__media-wrapper .slider-buttons {
+    justify-content: space-between;
+  }
+
+  .product__media-wrapper .slider-counter {
+    min-width: 0;
+  }
+
+  /* Dawn's caret is 0.6rem tall, which is a speck at the edge of a screen;
+     turned a quarter-turn this one reads 9 x 15px, moonmagic's own size. */
+  .product__media-wrapper .slider-button {
+    color: rgb(var(--color-foreground));
+  }
+
+  .product__media-wrapper .slider-button .icon {
+    height: 0.9rem;
+  }
+}
+
+/* The dots (assets/gallery-dots.js): 6px, 29px apart, the current one in the
+   text colour and the others a quarter of it, as moonmagic's are black and
+   #C1C1C6 -- ours stay in the warm family of the page. */
+.gallery-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.gallery-dots__dot {
+  width: 0.6rem;
+  height: 0.6rem;
+  margin: 0 1.15rem;
+  border-radius: 50%;
+  background-color: rgba(var(--color-foreground), 0.25);
+  transition: background-color 0.2s ease;
+}
+
+.gallery-dots__dot.is-active {
+  background-color: rgb(var(--color-foreground));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gallery-dots__dot {
+    transition: none;
+  }
 }

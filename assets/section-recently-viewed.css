@@ -9,10 +9,14 @@
   this site's own sizes for the rest: the heading is the collection-title clamp
   (crown.css, `.collection .collection__title .title`: 26px to 40px, capitals) so it
   reads as the sibling of "Може да ви хареса" below it, and the cards sit on the same
-  four-across, 24px grid, so the two rows share their edges.
+  three-across, 24px grid, so the two rows share their edges.
 
-  Four across from 990px and two below, whole cards only -- the row scrolls by one
+  Three across from 990px and two below, whole cards only -- the row scrolls by one
   card, with arrows that exist only when the cards do not all fit.
+
+  It was four across until 2026-10-02 (the owner: "make every picture product
+  bigger"), when every product listing on the site went to three across from
+  990px: 417px pictures at 1440 where they were 307px.
 */
 
 recently-viewed {
@@ -84,7 +88,7 @@ recently-viewed[hidden],
 
 @media screen and (min-width: 990px) {
   .recently-viewed__track {
-    --recently-viewed-columns: 4;
+    --recently-viewed-columns: 3;
   }
 }
 
