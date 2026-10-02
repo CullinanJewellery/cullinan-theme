@@ -313,7 +313,8 @@ Rules that matter here:
 | scheme-7 | `#D8DFBF` milky matcha | `#221F1C` | Нашите материали on the homepage. Owner’s choice, 2026-09-14. Buttons `#3D5229`. |
 | scheme-8 | `#F1E3DC` marble blush | `#221F1C` | Контакти: open-row panels and the footer’s Facebook/Instagram hover, matched to the banner picture (2026-09-15). Black buttons. |
 
-- Type: **Jost** for everything since 2026-09-14: headings bold (700), text regular (400).
+- Type: **Jost** for everything since 2026-09-14: headings regular (400 since 2026-10-03, bold
+  700 before -- see Weight under Custom code), text regular (400).
   The owner first chose EB Garamond with Inter (option D), then the same day asked for the
   font of hestiahome.bg (option E). hestiahome loads Shopify’s Jost, so its Bulgarian
   actually shows in the visitor’s system font (Arial on Windows); the owner was shown real
@@ -1850,15 +1851,38 @@ Anything of ours that is not a Dawn setting lives in these two places:
   type set to **Mega menu**.
 - **Weight.** `assets/crown.css` sets bold only where the eye needs an anchor: product card
   titles, sale prices, benefit headings, the atelier fact values, and the three claims under
-  the hero. Headings are bold (700), as on the board the owner chose. Every heading rule reads
+  the hero. Headings were bold (700), as on the board the owner chose, until 2026-10-03 (see
+  below). Every heading rule reads
   `--font-heading-weight` instead of a number, so the weight is set once, in
-  `snippets/theme-fonts.liquid`. Product card titles and benefit headings stay at 600; the
+  `snippets/theme-fonts.liquid`. Product card titles and benefit headings were 600 until
+  2026-10-03; the
   benefit headings use the text face’s variables, as small capital labels do.
   - **The header menu categories are 700** (since 2026-09-15; the desktop inline menu only).
     They were 600 from 2026-09-14, when 700 beside the spaced-capital wordmark outweighed the
     shop name; once the name became a logo image the owner asked for them bold again. The
     phone drawer and the mega menu links keep their weight — the owner asked about the menu
     in the header bar.
+  - **Titles are regular (400) since 2026-10-03** (the owner: "for all the titles lets make
+    them not bold"). `--font-heading-weight` went from 700 to 400 in
+    `snippets/theme-fonts.liquid`, which flips every `h1` to `h6`, every `.h0` to `.h5` and
+    everything Dawn builds on them. **Fourteen rules that carried a number of their own now read
+    the token too** (eleven were 600, two 500, one 700), so they follow it from here on: product
+    card titles, benefit headings, the category mosaic's labels (both variants), the Контакти
+    row titles, the title under a card in Наскоро разгледани, the social band's heading, the
+    homepage social heading, the footer's newsletter and column headings, the phone footer
+    accordion titles and the reviews title. **A new title rule should read the token, not a
+    number.**
+    - **Left bold on purpose, because they are not titles**: the header menu (700, asked for on
+      2026-09-15) and the mega menu, every button label, prices and sale prices, the spec
+      list's labels, the option legends, pills and values on the product page, the delivery
+      line's label, the facts under the hero, the lead sentence in the About panels, the stones'
+      one-word meanings (the small spaced capitals above each stone's name), the atelier fact
+      values and the Judge.me button. **Worth asking, not assumed**: the stones' meanings and the
+      About leads are the two a reader might also call titles; each is one rule to switch.
+    - **Checked live** on the homepage, a product, the collection, За нас and Контакти at 1440
+      and 375: the token reads 400; every heading, card title, accordion title and footer
+      heading reads 400; the only things at 500 or more on the homepage are the header menu,
+      the stones' meanings and the Facebook button's label; no page overflows sideways.
 - `sections/image-banner.liquid` — writing `[years]` in the hero heading or text renders the
   number of years since `founded_year` (1991), so the count never goes stale.
 - **Hero heading.** `.banner__heading` in `assets/crown.css` carries its own unscoped
@@ -3738,7 +3762,8 @@ Anything of ours that is not a Dawn setting lives in these two places:
     - **Keyboard focus is drawn inside the tile.** Dawn draws it 5px outside, which a tile with
       no gap, a full-bleed slide and a scrolling list would all clip.
     - **Left as Dawn's, on purpose**: the lightbox (it shows every picture at its own shape,
-      uncropped, which is right for looking closely -- theirs adds a thumbnail strip), the
+      uncropped, which is right for looking closely -- theirs adds a thumbnail strip; **since
+      2026-10-03 it is moonmagic's too, see Zoom viewer below**), the
       phone slider's scrolling, and **the sticky purchase bar on a phone** (theirs has a size
       picker and ADD TO BAG fixed to the bottom of the screen; not asked about, not built).
       The tablet layout from 750 to 989px stacks the pictures in the half column, as it did
@@ -3798,6 +3823,96 @@ Anything of ours that is not a Dawn setting lives in these two places:
     theirs to choose. The square crop of that second photograph cuts the top of its logo, which
     is the 12.5% above. Sources are 1086px wide, enough for a 417px tile even at twice the
     pixel density.
+- **Zoom viewer.** `snippets/product-media-modal.liquid`, `assets/product-modal.js` and
+  `assets/component-product-viewer.css`, plus one stylesheet line each in
+  `sections/main-product.liquid` and `sections/featured-product.liquid` (2026-10-03, the owner:
+  "when you open them and click on their pictures to zoom or whatever it is lets make it like
+  moonmagic it looks way better"). It is what opens when a picture in the product gallery is
+  clicked.
+  - **What it was.** Dawn's own: every picture of the product in one scrolling column at full
+    width, under a layer that closes on any click anywhere (the `media-modal` class makes
+    `ModalDialog` do that). Nothing said which picture you were on and nothing let you jump.
+  - **moonmagic's, measured on a product page at 1440, 1024, 768 and 375px** (it is micromodal
+    and Swiper). A full-screen white layer that fades in over 0.3s on `cubic-bezier(0, 0, 0.2,
+    1)` while the content slides up 15% into place, and fades out while it slides 10% further
+    up. **From 1200px a vertical strip of 100px square thumbnails**, 20px apart and 30px from
+    the left, with a 100 x 28 grey arrow bar above and below that dims at each end; **no marker
+    on the current thumbnail**. The picture fills the rest, `contain`, in a box the window's
+    height less 180px (less 100px under 1200), and cross-fades over 0.3s. **Under 992px there is
+    no strip**: the picture runs the full width and a **4px progress bar**, 90% wide, a black
+    segment 1/N of the track on a 10% black track, sits under it, and a swipe changes picture.
+    **CLOSE at the top right**, 40px in and 20px down: the word at 16px in capitals and a cross
+    of two 2px lines. At 1024 they show neither strip nor bar, and there is no keyboard
+    navigation at all.
+  - **Ours is the same, with these differences, all deliberate.**
+    - **The strip starts at 990px, not 1200**, this theme's own line between tablet and
+      computer; between 990 and 1200 theirs has no way at all to change picture with a mouse.
+    - **The word is Bulgarian, „Затвори“, written into the snippet.** The button's accessible
+      name is still Dawn's `accessibility.close`. One string, not a locale entry.
+    - **The ground is the page's own off-white** (the colour scheme's background, `#FCFCFB`),
+      not pure white, under the project's no-pure-white rule. A photograph shot on pure white
+      therefore shows a faint lighter rectangle on it, where moonmagic's pure white would let it
+      vanish. One line to change if the owner wants theirs: `background-color` on
+      `product-modal.product-media-modal` in `component-product-viewer.css`.
+    - **Arrow keys, Home and End step through the pictures, Escape closes, Tab stays inside**,
+      and focus goes back to the picture that was clicked. A screen reader hears „Снимка 2 от
+      4“ from a polite live region, and each thumbnail carries the same words and `aria-current`.
+    - **A click on empty space closes it with a mouse, not with a finger**: on a phone only
+      Затвори closes it, so a stray touch while pinching cannot dismiss it.
+  - **How it is built, and the traps in it.**
+    - **Everything but the pictures is built when the viewer opens.** The strip and the bar are
+      made by `ProductModal.show()` from the pictures in the content at that moment, because
+      `assets/product-info.js` overwrites `.product-media-modal__content` when a variant is
+      chosen -- a strip printed by Liquid would go stale on the first colour change. The
+      element keeps its id, `ProductModal-{{ section.id }}`, which that script looks for.
+    - **The `media-modal` class is gone.** With it `ModalDialog` closes the viewer on any mouse
+      click, thumbnails and picture included. Without it the viewer closes itself only from the
+      layer, the dialog, the stage or the picture's own box -- the empty space.
+    - **Dawn's focus trap counts hidden controls.** It takes the first and last focusable
+      element in the markup whether or not it is shown, and the strip is `display: none` on a
+      phone, so Tab would have escaped. `show()` drops the trap straight after `super.show()`
+      and the viewer wraps Tab itself over what is actually on screen.
+    - **Only the current picture and its two neighbours are drawn** (`is-near`); the rest stay
+      `display: none`, so their lazy images are not fetched until the visitor gets near them.
+      Variant pictures the gallery hides stay hidden here too, except the chosen variant's own:
+      the ring holds four pictures, two of them variant ones, and the viewer steps through two.
+    - **Every rule is `product-modal.product-media-modal ...`, two classes deep**, because
+      Dawn's modal rules in `section-main-product.css` are single-class and the new stylesheet
+      loads right after it -- a plain class would only tie on load order.
+    - **`assets/product-modal.js` is Dawn's file with its class replaced whole**, so a Dawn
+      upgrade will conflict there. The stock one showed every picture in a column.
+    - **Videos and 3D models are handled** (the poster is `contain`, a model's inline padding
+      is cancelled) **but none exist in the catalogue, so that path is untested.**
+  - **Checked live on the preview after the push**, with real events:
+    - **1440 x 900**: layer 1440 x 900 on `rgb(252, 252, 251)`; strip at x 30, thumbnails
+      100 x 100 and 20px apart; picture box 1260 x 720 at (150, 90), the window less 180,
+      theirs 720; CLOSE 115 x 40 at 40px from the right and 20px down, word 16px. **1024 x 768**:
+      strip shown, picture box 844 x 668 (the window less 100, theirs 668), no bar. **768 x
+      1024**: no strip, bar 691.2 x 4 at x 38.4 (5% in, 90% wide). **375 x 812**: no strip, bar
+      337.5 x 4 at x 18.8 with its segment 168.8px wide (one of two) and a 10px radius, theirs
+      to the pixel; picture 375 x 692. No horizontal overflow at any of the four.
+    - **Behaviour**: it opens on the picture that was clicked, from either of the ring's two
+      gallery buttons; a thumbnail click, the Arrow keys, Home and End all land on the right
+      picture and stop at the ends; Tab wraps both ways; Escape, a click on empty space and
+      Затвори each close it, release the page's scroll lock and hand focus back to the button
+      that opened it; a mouse click on the picture or a thumbnail does not close it. On a phone
+      a leftward swipe goes on, a rightward one goes back, one under 40px or mostly vertical or
+      made with a mouse does nothing, and a tap does not close.
+    - **The pendant, with one picture, shows no strip and no bar, and only Затвори takes
+      focus** -- either would be a control that does nothing.
+  - **Lessons from the checking.**
+    - **Dawn closes on `event.code`, not `event.key`.** A synthetic `keyup` with only
+      `key: 'Escape'` closes nothing and reads as a broken Escape. Send both.
+    - **A synthetic mouse `pointerup` on the stage element counts as a click on empty space**
+      and closes the viewer, as it should. On a real page the active picture's own box covers
+      the whole stage (`contain` letterboxes inside it), so a real click there lands on the
+      picture. A test that "drags" with a mouse on the stage closes the thing under test.
+    - **The Shopify preview bar covers the bottom of the screen on a preview link**, which is
+      where the phone's progress bar sits; it is not there on the published store. A screenshot
+      of a phone on a preview link never shows the bar, so measure it.
+    - **Not seen**: the 0.3s fade and slide, since the pane produces no animation frames.
+      Animations were finished by hand (`document.getAnimations().forEach(a => a.finish())`).
+
 
 ## Current state
 
