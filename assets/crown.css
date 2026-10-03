@@ -1483,8 +1483,8 @@ html {
    Ours has the same skeleton in our own measures, and draws it the same whether the
    menu has one level of links (Пръстени: Дамски, Мъжки -- each link is a column
    heading with nothing under it yet) or two (headings with links below, as theirs):
-   - the links are columns in a row, 20rem apart, from the page's own left edge,
-     which is the logo's; a longer list wraps to a second row of columns;
+   - the links are columns in a row, at least 20rem apart, from the page's own left
+     edge, which is the logo's; a longer list wraps to a second row of columns;
    - the headings are 16px / 700 capitals at 0.08em on a 20px line, 3px of padding and
      15px of air under them, the first 55px below the panel's top;
    - the panel keeps no padding of its own, because the picture sits flush in its
@@ -1528,9 +1528,13 @@ html {
   padding: 0;
 }
 
+/* At least 20rem apart, as theirs, but a column grows to its own heading (up to 30rem) rather
+   than breaking it: „Гривни с циркони“ needs about 19rem at this size and a fixed 20rem
+   column, less its air, wrapped it onto two lines. */
 .mega-menu .mega-menu__body .mega-menu__list > li {
-  flex: 0 0 20rem;
-  min-width: 0;
+  flex: 0 0 auto;
+  min-width: 20rem;
+  max-width: 30rem;
   padding-right: 2rem;
 }
 
