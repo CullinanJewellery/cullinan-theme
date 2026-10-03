@@ -2684,8 +2684,9 @@ card-swatches {
     rgb(230, 186, 185) -- one before its own three nav columns, a second
     right where its newsletter column begins, the exact equivalent of this
     gap. Ours has no block before the nav columns, so only the second
-    line applies. Reuses this footer's own pink (#F3E1DB) rather than
-    moonmagic's literal colour, matching every other line already in this
+    line applies. Reuses this footer's own pink (#F3E1DB; #E1CDC2 since
+    2026-10-04, direction C) rather than moonmagic's literal colour,
+    matching every other line already in this
     section. padding-left is half of .footer__blocks-wrapper's own
     column-gap at each breakpoint (4rem, then 8rem from 990px), so the
     line centres in the gap instead of sitting flush against the box.
@@ -2801,7 +2802,8 @@ card-swatches {
   a heading or the last link reads as a mistake, not a frame.
 
   Pink, at the owner's request, the same day: the image marquee's own flat
-  colour, #F3E1DB. (A short, centred version of these lines was tried right
+  colour, #F3E1DB (#E1CDC2 since 2026-10-04, direction C). (A short,
+  centred version of these lines was tried right
   after this, on a misreading of "make it small small" as being about the
   lines -- the owner meant the column text, not the lines, so that version
   was reverted back to this same full-width border-top/border-bottom; see

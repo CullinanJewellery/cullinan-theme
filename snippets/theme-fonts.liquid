@@ -1,18 +1,25 @@
 {%- comment -%}
-  The site's font: Jost, for headings and text alike, the owner's choice on
-  2026-09-14 (option E, after seeing it on hestiahome.bg). Headings were bold
-  (700) until 2026-10-03, when the owner asked for every title to be regular
-  and then, the same evening, for "50% of" the bold back: the one number
-  below, --font-heading-weight, now says 550, halfway between regular (400)
-  and bold (700), and every title in the theme reads it. The files are
-  variable (font-weight: 300 700 below), so 550 is drawn as 550.
+  The site's fonts. Text and every small label: Jost, the owner's choice on
+  2026-09-14 (option E, after seeing it on hestiahome.bg). Headings: Prata since
+  2026-10-04, when the owner chose direction C on the Cullinan Directions board
+  (a high-contrast serif with Cyrillic, in sentence case). Until then Jost set
+  the headings too: bold (700) until 2026-10-03, then 550.
+
+  Prata has one weight, 400, so --font-heading-weight says 400 and every title
+  in the theme reads it. A rule that asks a heading for 600 or 700 would get a
+  synthetic bold, which a didone with hairlines takes badly, so headings are
+  barred from synthesising one (font-synthesis: none at the end). Jost's files
+  are variable (font-weight: 300 700 below), so the text weights are real.
 
   Loaded from the theme's own files, not Shopify's font library. Every font file
   Shopify hosts is Latin-only -- Shopify's Jost included -- so with a library
   font each Bulgarian word falls back to the visitor's system font. These files
   are the originals from Google Fonts, SIL Open Font License, split by alphabet.
   unicode-range lets the browser download only the parts a page uses, usually
-  the upright Cyrillic and Latin files, under 40 KB together.
+  the upright Cyrillic and Latin files of each family: Jost under 40 KB, Prata
+  (13 KB Cyrillic, 19 KB Latin) a little over 30 more. Prata has no latin-ext or
+  italic file: Google ships it as cyrillic-ext, cyrillic, vietnamese and latin,
+  and Bulgarian needs only the cyrillic part.
 
   The family name ends in "Theme" so it can never be matched to a Shopify
   library copy of Jost, which has no Cyrillic.
@@ -26,6 +33,8 @@
 {%- comment -%}theme-check-disable AssetPreload{%- endcomment -%}
 <link rel="preload" as="font" href="{{ 'font-jost-normal-cyrillic.woff2' | asset_url }}" type="font/woff2" crossorigin>
 <link rel="preload" as="font" href="{{ 'font-jost-normal-latin.woff2' | asset_url }}" type="font/woff2" crossorigin>
+<link rel="preload" as="font" href="{{ 'font-prata-normal-cyrillic.woff2' | asset_url }}" type="font/woff2" crossorigin>
+<link rel="preload" as="font" href="{{ 'font-prata-normal-latin.woff2' | asset_url }}" type="font/woff2" crossorigin>
 {%- comment -%}theme-check-enable AssetPreload{%- endcomment -%}
 
 <style>
@@ -89,19 +98,44 @@
     unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
   }
 
+  /* Prata, normal, cyrillic */
+  @font-face {
+    font-family: "Prata Theme";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url({{ 'font-prata-normal-cyrillic.woff2' | asset_url }}) format("woff2");
+    unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+  }
+
+  /* Prata, normal, latin */
+  @font-face {
+    font-family: "Prata Theme";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url({{ 'font-prata-normal-latin.woff2' | asset_url }}) format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
   :root {
     --font-body-family: "Jost Theme", "Segoe UI", Arial, sans-serif;
     --font-body-style: normal;
     --font-body-weight: 400;
     --font-body-weight-bold: 700;
 
-    /* 550 since 2026-10-03: the owner first asked for no bold titles ("for all
-       the titles lets make them not bold", 400), then for half the bold back
-       ("i like 50% of it"); 700 from 2026-09-14 until then. Every title reads
+    /* Prata, 400, since 2026-10-04 (direction C). Jost's headings were 700 from
+       2026-09-14, 400 for an evening and then 550 from 2026-10-03, after the
+       owner asked for no bold titles and then for "50% of it". Every title reads
        this, so changing it changes them all. Buttons, prices, menu items and
-       form labels do not. */
-    --font-heading-family: "Jost Theme", "Segoe UI", Arial, sans-serif;
+       form labels do not. Georgia stands in only if the Prata files fail to
+       load, and has Cyrillic. */
+    --font-heading-family: "Prata Theme", Georgia, "Times New Roman", serif;
     --font-heading-style: normal;
-    --font-heading-weight: 550;
+    --font-heading-weight: 400;
+  }
+
+  h1, h2, h3, h4, h5, h6, .h0, .h1, .h2, .h3, .h4, .h5 {
+    font-synthesis: none;
   }
 </style>

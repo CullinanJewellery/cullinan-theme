@@ -71,10 +71,12 @@ blocks, a second category row and a tree-planting block; ours had nothing theirs
 Custom request band. The blush gradient, the greige band and the pink stars were measured off their
 site, Jost is hestiahome's face, and several headlines take their rhythm („Нашето сребро. Нашият
 блясък.“ is "Their stone. Their story."). The formula's third term, Cullinan's own requirements, has
-been the thin one. **Proposed, none of it decided**: the Custom request band (built, see Custom request
-section under Custom code) and the Identity directions board (a comparison page, same place), then an
-occasions row, a ring-size page and product data. **Nothing about colour or type changes until the
-owner chooses a direction.**
+been the thin one. **Proposed, and since acted on**: the Custom request band (built, see Custom request
+section under Custom code) and the Identity directions board (a comparison page, same place). **The owner
+chose direction C, Мрамор, the same day, and it is applied (2026-10-04; see Direction C applied under Custom
+code)**: marble and rose gold, Prata headings in sentence case, rosewood buttons, a rope line. It moves the
+site's colour and type away from both references at once, which is the point. **Still proposed, none of it
+decided**: an occasions row, a ring-size page and product data.
 
 Photography comes last. Build every image slot empty and make sure the layout holds when
 nothing is set. No placeholder graphics and no stock images. **AI-generated pictures are
@@ -186,6 +188,14 @@ Rules that matter here:
       already hides the plain off-white ground today. Nothing to revisit then. The same
       gradient was reused on the marquee and the footer link-column band at the same
       breakpoint, matching the phone pass reusing the same flat pink on both.
+    - **Rose-clay since 2026-10-04 (direction C).** The phone panel is `#E1CDC2` and the computer
+      gradient `#F1E6DF` to `#E1CDC2`, replacing the pink `#F3E1DB` and the gradient measured off
+      moonmagic above; the marquee's boxes and the footer's lines take the same two. The silver banner has
+      a deeper pair of its own on a computer, `#EADBD2` to `#D9C4B8`, so the two full-bleed bands read as
+      related rather than identical (a rule keyed to its section id, in `assets/crown.css`). Scheme-5 itself
+      is `#E9D9D0` with a rosewood button, not `#391D13`. The heading is „Блясък без усилие“ in Prata, sentence
+      case: the words are retyped that way in `templates/index.json` and the heading's `text-transform:
+      uppercase` is gone. **The button stays red `#E63946`** (the exception below).
     - **The button itself changed shape and colour, 2026-09-20, at the owner's instruction**
       ("like in hestiahome.bg" for the shape; "very dark" shade of the background for the
       colour). See Square corners (now a full pill, site-wide, not just this button) and the
@@ -227,6 +237,14 @@ Rules that matter here:
 - **Gold comes from the photographs, not the interface.** The gold accent is muted and used
   sparingly (badges, small accents). Never gold gradients, never gold text on black.
 - **No pure white or pure black.** Both read cheap on screen.
+  - **Direction C (2026-10-04) moved most of what follows.** Where the exceptions below say black, they
+    are history: **the newsletter band is espresso `#2A1E1A`** (field `#382B26`, text `#F3EAE5`), and **every
+    dark button is rosewood `#6E3B30` with a `#FBF8F6` label** (8.5:1) on schemes 1, 2, 5, 6 and 8 -- the black
+    and white of the second exception, scheme-5's `#391D13` and scheme-6's taupe `#5B5548` are all gone;
+    scheme-7's moss green `#3D5229` stays. **Kept as written**: the pure-black text exceptions (the homepage
+    social heading, the stones row, the footer, the buy box -- asked for by name, 19.9:1 on C's page, a touch
+    darker than the `#2A1E1A` ink around them) and the hero button's red. The page ground is `#FBF8F6` and
+    the ink `#2A1E1A`, so the rule itself -- neither pure white nor pure black as a ground -- holds.
   - **One exception, at the owner's instruction (2026-09-10):** the newsletter band is
     `#000000`, matching the reference. It is set in `assets/crown.css`, not by a colour
     scheme, so nothing else on the site is affected.
@@ -318,25 +336,39 @@ Rules that matter here:
 
 | Scheme | Background | Text | Use |
 |---|---|---|---|
-| scheme-1 | `#FCFCFB` warm off-white | `#221F1C` | Default. Page ground, product cards. |
-| scheme-2 | `#F2F0EC` soft stone | `#221F1C` | Alternating sections. |
-| scheme-3 | `#221F1C` warm near-black | `#F5F2EE` | Footer, dramatic bands. |
-| scheme-4 | `#8C6A2E` deep muted gold | `#FFFFFF` | Badges and accents only. |
-| scheme-5 | `#E7E1D6` warm sand | `#221F1C` | Feature blocks. |
-| scheme-6 | `#F5F4F0` light greige | `#221F1C` | The reference’s band colour, and measured off their own band again for the stones row on 2026-09-29. Нашето вдъхновение and Всеки камък има значение on the homepage. Buttons `#5B5548`. |
-| scheme-7 | `#D8DFBF` milky matcha | `#221F1C` | Нашите материали on the homepage. Owner’s choice, 2026-09-14. Buttons `#3D5229`. |
-| scheme-8 | `#F1E3DC` marble blush | `#221F1C` | Контакти: open-row panels and the footer’s Facebook/Instagram hover, matched to the banner picture (2026-09-15). Black buttons. |
+| scheme-1 | `#FBF8F6` marble white | `#2A1E1A` espresso | Default. Page ground, product cards. Buttons rosewood `#6E3B30`, label `#FBF8F6`. (`#FCFCFB` and `#221F1C`, with black buttons, until direction C, 2026-10-04.) |
+| scheme-2 | `#EBDFD8` pale rose-clay | `#2A1E1A` | Alternating sections; the custom-request band. Rosewood buttons. (Was soft stone `#F2F0EC`.) |
+| scheme-3 | `#2A1E1A` espresso | `#F3EAE5` | Footer, dramatic bands. Buttons `#F3EAE5`, label `#2A1E1A`. (Was `#221F1C` and `#F5F2EE`.) |
+| scheme-4 | `#8C6A2E` deep muted gold | `#FFFFFF` | Badges and accents only. Not touched by direction C. |
+| scheme-5 | `#E9D9D0` rose-clay | `#2A1E1A` | Feature blocks: the hero and the silver banner (their pinks and gradients are literals in `assets/crown.css`), the Контакти banner. Rosewood buttons. (Was warm sand `#E7E1D6`, button `#391D13`.) |
+| scheme-6 | `#F3EBE6` pale marble | `#2A1E1A` | The story band, Всеки камък има значение, the reviews' cards, the cart's reassurances. Rosewood buttons. (Was light greige `#F5F4F0`, the reference’s band colour, measured off their own band again for the stones row on 2026-09-29; buttons taupe `#5B5548`.) |
+| scheme-7 | `#D8DFBF` milky matcha | `#221F1C` | Нашите материали, no longer on the homepage. Owner’s choice, 2026-09-14. Buttons `#3D5229`. Not touched by direction C. |
+| scheme-8 | `#F1E3DC` marble blush | `#2A1E1A` | Контакти: open-row panels and the footer’s Facebook/Instagram hover, matched to the banner picture (2026-09-15). Rosewood buttons (black until direction C). |
 
-- Type: **Jost** for everything since 2026-09-14: headings at 550 since 2026-10-03 (halfway
-  between regular and bold; 700 before that, and 400 for part of that day -- see Weight under
-  Custom code), text regular (400).
-  The owner first chose EB Garamond with Inter (option D), then the same day asked for the
+- Type: **Prata for headings and Jost for everything else, since 2026-10-04** (direction C, from the
+  Cullinan Directions board). Prata 400 -- the only weight it has -- in sentence case with no tracking for
+  every heading; Jost regular (400) for text and for every small spaced-capitals label (eyebrows, button
+  labels, option legends, the cart's „ВАШАТА КОЛИЧКА“ and „ОБЩО“, the stones' one-word meanings). **Jost alone
+  set everything from 2026-09-14**, headings at 550 from 2026-10-03 (halfway between regular and bold; 700
+  before that, and 400 for part of that day -- see Weight under Custom code), text regular (400).
+  **Prata was checked for Cyrillic before it was set, as the rule below requires**: Google Fonts ships a
+  Cyrillic file for it (SIL Open Font License) and the local copies of the pages render Bulgarian in it.
+  **The Jost history, which still sets text and labels.** The owner first chose EB Garamond with Inter (option D), then the same day asked for the
   font of hestiahome.bg (option E). hestiahome loads Shopify’s Jost, so its Bulgarian
   actually shows in the visitor’s system font (Arial on Windows); the owner was shown real
   Jost with Cyrillic beside that Arial look, and chose real Jost. Heading scale 100 (100 is
   Dawn’s minimum). History: Shopify’s Jost until 2026-09-08, then Playfair Display and
   Montserrat, then EB Garamond and Inter for part of a day. Before 2026-09-14 no Bulgarian
   letter ever showed in the chosen font (see the correction below).
+  - **Prata is self-hosted the way Jost is.** `font-prata-normal-cyrillic.woff2` (13 KB) and
+    `font-prata-normal-latin.woff2` (19 KB) in `assets/`, family "Prata Theme", declared in
+    `snippets/theme-fonts.liquid` with Google's own `unicode-range`s and preloaded after Jost's. **There is no
+    latin-ext and no italic file**: Google ships Prata as cyrillic-ext, cyrillic, vietnamese and latin, and
+    Bulgarian needs only the cyrillic part. `--font-heading-weight` is 400, and **headings are `font-synthesis:
+    none`**, so a rule that asks a heading for 600 gets the regular face rather than a smeared synthetic bold
+    on a didone's hairlines. Georgia stands in if the files fail to load, and has Cyrillic.
+  - **A new heading rule reads `var(--font-heading-family)`; a small label reads `var(--font-body-family)`.**
+    That is the whole division. The cart drawer's three labels were moved to Jost for it.
   - **Self-hosted, not from the font library.** `snippets/theme-fonts.liquid` declares six
     woff2 files in `assets/`, `font-jost-{normal,italic}-{cyrillic,latin,latin-ext}.woff2`,
     from Google Fonts under the SIL Open Font License, with `unicode-range`. It preloads the
@@ -348,7 +380,7 @@ Rules that matter here:
     instead.
   - The Typography font pickers in the theme editor name Jost but no longer change anything;
     a note in the editor says so. The size sliders still work.
-  - The files cover weights 300–700, which is every weight the CSS uses. A heavier weight
+  - The Jost files cover weights 300–700, which is every weight the CSS uses on text. A heavier weight
     means new files.
   - **Changing the font later:** get the Cyrillic, Latin and extended Latin woff2 files from
     Google Fonts, replace them in `assets/`, and update the snippet. Picking a font in the
@@ -434,6 +466,10 @@ Rules that matter here:
     story and reviews work and the shorter За нас, pushed after, are **unverified on a page** until the
     owner sends a new link. **The custom-request band (2026-10-04) is unverified on a page too, and its form has
     never sent a message.**
+    **Direction C (2026-10-04) was pushed with no link as well**: every colour, the Prata headings and the rope
+    line are unverified on a live page until the owner sends one (Online Store -> Themes -> the draft theme ->
+    Preview -> Share preview). The two font files and the stylesheets can be read off the CDN path below; the
+    snippet, the settings file and the template cannot.
   - **A pushed asset can be checked without any preview link.** The draft theme (id 2) serves its
     files publicly, with no password, at `https://2fp38p-az.myshopify.com/cdn/shop/t/2/assets/<file>`:
     a new file answers 200 within seconds of a push and 404 before, and **a changed file must be read
@@ -1935,6 +1971,11 @@ Anything of ours that is not a Dawn setting lives in these two places:
     in the header bar. **A fifth bolder since 2026-10-03**: the words and the dropdown's headings carry
     a 0.03em stroke in their own colour on top of the 700, because the Jost files stop there (half
     again was tried first and the owner asked for less; see Header menu, second round).
+  - **Superseded 2026-10-04 (direction C): headings are Prata 400, and 400 is the only weight it has.**
+    `--font-heading-weight` reads 400 and every rule that reads the token follows it; headings are
+    `font-synthesis: none`, so a rule that asks one for 600 or 700 is ignored, not faked. **The entry below is
+    what the weight was and how the token works; its 550 is history.** Still bold on purpose, as before, and
+    all in Jost: the header menu, buttons, prices, the option pills and the small labels.
   - **Titles are 550 since 2026-10-03: regular first, then halfway back** (the owner: "for all
     the titles lets make them not bold", then the same evening the halfway note below).
     `--font-heading-weight` went from 700 to 400 and then to 550 in
@@ -3806,12 +3847,74 @@ Anything of ours that is not a Dawn setting lives in these two places:
     grown from colours the owner chose (the matcha and the moss green) and from the stone in the earrings, and
     gold glows against deep green. A suits white gold and silver; C is the smallest step and still reads close
     to pink. **The hero button** is red today at the owner's explicit instruction; each look gives it its own
-    colour on the board, and the red can stay.
+    colour on the board, and the red can stay. **The owner chose C instead, 2026-10-04.**
   - **Applying a look** is one pass: the eight colour schemes in `config/settings_data.json`, the colour
     literals in `assets/crown.css` (the blush gradient, the greige, the pink stars, the taupe and brown
     buttons), the heading face in `snippets/theme-fonts.liquid` with its Cyrillic woff2 files self-hosted in
-    `assets/` (see Type under Design tokens), and the Design System. **Nothing has been applied; the owner has
-    not chosen.**
+    `assets/` (see Type under Design tokens), and the Design System. **The owner chose C on 2026-10-04 and
+    the pass was made: see Direction C applied, next.** The recommendation above, B, was not taken.
+- **Direction C applied.** (2026-10-04, the owner: "go with C, apply it".) The look the board called
+  **C · Мрамор** is the site's: marble and rose gold, Prata for headings in sentence case, rosewood buttons
+  and a rope line. It changes the colour and the type of every page, so what moved is listed here once; the
+  older notes keep their history, and **where this entry and an older one disagree, this one is current.**
+  - **Colour.** The schemes in `config/settings_data.json` take the values in the table under Design
+    tokens: page `#FBF8F6`, ink `#2A1E1A`, bands `#EBDFD8` (scheme-2), `#E9D9D0` (scheme-5) and `#F3EBE6`
+    (scheme-6), blush `#F1E3DC` (scheme-8, the same), and the dark scheme-3 `#2A1E1A`. **Every button on
+    schemes 1, 2, 5, 6 and 8 is rosewood `#6E3B30` with a `#FBF8F6` label, 8.5:1**; scheme-3's is the light
+    `#F3EAE5` with an espresso label. **Schemes 4 (muted gold) and 7 (matcha, moss-green button) were not
+    touched.** The stars are the owner's own rose-gold swatch, `#B76E79` -- 3.6:1 on the page, and graphics need
+    3:1 -- in Dawn's rating, the review cards and Judge.me.
+  - **Literals in `assets/crown.css` and the section stylesheets**, which no scheme reaches: the hero's phone
+    panel `#E1CDC2` and computer gradient `#F1E6DF` to `#E1CDC2`; the silver banner's own deeper `#EADBD2` to
+    `#D9C4B8` (computer only, keyed to its section id); the new-arrivals band `#EBDFD8`, scheme-2's own value,
+    with its slot override removed (the banner slot, `rgb(246 239 234)`, is lighter than every band it sits
+    on, so the cut shows without one); the marquee's boxes; the footer's three lines `#E1CDC2`; **the newsletter
+    band `#2A1E1A`**, its field `#382B26`, text `#F3EAE5`, outline `#85736B` (3.6:1 on the band, 3.0:1 on the
+    field -- it was 2.5:1 at first, and was lightened), placeholder `#C8B9B2` (7.2:1) and a light button with
+    an espresso label; Judge.me's colour variables and its form's buttons, chips and focus ring, in rosewood;
+    every empty picture slot a warm `rgb(240 232 226)`; and the old greys in the About page's pills
+    (`section-about-intro.css`), the benefits tiles (`section-icon-benefits.css`) and the split-story slot
+    (`section-split-story.css`).
+  - **Headings.** Prata 400, sentence case, no tracking: `--font-heading-family` and `--font-heading-weight`
+    in `snippets/theme-fonts.liquid`; one `letter-spacing: 0` on `h1`-`h5` and `.h0`-`.h5` at the end of
+    `assets/crown.css` (Dawn tracks headings at 0.6px); and `text-transform: none` wherever a heading rule
+    uppercased: the hero, the collection title, the newsletter's heading, the homepage's social heading and the
+    headings of the atelier, category mosaic, custom-request, recently-viewed, stones, reviews and social-band
+    sections. **The three typed banner headings are retyped in sentence case in `templates/index.json`**
+    („Блясък без усилие“, „Нашето сребро. Нашият блясък.“, „Ново при нас“): they were typed in capitals, so
+    removing the transform alone would have left them shouting in a serif. **Small labels stay in Jost and in
+    their capitals**; the cart drawer's „ВАШАТА КОЛИЧКА“, „ОБЩО“ and the empty bag's line were moved to the
+    text face to match.
+  - **The rope line.** A thin twisted line, 11px tall, under the claims below the hero and at the top of
+    every footer: `.hero-facts::after` and `.footer::before`, one rule at the end of `assets/crown.css`, a CSS
+    mask (a data-URI SVG of two crossing waves, 18px to the repeat) over a `#6E3B30` background, as wide as the
+    page's content (the page width less 5rem each side from 750px). **It comes from the owner's own pieces**
+    -- the ring's twisted band, the pendant's rope frame -- and is decoration with no accessible name. It is the
+    one part of C that was a proposal on the board rather than a switch, and **deleting that block removes it**.
+  - **Kept on purpose.** The hero's button stays red `#E63946` (the owner's explicit override of 2026-09-21;
+    the board said "the red can stay"). **It is 4.2:1 with its white label, which passes only as large text** --
+    unchanged, still flagged. **The pure-black text exceptions stay** (the stones row, the footer, the buy box,
+    the homepage social heading): asked for by name, 19.9:1 on the page, and a touch darker than the espresso
+    ink beside them. **The pink hovers stay**: Add to cart's fill and the header icons' underline are `#E6BAB9`,
+    moonmagic's own pink, with an espresso label (9.3:1) -- the one piece of their pink left in the interface,
+    a light relative of the rose gold; one value each to change. The Facebook and Instagram brand colours,
+    scheme-4's gold and scheme-7's matcha are as they were.
+  - **What it supersedes**: the black newsletter band and the black-and-white dark buttons (the first two named
+    exceptions to no pure black), scheme-5's `#391D13` and scheme-6's taupe, the pink `#F3E1DB` and the
+    gradient measured off moonmagic (hero, marquee, footer lines), moonmagic's pink stars, and Jost at 550 for
+    headings.
+  - **Checked** on local copies of the homepage, a product page, a collection and За нас, built from the live
+    pages with the real stylesheets, the Prata files and the retyped headings, at 1280 and 375px: every heading
+    fits and wraps, nothing overflows sideways, the empty slots read warm, the rope line sits level under the
+    claims and above the footer. Contrast was computed for every new pairing from the tokens; the lowest text
+    pair is the button label, 8.5:1. The JSON files round-trip byte for byte and every stylesheet's braces
+    balance.
+  - **Not seen on a live page**: the preview link had expired. The cart drawer with a line in it, Judge.me's
+    widget, Контакти and every hover state were not seen at all, and **the new heading face has not been looked at
+    on a real phone**. Look at all of them on the next link.
+  - **Pushed in two steps**: the Prata files and the stylesheets first, then `config/settings_data.json`,
+    `snippets/theme-fonts.liquid`, `templates/index.json` and these notes -- the snippet points at font files
+    that must already exist, and a refused settings file would hold back everything pushed with it.
 - **Customer reviews (Judge.me).** The owner installed Judge.me on its free plan and added its
   Review Widget on 2026-10-01 ("i did what you said"), by the steps given under Judge.me in
   Waiting on the Shopify admin. Shopify wrote three commits back; pulled before touching
@@ -4806,7 +4909,7 @@ Anything of ours that is not a Dawn setting lives in these two places:
 
 ## Current state
 
-- Design foundation applied (palette, type, spacing). Committed and live on the draft theme.
+- Design foundation applied (palette, type, spacing). Committed and live on the draft theme. **Direction C, marble and rose gold with Prata headings, replaced the first palette and type on 2026-10-04: see Direction C applied under Custom code.**
 - **За нас page** (2026-09-13): intro with four jump links — Нашето вдъхновение · Нашият дизайн ·
   Нашите материали · Въпроси и отговори — then photograph-and-panel blocks for Нашата история,
   Нашето вдъхновение, Нашият дизайн and Нашите материали, then the questions. History keeps its
