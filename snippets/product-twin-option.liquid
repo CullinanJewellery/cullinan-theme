@@ -1,0 +1,71 @@
+{% comment %}
+  Which option of a product is a colour that another option already names.
+
+  Cullinan (2026-10-03, the owner: "for every product we open i don't want the color
+  choice to be shown"). The option with swatches exists so the product cards can show
+  colour circles, and it also feeds the cart. On the product page the shopper chooses
+  the material, in words, and the colour is carried along with it -- drawn as well, the
+  two rows would say the same thing twice.
+
+  Prints "hidden,shown" -- the 1-based positions of the colour option (the first option
+  with swatches) and of the option that names its colours ("14К жълто злато" names
+  "жълто злато") -- or nothing when the product has no such pair. The shown option is the
+  first one without swatches in which at least one value contains the name of one of
+  the colours. It used to have to cover every colour exactly, which kept the colour row
+  on the ring (silver names no gold) and on the bracelet (no rose or white material);
+  now a single named colour is enough, and the colours no value names are simply not
+  reachable from the page until a value for them is added in the Admin.
+
+  A product with a colour option alone, or a colour and a size, prints nothing: hiding
+  its only way to choose a colour would make the other colours unbuyable.
+
+  Accepts:
+  - product: {Object} product object.
+
+  Usage:
+  {%- capture twin_pair -%}{%- render 'product-twin-option', product: product -%}{%- endcapture -%}
+  {%- assign twin_positions = twin_pair | strip | split: ',' -%}
+{% endcomment %}
+{%- liquid
+  assign hidden_option = null
+  assign shown_option = null
+
+  for candidate in product.options_with_values
+    assign candidate_swatches = candidate.values | map: 'swatch' | compact | size
+    if candidate_swatches > 0
+      assign hidden_option = candidate
+      break
+    endif
+  endfor
+
+  if hidden_option
+    for candidate in product.options_with_values
+      if shown_option
+        break
+      endif
+      assign candidate_swatches = candidate.values | map: 'swatch' | compact | size
+      if candidate.position == hidden_option.position or candidate_swatches > 0
+        continue
+      endif
+
+      assign names_a_colour = false
+      for candidate_value in candidate.values
+        assign candidate_name = candidate_value.name | downcase
+        for hidden_value in hidden_option.values
+          assign hidden_name = hidden_value.name | downcase
+          if hidden_name != blank and candidate_name contains hidden_name
+            assign names_a_colour = true
+          endif
+        endfor
+      endfor
+
+      if names_a_colour
+        assign shown_option = candidate
+      endif
+    endfor
+
+    if shown_option
+      echo hidden_option.position | append: ',' | append: shown_option.position
+    endif
+  endif
+-%}

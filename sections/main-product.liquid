@@ -44,6 +44,7 @@
   <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
   {%- unless product.has_only_default_variant -%}
     <script src="{{ 'option-menu.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'variant-twin-sync.js' | asset_url }}" defer="defer"></script>
   {%- endunless -%}
   {%- if product.quantity_price_breaks_configured? -%}
     <script src="{{ 'show-more.js' | asset_url }}" defer="defer"></script>

@@ -10,78 +10,43 @@
 {% endcomment %}
 {%- unless product.has_only_default_variant -%}
   {% comment %}
-    Cullinan: a colour option that only mirrors a material option is not drawn.
+    Cullinan: a colour option that another option names is not drawn.
 
     The option with swatches exists so the product cards can show colour circles. On
     the product page the shopper chooses the material, in words, and the colour follows
     from it -- drawn as well, the two rows would say the same thing twice.
 
-    An option with swatches is skipped only when another option, without swatches,
-    covers it exactly: every value of that option contains exactly one colour name, and
-    every colour name sits inside at least one value ("жълто злато" inside "14К жълто
-    злато"). Anything short of that draws both rows as Dawn does, so a choice can never
-    become unreachable, and a product with a colour option alone keeps its picker.
+    snippets/product-twin-option.liquid decides which options those are: the first
+    option with swatches, and the first option without swatches in which a value names
+    one of its colours ("жълто злато" inside "14К жълто злато"). It used to have to cover
+    every colour exactly; since 2026-10-03 one named colour is enough, because the owner
+    wants the colour row gone on every product. A product with a colour option alone
+    keeps its picker, so a choice can never become unreachable.
 
     The skipped option is still part of every variant, so it cannot just be left out of
     the request: Shopify would fill it with its first value and a shopper choosing rose
     gold could be sent a variant whose colour says yellow. product-variant-options.liquid
     sends the matching colour's id together with each visible value instead (`twin`).
+
+    The variant a page loads on is Shopify's first available one, which can carry a
+    colour its visible material does not name (the bracelet loads on "14К жълто злато"
+    with a rose colour). `data-hidden-selected-value-id` says which colour the loaded
+    variant has, and assets/variant-twin-sync.js re-requests the right one when it
+    differs from the colour the checked material stands for.
   {% endcomment %}
   {%- liquid
     assign hidden_option = null
     assign shown_option = null
 
-    for candidate in product.options_with_values
-      assign candidate_swatches = candidate.values | map: 'swatch' | compact | size
-      if candidate_swatches > 0
-        assign hidden_option = candidate
-        break
-      endif
-    endfor
-
-    if hidden_option
-      for candidate in product.options_with_values
-        if shown_option
-          break
-        endif
-        assign candidate_swatches = candidate.values | map: 'swatch' | compact | size
-        if candidate.position == hidden_option.position or candidate_swatches > 0
-          continue
-        endif
-
-        assign pairing_ok = true
-        for candidate_value in candidate.values
-          assign candidate_name = candidate_value.name | downcase
-          assign name_matches = 0
-          for hidden_value in hidden_option.values
-            assign hidden_name = hidden_value.name | downcase
-            if hidden_name != blank and candidate_name contains hidden_name
-              assign name_matches = name_matches | plus: 1
-            endif
-          endfor
-          if name_matches != 1
-            assign pairing_ok = false
-          endif
-        endfor
-
-        for hidden_value in hidden_option.values
-          assign hidden_name = hidden_value.name | downcase
-          assign name_found = false
-          for candidate_value in candidate.values
-            assign candidate_name = candidate_value.name | downcase
-            if hidden_name != blank and candidate_name contains hidden_name
-              assign name_found = true
-            endif
-          endfor
-          unless name_found
-            assign pairing_ok = false
-          endunless
-        endfor
-
-        if pairing_ok
-          assign shown_option = candidate
-        endif
-      endfor
+    capture twin_pair
+      render 'product-twin-option', product: product
+    endcapture
+    assign twin_positions = twin_pair | strip | split: ','
+    if twin_positions.size == 2
+      assign hidden_index = twin_positions[0] | minus: 1
+      assign shown_index = twin_positions[1] | minus: 1
+      assign hidden_option = product.options_with_values[hidden_index]
+      assign shown_option = product.options_with_values[shown_index]
     endif
   -%}
   <variant-selects
@@ -94,6 +59,9 @@
     {% # theme-check-disable %}
     data-selected-price-amount="{{ product.selected_or_first_available_variant.price | default: 0 | money_amount | escape }}"
     {% # theme-check-enable %}
+    {% if shown_option %}
+      data-hidden-selected-value-id="{{ hidden_option.selected_value.id }}"
+    {% endif %}
     {{ block.shopify_attributes }}
   >
     {%- comment -%}
