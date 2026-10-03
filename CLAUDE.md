@@ -3691,7 +3691,7 @@ Anything of ours that is not a Dawn setting lives in these two places:
     left (`base.css`), so a first version of the card carried a stray vertical line beside every
     quote -- reset in the card's own rule.
   - **Not seen on a live page**: the preview link expired mid-session (see Preview links expire),
-    so the template that adds the section was pushed without a page to look at -- at 19:52, fourteen
+    so the template that adds the section was pushed without a page to look at -- at 19:51, fourteen
     minutes after the section files, to give Shopify's validator time. The section's files were
     confirmed live by their assets (`review-cards.js` and `section-review-cards.css` answered 200
     within seconds of the push, `section-atelier.css?v=` carried the list layout). **A template
