@@ -1468,6 +1468,32 @@
         "id": "cart_color_scheme",
         "label": "t:sections.all.colors.label",
         "default": "scheme-1"
+      },
+      {
+        "type": "header",
+        "content": "Reassurance lines in the cart drawer"
+      },
+      {
+        "type": "paragraph",
+        "content": "Up to three short lines with a tick, on a band above the total. Leave a line empty to hide it."
+      },
+      {
+        "type": "text",
+        "id": "cart_trust_1",
+        "label": "Line 1",
+        "default": "Наложен платеж — плащате при получаване"
+      },
+      {
+        "type": "text",
+        "id": "cart_trust_2",
+        "label": "Line 2",
+        "default": "Изработка по поръчка · доставка 5–20 работни дни"
+      },
+      {
+        "type": "text",
+        "id": "cart_trust_3",
+        "label": "Line 3",
+        "default": "Връщане до 14 дни от получаването"
       }
     ]
   },

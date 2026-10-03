@@ -279,7 +279,7 @@
       "title": "Вашата количка",
       "caption": "Артикули в количката",
       "remove_title": "Премахване на {{ title }}",
-      "checkout": "Преминаване към плащане",
+      "checkout": "Към плащане",
       "empty": "Количката ви е празна.",
       "product_disclosure": "Оповестяване за продукта",
       "product_disclosures": "Оповестявания за продукта",
@@ -293,12 +293,12 @@
         "image": "Изображение на продукта"
       },
       "update": "Актуализиране",
-      "note": "Специални инструкции за поръчката",
+      "note": "Бележка към поръчката",
       "login": {
         "title": "Имате профил?",
         "paragraph_html": "<a href=\"{{ link }}\" class=\"link underlined-link\">Влезте</a> за по-бързо преминаване към плащане."
       },
-      "estimated_total": "Очаквана обща сума",
+      "estimated_total": "Общо",
       "new_estimated_total": "Нова очаквана обща сума",
       "duties_and_taxes_included_shipping_at_checkout_with_policy_html": "С включено мито и данъци. Отстъпките и <a href=\"{{ link }}\">доставката</a> се изчисляват при плащане.",
       "duties_and_taxes_included_shipping_at_checkout_without_policy": "С включено мито и данъци. Отстъпките и доставката се изчисляват при плащане.",
@@ -526,6 +526,13 @@
       "send_on_label": "Изпращане на (незадължително)",
       "expanded": "Формулярът за получател на ваучер за подарък е разгънат",
       "collapsed": "Формулярът за получател на ваучер за подарък е свит"
+    }
+  },
+  "cullinan": {
+    "cart": {
+      "remove": "Премахни",
+      "size": "Размер {{ value }}",
+      "each": "{{ price }} за бр."
     }
   }
 }

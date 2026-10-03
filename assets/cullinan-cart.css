@@ -1,0 +1,496 @@
+/* ---------------------------------------------------------------------------
+   The cart drawer (2026-10-03)
+
+   The owner: a design for what opens when "Добави в количката" is clicked,
+   "something mix like choosing from hestiahome and moonmagic or the best idea
+   you can make our own but using examples from their carts".
+
+   Both were opened live, with a piece in the bag, at 1440 and 375px.
+
+   moonmagic's bag: a 720px sheet from the right (half the screen) and a
+   full-screen sheet on a phone, white, square, slides in over 0.3s on a 0.6
+   black veil. A tracked-capitals title (24px/600, 0.1em), a hairline under it;
+   lines of a 110px square picture, the name (16px/600), the options in small
+   grey capitals (12px, 0.5 black), a borderless "- 1 +" and a cross, the price
+   at the right; a greige band (#F5F4F0) between hairlines; a pinned footer with
+   the total (22px) and a black square CHECKOUT (60px, 18px/700, 0.1em).
+
+   hestiahome.bg's cart: a 440px floating card (12px radius, a 24px blur, a cream
+   at 0.72), a Jost title, rounded thumbnails, a quantity pill, a row of three
+   reassurances above the total ("Наложен платеж при получаване" among them) and
+   a full-width dark pill to pay.
+
+   Ours takes moonmagic's structure and squareness (the hairlines, the square
+   picture, the small-capitals options, the pinned footer, the black square
+   button -- the same one as Add to cart, pink on hover included, so the two
+   steps of buying read as one) and hestiahome's idea that the reassurances sit
+   next to the money, as one calm list on scheme-6's greige instead of a row of
+   icons, in our own words from facts the owner has already given. What is our
+   own: the options say values only, with the colour left out where the product
+   page leaves it out (snippets/cart-item-options.liquid); a text "Премахни"
+   where both references use an icon; the count in the title; a calm empty bag.
+
+   What is deliberately not here, because no policy or data stands behind it:
+   payment-method logos, a free-shipping bar, an upsell row, a gift offer.
+
+   Everything is scoped to #CartDrawer. Dawn's drawer rules are two classes deep
+   (`.cart-drawer .cart-item`) and component-cart-items.css loads asynchronously,
+   after this file or before it; an id wins either way.
+   --------------------------------------------------------------------------- */
+
+/* ---- the panel ---------------------------------------------------------- */
+
+cart-drawer .drawer__inner {
+  width: 46rem;
+  max-width: 100vw;
+  padding: 0;
+  border: 0;
+  border-left: 0.1rem solid rgba(var(--color-foreground), 0.12);
+  /* hestiahome's own easing (the accordion arrow uses it too): fast at first,
+     then settling; moonmagic's is a plain 0.3s */
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media screen and (max-width: 749px) {
+  /* a full-screen sheet on a phone, as moonmagic's is */
+  cart-drawer .drawer__inner {
+    width: 100vw;
+    border-left: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  cart-drawer .drawer__inner {
+    transition: none;
+  }
+}
+
+/* ---- the header --------------------------------------------------------- */
+
+#CartDrawer .drawer__header {
+  padding: 2.2rem 2.4rem 1.8rem;
+  border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.12);
+}
+
+#CartDrawer .drawer__heading {
+  margin: 0;
+  font-family: var(--font-heading-family);
+  font-size: 1.6rem;
+  font-weight: var(--font-heading-weight);
+  letter-spacing: 0.12em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+#CartDrawer .drawer__count {
+  margin-left: 0.6rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+}
+
+#CartDrawer .drawer__header .drawer__close,
+#CartDrawer .cart-drawer__warnings .drawer__close {
+  top: 50%;
+  right: 1.2rem;
+  transform: translateY(-50%);
+}
+
+#CartDrawer .cart-drawer__warnings .drawer__close {
+  top: 2.2rem;
+  transform: none;
+}
+
+/* ---- the lines ---------------------------------------------------------- */
+
+cart-drawer cart-drawer-items {
+  padding: 0 2.4rem;
+}
+
+#CartDrawer .cart-items,
+#CartDrawer .cart-items tbody {
+  display: block;
+  width: 100%;
+}
+
+/* the column headings stay for a screen reader; the layout below has no columns */
+#CartDrawer .cart-items thead {
+  display: block;
+  width: 1px;
+  height: 1px;
+}
+
+#CartDrawer .cart-item {
+  display: grid;
+  grid-template-columns: 10rem minmax(0, 1fr) auto;
+  grid-template-areas:
+    'media details totals'
+    'media quantity quantity';
+  column-gap: 1.6rem;
+  row-gap: 0.8rem;
+  align-content: start;
+  margin: 0;
+  padding: 2rem 0;
+  border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.12);
+}
+
+@media screen and (max-width: 749px) {
+  #CartDrawer .cart-item {
+    grid-template-columns: 9rem minmax(0, 1fr) auto;
+    column-gap: 1.4rem;
+  }
+}
+
+/* the four cells, put where the template above says; Dawn's own placements
+   (grid-column / grid-row, a table-row at tablet) are overridden by grid-area */
+#CartDrawer .cart-item__media {
+  grid-area: media;
+  position: relative;
+  width: auto;
+  padding: 0;
+}
+
+#CartDrawer .cart-item__details {
+  grid-area: details;
+  width: auto;
+  min-width: 0;
+  padding: 0;
+  font-size: 1.4rem;
+  line-height: 1.4;
+}
+
+#CartDrawer .cart-item__totals {
+  grid-area: totals;
+  padding: 0;
+}
+
+#CartDrawer .cart-item__quantity {
+  grid-area: quantity;
+  align-self: end;
+  padding: 0;
+}
+
+/* the picture: always a square, like the cards and the gallery tiles. A line with
+   no picture is the flat square every empty media slot on this site is. */
+#CartDrawer .cart-item__image {
+  display: block;
+  width: 100%;
+  max-width: none;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  background-color: rgb(242 240 236);
+}
+
+#CartDrawer .cart-item__image--empty {
+  background-color: rgb(242 240 236);
+}
+
+/* the words */
+#CartDrawer .cart-item__details > * {
+  max-width: none;
+  margin: 0;
+}
+
+#CartDrawer .cart-item__details > * + * {
+  margin-top: 0.5rem;
+}
+
+#CartDrawer .cart-item__title {
+  display: block;
+  font-size: 1.5rem;
+}
+
+#CartDrawer .cart-item__name {
+  font-family: var(--font-heading-family);
+  font-size: 1.5rem;
+  font-weight: var(--font-heading-weight);
+  letter-spacing: 0.02em;
+  line-height: 1.35;
+  text-transform: none;
+}
+
+#CartDrawer .cart-item__name:hover {
+  text-decoration-thickness: 0.1rem;
+}
+
+/* the options: values only, in the small spaced capitals every label here uses */
+#CartDrawer .cart-item__options {
+  margin-top: 0.4rem;
+  color: rgba(var(--color-foreground), 0.7);
+  font-size: 1.15rem;
+  letter-spacing: 0.06em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+#CartDrawer .cart-item__each,
+#CartDrawer .cart-item__details .product-option {
+  color: rgba(var(--color-foreground), 0.7);
+  font-size: 1.2rem;
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+}
+
+#CartDrawer .cart-item__discounted-prices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 0.8rem;
+}
+
+/* the line's price, at the right, on the title's own baseline */
+#CartDrawer .cart-item__totals {
+  display: block;
+  text-align: right;
+}
+
+#CartDrawer .cart-item__price-wrapper .price {
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1.35;
+}
+
+#CartDrawer .cart-item .loading__spinner {
+  top: 0;
+  right: 0;
+  padding: 0;
+}
+
+/* quantity and remove, on one row under the options */
+#CartDrawer .cart-item__quantity-wrapper {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 1.6rem;
+}
+
+#CartDrawer .cart-item__quantity .quantity-popover-container {
+  padding: 0;
+}
+
+/* a "- 1 +" in a quiet box: the faint fill the size boxes on the product page have,
+   square, with no ring and no shadow */
+#CartDrawer .cart-item__quantity .quantity {
+  width: 10.4rem;
+  min-height: 3.6rem;
+  border-radius: 0;
+  background-color: rgba(var(--color-foreground), 0.04);
+}
+
+#CartDrawer .cart-item__quantity .quantity::before,
+#CartDrawer .cart-item__quantity .quantity::after {
+  content: none;
+}
+
+#CartDrawer .cart-item__quantity .quantity__button {
+  width: 3.4rem;
+}
+
+#CartDrawer .cart-item__quantity .quantity__input {
+  font-size: 1.4rem;
+  font-weight: 500;
+  opacity: 1;
+}
+
+/* "Премахни": a words-only link where both references use an icon -- an icon next to
+   a stepper is a stray tap, and the words say what it does in plain Bulgarian */
+#CartDrawer cart-remove-button {
+  display: inline-flex;
+  width: auto;
+  height: auto;
+  margin: 0;
+}
+
+#CartDrawer .cart-remove-button {
+  width: auto;
+  min-width: 0;
+  height: auto;
+  min-height: 0;
+  margin: 0;
+  padding: 0.4rem 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  color: rgba(var(--color-foreground), 0.7);
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-decoration: underline;
+  text-decoration-thickness: 0.1rem;
+  text-transform: none;
+  text-underline-offset: 0.3rem;
+}
+
+#CartDrawer .cart-remove-button:hover,
+#CartDrawer .cart-remove-button:focus-visible {
+  color: rgb(var(--color-foreground));
+}
+
+#CartDrawer .cart-item__error {
+  margin: 0.4rem 0 0;
+}
+
+/* ---- the footer --------------------------------------------------------- */
+
+#CartDrawer .drawer__footer {
+  padding: 0;
+  border-top: 0;
+}
+
+/* the reassurance list: scheme-6's greige, full width, three ticked lines */
+#CartDrawer .cart-drawer__trust {
+  display: grid;
+  gap: 0.9rem;
+  margin: 0;
+  padding: 1.6rem 2.4rem;
+  list-style: none;
+}
+
+#CartDrawer .cart-drawer__trust-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.25rem;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+}
+
+#CartDrawer .cart-drawer__trust-icon {
+  flex: none;
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+/* the total */
+#CartDrawer .cart-drawer__footer {
+  padding: 2rem 2.4rem 0;
+}
+
+#CartDrawer .cart-drawer__footer > * + * {
+  margin-top: 0;
+}
+
+#CartDrawer .totals {
+  align-items: baseline;
+  margin: 0;
+}
+
+#CartDrawer .totals__total {
+  margin: 0;
+  color: rgba(var(--color-foreground), 0.7);
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+#CartDrawer .totals__total-value {
+  margin: 0;
+  font-family: var(--font-heading-family);
+  font-size: 2.2rem;
+  font-weight: var(--font-heading-weight);
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+}
+
+#CartDrawer .tax-note {
+  display: block;
+  margin: 0.8rem 0 0;
+  color: rgba(var(--color-foreground), 0.7);
+  font-size: 1.2rem;
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+  text-align: left;
+}
+
+/* ---- the buttons: the same black square as Add to cart ------------------ */
+
+#CartDrawer .cart__ctas {
+  padding: 1.6rem 2.4rem calc(2.4rem + env(safe-area-inset-bottom, 0px));
+}
+
+#CartDrawer .cart__checkout-button.button::before,
+#CartDrawer .cart__checkout-button.button::after,
+#CartDrawer .drawer__inner-empty .button::before,
+#CartDrawer .drawer__inner-empty .button::after {
+  content: none;
+}
+
+#CartDrawer .cart__checkout-button.button,
+#CartDrawer .drawer__inner-empty .button {
+  min-height: 4.8rem;
+  border-radius: 0;
+  background-color: rgb(var(--color-button));
+  color: rgb(var(--color-button-text));
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  box-shadow: inset 0 0 0 1px rgba(var(--color-button), 0);
+  transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out,
+    box-shadow 0.35s ease-in-out, transform 0.2s cubic-bezier(0, 0, 0.3, 1);
+}
+
+#CartDrawer .cart__checkout-button.button {
+  width: 100%;
+  max-width: none;
+}
+
+#CartDrawer .drawer__inner-empty .button {
+  min-width: 26rem;
+  padding: 0 3rem;
+}
+
+@media screen and (max-width: 749px) {
+  #CartDrawer .cart__checkout-button.button,
+  #CartDrawer .drawer__inner-empty .button {
+    font-size: 1.4rem;
+  }
+}
+
+/* moonmagic's pink on hover, as Add to cart answers it (see "Add to cart" in crown.css);
+   the label is the site's near-black because white on this pink is 1.74:1 */
+#CartDrawer .cart__checkout-button.button:not([disabled]):hover,
+#CartDrawer .cart__checkout-button.button:not([disabled]):focus-visible,
+#CartDrawer .drawer__inner-empty .button:hover,
+#CartDrawer .drawer__inner-empty .button:focus-visible {
+  background-color: #e6bab9;
+  color: rgb(var(--color-foreground));
+  box-shadow: inset 0 0 0 1px #e6bab9;
+}
+
+/* ---- the empty bag ------------------------------------------------------ */
+
+#CartDrawer .drawer__inner-empty {
+  padding: 0 2.4rem;
+}
+
+#CartDrawer .cart-drawer__empty-content {
+  text-align: center;
+}
+
+#CartDrawer .cart__empty-text {
+  margin: 0 0 2.4rem;
+  font-family: var(--font-heading-family);
+  font-size: 1.7rem;
+  font-weight: var(--font-heading-weight);
+  letter-spacing: 0.1em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+/* ---- the order note, if it is ever switched on (Theme settings > Cart) --- */
+
+#CartDrawer .drawer__footer > details {
+  margin: 0;
+  padding: 0 2.4rem;
+  border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.12);
+}
+
+#CartDrawer .drawer__footer summary {
+  padding: 1.6rem 3.2rem 1.6rem 0;
+  font-size: 1.2rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}

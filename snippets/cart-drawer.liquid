@@ -45,13 +45,11 @@
               <a href="{{ routes.all_products_collection_url }}" class="button">
                 {{ 'general.continue_shopping' | t }}
               </a>
-
-              {%- if shop.customer_accounts_enabled and customer == null -%}
-                <p class="cart__login-title h3">{{ 'sections.cart.login.title' | t }}</p>
-                <p class="cart__login-paragraph">
-                  {{ 'sections.cart.login.paragraph_html' | t: link: routes.account_login_url }}
-                </p>
-              {%- endif -%}
+              {%- comment -%}
+                Cullinan (2026-10-03): Dawn's "Have an account? Log in" prompt is not drawn in
+                the empty bag. The shop has no customers yet, and the prompt is the one thing in
+                an empty bag that is not about the bag.
+              {%- endcomment -%}
             </div>
           </div>
           {%- if settings.cart_drawer_collection != blank -%}
@@ -62,7 +60,12 @@
         </div>
       {%- endif -%}
       <div class="drawer__header">
-        <h2 class="drawer__heading">{{ 'sections.cart.title' | t }}</h2>
+        <h2 class="drawer__heading">
+          {{- 'sections.cart.title' | t -}}
+          {%- if cart.item_count > 0 -%}
+            <span class="drawer__count">({{ cart.item_count }})</span>
+          {%- endif -%}
+        </h2>
         <button
           class="drawer__close"
           type="button"
@@ -91,7 +94,7 @@
             {%- if cart != empty -%}
               <div class="drawer__cart-items-wrapper">
                 <table class="cart-items" role="table">
-                  <thead role="rowgroup">
+                  <thead role="rowgroup" class="visually-hidden">
                     <tr role="row">
                       <th id="CartDrawer-ColumnProductImage" role="columnheader">
                         <span class="visually-hidden">{{ 'sections.cart.headings.image' | t }}</span>
@@ -136,14 +139,22 @@
                           {% if item.image %}
                             {% comment %} Leave empty space due to a:empty CSS display: none rule {% endcomment %}
                             <a href="{{ item.url }}" class="cart-item__link" tabindex="-1" aria-hidden="true"> </a>
+                            {%- comment -%}
+                              Cullinan: always a square, cropped around the focal point set in
+                              Shopify's Files, like the cards and the gallery tiles; a line with
+                              no picture is a flat square, like every empty media slot here.
+                            {%- endcomment -%}
                             <img
                               class="cart-item__image"
                               src="{{ item.image | image_url: width: 300 }}"
                               alt="{{ item.image.alt | escape }}"
                               loading="lazy"
-                              width="150"
-                              height="{{ 150 | divided_by: item.image.aspect_ratio | ceil }}"
+                              width="100"
+                              height="100"
+                              style="object-position: {{ item.image.presentation.focal_point | default: '50% 50%' }};"
                             >
+                          {% else %}
+                            <span class="cart-item__image cart-item__image--empty"></span>
                           {% endif %}
                         </td>
 
@@ -163,6 +174,13 @@
                             -%}
                           </div>
 
+                          {%- comment -%}
+                            Cullinan: the options are one line of values (snippets/cart-item-options.liquid)
+                            and the unit price is only said when it is not the line's price, i.e. when the
+                            quantity is more than one or a discount applies. The line's price is on the right.
+                          {%- endcomment -%}
+                          {%- render 'cart-item-options', item: item -%}
+
                           {%- if item.original_price != item.final_price -%}
                             <div class="cart-item__discounted-prices">
                               <span class="visually-hidden">
@@ -178,29 +196,17 @@
                                 {{ item.final_price | money }}
                               </strong>
                             </div>
-                          {%- else -%}
-                            <div class="product-option">
-                              {{ item.original_price | money }}
-                            </div>
+                          {%- elsif item.quantity > 1 -%}
+                            {%- assign each_price = item.original_price | money -%}
+                            <p class="cart-item__each">
+                              {{- 'cullinan.cart.each' | t: price: each_price -}}
+                            </p>
                           {%- endif -%}
 
-                          {%- if item.product.has_only_default_variant == false
-                            or item.properties.size != 0
+                          {%- if item.properties.size != 0
                             or item.selling_plan_allocation != null
                           -%}
                             <dl>
-                              {%- if item.product.has_only_default_variant == false -%}
-                                {%- for option in item.options_with_values -%}
-                                  <div class="product-option">
-                                    <dt>{{ option.name }}:</dt>
-                                    <dd>
-                                      {{ option.value -}}
-                                      {%- unless forloop.last %}, {% endunless %}
-                                    </dd>
-                                  </div>
-                                {%- endfor -%}
-                              {%- endif -%}
-
                               {%- for property in item.properties -%}
                                 {%- assign property_first_char = property.first | slice: 0 -%}
                                 {%- if property.last != blank and property_first_char != '_' -%}
@@ -370,9 +376,7 @@
                                     class="hidden"
                                   {% endif %}
                                 >
-                                  <span class="svg-wrapper">
-                                    {{- 'icon-remove.svg' | inline_asset_content -}}
-                                  </span>
+                                  <span class="cart-remove-button__label">{{ 'cullinan.cart.remove' | t }}</span>
                                 </button>
                               </cart-remove-button>
                             </div>
@@ -508,6 +512,45 @@
           </details>
         {%- endif -%}
 
+        {%- comment -%}
+          Cullinan (2026-10-03): up to three short reassurance lines on the greige band
+          (scheme-6) above the total, each with a tick -- hestiahome.bg's row of icons and
+          moonmagic's trust strip, in one quiet list. The words are theme settings (Theme
+          settings > Cart), each hidden when empty; the defaults are facts the owner has
+          already given for the product page (cash on delivery, made to order with delivery
+          in 5-20 working days, returns within 14 days).
+        {%- endcomment -%}
+        {%- liquid
+          assign trust_lines = settings.cart_trust_1 | append: '||' | append: settings.cart_trust_2 | append: '||' | append: settings.cart_trust_3 | split: '||'
+        -%}
+        {%- capture trust_items -%}
+          {%- for trust_line in trust_lines -%}
+            {%- assign trust_text = trust_line | strip -%}
+            {%- if trust_text != blank -%}
+              <li class="cart-drawer__trust-item">
+                <svg
+                  class="cart-drawer__trust-icon"
+                  viewBox="0 0 20 20"
+                  width="16"
+                  height="16"
+                  fill="none"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.2" vector-effect="non-scaling-stroke"/>
+                  <path d="M6.2 10.4l2.7 2.7 4.9-5.3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+                </svg>
+                <span>{{ trust_text }}</span>
+              </li>
+            {%- endif -%}
+          {%- endfor -%}
+        {%- endcapture -%}
+        {%- if trust_items != blank -%}
+          <ul class="cart-drawer__trust color-scheme-6 gradient" role="list">
+            {{ trust_items }}
+          </ul>
+        {%- endif -%}
+
         <!-- Start blocks -->
         <!-- Subtotals -->
 
@@ -528,7 +571,7 @@
 
           <div class="totals" role="status">
             <h2 class="totals__total">{{ 'sections.cart.estimated_total' | t }}</h2>
-            <p class="totals__total-value">{{ cart.total_price | money_with_currency }}</p>
+            <p class="totals__total-value">{{ cart.total_price | money }}</p>
           </div>
 
           <small class="tax-note caption-large rte">

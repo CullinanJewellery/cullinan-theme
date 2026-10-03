@@ -1,0 +1,70 @@
+{% comment %}
+  The options of a cart line as one quiet line of values.
+
+  Cullinan (2026-10-03, the cart drawer). Dawn prints every option as a "Name: value"
+  row, and on this store the names are instructions written for the product page
+  ("изберете вашия размер", "Изберете вашия метал"), so a line read like three
+  half-sentences with the gold colour said twice: "изберете вашия размер: 54 55,
+  Цветове на златото: жълто злато, Изберете вашия метал: 14К жълто злато". This prints
+  the values only, material first and then the rest (the order the product page draws
+  them in), joined by a middle dot, with the colour option left out when the product
+  page does not draw it either (snippets/product-twin-option.liquid): "14К жълто злато
+  · Размер 54 55". A size gets its word, because a bare "54 55" says nothing.
+
+  Only the cart looks different. The variant is the same, and checkout, order emails and
+  the Admin list every option as Shopify has them, which is what the atelier reads when
+  it makes the piece -- which is why the colour is never guessed (see product-twin-match.liquid).
+
+  Accepts:
+  - item: {Object} a cart line item.
+
+  Usage:
+  {% render 'cart-item-options', item: item %}
+{% endcomment %}
+{%- unless item.product.has_only_default_variant -%}
+  {%- capture twin_pair -%}
+    {%- render 'product-twin-option', product: item.product -%}
+  {%- endcapture -%}
+  {%- assign twin_positions = twin_pair | strip | split: ',' -%}
+  {%- liquid
+    assign hidden_position = 0
+    if twin_positions.size == 2
+      assign hidden_position = twin_positions[0] | plus: 0
+    endif
+
+    assign options_line = ''
+    for pass in (1..2)
+      for option in item.options_with_values
+        if forloop.index == hidden_position
+          continue
+        endif
+
+        assign option_name_lower = option.name | downcase
+        assign is_material = false
+        if option_name_lower contains 'метал' or option_name_lower contains 'материал' or option_name_lower contains 'metal' or option_name_lower contains 'material'
+          assign is_material = true
+        endif
+        if pass == 1 and is_material == false
+          continue
+        endif
+        if pass == 2 and is_material
+          continue
+        endif
+
+        assign piece = option.value
+        if option_name_lower contains 'размер' or option_name_lower contains 'size'
+          assign piece = 'cullinan.cart.size' | t: value: option.value
+        endif
+
+        if options_line == ''
+          assign options_line = piece
+        else
+          assign options_line = options_line | append: ' · ' | append: piece
+        endif
+      endfor
+    endfor
+  -%}
+  {%- if options_line != blank -%}
+    <p class="cart-item__options">{{ options_line | escape }}</p>
+  {%- endif -%}
+{%- endunless -%}
