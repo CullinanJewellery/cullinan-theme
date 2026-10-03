@@ -1,0 +1,327 @@
+/*
+  Reviews on the homepage (sections/review-cards.liquid, assets/review-cards.js),
+  2026-10-03, after moonmagic's "Trusted by 600K+ customers" and hestiahome.bg's
+  "949+ доволни клиенти".
+
+  Measured on moonmagic's at 1440: a 65px capital heading at the left gutter with the
+  arrows in the same row (27px), then a carousel of cards 350px wide, 18px apart, each
+  a 350px customer photo over a greige panel (#F5F4F0, padding 28px 23px) holding five
+  pink stars (14px, #E6BAB9), the quote at 18px on a 30.6px line, and the name with
+  "Verified Buyer" at 18px. Measured on hestiahome.bg's: an eyebrow, a 37px heading, a
+  rating line with a link to every review, then white cards 427 x 308 with a 12px
+  radius, 35px of padding, stars, a 19.8px quote and an initial in a circle beside the
+  name.
+
+  Ours takes moonmagic's row and greige card, with this site's own measures: the
+  heading is the one every other homepage heading has (26 to 40px, capitals), square
+  corners, the pink stars of the product page, 3 whole cards across from 990px, 2 from
+  750px and one with a peek of the next on a phone. What is different is the foot of
+  a card: the piece the review is about, as its picture and name, linked.
+*/
+
+review-cards {
+  display: block;
+}
+
+/* An author `display` anywhere cancels `hidden`, so say it: the arrows wait until the
+   row really overflows. */
+.review-cards__buttons[hidden] {
+  display: none;
+}
+
+.review-cards {
+  --review-star: #E6BAB9;
+}
+
+/* --- Heading row ----------------------------------------------------------- */
+
+.review-cards__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 3.6rem;
+}
+
+.review-cards__eyebrow {
+  margin: 0 0 1.8rem;
+  font-size: 1.1rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(var(--color-foreground), 0.62);
+}
+
+.review-cards__heading {
+  margin: 0;
+  font-size: clamp(2.6rem, 3.2vw, 4rem);
+  font-weight: var(--font-heading-weight);
+  line-height: 1.05;
+  letter-spacing: 0.01em;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.review-cards__summary {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin: 1.8rem 0 0;
+  font-size: 1.4rem;
+  line-height: 1.4;
+  color: rgba(var(--color-foreground), 0.75);
+}
+
+.review-cards__buttons {
+  display: flex;
+  margin-left: auto;
+}
+
+/* --- Stars (snippets/review-stars.liquid) ---------------------------------- */
+
+.review-stars {
+  display: inline-block;
+  line-height: 0;
+  color: var(--review-star, #E6BAB9);
+}
+
+.review-stars svg {
+  display: block;
+  height: 1.4rem;
+  width: auto;
+  aspect-ratio: 118 / 22;
+  overflow: visible;
+}
+
+/* The ones not earned stay as an outline in the same pink, which is what Judge.me
+   draws for an empty star on the product page and on moonmagic. */
+.review-stars__star {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.3;
+  stroke-linejoin: round;
+}
+
+.review-stars__star--on {
+  fill: currentColor;
+}
+
+/* --- The row ---------------------------------------------------------------- */
+
+.review-cards__track {
+  --review-cards-gap: var(--grid-mobile-horizontal-spacing, 1.2rem);
+  --review-cards-columns: 1.15;
+  display: flex;
+  gap: var(--review-cards-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+}
+
+.review-cards__track::-webkit-scrollbar {
+  display: none;
+}
+
+@media screen and (min-width: 750px) {
+  .review-cards__track {
+    --review-cards-columns: 2;
+    --review-cards-gap: var(--grid-desktop-horizontal-spacing, 2.4rem);
+  }
+}
+
+/* Three whole cards: 417px each at 1440 with a 24px gap, against moonmagic's 350 and
+   hestiahome's 427. Whole cards only, never a cut one: the row scrolls by one card. */
+@media screen and (min-width: 990px) {
+  .review-cards__track {
+    --review-cards-columns: 3;
+  }
+}
+
+.review-cards__item {
+  display: flex;
+  flex: 0 0
+    calc(
+      (100% - (var(--review-cards-columns) - 1) * var(--review-cards-gap)) /
+        var(--review-cards-columns)
+    );
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  scroll-snap-align: start;
+}
+
+/* --- A card ------------------------------------------------------------------ */
+
+.review-cards__card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0;
+  background-color: rgb(var(--color-background));
+  color: rgb(var(--color-foreground));
+}
+
+/* Her photo, when she sent one: square, full width, above the card's words. */
+.review-cards__photo {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
+
+.review-cards__photo-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.review-cards__body {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  padding: 3.2rem 3rem 3rem;
+}
+
+/* Dawn styles every blockquote with italics, a muted colour and a rule down the left
+   (base.css); a review is none of those, so they are put back. */
+.review-cards__quote {
+  margin: 2rem 0 0;
+  padding: 0;
+  border: 0;
+  quotes: "„" "“";
+  font-size: 1.8rem;
+  font-style: normal;
+  line-height: 1.65;
+  color: inherit;
+  text-wrap: pretty;
+}
+
+.review-cards__quote p {
+  margin: 0;
+}
+
+.review-cards__quote p::before {
+  content: open-quote;
+}
+
+.review-cards__quote p::after {
+  content: close-quote;
+}
+
+/* The foot is pushed to the bottom, so cards of different lengths line up. */
+.review-cards__foot {
+  margin-top: auto;
+  padding-top: 2.8rem;
+}
+
+.review-cards__author {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(var(--color-foreground), 0.12);
+}
+
+.review-cards__name {
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.review-cards__detail {
+  font-size: 1.3rem;
+  line-height: 1.4;
+  color: rgba(var(--color-foreground), 0.7);
+}
+
+/* The piece she bought: its picture and name, one link. */
+.review-cards__product {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  margin-top: 2rem;
+  color: inherit;
+  text-decoration: none;
+}
+
+/* With no name above it the piece takes the hairline itself, so a card always starts
+   its foot the same way. */
+.review-cards__foot > .review-cards__product:first-child {
+  margin-top: 0;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(var(--color-foreground), 0.12);
+}
+
+.review-cards__product-image {
+  display: block;
+  flex: none;
+  width: 5.2rem;
+  height: 5.2rem;
+  object-fit: cover;
+  background-color: rgba(var(--color-foreground), 0.06);
+}
+
+.review-cards__product-name {
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+@media (hover: hover) {
+  .review-cards__product:hover .review-cards__product-name {
+    text-decoration: underline;
+    text-underline-offset: 0.3rem;
+  }
+}
+
+.review-cards__product:focus-visible {
+  outline: 0.2rem solid rgb(var(--color-foreground));
+  outline-offset: 0.4rem;
+}
+
+/* --- A sample card: the editor and an unpublished preview only ------------------ */
+
+.review-cards__card--sample .review-cards__quote,
+.review-cards__card--sample .review-cards__name {
+  color: rgba(var(--color-foreground), 0.5);
+}
+
+.review-cards__card--sample::after {
+  content: "Пример";
+  position: absolute;
+  top: 1.4rem;
+  right: 1.8rem;
+  font-size: 1.1rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(var(--color-foreground), 0.5);
+}
+
+/* Inside the theme editor, when there are no blocks at all. */
+.review-cards__note {
+  margin-top: 2.4rem;
+  margin-bottom: 2.4rem;
+  font-size: 1.3rem;
+  line-height: 1.5;
+  color: rgba(var(--color-foreground), 0.7);
+}
+
+@media screen and (max-width: 749px) {
+  .review-cards__header {
+    margin-bottom: 2.8rem;
+  }
+
+  .review-cards__body {
+    padding: 2.6rem 2.4rem 2.4rem;
+  }
+
+  .review-cards__quote {
+    font-size: 1.6rem;
+  }
+}

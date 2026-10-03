@@ -159,6 +159,72 @@
   color: rgba(var(--color-foreground), 0.62);
 }
 
+/* --- List layout ----------------------------------------------------------- */
+
+/*
+  Facts as a list, after moonmagic's story block (2026-10-03, the owner: the three
+  story bands "in section or something like that ... to be the same as moonmagic").
+  Measured on theirs, "Soulful jewelry. Crafted with precision.", at 1440: a 65px
+  capital heading, then three short facts, each a small capital label with one line
+  under it (22px on their page), then one button, beside a picture 673 x 602 on a
+  greige band -- the same #F5F4F0 as scheme-6 here.
+
+  Here the heading takes the size every other homepage section heading has (the
+  collection-title clamp, 26px to 40px, capitals) instead of their 65px, which the
+  owner has asked to bring down on every one of them. A fact's `value` is the small
+  capital label and its `label` is the line under it, so the same two settings serve
+  both layouts; a hairline sits between the facts, as it does between the columns
+  of the default layout. Switched on by the section's "Text layout", so the three
+  instances that used the columns are untouched.
+*/
+.atelier--list .atelier__heading {
+  margin-top: 2rem;
+  font-size: clamp(2.6rem, 3.2vw, 4rem);
+  line-height: 1.05;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+.atelier--list .atelier__facts {
+  display: block;
+  margin-top: 3.6rem;
+}
+
+.atelier--list .atelier__fact {
+  padding: 2rem 0;
+}
+
+.atelier--list .atelier__fact:first-child {
+  padding-top: 0;
+}
+
+.atelier--list .atelier__fact:last-child {
+  padding-bottom: 0;
+}
+
+.atelier--list .atelier__fact + .atelier__fact {
+  border-left: 0;
+  border-top: 1px solid rgba(var(--color-foreground), 0.15);
+}
+
+.atelier--list .atelier__fact-value {
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.atelier--list .atelier__fact-label {
+  max-width: 46ch;
+  margin-top: 0.7rem;
+  font-size: 1.6rem;
+  line-height: 1.55;
+  letter-spacing: normal;
+  text-transform: none;
+  color: rgba(var(--color-foreground), 0.75);
+}
+
 /* --- Button --------------------------------------------------------------- */
 
 /*

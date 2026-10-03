@@ -44,7 +44,7 @@
 -%}
 
 <div class="color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-margin">
-  <div class="atelier page-width section-{{ section.id }}-padding atelier--media-{{ section.settings.media_position }}">
+  <div class="atelier page-width section-{{ section.id }}-padding atelier--media-{{ section.settings.media_position }}{% if section.settings.layout == 'list' %} atelier--list{% endif %}">
     <div class="atelier__media-column">
       <div class="atelier__media">
         {%- if section.settings.video != blank -%}
@@ -294,6 +294,17 @@
     {
       "type": "header",
       "content": "Facts"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "options": [
+        { "value": "columns", "label": "Facts side by side" },
+        { "value": "list", "label": "Facts as a list, heading in capitals" }
+      ],
+      "default": "columns",
+      "label": "Text layout",
+      "info": "List, like the story block on moonmagic.com: the heading is set in capitals like the other homepage sections, and each fact is a small capital label (its value) with one line under it (its label), a hairline between them."
     },
     {
       "type": "text",

@@ -1,0 +1,30 @@
+{% comment %}
+  Five stars as one inline SVG: the first `rating` filled, the rest an outline in the
+  same colour (the owner, 2026-10-01: stars that are not full "just stay not full with
+  color"). Drawn rather than typed as the star character, because Jost has no star and
+  the fallback font would size and shape it differently on every device.
+
+  The colour is set by .review-stars in assets/section-review-cards.css.
+
+  Accepts:
+  - rating: {Number} 0 to 5, default 5
+
+  Usage:
+  {% render 'review-stars', rating: 5 %}
+{% endcomment %}
+
+{%- liquid
+  assign stars_on = rating | default: 5 | round: 0
+-%}
+<span class="review-stars" role="img" aria-label="{{ stars_on }} от 5">
+  <svg viewBox="0 0 118 22" aria-hidden="true" focusable="false">
+    {%- for i in (1..5) -%}
+      {%- assign shift = i | minus: 1 | times: 24 -%}
+      <path
+        class="review-stars__star{% if i <= stars_on %} review-stars__star--on{% endif %}"
+        transform="translate({{ shift }} 0)"
+        d="M11 1.6 13.59 8.04 20.51 8.51 15.19 12.96 16.88 19.69 11 16 5.12 19.69 6.81 12.96 1.49 8.51 8.41 8.04Z"
+      />
+    {%- endfor -%}
+  </svg>
+</span>
