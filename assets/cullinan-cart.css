@@ -213,14 +213,17 @@ cart-drawer cart-drawer-items {
   text-decoration-thickness: 0.1rem;
 }
 
-/* the options: values only, in the small spaced capitals every label here uses */
+/* the options: values only, in the small spaced capitals every label here uses.
+   They sit in the quantity cell, above the stepper, so they run under the price
+   instead of wrapping beside it; the title row above is just title and price. */
 #CartDrawer .cart-item__options {
-  margin-top: 0.4rem;
+  margin: 0 0 0.9rem;
   color: rgba(var(--color-foreground), 0.7);
   font-size: 1.15rem;
   letter-spacing: 0.06em;
   line-height: 1.5;
   text-transform: uppercase;
+  text-wrap: balance;
 }
 
 #CartDrawer .cart-item__each,
@@ -354,6 +357,13 @@ cart-drawer cart-drawer-items {
   font-size: 1.25rem;
   letter-spacing: 0.02em;
   line-height: 1.4;
+}
+
+/* a line that has to wrap on a phone breaks in the middle instead of leaving one
+   word on a line of its own ("... 5-20 работни / дни") */
+#CartDrawer .cart-drawer__trust-item span,
+#CartDrawer .tax-note {
+  text-wrap: balance;
 }
 
 #CartDrawer .cart-drawer__trust-icon {
