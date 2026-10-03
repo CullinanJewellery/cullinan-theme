@@ -1862,7 +1862,9 @@ Anything of ours that is not a Dawn setting lives in these two places:
     They were 600 from 2026-09-14, when 700 beside the spaced-capital wordmark outweighed the
     shop name; once the name became a logo image the owner asked for them bold again. The
     phone drawer and the mega menu links keep their weight — the owner asked about the menu
-    in the header bar.
+    in the header bar. **A fifth bolder since 2026-10-03**: the words and the dropdown's headings carry
+    a 0.03em stroke in their own colour on top of the 700, because the Jost files stop there (half
+    again was tried first and the owner asked for less; see Header menu, second round).
   - **Titles are 550 since 2026-10-03: regular first, then halfway back** (the owner: "for all
     the titles lets make them not bold", then the same evening the halfway note below).
     `--font-heading-weight` went from 700 to 400 and then to 550 in
@@ -1984,7 +1986,8 @@ Anything of ours that is not a Dawn setting lives in these two places:
       centre about 10px below the image’s middle (measured on the PNG’s own pixels). Menu words
       centred on the box read high beside it, so with a logo they sit 8px lower (the dropdown
       caret with them), chosen by eye from 1, 5, 8 and 10px. The icons stay centred on the bar.
-    - Header icons are bolder at the owner’s request: a 0.9 stroke in the icon colour round
+    - **Superseded 2026-10-03: the stroke is gone, and it never reached the menu button (see Header
+      menu, second round).** Header icons were bolder at the owner’s request: a 0.9 stroke in the icon colour round
       Dawn’s filled outlines (search, account, cart, and the menu button on phones), about 1px
       more. 0.5 was too close to before; 0.9 keeps the bag’s handle and the magnifier open.
     - Measured first in a local mock-up, while the preview link was expired, then confirmed on
@@ -4364,14 +4367,17 @@ Anything of ours that is not a Dawn setting lives in these two places:
     secondary links keep their underline**: the owner asked for those on 2026-09-13, and named
     only the collections now.
   - **The arrow** is the site's own (`icon-accordion-caret`): a thin chevron that flattens into a
-    line while the dropdown is open, 10 x 6px with a 1.2px stroke (the accordions' is 1.5), in
+    line while the dropdown is open, 10 x 6px with a 1.2px stroke (1.8px since the second round; the
+    accordions' is 1.5), in
     place of Dawn's solid caret. **A trap**: it is a `<span>`, and the older rules that lift the
     label's own `<span>` onto the logo's lettering (`position: relative; top: 0.8rem`) caught it
     too and set it 8px up and 8px left, over the last letter. Both rules now say
-    `span:not(.cj-caret)`, and the arrow's `top` is `calc(50% - 0.45rem)` because the wings hang
+    `span:not(.cj-caret)` (**not enough**: the two wing spans inside the arrow still matched, and no
+    arrow was drawn at all until the second round made it `> span:not(.cj-caret)`), and the arrow's
+    `top` is `calc(50% - 0.45rem)` because the wings hang
     below the box's middle: the chevron itself sits 0.9px below the label's centre, the same as
     Dawn's did. It reads the summary's colour, so it goes black with the word.
-  - **The dropdown.** A body of its own (`mega-menu__body`): the links and, when the header has a
+  - **The dropdown (first round -- replaced by the second round below).** A body of its own (`mega-menu__body`): the links and, when the header has a
     block for that menu item, the picture, in one grid -- `minmax(0, 1fr)` and **22-32rem for the
     picture** (24vw between), 6rem apart, inside the page width, so the picture ends on the page's
     right edge (the header icons') and the links start on its left (the logo's). A one-level
@@ -4380,7 +4386,8 @@ Anything of ours that is not a Dawn setting lives in these two places:
     420px** against moonmagic's 403, whatever the number of links. Without a block the body is a
     single column, as before. The picture is drawn from 990px, where the inline menu starts; it
     was hidden below 1200px.
-  - **The picture** is square (like every picture here), an empty flat panel (`rgb(242, 240, 236)`)
+  - **The picture** is square (like every picture here; its place, the corner, is the second
+    round's), an empty flat panel (`rgb(242, 240, 236)`)
     until one is uploaded -- no placeholder graphic -- with **the label beneath it in live text**,
     not on it: words lie over a picture on this site only where this file names the exception, and
     moonmagic's caption on the photograph is not one. Black on hover and focus, no underline. If
@@ -4399,7 +4406,7 @@ Anything of ours that is not a Dawn setting lives in these two places:
     promo as a `div` after the list, an empty block and one with a picture, a block matched
     case-insensitively, a menu word without a block, no blocks at all, the phone row's place in the
     drawer and its absence.
-  - **Checked live at 1440 and 375.** A real hover on Обеци: `rgb(0, 0, 0)`, no underline, the
+  - **Checked live at 1440 and 375 (first round).** A real hover on Обеци: `rgb(0, 0, 0)`, no underline, the
     others still at 0.75; on a collection page the current word is black and not underlined;
     Пръстени open: summary black, the wings flat (a 10px line), the panel 1425 x 420, the body grid
     `920px 320px`, the picture 320 x 320 with its label beneath, the links at x 62.5 (the logo's
@@ -4414,6 +4421,120 @@ Anything of ours that is not a Dawn setting lives in these two places:
     moonmagic's opens on hover -- one more rule would do it, not asked for. The two collections
     behind Дамски and Мъжки hold no product, and the entry is typed „Дамкси“ in the Admin: see Main
     menu under Waiting on the Shopify admin.
+  - **Second round, the same day** (the owner: "i want the pictures boxes we put for a computer for
+    the colections to be align in the right corner, position better the collection text it look
+    alwful for compouter also make them go a little bitt up when you click on them and they become
+    black as they are now and for the colection i want them to go for a computer like in moonmagic
+    not in a colum but next to each other you can see that in their website, and the cart the icon
+    for you profile and the search icon i don't want them bold we can bold the black navigation
+    arrows and the text by 50%"; and a message later "in the navigation the collections i want them
+    bold by 20% don't make them more bold they will look bad"). `assets/crown.css` ("Text-column
+    mega menu", "The picture at the right of the dropdown", the menu-word rules),
+    `snippets/header-mega-menu.liquid`, `snippets/header-mega-promo.liquid`. **It supersedes The
+    dropdown and the picture's place above.**
+    - **What it was, measured live before touching it.** A 1425 x 420 panel holding two 15px
+      links, "ДАМКСИ" and "МЪЖКИ", stacked at the far left (x 63, y 136 and 174), and the picture
+      floating 62px inside the right edge and 32px under the bar with its label beneath, so the
+      left three quarters of the panel were empty. That is what "awful" was.
+    - **moonmagic's Rings dropdown, measured again at 1440**: the text starts at their page
+      gutter (20px) in **columns side by side, 200px apart** (x 20, 220, 420), each a heading of
+      16px / 600 capitals (1.3px of tracking, a 20px line, 3px of padding and 15px of air under
+      it) over its links (16px / 400, the first 700, a 22.4px line, 6px apart); **the first
+      heading is 55px below the panel's top**; the picture is 390 x 401, **flush to the panel's top
+      and to the page's right edge**.
+    - **Columns in a row.** The links are `flex` columns at least 20rem apart (a column grows to its
+      own heading, up to 30rem: „Гривни с циркони“ broke onto two lines in a fixed 20rem one, found
+      on the live page), from the page's own left edge -- **62.5px at 1440, exactly the logo's** --
+      with 16px / 700 capitals at 0.08em on a 20px line, 55px below the panel's top. The same for a
+      one-level menu (Пръстени: Дамски, Мъжки, each link a heading with nothing under it yet) as for
+      a two-level one, which is why a menu that later gets children under Дамски needs no change:
+      they print under the heading in the same column, as moonmagic's do. The panel's padding is on
+      the body (55px above, 40px below), not on the panel, because the picture sits flush in its
+      corner. The visual menu (`visual_menu_item` blocks) keeps Dawn's own padding and spacing: the
+      text-column panel is marked `mega-menu__content--links`, printed only for it.
+    - **The picture is in the corner**: a square, flush to the panel's top and to the page's true
+      right edge (no longer inside the page width), `clamp(24rem, 25vw, 36rem)` wide -- **360px at
+      1440, 247.5px at 990, theirs 390** -- with its live label in a 44px strip beneath it that
+      belongs to the panel, so the panel is the picture and its strip tall: **404px at 1440,
+      theirs 403.** It is a child of the panel, not of the page-width body, because the body stops
+      at the page's width and the corner is the page's edge; `mega-menu__content--with-promo` is
+      printed only when the menu word has a block. The links keep clear of it: a right padding of
+      the picture's width plus 4rem, less the page-width margin already between the body and the
+      edge, so the gap is 40px at 990, 1440 and 1920.
+      - **The label is still beneath the picture, not on it**, so the picture is flush to the top
+        and the right but not to the bottom, as moonmagic's is. Words lie over a picture on this
+        site only where this file names the exception; the owner asked for "the corner", not for a
+        caption on the photograph. If they want theirs, the label goes onto the picture and the
+        strip goes -- one change.
+      - **A first version overflowed by 1px and grew a scrollbar**, caught in a local copy before
+        the push: the panel's own 1px border sits inside its `min-height` (border-box) and the
+        picture is placed in the padding box, so the 404px picture overflowed a 403px box and
+        `overflow-y: auto` drew a 15px scrollbar that also pushed the picture 15px off the edge.
+        `min-height` includes `2 * var(--popup-border-width)` now.
+    - **The lift.** The menu words, their arrow, the dropdown's headings and links and the picture's
+      label rise 0.25rem (2.5px, the buttons' own lift) under a real pointer and on keyboard focus,
+      the words and their arrow also **while their dropdown is open**, which is what "when you click
+      on them" became (a click opens it), and they go black as before. **A box that moves out from
+      under a still cursor flickers**, so the menu words lift their inner text and arrow and never
+      the summary, and the dropdown's links carry an invisible 0.4rem strip under them
+      (`::after`) that moves up with them and still covers the ground they left. `translate`, not
+      `transform`, because the arrow's wings and Dawn's old turn-over rule already use that. The
+      lift alone waits for `hover: hover` and for motion to be wanted; the colour does not.
+    - **Bolder: a fifth, after half again was tried and was too much.** The first ask, "bold the
+      black navigation arrows and the text by 50%", was read as the header's menu words, their
+      dropdown arrows and the dropdown's headings (navigation text too), and shipped as a 0.075em
+      stroke -- half again. It was live for a short while, and the owner wrote "in the navigation the
+      collections i want them bold by 20% don't make them more bold they will look bad". That also
+      settled the reading: "the collections" are the menu words, as in their earlier message about
+      the underline. The Jost files stop at 700 and the words were 700 already, so the extra is a
+      stroke in the word's own colour, `-webkit-text-stroke: 0.03em currentcolor`: **0.375px on the
+      12.5px words and 0.48px on the 16px headings**. Measured on the canvas at 12.5px, a stroke adds
+      to the ink of a 700 capital 16% at 0.3px, 22% at 0.4px, 27% at 0.5px, 43% at 0.8px and 54% at
+      1px, so 0.03em is about a fifth. **The dial is that one number** (two rules): 0.05em would be
+      about a third, the 0.075em of the first try half again. **The arrow's stroke stays at the 1.8px
+      asked for in the first message** (it was 1.2px, and not drawn at all until the bug below was
+      found); the second message did not name the arrows, so they were left. **The other reading of
+      the first message** -- the black bar at the very top, its ‹ › arrows and its text -- is not
+      what the second one describes, and was not touched.
+      - **A new font weight was not an option**: the Jost files carry 300 to 700, and a heavier
+        file is a download, which was not asked for.
+    - **Thin icons.** The 0.9 stroke on search, profile and bag is removed; they are Dawn's own
+      outlines again. **It never reached the menu button**: the rule needs a `.svg-wrapper` and the
+      hamburger and close icons are inlined without one (read live: `stroke: none` on both), so the
+      notes that said the menu button was bolded were wrong and nothing was left to change there.
+    - **A bug found on the way: the arrow had never been drawn.** The rules that lift the label onto
+      the logo's lettering matched `span:not(.cj-caret)` as a **descendant** selector, and the arrow
+      is a `<span>` holding two more `<span>` wings that do not carry that class. They were set
+      `position: relative`, which made them inline and collapsed both to 0 x 0, so **no arrow was
+      painted** beside Пръстени or Гривни -- on the live site from the day the arrow was introduced.
+      The first round measured the arrow's box (9px after the label, absolutely placed) and never
+      its strokes, and its note "the wings flat (a 10px line)" was read off that box. It is
+      `> span:not(.cj-caret)` now, the label only. Found by measuring the wings in the local copy
+      (`position: relative`, a 0 x 0 box) and confirmed on the live page by eye: **a screenshot was
+      the check that was missing**, the same lesson as the stones row's arrows. **When a component
+      is a box with parts inside it, measure the parts.**
+    - **Checked.** Offline: 21 render checks of the snippet (a dropdown with and without a block, a
+      block matched case-insensitively, a three-level menu, a visual menu word keeping Dawn's panel,
+      an empty menu) and a parse check of every header snippet. In a local copy of the live page with
+      the real stylesheet, at 990, 1440, 1920 and 375px: the panel never has a scrollbar or a
+      sideways scroll, the headings sit at the logo's left edge 55px down with the second column
+      200px along, the picture is square with a 0px gap to the right edge and to the panel's top, the
+      list is 40px from it at every width, the three icons and the burger read `stroke: none`.
+      **Live, at 1440, after the pushes**: the panel 1425 x 406, no scrollbar, no sideways scroll, the
+      picture 360 x 360 at x 1065, its label 44px high, the headings at x 62.5 and 55px down, the
+      second column at 262.5, Гривни's one heading on one line (193px) in a 213px column; the
+      strokes read 0.375px on the words and 0.48px on the headings, the arrow's wings 1.8px and
+      absolutely placed, flat while open. **Real hovers**: on Обеци black, no underline,
+      `translate: 0 -2.5px`, neighbours at three quarters and still; on „Дамкси“ and on the
+      picture's label each lifts and goes black alone; Пръстени open has its word and arrow lifted.
+      At 375 live: the header is 47px, nothing scrolls sideways, the drawer still has its row of two
+      tiles, and the three icons read `stroke: none`.
+    - **The language was switched to Bulgarian by the owner in between**, so the cart drawer was
+      re-read in it on the live page, with a ring in the bag: every word Bulgarian, aria labels
+      included, no Latin word left, the empty bag too; „Добави в количката“ is 222px of label in
+      its button. Checkout is still unseen. The test cart was emptied afterwards.
+    - **Not changed.** The dropdown still opens on a click; the phone drawer and its picture row;
+      the black bar at the top; the visual menu; the menu button; every colour.
 
 ## Current state
 
