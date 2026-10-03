@@ -86,7 +86,7 @@
     desktop card and a 144px phone card alike, checked live at both.
   */
   padding: 0 1.9rem;
-  background-color: #F3E1DB;
+  background-color: #E1CDC2; /* 2026-10-04, direction C: the bottom of its hero gradient (#F3E1DB before) */
   /*
     Each item occupies its own width plus one gap, so the number visible across
     the viewport is exactly the setting.
@@ -96,7 +96,7 @@
 
 @media screen and (min-width: 750px) {
   .marquee__item {
-    background: linear-gradient(180deg, #FFE8E0 0%, #F3E1DB 100%);
+    background: linear-gradient(180deg, #F1E6DF 0%, #E1CDC2 100%); /* C's hero gradient (#FFE8E0 to #F3E1DB before) */
   }
 }
 
@@ -245,7 +245,7 @@
 
 /* Stands in until the photography exists — the band keeps its rhythm. */
 .marquee__image--empty {
-  background-color: rgb(242 240 236);
+  background-color: rgb(240 232 226);
 }
 
 @keyframes marquee-drift {

@@ -74,7 +74,10 @@ cart-drawer .drawer__inner {
 
 #CartDrawer .drawer__heading {
   margin: 0;
-  font-family: var(--font-heading-family);
+  /* A small spaced-capitals label, so Jost, not the headings' Prata (2026-10-04,
+     direction C): the board's rule is that headings take the serif and small
+     labels stay in the text face. */
+  font-family: var(--font-body-family);
   font-size: 1.6rem;
   font-weight: var(--font-heading-weight);
   letter-spacing: 0.12em;
@@ -178,11 +181,11 @@ cart-drawer cart-drawer-items {
   height: auto;
   aspect-ratio: 1 / 1;
   object-fit: cover;
-  background-color: rgb(242 240 236);
+  background-color: rgb(240 232 226);
 }
 
 #CartDrawer .cart-item__image--empty {
-  background-color: rgb(242 240 236);
+  background-color: rgb(240 232 226);
 }
 
 /* the words */
@@ -388,6 +391,7 @@ cart-drawer cart-drawer-items {
 
 #CartDrawer .totals__total {
   margin: 0;
+  font-family: var(--font-body-family);
   color: rgba(var(--color-foreground), 0.7);
   font-size: 1.2rem;
   font-weight: 600;
@@ -482,7 +486,7 @@ cart-drawer cart-drawer-items {
 
 #CartDrawer .cart__empty-text {
   margin: 0 0 2.4rem;
-  font-family: var(--font-heading-family);
+  font-family: var(--font-body-family);
   font-size: 1.7rem;
   font-weight: var(--font-heading-weight);
   letter-spacing: 0.1em;

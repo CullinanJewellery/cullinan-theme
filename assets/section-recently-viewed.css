@@ -45,9 +45,9 @@ recently-viewed[hidden],
   font-size: clamp(2.6rem, 3.2vw, 4rem);
   font-weight: var(--font-heading-weight);
   line-height: 1.05;
-  letter-spacing: 0.01em;
+  letter-spacing: 0;
   text-align: left;
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 /* Inside the theme editor only, when nothing has been browsed yet. */

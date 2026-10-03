@@ -702,7 +702,7 @@ html {
    --------------------------------------------------------------------------- */
 
 .banner__media--empty {
-  background-color: rgb(242 240 236);
+  background-color: rgb(246 239 234);
 }
 
 /*
@@ -745,8 +745,11 @@ html {
   font-size: clamp(2.1rem, 6.2vw, 5.7rem);
   font-weight: var(--font-heading-weight);
   line-height: 1.23;
-  letter-spacing: 0.01em;
-  text-transform: uppercase;
+  /* Sentence case and no tracking since 2026-10-04 (direction C, Prata): the
+     capitals and their 0.01em went with Jost. The three banner headings are
+     typed in sentence case in templates/index.json for the same reason. */
+  letter-spacing: 0;
+  text-transform: none;
   margin-bottom: 3.2rem;
 }
 
@@ -878,8 +881,10 @@ html {
   the footer link columns further down in this file.
 */
 @media screen and (max-width: 749px) {
+  /* Direction C (2026-10-04): the bottom of C's hero gradient, #E1CDC2. It was
+     #F3E1DB, moonmagic's pink, until the owner chose C. */
   .banner.banner--mobile-bottom .banner__box {
-    background-color: #F3E1DB;
+    background-color: #E1CDC2;
   }
 }
 
@@ -907,8 +912,22 @@ html {
   revisit then.
 */
 @media screen and (min-width: 750px) {
+  /* Direction C (2026-10-04): #F1E6DF to #E1CDC2, marble to a warm taupe-rose.
+     It was #FFE8E0 to #F3E1DB, measured off moonmagic. */
   .banner.banner--mobile-bottom {
-    background: linear-gradient(180deg, #FFE8E0 0%, #F3E1DB 100%);
+    background: linear-gradient(180deg, #F1E6DF 0%, #E1CDC2 100%);
+  }
+}
+
+/*
+  The silver banner is a touch deeper than the hero (direction C, 2026-10-04, as
+  on the board): #EADBD2 to #D9C4B8 against the hero's #F1E6DF to #E1CDC2, so the
+  two full-width bands read as related rather than identical. Computer only; on a
+  phone both panels share the flat colour above.
+*/
+@media screen and (min-width: 750px) {
+  [id^="shopify-section-"][id$="__silver_teaser"] .banner.banner--mobile-bottom {
+    background: linear-gradient(180deg, #EADBD2 0%, #D9C4B8 100%);
   }
 }
 
@@ -940,8 +959,9 @@ html {
 }
 
 @media screen and (min-width: 750px) {
+  /* #EBDFD8 since 2026-10-04 (direction C moved scheme-2 from #F2F0EC). */
   [id^="shopify-section-"][id$="__new_arrivals"] .banner.banner--mobile-bottom {
-    background: #F2F0EC;
+    background: #EBDFD8;
   }
 }
 
@@ -1059,8 +1079,9 @@ html {
   The empty picture slot shown on desktop too, at the owner's request, so
   the cut and its position can be judged live without waiting for a real
   photograph. Not a new placeholder graphic: `.banner__media--empty`
-  already has its own flat colour above (`rgb(242 240 236)`, the same one
-  every other empty media slot on the site uses) -- Dawn's own `div:empty
+  already has its own flat colour above (`rgb(246 239 234)`, a warm near-white
+  since 2026-10-04; it was the neutral `rgb(242 240 236)` every other empty
+  media slot used) -- Dawn's own `div:empty
   { display: none }` (`base.css`) is just what hides it, the same rule
   that keeps the hero's own desktop slot invisible (see Current state).
   This overrides that, scoped to this section only, so the hero and every
@@ -1074,15 +1095,12 @@ html {
     display: block;
   }
 
-  /* On this band the slot also needs a tone of its own, or the cut cannot be
-     seen at all: .banner__media--empty is rgb(242 240 236) everywhere on the
-     site, which is #F2F0EC -- exactly scheme-2's own background -- so the
-     placeholder and the ground would match to the pixel. Sand is scheme-5's
-     own token rather than a new colour, and Dawn only adds --empty when there
-     is no image, so this disappears by itself once a photograph is set. */
-  [id^="shopify-section-"][id$="__new_arrivals"] .banner__media--empty {
-    background-color: #E7E1D6;
-  }
+  /* This band used to give the slot a tone of its own, or the cut could not be
+     seen at all: .banner__media--empty (rgb(242 240 236), #F2F0EC) was exactly
+     scheme-2's own background, so placeholder and ground matched to the pixel, and
+     the slot took scheme-5's sand. Direction C (2026-10-04) moved scheme-2 to
+     #EBDFD8 and made the banner slot a warm near-white, rgb(246 239 234), lighter
+     than every band it sits on, so the cut shows here without a colour of its own. */
 }
 
 /*
@@ -1210,9 +1228,9 @@ html {
   font-size: clamp(2.6rem, 3.2vw, 4rem);
   font-weight: var(--font-heading-weight);
   line-height: 1.05;
-  letter-spacing: 0.01em;
+  letter-spacing: 0;
   text-align: left;
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 /* Най-продавани only, a little bigger again at the owner's request -- the
@@ -1412,7 +1430,7 @@ html {
    shape instead of collapsing or showing a broken image. */
 .visual-menu__image--empty {
   display: block;
-  background-color: rgb(242 240 236);
+  background-color: rgb(240 232 226);
 }
 
 .visual-menu__text {
@@ -1695,7 +1713,7 @@ html {
 
 /* Stands in until the photography exists — flat, never a stock graphic. */
 .mega-menu__promo-image--empty {
-  background-color: rgb(242 240 236);
+  background-color: rgb(240 232 226);
 }
 
 /* A strip of its own, 44px: the line is centred in it by its own line height, and a
@@ -1787,7 +1805,7 @@ html {
 }
 
 .menu-drawer__featured-image--empty {
-  background-color: rgb(242 240 236);
+  background-color: rgb(240 232 226);
 }
 
 .menu-drawer__featured-label {
@@ -2036,7 +2054,7 @@ card-swatches {
 .card__media--empty {
   position: absolute;
   inset: 0;
-  background-color: rgb(242 240 236);
+  background-color: rgb(240 232 226);
 }
 
 /* --- Product row: one content column -------------------------------------- */
@@ -2148,16 +2166,18 @@ card-swatches {
   roughly a fifth off every size and gap here, not just the outer padding.
 */
 
-/* Black, at the owner's instruction. This is the one place on the site that
-   overrides the no-pure-black rule in CLAUDE.md. */
+/* Black, at the owner's instruction (2026-09-10) -- the one place on the site that
+   overrode the no-pure-black rule in CLAUDE.md, "matching the reference". Espresso
+   since 2026-10-04: direction C moves away from the reference, and #2A1E1A is C's
+   own dark (its ink, the top bar and this band), as on the board. */
 .newsletter__wrapper.newsletter--crown {
   /* Redefining the scheme variables is what makes every child legible: the
      section is still on a light scheme, so heading, paragraph and footnote
      would otherwise be near-black text on a black band. */
-  --color-foreground: 245, 242, 238;
-  --color-background: 0, 0, 0;
+  --color-foreground: 243, 234, 229;
+  --color-background: 42, 30, 26;
 
-  background: #000000;
+  background: #2A1E1A;
   padding-top: 5rem;
   padding-bottom: 3rem;
 }
@@ -2215,7 +2235,7 @@ card-swatches {
   content: '';
   position: absolute;
   inset: 0;
-  background-color: #000000;
+  background-color: #2A1E1A;
   opacity: var(--newsletter-veil, 0);
 }
 
@@ -2228,8 +2248,8 @@ card-swatches {
   font-size: clamp(2.2rem, 3.6vw, 4rem);
   font-weight: var(--font-heading-weight);
   line-height: 1.1;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
+  letter-spacing: 0;
+  text-transform: none;
   margin-bottom: 1.4rem;
 }
 
@@ -2287,14 +2307,14 @@ card-swatches {
 .newsletter--crown .field__input {
   height: 4.6rem;
   padding: 0 1.6rem;
-  background-color: #333333;
-  color: #ffffff;
-  border: 1px solid #5a5a5f;
+  background-color: #382B26;
+  color: #F3EAE5;
+  border: 1px solid #85736B;
   border-radius: 0;
 }
 
 .newsletter--crown .field__input::placeholder {
-  color: #b9b9be;
+  color: #C8B9B2;
   opacity: 1;
 }
 
@@ -2312,8 +2332,8 @@ card-swatches {
   min-width: 15rem;
   height: 4.6rem;
   padding: 0 2rem;
-  background-color: rgb(231 225 214);
-  color: rgb(0 0 0);
+  background-color: rgb(243 234 229);
+  color: rgb(42 30 26);
   border: 0;
   transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out,
     box-shadow 0.35s ease-in-out;
@@ -2322,8 +2342,8 @@ card-swatches {
 .newsletter--crown .newsletter-form__button:hover:not(.focused),
 .newsletter--crown .newsletter-form__button:focus-visible {
   background-color: transparent;
-  color: rgb(231 225 214);
-  box-shadow: inset 0 0 0 1px rgb(231 225 214);
+  color: rgb(243 234 229);
+  box-shadow: inset 0 0 0 1px rgb(243 234 229);
 }
 
 .newsletter--crown .newsletter-form__button-label {
@@ -2479,7 +2499,10 @@ card-swatches {
   /* 3.4rem at first, matching the reference's own 35px exactly; brought back
      down at the owner's request the next round -- too big. */
   font-size: 2.4rem;
-  letter-spacing: 0.06em;
+  /* Sentence case, no tracking: the homepage block's heading is a real heading
+     (direction C, 2026-10-04). Контакти's own stays a small spaced label. */
+  letter-spacing: 0;
+  text-transform: none;
   color: rgb(0 0 0);
 }
 
@@ -2617,7 +2640,7 @@ card-swatches {
   align-items: center;
   margin: 1.2rem 0 0;
   padding: 1.2rem 0 0;
-  border-top: 0.2rem solid #F3E1DB;
+  border-top: 0.2rem solid #E1CDC2;
   list-style: none;
 }
 
@@ -2674,7 +2697,7 @@ card-swatches {
     read as the same weight.
   */
   .footer .footer__blocks-wrapper > .footer-block--subscribe.grid__item {
-    border-left: 0.2rem solid #F3E1DB;
+    border-left: 0.2rem solid #E1CDC2;
     padding-left: 2rem;
   }
 }
@@ -2831,7 +2854,7 @@ card-swatches {
      above, rgba(var(--color-foreground), 0.15) before this. */
   .footer .footer-links__toggle {
     display: block;
-    border-bottom: 0.1rem solid #F3E1DB;
+    border-bottom: 0.1rem solid #E1CDC2;
   }
 
   /*
@@ -4002,27 +4025,27 @@ card-swatches {
    --------------------------------------------------------------------------- */
 
 :root {
-  --jdgm-primary-color: #000000 !important;
+  --jdgm-primary-color: #6E3B30 !important;
   --jdgm-secondary-color: rgba(0, 0, 0, 0.08) !important;
-  --jdgm-star-color: #e6bab9 !important;
-  --jdgm-write-review-text-color: #ffffff !important;
-  --jdgm-write-review-bg-color: #000000 !important;
+  --jdgm-star-color: #B76E79 !important;
+  --jdgm-write-review-text-color: #FBF8F6 !important;
+  --jdgm-write-review-bg-color: #6E3B30 !important;
   --jdgm-paginate-color: #000000 !important;
   --jdgm-reviewer-name-color: #000000 !important;
 }
 
 .jm-review-widget {
-  --jm-review-widget-star-and-histogram-color: #e6bab9 !important;
-  --jm-review-widget-button-color: #000000 !important;
-  --jm-review-widget-button-text-color: #ffffff !important;
+  --jm-review-widget-star-and-histogram-color: #B76E79 !important;
+  --jm-review-widget-button-color: #6E3B30 !important;
+  --jm-review-widget-button-text-color: #FBF8F6 !important;
   --jm-review-widget-text-color: #000000 !important;
   /* Dates and "helpful?": lighter on purpose, but darker than Judge.me's #7B7B7B,
      which is 4.1:1 on this page's ground; #595959 is 7:1. */
   --jm-review-widget-lighter-text-color: #595959 !important;
-  --jm-widget-primary-color: #000000 !important;
+  --jm-widget-primary-color: #6E3B30 !important;
   --jm-widget-border-radius: 0 !important;
-  --jm-review-widget-form-button-color: #000000 !important;
-  --jm-review-widget-form-button-text-color: #ffffff !important;
+  --jm-review-widget-form-button-color: #6E3B30 !important;
+  --jm-review-widget-form-button-text-color: #FBF8F6 !important;
   --jm-review-widget-form-text-color: #000000 !important;
 
   /* Everything inside the widget is sized in em from here -- text 1em, .875em and
@@ -4102,11 +4125,11 @@ body .jdgm-preview-badge .jdgm-star,
 body .jdgm-histogram .jdgm-star,
 body .jdgm-write-review-modal .jdgm-write-review-modal__stars .jdgm-star,
 body .jdgm-write-review-modal .jdgm-write-review-modal__other-product-stars .jdgm-star {
-  color: #e6bab9;
+  color: #B76E79;
 }
 
 body .jdgm-histogram__bar-content {
-  background-color: #e6bab9;
+  background-color: #B76E79;
 }
 
 body .jdgm-rev__buyer-badge.jdgm-rev__buyer-badge,
@@ -4115,32 +4138,33 @@ body .jdgm-rev[data-verified-buyer=true] .jdgm-rev__icon.jdgm-rev__icon:after {
   background-color: #000000;
 }
 
-/* The write-a-review form: its buttons, chips, checkbox and focus ring, black. */
+/* The write-a-review form: its buttons, chips, checkbox and focus ring, in the
+   buttons' rosewood since 2026-10-04 (black before, as every button was). */
 body .jdgm-write-review-modal .jdgm-write-review-modal__nav-btn,
 body .jdgm-write-review-modal .jdgm-write-review-modal__btn--contact-us {
-  background-color: #000000;
-  color: #ffffff;
+  background-color: #6E3B30;
+  color: #FBF8F6;
 }
 
 body .jdgm-write-review-modal .jdgm-write-review-modal__btn--leave-review {
-  color: #000000;
-  border-color: #000000;
+  color: #6E3B30;
+  border-color: #6E3B30;
 }
 
 body .jdgm-write-review-modal .jdgm-write-review-modal__btn--leave-review:hover,
 body .jdgm-write-review-modal .jdgm-write-review-modal__chip-input:checked + .jdgm-write-review-modal__chip-label,
 body .jdgm-write-review-modal .jdgm-write-review-modal__chip-label:hover {
-  background-color: #000000;
-  color: #ffffff;
+  background-color: #6E3B30;
+  color: #FBF8F6;
 }
 
 body .jdgm-write-review-modal .jdgm-write-review-modal__checkbox-input:checked + .jdgm-write-review-modal__checkbox-custom {
-  border-color: #000000;
-  background-color: #000000;
+  border-color: #6E3B30;
+  background-color: #6E3B30;
 }
 
 body .jdgm-write-review-modal .jdgm-write-review-modal__field-input:focus {
-  border-color: #000000;
+  border-color: #6E3B30;
 }
 
 /* ---------------------------------------------------------------------------
@@ -4226,7 +4250,7 @@ body .jdgm-write-review-modal .jdgm-write-review-modal__page--review-form-intro 
 
 .product .rating .rating-star,
 .card-wrapper .rating .rating-star {
-  --color-rating-star: #e6bab9;
+  --color-rating-star: #B76E79; /* rose gold since 2026-10-04 (direction C); moonmagic's pink before */
 }
 
 .product .rating .rating-star {
@@ -4932,4 +4956,56 @@ details[open] .cj-caret__wing {
   .gallery-dots__dot {
     transition: none;
   }
+}
+
+/* ---------------------------------------------------------------------------
+   The rope line (2026-10-04, direction C, as on the Cullinan Directions board)
+
+   A thin twisted-rope line between bands, taken from the owner's own pieces: the
+   ring's twisted band and the pendant's rope frame. Two strands crossing every
+   18px, drawn as a CSS mask so one rule colours it, here in rosewood (#6E3B30,
+   C's accent). It stands in two places only, as on the board: under the claims
+   below the hero, and at the top of every footer. Decoration, so it is a
+   pseudo-element with no content and no accessible name. To drop it, delete this
+   block.
+   --------------------------------------------------------------------------- */
+.hero-facts::after,
+.footer::before {
+  content: "";
+  display: block;
+  height: 11px;
+  width: calc(100% - 3rem);
+  margin-inline: auto;
+  background-color: #6E3B30;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='11' viewBox='0 0 18 11'%3E%3Cpath d='M0 5.5C4.5-.5 4.5-.5 9 5.5S13.5 11.5 18 5.5' fill='none' stroke='%23000' stroke-width='1.2'/%3E%3Cpath d='M0 5.5C4.5 11.5 4.5 11.5 9 5.5S13.5-.5 18 5.5' fill='none' stroke='%23000' stroke-width='1.2'/%3E%3C/svg%3E") repeat-x center / 18px 11px;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='11' viewBox='0 0 18 11'%3E%3Cpath d='M0 5.5C4.5-.5 4.5-.5 9 5.5S13.5 11.5 18 5.5' fill='none' stroke='%23000' stroke-width='1.2'/%3E%3Cpath d='M0 5.5C4.5 11.5 4.5 11.5 9 5.5S13.5-.5 18 5.5' fill='none' stroke='%23000' stroke-width='1.2'/%3E%3C/svg%3E") repeat-x center / 18px 11px;
+}
+
+.hero-facts::after {
+  margin-top: 2.4rem;
+}
+
+.footer::before {
+  margin-bottom: 3.2rem;
+}
+
+/* The page's content width: the page width less its 5rem of side padding each way. */
+@media screen and (min-width: 750px) {
+  .hero-facts::after,
+  .footer::before {
+    width: min(calc(100% - 10rem), calc(var(--page-width) - 10rem));
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Headings carry no tracking (2026-10-04, direction C)
+
+   Dawn tracks every heading at calc(var(--font-heading-scale) * 0.06rem), 0.6px
+   at this theme's scale. That suited Jost in capitals; Prata in sentence case is
+   set without it, as on the Cullinan Directions board. Element and size-class
+   selectors only, so every rule above and in the section stylesheets that gives
+   a small spaced-capitals label its own tracking (a class or two deep) still wins.
+   --------------------------------------------------------------------------- */
+h1, h2, h3, h4, h5, h6, .h0, .h1, .h2, .h3, .h4, .h5 {
+  letter-spacing: 0;
 }

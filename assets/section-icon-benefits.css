@@ -100,7 +100,7 @@
     breathing room comes from 30px of padding inside each tile, not the gap.
   */
   .benefits-band {
-    background: rgb(252 252 251);
+    background: rgb(251 248 246);
   }
 
   .benefits {
@@ -114,7 +114,7 @@
   }
 
   .benefits__item {
-    background-color: rgb(242 240 236);
+    background-color: rgb(235 223 216);
     padding: 3rem 0.5rem;
   }
 

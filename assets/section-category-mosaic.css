@@ -17,8 +17,8 @@
   font-size: clamp(2.3rem, 3.5vw, 4.4rem);
   font-weight: var(--font-heading-weight);
   line-height: 1.1;
-  letter-spacing: 0.01em;
-  text-transform: uppercase;
+  letter-spacing: 0;
+  text-transform: none;
 }
 
 .mosaic__grid {
@@ -72,7 +72,7 @@
 
 /* Stands in until the photography exists. */
 .mosaic__image--empty {
-  background-color: rgb(242 240 236);
+  background-color: rgb(240 232 226);
 }
 
 /* A photograph lifts very slightly on hover. Nothing else moves. */

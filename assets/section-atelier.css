@@ -53,7 +53,7 @@
 /* Shown until the footage exists. Deliberately plain — no graphic, no icon,
    no instructional text. */
 .atelier__empty {
-  background-color: rgb(242 240 236);
+  background-color: rgb(240 232 226);
 }
 
 /* On a tinted band -- any colour scheme but the page ground, scheme-1 -- the
@@ -181,8 +181,8 @@
   margin-top: 2rem;
   font-size: clamp(2.6rem, 3.2vw, 4rem);
   line-height: 1.05;
-  letter-spacing: 0.01em;
-  text-transform: uppercase;
+  letter-spacing: 0;
+  text-transform: none;
 }
 
 .atelier--list .atelier__facts {

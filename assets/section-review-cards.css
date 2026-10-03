@@ -30,7 +30,7 @@ review-cards {
 }
 
 .review-cards {
-  --review-star: #E6BAB9;
+  --review-star: #B76E79; /* rose gold since 2026-10-04, direction C; moonmagic's #E6BAB9 before */
 }
 
 /* --- Heading row ----------------------------------------------------------- */
@@ -56,9 +56,9 @@ review-cards {
   font-size: clamp(2.6rem, 3.2vw, 4rem);
   font-weight: var(--font-heading-weight);
   line-height: 1.05;
-  letter-spacing: 0.01em;
+  letter-spacing: 0;
   text-align: left;
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 .review-cards__summary {
@@ -81,7 +81,7 @@ review-cards {
 .review-stars {
   display: inline-block;
   line-height: 0;
-  color: var(--review-star, #E6BAB9);
+  color: var(--review-star, #B76E79);
 }
 
 .review-stars svg {

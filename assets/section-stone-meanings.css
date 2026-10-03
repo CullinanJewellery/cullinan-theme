@@ -24,9 +24,9 @@
   font-size: clamp(2.4rem, 3.2vw, 4rem);
   font-weight: var(--font-heading-weight);
   line-height: 1.1;
-  letter-spacing: 0.01em;
+  letter-spacing: 0;
   text-align: center;
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 /* A plain block on a computer -- it only becomes the arrows-either-side row on
@@ -130,7 +130,7 @@ a.stones__tile:focus-visible {
 /* Stands in until the photography exists -- the same flat tone every empty
    slot on this site uses, never a placeholder graphic. */
 .stones__image--empty {
-  background-color: rgb(242 240 236);
+  background-color: rgb(240 232 226);
 }
 
 /* --- The words ------------------------------------------------------------- */
