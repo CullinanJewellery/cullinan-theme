@@ -2524,7 +2524,8 @@ Anything of ours that is not a Dawn setting lives in these two places:
       in `templates/product.json`, so the box reads title, a line or two about the piece,
       the price, then the options. Dawn's 1.5rem above and below every block (2.5rem on the
       description) became 0.8rem from title to description and 1.4rem from description to
-      price. The tax line still tucks under the price: Dawn's -1.4rem needs the price
+      price (0.4rem and 0.8rem since 2026-10-03, see the entry below). The tax line still tucks
+      under the price: Dawn's -1.4rem needs the price
       block's own 1.5rem below it, so only that block's top margin was zeroed. Live at
       1440: title ends 183, description 191-216, price 230, tax 269-290, options 310.
       - **The sentence was ambiguous, and this is a reading, not a certainty.** "Description
@@ -2635,18 +2636,68 @@ Anything of ours that is not a Dawn setting lives in these two places:
     so the size boxes were taken for them, "the button" for Add to cart and "the text above" for
     the made-to-order line.
     - **Measured at 1440 before touching it**: the last row of size boxes 23px above the line,
-      the line 34px above the button, the button 25px above the first accordion. Now **40px and
-      40px**, the button's 25px untouched, at every width. moonmagic's own gaps there are tighter
+      the line 34px above the button, the button 25px above the first accordion. Went to **40px
+      and 40px** (**superseded the same day: 24px and 25px, see the next entry**), the button's
+      25px untouched, at every width. moonmagic's own gaps there are tighter
       than ours were (about 10px each), so this is the owner's taste, not a match.
-    - **Where**: `variant-selects` takes `margin-bottom: 3.2rem` (the 8px inside the last row of
+    - **Where** (the values are now 1.8rem and 2.4rem, see the next entry): `variant-selects`
+      takes `margin-bottom: 3.2rem` (the 8px inside the last row of
       boxes brings it to 40) and `.product-delivery-note` `margin-bottom: 4rem`, both in
       `assets/crown.css`. The first sits on the options rather than on the line, so it holds
       with or without a delivery line.
     - **If another gap was meant**, these are the candidates, all left as they were: the size boxes
       themselves (13px between boxes, 15px between rows), the legend above them (17px), and the top
       of the box (16px from the breadcrumb to the stars, 4px from the stars to the title).
-    - **Checked live at 1440 and 375**: 40px and 40px, the made-to-order line still one row, the
+    - **Checked live at 1440 and 375, at 40px and 40px (since superseded)**: the made-to-order
+      line still one row, the
       page exactly as wide as the screen.
+  - **The buy box tightened, the metal box narrowed and the sizes made smaller, 2026-10-03** (the
+    owner, the next message: "there is to much space between Изработка по поръчка: Доставка
+    5-20 работни дни and the section with the sizes and the button below it, also i think
+    material box is to long, and maybe we can make a little bit smaller the sizes and the
+    materials also make the price and the descirpion and the title closer and make it a little
+    bit color to the material choosing"). **Several readings, none certain**, each one a value
+    in `assets/crown.css`:
+    - **"Too much space" around the made-to-order line undoes the 40px / 40px above.** The
+      owner had asked for more room there that same morning and now found it too much, so both
+      gaps are **24px above and 25px below** (they were 23px and 34px before any of this): the
+      options carry `margin-bottom: 1.8rem` (plus the 6px inside the last row of boxes), the
+      line `2.4rem`. The 24px above is 1px looser than the original 23px, and **the gap below
+      is 9px tighter than it ever was**, which the wording does not ask for either way ("the
+      section with the sizes *and* the button" names both sides). Both are one number each if
+      the owner wants either back.
+    - **"Material box is too long" was read as too wide.** The metal drop-down ran the whole
+      column, 425px at 1440; it is `max-width: 28rem` (**280px**) and 4.2rem tall now (was
+      4.8rem). The open list shares its element's edges, so it is 280px wide as well, with its
+      rows 4rem tall (were 4.4rem). **Too tall** is the other reading and would be the
+      height alone.
+    - **The size boxes and the metal box are both a little smaller.** Size pills: 13px type
+      (was 14), padding 1.1rem x 1.8rem (was 1.3rem x 2.4rem), 0.6rem above and below (was
+      0.7rem and 0.8rem), so a box is **37px tall (was 42)** and a "56" box about 55px wide
+      (was 68). The metal box: 13px type and 0.08rem tracking (were 14px and 0.1rem), the
+      colour dot 1.4rem (was 1.6), the padding and gaps down with it. The legends over both
+      sit 0.8rem above their boxes (were 1rem).
+    - **Title, description and price closer**: title to description **4px** (was 8),
+      description to price **8px** (was 14). The order is the owner's own from 2026-10-01
+      (the description above the price) and is unchanged.
+    - **"A little bit color to the material choosing" was read as "closer"**, because that is
+      what the rest of the sentence is about and "color" does not fit it -- a reading, not a
+      certainty. The price block to the metal choice is **15px** (was 20), and 15 is the
+      floor rather than a pick: the Shop Pay instalments wrapper (`<div><form
+      class="installment caption-large">`) sits between the tax line and the options with no
+      height and 1.5rem margins, and those margins collapse through, so anything under 15px is
+      swallowed. A 12px target measured 15 on the first try. Going lower would mean hiding
+      that empty wrapper, which is not worth a rule for 3px.
+    - **The whole box is 73px shorter at 1440** (756.2px tall, was 829.2px). Phones use the
+      same rules, since the pills and the metal box are the same elements: at 375px the stars
+      are at the top of the box as before, title to description 4, description to price 8,
+      price block to options 15, options to the line 24, the line to the button 25, the line
+      still on one row, and the page exactly 375 wide.
+    - **Checked live**: the ring at 1440 and 375 and the bracelet
+      at 1440 (the metal box 280 x 42 and the pills 37px tall on both products, 24px and 25px
+      around the line). The open list and the pills' rows were measured on a local copy of the
+      live page: four 40px rows, nothing overflowing. **Not seen by eye**, beyond what the
+      numbers say.
 - **Най-продавани sized to moonmagic's own bestseller carousel, 2026-09-26/27**, at the
   owner's request ("make in this section bigger the pictures of the products their text and
   the circles with colors to match moonmagic", then "the pictures should be with the size
@@ -4011,18 +4062,29 @@ Anything of ours that is not a Dawn setting lives in these two places:
     hover), the name black. **It is `display: none` below 992px**: a tablet and a phone have no
     breadcrumb at all.
   - **Ours is the same shape**: "Начало / Пръстен с верижка", at the top of the buy box above
-    the stars, 12px capitals, 0.1em tracking, 16px line, 9.6px above (written `0.96rem`, since
+    the stars, 12px capitals (10px since the same day, see below), 0.1em tracking, 16px line,
+    9.6px above (written `0.96rem`, since
     this theme's root is 10px, where their `0.6rem` would be 6px), one line with an ellipsis
     (checked with an 89-character name at 990px: still one line, the box and the page not
     widened). The link goes to `routes.root_url`, the name carries `aria-current="page"`, the
     slash is `aria-hidden`, and the nav is labelled „Навигационна пътека“. **Shown from 990px**,
     this theme's own tablet/computer line, not their 992.
-  - **Black, not their grey.** The link and the slash are black here, because the owner has
-    asked for every word of the buy box in black (see Buy box reordered, metal before size,
-    black text, 2026-10-01); moonmagic's `#929292` link is 3.0:1 on this page ground in any
-    case. The link still reads as one: it underlines on hover and on keyboard focus, where
-    theirs goes grey to black. **Worth asking, not assumed**: if the owner wants their grey
-    link it is one colour, and 60% black (5.7:1) would pass contrast where `#929292` does not.
+  - **Colour: black first, moonmagic's grey since the same day.** It shipped black, because the
+    owner had asked for every word of the buy box in black (see Buy box reordered, metal before
+    size, black text, 2026-10-01), with an underline on hover. The owner then asked for "Начало"
+    to be "like moonmagic ... and when i put my cursor on it to become black", so the link and
+    the slash are moonmagic's own `#929292` (`rgb(146, 146, 146)`), the name after them stays
+    black, and the underline is gone: the link turns black over 0.2s on hover and on keyboard
+    focus, as theirs does. **`#929292` is 3.0:1 on this page's ground**, under the 4.5:1 for
+    text this small; it is moonmagic's own value and the owner's request, flagged to them as
+    it shipped, and 60% black (5.7:1) is the one colour to change if it ever has to pass. The
+    slash is grey as well and is `aria-hidden`, so it takes no part in that.
+  - **10px, not 12, 2026-10-03** ("make it smaller as well ... and the title of the product that
+    is on the right side of the slash"). The whole line, both sides of the slash, in one
+    `font-size`. 12px is moonmagic's, in Latin capitals; Cyrillic capitals run about 9% wider
+    per letter, so the same 12px read bigger here than it does there. The tracking stays 0.1em
+    (so 1px), and the 16px line and the 9.6px above it are unchanged, which keeps the line
+    exactly as tall as before and everything under it where it was.
   - **No template change, and no block.** The nav is printed by the section itself, first
     inside `.product__info-container`, behind `show_breadcrumb` (default on), with the word for
     home as `breadcrumb_home_label` (default „Начало“). Both defaults live in the schema, so
@@ -4043,15 +4105,29 @@ Anything of ours that is not a Dawn setting lives in these two places:
     entry.**
   - **Checked on a local copy first, then live**, the same method as under Product gallery. At
     1440: the nav at x 937.1, the buy box's own left edge, 425.4 wide and 25.6 tall (9.6 + 16),
-    12px / 1.2px / uppercase / black / nowrap, the stars 16px under it, so the buy box's top is
+    12px / 1.2px / uppercase / black / nowrap (the first version), the stars 16px under it, so
+    the buy box's top is
     41.6px taller than before; at 990 a 273px column; at 375 hidden with no overflow. A real
-    hover on „Начало“ gives a 1px underline 3px under the text.
-  - **A trap in the hover check.** `computer` hover with a `ref` goes to CSS-pixel coordinates,
-    which missed: with a viewport emulated larger than the pane, the screenshot frame shows the
-    page at about 0.28 of its size, anchored top-left (408 x 253 of the 800 x 500 frame at
-    1440 x 900), so the hover has to go to **frame coordinates read off a screenshot** (273, 45
-    here). The page said `:hover` was false until then. A viewport of about 1000 x 640 fills
-    the frame well enough to read a screenshot by eye.
+    hover on „Начало“ gave a 1px underline 3px under the text (the first version; see Colour above).
+  - **A trap in the hover check, and the method that works.** With a viewport emulated larger
+    than the pane, the screenshot frame shows the page scaled down and anchored top-left (408 x
+    253 of the 800 x 500 frame at 1440 x 900), and a `computer` hover goes to **frame
+    coordinates, not CSS pixels**: a hover by `ref` or at the element's CSS position misses, and
+    the page reports `:hover` false. The first version of this note said to read the
+    coordinates off a screenshot, which is fiddly, and its "about 0.28" is only the 1440
+    figure: **the factor depends on the emulated width** (about 3.53 CSS pixels per frame pixel
+    at 1440, about 2.05 at 1100). What works at any width: install a capture-phase `mousemove`
+    listener on `window` that records `clientX` and `clientY`, hover at a known frame point,
+    read the recorded CSS position back, divide to get the factor, then hover at the target's
+    CSS centre divided by it. **Take a screenshot first after every navigation**, since the tool
+    refuses `coordinate` without one. A viewport of about 1000 x 640 fills the frame well
+    enough to read a screenshot by eye.
+  - **Grey and 10px, checked live 2026-10-03.** At 1440 on the ring: "Начало" and the slash
+    `rgb(146, 146, 146)`, the name `rgb(0, 0, 0)`, the line 10px with 1px of tracking, no
+    underline; the three pieces are 47, 6.2 and 118.4px wide (were 56.4, 7.4 and 142.1 at
+    12px); a real hover on "Начало" turned it `rgb(0, 0, 0)` with no underline. At 375 the nav
+    is `display: none`, the stars sit at the top of the box as before and the page is exactly
+    375 wide.
 
   - **Correction, 2026-10-03: the breadcrumb had silently widened the stars-to-title gap from 4px
     to 15px**, on a computer and on a phone. The rating block used to be the box's first child,
