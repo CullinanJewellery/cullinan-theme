@@ -424,18 +424,21 @@ html {
    spaced-capital shop name beside it; 700 since 2026-09-15, when the name
    became a logo image and the owner asked for the words bold again.
 
-   Half as bold again since 2026-10-03 ("we can bold the black navigation arrows
-   and the text by 50%"). The Jost files stop at 700, so the extra weight is a
-   stroke in the word's own colour round each letter: 0.075em, which is 0.94px at
-   this size and adds about half again to the ink of a 700 capital (measured on
-   the canvas at 12.5px: 0.5px adds 27%, 0.8px 43%, 1px 54%). `currentcolor`
-   means it follows the word from three-quarters black to black on hover. */
+   A fifth bolder again since 2026-10-03. The owner first asked for half again
+   ("we can bold the black navigation arrows and the text by 50%"), saw it live,
+   and asked for less: "in the navigation the collections i want them bold by 20%
+   don't make them more bold they will look bad". The Jost files stop at 700, so
+   the extra weight is a stroke in the word's own colour round each letter:
+   0.03em, which is 0.375px at this size and adds about a fifth to the ink of a
+   700 capital (measured on the canvas at 12.5px: 0.3px adds 16%, 0.4px 22%, 0.5px
+   27%, 0.8px 43%, 1px 54%; the 50% version was 0.075em). `currentcolor` means it
+   follows the word from three-quarters black to black on hover. */
 .header__inline-menu .header__menu-item {
   font-size: 1.25rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  -webkit-text-stroke: 0.075em currentcolor;
+  -webkit-text-stroke: 0.03em currentcolor;
 }
 
 /* ---------------------------------------------------------------------------
@@ -1539,8 +1542,8 @@ html {
 }
 
 /* A column's heading: the second-level link. It is navigation text like the menu words
-   above it, so it takes the same half-again weight: the same 0.075em stroke in its own
-   colour (see the menu words, 2026-10-03: "bold ... the text by 50%"). */
+   above it, so it takes the same extra weight, a fifth: the same 0.03em stroke in its own
+   colour, 0.48px at this size (see the menu words, 2026-10-03: "bold by 20%"). */
 .mega-menu .mega-menu__body .mega-menu__link--level-2 {
   margin-bottom: 1.5rem;
   padding: 0 0 0.3rem;
@@ -1549,7 +1552,7 @@ html {
   line-height: 2rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  -webkit-text-stroke: 0.075em currentcolor;
+  -webkit-text-stroke: 0.03em currentcolor;
 }
 
 /* Items within a column. */
