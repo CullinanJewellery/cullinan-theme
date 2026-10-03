@@ -507,70 +507,25 @@
     "atelier": {
       "type": "atelier",
       "settings": {
-        "media_position": "left",
+        "media_position": "right",
         "color_scheme": "scheme-6",
         "video_url": "",
-        "eyebrow": "Нашето вдъхновение",
-        "heading": "Знаете ли откъде идва името ни?",
-        "paragraph": "<p>През 1905 година в Южна Африка е открит диамант, какъвто светът не е виждал. Той ни даде името си — и идеята, която следваме във всяко бижу.</p>",
-        "fact_1_value": "",
-        "fact_1_label": "",
-        "fact_2_value": "",
-        "fact_2_label": "",
-        "fact_3_value": "",
-        "fact_3_label": "",
+        "eyebrow": "От 1991 година",
+        "heading": "Занаят с история",
+        "paragraph": "",
+        "fact_1_value": "Нашето вдъхновение",
+        "fact_1_label": "Името ни идва от Кулинан — най-големия диамант с ювелирно качество, откриван някога.",
+        "fact_2_value": "Нашият дизайн",
+        "fact_2_label": "Всяко бижу започва като наш собствен 3D модел и се изпипва на ръка.",
+        "fact_3_value": "Нашите материали",
+        "fact_3_label": "Злато 14 и 18 карата, сребро 925 и камъни, оценени от специалист.",
         "link_label": "Открийте историята",
-        "link_url": "/pages/за-нас#vdahnovenie",
+        "link_url": "/pages/за-нас",
         "padding_top": 56,
         "padding_bottom": 56,
         "margin_top": 40,
-        "margin_bottom": 0
-      }
-    },
-    "design_teaser": {
-      "type": "atelier",
-      "settings": {
-        "media_position": "right",
-        "color_scheme": "scheme-1",
-        "video_url": "",
-        "eyebrow": "Нашият дизайн",
-        "heading": "Как се ражда едно бижу?",
-        "paragraph": "<p>Всяко наше бижу започва като идея. Превръщаме я в модел, отпечатваме го на 3D принтер и го оглеждаме от всеки ъгъл — и това е само началото.</p>",
-        "fact_1_value": "",
-        "fact_1_label": "",
-        "fact_2_value": "",
-        "fact_2_label": "",
-        "fact_3_value": "",
-        "fact_3_label": "",
-        "link_label": "Вижте как го правим",
-        "link_url": "/pages/за-нас#dizain",
-        "padding_top": 56,
-        "padding_bottom": 56,
-        "margin_top": 0,
-        "margin_bottom": 0
-      }
-    },
-    "materials_teaser": {
-      "type": "atelier",
-      "settings": {
-        "media_position": "left",
-        "color_scheme": "scheme-7",
-        "video_url": "",
-        "eyebrow": "Нашите материали",
-        "heading": "Кое злато е за вас?",
-        "paragraph": "<p>Злато 14 или 18 карата, сребро и скъпоценни камъни — всеки материал има своя характер. Едни са за всеки ден, други — за бижу с особено значение.</p>",
-        "fact_1_value": "",
-        "fact_1_label": "",
-        "fact_2_value": "",
-        "fact_2_label": "",
-        "fact_3_value": "",
-        "fact_3_label": "",
-        "link_label": "Открийте разликата",
-        "link_url": "/pages/за-нас#materiali",
-        "padding_top": 56,
-        "padding_bottom": 56,
-        "margin_top": 0,
-        "margin_bottom": 40
+        "margin_bottom": 40,
+        "layout": "list"
       }
     },
     "social_follow": {
@@ -620,6 +575,38 @@
         "padding_top": 72,
         "padding_bottom": 40
       }
+    },
+    "review_cards": {
+      "type": "review-cards",
+      "blocks": {
+        "review_1": {
+          "type": "review",
+          "settings": {}
+        },
+        "review_2": {
+          "type": "review",
+          "settings": {}
+        },
+        "review_3": {
+          "type": "review",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "review_1",
+        "review_2",
+        "review_3"
+      ],
+      "settings": {
+        "eyebrow": "Отзиви",
+        "heading": "Какво казват клиентките ни",
+        "color_scheme": "scheme-1",
+        "card_color_scheme": "scheme-6",
+        "padding_top": 56,
+        "padding_bottom": 56,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
     }
   },
   "order": [
@@ -633,8 +620,7 @@
     "silver_teaser",
     "new_arrivals",
     "atelier",
-    "design_teaser",
-    "materials_teaser",
+    "review_cards",
     "social_follow",
     "newsletter"
   ]

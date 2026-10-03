@@ -414,6 +414,22 @@ Rules that matter here:
   product page came back as the generic sell-online landing page). No replacement had
   arrived when the product page work below was pushed, so **that push is unverified live**:
   ask the owner for a new link first thing, then look.
+  - **Expired again on 2026-10-03**, in the middle of a session: the link in use
+    (`54jigitxu7tro3gx`) began answering HTTP 410 with Shopify's generic "sell online" page, in the
+    browser pane and from `curl` alike. Everything pushed before that was checked live; the homepage
+    story and reviews work and the shorter За нас, pushed after, are **unverified on a page** until the
+    owner sends a new link.
+  - **A pushed asset can be checked without any preview link.** The draft theme (id 2) serves its
+    files publicly, with no password, at `https://2fp38p-az.myshopify.com/cdn/shop/t/2/assets/<file>`:
+    a new file answers 200 within seconds of a push and 404 before, and **a changed file must be read
+    with a `?v=<anything>` query**. The edge caches the plain path -- and any other query, such as
+    `?x=` -- for up to a year (`cache-control: max-age=31557600`; `Age: 280` on a file changed four
+    minutes earlier) and only `v` bypasses it, which is the one page links carry. A plain check of
+    a changed file therefore reads as a dropped push when it is only cached: on 2026-10-03
+    `section-atelier.css` looked unchanged for over a minute and came back new with `?v=`. The theme id
+    is in any page's asset URLs (`/cdn/shop/t/2/assets/`). Liquid sections, JSON templates and locale
+    files are not served this way, so a section or template push can only be inferred from an asset
+    pushed in the same commit, or seen on a page.
   - **A local mock needs http, not file://.** The pane opens a `file://` page as a static
     snapshot and refuses its page tools ("This tab shows a local file"). Serve the mock
     over http with `preview_start` and a temporary `.claude/launch.json` pointing at a
@@ -702,6 +718,45 @@ Anything of ours that is not a Dawn setting lives in these two places:
   Shopify-hosted video, a YouTube/Vimeo URL or a still, always square (4:5 portrait until 2026-09-14). Video is
   decorative and `aria-hidden` — every fact lives in the text. Under prefers-reduced-motion a
   small inline script removes the video outright and the poster still is what remains.
+  - **Three bands became one, with a list layout, 2026-10-03** (the owner: "the three section with
+    the history and the gold and does think i think we need to make it in section or something
+    like that to look better and to be the same as moonmagic"). **A reading, not a certainty**:
+    "in section" was taken as *one section*, because the owner said it in the same message that
+    asked for less text and fewer detours, and because moonmagic's own equivalent is exactly that.
+    Its homepage has **three "image with text" sections** (Soulful jewelry, Fine diamonds jewelry,
+    Made for you), and the first is **one block carrying three facts**: a 65px capital heading, then
+    three short facts -- each a small capital label with one line under it ("ESTABLISHED 2016 / Over a
+    decade of craftsmanship and trust", "ARTISAN CRAFTSMANSHIP", "GENUINE GEMSTONES") -- then one
+    486 x 72 button, beside a 673 x 602 picture, on `rgb(245, 244, 240)` (scheme-6). Measured at 1440.
+    Ours is that block, with the history, design and materials as the three facts.
+    - **`design_teaser` and `materials_teaser` are gone from the homepage; `atelier` keeps its key and
+      takes the whole story.** Eyebrow „От 1991 година“, heading „Занаят с история“, facts
+      **НАШЕТО ВДЪХНОВЕНИЕ** — „Името ни идва от Кулинан — най-големия диамант с ювелирно качество,
+      откриван някога.“ (the За нас lead, word for word), **НАШИЯТ ДИЗАЙН** — „Всяко бижу започва като
+      наш собствен 3D модел и се изпипва на ръка.“, **НАШИТЕ МАТЕРИАЛИ** — „Злато 14 и 18 карата, сребро
+      925 и камъни, оценени от специалист.“, one button „Открийте историята“ to `/pages/за-нас`, the
+      picture on the **right**, on scheme-6 with its taupe button, with 40px of page ground above and
+      below. Every fact is one the site already states (За нас, the benefits row, Качество и детайли).
+      The old per-story anchors (`#vdahnovenie`, `#dizain`, `#materiali`) are no longer linked from the
+      homepage and still work from the jump links on За нас.
+    - **The section gained a "Text layout" setting**, default **Facts side by side** -- the old look,
+      so nothing that already used the section changes. **Facts as a list** sets the heading in
+      capitals at the size of every other homepage heading (the collection-title clamp, 26 to 40px),
+      not their 65px, which the owner has brought down on each of them; each fact is a small capital
+      label (its `value`) with one 16px line (its `label`) under it, a hairline between facts. The same
+      two settings serve both layouts, which is why the setting's help text says which is which.
+    - **Pushed in two steps**, the section and stylesheet first, `templates/index.json` after -- a
+      template cannot use a setting its section does not hold yet. The page is **about 1,300px shorter** (one
+      668px band at 1440 where three stood).
+    - **Alternatives, if "section" meant something else**: keep three bands and restyle them as full-bleed
+      picture banners like the silver banner and new arrivals (five banners in a row would repeat); or one
+      section with three cards side by side. Each is a template change plus a stylesheet, not a rebuild.
+    - **The notes below this one describe the three bands it replaced**: how they were built, their
+      colours (scheme-6, the page ground, scheme-7), buttons and margins. They stay as the record;
+      the one band now on the page is the first of them, on scheme-6 with the taupe button.
+    - **A cosmetic gap, only until photography**: the text column is about 680px wide and the facts
+      take about 420px of it, so there is air between the words and the picture -- moonmagic's has the
+      same (their text is 500px beside a 673px picture with about 210px between).
   - **On the homepage it no longer tells the atelier story** (2026-09-14, at the owner’s
     request: keep the design, lead to the inspiration story). Eyebrow Нашето вдъхновение, the
     question „Знаете ли откъде идва името ни?“, two sentences saying a diamond found in 1905
@@ -2021,6 +2076,29 @@ Anything of ours that is not a Dawn setting lives in these two places:
   81px of 85px at 320px. It fits, but a wider or heavier face, or more tracking, would not.
 - **About page.** Rebuilt on 2026-09-13 on the reference’s About page, in
   `templates/page.about.json`: an intro, three story blocks, then the questions.
+  - **Cut to a fraction of the text, 2026-10-03** (the owner: "make the text in За нас shorter for every
+    section there because it is too much text they just need to get into the things to buy not just
+    for our history and materials and the other thing"). The four story panels went from **767, 466,
+    767 and 919 characters to 222, 171, 184 and 204**: each keeps its lead sentence and gets two short
+    sentences, in `templates/page.about.json` (four `body` values, nothing else). Only facts the site
+    already states are in them:
+    - **История**: 1991, a garage in Veliko Tarnovo as the first workshop; pieces of gold and silver
+      made with the same care today. The shop's address is no longer here (it is in the FAQ).
+    - **Вдъхновение**: 1905, over 3100 carats, the British crown jewels; „такава красота търсим във
+      всяко наше бижу“. The ring-as-a-circle passage is out.
+    - **Дизайн**: an idea, a 3D model printed and examined from every angle, then gold or silver in
+      the goldsmiths' hands. **The engraving sentence is dropped on purpose**: the owner removed the
+      engraving question from the FAQ on 2026-09-30, so the short version does not repeat the claim.
+    - **Материали**: 14 carats (585) for every day, 18 (750) for pieces with particular meaning, silver
+      925, stones appraised by a specialist qualified at HRD Antwerp. The percentages, the stones'
+      hardness, the enamel and the long explanation of what a proba is are out; Качество и детайли on the
+      product page carries the short version of the gold and silver facts.
+    - **The FAQ was left alone**: its rows are closed until opened, so they add no text a visitor has to
+      read, and the owner asked earlier for help that really serves the products (the ring size answer
+      is the longest at 598 characters). "Every section" was read as the four panels. The panels'
+      height now follows the photograph, 623px at 1440 (its 8:7 floor), instead of 627 to 841px, so the
+      four are about 500px shorter together. **The paragraphs under Current state that describe the
+      longer text are out of date as to the words**, not the structure.
   - `sections/about-intro.liquid` with `assets/section-about-intro.css`: the title, one line,
     and square jump-link tiles with line icons (two across on phones). Smooth scrolling is
     switched on by that stylesheet, so only on pages that carry the section, and never under
@@ -3544,6 +3622,82 @@ Anything of ours that is not a Dawn setting lives in these two places:
     horizontal overflow. A real hover on Харесайте ни gives a transparent fill, a black
     label, the 1px outline and `translateY(-2.5px)` with the icon unscaled.
 
+- **Reviews section.** `sections/review-cards.liquid` with `assets/section-review-cards.css`,
+  `assets/review-cards.js` and `snippets/review-stars.liquid` (2026-10-03, the owner: "add reveiew
+  on the home page something like moonmagic and hestai home do ours better and different maybe i
+  don't make it look ours and good"). On the homepage between the story section and „Вижте
+  работата ни“, a page-ground band with greige cards.
+  - **moonmagic's, measured at 1440** ("Trusted by 600K+ customers", `.homepage-reviews`, 810px):
+    a 65px capital heading at the left gutter with prev and next arrows (27px) on its row, then a
+    Swiper of cards 350px wide and 18px apart, each a **350px customer photo** over a greige panel
+    (`rgb(245, 244, 240)`, the same #F5F4F0 as scheme-6; padding 28px 23px) holding five stars
+    (14px, `rgb(230, 186, 185)` -- our #E6BAB9), the quote at 18px on a 30.6px line, and the name
+    with "Verified Buyer" and a tick.
+  - **hestiahome.bg's, measured**: a cream band (`rgb(250, 246, 239)`, 60px padding) with an
+    eyebrow „Отзиви“, a 37px heading „949+ доволни клиенти“, a rating line (amber stars, „4,8 · 949
+    отзива“), a link to every review and a row of four trust items, then white cards 427 x 308 with
+    a 12px radius and 35px of padding: stars, a 19.8px quote, an initial in a pink circle, the name
+    and „проверена покупка“ with a green tick; arrows under the rail.
+  - **What is ours.** moonmagic's row and greige card, in this site's own measures: the heading is
+    the one every homepage row has (26 to 40px, capitals) with an eyebrow in the small spaced
+    capitals the atelier uses; square corners; pink stars drawn as one inline SVG (the character
+    does not exist in Jost, so a fallback font would size it differently on every device), the ones
+    not earned left as an outline; the quote at 18px (16px on a phone) in „ “; the name in small
+    capitals with a line under it; **and, what neither of them has, the piece the review is about**,
+    as its own picture and name under the hairline, linked -- so a visitor reading what others
+    say can walk straight to the thing to buy, which is what the owner said the whole site is for
+    in the same message ("they just need to get into the things to buy"). 3 whole cards across from 990px (417px at 1440, 24px apart, against their 350 and
+    427), 2 from 750px, one with a peek of the next on a phone; the row scrolls by one card
+    (441px at 1440) and the arrows -- Dawn's own `.slider-button`, like every other row -- exist
+    only when the cards do not all fit. A photo of the customer is optional: square above the
+    card when given, absent otherwise, since most reviews have none. No "verified" mark: this
+    shop cannot say a manually entered review is verified, so it does not.
+  - **NO REVIEW IS INVENTED, and the section cannot show a made-up one.** Every card is a block
+    the owner fills with a customer's own words (stars, review, name, an optional line, an
+    optional piece, an optional photo); the shop has none yet, and the project's rule since the
+    Judge.me install stands: none to fill the space. A block with **no review text** prints
+    nothing on a published theme, and **the whole section prints nothing until at least one block
+    has text**, so it can sit in the template, finished, before there is anything to put in it. In
+    the theme editor (`request.design_mode`) and on an unpublished theme (`theme.role` is `main`
+    only for the published one -- the draft preview is `unpublished`) a block with no text shows as
+    a **labelled sample card** instead (muted placeholder words and a „Пример“ tag), so the design
+    can be seen and judged; publishing the theme removes every sample by itself. The template
+    ships three empty blocks. The rating line under the heading is a setting, empty by default,
+    because a figure like „5,0 · над 100 отзива“ must be one the owner can stand behind: it is not
+    counted from the cards.
+  - **To fill it**: Customize → Home page → Reviews → each Review block: the stars, the customer's
+    words as she wrote them, her name, optionally her town or when she bought, the piece (a product
+    picker) and a photo she sent. Real reviews have to come from somewhere real -- the old shop's
+    customers, messages, Facebook or Instagram with her permission, or Judge.me once the shop sells.
+    **Judge.me** (installed 2026-10-01) draws the product page's reviews and writes nothing the
+    theme can read for a homepage row; it has carousel widgets of its own, and **whether the free
+    plan includes them was not checked** (the owner has declined the paid one). If the owner ever
+    wants reviews to flow in on their own, that is the route, and it would replace the hand-filled
+    blocks.
+  - **Tested offline**, 19 render checks (liquidjs, mock blocks, kept in the scratchpad): three blank
+    blocks on a published theme print nothing and no note; two real and one blank print two cards;
+    on a draft theme and in the editor blank blocks are labelled samples and the editor with no
+    blocks shows only a note; the quote is escaped and keeps its line breaks; a four-star review
+    has four filled stars; the piece is a link with its picture and name, and a piece with no
+    picture gets the flat square; her photo comes above the body; a card with no name, line or
+    piece has no foot; no rating line without text; the arrows exist in the markup, hidden. Schema
+    validated (ranges on their step, defaults inside them). In a local copy of the homepage with the
+    real stylesheets, at 1440 and 375: three 417px cards 24px apart with the pink fill on the stars,
+    heading 40px / 26px, equal card heights with the names on one line, the arrows hidden for
+    three cards and shown for four, **a step of exactly 441px** (a card and its gap), the previous
+    button disabled at the start and the next at the end, a disabled button doing nothing, a phone
+    card 298px with the next one peeking, no sideways scroll. The screenshot caught what the numbers
+    did not: **Dawn styles every `blockquote`** with italics, a muted colour and a rule down the
+    left (`base.css`), so a first version of the card carried a stray vertical line beside every
+    quote -- reset in the card's own rule.
+  - **Not seen on a live page**: the preview link expired mid-session (see Preview links expire),
+    so the template that adds the section was pushed without a page to look at -- at 19:52, fourteen
+    minutes after the section files, to give Shopify's validator time. The section's files were
+    confirmed live by their assets (`review-cards.js` and `section-review-cards.css` answered 200
+    within seconds of the push, `section-atelier.css?v=` carried the list layout). **A template
+    cannot be checked that way**: if the homepage still shows three story bands and no reviews row on
+    a new preview link, the template was refused or dropped, and re-sending it with one byte changed
+    is the first thing to try (see Wait for one push to reach the preview before sending the next).
 - **Customer reviews (Judge.me).** The owner installed Judge.me on its free plan and added its
   Review Widget on 2026-10-01 ("i did what you said"), by the steps given under Judge.me in
   Waiting on the Shopify admin. Shopify wrote three commits back; pulled before touching
@@ -4545,6 +4699,9 @@ Anything of ours that is not a Dawn setting lives in these two places:
   block but has no button: the owner did not want it as one. Linked
   from the top bar. All copy is drafted only from facts already on the site or on the old
   site. **At the owner’s instruction, nothing on it says the business is a family one.**
+  - **The words of the four story panels were cut on 2026-10-03** to a lead and two short
+    sentences each (see About page under Custom code). The paragraphs that follow describe the
+    longer text they replaced: the structure and the facts still hold, the wording does not.
   - **The inspiration block tells the Cullinan diamond’s story** (largest gem-quality diamond
     ever found, 1905, over 3,100 carats, cut into stones for the British Crown Jewels) and calls
     it the business’s inspiration. **The owner confirmed on 2026-09-13 that the name comes from
@@ -4733,9 +4890,9 @@ Anything of ours that is not a Dawn setting lives in these two places:
   done in the admin; the handle stays `contact`).
 - Homepage, working top to bottom: announcement bar, header and hero are built; the product
   row is built; a second hero-style banner for the shop's own silver sits right after the
-  benefits row (see Silver banner above), then three atelier blocks lead to the inspiration,
-  design and materials stories on За нас (see Atelier section above); the newsletter is
-  still Dawn's default.
+  benefits row (see Silver banner above), then one story band (the history, design and materials as three short facts;
+  see Atelier section above) and a row of customer reviews (see Reviews section) follow; the
+  newsletter is still Dawn's default.
 - Dawn's placeholder illustration has been removed from the hero. The empty image slot is an
   empty div, and Dawn's base.css hides every empty div (`div:empty { display: none }`). On
   phones crown.css shows it again as a flat stone square. **On desktop it is still hidden**,
