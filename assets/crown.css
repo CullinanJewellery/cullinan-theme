@@ -3172,7 +3172,7 @@ card-swatches {
 
 .product .product-form__input--pill legend.form__label,
 .product .product-form__input--menu legend.form__label {
-  margin: 0 0 1rem;
+  margin: 0 0 0.8rem;
   font-size: 1.2rem;
   font-weight: 600;
   letter-spacing: 0.08em;
@@ -3189,9 +3189,14 @@ card-swatches {
   color: rgb(var(--color-foreground));
 }
 
+/* A little smaller on 2026-10-03 (the owner: "make a little bit smaller the sizes and
+   the materials"): 13px type, 1.1rem by 1.8rem of padding and 0.6rem above and below,
+   from 14px, 1.3rem by 2.4rem and 0.7rem / 0.8rem -- 42px boxes became 37px and a
+   "56" box 68px became about 54px. */
 .product .product-form__input--pill input[type='radio'] + label {
-  margin: 0.7rem 0.8rem 0.8rem 0;
-  padding: 1.3rem 2.4rem;
+  margin: 0.6rem 0.8rem 0.6rem 0;
+  padding: 1.1rem 1.8rem;
+  font-size: 1.3rem;
   background-color: rgba(var(--color-foreground), 0.04);
   border-color: transparent;
   transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
@@ -3487,12 +3492,19 @@ card-swatches {
   color: rgb(0 0 0);
 }
 
+/* Tightened again on 2026-10-03 (the owner: "make the price and the description and
+   the title closer ... and a little bit closer to the material choosing"): title to
+   description 0.8rem to 0.4rem, description to price 1.4rem to 0.8rem, and the tax
+   line to the options 2rem to 1.5rem. The last one is Dawn's own rhythm and what an
+   empty block between them already imposes: the Shop Pay instalments wrapper
+   (`<div><form class="installment">`) sits there with 1.5rem margins and no height,
+   so anything smaller than 1.5rem is swallowed by it. */
 .product .product__title {
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.4rem;
 }
 
 .product .product__info-container .product__description {
-  margin: 0 0 1.4rem;
+  margin: 0 0 0.8rem;
 }
 
 .product .product__info-container > [id^='price-'] {
@@ -3500,7 +3512,7 @@ card-swatches {
 }
 
 .product .product__info-container .product__tax {
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 /* ---------------------------------------------------------------------------
@@ -3517,11 +3529,12 @@ card-swatches {
    --------------------------------------------------------------------------- */
 
 .product .product-delivery-note {
-  /* 4rem: 40px between this line and the button, the same as between the options
-     above it and this line (see the variant-selects rule below). It was 3.4rem
-     (34px) until 2026-10-03, which itself had been chosen to match a gap
-     measured on moonmagic; the owner asked for more room here. */
-  margin: 0 0 4rem;
+  /* 2.4rem: 24px between this line and the button, the same as between the options
+     above it and this line (see the variant-selects rule below). 3.4rem (34px)
+     until 2026-10-03, which had been chosen to match a gap measured on
+     moonmagic; 4rem earlier that day, at the owner's request for more room,
+     then back down at the owner's request for less. */
+  margin: 0 0 2.4rem;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -3540,15 +3553,18 @@ card-swatches {
 }
 
 /* The options -- metal and size -- are a group of their own, and the line above the
-   button and the button itself are another (2026-10-03, the owner: "make more space
-   between the stones and button and the text above"). Dawn leaves 1.5rem under the
-   options, which with the 8px inside the last row of size boxes read as 23px between
-   the boxes and the made-to-order line; 3.2rem makes it 40px, the same as the 40px
-   between that line and the button, so the three pieces sit evenly apart. It sits on
-   the options rather than on the line so it holds whatever follows them, with or
-   without the delivery line. */
+   button and the button itself are another (2026-10-03). Dawn leaves 1.5rem under
+   the options, which with the 8px inside the last row of size boxes read as 23px
+   between the boxes and the made-to-order line. The owner first asked for more
+   room there ("make more space between the stones and button and the text above")
+   and it went to 40px, with 40px under the line too; the same day, "there is too
+   much space between Изработка по поръчка and the section with the sizes and the
+   button below it". Now 24px above the line (1.8rem here, plus the 6px inside the
+   last row of boxes) and 24px below it. The margin sits on the options rather
+   than on the line so it holds whatever follows them, with or without the delivery
+   line. */
 .product .product__info-container > variant-selects {
-  margin-bottom: 3.2rem;
+  margin-bottom: 1.8rem;
 }
 
 /* Phones have a narrower column again, and the same line has to hold one row
@@ -3946,10 +3962,18 @@ body .jdgm-write-review-modal .jdgm-write-review-modal__page--review-form-intro 
    none` below 992px, so a tablet and a phone have no breadcrumb at all; ours
    switches on at 990px, this theme's own line between tablet and computer.
 
-   Colour. Theirs is a grey link and a black name; here both are black, because
-   the owner has asked for every word of the buy box in black (see "Buy box: the
-   words in black" above). The link still reads as one: it underlines on hover and
-   on keyboard focus, where theirs turns from grey to black.
+   Colour. Theirs is a grey link (`#929292`), a grey slash and a black name, the
+   link turning black on hover with no underline. It shipped here all black first,
+   because the owner had asked for every word of the buy box in black (see "Buy box:
+   the words in black" above), and with an underline on hover; the owner then asked
+   for "Начало" to be "like moonmagic", black on hover, so the link and the slash
+   take their exact grey and the name stays black (2026-10-03). `#929292` is 3.0:1
+   on this page's ground, which is the owner's call: 60% black (5.7:1) is the
+   alternative if it ever has to pass.
+
+   Size. 12px in moonmagic's Latin; Cyrillic capitals run about 9% wider per letter,
+   so the same 12px read bigger than theirs, and the owner asked for it smaller:
+   10px, the tracking staying at 0.1em (1px).
 
    Space. The block after it -- the stars -- would take Dawn's 1.5rem above itself
    (`.product__info-container > * + *`), and on a phone, where the breadcrumb is
@@ -3986,7 +4010,7 @@ body .jdgm-write-review-modal .jdgm-write-review-modal__page--review-form-intro 
     padding: 0.96rem 0 0;
     overflow: hidden;
     color: rgb(0 0 0);
-    font-size: 1.2rem;
+    font-size: 1rem;
     letter-spacing: 0.1em;
     line-height: 1.6rem;
     text-overflow: ellipsis;
@@ -3994,16 +4018,20 @@ body .jdgm-write-review-modal .jdgm-write-review-modal__page--review-form-intro 
     white-space: nowrap;
   }
 
+  /* The link and the slash in moonmagic's grey, the name after them black. */
+  .product-breadcrumb a,
+  .product-breadcrumb__divider {
+    color: rgb(146 146 146);
+  }
+
   .product-breadcrumb a {
-    color: inherit;
     text-decoration: none;
+    transition: color 0.2s ease;
   }
 
   .product-breadcrumb a:hover,
   .product-breadcrumb a:focus-visible {
-    text-decoration: underline;
-    text-decoration-thickness: 0.1rem;
-    text-underline-offset: 0.3rem;
+    color: rgb(0 0 0);
   }
 }
 
@@ -4082,24 +4110,30 @@ body .jdgm-write-review-modal .jdgm-write-review-modal__field-group--review-body
    behaviour -- closing, Escape, the keyboard -- is in assets/option-menu.js.
    --------------------------------------------------------------------------- */
 
+/* Shorter and a little smaller, 2026-10-03 (the owner: "i think material box is to
+   long ... make a little bit smaller the sizes and the materials"). It had been as
+   wide as the column (425px at 1440); 28rem caps it, and the list under it follows
+   because its edges are this element's. 4.2rem tall (was 4.8), 13px type (was 14)
+   and the dot, padding, gaps and list rows scaled down with it. */
 option-menu {
   display: block;
   position: relative;
-  margin: 0.7rem 0 0.8rem;
+  max-width: 28rem;
+  margin: 0.6rem 0 0.6rem;
 }
 
 .product .option-menu__summary {
   display: flex;
   align-items: center;
-  gap: 1.2rem;
-  min-height: 4.8rem;
-  padding: 1rem 4.8rem 1rem 1.6rem;
+  gap: 1rem;
+  min-height: 4.2rem;
+  padding: 0.8rem 4rem 0.8rem 1.4rem;
   border: 0.1rem solid rgb(var(--color-foreground));
   background-color: rgb(var(--color-background));
   color: rgb(var(--color-foreground));
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   font-weight: 600;
-  letter-spacing: 0.1rem;
+  letter-spacing: 0.08rem;
   line-height: 1.2;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
@@ -4113,7 +4147,7 @@ option-menu {
 }
 
 .product .option-menu__summary .icon-caret {
-  right: 1.8rem;
+  right: 1.5rem;
   top: calc(50% - 0.3rem);
   height: 0.6rem;
 }
@@ -4121,8 +4155,8 @@ option-menu {
 
 .product .option-menu__dot {
   flex: 0 0 auto;
-  width: 1.6rem;
-  height: 1.6rem;
+  width: 1.4rem;
+  height: 1.4rem;
   border-radius: 50%;
   background: var(--option-dot, transparent) center / cover no-repeat;
   box-shadow: inset 0 0 0 0.1rem rgba(var(--color-foreground), 0.18);
@@ -4151,14 +4185,14 @@ option-menu {
   position: relative;
   display: flex;
   align-items: center;
-  gap: 1.2rem;
-  min-height: 4.4rem;
+  gap: 1rem;
+  min-height: 4rem;
   margin: 0;
-  padding: 1rem 4.8rem 1rem 1.6rem;
+  padding: 0.8rem 4rem 0.8rem 1.4rem;
   color: rgb(var(--color-foreground));
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   font-weight: 400;
-  letter-spacing: 0.1rem;
+  letter-spacing: 0.08rem;
   line-height: 1.2;
   cursor: pointer;
   user-select: none;
@@ -4179,7 +4213,7 @@ option-menu {
 .product .option-menu__list input[type='radio']:checked + .option-menu__item::after {
   content: '';
   position: absolute;
-  right: 1.9rem;
+  right: 1.6rem;
   top: 50%;
   width: 0.5rem;
   height: 1rem;
