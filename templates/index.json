@@ -528,6 +528,16 @@
         "layout": "list"
       }
     },
+    "custom_request": {
+      "type": "custom-request",
+      "settings": {
+        "color_scheme": "scheme-2",
+        "padding_top": 64,
+        "padding_bottom": 64,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
     "social_follow": {
       "type": "social-follow",
       "settings": {
@@ -620,6 +630,7 @@
     "silver_teaser",
     "new_arrivals",
     "atelier",
+    "custom_request",
     "review_cards",
     "social_follow",
     "newsletter"

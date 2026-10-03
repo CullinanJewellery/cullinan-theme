@@ -62,6 +62,20 @@ layout choices each tagged moonmagic / hestiahome.bg / our own call — and gets
 in the same pass as this file whenever a new section adds a token-level decision worth
 tracking, not saved up for later.
 
+**The formula has been lopsided, and the owner has said so (2026-10-04: "i like most of the things
+that we made but i feel like it is not mine because it looks on some parts to close to moonmagic").**
+Checked against their homepage that day: **all thirteen of our homepage sections had a twin on theirs,
+in the same order** (hero, facts and marquee, bestsellers, stones, categories, promises, the two
+banners, the story block, reviews, Instagram, newsletter). Theirs adds two more picture-and-text
+blocks, a second category row and a tree-planting block; ours had nothing theirs lacked until the
+Custom request band. The blush gradient, the greige band and the pink stars were measured off their
+site, Jost is hestiahome's face, and several headlines take their rhythm („Нашето сребро. Нашият
+блясък.“ is "Their stone. Their story."). The formula's third term, Cullinan's own requirements, has
+been the thin one. **Proposed, none of it decided**: the Custom request band (built, see Custom request
+section under Custom code) and the Identity directions board (a comparison page, same place), then an
+occasions row, a ring-size page and product data. **Nothing about colour or type changes until the
+owner chooses a direction.**
+
 Photography comes last. Build every image slot empty and make sure the layout holds when
 nothing is set. No placeholder graphics and no stock images. **AI-generated pictures are
 allowed:** the owner decided on 2026-09-15 to use them (the Контакти banner’s marble is one),
@@ -418,7 +432,8 @@ Rules that matter here:
     (`54jigitxu7tro3gx`) began answering HTTP 410 with Shopify's generic "sell online" page, in the
     browser pane and from `curl` alike. Everything pushed before that was checked live; the homepage
     story and reviews work and the shorter За нас, pushed after, are **unverified on a page** until the
-    owner sends a new link.
+    owner sends a new link. **The custom-request band (2026-10-04) is unverified on a page too, and its form has
+    never sent a message.**
   - **A pushed asset can be checked without any preview link.** The draft theme (id 2) serves its
     files publicly, with no password, at `https://2fp38p-az.myshopify.com/cdn/shop/t/2/assets/<file>`:
     a new file answers 200 within seconds of a push and 404 before, and **a changed file must be read
@@ -3698,6 +3713,105 @@ Anything of ours that is not a Dawn setting lives in these two places:
     cannot be checked that way**: if the homepage still shows three story bands and no reviews row on
     a new preview link, the template was refused or dropped, and re-sending it with one byte changed
     is the first thing to try (see Wait for one push to reach the preview before sending the next).
+- **Custom request section.** `sections/custom-request.liquid` with `assets/section-custom-request.css`
+  (2026-10-04, the owner's "go" on the honest-opinion round). On the homepage between the story band and
+  the reviews row: „Не виждате своето? Ще го направим.“, two sentences and a short form.
+  - **Why it exists.** About fifty pieces will be online and the atelier has made far more since 1991, so the
+    one thing a catalogue-only brand cannot offer is "tell us what you are looking for". **It has no twin on
+    moonmagic's homepage**: their nearest block, "Made for you", is an image-with-text section (read off their
+    section list on 2026-10-04). So it is built only from the site's own parts -- the atelier's eyebrow, the
+    heading size of every other homepage band (26 to 40px, capitals), Dawn's field styles and the Контакти
+    form's button measures -- and it is the first step away from the twin homepage (see How we work).
+  - **The words**, defaults in the schema: eyebrow „Изработка по поръчка“, heading „Не виждате своето? Ще го
+    направим.“, text „Тук показваме само малка част от моделите на ателието. Кажете ни какво търсите — друг
+    камък, друг метал, друг размер или бижу, което сте виждали — и ще ви отговорим.“, button „Изпратете
+    запитване“, thank-you „Благодарим ви. Ще ви отговорим възможно най-скоро.“. **Every claim is one the site
+    already makes**: the atelier has worked since 1991, and "a piece shown here can be made with another stone"
+    is the old site's own sentence on nearly every product. **No number of designs is printed**: "about 4,000"
+    is the owner's figure in the brief at the top of this file, but the old site lists 2,038 products, so the
+    text is a setting for the owner to add a figure once it is one to stand behind. **The heading promises "we
+    will make it"**, the wording the owner agreed to when saying go; the text under it promises only an answer.
+    If some requests cannot be made, „Ще опитаме“ or „Ще ви кажем дали можем“ is the softer heading.
+  - **The form is Shopify's own contact form**, so a message reaches the store's email exactly as the
+    Контакти form's does and there is no new backend. **Shopify's contact form cannot carry an attachment**,
+    so a picture goes by email, Instagram or Facebook: a line under the words with up to three links, each
+    printed only when it is set (the email is a section setting defaulting to the footer's address; the two
+    social links come from Theme settings > Social media). Fields: name, email (required), phone (optional) and
+    „Какво търсите?“ (required), with Shopify's **standard keys** (`contact[name]`, `contact[email]`,
+    `contact[phone]`, `contact[body]`) so a refused form keeps what was typed. The Контакти form uses Bulgarian
+    custom keys instead (chosen so the notification email reads in Bulgarian) and keeps only the email on a
+    refusal. Two hidden custom fields tell the owner which form it was: `contact[Тема]` = „Изработка по
+    поръчка“ and, on a product page only, `contact[Бижу]` = the piece's title and address. A refused form
+    shows the Контакти form's own sentence („Моля, въведете валиден имейл адрес.“); a sent one replaces the
+    fields with the thank-you, in a `role="status"` paragraph that takes focus.
+  - **The privacy link** (`shop.privacy_policy`) prints only when the shop has a privacy policy page, so it
+    can never point nowhere, and it says nothing about the data: no legal text was written (Working
+    agreements). **Budget, deadline and an upload field were left out on purpose**: each is friction on a
+    first message, and the upload cannot work (above).
+  - **Where and what colour**: key `custom_request`, directly after `atelier` and before `review_cards`;
+    scheme-2 (soft stone), 64px of padding and no margin. The story band's own 40px bottom margin is the gap
+    above it, which matters: stone and greige are three levels apart, so without that strip the two would
+    read as one band. **It is reusable**: dragged onto a product page it adds the piece's name to the message,
+    which is the "Въпрос за това бижу?" idea; onto a collection page or Контакти it just asks. **Not tried: a
+    page holding two contact forms** (Контакти's own and this one), where Shopify may show one form's
+    thank-you in both.
+  - **Layout.** From 990px the words (5fr) and the form (6fr) sit side by side, 8rem apart, vertically centred;
+    below that, one column with the form capped at 64rem; the two top fields side by side from 750px. The
+    button takes the scheme's own button colour (black on scheme-2), a pill from the shared setting, 6.4rem and
+    14px capitals on a computer, 5.4rem and 12px at full width on a phone, dropping to an outline on hover, tap
+    and focus with the site's lift. It is not Dawn's `.button`, whose own size (5.5rem / 2.2rem) is far too big
+    for a form.
+  - **Tested without a preview link.** The real Liquid rendered by liquidjs in every state that matters
+    (default, thanked, refused, on a product page, each optional piece off, a heading with markup in it; 27
+    checks, including the schema's steps and that every setting the markup reads exists), and a local copy of
+    the homepage at 1440, 1100 and 375px. At 1440 the band is 1425 x 499, the words start at x 63 (the logo's
+    own left edge), the heading is 40px / 550, the fields 325 x 47 and 665 x 47 (the message 665 x 102) and the
+    button 300 x 64. At 375 the page is exactly 375 wide, the button 345 x 54 and the form 345 wide. The
+    stylesheet answered 200 on the store's CDN path eight seconds after its push.
+  - **Pushed in two steps**: the section and its stylesheet at 01:16 (`8426698`), `templates/index.json` and
+    these notes at about 01:29, 13 minutes later (the validator lag, see Design tokens).
+    **Not seen on a real page, and the form has never sent a message**: the preview link had expired. On the
+    next link, look at the homepage (the band between the story and the reviews) and **send one test message
+    from it and check the store's inbox** -- the Контакти form has never had one either. If the band is
+    missing, `templates/index.json` was refused or dropped: re-send it with one byte changed.
+- **Identity directions board.** An Artifact, not a theme file: https://claude.ai/artifact/8AYRdcfQui3Er5yRcVZpBD
+  (2026-10-04, private). It exists so the owner can choose by looking rather than imagining: today's homepage
+  and three directions, each a colour system plus a heading face, drawn on a miniature of the real homepage
+  (eight of the thirteen sections, the Custom request band included) with the owner's own test pieces, their
+  logo and the site's real Bulgarian words. Switches: look, heading font (the look's own or Jost), case (the
+  look's own, capitals or sentence case), the rope line, computer or phone. A "your pick" line states the
+  choice in words to paste into chat. **The source** is `board-src.html` and `build.mjs` in the session
+  scratchpad, not in the repository; the published page is the record.
+  - **The three directions.** All keep the logo, the structure and Jost 400 for body text. **A · Диамант**:
+    cold and clear, from the colourless Cullinan; page `#F8F9FA`, band `#EDF0F3`, ink `#1B2129`, buttons navy
+    `#1B2A3B`, stars champagne `#B08D57`; Forum 400 in capitals. **B · Изумруд**: a jeweller's-box green; page
+    `#F7F8F4`, band `#E7EDE4`, ink `#17231D`, buttons emerald `#1F4D3A`, a deep emerald banner (`#1F4D3A` to
+    `#173B2C`), stars antique gold `#B0914F`; Cormorant Garamond 600 in sentence case at 1.2 times the size (its
+    x-height is small). **C · Мрамор**: marble and rose gold; page `#FBF8F6`, band `#F3EBE6`, ink `#2A1E1A`,
+    buttons rosewood `#6E3B30`, stars the owner's own rose-gold swatch `#B76E79`; Prata 400 in sentence case.
+    **Every pairing in all three is 8.5:1 or better** (computed from the tokens whenever the board is built).
+    Today's hero button, white on `#E63946`, is **4.2:1**, which passes only as large text.
+  - **What the board found, worth keeping whichever look is chosen.** **The logo** (`cullinan-logo-900.png`,
+    900 x 237, transparent) is a heavy black retro brush script, and it is the most ownable thing on the site.
+    It cannot be recoloured, so the header stays on a light ground in every look; on a coloured box it goes
+    white with `filter: invert(1)`. **A rope motif** runs through the owner's own pieces -- the ring's twisted
+    band and the pendant's rope frame -- and the board draws it as a thin line between bands (a two-strand wave
+    as a CSS mask in the accent colour). It is a proposal, not built. **The earrings carry a green stone**,
+    which is part of why B is not arbitrary. **The product pictures**: the yellow-gold ring render
+    (`2_4_3375.png`) looks like it comes from the owner's own 3D model; the rose and white variants are
+    ChatGPT's (their file names say so); the ring's second picture (`40B9DBF8...jpg`) has the logo and a slogan
+    burned in, which the first rule here forbids. **All of them are opaque with white backgrounds**, so a tinted
+    band shows their edges; real photographs will not.
+  - **The recommendation on the board is B, Cormorant, sentence case, rope on**: the furthest from moonmagic,
+    grown from colours the owner chose (the matcha and the moss green) and from the stone in the earrings, and
+    gold glows against deep green. A suits white gold and silver; C is the smallest step and still reads close
+    to pink. **The hero button** is red today at the owner's explicit instruction; each look gives it its own
+    colour on the board, and the red can stay.
+  - **Applying a look** is one pass: the eight colour schemes in `config/settings_data.json`, the colour
+    literals in `assets/crown.css` (the blush gradient, the greige, the pink stars, the taupe and brown
+    buttons), the heading face in `snippets/theme-fonts.liquid` with its Cyrillic woff2 files self-hosted in
+    `assets/` (see Type under Design tokens), and the Design System. **Nothing has been applied; the owner has
+    not chosen.**
 - **Customer reviews (Judge.me).** The owner installed Judge.me on its free plan and added its
   Review Widget on 2026-10-01 ("i did what you said"), by the steps given under Judge.me in
   Waiting on the Shopify admin. Shopify wrote three commits back; pulled before touching
@@ -4891,8 +5005,8 @@ Anything of ours that is not a Dawn setting lives in these two places:
 - Homepage, working top to bottom: announcement bar, header and hero are built; the product
   row is built; a second hero-style banner for the shop's own silver sits right after the
   benefits row (see Silver banner above), then one story band (the history, design and materials as three short facts;
-  see Atelier section above) and a row of customer reviews (see Reviews section) follow; the
-  newsletter is still Dawn's default.
+  see Atelier section above), the custom-request band (see Custom request section) and a row of
+  customer reviews (see Reviews section) follow; the newsletter is still Dawn's default.
 - Dawn's placeholder illustration has been removed from the hero. The empty image slot is an
   empty div, and Dawn's base.css hides every empty div (`div:empty { display: none }`). On
   phones crown.css shows it again as a flat stone square. **On desktop it is still hidden**,
