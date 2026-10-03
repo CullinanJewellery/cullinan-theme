@@ -22,6 +22,19 @@
       -%}
       <li>
         {%- if link.links != blank or visual_count > 0 -%}
+          {%- comment -%}
+            The picture panel of this menu word, if the header has a block for it
+            (snippets/header-mega-promo.liquid). Captured here, ahead of the <details>,
+            because the dropdown itself has to say it has one: the class
+            mega-menu__content--with-promo sets its minimum height and keeps the links clear
+            of the picture (assets/crown.css, "The picture at the right of the dropdown").
+            A menu word with a visual grid (visual_menu_item blocks) has no use for it.
+          {%- endcomment -%}
+          {%- capture mega_promo -%}
+            {%- if visual_count == 0 -%}
+              {%- render 'header-mega-promo', link: link, section: section -%}
+            {%- endif -%}
+          {%- endcapture -%}
           <header-menu>
             <details id="Details-HeaderMenu-{{ forloop.index }}" class="mega-menu">
               <summary
@@ -45,7 +58,7 @@
               </summary>
               <div
                 id="MegaMenu-Content-{{ forloop.index }}"
-                class="mega-menu__content color-{{ section.settings.menu_color_scheme }} gradient motion-reduce global-settings-popup"
+                class="mega-menu__content{% if visual_count == 0 %} mega-menu__content--links{% if mega_promo != blank %} mega-menu__content--with-promo{% endif %}{% endif %} color-{{ section.settings.menu_color_scheme }} gradient motion-reduce global-settings-popup"
                 tabindex="-1"
               >
                 {%- if visual_count > 0 -%}
@@ -55,17 +68,14 @@
                 {%- else -%}
 
                 {%- comment -%}
-                  The links and, to their right, the picture panel of this menu item if the header
-                  has one for it (snippets/header-mega-promo.liquid). They share one body so the
-                  picture sits at the right edge whether the menu has one level of links or two;
-                  before 2026-10-03 the panel was a list item inside the links' own grid, which a
-                  one-level menu (Пръстени: Дамски, Мъжки) draws as a plain block, so the panel
-                  would have fallen below the links instead.
+                  The links, as columns in a row (assets/crown.css, "Text-column mega menu"), and
+                  after them, outside the page-width body, the picture panel captured above. It is
+                  placed against the dropdown's own corner, so it has to be a child of the dropdown
+                  and not of the body: the body stops at the page's width, the corner is the page's
+                  edge. Before 2026-10-03 the panel was a list item inside the links' own grid, then
+                  a column of a grid in the body, which kept it 62px inside the edge.
                 {%- endcomment -%}
-                {%- capture mega_promo -%}
-                  {%- render 'header-mega-promo', link: link, section: section -%}
-                {%- endcapture -%}
-                <div class="mega-menu__body page-width{% if mega_promo != blank %} mega-menu__body--with-promo{% endif %}">
+                <div class="mega-menu__body page-width">
                 <ul
                   class="mega-menu__list{% if link.levels == 1 %} mega-menu__list--condensed{% endif %}"
                   role="list"
@@ -104,8 +114,8 @@
                     </li>
                   {%- endfor -%}
                 </ul>
-                {{ mega_promo }}
                 </div>
+                {{ mega_promo }}
 
                 {%- endif -%}
               </div>

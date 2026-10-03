@@ -422,12 +422,20 @@ html {
 
 /* Bold at the owner's request. 600 from 2026-09-14, when 700 outweighed the
    spaced-capital shop name beside it; 700 since 2026-09-15, when the name
-   became a logo image and the owner asked for the words bold again. */
+   became a logo image and the owner asked for the words bold again.
+
+   Half as bold again since 2026-10-03 ("we can bold the black navigation arrows
+   and the text by 50%"). The Jost files stop at 700, so the extra weight is a
+   stroke in the word's own colour round each letter: 0.075em, which is 0.94px at
+   this size and adds about half again to the ink of a 700 capital (measured on
+   the canvas at 12.5px: 0.5px adds 27%, 0.8px 43%, 1px 54%). `currentcolor`
+   means it follows the word from three-quarters black to black on hover. */
 .header__inline-menu .header__menu-item {
   font-size: 1.25rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+  -webkit-text-stroke: 0.075em currentcolor;
 }
 
 /* ---------------------------------------------------------------------------
@@ -468,8 +476,9 @@ html {
 /* The arrow beside a menu word that opens a dropdown: the site's own, a thin chevron
    that flattens into a line while the dropdown is open (snippets/icon-accordion-caret
    .liquid, "The accordion arrow" below), in place of Dawn's solid caret. 10 x 6px, the
-   size the old one was, with a 1.2px stroke (the accordions' is 1.5px) so it sits
-   quietly beside 12.5px bold capitals. Dawn turns the whole icon over on open
+   size the old one was, with a 1.8px stroke (the accordions' is 1.5px; it was 1.2px
+   until 2026-10-03, when the owner asked for the arrows half as bold again) so it
+   holds its own beside the 12.5px capitals. Dawn turns the whole icon over on open
    (`details[open] > .header__menu-item .icon-caret`); the wings flatten instead, so
    that turn is cancelled. */
 .header__inline-menu .header__menu-item .icon-caret.cj-caret {
@@ -480,8 +489,9 @@ html {
      chevron, not the box, to sit centred beside the capitals (measured against the
      label's cap height: 76.65 against 76.8). The old rules that lift the label's own
      <span> onto the logo's lettering (relative, top .8rem) caught this <span> too -- the
-     arrow came out 8px up and 8px left, on top of the last letter -- and now skip it
-     with :not(.cj-caret). */
+     arrow came out 8px up and 8px left, on top of the last letter -- and now reach only
+     the label (`> span:not(.cj-caret)`, below), which also frees the two wing <span>s
+     inside the arrow that the descendant form had silently collapsed. */
   top: calc(50% - 0.45rem);
 }
 
@@ -489,9 +499,43 @@ html {
   transform: none;
 }
 
+/* `top` is half the thickness above the box's middle, so the stroke stays on the same
+   centre line as it grows from 1.2px to 1.8px. */
 .header__inline-menu .header__menu-item .cj-caret__wing {
-  top: calc(50% - 0.06rem);
-  height: 0.12rem;
+  top: calc(50% - 0.09rem);
+  height: 0.18rem;
+}
+
+/* The words and their arrow lift a little (0.25rem, the buttons' own lift, after
+   hestiahome) under the cursor and on keyboard focus, and stay lifted while their
+   dropdown is open: the owner, 2026-10-03, "make them go a little bit up when you click
+   on them and they become black as they are now".
+
+   The lift is on the inner text and on the arrow, never on the summary: a box that
+   moves out from under a still cursor flickers between hover and not, and the summary
+   does not move. `translate` rather than `transform` because the arrow's wings and the
+   old turn-over rule already use `transform`. Colour is not gated, the lift is: under
+   reduced motion the words only change colour, and without a real pointer
+   (`hover: hover`) a tap does not leave a word stuck up. */
+@media (prefers-reduced-motion: no-preference) {
+  .header__inline-menu .header__menu-item > span:not(.cj-caret),
+  .header__inline-menu .header__menu-item .icon-caret.cj-caret {
+    transition: translate 0.2s ease;
+  }
+
+  .header__inline-menu .header__menu-item:focus-visible > span:not(.cj-caret),
+  .header__inline-menu .header__menu-item:focus-visible .icon-caret.cj-caret,
+  .header__inline-menu details[open] > .header__menu-item > span:not(.cj-caret),
+  .header__inline-menu details[open] > .header__menu-item .icon-caret.cj-caret {
+    translate: 0 -0.25rem;
+  }
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .header__inline-menu .header__menu-item:hover > span:not(.cj-caret),
+  .header__inline-menu .header__menu-item:hover .icon-caret.cj-caret {
+    translate: 0 -0.25rem;
+  }
 }
 
 /*
@@ -508,7 +552,12 @@ html {
   top: 0.2rem;
 }
 
-.header__inline-menu .header__menu-item span:not(.cj-caret) {
+/* The label only: `>` and not a descendant, because the arrow inside the same link is
+   a <span> (.cj-caret) holding two more <span>s (its wings), and a descendant rule
+   reaches those too -- 2026-10-03: they were set `position: relative`, which collapsed
+   both to 0 x 0 and left no arrow at all, on the live site since the arrow was
+   introduced. `:not(.cj-caret)` alone only skipped the arrow's own box. */
+.header__inline-menu .header__menu-item > span:not(.cj-caret) {
   position: relative;
   top: 0.1rem;
 }
@@ -535,8 +584,8 @@ html {
   icons, at the far end, stay centred on the bar. Re-measure if the logo, its
   width or the menu size changes.
 */
-.header__heading-link:has(.header__heading-logo) ~ .header__inline-menu .header__menu-item span:not(.cj-caret),
-.header__heading:has(.header__heading-logo) ~ .header__inline-menu .header__menu-item span:not(.cj-caret) {
+.header__heading-link:has(.header__heading-logo) ~ .header__inline-menu .header__menu-item > span:not(.cj-caret),
+.header__heading:has(.header__heading-logo) ~ .header__inline-menu .header__menu-item > span:not(.cj-caret) {
   top: 0.8rem;
 }
 
@@ -546,17 +595,15 @@ html {
 }
 
 /*
-  Bolder header icons -- search, account, cart, and the menu button on phones
-  (2026-09-15, at the owner's request). Dawn draws them as filled outlines
-  about 1px thick; a stroke of the same colour round each shape adds about 1px
-  more. Checked side by side at 0.5 and 0.9: 0.9 reads as bold without closing
-  the bag's handle or the magnifier's ring.
+  The search, profile and bag icons are Dawn's own thin outlines again
+  (2026-10-03, the owner: "the cart the icon for you profile and the search icon
+  i don't want them bold"). From 2026-09-15 a stroke of 0.9 in the icon colour
+  ran round each shape, about 1px more than Dawn's outline; that rule is gone.
+  It only ever reached these three: `.header__icon .svg-wrapper svg path` needs a
+  .svg-wrapper, and the menu button's two SVGs (hamburger, close) are inlined
+  without one, so the menu button was never bolded -- the notes that said it was
+  were wrong -- and nothing is left to change there.
 */
-.header__icon .svg-wrapper svg path {
-  stroke: currentColor;
-  stroke-width: 0.9;
-  stroke-linejoin: round;
-}
 /*
   A bold pink line under the search, profile and bag icons on hover, at the
   owner's request (2026-10-01). #E6BAB9 is moonmagic's own blush pink, read off their
@@ -1421,22 +1468,84 @@ html {
 
    Measured off the reference: column headers in small capitals, items at 16px
    on a 22.4px line with 6px between them, and the first item of a column set
-   bold. The image panel on the right is a mega_menu_promo block, since Shopify
-   menu items cannot carry images.
+   bold. The picture panel on the right is a mega_menu_promo block, since Shopify
+   menu items cannot carry images; it has its own section below.
+
+   Rewritten 2026-10-03 (the owner: "position better the collection text it look
+   alwful for compouter ... for the colection i want them to go for a computer like
+   in moonmagic not in a colum but next to each other"). moonmagic's Rings dropdown,
+   re-measured at 1440 (a 1425px panel, 403px tall): the text starts at the page's
+   left gutter, 20px in, in COLUMNS SIDE BY SIDE 200px apart -- CATEGORIES,
+   COLLECTIONS, MATERIAL -- each a heading of 16px / 600 capitals (1.3px of tracking,
+   a 20px line, 3px of padding and 15px of air under it) over its links (16px / 400
+   on a 22.4px line, 6px apart); the first heading sits 55px below the panel's top.
+
+   Ours has the same skeleton in our own measures, and draws it the same whether the
+   menu has one level of links (Пръстени: Дамски, Мъжки -- each link is a column
+   heading with nothing under it yet) or two (headings with links below, as theirs):
+   - the links are columns in a row, 20rem apart, from the page's own left edge,
+     which is the logo's; a longer list wraps to a second row of columns;
+   - the headings are 16px / 700 capitals at 0.08em on a 20px line, 3px of padding and
+     15px of air under them, the first 55px below the panel's top;
+   - the panel keeps no padding of its own, because the picture sits flush in its
+     corner, so the body carries the 55px above and 40px below.
+
+   Before this the links were a six-column grid (two levels) or a plain stacked block
+   (one level, Dawn's `.mega-menu .mega-menu__list--condensed { display: block }`),
+   under the browser's own indent, 15px/500 capitals in a 420px panel: two small words
+   in a corner of a mostly empty strip. Dawn's rules here are one or two classes deep and
+   load from inside the header section, after this file, so every rule below carries
+   `.mega-menu .mega-menu__body` to win on specificity, not on order.
    --------------------------------------------------------------------------- */
 
+/* The visual menu (snippets/header-visual-menu.liquid) is a `.mega-menu__list` too, and
+   this is its spacing; the text columns below take over inside `.mega-menu__body`. */
 .mega-menu__list {
   gap: 2.4rem 4rem;
   align-items: start;
 }
 
-/* Column header — the second-level link. */
-.mega-menu__link--level-2 {
-  font-size: 1.4rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
+/* Dawn pads the panel 3rem top and bottom; here the body does it (above), because the
+   picture is flush in the panel's corner. `--links` is the text-column panel, printed
+   by snippets/header-mega-menu.liquid, so the visual menu keeps Dawn's own padding. The
+   extra class is so this wins over component-mega-menu.css, which loads later. */
+.mega-menu .mega-menu__content--links {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.mega-menu .mega-menu__body {
+  padding-top: 5.5rem;
+  padding-bottom: 4rem;
+}
+
+.mega-menu .mega-menu__body .mega-menu__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 3rem 0;
+  margin: 0;
+  padding: 0;
+}
+
+.mega-menu .mega-menu__body .mega-menu__list > li {
+  flex: 0 0 20rem;
+  min-width: 0;
+  padding-right: 2rem;
+}
+
+/* A column's heading: the second-level link. It is navigation text like the menu words
+   above it, so it takes the same half-again weight: the same 0.075em stroke in its own
+   colour (see the menu words, 2026-10-03: "bold ... the text by 50%"). */
+.mega-menu .mega-menu__body .mega-menu__link--level-2 {
+  margin-bottom: 1.5rem;
+  padding: 0 0 0.3rem;
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 2rem;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  margin-bottom: 1.2rem;
+  -webkit-text-stroke: 0.075em currentcolor;
 }
 
 /* Items within a column. */
@@ -1453,78 +1562,31 @@ html {
   font-weight: 700;
 }
 
-/* ---------------------------------------------------------------------------
-   A picture at the right of the dropdown (2026-10-03, the owner: "you have to
-   [put a] picture in the right corner ... like in moon magic i want the same")
-
-   moonmagic's Rings dropdown, measured at 1440: a full-width white panel of 403px
-   with a 1px hairline, three text columns at the left (16px/600 capitals, the
-   links under them), and a picture panel on the right edge, 390 x 401, flush to the
-   panel's top, right and bottom, with its caption on the photograph in white capitals
-   and an arrow at each side to move to a second picture. Theirs opens on hover.
-
-   Ours keeps Dawn's click and keeps the picture inside the page's own edges, square
-   like every picture here, with the caption in live text *beneath* it: words lie over
-   a picture on this site only where CLAUDE.md names the exception, and moonmagic's
-   caption on the photograph is not one of them. One picture per menu item, from the
-   header's "Mega menu image panel" blocks; an empty flat panel until one is uploaded,
-   never a placeholder graphic. The panel's height is the picture's, so the dropdown is
-   about 400px tall, the same as theirs, whatever the number of links.
-
-   The picture used to be a list item inside the links' grid, which reached the right
-   edge only when the menu had two levels; the dropdown with one level (Пръстени:
-   Дамски, Мъжки) is a plain block and would have dropped it under the links. The links
-   and the picture now share one grid (.mega-menu__body, snippets/header-mega-menu
-   .liquid). Without a picture the body is a single column, as before.
-
-   The picture is 22-32rem wide (24vw between), so it is drawn from 990px up, where the
-   inline menu starts; it was hidden below 1200px before.
-   --------------------------------------------------------------------------- */
-
-/* Dawn pads the panel 3rem top and bottom; the picture wants a little more air. The
-   extra class is only so this wins over component-mega-menu.css, which loads from
-   inside the header section, after this file. */
-.mega-menu .mega-menu__content {
-  padding-top: 3.2rem;
-  padding-bottom: 3.2rem;
-}
-
-.mega-menu__body {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  align-items: start;
-}
-
-.mega-menu__body--with-promo {
-  grid-template-columns: minmax(0, 1fr) clamp(22rem, 24vw, 32rem);
-  column-gap: 6rem;
-}
-
-/* The list no longer carries `page-width`, whose own padding used to override the
-   browser's 40px indent on a <ul>; with the class gone the indent came back and set
-   the links 40px in from the page's left edge. */
-.mega-menu__body .mega-menu__list {
-  margin: 0;
-  padding: 0;
-}
-
-/* A one-level dropdown's links ARE the content, not column headers over a list, so
-   they are set as links: a size up from the headers, regular-weight capitals, with air
-   between. Dawn's own `.mega-menu__list--condensed .mega-menu__link` (normal weight) is
-   two classes deep, hence the third. */
-.mega-menu .mega-menu__list--condensed .mega-menu__link--level-2 {
-  margin-bottom: 0;
-  padding: 0.9rem 0;
-  font-size: 1.5rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-}
-
 /* The dropdown's links answer the cursor the way the menu words above them do: no
-   underline, black. At rest they are three quarters of the text colour. */
+   underline, pure black, and a small lift (0.25rem, the buttons' own; the owner,
+   2026-10-03: "make them go a little bit up ... and they become black as they are
+   now"). At rest they are three quarters of the text colour.
+
+   A link is only as wide as its words, so the lift answers the words and not the empty
+   cell beside them. The invisible strip under it (`::after`, 0.4rem) is the lift's
+   safety: it moves up with the link and still covers the ground the link left, so a
+   cursor resting on the lowest pixels cannot flicker between lifted and not. The lift
+   is the only part that waits for a real pointer and for motion to be wanted; the colour
+   does not. */
 .mega-menu__content .mega-menu__link {
+  position: relative;
+  width: fit-content;
   text-decoration: none;
   transition: color 0.2s ease;
+}
+
+.mega-menu__content .mega-menu__link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  height: 0.4rem;
 }
 
 .mega-menu__content .mega-menu__link:hover,
@@ -1535,8 +1597,77 @@ html {
   text-decoration: none;
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  .mega-menu__content .mega-menu__link {
+    transition: color 0.2s ease, translate 0.2s ease;
+  }
+
+  .mega-menu__content .mega-menu__link:focus-visible {
+    translate: 0 -0.25rem;
+  }
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .mega-menu__content .mega-menu__link:hover {
+    translate: 0 -0.25rem;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   The picture at the right of the dropdown, in the corner (2026-10-03, the owner:
+   "i want the pictures boxes we put for a computer for the colections to be align
+   in the right corner", after "you have to [put a] picture in the right corner ...
+   like in moon magic i want the same")
+
+   moonmagic's, measured at 1440: 390 x 401, flush to the panel's top, to its right
+   edge -- the page's own edge -- and to its bottom, its caption on the photograph in
+   white capitals, an arrow at each side to move to a second picture. Theirs opens on
+   hover.
+
+   Ours is a square flush to the panel's top and to the page's right edge, where it
+   used to float inside the page width, 62px short of the edge and 32px under the bar.
+   24-36rem wide (25vw between: 360px at 1440, theirs 390), with its label in live text
+   in a 44px strip BENEATH it that is part of the panel, so the panel is the picture and
+   its strip tall: 404px at 1440, theirs 403. Words lie over a picture on this site only
+   where CLAUDE.md names the exception, and moonmagic's caption on the photograph is not
+   one of them -- hence the strip, and no corner at the bottom. An empty flat panel until
+   a picture is uploaded (header, "Mega menu image panel"), never a placeholder graphic;
+   one picture per menu word; it opens on a click, as Dawn's menu does.
+
+   How it sits. `.mega-menu__content` is Dawn's full-width absolute panel, so a child
+   placed absolutely with `right: 0` is at the page's true edge whatever the page width;
+   the picture no longer takes part in the panel's height, so `min-height` is the picture
+   and strip together. The links keep clear of it with a right padding of the picture's
+   width plus 4rem of air, less the page-width margin that already lies between the body
+   and the edge (nothing up to 1400px, half the surplus above). `--with-promo` is printed
+   by snippets/header-mega-menu.liquid only when the menu word has a picture block, so
+   without one the dropdown is just the links.
+
+   Drawn from 990px up, where the inline menu starts.
+   --------------------------------------------------------------------------- */
+/* The panel's own border is inside its min-height (border-box), and the picture is placed
+   in the padding box, so the minimum has to include the border or the picture overflows
+   by that 1px and `overflow-y: auto` draws a 15px scrollbar down the panel, which also
+   moves the picture 15px in from the edge. Dawn borders the bottom, and the top as well
+   on a header without a bottom rule, hence two borders; the spare pixel is invisible. */
+.mega-menu__content--with-promo {
+  --mega-promo-size: clamp(24rem, 25vw, 36rem);
+  min-height: calc(var(--mega-promo-size) + 4.4rem + 2 * var(--popup-border-width, 1px));
+}
+
+.mega-menu .mega-menu__content--with-promo .mega-menu__body {
+  padding-right: max(5rem, calc(var(--mega-promo-size) + 4rem - max(0px, (100% - var(--page-width)) / 2)));
+}
+
 .mega-menu__promo {
   margin: 0;
+}
+
+.mega-menu__content--with-promo .mega-menu__promo {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: var(--mega-promo-size);
 }
 
 .mega-menu__promo-link {
@@ -1560,20 +1691,45 @@ html {
   background-color: rgb(242 240 236);
 }
 
+/* A strip of its own, 44px: the line is centred in it by its own line height, and a
+   label too long for the picture's width is cut with an ellipsis rather than wrapped,
+   which would push the panel past its height. */
 .mega-menu__promo-label {
   display: block;
-  margin-top: 1.2rem;
+  height: 4.4rem;
+  margin: 0;
+  overflow: hidden;
   color: rgba(var(--color-foreground), 0.75);
   font-size: 1.3rem;
   font-weight: 600;
+  line-height: 4.4rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   transition: color 0.2s ease;
 }
 
 .mega-menu__promo-link:hover .mega-menu__promo-label,
 .mega-menu__promo-link:focus-visible .mega-menu__promo-label {
   color: rgb(0 0 0);
+}
+
+/* The label lifts like every other word in the dropdown. */
+@media (prefers-reduced-motion: no-preference) {
+  .mega-menu__promo-label {
+    transition: color 0.2s ease, translate 0.2s ease;
+  }
+
+  .mega-menu__promo-link:focus-visible .mega-menu__promo-label {
+    translate: 0 -0.25rem;
+  }
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .mega-menu__promo-link:hover .mega-menu__promo-label {
+    translate: 0 -0.25rem;
+  }
 }
 
 /* ---------------------------------------------------------------------------

@@ -9,7 +9,9 @@
   the links' own list, which only reached the right edge when the menu had two
   levels; a menu with one level of links (Пръстени: Дамски, Мъжки) is drawn as a
   plain block and the panel would have fallen under the links. snippets/header-
-  mega-menu.liquid puts it beside the list in a body of its own.
+  mega-menu.liquid prints it after the links' body, as a child of the dropdown
+  itself, and assets/crown.css sets it in the dropdown's top right corner, flush
+  to the page's edge (the same day, the owner: "align in the right corner").
 
   The picture is an empty flat panel until one is uploaded -- no placeholder
   graphic, no stock image -- so the dropdown is finished before the photography
@@ -42,7 +44,7 @@
               | image_tag:
                 class: 'mega-menu__promo-image',
                 widths: '300, 450, 600, 800',
-                sizes: '(min-width: 1200px) 32rem, 24rem',
+                sizes: '(min-width: 1440px) 360px, 25vw',
                 loading: 'lazy',
                 alt: ''
             }}
