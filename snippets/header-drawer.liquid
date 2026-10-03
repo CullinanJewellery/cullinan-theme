@@ -185,6 +185,52 @@
                 {%- endfor -%}
               </ul>
             {%- endif -%}
+            {%- comment -%}
+              Cullinan (2026-10-03, the owner: "i don't know if they put pictures on the phone but
+              if they put somewhere we need that too"). moonmagic does: not inside the submenus,
+              which are links only, but as a row of square picture tiles under the whole menu,
+              swiped sideways. The tiles are the same pictures the desktop dropdowns carry (the
+              header's "Mega menu image panel" blocks), one per block in block order. Each is an
+              empty flat square until a picture is uploaded; with no blocks the row is not drawn.
+            {%- endcomment -%}
+            {%- liquid
+              assign has_featured = false
+              for block in section.blocks
+                if block.type == 'mega_menu_promo'
+                  assign has_featured = true
+                  break
+                endif
+              endfor
+            -%}
+            {%- if has_featured -%}
+              <ul class="menu-drawer__featured list-unstyled" role="list">
+                {%- for block in section.blocks -%}
+                  {%- if block.type == 'mega_menu_promo' -%}
+                    <li class="menu-drawer__featured-item" {{ block.shopify_attributes }}>
+                      <a href="{{ block.settings.link | default: '#' }}" class="menu-drawer__featured-link">
+                        {%- if block.settings.image != blank -%}
+                          {{
+                            block.settings.image
+                            | image_url: width: 600
+                            | image_tag:
+                              class: 'menu-drawer__featured-image',
+                              widths: '240, 360, 480, 600',
+                              sizes: '60vw',
+                              loading: 'lazy',
+                              alt: ''
+                          }}
+                        {%- else -%}
+                          <span class="menu-drawer__featured-image menu-drawer__featured-image--empty" aria-hidden="true"></span>
+                        {%- endif -%}
+                        {%- if block.settings.label != blank -%}
+                          <span class="menu-drawer__featured-label">{{ block.settings.label | escape }}</span>
+                        {%- endif -%}
+                      </a>
+                    </li>
+                  {%- endif -%}
+                {%- endfor -%}
+              </ul>
+            {%- endif -%}
           </nav>
           <div class="menu-drawer__utility-links">
             {%- if show_country_selector or show_language_selector -%}

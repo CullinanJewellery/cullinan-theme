@@ -50,7 +50,29 @@
         "margin_bottom": 0,
         "padding_top": 12,
         "padding_bottom": 12
-      }
+      },
+      "blocks": {
+        "mega-promo-rings": {
+          "type": "mega_menu_promo",
+          "settings": {
+            "menu_item": "Пръстени",
+            "label": "Всички пръстени",
+            "link": "/collections/пръстени"
+          }
+        },
+        "mega-promo-bracelets": {
+          "type": "mega_menu_promo",
+          "settings": {
+            "menu_item": "Гривни",
+            "label": "Всички гривни",
+            "link": "/collections/гривни"
+          }
+        }
+      },
+      "block_order": [
+        "mega-promo-rings",
+        "mega-promo-bracelets"
+      ]
     }
   },
   "order": [

@@ -430,16 +430,60 @@ html {
   text-transform: uppercase;
 }
 
-/* Dawn underlines the current page. A thin rule sits better than a thick one. */
-.header__inline-menu .header__menu-item span {
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.5rem;
+/* ---------------------------------------------------------------------------
+   The menu words never underline (2026-10-03, the owner: "i don't like that they
+   underline ... i just want them to become black").
+
+   Dawn underlines them under the cursor, while their dropdown is open, and on the
+   page they belong to; this file kept the cursor's underline, thinner, until now.
+   The cue is colour instead. The words rest at three quarters of the text colour
+   and go pure black -- the same black the owner has asked for elsewhere -- under the
+   cursor, on keyboard focus, while a dropdown is open and on the current page, with
+   0.2s between the two.
+
+   Scoped to .header__inline-menu (three classes with :hover) so it beats Dawn's
+   `.header__menu-item:hover span` and its two `details[open]` rules whatever the
+   load order, and the dropdown's own links follow below, with the mega menu.
+   --------------------------------------------------------------------------- */
+.header__inline-menu .header__menu-item {
+  transition: color 0.2s ease;
 }
 
-.header__inline-menu .header__menu-item:hover span {
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.5rem;
+.header__inline-menu .header__menu-item:hover,
+.header__inline-menu .header__menu-item:focus-visible,
+.header__inline-menu details[open] > .header__menu-item,
+.header__inline-menu .header__active-menu-item {
+  color: rgb(0 0 0);
+}
+
+.header__inline-menu .header__menu-item span,
+.header__inline-menu .header__menu-item:hover span,
+.header__inline-menu details[open] > .header__menu-item,
+.header__inline-menu details[open]:hover > .header__menu-item,
+.header__inline-menu .header__active-menu-item,
+.header__inline-menu .header__menu-item:hover .header__active-menu-item {
+  text-decoration: none;
+}
+
+/* The arrow beside a menu word that opens a dropdown: the site's own, a thin chevron
+   that flattens into a line while the dropdown is open (snippets/icon-accordion-caret
+   .liquid, "The accordion arrow" below), in place of Dawn's solid caret. 10 x 6px, the
+   size the old one was, with a 1.2px stroke (the accordions' is 1.5px) so it sits
+   quietly beside 12.5px bold capitals. Dawn turns the whole icon over on open
+   (`details[open] > .header__menu-item .icon-caret`); the wings flatten instead, so
+   that turn is cancelled. */
+.header__inline-menu .header__menu-item .icon-caret.cj-caret {
+  width: 1rem;
+  height: 0.6rem;
+}
+
+.header__inline-menu details[open] > .header__menu-item .icon-caret.cj-caret {
+  transform: none;
+}
+
+.header__inline-menu .header__menu-item .cj-caret__wing {
+  top: calc(50% - 0.06rem);
+  height: 0.12rem;
 }
 
 /*
@@ -1401,10 +1445,82 @@ html {
   font-weight: 700;
 }
 
-/* The image panel occupies the last two of Dawn's six grid columns. */
+/* ---------------------------------------------------------------------------
+   A picture at the right of the dropdown (2026-10-03, the owner: "you have to
+   [put a] picture in the right corner ... like in moon magic i want the same")
+
+   moonmagic's Rings dropdown, measured at 1440: a full-width white panel of 403px
+   with a 1px hairline, three text columns at the left (16px/600 capitals, the
+   links under them), and a picture panel on the right edge, 390 x 401, flush to the
+   panel's top, right and bottom, with its caption on the photograph in white capitals
+   and an arrow at each side to move to a second picture. Theirs opens on hover.
+
+   Ours keeps Dawn's click and keeps the picture inside the page's own edges, square
+   like every picture here, with the caption in live text *beneath* it: words lie over
+   a picture on this site only where CLAUDE.md names the exception, and moonmagic's
+   caption on the photograph is not one of them. One picture per menu item, from the
+   header's "Mega menu image panel" blocks; an empty flat panel until one is uploaded,
+   never a placeholder graphic. The panel's height is the picture's, so the dropdown is
+   about 400px tall, the same as theirs, whatever the number of links.
+
+   The picture used to be a list item inside the links' grid, which reached the right
+   edge only when the menu had two levels; the dropdown with one level (Пръстени:
+   Дамски, Мъжки) is a plain block and would have dropped it under the links. The links
+   and the picture now share one grid (.mega-menu__body, snippets/header-mega-menu
+   .liquid). Without a picture the body is a single column, as before.
+
+   The picture is 22-32rem wide (24vw between), so it is drawn from 990px up, where the
+   inline menu starts; it was hidden below 1200px before.
+   --------------------------------------------------------------------------- */
+
+/* Dawn pads the panel 3rem top and bottom; the picture wants a little more air. The
+   extra class is only so this wins over component-mega-menu.css, which loads from
+   inside the header section, after this file. */
+.mega-menu .mega-menu__content {
+  padding-top: 3.2rem;
+  padding-bottom: 3.2rem;
+}
+
+.mega-menu__body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: start;
+}
+
+.mega-menu__body--with-promo {
+  grid-template-columns: minmax(0, 1fr) clamp(22rem, 24vw, 32rem);
+  column-gap: 6rem;
+}
+
+/* A one-level dropdown's links ARE the content, not column headers over a list, so
+   they are set as links: a size up from the headers, regular-weight capitals, with air
+   between. Dawn's own `.mega-menu__list--condensed .mega-menu__link` (normal weight) is
+   two classes deep, hence the third. */
+.mega-menu .mega-menu__list--condensed .mega-menu__link--level-2 {
+  margin-bottom: 0;
+  padding: 0.9rem 0;
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+}
+
+/* The dropdown's links answer the cursor the way the menu words above them do: no
+   underline, black. At rest they are three quarters of the text colour. */
+.mega-menu__content .mega-menu__link {
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.mega-menu__content .mega-menu__link:hover,
+.mega-menu__content .mega-menu__link:focus-visible,
+.mega-menu__content .mega-menu__link--active,
+.mega-menu__content .mega-menu__link--active:hover {
+  color: rgb(0 0 0);
+  text-decoration: none;
+}
+
 .mega-menu__promo {
-  grid-column: 5 / -1;
-  grid-row: 1 / -1;
+  margin: 0;
 }
 
 .mega-menu__promo-link {
@@ -1413,10 +1529,13 @@ html {
   color: rgb(var(--color-foreground));
 }
 
+/* `height: auto` is what lets aspect-ratio work: image_tag writes both a width and a
+   height attribute, and with both definite the ratio would be ignored. */
 .mega-menu__promo-image {
   display: block;
   width: 100%;
-  aspect-ratio: 39 / 43;
+  height: auto;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
 }
 
@@ -1425,27 +1544,80 @@ html {
   background-color: rgb(242 240 236);
 }
 
-/* The label sits beneath the image, not across it — see the rule in CLAUDE.md.
-   The reference lays its label over the photograph; we do not. */
 .mega-menu__promo-label {
   display: block;
   margin-top: 1.2rem;
+  color: rgba(var(--color-foreground), 0.75);
   font-size: 1.3rem;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  transition: color 0.2s ease;
 }
 
-.mega-menu__promo-link:hover .mega-menu__promo-label {
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 4px;
+.mega-menu__promo-link:hover .mega-menu__promo-label,
+.mega-menu__promo-link:focus-visible .mega-menu__promo-label {
+  color: rgb(0 0 0);
 }
 
-@media screen and (max-width: 1200px) {
-  .mega-menu__promo {
-    display: none;
-  }
+/* ---------------------------------------------------------------------------
+   The same pictures on a phone (2026-10-03)
+
+   moonmagic's phone menu has none inside its submenus, which are links only; it puts
+   them at the foot of the whole menu as a row of square tiles, 302px at 375, swiped
+   sideways, with an arrow pair above. Ours is the same row, under the menu and the
+   top bar's links: one tile per "Mega menu image panel" block, nearly the drawer's
+   width so the next one shows its edge, square, the live label beneath. Swiped, no
+   arrows. snippets/header-drawer.liquid draws it only when the header has such blocks.
+   --------------------------------------------------------------------------- */
+.menu-drawer__featured {
+  display: flex;
+  gap: 1.2rem;
+  margin: 2.4rem 0 0;
+  padding: 2rem 3rem 3rem;
+  list-style: none;
+  border-top: 1px solid rgba(var(--color-foreground), 0.08);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-padding-left: 3rem;
+  scrollbar-width: none;
+}
+
+.menu-drawer__featured::-webkit-scrollbar {
+  display: none;
+}
+
+.menu-drawer__featured-item {
+  flex: 0 0 calc(100% - 4.4rem);
+  scroll-snap-align: start;
+}
+
+.menu-drawer__featured-link {
+  display: block;
+  color: rgb(var(--color-foreground));
+  text-decoration: none;
+}
+
+.menu-drawer__featured-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.menu-drawer__featured-image--empty {
+  background-color: rgb(242 240 236);
+}
+
+.menu-drawer__featured-label {
+  display: block;
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
 /* --- Product card: detail line, swatches, discount ------------------------- */

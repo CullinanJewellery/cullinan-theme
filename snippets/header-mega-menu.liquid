@@ -35,7 +35,13 @@
                 >
                   {{- link.title | escape -}}
                 </span>
-                {{- 'icon-caret.svg' | inline_asset_content -}}
+                {%- comment -%}
+                  Cullinan (2026-10-03, the owner: "change the drop down arrow to something
+                  else or make it look better"). The same arrow as every other drop-down on
+                  the site: a thin chevron that flattens into a line while the menu is open
+                  (snippets/icon-accordion-caret.liquid), in place of Dawn's solid caret.
+                {%- endcomment -%}
+                {% render 'icon-accordion-caret' %}
               </summary>
               <div
                 id="MegaMenu-Content-{{ forloop.index }}"
@@ -48,8 +54,20 @@
 
                 {%- else -%}
 
+                {%- comment -%}
+                  The links and, to their right, the picture panel of this menu item if the header
+                  has one for it (snippets/header-mega-promo.liquid). They share one body so the
+                  picture sits at the right edge whether the menu has one level of links or two;
+                  before 2026-10-03 the panel was a list item inside the links' own grid, which a
+                  one-level menu (Пръстени: Дамски, Мъжки) draws as a plain block, so the panel
+                  would have fallen below the links instead.
+                {%- endcomment -%}
+                {%- capture mega_promo -%}
+                  {%- render 'header-mega-promo', link: link, section: section -%}
+                {%- endcapture -%}
+                <div class="mega-menu__body page-width{% if mega_promo != blank %} mega-menu__body--with-promo{% endif %}">
                 <ul
-                  class="mega-menu__list page-width{% if link.levels == 1 %} mega-menu__list--condensed{% endif %}"
+                  class="mega-menu__list{% if link.levels == 1 %} mega-menu__list--condensed{% endif %}"
                   role="list"
 
                 >
@@ -85,8 +103,9 @@
                       {%- endif -%}
                     </li>
                   {%- endfor -%}
-                  {%- render 'header-mega-promo', link: link, section: section -%}
                 </ul>
+                {{ mega_promo }}
+                </div>
 
                 {%- endif -%}
               </div>
