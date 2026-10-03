@@ -3915,6 +3915,13 @@ Anything of ours that is not a Dawn setting lives in these two places:
   - **Pushed in two steps**: the Prata files and the stylesheets first, then `config/settings_data.json`,
     `snippets/theme-fonts.liquid`, `templates/index.json` and these notes -- the snippet points at font files
     that must already exist, and a refused settings file would hold back everything pushed with it.
+    **`d87cde5` at 02:07 and `6d2cb27` at 02:10, 2m17s apart.** Step 1 was confirmed on the store's CDN path:
+    both font files answer 200 at their exact sizes (19,224 and 13,132 bytes) and the served stylesheets carry
+    every new colour and none of the old ones. **Step 2 cannot be read off the CDN** -- a settings file, a snippet
+    and a template are not served as assets -- so it is unverified: if the next preview link shows Jost
+    headings, black buttons or capitals in the three banner headings, step 2 was dropped (it has happened
+    seven times); re-send `config/settings_data.json`, `snippets/theme-fonts.liquid` and `templates/index.json`
+    with a byte changed in each, not all at once.
 - **Customer reviews (Judge.me).** The owner installed Judge.me on its free plan and added its
   Review Widget on 2026-10-01 ("i did what you said"), by the steps given under Judge.me in
   Waiting on the Shopify admin. Shopify wrote three commits back; pulled before touching
