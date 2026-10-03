@@ -1,0 +1,331 @@
+{{ 'section-custom-request.css' | asset_url | stylesheet_tag }}
+
+{%- comment -%}
+  "Не виждате своето? Ще го направим." -- a way to ask for a piece that is not in
+  the shop (2026-10-04, after the owner's go on the honest-opinion round). About
+  fifty pieces are online and the atelier has made far more since 1991, so the
+  thing a catalogue-only brand cannot offer is "tell us what you are looking for".
+
+  No twin on moonmagic's homepage: their nearest block, "Made for you", is an
+  image-with-text section. This is the first section here with no reference to
+  copy, so it takes only the site's own parts -- the eyebrow, the heading size of
+  every other homepage band, Dawn's field styles and the contact-methods button.
+
+  It is Shopify's own contact form, so a message arrives at the store's email
+  exactly as the Контакти form's does, and there is no new backend. Shopify's
+  contact form cannot carry an attachment, which is why a picture goes by email,
+  Instagram or Facebook (the three links under the words, each shown only when it
+  is set). The name, phone and message use Shopify's own keys, so a refused form
+  keeps what was typed; two hidden fields tell the owner which form it came from
+  and, on a product page, which piece.
+
+  Every claim in the default words is one the site already makes: the atelier has
+  worked since 1991, and a piece shown here "can be made with" another stone is
+  the old site's own sentence on nearly every product. No number of designs is
+  printed -- it is a setting for the owner to add once it is a figure to stand
+  behind. The privacy link only prints when the shop has a privacy policy page,
+  so it can never point nowhere, and says nothing about the data.
+{%- endcomment -%}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  .section-{{ section.id }}-margin {
+    margin-top: {{ section.settings.margin_top | times: 0.75 | round: 0 }}px;
+    margin-bottom: {{ section.settings.margin_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+
+    .section-{{ section.id }}-margin {
+      margin-top: {{ section.settings.margin_top }}px;
+      margin-bottom: {{ section.settings.margin_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+{%- liquid
+  assign form_id = 'CustomRequest-' | append: section.id
+  assign email = section.settings.email | strip
+  assign has_ways = false
+  if section.settings.show_ways
+    if email != blank or settings.social_instagram_link != blank or settings.social_facebook_link != blank
+      assign has_ways = true
+    endif
+  endif
+-%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-margin">
+  <div class="custom-request page-width section-{{ section.id }}-padding">
+    <div class="custom-request__intro">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="custom-request__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2 class="custom-request__heading">{{ section.settings.heading | escape }}</h2>
+      {%- endif -%}
+      {%- if section.settings.text != blank -%}
+        <p class="custom-request__text">{{ section.settings.text | escape }}</p>
+      {%- endif -%}
+
+      {%- if has_ways -%}
+        <div class="custom-request__ways">
+          <p class="custom-request__ways-label">Имате снимка? Изпратете ни я:</p>
+          <ul class="custom-request__ways-list" role="list">
+            {%- if email != blank -%}
+              <li>
+                <a href="mailto:{{ email | escape }}?subject={{ 'Изработка по поръчка' | url_encode }}">по имейл</a>
+              </li>
+            {%- endif -%}
+            {%- if settings.social_instagram_link != blank -%}
+              <li>
+                <a href="{{ settings.social_instagram_link }}" target="_blank" rel="noopener">в Instagram<span class="visually-hidden"> (отваря се в нов прозорец)</span></a>
+              </li>
+            {%- endif -%}
+            {%- if settings.social_facebook_link != blank -%}
+              <li>
+                <a href="{{ settings.social_facebook_link }}" target="_blank" rel="noopener">във Facebook<span class="visually-hidden"> (отваря се в нов прозорец)</span></a>
+              </li>
+            {%- endif -%}
+          </ul>
+        </div>
+      {%- endif -%}
+    </div>
+
+    {%- form 'contact', id: form_id, class: 'custom-request__form' -%}
+      {%- if form.posted_successfully? -%}
+        <p class="custom-request__status" role="status" tabindex="-1" autofocus>
+          {{- section.settings.success_message | escape -}}
+        </p>
+      {%- else -%}
+        {%- if form.errors -%}
+          <p class="custom-request__status custom-request__status--error" role="alert" tabindex="-1" autofocus>
+            {{- section.settings.error_message | escape -}}
+          </p>
+        {%- endif -%}
+
+        {%- comment -%}
+          Which form this came from, and on a product page which piece. They
+          arrive in the store's email as lines of their own.
+        {%- endcomment -%}
+        <input type="hidden" name="contact[Тема]" value="Изработка по поръчка">
+        {%- if product -%}
+          <input type="hidden" name="contact[Бижу]" value="{{ product.title | escape }}: {{ shop.url }}{{ product.url }}">
+        {%- endif -%}
+
+        <div class="custom-request__row">
+          <div class="field">
+            <input
+              class="field__input"
+              type="text"
+              id="{{ form_id }}-name"
+              name="contact[name]"
+              autocomplete="name"
+              value="{{ form.name }}"
+              placeholder="Име"
+            >
+            <label class="field__label" for="{{ form_id }}-name">Име</label>
+          </div>
+
+          <div class="field">
+            <input
+              class="field__input"
+              type="email"
+              id="{{ form_id }}-email"
+              name="contact[email]"
+              autocomplete="email"
+              spellcheck="false"
+              autocapitalize="off"
+              required
+              aria-required="true"
+              value="{{ form.email }}"
+              placeholder="Имейл"
+              {% if form.errors contains 'email' %}
+                aria-invalid="true"
+              {% endif %}
+            >
+            <label class="field__label" for="{{ form_id }}-email">Имейл <span aria-hidden="true">*</span></label>
+          </div>
+        </div>
+
+        {%- comment -%}
+          No pattern: Dawn's [0-9\-]* refuses +359 and spaces, the way most
+          Bulgarian customers write a number.
+        {%- endcomment -%}
+        <div class="field">
+          <input
+            class="field__input"
+            type="tel"
+            id="{{ form_id }}-phone"
+            name="contact[phone]"
+            autocomplete="tel"
+            value="{{ form.phone }}"
+            placeholder="Телефон (по желание)"
+          >
+          <label class="field__label" for="{{ form_id }}-phone">Телефон (по желание)</label>
+        </div>
+
+        <div class="field">
+          <textarea
+            class="text-area field__input"
+            id="{{ form_id }}-body"
+            name="contact[body]"
+            rows="5"
+            required
+            aria-required="true"
+            placeholder="Какво търсите?"
+          >{{ form.body }}</textarea>
+          <label class="field__label" for="{{ form_id }}-body">Какво търсите? <span aria-hidden="true">*</span></label>
+        </div>
+
+        <button type="submit" class="custom-request__button">
+          {{- section.settings.button_label | escape -}}
+        </button>
+
+        {%- if shop.privacy_policy != blank -%}
+          <p class="custom-request__privacy">
+            <a href="{{ shop.privacy_policy.url }}">Политика за поверителност</a>
+          </p>
+        {%- endif -%}
+      {%- endif -%}
+    {%- endform -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Custom request",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Colour scheme",
+      "default": "scheme-2"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Small line above the heading",
+      "default": "Изработка по поръчка"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Не виждате своето? Ще го направим."
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text",
+      "info": "No number of designs is printed by default. Add one here only when it is a figure the shop can stand behind.",
+      "default": "Тук показваме само малка част от моделите на ателието. Кажете ни какво търсите — друг камък, друг метал, друг размер или бижу, което сте виждали — и ще ви отговорим."
+    },
+    {
+      "type": "header",
+      "content": "Form"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button",
+      "default": "Изпратете запитване"
+    },
+    {
+      "type": "text",
+      "id": "success_message",
+      "label": "Message after sending",
+      "default": "Благодарим ви. Ще ви отговорим възможно най-скоро."
+    },
+    {
+      "type": "text",
+      "id": "error_message",
+      "label": "Message when the email is missing or wrong",
+      "default": "Моля, въведете валиден имейл адрес."
+    },
+    {
+      "type": "header",
+      "content": "Send a picture"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_ways",
+      "label": "Show the line about sending a picture",
+      "info": "Shopify's contact form cannot carry an attachment, so a picture goes by email, Instagram or Facebook.",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "Email for pictures",
+      "info": "Leave empty to hide the email link. Instagram and Facebook come from Theme settings > Social media.",
+      "default": "cullinanjewellery.bg@gmail.com"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 64
+    },
+    {
+      "type": "header",
+      "content": "Space around the band"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Space above",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Space below",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom request"
+    }
+  ]
+}
+{% endschema %}

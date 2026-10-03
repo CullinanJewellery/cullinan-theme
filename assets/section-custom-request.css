@@ -1,0 +1,205 @@
+/*
+  Custom request -- "Не виждате своето? Ще го направим." (2026-10-04). The words
+  on the left, a short form on the right; one column under 990px. The reasoning
+  and the facts behind the default words are in sections/custom-request.liquid.
+
+  Only the site's own measures, no reference to match: the eyebrow is the
+  atelier's (1.1rem, spaced capitals), the heading the size of every other
+  homepage band (26 to 40px, capitals, the collection-title clamp), the text
+  16px on a 1.7 line like the story section's, the button the Контакти form's
+  (6.4rem, 14px capitals, 5.4rem and 12px on a phone). Everything takes its
+  colour from the section's scheme, so the band follows the scheme if it is ever
+  changed, and the button is the scheme's own button colour rather than a typed
+  hex.
+
+  This sheet loads from inside the section, after crown.css, so a rule here beats
+  one there on order alone; the selectors still carry their own class so they do
+  not depend on it.
+*/
+
+.custom-request {
+  display: grid;
+  gap: 3.6rem;
+}
+
+/* --- The words ------------------------------------------------------------ */
+
+.custom-request__eyebrow {
+  margin: 0;
+  font-size: 1.1rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(var(--color-foreground), 0.75);
+}
+
+.custom-request__heading {
+  margin: 2rem 0 0;
+  font-size: clamp(2.6rem, 3.2vw, 4rem);
+  font-weight: var(--font-heading-weight);
+  line-height: 1.05;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+.custom-request__text {
+  max-width: 46ch;
+  margin: 2.4rem 0 0;
+  font-size: 1.6rem;
+  line-height: 1.7;
+  color: rgba(var(--color-foreground), 0.75);
+}
+
+/* "Имате снимка?" -- three ways to send one, each shown only when it is set. */
+.custom-request__ways {
+  max-width: 46ch;
+  margin-top: 3.2rem;
+  padding-top: 2.4rem;
+  border-top: 1px solid rgba(var(--color-foreground), 0.15);
+}
+
+.custom-request__ways-label {
+  margin: 0;
+  font-size: 1.4rem;
+  line-height: 1.5;
+}
+
+.custom-request__ways-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0;
+  margin: 0.8rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.custom-request__ways-list li + li::before {
+  content: "·";
+  margin: 0 1rem;
+  color: rgba(var(--color-foreground), 0.5);
+}
+
+.custom-request__ways-list a {
+  font-size: 1.4rem;
+  color: rgb(var(--color-foreground));
+  text-decoration: underline;
+  text-decoration-thickness: 0.1rem;
+  text-underline-offset: 0.3rem;
+}
+
+.custom-request__ways-list a:hover {
+  text-decoration-thickness: 0.2rem;
+}
+
+/* --- The form ------------------------------------------------------------- */
+
+.custom-request__form {
+  display: grid;
+  align-content: start;
+  gap: 1.6rem;
+  max-width: 64rem;
+}
+
+.custom-request__row {
+  display: grid;
+  gap: 1.6rem;
+}
+
+.custom-request__status {
+  margin: 0;
+  font-size: 1.8rem;
+  line-height: 1.5;
+}
+
+/* A refused form sits above the fields it asks the visitor to fix. */
+.custom-request__status--error {
+  font-size: 1.5rem;
+}
+
+/*
+  Solid in the scheme's button colour, the fill dropping away to an outline on
+  hover, tap and focus with the site's usual lift -- the same behaviour as every
+  other button here. Not Dawn's .button (whose own size is 5.5rem / 2.2rem on a
+  computer, far too big for a form); the Контакти form's button is built the
+  same way, a pill from the shared setting.
+*/
+.custom-request__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 5.4rem;
+  margin: 0;
+  padding: 0 2.4rem;
+  border: 0;
+  border-radius: var(--buttons-radius);
+  background-color: rgb(var(--color-button));
+  box-shadow: inset 0 0 0 1px rgb(var(--color-button));
+  color: rgb(var(--color-button-text));
+  font-family: var(--font-body-family);
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out,
+    box-shadow 0.35s ease-in-out, transform 0.2s cubic-bezier(0, 0, 0.3, 1);
+}
+
+.custom-request__button:hover,
+.custom-request__button:active,
+.custom-request__button:focus-visible {
+  background-color: transparent;
+  color: rgb(var(--color-button));
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .custom-request__button:hover,
+  .custom-request__button:focus-visible {
+    transform: translateY(-0.25rem);
+  }
+
+  .custom-request__button:active {
+    transform: translateY(0);
+  }
+}
+
+.custom-request__privacy {
+  margin: 0;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: rgba(var(--color-foreground), 0.75);
+}
+
+.custom-request__privacy a {
+  color: inherit;
+  text-underline-offset: 0.3rem;
+}
+
+/* --- Wider screens -------------------------------------------------------- */
+
+@media screen and (min-width: 750px) {
+  .custom-request__row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .custom-request__button {
+    justify-self: start;
+    width: auto;
+    min-width: 30rem;
+    min-height: 6.4rem;
+    font-size: 1.4rem;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .custom-request {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    align-items: center;
+    gap: 8rem;
+  }
+
+  .custom-request__form {
+    max-width: none;
+  }
+}
