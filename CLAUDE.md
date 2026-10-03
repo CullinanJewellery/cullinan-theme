@@ -3732,8 +3732,9 @@ Anything of ours that is not a Dawn setting lives in these two places:
     was read to include that one too, not just FAQ-style content accordions, since the
     whole message opened by discussing it. **Left alone, as functional controls rather
     than content disclosures**: native `<select>` dropdown arrows (including the
-    variant picker's own `dropdown` mode, unused on this site today), the header's
-    navigation menus and drawer, pagination, every slider/carousel's prev-next arrows
+    variant picker's own `dropdown` mode, unused on this site today), the phone
+    drawer's rows (the header's desktop menu took the arrow on 2026-10-03, see Header menu),
+    pagination, every slider/carousel's prev-next arrows
     (including this section's own, and the Recently viewed row's), and the cart drawer's
     own disclosures (a checkout-adjacent area, left untouched out of caution rather than
     checked and excluded). Worth asking about if the owner wants it wider.
@@ -4326,6 +4327,94 @@ Anything of ours that is not a Dawn setting lives in these two places:
     lets a shopper buy two of a piece; removing it is one block. Checkout, the order emails and
     the Admin are Shopify's own and are not touched.
 
+- **Header menu: no underline, black on hover, the site's arrow, a picture in the dropdown.**
+  `assets/crown.css` ("The menu words never underline", "A picture at the right of the dropdown",
+  "The same pictures on a phone"), `snippets/header-mega-menu.liquid`,
+  `snippets/header-mega-promo.liquid`, `snippets/header-drawer.liquid` and two blocks in
+  `sections/header-group.json` (2026-10-03, the owner: "i don't like that they underline i am
+  talking about the collections fix that i just want them to become black and also change the drop
+  down arrow to something else or make it look better ... we need the pictures that are showing
+  when you for example click on rings and there is the collections Дамски and мъжки you have to
+  [put a] picture in the right corner down like in moon magic i want the same ... if they put
+  [pictures on the phone] we need that too or we can make it a little bit different").
+  - **What it was.** Dawn's: the menu words and the dropdown's links underlined under the cursor,
+    while open and on the current page; a solid caret that turned over; and a dropdown that was a
+    145px off-white strip holding two small words, "ДАМКСИ" and "МЪЖКИ", at the left. The picture
+    panel the owner asked for had been built in an earlier session (`mega_menu_promo`, "Mega menu
+    image panel") but **never rendered**, for two reasons: the header had no such block
+    (`header-group.json` had no `blocks` at all), and the panel was a list item inside the links'
+    grid, which only reaches the right edge when the menu has two levels -- Пръстени has one, so
+    Dawn draws its list as a plain block and the panel would have fallen under the links.
+  - **moonmagic, measured live.** Their menu words are 15px/500 at 1px tracking and **underline
+    under the cursor too** (their stylesheet says so; the owner's instruction outranks the
+    reference here); there is **no arrow at all** beside a word with a dropdown; the dropdown
+    **opens on hover**; their desktop menu only shows from about 1340px, below which they use the
+    phone menu. The Rings dropdown is a white full-width panel 403px tall with a 1px hairline,
+    three text columns (CATEGORIES, COLLECTIONS, MATERIAL: 16px/600 capitals, the links under
+    them) and a **picture panel flush to the right edge, 390 x 401, from the top of the panel to
+    its bottom**, its caption on the photograph in white capitals ("SHOP ALL RINGS", 16px/600)
+    and a prev/next pair of 32px circles. On a **phone** the submenus are links only; the
+    pictures are **a row of square tiles at the foot of the whole menu**, 302 x 302 at 375, a
+    caption on each, swiped sideways with an arrow pair above.
+  - **The words.** At rest 75% of the text colour, **pure black** under the cursor, on keyboard
+    focus, while their dropdown is open and on the current page, over 0.2s; no underline in any
+    of those states. The dropdown's own links do the same. Scoped to `.header__inline-menu`
+    (three classes with `:hover`) so it beats Dawn's `.header__menu-item:hover span` and its two
+    `details[open]` rules whatever the load order. **The top bar's links and the phone drawer's
+    secondary links keep their underline**: the owner asked for those on 2026-09-13, and named
+    only the collections now.
+  - **The arrow** is the site's own (`icon-accordion-caret`): a thin chevron that flattens into a
+    line while the dropdown is open, 10 x 6px with a 1.2px stroke (the accordions' is 1.5), in
+    place of Dawn's solid caret. **A trap**: it is a `<span>`, and the older rules that lift the
+    label's own `<span>` onto the logo's lettering (`position: relative; top: 0.8rem`) caught it
+    too and set it 8px up and 8px left, over the last letter. Both rules now say
+    `span:not(.cj-caret)`, and the arrow's `top` is `calc(50% - 0.45rem)` because the wings hang
+    below the box's middle: the chevron itself sits 0.9px below the label's centre, the same as
+    Dawn's did. It reads the summary's colour, so it goes black with the word.
+  - **The dropdown.** A body of its own (`mega-menu__body`): the links and, when the header has a
+    block for that menu item, the picture, in one grid -- `minmax(0, 1fr)` and **22-32rem for the
+    picture** (24vw between), 6rem apart, inside the page width, so the picture ends on the page's
+    right edge (the header icons') and the links start on its left (the logo's). A one-level
+    dropdown's links are the content, not column headers over a list, so they are set as links
+    (15px/500 capitals at 0.1em, 0.9rem of air). The panel's height is the picture's, **about
+    420px** against moonmagic's 403, whatever the number of links. Without a block the body is a
+    single column, as before. The picture is drawn from 990px, where the inline menu starts; it
+    was hidden below 1200px.
+  - **The picture** is square (like every picture here), an empty flat panel (`rgb(242, 240, 236)`)
+    until one is uploaded -- no placeholder graphic -- with **the label beneath it in live text**,
+    not on it: words lie over a picture on this site only where this file names the exception, and
+    moonmagic's caption on the photograph is not one. Black on hover and focus, no underline. If
+    the owner wants theirs, it is one change: move the label into the panel.
+  - **Two blocks were added to `header-group.json`**, "Mega menu image panel" for Пръстени and for
+    Гривни, with no picture, labelled „Всички пръстени“ and „Всички гривни“ and linking to
+    `/collections/пръстени` and `/collections/гривни` (both hold a product). **To put a picture in**:
+    theme editor → Header → the block → Image. A block matches its menu word by title,
+    case-insensitively; a third dropdown needs a third block.
+  - **On a phone** the same blocks are a row under the menu and the top bar's links
+    (`menu-drawer__featured`): square tiles nearly the drawer's width, so the next shows its edge,
+    swiped with scroll-snap, the label beneath, no arrows. Drawn only when the header has such
+    blocks; each is a flat square until a picture exists, so the phone menu shows two empty
+    squares now.
+  - **Tested offline** against a mock header (13 checks, scratchpad): the arrow, the body, the
+    promo as a `div` after the list, an empty block and one with a picture, a block matched
+    case-insensitively, a menu word without a block, no blocks at all, the phone row's place in the
+    drawer and its absence.
+  - **Checked live at 1440 and 375.** A real hover on Обеци: `rgb(0, 0, 0)`, no underline, the
+    others still at 0.75; on a collection page the current word is black and not underlined;
+    Пръстени open: summary black, the wings flat (a 10px line), the panel 1425 x 420, the body grid
+    `920px 320px`, the picture 320 x 320 with its label beneath, the links at x 62.5 (the logo's
+    left edge) and the picture ending at 1362.5; a real hover on a dropdown link: black, no
+    underline. The arrow sits 9px after the label, absolutely placed, in Пръстени and in Гривни. At
+    375 the drawer shows the row: tiles 271 x 271 on a 12px gap with 30px of padding, snapping, and
+    the page does not scroll sideways.
+  - **Two slips on the way, each live for minutes**: the links sat 40px too far in, because the
+    list lost the `page-width` class whose padding had been overriding the browser's 40px indent on
+    a `<ul>` (`.mega-menu__body .mega-menu__list { margin: 0; padding: 0 }`); and the arrow slip above.
+  - **Not changed, worth knowing.** The dropdown still **opens on a click**, as Dawn's does;
+    moonmagic's opens on hover -- one more rule would do it, not asked for. The two collections
+    behind Дамски and Мъжки hold no product, and the entry is typed „Дамкси“ in the Admin: see Main
+    menu under Waiting on the Shopify admin.
+
 ## Current state
 
 - Design foundation applied (palette, type, spacing). Committed and live on the draft theme.
@@ -4622,6 +4711,12 @@ data, not theme files:
   Cullinan Jewellery. The header prints `shop.name` until a logo image is uploaded.
 - **Main menu** (Content → Menus → Main menu). As of 2026-09-16 it holds six flat items:
   Пръстени · Обеци · Висулки · Комплекти · Гривни · Диаманти.
+  - **Read live 2026-10-03**: five items -- Пръстени (Дамкси, Мъжки), Обеци, Висулки, Комплекти,
+    Гривни (Гривни с циркони). The first child is typed **„Дамкси“**; it is meant to read „Дамски“,
+    which is a rename in the Admin. **Both of Пръстени's children point at collections that hold no
+    product** (`/collections/дамски`, `/collections/мъжки-пръстени`): a dropdown link to an empty
+    page, which "Never link to an empty collection" rules out. The owner built these two, so they
+    either get products or come out of the menu.
   - **Stones go a level down** (the owner’s decision, 2026-09-16, asked for as “like a
     collection but under the main one”). Диаманти should stop sitting beside Пръстени and
     Обеци as a seventh product type; instead a parent item carries every stone as its
@@ -4834,6 +4929,57 @@ data, not theme files:
       own entries („18К жълто злато“), not a rename of these. **Translate & Adapt** is the
       way to Bulgarian option names once Bulgarian is a store language; until then the names
       are whatever is typed in the Admin.
+- **Checkout** (2026-10-03, the owner: "when we click on the buttons към плащане there is a page
+  which with the payment i want to make our own but use for example hestaihome and moonmagic and
+  add something ours"). **Nothing about it lives in this repository.** The checkout is Shopify's
+  own page, branded from Settings → Checkout → Customize (the checkout editor) and by what the
+  store's payment, shipping and policy settings say; the theme cannot restyle it. **Not started**:
+  it affects checkout and payments, which are the owner's to decide, and the owner has not said
+  which Shopify plan the store is on.
+  - **Our own cannot be seen from here.** `/checkout` on the preview link redirects to the shop's
+    primary address and lands on the storefront password page, "Opening soon"
+    (`https://2fp38p-az.myshopify.com/en/password`) -- and the path carries `/en`: **Bulgarian is
+    not a published language, so the checkout would read in English** whatever the theme says. The
+    password was not entered. To look at it, the owner has to open the store with the password.
+  - **hestiahome.bg's, measured live** (a pillow in the cart, cleared afterwards). Shopify's
+    standard multi-step page in Bulgarian (`/bg-bg/`): the crumbs „Количка › Информация ›
+    Доставка › Плащане“, express buttons, Контакт, Адрес за доставка, a grey order-summary
+    column with the discount field, the button „Продължете към изпращането“. Their brand: their
+    own black wordmark at the left, **one red** (`#E34F4F`) for the primary button, the links and
+    the active crumb, **12px radius** on buttons and fields, and the **default system font**, not
+    their theme's Jost.
+  - **moonmagic's, measured live.** A one-page checkout (contact, delivery, shipping method and
+    payment on one page) with express buttons (Shop Pay, PayPal, Google Pay); their wordmark at
+    the left (200 x 21) over a 1px hairline; **square corners everywhere** (0 radius on the fields
+    and on the pay button); the pay button `#2F2F2F`, 50px, 14px/500; their own typefaces in
+    light weights (custom fonts); and under the order summary a block of their own, **„MORE THAN
+    JEWELRY“ with three icon-and-text lines** (600K+ customers, real gems, warranty), plus a
+    loyalty line. As far as is known, the custom fonts and that block are what only Shopify Plus
+    allows.
+  - **What the checkout editor lets any plan do** (to be confirmed in the Admin, whose labels vary
+    a little): the logo, the colours, the corner radius of buttons and fields, a font from
+    Shopify's own list, the summary column's background, which contact and address fields are
+    asked for.
+  - **Proposed for Cullinan, from the design system (nothing applied)**: the same logo file as the
+    header, at the left; page `#FCFCFB`, text `#221F1C`; **square corners** on buttons and fields,
+    like Add to cart, the cart's button and moonmagic's; the primary button **black `#000000` with a
+    white label**, the site's own button exception; links and focus in `#221F1C` -- not the gold and
+    not the pink, neither reads on white; the order-summary column on the greige **`#F5F4F0`**
+    (scheme-6, the same band as the cart's reassurances); the **default system font**, because no
+    font in Shopify's list carries Cyrillic (found 2026-09-14), so a library font would draw the
+    digits in one typeface and the Bulgarian letters in another -- uploading the self-hosted Jost
+    files is the Plus way out.
+  - **Ours, on any plan**: the words in the places the checkout does print. The cash-on-delivery
+    method's name and its "additional details" (Settings → Payments: „Наложен платеж“, „Плащате в
+    брой на куриера при получаване“), the names of the shipping rates, the policy links at the foot
+    (Refund, Shipping, Privacy, Terms: the accountant's, not drafted here), and a required phone
+    number (couriers need one; company name and address line 2 can be off). **Nothing is drafted
+    into the Admin**: the delivery price is still unsettled, and so is whether card payments are on
+    at all.
+  - **First, and not about design**: publish **Bulgarian** (Settings → Languages), or none of the
+    above will read Bulgarian; `locales/bg.json` is already complete. The order-confirmation emails
+    (Settings → Notifications) are plain editable templates on every plan and would carry the logo
+    and the same words.
 - **Photographs** are staged in `photography/` (see its README for naming and shapes). That
   folder is outside the theme directories, so Shopify never sees it, and the image files are
   gitignored — git is for the theme, not a photo library. Shopify's Files library has no
