@@ -47,13 +47,13 @@
     this value belongs to (the one whose name it contains), so the id of both can be
     sent together, and work out sold-out state for that exact pair.
 
-    A value that names no colour at all ("925 сребро" beside three golds) takes the
-    first colour, in the colour option's own order, that has a variant with this value
-    -- an available one if any is -- which is the colour Shopify would have filled in
-    itself had the hidden option not been sent. Where a value names several colours
-    the longest name wins. Since 2026-10-03 every value therefore has a colour: the
-    colour row is hidden whenever one value names one (product-twin-option.liquid),
-    and a value that names none must still resolve to a real variant.
+    Which colour a value names is decided in one place, product-twin-match.liquid
+    (the colour's name inside the value's, the longest name wins, English "silver"
+    read as "сребро"). The colour row is only hidden when EVERY value of the option
+    names one (product-twin-option.liquid), so every value that gets here has a
+    colour. A first version gave a value that named none the first colour that had a
+    variant with it; on the bracelet ("Silver" beside a colour called "Сребро") that
+    was rose gold, and it was removed rather than made cleverer.
 
     Shopify's own `value.available` looks at the selected values of the options before
     this one -- and the hidden colour comes before the material -- so with one colour
@@ -65,49 +65,19 @@
   {%- liquid
     assign twin_value = null
     if twin
-      assign value_name_down = value.name | downcase
       assign value_index = option.position | minus: 1
       assign twin_index = twin.position | minus: 1
 
-      assign best_length = 0
+      capture twin_name
+        render 'product-twin-match', colour_option: twin, material_name: value.name
+      endcapture
+      assign twin_name = twin_name | strip
       for twin_candidate in twin.values
-        assign twin_name_down = twin_candidate.name | downcase
-        if twin_name_down != blank and value_name_down contains twin_name_down
-          assign twin_length = twin_name_down | size
-          if twin_length > best_length
-            assign twin_value = twin_candidate
-            assign best_length = twin_length
-          endif
+        if twin_candidate.name == twin_name
+          assign twin_value = twin_candidate
+          break
         endif
       endfor
-
-      unless twin_value
-        for twin_candidate in twin.values
-          for variant_candidate in product.variants
-            if variant_candidate.available and variant_candidate.options[value_index] == value.name and variant_candidate.options[twin_index] == twin_candidate.name
-              assign twin_value = twin_candidate
-              break
-            endif
-          endfor
-          if twin_value
-            break
-          endif
-        endfor
-      endunless
-
-      unless twin_value
-        for twin_candidate in twin.values
-          for variant_candidate in product.variants
-            if variant_candidate.options[value_index] == value.name and variant_candidate.options[twin_index] == twin_candidate.name
-              assign twin_value = twin_candidate
-              break
-            endif
-          endfor
-          if twin_value
-            break
-          endif
-        endfor
-      endunless
     endif
 
     if twin_value

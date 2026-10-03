@@ -1,0 +1,46 @@
+{% comment %}
+  Which colour does a material value name?
+
+  Cullinan (2026-10-03). The colour row is not drawn on a product page; the material
+  stands for the colour instead, so every material value has to say which colour it
+  is. This is the one place that decides it, for the picker, the options snippet and
+  the cart (product-twin-option.liquid, product-variant-options.liquid).
+
+  A colour is named when its name, lower-cased, sits inside the material value's name,
+  lower-cased ("жълто злато" inside "14К жълто злато", "сребро" inside "925 сребро").
+  Where a value names several the longest name wins, so "жълто злато" beats "злато".
+  English "silver" is read as "сребро" on both sides: the Admin of this store mixes the
+  two (a bracelet whose material says "Silver" next to a colour called "Сребро"), and
+  a pair that differs only in language must not be left unpaired -- or paired with
+  whichever colour happens to come first, which would put a rose-gold colour on a
+  silver order.
+
+  Prints the colour value's own name (exactly as the Admin has it) or nothing.
+
+  Accepts:
+  - colour_option: {Object} the hidden colour option (a product_option with swatches).
+  - material_name: {String} the name of the material value.
+
+  Usage:
+  {%- capture twin_name -%}
+    {%- render 'product-twin-match', colour_option: twin, material_name: value.name -%}
+  {%- endcapture -%}
+{% endcomment %}
+{%- liquid
+  assign material_down = material_name | downcase | replace: 'silver', 'сребро'
+  assign best_length = 0
+  assign best_name = ''
+
+  for colour_value in colour_option.values
+    assign colour_down = colour_value.name | downcase | replace: 'silver', 'сребро'
+    if colour_down != blank and material_down contains colour_down
+      assign colour_length = colour_down | size
+      if colour_length > best_length
+        assign best_name = colour_value.name
+        assign best_length = colour_length
+      endif
+    endif
+  endfor
+
+  echo best_name
+-%}

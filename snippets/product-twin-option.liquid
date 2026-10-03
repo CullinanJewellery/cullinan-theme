@@ -8,13 +8,19 @@
   two rows would say the same thing twice.
 
   Prints "hidden,shown" -- the 1-based positions of the colour option (the first option
-  with swatches) and of the option that names its colours ("14К жълто злато" names
-  "жълто злато") -- or nothing when the product has no such pair. The shown option is the
-  first one without swatches in which at least one value contains the name of one of
-  the colours. It used to have to cover every colour exactly, which kept the colour row
-  on the ring (silver names no gold) and on the bracelet (no rose or white material);
-  now a single named colour is enough, and the colours no value names are simply not
-  reachable from the page until a value for them is added in the Admin.
+  with swatches) and of the option that names its colours -- or nothing when the
+  product has no such pair. The shown option is the first one without swatches in which
+  EVERY value names one of the colours (snippets/product-twin-match.liquid: "14К
+  жълто злато" names "жълто злато"). Every value, because the colour is sent along with
+  the material and a value that names no colour would have to be given one by guesswork;
+  the first colour in the list was tried and put a rose-gold colour on a silver
+  bracelet. A product that cannot be paired safely keeps its colour row, and the colour
+  row says exactly which value to rename in the Admin.
+
+  What is not required is the other direction: a colour no material names (the
+  bracelet's rose and white gold) is simply not reachable from the page until a value
+  for it is added in the Admin. Before 2026-10-03 every colour had to be named as well,
+  which kept the row on every product the owner has.
 
   A product with a colour option alone, or a colour and a size, prints nothing: hiding
   its only way to choose a colour would make the other colours unbuyable.
@@ -48,18 +54,18 @@
         continue
       endif
 
-      assign names_a_colour = false
+      assign every_value_names_a_colour = true
       for candidate_value in candidate.values
-        assign candidate_name = candidate_value.name | downcase
-        for hidden_value in hidden_option.values
-          assign hidden_name = hidden_value.name | downcase
-          if hidden_name != blank and candidate_name contains hidden_name
-            assign names_a_colour = true
-          endif
-        endfor
+        capture named_colour
+          render 'product-twin-match', colour_option: hidden_option, material_name: candidate_value.name
+        endcapture
+        if named_colour == blank
+          assign every_value_names_a_colour = false
+          break
+        endif
       endfor
 
-      if names_a_colour
+      if every_value_names_a_colour
         assign shown_option = candidate
       endif
     endfor

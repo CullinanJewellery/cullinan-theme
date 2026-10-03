@@ -17,11 +17,13 @@
     from it -- drawn as well, the two rows would say the same thing twice.
 
     snippets/product-twin-option.liquid decides which options those are: the first
-    option with swatches, and the first option without swatches in which a value names
-    one of its colours ("жълто злато" inside "14К жълто злато"). It used to have to cover
-    every colour exactly; since 2026-10-03 one named colour is enough, because the owner
-    wants the colour row gone on every product. A product with a colour option alone
-    keeps its picker, so a choice can never become unreachable.
+    option with swatches, and the first option without swatches in which EVERY value
+    names one of its colours ("жълто злато" inside "14К жълто злато", decided by
+    product-twin-match.liquid). It used to have to cover every colour exactly; since
+    2026-10-03 a colour no material names is allowed to go unreachable, because the
+    owner wants the colour row gone on every product -- but a material value that names
+    no colour keeps the row, so a colour is never guessed. A product with a colour
+    option alone keeps its picker, so a choice can never become unreachable.
 
     The skipped option is still part of every variant, so it cannot just be left out of
     the request: Shopify would fill it with its first value and a shopper choosing rose
@@ -156,10 +158,12 @@
           assign menu_dot = null
           assign menu_dot_source = option.selected_value
           if twin
-            assign selected_down = option.selected_value.name | downcase
+            capture selected_twin_name
+              render 'product-twin-match', colour_option: twin, material_name: option.selected_value.name
+            endcapture
+            assign selected_twin_name = selected_twin_name | strip
             for twin_candidate in twin.values
-              assign twin_down = twin_candidate.name | downcase
-              if twin_down != blank and selected_down contains twin_down
+              if twin_candidate.name == selected_twin_name
                 assign menu_dot_source = twin_candidate
               endif
             endfor
