@@ -2173,7 +2173,8 @@ Anything of ours that is not a Dawn setting lives in these two places:
       asking for size 56 and 14К розово злато alone returned "56 / жълто злато / 14К розово
       злато" -- an order line reading yellow beside rose. Hiding the row and nothing else
       would have shipped that.
-    - **The rule.** The option with swatches (the first, if several) is skipped only if
+    - **The rule, as first written -- superseded 2026-10-03, see the next entry.** The option with
+      swatches (the first, if several) is skipped only if
       another option **without** swatches covers it exactly: every value of that option
       contains exactly one colour name (case-insensitive containment -- "жълто злато" inside
       "14К жълто злато"), and every colour name sits inside at least one value. Anything less
@@ -2213,7 +2214,58 @@ Anything of ours that is not a Dawn setting lives in these two places:
       page and the same card circles with no hidden option, no matching rule and a third of
       the variants.
     - **The cart, checkout and emails still list every option**, so a line reads "58 / жълто
-      злато / 14К жълто злато". Not touched, not asked about.
+      злато / 14К жълто злато". Not touched, not asked about. (Since 2026-10-03 the cart
+      drawer leaves the colour out of a line -- see Cart drawer; the cart page, checkout and
+      the order emails still list every option.)
+  - **The colour row is hidden on every product with a material option, 2026-10-03** (the owner:
+    "for every product we open i don't want the color choice to be shown"). The exact-cover rule
+    above kept it on both products the owner has: the ring because `925 сребро` named none of the
+    three golds (it does name the fourth colour, `Сребро`, which the owner has since added: 112
+    variants now), and the bracelet because its material list has no rose or white gold.
+    - **The rule now**, in `snippets/product-twin-option.liquid`: the colour option (the first with
+      swatches) is hidden when another option without swatches has **a name for a colour in every
+      one of its values**. A colour that no value names (the bracelet's rose and white gold) is
+      allowed to be unreachable from the page -- that is what "every product" costs, and the
+      Admin is where it is filled in. A product whose only way to pick a colour is the colour (a
+      colour and a size, or a material that names no colour) keeps its row: hiding it would make
+      the other colours unbuyable, which no instruction can have meant.
+    - **A first version guessed, and a live check caught it.** It hid the row whenever one value
+      named a colour and gave a value that named none the first colour that had a variant with it.
+      Checked live on the bracelet, picking Silver resolved to "Silver / розово злато": the
+      material says the English "Silver" and the colour entry is the Bulgarian "Сребро", so
+      nothing matched and the first colour won. The colour is **order data the atelier reads when
+      it makes the piece**, so a guess is not acceptable: the fallback was deleted rather than made
+      cleverer. It was live for a few minutes (`4f54743`); the correction is `2f57b8a`.
+    - **One place decides which colour a value names**, `snippets/product-twin-match.liquid`: the
+      colour's name inside the value's name, lower-cased; the longest name wins ("жълто злато"
+      beats "злато"); and **English silver is read as сребро on both sides**, so "Silver" meets
+      "Сребро" and "Sterling Silver" meets "Silver". Gold is not translated: both sides of every
+      gold pair are Bulgarian today. The picker, the options snippet, the metal box's dot and the
+      cart line (see Cart drawer) all go through it.
+    - **The page's first paint can carry the wrong colour.** Shopify loads the first available
+      variant, and the bracelet's first is "14К жълто злато / розово злато". With the colour
+      hidden, a shopper who changed nothing would have put that in the bag. The picker prints the
+      loaded colour (`data-hidden-selected-value-id`) and `assets/variant-twin-sync.js` -- loaded
+      only where there is a picker -- asks for the right variant once, with a `change` event on
+      `<variant-selects>` itself, the way a click would. **The event goes to the picker, not to the
+      radio**: `<option-menu>` treats a change on a radio as a keyboard step and would have opened
+      the metal list. It runs once per page load, so a pair Shopify has no variant for cannot loop.
+    - **Tested offline** (liquidjs, mock products, 34 checks, kept in the scratchpad): the ring and
+      the bracelet as live (the bracelet including the condition that fires the sync), a colour with
+      only a size, a material that names no colour, no colour option, a platinum value that names
+      none, silver sold out in its own colour only, sold out following the selected size, English on
+      both sides, ambiguous names, 14К and 18К sharing a colour. The older harness files' expectations
+      for the exact-cover rule (S5, S7, M3, "ORDER bracelet") fail now **on purpose**; three failures
+      that were there before this change are stale checks from before the metal menu.
+    - **Checked live**: the ring draws the metal and the size and no colour, loads on its paired
+      variant with the URL untouched, and each of the four materials resolves to its own variant
+      ("54 55 / жълто злато / 14К жълто злато" ... "54 55 / Сребро / 925 сребро"), all available. The
+      bracelet draws one row, "Jewelry material"; it loaded on the mismatched variant and corrected
+      itself to "14К жълто злато / жълто злато" (the URL gains `?variant=`) without opening the list;
+      Silver resolves to "Silver / Сребро".
+    - **What this leaves for the Admin**: the bracelet's page offers yellow gold and silver only,
+      until `14К розово злато` and `14К бяло злато` are added to Jewelry material; rose and white
+      gold are otherwise unreachable from it (they still show as circles on its card).
   - **Размери and Материал на бижуто redesigned, 2026-09-28, at the owner's request** ("i
       don't like it and i want it to look luxury and professional"). Dawn's own pill picker
       (`component-product-variant-picker.css`) is plain e-commerce default: a hairline
@@ -4140,6 +4192,140 @@ Anything of ours that is not a Dawn setting lives in these two places:
     margin too, and the live page measures 4px again at 1440 and 375. **Lesson: when a block stops
     being the first child, check both of its margins, and measure the gap on both sides.**
 
+- **Cart drawer.** `assets/cullinan-cart.css`, `snippets/cart-drawer.liquid`,
+  `snippets/cart-item-options.liquid`, three theme settings, the cart's strings in
+  `locales/en.default.json` and one stylesheet line in `layout/theme.liquid` (2026-10-03, the
+  owner: "we need to make a design for the добави количката because when i click it it opens
+  your cart ... what will show there i think we can make it something mix like choosing from
+  hestiahome and moonmagic or the best idea you can make our own but using examples from theirs
+  carts"). It is what opens when „Добави в количката“ is clicked and from the bag icon in the
+  header (`cart_type` is `drawer`).
+  - **What it was.** Stock Dawn: "Your cart", "Product / Total" column headings, a 400px panel,
+    the options as "Name: value" rows with the gold colour said twice ("изберете вашия размер:
+    54 55, Цветове на златото: жълто злато, Изберете вашия метал: 14К жълто злато"), a boxed
+    quantity field and a trash icon, "Estimated total €200,00 EUR", an English tax note, a
+    pill button. All in English, because the store language is still English.
+  - **moonmagic's bag, measured live** (a ring in the bag, at 1440 and 375). A 720px sheet from
+    the right at 1440 (half the screen), **full-screen on a phone**; white, square, `transform
+    0.3s`, a 0.6 black veil. A 40px strip of trust items on top (14px/500: taxes included,
+    premium metals, 600K+ women, authentic gemstones, hassle-free returns, 2-year warranty), then
+    "YOUR BAG" 24px/600 capitals at 2.4px tracking over a 1px black hairline. Lines: 10px padding,
+    a 1px black rule under each, a **110px square picture**, the name 16px/600, the options in
+    12px capitals at half black, a borderless "- 1 +" (30px cells), a small cross to remove, the
+    price at the right (18px, the sale in crimson). A greige band (`#F5F4F0`, the same token as
+    our scheme-6) between black rules offering a gift bag; a "You may also like" carousel; a
+    pinned footer with a followers-and-Trustpilot row, "Total" at 22px and a **black square
+    CHECKOUT, 60px, 18px/700, 0.1em, radius 1px**, then thirteen payment logos. On a phone: 45px
+    header, 22px title, an 85px picture, 14px name, 345 x 48 button at 16px. Their empty bag is a
+    12px capitals line over the same shell, the carousel and a live CHECKOUT button. **Not
+    copied**: on Add to Bag a "Make it a set" modal appears first, selling a set.
+  - **hestiahome.bg's cart, measured live** (a pillow in the bag). A **440px floating card**:
+    13px of margin all round, a 12px radius, `blur(24px) saturate(1.3)` over a cream at 0.72, a
+    0.5 veil; Jost throughout. The title 26px/500 in sentence case, column headings in 13px
+    capitals, a rounded 110px thumbnail, the name 15px/500, the unit price and "Размер: ..."
+    underneath, the line's total at the right, a rounded quantity box and a round trash button.
+    Above the total **a row of three reassurances with icons** -- „Безплатна доставка за 2+
+    комплекта“, „Наложен платеж при получаване“, „Лесна замяна“ -- on their scheme-2; then
+    „Очаквана обща сума“ (26px) and a full-width **dark pill**, „Преминаване към плащане“. Their
+    empty state: „Количката Ви е празна.“, a button, and a prompt to log in.
+  - **What was taken, and what is our own.** From moonmagic: the structure and the squareness --
+    the tracked-capitals title with a hairline, hairline-separated lines, a square picture, the
+    options in small capitals, a pinned footer, a full-screen sheet on a phone, and the black
+    square button, **the same one as Add to cart** (pink on hover, a near-black label, since
+    white on that pink is 1.74:1) so the two steps of buying read as one. From hestiahome.bg: the
+    idea that reassurances belong next to the money, as one list. Our own: the list is three
+    ticked lines on **scheme-6's greige**, from facts the owner has already given for the product
+    page; the options say values only, with the colour left out where the product page leaves it
+    out; **„Премахни“** in words where both references use an icon (an icon beside a stepper is a
+    stray tap); the item count in the title; a calm empty bag; Bulgarian throughout.
+  - **The panel.** 46rem wide, `max-width: 100vw`, full-screen below 750px; the cart colour scheme
+    (scheme-1) with a hairline on its left edge; 0.4s on hestiahome's easing
+    (`cubic-bezier(0.22, 1, 0.36, 1)`, the accordion arrow's too), none under reduced motion. The
+    header is 60px: „ВАШАТА КОЛИЧКА (1)“ in Jost at 16px/550, 0.12em, capitals, a 44px close.
+  - **A line.** A 10rem square picture (9rem on a phone), cropped around the focal point set in
+    Shopify's Files; a line with no picture is the flat square every empty media slot here is. To
+    its right the title (15px/550) and the price (15px/500, right-aligned on the title's
+    baseline); under them the options as one line of values (11.5px capitals, 70% of the text
+    colour): "14К жълто злато · Размер 54 55"; then a "- 1 +" in the faint 4% fill the size boxes
+    on the product page have (104 x 36, square, no ring) and the underlined „Премахни“. The unit
+    price („€200,00 за бр.“) shows only when the quantity is more than one or a discount applies.
+  - **The options line** is `snippets/cart-item-options.liquid`: values only, **material first and
+    the rest after it** (the order the product page draws), joined by a middle dot, the size
+    with its word („Размер 54 55“, because a bare "54 55" says nothing), and the colour option
+    **left out exactly where the product page leaves it out** (it asks `product-twin-option`). The
+    names are never printed: on this store they are instructions written for the product page
+    ("изберете вашия размер"). Only the cart looks different -- the variant, checkout, the order
+    emails and the Admin list every option, which is what the atelier reads (hence the colour
+    is never guessed).
+  - **The footer.** The three reassurance lines on a full-width band (scheme-6, tick icons drawn
+    with a non-scaling 1.2px stroke like the header icons), then „ОБЩО“ in small capitals with the
+    amount at 22px/550, the tax note (Shopify's own sentence, in Bulgarian: „С включени данъци.
+    Отстъпките и доставката се изчисляват при плащане.“) and the **checkout button**: black,
+    square, 48px, 15px/700 capitals, 0.1em, label „Към плащане“, pink on hover and focus. The total
+    is printed without the currency code, as every price here is.
+  - **The three lines are settings** (Theme settings > Cart): „Наложен платеж — плащате при
+    получаване“, „Изработка по поръчка · доставка 5–20 работни дни“, „Връщане до 14 дни от
+    получаването“, each hidden when emptied. Every one is a fact already on the product page
+    (the payment accordion, the delivery line, Доставка и връщане). Defaults live in the
+    schema, so nothing is written into `settings_data.json`. Wording of the first differs from
+    hestiahome's on purpose.
+  - **The empty bag.** The login prompt is not drawn (the shop has no customers yet, and it is
+    the one thing in an empty bag that is not about the bag). „КОЛИЧКАТА ВИ Е ПРАЗНА.“ centred, one
+    black square button, „ПРОДЪЛЖЕТЕ ДА ПАЗАРУВАТЕ“, to the whole catalogue.
+  - **The words are Bulgarian now without waiting for the store language**, the same stopgap as
+    the three button strings of 2026-09-29: **41 values in `locales/en.default.json` were copied
+    from `bg.json`** (everything under `sections.cart`, plus continue shopping, close, loading,
+    the discount label, the quantity labels and the regular and sale price labels) and the file
+    was edited line by line, so the diff is those lines and not a reformat. Three are our own and
+    in **both** files, shorter than Shopify's („Към плащане“ for „Преминаване към плащане“,
+    „Общо“ for „Очаквана обща сума“, „Бележка към поръчката“), so nothing changes when Bulgarian
+    becomes the default. A small `cullinan.cart` block holds „Премахни“, „Размер {{ value }}“ and
+    „{{ price }} за бр.“ in both. The cart page's strings change with them.
+  - **How it is built, and the traps in it.**
+    - **Scoped to `#CartDrawer`.** Dawn's drawer rules are two classes deep (`.cart-drawer
+      .cart-item`) and `component-cart-items.css` loads asynchronously (`media="print"` then
+      `onload`), after this sheet or before it. An id beats both either way. The sheet is linked
+      after Dawn's drawer sheets in `layout/theme.liquid`.
+    - **The table stays**, for the JS (`.cart-item`, `#CartDrawer-Item-N`, `quantity-input`,
+      `cart-remove-button`, `.cart-item__error`, `.loading__spinner` all matter to `cart.js`).
+      The `<tr>` is a grid, as Dawn makes it, and the four `<td>`s are placed with `grid-area`;
+      the column headings stay for a screen reader only. The options live in the quantity cell so
+      they run under the price: **beside it they wrapped on a phone**, a lone size number on its
+      own line, which a first look at 375px showed.
+    - **`'key' | t: price: x | money` applies `money` to the translation**, not to the price --
+      the money string is made first. Caught before it was pushed.
+    - **Parse-checked before the push**, because the drawer renders on every page: a Liquid error
+      would have shown on all of them. (`liquidjs` does not know `{% style %}`, so
+      `theme.liquid` and `main-product.liquid` report that one tag; every snippet parses.)
+    - **A colour is never guessed here either**, and the options snippet reuses the same twin
+      rule as the page.
+  - **Checked live** (1000 and 1100 wide, 375): the panel is 460 x 700 at 1000; header 60px;
+    picture 100 x 100; title 15px/550; options 11.5px capitals at 0.7; price 15px/500; stepper
+    104 x 36 at 4% fill; „Премахни“ 12px underlined; the band `rgb(245, 244, 240)` across the whole
+    panel with three one-line items at 12.5px; „ОБЩО“ 12px/600, the amount 22px/550; the checkout
+    411 x 48, black, square, 15px/700. **Real clicks through the page's own buttons**: plus gives
+    quantity 2, "(2)", „€200,00 за бр.“, a line of €400,00 and a total of €400,00 with the header
+    bubble at 2; minus goes back; „Премахни“ gives the empty bag; adding the ring again opens the
+    drawer on the new line. The checkout button is still `name="checkout"` in a form posting to
+    `/cart`. At 375: a full-width sheet, a 90px picture, one-line options, the band's second
+    line breaking in the middle, the checkout 327 x 48 with 24px below it, no sideways scroll;
+    four lines (five pieces) scroll under the pinned footer and the total reads „€1.000,00“.
+  - **Not seen, and why**: the hover colours (the pane's synthetic hover), the 0.4s slide (the
+    pane produces no animation frames), a line with a discount, the order note, and Judge.me's
+    "Reviews in Cart Drawer" embed (no reviews exist, so it draws nothing). **Shopify's preview
+    bar** (an iframe, `#PBarNextFrame`) covers the bottom 40px of a preview page -- exactly where
+    the checkout button is -- and its Hide bar button did not take a click in the pane; setting
+    that iframe's `display` to `none` in the page (local to the tab) is how the footer was seen.
+  - **Deliberately not built, because no policy or data stands behind it**: payment-method logos
+    (which methods the store takes is not settled), a free-shipping bar (no policy), an upsell
+    row (Shopify's recommendations are empty for this catalogue), a gift offer. **The order note
+    stays off**: one switch in Theme settings > Cart, and the sheet already styles it.
+  - **Left alone, worth knowing**: the **cart page** (`/cart`) is still stock Dawn in layout (its
+    strings are Bulgarian now); it lists every option, the colour included. **The quantity
+    stepper is kept** although the owner removed quantity from the product page: in the bag it
+    lets a shopper buy two of a piece; removing it is one block. Checkout, the order emails and
+    the Admin are Shopify's own and are not touched.
+
 ## Current state
 
 - Design foundation applied (palette, type, spacing). Committed and live on the draft theme.
@@ -4626,27 +4812,22 @@ data, not theme files:
   - **The two open questions that stood here were settled by the owner in the Admin on
     2026-09-28, their own way** (the English `Jewelry material` option, and the English Color
     entry names). Where it stands, read live that day:
-    - **Пръстен с верижка has three options and 84 variants** (7 sizes × 3 × 4), renamed and
-      extended by the owner in the Admin later on 2026-09-28: **изберете вашия размер**
+    - **Пръстен с верижка has three options and 112 variants** (7 sizes × 4 × 4), renamed and
+      extended by the owner in the Admin on 2026-09-28 and after: **изберете вашия размер**
       (54 55, 56, 55, 57, 58, 59, 60); **Цветове на златото**, the option with swatches,
-      values жълто злато / бяло злато / розово злато, which feeds the card circles; and
-      **Изберете вашия метал**, values 14К жълто злато / 14К бяло злато / 14К розово злато /
-      **925 сребро**. The owner added the material option after the page showed the colour
-      words twice, and asked for the colour section to be hidden -- see Colour option hidden
-      under Product page.
-      - **The colour row is visible again, and that is the rule working, not breaking.**
-        Hiding it requires every material value to contain exactly one colour name; `925
-        сребро` contains none of the three gold colours, so the pairing fails and both rows
-        draw, exactly as designed ("anything short of an exact cover draws both rows, so a
-        choice can never become unreachable"). **To hide it again**: add a silver value to
-        Цветове на златото whose name sits inside `925 сребро` -- `сребро` -- so all four
-        materials map to a colour. Removing `925 сребро` from this ring works too. Either is
-        Admin work, no theme change.
+      values жълто злато / бяло злато / розово злато / **Сребро**, which feeds the card circles;
+      and **Изберете вашия метал**, values 14К жълто злато / 14К бяло злато / 14К розово злато /
+      **925 сребро**. (Read live 2026-10-03: the owner has added the `Сребро` colour entry since
+      the note that stood here said silver was what kept the colour row visible.)
+      - **The colour row is hidden on this page** since 2026-10-03: every material value names a
+        colour (`925 сребро` names `Сребро`), so the rule is met. See The colour row is hidden on
+        every product with a material option under Product page.
     - **Гривна с червен конец has 8 variants and English option names still**: `Jewelry
-      material` (14К жълто злато | Silver) and `Color` (розово злато | жълто злато | Silver |
-      бяло злато). Its material list lacks розово and бяло, so the product page cannot hide
-      the colour row there (hiding it would strand two colours) and shows both rows. Adding
-      `14К розово злато` and `14К бяло злато` to Jewelry material makes the row hide itself,
+      material` (14К жълто злато | Silver) and `Color` (розово злато | жълто злато | Сребро |
+      бяло злато -- the third read `Silver` until the owner translated it). Its colour row is
+      hidden since 2026-10-03 (English "Silver" is read as „сребро“, so it meets `Сребро`) and its
+      page offers **yellow gold and silver only**: no material value names rose or white gold.
+      Adding `14К розово злато` and `14К бяло злато` to Jewelry material makes them reachable,
       with no code change.
     - **Обеци and Висулка плочка still have no options at all.**
     - **The entries are shared by every product that uses them.** A piece in 18K needs its
