@@ -1492,6 +1492,14 @@ html {
   column-gap: 6rem;
 }
 
+/* The list no longer carries `page-width`, whose own padding used to override the
+   browser's 40px indent on a <ul>; with the class gone the indent came back and set
+   the links 40px in from the page's left edge. */
+.mega-menu__body .mega-menu__list {
+  margin: 0;
+  padding: 0;
+}
+
 /* A one-level dropdown's links ARE the content, not column headers over a list, so
    they are set as links: a size up from the headers, regular-weight capitals, with air
    between. Dawn's own `.mega-menu__list--condensed .mega-menu__link` (normal weight) is
