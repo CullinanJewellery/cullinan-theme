@@ -132,7 +132,8 @@ No replacement legal text is to be written; the accountant handles legal pages.
 
 ## G. Workshop slides and proposals awaiting the owner
 
-1. **Workshop slides — BUILT 2026-10-04 (owner approved the layout), waiting for the four photographs.** Section
+1. **Workshop slides — LIVE in a text-only layout since 2026-10-04; photographs pending.** The old story band is switched off.
+   Photographs switch on only when all four slides have one. Section
    `workshop-slides` (key `workshop`, directly before the old story band `atelier`); details in
    `docs/theme-guide.md` §3. Visitors see it only when every slide has a photograph and a heading; the old story band
    stays visible meanwhile. **When the four photographs are in and the links chosen: hide the old story section**
@@ -150,6 +151,21 @@ No replacement legal text is to be written; the accountant handles legal pages.
 **Photographs needed** (real, nothing burned in): the atelier bench with hands at work; the 3D model on screen; a
 printed model beside its finished piece; two or three finished pieces worn; the shop front and interior; packaging
 once decided. Shot list in `photography/README.md`.
+
+## I. Rating near the hero — proposal awaiting the owner (2026-10-04, not built)
+
+- **Placement**: one line directly under the hero subtitle, before the button — ★★★★★ 4,9 · 37 отзива (numbers here only
+  illustrate the format; nothing is shown until real data exists). Computer: left-aligned with the hero words, light
+  text on the photo's gradient; phone: centred on the clay panel under the subtitle. Stars in rose gold (#B76E79, as the
+  other stars); the line links to the reviews section. Screen-reader text: „Средна оценка 4,9 от 5 от 37 отзива“.
+- **Data needed (verified, real)**: reviews collected by Judge.me from real orders (its review-request emails after
+  delivery), giving a shop-wide average and count. To confirm in Judge.me / Shopify (not checked): whether the free plan
+  writes a shop-level average and count the theme can read (shop metafields), or only per-product
+  `reviews.rating`/`rating_count`. Imported old reviews (old site, Facebook, with permission) count only if the owner
+  accepts them and Judge.me marks them as imported, not verified.
+- **Rules**: no example or placeholder ratings to visitors, ever; the line prints nothing until a minimum number of
+  real reviews exists (owner to choose, e.g. 5 or 10); the hand-filled homepage review cards are **not** a source for an
+  average or a count.
 
 ## F. Content and photography
 

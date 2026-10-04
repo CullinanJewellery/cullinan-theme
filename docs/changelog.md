@@ -27,6 +27,19 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
   or checkout setting touched); „Изработка и доставка: 5–20 работни дни“ everywhere (5–20 confirmed as making +
   delivery); За нас ring-size answer says inner circumference in mm, not diameter, matching the guide. Fallback
   tested with substituted data (liquidjs mocks); hiding, wording and FAQ checked on the real preview.
+- **Evening round (owner)**, each verified on the real preview at 375 and 1440:
+  - Social band wording: „Още от нашите бижута“ / „Разгледайте снимки и видеа във Facebook и Instagram.“ (product pages
+    and the footer's social block on other pages); links kept. CLAUDE.md gains one line on how Bulgarian copy should read.
+  - A Shopify theme-editor save (b403e0c) had written back an older `main-product.liquid` without the per-variant stone
+    rule (that push had been dropped); restored from 24f556f.
+  - Workshop slides show without photographs in a text-only layout (photos all or nothing); „Занаят с история“ switched
+    off on the homepage; section title 26–40px.
+  - Контакти: the picture behind the Facebook/Instagram buttons now starts at the footer's top edge (the strip was 16px
+    on a computer, 7px on a phone); words unmoved.
+  - Product rows: the „1 / от 4“ counter hidden visually; arrows checked (next asks the right scroll, previous enables).
+  - За нас: no promotional social block in its footer; other pages unchanged.
+  - Trust slider on phones: cards 82% wide, 16px gap, ~62px of the next card visible; computer unchanged.
+  - Rating near the hero: proposal only (`docs/tasks.md` I).
 - **Trust row slides on phones (owner)**: after hestiahome.bg's mobile trust row (checked live: a CSS scroll-snap row,
   cards 266px with the next peeking, no dots, no autoplay). Ours: one card per screen, a small dot indicator,
   keyboard scrolling, no autoplay. Computer and tablet unchanged. Verified on the real preview at 375 and 1440 (dot
