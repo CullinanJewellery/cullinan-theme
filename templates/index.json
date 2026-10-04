@@ -523,7 +523,7 @@
         "judge_me_reviews_testimonials_carousel_QzKXjN": {
           "type": "shopify://apps/judge-me-reviews/blocks/testimonials_carousel/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
           "settings": {
-            "show_sample_reviews": true,
+            "show_sample_reviews": false,
             "reviews_selection": "all",
             "products": [],
             "filter_pinned": false,
@@ -541,15 +541,15 @@
             "max_width": 1100,
             "corner_styling": "soft",
             "quote_marks_style": "serif",
-            "card_color": "#F9F9F9",
-            "stars_and_quote_marks_color": "#108474",
-            "text_color": "#000000",
-            "arrows_color": "#000000",
+            "card_color": "#F3EBE6",
+            "stars_and_quote_marks_color": "#B76E79",
+            "text_color": "#2A1E1A",
+            "arrows_color": "#2A1E1A",
             "show_border": false,
-            "border_color": "#108474",
+            "border_color": "#B76E79",
             "show_drop_shadow": false,
             "transition_speed": 5,
-            "header_text": "Customers are saying",
+            "header_text": "",
             "show_average_rating": true,
             "rating_display": "default"
           }
