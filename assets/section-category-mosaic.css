@@ -273,3 +273,34 @@
 .mosaic__grid--caption-over .mosaic__tile:has(.mosaic__image--empty) .mosaic__subline {
   color: rgb(var(--color-foreground));
 }
+
+/* ---------------------------------------------------------------------------
+   Phones: a compact two-column grid of square tiles (2026-10-05, owner). Names
+   only (the taglines were removed at every size); the whole tile stays the link.
+   Inside the page gutters rather than bleeding to the edges, so the two columns
+   read as a grid. Computer and tablet unchanged.
+   --------------------------------------------------------------------------- */
+@media screen and (max-width: 749px) {
+  .mosaic__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    margin-inline: 0;
+  }
+
+  .mosaic__item--tall .mosaic__media,
+  .mosaic__item--standard .mosaic__media {
+    aspect-ratio: 1 / 1;
+  }
+
+  .mosaic__grid--caption-over .mosaic__caption {
+    padding: 3rem 1.2rem 1.2rem;
+  }
+
+  .mosaic__grid--caption-over .mosaic__label {
+    font-size: 1.4rem;
+  }
+
+  .mosaic__grid--caption-over .mosaic__subline {
+    display: none;
+  }
+}
