@@ -5153,3 +5153,47 @@ h1, h2, h3, h4, h5, h6, .h0, .h1, .h2, .h3, .h4, .h5 {
   width: 1.8rem;
   height: 1.8rem;
 }
+
+/* ---------------------------------------------------------------------------
+   The hero with a photograph (2026-10-04)
+
+   The owner uploaded the first hero picture the same day (set in the theme
+   editor): a low-key portrait, the lower face and neck with a gold bell on a
+   chain, 941 x 1672. Dropped into the wide desktop hero with the words centred
+   and espresso, it failed three ways, seen in a local copy before anything was
+   pushed: the heading was dark on skin and nearly unreadable, the words sat
+   over the chain, and the centre crop cut the pendant off at the bottom edge.
+
+   So, only while the hero has a picture (an empty hero keeps its pale gradient
+   and its dark words):
+   - the picture is positioned at 50% 70%, which puts the pendant in the middle
+     of the frame on a computer (a 2:1 crop) and on a phone (a square) alike. A
+     focal point set in Shopify's Files writes an inline object-position that
+     wins over this, so choosing one still works;
+   - from 750px the words go light (marble white) over a soft espresso gradient
+     from the left, and sit at the left, on the logo's own left edge
+     (templates/index.json: content position middle-left, alignment left), so
+     the piece itself stays clear. On a phone the words are under the picture on
+     the clay panel and are untouched.
+   Way back: delete this block and set the hero's content position and alignment
+   back to centre.
+   --------------------------------------------------------------------------- */
+[id^="shopify-section-"][id$="__hero_image"] .banner:has(.banner__media:not(.banner__media--empty)) .banner__media img {
+  object-position: 50% 70%;
+}
+
+@media screen and (min-width: 750px) {
+  [id^="shopify-section-"][id$="__hero_image"] .banner:has(.banner__media:not(.banner__media--empty))::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: linear-gradient(90deg, rgba(24, 14, 9, 0.66) 0%, rgba(24, 14, 9, 0.42) 34%, rgba(24, 14, 9, 0) 64%);
+  }
+
+  [id^="shopify-section-"][id$="__hero_image"] .banner:has(.banner__media:not(.banner__media--empty)) .banner__box {
+    --color-foreground: 251, 248, 246;
+    color: #FBF8F6;
+  }
+}
