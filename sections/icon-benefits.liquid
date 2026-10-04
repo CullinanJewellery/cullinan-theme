@@ -1,4 +1,5 @@
 {{ 'section-icon-benefits.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'benefits-slider.js' | asset_url }}" defer="defer"></script>
 
 <div class="benefits-band color-{{ section.settings.color_scheme }} gradient">
   <div
@@ -8,7 +9,15 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     "
   >
-    <ul class="benefits__grid" role="list">
+    {%- comment -%}
+      2026-10-04: on phones (below 750px) the cards slide sideways, one per screen, after
+      hestiahome.bg's own mobile trust row (a scroll-snap row, no autoplay). The
+      <benefits-slider> element (assets/benefits-slider.js) adds a small position
+      indicator and makes the row keyboard-scrollable; without it the row still swipes.
+      Computer and tablet keep the grid.
+    {%- endcomment -%}
+    <benefits-slider class="benefits__slider">
+    <ul class="benefits__grid" role="list" aria-label="Предимства при поръчка">
       {%- for block in section.blocks -%}
         <li class="benefits__item" {{ block.shopify_attributes }}>
           <div class="benefit__visual">
@@ -37,6 +46,8 @@
         </li>
       {%- endfor -%}
     </ul>
+    <div class="benefits__dots" hidden></div>
+    </benefits-slider>
   </div>
 </div>
 

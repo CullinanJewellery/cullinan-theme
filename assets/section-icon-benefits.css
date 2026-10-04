@@ -248,3 +248,97 @@
     grid-template-columns: minmax(0, 1fr);
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Phones: the trust cards slide (2026-10-04, owner; reference hestiahome.bg's
+   mobile trust row, a plain scroll-snap row with no autoplay). One card per
+   screen, swiped sideways, with a small dot indicator drawn by
+   assets/benefits-slider.js. Same cards, icons, type and words as before; only
+   the arrangement changes. Tablet and computer keep the grid above.
+   --------------------------------------------------------------------------- */
+@media screen and (max-width: 749px) {
+  .benefits-band .benefits {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .benefits-band .benefits__grid {
+    display: flex;
+    grid-template-columns: none;
+    gap: 1.2rem;
+    padding: 0 1.5rem;
+    scroll-padding-inline: 1.5rem;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .benefits-band .benefits__grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .benefits-band .benefits__item,
+  .benefits-band .benefits__item:last-child:nth-child(odd) {
+    flex: 0 0 100%;
+    grid-column: auto;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    padding: 2.8rem 2rem 2.6rem;
+  }
+
+  .benefits-band .benefits__grid:focus-visible {
+    outline: 0.2rem solid rgb(var(--color-foreground));
+    outline-offset: 0.2rem;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .benefits-band .benefits__grid {
+      scroll-behavior: smooth;
+    }
+  }
+
+  .benefits__dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.2rem;
+    margin-top: 0.8rem;
+  }
+
+  .benefits__dots[hidden] {
+    display: none;
+  }
+
+  /* A 24px tap area around a 6px dot. */
+  .benefits__dot {
+    position: relative;
+    width: 2.4rem;
+    height: 2.4rem;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+  }
+
+  .benefits__dot::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0.6rem;
+    height: 0.6rem;
+    border-radius: 50%;
+    background: rgba(var(--color-foreground), 0.25);
+    transform: translate(-50%, -50%);
+    transition: background-color 0.2s;
+  }
+
+  .benefits__dot[aria-current='true']::before {
+    background: rgb(var(--color-button));
+  }
+
+  .benefits__dot:focus-visible {
+    outline: 0.2rem solid rgb(var(--color-foreground));
+    outline-offset: -0.2rem;
+  }
+}
