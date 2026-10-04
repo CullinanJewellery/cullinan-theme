@@ -195,6 +195,44 @@
   {%- endif -%}
   <div class="banner__content banner__content--{{ section.settings.desktop_content_position }} page-width{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
     <div class="banner__box content-container content-container--full-width-mobile color-{{ section.settings.color_scheme }} gradient">
+      {%- comment -%}
+        Cullinan (2026-10-05): the review rating above the heading, when the section's
+        "Show review rating" is on (the homepage hero only). Source: Judge.me's shop-wide
+        values, shop.metafields.judgeme.all_reviews_rating and .all_reviews_count -- the
+        same ones Judge.me's own "all reviews" badge reads: every published review
+        (product and store reviews), updated by Judge.me when a review is published, not
+        on delivery. Nothing is shown to shoppers without reviews; the theme editor shows
+        five outline stars and „— · Все още няма отзиви“ so the place can be seen.
+      {%- endcomment -%}
+      {%- if section.settings.show_review_rating -%}
+        {%- liquid
+          assign jm_count = shop.metafields.judgeme.all_reviews_count | plus: 0
+          assign jm_rating = shop.metafields.judgeme.all_reviews_rating | plus: 0.0
+        -%}
+        {%- if jm_count > 0 and jm_rating > 0 -%}
+          {%- liquid
+            assign jm_display = jm_rating | round: 1 | append: '' | replace: '.', ','
+            unless jm_display contains ','
+              assign jm_display = jm_display | append: ',0'
+            endunless
+            assign jm_stars = jm_rating | round: 0
+            if jm_count == 1
+              assign jm_word = 'отзив'
+            else
+              assign jm_word = 'отзива'
+            endif
+          -%}
+          <p class="banner__rating">
+            <span aria-hidden="true">{%- render 'review-stars', rating: jm_stars -%}</span>
+            <span class="banner__rating-text"><span class="visually-hidden">Средна оценка: </span>{{ jm_display }} · {{ jm_count }} {{ jm_word }}</span>
+          </p>
+        {%- elsif request.design_mode -%}
+          <p class="banner__rating banner__rating--empty">
+            <span aria-hidden="true">{%- render 'review-stars', rating: 0 -%}</span>
+            <span class="banner__rating-text">— · Все още няма отзиви</span>
+          </p>
+        {%- endif -%}
+      {%- endif -%}
       {%- for block in section.blocks -%}
         {%- case block.type -%}
           {%- when 'heading' -%}
@@ -269,6 +307,13 @@
     "groups": ["header", "footer"]
   },
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_review_rating",
+      "label": "Show review rating",
+      "info": "Stars, average and number of reviews from Judge.me, above the heading. Hidden from shoppers while there are no published reviews.",
+      "default": false
+    },
     {
       "type": "image_picker",
       "id": "image",

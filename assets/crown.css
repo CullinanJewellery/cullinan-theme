@@ -5640,3 +5640,44 @@ recently-viewed .slider-button .icon {
 recently-viewed .slider-button[disabled] .icon {
   color: rgba(var(--color-foreground), 0.25);
 }
+
+/* ---------------------------------------------------------------------------
+   Hero rating line (2026-10-05): stars, average and count from Judge.me above the
+   hero heading (sections/image-banner.liquid). Takes the hero's own text colour
+   (light over the photo on computers, ink on the phone panel); stars in rose gold.
+   --------------------------------------------------------------------------- */
+.banner__rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin: 0 0 1.2rem;
+  font-family: var(--font-body-family);
+  font-size: 1.3rem;
+  letter-spacing: 0.04em;
+  line-height: 1.4;
+}
+
+.banner__rating .review-stars {
+  display: inline-flex;
+  color: #b76e79;
+}
+
+.banner__rating .review-stars svg {
+  display: block;
+  width: 8.6rem;
+  height: 1.6rem;
+}
+
+.banner__rating .review-stars__star {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.4;
+}
+
+.banner__rating .review-stars__star--on {
+  fill: currentColor;
+}
+
+.banner__rating--empty {
+  opacity: 0.8;
+}
