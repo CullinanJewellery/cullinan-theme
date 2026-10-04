@@ -510,7 +510,7 @@ cart-drawer cart-drawer-items {
 }
 
 /* ===========================================================================
-   The cart page (/cart), 2026-10-04: the same words and button as the drawer.
+   The cart page (/cart), 2026-10-04: the same words and the same button as the drawer.
    Dawn's layout stays (a table with the picture, the details, the quantity and
    the line total); what changes is what the drawer already settled: the options
    as one line of values (snippets/cart-item-options.liquid), „Премахни“ in words
