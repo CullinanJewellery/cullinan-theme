@@ -25,6 +25,14 @@
   printed -- it is a setting for the owner to add once it is a figure to stand
   behind. The privacy link only prints when the shop has a privacy policy page,
   so it can never point nowhere, and says nothing about the data.
+
+  On a product page (2026-10-04, "product-specific enquiries") it becomes a
+  question about that piece: the band carries the anchor #zapitvane, which the
+  buy box's "Попитайте за това бижу" link jumps to; the subject line reads
+  „Въпрос за бижу“; and three hidden lines tell the owner which piece -- its
+  title, its address with the chosen variant, and the variant itself (size,
+  metal). The variant lines follow the shopper's choice through Dawn's
+  variant-change event, so the message names what was selected when it was sent.
 {%- endcomment -%}
 
 {%- style -%}
@@ -62,7 +70,12 @@
   endif
 -%}
 
-<div class="color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-margin">
+<div
+  class="color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-margin"
+  {% if product %}
+    id="zapitvane"
+  {% endif %}
+>
   <div class="custom-request page-width section-{{ section.id }}-padding">
     <div class="custom-request__intro">
       {%- if section.settings.eyebrow != blank -%}
@@ -115,9 +128,21 @@
           Which form this came from, and on a product page which piece. They
           arrive in the store's email as lines of their own.
         {%- endcomment -%}
-        <input type="hidden" name="contact[Тема]" value="Изработка по поръчка">
         {%- if product -%}
-          <input type="hidden" name="contact[Бижу]" value="{{ product.title | escape }}: {{ shop.url }}{{ product.url }}">
+          {%- assign enquiry_variant = product.selected_or_first_available_variant -%}
+          <input type="hidden" name="contact[Тема]" value="Въпрос за бижу">
+          <input type="hidden" name="contact[Бижу]" value="{{ product.title | escape }}">
+          <input
+            type="hidden"
+            name="contact[Връзка]"
+            value="{{ shop.url }}{{ product.url }}?variant={{ enquiry_variant.id }}"
+            data-enquiry-url="{{ shop.url }}{{ product.url }}"
+          >
+          {%- unless product.has_only_default_variant -%}
+            <input type="hidden" name="contact[Вариант]" value="{{ enquiry_variant.title | escape }}" data-enquiry-variant>
+          {%- endunless -%}
+        {%- else -%}
+          <input type="hidden" name="contact[Тема]" value="Изработка по поръчка">
         {%- endif -%}
 
         <div class="custom-request__row">
@@ -180,9 +205,11 @@
             rows="5"
             required
             aria-required="true"
-            placeholder="Какво търсите?"
+            placeholder="{% if product %}Вашият въпрос{% else %}Какво търсите?{% endif %}"
           >{{ form.body }}</textarea>
-          <label class="field__label" for="{{ form_id }}-body">Какво търсите? <span aria-hidden="true">*</span></label>
+          <label class="field__label" for="{{ form_id }}-body">
+            {%- if product %}Вашият въпрос{% else %}Какво търсите?{% endif %} <span aria-hidden="true">*</span>
+          </label>
         </div>
 
         <button type="submit" class="custom-request__button">
@@ -198,6 +225,24 @@
     {%- endform -%}
   </div>
 </div>
+
+{%- if product -%}
+  <script>
+    // pubsub.js is deferred, so wait for it (deferred scripts run before DOMContentLoaded).
+    document.addEventListener('DOMContentLoaded', function () {
+      var form = document.getElementById({{ form_id | json }});
+      if (!form || typeof subscribe !== 'function' || typeof PUB_SUB_EVENTS === 'undefined') return;
+      subscribe(PUB_SUB_EVENTS.variantChange, function (event) {
+        var variant = event && event.data && event.data.variant;
+        if (!variant) return;
+        var url = form.querySelector('[data-enquiry-url]');
+        var title = form.querySelector('[data-enquiry-variant]');
+        if (url) url.value = url.dataset.enquiryUrl + '?variant=' + variant.id;
+        if (title) title.value = variant.title;
+      });
+    });
+  </script>
+{%- endif -%}
 
 {% schema %}
 {

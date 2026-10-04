@@ -744,15 +744,30 @@
                     Контакти); it only dials. Renders nothing without a number, so the block can sit
                     in the template before the shop has settled whose phone it is.
                   {%- endcomment -%}
+                  {%- comment -%}
+                    2026-10-04: a second link beside it, "Попитайте за това бижу", to the
+                    custom-request band on this page (#zapitvane), whose form names the piece and
+                    the chosen variant. crown.css hides the link when the page has no such band.
+                  {%- endcomment -%}
                   {%- assign phone_digits = block.settings.phone | remove: ' ' | remove: '-' -%}
-                  {%- if phone_digits != blank -%}
+                  {%- if phone_digits != blank or block.settings.ask_label != blank -%}
                     <p class="product-phone-order" {{ block.shopify_attributes }}>
-                      <a class="product-phone-order__link" href="tel:{{ phone_digits | escape }}">
-                        <span class="product-phone-order__icon" aria-hidden="true">
-                          {%- render 'icon-benefit', icon: 'phone' -%}
-                        </span>
-                        <span class="product-phone-order__label">{{ block.settings.label | escape }}</span>
-                      </a>
+                      {%- if phone_digits != blank -%}
+                        <a class="product-phone-order__link" href="tel:{{ phone_digits | escape }}">
+                          <span class="product-phone-order__icon" aria-hidden="true">
+                            {%- render 'icon-benefit', icon: 'phone' -%}
+                          </span>
+                          <span class="product-phone-order__label">{{ block.settings.label | escape }}</span>
+                        </a>
+                      {%- endif -%}
+                      {%- if block.settings.ask_label != blank -%}
+                        <a class="product-phone-order__link product-phone-order__link--ask" href="#zapitvane">
+                          <span class="product-phone-order__icon" aria-hidden="true">
+                            {%- render 'icon-benefit', icon: 'envelope' -%}
+                          </span>
+                          <span class="product-phone-order__label">{{ block.settings.ask_label | escape }}</span>
+                        </a>
+                      {%- endif -%}
                     </p>
                   {%- endif -%}
                 {%- when 'trust_lines' -%}
@@ -1314,6 +1329,13 @@
           "id": "phone",
           "label": "Phone number",
           "info": "With the country code, e.g. +359 88 123 4567."
+        },
+        {
+          "type": "text",
+          "id": "ask_label",
+          "label": "Question link",
+          "info": "Jumps to the Custom request section on the product page, whose form adds the piece's name, link and chosen variant. Hidden when the page has no such section. Leave empty to hide.",
+          "default": "Попитайте за това бижу"
         }
       ]
     },

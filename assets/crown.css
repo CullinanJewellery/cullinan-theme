@@ -5123,7 +5123,15 @@ h1, h2, h3, h4, h5, h6, .h0, .h1, .h2, .h3, .h4, .h5 {
    printed as text, as on Контакти. The block prints nothing without a number.
    --------------------------------------------------------------------------- */
 .product .product-phone-order {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 2.4rem;
   margin: 1.4rem 0 0;
+}
+
+/* The question link only where the page has the enquiry band to jump to. */
+body:not(:has(#zapitvane)) .product .product-phone-order__link--ask {
+  display: none;
 }
 
 .product .product-phone-order__link {
