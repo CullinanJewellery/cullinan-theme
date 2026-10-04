@@ -5197,3 +5197,99 @@ h1, h2, h3, h4, h5, h6, .h0, .h1, .h2, .h3, .h4, .h5 {
     color: #FBF8F6;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Buttons, one language (2026-10-04)
+
+   The owner: "i want my buttons ... if they are not good make them good". They
+   were three sizes of three shapes: Dawn's pill from the theme setting, square
+   ones in the banners, the stones row and Add to cart, rectangles of 64px, 68px
+   and 72px with type from 14px to 22px. The houses we looked at use one shape
+   and a small tracked label (Tiffany 60px tall, 11px capitals at 0.08em; Ole
+   Lynggaard 58px, 14px).
+
+   So: **square** (config/settings_data.json buttons_radius is 0, which also
+   squares everything that reads the setting: the contact and request buttons,
+   the footer's social buttons, every plain .button), a 5.6rem height, 14px
+   capitals at 0.14em in weight 500, from 750px up; phones keep the sizes the
+   owner tuned. The hero's button, which was 72px by up to 485px at 22px, the
+   loudest object on the first screen of any shop looked at, is the same size as
+   the rest and 34rem wide. Colour, hover and lift are unchanged.
+   The `html body` prefix is only for specificity: the section stylesheets load
+   after this file and would otherwise tie.
+   Way back: delete this block; set buttons_radius back to 40.
+   --------------------------------------------------------------------------- */
+@media screen and (min-width: 750px) {
+  html body :is(
+      .banner__buttons .button,
+      .collection .collection__view-all .button,
+      .atelier .atelier__button,
+      .stones .stones__button,
+      .contact-methods__button,
+      .custom-request__button
+    ) {
+    min-height: 5.6rem;
+    border-radius: 0;
+    font-size: 1.4rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+  }
+
+  html body .banner__buttons .button {
+    min-width: min(34rem, 100%);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   The filter and sort bar (2026-10-04)
+
+   Dawn's own: plain words with solid carets, a hairline-less row, panels with a
+   default shadow. Now the site's small capitals, a hairline above and below the
+   bar, and panels that are a quiet paper card with one soft shadow. Collection
+   pages and search.
+   --------------------------------------------------------------------------- */
+html body .facets-wrapper .facets-container {
+  border-top: 1px solid rgba(var(--color-button), 0.18);
+  border-bottom: 1px solid rgba(var(--color-button), 0.18);
+}
+
+html body .facets-wrapper .facets__heading,
+html body .facets-wrapper .facets__summary,
+html body .facets-wrapper .facet-filters__label,
+html body .facets-wrapper .facet-filters__field .select__select {
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+html body .facets-wrapper .product-count__text {
+  font-size: 1.2rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(var(--color-foreground), 0.7);
+}
+
+html body .facets-wrapper .facets__display {
+  border: 1px solid rgba(var(--color-button), 0.2);
+  border-radius: 0;
+  background-color: rgb(var(--color-background));
+  box-shadow: 0 1.6rem 4rem rgba(42, 30, 26, 0.1);
+}
+
+/* ---------------------------------------------------------------------------
+   The shop's address and hours, under the footer's first column (2026-10-04)
+
+   Plain lines in sentence case, a little apart from the links above them, in the
+   footer's black. The owner gave the hours: Monday to Friday 09:30-19:00,
+   Saturday 10:00-18:00, Sunday closed. Set in the "note" of the column
+   (sections/footer-group.json).
+   --------------------------------------------------------------------------- */
+.footer .footer-links__list .footer-links__note {
+  margin-top: 1.4rem;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: rgb(0 0 0);
+}

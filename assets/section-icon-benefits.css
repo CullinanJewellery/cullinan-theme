@@ -129,3 +129,112 @@
     grid-template-columns: minmax(0, 1fr);
   }
 }
+
+/* ---------------------------------------------------------------------------
+   The trust band (2026-10-04)
+
+   The owner, about the four capitals under the hero: "just a text, look a bad,
+   very bad". hestiahome.bg's answer, which the owner pointed to, is a row of cards
+   each with an icon, a title and a sentence that settle the buyer's worries before
+   the first product: cash on delivery, easy replacement, free delivery. This row
+   is that, for Cullinan: a ringed icon, a small-capitals title and a sentence a
+   shopper can read (the old row set its sentence at 13px in 62% grey, which was
+   not legible). Four cards on a computer, two by two on a phone. It sits directly
+   under the hero (templates/index.json) and replaces the capitals strip.
+   Way back: the old rules above still describe the plain row; delete this block.
+   --------------------------------------------------------------------------- */
+.benefits-band .benefits__grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+.benefits-band .benefits__item {
+  justify-content: flex-start;
+  padding: 3.2rem 2.2rem 3rem;
+  border: 1px solid rgba(var(--color-button), 0.2);
+  background-color: transparent;
+}
+
+.benefits-band .benefit__visual {
+  width: 5.6rem;
+  height: 5.6rem;
+  border: 1px solid rgba(var(--color-button), 0.4);
+  border-radius: 50%;
+  color: rgb(var(--color-button));
+}
+
+.benefits-band .benefit__icon {
+  width: 2.6rem;
+  height: 2.6rem;
+}
+
+.benefits-band .benefit__heading {
+  margin-top: 1.8rem;
+  font-size: 1.4rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-wrap: balance;
+}
+
+.benefits-band .benefit__subline {
+  margin-top: 0.8rem;
+  max-width: 30ch;
+  font-size: 1.45rem;
+  line-height: 1.55;
+  color: rgba(var(--color-foreground), 0.78);
+  text-wrap: pretty;
+}
+
+@media screen and (max-width: 989px) {
+  .benefits-band .benefits__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.2rem;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  /* Two by two, as bordered cards like the computer's rather than tinted tiles: the
+     tint read as a default grid, the ring and the hairline read as ours. */
+  .benefits-band {
+    background: transparent;
+  }
+
+  .benefits-band .benefits {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .benefits-band .benefits__grid {
+    gap: 1rem;
+  }
+
+  .benefits-band .benefits__item {
+    padding: 2.4rem 1.2rem 2.2rem;
+    background-color: transparent;
+  }
+
+  .benefits-band .benefit__visual {
+    width: 4.8rem;
+    height: 4.8rem;
+  }
+
+  .benefits-band .benefit__icon {
+    width: 2.2rem;
+    height: 2.2rem;
+  }
+
+  .benefits-band .benefit__heading {
+    margin-top: 1.4rem;
+    font-size: 1.2rem;
+  }
+
+  .benefits-band .benefit__subline {
+    font-size: 1.3rem;
+  }
+}
+
+@media screen and (max-width: 359px) {
+  .benefits-band .benefits__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

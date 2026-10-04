@@ -378,6 +378,14 @@
                           </a>
                         </li>
                       {%- endif -%}
+                      {%- comment -%}
+                        2026-10-04: plain lines under the links (the shop's address and opening
+                        hours), not a link: a person reading a footer looks there for when the
+                        door is open. Each line break is kept.
+                      {%- endcomment -%}
+                      {%- if block.settings.note != blank -%}
+                        <li class="footer-links__note">{{ block.settings.note | escape | newline_to_br }}</li>
+                      {%- endif -%}
                     {%- endcapture -%}
                     {%- assign column_links = column_links | strip -%}
                     {%- if column_links != blank -%}
@@ -580,6 +588,12 @@
           "type": "text",
           "id": "heading",
           "label": "Heading"
+        },
+        {
+          "type": "textarea",
+          "id": "note",
+          "label": "Note under the links",
+          "info": "Plain lines, for example an address and opening hours. Each line break is kept. Leave empty for none."
         },
         {
           "type": "link_list",
