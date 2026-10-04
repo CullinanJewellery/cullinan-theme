@@ -17,6 +17,12 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 - Ring-size guide: „Таблица с размери“ beside the size option opens a dialog with how to measure (ring sizer or an
   existing ring), its limits, and sizes 48–64 with computed diameters. No resizing or exchange promise. Verified on
   the preview at 1440, 990 and 375.
+- Product enquiry: a custom-request band after the questions; its form names the piece, its link and the chosen
+  variant (kept current on variant change); „Попитайте за това бижу“ beside the phone link jumps to it.
+- Buying information: engraving trust line; the delivery tab says office or address and "another stone, metal or
+  size". Returns and cash-on-delivery wording unchanged, flagged.
+- Cart page aligned with the drawer: options line, „Премахни“, the same checkout button. Express buttons flagged.
+- Two template pushes dropped again (sent within a minute of another push); re-sent with a byte change.
 
 ## 2026-10-04 — documentation reorganised
 - CLAUDE.md archived verbatim as `docs/archive/CLAUDE-original.md` and rewritten as a short entry point; current

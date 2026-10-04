@@ -32,15 +32,19 @@ payment-provider or checkout setting is to be changed from here.**
    (Customize → product → Variant picker → Ring size guide). It says sizes are the inner circumference in mm, as the
    brief asked; the FAQ's own ring-size answer deliberately never mentions mm (an earlier owner remark), so the two
    are worded differently — say if they should match.
-3. **Buying information** near the purchase controls (confirmed facts only), details in the accordions; distinguish
+3. ~~Buying information~~ done 2026-10-04 as far as confirmed facts allow: engraving line added; delivery tab says
+   office or address and "another stone, metal or size". Still open, needing the owner: whether „5–20 работни дни“
+   is production + shipping or shipping only; the cash-on-delivery lines (A2); the returns sentence (C); the
+   „Качество и детайли“ prose is general (585 or 750) until per-product metafields are filled.
+   Original brief: **Buying information** near the purchase controls (confirmed facts only), details in the accordions; distinguish
    production time from shipping time if the business confirms the split; consistency between product page, cart and
    footer; payment icons only for methods actually enabled. The footer draws Shopify's icons for the enabled methods automatically (`payment_enable`); on the preview (2026-10-04) it shows **PayPal only**, and cash on delivery has no icon.
-4. **Product-specific enquiry**: an "ask about this piece" route that carries the product name and link (the
-   custom-request section already adds `contact[Бижу]` on product pages; place it or link to it).
-5. **Workshop story** with confirmed facts and suitable existing images (no text in photographs).
-6. **Homepage review** around: what we sell, why trust us, how to choose, how to order; occasions only where real
-   products and collections exist.
-7. **The /cart page** in the site's own design (now checkable on the preview).
+4. ~~Product-specific enquiry~~ done 2026-10-04 (enquiry band + buy-box link; theme guide §4). **No test message has
+   been sent** from it (or from Контакти): send one from the preview and check the store inbox before launch.
+5. **Workshop story** — proposal given to the owner 2026-10-04, **awaiting approval** (see G).
+6. **Homepage review** — proposal given to the owner 2026-10-04, **awaiting approval** (see G).
+7. ~~The /cart page~~ reviewed and aligned with the drawer 2026-10-04. Flagged, not changed: Shopify's express
+   buttons (Shop Pay, PayPal) under the checkout button, shown because those methods are partly enabled (A2).
 8. **Product-data checklist** for the owner using the fields the theme supports (see D).
 
 ## C. Decisions needed from the owner
@@ -54,7 +58,7 @@ payment-provider or checkout setting is to be changed from here.**
 | Packaging (what a piece arrives in) | Photograph and a line | Product page |
 | Price range of the first ~50 pieces | Homepage hierarchy, navigation | |
 | Cleaning and repair terms | Confirmed as offered; terms unknown | Care tab, footer |
-| Which payment methods are enabled (preview footer shows PayPal only) | Icons follow Shopify automatically; confirm PayPal is intended and whether cards are | Footer, payment tab |
+| Payment setup (see A2): firm registration, then Shopify Payments / PayPal / COD at checkout | Footer icons are hidden until then; COD lines are unverified; cart express buttons show | Footer, payment tab, trust lines, cart |
 | Production vs shipping time split | "5-20 working days" is stated as one figure | Delivery note, tabs |
 
 ### Returns wording to review (flagged, not changed)
@@ -93,6 +97,22 @@ No replacement legal text is to be written; the accountant handles legal pages.
 3. Ruby hero button vs restraint: an owner exception, kept.
 4. The old "fourteen rules" (archive) treated small prices and few sections as rules; the owner's brief says they are not
    universal. Prices are currently 18px/15px; revisit only with a reason (readability first).
+
+## G. Proposals awaiting the owner (2026-10-04, not built)
+
+1. **Workshop story ("Как се ражда едно бижу")**: a homepage band replacing the current three-facts story band,
+   in four steps with a real photograph each — the 3D model on screen, the printed model, the goldsmith's hands at the
+   bench, the finished piece — each with one confirmed sentence; button to За нас. Same four photographs reused on За
+   нас's design panel.
+2. **Homepage order**: hero → trust band → selected pieces → **workshop story** (moved up: it is the reason to pay
+   more) → categories → stones → reviews (only once real ones exist) → custom request → shop visit (address, hours,
+   map, a photograph of the shop front) → newsletter. Social follow folded into the footer.
+3. **Shop visit band**: the shop in Veliko Tarnovo as a trust signal for a high-priced purchase (address, hours,
+   „Обадете се“), from facts already confirmed.
+
+**Photographs needed** (real, nothing burned in): the atelier bench with hands at work; the 3D model on screen; a
+printed model beside its finished piece; two or three finished pieces worn; the shop front and interior; packaging
+once decided. Shot list in `photography/README.md`.
 
 ## F. Content and photography
 

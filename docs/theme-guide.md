@@ -76,7 +76,8 @@ social → newsletter. Hidden (`"disabled": true`, kept): `hero_facts`, `image_m
 
 Block order: rating → title → description → price → variant picker → delivery note → buy buttons → **order by phone**
 → **trust lines** → Доставка и връщане → Начини на плащане → Качество и детайли → Грижа за бижуто → За камъка →
-Подхождат си. Then: recently viewed, Judge.me reviews, Може да ви хареса (featured collection), questions, social band.
+Подхождат си. Then: recently viewed, Judge.me reviews, questions, **enquiry band** („Имате въпрос за това бижу?“),
+Може да ви хареса (featured collection), social band.
 
 | Part | Where | Behaviour |
 |---|---|---|
@@ -86,8 +87,9 @@ Block order: rating → title → description → price → variant picker → d
 | Ring-size guide | variant picker block settings (`size_guide_*`), `snippets/product-variant-picker.liquid`, dialog in `main-product.liquid`, styles at the end of `crown.css` | „Таблица с размери“ link for any option whose name contains „размер“/"size": on the label's line from 750px (the label leaves 15rem for it), under the boxes on a phone. Opens a native `<dialog>`: the guide text (a richtext setting with a Bulgarian default) and a table of European sizes 48–64 (circumference = size; diameter = size ÷ π, computed). Closes with Затвори, Escape or the backdrop. The dialog is printed outside `<variant-selects>` because Dawn re-renders that on variant change. No dialog on products without a size option |
 | Collapsible tabs | `collapsible_tab` | Render nothing when they have no text and no page |
 | Delivery note | `delivery_note` block | Bold label + text, truck icon; „Изработка по поръчка: Доставка 5-20 работни дни“ |
-| Order by phone | `phone_order` block | Link dialling the block's number (not printed); nothing without a number |
-| Trust lines | `trust_lines` block | Up to three icon + sentence lines; an empty line prints nothing |
+| Order by phone / ask | `phone_order` block | Link dialling the block's number (not printed), and „Попитайте за това бижу“ (`ask_label`) jumping to `#zapitvane`; the ask link is hidden by CSS when the page has no enquiry band |
+| Enquiry band | `custom-request` section, key `enquiry`, after the questions | On a product page the section carries `id="zapitvane"`, subject „Въпрос за бижу“, and hidden lines `contact[Бижу]` (title), `contact[Връзка]` (URL with `?variant=`) and `contact[Вариант]` (variant title), the last two kept current through Dawn's `variantChange` pubsub event; the message field reads „Вашият въпрос“; „Имате снимка?“ line off. On the homepage it behaves as before |
+| Trust lines | `trust_lines` block | Up to three icon + sentence lines; an empty line prints nothing. Now: cash on delivery (flagged, A2), engraving on request, Econt/Speedy to office or address |
 | Variant picker | `snippets/product-variant-picker.liquid`, `product-variant-options.liquid`, `product-twin-*.liquid`, `assets/variant-twin-sync.js` | Metal options drawn first; pills for size; metal as a custom drop-down with colour dots; **a colour option is hidden when a material option names a colour in every value**, and both ids travel together so the right variant is chosen; sold-out computed from variants |
 | Gallery | `snippets/product-media-gallery.liquid`, `assets/gallery-dots.js`, `crown.css` | Square tiles, no gaps; lone picture fitted; phone: full-bleed slides with dots |
 | Zoom viewer | `snippets/product-media-modal.liquid`, `assets/product-modal.js`, `assets/component-product-viewer.css` | Thumbnail strip ≥990px, progress bar on phones, keyboard and swipe |
@@ -110,7 +112,12 @@ Block order: rating → title → description → price → variant picker → d
 
 - 46rem sheet (full screen on phones), square; options as values only (material first, colour hidden where the page
   hides it); three reassurance lines from Theme settings → Cart (**one is the 14-day return line, flagged**);
-  checkout button square, black → pink hover. The `/cart` page is still Dawn's layout.
+  checkout button square, rosewood (the scheme's button) → pink hover.
+- **The `/cart` page** keeps Dawn's table layout but reads like the drawer (end of `assets/cullinan-cart.css`, scoped to
+  `#main-cart-items` / `#main-cart-footer`): the same options line (`cart-item-options`), „Премахни“ in words, the same
+  checkout button (48px, 15px bold capitals). Shopify draws express buttons (Shop Pay, PayPal) under it from the
+  enabled payment methods; **left as they are and flagged** (payments are the owner's, `docs/tasks.md` A2). An empty
+  `<dl>` stays in each line (Dawn's properties list; zero height).
 
 ## 8. Story pages
 
