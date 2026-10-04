@@ -400,3 +400,48 @@
     margin-top: 2rem;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Phones, second pass (2026-10-05, owner): the main button on its own row with
+   „Опишете своето бижу“ under it; the arrows and the four step marks grouped in
+   one compact, centred row; a little less space. Photo layout keeps the same
+   grouped row directly under the photo. Tablet and computer unchanged.
+   --------------------------------------------------------------------------- */
+@media screen and (max-width: 749px) {
+  .workshop .workshop__actions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-top: 1.6rem;
+  }
+
+  .workshop .workshop__secondary {
+    display: inline-flex;
+    align-items: center;
+    min-height: 3.2rem;
+  }
+
+  .workshop.workshop--js .workshop__controls {
+    justify-content: center;
+    gap: 0.4rem;
+  }
+
+  .workshop.workshop--js .workshop__steps {
+    flex: none;
+    gap: 0.6rem;
+  }
+
+  .workshop .workshop__dot {
+    width: 2.4rem;
+  }
+
+  .workshop--text.workshop--js .workshop__controls {
+    margin-top: 1.6rem;
+  }
+
+  /* Photo layout: the row sits right under the photo, centred. */
+  .workshop:not(.workshop--text).workshop--js .workshop__controls {
+    left: 0;
+    right: 0;
+  }
+}
