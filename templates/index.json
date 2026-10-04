@@ -302,7 +302,6 @@
           "settings": {
             "size": "tall",
             "label": "Пръстени",
-            "subline": "",
             "link": "/collections/пръстени"
           }
         },
@@ -311,7 +310,6 @@
           "settings": {
             "size": "standard",
             "label": "Обеци",
-            "subline": "",
             "link": "/collections/обеци"
           }
         },
@@ -320,7 +318,6 @@
           "settings": {
             "size": "standard",
             "label": "Висулки",
-            "subline": "",
             "link": "/collections/висулки"
           }
         },
@@ -329,7 +326,6 @@
           "settings": {
             "size": "tall",
             "label": "Гривни",
-            "subline": "",
             "link": "/collections/гривни"
           }
         },
@@ -338,7 +334,6 @@
           "settings": {
             "size": "standard",
             "label": "Комплекти",
-            "subline": "",
             "link": "/collections/комплекти"
           }
         },
@@ -347,7 +342,6 @@
           "settings": {
             "size": "standard",
             "label": "Диаманти",
-            "subline": "",
             "link": "/collections/диаманти"
           }
         }
