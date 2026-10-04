@@ -1305,7 +1305,8 @@ html {
 }
 
 .collection .price {
-  font-size: 1.8rem;
+  /* 1.5rem since 2026-10-04 (was 1.8rem): the same reasoning as the buy box's price. */
+  font-size: 1.5rem;
 }
 
 .collection .price__sale .price-item--regular,
@@ -3824,7 +3825,12 @@ card-swatches {
 
 .product .price,
 .product .price .price-item {
-  font-size: 2.2rem;
+  /* 1.8rem since 2026-10-04 (luxury wave 1, see "The goal" in CLAUDE.md). It was 2.2rem,
+     moonmagic's own, matched at the owner's request on 2026-09-28. The luxury houses
+     set the price small and let the name lead: Tiffany 13px on its product page, Ole
+     Lynggaard 10px grey on its cards, Pomellato 16px, measured 2026-10-04; moonmagic
+     is the accessible tier. Way back: 2.2rem. */
+  font-size: 1.8rem;
 }
 
 .product .product__description {
@@ -5084,4 +5090,66 @@ h1, h2, h3, h4, h5, h6, .h0, .h1, .h2, .h3, .h4, .h5 {
     letter-spacing: 0;
     -webkit-text-stroke: 0.012em currentcolor;
   }
+}
+
+/* ---------------------------------------------------------------------------
+   Luxury wave 1 (2026-10-04): the hero heading, smaller on a computer
+
+   The owner set the goal -- luxury jewellery at a high price -- and asked for the
+   site to change wherever that needs it (CLAUDE.md, "The goal"). The houses that
+   sell at that level set their hero words at 40px: Tiffany's h1 and Van Cleef &
+   Arpels' hero line both measure 40px at a 1024px window (2026-10-04); Ole
+   Lynggaard's is a small caption baked into the picture. Ours was 57px at 1440,
+   and 40px is what the heading was meant to be all along (see the 2026-09-27
+   correction in CLAUDE.md). 40px at most, scaling down with the window; phones are
+   untouched (the phone rule above and the 6.2vw clamp stay). Keyed to the hero's
+   own section id so the silver banner's and every other banner's heading keep
+   their sizes. Way back: delete this block.
+   --------------------------------------------------------------------------- */
+@media screen and (min-width: 750px) {
+  [id^="shopify-section-"][id$="__hero_image"] .banner__heading {
+    font-size: clamp(2.8rem, 3.2vw, 4rem);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Order by phone
+
+   A person at the other end is part of what a high-priced piece is bought with:
+   Ole Lynggaard puts an "Order by phone" link beside its Add to bag, Tiffany a
+   "Contact a client advisor" button. Ours is a small link under the button, in the
+   buy box's own small spaced capitals and black, dialling the number set on the
+   block (sections/main-product.liquid, block phone_order). The number is never
+   printed as text, as on Контакти. The block prints nothing without a number.
+   --------------------------------------------------------------------------- */
+.product .product-phone-order {
+  margin: 1.4rem 0 0;
+}
+
+.product .product-phone-order__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  min-height: 4.4rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: rgb(0 0 0);
+}
+
+.product .product-phone-order__link:hover,
+.product .product-phone-order__link:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 0.4rem;
+  text-decoration-thickness: 0.1rem;
+}
+
+.product .product-phone-order__icon,
+.product .product-phone-order__icon svg {
+  display: block;
+  width: 1.8rem;
+  height: 1.8rem;
 }

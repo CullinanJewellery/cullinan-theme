@@ -642,6 +642,25 @@
                       {%- endif -%}
                     </p>
                   {%- endif -%}
+                {%- when 'phone_order' -%}
+                  {%- comment -%}
+                    Cullinan (2026-10-04, luxury wave 1): a small "order by phone" link under the
+                    button, after Ole Lynggaard's own. A person at the other end is part of what
+                    a high-priced piece is bought with. The number is never printed as text (as on
+                    Контакти); it only dials. Renders nothing without a number, so the block can sit
+                    in the template before the shop has settled whose phone it is.
+                  {%- endcomment -%}
+                  {%- assign phone_digits = block.settings.phone | remove: ' ' | remove: '-' -%}
+                  {%- if phone_digits != blank -%}
+                    <p class="product-phone-order" {{ block.shopify_attributes }}>
+                      <a class="product-phone-order__link" href="tel:{{ phone_digits | escape }}">
+                        <span class="product-phone-order__icon" aria-hidden="true">
+                          {%- render 'icon-benefit', icon: 'phone' -%}
+                        </span>
+                        <span class="product-phone-order__label">{{ block.settings.label | escape }}</span>
+                      </a>
+                    </p>
+                  {%- endif -%}
                 {%- when 'buy_buttons' -%}
                   {%- render 'buy-buttons',
                     block: block,
@@ -1120,6 +1139,29 @@
           "label": "Text after it",
           "info": "Replace with the shop's own delivery time when it is settled, e.g. Доставка до 5-7 работни дни.",
           "default": "Доставка с Еконт и Спиди"
+        }
+      ]
+    },
+    {
+      "type": "phone_order",
+      "name": "Order by phone",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "A small link under Add to cart that dials the number. The number is not shown as text. Leave it empty and nothing renders."
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Поръчайте по телефон"
+        },
+        {
+          "type": "text",
+          "id": "phone",
+          "label": "Phone number",
+          "info": "With the country code, e.g. +359 88 123 4567."
         }
       ]
     },

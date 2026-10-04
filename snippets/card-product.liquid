@@ -284,12 +284,12 @@
                           endif
 
                           if swatch_variant
-                            assign swatch_money_price = swatch_variant.price | money
+                            assign swatch_money_price = swatch_variant.price | money_without_trailing_zeros
                             if settings.currency_code_enabled
                               assign swatch_money_price = swatch_variant.price | money_with_currency
                             endif
                             if swatch_variant.compare_at_price > swatch_variant.price
-                              assign swatch_compare_money = swatch_variant.compare_at_price | money
+                              assign swatch_compare_money = swatch_variant.compare_at_price | money_without_trailing_zeros
                               if settings.currency_code_enabled
                                 assign swatch_compare_money = swatch_variant.compare_at_price | money_with_currency
                               endif
