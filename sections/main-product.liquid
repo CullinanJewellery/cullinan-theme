@@ -635,6 +635,81 @@
                     block: block,
                     product_form_id: product_form_id
                   %}
+                  {%- comment -%}
+                    Cullinan: the ring-size guide (2026-10-04). Printed only when the
+                    product has an option whose name says size, so earrings and pendants
+                    carry no dialog. European ring sizes are the inner circumference in
+                    millimetres; the table's diameter is that number divided by pi, worked
+                    out here rather than typed, so it cannot be mistyped. The words are a
+                    block setting with a Bulgarian default; nothing in them promises
+                    resizing, exchange or a fit.
+                  {%- endcomment -%}
+                  {%- liquid
+                    assign has_size_option = false
+                    for size_option in product.options
+                      assign size_option_lower = size_option | downcase
+                      if size_option_lower contains 'размер' or size_option_lower contains 'size'
+                        assign has_size_option = true
+                      endif
+                    endfor
+                  -%}
+                  {%- if block.settings.size_guide_enable and has_size_option -%}
+                    <dialog
+                      id="SizeGuide-{{ section.id }}"
+                      class="size-guide color-{{ section.settings.color_scheme }}"
+                      aria-labelledby="SizeGuide-{{ section.id }}-title"
+                    >
+                      <div class="size-guide__inner">
+                        <form method="dialog" class="size-guide__close-form">
+                          <button type="submit" class="size-guide__close">
+                            Затвори<span class="size-guide__cross" aria-hidden="true"></span>
+                          </button>
+                        </form>
+                        <h2 id="SizeGuide-{{ section.id }}-title" class="size-guide__title h3">
+                          {{- block.settings.size_guide_heading | escape -}}
+                        </h2>
+                        <div class="size-guide__body rte">{{ block.settings.size_guide_content }}</div>
+                        <table class="size-guide__table">
+                          <caption class="visually-hidden">Европейски размери на пръстени</caption>
+                          <thead>
+                            <tr>
+                              <th scope="col">Размер</th>
+                              <th scope="col">Обиколка, мм</th>
+                              <th scope="col">Диаметър, мм</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {%- for ring_size in (48..64) -%}
+                              {%- assign ring_diameter = ring_size | times: 1.0 | divided_by: 3.14159 | round: 1 -%}
+                              <tr>
+                                <th scope="row">{{ ring_size }}</th>
+                                <td>{{ ring_size }}</td>
+                                <td>{{ ring_diameter | replace: '.', ',' }}</td>
+                              </tr>
+                            {%- endfor -%}
+                          </tbody>
+                        </table>
+                        <p class="size-guide__note">
+                          Диаметърът е изчислен от обиколката и е ориентировъчен.
+                        </p>
+                      </div>
+                    </dialog>
+                    <script>
+                      if (!window.cullinanSizeGuide) {
+                        window.cullinanSizeGuide = true;
+                        document.addEventListener('click', function (event) {
+                          var opener = event.target.closest('[data-size-guide-open]');
+                          if (opener) {
+                            var dialog = document.getElementById(opener.getAttribute('aria-controls'));
+                            if (dialog && typeof dialog.showModal === 'function') dialog.showModal();
+                            return;
+                          }
+                          // A click on the backdrop lands on the dialog itself (its inner box fills it).
+                          if (event.target.matches && event.target.matches('dialog.size-guide')) event.target.close();
+                        });
+                      }
+                    </script>
+                  {%- endif -%}
                 {%- when 'delivery_note' -%}
                   {%- comment -%}
                     Cullinan: the made-to-order line above the button, after moonmagic's own
@@ -1157,6 +1232,35 @@
             }
           ],
           "default": "circle"
+        },
+        {
+          "type": "header",
+          "content": "Ring size guide"
+        },
+        {
+          "type": "checkbox",
+          "id": "size_guide_enable",
+          "label": "Show the ring size guide",
+          "info": "A link beside any option whose name contains „размер“ or \"size\". It opens the guide below and a table of European sizes 48-64.",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "size_guide_label",
+          "label": "Link text",
+          "default": "Таблица с размери"
+        },
+        {
+          "type": "text",
+          "id": "size_guide_heading",
+          "label": "Guide heading",
+          "default": "Как да определите размера"
+        },
+        {
+          "type": "richtext",
+          "id": "size_guide_content",
+          "label": "Guide text",
+          "default": "<p>Работим с европейски размери — например 52, 54, 56. Числото е вътрешната обиколка на пръстена в милиметри.</p><p><strong>Най-точно:</strong> пробвайте с пръстеномер — комплект номерирани пробни пръстени, какъвто има всеки бижутер. Пробвайте на пръста, на който ще носите бижуто.</p><p><strong>По пръстен, който вече носите:</strong> измерете вътрешния му диаметър и потърсете най-близката стойност в таблицата.</p><ul><li>Подходящият размер минава през кокалчето с леко съпротивление и не се върти свободно.</li><li>Широката халка стои по-стегнато. Ако сте между два размера, изберете по-големия.</li><li>Мерете в края на деня, когато пръстите не са студени.</li></ul><p>Измерването с конец или хартиена лента е неточно и не го препоръчваме. Ако не сте сигурни, <a href=\"/pages/contact\">пишете ни</a> преди да поръчате.</p>"
         }
       ]
     },

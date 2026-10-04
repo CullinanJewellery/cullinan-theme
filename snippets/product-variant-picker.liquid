@@ -212,6 +212,26 @@
               {{- option.selected_value -}}
             </span>
           </legend>
+          {%- comment -%}
+            Cullinan: the ring-size guide sits at the right of the size row's label
+            (2026-10-04). Only on the product page's own picker (the setting exists on
+            main-product's block alone) and only for an option whose name says size.
+            The dialog it opens is printed by main-product.liquid, outside this element,
+            because Dawn re-renders <variant-selects> on every variant change.
+          {%- endcomment -%}
+          {%- if block.settings.size_guide_enable -%}
+            {%- if option_name_lower contains 'размер' or option_name_lower contains 'size' -%}
+              <button
+                type="button"
+                class="size-guide__open"
+                data-size-guide-open
+                aria-controls="SizeGuide-{{ section.id }}"
+                aria-haspopup="dialog"
+              >
+                {{- block.settings.size_guide_label | default: 'Таблица с размери' | escape -}}
+              </button>
+            {%- endif -%}
+          {%- endif -%}
           {% render 'product-variant-options',
             product: product,
             option: option,
