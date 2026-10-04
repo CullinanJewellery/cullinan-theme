@@ -20,8 +20,8 @@ payment-provider or checkout setting is to be changed from here.**
 
 - Footer payment icons hidden (`payment_enable: false` in `sections/footer-group.json`) until the methods are real.
 - **Cash-on-delivery claims already on the site** (written as fact, flagged for the owner, not changed): the homepage
-  trust band card „Наложен платеж“, the product trust line „Наложен платеж — плащате при получаване“, the product tab
-  „Начини на плащане“, and the cart drawer reassurance line. They become true only once COD is configured at
+  trust band card „Наложен платеж“, the product trust line „Наложен платеж — плащате при получаване“ and the cart
+  drawer reassurance line (the product tab „Начини на плащане“ was removed 2026-10-04 at the owner's request). They become true only once COD is configured at
   checkout. Before launch: configure COD under Manual payment methods and place a test order, or hide those lines.
 
 ## B. Theme work authorised (the owner's brief of 2026-10-04), next stage

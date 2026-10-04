@@ -27,6 +27,16 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
   or checkout setting touched); „Изработка и доставка: 5–20 работни дни“ everywhere (5–20 confirmed as making +
   delivery); За нас ring-size answer says inner circumference in mm, not diameter, matching the guide. Fallback
   tested with substituted data (liquidjs mocks); hiding, wording and FAQ checked on the real preview.
+- **Trust row slides on phones (owner)**: after hestiahome.bg's mobile trust row (checked live: a CSS scroll-snap row,
+  cards 266px with the next peeking, no dots, no autoplay). Ours: one card per screen, a small dot indicator,
+  keyboard scrolling, no autoplay. Computer and tablet unchanged. Verified on the real preview at 375 and 1440 (dot
+  and key navigation checked by recording the requested scroll targets: the pane runs no animation frames).
+- **Social wording (owner)**: product pages read „Вижте бижутата в действие“ / „Разгледайте още снимки и видеа на
+  нашите бижута във Facebook и Instagram.“. To keep „Вижте работата ни“ on the homepage only, the footer's social
+  block on other pages (collections, За нас, search) now uses the same new words — a reading of "homepage only"; way
+  back: `social_heading` / `social_text` in `sections/footer-group.json`. Контакти unchanged.
+- **Product buying information (owner)**: „Начини на плащане“ accordion and the courier trust line removed; couriers
+  stay in „Доставка и връщане“. Spacing even (18–25px) at 375 and 1440 on the preview. Payment and returns unchanged.
 - **Product enquiry test passed (owner, real Shopify data)**: the email arrived and its link opened the selected
   metal and size. Контакти form also tested and working (owner). Open: the gold named twice in variant titles (Admin data). Size „54 55“ fixed by the owner: sizes 53–60, 128
   variants, all buyable; size 53 has no variant pictures yet (checked on the preview).

@@ -51,7 +51,7 @@ deliberately not renamed.
 | Mega menu | `snippets/header-mega-menu.liquid`, `header-mega-promo.liquid` | Text columns from the menu; a square picture in the corner from a `mega_menu_promo` block whose title matches the menu word (case-insensitive) |
 | Phone drawer | `snippets/header-drawer.liquid` | Category words in Prata 24px; picture row from the same promo blocks |
 | Accordion arrow | `snippets/icon-accordion-caret.liquid` | Chevron → minus; used by product tabs, FAQ, footer phone accordions, Контакти rows, metal menu |
-| Footer | `sections/footer.liquid`, `footer-group.json` | Scheme-5; newsletter column + `link_column` blocks (up to six label/link pairs, optional contact email, optional **note**: plain lines such as address and hours); all text pure black; social block printed by the footer on all pages except homepage and product pages; on Контакти it has its own heading and picture |
+| Footer | `sections/footer.liquid`, `footer-group.json` | Scheme-5; newsletter column + `link_column` blocks (up to six label/link pairs, optional contact email, optional **note**: plain lines such as address and hours); all text pure black; social block printed by the footer on all pages except homepage and product pages, reading „Вижте бижутата в действие“ + the Facebook/Instagram sentence (since 2026-10-04; „Вижте работата ни“ is the homepage's own section only); on Контакти it has its own heading („Ще ни намерите и там“) and picture |
 | Icons | `snippets/icon-benefit.liquid` | Line icons, 24-unit viewBox, non-scaling 1.25px stroke: gold-bar, gem, ring, hammer, map-pin, engraving-pen, delivery-van, box, return-arrow, certificate, clock, question, scroll, ring-tools, brilliant, crystals, envelope, phone, cash |
 
 ## 3. Homepage (`templates/index.json`)
@@ -62,7 +62,7 @@ social → newsletter. Hidden (`"disabled": true`, kept): `hero_facts`, `image_m
 | Section | Files | Behaviour |
 |---|---|---|
 | Hero (`hero_image`) | Dawn `image-banner.liquid` + `crown.css` | Owner's photo; ≥750px words at the left, marble white over a gradient; phone: words below the picture on a clay panel; ruby button; `[years]` token renders years since 1991. On phones Dawn's zoom-in makes the image `position: fixed; 100vh`; a phone-only rule in `crown.css` (keyed to `__hero_image`) puts it back to `absolute; inset: 0; object-fit: cover` so the 375px square shows the pendant |
-| Trust band (`benefits`) | `sections/icon-benefits.liquid`, `assets/section-icon-benefits.css` | Bordered cards: ringed icon, small-capitals title, sentence. As many equal columns as cards (3 now); 2 columns on phones, odd last card spans. Blocks: icon or uploaded image, heading, subline |
+| Trust band (`benefits`) | `sections/icon-benefits.liquid`, `assets/section-icon-benefits.css` | Bordered cards: ringed icon, small-capitals title, sentence. As many equal columns as cards (3 now) on a computer; 2 columns (odd last card spans) on tablets. **Phones (<750px): a scroll-snap row, one card per screen** (after hestiahome.bg's mobile trust row), with a dot indicator and keyboard scrolling from `<benefits-slider>` (`assets/benefits-slider.js`): dots are buttons „Карта 2 от 3“, the row is a focusable region (Left/Right step a card), no autoplay, smooth only without reduced motion; without JS the row still swipes. Blocks: icon or uploaded image, heading, subline |
 | Selected pieces | Dawn `featured-collection.liquid` | Carousel of `all`, 3 whole cards from 990px; skips the current product when used on a product page |
 | Categories | `sections/category-mosaic.liquid` + CSS | Tall/standard tiles via block order; caption over the picture; empty tiles show the hero gradient with ink words; tiles without a link are not links |
 | Stones | `sections/stone-meanings.liquid` + CSS + inline script | Six stones (diamond first, zircon last), each a picture, one-word meaning, name, link; phone: centred looping carousel with arrows; pointer-hover grows a stone; button „Открийте своя камък“ |
@@ -70,15 +70,17 @@ social → newsletter. Hidden (`"disabled": true`, kept): `hero_facts`, `image_m
 | Story (`atelier`) | `sections/atelier.liquid` + CSS | "Facts as a list" layout: heading, three facts, button to За нас; media video/URL/still |
 | Reviews | `sections/review-cards.liquid`, `assets/review-cards.js`, `snippets/review-stars.liquid` | Hand-filled review blocks; **a block without text prints nothing on the published theme; the section prints nothing until one has text**; in the editor and on an unpublished theme, empty blocks show labelled samples („Пример“) |
 | Custom request | `sections/custom-request.liquid` + CSS | Shopify contact form; standard keys; hidden `contact[Тема]`; **on a product page adds `contact[Бижу]` with the piece's title and URL** |
-| Social follow | `sections/social-follow.liquid` | Reuses the footer social markup; brand-coloured buttons |
+| Social follow | `sections/social-follow.liquid` | Reuses the footer social markup; brand-coloured buttons; „Вижте работата ни“ + its line — **homepage only** |
 | Newsletter | Dawn `newsletter.liquid` (extended) | Espresso band; optional background picture, video or video URL with poster |
 
 ## 4. Product page (`templates/product.json`, `sections/main-product.liquid`)
 
 Block order: rating → title → description → price → variant picker → delivery note → buy buttons → **order by phone**
-→ **trust lines** → Доставка и връщане → Начини на плащане → Качество и детайли → Грижа за бижуто → За камъка →
-Подхождат си. Then: recently viewed, Judge.me reviews, questions, **enquiry band** („Имате въпрос за това бижу?“),
-Може да ви хареса (featured collection), social band.
+→ **trust lines** → Доставка и връщане → Качество и детайли → Грижа за бижуто → За камъка → Подхождат си
+(„Начини на плащане“ removed 2026-10-04, owner; couriers are named inside „Доставка и връщане“). Then: recently
+viewed, Judge.me reviews, questions, **enquiry band** („Имате въпрос за това бижу?“), Може да ви хареса (featured
+collection), **social band** („Вижте бижутата в действие“ / „Разгледайте още снимки и видеа на нашите бижута във
+Facebook и Instagram.“, `sections/social-band.liquid`, Facebook and Instagram links).
 
 | Part | Where | Behaviour |
 |---|---|---|
@@ -90,7 +92,7 @@ Block order: rating → title → description → price → variant picker → d
 | Delivery note | `delivery_note` block | Bold label + text, truck icon; „Изработка и доставка: 5–20 работни дни“ |
 | Order by phone / ask | `phone_order` block | Link dialling the block's number (not printed), and „Попитайте за това бижу“ (`ask_label`) jumping to `#zapitvane`; the ask link is hidden by CSS when the page has no enquiry band |
 | Enquiry band | `custom-request` section, key `enquiry`, after the questions | On a product page the section carries `id="zapitvane"`, subject „Въпрос за бижу“, and hidden lines `contact[Бижу]` (title), `contact[Връзка]` (URL with `?variant=`) and `contact[Вариант]` (variant title), the last two kept current through Dawn's `variantChange` pubsub event; the message field reads „Вашият въпрос“; „Имате снимка?“ line off. On the homepage it behaves as before |
-| Trust lines | `trust_lines` block | Up to three icon + sentence lines; an empty line prints nothing. Now: cash on delivery (flagged, A2), engraving on request, Econt/Speedy to office or address |
+| Trust lines | `trust_lines` block | Up to three icon + sentence lines; an empty line prints nothing. Now: cash on delivery (flagged, A2) and engraving on request; the third line (couriers) is empty since 2026-10-04 |
 | Variant picker | `snippets/product-variant-picker.liquid`, `product-variant-options.liquid`, `product-twin-*.liquid`, `assets/variant-twin-sync.js` | Metal options drawn first; pills for size; metal as a custom drop-down with colour dots; **a colour option is hidden when a material option names a colour in every value**, and both ids travel together so the right variant is chosen; sold-out computed from variants |
 | Gallery | `snippets/product-media-gallery.liquid`, `assets/gallery-dots.js`, `crown.css` | Square tiles, no gaps; lone picture fitted; phone: full-bleed slides with dots |
 | Zoom viewer | `snippets/product-media-modal.liquid`, `assets/product-modal.js`, `assets/component-product-viewer.css` | Thumbnail strip ≥990px, progress bar on phones, keyboard and swipe |
