@@ -22,6 +22,13 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 - Buying information: engraving trust line; the delivery tab says office or address and "another stone, metal or
   size". Returns and cash-on-delivery wording unchanged, flagged.
 - Cart page aligned with the drawer: options line, „Премахни“, the same checkout button. Express buttons flagged.
+- Focused checks **(owner)**: specs on multi-variant products no longer fall back to product-level metal, proba,
+  weight or dimensions (stone fields still may); cart page accelerated buttons hidden by a theme setting (no payment
+  or checkout setting touched); „Изработка и доставка: 5–20 работни дни“ everywhere (5–20 confirmed as making +
+  delivery); За нас ring-size answer says inner circumference in mm, not diameter, matching the guide. Fallback
+  tested with substituted data (liquidjs mocks); hiding, wording and FAQ checked on the real preview.
+- Docs correction: the product page has had no copy of the FAQ since 2026-10-03; the theme guide said otherwise.
+- Workshop story proposal (one section, four slides) recorded in `docs/tasks.md` G; not built.
 - Two template pushes dropped again (sent within a minute of another push); re-sent with a byte change.
 
 ## 2026-10-04 — documentation reorganised

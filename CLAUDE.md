@@ -24,7 +24,7 @@ Only these, unless the owner confirms more. Never invent policies, prices, warra
 - Since 1991; handmade in an atelier in Veliko Tarnovo; every piece starts as the atelier's own 3D model, finished by hand.
 - Gold 14K (585) and 18K (750); silver 925, rhodium plated. Stones appraised by a specialist qualified at HRD Antwerp.
 - Engraving on request (name, date or message); terms unknown.
-- Made to order, 5–20 working days; a piece can be made with another stone, metal or size.
+- Made to order; making and delivery together take 5–20 working days (wording: „Изработка и доставка: 5–20 работни дни“); a piece can be made with another stone, metal or size.
 - Delivery with Econt and Speedy to an office or address in Bulgaria. Cash on delivery is the **intended** method, but
   its checkout configuration is unverified and no online payment method is set up yet (`docs/tasks.md` A2): never
   claim online payments are ready.

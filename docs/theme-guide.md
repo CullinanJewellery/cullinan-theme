@@ -83,10 +83,10 @@ Block order: rating → title → description → price → variant picker → d
 |---|---|---|
 | Breadcrumb | `main-product.liquid` (section settings) | „Начало / name“, ≥990px only, grey link turning black |
 | Rating | `rating` block | Five outline stars until Judge.me writes `reviews.rating` |
-| Specs | `product_specs` block, `assets/product-info.js` | Rows (in this order): `custom.metal`, `custom.proba`, `custom.weight_g` (г), `custom.stone`, `custom.stone_count`, `custom.stone_size`, `custom.stone_weight_ct` (ct), `custom.cut`, `custom.dimensions`; then shared richtext or page. **Each row reads the selected variant's metafield first, then the product's** (same namespace and key; variant definitions under Settings → Custom data → Variants). The list sits in `#ProductSpecs-<section>`, which `product-info.js` refreshes on variant change like the price. A row prints only when filled; the accordion only when the product or any variant has a value, or the block has text |
+| Specs | `product_specs` block, `assets/product-info.js` | Rows (in this order): `custom.metal`, `custom.proba`, `custom.weight_g` (г), `custom.stone`, `custom.stone_count`, `custom.stone_size`, `custom.stone_weight_ct` (ct), `custom.cut`, `custom.dimensions`; then shared richtext or page. **Each row reads the selected variant's metafield first, then the product's** (same namespace and key; variant definitions under Settings → Custom data → Variants). **Exception: on a product with more than one variant, `metal`, `proba`, `weight_g` and `dimensions` never fall back** to the product value (a product-level 750 must not appear beside a silver variant); they show only when the selected variant has them. Stone fields may fall back. The list sits in `#ProductSpecs-<section>`, which `product-info.js` refreshes on variant change like the price. A row prints only when filled; the accordion only when the product or any variant has a value, or the block has text |
 | Ring-size guide | variant picker block settings (`size_guide_*`), `snippets/product-variant-picker.liquid`, dialog in `main-product.liquid`, styles at the end of `crown.css` | „Таблица с размери“ link for any option whose name contains „размер“/"size": on the label's line from 750px (the label leaves 15rem for it), under the boxes on a phone. Opens a native `<dialog>`: the guide text (a richtext setting with a Bulgarian default) and a table of European sizes 48–64 (circumference = size; diameter = size ÷ π, computed). Closes with Затвори, Escape or the backdrop. The dialog is printed outside `<variant-selects>` because Dawn re-renders that on variant change. No dialog on products without a size option |
 | Collapsible tabs | `collapsible_tab` | Render nothing when they have no text and no page |
-| Delivery note | `delivery_note` block | Bold label + text, truck icon; „Изработка по поръчка: Доставка 5-20 работни дни“ |
+| Delivery note | `delivery_note` block | Bold label + text, truck icon; „Изработка и доставка: 5–20 работни дни“ |
 | Order by phone / ask | `phone_order` block | Link dialling the block's number (not printed), and „Попитайте за това бижу“ (`ask_label`) jumping to `#zapitvane`; the ask link is hidden by CSS when the page has no enquiry band |
 | Enquiry band | `custom-request` section, key `enquiry`, after the questions | On a product page the section carries `id="zapitvane"`, subject „Въпрос за бижу“, and hidden lines `contact[Бижу]` (title), `contact[Връзка]` (URL with `?variant=`) and `contact[Вариант]` (variant title), the last two kept current through Dawn's `variantChange` pubsub event; the message field reads „Вашият въпрос“; „Имате снимка?“ line off. On the homepage it behaves as before |
 | Trust lines | `trust_lines` block | Up to three icon + sentence lines; an empty line prints nothing. Now: cash on delivery (flagged, A2), engraving on request, Econt/Speedy to office or address |
@@ -94,7 +94,7 @@ Block order: rating → title → description → price → variant picker → d
 | Gallery | `snippets/product-media-gallery.liquid`, `assets/gallery-dots.js`, `crown.css` | Square tiles, no gaps; lone picture fitted; phone: full-bleed slides with dots |
 | Zoom viewer | `snippets/product-media-modal.liquid`, `assets/product-modal.js`, `assets/component-product-viewer.css` | Thumbnail strip ≥990px, progress bar on phones, keyboard and swipe |
 | Recently viewed | `sections/recently-viewed.liquid`, `assets/recently-viewed.js` | localStorage list (per browser); hidden until another product is stored |
-| Questions | Dawn `collapsible-content.liquid` (extended) | Rows can be limited by product type or collection (`only_for`); **a separate copy of the За нас questions: change both** |
+| Questions | Dawn `disclosures` section (prints only what Shopify's product disclosures supply; nothing today) | The product page **no longer carries a copy of the За нас FAQ** (removed 2026-10-03, `1c60b42`); the FAQ lives only in `templates/page.about.json` |
 | Judge.me | app block | Restyled in `crown.css` (`jm-*`, `jdgm-*` selectors; fail soft) |
 
 ## 5. Collection and search
@@ -115,8 +115,9 @@ Block order: rating → title → description → price → variant picker → d
   checkout button square, rosewood (the scheme's button) → pink hover.
 - **The `/cart` page** keeps Dawn's table layout but reads like the drawer (end of `assets/cullinan-cart.css`, scoped to
   `#main-cart-items` / `#main-cart-footer`): the same options line (`cart-item-options`), „Премахни“ in words, the same
-  checkout button (48px, 15px bold capitals). Shopify draws express buttons (Shop Pay, PayPal) under it from the
-  enabled payment methods; **left as they are and flagged** (payments are the owner's, `docs/tasks.md` A2). An empty
+  checkout button (48px, 15px bold capitals). Shopify's accelerated buttons (Shop Pay, PayPal) are drawn only when the
+  buttons block's **Show accelerated payment buttons** setting is on (`sections/main-cart-footer.liquid`, default off
+  while the payment setup is unfinished); no Shopify payment or checkout setting is involved. An empty
   `<dl>` stays in each line (Dawn's properties list; zero height).
 
 ## 8. Story pages
