@@ -55,7 +55,8 @@
         "color_scheme": "scheme-5",
         "stack_images_on_mobile": false,
         "mobile_content_alignment": "center",
-        "show_text_below": true
+        "show_text_below": true,
+        "show_review_rating": true
       }
     },
     "hero_facts": {
