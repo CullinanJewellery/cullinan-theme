@@ -1,34 +1,22 @@
-{{ 'component-slider.css' | asset_url | stylesheet_tag }}
 {{ 'section-review-cards.css' | asset_url | stylesheet_tag }}
-<script src="{{ 'review-cards.js' | asset_url }}" defer="defer"></script>
 
 {%- comment -%}
-  Customer reviews on the homepage (2026-10-03, at the owner's request: "add review on
-  the home page something like moonmagic and hestia home do, ours better and
-  different").
+  Customer reviews on the homepage: „Отзиви от наши клиенти“.
 
-  moonmagic's, "Trusted by 600K+ customers": a row of cards in a carousel, each a
-  350px customer photo over a greige panel holding five pink stars, an 18px quote,
-  the name and "Verified Buyer". hestiahome.bg's, "949+ доволни клиенти": a calm cream
-  band with a small eyebrow, a rating line and a link to every review, then white
-  cards with stars, a quote, an initial in a circle, the name and "проверена покупка".
+  Since 2026-10-05 the reviews come only from Judge.me (the owner: real, published
+  reviews, one source with the hero rating). The theme cannot list individual
+  Judge.me reviews itself -- Judge.me gives the theme only the shop-wide average and
+  count as metafields -- so the reviews are drawn by a Judge.me widget placed in this
+  section as an app block (Judge.me's Cards or Testimonials carousel, both on its free
+  plan). App blocks can only be added in the theme editor: Customize -> Home page ->
+  this section -> Add block -> Judge.me.
 
-  Ours takes the row and the greige card, and what is different is that **a review
-  leads to the piece it is about**: under the quote sits the product's own picture
-  and name, linked, so the people who read what others say can walk straight to the
-  thing to buy. The photo of the customer is optional (a square above the card, as
-  moonmagic's) and absent otherwise, since most reviews have none.
-
-  NO REVIEW IS INVENTED. Every card is a block the owner fills with a customer's own
-  words. A block with no review text shows nothing on a published theme, and the
-  whole section prints nothing until at least one has text -- so it can sit in the
-  template, finished, before there is anything to put in it. In the theme editor and
-  on an unpublished theme (the draft preview) such a block shows as a labelled sample
-  card instead, so the design can be seen and judged; `theme.role` is 'main' only for
-  the published theme, so publishing removes the samples by itself.
-
-  The arrows exist only when the cards do not all fit (assets/review-cards.js), like
-  every other row on this site.
+  The section prints nothing to shoppers until Judge.me reports at least one
+  published review (shop.metafields.judgeme.all_reviews_count, the same count as the
+  hero line) and a Judge.me block is in place. In the theme editor it always shows,
+  with a note saying what is missing. The earlier hand-filled review cards and their
+  draft-only samples are gone. Our heading and eyebrow stay; the widget's own look is
+  styled in assets/crown.css where Judge.me's classes allow (fails soft).
 {%- endcomment -%}
 
 {%- style -%}
@@ -56,32 +44,26 @@
 {%- endstyle -%}
 
 {%- liquid
-  assign show_samples = false
-  if request.design_mode
-    assign show_samples = true
-  elsif theme.role != 'main'
-    assign show_samples = true
-  endif
-
-  assign real_count = 0
+  assign jm_count = shop.metafields.judgeme.all_reviews_count | plus: 0
+  assign app_count = 0
   for block in section.blocks
-    if block.settings.quote != blank
-      assign real_count = real_count | plus: 1
+    if block.type == '@app'
+      assign app_count = app_count | plus: 1
     endif
   endfor
 
-  assign has_cards = false
-  if real_count > 0
-    assign has_cards = true
-  elsif show_samples
-    if section.blocks.size > 0
-      assign has_cards = true
+  assign show_section = false
+  if request.design_mode
+    assign show_section = true
+  elsif jm_count > 0
+    if app_count > 0
+      assign show_section = true
     endif
   endif
 -%}
 
-{%- if has_cards -%}
-  <review-cards class="review-cards color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-margin">
+{%- if show_section -%}
+  <div class="review-cards color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-margin" id="otzivi">
     <div class="review-cards__inner page-width section-{{ section.id }}-padding">
       <div class="review-cards__header">
         <div class="review-cards__titles">
@@ -91,126 +73,30 @@
           {%- if section.settings.heading != blank -%}
             <h2 class="review-cards__heading">{{ section.settings.heading | escape }}</h2>
           {%- endif -%}
-          {%- if section.settings.summary_text != blank -%}
-            <p class="review-cards__summary">
-              {%- render 'review-stars', rating: 5 -%}
-              <span>{{ section.settings.summary_text | escape }}</span>
-            </p>
-          {%- endif -%}
-        </div>
-
-        <div class="review-cards__buttons" hidden>
-          <button
-            type="button"
-            class="slider-button slider-button--prev"
-            name="previous"
-            aria-label="{{ 'general.slider.previous_slide' | t }}"
-          >
-            <span class="svg-wrapper">
-              {{- 'icon-caret.svg' | inline_asset_content -}}
-            </span>
-          </button>
-          <button
-            type="button"
-            class="slider-button slider-button--next"
-            name="next"
-            aria-label="{{ 'general.slider.next_slide' | t }}"
-          >
-            <span class="svg-wrapper">
-              {{- 'icon-caret.svg' | inline_asset_content -}}
-            </span>
-          </button>
         </div>
       </div>
 
-      <ul class="review-cards__track" role="list">
+      {%- if request.design_mode -%}
+        {%- if app_count == 0 -%}
+          <p class="review-cards__note">
+            Само в редактора: добавете блок от Judge.me (Cards carousel или Testimonials carousel) в тази секция.
+          </p>
+        {%- endif -%}
+        {%- if jm_count == 0 -%}
+          <p class="review-cards__note">
+            Само в редактора: все още няма публикувани отзиви в Judge.me, затова секцията е скрита за посетителите.
+          </p>
+        {%- endif -%}
+      {%- endif -%}
+
+      <div class="review-cards__app">
         {%- for block in section.blocks -%}
-          {%- liquid
-            assign is_real = false
-            if block.settings.quote != blank
-              assign is_real = true
-            endif
-            assign picked = block.settings.product
-          -%}
-          {%- if is_real or show_samples -%}
-            <li class="review-cards__item" {{ block.shopify_attributes }}>
-              <figure
-                class="review-cards__card color-{{ section.settings.card_color_scheme }} gradient{% unless is_real %} review-cards__card--sample{% endunless %}"
-              >
-                {%- if block.settings.image != blank -%}
-                  <div class="review-cards__photo">
-                    {{
-                      block.settings.image
-                      | image_url: width: 700
-                      | image_tag:
-                        class: 'review-cards__photo-image',
-                        widths: '350, 525, 700',
-                        sizes: '(min-width: 990px) 30vw, (min-width: 750px) 45vw, 85vw',
-                        loading: 'lazy',
-                        alt: ''
-                    }}
-                  </div>
-                {%- endif -%}
-
-                <div class="review-cards__body">
-                  {%- render 'review-stars', rating: block.settings.rating -%}
-
-                  <blockquote class="review-cards__quote">
-                    {%- if is_real -%}
-                      <p>{{ block.settings.quote | escape | newline_to_br }}</p>
-                    {%- else -%}
-                      <p>Тук ще се покаже отзивът на клиентка.</p>
-                    {%- endif -%}
-                  </blockquote>
-
-                  <div class="review-cards__foot">
-                    {%- if block.settings.name != blank or block.settings.detail != blank or is_real == false -%}
-                      <figcaption class="review-cards__author">
-                        <span class="review-cards__name">
-                          {%- if block.settings.name != blank -%}
-                            {{- block.settings.name | escape -}}
-                          {%- elsif is_real == false -%}
-                            Име на клиентката
-                          {%- endif -%}
-                        </span>
-                        {%- if block.settings.detail != blank -%}
-                          <span class="review-cards__detail">{{ block.settings.detail | escape }}</span>
-                        {%- endif -%}
-                      </figcaption>
-                    {%- endif -%}
-
-                    {%- if picked != blank -%}
-                      <a class="review-cards__product" href="{{ picked.url }}">
-                        {%- if picked.featured_image != blank -%}
-                          {{
-                            picked.featured_image
-                            | image_url: width: 160
-                            | image_tag:
-                              class: 'review-cards__product-image',
-                              widths: '80, 120, 160',
-                              sizes: '52px',
-                              loading: 'lazy',
-                              alt: ''
-                          }}
-                        {%- else -%}
-                          <span class="review-cards__product-image review-cards__product-image--empty" aria-hidden="true"></span>
-                        {%- endif -%}
-                        <span class="review-cards__product-name">{{ picked.title | escape }}</span>
-                      </a>
-                    {%- endif -%}
-                  </div>
-                </div>
-              </figure>
-            </li>
+          {%- if block.type == '@app' -%}
+            {% render block %}
           {%- endif -%}
         {%- endfor -%}
-      </ul>
+      </div>
     </div>
-  </review-cards>
-{%- elsif request.design_mode -%}
-  <div class="review-cards__note page-width">
-    Само в редактора: добавете блок „Отзив“ и напишете отзива на клиентка с нейни думи.
-    Секцията не показва нищо, докато няма поне един истински отзив.
   </div>
 {%- endif -%}
 
@@ -219,11 +105,10 @@
   "name": "Reviews",
   "tag": "section",
   "class": "section",
-  "max_blocks": 12,
   "settings": [
     {
       "type": "paragraph",
-      "content": "A row of customer reviews. Each is a block you fill with a customer's own words; nothing is made up. A block with no review text is shown only in the editor and on an unpublished theme, as a labelled sample, and never to visitors. The section shows nothing at all until at least one review has text."
+      "content": "Real, published Judge.me reviews only. Add a Judge.me block (Cards carousel or Testimonials carousel) to this section. Visitors see the section only when Judge.me has at least one published review."
     },
     {
       "type": "text",
@@ -234,14 +119,14 @@
     {
       "type": "text",
       "id": "heading",
-      "default": "Какво казват клиентките ни",
+      "default": "Отзиви от наши клиенти",
       "label": "Heading"
     },
     {
       "type": "text",
       "id": "summary_text",
-      "label": "Rating line",
-      "info": "Optional, under the heading beside five stars, e.g. 5,0 · над 100 отзива. Only write a figure that is true: it is not counted from the cards."
+      "label": "Unused",
+      "info": "No longer shown; the rating comes from Judge.me."
     },
     {
       "type": "color_scheme",
@@ -253,7 +138,8 @@
       "type": "color_scheme",
       "id": "card_color_scheme",
       "default": "scheme-6",
-      "label": "Card colour scheme"
+      "label": "Card colour scheme",
+      "info": "Kept for compatibility; Judge.me draws its own cards."
     },
     {
       "type": "header",
@@ -306,60 +192,12 @@
   ],
   "blocks": [
     {
-      "type": "review",
-      "name": "Review",
-      "limit": 12,
-      "settings": [
-        {
-          "type": "range",
-          "id": "rating",
-          "min": 1,
-          "max": 5,
-          "step": 1,
-          "default": 5,
-          "label": "Stars"
-        },
-        {
-          "type": "textarea",
-          "id": "quote",
-          "label": "Review",
-          "info": "The customer's own words, as she wrote them. Left empty, the card is a sample shown only in the editor and on an unpublished theme."
-        },
-        {
-          "type": "text",
-          "id": "name",
-          "label": "Name",
-          "info": "For example Мария К."
-        },
-        {
-          "type": "text",
-          "id": "detail",
-          "label": "Line under the name",
-          "info": "Optional: her town, or when she bought."
-        },
-        {
-          "type": "product",
-          "id": "product",
-          "label": "Piece she bought",
-          "info": "Optional. Shows the piece's picture and name under the review and links to it."
-        },
-        {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Her photo",
-          "info": "Optional: a photo she sent of the piece worn. Shown square above the review."
-        }
-      ]
+      "type": "@app"
     }
   ],
   "presets": [
     {
-      "name": "Reviews",
-      "blocks": [
-        { "type": "review" },
-        { "type": "review" },
-        { "type": "review" }
-      ]
+      "name": "Reviews"
     }
   ]
 }
