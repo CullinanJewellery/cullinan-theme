@@ -438,3 +438,100 @@
     color: rgba(var(--color-foreground), 0.25);
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Category slider on phones, second pass (2026-10-05, owner), after Cartier's
+   mobile service cards ("Our jewellery services" etc.): a tall photo, centred text,
+   a quiet underlined link. Adapted: a 4:5 photo (theirs 3:5, too tall here), the
+   name in Prata, the sentence under it, an underlined link with a 44px tap height;
+   each slide is a column with the link pushed to the bottom and room for three
+   lines of text, so every link sits at the same height whatever the text length.
+   A pale-marble band (#F3EBE6, scheme-6's ground) behind the section on phones.
+   Arrows: square outlined 44x44 buttons like the workshop slides', disabled ones
+   faded. Swiping and the next-slide peek unchanged. Tablet and computer unchanged.
+   --------------------------------------------------------------------------- */
+@media screen and (max-width: 749px) {
+  [id^='shopify-section-'][id$='__category_mosaic'] > .gradient {
+    background: #f3ebe6;
+  }
+
+  .mosaic-slider__track {
+    align-items: stretch;
+  }
+
+  .mosaic-slider__slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .mosaic-slider__media {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+  }
+
+  .mosaic-slider__name {
+    margin-top: 1.6rem;
+  }
+
+  .mosaic-slider__text {
+    margin-top: 0.8rem;
+    min-height: calc(1.4rem * 1.5 * 3);
+    max-width: 28ch;
+  }
+
+  .mosaic-slider__button,
+  .mosaic-slider__button:hover,
+  .mosaic-slider__button:focus-visible {
+    margin-top: auto;
+    padding: 0;
+    min-height: 4.4rem;
+    background: none;
+    box-shadow: none;
+    color: rgb(var(--color-foreground));
+    font-size: 1.3rem;
+    letter-spacing: 0.08em;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.6rem;
+  }
+
+  .mosaic-slider__button:hover,
+  .mosaic-slider__button:focus-visible {
+    text-decoration-thickness: 2px;
+  }
+
+  .mosaic-slider__button:focus-visible {
+    outline: 0.2rem solid rgb(var(--color-foreground));
+    outline-offset: 0.2rem;
+  }
+
+  .mosaic-slider__controls {
+    gap: 1.2rem;
+    margin-top: 2rem;
+  }
+
+  .mosaic-slider .slider-button {
+    width: 4.4rem;
+    height: 4.4rem;
+    border: 0.1rem solid rgba(var(--color-foreground), 0.45);
+    background: rgb(251 248 246);
+    transition: border-color 0.2s, opacity 0.2s;
+  }
+
+  .mosaic-slider .slider-button:not([disabled]):hover {
+    border-color: rgb(var(--color-foreground));
+  }
+
+  .mosaic-slider .slider-button[disabled] {
+    border-color: rgba(var(--color-foreground), 0.15);
+    background: transparent;
+    cursor: default;
+  }
+
+  .mosaic-slider .slider-button:focus-visible {
+    outline: 0.2rem solid rgb(var(--color-foreground));
+    outline-offset: 0.2rem;
+  }
+}
