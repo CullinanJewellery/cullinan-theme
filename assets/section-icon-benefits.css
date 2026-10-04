@@ -143,8 +143,12 @@
    under the hero (templates/index.json) and replaces the capitals strip.
    Way back: the old rules above still describe the plain row; delete this block.
    --------------------------------------------------------------------------- */
+/* As many equal columns as there are cards (three since 2026-10-04, when the 14-day return card came out
+   pending the owner's confirmation of the returns policy). */
 .benefits-band .benefits__grid {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: none;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
   gap: 2rem;
 }
 
@@ -188,7 +192,13 @@
 @media screen and (max-width: 989px) {
   .benefits-band .benefits__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-flow: row;
     gap: 1.2rem;
+  }
+
+  /* An odd last card takes the whole row rather than leaving a hole. */
+  .benefits-band .benefits__item:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
   }
 }
 

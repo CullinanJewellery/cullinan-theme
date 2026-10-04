@@ -382,15 +382,6 @@
             "subline": "Плащате в брой, когато получите пратката."
           }
         },
-        "b2": {
-          "type": "benefit",
-          "settings": {
-            "visual": "icon",
-            "icon": "return-arrow",
-            "heading": "Връщане до 14 дни",
-            "subline": "Размерът не е точен? Пишете ни и ще ви насочим."
-          }
-        },
         "b3": {
           "type": "benefit",
           "settings": {
@@ -412,7 +403,6 @@
       },
       "block_order": [
         "b1",
-        "b2",
         "b3",
         "b4"
       ],
