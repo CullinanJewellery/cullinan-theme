@@ -5569,3 +5569,22 @@ dialog.size-guide .size-guide__note {
     padding-right: 9rem;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Product rows without a numeric counter (2026-10-04, owner: remove "1 / 5" from
+   the product sections, keep the arrows). Dawn's featured-collection row (the
+   homepage's Избрани бижута and the product page's Може да ви хареса) prints a
+   counter between its arrows; it is hidden visually but kept for screen readers,
+   and Dawn's slider script keeps updating it. The arrows are untouched.
+   --------------------------------------------------------------------------- */
+.collection .slider-buttons .slider-counter {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
