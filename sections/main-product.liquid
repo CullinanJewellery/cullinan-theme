@@ -282,12 +282,27 @@
                     and finenesses. The list sits in #ProductSpecs-<section>, which product-info.js
                     refreshes on every variant change, like the price. The accordion renders when the
                     product or any variant has a value, or when the block has its own text.
+
+                    Fields that change with the metal or the size -- metal, proba, weight_g,
+                    dimensions (spec_variant_only) -- never fall back to the product's value on a
+                    product with more than one variant: a product-level "750" must not show beside a
+                    silver variant, nor one weight beside every ring size. On such a product they
+                    show only when the selected variant has them. Stone fields may fall back. A
+                    product with a single variant uses its product-level values for everything.
                   {%- endcomment -%}
                   {%- liquid
                     assign spec_variant = product.selected_or_first_available_variant
                     assign spec_keys = 'metal,proba,weight_g,stone,stone_count,stone_size,stone_weight_ct,cut,dimensions' | split: ','
+                    assign spec_variant_only = 'metal,proba,weight_g,dimensions' | split: ','
+                    assign spec_many = false
+                    if product.variants.size > 1
+                      assign spec_many = true
+                    endif
                     assign has_specs = false
                     for key in spec_keys
+                      if spec_many and spec_variant_only contains key
+                        continue
+                      endif
                       if product.metafields.custom[key] != blank
                         assign has_specs = true
                         break
@@ -327,7 +342,9 @@
                                   {%- liquid
                                     assign spec_value = spec_variant.metafields.custom[key].value
                                     if spec_value == blank
-                                      assign spec_value = product.metafields.custom[key].value
+                                      unless spec_many and spec_variant_only contains key
+                                        assign spec_value = product.metafields.custom[key].value
+                                      endunless
                                     endif
                                     case key
                                       when 'metal'
@@ -1275,7 +1292,7 @@
           "type": "richtext",
           "id": "size_guide_content",
           "label": "Guide text",
-          "default": "<p>Работим с европейски размери — например 52, 54, 56. Числото е вътрешната обиколка на пръстена в милиметри.</p><p><strong>Най-точно:</strong> пробвайте с пръстеномер — комплект номерирани пробни пръстени, какъвто има всеки бижутер. Пробвайте на пръста, на който ще носите бижуто.</p><p><strong>По пръстен, който вече носите:</strong> измерете вътрешния му диаметър и потърсете най-близката стойност в таблицата.</p><ul><li>Подходящият размер минава през кокалчето с леко съпротивление и не се върти свободно.</li><li>Широката халка стои по-стегнато. Ако сте между два размера, изберете по-големия.</li><li>Мерете в края на деня, когато пръстите не са студени.</li></ul><p>Измерването с конец или хартиена лента е неточно и не го препоръчваме. Ако не сте сигурни, <a href=\"/pages/contact\">пишете ни</a> преди да поръчате.</p>"
+          "default": "<p>Работим с европейски размери — например 52, 54, 56. Числото е вътрешната обиколка на пръстена в милиметри, а не диаметърът му.</p><p><strong>Най-точно:</strong> пробвайте с пръстеномер — комплект номерирани пробни пръстени, какъвто има всеки бижутер. Пробвайте на пръста, на който ще носите бижуто.</p><p><strong>По пръстен, който вече носите:</strong> измерете вътрешния му диаметър и потърсете най-близката стойност в таблицата.</p><ul><li>Подходящият размер минава през кокалчето с леко съпротивление и не се върти свободно.</li><li>Широката халка стои по-стегнато. Ако сте между два размера, изберете по-големия.</li><li>Мерете в края на деня, когато пръстите не са студени.</li></ul><p>Измерването с конец или хартиена лента е неточно и не го препоръчваме. Ако не сте сигурни, <a href=\"/pages/contact\">пишете ни</a> преди да поръчате.</p>"
         }
       ]
     },

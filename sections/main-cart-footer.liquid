@@ -119,7 +119,12 @@
                 </button>
               </div>
 
-              {%- if additional_checkout_buttons -%}
+              {%- comment -%}
+                Cullinan (2026-10-04): Shopify's accelerated buttons (Shop Pay, PayPal and the like)
+                are drawn only when the block's setting is on. Off while the payment setup is
+                unfinished; this changes nothing in Shopify's payment or checkout settings.
+              {%- endcomment -%}
+              {%- if additional_checkout_buttons and block.settings.show_accelerated_buttons -%}
                 <div class="cart__dynamic-checkout-buttons additional-checkout-buttons">
                   {{ content_for_additional_checkout_buttons }}
                 </div>
@@ -178,7 +183,16 @@
     {
       "type": "buttons",
       "name": "t:sections.main-cart-footer.blocks.buttons.name",
-      "limit": 1
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_accelerated_buttons",
+          "label": "Show accelerated payment buttons",
+          "info": "Shop Pay, PayPal and other express buttons under Checkout. Shown only for methods enabled in Settings > Payments. Off until the payment setup is finished.",
+          "default": false
+        }
+      ]
     },
     {
       "type": "@app"
