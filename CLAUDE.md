@@ -169,8 +169,8 @@ we stand.
    За нас and in the footer.
 6. **Specifics, not superlatives.** "18k gold with diamonds 0.31 ct TW VS", "63 diamonds, hand-set by master
    goldsmiths"; never "premium quality". Every card and product page names the metal, the stone and the weight.
-   „Първокласни метали“ and „Сертифицирани продукти“, the owner's early claims, are the kind of line a house does
-   not write. (This needs the product metafields filled: `custom.metal`, `custom.stone`, `custom.weight_g`.)
+   „Първокласни метали“ and „Сертифицирани продукти“, the owner's early claims, were the kind of line a house does
+   not write (both replaced the same night, see wave 1). (This needs the product metafields filled: `custom.metal`, `custom.stone`, `custom.weight_g`.)
 7. **Service is part of the product, and it is shown**: an advisor or a phone, engraving, care and repair,
    packaging, shipping and returns, a size guide. We can state personal service by phone, engraving, made to
    order, a shop to visit and care advice. **We cannot yet state** packaging, a warranty, repair or shipping
@@ -262,9 +262,13 @@ Each row is a reversal or an addition made under the permission above. The owner
   the eye icon in the theme editor brings either back); **the order** is hero, facts, pieces, categories, the story,
   bespoke, stones, services, reviews (empty, so invisible on a published theme), social, newsletter. Way back:
   the `order` array and two flags in `templates/index.json`.
-- **Cash on delivery left the first-screen claims** for „Гравиране по желание“; the services row's engraving
-  became „Изработка по поръчка — друг камък, друг метал, друг размер“, so nothing repeats. Cash on delivery stays in
-  the cart drawer's reassurances and the product page's payment accordion. Way back: two strings.
+- **The four first-screen claims are specifics now**: „Собствено производство“, „Злато 14 и 18 карата“, „Камъни с
+  оценка“, „Гравиране по желание“. Cash on delivery left for engraving (it stays in the cart drawer's reassurances
+  and the product page's payment accordion); „Първокласни метали“ became the gold's actual range; and
+  „Сертифицирани продукти“ became „Камъни с оценка“, because it said certified without saying by whom, which is not
+  on the facts list (the stones are appraised by an HRD Antwerp-qualified specialist, which is). The services row's
+  engraving became „Изработка по поръчка — друг камък, друг метал, друг размер“, so nothing repeats. Way back: four
+  strings in `templates/index.json`.
 - **The stones row leads with the stones that carry the value**: diamond, sapphire, ruby, emerald, pearl, then the
   zircon (was zircon first). Way back: `block_order` of `stones`.
 - **Top bar**: „Ръчна изработка от 1991“ in place of „Безупречно качество до детайла“.
