@@ -302,7 +302,7 @@
           "settings": {
             "size": "tall",
             "label": "Пръстени",
-            "subline": "Носи се всеки ден, помни се завинаги.",
+            "subline": "",
             "link": "/collections/пръстени"
           }
         },
@@ -311,7 +311,7 @@
           "settings": {
             "size": "standard",
             "label": "Обеци",
-            "subline": "Леки, а променят целия вид.",
+            "subline": "",
             "link": "/collections/обеци"
           }
         },
@@ -320,7 +320,7 @@
           "settings": {
             "size": "standard",
             "label": "Висулки",
-            "subline": "Нещо лично, близо до сърцето.",
+            "subline": "",
             "link": "/collections/висулки"
           }
         },
@@ -329,7 +329,7 @@
           "settings": {
             "size": "tall",
             "label": "Гривни",
-            "subline": "Улавя светлината при всяко движение.",
+            "subline": "",
             "link": "/collections/гривни"
           }
         },
@@ -338,7 +338,7 @@
           "settings": {
             "size": "standard",
             "label": "Комплекти",
-            "subline": "Завършеният вид, за който ви питат.",
+            "subline": "",
             "link": "/collections/комплекти"
           }
         },
@@ -347,7 +347,7 @@
           "settings": {
             "size": "standard",
             "label": "Диаманти",
-            "subline": "Блясък, който не избледнява.",
+            "subline": "",
             "link": "/collections/диаманти"
           }
         }
