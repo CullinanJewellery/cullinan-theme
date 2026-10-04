@@ -281,7 +281,7 @@
   .benefits-band .benefits__item,
   .benefits-band .benefits__item:last-child:nth-child(odd) {
     /* 82% of the row, so the next card shows at the right and invites a swipe, as on
-       hestiahome.bg (theirs show about 70px of the next card; ours about 60px at 375px). */
+       hestiahome.bg (theirs show about 70px of the next card; ours about 60px at a 375px screen). */
     flex: 0 0 82%;
     grid-column: auto;
     scroll-snap-align: start;
