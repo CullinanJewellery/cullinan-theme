@@ -27,6 +27,19 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
   or checkout setting touched); „Изработка и доставка: 5–20 работни дни“ everywhere (5–20 confirmed as making +
   delivery); За нас ring-size answer says inner circumference in mm, not diameter, matching the guide. Fallback
   tested with substituted data (liquidjs mocks); hiding, wording and FAQ checked on the real preview.
+- **2026-10-05, fourth round (owner)**:
+  - Product row heading „Най-продавани“ (owner's wording; the owner's editor save had not reached the draft theme,
+    so it was set in the template). Flag stands: the row lists the catalogue, not sales.
+  - Phone category slider after Cartier's mobile service cards (stacked cards there: a 3:5 photo, centred small-caps
+    title, short text, underlined link): 4:5 photo, centred name and sentence, underlined link with a 44px tap
+    height pushed to the bottom so every link aligns (467px at 375, 411px at 320, all six slides), a pale-marble band
+    (#F3EBE6), outlined 44×44 arrows with a faded disabled state. Real preview at 375 and 320: no sideways scroll.
+    Desktop grid unchanged.
+  - Reviews: Judge.me Testimonials carousel styled (square, Jost 18/16px, rose gold, outlined arrows, centred
+    heading). Checked on a LOCAL mock built from Judge.me's real markup and stylesheet (version 771) with labelled
+    test text only; the storefront section stays hidden. Limit: the Testimonials carousel shows one card and fades —
+    no peek of the next card without overriding Judge.me's script; the free Cards carousel shows one whole card on
+    phones too.
 - **2026-10-05, reviews wiring (owner)**: owner added Judge.me's Testimonials carousel; its sample reviews switched off,
   English header blanked, colours set to ours. Product rating moved under the title, linked to the Judge.me widget,
   hidden without reviews (the empty-stars fallback removed). Real preview at 375 and 1440: reviews section and hero

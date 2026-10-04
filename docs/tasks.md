@@ -164,7 +164,11 @@ about 650px. Also flagged: several taglines read as the slogan-style copy the ow
 
 - Done (owner, 2026-10-05): Judge.me Testimonials carousel added (all reviews, all ratings). Product page: this
   product's stars under the title, linking to the widget; nothing without reviews.
-- **Untestable until the first real review is published**: the hero line's numbers, the carousel's look and its
+- **Pending a real published review (recorded 2026-10-05)**: hero line numbers; carousel look on the real store
+  (the design was checked only on a local mock with test text); its count matching the hero; product stars under
+  the title and the jump to the widget. Owner decision open: a peek of the next review card on phones needs either
+  replacing Judge.me's carousel script or a theme-built carousel fed by Judge.me — ask before doing either.
+- (earlier wording) **Untestable until the first real review is published**: the hero line's numbers, the carousel's look and its
   scope matching the hero count, the product stars under the title and the jump to the widget, and the editor-only
   outline-star line (needs the theme editor).
 - Not verified with real data: the metafield values and the carousel look appear only once a review exists.
