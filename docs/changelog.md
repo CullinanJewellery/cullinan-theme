@@ -27,6 +27,8 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
   or checkout setting touched); „Изработка и доставка: 5–20 работни дни“ everywhere (5–20 confirmed as making +
   delivery); За нас ring-size answer says inner circumference in mm, not diameter, matching the guide. Fallback
   tested with substituted data (liquidjs mocks); hiding, wording and FAQ checked on the real preview.
+- **Product enquiry test passed (owner, real Shopify data)**: the email arrived and its link opened the selected
+  metal and size. Open: Контакти form test; size „54 55“ and the gold named twice in variant titles (Admin data).
 - **Workshop slides built (owner approved the layout)**: one section, up to four slides, owner's shorter copy, links
   chosen in the editor only, hidden from visitors until every slide has a photograph and a heading; the old story band
   stays until then. Checked locally (real Liquid via liquidjs, real CSS/JS in a mock with generated pictures, 1440 and

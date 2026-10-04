@@ -38,8 +38,11 @@ payment-provider or checkout setting is to be changed from here.**
    Original brief: **Buying information** near the purchase controls (confirmed facts only), details in the accordions; distinguish
    production time from shipping time if the business confirms the split; consistency between product page, cart and
    footer; payment icons only for methods actually enabled. The footer draws Shopify's icons for the enabled methods automatically (`payment_enable`); on the preview (2026-10-04) it shows **PayPal only**, and cash on delivery has no icon.
-4. ~~Product-specific enquiry~~ done 2026-10-04 (enquiry band + buy-box link; theme guide §4). **No test message has
-   been sent** from it (or from Контакти): send one from the preview and check the store inbox before launch.
+4. ~~Product-specific enquiry~~ done 2026-10-04 (enquiry band + buy-box link; theme guide §4). **Test passed
+   2026-10-04 (owner, real Shopify data)**: the message arrived and its emailed link opened the same metal and size
+   that were selected. Still untested: the Контакти form — send one message from it before launch.
+   The test also showed two data issues, still open (see D): the size value „54 55“, and the Вариант line naming the
+   gold twice („жълто злато / 14К жълто злато“) because the ring has both a colour and a metal option.
 5. **Workshop story** — built as a four-slide section, waiting for photographs (see G).
 6. **Homepage review** — proposal given to the owner 2026-10-04, **awaiting approval** (see G).
 7. ~~The /cart page~~ reviewed and aligned with the drawer 2026-10-04. Accelerated payment buttons hidden through the
@@ -48,7 +51,7 @@ payment-provider or checkout setting is to be changed from here.**
 
 ## H. Owner how-tos (2026-10-04)
 
-**Test the product enquiry form** (real Shopify data; never done yet):
+**Test the product enquiry form** (real Shopify data; **passed 2026-10-04** on the ring — keep for re-testing):
 1. Open a product on the preview link, pick a size and metal, click „Попитайте за това бижу“.
 2. Fill name, your own email and a question; send. Expect „Благодарим ви…“ in place of the form.
 3. In the store's notification inbox (Settings → Notifications → sender/recipient email) find the message: it should
@@ -106,14 +109,14 @@ No replacement legal text is to be written; the accountant handles legal pages.
 | Issue | Where | Action |
 |---|---|---|
 | Test descriptions (one word, gibberish) | All four test products | Write real descriptions |
-| Size value „54 55“ | Ring variants | Correct to a single size |
+| Size value „54 55“ | Ring variants | Correct to a single size (still open 2026-10-04; it shows in enquiry emails, the cart and orders) |
 | Prices €0 | Обеци, Висулка плочка, Гривна с червен конец | Set real prices |
 | Vendor "Crown Jewellery" | All products | Use the field for stone or metal (cards print it) |
 | No tags, product types empty or "earings" | All products | Stone tags (Циркон, Диамант…), types (Пръстени…) |
 | Spec metafields empty | All products | Product definitions (Settings → Custom data → Products): `custom.metal`, `custom.proba` (text), `custom.weight_g` (decimal), `custom.stone`, `custom.stone_count` (integer), `custom.stone_size`, `custom.stone_weight_ct` (decimal), `custom.cut`, `custom.dimensions` (text), `custom.detail`. Where a variant differs (e.g. 14K vs 18K weight/fineness), create the **same keys under Settings → Custom data → Variants** and fill them per variant; the variant's value wins |
 | Photographs with logo/slogan burned in | Bracelet; the ring's second photo | Replace (the first rule) |
 | Variant pictures missing | Ring rose/white sizes 56-60, silver variants | Link pictures to every paired variant |
-| 112 variants on one ring (only 28 reachable) | Ring | Consider one material option carrying swatches |
+| 112 variants on one ring (only 28 reachable); the gold named twice in variant titles („жълто злато / 14К жълто злато“, seen in the enquiry email) | Ring | Consider one material option carrying swatches; this also removes the repetition (still open 2026-10-04) |
 | Bracelet material list lacks rose/white gold | Гривна | Add values or remove colours |
 | Menu: „Дамкси“ typo; Дамски/Мъжки collections empty | Main menu | Fix spelling; fill or remove |
 | Stone collections empty except Циркони, Диаманти, Камъни | Collections | Tag products (stones row links them — see E) |
