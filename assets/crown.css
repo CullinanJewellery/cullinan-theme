@@ -5588,3 +5588,30 @@ dialog.size-guide .size-guide__note {
   white-space: nowrap;
   border: 0;
 }
+
+/* ---------------------------------------------------------------------------
+   Header menu: no movement, a thin underline instead (2026-10-05, owner: "remove
+   any hover change that makes the category names shift"). The words never change
+   weight; what moved them was the 0.25rem lift on hover, keyboard focus and an
+   open dropdown (menu words, their arrow, and the dropdown's links). The lift is
+   switched off here and a 1px underline marks hover, keyboard focus and the
+   current category instead. text-decoration does not move the text. Jost, the
+   700 weight and the arrows are unchanged. !important only on `translate`, to beat
+   the several lift rules above whatever their specificity.
+   --------------------------------------------------------------------------- */
+.header__inline-menu .header__menu-item > span:not(.cj-caret),
+.header__inline-menu .header__menu-item .icon-caret.cj-caret,
+.mega-menu__content .mega-menu__link {
+  translate: none !important;
+}
+
+.header__inline-menu .header__menu-item:hover > span:not(.cj-caret),
+.header__inline-menu .header__menu-item:focus-visible > span:not(.cj-caret),
+.header__inline-menu .header__menu-item > span.header__active-menu-item,
+.mega-menu .mega-menu__content .mega-menu__link:hover,
+.mega-menu .mega-menu__content .mega-menu__link:focus-visible,
+.mega-menu .mega-menu__content .mega-menu__link--active {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.5rem;
+}
