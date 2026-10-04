@@ -27,6 +27,18 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
   or checkout setting touched); „Изработка и доставка: 5–20 работни дни“ everywhere (5–20 confirmed as making +
   delivery); За нас ring-size answer says inner circumference in mm, not diameter, matching the guide. Fallback
   tested with substituted data (liquidjs mocks); hiding, wording and FAQ checked on the real preview.
+- **2026-10-05, fifth round (owner)**, real preview at 320, 375 and 1440 (no sideways scroll):
+  - „Най-продавани“ confirmed live.
+  - Category slider (phones): circular 44×44 arrows (disabled faded) and line indicators between them; active line
+    #E6BAB9 (the Add to cart pink), others faint; each line a 44px button; updates on swipe, arrows and taps. Links
+    still aligned (467 / 411px). Desktop grid unchanged.
+  - Product rows on phones/tablets: arrows on the title row at the right (lifted out of the slider, title keeps
+    10.4rem free); „Може да ви хареса“ wraps to two lines clear of them; Наскоро разгледани already did this.
+  - Workshop slides: photos per slide, independently; phones show the photo (4:5) above the text; editor-only
+    labelled placeholders for missing photos; storefront text-only for those. Checked with a stand-in in the browser
+    only (no real photo exists).
+  - Reviews: design unchanged (local mock only); peek on phones still not built — needs a workaround beyond
+    Judge.me's Testimonials carousel; awaiting the owner's go-ahead.
 - **2026-10-05, fourth round (owner)**:
   - Product row heading „Най-продавани“ (owner's wording; the owner's editor save had not reached the draft theme,
     so it was set in the template). Flag stands: the row lists the catalogue, not sales.
