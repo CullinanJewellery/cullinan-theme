@@ -5867,3 +5867,42 @@ recently-viewed .slider-button[disabled] .icon {
   text-align: center;
   margin-bottom: 1.6rem;
 }
+
+/* ---------------------------------------------------------------------------
+   Product-row arrows on the heading row on phones and tablets too (2026-10-05,
+   owner): title on the left, both arrows together on the right, as computers
+   already have it. The arrows stay inside <slider-component> (Dawn's script looks
+   for them there) and are lifted onto the title's last line; the title keeps
+   10.4rem free on the right so a long title wraps instead of running under them.
+   Applies to every featured-collection row (Най-продавани, Може да ви хареса).
+   Наскоро разгледани already has its own heading row with the arrows on the right.
+   --------------------------------------------------------------------------- */
+@media screen and (max-width: 989px) {
+  .collection slider-component {
+    position: relative;
+  }
+
+  .collection slider-component .slider-buttons {
+    position: absolute;
+    right: 1.5rem;
+    bottom: calc(100% + 1.9rem);
+    justify-content: flex-end;
+    margin: 0;
+    padding: 0;
+  }
+
+  .collection .collection__title .title {
+    padding-right: 10.4rem;
+  }
+}
+
+@media screen and (min-width: 750px) and (max-width: 989px) {
+  .collection slider-component .slider-buttons {
+    right: 5rem;
+  }
+}
+
+.recently-viewed__heading {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
