@@ -19,6 +19,8 @@ if (!customElements.get('category-slider')) {
         this.phone = window.matchMedia('(max-width: 749px)');
         this.reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
 
+        this.lines = Array.from(this.querySelectorAll('[data-cat-go]'));
+        this.lines.forEach((line) => line.addEventListener('click', () => this.goTo(Number(line.dataset.catGo))));
         this.prev.addEventListener('click', () => this.step(-1));
         this.next.addEventListener('click', () => this.step(1));
         this.track.addEventListener('scroll', () => this.update(), { passive: true });
@@ -58,7 +60,11 @@ if (!customElements.get('category-slider')) {
       }
 
       step(dir) {
-        const i = Math.max(0, Math.min(this.slides.length - 1, this.current() + dir));
+        this.goTo(this.current() + dir);
+      }
+
+      goTo(index) {
+        const i = Math.max(0, Math.min(this.slides.length - 1, index));
         this.track.scrollTo({ left: this.offsetOf(this.slides[i]), behavior: this.reduce.matches ? 'auto' : 'smooth' });
       }
 
@@ -66,6 +72,12 @@ if (!customElements.get('category-slider')) {
         const max = this.track.scrollWidth - this.track.clientWidth;
         this.prev.disabled = this.track.scrollLeft <= 2;
         this.next.disabled = this.track.scrollLeft >= max - 2;
+        // At the far end the last slide may not reach the start edge; count it as current.
+        const c = this.next.disabled ? this.slides.length - 1 : this.current();
+        (this.lines || []).forEach((line, i) => {
+          if (i === c) line.setAttribute('aria-current', 'true');
+          else line.removeAttribute('aria-current');
+        });
       }
     }
   );

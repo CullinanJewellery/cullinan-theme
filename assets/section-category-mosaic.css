@@ -535,3 +535,65 @@
     outline-offset: 0.2rem;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Category slider controls on phones (2026-10-05, owner): circular arrows (44x44,
+   faded when disabled) and line indicators between them, after Cartier. The active
+   line is the exact pink of Add to cart's hover (#E6BAB9); the others are faint.
+   Each line is a 44px-tall button. No counter, no autoplay.
+   --------------------------------------------------------------------------- */
+@media screen and (max-width: 749px) {
+  .mosaic-slider__controls {
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .mosaic-slider .slider-button {
+    flex: none;
+    border-radius: 50%;
+  }
+
+  .mosaic-slider__lines {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .mosaic-slider__line {
+    position: relative;
+    width: 2.4rem;
+    height: 4.4rem;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+  }
+
+  .mosaic-slider__line::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 0.2rem;
+    transform: translateY(-50%);
+    background: rgba(var(--color-foreground), 0.18);
+    transition: background-color 0.25s, height 0.25s;
+  }
+
+  .mosaic-slider__line[aria-current='true']::before {
+    height: 0.3rem;
+    background: #e6bab9;
+  }
+
+  .mosaic-slider__line:focus-visible {
+    outline: 0.2rem solid rgb(var(--color-foreground));
+    outline-offset: -0.2rem;
+  }
+}
+
+@media screen and (max-width: 359px) {
+  .mosaic-slider__line {
+    width: 2rem;
+  }
+}

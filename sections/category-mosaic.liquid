@@ -142,6 +142,28 @@
         <button type="button" class="slider-button slider-button--prev" data-cat-prev aria-label="Предишна категория">
           <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
         </button>
+        {%- comment -%} Line indicators, one per slide (2026-10-05, owner, after Cartier). {%- endcomment -%}
+        {%- liquid
+          assign cat_total = 0
+          for block in section.blocks
+            if block.settings.link != blank
+              assign cat_total = cat_total | plus: 1
+            endif
+          endfor
+        -%}
+        <div class="mosaic-slider__lines" role="group" aria-label="Категории">
+          {%- for i in (1..cat_total) -%}
+            <button
+              type="button"
+              class="mosaic-slider__line"
+              data-cat-go="{{ forloop.index0 }}"
+              aria-label="Категория {{ i }} от {{ cat_total }}"
+              {% if forloop.first %}
+                aria-current="true"
+              {% endif %}
+            ></button>
+          {%- endfor -%}
+        </div>
         <button type="button" class="slider-button slider-button--next" data-cat-next aria-label="Следваща категория">
           <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
         </button>
