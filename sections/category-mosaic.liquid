@@ -1,4 +1,6 @@
+{{ 'component-slider.css' | asset_url | stylesheet_tag }}
 {{ 'section-category-mosaic.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'category-slider.js' | asset_url }}" defer="defer"></script>
 
 {%- comment -%}
   A mosaic of category tiles.
@@ -95,6 +97,56 @@
         </li>
       {%- endfor -%}
     </ul>
+
+    {%- comment -%}
+      Phones only (2026-10-05, owner): the same categories as a slider -- a large
+      photo, the name, one short sentence and a button to the collection. The next
+      slide shows at the edge; scroll-snap swiping; Dawn-style arrows (44x44) under
+      it, disabled at the ends; no counter, no autoplay. Hidden from 750px, where the
+      mosaic above is shown. Only tiles with a link appear here.
+    {%- endcomment -%}
+    <category-slider class="mosaic-slider">
+      <ul class="mosaic-slider__track" role="list" aria-label="{{ section.settings.heading | default: 'Категории' | escape }}">
+        {%- for block in section.blocks -%}
+          {%- if block.settings.link != blank -%}
+            <li class="mosaic-slider__slide">
+              <a class="mosaic-slider__media" href="{{ block.settings.link }}" tabindex="-1" aria-hidden="true">
+                {%- if block.settings.image != blank -%}
+                  {{
+                    block.settings.image
+                    | image_url: width: 900
+                    | image_tag:
+                      class: 'mosaic-slider__image',
+                      widths: '400, 600, 900',
+                      sizes: '82vw',
+                      loading: 'lazy',
+                      alt: ''
+                  }}
+                {%- else -%}
+                  <span class="mosaic-slider__image mosaic-slider__image--empty"></span>
+                {%- endif -%}
+              </a>
+              <h3 class="mosaic-slider__name">{{ block.settings.label | escape }}</h3>
+              {%- if block.settings.phone_text != blank -%}
+                <p class="mosaic-slider__text">{{ block.settings.phone_text | escape }}</p>
+              {%- endif -%}
+              <a class="mosaic-slider__button" href="{{ block.settings.link }}">
+                {{- block.settings.phone_button | default: 'Разгледайте' | escape -}}
+                <span class="visually-hidden">: {{ block.settings.label | escape }}</span>
+              </a>
+            </li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+      <div class="mosaic-slider__controls" hidden>
+        <button type="button" class="slider-button slider-button--prev" data-cat-prev aria-label="Предишна категория">
+          <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
+        </button>
+        <button type="button" class="slider-button slider-button--next" data-cat-next aria-label="Следваща категория">
+          <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
+        </button>
+      </div>
+    </category-slider>
   </div>
 </div>
 
@@ -212,6 +264,22 @@
           "id": "link",
           "label": "Link",
           "info": "Without a destination the tile is shown but is not a link."
+        },
+        {
+          "type": "header",
+          "content": "Phone slider"
+        },
+        {
+          "type": "text",
+          "id": "phone_text",
+          "label": "Short sentence (phones)",
+          "info": "One short, factual sentence shown under the name in the phone slider. Not shown on computers."
+        },
+        {
+          "type": "text",
+          "id": "phone_button",
+          "label": "Button text (phones)",
+          "info": "Empty: „Разгледайте“."
         }
       ]
     }

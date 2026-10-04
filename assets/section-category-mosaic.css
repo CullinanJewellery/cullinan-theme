@@ -304,3 +304,133 @@
     display: none;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Category slider on phones (2026-10-05, owner). Replaces the phone grid; the
+   mosaic stays on tablet and computer. Slides are 82% wide so the next one shows;
+   scroll-snap; the product-row arrow style (44x44, full ink, 25% when disabled).
+   --------------------------------------------------------------------------- */
+.mosaic-slider {
+  display: none;
+}
+
+@media screen and (max-width: 749px) {
+  .mosaic__grid {
+    display: none;
+  }
+
+  .mosaic-slider {
+    display: block;
+  }
+
+  .mosaic-slider__track {
+    display: flex;
+    gap: 1.2rem;
+    margin: 0 -1.5rem;
+    padding: 0 1.5rem;
+    scroll-padding-inline: 1.5rem;
+    list-style: none;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .mosaic-slider__track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .mosaic-slider__slide {
+    flex: 0 0 82%;
+    margin: 0;
+    scroll-snap-align: start;
+  }
+
+  .mosaic-slider__media {
+    display: block;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+  }
+
+  .mosaic-slider__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .mosaic-slider__image--empty {
+    background: linear-gradient(180deg, #f1e6df 0%, #e1cdc2 100%);
+  }
+
+  .mosaic-slider__name {
+    margin: 1.4rem 0 0;
+    font-family: var(--font-heading-family);
+    font-weight: var(--font-heading-weight);
+    font-size: 2.2rem;
+    line-height: 1.2;
+    letter-spacing: 0;
+  }
+
+  .mosaic-slider__text {
+    margin: 0.6rem 0 0;
+    font-size: 1.4rem;
+    line-height: 1.5;
+    color: rgba(var(--color-foreground), 0.8);
+  }
+
+  .mosaic-slider__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 4.4rem;
+    margin-top: 1.4rem;
+    padding: 0 2rem;
+    background-color: rgb(var(--color-button));
+    box-shadow: inset 0 0 0 1px rgb(var(--color-button));
+    color: rgb(var(--color-button-text));
+    font-family: var(--font-body-family);
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out;
+  }
+
+  .mosaic-slider__button:hover,
+  .mosaic-slider__button:focus-visible {
+    background-color: transparent;
+    color: rgb(var(--color-button));
+  }
+
+  .mosaic-slider__track:focus-visible {
+    outline: 0.2rem solid rgb(var(--color-foreground));
+    outline-offset: 0.2rem;
+  }
+
+  .mosaic-slider__controls {
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+    margin-top: 1.6rem;
+  }
+
+  .mosaic-slider__controls[hidden] {
+    display: none;
+  }
+
+  .mosaic-slider .slider-button {
+    min-width: 4.4rem;
+    min-height: 4.4rem;
+    color: rgb(var(--color-foreground));
+  }
+
+  .mosaic-slider .slider-button .icon {
+    height: 0.8rem;
+  }
+
+  .mosaic-slider .slider-button[disabled] .icon {
+    color: rgba(var(--color-foreground), 0.25);
+  }
+}
