@@ -18,20 +18,29 @@
           "type": "link_column",
           "settings": {
             "heading": "Нека ви помогнем",
+            "note": "бул. Васил Левски 21, Велико Търново\nПон – Пет: 09:30 – 19:00\nСъбота: 10:00 – 18:00\nНеделя: почивен ден",
+            "menu": "",
             "link_1_label": "Контакти",
             "link_1": "/pages/contact",
             "link_2_label": "Въпроси и отговори",
             "link_2": "/pages/за-нас#vaprosi",
             "link_3_label": "Магазин във Велико Търново",
             "link_3": "/pages/contact",
-            "show_email": false,
-            "note": "бул. Васил Левски 21, Велико Търново\nПон – Пет: 09:30 – 19:00\nСъбота: 10:00 – 18:00\nНеделя: почивен ден"
+            "link_4_label": "",
+            "link_4": "",
+            "link_5_label": "",
+            "link_5": "",
+            "link_6_label": "",
+            "link_6": "",
+            "show_email": false
           }
         },
         "about": {
           "type": "link_column",
           "settings": {
             "heading": "Всичко за нас",
+            "note": "",
+            "menu": "",
             "link_1_label": "Нашата история",
             "link_1": "/pages/за-нас#istoriya",
             "link_2_label": "Нашето вдъхновение",
@@ -39,13 +48,20 @@
             "link_3_label": "Нашият дизайн",
             "link_3": "/pages/за-нас#dizain",
             "link_4_label": "Нашите материали",
-            "link_4": "/pages/за-нас#materiali"
+            "link_4": "/pages/за-нас#materiali",
+            "link_5_label": "",
+            "link_5": "",
+            "link_6_label": "",
+            "link_6": "",
+            "show_email": false
           }
         },
         "collections": {
           "type": "link_column",
           "settings": {
             "heading": "Колекции",
+            "note": "",
+            "menu": "",
             "link_1_label": "Пръстени",
             "link_1": "/collections/пръстени",
             "link_2_label": "Обеци",
@@ -57,7 +73,8 @@
             "link_5_label": "Гривни",
             "link_5": "/collections/гривни",
             "link_6_label": "Камъни",
-            "link_6": "/collections/камъни"
+            "link_6": "/collections/камъни",
+            "show_email": false
           }
         }
       },
@@ -70,13 +87,15 @@
         "color_scheme": "scheme-5",
         "newsletter_enable": true,
         "newsletter_heading": "Абонирайте се за бюлетина",
-        "contact_email": "cullinanjewellery.bg@gmail.com",
+        "newsletter_show_email": true,
+        "newsletter_email_label": "Свържете се с нас:",
         "enable_follow_on_shop": true,
+        "contact_email": "cullinanjewellery.bg@gmail.com",
         "social_heading": "Вижте бижутата в действие",
         "social_text": "Разгледайте още снимки и видеа на нашите бижута във Facebook и Instagram.",
         "social_heading_contact": "Ще ни намерите и там",
         "social_text_contact": "Можете да ни пишете и във Facebook или Instagram — ще ви отговорим възможно най-скоро.",
-        "social_image_contact": "shopify://shop_images/ChatGPT_Image_Sep_15_2026_04_13_30_PM_27655a6d-1a61-4f44-8722-3a5b1065d2bc.png",
+        "social_image_contact": "shopify://shop_images/ChatGPT_Image_Sep_15_2026_11_52_21_AM.png",
         "social_image_overlay_contact": 0,
         "show_social": true,
         "enable_country_selector": true,

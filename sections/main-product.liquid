@@ -287,43 +287,17 @@
                     dimensions (spec_variant_only) -- never fall back to the product's value on a
                     product with more than one variant: a product-level "750" must not show beside a
                     silver variant, nor one weight beside every ring size. On such a product they
-                    show only when the selected variant has them. A product with a single variant
-                    uses its variant's value first and the product's as the fallback, for everything.
-
-                    Stone fields (stone, stone_count, stone_size, stone_weight_ct, cut) are shared
-                    from the product only while no variant has stone data of its own. The moment any
-                    variant of a multi-variant product carries a stone field, the stones are taken to
-                    differ by variant and stone rows come only from the selected variant: a variant
-                    with nothing filled shows no stone rows rather than another variant's or the
-                    product's. A variant's value is never borrowed by another variant.
+                    show only when the selected variant has them. Stone fields may fall back. A
+                    product with a single variant uses its product-level values for everything.
                   {%- endcomment -%}
                   {%- liquid
                     assign spec_variant = product.selected_or_first_available_variant
                     assign spec_keys = 'metal,proba,weight_g,stone,stone_count,stone_size,stone_weight_ct,cut,dimensions' | split: ','
-                    assign spec_no_fallback_list = 'metal,proba,weight_g,dimensions'
-                    assign spec_stone_keys = 'stone,stone_count,stone_size,stone_weight_ct,cut' | split: ','
+                    assign spec_variant_only = 'metal,proba,weight_g,dimensions' | split: ','
                     assign spec_many = false
                     if product.variants.size > 1
                       assign spec_many = true
                     endif
-                    assign stones_per_variant = false
-                    if spec_many
-                      for v in product.variants
-                        for key in spec_stone_keys
-                          if v.metafields.custom[key] != blank
-                            assign stones_per_variant = true
-                            break
-                          endif
-                        endfor
-                        if stones_per_variant
-                          break
-                        endif
-                      endfor
-                    endif
-                    if stones_per_variant
-                      assign spec_no_fallback_list = spec_no_fallback_list | append: ',stone,stone_count,stone_size,stone_weight_ct,cut'
-                    endif
-                    assign spec_variant_only = spec_no_fallback_list | split: ','
                     assign has_specs = false
                     for key in spec_keys
                       if spec_many and spec_variant_only contains key
