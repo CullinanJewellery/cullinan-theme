@@ -351,3 +351,52 @@
 .workshop--text .workshop__steps {
   flex: none;
 }
+
+/* ---------------------------------------------------------------------------
+   Phones (2026-10-05, owner: heading, text and buttons felt too large). Smaller
+   type and tighter spacing below 750px only; tablet and computer unchanged. With
+   photographs the order stays photo (full width, square) -> controls -> text ->
+   compact button, so the photo leads. Arrows keep a 44px tap area.
+   --------------------------------------------------------------------------- */
+@media screen and (max-width: 749px) {
+  .workshop__title {
+    margin-bottom: 2rem;
+    font-size: 2.2rem;
+  }
+
+  .workshop .workshop__step {
+    margin-bottom: 0.8rem;
+    font-size: 1.1rem;
+  }
+
+  .workshop .workshop__heading {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    line-height: 1.25;
+  }
+
+  .workshop .workshop__text {
+    font-size: 1.5rem;
+    line-height: 1.55;
+  }
+
+  .workshop .workshop__actions {
+    margin-top: 1.8rem;
+    gap: 1.2rem 2rem;
+  }
+
+  .workshop .workshop__button {
+    min-height: 4.4rem;
+    padding: 0 2rem;
+    font-size: 1.2rem;
+    letter-spacing: 0.1em;
+  }
+
+  .workshop .workshop__secondary {
+    font-size: 1.3rem;
+  }
+
+  .workshop--text.workshop--js .workshop__controls {
+    margin-top: 2rem;
+  }
+}
