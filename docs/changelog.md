@@ -27,6 +27,12 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
   or checkout setting touched); „Изработка и доставка: 5–20 работни дни“ everywhere (5–20 confirmed as making +
   delivery); За нас ring-size answer says inner circumference in mm, not diameter, matching the guide. Fallback
   tested with substituted data (liquidjs mocks); hiding, wording and FAQ checked on the real preview.
+- **Workshop slides built (owner approved the layout)**: one section, up to four slides, owner's shorter copy, links
+  chosen in the editor only, hidden from visitors until every slide has a photograph and a heading; the old story band
+  stays until then. Checked locally (real Liquid via liquidjs, real CSS/JS in a mock with generated pictures, 1440 and
+  375); **not visible on the real preview until photographs are uploaded**.
+- Specs, third pass **(owner)**: stone fields stop falling back to the product once any variant has stone data;
+  single-variant products read the variant first. Substituted-data tests only (15 checks).
 - Docs correction: the product page has had no copy of the FAQ since 2026-10-03; the theme guide said otherwise.
 - Workshop story proposal (one section, four slides) recorded in `docs/tasks.md` G; not built.
 - Two template pushes dropped again (sent within a minute of another push); re-sent with a byte change.

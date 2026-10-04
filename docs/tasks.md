@@ -40,7 +40,7 @@ payment-provider or checkout setting is to be changed from here.**
    footer; payment icons only for methods actually enabled. The footer draws Shopify's icons for the enabled methods automatically (`payment_enable`); on the preview (2026-10-04) it shows **PayPal only**, and cash on delivery has no icon.
 4. ~~Product-specific enquiry~~ done 2026-10-04 (enquiry band + buy-box link; theme guide §4). **No test message has
    been sent** from it (or from Контакти): send one from the preview and check the store inbox before launch.
-5. **Workshop story** — proposal given to the owner 2026-10-04, **awaiting approval** (see G).
+5. **Workshop story** — built as a four-slide section, waiting for photographs (see G).
 6. **Homepage review** — proposal given to the owner 2026-10-04, **awaiting approval** (see G).
 7. ~~The /cart page~~ reviewed and aligned with the drawer 2026-10-04. Accelerated payment buttons hidden through the
    theme (cart footer buttons block, „Show accelerated payment buttons“, off); switch on only after the payment setup.
@@ -57,16 +57,26 @@ payment-provider or checkout setting is to be changed from here.**
    Do the same once from Контакти.
 
 **Add specification data to one real product:**
-1. Settings → Custom data → **Products** → Add definition, namespace and key exactly: `custom.metal`, `custom.proba`
-   (single line text), `custom.weight_g` (decimal), `custom.stone`, `custom.stone_count` (integer),
-   `custom.stone_size`, `custom.stone_weight_ct` (decimal), `custom.cut`, `custom.dimensions` (single line text).
-2. Settings → Custom data → **Variants** → the same keys for the per-variant fields: **`custom.metal`, `custom.proba`,
-   `custom.weight_g`, `custom.dimensions`** (and stone fields only if the stone differs by variant).
-3. On a product with **more than one variant**: fill metal, proba, weight and dimensions on **each variant** (Products →
-   the product → a variant → Metafields). The product-level values of those four are ignored there by design, so a
-   gold fineness can never show on a silver variant. Stone fields can be filled once on the product.
-4. On a product with **one variant**: fill everything on the product.
-5. Open the product on the preview, open „Качество и детайли“, switch variants: the rows should change with them.
+0. **First check what already exists** (Claude has no Admin access, so it cannot list definitions): Settings →
+   Custom data → **Products** and → **Variants**; note any definition already in namespace `custom` with the keys below
+   and only create the missing ones, so nothing is duplicated. Keys must match exactly; a definition with another
+   namespace or key will not be read.
+1. Settings → Custom data → **Products**: `custom.metal`, `custom.proba`, `custom.stone`, `custom.stone_size`,
+   `custom.cut`, `custom.dimensions` (single line text); `custom.weight_g`, `custom.stone_weight_ct` (decimal);
+   `custom.stone_count` (integer).
+2. Settings → Custom data → **Variants**: `custom.metal`, `custom.proba`, `custom.weight_g`, `custom.dimensions`;
+   **plus the five stone fields** (`custom.stone`, `custom.stone_count`, `custom.stone_size`, `custom.stone_weight_ct`,
+   `custom.cut`, same types) for any product whose stone differs by variant.
+3. **The rules the theme applies** (variant value always first):
+   - One variant: variant value, else the product value — for every field.
+   - Several variants: metal, proba, weight and dimensions come **only from each variant** (product values ignored),
+     so a gold fineness can never show on a silver variant. Fill them on every variant.
+   - Several variants, **same stone on all**: fill the stone fields once on the product and leave them empty on every
+     variant; every variant shows the product's stone.
+   - Several variants, **stones differ**: fill the stone fields on **every** variant. As soon as one variant has any
+     stone field, the product's stone values are ignored for that product, and a variant left empty shows no stone
+     rows (never another variant's or the product's).
+4. Open the product on the preview, open „Качество и детайли“, switch variants: the rows should change with them.
 
 ## C. Decisions needed from the owner
 
@@ -118,32 +128,17 @@ No replacement legal text is to be written; the accountant handles legal pages.
 4. The old "fourteen rules" (archive) treated small prices and few sections as rules; the owner's brief says they are not
    universal. Prices are currently 18px/15px; revisit only with a reason (readability first).
 
-## G. Proposals awaiting the owner (2026-10-04, not built)
+## G. Workshop slides and proposals awaiting the owner
 
-1. **Workshop story — one section, four slides (owner's brief 2026-10-04; proposal, not built).** Keep the current
-   story band until the replacement is ready.
-   - **Layout**: one band (scheme-6). Computer: square photograph left (~55%), text right — step label „Стъпка 1 от 4“,
-     heading (Prata), one or two sentences, primary button, optional secondary link; under the text a step indicator
-     (four short labelled bars, the current one filled) with ‹ › arrows. Phone: square photograph full width, text
-     under it, indicator and arrows between photo and text; swipe left/right. Manual only (no autoplay); 0.4s
-     cross-fade, instant under reduced motion. Region labelled „Как се ражда едно бижу“, slides „1 от 4“, polite
-     live region, arrows and indicator are real buttons, ←/→ keys when focus is inside, Tab never enters hidden slides.
-   - **Copy** (section heading „Как се ражда едно бижу“):
-     1. **Наш собствен дизайн** — „Всяко бижу започва като наш 3D модел, създаден в ателието във Велико Търново.
-        Затова можем да го изработим и с друг камък, метал или размер — специално за вас.“ → „Вижте пръстена“
-        (`/products/пръстен-с-верижка`); secondary „Опишете своето бижу“ (custom-request band).
-     2. **От модела към формата** — „Моделът се отпечатва на 3D принтер и се оглежда от всеки ъгъл, преди да стане
-        злато или сребро. Така пропорциите са точни още преди метала.“ → „Вижте пръстените“ (`/collections/пръстени`).
-     3. **Завършено на ръка** — „Златарите ни довършват всяко бижу на ръка, както работим от 1991 година. Това е
-        гладкостта и блясъкът, които усещате, когато го носите.“ → „Вижте пръстена“ (`/products/пръстен-с-верижка`).
-     4. **Готово за носене** — „Злато 585 или 750, сребро 925 с родиево покритие и камъни, оценени от специалист с
-        квалификация от HRD Antwerp. Изработка и доставка: 5–20 работни дни.“ → „Разгледайте бижутата“
-        (`/collections/all`).
-   - Links checked 2026-10-04: only the ring is priced; Пръстени holds the ring; Дамски and Мъжки are empty (never
-     linked). If the photographs follow a different piece, slides 1 and 3 link to that product instead.
-   - **Photographs (4, real, square, ≥1600px, one light and background, nothing burned in), ideally all of one piece**:
-     the piece's 3D model on the screen; its printed model (alone or beside the finished piece); a goldsmith's hands
-     at the bench working on it; the finished piece worn on a hand/neck.
+1. **Workshop slides — BUILT 2026-10-04 (owner approved the layout), waiting for the four photographs.** Section
+   `workshop-slides` (key `workshop`, directly before the old story band `atelier`); details in
+   `docs/theme-guide.md` §3. Visitors see it only when every slide has a photograph and a heading; the old story band
+   stays visible meanwhile. **When the four photographs are in and the links chosen: hide the old story section**
+   (Customize → Home page → the story section → eye icon). Owner to do in the editor, per slide: upload the
+   photograph, pick a product or a populated collection (none is set; nothing links to the test ring automatically).
+   Slide 4's button reads „Разгледайте бижутата“; slide 1 has a second link „Опишете своето бижу“ → Контакти.
+   - **Photographs (4, real, square, ≥1600px, one light and background, nothing burned in), ideally one piece**:
+     its 3D model on screen; its printed model; a goldsmith's hands at the bench; the finished piece worn.
 2. **Homepage order**: hero → trust band → selected pieces → **workshop story** (moved up: it is the reason to pay
    more) → categories → stones → reviews (only once real ones exist) → custom request → shop visit (address, hours,
    map, a photograph of the shop front) → newsletter. Social follow folded into the footer.
