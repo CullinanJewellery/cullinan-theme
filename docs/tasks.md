@@ -40,7 +40,7 @@ payment-provider or checkout setting is to be changed from here.**
    footer; payment icons only for methods actually enabled. The footer draws Shopify's icons for the enabled methods automatically (`payment_enable`); on the preview (2026-10-04) it shows **PayPal only**, and cash on delivery has no icon.
 4. ~~Product-specific enquiry~~ done 2026-10-04 (enquiry band + buy-box link; theme guide §4). **Test passed
    2026-10-04 (owner, real Shopify data)**: the message arrived and its emailed link opened the same metal and size
-   that were selected. Still untested: the Контакти form — send one message from it before launch.
+   that were selected. The Контакти form was also tested by the owner the same day and works.
    The test also showed two data issues, still open (see D): the size value „54 55“, and the Вариант line naming the
    gold twice („жълто злато / 14К жълто злато“) because the ring has both a colour and a metal option.
 5. **Workshop story** — built as a four-slide section, waiting for photographs (see G).
@@ -57,7 +57,7 @@ payment-provider or checkout setting is to be changed from here.**
 3. In the store's notification inbox (Settings → Notifications → sender/recipient email) find the message: it should
    list Тема „Въпрос за бижу“, Бижу (title), Връзка (link with `?variant=`), Вариант (the size/metal chosen).
 4. Open the link: it should land on the same variant. If nothing arrives, check spam, then the store email setting.
-   Do the same once from Контакти.
+   The Контакти form works the same way (tested 2026-10-04).
 
 **Add specification data to one real product:**
 0. **First check what already exists** (Claude has no Admin access, so it cannot list definitions): Settings →
