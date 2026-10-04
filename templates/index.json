@@ -504,6 +504,7 @@
     },
     "atelier": {
       "type": "atelier",
+      "disabled": true,
       "settings": {
         "media_position": "right",
         "color_scheme": "scheme-2",
