@@ -27,6 +27,11 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
   or checkout setting touched); „Изработка и доставка: 5–20 работни дни“ everywhere (5–20 confirmed as making +
   delivery); За нас ring-size answer says inner circumference in mm, not diameter, matching the guide. Fallback
   tested with substituted data (liquidjs mocks); hiding, wording and FAQ checked on the real preview.
+- **2026-10-05, reviews wiring (owner)**: owner added Judge.me's Testimonials carousel; its sample reviews switched off,
+  English header blanked, colours set to ours. Product rating moved under the title, linked to the Judge.me widget,
+  hidden without reviews (the empty-stars fallback removed). Real preview at 375 and 1440: reviews section and hero
+  line hidden, no product stars, one widget with „Напишете отзив“, no duplicate badge. Populated states only tested
+  offline (liquidjs).
 - **2026-10-05, third round (owner)**, checked on the real preview at 375 (and 320) and 1440:
   - Workshop on phones: button on its own row, „Опишете своето бижу“ under it, arrows and step marks one centred row;
     all four slides fit at 320. Slide 1 (longest) sets the section height, so shorter slides leave space above the

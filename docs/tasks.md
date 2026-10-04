@@ -162,9 +162,11 @@ about 650px. Also flagged: several taglines read as the slogan-style copy the ow
 
 ## I. Rating near the hero and homepage reviews — BUILT 2026-10-05 (Judge.me); owner steps open
 
-- **Owner**: in the theme editor add a Judge.me block (Cards carousel or Testimonials carousel) to „Отзиви от наши
-  клиенти“; in Judge.me, check the carousel shows all published reviews (not only featured/minimum-star ones) so it
-  matches the hero count. Both stay hidden until the first review is published.
+- Done (owner, 2026-10-05): Judge.me Testimonials carousel added (all reviews, all ratings). Product page: this
+  product's stars under the title, linking to the widget; nothing without reviews.
+- **Untestable until the first real review is published**: the hero line's numbers, the carousel's look and its
+  scope matching the hero count, the product stars under the title and the jump to the widget, and the editor-only
+  outline-star line (needs the theme editor).
 - Not verified with real data: the metafield values and the carousel look appear only once a review exists.
 
 ### Original proposal (2026-10-04)

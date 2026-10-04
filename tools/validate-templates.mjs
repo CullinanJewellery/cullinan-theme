@@ -35,6 +35,8 @@ function checkSection(where, inst) {
   const order = inst.block_order || [];
   for (const [bk, b] of Object.entries(inst.blocks || {})) {
     const bd = (s.blocks || []).find((x) => x.type === b.type);
+    // App blocks (shopify://apps/...) are defined by the app, not by our section schemas.
+    if (!bd && b.type.startsWith('shopify://apps/')) continue;
     if (!bd && b.type[0] !== '@') { problems.push(where + ' / block ' + bk + ': unknown block type "' + b.type + '"'); continue; }
     if (bd) checkSettings(where + ' / block ' + bk, bd.settings, b.settings);
     if (!order.includes(bk)) problems.push(where + ' / block ' + bk + ': not in block_order');
