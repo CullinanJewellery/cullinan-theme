@@ -4038,10 +4038,12 @@ Anything of ours that is not a Dawn setting lives in these two places:
     (`#F1E6DF` to `#E1CDC2`), so a phone with no photograph yet reads as one designed block instead of a blank square
     above a box (it goes by itself when a photograph is set); the category mosaic's caption scrim is espresso
     (`rgba(42, 30, 26, ...)`) instead of black.
-  - **Pushed in three steps** (the stylesheets, then the two group files and the product template, then the
-    homepage template with these notes): **`696e3bc` at 13:37 and `f8f0f3b` at 13:42**, four and a half minutes apart.
+  - **Pushed in three steps and a fix** (the stylesheets, then the two group files and the product template, then the
+    homepage template with these notes, then the search grid below): **`696e3bc` at 13:37, `f8f0f3b` at 13:42,
+    `6238c69` at 13:45 and `1ed6cff` at 13:51**, never closer than three minutes.
     **Step 1 was confirmed on the store's CDN path**: `crown.css` (55 KB) carries `footer-line` four times,
     `64vw`, the new exceptions and neither rope selector, and the hero rule reads `--color-button: 214, 34, 70`.
+    The search fix was read off the CDN too (the new selector, twice, within five seconds of the push).
     **Steps 2 and 3 cannot be read off the CDN** (JSON files, not assets), so they are unverified: if the next
     preview link shows a white footer, a page-ground menu or the moving-pictures strip, that push was dropped (it has
     happened seven times) -- re-send the file with a byte changed.
