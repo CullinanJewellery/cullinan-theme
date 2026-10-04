@@ -115,6 +115,17 @@
             "label": "Поръчайте по телефон",
             "phone": "+359 88 287 4895"
           }
+        },
+        "trust_lines": {
+          "type": "trust_lines",
+          "settings": {
+            "icon_1": "cash",
+            "text_1": "Наложен платеж — плащате при получаване",
+            "icon_2": "return-arrow",
+            "text_2": "Връщане до 14 дни",
+            "icon_3": "delivery-van",
+            "text_3": "Доставка с Еконт и Спиди до офис или адрес"
+          }
         }
       },
       "block_order": [
@@ -126,6 +137,7 @@
         "delivery_note",
         "buy_buttons",
         "phone_order",
+        "trust_lines",
         "shipping_tab",
         "payment_tab",
         "specs",
