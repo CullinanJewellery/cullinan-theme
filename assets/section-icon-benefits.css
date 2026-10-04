@@ -265,7 +265,7 @@
   .benefits-band .benefits__grid {
     display: flex;
     grid-template-columns: none;
-    gap: 1.2rem;
+    gap: 1.6rem;
     padding: 0 1.5rem;
     scroll-padding-inline: 1.5rem;
     overflow-x: auto;
@@ -280,7 +280,9 @@
 
   .benefits-band .benefits__item,
   .benefits-band .benefits__item:last-child:nth-child(odd) {
-    flex: 0 0 100%;
+    /* 82% of the row, so the next card shows at the right and invites a swipe, as on
+       hestiahome.bg (theirs show about 70px of the next card; ours about 60px at 375px). */
+    flex: 0 0 82%;
     grid-column: auto;
     scroll-snap-align: start;
     scroll-snap-stop: always;
