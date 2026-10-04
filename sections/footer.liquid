@@ -267,8 +267,11 @@
           Instagram"). They carry sections/social-band.liquid instead, set in
           templates/product.json, so printing this copy as well would put the block
           on the page twice.
+
+          За нас is the third (2026-10-04, owner): the page ends with its questions, and the
+          promotional block is left off there; the small icons under the newsletter stay.
         {%- endcomment -%}
-        {%- unless template.name == 'index' or template.name == 'product' -%}
+        {%- unless template.name == 'index' or template.name == 'product' or template.suffix == 'about' -%}
           {{- footer_social -}}
         {%- endunless -%}
         {%- if section.blocks.size > 0 or footer_subscribe != blank -%}
