@@ -152,7 +152,7 @@ No replacement legal text is to be written; the accountant handles legal pages.
 printed model beside its finished piece; two or three finished pieces worn; the shop front and interior; packaging
 once decided. Shot list in `photography/README.md`.
 
-## J. Homepage categories on phones — review 2026-10-05, awaiting the owner
+## J. Homepage categories on phones — BUILT 2026-10-05 (two-column grid, names only, taglines removed everywhere)
 
 One column of six full-width tiles, 375×230px each, the section 1552px tall at 375px; names 15px capitals with a
 tagline, whole tile tappable, links all to populated collections. Recommendation: two columns (about 170×170px square

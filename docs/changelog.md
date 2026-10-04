@@ -27,6 +27,19 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
   or checkout setting touched); „Изработка и доставка: 5–20 работни дни“ everywhere (5–20 confirmed as making +
   delivery); За нас ring-size answer says inner circumference in mm, not diameter, matching the guide. Fallback
   tested with substituted data (liquidjs mocks); hiding, wording and FAQ checked on the real preview.
+- **2026-10-05, second round (owner)**, each checked on the real preview at 375 and 1440:
+  - Categories: two-column square grid on phones (167px tiles; section 1552 → 655px), names only; taglines removed at
+    every size (cleared from the six blocks; the setting stays). Computer tiles unchanged.
+  - Product row heading „Бестселъри“ → „Нашите бижута“ (it shows the catalogue, not sales). Products and square frames
+    unchanged.
+  - Header menu: the 0.25rem lift on hover, focus and open dropdown removed (it was what moved the words; the weight
+    never changed); a 1px underline marks hover, keyboard focus and the current category, menu words and dropdown
+    links alike. Checked with a real hover and real Tab presses: underline on, position unchanged (468, 68.6).
+  - Product-row arrows (featured-collection rows and Наскоро разгледани): caret 0.6 → 0.8rem, full ink; disabled 25%;
+    44×44 targets. Gallery and reviews arrows unchanged. Counter still hidden.
+  - Workshop slides linked: Пръстени, Висулки, Обеци, all — „Вижте пръстените“, „Вижте висулките“, „Вижте обеците“,
+    „Разгледайте бижутата“; each link returns 200 with products (1, 1, 1, 4).
+  - Three template pushes dropped again and were re-sent with a byte change.
 - **2026-10-05 (owner)**, checked on the real preview:
   - Homepage product row renamed „Избрани бижута“ → „Бестселъри“; same products (collection all) and layout. **Flag: not
     based on sales** — the store has no orders; the row shows the whole catalogue. The name was „Избрани бижута“ for that
