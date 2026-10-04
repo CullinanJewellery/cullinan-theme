@@ -160,7 +160,14 @@ tiles, 8–12px gap), name only (14px capitals) under or on the tile, taglines d
 about 650px. Also flagged: several taglines read as the slogan-style copy the owner now wants avoided („помни се
 завинаги“, „Блясък, който не избледнява“, „Завършеният вид, за който ви питат“).
 
-## I. Rating near the hero — proposal awaiting the owner (2026-10-04, not built)
+## I. Rating near the hero and homepage reviews — BUILT 2026-10-05 (Judge.me); owner steps open
+
+- **Owner**: in the theme editor add a Judge.me block (Cards carousel or Testimonials carousel) to „Отзиви от наши
+  клиенти“; in Judge.me, check the carousel shows all published reviews (not only featured/minimum-star ones) so it
+  matches the hero count. Both stay hidden until the first review is published.
+- Not verified with real data: the metafield values and the carousel look appear only once a review exists.
+
+### Original proposal (2026-10-04)
 
 - **Placement**: one line directly under the hero subtitle, before the button — ★★★★★ 4,9 · 37 отзива (numbers here only
   illustrate the format; nothing is shown until real data exists). Computer: left-aligned with the hero words, light

@@ -27,6 +27,19 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
   or checkout setting touched); „Изработка и доставка: 5–20 работни дни“ everywhere (5–20 confirmed as making +
   delivery); За нас ring-size answer says inner circumference in mm, not diameter, matching the guide. Fallback
   tested with substituted data (liquidjs mocks); hiding, wording and FAQ checked on the real preview.
+- **2026-10-05, third round (owner)**, checked on the real preview at 375 (and 320) and 1440:
+  - Workshop on phones: button on its own row, „Опишете своето бижу“ under it, arrows and step marks one centred row;
+    all four slides fit at 320. Slide 1 (longest) sets the section height, so shorter slides leave space above the
+    arrows — kept to avoid the page jumping between slides. The owner's reference screenshot did not arrive.
+  - Categories on phones: a slider with name, one short sentence (drafted from site facts only) and a button; all six
+    links return 200 with products. A first version widened the page to 1558px (Dawn's absolutely positioned
+    visually hidden text escaped the scroll track); fixed with `position: relative` on each slide.
+  - Judge.me check: free plan includes the review widget, star badge, cards/testimonial/video carousels, reviews
+    grid, trust badge, medals and a basic reviews carousel; not the pop-up/sidebar, AI summary, review snippets or the
+    „Happy Customers“ all-reviews page. Shop-wide average and count exist as `shop.metafields.judgeme.all_reviews_rating`
+    / `all_reviews_count` (our store's own Judge.me settings already use them for its all-reviews badge).
+  - Hero rating line built (setting, hero only); homepage reviews rebuilt around a Judge.me app block; both read the
+    same count. Verified hidden at 0 reviews on the preview; populated states tested with liquidjs mocks only.
 - **2026-10-05, second round (owner)**, each checked on the real preview at 375 and 1440:
   - Categories: two-column square grid on phones (167px tiles; section 1552 → 655px), names only; taglines removed at
     every size (cleared from the six blocks; the setting stays). Computer tiles unchanged.
