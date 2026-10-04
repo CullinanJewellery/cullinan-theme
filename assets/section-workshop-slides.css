@@ -311,3 +311,41 @@
     transform: translateY(-0.25rem);
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Text-only layout (2026-10-04): used until every slide has a photograph.
+   One readable column: step, heading, text, button, then the controls under it
+   at every width. No image box at all.
+   --------------------------------------------------------------------------- */
+.workshop--text .workshop__slide {
+  grid-template-columns: minmax(0, 1fr);
+  align-items: start;
+}
+
+.workshop--text .workshop__content {
+  max-width: 64rem;
+  padding: 0;
+}
+
+.workshop--text .workshop__heading {
+  font-size: clamp(2.6rem, 3vw, 3.6rem);
+}
+
+.workshop--text .workshop__text {
+  max-width: 56ch;
+  font-size: 1.7rem;
+}
+
+.workshop--text.workshop--js .workshop__content {
+  padding: 0;
+}
+
+.workshop--text.workshop--js .workshop__controls {
+  position: static;
+  margin-top: 3.2rem;
+  justify-content: flex-start;
+}
+
+.workshop--text .workshop__steps {
+  flex: none;
+}

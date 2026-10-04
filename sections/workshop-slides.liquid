@@ -4,11 +4,12 @@
   heading, one or two sentences, a shopping link and an optional second link.
 
   Rules the owner set:
-  - Nothing shows to visitors until the section is ready: every slide must have
-    a photograph and a heading (and there must be at least two slides). Until
-    then the section prints nothing outside the theme editor, so the current
-    story band carries on. In the editor, incomplete slides are drawn with a
-    label saying what is missing.
+  - The section shows as soon as every slide has a heading (at least two
+    slides). Photographs are all or nothing: until every slide has one, the
+    slides use a finished text-only layout -- no empty image boxes, no
+    placeholders -- and once all are uploaded the photo layout switches on, so
+    one slide never has a picture while the next has a hole (2026-10-04, owner:
+    "show the existing four slides even without photos").
   - No automatic links. Each slide links to the product or collection chosen in
     the editor (a product wins if both are set); a collection with no products
     is never linked. Without a target, the slide has no button.
@@ -46,15 +47,24 @@
 {%- liquid
   assign slide_total = section.blocks.size
   assign complete_total = 0
+  assign photo_total = 0
   for block in section.blocks
-    if block.settings.image != blank and block.settings.heading != blank
+    if block.settings.heading != blank
       assign complete_total = complete_total | plus: 1
+    endif
+    if block.settings.image != blank
+      assign photo_total = photo_total | plus: 1
     endif
   endfor
 
   assign is_ready = false
   if slide_total >= 2 and complete_total == slide_total
     assign is_ready = true
+  endif
+
+  assign with_photos = false
+  if slide_total > 0 and photo_total == slide_total
+    assign with_photos = true
   endif
 
   assign show_section = is_ready
@@ -71,11 +81,18 @@
   <script src="{{ 'workshop-slides.js' | asset_url }}" defer="defer"></script>
   <div class="color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-margin">
     <div class="page-width section-{{ section.id }}-padding">
-      {%- if request.design_mode and is_ready == false -%}
-        <p class="workshop__editor-note">
-          Секцията не се показва на посетителите, докато всеки слайд няма снимка и заглавие
-          (готови: {{ complete_total }} от {{ slide_total }}). Дотогава остава старата секция с историята.
-        </p>
+      {%- if request.design_mode -%}
+        {%- if is_ready == false -%}
+          <p class="workshop__editor-note">
+            Секцията не се показва на посетителите, докато всеки слайд няма заглавие
+            (готови: {{ complete_total }} от {{ slide_total }}).
+          </p>
+        {%- elsif with_photos == false -%}
+          <p class="workshop__editor-note">
+            Снимките се показват, когато и четирите слайда имат снимка (качени: {{ photo_total }} от {{ slide_total }}).
+            Дотогава слайдовете са само с текст.
+          </p>
+        {%- endif -%}
       {%- endif -%}
 
       {%- if section.settings.heading != blank -%}
@@ -83,7 +100,7 @@
       {%- endif -%}
 
       <workshop-slides
-        class="workshop"
+        class="workshop{% unless with_photos %} workshop--text{% endunless %}"
         role="region"
         aria-roledescription="карусел"
         aria-label="{{ region_label | escape }}"
@@ -116,13 +133,13 @@
               data-heading="{{ block.settings.heading | escape }}"
               {{ block.shopify_attributes }}
             >
+              {%- if with_photos -%}
               <div class="workshop__media">
-                {%- if block.settings.image != blank -%}
-                  {%- if forloop.first -%}
-                    {%- assign img_loading = 'eager' -%}
-                  {%- else -%}
-                    {%- assign img_loading = 'lazy' -%}
-                  {%- endif -%}
+                {%- if forloop.first -%}
+                  {%- assign img_loading = 'eager' -%}
+                {%- else -%}
+                  {%- assign img_loading = 'lazy' -%}
+                {%- endif -%}
                   {{
                     block.settings.image
                     | image_url: width: 1600
@@ -132,10 +149,8 @@
                       sizes: '(min-width: 990px) 55vw, 100vw',
                       class: 'workshop__image'
                   }}
-                {%- else -%}
-                  <span class="workshop__missing">Липсва снимка</span>
-                {%- endif -%}
               </div>
+              {%- endif -%}
 
               <div class="workshop__content">
                 <p class="workshop__step">Стъпка {{ forloop.index }} от {{ shown_total }}</p>
@@ -205,7 +220,7 @@
   "settings": [
     {
       "type": "paragraph",
-      "content": "Visitors see this section only when every slide has a photograph and a heading (at least two slides). Until then it shows only here in the editor, so keep the old story section until it is ready, then hide that one."
+      "content": "Visitors see this section once every slide has a heading (at least two slides). Photographs appear only when every slide has one; until then the slides are text only."
     },
     {
       "type": "text",
