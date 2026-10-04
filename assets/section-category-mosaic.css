@@ -340,7 +340,11 @@
     display: none;
   }
 
+  /* position: relative keeps the button's visually hidden text (absolutely positioned by
+     Dawn) inside the scrolling track; without it the text escaped the track and widened
+     the whole page to 1558px. */
   .mosaic-slider__slide {
+    position: relative;
     flex: 0 0 82%;
     margin: 0;
     scroll-snap-align: start;
