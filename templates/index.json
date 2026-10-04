@@ -394,7 +394,7 @@
           "type": "benefit",
           "settings": {
             "visual": "icon",
-            "icon": "ring-tools",
+            "icon": "hammer",
             "heading": "Изработка по поръчка",
             "subline": "Друг камък, друг метал, друг размер."
           }
