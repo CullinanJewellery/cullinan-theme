@@ -49,8 +49,8 @@
         "image_overlay_opacity": 0,
         "image_height": "large",
         "image_behavior": "zoom-in",
-        "desktop_content_position": "middle-center",
-        "desktop_content_alignment": "center",
+        "desktop_content_position": "middle-left",
+        "desktop_content_alignment": "left",
         "show_text_box": false,
         "color_scheme": "scheme-5",
         "stack_images_on_mobile": false,
@@ -82,7 +82,7 @@
         "f4": {
           "type": "fact",
           "settings": {
-            "text": "<strong>НАЛОЖЕН ПЛАТЕЖ</strong>"
+            "text": "<strong>ГРАВИРАНЕ ПО ЖЕЛАНИЕ</strong>"
           }
         }
       },
@@ -192,7 +192,7 @@
       "settings": {
         "collection": "all",
         "products_to_show": 8,
-        "title": "Най-продавани",
+        "title": "Избрани бижута",
         "heading_size": "h1",
         "description": "",
         "show_description": false,
@@ -275,12 +275,12 @@
         }
       },
       "block_order": [
-        "zircon",
         "diamond",
-        "pearl",
         "sapphire",
         "ruby",
-        "emerald"
+        "emerald",
+        "pearl",
+        "zircon"
       ],
       "settings": {
         "heading": "Всеки камък има значение",
@@ -394,9 +394,9 @@
           "type": "benefit",
           "settings": {
             "visual": "icon",
-            "icon": "engraving-pen",
-            "heading": "Гравиране по желание",
-            "subline": "Име, дата или послание."
+            "icon": "ring-tools",
+            "heading": "Изработка по поръчка",
+            "subline": "Друг камък, друг метал, друг размер."
           }
         },
         "b4": {
@@ -467,7 +467,8 @@
         "stack_images_on_mobile": false,
         "mobile_content_alignment": "left",
         "show_text_below": true
-      }
+      },
+      "disabled": true
     },
     "new_arrivals": {
       "type": "image-banner",
@@ -507,7 +508,8 @@
         "stack_images_on_mobile": false,
         "mobile_content_alignment": "left",
         "show_text_below": true
-      }
+      },
+      "disabled": true
     },
     "atelier": {
       "type": "atelier",
@@ -656,13 +658,13 @@
     "hero_facts",
     "image_marquee",
     "featured_collection",
-    "stones",
     "category_mosaic",
-    "benefits",
     "silver_teaser",
     "new_arrivals",
     "atelier",
     "custom_request",
+    "stones",
+    "benefits",
     "review_cards",
     "social_follow",
     "newsletter"
