@@ -5615,3 +5615,28 @@ dialog.size-guide .size-guide__note {
   text-decoration-thickness: 1px;
   text-underline-offset: 0.5rem;
 }
+
+/* ---------------------------------------------------------------------------
+   Product-row arrows (2026-10-05, owner: slightly larger and darker, disabled
+   still muted, 44x44 at least). Dawn's simple caret is kept; it goes from 0.6rem
+   to 0.8rem and from 75% to the full text colour, disabled 25%. Product rows only:
+   the featured-collection rows (homepage, Може да ви хареса) and Наскоро
+   разгледани. The photo gallery and the reviews row keep their own arrows. The
+   numeric counter stays hidden (rule above).
+   --------------------------------------------------------------------------- */
+.collection .slider-buttons .slider-button,
+recently-viewed .slider-button {
+  min-width: 4.4rem;
+  min-height: 4.4rem;
+  color: rgb(var(--color-foreground));
+}
+
+.collection .slider-buttons .slider-button .icon,
+recently-viewed .slider-button .icon {
+  height: 0.8rem;
+}
+
+.collection .slider-buttons .slider-button[disabled] .icon,
+recently-viewed .slider-button[disabled] .icon {
+  color: rgba(var(--color-foreground), 0.25);
+}
