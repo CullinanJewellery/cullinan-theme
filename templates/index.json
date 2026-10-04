@@ -44,6 +44,7 @@
         "buttons"
       ],
       "settings": {
+        "show_review_rating": true,
         "image": "shopify://shop_images/ChatGPT_Image_Aug_31_2026_08_09_00_PM.png",
         "video_url": "",
         "image_overlay_opacity": 0,
@@ -55,8 +56,49 @@
         "color_scheme": "scheme-5",
         "stack_images_on_mobile": false,
         "mobile_content_alignment": "center",
-        "show_text_below": true,
-        "show_review_rating": true
+        "show_text_below": true
+      }
+    },
+    "benefits": {
+      "type": "icon-benefits",
+      "blocks": {
+        "b1": {
+          "type": "benefit",
+          "settings": {
+            "visual": "icon",
+            "icon": "cash",
+            "heading": "Наложен платеж",
+            "subline": "Плащате в брой, когато получите пратката."
+          }
+        },
+        "b3": {
+          "type": "benefit",
+          "settings": {
+            "visual": "icon",
+            "icon": "delivery-van",
+            "heading": "Доставка с Еконт и Спиди",
+            "subline": "До офис или адрес в цялата страна."
+          }
+        },
+        "b4": {
+          "type": "benefit",
+          "settings": {
+            "visual": "icon",
+            "icon": "engraving-pen",
+            "heading": "Гравиране и грижа",
+            "subline": "Гравираме по желание, почистваме и ремонтираме."
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b3",
+        "b4"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "padding_top": 40,
+        "padding_bottom": 40
       }
     },
     "hero_facts": {
@@ -93,13 +135,13 @@
         "f3",
         "f4"
       ],
+      "disabled": true,
       "settings": {
         "color_scheme": "scheme-1",
         "container_width": 1150,
         "padding_top": 16,
         "padding_bottom": 6
-      },
-      "disabled": true
+      }
     },
     "image_marquee": {
       "type": "image-marquee",
@@ -192,9 +234,9 @@
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
-        "title": "Нашите бижута",
         "collection": "all",
         "products_to_show": 8,
+        "title": "Нашите бижута",
         "heading_size": "h1",
         "description": "",
         "show_description": false,
@@ -218,18 +260,97 @@
         "padding_bottom": 64
       }
     },
+    "category_mosaic": {
+      "type": "category-mosaic",
+      "blocks": {
+        "t1": {
+          "type": "tile",
+          "settings": {
+            "size": "tall",
+            "label": "Пръстени",
+            "subline": "",
+            "link": "/collections/пръстени",
+            "phone_text": "Всеки пръстен можем да изработим в друг размер.",
+            "phone_button": "Вижте пръстените"
+          }
+        },
+        "t2": {
+          "type": "tile",
+          "settings": {
+            "size": "standard",
+            "label": "Обеци",
+            "subline": "",
+            "link": "/collections/обеци",
+            "phone_text": "Ръчна изработка от нашето ателие във Велико Търново.",
+            "phone_button": "Вижте обеците"
+          }
+        },
+        "t3": {
+          "type": "tile",
+          "settings": {
+            "size": "standard",
+            "label": "Висулки",
+            "subline": "",
+            "link": "/collections/висулки",
+            "phone_text": "Всяка висулка можем да изработим и с друг камък или метал.",
+            "phone_button": "Вижте висулките"
+          }
+        },
+        "t4": {
+          "type": "tile",
+          "settings": {
+            "size": "tall",
+            "label": "Гривни",
+            "subline": "",
+            "link": "/collections/гривни",
+            "phone_text": "Изработени на ръка в ателието ни, както работим от 1991 г.",
+            "phone_button": "Вижте гривните"
+          }
+        },
+        "t5": {
+          "type": "tile",
+          "settings": {
+            "size": "standard",
+            "label": "Комплекти",
+            "subline": "",
+            "link": "/collections/комплекти",
+            "phone_text": "Бижута в общ стил, които се носят заедно.",
+            "phone_button": "Вижте комплектите"
+          }
+        },
+        "t6": {
+          "type": "tile",
+          "settings": {
+            "size": "standard",
+            "label": "Диаманти",
+            "subline": "",
+            "link": "/collections/диаманти",
+            "phone_text": "Диамантите се оценяват от специалист с квалификация от HRD Antwerp.",
+            "phone_button": "Вижте диамантите"
+          }
+        }
+      },
+      "block_order": [
+        "t1",
+        "t2",
+        "t3",
+        "t4",
+        "t5",
+        "t6"
+      ],
+      "settings": {
+        "heading": "Разгледайте по категория",
+        "color_scheme": "scheme-1",
+        "caption_position": "over",
+        "scrim_opacity": 55,
+        "gap": 14,
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
+    },
     "stones": {
       "type": "stone-meanings",
       "blocks": {
-        "zircon": {
-          "type": "stone",
-          "settings": {
-            "image": "shopify://shop_images/ChatGPT_Image_Sep_29_2026_07_43_02_PM.png",
-            "meaning": "Блясък",
-            "name": "Циркон",
-            "link": "/collections/циркони"
-          }
-        },
         "diamond": {
           "type": "stone",
           "settings": {
@@ -237,15 +358,6 @@
             "meaning": "Завинаги",
             "name": "Диамант",
             "link": "/collections/диаманти"
-          }
-        },
-        "pearl": {
-          "type": "stone",
-          "settings": {
-            "image": "shopify://shop_images/ChatGPT_Image_Sep_29_2026_07_44_05_PM.png",
-            "meaning": "Класика",
-            "name": "Перла",
-            "link": "/collections/перли"
           }
         },
         "sapphire": {
@@ -274,6 +386,24 @@
             "name": "Изумруд",
             "link": "/collections/изумруди"
           }
+        },
+        "pearl": {
+          "type": "stone",
+          "settings": {
+            "image": "shopify://shop_images/ChatGPT_Image_Sep_29_2026_07_44_05_PM.png",
+            "meaning": "Класика",
+            "name": "Перла",
+            "link": "/collections/перли"
+          }
+        },
+        "zircon": {
+          "type": "stone",
+          "settings": {
+            "image": "shopify://shop_images/ChatGPT_Image_Sep_29_2026_07_43_02_PM.png",
+            "meaning": "Блясък",
+            "name": "Циркон",
+            "link": "/collections/циркони"
+          }
         }
       },
       "block_order": [
@@ -295,128 +425,167 @@
         "padding_bottom": 88
       }
     },
-    "category_mosaic": {
-      "type": "category-mosaic",
+    "workshop": {
+      "type": "workshop-slides",
       "blocks": {
-        "t1": {
-          "type": "tile",
+        "slide_1": {
+          "type": "slide",
           "settings": {
-            "size": "tall",
-            "label": "Пръстени",
-            "link": "/collections/пръстени",
-            "phone_text": "Всеки пръстен можем да изработим в друг размер.",
-            "phone_button": "Вижте пръстените"
+            "heading": "Наш собствен дизайн",
+            "text": "Създаваме нашите 3D модели в ателието във Велико Търново. Избраният модел може да бъде изработен с друг камък, метал или размер.",
+            "product": "",
+            "collection": "пръстени",
+            "button_label": "Вижте пръстените",
+            "secondary_label": "Опишете своето бижу",
+            "secondary_link": "/pages/contact"
           }
         },
-        "t2": {
-          "type": "tile",
+        "slide_2": {
+          "type": "slide",
           "settings": {
-            "size": "standard",
-            "label": "Обеци",
-            "link": "/collections/обеци",
-            "phone_text": "Ръчна изработка от нашето ателие във Велико Търново.",
-            "phone_button": "Вижте обеците"
+            "heading": "От модела към формата",
+            "text": "Отпечатваме модела на 3D принтер и проверяваме формата и пропорциите му преди изработката в метал.",
+            "product": "",
+            "collection": "висулки",
+            "button_label": "Вижте висулките",
+            "secondary_label": "",
+            "secondary_link": ""
           }
         },
-        "t3": {
-          "type": "tile",
+        "slide_3": {
+          "type": "slide",
           "settings": {
-            "size": "standard",
-            "label": "Висулки",
-            "link": "/collections/висулки",
-            "phone_text": "Всяка висулка можем да изработим и с друг камък или метал.",
-            "phone_button": "Вижте висулките"
+            "heading": "Завършено на ръка",
+            "text": "Всяко бижу се довършва на ръка в нашето ателие. Занаят и внимание към детайла от 1991 година.",
+            "product": "",
+            "collection": "обеци",
+            "button_label": "Вижте обеците",
+            "secondary_label": "",
+            "secondary_link": ""
           }
         },
-        "t4": {
-          "type": "tile",
+        "slide_4": {
+          "type": "slide",
           "settings": {
-            "size": "tall",
-            "label": "Гривни",
-            "link": "/collections/гривни",
-            "phone_text": "Изработени на ръка в ателието ни, както работим от 1991 г.",
-            "phone_button": "Вижте гривните"
-          }
-        },
-        "t5": {
-          "type": "tile",
-          "settings": {
-            "size": "standard",
-            "label": "Комплекти",
-            "link": "/collections/комплекти",
-            "phone_text": "Бижута в общ стил, които се носят заедно.",
-            "phone_button": "Вижте комплектите"
-          }
-        },
-        "t6": {
-          "type": "tile",
-          "settings": {
-            "size": "standard",
-            "label": "Диаманти",
-            "link": "/collections/диаманти",
-            "phone_text": "Диамантите се оценяват от специалист с квалификация от HRD Antwerp.",
-            "phone_button": "Вижте диамантите"
+            "heading": "Готово за носене",
+            "text": "От нашето ателие до вас. Открийте бижуто, което искате да носите или подарите.",
+            "product": "",
+            "collection": "all",
+            "button_label": "Разгледайте бижутата",
+            "secondary_label": "",
+            "secondary_link": ""
           }
         }
       },
       "block_order": [
-        "t1",
-        "t2",
-        "t3",
-        "t4",
-        "t5",
-        "t6"
+        "slide_1",
+        "slide_2",
+        "slide_3",
+        "slide_4"
       ],
       "settings": {
-        "heading": "Разгледайте по категория",
-        "color_scheme": "scheme-1",
-        "caption_position": "over",
-        "scrim_opacity": 55,
-        "gap": 14,
-        "padding_top": 64,
-        "padding_bottom": 64
+        "heading": "Как се ражда едно бижу",
+        "color_scheme": "scheme-6",
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "margin_top": 40,
+        "margin_bottom": 40
       }
     },
-    "benefits": {
-      "type": "icon-benefits",
+    "atelier": {
+      "type": "atelier",
+      "disabled": true,
+      "settings": {
+        "media_position": "right",
+        "color_scheme": "scheme-2",
+        "video_url": "",
+        "eyebrow": "От 1991 година",
+        "heading": "Занаят с история",
+        "paragraph": "",
+        "layout": "list",
+        "fact_1_value": "Нашето вдъхновение",
+        "fact_1_label": "Името ни идва от Кулинан — най-големия диамант с ювелирно качество, откриван някога.",
+        "fact_2_value": "Нашият дизайн",
+        "fact_2_label": "Всяко бижу започва като наш собствен 3D модел и се изпипва на ръка.",
+        "fact_3_value": "Нашите материали",
+        "fact_3_label": "Злато 14 и 18 карата, сребро 925 и камъни, оценени от специалист.",
+        "link_label": "Открийте историята",
+        "link_url": "/pages/за-нас",
+        "padding_top": 56,
+        "padding_bottom": 56,
+        "margin_top": 40,
+        "margin_bottom": 40
+      }
+    },
+    "review_cards": {
+      "type": "review-cards",
       "blocks": {
-        "b1": {
-          "type": "benefit",
+        "judge_me_reviews_testimonials_carousel_QzKXjN": {
+          "type": "shopify://apps/judge-me-reviews/blocks/testimonials_carousel/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
           "settings": {
-            "visual": "icon",
-            "icon": "cash",
-            "heading": "Наложен платеж",
-            "subline": "Плащате в брой, когато получите пратката."
-          }
-        },
-        "b3": {
-          "type": "benefit",
-          "settings": {
-            "visual": "icon",
-            "icon": "delivery-van",
-            "heading": "Доставка с Еконт и Спиди",
-            "subline": "До офис или адрес в цялата страна."
-          }
-        },
-        "b4": {
-          "type": "benefit",
-          "settings": {
-            "visual": "icon",
-            "icon": "engraving-pen",
-            "heading": "Гравиране и грижа",
-            "subline": "Гравираме по желание, почистваме и ремонтираме."
+            "show_sample_reviews": true,
+            "reviews_selection": "all",
+            "products": [],
+            "filter_pinned": false,
+            "filter_featured": false,
+            "filter_custom_tags": "",
+            "star_rating": "all",
+            "max_reviews": 20,
+            "quote_marks_size": "small",
+            "product_name_text_size": "small",
+            "verified_badge_style": "icon",
+            "card_height": "medium",
+            "text_size": "small",
+            "stars_size": "medium",
+            "arrows_position": "bottom",
+            "max_width": 1100,
+            "corner_styling": "soft",
+            "quote_marks_style": "serif",
+            "card_color": "#F9F9F9",
+            "stars_and_quote_marks_color": "#108474",
+            "text_color": "#000000",
+            "arrows_color": "#000000",
+            "show_border": false,
+            "border_color": "#108474",
+            "show_drop_shadow": false,
+            "transition_speed": 5,
+            "header_text": "Customers are saying",
+            "show_average_rating": true,
+            "rating_display": "default"
           }
         }
       },
       "block_order": [
-        "b1",
-        "b3",
-        "b4"
+        "judge_me_reviews_testimonials_carousel_QzKXjN"
       ],
       "settings": {
+        "eyebrow": "Отзиви",
+        "heading": "Отзиви от наши клиенти",
+        "summary_text": "",
         "color_scheme": "scheme-1",
-        "padding_top": 40,
-        "padding_bottom": 40
+        "card_color_scheme": "scheme-6",
+        "padding_top": 56,
+        "padding_bottom": 56,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "custom_request": {
+      "type": "custom-request",
+      "settings": {
+        "color_scheme": "scheme-2",
+        "eyebrow": "Изработка по поръчка",
+        "heading": "Не виждате своето? Ще го направим.",
+        "text": "Тук показваме само малка част от моделите на ателието. Кажете ни какво търсите — друг камък, друг метал, друг размер или бижу, което сте виждали — и ще ви отговорим.",
+        "button_label": "Изпратете запитване",
+        "success_message": "Благодарим ви. Ще ви отговорим възможно най-скоро.",
+        "error_message": "Моля, въведете валиден имейл адрес.",
+        "show_ways": true,
+        "email": "cullinanjewellery.bg@gmail.com",
+        "padding_top": 64,
+        "padding_bottom": 64,
+        "margin_top": 0,
+        "margin_bottom": 0
       }
     },
     "silver_teaser": {
@@ -453,7 +622,9 @@
         "text",
         "buttons"
       ],
+      "disabled": true,
       "settings": {
+        "show_review_rating": false,
         "video_url": "",
         "image_overlay_opacity": 0,
         "image_height": "medium",
@@ -465,8 +636,7 @@
         "stack_images_on_mobile": false,
         "mobile_content_alignment": "left",
         "show_text_below": true
-      },
-      "disabled": true
+      }
     },
     "new_arrivals": {
       "type": "image-banner",
@@ -494,7 +664,9 @@
         "heading",
         "buttons"
       ],
+      "disabled": true,
       "settings": {
+        "show_review_rating": false,
         "video_url": "",
         "image_overlay_opacity": 0,
         "image_height": "medium",
@@ -506,66 +678,6 @@
         "stack_images_on_mobile": false,
         "mobile_content_alignment": "left",
         "show_text_below": true
-      },
-      "disabled": true
-    },
-    "atelier": {
-      "type": "atelier",
-      "disabled": true,
-      "settings": {
-        "media_position": "right",
-        "color_scheme": "scheme-2",
-        "video_url": "",
-        "eyebrow": "От 1991 година",
-        "heading": "Занаят с история",
-        "paragraph": "",
-        "layout": "list",
-        "fact_1_value": "Нашето вдъхновение",
-        "fact_1_label": "Името ни идва от Кулинан — най-големия диамант с ювелирно качество, откриван някога.",
-        "fact_2_value": "Нашият дизайн",
-        "fact_2_label": "Всяко бижу започва като наш собствен 3D модел и се изпипва на ръка.",
-        "fact_3_value": "Нашите материали",
-        "fact_3_label": "Злато 14 и 18 карата, сребро 925 и камъни, оценени от специалист.",
-        "link_label": "Открийте историята",
-        "link_url": "/pages/за-нас",
-        "padding_top": 56,
-        "padding_bottom": 56,
-        "margin_top": 40,
-        "margin_bottom": 40
-      }
-    },
-    "custom_request": {
-      "type": "custom-request",
-      "settings": {
-        "color_scheme": "scheme-2",
-        "eyebrow": "Изработка по поръчка",
-        "heading": "Не виждате своето? Ще го направим.",
-        "text": "Тук показваме само малка част от моделите на ателието. Кажете ни какво търсите — друг камък, друг метал, друг размер или бижу, което сте виждали — и ще ви отговорим.",
-        "button_label": "Изпратете запитване",
-        "success_message": "Благодарим ви. Ще ви отговорим възможно най-скоро.",
-        "error_message": "Моля, въведете валиден имейл адрес.",
-        "show_ways": true,
-        "email": "cullinanjewellery.bg@gmail.com",
-        "padding_top": 64,
-        "padding_bottom": 64,
-        "margin_top": 0,
-        "margin_bottom": 0
-      }
-    },
-    "review_cards": {
-      "type": "review-cards",
-      "blocks": {},
-      "block_order": [],
-      "settings": {
-        "heading": "Отзиви от наши клиенти",
-        "eyebrow": "Отзиви",
-        "summary_text": "",
-        "color_scheme": "scheme-1",
-        "card_color_scheme": "scheme-6",
-        "padding_top": 56,
-        "padding_bottom": 56,
-        "margin_top": 0,
-        "margin_bottom": 0
       }
     },
     "social_follow": {
@@ -614,63 +726,6 @@
         "overlay_opacity": 30,
         "padding_top": 72,
         "padding_bottom": 40
-      }
-    },
-    "workshop": {
-      "type": "workshop-slides",
-      "blocks": {
-        "slide_1": {
-          "type": "slide",
-          "settings": {
-            "heading": "Наш собствен дизайн",
-            "text": "Създаваме нашите 3D модели в ателието във Велико Търново. Избраният модел може да бъде изработен с друг камък, метал или размер.",
-            "secondary_label": "Опишете своето бижу",
-            "secondary_link": "/pages/contact",
-            "collection": "пръстени",
-            "button_label": "Вижте пръстените"
-          }
-        },
-        "slide_2": {
-          "type": "slide",
-          "settings": {
-            "heading": "От модела към формата",
-            "text": "Отпечатваме модела на 3D принтер и проверяваме формата и пропорциите му преди изработката в метал.",
-            "collection": "висулки",
-            "button_label": "Вижте висулките"
-          }
-        },
-        "slide_3": {
-          "type": "slide",
-          "settings": {
-            "heading": "Завършено на ръка",
-            "text": "Всяко бижу се довършва на ръка в нашето ателие. Занаят и внимание към детайла от 1991 година.",
-            "collection": "обеци",
-            "button_label": "Вижте обеците"
-          }
-        },
-        "slide_4": {
-          "type": "slide",
-          "settings": {
-            "collection": "all",
-            "button_label": "Разгледайте бижутата",
-            "heading": "Готово за носене",
-            "text": "От нашето ателие до вас. Открийте бижуто, което искате да носите или подарите."
-          }
-        }
-      },
-      "block_order": [
-        "slide_1",
-        "slide_2",
-        "slide_3",
-        "slide_4"
-      ],
-      "settings": {
-        "heading": "Как се ражда едно бижу",
-        "color_scheme": "scheme-6",
-        "padding_top": 72,
-        "padding_bottom": 72,
-        "margin_top": 40,
-        "margin_bottom": 40
       }
     }
   },
