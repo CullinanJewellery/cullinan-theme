@@ -34,7 +34,7 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
   - Workshop slides on phones: title 22px, step 11px, heading 20px, text 15px, a 44px compact button, tighter gaps;
     section 547 → 477px tall at 375. Photo layout (previewed with stand-ins in the browser only): photo 345px first,
     controls, text, button. Computer and tablet unchanged.
-  - Categories on phones: reviewed, not changed (see docs/tasks.md G).
+  - Categories on phones: reviewed, not changed (see docs/tasks.md J).
 - **Evening round (owner)**, each verified on the real preview at 375 and 1440:
   - Social band wording: „Още от нашите бижута“ / „Разгледайте снимки и видеа във Facebook и Instagram.“ (product pages
     and the footer's social block on other pages); links kept. CLAUDE.md gains one line on how Bulgarian copy should read.
