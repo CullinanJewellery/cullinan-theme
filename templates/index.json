@@ -44,6 +44,7 @@
         "buttons"
       ],
       "settings": {
+        "image": "shopify://shop_images/ChatGPT_Image_Aug_31_2026_08_09_00_PM.png",
         "video_url": "",
         "image_overlay_opacity": 0,
         "image_height": "large",
@@ -176,6 +177,7 @@
         "m7",
         "m8"
       ],
+      "disabled": true,
       "settings": {
         "color_scheme": "scheme-1",
         "images_visible": 6,
@@ -183,8 +185,7 @@
         "seconds_per_image": 6,
         "padding_top": 12,
         "padding_bottom": 12
-      },
-      "disabled": true
+      }
     },
     "featured_collection": {
       "type": "featured-collection",
@@ -284,9 +285,12 @@
       "settings": {
         "heading": "Всеки камък има значение",
         "color_scheme": "scheme-6",
+        "button_label": "Открийте своя камък",
+        "button_link": "/collections/камъни",
+        "margin_top": 40,
+        "margin_bottom": 40,
         "padding_top": 88,
-        "padding_bottom": 88,
-        "button_link": "/collections/камъни"
+        "padding_bottom": 88
       }
     },
     "category_mosaic": {
@@ -514,6 +518,7 @@
         "eyebrow": "От 1991 година",
         "heading": "Занаят с история",
         "paragraph": "",
+        "layout": "list",
         "fact_1_value": "Нашето вдъхновение",
         "fact_1_label": "Името ни идва от Кулинан — най-големия диамант с ювелирно качество, откриван някога.",
         "fact_2_value": "Нашият дизайн",
@@ -525,16 +530,74 @@
         "padding_top": 56,
         "padding_bottom": 56,
         "margin_top": 40,
-        "margin_bottom": 40,
-        "layout": "list"
+        "margin_bottom": 40
       }
     },
     "custom_request": {
       "type": "custom-request",
       "settings": {
         "color_scheme": "scheme-2",
+        "eyebrow": "Изработка по поръчка",
+        "heading": "Не виждате своето? Ще го направим.",
+        "text": "Тук показваме само малка част от моделите на ателието. Кажете ни какво търсите — друг камък, друг метал, друг размер или бижу, което сте виждали — и ще ви отговорим.",
+        "button_label": "Изпратете запитване",
+        "success_message": "Благодарим ви. Ще ви отговорим възможно най-скоро.",
+        "error_message": "Моля, въведете валиден имейл адрес.",
+        "show_ways": true,
+        "email": "cullinanjewellery.bg@gmail.com",
         "padding_top": 64,
         "padding_bottom": 64,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "review_cards": {
+      "type": "review-cards",
+      "blocks": {
+        "review_1": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "quote": "",
+            "name": "",
+            "detail": "",
+            "product": ""
+          }
+        },
+        "review_2": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "quote": "",
+            "name": "",
+            "detail": "",
+            "product": ""
+          }
+        },
+        "review_3": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "quote": "",
+            "name": "",
+            "detail": "",
+            "product": ""
+          }
+        }
+      },
+      "block_order": [
+        "review_1",
+        "review_2",
+        "review_3"
+      ],
+      "settings": {
+        "eyebrow": "Отзиви",
+        "heading": "Какво казват клиентките ни",
+        "summary_text": "",
+        "color_scheme": "scheme-1",
+        "card_color_scheme": "scheme-6",
+        "padding_top": 56,
+        "padding_bottom": 56,
         "margin_top": 0,
         "margin_bottom": 0
       }
@@ -585,38 +648,6 @@
         "overlay_opacity": 30,
         "padding_top": 72,
         "padding_bottom": 40
-      }
-    },
-    "review_cards": {
-      "type": "review-cards",
-      "blocks": {
-        "review_1": {
-          "type": "review",
-          "settings": {}
-        },
-        "review_2": {
-          "type": "review",
-          "settings": {}
-        },
-        "review_3": {
-          "type": "review",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "review_1",
-        "review_2",
-        "review_3"
-      ],
-      "settings": {
-        "eyebrow": "Отзиви",
-        "heading": "Какво казват клиентките ни",
-        "color_scheme": "scheme-1",
-        "card_color_scheme": "scheme-6",
-        "padding_top": 56,
-        "padding_bottom": 56,
-        "margin_top": 0,
-        "margin_bottom": 0
       }
     }
   },
