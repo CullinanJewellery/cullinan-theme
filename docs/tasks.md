@@ -41,8 +41,8 @@ payment-provider or checkout setting is to be changed from here.**
 4. ~~Product-specific enquiry~~ done 2026-10-04 (enquiry band + buy-box link; theme guide §4). **Test passed
    2026-10-04 (owner, real Shopify data)**: the message arrived and its emailed link opened the same metal and size
    that were selected. The Контакти form was also tested by the owner the same day and works.
-   The test also showed two data issues, still open (see D): the size value „54 55“, and the Вариант line naming the
-   gold twice („жълто злато / 14К жълто злато“) because the ring has both a colour and a metal option.
+   The test also showed two data issues (see D): the size value „54 55“ (**fixed by the owner 2026-10-04**: sizes now
+   53–60), and, still open, the Вариант line naming the gold twice („жълто злато / 14К жълто злато“) because the ring has both a colour and a metal option.
 5. **Workshop story** — built as a four-slide section, waiting for photographs (see G).
 6. **Homepage review** — proposal given to the owner 2026-10-04, **awaiting approval** (see G).
 7. ~~The /cart page~~ reviewed and aligned with the drawer 2026-10-04. Accelerated payment buttons hidden through the
@@ -109,13 +109,12 @@ No replacement legal text is to be written; the accountant handles legal pages.
 | Issue | Where | Action |
 |---|---|---|
 | Test descriptions (one word, gibberish) | All four test products | Write real descriptions |
-| Size value „54 55“ | Ring variants | Correct to a single size (still open 2026-10-04; it shows in enquiry emails, the cart and orders) |
 | Prices €0 | Обеци, Висулка плочка, Гривна с червен конец | Set real prices |
 | Vendor "Crown Jewellery" | All products | Use the field for stone or metal (cards print it) |
 | No tags, product types empty or "earings" | All products | Stone tags (Циркон, Диамант…), types (Пръстени…) |
 | Spec metafields empty | All products | Product definitions (Settings → Custom data → Products): `custom.metal`, `custom.proba` (text), `custom.weight_g` (decimal), `custom.stone`, `custom.stone_count` (integer), `custom.stone_size`, `custom.stone_weight_ct` (decimal), `custom.cut`, `custom.dimensions` (text), `custom.detail`. Where a variant differs (e.g. 14K vs 18K weight/fineness), create the **same keys under Settings → Custom data → Variants** and fill them per variant; the variant's value wins |
 | Photographs with logo/slogan burned in | Bracelet; the ring's second photo | Replace (the first rule) |
-| Variant pictures missing | Ring rose/white sizes 56-60, silver variants | Link pictures to every paired variant |
+| Variant pictures missing | Ring, read on the preview 2026-10-04 (after the size fix: sizes 53–60, 128 variants): **size 53 has no pictures at all** (and the page now loads on 53 / 14К жълто злато, showing the product's own pictures); sizes 55–60 have a picture only for yellow gold; only size 54 has all four metals | Link each metal's picture to its paired variant in every size (all variants are buyable) |
 | 112 variants on one ring (only 28 reachable); the gold named twice in variant titles („жълто злато / 14К жълто злато“, seen in the enquiry email) | Ring | Consider one material option carrying swatches; this also removes the repetition (still open 2026-10-04) |
 | Bracelet material list lacks rose/white gold | Гривна | Add values or remove colours |
 | Menu: „Дамкси“ typo; Дамски/Мъжки collections empty | Main menu | Fix spelling; fill or remove |
