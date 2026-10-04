@@ -87,15 +87,6 @@
             "page": ""
           }
         },
-        "payment_tab": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Начини на плащане",
-            "icon": "none",
-            "content": "<p>Приемаме наложен платеж — плащате в брой при получаване на пратката.</p>",
-            "page": ""
-          }
-        },
         "complementary": {
           "type": "complementary",
           "settings": {
@@ -124,7 +115,7 @@
             "icon_2": "engraving-pen",
             "text_2": "Гравиране по желание — име, дата или послание",
             "icon_3": "delivery-van",
-            "text_3": "Доставка с Еконт и Спиди до офис или адрес"
+            "text_3": ""
           }
         }
       },
@@ -139,7 +130,6 @@
         "phone_order",
         "trust_lines",
         "shipping_tab",
-        "payment_tab",
         "specs",
         "care_tab",
         "stone_tab",
@@ -229,8 +219,8 @@
       "type": "social-band",
       "settings": {
         "color_scheme": "scheme-6",
-        "heading": "Присъединете се към нас",
-        "text": "Над 2000 души ни следват в социалните мрежи.",
+        "heading": "Вижте бижутата в действие",
+        "text": "Разгледайте още снимки и видеа на нашите бижута във Facebook и Instagram.",
         "padding_top": 72,
         "padding_bottom": 72
       }
