@@ -14,6 +14,9 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 - Footer payment icons hidden: payment setup is pending (firm not registered; status in `docs/tasks.md` A2) **(owner)**.
 - Specifications follow the selected variant: each row reads the variant's metafield first, then the product's; new
   row `custom.dimensions` („Размери на бижуто“); refreshed on variant change by `product-info.js`.
+- Ring-size guide: „Таблица с размери“ beside the size option opens a dialog with how to measure (ring sizer or an
+  existing ring), its limits, and sizes 48–64 with computed diameters. No resizing or exchange promise. Verified on
+  the preview at 1440, 990 and 375.
 
 ## 2026-10-04 — documentation reorganised
 - CLAUDE.md archived verbatim as `docs/archive/CLAUDE-original.md` and rewritten as a short entry point; current

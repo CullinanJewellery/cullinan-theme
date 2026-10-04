@@ -5494,6 +5494,15 @@ dialog.size-guide .size-guide__body ul {
   margin: 0 0 1.2rem;
 }
 
+dialog.size-guide .size-guide__body ul {
+  padding-left: 1.8rem;
+}
+
+dialog.size-guide .size-guide__body li {
+  list-style-position: outside;
+  margin-bottom: 0.4rem;
+}
+
 dialog.size-guide .size-guide__table {
   width: 100%;
   margin-top: 2.4rem;

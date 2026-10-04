@@ -28,8 +28,10 @@ payment-provider or checkout setting is to be changed from here.**
 
 1. ~~Variant-aware specifications~~ done 2026-10-04 (see `docs/theme-guide.md` §4, Specs). Admin setup to use it is in
    D. Never show generic text as a piece's specification.
-2. **Ring-size guide** in Bulgarian, linked beside the size selector: the European system (size = inner circumference
-   in mm), how to measure with a ring sizer, stated limitations; no promise of free resizing.
+2. ~~Ring-size guide~~ done 2026-10-04 (theme guide §4). For the owner to read: the wording is a block setting
+   (Customize → product → Variant picker → Ring size guide). It says sizes are the inner circumference in mm, as the
+   brief asked; the FAQ's own ring-size answer deliberately never mentions mm (an earlier owner remark), so the two
+   are worded differently — say if they should match.
 3. **Buying information** near the purchase controls (confirmed facts only), details in the accordions; distinguish
    production time from shipping time if the business confirms the split; consistency between product page, cart and
    footer; payment icons only for methods actually enabled. The footer draws Shopify's icons for the enabled methods automatically (`payment_enable`); on the preview (2026-10-04) it shows **PayPal only**, and cash on delivery has no icon.
