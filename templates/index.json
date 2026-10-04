@@ -302,7 +302,9 @@
           "settings": {
             "size": "tall",
             "label": "Пръстени",
-            "link": "/collections/пръстени"
+            "link": "/collections/пръстени",
+            "phone_text": "Всеки пръстен можем да изработим в друг размер.",
+            "phone_button": "Вижте пръстените"
           }
         },
         "t2": {
@@ -310,7 +312,9 @@
           "settings": {
             "size": "standard",
             "label": "Обеци",
-            "link": "/collections/обеци"
+            "link": "/collections/обеци",
+            "phone_text": "Ръчна изработка от нашето ателие във Велико Търново.",
+            "phone_button": "Вижте обеците"
           }
         },
         "t3": {
@@ -318,7 +322,9 @@
           "settings": {
             "size": "standard",
             "label": "Висулки",
-            "link": "/collections/висулки"
+            "link": "/collections/висулки",
+            "phone_text": "Всяка висулка можем да изработим и с друг камък или метал.",
+            "phone_button": "Вижте висулките"
           }
         },
         "t4": {
@@ -326,7 +332,9 @@
           "settings": {
             "size": "tall",
             "label": "Гривни",
-            "link": "/collections/гривни"
+            "link": "/collections/гривни",
+            "phone_text": "Изработени на ръка в ателието ни, както работим от 1991 г.",
+            "phone_button": "Вижте гривните"
           }
         },
         "t5": {
@@ -334,7 +342,9 @@
           "settings": {
             "size": "standard",
             "label": "Комплекти",
-            "link": "/collections/комплекти"
+            "link": "/collections/комплекти",
+            "phone_text": "Бижута в общ стил, които се носят заедно.",
+            "phone_button": "Вижте комплектите"
           }
         },
         "t6": {
@@ -342,7 +352,9 @@
           "settings": {
             "size": "standard",
             "label": "Диаманти",
-            "link": "/collections/диаманти"
+            "link": "/collections/диаманти",
+            "phone_text": "Диамантите се оценяват от специалист с квалификация от HRD Antwerp.",
+            "phone_button": "Вижте диамантите"
           }
         }
       },
