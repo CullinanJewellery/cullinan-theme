@@ -556,8 +556,8 @@
       "blocks": {},
       "block_order": [],
       "settings": {
-        "eyebrow": "Отзиви",
         "heading": "Отзиви от наши клиенти",
+        "eyebrow": "Отзиви",
         "summary_text": "",
         "color_scheme": "scheme-1",
         "card_color_scheme": "scheme-6",
