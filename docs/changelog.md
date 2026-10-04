@@ -27,6 +27,14 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
   or checkout setting touched); „Изработка и доставка: 5–20 работни дни“ everywhere (5–20 confirmed as making +
   delivery); За нас ring-size answer says inner circumference in mm, not diameter, matching the guide. Fallback
   tested with substituted data (liquidjs mocks); hiding, wording and FAQ checked on the real preview.
+- **2026-10-05 (owner)**, checked on the real preview:
+  - Homepage product row renamed „Избрани бижута“ → „Бестселъри“; same products (collection all) and layout. **Flag: not
+    based on sales** — the store has no orders; the row shows the whole catalogue. The name was „Избрани бижута“ for that
+    reason (2026-10-04); revert or switch to a curated/sales-based collection once orders exist.
+  - Workshop slides on phones: title 22px, step 11px, heading 20px, text 15px, a 44px compact button, tighter gaps;
+    section 547 → 477px tall at 375. Photo layout (previewed with stand-ins in the browser only): photo 345px first,
+    controls, text, button. Computer and tablet unchanged.
+  - Categories on phones: reviewed, not changed (see docs/tasks.md G).
 - **Evening round (owner)**, each verified on the real preview at 375 and 1440:
   - Social band wording: „Още от нашите бижута“ / „Разгледайте снимки и видеа във Facebook и Instagram.“ (product pages
     and the footer's social block on other pages); links kept. CLAUDE.md gains one line on how Bulgarian copy should read.

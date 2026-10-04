@@ -152,6 +152,14 @@ No replacement legal text is to be written; the accountant handles legal pages.
 printed model beside its finished piece; two or three finished pieces worn; the shop front and interior; packaging
 once decided. Shot list in `photography/README.md`.
 
+## J. Homepage categories on phones — review 2026-10-05, awaiting the owner
+
+One column of six full-width tiles, 375×230px each, the section 1552px tall at 375px; names 15px capitals with a
+tagline, whole tile tappable, links all to populated collections. Recommendation: two columns (about 170×170px square
+tiles, 8–12px gap), name only (14px capitals) under or on the tile, taglines dropped on phones; the section would be
+about 650px. Also flagged: several taglines read as the slogan-style copy the owner now wants avoided („помни се
+завинаги“, „Блясък, който не избледнява“, „Завършеният вид, за който ви питат“).
+
 ## I. Rating near the hero — proposal awaiting the owner (2026-10-04, not built)
 
 - **Placement**: one line directly under the hero subtitle, before the button — ★★★★★ 4,9 · 37 отзива (numbers here only
