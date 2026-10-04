@@ -74,7 +74,7 @@ site, Jost is hestiahome's face, and several headlines take their rhythm („Н�
 been the thin one. **Proposed, and since acted on**: the Custom request band (built, see Custom request
 section under Custom code) and the Identity directions board (a comparison page, same place). **The owner
 chose direction C, Мрамор, the same day, and it is applied (2026-10-04; see Direction C applied under Custom
-code)**: marble and rose gold, Prata headings in sentence case, rosewood buttons, a rope line. It moves the
+code)**: marble and rose gold, Prata headings in sentence case, rosewood buttons and, for its first hours, a rope line (removed that night, see Direction C, round 2). It moves the
 site's colour and type away from both references at once, which is the point. **Still proposed, none of it
 decided**: an occasions row, a ring-size page and product data.
 
@@ -195,7 +195,8 @@ Rules that matter here:
       related rather than identical (a rule keyed to its section id, in `assets/crown.css`). Scheme-5 itself
       is `#E9D9D0` with a rosewood button, not `#391D13`. The heading is „Блясък без усилие“ in Prata, sentence
       case: the words are retyped that way in `templates/index.json` and the heading's `text-transform:
-      uppercase` is gone. **The button stays red `#E63946`** (the exception below).
+      uppercase` is gone. **The button stays bright** (the exception below): red `#E63946` that day, ruby `#D62246` since
+      the same night (Direction C, round 2).
     - **The button itself changed shape and colour, 2026-09-20, at the owner's instruction**
       ("like in hestiahome.bg" for the shape; "very dark" shade of the background for the
       colour). See Square corners (now a full pill, site-wide, not just this button) and the
@@ -243,7 +244,8 @@ Rules that matter here:
     and white of the second exception, scheme-5's `#391D13` and scheme-6's taupe `#5B5548` are all gone;
     scheme-7's moss green `#3D5229` stays. **Kept as written**: the pure-black text exceptions (the homepage
     social heading, the stones row, the footer, the buy box -- asked for by name, 19.9:1 on C's page, a touch
-    darker than the `#2A1E1A` ink around them) and the hero button's red. The page ground is `#FBF8F6` and
+    darker than the `#2A1E1A` ink around them) and the hero button's bright colour (red, ruby `#D62246` since round
+    2). The page ground is `#FBF8F6` and
     the ink `#2A1E1A`, so the rule itself -- neither pure white nor pure black as a ground -- holds.
   - **One exception, at the owner's instruction (2026-09-10):** the newsletter band is
     `#000000`, matching the reference. It is set in `assets/crown.css`, not by a colour
@@ -320,6 +322,11 @@ Rules that matter here:
   (that's where `.color-scheme-5` actually redeclares those variables, checked live rather
   than assumed -- an override on the outer section wrapper would have sat further from the
   button than that redeclaration and lost silently, with no visible effect at all).
+  - **Ruby `#D62246` since 2026-10-04** (the owner asked whether the colour should change: "it needs to stand out
+    but ... get along with the other"). The same exception and the same scoped override; only the hue moved. It is
+    the highlight of the stones row's own ruby, hue 348 against the rose gold's 352, still the most saturated
+    colour on the page, and its white label is 5.0:1 where the red's was 4.2:1. See Direction C, round 2 under
+    Custom code.
 - **The hero's own button is a rectangle, not a pill, since 2026-09-22** ("make the button
   in section БЛЯСЪК БЕЗ УСИЛИЕ with a rectangle form and don't change the size"). A second
   deliberate, scoped exception to the site-wide pill (see Square corners under Design
@@ -338,10 +345,10 @@ Rules that matter here:
 |---|---|---|---|
 | scheme-1 | `#FBF8F6` marble white | `#2A1E1A` espresso | Default. Page ground, product cards. Buttons rosewood `#6E3B30`, label `#FBF8F6`. (`#FCFCFB` and `#221F1C`, with black buttons, until direction C, 2026-10-04.) |
 | scheme-2 | `#EBDFD8` pale rose-clay | `#2A1E1A` | Alternating sections; the custom-request band. Rosewood buttons. (Was soft stone `#F2F0EC`.) |
-| scheme-3 | `#2A1E1A` espresso | `#F3EAE5` | Footer, dramatic bands. Buttons `#F3EAE5`, label `#2A1E1A`. (Was `#221F1C` and `#F5F2EE`.) |
+| scheme-3 | `#2A1E1A` espresso | `#F3EAE5` | Dramatic bands: the homepage newsletter. Buttons `#F3EAE5`, label `#2A1E1A`. (Was `#221F1C` and `#F5F2EE`. The footer is not on it: scheme-1 until 2026-10-04, scheme-5 since.) |
 | scheme-4 | `#8C6A2E` deep muted gold | `#FFFFFF` | Badges and accents only. Not touched by direction C. |
-| scheme-5 | `#E9D9D0` rose-clay | `#2A1E1A` | Feature blocks: the hero and the silver banner (their pinks and gradients are literals in `assets/crown.css`), the Контакти banner. Rosewood buttons. (Was warm sand `#E7E1D6`, button `#391D13`.) |
-| scheme-6 | `#F3EBE6` pale marble | `#2A1E1A` | The story band, Всеки камък има значение, the reviews' cards, the cart's reassurances. Rosewood buttons. (Was light greige `#F5F4F0`, the reference’s band colour, measured off their own band again for the stones row on 2026-09-29; buttons taupe `#5B5548`.) |
+| scheme-5 | `#E9D9D0` rose-clay | `#2A1E1A` | Feature blocks: the hero and the silver banner (their pinks and gradients are literals in `assets/crown.css`), the Контакти banner, **the footer (since 2026-10-04)**. Rosewood buttons. (Was warm sand `#E7E1D6`, button `#391D13`.) |
+| scheme-6 | `#F3EBE6` pale marble | `#2A1E1A` | The story band, Всеки камък има значение, the reviews' cards, the cart's reassurances, **the menu dropdown, the phone drawer and the product page's join-us band (since 2026-10-04)**. Rosewood buttons. (Was light greige `#F5F4F0`, the reference’s band colour, measured off their own band again for the stones row on 2026-09-29; buttons taupe `#5B5548`.) |
 | scheme-7 | `#D8DFBF` milky matcha | `#221F1C` | Нашите материали, no longer on the homepage. Owner’s choice, 2026-09-14. Buttons `#3D5229`. Not touched by direction C. |
 | scheme-8 | `#F1E3DC` marble blush | `#2A1E1A` | Контакти: open-row panels and the footer’s Facebook/Instagram hover, matched to the banner picture (2026-09-15). Rosewood buttons (black until direction C). |
 
@@ -369,6 +376,11 @@ Rules that matter here:
     on a didone's hairlines. Georgia stands in if the files fail to load, and has Cyrillic.
   - **A new heading rule reads `var(--font-heading-family)`; a small label reads `var(--font-body-family)`.**
     That is the whole division. The cart drawer's three labels were moved to Jost for it.
+  - **Titles carry a fifth more ink, 2026-10-04** (the owner: "don't you think it is better if the title are bold by
+    20 percent maybe so they can be seen more"). Prata has one weight, so it is a `-webkit-text-stroke: 0.012em
+    currentcolor` on `h1`-`h6` and `.h0`-`.h5` (measured +21% ink; 0.5px at 40px), with Dawn's small-label classes
+    and the Jost label headings excepted. **One number, in the headings block at the end of `assets/crown.css`.**
+    See Direction C, round 2 under Custom code.
   - **Self-hosted, not from the font library.** `snippets/theme-fonts.liquid` declares six
     woff2 files in `assets/`, `font-jost-{normal,italic}-{cyrillic,latin,latin-ext}.woff2`,
     from Google Fonts under the SIL Open Font License, with `unicode-range`. It preloads the
@@ -470,6 +482,8 @@ Rules that matter here:
     line are unverified on a live page until the owner sends one (Online Store -> Themes -> the draft theme ->
     Preview -> Share preview). The two font files and the stylesheets can be read off the CDN path below; the
     snippet, the settings file and the template cannot.
+    **Round 2 of direction C (the same night) too**: its stylesheets were read off the CDN; the clay footer, the tinted
+    menu, the product band and the hidden strip were not and are unverified on a page.
   - **A pushed asset can be checked without any preview link.** The draft theme (id 2) serves its
     files publicly, with no password, at `https://2fp38p-az.myshopify.com/cdn/shop/t/2/assets/<file>`:
     a new file answers 200 within seconds of a push and 404 before, and **a changed file must be read
@@ -1631,7 +1645,8 @@ Anything of ours that is not a Dawn setting lives in these two places:
       treated as stated on the site until this). The subline is untouched -- it already names
       сребро as the material the new number belongs to. Checked live at 1440 and 375px: one
       line, no wrap, no overflow at either width.
-- **Image marquee.** `sections/image-marquee.liquid` with
+- **Image marquee.** **Hidden on the homepage since 2026-10-04** (`"disabled": true` in `templates/index.json`: it has no
+  pictures to show yet; see Direction C, round 2). `sections/image-marquee.liquid` with
   `assets/section-image-marquee.css`. Full-bleed band of square images drifting sideways,
   under the facts strip. The reference uses Swiper; this is a CSS marquee instead — no
   library, and it stops under prefers-reduced-motion. The track holds the same set twice and
@@ -3855,7 +3870,8 @@ Anything of ours that is not a Dawn setting lives in these two places:
     the pass was made: see Direction C applied, next.** The recommendation above, B, was not taken.
 - **Direction C applied.** (2026-10-04, the owner: "go with C, apply it".) The look the board called
   **C · Мрамор** is the site's: marble and rose gold, Prata for headings in sentence case, rosewood buttons
-  and a rope line. It changes the colour and the type of every page, so what moved is listed here once; the
+  and, for its first hours, a rope line (removed the same night). It changes the colour and the type of every
+  page, so what moved is listed here once; the
   older notes keep their history, and **where this entry and an older one disagree, this one is current.**
   - **Colour.** The schemes in `config/settings_data.json` take the values in the table under Design
     tokens: page `#FBF8F6`, ink `#2A1E1A`, bands `#EBDFD8` (scheme-2), `#E9D9D0` (scheme-5) and `#F3EBE6`
@@ -3868,7 +3884,7 @@ Anything of ours that is not a Dawn setting lives in these two places:
     panel `#E1CDC2` and computer gradient `#F1E6DF` to `#E1CDC2`; the silver banner's own deeper `#EADBD2` to
     `#D9C4B8` (computer only, keyed to its section id); the new-arrivals band `#EBDFD8`, scheme-2's own value,
     with its slot override removed (the banner slot, `rgb(246 239 234)`, is lighter than every band it sits
-    on, so the cut shows without one); the marquee's boxes; the footer's three lines `#E1CDC2`; **the newsletter
+    on, so the cut shows without one); the marquee's boxes; the footer's three lines `#E1CDC2` (`#CDB5A8` since round 2); **the newsletter
     band `#2A1E1A`**, its field `#382B26`, text `#F3EAE5`, outline `#85736B` (3.6:1 on the band, 3.0:1 on the
     field -- it was 2.5:1 at first, and was lightened), placeholder `#C8B9B2` (7.2:1) and a light button with
     an espresso label; Judge.me's colour variables and its form's buttons, chips and focus ring, in rosewood;
@@ -3885,15 +3901,16 @@ Anything of ours that is not a Dawn setting lives in these two places:
     removing the transform alone would have left them shouting in a serif. **Small labels stay in Jost and in
     their capitals**; the cart drawer's „ВАШАТА КОЛИЧКА“, „ОБЩО“ and the empty bag's line were moved to the
     text face to match.
-  - **The rope line.** A thin twisted line, 11px tall, under the claims below the hero and at the top of
+  - **The rope line -- removed 2026-10-04, hours after it was built, at the owner's request; what follows is history.**
+    A thin twisted line, 11px tall, under the claims below the hero and at the top of
     every footer: `.hero-facts::after` and `.footer::before`, one rule at the end of `assets/crown.css`, a CSS
     mask (a data-URI SVG of two crossing waves, 18px to the repeat) over a `#6E3B30` background, as wide as the
     page's content (the page width less 5rem each side from 750px). **It comes from the owner's own pieces**
     -- the ring's twisted band, the pendant's rope frame -- and is decoration with no accessible name. It is the
     one part of C that was a proposal on the board rather than a switch, and **deleting that block removes it**.
-  - **Kept on purpose.** The hero's button stays red `#E63946` (the owner's explicit override of 2026-09-21;
-    the board said "the red can stay"). **It is 4.2:1 with its white label, which passes only as large text** --
-    unchanged, still flagged. **The pure-black text exceptions stay** (the stones row, the footer, the buy box,
+  - **Kept on purpose.** The hero's button stays bright, as the owner's explicit override of 2026-09-21 says. It was
+    red `#E63946` that day (the board said "the red can stay"; 4.2:1 under its white label) and is ruby `#D62246`
+    since round 2, below (5.0:1). **The pure-black text exceptions stay** (the stones row, the footer, the buy box,
     the homepage social heading): asked for by name, 19.9:1 on the page, and a touch darker than the espresso
     ink beside them. **The pink hovers stay**: Add to cart's fill and the header icons' underline are `#E6BAB9`,
     moonmagic's own pink, with an espresso label (9.3:1) -- the one piece of their pink left in the interface,
@@ -3922,6 +3939,114 @@ Anything of ours that is not a Dawn setting lives in these two places:
     headings, black buttons or capitals in the three banner headings, step 2 was dropped (it has happened
     seven times); re-send `config/settings_data.json`, `snippets/theme-fonts.liquid` and `templates/index.json`
     with a byte changed in each, not all at once.
+- **Direction C, round 2.** (2026-10-04, later the same night, the owner: "i don't like the lines that are put in
+  the footer that are abouve the text and the ones that are put in the home page [under the four claims] ... remove
+  them, also the footer i want put a color that can get along with the colors we have, and if you have any
+  suggestions for the navigation ... change it too look better and also don't you think it is better if the title
+  are bold by 20 percent maybe so they can be seen more ... and for the color of the button in section Блясък без
+  усилие ... do you think we should change it ... it needs to stand out but ... get along with the other ... and i
+  think for phone the product pictures ... are smaller if you think they should get bigger make them bigger and if
+  you think the home page section are not arranged correct make that and also if you think some of the section are
+  bad and we don't need them or we need to design them different we can do that to".) **The owner handed over the
+  judgement on most of it**, so each item below is a reading, with what was done and what was left alone.
+  - **"The lines" are the rope line, and it is gone.** It was the only line in both places named, under the four
+    claims and at the top of the footer. `.hero-facts::after`, `.footer::before` and their margins are deleted
+    from `assets/crown.css`, not hidden. **Not touched, in case they were meant too**: the faint vertical divider
+    beside the footer's newsletter box, the line above its Facebook and Instagram icons, the phone accordion's
+    row hairlines and Dawn's own hairline above the copyright row. One rule each if the owner wants one gone.
+  - **The footer is the hero's rose-clay**: `sections/footer-group.json`, scheme-5, `#E9D9D0`, so the page opens and
+    closes on one colour and the homepage's espresso newsletter band reads as a dark layer between two clay ones.
+    **Light, not espresso, because the footer's text is pure black by the owner's own instruction** (2026-10-01,
+    15.3:1 on the clay). Its hairlines were the pink `#E1CDC2`, a few levels from the clay and invisible on it, so
+    they read `var(--footer-line)`, `#CDB5A8`, defined once on `.footer` (1.4:1, decoration).
+    - **The product page needed a second change.** Its join-us band was scheme-2, `#EBDFD8`, directly above the
+      footer: 1.05:1, one block with no seam. It is scheme-6, `#F3EBE6`, in `templates/product.json`, so the page
+      ends page ground, pale marble, clay (steps of 1.11:1 and 1.17:1, the size of every other band step here).
+      Checked every template's last section: no other page ends on a scheme-2 band.
+    - **A cost, not fixed**: the footer's Facebook and Instagram buttons (collection, About and the other pages that
+      print the footer's copy; not the homepage, the product pages or Контакти) keep the brand colours the owner
+      asked for on 2026-09-20. On clay the blue is 3.1:1 and the magenta 3.7:1 (4.0 and 4.8 on the page ground).
+      A deeper blue `#1459C7` (4.7:1) and magenta `#B02A78` (4.4:1) would fix it in those copies alone -- **not
+      done, they are the owner's colours**; both labels were under 4.5:1 before.
+  - **Hero button: ruby `#D62246`, was red `#E63946`.** The owner asked for an opinion and a change if it was better.
+    The red was an explicit override (2026-09-21) and still stood out, but it read as retail beside marble and rose
+    gold and gave its white label 4.2:1. Six candidates were laid on the real hero gradient; this is the highlight
+    of the ruby in the homepage's own stones row, sampled off that picture: hue 348 against the rose gold's 352, so
+    it is in the family, and it is still the most saturated colour on the page, so it is still the one thing asking
+    to be clicked. White label **5.0:1**. The exception's reasoning stands (it is the one deliberately bright
+    thing) and only the hue moved: `--color-button` in the hero's `.banner__box` rule, `assets/crown.css`. The
+    silver and new-arrivals banners and the hero's square corners are as they were.
+  - **Titles carry a fifth more ink.** Prata has one weight, so the extra is a text stroke in the heading's own
+    colour, as the menu words already do. Measured on the canvas on five of the site's own headings: 0.01em adds
+    17% to the ink of a line, **0.012em 21%**, 0.015em 26% -- the face is thin enough that any stroke is a lot.
+    0.012em is 0.5px on a 40px heading, 0.3px on a 26px one and 0.19px on a 16px card title. It is one number, on
+    `h1`-`h6` and `.h0`-`.h5` in the headings block at the end of `assets/crown.css` (0 takes it away).
+    - **Left at their own weight**: the top bar's messages (a `p.h5`), the benefit titles, the footer's headings and
+      the cart drawer's three labels, **and every `.text-body` and `.caption-with-letter-spacing`** -- Dawn's
+      heading tags that are really small Jost text (the filter bar's "Filter:" and product count, the notices, the
+      country selector's label). Found by listing every element in `sections/` and `snippets/` that carries a heading
+      tag or size class (about 120). `-webkit-text-stroke` is inherited, so anything inside a heading would carry it.
+    - **Not stroked**: the header menu (Jost 700 with its own 0.03em), buttons, prices and every small label.
+    - **Checked in a local copy of the collection page**: the card title in Prata with 0.192px, the filter labels and
+      the footer headings in Jost with 0.
+  - **Product pictures on a phone, bigger** (the owner: "for phone the product pictures ... in sections when you for
+    example open rings and you see a product the picture i think is smaller"). Measured at 375px first: the
+    homepage's Най-продавани row and the related row on a product page **146px**, the collection and search grids
+    **167px**, Наскоро разгледани 167px; moonmagic's own phone row is 238px.
+    - **Rows: 64vw, 240px at 375px** -- one card and about 45% of the next, the peek saying the row moves.
+      Dawn's item is half the row (`max-width: calc(50% - gap/2)`) less 3rem for the peek (`min-width: 35%`), so the
+      rule sets `width`, `max-width: none` and `min-width: 0`, on `.product-grid.slider--tablet.grid--peek.
+      contains-card--product` (the mobile class is `slider--tablet`, not `--mobile`). The product gallery's own peek
+      slider is not a product card and is not reached. Наскоро разгледани does the same through its own column count:
+      `--recently-viewed-columns: 1.42` (about 240px).
+    - **Grids: still two across, edge to edge with a 4px gap, 186px** (the list takes `margin-inline: -1.5rem` and
+      `--grid-mobile-horizontal-spacing: 0.4rem`, which Dawn's item width subtracts, so the gap and the width
+      agree), the text keeping a 12px inset under each picture. Two across is how jewellery is compared on a phone;
+      one across would have made every shopper scroll four times as far.
+    - Tablets and computers are untouched. **Measured in a local copy only**: 240px cards and no overflow in the rows,
+      186px with no sideways scroll in the grids.
+  - **Navigation.** Changed: the phone menu's category words are Prata in sentence case at 24px with the same
+    stroke (they are titles in all but name and the first thing a phone visitor opens; the submenu links, the top
+    bar and every label stay Jost); the menu dropdown and the phone drawer are scheme-6's pale marble `#F3EBE6`
+    (`menu_color_scheme` in `sections/header-group.json`) instead of the page's own ground with a hairline, so they
+    read as a layer; their empty picture slots, `.mega-menu__promo-image--empty` and
+    `.menu-drawer__featured-image--empty`, took rose-clay `rgb(233 217 208)` because the old tone was three levels
+    from the new ground. **Left, and for the owner, because they are store data**: „Дамкси“ is a typo for „Дамски“,
+    and both of Пръстени's dropdown links point at collections with no product (see Main menu under Waiting on the
+    Shopify admin); Камъни can come back into the menu once the stone tags exist; a Подаръци or Изработка по поръчка
+    entry is worth considering. The desktop dropdown still opens on a click, not on hover as moonmagic's does.
+  - **The homepage's order was kept, one section is hidden and none is deleted.** The page was read top to bottom
+    the way a visitor scrolls: every band sits between neighbours of another colour or a 40px strip of page ground,
+    the product row comes straight after the hero and its claims and the stones row precedes the categories, both as
+    on the reference, and the custom-request band follows the story it continues, so a move would have been a guess. **The moving-pictures
+    strip is hidden** (`image_marquee`, `"disabled": true` in `templates/index.json`): it has no pictures and no
+    captions, so it was a row of empty boxes between the claims and the bestsellers, where the eye should go to
+    products. It keeps every setting; switch it on from the section's eye icon in the theme editor once there are
+    photographs. `disabled` is Shopify's own JSON-template property (the section "isn't rendered but can still be
+    customized in the theme editor", shopify.dev, JSON templates). **Thirteen of the fourteen sections show
+    now.** Nothing else was a candidate for removal: each has content or a job.
+    - **Found, not changed**: the benefits row still promises „Гравиране по желание — Име, дата или послание.“ and
+      Контакти's banner still asks about "гравиране", while the owner removed the engraving question from the FAQ on
+      2026-09-30. Whether the shop engraves is the owner's to say.
+  - **Smaller things in the same pass**: on a phone the hero's empty slot is the computer hero's gradient
+    (`#F1E6DF` to `#E1CDC2`), so a phone with no photograph yet reads as one designed block instead of a blank square
+    above a box (it goes by itself when a photograph is set); the category mosaic's caption scrim is espresso
+    (`rgba(42, 30, 26, ...)`) instead of black.
+  - **Pushed in three steps** (the stylesheets, then the two group files and the product template, then the
+    homepage template with these notes): **`696e3bc` at 13:37 and `f8f0f3b` at 13:42**, four and a half minutes apart.
+    **Step 1 was confirmed on the store's CDN path**: `crown.css` (55 KB) carries `footer-line` four times,
+    `64vw`, the new exceptions and neither rope selector, and the hero rule reads `--color-button: 214, 34, 70`.
+    **Steps 2 and 3 cannot be read off the CDN** (JSON files, not assets), so they are unverified: if the next
+    preview link shows a white footer, a page-ground menu or the moving-pictures strip, that push was dropped (it has
+    happened seven times) -- re-send the file with a byte changed.
+    - **A search of the served CSS for the colour's source form missed twice, and the file was fine.** The minifier
+      keeps the spaces in a custom property's value (`--color-button: 214, 34, 70`) but rewrites a colour function
+      to hex (`rgb(233 217 208)` becomes `#e9d9d0`). Search for what the minifier writes, not for what was typed:
+      the same family as spaces, quotes and Cyrillic escapes under Preview links expire.
+  - **Not seen on a live page** (the preview link is still expired): the clay footer, the tinted menu and drawer, the
+    ruby against a real photograph and the bigger phone pictures were seen only in local copies built from the live
+    pages with the real stylesheets. **The new preview link, and a test message from the custom-request band and
+    from Контакти, are still the first things to ask for.**
 - **Customer reviews (Judge.me).** The owner installed Judge.me on its free plan and added its
   Review Widget on 2026-10-01 ("i did what you said"), by the steps given under Judge.me in
   Waiting on the Shopify admin. Shopify wrote three commits back; pulled before touching
@@ -4379,7 +4504,8 @@ Anything of ours that is not a Dawn setting lives in these two places:
       `assets/section-recently-viewed.css` (`--recently-viewed-gap: 5%`, so its own width
       formula lands on 30%), and `columns_desktop: 3` in `templates/collection.json`,
       `search.json` and `product.json` (the related row). Measured live on all five.
-    - **Phones and tablets are untouched**: phones stay two across at 168px (moonmagic's own
+    - **Phones and tablets are untouched** (**phones changed on 2026-10-04: 240px rows and 186px grids, see Direction
+      C, round 2**): phones stayed two across at 168px (moonmagic's own
       collection grid is two across at 174px), tablets were already three.
     - **The sizes the owner has now seen**: 307 and 320 (four across), 417 and 437 (three
       across, edge to edge), 390 and 392 (now). moonmagic's own: 308 in a collection (beside a
@@ -5116,10 +5242,11 @@ Anything of ours that is not a Dawn setting lives in these two places:
   row is built; a second hero-style banner for the shop's own silver sits right after the
   benefits row (see Silver banner above), then one story band (the history, design and materials as three short facts;
   see Atelier section above), the custom-request band (see Custom request section) and a row of
-  customer reviews (see Reviews section) follow; the newsletter is still Dawn's default.
+  customer reviews (see Reviews section) follow; the newsletter is still Dawn's default. The moving-pictures strip
+  is hidden since 2026-10-04 (see Image marquee).
 - Dawn's placeholder illustration has been removed from the hero. The empty image slot is an
   empty div, and Dawn's base.css hides every empty div (`div:empty { display: none }`). On
-  phones crown.css shows it again as a flat stone square. **On desktop it is still hidden**,
+  phones crown.css shows it again as a flat stone square (a rose-clay gradient since 2026-10-04). **On desktop it is still hidden**,
   so the hero there is off-white rather than the stone band this note used to promise; the
   layout holds either way, since the banner keeps its height. Not changed — the owner has
   not asked about the desktop hero.
