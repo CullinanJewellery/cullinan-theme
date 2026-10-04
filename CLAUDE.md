@@ -25,7 +25,9 @@ Only these, unless the owner confirms more. Never invent policies, prices, warra
 - Gold 14K (585) and 18K (750); silver 925, rhodium plated. Stones appraised by a specialist qualified at HRD Antwerp.
 - Engraving on request (name, date or message); terms unknown.
 - Made to order, 5–20 working days; a piece can be made with another stone, metal or size.
-- Delivery with Econt and Speedy to an office or address in Bulgaria; cash on delivery.
+- Delivery with Econt and Speedy to an office or address in Bulgaria. Cash on delivery is the **intended** method, but
+  its checkout configuration is unverified and no online payment method is set up yet (`docs/tasks.md` A2): never
+  claim online payments are ready.
 - The atelier cleans and repairs pieces after a sale (terms unknown).
 - Shop: бул. Васил Левски 21, Велико Търново; Mon–Fri 09:30–19:00, Sat 10:00–18:00, Sun closed. Phone +359 88 287 4895
   (shown as a call button, never printed as text).
