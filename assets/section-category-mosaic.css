@@ -252,3 +252,24 @@
     transform: none;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   An empty tile is a designed block, not a grey one (2026-10-04)
+
+   Until a photograph is set the tile was a pale slot with the dark scrim and white
+   words laid over it, which mixed into a muddy grey. Now it takes the hero's own
+   rose-clay gradient, with no scrim and the words in the ink; a tile with a picture
+   is exactly as before. Flat colour only, never a placeholder graphic.
+   --------------------------------------------------------------------------- */
+.mosaic__tile:has(.mosaic__image--empty) .mosaic__image--empty {
+  background: linear-gradient(160deg, #F1E6DF 0%, #E1CDC2 100%);
+}
+
+.mosaic__grid--caption-over .mosaic__tile:has(.mosaic__image--empty) .mosaic__caption {
+  background-image: none;
+}
+
+.mosaic__grid--caption-over .mosaic__tile:has(.mosaic__image--empty) .mosaic__label,
+.mosaic__grid--caption-over .mosaic__tile:has(.mosaic__image--empty) .mosaic__subline {
+  color: rgb(var(--color-foreground));
+}
