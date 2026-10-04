@@ -553,46 +553,11 @@
     },
     "review_cards": {
       "type": "review-cards",
-      "blocks": {
-        "review_1": {
-          "type": "review",
-          "settings": {
-            "rating": 5,
-            "quote": "",
-            "name": "",
-            "detail": "",
-            "product": ""
-          }
-        },
-        "review_2": {
-          "type": "review",
-          "settings": {
-            "rating": 5,
-            "quote": "",
-            "name": "",
-            "detail": "",
-            "product": ""
-          }
-        },
-        "review_3": {
-          "type": "review",
-          "settings": {
-            "rating": 5,
-            "quote": "",
-            "name": "",
-            "detail": "",
-            "product": ""
-          }
-        }
-      },
-      "block_order": [
-        "review_1",
-        "review_2",
-        "review_3"
-      ],
+      "blocks": {},
+      "block_order": [],
       "settings": {
         "eyebrow": "Отзиви",
-        "heading": "Какво казват клиентките ни",
+        "heading": "Отзиви от наши клиенти",
         "summary_text": "",
         "color_scheme": "scheme-1",
         "card_color_scheme": "scheme-6",
