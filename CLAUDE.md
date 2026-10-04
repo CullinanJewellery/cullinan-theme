@@ -55,6 +55,8 @@ launch the store.
 - Verify on desktop and phone (Cyrillic, variants, forms, navigation, keyboard, overflow). **Report local checks
   (mocks, scripts) separately from checks on the real Shopify preview.**
 - Product titles are descriptive; old catalogue codes belong in the SKU field.
+- **Bulgarian copy (owner, 2026-10-04)**: natural, clear language that suits a jewellery atelier. No forced
+  metaphors, no exaggerated promises, nothing that sounds translated from English.
 - Keep detail in `docs/changelog.md`, not here.
 
 ## Shopify mechanics you must not skip

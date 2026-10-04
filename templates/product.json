@@ -219,8 +219,8 @@
       "type": "social-band",
       "settings": {
         "color_scheme": "scheme-6",
-        "heading": "Вижте бижутата в действие",
-        "text": "Разгледайте още снимки и видеа на нашите бижута във Facebook и Instagram.",
+        "heading": "Още от нашите бижута",
+        "text": "Разгледайте снимки и видеа във Facebook и Instagram.",
         "padding_top": 72,
         "padding_bottom": 72
       }
