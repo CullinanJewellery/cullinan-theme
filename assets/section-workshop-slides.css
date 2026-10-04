@@ -13,8 +13,10 @@
   line-height: 1.5;
 }
 
+/* The same size as every other homepage section title (26-40px), above the slide headings. */
 .workshop__title {
   margin: 0 0 3.2rem;
+  font-size: clamp(2.6rem, 3.2vw, 4rem);
 }
 
 .workshop {
@@ -328,7 +330,7 @@
 }
 
 .workshop--text .workshop__heading {
-  font-size: clamp(2.6rem, 3vw, 3.6rem);
+  font-size: clamp(2.2rem, 2.2vw, 2.8rem);
 }
 
 .workshop--text .workshop__text {

@@ -3409,6 +3409,17 @@ card-swatches {
   margin-top: -2rem;
 }
 
+/* With a picture (2026-10-04, owner: "a little background is showing around it"): the -2rem
+   pull left a strip of the footer colour above the picture (16px on a computer, 7px on a
+   phone), because the footer's own padding-top is 36px / 27px. Pull the block up by the
+   whole padding and give the same amount back inside it, so the picture starts at the
+   footer's top edge and the words stay exactly where they were. The variable comes from
+   the footer section's own style block, so it follows the padding setting. */
+.footer .footer__social--contact.footer__social--picture {
+  margin-top: calc(-1 * var(--footer-padding-top, 2rem));
+  padding-top: var(--footer-padding-top, 2rem);
+}
+
 /*
   Dawn puts a hairline across the top of every footer, and another above its
   bottom row (language, currency, payment icons) -- on Контакти, right below
