@@ -166,8 +166,9 @@ about 650px. Also flagged: several taglines read as the slogan-style copy the ow
   product's stars under the title, linking to the widget; nothing without reviews.
 - **Pending a real published review (recorded 2026-10-05)**: hero line numbers; carousel look on the real store
   (the design was checked only on a local mock with test text); its count matching the hero; product stars under
-  the title and the jump to the widget. Owner decision open: a peek of the next review card on phones needs either
-  replacing Judge.me's carousel script or a theme-built carousel fed by Judge.me — ask before doing either.
+  the title and the jump to the widget. **Decided (owner, 2026-10-05)**: Judge.me's supported Testimonials carousel, one card at a time on phones;
+  no next-card peek, no override of its behaviour, no custom carousel. Our styling stays. The hero count is Judge.me's
+  shop-wide published-review count (shop.metafields.judgeme.all_reviews_count), not the number of cards displayed.
 - (earlier wording) **Untestable until the first real review is published**: the hero line's numbers, the carousel's look and its
   scope matching the hero count, the product stars under the title and the jump to the widget, and the editor-only
   outline-star line (needs the theme editor).
