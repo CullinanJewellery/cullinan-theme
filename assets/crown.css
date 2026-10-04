@@ -5329,3 +5329,23 @@ html body .facets-wrapper .facets__display {
   height: 2rem;
   color: rgb(var(--color-button));
 }
+
+/* ---------------------------------------------------------------------------
+   The hero picture on a phone fills its square (2026-10-04)
+
+   Dawn's "zoom in on scroll" behaviour (image_behavior: zoom-in) fixes the picture to the
+   viewport (position: fixed; height: 100vh) and clips it to the box. On a phone the box is a
+   375px square near the top, so it showed only the strip of the picture behind it -- the lips
+   -- and the pendant was cut off; object-position could not help. On phones only, the picture
+   sits in its square again and covers it, positioned at 50% 70% (the rule above), so the bell
+   pendant is in frame. Computers keep Dawn's effect. Seen on the real preview, not a mock.
+   --------------------------------------------------------------------------- */
+@media screen and (max-width: 749px) {
+  [id^="shopify-section-"][id$="__hero_image"] .banner .banner__media.animate--zoom-in > img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
