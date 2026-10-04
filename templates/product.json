@@ -234,6 +234,21 @@
         "padding_top": 72,
         "padding_bottom": 72
       }
+    },
+    "enquiry": {
+      "type": "custom-request",
+      "settings": {
+        "color_scheme": "scheme-2",
+        "eyebrow": "Запитване",
+        "heading": "Имате въпрос за това бижу?",
+        "text": "Размер, метал, камък или срок на изработка — пишете ни и ще ви отговорим. Името на бижуто и избраният вариант се добавят към съобщението.",
+        "button_label": "Изпратете въпроса",
+        "show_ways": false,
+        "padding_top": 64,
+        "padding_bottom": 64,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
     }
   },
   "order": [
@@ -241,6 +256,7 @@
     "recently_viewed",
     "17908484248f2d50d1",
     "disclosures",
+    "enquiry",
     "related-products",
     "social_band"
   ]
