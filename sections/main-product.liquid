@@ -852,15 +852,16 @@
                   -%}
                 {%- when 'rating' -%}
                   {%- comment -%}
-                    Unlike Dawn's own, this never prints nothing. Without a rating yet
-                    (Judge.me writes the metafield with the first review) it draws the
-                    five stars empty -- outlines only, see crown.css -- the way Judge.me
-                    draws its own before a star is picked, so the top of the buy box
-                    keeps its row of stars from the first day. 2026-10-01, at the owner's
-                    request: the stars take the place of the vendor line above the title.
+                    The product's own Judge.me rating (2026-10-05, owner): Judge.me writes
+                    this product's reviews into Shopify's reviews.rating / reviews.rating_count,
+                    so the stars, average and count are this product's only. Placed under the
+                    title (template block order) and a link to the full Judge.me widget lower
+                    on the page (#judgeme_product_reviews, Judge.me's own id). Without reviews
+                    nothing is printed -- no stars, no numbers; the widget below still offers
+                    „Напишете отзив“. (Until 2026-10-05 it drew five empty stars above the title.)
                   {%- endcomment -%}
-                  {%- if product.metafields.reviews.rating.value != blank -%}
-                    <div class="rating-wrapper">
+                  {%- if product.metafields.reviews.rating.value != blank and product.metafields.reviews.rating_count.value > 0 -%}
+                    <a class="rating-wrapper rating-wrapper--link" href="#judgeme_product_reviews" {{ block.shopify_attributes }}>
                       {% liquid
                         assign rating_decimal = 0
                         assign decimal = product.metafields.reviews.rating.value.rating | modulo: 1
@@ -894,17 +895,7 @@
                           {{ 'accessibility.total_reviews' | t -}}
                         </span>
                       </p>
-                    </div>
-                  {%- else -%}
-                    <div class="rating-wrapper" {{ block.shopify_attributes }}>
-                      <div class="rating rating--empty" role="img" aria-label="Все още няма отзиви">
-                        <span
-                          aria-hidden="true"
-                          class="rating-star"
-                          style="--rating: 0; --rating-max: 5; --rating-decimal: 0;"
-                        ></span>
-                      </div>
-                    </div>
+                    </a>
                   {%- endif -%}
                 {%- when 'complementary' -%}
                   <product-recommendations

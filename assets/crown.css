@@ -5681,3 +5681,27 @@ recently-viewed .slider-button[disabled] .icon {
 .banner__rating--empty {
   opacity: 0.8;
 }
+
+/* ---------------------------------------------------------------------------
+   Product rating under the title (2026-10-05, owner): the product's own Judge.me
+   stars, average and count, one link to the full widget lower on the page. Shown
+   only when the product has reviews. ~4px under the title, 8px above the
+   description; the link keeps the text colour and underlines the count on hover.
+   --------------------------------------------------------------------------- */
+.product .product__info-container > .product__title + .rating-wrapper {
+  margin-top: 0.2rem;
+  margin-bottom: 0.8rem;
+}
+
+.product .rating-wrapper--link {
+  color: inherit;
+  text-decoration: none;
+  width: fit-content;
+  min-height: 2.4rem;
+}
+
+.product .rating-wrapper--link:hover .rating-count,
+.product .rating-wrapper--link:focus-visible .rating-count {
+  text-decoration: underline;
+  text-underline-offset: 0.3rem;
+}
