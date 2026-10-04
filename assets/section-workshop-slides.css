@@ -445,3 +445,46 @@
     right: 0;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Photos per slide (2026-10-05, owner): a slide with a photo (or, in the theme
+   editor, a labelled placeholder) is .workshop__slide--photo; the rest stay in the
+   text layout. Phones: photo first (4:5), then compact text and button; the
+   controls stay in one row under the slides. Computers: photo 55% beside the text.
+   --------------------------------------------------------------------------- */
+.workshop__media--placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  border: 0.1rem dashed rgba(var(--color-foreground), 0.45);
+  background: rgb(240 232 226);
+  text-align: center;
+  font-size: 1.3rem;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: rgba(var(--color-foreground), 0.75);
+}
+
+.workshop--text .workshop__slide--photo {
+  align-items: start;
+}
+
+@media screen and (max-width: 989px) {
+  .workshop--text .workshop__slide--photo {
+    gap: 1.6rem;
+  }
+
+  .workshop--text .workshop__slide--photo .workshop__media {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .workshop--text .workshop__slide--photo {
+    grid-template-columns: 55fr 45fr;
+    gap: 6.4rem;
+    align-items: center;
+  }
+}

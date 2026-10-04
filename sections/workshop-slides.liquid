@@ -62,10 +62,6 @@
     assign is_ready = true
   endif
 
-  assign with_photos = false
-  if slide_total > 0 and photo_total == slide_total
-    assign with_photos = true
-  endif
 
   assign show_section = is_ready
   if request.design_mode and slide_total > 0
@@ -87,10 +83,10 @@
             Секцията не се показва на посетителите, докато всеки слайд няма заглавие
             (готови: {{ complete_total }} от {{ slide_total }}).
           </p>
-        {%- elsif with_photos == false -%}
+        {%- elsif photo_total < slide_total -%}
           <p class="workshop__editor-note">
-            Снимките се показват, когато и четирите слайда имат снимка (качени: {{ photo_total }} от {{ slide_total }}).
-            Дотогава слайдовете са само с текст.
+            Всеки слайд показва своята снимка, щом бъде качена (качени: {{ photo_total }} от {{ slide_total }}).
+            Слайдовете без снимка се виждат в магазина само с текст; маркираните полета са само за редактора.
           </p>
         {%- endif -%}
       {%- endif -%}
@@ -100,7 +96,7 @@
       {%- endif -%}
 
       <workshop-slides
-        class="workshop{% unless with_photos %} workshop--text{% endunless %}"
+        class="workshop workshop--text"
         role="region"
         aria-roledescription="карусел"
         aria-label="{{ region_label | escape }}"
@@ -123,9 +119,18 @@
                 assign default_label = 'Разгледайте бижутата'
               endif
               assign button_label = block.settings.button_label | default: default_label
+
+              assign has_photo = false
+              if block.settings.image != blank
+                assign has_photo = true
+              endif
+              assign show_placeholder = false
+              if has_photo == false and request.design_mode
+                assign show_placeholder = true
+              endif
             -%}
             <div
-              class="workshop__slide{% if forloop.first %} is-active{% endif %}"
+              class="workshop__slide{% if has_photo or show_placeholder %} workshop__slide--photo{% endif %}{% if forloop.first %} is-active{% endif %}"
               role="group"
               aria-roledescription="слайд"
               aria-label="{{ forloop.index }} от {{ shown_total }}"
@@ -133,7 +138,16 @@
               data-heading="{{ block.settings.heading | escape }}"
               {{ block.shopify_attributes }}
             >
-              {%- if with_photos -%}
+              {%- comment -%}
+                Each slide shows its own photo as soon as it has one (2026-10-05, owner);
+                a slide without one is text-only on the storefront and shows a labelled
+                placeholder only in the theme editor.
+              {%- endcomment -%}
+              {%- if show_placeholder -%}
+                <div class="workshop__media workshop__media--placeholder">
+                  <span>Снимка за стъпка {{ forloop.index }} — качете я в редактора<br>(вижда се само тук)</span>
+                </div>
+              {%- elsif has_photo -%}
               <div class="workshop__media">
                 {%- if forloop.first -%}
                   {%- assign img_loading = 'eager' -%}
