@@ -5705,3 +5705,165 @@ recently-viewed .slider-button[disabled] .icon {
   text-decoration: underline;
   text-underline-offset: 0.3rem;
 }
+
+/* ---------------------------------------------------------------------------
+   Homepage reviews: Judge.me Testimonials carousel in our design (2026-10-05).
+   Judge.me's own markup (.jdgm-testimonials-carousel, light DOM, colours from the
+   block's settings as inline CSS variables). Limits: it shows ONE card at a time and
+   fades between them (each card is absolutely positioned; the arrows switch the
+   .active card) -- it cannot show a peek of the next card without overriding its
+   script. What CSS can do: square cards, our type, spacing and arrows. Scoped to our
+   section; if Judge.me renames its classes the widget falls back to its own look.
+   --------------------------------------------------------------------------- */
+.review-cards .jdgm-testimonials-carousel {
+  /* Judge.me writes these as inline styles on the widget, so only !important wins. */
+  --border-radius: 0px !important;
+  --border: 0 !important;
+  --box-shadow: none !important;
+  --quote-size: 2rem !important;
+  --line-clamp: 5 !important;
+  --line-clamp-mobile: 6 !important;
+  max-width: 76rem;
+  margin: 0 auto;
+  padding: 0;
+  font-family: var(--font-body-family);
+}
+
+.review-cards .jdgm-testimonials-carousel .jdgm-header {
+  margin-bottom: 2.4rem;
+}
+
+.review-cards .jdgm-testimonials-carousel .jdgm-title,
+.review-cards .jdgm-testimonials-carousel .jdgm-verified-badge-header {
+  display: none;
+}
+
+.review-cards .jdgm-testimonials-carousel .jdgm-rating-text {
+  font-family: var(--font-body-family);
+  font-size: 1.4rem;
+  letter-spacing: 0.04em;
+}
+
+.review-cards .jdgm-testimonials-carousel .jdgm-card {
+  padding: 4.8rem 4rem 4rem;
+  gap: 2.4rem;
+  cursor: default;
+}
+
+.review-cards .jdgm-testimonials-carousel .jdgm-card-content {
+  gap: 2rem;
+}
+
+.review-cards .jdgm-testimonials-carousel .jdgm-text,
+.review-cards .jdgm-testimonials-carousel .jdgm-text p {
+  font-family: var(--font-body-family);
+  font-size: 1.8rem;
+  line-height: 1.55;
+  letter-spacing: 0.01em;
+}
+
+.review-cards .jdgm-testimonials-carousel .jdgm-text {
+  min-height: calc(var(--line-clamp) * 1.55em);
+  max-height: calc(var(--line-clamp) * 1.55em);
+  max-width: 60ch;
+  margin: 0 auto;
+}
+
+/* Judge.me lays the text out in a grid that sizes to the longest line; without a
+   minmax(0, 1fr) column a long review widened the card past a phone screen. */
+.review-cards .jdgm-testimonials-carousel .jdgm-text {
+  width: 100%;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.review-cards .jdgm-testimonials-carousel .jdgm-text p {
+  max-width: 100%;
+  min-width: 0;
+}
+
+.review-cards .jdgm-testimonials-carousel .jdgm-card,
+.review-cards .jdgm-testimonials-carousel .jdgm-card-content {
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.review-cards .jdgm-testimonials-carousel .jdgm-rating-section {
+  gap: 1rem;
+}
+
+.review-cards .jdgm-testimonials-carousel .jdgm-rating-section .jdgm-star {
+  font-size: 1.8rem;
+}
+
+.review-cards .jdgm-testimonials-carousel .jdgm-reviewer-name {
+  font-family: var(--font-body-family);
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.review-cards .jdgm-testimonials-carousel .jdgm-product-name,
+.review-cards .jdgm-testimonials-carousel .jdgm-product-name a {
+  font-family: var(--font-body-family);
+  font-size: 1.3rem;
+  color: rgb(var(--color-foreground));
+  text-underline-offset: 0.4rem;
+}
+
+.review-cards .jdgm-testimonials-carousel .jdgm-content {
+  margin-bottom: 2.4rem;
+}
+
+.review-cards .jdgm-testimonials-carousel .jdgm-arrows--bottom {
+  gap: 1.2rem;
+}
+
+.review-cards .jdgm-testimonials-carousel .jdgm-arrow {
+  width: 4.4rem;
+  height: 4.4rem;
+  border: 0.1rem solid rgba(var(--color-foreground), 0.45);
+  border-radius: 0;
+  background: rgb(251 248 246);
+  color: rgb(var(--color-foreground));
+  transition: border-color 0.2s;
+}
+
+.review-cards .jdgm-testimonials-carousel .jdgm-arrow:hover {
+  opacity: 1;
+  border-color: rgb(var(--color-foreground));
+}
+
+.review-cards .jdgm-testimonials-carousel .jdgm-arrow:focus-visible {
+  outline: 0.2rem solid rgb(var(--color-foreground));
+  outline-offset: 0.2rem;
+}
+
+.review-cards .jdgm-testimonials-carousel .jdgm-arrow svg {
+  width: 1rem;
+  height: 1.6rem;
+}
+
+@media screen and (max-width: 749px) {
+  .review-cards .jdgm-testimonials-carousel .jdgm-card {
+    padding: 3.2rem 2rem 2.8rem;
+  }
+
+  .review-cards .jdgm-testimonials-carousel .jdgm-text,
+  .review-cards .jdgm-testimonials-carousel .jdgm-text p {
+    font-size: 1.6rem;
+  }
+
+  .review-cards .jdgm-testimonials-carousel {
+    --line-clamp: 6 !important;
+  }
+}
+
+/* Our eyebrow and heading centred above Judge.me's centred card, so the section
+   reads as one composition. */
+.review-cards:has(.jdgm-testimonials-carousel) .review-cards__header {
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 1.6rem;
+}
