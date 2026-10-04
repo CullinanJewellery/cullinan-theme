@@ -62,11 +62,14 @@ discipline as Legal pages under Working agreements).
 - Made to order, 5-20 working days; a piece shown can be made with another stone, metal or size.
 - Delivery with Econt and Speedy, to an office or an address anywhere in Bulgaria; cash on delivery; returns
   within 14 days of receipt.
-- A shop at бул. Васил Левски 21, Veliko Tarnovo, where the pieces can be seen; a number to call (+359 88 287
-  4895, a button, never printed as text).
-- **Never claimed so far**: free shipping or a delivery price, a warranty, opening hours, gift packaging, a
-  certificate of authenticity with the piece, repair or cleaning, lifetime care, a named designer, a number of
-  designs ("about 4,000" is the owner's figure in the brief; the old site lists 2,038 products).
+- A shop at бул. Васил Левски 21, Veliko Tarnovo, where the pieces can be seen, **open Monday to Friday 09:30-19:00,
+  Saturday 10:00-18:00, closed on Sunday** (the owner, 2026-10-04); a number to call (+359 88 287 4895, a button, never
+  printed as text).
+- The atelier **cleans and repairs pieces after a sale** (the owner, 2026-10-04); the terms and any price are not stated.
+- **Never claimed so far**: free shipping or a delivery price (the owner wants free delivery as a trust item, as
+  hestiahome.bg has, but has not stated the terms), a warranty, gift packaging (the owner cannot say what a piece is
+  packed in), a certificate of authenticity with the piece, lifetime care, a named designer, an engraving price or
+  limit, a number of designs ("about 4,000" is the owner's figure in the brief; the old site lists 2,038 products).
 
 ### The formula, widened
 
@@ -189,7 +192,7 @@ we stand.
 11. **Calls to action are small**: text links or small squares in 11 to 14px capitals tracked 0.08 to 0.12em
     (Tiffany 11px/0.08em, Van Cleef 13px/0.11em, Ole Lynggaard 14px/0.8px). **The hero's button is 72px tall and
     up to 485px wide in ruby, at the owner's explicit wish (2026-09-21, 2026-10-04): the loudest object on the first
-    screen of any shop we looked at. Flagged, not changed; "smaller" is one request.**
+    screen of any shop we looked at. Made the same size as every other button in wave 2 (2026-10-04).**
 12. **Warm neutrals, one accent, no pure black fields**: charcoal rather than black (Ole Lynggaard `#4B4B4B`), a
     light tile grey, one signature colour used sparingly. Direction C (marble, rose-clay, espresso, rosewood)
     already follows this.
@@ -261,7 +264,8 @@ Each row is a reversal or an addition made under the permission above. The owner
   `templates/index.json`). Way back: delete the block at the end of `crown.css`, set both to centre.
 - **„Най-продавани“ is „Избрани бижута“**; **the silver banner and „Ново при нас“ are hidden** (`disabled: true`;
   the eye icon in the theme editor brings either back); **the order** is hero, facts, pieces, categories, the story,
-  bespoke, stones, services, reviews (empty, so invisible on a published theme), social, newsletter. Way back:
+  bespoke, stones, services, reviews (empty, so invisible on a published theme), social, newsletter (**changed again in
+  wave 2**). Way back:
   the `order` array and two flags in `templates/index.json`.
 - **The four first-screen claims are specifics now**: „Собствено производство“, „Злато 14 и 18 карата“, „Камъни с
   оценка“, „Гравиране по желание“. Cash on delivery left for engraving (it stays in the cart drawer's reassurances
@@ -291,6 +295,82 @@ Each row is a reversal or an addition made under the permission above. The owner
   - **The minifier rewrote two more things**: `rgba(24, 14, 9, 0.66)` is served as `#180e09a8` and `inset: 0` as four
     properties. Search the served CSS for what it writes (see Preview links expire).
 
+### Wave 2, 2026-10-04 (later): "everything", and what hestiahome.bg does for trust
+
+**The owner**, after the answers below: "if you want to change the font ... do it ... if the sections we made are bad make
+new ones and the buttons too ... the colors too ... the buttons, the product pictures, the text, the footer, the cart
+page, every page ... use the websites [hestiahome.bg]: their selling method is good, they put things so people can trust
+them to buy ... free delivery and Наложен платеж, Лесна замяна ... then their collection, then reviews ... i don't want
+it to be like moonmagic, i want it to be like mine own ... the things i like are the color choosing we made on the
+product before we open it, the material choosing, how it is made, the circles with the colors, the section with the
+stones and what our clients said ... i don't want any default designs ... my buttons ... the drop down menus ... every
+other menu". **Full permission, again, to remove or rebuild anything.**
+
+**Answers the same message gave**, now in the facts list above: the shop is open **Monday to Friday 09:30-19:00,
+Saturday 10:00-18:00, closed on Sunday**; the atelier **cleans and repairs pieces after a sale**. **Unknown, so not
+claimed**: engraving's price, character limit and extra time; what a piece is packed in; the price range of the first fifty;
+the delivery price; whether the 14-day return covers a piece made for one customer. The question about a "refined
+wordmark" was not understood (it means only: the lettering of the logo is a heavy brush script; a thinner, more formal
+lettering is what the big houses use). It was a question, not a plan, and the logo stays.
+
+**What hestiahome.bg does, read again** (2026-10-04; the pane would not open it, so its homepage was read as text): hero,
+then **a row of three cards with icons** (free delivery on two or more sets, cash on delivery "pay calmly when the parcel
+arrives", easy replacement), the categories, "customers' favourites", a story block with its rating and order count,
+**reviews** (4.8 stars, 949+ customers, ten cards each with "verified purchase"), a certification block, **a guide ("which
+fabric is for you")**, and a footer with payment methods. The lesson is not the products but the order: **settle the buyer's
+worries before the first product**, then show pieces, then show other people.
+
+**What was changed, and why**
+- **The four capitals under the hero are gone** (the section is hidden, not deleted). In their place, directly under the
+  hero, **the trust band**: four bordered cards, each a ringed icon, a small-capitals title and a sentence a shopper can
+  read: „Наложен платеж — Плащате в брой, когато получите пратката.“ (a fact the product page already states), „Връщане до 14
+  дни — Размерът не е точен? Пишете ни и ще ви насочим.“ (the FAQ's own promise), „Доставка с Еконт и Спиди — До
+  офис или адрес в цялата страна.“, „Гравиране и грижа — Гравираме по желание, почистваме и ремонтираме.“ It is the old
+  benefits row redesigned (its sentence was 13px in 62% grey, which nobody could read) and moved up, which also retires the
+  second, duplicate trust row lower on the page. Two by two on a phone. A banknote icon was drawn for cash on delivery.
+  **Free delivery is not in it**: hestiahome offers it, the owner wants it, but no delivery price or threshold has been
+  stated and a promise of free delivery is a business term, not a design choice. It is one block to add the day the owner
+  says what it is (see the questions).
+- **Buttons are one language.** The theme setting `buttons_radius` goes from 40 (a pill) to 0, so every plain button, the
+  contact and request buttons and the footer's social buttons are square like the banner, stones and Add to cart buttons
+  already were. From 750px every call-to-action button is 5.6rem tall with 14px capitals tracked 0.14em (it was 64px, 68px
+  and 72px with type from 14px to 22px), and **the hero's button is the same size as the rest, 34rem wide** (it was 72px
+  tall and up to 485px wide). Ruby, hover, lift and the phone sizes the owner tuned are unchanged. This reverses the pill
+  of 2026-09-20 ("like in hestiahome.bg"), made when hestiahome was the only reference; the houses all use a square or a
+  3px corner. Way back: `buttons_radius: 40` and delete the "Buttons, one language" block of `assets/crown.css`.
+- **The filter and sort bar** on collection pages and search is now the site's small capitals between two hairlines, with
+  paper-card panels, instead of Dawn's plain words and solid carets.
+- **The order of the homepage**: hero, trust band, pieces, categories, **stones** (the owner likes it), the story,
+  **reviews** (the owner likes it; they print nothing on a published theme until a real review exists), the bespoke band,
+  social, newsletter; the silver banner, the new-arrivals band, the moving pictures and the old capitals strip stay hidden.
+  The story band is scheme-2 so the two pale-marble bands (stones, story) alternate.
+- **The shop's hours** are in the Контакти shop row and, with the address, as plain lines under the footer's first column
+  (a new `note` on the footer's link column).
+- **Fonts: kept, on evidence.** Prata for headings and Jost for text were checked against what the houses use: serif headings
+  over a clean sans (Tiffany, Van Cleef & Arpels), and Pomellato's text face is Futura, which Jost is a Cyrillic-capable
+  cousin of. A new face would cost a Cyrillic file, a new check and a new look at every page for no gain; what looked weak was
+  small, grey text (fixed in the trust band) and the capitals strip (gone). If the owner still wants a different heading
+  face, Cormorant Garamond and Playfair Display both have Cyrillic; it is one block in `snippets/theme-fonts.liquid`.
+
+**Not done in this wave, and why** (so nothing is promised that was not done)
+- **The /cart page** is Dawn's stock layout and could not be seen: the preview link is expired and no saved copy of it
+  exists. The cart *drawer*, which is what opens when a bag is clicked or a piece added, was already built to the site's own
+  design. The page gets its look from the new buttons and fonts only, until a preview link lets it be seen.
+- **Product pictures** are the owner's renders and photographs; the gallery, the square crop and the zoom viewer are already
+  the site's own. What would change them is photography (the shot list).
+- **A new page for sizes, care and a gold guide** wait for the owner's facts.
+- **A reviews strip with real clients' words** needs real clients' words; none is invented.
+
+**Mistake caught the same night**: the wave-1 push put `icon: "ring-tools"` on a benefit, a value the snippet draws but the
+section's icon list does not offer. **Shopify validates a select against its options**, so the template could have been
+refused whole. Fixed in `5131202`; the section's list now offers banknote, phone and ring-and-tweezers. **Check every
+select value against the section's options, not only ranges against their steps.** That check is a script now:
+`node tools/validate-templates.mjs` (run from the repository root before pushing any template or section group) reads every
+section instance in `templates/*.json` and `sections/*-group.json` against its section's schema -- known type, known setting
+ids, select values in the options, ranges on their step, booleans, known block types -- and prints only problems. It reports
+two that are not (stock Dawn's 404 has no schema, and the Judge.me app block is resolved by Shopify). It is not a theme
+file: Shopify never reads `tools/`.
+
 ### Queue, in the order of value for effort
 
 1. **Photography** is what luxury is made of. The brief: one clean picture of each piece on a soft neutral tile, one
@@ -304,7 +384,7 @@ Each row is a reversal or an addition made under the permission above. The owner
    below.
 4. **A ring-size guide, a care page, a stones guide**; several wait on the owner's facts (care and repair).
 5. **Named design families** once the first fifty are chosen (rule 10).
-6. **The hero's call to action**, smaller, in the houses' manner (rule 11): the owner's call.
+6. ~~The hero's call to action, smaller~~: done in wave 2.
 7. **Facebook and Instagram pills** in brand colours to a quiet pair of icons: the owner's call.
 8. **A transparent header over the hero** (Van Cleef); **a refined wordmark** (the logo).
 9. **Press, awards or real client words** in place of stars: reviews stay invisible until they are real, and
@@ -312,18 +392,23 @@ Each row is a reversal or an addition made under the permission above. The owner
 10. **An appointment route** ("book a visit"): needs opening hours.
 11. **Gifts by occasion** (Ole Lynggaard: graduation, anniversary, birthday, a new baby, Christmas, Valentine's,
     Mother's Day): the occasions row already proposed.
+12. **The /cart page** in the site's own design: it needs a preview link to be seen (the drawer already is).
+13. **Free delivery** as a fifth card in the trust band and a line under the buy button, the day the owner states its terms.
+14. **A gold guide** (hestiahome's "which fabric is for you"): 14K for every day, 18K for a piece with meaning, silver 925
+    with its rhodium plating, from facts already on За нас.
 
 ### Questions for the owner (answers go into the facts list above)
 
-- **Engraving**: the price, how many characters, how long it adds, whether it is asked for with the order.
-- **Opening hours** of the shop, and whether a visit can be booked by phone.
-- **Care and repair**: does the atelier clean, resize, repair or re-plate pieces, and for how long after a sale?
-- **Gift packaging**: what does a piece arrive in?
-- **Certificates**: which pieces come with an appraisal or a certificate, and from whom (HRD Antwerp)?
-- **Prices**: the range of the first fifty, and the dearest piece; delivery price or a free-shipping threshold; how a
-  high-value piece is insured and handed over; whether cash on delivery has a ceiling.
-- **Made to order and the 14-day return**: do both apply to a piece made for one customer?
-- **The logo**: is a refined wordmark an option, or is the brush script the brand?
+**Answered 2026-10-04**: opening hours (in the facts); cleaning and repair (yes). **Answered "not sure" or "I don't know"**:
+engraving's price, character limit and time; what a piece is packed in; the range of the first fifty; the delivery price;
+whether the 14-day return covers a piece made for one customer. None of these is claimed anywhere. They stay open and are
+asked again only when a page needs them.
+
+- **Free delivery**: the owner wants it as a trust item. Is delivery free for every order, or from some amount, or never? One
+  block in the trust band says it the day this is answered.
+- **Packaging**: what a piece arrives in, when the owner knows (a box, a pouch, a bag), so a photograph and a line can say it.
+- **Engraving**, when known: the price, how many characters, how many days it adds.
+- **Returns on made-to-order pieces**, when the accountant has said.
 
 ## What this repository is
 
@@ -851,7 +936,7 @@ Rules that matter here:
   that push ("0 succeeded, 1 failed"), so it also held back unrelated work. Check
   `config/settings_schema.json` for min, max and step before setting any range value.
 - **Square corners on badges, variant pills and cards. Buttons are a full pill, site-wide,
-  since 2026-09-20.** Started as one button: the homepage hero's own „Разгледайте колекцията“,
+  since 2026-09-20 (square again since 2026-10-04: `buttons_radius` is 0, see The goal, wave 2).** Started as one button: the homepage hero's own „Разгледайте колекцията“,
   at the owner's instruction ("like in hestiahome.bg"), checked directly (41px radius on their
   own 62px-tall button, comfortably a stadium shape at any height) and shipped as a hardcoded
   `border-radius: 999px` scoped to just `.banner__buttons .button`. Widened the same day, at
@@ -1892,7 +1977,8 @@ Anything of ours that is not a Dawn setting lives in these two places:
       both pseudo-elements, so this was the only one.
     - **Live, with a real hover**: a transparent square with a 1px taupe outline, lifted
       `-2.5px`, and both pseudo-elements compute `content: none`.
-- **Hero facts.** `sections/hero-facts.liquid` with `assets/section-hero-facts.css`. The
+- **Hero facts.** **Hidden since 2026-10-04: the owner called the four capitals "a bad very bad" text, and the trust band
+  under the hero replaced them (see The goal, wave 2).** `sections/hero-facts.liquid` with `assets/section-hero-facts.css`. The
   short claims under the hero. Its own section, not Dawn's multicolumn — Dawn loads section
   stylesheets from inside the section, which puts them after `crown.css` in the document, so
   overriding multicolumn meant winning a specificity fight on every rule. Measured off the
@@ -1936,7 +2022,8 @@ Anything of ours that is not a Dawn setting lives in these two places:
     goes back to plain `color_scheme` with no background override, no `hero-facts-band`
     class. The finding about moonmagic's own structure stays true; the owner just didn't
     want it applied here.
-- **Benefits row.** `sections/icon-benefits.liquid` with `assets/section-icon-benefits.css`
+- **Benefits row.** **Redesigned and moved directly under the hero as the trust band on 2026-10-04 (see The goal, wave 2);
+  the description below is the plain row it was.** `sections/icon-benefits.liquid` with `assets/section-icon-benefits.css`
   and `snippets/icon-benefit.liquid`. Four short promises under the product row. Each block
   takes either an uploaded image (contained, never cropped, no mask or border) or one of nine
   built-in line icons. The icons carry `vector-effect="non-scaling-stroke"` so the line stays

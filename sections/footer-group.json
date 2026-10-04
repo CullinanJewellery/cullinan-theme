@@ -24,7 +24,8 @@
             "link_2": "/pages/за-нас#vaprosi",
             "link_3_label": "Магазин във Велико Търново",
             "link_3": "/pages/contact",
-            "show_email": false
+            "show_email": false,
+            "note": "бул. Васил Левски 21, Велико Търново\nПон – Пет: 09:30 – 19:00\nСъбота: 10:00 – 18:00\nНеделя: почивен ден"
           }
         },
         "about": {

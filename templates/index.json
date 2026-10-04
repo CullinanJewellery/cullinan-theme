@@ -97,7 +97,8 @@
         "container_width": 1150,
         "padding_top": 16,
         "padding_bottom": 6
-      }
+      },
+      "disabled": true
     },
     "image_marquee": {
       "type": "image-marquee",
@@ -376,36 +377,36 @@
           "type": "benefit",
           "settings": {
             "visual": "icon",
-            "icon": "gold-bar",
-            "heading": "Проба 585, 750 и 925",
-            "subline": "14 и 18 карата злато, а също и сребро."
+            "icon": "cash",
+            "heading": "Наложен платеж",
+            "subline": "Плащате в брой, когато получите пратката."
           }
         },
         "b2": {
           "type": "benefit",
           "settings": {
             "visual": "icon",
-            "icon": "certificate",
-            "heading": "Сертифицирани майстори",
-            "subline": "Златари с професионална квалификация."
+            "icon": "return-arrow",
+            "heading": "Връщане до 14 дни",
+            "subline": "Размерът не е точен? Пишете ни и ще ви насочим."
           }
         },
         "b3": {
           "type": "benefit",
           "settings": {
             "visual": "icon",
-            "icon": "hammer",
-            "heading": "Изработка по поръчка",
-            "subline": "Друг камък, друг метал, друг размер."
+            "icon": "delivery-van",
+            "heading": "Доставка с Еконт и Спиди",
+            "subline": "До офис или адрес в цялата страна."
           }
         },
         "b4": {
           "type": "benefit",
           "settings": {
             "visual": "icon",
-            "icon": "box",
-            "heading": "Доставка с Еконт и Спиди",
-            "subline": "До офис или адрес в цялата страна."
+            "icon": "engraving-pen",
+            "heading": "Гравиране и грижа",
+            "subline": "Гравираме по желание, почистваме и ремонтираме."
           }
         }
       },
@@ -416,9 +417,9 @@
         "b4"
       ],
       "settings": {
-        "color_scheme": "scheme-2",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "color_scheme": "scheme-1",
+        "padding_top": 40,
+        "padding_bottom": 40
       }
     },
     "silver_teaser": {
@@ -515,7 +516,7 @@
       "type": "atelier",
       "settings": {
         "media_position": "right",
-        "color_scheme": "scheme-6",
+        "color_scheme": "scheme-2",
         "video_url": "",
         "eyebrow": "От 1991 година",
         "heading": "Занаят с история",
@@ -655,17 +656,17 @@
   },
   "order": [
     "hero_image",
+    "benefits",
     "hero_facts",
     "image_marquee",
     "featured_collection",
     "category_mosaic",
+    "stones",
+    "atelier",
+    "review_cards",
+    "custom_request",
     "silver_teaser",
     "new_arrivals",
-    "atelier",
-    "custom_request",
-    "stones",
-    "benefits",
-    "review_cards",
     "social_follow",
     "newsletter"
   ]
