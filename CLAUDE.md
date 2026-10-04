@@ -4003,8 +4003,14 @@ Anything of ours that is not a Dawn setting lives in these two places:
       `--grid-mobile-horizontal-spacing: 0.4rem`, which Dawn's item width subtracts, so the gap and the width
       agree), the text keeping a 12px inset under each picture. Two across is how jewellery is compared on a phone;
       one across would have made every shopper scroll four times as far.
+    - **The first push missed the search results.** The collection's list carries the id itself (`ul#product-grid`);
+      the search page puts `id="product-grid"` on the wrapper div (`.template-search__results`) and the list inside
+      it has none, so `#product-grid.product-grid` never matched it and search stayed at 167px. Found by building a
+      local copy of the search page and measuring it, not by reading the selector: both lists are named now
+      (`.template-search__results .product-grid`), 186px with a 4px gap and no sideways scroll on each. **When a rule
+      is meant for "the product grid", check the markup of every template that prints one** (collection, search).
     - Tablets and computers are untouched. **Measured in a local copy only**: 240px cards and no overflow in the rows,
-      186px with no sideways scroll in the grids.
+      186px with no sideways scroll in the collection and search grids.
   - **Navigation.** Changed: the phone menu's category words are Prata in sentence case at 24px with the same
     stroke (they are titles in all but name and the first thing a phone visitor opens; the submenu links, the top
     bar and every label stay Jost); the menu dropdown and the phone drawer are scheme-6's pale marble `#F3EBE6`

@@ -5044,8 +5044,10 @@ h1, h2, h3, h4, h5, h6, .h0, .h1, .h2, .h3, .h4, .h5 {
    edge to edge with a 4px gap, as the premium jewellery sites do it -- 186px
    pictures instead of 167. The text keeps a 12px inset under each picture. The
    spacing variable is set on the list itself so Dawn's item width, which
-   subtracts it, and the gap agree. #product-grid is the collection and the
-   search results both.
+   subtracts it, and the gap agree. The collection's list carries the id itself
+   (ul#product-grid); the search results' list sits inside a wrapper that does
+   (.template-search__results), so both are named -- the first version named
+   only the collection and left search at 167px.
    --------------------------------------------------------------------------- */
 @media screen and (max-width: 749px) {
   .product-grid.slider--tablet.grid--peek.contains-card--product > .grid__item {
@@ -5054,12 +5056,14 @@ h1, h2, h3, h4, h5, h6, .h0, .h1, .h2, .h3, .h4, .h5 {
     min-width: 0;
   }
 
-  #product-grid.product-grid {
+  #product-grid.product-grid,
+  .template-search__results .product-grid {
     --grid-mobile-horizontal-spacing: 0.4rem;
     margin-inline: -1.5rem;
   }
 
-  #product-grid.product-grid .card__content {
+  #product-grid.product-grid .card__content,
+  .template-search__results .product-grid .card__content {
     padding-inline: 1.2rem;
   }
 }
