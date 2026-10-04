@@ -120,8 +120,8 @@
         }
       },
       "block_order": [
-        "rating",
         "title",
+        "rating",
         "description",
         "price",
         "variant_picker",
