@@ -66,7 +66,11 @@ recently-viewed[hidden],
 
 .recently-viewed__track {
   --recently-viewed-gap: var(--grid-mobile-horizontal-spacing, 1.2rem);
-  --recently-viewed-columns: 2;
+  /* 1.42 on a phone since 2026-10-04: one card and a good part of the next, 240px
+     pictures at 375px where two whole cards made them 167px (moonmagic's own phone
+     row measures 238px). The homepage row and the related row do the same in
+     crown.css ("Product pictures on a phone"). */
+  --recently-viewed-columns: 1.42;
   display: flex;
   gap: var(--recently-viewed-gap);
   margin: 0;
