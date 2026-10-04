@@ -188,7 +188,7 @@ we stand.
     families with a sentence of origin each; until then the categories stand.
 11. **Calls to action are small**: text links or small squares in 11 to 14px capitals tracked 0.08 to 0.12em
     (Tiffany 11px/0.08em, Van Cleef 13px/0.11em, Ole Lynggaard 14px/0.8px). **The hero's button is 72px tall and
-    485px wide in ruby, at the owner's explicit wish (2026-09-21, 2026-10-04): the loudest object on the first
+    up to 485px wide in ruby, at the owner's explicit wish (2026-09-21, 2026-10-04): the loudest object on the first
     screen of any shop we looked at. Flagged, not changed; "smaller" is one request.**
 12. **Warm neutrals, one accent, no pure black fields**: charcoal rather than black (Ole Lynggaard `#4B4B4B`), a
     light tile grey, one signature colour used sparingly. Direction C (marble, rose-clay, espresso, rosewood)
@@ -278,6 +278,18 @@ Each row is a reversal or an addition made under the permission above. The owner
   button that dials +359 88 287 4895, the number Контакти already dials, and prints nothing without one. Way back:
   take the block out of the template.
 - **Контакти** and **the footer** gain the shop (above).
+- **Pushed in six steps**, none closer than three minutes to the one before except the last: `384f6d4` at 14:22 (prices,
+  hero size, the phone block's section), `24014af` at 14:26 (the hero-with-a-photograph stylesheet), `250d0a4` at 14:30 (the
+  homepage, top bar, footer and Контакти), `091c2f2` at 14:35 (these notes), `8a11c80` at 14:37 (the first-screen claims),
+  `a9336ca` at 14:40 (the product template naming the phone block, 18 minutes after its section, so the validator held it).
+  **The stylesheet was read back off the store's CDN** (the hero rules, the gradient, the phone link, the prices); **the
+  Liquid and the JSON cannot be** (not assets), so the whole-number prices, the new homepage order, the hidden banners, the
+  top bar, the footer link, the shop row and the phone link are **unverified on a page**: if the next preview shows ",00"
+  prices or the old order, that push was dropped (it has happened seven times before); re-send the file with a byte changed.
+  **The first push was refused**: the owner had saved in the theme editor at 14:05 (Shopify's commit `bee1b8a`, which
+  also carried the hero picture), and `git status -sb` had said "behind 1" before the commit. Pull first when it says so.
+  - **The minifier rewrote two more things**: `rgba(24, 14, 9, 0.66)` is served as `#180e09a8` and `inset: 0` as four
+    properties. Search the served CSS for what it writes (see Preview links expire).
 
 ### Queue, in the order of value for effort
 
