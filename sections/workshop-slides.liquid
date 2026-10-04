@@ -1,0 +1,343 @@
+{%- comment -%}
+  "Как се ражда едно бижу" -- the workshop story as one section with up to four
+  slides (2026-10-04, layout approved by the owner): photograph, step label,
+  heading, one or two sentences, a shopping link and an optional second link.
+
+  Rules the owner set:
+  - Nothing shows to visitors until the section is ready: every slide must have
+    a photograph and a heading (and there must be at least two slides). Until
+    then the section prints nothing outside the theme editor, so the current
+    story band carries on. In the editor, incomplete slides are drawn with a
+    label saying what is missing.
+  - No automatic links. Each slide links to the product or collection chosen in
+    the editor (a product wins if both are set); a collection with no products
+    is never linked. Without a target, the slide has no button.
+  - Manual navigation only: arrows, a step indicator, swiping on phones, the
+    arrow keys. Arrows stop at the first and last step (it is a sequence).
+
+  Without JavaScript the slides are simply listed one under another; the
+  carousel switches on when assets/workshop-slides.js adds .workshop--js.
+{%- endcomment -%}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  .section-{{ section.id }}-margin {
+    margin-top: {{ section.settings.margin_top | times: 0.75 | round: 0 }}px;
+    margin-bottom: {{ section.settings.margin_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+
+    .section-{{ section.id }}-margin {
+      margin-top: {{ section.settings.margin_top }}px;
+      margin-bottom: {{ section.settings.margin_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+{%- liquid
+  assign slide_total = section.blocks.size
+  assign complete_total = 0
+  for block in section.blocks
+    if block.settings.image != blank and block.settings.heading != blank
+      assign complete_total = complete_total | plus: 1
+    endif
+  endfor
+
+  assign is_ready = false
+  if slide_total >= 2 and complete_total == slide_total
+    assign is_ready = true
+  endif
+
+  assign show_section = is_ready
+  if request.design_mode and slide_total > 0
+    assign show_section = true
+  endif
+
+  assign shown_total = slide_total
+  assign region_label = section.settings.heading | default: 'Как се ражда едно бижу'
+-%}
+
+{%- if show_section -%}
+  {{ 'section-workshop-slides.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'workshop-slides.js' | asset_url }}" defer="defer"></script>
+  <div class="color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-margin">
+    <div class="page-width section-{{ section.id }}-padding">
+      {%- if request.design_mode and is_ready == false -%}
+        <p class="workshop__editor-note">
+          Секцията не се показва на посетителите, докато всеки слайд няма снимка и заглавие
+          (готови: {{ complete_total }} от {{ slide_total }}). Дотогава остава старата секция с историята.
+        </p>
+      {%- endif -%}
+
+      {%- if section.settings.heading != blank -%}
+        <h2 class="workshop__title h2">{{ section.settings.heading | escape }}</h2>
+      {%- endif -%}
+
+      <workshop-slides
+        class="workshop"
+        role="region"
+        aria-roledescription="карусел"
+        aria-label="{{ region_label | escape }}"
+      >
+        <div class="workshop__slides">
+          {%- for block in section.blocks -%}
+            {%- liquid
+              assign slide_complete = false
+              if block.settings.image != blank and block.settings.heading != blank
+                assign slide_complete = true
+              endif
+
+              assign target_url = ''
+              assign default_label = ''
+              if block.settings.product != blank
+                assign target_url = block.settings.product.url
+                assign default_label = 'Вижте бижуто'
+              elsif block.settings.collection != blank and block.settings.collection.products_count > 0
+                assign target_url = block.settings.collection.url
+                assign default_label = 'Разгледайте бижутата'
+              endif
+              assign button_label = block.settings.button_label | default: default_label
+            -%}
+            <div
+              class="workshop__slide{% if forloop.first %} is-active{% endif %}"
+              role="group"
+              aria-roledescription="слайд"
+              aria-label="{{ forloop.index }} от {{ shown_total }}"
+              data-step="{{ forloop.index }}"
+              data-heading="{{ block.settings.heading | escape }}"
+              {{ block.shopify_attributes }}
+            >
+              <div class="workshop__media">
+                {%- if block.settings.image != blank -%}
+                  {%- if forloop.first -%}
+                    {%- assign img_loading = 'eager' -%}
+                  {%- else -%}
+                    {%- assign img_loading = 'lazy' -%}
+                  {%- endif -%}
+                  {{
+                    block.settings.image
+                    | image_url: width: 1600
+                    | image_tag:
+                      loading: img_loading,
+                      widths: '375, 550, 750, 1000, 1300, 1600',
+                      sizes: '(min-width: 990px) 55vw, 100vw',
+                      class: 'workshop__image'
+                  }}
+                {%- else -%}
+                  <span class="workshop__missing">Липсва снимка</span>
+                {%- endif -%}
+              </div>
+
+              <div class="workshop__content">
+                <p class="workshop__step">Стъпка {{ forloop.index }} от {{ shown_total }}</p>
+                {%- if block.settings.heading != blank -%}
+                  <h3 class="workshop__heading">{{ block.settings.heading | escape }}</h3>
+                {%- elsif request.design_mode -%}
+                  <h3 class="workshop__heading workshop__heading--missing">Липсва заглавие</h3>
+                {%- endif -%}
+                {%- if block.settings.text != blank -%}
+                  <p class="workshop__text">{{ block.settings.text | escape }}</p>
+                {%- endif -%}
+
+                {%- if target_url != '' or block.settings.secondary_label != blank -%}
+                  <div class="workshop__actions">
+                    {%- if target_url != '' -%}
+                      <a class="workshop__button" href="{{ target_url }}">{{ button_label | escape }}</a>
+                    {%- endif -%}
+                    {%- if block.settings.secondary_label != blank and block.settings.secondary_link != blank -%}
+                      <a class="workshop__secondary" href="{{ block.settings.secondary_link }}">
+                        {{- block.settings.secondary_label | escape -}}
+                      </a>
+                    {%- endif -%}
+                  </div>
+                {%- endif -%}
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+
+        <div class="workshop__controls" hidden>
+          <button type="button" class="workshop__arrow workshop__arrow--prev" data-workshop-prev aria-label="Предишна стъпка">
+            <span aria-hidden="true"></span>
+          </button>
+          <div class="workshop__steps" role="group" aria-label="Стъпки">
+            {%- for block in section.blocks -%}
+              <button
+                type="button"
+                class="workshop__dot"
+                data-workshop-go="{{ forloop.index0 }}"
+                aria-label="Стъпка {{ forloop.index }}: {{ block.settings.heading | default: 'без заглавие' | escape }}"
+                {% if forloop.first %}
+                  aria-current="step"
+                {% endif %}
+              ></button>
+            {%- endfor -%}
+          </div>
+          <button type="button" class="workshop__arrow workshop__arrow--next" data-workshop-next aria-label="Следваща стъпка">
+            <span aria-hidden="true"></span>
+          </button>
+        </div>
+
+        <p class="visually-hidden" aria-live="polite" data-workshop-status></p>
+      </workshop-slides>
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Workshop slides",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "max_blocks": 4,
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Visitors see this section only when every slide has a photograph and a heading (at least two slides). Until then it shows only here in the editor, so keep the old story section until it is ready, then hide that one."
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Как се ражда едно бижу"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Colour scheme",
+      "default": "scheme-6"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 72
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 72
+    },
+    {
+      "type": "header",
+      "content": "Space around the band"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Space above",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Space below",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Photograph",
+          "info": "Square works best (1600 px or more). Nothing written on the picture."
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text"
+        },
+        {
+          "type": "header",
+          "content": "Shopping link"
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product",
+          "info": "Used first if set."
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Or a collection",
+          "info": "Not linked while it has no products."
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button text",
+          "info": "Empty: „Вижте бижуто“ for a product, „Разгледайте бижутата“ for a collection."
+        },
+        {
+          "type": "header",
+          "content": "Second link (optional)"
+        },
+        {
+          "type": "text",
+          "id": "secondary_label",
+          "label": "Text"
+        },
+        {
+          "type": "url",
+          "id": "secondary_link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Workshop slides",
+      "blocks": [
+        { "type": "slide" },
+        { "type": "slide" },
+        { "type": "slide" },
+        { "type": "slide" }
+      ]
+    }
+  ]
+}
+{% endschema %}

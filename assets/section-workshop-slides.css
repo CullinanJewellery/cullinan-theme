@@ -1,0 +1,313 @@
+/* ===========================================================================
+   Workshop slides (sections/workshop-slides.liquid), 2026-10-04.
+   Computer: square photograph left (55%), text right, controls under the text.
+   Phone: photograph full width, controls directly under it, text below.
+   Without JavaScript the slides are listed; .workshop--js turns on the carousel.
+   =========================================================================== */
+
+.workshop__editor-note {
+  margin: 0 0 2.4rem;
+  padding: 1.2rem 1.6rem;
+  border: 0.1rem dashed rgba(var(--color-foreground), 0.4);
+  font-size: 1.3rem;
+  line-height: 1.5;
+}
+
+.workshop__title {
+  margin: 0 0 3.2rem;
+}
+
+.workshop {
+  display: block;
+  position: relative;
+  container-type: inline-size;
+}
+
+.workshop__slides {
+  display: grid;
+  gap: 4.8rem;
+}
+
+.workshop__slide {
+  display: grid;
+  gap: 2.4rem;
+  align-items: center;
+}
+
+.workshop__media {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: rgb(240 232 226);
+}
+
+.workshop__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.workshop__missing {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(var(--color-foreground), 0.6);
+}
+
+.workshop__content {
+  max-width: 48rem;
+}
+
+.workshop__step {
+  margin: 0 0 1.2rem;
+  font-family: var(--font-body-family);
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(var(--color-foreground), 0.75);
+}
+
+.workshop__heading {
+  margin: 0 0 1.4rem;
+  font-family: var(--font-heading-family);
+  font-size: clamp(2.4rem, 2.6vw, 3.4rem);
+  font-weight: var(--font-heading-weight);
+  line-height: 1.2;
+  letter-spacing: 0;
+  text-wrap: balance;
+}
+
+.workshop__heading--missing {
+  color: rgba(var(--color-foreground), 0.5);
+}
+
+.workshop__text {
+  margin: 0;
+  font-size: 1.6rem;
+  line-height: 1.65;
+  max-width: 44ch;
+}
+
+.workshop__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.6rem 2.8rem;
+  margin-top: 2.8rem;
+}
+
+.workshop__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 5.4rem;
+  padding: 0 2.8rem;
+  border-radius: 0;
+  background-color: rgb(var(--color-button));
+  box-shadow: inset 0 0 0 1px rgb(var(--color-button));
+  color: rgb(var(--color-button-text));
+  font-family: var(--font-body-family);
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out,
+    transform 0.2s cubic-bezier(0, 0, 0.3, 1);
+}
+
+.workshop__button:hover,
+.workshop__button:focus-visible {
+  background-color: transparent;
+  color: rgb(var(--color-button));
+}
+
+.workshop__secondary {
+  color: rgb(var(--color-foreground));
+  font-size: 1.3rem;
+  letter-spacing: 0.06em;
+  text-decoration: underline;
+  text-underline-offset: 0.35rem;
+}
+
+.workshop__secondary:hover {
+  text-decoration-thickness: 0.2rem;
+}
+
+/* ---- controls ------------------------------------------------------------ */
+
+.workshop__controls {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+.workshop__controls[hidden] {
+  display: none;
+}
+
+.workshop__arrow {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.4rem;
+  height: 4.4rem;
+  padding: 0;
+  border: 0.1rem solid rgba(var(--color-foreground), 0.35);
+  border-radius: 0;
+  background: transparent;
+  color: rgb(var(--color-foreground));
+  cursor: pointer;
+  transition: border-color 0.2s, opacity 0.2s;
+}
+
+.workshop__arrow span {
+  width: 0.9rem;
+  height: 0.9rem;
+  border-top: 0.15rem solid currentColor;
+  border-right: 0.15rem solid currentColor;
+}
+
+.workshop__arrow--prev span {
+  transform: translateX(0.2rem) rotate(-135deg);
+}
+
+.workshop__arrow--next span {
+  transform: translateX(-0.2rem) rotate(45deg);
+}
+
+.workshop__arrow:hover:not([disabled]) {
+  border-color: rgb(var(--color-foreground));
+}
+
+.workshop__arrow[disabled] {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.workshop__steps {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.workshop__dot {
+  position: relative;
+  width: 3.2rem;
+  height: 4.4rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.workshop__dot::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 0.2rem;
+  background: rgba(var(--color-foreground), 0.25);
+  transition: background-color 0.3s, height 0.3s;
+}
+
+.workshop__dot[aria-current='step']::before {
+  height: 0.3rem;
+  background: rgb(var(--color-foreground));
+}
+
+.workshop__arrow:focus-visible,
+.workshop__dot:focus-visible {
+  outline: 0.2rem solid rgb(var(--color-foreground));
+  outline-offset: 0.2rem;
+}
+
+/* ---- the carousel (JavaScript on) ---------------------------------------- */
+
+.workshop--js .workshop__slides {
+  gap: 0;
+  touch-action: pan-y;
+}
+
+.workshop--js .workshop__slide {
+  grid-area: 1 / 1;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0s linear 0.4s;
+}
+
+.workshop--js .workshop__slide.is-active {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.4s ease, visibility 0s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .workshop--js .workshop__slide,
+  .workshop--js .workshop__slide.is-active {
+    transition: none;
+  }
+}
+
+/* Phone: the controls sit directly under the square photograph. The photo is as
+   wide as the container, so its bottom edge is 100cqw from the top. */
+@media screen and (max-width: 989px) {
+  .workshop--js .workshop__controls {
+    position: absolute;
+    top: calc(100cqw + 0.8rem);
+    left: 0;
+    right: 0;
+    justify-content: space-between;
+  }
+
+  .workshop--js .workshop__content {
+    padding-top: 6rem;
+  }
+
+  .workshop--js .workshop__slide {
+    gap: 0;
+  }
+
+  .workshop__steps {
+    flex: 1;
+    justify-content: center;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .workshop__slide {
+    grid-template-columns: 55fr 45fr;
+    gap: 6.4rem;
+  }
+
+  .workshop--js .workshop__content {
+    padding-bottom: 8rem;
+  }
+
+  /* Controls under the text column. */
+  .workshop--js .workshop__controls {
+    position: absolute;
+    bottom: 0;
+    left: calc((100% - 6.4rem) * 0.55 + 6.4rem);
+  }
+
+  .workshop__button {
+    min-height: 5.6rem;
+    font-size: 1.4rem;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .workshop__button:hover,
+  .workshop__button:focus-visible {
+    transform: translateY(-0.25rem);
+  }
+}
