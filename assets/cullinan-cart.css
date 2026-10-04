@@ -508,3 +508,81 @@ cart-drawer cart-drawer-items {
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
+
+/* ===========================================================================
+   The cart page (/cart), 2026-10-04: the same words and button as the drawer.
+   Dawn's layout stays (a table with the picture, the details, the quantity and
+   the line total); what changes is what the drawer already settled: the options
+   as one line of values (snippets/cart-item-options.liquid), „Премахни“ in words
+   instead of a bin icon, and the checkout button's size and type. Ids, because
+   Dawn's cart stylesheets load inside the sections, after this one.
+   =========================================================================== */
+
+#main-cart-items .cart-item__options {
+  margin: 0.6rem 0 0;
+  color: rgba(var(--color-foreground), 0.7);
+  font-size: 1.15rem;
+  letter-spacing: 0.06em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+#main-cart-items cart-remove-button .cart-remove-button {
+  width: auto;
+  min-width: 0;
+  height: auto;
+  min-height: 4.4rem;
+  padding: 0 0.4rem;
+  margin-left: 1.2rem;
+  box-shadow: none;
+}
+
+#main-cart-items cart-remove-button .cart-remove-button::before,
+#main-cart-items cart-remove-button .cart-remove-button::after {
+  content: none;
+}
+
+#main-cart-items .cart-remove-button__label {
+  color: rgb(var(--color-foreground));
+  font-family: var(--font-body-family);
+  font-size: 1.2rem;
+  letter-spacing: 0.04em;
+  text-decoration: underline;
+  text-underline-offset: 0.3rem;
+}
+
+#main-cart-items .cart-remove-button:hover .cart-remove-button__label {
+  text-decoration-thickness: 0.2rem;
+}
+
+#main-cart-footer .cart__checkout-button.button::before,
+#main-cart-footer .cart__checkout-button.button::after {
+  content: none;
+}
+
+#main-cart-footer .cart__checkout-button.button {
+  min-height: 4.8rem;
+  border-radius: 0;
+  background-color: rgb(var(--color-button));
+  color: rgb(var(--color-button-text));
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  box-shadow: inset 0 0 0 1px rgba(var(--color-button), 0);
+  transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out,
+    box-shadow 0.35s ease-in-out, transform 0.2s cubic-bezier(0, 0, 0.3, 1);
+}
+
+#main-cart-footer .cart__checkout-button.button:not([disabled]):hover,
+#main-cart-footer .cart__checkout-button.button:not([disabled]):focus-visible {
+  background-color: #e6bab9;
+  color: rgb(var(--color-foreground));
+  box-shadow: inset 0 0 0 1px #e6bab9;
+}
+
+@media screen and (max-width: 749px) {
+  #main-cart-footer .cart__checkout-button.button {
+    font-size: 1.4rem;
+  }
+}

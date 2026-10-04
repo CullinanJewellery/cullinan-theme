@@ -141,19 +141,17 @@
                         </div>
                       {%- endif -%}
 
-                      {%- if item.product.has_only_default_variant == false
-                        or item.properties.size != 0
-                        or item.selling_plan_allocation != null
-                      -%}
+                      {%- comment -%}
+                        Cullinan (2026-10-04): the options as one line of values, material first,
+                        the colour left out where the product page leaves it out -- the same
+                        snippet as the cart drawer, so the two read alike. The option names are
+                        instructions written for the product page („изберете вашия размер“), so
+                        they are not printed. Checkout and the order emails list every option.
+                      {%- endcomment -%}
+                      {%- render 'cart-item-options', item: item -%}
+
+                      {%- if item.properties.size != 0 or item.selling_plan_allocation != null -%}
                         <dl>
-                          {%- if item.product.has_only_default_variant == false -%}
-                            {%- for option in item.options_with_values -%}
-                              <div class="product-option">
-                                <dt>{{ option.name }}:</dt>
-                                <dd>{{ option.value }}</dd>
-                              </div>
-                            {%- endfor -%}
-                          {%- endif -%}
 
                           {%- for property in item.properties -%}
                             {%- assign property_first_char = property.first | slice: 0 -%}
@@ -312,12 +310,10 @@
                           >
                             <a
                               href="{{ item.url_to_remove }}"
-                              class="button button--tertiary"
+                              class="button button--tertiary cart-remove-button"
                               aria-label="{{ 'sections.cart.remove_title' | t: title: item.title | escape }}"
                             >
-                              <span class="svg-wrapper">
-                                {{- 'icon-remove.svg' | inline_asset_content -}}
-                              </span>
+                              <span class="cart-remove-button__label">{{ 'cullinan.cart.remove' | t }}</span>
                             </a>
                           </cart-remove-button>
                         </div>
