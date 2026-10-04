@@ -8,6 +8,13 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-04 — next stage **(owner: "start the next stage")**
+- Phone hero: the picture fills its 375px square and shows the pendant (Dawn's zoom-in had made it fixed and 100vh
+  tall). Desktop unchanged. Verified on the preview.
+- Footer payment icons hidden: payment setup is pending (firm not registered; status in `docs/tasks.md` A2) **(owner)**.
+- Specifications follow the selected variant: each row reads the variant's metafield first, then the product's; new
+  row `custom.dimensions` („Размери на бижуто“); refreshed on variant change by `product-info.js`.
+
 ## 2026-10-04 — documentation reorganised
 - CLAUDE.md archived verbatim as `docs/archive/CLAUDE-original.md` and rewritten as a short entry point; current
   design system, theme guide, this changelog and the task list split into `docs/`.

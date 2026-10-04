@@ -5,16 +5,29 @@ apart: theme work we can do now, decisions only the owner can make, and Shopify-
 
 ## A. Known theme bugs
 
-1. **Hero picture on phones does not fill its square** (found on the live preview, 2026-10-04). At 375px the image
-   renders 422×913 inside a 375×375 slot, top-aligned, so the pendant is cut off and `object-position: 50% 70%` has
-   no effect. Needs `width/height: 100%; object-fit: cover` on the phone hero image. The local mock hid it because
-   the mock image was inserted with its own styles. *Next stage.*
+None open. (Phone hero crop fixed and verified on the preview, 2026-10-04.)
+
+## A2. Payment setup status (2026-10-04, from the owner): pending, not ready
+
+The owner's new firm is not registered yet. **Nothing on the site may claim online payments are ready, and no
+payment-provider or checkout setting is to be changed from here.**
+
+| Method | Status in the Admin | Notes |
+|---|---|---|
+| Shopify Payments | "Complete setup" (not set up) | Needs the registered firm |
+| PayPal | "Setup incomplete" | Footer was showing its icon automatically |
+| Cash on delivery (Manual payment methods) | **Not verified** | The intended method; its checkout configuration is unverified |
+
+- Footer payment icons hidden (`payment_enable: false` in `sections/footer-group.json`) until the methods are real.
+- **Cash-on-delivery claims already on the site** (written as fact, flagged for the owner, not changed): the homepage
+  trust band card „Наложен платеж“, the product trust line „Наложен платеж — плащате при получаване“, the product tab
+  „Начини на плащане“, and the cart drawer reassurance line. They become true only once COD is configured at
+  checkout. Before launch: configure COD under Manual payment methods and place a test order, or hide those lines.
 
 ## B. Theme work authorised (the owner's brief of 2026-10-04), next stage
 
-1. **Product information**: make metal, fineness, weight, stone details and dimensions clear when supplied (reuse the
-   `product_specs` metafields); make specs follow the selected variant where they differ (needs variant metafields;
-   document the setup); never show generic text as a piece's specification.
+1. ~~Variant-aware specifications~~ done 2026-10-04 (see `docs/theme-guide.md` §4, Specs). Admin setup to use it is in
+   D. Never show generic text as a piece's specification.
 2. **Ring-size guide** in Bulgarian, linked beside the size selector: the European system (size = inner circumference
    in mm), how to measure with a ring sizer, stated limitations; no promise of free resizing.
 3. **Buying information** near the purchase controls (confirmed facts only), details in the accordions; distinguish
@@ -61,7 +74,7 @@ No replacement legal text is to be written; the accountant handles legal pages.
 | Prices €0 | Обеци, Висулка плочка, Гривна с червен конец | Set real prices |
 | Vendor "Crown Jewellery" | All products | Use the field for stone or metal (cards print it) |
 | No tags, product types empty or "earings" | All products | Stone tags (Циркон, Диамант…), types (Пръстени…) |
-| Spec metafields empty | All products | `custom.metal`, `custom.proba`, `custom.weight_g`, `custom.stone`, `custom.stone_count`, `custom.stone_size`, `custom.stone_weight_ct`, `custom.cut`, `custom.detail` |
+| Spec metafields empty | All products | Product definitions (Settings → Custom data → Products): `custom.metal`, `custom.proba` (text), `custom.weight_g` (decimal), `custom.stone`, `custom.stone_count` (integer), `custom.stone_size`, `custom.stone_weight_ct` (decimal), `custom.cut`, `custom.dimensions` (text), `custom.detail`. Where a variant differs (e.g. 14K vs 18K weight/fineness), create the **same keys under Settings → Custom data → Variants** and fill them per variant; the variant's value wins |
 | Photographs with logo/slogan burned in | Bracelet; the ring's second photo | Replace (the first rule) |
 | Variant pictures missing | Ring rose/white sizes 56-60, silver variants | Link pictures to every paired variant |
 | 112 variants on one ring (only 28 reachable) | Ring | Consider one material option carrying swatches |

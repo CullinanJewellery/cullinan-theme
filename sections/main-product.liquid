@@ -275,12 +275,37 @@
                     all shows no accordion. Same "structure before content" rule the
                     empty image slots follow everywhere else on the site.
                   {%- endcomment -%}
+                  {%- comment -%}
+                    2026-10-04: each row reads the selected variant's metafield first (same
+                    namespace and key, defined under Settings > Custom data > Variants) and falls
+                    back to the product's. A 14K and an 18K variant can then show different weights
+                    and finenesses. The list sits in #ProductSpecs-<section>, which product-info.js
+                    refreshes on every variant change, like the price. The accordion renders when the
+                    product or any variant has a value, or when the block has its own text.
+                  {%- endcomment -%}
                   {%- liquid
-                    assign m = product.metafields.custom
+                    assign spec_variant = product.selected_or_first_available_variant
+                    assign spec_keys = 'metal,proba,weight_g,stone,stone_count,stone_size,stone_weight_ct,cut,dimensions' | split: ','
                     assign has_specs = false
-                    if m.metal != blank or m.proba != blank or m.weight_g != blank or m.stone != blank or m.stone_count != blank or m.stone_size != blank or m.stone_weight_ct != blank or m.cut != blank
-                      assign has_specs = true
-                    endif
+                    for key in spec_keys
+                      if product.metafields.custom[key] != blank
+                        assign has_specs = true
+                        break
+                      endif
+                    endfor
+                    unless has_specs
+                      for v in product.variants
+                        for key in spec_keys
+                          if v.metafields.custom[key] != blank
+                            assign has_specs = true
+                            break
+                          endif
+                        endfor
+                        if has_specs
+                          break
+                        endif
+                      endfor
+                    endunless
                   -%}
                   {%- if has_specs or block.settings.content != blank or block.settings.page != blank -%}
                     <div class="product__accordion accordion quick-add-hidden" {{ block.shopify_attributes }}>
@@ -296,56 +321,50 @@
                         </summary>
                         <div class="accordion__content rte" id="ProductAccordion-{{ block.id }}-{{ section.id }}">
                           {%- if has_specs -%}
-                            <dl class="product-specs">
-                              {%- if m.metal != blank -%}
-                                <div class="product-specs__row">
-                                  <dt class="product-specs__label">Метал</dt>
-                                  <dd class="product-specs__value">{{ m.metal | escape }}</dd>
-                                </div>
+                            <div id="ProductSpecs-{{ section.id }}">
+                              {%- capture spec_rows -%}
+                                {%- for key in spec_keys -%}
+                                  {%- liquid
+                                    assign spec_value = spec_variant.metafields.custom[key].value
+                                    if spec_value == blank
+                                      assign spec_value = product.metafields.custom[key].value
+                                    endif
+                                    case key
+                                      when 'metal'
+                                        assign spec_label = 'Метал'
+                                      when 'proba'
+                                        assign spec_label = 'Проба'
+                                      when 'weight_g'
+                                        assign spec_label = 'Тегло'
+                                      when 'stone'
+                                        assign spec_label = 'Камък'
+                                      when 'stone_count'
+                                        assign spec_label = 'Брой камъни'
+                                      when 'stone_size'
+                                        assign spec_label = 'Размер на камъка'
+                                      when 'stone_weight_ct'
+                                        assign spec_label = 'Тегло на камъка'
+                                      when 'cut'
+                                        assign spec_label = 'Шлифовка'
+                                      when 'dimensions'
+                                        assign spec_label = 'Размери на бижуто'
+                                    endcase
+                                  -%}
+                                  {%- if spec_value != blank -%}
+                                    <div class="product-specs__row">
+                                      <dt class="product-specs__label">{{ spec_label }}</dt>
+                                      <dd class="product-specs__value">
+                                        {{- spec_value | escape -}}
+                                        {%- if key == 'weight_g' %} г{% elsif key == 'stone_weight_ct' %} ct{% endif -%}
+                                      </dd>
+                                    </div>
+                                  {%- endif -%}
+                                {%- endfor -%}
+                              {%- endcapture -%}
+                              {%- if spec_rows != blank -%}
+                                <dl class="product-specs">{{ spec_rows }}</dl>
                               {%- endif -%}
-                              {%- if m.proba != blank -%}
-                                <div class="product-specs__row">
-                                  <dt class="product-specs__label">Проба</dt>
-                                  <dd class="product-specs__value">{{ m.proba | escape }}</dd>
-                                </div>
-                              {%- endif -%}
-                              {%- if m.weight_g != blank -%}
-                                <div class="product-specs__row">
-                                  <dt class="product-specs__label">Тегло</dt>
-                                  <dd class="product-specs__value">{{ m.weight_g }} г</dd>
-                                </div>
-                              {%- endif -%}
-                              {%- if m.stone != blank -%}
-                                <div class="product-specs__row">
-                                  <dt class="product-specs__label">Камък</dt>
-                                  <dd class="product-specs__value">{{ m.stone | escape }}</dd>
-                                </div>
-                              {%- endif -%}
-                              {%- if m.stone_count != blank -%}
-                                <div class="product-specs__row">
-                                  <dt class="product-specs__label">Брой камъни</dt>
-                                  <dd class="product-specs__value">{{ m.stone_count }}</dd>
-                                </div>
-                              {%- endif -%}
-                              {%- if m.stone_size != blank -%}
-                                <div class="product-specs__row">
-                                  <dt class="product-specs__label">Размер на камъка</dt>
-                                  <dd class="product-specs__value">{{ m.stone_size | escape }}</dd>
-                                </div>
-                              {%- endif -%}
-                              {%- if m.stone_weight_ct != blank -%}
-                                <div class="product-specs__row">
-                                  <dt class="product-specs__label">Тегло на камъка</dt>
-                                  <dd class="product-specs__value">{{ m.stone_weight_ct }} ct</dd>
-                                </div>
-                              {%- endif -%}
-                              {%- if m.cut != blank -%}
-                                <div class="product-specs__row">
-                                  <dt class="product-specs__label">Шлифовка</dt>
-                                  <dd class="product-specs__value">{{ m.cut | escape }}</dd>
-                                </div>
-                              {%- endif -%}
-                            </dl>
+                            </div>
                           {%- endif -%}
                           {{ block.settings.content }}
                           {{ block.settings.page.content }}

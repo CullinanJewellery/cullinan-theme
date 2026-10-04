@@ -203,6 +203,8 @@ if (!customElements.get('product-info')) {
           };
 
           updateSourceFromDestination('price');
+          // Cullinan: the spec list follows the selected variant (sections/main-product.liquid, product_specs).
+          updateSourceFromDestination('ProductSpecs');
           updateSourceFromDestination('Sku', ({ classList }) => classList.contains('hidden'));
           updateSourceFromDestination('Inventory', ({ innerText }) => innerText === '');
           updateSourceFromDestination('Volume');

@@ -61,7 +61,7 @@ social → newsletter. Hidden (`"disabled": true`, kept): `hero_facts`, `image_m
 
 | Section | Files | Behaviour |
 |---|---|---|
-| Hero (`hero_image`) | Dawn `image-banner.liquid` + `crown.css` | Owner's photo; ≥750px words at the left, marble white over a gradient; phone: words below the picture on a clay panel; ruby button; `[years]` token renders years since 1991. **Known bug**: on phones the picture does not fill its square (see `docs/tasks.md`) |
+| Hero (`hero_image`) | Dawn `image-banner.liquid` + `crown.css` | Owner's photo; ≥750px words at the left, marble white over a gradient; phone: words below the picture on a clay panel; ruby button; `[years]` token renders years since 1991. On phones Dawn's zoom-in makes the image `position: fixed; 100vh`; a phone-only rule in `crown.css` (keyed to `__hero_image`) puts it back to `absolute; inset: 0; object-fit: cover` so the 375px square shows the pendant |
 | Trust band (`benefits`) | `sections/icon-benefits.liquid`, `assets/section-icon-benefits.css` | Bordered cards: ringed icon, small-capitals title, sentence. As many equal columns as cards (3 now); 2 columns on phones, odd last card spans. Blocks: icon or uploaded image, heading, subline |
 | Selected pieces | Dawn `featured-collection.liquid` | Carousel of `all`, 3 whole cards from 990px; skips the current product when used on a product page |
 | Categories | `sections/category-mosaic.liquid` + CSS | Tall/standard tiles via block order; caption over the picture; empty tiles show the hero gradient with ink words; tiles without a link are not links |
@@ -82,7 +82,7 @@ Block order: rating → title → description → price → variant picker → d
 |---|---|---|
 | Breadcrumb | `main-product.liquid` (section settings) | „Начало / name“, ≥990px only, grey link turning black |
 | Rating | `rating` block | Five outline stars until Judge.me writes `reviews.rating` |
-| Specs | `product_specs` block | Prints rows only for filled metafields: `custom.metal`, `custom.proba`, `custom.weight_g`, `custom.stone`, `custom.stone_count`, `custom.stone_size`, `custom.stone_weight_ct`, `custom.cut`; then shared richtext or page. **Product-level only; not variant-aware yet** |
+| Specs | `product_specs` block, `assets/product-info.js` | Rows (in this order): `custom.metal`, `custom.proba`, `custom.weight_g` (г), `custom.stone`, `custom.stone_count`, `custom.stone_size`, `custom.stone_weight_ct` (ct), `custom.cut`, `custom.dimensions`; then shared richtext or page. **Each row reads the selected variant's metafield first, then the product's** (same namespace and key; variant definitions under Settings → Custom data → Variants). The list sits in `#ProductSpecs-<section>`, which `product-info.js` refreshes on variant change like the price. A row prints only when filled; the accordion only when the product or any variant has a value, or the block has text |
 | Collapsible tabs | `collapsible_tab` | Render nothing when they have no text and no page |
 | Delivery note | `delivery_note` block | Bold label + text, truck icon; „Изработка по поръчка: Доставка 5-20 работни дни“ |
 | Order by phone | `phone_order` block | Link dialling the block's number (not printed); nothing without a number |
