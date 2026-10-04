@@ -170,7 +170,9 @@ we stand.
 6. **Specifics, not superlatives.** "18k gold with diamonds 0.31 ct TW VS", "63 diamonds, hand-set by master
    goldsmiths"; never "premium quality". Every card and product page names the metal, the stone and the weight.
    „Първокласни метали“ and „Сертифицирани продукти“, the owner's early claims, were the kind of line a house does
-   not write (both replaced the same night, see wave 1). (This needs the product metafields filled: `custom.metal`, `custom.stone`, `custom.weight_g`.)
+   not write (both replaced the same night, see wave 1). (The theme already prints them: a card shows the product's Vendor field and its `custom.detail` line, and the
+   product page's „Качество и детайли“ prints `custom.metal`, `custom.proba`, `custom.weight_g`, `custom.stone` and the
+   rest. What is missing is the data, which is store data: see Waiting on the Shopify admin.)
 7. **Service is part of the product, and it is shown**: an advisor or a phone, engraving, care and repair,
    packaging, shipping and returns, a size guide. We can state personal service by phone, engraving, made to
    order, a shop to visit and care advice. **We cannot yet state** packaging, a warranty, repair or shipping
@@ -224,8 +226,7 @@ that is theirs.
   is, how it is made) and a spec line on each card. Ours has neither yet: the introductions are Shopify
   collection descriptions (store data), the spec line needs the metafields. **Queue.** Prices are whole numbers and
   15px now.
-- **Product page.** Done: the price is 18px and whole; a small "order by phone" link under the button (the block
-  exists; the template names it in a later push). Already right: metals as words, square size boxes, one black
+- **Product page.** Done: the price is 18px and whole; a small "order by phone" link under the button. Already right: metals as words, square size boxes, one black
   rosewood button, accordions, a made-to-order line, "style with" (Подхождат си). **Queue**: a spec line under the
   title from the metafields; the engraving field at purchase; a service block; a worn picture as the last
   thumbnail (photography).
@@ -272,8 +273,10 @@ Each row is a reversal or an addition made under the permission above. The owner
 - **The stones row leads with the stones that carry the value**: diamond, sapphire, ruby, emerald, pearl, then the
   zircon (was zircon first). Way back: `block_order` of `stones`.
 - **Top bar**: „Ръчна изработка от 1991“ in place of „Безупречно качество до детайла“.
-- **Order by phone**: the `phone_order` block of `sections/main-product.liquid`: a small link under the button that
-  dials the number set on the block and prints nothing without one.
+- **Order by phone**: the `phone_order` block of `sections/main-product.liquid` (pushed 14:22), named in
+  `templates/product.json` right after Add to cart (a later push, once Shopify held the block): a small link under the
+  button that dials +359 88 287 4895, the number Контакти already dials, and prints nothing without one. Way back:
+  take the block out of the template.
 - **Контакти** and **the footer** gain the shop (above).
 
 ### Queue, in the order of value for effort
@@ -282,8 +285,9 @@ Each row is a reversal or an addition made under the permission above. The owner
    worn picture last, close detail of the setting and the engraving, the workshop hands, the box and the bag when
    they exist; models cropped at the face, as the hero is; the same light across all fifty. A shot list is in
    `photography/README.md`.
-2. **Spec lines on cards and pages** from `custom.metal`, `custom.stone`, `custom.weight_g` (rule 6): the theme
-   change is small, the data entry is the work.
+2. **Fill the spec data** (rule 6): the Vendor field and `custom.detail` for the cards; `custom.metal`, `custom.proba`,
+   `custom.weight_g`, `custom.stone` and the rest for the product page. The theme prints all of it already; the one
+   small addition is a spec line directly under the product title, as Tiffany and Ole Lynggaard have.
 3. **Engraving at purchase**: a text field that travels with the order as a line-item property. Needs the answers
    below.
 4. **A ring-size guide, a care page, a stones guide**; several wait on the owner's facts (care and repair).

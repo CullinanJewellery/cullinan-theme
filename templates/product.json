@@ -108,6 +108,13 @@
             "image_ratio": "square",
             "enable_quick_add": false
           }
+        },
+        "phone_order": {
+          "type": "phone_order",
+          "settings": {
+            "label": "Поръчайте по телефон",
+            "phone": "+359 88 287 4895"
+          }
         }
       },
       "block_order": [
@@ -118,6 +125,7 @@
         "variant_picker",
         "delivery_note",
         "buy_buttons",
+        "phone_order",
         "shipping_tab",
         "payment_tab",
         "specs",
