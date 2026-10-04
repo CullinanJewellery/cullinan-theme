@@ -22,6 +22,289 @@ atelier in Veliko Tarnovo, Bulgaria, trading since 1991. There is a physical sho
 - Store currency: EUR. Customer-facing language: Bulgarian.
 - The old site (studio-cullinan.com, Zen Cart) is being replaced by this Shopify store.
 
+## The goal: luxury jewellery at a high price
+
+**The owner, 2026-10-04**, answering whether the shop engraves ("we are engraving") and in the same message:
+"i want to say something in the CLAUDE.md if we have to change something so we can make the website better
+change it i mean our goal is to sell luxery jewelry and sell it on high price ofcourse we will have a lower
+prices but i want to sell just good and pricy stuff so if you need to use for reference other websites not
+just moonmagic and hestiahomebg use more and write it in the md file so we can make the best website and if
+you have to change the home page and all the pages we have".
+
+What this settles, and what it hands over:
+
+- **The goal.** Sell luxury jewellery at a high price. Cheaper pieces exist and stay, but the shop is built to
+  sell the good, expensive ones, and everything else supports that. One question judges every decision:
+  *does this make a purchase of several hundred or several thousand euros feel safe and desirable?*
+- **Permission to change anything**, the homepage and every other page included, and to look at more sites than
+  moonmagic and hestiahome.bg. **This outranks two habits further down this file**: the pace (one element per
+  round, top to bottom) and loyalty to earlier decisions. An earlier decision, the owner's own included, may be
+  reversed when it works against the goal -- but each reversal is written down here with its reason and its
+  one-line way back, and the owner is told in plain words. **What does not change**: the safety rules (never
+  publish the theme or launch the store; no invented legal text; nothing burned into a photograph; no review
+  invented; no empty collection linked; ask before touching checkout or payments) and the owner's explicit
+  "exactly this" instructions, which are reversed only for a stated reason and announced.
+- **Engraving is offered** (confirmed 2026-10-04). It had looked contradictory: the benefits row promised it
+  while the owner had taken the engraving question out of the FAQ (2026-09-30). Settled: „Гравиране по
+  желание“ (name, date or message) stands. **Not yet known**: its price, a character limit, the lead time,
+  and whether it is asked for with the order or by phone.
+
+### Facts the site may state
+
+From the owner or the old site. **Anything not on this list is not claimed** until the owner says so (the same
+discipline as Legal pages under Working agreements).
+
+- Trading since 1991; handmade in an atelier in Veliko Tarnovo; every piece starts as the atelier's own 3D
+  model and is finished by hand.
+- Gold 14K (proba 585) and 18K (750); silver 925, rhodium plated.
+- Stones appraised by a specialist qualified at HRD Antwerp.
+- Engraving on request: name, date or message.
+- Made to order, 5-20 working days; a piece shown can be made with another stone, metal or size.
+- Delivery with Econt and Speedy, to an office or an address anywhere in Bulgaria; cash on delivery; returns
+  within 14 days of receipt.
+- A shop at бул. Васил Левски 21, Veliko Tarnovo, where the pieces can be seen; a number to call (+359 88 287
+  4895, a button, never printed as text).
+- **Never claimed so far**: free shipping or a delivery price, a warranty, opening hours, gift packaging, a
+  certificate of authenticity with the piece, repair or cleaning, lifetime care, a named designer, a number of
+  designs ("about 4,000" is the owner's figure in the brief; the old site lists 2,038 products).
+
+### The formula, widened
+
+The earlier formula (moonmagic + hestiahome.bg + Cullinan's own requirements, see How we work) becomes:
+
+**luxury houses (what "expensive" looks like) + moonmagic (shop mechanics and structure only) + hestiahome.bg
+(buttons and motion) + Cullinan's own facts and requirements.**
+
+moonmagic is **accessible luxury**: moonstone rings in the low hundreds of dollars, discount stickers, a modern
+catalogue UI. It taught the shop mechanics (a buy box, a cart, a gallery), and those stay. But **where a luxury
+house and moonmagic disagree about something that changes how expensive the shop feels, the luxury house wins.**
+Every new section or change checks all four: a luxury reference, moonmagic for mechanics, hestiahome for buttons
+and motion, and the facts above. Neither moonmagic nor hestiahome sells fine jewellery at a high price.
+
+### Reference sites, looked at live on 2026-10-04
+
+Opened in the browser pane (a 1024px window, so the sizes below are the tablet-to-computer tier). No cookie banner
+was accepted: declined where one blocked the page, left alone otherwise. Numbers are measured, not remembered.
+**Nothing of theirs is copied: structure, proportion and habit only, never their words, pictures or code.**
+
+**The luxury houses**
+- **Tiffany & Co.** (tiffany.com; a two-diamond 18k ring is $2,300.) Six homepage blocks, 9,448px tall: a
+  campaign hero with one line and one link, that collection's pieces, two shelf tiles, four category tiles, two
+  collection stories carrying archive dates (1962, 1889), and a services trio -- book an appointment,
+  personalisation ("bespoke engraving"), contact. Serif headings 40px/500 and 32px/325 with tight tracking, sans
+  text 16px, link-buttons 11px capitals tracked 0.08em. **Product page: price 13px**, whole dollars; the metals
+  as words, the sizes as 36px square boxes; Add to cart a 60px full-width black rectangle; under it a second
+  full-width cream button, "contact a client advisor or book an appointment"; two sentences of description, a
+  spec list (metal and stones, carat weight, SKU); then a service stack: packaging, complimentary shipping and
+  returns, a client advisor, responsible sourcing, a size guide, visit a store.
+- **Van Cleef & Arpels** (vancleefarpels.com; "place Vendôme since 1906".) About ten blocks, each a picture with a
+  line or two: a campaign hero (a six-slide carousel; the hero line is serif 40px regular, no tracking),
+  editorial blocks on craft and patronage, a collection story, an invitation to the boutiques, gifts, the
+  categories, news, and **care and services ("personalize, adjust or revive")** as content. No prices on the
+  homepage (8,255px). The header is 100px, fixed, transparent over the picture, a
+  thin serif wordmark centred; menu labels 16px capitals tracked 0.12em; **calls to action are 13px capitals
+  text links in grey, not buttons**.
+- **Ole Lynggaard Copenhagen** (olelynggaard.com; family firm, handcrafted 18k, "fine jewellery since 1963", "by
+  appointment to the Royal Danish Court"; the rings on one page cost $3,600 to $16,000.) **The closest to us in
+  story.** Both heritage lines sit under the logo; the bar says all prices include duties and shipping is
+  complimentary. Five homepage blocks (3,704px): an inset hero with its caption baked into the picture and no
+  button, a gemstone feature, an edit, engagement and wedding, a "planning to propose?" note, the newsletter.
+  Headings serif capitals 20px tracked 0.1em, text sans 16px, calls to action plain text links. **Cards carry a
+  spec line** ("18k gold with diamonds 0.31 ct. TW. VS.") and **a 10px grey whole-number price**. The product page
+  has a 24px tracked-capitals title in charcoal `#4B4B4B` (not black), a 58px charcoal button with a 3px radius,
+  **"Order by phone" beside it**, a vertical thumbnail strip whose last picture is worn, a description that names
+  the designer, the stone count and "hand-set by master goldsmiths", accordions, four pieces to style it with, and
+  service pillars (gift wrapping in handmade silk boxes, free shipping, secure payment, care). The footer lists
+  contact, store locator, book an appointment, size guide, care guide, payment and prices, delivery, returns,
+  claims and repairs, and gives its reply time and phone hours; gifts are sorted by occasion; guides cover
+  engagement, diamonds and size.
+- **Pomellato** (pomellato.com; the pane was sent to its **Bulgarian storefront, in euros**.) Four or five
+  blocks (4,449px) and a bar saying standard shipping and returns are complimentary. "Most wanted" is twelve
+  pieces showing only a name and a price: **€2,500 to €16,500, whole euros, 16px**. The footer: FAQ, size guide,
+  shipping and returns, **packaging**, **care and repairing**, payment methods, **legal guarantee**. This is what a
+  luxury brand shows a Bulgarian customer.
+- **Jessica McCormack** (London, diamonds.) One full-bleed model picture per screen, a tiny spaced serif
+  wordmark, serif text and 12px monospaced controls; "make an enquiry" and "chat with an ambassador" for the top
+  pieces.
+
+**The accessible tier, which is what not to be**
+- **Mejuri** (a four-block homepage, a 64px capital grotesque hero, monospaced text, "stores and services" with
+  complimentary cleaning): modern and friendly, priced in the hundreds. Not a tone to borrow.
+- **Catbird** (charms at $48 to $198): "best seller", "ready to ship" and "new" stickers, shelves of "under $150 /
+  $300 / $500 / $1000", long carousels of small pieces. A high-price shop does none of this.
+- **moonmagic**: see above; mechanics only.
+
+**The Bulgarian rivals our customers compare us with**
+- **Kirkorian Diamonds** (since 1998; diamonds with GIA and IGI certificates, lab-grown too.) Diamond rings of 0.13
+  to 0.98 ct in 14K cost **€887 to €2,701**; prices are written "€1.039,00"; cards carry "НАМАЛЕНИЕ" and
+  "ИЗЧЕРПАН" stickers and catalogue codes in the titles; 4.85 stars from 126 reviews; a "create your own model"
+  offer. Take: certificates stated plainly, the custom-design offer. Leave: stickers, codes, decimals.
+- **Aristo Jewellery**, Varna (since 1997; "29 years of craft turned into trust".) The main action is "connect
+  with a jeweller"; services are repair, gold buying, made to order. Take: a person as the call to action.
+- **ASTO Gold**, Plovdiv ("over 33 years".) A 14K catalogue; tennis bracelets €2,340 to €4,120, pendants and
+  crosses €167 to €377; **euro and lev prices side by side**; a gift box and a certificate of origin claimed;
+  keyword-heavy titles ("a gift for cyclists"). Leave: the titles, the double price.
+- **Our edge over all three**: **1991 is older**, every piece is made from the atelier's own models, and there is
+  no discount culture to unlearn.
+
+**Not readable**: Cartier (the pane received an error page from the site's bot protection) and Bulgari (a blank
+page). Not bypassed.
+
+### The rules
+
+What the houses agree on and the rivals do not. Each is measured above; the page-by-page list after it says where
+we stand.
+
+1. **Few blocks, one idea each.** Homepages: Tiffany 6 blocks, Van Cleef about 10 (each a picture and a line or
+   two), Ole Lynggaard 5, Pomellato 4 to 5, Mejuri 4. Ours had 13 visible sections, most of them rows of small
+   things. A block is one heading, at most a sentence and one link. Target: nine or ten, each as quiet as theirs.
+2. **The picture leads, the words are small.** Hero line 40px (Tiffany, Van Cleef), section headings 20 to 32px,
+   text 14 to 16px. A heading is never louder than the piece.
+3. **Prices are quiet and whole.** 10 to 16px, regular, grey or black, no decimals, no strike-through. Tiffany 13,
+   Ole Lynggaard 10, Pomellato 16; moonmagic 22 and 18, the Bulgarian rivals "€1.039,00".
+4. **No stickers, no discounts, no price shelves.** Not "new", "best seller", "ready to ship", "-20%", not
+   "under €300". They are the mid-market's tell (Catbird, Kirkorian). A piece made to order is never "sold out".
+5. **Heritage is a date beside the name.** Since 1837, 1906, 1963, 1998, 1997, "over 33 years". Ours is **since
+   1991**, older than all three Bulgarian rivals. It belongs by the logo, in the top bar, on the first line of
+   За нас and in the footer.
+6. **Specifics, not superlatives.** "18k gold with diamonds 0.31 ct TW VS", "63 diamonds, hand-set by master
+   goldsmiths"; never "premium quality". Every card and product page names the metal, the stone and the weight.
+   „Първокласни метали“ and „Сертифицирани продукти“, the owner's early claims, are the kind of line a house does
+   not write. (This needs the product metafields filled: `custom.metal`, `custom.stone`, `custom.weight_g`.)
+7. **Service is part of the product, and it is shown**: an advisor or a phone, engraving, care and repair,
+   packaging, shipping and returns, a size guide. We can state personal service by phone, engraving, made to
+   order, a shop to visit and care advice. **We cannot yet state** packaging, a warranty, repair or shipping
+   terms (see the questions at the end).
+8. **A human, one tap away.** "Order by phone" beside the button (Ole Lynggaard), "contact a client advisor"
+   (Tiffany), "make an enquiry" (Jessica McCormack), "connect with a jeweller" (Aristo).
+9. **The product page is calm**: the piece on a soft neutral tile; two to five pictures, the last one worn; a
+   serif title; one spec line; a quiet price; the metal as words; square size boxes; one primary button, then
+   small text links; a short description with a human fact (who drew it, how many stones, set by hand);
+   accordions; four pieces to style it with; a service block.
+10. **Collections have names and a story** (Tiffany's HardWear 1962 and Knot 1889, Pomellato's Iconica and Nudo,
+    Ole Lynggaard's Winter Frost). Once the first fifty are chosen, they fall into three or four named design
+    families with a sentence of origin each; until then the categories stand.
+11. **Calls to action are small**: text links or small squares in 11 to 14px capitals tracked 0.08 to 0.12em
+    (Tiffany 11px/0.08em, Van Cleef 13px/0.11em, Ole Lynggaard 14px/0.8px). **The hero's button is 72px tall and
+    485px wide in ruby, at the owner's explicit wish (2026-09-21, 2026-10-04): the loudest object on the first
+    screen of any shop we looked at. Flagged, not changed; "smaller" is one request.**
+12. **Warm neutrals, one accent, no pure black fields**: charcoal rather than black (Ole Lynggaard `#4B4B4B`), a
+    light tile grey, one signature colour used sparingly. Direction C (marble, rose-clay, espresso, rosewood)
+    already follows this.
+13. **Teach, because the sum is large**: guides for size, care, diamonds and engagement (Ole Lynggaard, Tiffany,
+    Van Cleef). We have the FAQ and the About panels; the ring-size guide, a care page and a stones guide are the
+    next pages.
+14. **Respect the Bulgarian buyer**: euros as whole numbers; a person to ring; cash on delivery available, in the
+    cart's reassurances and the product page's payment accordion, but **not a first-screen claim**; no lev price
+    beside the euro.
+
+**What we do not take from anyone**: a royal warrant or any distinction we do not hold; "complimentary shipping"
+(no policy); dated archive stories we cannot tell; a client advisor team (there is the owner); a signature colour
+that is theirs.
+
+### The site against the rules, page by page (2026-10-04)
+
+- **Header and top bar.** The logo is a heavy retro brush script: the most ownable thing on the site and the least
+  maison-like -- every house we looked at sets a refined wordmark in capitals or thin serif. **Not changed** (it
+  is the owner's brand asset); a refined wordmark is the one logo-level question worth raising. The top bar's
+  first message is now „Ръчна изработка от 1991“ (was „Безупречно качество до детайла“, a superlative); the second
+  stays „Лична грижа за всеки клиент“. A transparent header over the hero (Van Cleef) needs the photograph and
+  the sticky bar's hide-on-scroll to be reconciled: queued.
+- **Homepage.** The owner uploaded the **first hero photograph** the same day (theme editor): a low-key portrait,
+  the lower face and a gold bell on a chain; it is dealt with under wave 1 below. Done in wave 1: eleven visible
+  sections instead of thirteen (ten on a published theme, where the empty reviews row prints nothing); the
+  target of nine or ten waits for photographs of the pieces; „Най-продавани“ is „Избрани бижута“ (nothing has sold, so
+  "bestsellers" was untrue, and the houses say "selected"); the silver banner and the "new arrivals" band are
+  hidden; the story and the bespoke band moved above the stones row; the stones lead with diamond, sapphire, ruby
+  and emerald and end with the zircon; cash on delivery left the first-screen claims for engraving. **Queue**:
+  fewer, larger blocks once there are photographs of the pieces; collection stories; the two brand-coloured
+  Facebook and Instagram pills of „Вижте работата ни“ (a mass-market habit; a quiet pair of icons is what the houses
+  have) -- the owner's design, flagged.
+- **Collection pages.** The houses give a collection an editorial introduction (Ole Lynggaard: what the material
+  is, how it is made) and a spec line on each card. Ours has neither yet: the introductions are Shopify
+  collection descriptions (store data), the spec line needs the metafields. **Queue.** Prices are whole numbers and
+  15px now.
+- **Product page.** Done: the price is 18px and whole; a small "order by phone" link under the button (the block
+  exists; the template names it in a later push). Already right: metals as words, square size boxes, one black
+  rosewood button, accordions, a made-to-order line, "style with" (Подхождат си). **Queue**: a spec line under the
+  title from the metafields; the engraving field at purchase; a service block; a worn picture as the last
+  thumbnail (photography).
+- **Cart drawer.** Calm and already aligned: hairlines, square, three reassurances. Prices are whole numbers now.
+- **За нас.** Heritage is its subject, which is right. Queue: the first line states „От 1991“; a ring-size guide
+  and a care page as sibling pages.
+- **Контакти.** Gains a third row, **„Магазин във Велико Търново“** with the address and a map link (the shop is a
+  trust signal for a large purchase). Opening hours are not shown: none have been given.
+- **Footer.** Gains a link to the shop. The service pages the houses list (size guide, care, delivery and returns,
+  payment, packaging, warranty) are the queue; several wait for the owner's facts.
+- **Not reviewed**: search, 404, the password page, gift cards.
+
+### Wave 1, 2026-10-04: what changed, why, and the way back
+
+Each row is a reversal or an addition made under the permission above. The owner is told of each in plain words.
+
+- **Prices are whole numbers** when they are (€200, not €200,00): the money filter becomes
+  `money_without_trailing_zeros` in the price snippet, the cards' swatch prices, the cart drawer, the cart page and
+  the filter bar (`snippets/price.liquid`, `card-product.liquid`, `cart-drawer.liquid`, `facets.liquid`,
+  `sections/main-cart-items.liquid`, `main-cart-footer.liquid`). Checkout and the order emails are Shopify's and
+  still show ",00". Way back: `money`.
+- **The price is quieter**: the buy box's 22px (moonmagic's, matched at the owner's request on 2026-09-28) became
+  18px, the cards' 18px became 15px. Way back: two numbers in `assets/crown.css`.
+- **The hero heading is 40px at most on a computer** (it was 57px): it is what the heading was meant to be, and
+  what both houses measure. Phones untouched. Way back: one block at the end of `assets/crown.css`.
+- **The hero with a photograph.** The first picture is dark and warm; set under the old centred, espresso words it
+  failed three ways in a local copy before anything was pushed: unreadable dark words on skin, words over the
+  chain, and the pendant cut off by the centre crop. While a picture is set (an empty hero is unchanged): the
+  picture is positioned at 50% 70% so the pendant sits mid-frame on a computer and a phone (a Shopify focal point
+  still wins); from 750px the words are marble white over a soft espresso gradient from the left and sit at the
+  left, on the logo's edge (`desktop_content_position: middle-left`, `desktop_content_alignment: left` in
+  `templates/index.json`). Way back: delete the block at the end of `crown.css`, set both to centre.
+- **„Най-продавани“ is „Избрани бижута“**; **the silver banner and „Ново при нас“ are hidden** (`disabled: true`;
+  the eye icon in the theme editor brings either back); **the order** is hero, facts, pieces, categories, the story,
+  bespoke, stones, services, reviews (empty, so invisible on a published theme), social, newsletter. Way back:
+  the `order` array and two flags in `templates/index.json`.
+- **Cash on delivery left the first-screen claims** for „Гравиране по желание“; the services row's engraving
+  became „Изработка по поръчка — друг камък, друг метал, друг размер“, so nothing repeats. Cash on delivery stays in
+  the cart drawer's reassurances and the product page's payment accordion. Way back: two strings.
+- **The stones row leads with the stones that carry the value**: diamond, sapphire, ruby, emerald, pearl, then the
+  zircon (was zircon first). Way back: `block_order` of `stones`.
+- **Top bar**: „Ръчна изработка от 1991“ in place of „Безупречно качество до детайла“.
+- **Order by phone**: the `phone_order` block of `sections/main-product.liquid`: a small link under the button that
+  dials the number set on the block and prints nothing without one.
+- **Контакти** and **the footer** gain the shop (above).
+
+### Queue, in the order of value for effort
+
+1. **Photography** is what luxury is made of. The brief: one clean picture of each piece on a soft neutral tile, one
+   worn picture last, close detail of the setting and the engraving, the workshop hands, the box and the bag when
+   they exist; models cropped at the face, as the hero is; the same light across all fifty. A shot list is in
+   `photography/README.md`.
+2. **Spec lines on cards and pages** from `custom.metal`, `custom.stone`, `custom.weight_g` (rule 6): the theme
+   change is small, the data entry is the work.
+3. **Engraving at purchase**: a text field that travels with the order as a line-item property. Needs the answers
+   below.
+4. **A ring-size guide, a care page, a stones guide**; several wait on the owner's facts (care and repair).
+5. **Named design families** once the first fifty are chosen (rule 10).
+6. **The hero's call to action**, smaller, in the houses' manner (rule 11): the owner's call.
+7. **Facebook and Instagram pills** in brand colours to a quiet pair of icons: the owner's call.
+8. **A transparent header over the hero** (Van Cleef); **a refined wordmark** (the logo).
+9. **Press, awards or real client words** in place of stars: reviews stay invisible until they are real, and
+   real ones must come from real clients with permission.
+10. **An appointment route** ("book a visit"): needs opening hours.
+11. **Gifts by occasion** (Ole Lynggaard: graduation, anniversary, birthday, a new baby, Christmas, Valentine's,
+    Mother's Day): the occasions row already proposed.
+
+### Questions for the owner (answers go into the facts list above)
+
+- **Engraving**: the price, how many characters, how long it adds, whether it is asked for with the order.
+- **Opening hours** of the shop, and whether a visit can be booked by phone.
+- **Care and repair**: does the atelier clean, resize, repair or re-plate pieces, and for how long after a sale?
+- **Gift packaging**: what does a piece arrive in?
+- **Certificates**: which pieces come with an appraisal or a certificate, and from whom (HRD Antwerp)?
+- **Prices**: the range of the first fifty, and the dearest piece; delivery price or a free-shipping threshold; how a
+  high-value piece is insured and handed over; whether cash on delivery has a ceiling.
+- **Made to order and the 14-day return**: do both apply to a piece made for one customer?
+- **The logo**: is a refined wordmark an option, or is the brush script the brand?
+
 ## What this repository is
 
 A fork of Shopify's **Dawn 16** theme, connected to the Shopify store through the GitHub
@@ -35,8 +318,11 @@ the theme or launch the store — that is the owner's decision, not an implement
 Build in sections, top to bottom, one element per round. Homepage first — navigation, hero,
 then each section in the order a visitor scrolls past it. Only when the homepage is finished
 do we move to the templates: collection page, product page, cart, then the story pages.
+**The pace was overridden by the owner on 2026-10-04: any page may change at any time in service of the luxury
+goal (see The goal).**
 
-The reference is moonmagic.com. Go and look at it before building each element — study the
+The first reference is moonmagic.com (one of several since 2026-10-04, and the accessible-tier one: see The
+goal). Go and look at the references before building each element — study the
 structure, proportions, spacing, hierarchy and interaction. Take the patterns. Never take
 their code, their images or their words; we are building Cullinan Jewellery, and the pieces that
 make Cullinan Jewellery different (a workshop since 1991) are not on their site.
@@ -113,7 +399,8 @@ and prefer asking one more question over rebuilding.
 ## Design direction
 
 The reference the owner chose is **moonmagic.com** — light, quiet, generous with space.
-Not a copy of that site; the same qualities, applied to a Bulgarian goldsmith.
+Not a copy of that site; the same qualities, applied to a Bulgarian goldsmith. **Since 2026-10-04 it is the
+accessible-tier reference, and the luxury houses in The goal lead where they disagree with it.**
 
 Rules that matter here:
 
@@ -122,7 +409,8 @@ Rules that matter here:
   the single most important rule on the project — the owner's previous marketing broke it
   constantly.
   - **One deliberate exception:** the homepage hero. Its heading, subtitle and button are
-    live theme text laid over the photograph, centred, following moonmagic.com. Agreed
+    live theme text laid over the photograph, centred (at the left since 2026-10-04, when the first photograph
+    arrived: see The goal, wave 1), following moonmagic.com. Agreed
     2026-09-06. The photograph itself still carries no baked-in text. (No longer the only
     such place -- three more exceptions follow below.)
     - **On phones the words sit below the photograph** (2026-09-14, at the owner’s request,
@@ -881,7 +1169,8 @@ Anything of ours that is not a Dawn setting lives in these two places:
     to match, which this component's two-column structure cannot do -- moonmagic lays its
     words straight over a full-bleed photograph, not beside it. Rebuilt as a second
     `image-banner` instance instead; see Silver banner under Custom code.
-- **Silver banner.** A second `image-banner` instance, key `silver_teaser`, right after the
+- **Silver banner.** **Hidden on the homepage since 2026-10-04** (`disabled: true`; silver is the shop's entry tier and the
+  goal is the expensive pieces: see The goal, wave 1). A second `image-banner` instance, key `silver_teaser`, right after the
   benefits row (`templates/index.json`). No new template or stylesheet: `sections/image-
   banner.liquid` is Dawn's own, unchanged, and every hero rule in `assets/crown.css` is
   already scoped to shared classes (`.banner`, `.banner--mobile-bottom`, `color-scheme-5`)
@@ -1058,7 +1347,8 @@ Anything of ours that is not a Dawn setting lives in these two places:
     other banner stay exactly as they were. Self-removing once a real photo is set: Dawn
     only adds the `--empty` class when there is no image, so nothing here needs undoing by
     hand then.
-- **New arrivals banner.** A third `image-banner` instance, key `new_arrivals`, directly under
+- **New arrivals banner.** **Hidden on the homepage since 2026-10-04** (`disabled: true`; a "new" band over a catalogue of
+  fifty is a mid-market habit: see The goal, wave 1). A third `image-banner` instance, key `new_arrivals`, directly under
   the silver banner (`templates/index.json`), added 2026-09-30 at the owner's request ("lets
   make a section under НАШЕТО СРЕБРО. НАШИЯТ БЛЯСЪК. but like moonmagic NEW ARRIVELS").
   - **Their NEW ARRIVALS is not a product row, which is what checking first settled.** It and
@@ -1591,7 +1881,8 @@ Anything of ours that is not a Dawn setting lives in these two places:
   продукти) though the section was always built for four -- `max_blocks: 6`, a four-block
   preset, and the block's own info text ("Four claims is the most that fits one line on a
   phone") all said so from the start.
-  - **A fourth claim, Наложен платеж, added 2026-09-20 at the owner's request** -- settling,
+  - **A fourth claim, Наложен платеж, added 2026-09-20 at the owner's request** (**replaced on 2026-10-04 by
+    „ГРАВИРАНЕ ПО ЖЕЛАНИЕ“; cash on delivery stays in the cart and on the product page**, see The goal) -- settling,
     for this claim at least, the "no cash-on-delivery promise until that policy exists"
     caution logged under Top bar. Adding it exposed that the phone sizing had never actually
     had four claims tested against it: the three-claim row already used its full 375px width
@@ -2030,7 +2321,9 @@ Anything of ours that is not a Dawn setting lives in these two places:
       measure exactly 375 wide with no sideways overflow.
 - `sections/image-banner.liquid` — writing `[years]` in the hero heading or text renders the
   number of years since `founded_year` (1991), so the count never goes stale.
-- **Hero heading.** `.banner__heading` in `assets/crown.css` carries its own unscoped
+- **Hero heading.** **40px at most on a computer since 2026-10-04** (a hero-only block at the end of `assets/crown.css`,
+  see The goal); what follows is the generic banner clamp that block overrides. `.banner__heading` in
+  `assets/crown.css` carries its own unscoped
   `clamp()`, not the section's Heading size preset -- see the 2026-09-27 correction under
   Design direction for how that was found. Current values, cut a little smaller at the
   owner's request the same day: `clamp(2.1rem, 6.2vw, 5.7rem)`, down from `clamp(2.4rem,
@@ -2057,7 +2350,8 @@ Anything of ours that is not a Dawn setting lives in these two places:
   - The message padding is uneven on purpose (0.9rem over 0.7rem): even padding left the capitals
     2px above the arrows’ centre. Check with measured cap height, not the line box. Re-measured
     after each font change, most recently to Jost: still level.
-  - Two messages, as the owner chose on 2026-09-13: Безупречно качество до детайла · Лична
+  - Two messages, as the owner chose on 2026-09-13 (the first became „Ръчна изработка от 1991“ on 2026-10-04, see The
+    goal): Безупречно качество до детайла · Лична
     грижа за всеки клиент. The first is the reference’s "premium quality in every piece" idea
     in our own words; the second is the owner’s "грижа за клиентите", made personal. Earlier
     lines (14К и 18К злато, engraving, Еконт и Спиди, Майсторство от 1991 г.) were removed at
@@ -2507,7 +2801,7 @@ Anything of ours that is not a Dawn setting lives in these two places:
       rule of its own. Worth knowing while every test variant is sold out: **grey is the
       state this page actually shows today**, and the solid black only appears once something
       is in stock.
-  - **The buy box matched to moonmagic's own type scale, 2026-09-28** ("their section is
+  - **The buy box matched to moonmagic's own type scale, 2026-09-28** (**the price has been 18px, not 22px, since 2026-10-04**, see The goal; "their section is
     with smaller text and everything is smaller but with good proportions, make that way").
     Measured both at 1440, line by line:
 
@@ -2902,7 +3196,8 @@ Anything of ours that is not a Dawn setting lives in these two places:
       around the line). The open list and the pills' rows were measured on a local copy of the
       live page: four 40px rows, nothing overflowing. **Not seen by eye**, beyond what the
       numbers say.
-- **Най-продавани sized to moonmagic's own bestseller carousel, 2026-09-26/27**, at the
+- **Най-продавани sized to moonmagic's own bestseller carousel, 2026-09-26/27** (**titled „Избрани бижута“ since 2026-10-04**,
+  its prices 15px; see The goal), at the
   owner's request ("make in this section bigger the pictures of the products their text and
   the circles with colors to match moonmagic", then "the pictures should be with the size
   that moonmagic has and the spacing between them should be the same"). Measured their row at
@@ -4021,7 +4316,8 @@ Anything of ours that is not a Dawn setting lives in these two places:
     and both of Пръстени's dropdown links point at collections with no product (see Main menu under Waiting on the
     Shopify admin); Камъни can come back into the menu once the stone tags exist; a Подаръци or Изработка по поръчка
     entry is worth considering. The desktop dropdown still opens on a click, not on hover as moonmagic's does.
-  - **The homepage's order was kept, one section is hidden and none is deleted.** The page was read top to bottom
+  - **The homepage's order was kept, one section is hidden and none is deleted** (**changed again later that night, under
+    the luxury goal: see The goal, wave 1**). The page was read top to bottom
     the way a visitor scrolls: every band sits between neighbours of another colour or a 40px strip of page ground,
     the product row comes straight after the hero and its claims and the stones row precedes the categories, both as
     on the reference, and the custom-request band follows the story it continues, so a move would have been a guess. **The moving-pictures
@@ -4031,9 +4327,8 @@ Anything of ours that is not a Dawn setting lives in these two places:
     photographs. `disabled` is Shopify's own JSON-template property (the section "isn't rendered but can still be
     customized in the theme editor", shopify.dev, JSON templates). **Thirteen of the fourteen sections show
     now.** Nothing else was a candidate for removal: each has content or a job.
-    - **Found, not changed**: the benefits row still promises „Гравиране по желание — Име, дата или послание.“ and
-      Контакти's banner still asks about "гравиране", while the owner removed the engraving question from the FAQ on
-      2026-09-30. Whether the shop engraves is the owner's to say.
+    - **Settled the same night**: the owner answered that the shop engraves (see The goal). The benefits row's promise and
+      Контакти's banner stand; engraving moved up into the first-screen claims in wave 1.
   - **Smaller things in the same pass**: on a phone the hero's empty slot is the computer hero's gradient
     (`#F1E6DF` to `#E1CDC2`), so a phone with no photograph yet reads as one designed block instead of a blank square
     above a box (it goes by itself when a photograph is set); the category mosaic's caption scrim is espresso
@@ -5251,14 +5546,14 @@ Anything of ours that is not a Dawn setting lives in these two places:
   benefits row (see Silver banner above), then one story band (the history, design and materials as three short facts;
   see Atelier section above), the custom-request band (see Custom request section) and a row of
   customer reviews (see Reviews section) follow; the newsletter is still Dawn's default. The moving-pictures strip
-  is hidden since 2026-10-04 (see Image marquee).
+  is hidden since 2026-10-04 (see Image marquee); the order and the hidden banners changed again that night (see The goal).
 - Dawn's placeholder illustration has been removed from the hero. The empty image slot is an
   empty div, and Dawn's base.css hides every empty div (`div:empty { display: none }`). On
   phones crown.css shows it again as a flat stone square (a rose-clay gradient since 2026-10-04). **On desktop it is still hidden**,
   so the hero there is off-white rather than the stone band this note used to promise; the
   layout holds either way, since the banner keeps its height. Not changed — the owner has
   not asked about the desktop hero.
-- **No real products yet. No photography yet.** The homepage cannot be finished until the
+- **No real products yet. Almost no photography yet** (the owner uploaded the first hero photograph on 2026-10-04). The homepage cannot be finished until the
   atelier photo session happens. Four test products appeared by 2026-09-22 (Пръстен с
   верижка, Обеци, Висулка плочка, Гривна с червен конец) — enough to build and check the
   product page against, but all priced at €0,00, all with the vendor still reading Crown

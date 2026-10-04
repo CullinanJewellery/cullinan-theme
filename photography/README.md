@@ -116,3 +116,33 @@ uploading.
 
 **Nothing is burned into these pictures**: no stone name, no carat, no logo. The
 names are live theme text under each tile. See CLAUDE.md, Design direction.
+
+## The shot list for a high-price shop (2026-10-04)
+
+The goal is luxury jewellery at a high price (CLAUDE.md, "The goal"), and at that
+price the pictures carry the page. What the houses we looked at do, and so what to
+shoot, in order of importance:
+
+1. **The campaign picture, the hero.** One low-key, warm picture with a single
+   piece in it, the model cropped at the face. The owner's first one (a gold bell
+   on a chain, uploaded 2026-10-04) is exactly this. Portrait or wide both work:
+   the hero crops to the middle and sits the picture at 70% of its height, so the
+   pendant stays in frame; a focal point set on the file in Settings → Files
+   overrides that. Keep the left third calm, the words sit there on a computer.
+2. **Each piece, alone, on one soft neutral tile.** The same warm light grey or
+   ivory for all fifty, square, lit the same way every time, the whole piece in
+   frame. This is the picture a card shows. Without it the site reads as a
+   catalogue.
+3. **One worn picture per piece, last in the row**: a hand, an ear, a neck. It
+   gives scale and life; Ole Lynggaard's last thumbnail is always a worn one.
+4. **A close detail**: the setting, the claws, the engraving, the hallmark. This is
+   where "made by hand" is proved rather than said.
+5. **The hands at work**: the bench, the 3D model, a stone being set. For За нас and
+   the atelier band (video welcome, vertical 4:5).
+6. **The shop and the box**: the street door at бул. Васил Левски 21, the interior,
+   and the box a piece arrives in, once there is one.
+
+Rules that do not change: nothing burned into a picture (no logo, slogan, "925",
+price or badge), the same light and background across a set, and AI pictures are
+allowed and made by the owner, so long as they look like pieces the atelier can
+really make.
