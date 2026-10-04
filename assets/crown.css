@@ -5595,7 +5595,7 @@ dialog.size-guide .size-guide__note {
    weight; what moved them was the 0.25rem lift on hover, keyboard focus and an
    open dropdown (menu words, their arrow, and the dropdown's links). The lift is
    switched off here and a 1px underline marks hover, keyboard focus and the
-   current category instead. text-decoration does not move the text. Jost, the
+   current category instead. text-decoration never moves the text. Jost, the
    700 weight and the arrows are unchanged. !important only on `translate`, to beat
    the several lift rules above whatever their specificity.
    --------------------------------------------------------------------------- */
