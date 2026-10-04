@@ -5359,11 +5359,14 @@ html body .facets-wrapper .facets__display {
   position: relative;
 }
 
+/* A fieldset's content box starts under its legend, so the link is placed by its
+   bottom edge: on the legend's own 18px line, 8px (the legend's margin) above the boxes. */
 .product .product-form__input--pill .size-guide__open {
   position: absolute;
-  top: 0;
+  bottom: 100%;
   right: 0;
-  margin: 0;
+  margin: 0 0 0.8rem;
+  height: 1.8rem;
   padding: 0;
   border: 0;
   background: none;
@@ -5372,11 +5375,33 @@ html body .facets-wrapper .facets__display {
   font-size: 1.2rem;
   font-weight: 500;
   letter-spacing: 0.08em;
-  line-height: inherit;
+  line-height: 1.8rem;
   text-transform: uppercase;
   text-decoration: underline;
   text-underline-offset: 0.3rem;
   cursor: pointer;
+}
+
+/* The label wraps rather than running under the link. */
+.product .product-form__input--pill:has(.size-guide__open) > legend {
+  padding-right: 15rem;
+}
+
+/* On a phone the row is too narrow for both: the link goes under the size boxes. */
+@media screen and (max-width: 749px) {
+  .product .product-form__input--pill:has(.size-guide__open) > legend {
+    padding-right: 0;
+  }
+
+  .product .product-form__input--pill .size-guide__open {
+    position: static;
+    display: flex;
+    align-items: center;
+    width: max-content;
+    margin: 0.4rem 0 0;
+    height: auto;
+    min-height: 4.4rem;
+  }
 }
 
 .product .product-form__input--pill .size-guide__open:hover {

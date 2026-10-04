@@ -212,8 +212,16 @@
               {{- option.selected_value -}}
             </span>
           </legend>
+          {% render 'product-variant-options',
+            product: product,
+            option: option,
+            block: block,
+            picker_type: picker_type,
+            twin: twin
+          %}
           {%- comment -%}
-            Cullinan: the ring-size guide sits at the right of the size row's label
+            Cullinan: the ring-size guide sits at the right of the size row's label on a computer
+            and under the boxes on a phone (it comes after them in the markup for that)
             (2026-10-04). Only on the product page's own picker (the setting exists on
             main-product's block alone) and only for an option whose name says size.
             The dialog it opens is printed by main-product.liquid, outside this element,
@@ -232,13 +240,6 @@
               </button>
             {%- endif -%}
           {%- endif -%}
-          {% render 'product-variant-options',
-            product: product,
-            option: option,
-            block: block,
-            picker_type: picker_type,
-            twin: twin
-          %}
         </fieldset>
       {%- else -%}
         <div class="product-form__input product-form__input--dropdown">
