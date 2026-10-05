@@ -643,3 +643,41 @@ cart-drawer cart-drawer-items {
   line-height: 1.5;
   text-align: left;
 }
+
+/* ===========================================================================
+   Comfortable taps, drawer and /cart alike (2026-10-05, owner): −, the number and +
+   are three 44px squares (the box 13.2 × 4.4rem; was 3.4rem buttons in the drawer);
+   „Премахни“ stays a small underlined word with a 44px-tall tap area, 2rem from the box.
+   =========================================================================== */
+#CartDrawer .cart-item__quantity .quantity,
+#main-cart-items .cart-item__quantity .quantity {
+  width: 13.2rem;
+  min-height: 4.4rem;
+}
+
+#CartDrawer .cart-item__quantity .quantity__button,
+#main-cart-items .cart-item__quantity .quantity__button {
+  width: 4.4rem;
+  height: 4.4rem;
+}
+
+#CartDrawer .cart-item__quantity .quantity__input,
+#main-cart-items .cart-item__quantity .quantity__input {
+  width: 4.4rem;
+  height: 4.4rem;
+}
+
+#CartDrawer .cart-item__quantity-wrapper {
+  gap: 2rem;
+}
+
+#CartDrawer .cart-remove-button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 4.4rem;
+  padding: 0 0.4rem;
+}
+
+#main-cart-items cart-remove-button .cart-remove-button {
+  margin-left: 2rem;
+}
