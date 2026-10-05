@@ -62,6 +62,7 @@
 {%- liquid
   assign form_id = 'CustomRequest-' | append: section.id
   assign email = section.settings.email | strip
+  assign layout = section.settings.layout | default: 'open'
   assign has_ways = false
   if section.settings.show_ways
     if email != blank or settings.social_instagram_link != blank or settings.social_facebook_link != blank
@@ -76,7 +77,7 @@
     id="zapitvane"
   {% endif %}
 >
-  <div class="custom-request page-width section-{{ section.id }}-padding">
+  <div class="custom-request{% if layout != 'open' %} custom-request--{{ layout }}{% endif %} page-width section-{{ section.id }}-padding">
     <div class="custom-request__intro">
       {%- if section.settings.eyebrow != blank -%}
         <p class="custom-request__eyebrow">{{ section.settings.eyebrow | escape }}</p>
@@ -110,15 +111,35 @@
           </ul>
         </div>
       {%- endif -%}
+
+      {%- if layout == 'popup' -%}
+        {%- comment -%}
+          Product page (2026-10-05, owner): a compact band with one button; the form opens in
+          a popup styled like the size guide. „Попитайте за това бижу“ near the buy button
+          (href #zapitvane) opens the same popup.
+        {%- endcomment -%}
+        <button
+          type="button"
+          class="custom-request__open"
+          data-enquiry-open
+          aria-haspopup="dialog"
+          aria-controls="{{ form_id }}-dialog"
+        >
+          {{- section.settings.popup_button_label | default: 'Попитайте за това бижу' | escape -}}
+        </button>
+      {%- endif -%}
     </div>
 
+    {%- capture request_form -%}
     {%- form 'contact', id: form_id, class: 'custom-request__form' -%}
       {%- if form.posted_successfully? -%}
+        <span data-enquiry-reopen hidden></span>
         <p class="custom-request__status" role="status" tabindex="-1" autofocus>
           {{- section.settings.success_message | escape -}}
         </p>
       {%- else -%}
         {%- if form.errors -%}
+          <span data-enquiry-reopen hidden></span>
           <p class="custom-request__status custom-request__status--error" role="alert" tabindex="-1" autofocus>
             {{- section.settings.error_message | escape -}}
           </p>
@@ -223,6 +244,59 @@
         {%- endif -%}
       {%- endif -%}
     {%- endform -%}
+    {%- endcapture -%}
+
+    {%- if layout == 'popup' -%}
+      <dialog
+        id="{{ form_id }}-dialog"
+        class="size-guide custom-request__dialog color-{{ section.settings.color_scheme }}"
+        aria-labelledby="{{ form_id }}-dialog-title"
+      >
+        <div class="size-guide__inner">
+          <form method="dialog" class="size-guide__close-form">
+            <button type="submit" class="size-guide__close">
+              Затвори<span class="size-guide__cross" aria-hidden="true"></span>
+            </button>
+          </form>
+          <h2 id="{{ form_id }}-dialog-title" class="size-guide__title h3">
+            {{- section.settings.heading | default: 'Имате въпрос за това бижу?' | escape -}}
+          </h2>
+          {{ request_form }}
+        </div>
+      </dialog>
+      <script>
+        (function () {
+          var dialog = document.getElementById({{ form_id | append: '-dialog' | json }});
+          if (!dialog || typeof dialog.showModal !== 'function') return;
+          var opener = null;
+          function open(trigger) {
+            opener = trigger || document.activeElement;
+            if (!dialog.open) dialog.showModal();
+          }
+          // The section's button and every link to #zapitvane (the one near the buy button).
+          document.addEventListener('click', function (event) {
+            var trigger = event.target.closest('[data-enquiry-open], a[href="#zapitvane"]');
+            if (!trigger) return;
+            event.preventDefault();
+            open(trigger);
+          });
+          // A click on the backdrop lands on the dialog itself.
+          dialog.addEventListener('click', function (event) {
+            if (event.target === dialog) dialog.close();
+          });
+          // Escape and „Затвори“ close it natively; focus goes back to what opened it.
+          dialog.addEventListener('close', function () {
+            if (opener && document.contains(opener)) opener.focus();
+          });
+          // After sending (thank-you or an error), the page reloads: show the message in the popup.
+          if (dialog.querySelector('[data-enquiry-reopen]')) {
+            open(document.querySelector('[data-enquiry-open]'));
+          }
+        })();
+      </script>
+    {%- else -%}
+      {{ request_form }}
+    {%- endif -%}
   </div>
 </div>
 
@@ -253,6 +327,23 @@
     "groups": ["header", "footer"]
   },
   "settings": [
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Form layout",
+      "options": [
+        { "value": "open", "label": "Form always open" },
+        { "value": "popup", "label": "Button that opens the form in a popup" },
+        { "value": "collapsible", "label": "Button that expands the form" }
+      ],
+      "default": "open"
+    },
+    {
+      "type": "text",
+      "id": "popup_button_label",
+      "label": "Popup button text",
+      "default": "Попитайте за това бижу"
+    },
     {
       "type": "color_scheme",
       "id": "color_scheme",

@@ -203,3 +203,54 @@
     max-width: none;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Popup layout (product page, 2026-10-05, owner): the band keeps its eyebrow,
+   heading and short text in one column with a compact outlined button; the form
+   opens in a dialog that uses the size guide's own frame (dialog.size-guide in
+   crown.css), so the two popups on the page look alike.
+   --------------------------------------------------------------------------- */
+.custom-request--popup {
+  display: block;
+}
+
+.custom-request__open {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 5.4rem;
+  margin-top: 2.4rem;
+  padding: 0 3.2rem;
+  border: 0.1rem solid rgb(var(--color-foreground));
+  border-radius: 0;
+  background: transparent;
+  color: rgb(var(--color-foreground));
+  font-family: var(--font-body-family);
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.custom-request__open:hover,
+.custom-request__open:focus-visible {
+  background-color: rgb(var(--color-foreground));
+  color: rgb(var(--color-background));
+}
+
+.custom-request__open:focus-visible {
+  outline: 0.2rem solid rgb(var(--color-foreground));
+  outline-offset: 0.3rem;
+}
+
+@media screen and (max-width: 749px) {
+  .custom-request__open {
+    width: 100%;
+  }
+}
+
+.custom-request__dialog .custom-request__form {
+  margin-top: 2rem;
+}
