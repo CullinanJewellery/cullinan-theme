@@ -6247,7 +6247,7 @@ recently-viewed .slider-button[disabled] .icon {
    tablet / computer), Prata, line height 1.2. Homepage sections only (`main`); the
    footer and other pages keep their own. Way back: delete this whole block.
    --------------------------------------------------------------------------- */
-html body main .banner__heading {
+html body main [id^="shopify-section-"][id$="__hero_image"] .banner__heading {
   font-size: 3.2rem;
   line-height: 1.15;
 }
@@ -6265,7 +6265,7 @@ html body main .footer__social:not(.footer__social--contact) .footer__social-hea
 }
 
 @media screen and (min-width: 750px) {
-  html body main .banner__heading {
+  html body main [id^="shopify-section-"][id$="__hero_image"] .banner__heading {
     font-size: 4.4rem;
   }
 
@@ -6282,7 +6282,7 @@ html body main .footer__social:not(.footer__social--contact) .footer__social-hea
 }
 
 @media screen and (min-width: 990px) {
-  html body main .banner__heading {
+  html body main [id^="shopify-section-"][id$="__hero_image"] .banner__heading {
     font-size: 5.2rem;
   }
 
