@@ -348,6 +348,104 @@
         "padding_bottom": 64
       }
     },
+    "zodiac": {
+      "type": "zodiac-slides",
+      "blocks": {
+        "sign_oven": {
+          "type": "sign",
+          "settings": {
+            "heading": "Овен"
+          }
+        },
+        "sign_telec": {
+          "type": "sign",
+          "settings": {
+            "heading": "Телец"
+          }
+        },
+        "sign_bliznaci": {
+          "type": "sign",
+          "settings": {
+            "heading": "Близнаци"
+          }
+        },
+        "sign_rak": {
+          "type": "sign",
+          "settings": {
+            "heading": "Рак"
+          }
+        },
+        "sign_lav": {
+          "type": "sign",
+          "settings": {
+            "heading": "Лъв"
+          }
+        },
+        "sign_deva": {
+          "type": "sign",
+          "settings": {
+            "heading": "Дева"
+          }
+        },
+        "sign_vezni": {
+          "type": "sign",
+          "settings": {
+            "heading": "Везни"
+          }
+        },
+        "sign_skorpion": {
+          "type": "sign",
+          "settings": {
+            "heading": "Скорпион"
+          }
+        },
+        "sign_strelec": {
+          "type": "sign",
+          "settings": {
+            "heading": "Стрелец"
+          }
+        },
+        "sign_kozirog": {
+          "type": "sign",
+          "settings": {
+            "heading": "Козирог"
+          }
+        },
+        "sign_vodolei": {
+          "type": "sign",
+          "settings": {
+            "heading": "Водолей"
+          }
+        },
+        "sign_ribi": {
+          "type": "sign",
+          "settings": {
+            "heading": "Риби"
+          }
+        }
+      },
+      "block_order": [
+        "sign_oven",
+        "sign_telec",
+        "sign_bliznaci",
+        "sign_rak",
+        "sign_lav",
+        "sign_deva",
+        "sign_vezni",
+        "sign_skorpion",
+        "sign_strelec",
+        "sign_kozirog",
+        "sign_vodolei",
+        "sign_ribi"
+      ],
+      "settings": {
+        "ratio_desktop": "16 / 7",
+        "ratio_mobile": "4 / 5",
+        "color_scheme": "scheme-1",
+        "margin_top": 40,
+        "margin_bottom": 40
+      }
+    },
     "stones": {
       "type": "stone-meanings",
       "blocks": {
@@ -736,6 +834,7 @@
     "image_marquee",
     "featured_collection",
     "category_mosaic",
+    "zodiac",
     "stones",
     "workshop",
     "atelier",
