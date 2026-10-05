@@ -123,6 +123,15 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
   liquidjs). Real preview 320, 375, 1440: 12 slides, no links, no arrows/counter, button 44px clear of the text,
   autoplay, pause/play labels, swipe both ways, ←/→ with live announcement, wrap Овен ← Риби, reduced motion starts
   paused, no sideways scroll. **Turn the setting off when the photos are in** (tasks §L).
+- **2026-10-05, zodiac slideshow, third pass (owner)**: autoplay every 3 s (was 6), fade 0.6 s. Twelve line
+  indicators inside the picture, centred at the bottom under the words (active the category pink #E6BAB9, inactive
+  page colour with a faint dark edge), each a button with an invisible 44px-tall tap area (14px wide at 320, 18px at
+  375, 24px on computers — the widest that keeps the corner button clear at 320). Pause/play moved to the lower-right
+  corner on the indicators' row. Tapping the picture, swiping, an indicator or ←/→ stop autoplay until play; a real
+  link on the slide opens normally (checked with a temporary browser-only link). Draft-preview placeholders kept.
+  Real preview 320 / 375 / 1440: indicators 11 / 15px from the button and 14 / 14 / 28px under the words, no
+  arrows or counter, no sideways scroll; autoplay 3 s, tap stop, indicator select with aria-current and
+  announcement, swipe, ←/→, reduced motion paused.
 - **2026-10-05, fifth round (owner)**, real preview at 320, 375 and 1440 (no sideways scroll):
   - „Най-продавани“ confirmed live.
   - Category slider (phones): circular 44×44 arrows (disabled faded) and line indicators between them; active line
