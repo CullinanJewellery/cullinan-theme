@@ -268,3 +268,43 @@
     width: 1.6rem;
   }
 }
+
+/* ---- title over the pictures (2026-10-05, owner: „Вашата зодия“) ----------
+   One heading at the top of the frame, fixed while the slides fade beneath; a soft
+   espresso shade from the top keeps it readable; placeholders move to the centre. */
+.zodiac__overlay-title {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  right: 2rem;
+  z-index: 2;
+  margin: 0;
+  font-family: var(--font-heading-family);
+  font-weight: var(--font-heading-weight);
+  font-size: 2.4rem;
+  line-height: 1.2;
+  letter-spacing: 0;
+  text-align: center;
+  color: rgb(251 248 246);
+  pointer-events: none;
+}
+
+.zodiac__viewport--titled .zodiac__slide::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 70%;
+  z-index: 1;
+  background: linear-gradient(to bottom, rgba(42, 30, 26, 0.55), rgba(42, 30, 26, 0));
+  pointer-events: none;
+}
+
+.zodiac__viewport--titled .zodiac__placeholder {
+  align-items: center;
+}
+
+@media screen and (min-width: 750px) {
+  .zodiac__overlay-title {
+    top: 3.2rem;
+    font-size: 3.2rem;
+  }
+}

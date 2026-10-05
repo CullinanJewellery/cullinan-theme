@@ -110,10 +110,14 @@
         class="zodiac"
         role="region"
         aria-roledescription="карусел"
-        aria-label="{{ section.settings.heading | default: 'Зодии' | escape }}"
+        aria-label="{{ section.settings.overlay_title | default: section.settings.heading | default: 'Зодии' | escape }}"
         data-interval="3000"
       >
-        <div class="zodiac__viewport">
+        {%- comment -%} One title over every picture, at the top (owner, 2026-10-05). {%- endcomment -%}
+        {%- if section.settings.overlay_title != blank -%}
+          <h2 class="zodiac__overlay-title">{{ section.settings.overlay_title | escape }}</h2>
+        {%- endif -%}
+        <div class="zodiac__viewport{% if section.settings.overlay_title != blank %} zodiac__viewport--titled{% endif %}">
           {%- assign shown_index = 0 -%}
           {%- for block in section.blocks -%}
             {%- liquid
@@ -267,6 +271,12 @@
       "label": "Preview without photos",
       "info": "Temporary: shows all slides with placeholders on the draft preview link. Never shown on the published shop. Turn off once the photos are in.",
       "default": false
+    },
+    {
+      "type": "text",
+      "id": "overlay_title",
+      "label": "Title over the pictures",
+      "default": "Вашата зодия"
     },
     {
       "type": "text",
