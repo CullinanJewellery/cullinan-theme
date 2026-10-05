@@ -5363,7 +5363,7 @@ html body .facets-wrapper .facets__display {
   }
 
   html body .facets-wrapper .cj-bar-sort__select {
-    width: 100%;
+    width: auto;
     max-width: 100%;
     min-height: 4.4rem;
     padding: 0 2rem 0 0;

@@ -690,7 +690,8 @@
                               class="button button--primary"
                               onclick="this.closest('.mobile-facets__wrapper').querySelector('summary').click()"
                             >
-                              {{ 'products.facets.apply' | t }}
+                              Покажи резултатите
+                              (<span data-cj-result-count>{{ results.products_count | default: results.results_count }}</span>)
                             </button>
                           </div>
                         </div>
@@ -741,7 +742,8 @@
                               class="button button--primary"
                               onclick="this.closest('.mobile-facets__wrapper').querySelector('summary').click()"
                             >
-                              {{ 'products.facets.apply' | t }}
+                              Покажи резултатите
+                              (<span data-cj-result-count>{{ results.products_count | default: results.results_count }}</span>)
                             </button>
                           </div>
                         </div>
@@ -788,7 +790,7 @@
 
               <div class="mobile-facets__footer">
                 <facet-remove class="mobile-facets__clear-wrapper">
-                  <a href="{{ results_url }}" class="mobile-facets__clear underlined-link">
+                  <a href="{{ results_url }}" class="mobile-facets__clear underlined-link" data-cj-clear>
                     {{- 'products.facets.clear' | t -}}
                   </a>
                 </facet-remove>
@@ -826,7 +828,7 @@
     <div class="cj-bar-sort medium-hide large-up-hide">
       <label class="cj-bar-sort__label" for="SortBy-bar">{{ 'products.facets.sort_button' | t }}:</label>
       <div class="cj-bar-sort__field">
-        <select id="SortBy-bar" class="cj-bar-sort__select" data-cj-sort-bar>
+        <select id="SortBy-bar" class="cj-bar-sort__select" data-cj-sort-bar data-default="{{ results.default_sort_by | escape }}">
           {%- for option in results.sort_options -%}
             {%- unless option.value == 'most-relevant' -%}
               <option value="{{ option.value | escape }}"{% if option.value == sort_by %} selected="selected"{% endif %}>

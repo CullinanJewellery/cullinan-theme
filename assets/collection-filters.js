@@ -38,8 +38,15 @@
     }
 
     var bar = document.querySelector('[data-cj-sort-bar]');
-    var sort = params.get('sort_by');
+    var sort = params.get('sort_by') || (bar && bar.dataset.default) || '';
     if (bar && sort && bar.querySelector('option[value="' + sort + '"]')) bar.value = sort;
+
+    // The drawer's „Изчисти“ is not re-rendered by Dawn: point it at this page with the
+    // current order and no filters.
+    var keep = params.get('sort_by');
+    document.querySelectorAll('[data-cj-clear]').forEach(function (link) {
+      link.setAttribute('href', window.location.pathname + (keep ? '?sort_by=' + encodeURIComponent(keep) : ''));
+    });
   }
 
   document.addEventListener('change', function (event) {

@@ -187,7 +187,7 @@
     "facets": {
       "apply": "Приложи",
       "clear": "Изчисти",
-      "clear_all": "Премахване на всички",
+      "clear_all": "Изчисти всички",
       "from": "От",
       "filter_and_sort": "Филтриране и сортиране",
       "filter_by_label": "Филтър:",
@@ -326,8 +326,8 @@
     },
     "collection_template": {
       "title": "Колекция",
-      "empty": "Не са открити продукти",
-      "use_fewer_filters_html": "Използвайте по-малко филтри или <a class=\"{{ class }}\" href=\"{{ link }}\">премахнете всички</a>"
+      "empty": "Няма бижута с избраните филтри",
+      "use_fewer_filters_html": "Махнете някой от филтрите или <a class=\"{{ class }}\" href=\"{{ link }}\">изчистете всички</a>"
     },
     "video": {
       "load_video": "Зареждане на видео: {{ description }}"
