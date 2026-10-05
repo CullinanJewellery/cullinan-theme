@@ -65,6 +65,10 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
   size_guide_intro / size_guide_tip / size_guide_details_label; size_guide_content is the collapsed part (its
   first paragraph, which repeated the explanation, removed). Phone headers tighter so „Диаметър,“ fits at 320.
   Real preview: 375, 320 and 1440, no sideways scroll, no clipped cells; the section opens by click and keyboard.
+- **2026-10-05, size guide jump link (owner)**: „Как да определите размера си ↓“ between the explanation and the table
+  (a link to #SizeGuideHow-…, arrow aria-hidden, 44px tall). The guide's click handler opens the <details>, scrolls
+  the dialog to it (smooth; instant under prefers-reduced-motion) and focuses its summary; the URL is unchanged.
+  Real preview at 375 and 320: opens, scrolls to the end of the guide with all instructions visible, no sideways scroll.
 - **2026-10-05, fifth round (owner)**, real preview at 320, 375 and 1440 (no sideways scroll):
   - „Най-продавани“ confirmed live.
   - Category slider (phones): circular 44×44 arrows (disabled faded) and line indicators between them; active line
