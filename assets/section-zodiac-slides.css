@@ -298,8 +298,16 @@
   pointer-events: none;
 }
 
+/* Placeholder label in the empty band under the title, clear of the words below. */
 .zodiac__viewport--titled .zodiac__placeholder {
-  align-items: center;
+  align-items: flex-start;
+  padding-top: 9.6rem;
+}
+
+@media screen and (min-width: 750px) {
+  .zodiac__viewport--titled .zodiac__placeholder {
+    padding-top: 12rem;
+  }
 }
 
 @media screen and (min-width: 750px) {
