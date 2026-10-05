@@ -8,6 +8,7 @@
   - current: {String} the page you are on (collection or product title)
   - parent_title: {String} optional category name
   - parent_url: {String} optional category link
+  - home_label: {String} optional, default „Начало“
 
   Usage:
   {% render 'breadcrumbs', current: product.title, parent_title: title, parent_url: url %}
@@ -15,7 +16,7 @@
 <nav class="cj-breadcrumbs" aria-label="Навигационна пътека">
   <ol class="cj-breadcrumbs__list">
     <li class="cj-breadcrumbs__item">
-      <a class="cj-breadcrumbs__link" href="{{ routes.root_url }}">Начало</a>
+      <a class="cj-breadcrumbs__link" href="{{ routes.root_url }}">{{ home_label | default: 'Начало' | escape }}</a>
     </li>
     {%- if parent_title != blank and parent_url != blank -%}
       <li class="cj-breadcrumbs__item">

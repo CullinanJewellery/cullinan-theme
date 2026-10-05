@@ -4413,40 +4413,81 @@ body .jdgm-write-review-modal .jdgm-write-review-modal__page--review-form-intro 
   margin-bottom: 0;
 }
 
-.product-breadcrumb {
-  display: none;
+/* ---------------------------------------------------------------------------
+   Navigation trail (2026-10-05, owner; replaces the desktop-only „Начало / name“
+   above). Above collection and product titles at every width: Начало › Пръстени ›
+   Име на бижуто (snippets/breadcrumbs.liquid). Shape from hestiahome.bg: small, sentence
+   case, a › between steps; our Jost and ink. Links at 65% ink, underlined on hover and
+   keyboard focus; the current page full ink. Wraps on narrow screens rather than
+   cutting the name. Way back: git history of this block (2026-10-03 version).
+   --------------------------------------------------------------------------- */
+.cj-breadcrumbs {
+  margin: 0 0 1.2rem;
+  font-family: var(--font-body-family);
+  font-size: 1.2rem;
+  letter-spacing: 0.02em;
+  line-height: 1.6;
+  color: rgb(var(--color-foreground));
 }
 
-@media screen and (min-width: 990px) {
-  .product .product__info-container > .product-breadcrumb {
-    display: block;
-    margin: 0 0 1.6rem;
-    padding: 0.96rem 0 0;
-    overflow: hidden;
-    color: rgb(0 0 0);
-    font-size: 1rem;
-    letter-spacing: 0.1em;
-    line-height: 1.6rem;
-    text-overflow: ellipsis;
-    text-transform: uppercase;
-    white-space: nowrap;
-  }
+.cj-breadcrumbs__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
 
-  /* The link and the slash in moonmagic's grey, the name after them black. */
-  .product-breadcrumb a,
-  .product-breadcrumb__divider {
-    color: rgb(146 146 146);
-  }
+.cj-breadcrumbs__item {
+  display: inline-flex;
+  align-items: center;
+  min-width: 0;
+}
 
-  .product-breadcrumb a {
-    text-decoration: none;
-    transition: color 0.2s ease;
-  }
+.cj-breadcrumbs__sep {
+  margin: 0 0.7rem;
+  color: rgba(var(--color-foreground), 0.45);
+}
 
-  .product-breadcrumb a:hover,
-  .product-breadcrumb a:focus-visible {
-    color: rgb(0 0 0);
-  }
+.cj-breadcrumbs__link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.8rem;
+  color: rgba(var(--color-foreground), 0.65);
+  text-decoration: none;
+  text-underline-offset: 0.3rem;
+  transition: color 0.2s ease;
+}
+
+.cj-breadcrumbs__link:hover,
+.cj-breadcrumbs__link:focus-visible {
+  color: rgb(var(--color-foreground));
+  text-decoration: underline;
+}
+
+.cj-breadcrumbs__link:focus-visible {
+  outline: 0.2rem solid rgb(var(--color-foreground));
+  outline-offset: 0.2rem;
+}
+
+.cj-breadcrumbs__current {
+  overflow-wrap: anywhere;
+}
+
+/* Product page: the trail opens the buy box (above the stars and the title). */
+.product .product__info-container > .product-breadcrumb {
+  display: block;
+  margin: 0 0 1.2rem;
+}
+
+.product .product__info-container > .product-breadcrumb .cj-breadcrumbs {
+  margin: 0;
+}
+
+/* Collection page: above the title, which keeps its own spacing. */
+.collection-hero .cj-breadcrumbs {
+  margin-bottom: 0.8rem;
 }
 
 /* ---------------------------------------------------------------------------

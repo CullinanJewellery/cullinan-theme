@@ -96,15 +96,45 @@
                 Home / the product's name, the very first thing in the buy box, above the
                 stars -- moonmagic's own placement and wording (2026-10-03, the owner:
                 "can we do that for ours"). The left half goes back to the home page, the
-                right half is the page you are on. Computer only: assets/crown.css hides it
+                right half is the page you are on. (Desktop-only until 2026-10-05; see below.)
                 below 990px, as theirs is hidden below 992px. Not a block, so the template
                 needs nothing; the two settings below carry defaults.
               {%- endcomment -%}
-              <nav class="product-breadcrumb" aria-label="Навигационна пътека">
-                <a href="{{ routes.root_url }}">{{ section.settings.breadcrumb_home_label | default: 'Начало' | escape }}</a>
-                <span class="product-breadcrumb__divider" aria-hidden="true">/</span>
-                <span aria-current="page">{{ product.title | escape }}</span>
-              </nav>
+              {%- comment -%}
+                2026-10-05 (owner): Начало › category › the piece, at every width (snippets/
+                breadcrumbs.liquid). The category is the collection the piece was opened from
+                (cards on collection pages link through it); opened directly, it is the one
+                top-level menu category the piece belongs to, and none when it belongs to
+                none or to several, rather than guessing.
+              {%- endcomment -%}
+              {%- liquid
+                assign bc_title = ''
+                assign bc_url = ''
+                if collection and collection.handle != blank
+                  assign bc_title = collection.title
+                  assign bc_url = collection.url
+                else
+                  assign bc_matches = 0
+                  for menu_link in linklists['main-menu'].links
+                    if menu_link.type == 'collection_link' and menu_link.object
+                      for product_collection in product.collections
+                        if product_collection.id == menu_link.object.id
+                          assign bc_matches = bc_matches | plus: 1
+                          assign bc_title = menu_link.object.title
+                          assign bc_url = menu_link.object.url
+                        endif
+                      endfor
+                    endif
+                  endfor
+                  if bc_matches != 1
+                    assign bc_title = ''
+                    assign bc_url = ''
+                  endif
+                endif
+              -%}
+              <div class="product-breadcrumb">
+                {% render 'breadcrumbs', current: product.title, parent_title: bc_title, parent_url: bc_url, home_label: section.settings.breadcrumb_home_label %}
+              </div>
             {%- endif -%}
 
             {%- for block in section.blocks -%}
@@ -2792,7 +2822,7 @@
       "id": "show_breadcrumb",
       "default": true,
       "label": "Show the breadcrumb above the product title",
-      "info": "Home / the product's name, at the top of the buy box. Shown from 990px up."
+      "info": "Начало › category › the piece, at the top of the buy box, at every width."
     },
     {
       "type": "text",
