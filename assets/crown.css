@@ -6355,3 +6355,39 @@ html body .product-card-wrapper .card__media .media img {
 html body .product-card-wrapper .card__media .media {
   background-color: rgb(255 255 255);
 }
+
+/* ---------------------------------------------------------------------------
+   Product cards, second pass (2026-10-05, owner). Phones: the grid keeps the page's
+   15px side margins (was edge to edge, 2026-10-04) with a 12px gap between cards (was
+   4px), and the words line up with the picture's edge. Names 18px on phones / 20px
+   from 750px (were 16px), prices 17px (were 15px). Sale prices keep their own rule.
+   --------------------------------------------------------------------------- */
+html body .collection .card__heading,
+html body .collection .card__heading.h5 {
+  font-size: 1.8rem;
+  line-height: 1.25;
+}
+
+html body .collection .price:not(.price--on-sale) {
+  font-size: 1.7rem;
+}
+
+@media screen and (min-width: 750px) {
+  html body .collection .card__heading,
+  html body .collection .card__heading.h5 {
+    font-size: 2rem;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  html body #product-grid.product-grid,
+  html body .template-search__results .product-grid {
+    --grid-mobile-horizontal-spacing: 1.2rem;
+    margin-inline: 0;
+  }
+
+  html body #product-grid.product-grid .card__content,
+  html body .template-search__results .product-grid .card__content {
+    padding-inline: 0;
+  }
+}
