@@ -624,3 +624,11 @@
     width: 100%;
   }
 }
+
+@media screen and (min-width: 750px) {
+  .mosaic__all .button {
+    min-width: 36rem;
+    min-height: 5.6rem;
+    font-size: 1.4rem;
+  }
+}
