@@ -171,6 +171,17 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
      „Crown Jewellery“ in admin; it appears only in Shopify's hidden tracking data.
   Phone page 6,201 → 5,887px; page ending (custom order + social + footer) about 2,190 → 1,770px. „Вижте работата
   ни“ and the footer social icons kept. Zodiac behaviour unchanged.
+- **2026-10-05, product page (owner, three changes)**:
+  1. Computer gallery: Shopify's thumbnail layout (product.json gallery_layout columns → thumbnail): one 835px photo,
+     131px thumbnails below that switch it; zoom (lightbox) kept; phones unchanged (swipe, no thumbnails). The info
+     column stays sticky beside it (add-to-cart at about 630px on a 900px screen).
+  2. Purchase area (crown.css block „Product purchase area“): title 30px phone (26px below 360px, so long names stay
+     at about three lines) / 36px computer, price 22px, add-to-cart 54px tall, metal menu full width (was 28rem).
+     Button colour, variants (size 58 → variant updates), size guide and Judge.me stars unchanged.
+  3. Lower order in product.json: purchase → enquiry form → Judge.me reviews → „Може да ви хареса“ → „Наскоро
+     разгледани“ → social. „Попитайте за това бижу“ still jumps to #zapitvane; recently viewed collapses to 0px for a
+     first visit (no gaps).
+  Real preview 320 / 375 / 1440. Product descriptions, photos, prices and availability left for the data cleanup.
 - **2026-10-05, fifth round (owner)**, real preview at 320, 375 and 1440 (no sideways scroll):
   - „Най-продавани“ confirmed live.
   - Category slider (phones): circular 44×44 arrows (disabled faded) and line indicators between them; active line
