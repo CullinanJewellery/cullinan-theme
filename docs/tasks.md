@@ -152,6 +152,38 @@ No replacement legal text is to be written; the accountant handles legal pages.
 printed model beside its finished piece; two or three finished pieces worn; the shop front and interior; packaging
 once decided. Shot list in `photography/README.md`.
 
+## K. Collection filters — theme BUILT 2026-10-05; admin setup and product data open
+
+**What Shopify returns today** (Search & Discovery): „Наличност“ and „Цена“ only. The theme hides „Наличност“ (every
+piece is made to order), so shoppers see „Цена“. Метал, Камък and Размер appear automatically once they are set up in
+the app and the products carry consistent data; the theme already shows them with the same design.
+
+**Theme rules already in place** (snippets/facets.liquid): a filter with no products behind any value is hidden; a
+price filter is hidden if every price is 0; a filter whose name contains „размер“ / "size" shows only on collections
+whose handle contains „пръстен“ (e.g. пръстени, мъжки-пръстени) — not on „Всички“, earrings, pendants or search.
+
+**Product data needed first** (today it is inconsistent, so these filters would mislead):
+- Metal: one option with the same name on every product, e.g. „Метал“, and the same values everywhere
+  („14К жълто злато“, „14К бяло злато“, „14К розово злато“, „18К …“, „Сребро 925“). Today: „Изберете вашия метал“ on
+  the ring, „Jewelry material“ with „Silver“ on the bracelet; a second option „Цветове на златото“ repeats the colour.
+- Stone: no product has stone data. Fill the product metafield `custom.stone` (it already feeds the specification
+  list) with the same spelling everywhere, e.g. „Диамант“, „Изумруд“, „Цирконий“; leave it empty for pieces without a
+  stone.
+- Size: rings only, one option named „Размер“ with plain numbers (53, 54 …). Today the ring's option is named
+  „изберете вашия размер“ (lower case) — rename it to „Размер“; the product page's size guide link still works (it
+  looks for „размер“).
+- Prices: three of the four products are at €0, which makes the price filter's range wrong; set real prices.
+
+**Admin steps** (Shopify admin → Apps → Search & Discovery → Filters):
+1. Remove „Наличност“ (Availability) — optional, the theme hides it anyway.
+2. Keep „Цена“ (Price); label it „Цена“.
+3. Add filter → Product option → „Метал“ (after the option is unified); label „Метал“.
+4. Add filter → Product metafield → custom.stone; label „Камък“. If the metafield is not listed, first open Settings
+   → Custom data → Products → the stone definition and tick "Filtering" / "Storefront access".
+5. Add filter → Product option → „Размер“; label „Размер“.
+6. Order them: Цена, Метал, Камък, Размер. Save; the draft theme picks them up on the next page load.
+Tell me when this is done and I will check every collection on the preview.
+
 ## J. Homepage categories on phones — BUILT 2026-10-05 (two-column grid, names only, taglines removed everywhere)
 
 One column of six full-width tiles, 375×230px each, the section 1552px tall at 375px; names 15px capitals with a

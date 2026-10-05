@@ -69,6 +69,17 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
   (a link to #SizeGuideHow-…, arrow aria-hidden, 44px tall). The guide's click handler opens the <details>, scrolls
   the dialog to it (smooth; instant under prefers-reduced-motion) and focuses its summary; the URL is unchanged.
   Real preview at 375 and 320: opens, scrolls to the end of the guide with all instructions visible, no sideways scroll.
+- **2026-10-05, collection filters (owner)**: kept Dawn's horizontal filters and Search & Discovery (no new app).
+  Phones: „Филтри“ button with a count badge (price counts once) opens the drawer; sorting sits on the bar beside it
+  (hands its value to the drawer's sort, so filters and order travel together; the drawer no longer repeats it);
+  drawer panels end with „Изчисти“ and „Покажи резултатите (N)“. Clearing keeps the chosen sort (Liquid + JS, since
+  Dawn does not re-render the drawer footer). Chips „Изчисти всички“; desktop label „Филтри:“; zero results read
+  „Няма бижута с избраните филтри.“ with a clear link that keeps the sort. Hidden: „Наличност“ (made to order), empty
+  filters, an all-zero price filter, size outside ring collections. Real preview (/collections/all), 375, 320, 1440:
+  filters combine (availability + price → 1, then 0 results), each chip removes only its filter, sorting keeps
+  filters, „Изчисти“ keeps the sort, badge and result count follow every change, no sideways scroll. Size and
+  empty-filter rules checked locally with liquidjs mocks (11 cases) because Shopify returns no such filters yet.
+  Admin and data steps: docs/tasks.md §K.
 - **2026-10-05, fifth round (owner)**, real preview at 320, 375 and 1440 (no sideways scroll):
   - „Най-продавани“ confirmed live.
   - Category slider (phones): circular 44×44 arrows (disabled faded) and line indicators between them; active line
