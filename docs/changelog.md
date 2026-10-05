@@ -132,6 +132,11 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
   Real preview 320 / 375 / 1440: indicators 11 / 15px from the button and 14 / 14 / 28px under the words, no
   arrows or counter, no sideways scroll; autoplay 3 s, tap stop, indicator select with aria-current and
   announcement, swipe, ←/→, reduced motion paused.
+- **2026-10-05, zodiac slideshow: pause/play button removed (owner)**. Tapping the picture, swiping, an indicator
+  or ←/→ now stop autoplay for the rest of the visit (nothing restarts it); hover and keyboard focus still pause it
+  while they last, and reduced motion never starts it, so visitors keep a way to stop the motion. Indicator tap areas
+  widened to 20px (below 360) / 24px. Real preview 320 / 1440: no button, 12 lines inside the frame and centred,
+  autoplay 3 s once on screen, tap stops, indicator 6 selects Дева, swipe, ←/→, no sideways scroll.
 - **2026-10-05, fifth round (owner)**, real preview at 320, 375 and 1440 (no sideways scroll):
   - „Най-продавани“ confirmed live.
   - Category slider (phones): circular 44×44 arrows (disabled faded) and line indicators between them; active line
