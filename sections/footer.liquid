@@ -270,8 +270,11 @@
 
           За нас is the third (2026-10-04, owner): the page ends with its questions, and the
           promotional block is left off there; the small icons under the newsletter stay.
+
+          Collection pages (including „Най-продавани“, /collections/all) and the collections
+          list are the fourth (2026-10-05, owner): the small footer icons are enough there.
         {%- endcomment -%}
-        {%- unless template.name == 'index' or template.name == 'product' or template.suffix == 'about' -%}
+        {%- unless template.name == 'index' or template.name == 'product' or template.suffix == 'about' or template.name == 'collection' or template.name == 'list-collections' -%}
           {{- footer_social -}}
         {%- endunless -%}
         {%- if section.blocks.size > 0 or footer_subscribe != blank -%}
