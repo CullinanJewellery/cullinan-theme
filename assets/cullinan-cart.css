@@ -681,3 +681,21 @@ cart-drawer cart-drawer-items {
 #main-cart-items cart-remove-button .cart-remove-button {
   margin-left: 2rem;
 }
+
+/* ===========================================================================
+   Checkout reach (2026-10-05, owner). „Към плащане“ 54px tall in the drawer and on
+   /cart (was 48px), colour and hover unchanged. In the drawer the list of pieces takes
+   only its own height, so with one or two pieces the reassurances, total and button sit
+   right under them instead of at the foot of the screen; a long list shrinks and
+   scrolls on its own (min-height: 0), so the total and button stay in view below it
+   without covering any piece.
+   =========================================================================== */
+#CartDrawer .cart__checkout-button.button,
+#main-cart-footer .cart__checkout-button.button {
+  min-height: 5.4rem;
+}
+
+#CartDrawer cart-drawer-items {
+  flex: 0 1 auto;
+  min-height: 0;
+}
