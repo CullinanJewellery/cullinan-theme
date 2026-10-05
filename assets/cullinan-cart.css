@@ -688,7 +688,7 @@ cart-drawer cart-drawer-items {
    only its own height, so with one or two pieces the reassurances, total and button sit
    right under them instead of at the foot of the screen; a long list shrinks and
    scrolls on its own (min-height: 0), so the total and button stay in view below it
-   without covering any piece.
+   without covering a single piece.
    =========================================================================== */
 #CartDrawer .cart__checkout-button.button,
 #main-cart-footer .cart__checkout-button.button {
