@@ -100,6 +100,11 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
   shows Начало › Висулка плочка when opened directly). After a variant change Dawn rewrites the address to
   /products/…?variant=; the trail on screen stays, a reload uses the direct-product rule. Real preview: 320, 375,
   1440; all links followed (category link opens the collection); filter buttons unchanged (169×48, 8px).
+- **2026-10-05, collection page top (owner)**: trail lower and larger, title closer to the filters. Header → trail
+  0 → 20px (phone) / 28px (computer); trail 12 → 13px, still 65% ink beside the 30/40px title; trail → title 25 →
+  12px; title → filters 68 → 26px (phone) and 61 → 24px (computer): title bottom margin removed, product-grid
+  padding_top 36 → 24 in templates/collection.json, space above the phone buttons 16 → 8px. Real preview 320, 375,
+  1440: trail on one line (a longer test name too), links and filters unchanged, no sideways scroll.
 - **2026-10-05, fifth round (owner)**, real preview at 320, 375 and 1440 (no sideways scroll):
   - „Най-продавани“ confirmed live.
   - Category slider (phones): circular 44×44 arrows (disabled faded) and line indicators between them; active line
