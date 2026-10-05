@@ -29,6 +29,15 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
   tested with substituted data (liquidjs mocks); hiding, wording and FAQ checked on the real preview.
 - **2026-10-05, reviews decision (owner)**: keep Judge.me's Testimonials carousel as supported (one card at a time on
   phones); the peek requirement is dropped; no override or custom carousel. No theme changes this round.
+- **2026-10-05, workshop slides on phones (owner)**: the title stays above the slideshow with one „Стъпка N от 4“ line
+  under it (updated by the script; each slide's own step line hidden on phones). Each slide: photo when there is one,
+  then one box in the page colour #FBF8F6 on the pale band holding heading, text, button and second link; boxes are as
+  tall as the tallest slide so the control sits 16px under every one (text-only boxes keep their height while only
+  some photos exist). One joined control, two 56×44px halves with a divider, ends disabled; the step marks are not
+  shown on phones. Swipe also works on the control; a click within 500ms of a swipe is cancelled; vertical scrolling
+  untouched (`pan-y`). Keyboard, labels, live region and reduced motion unchanged. Tablet and computer unchanged.
+  Real preview: all four steps at 320 and 375, desktop at 1440, no sideways scroll; photo order checked with an
+  in-browser stand-in (no photos uploaded); swipe and click suppression with synthetic touch events.
 - **2026-10-05, fifth round (owner)**, real preview at 320, 375 and 1440 (no sideways scroll):
   - „Най-продавани“ confirmed live.
   - Category slider (phones): circular 44×44 arrows (disabled faded) and line indicators between them; active line
