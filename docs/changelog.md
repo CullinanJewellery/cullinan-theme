@@ -182,6 +182,16 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
      разгледани“ → social. „Попитайте за това бижу“ still jumps to #zapitvane; recently viewed collapses to 0px for a
      first visit (no gaps).
   Real preview 320 / 375 / 1440. Product descriptions, photos, prices and availability left for the data cleanup.
+- **2026-10-05, product cards (owner, three changes)**:
+  1. Square frames: collection.json image_ratio adapt → square (the homepage row was already square); card photos
+     fitted inside (object-fit contain) on a white frame, never cropped. Rows now align (names at one height).
+  2. Phones: the grid keeps the page's 15px margins with a 12px gap (**reverses** the 2026-10-04 edge-to-edge 4px
+     grid; way back: delete the „Product cards, second pass“ block in crown.css); words aligned with the picture.
+     Names 17px on phones (16px below 360px; 18px gave four lines to a long name at 375) / 20px from 750px; prices
+     17px. Swatches fit at 320.
+  3. „Изчерпано“ 11px with tighter padding (96×25 → 78×20px at 375).
+  Real preview 320 / 375 / 1440; filters, sorting, trails, swatches and links unchanged; product data and admin sorting
+  untouched.
 - **2026-10-05, fifth round (owner)**, real preview at 320, 375 and 1440 (no sideways scroll):
   - „Най-продавани“ confirmed live.
   - Category slider (phones): circular 44×44 arrows (disabled faded) and line indicators between them; active line
