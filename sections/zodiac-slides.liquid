@@ -219,22 +219,6 @@
             Swiping and the left/right arrow keys also move between slides.
           {%- endcomment -%}
           {%- comment -%} Previous/next inside the picture, computers only (owner, 2026-10-05). {%- endcomment -%}
-          {%- comment -%}
-            Small pause/play in the picture's top-right corner (restored 2026-10-05, owner). An
-            explicit Pause holds through scrolling away and back; only Play restarts.
-          {%- endcomment -%}
-          <button
-            type="button"
-            class="zodiac__toggle"
-            data-zodiac-toggle
-            aria-label="Спри автоматичното превъртане"
-            data-label-pause="Спри автоматичното превъртане"
-            data-label-play="Пусни автоматичното превъртане"
-            hidden
-          >
-            <span class="zodiac__icon-pause" aria-hidden="true"></span>
-            <span class="zodiac__icon-play" aria-hidden="true"></span>
-          </button>
           <button type="button" class="zodiac__arrow zodiac__arrow--prev" data-zodiac-prev aria-label="Предишна зодия" hidden>
             <span class="svg-wrapper" aria-hidden="true">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
           </button>
