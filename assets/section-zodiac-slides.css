@@ -179,14 +179,13 @@
   }
 }
 
-/* ---- controls under the frame ------------------------------------------- */
+/* ---- pause/play: one small button in the picture's top corner ---------- */
 
 .zodiac__controls {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.2rem;
-  margin-top: 1.6rem;
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  z-index: 2;
 }
 
 .zodiac__controls[hidden] {
@@ -200,34 +199,21 @@
   width: 4.4rem;
   height: 4.4rem;
   padding: 0;
-  border: 0.1rem solid rgba(var(--color-foreground), 0.35);
+  border: 0.1rem solid rgba(251, 248, 246, 0.6);
   border-radius: 50%;
-  background: transparent;
-  color: rgb(var(--color-foreground));
+  background: rgba(42, 30, 26, 0.45);
+  color: rgb(251 248 246);
   cursor: pointer;
-  transition: border-color 0.2s;
+  transition: background-color 0.2s;
 }
 
 .zodiac__control:hover {
-  border-color: rgb(var(--color-foreground));
+  background: rgba(42, 30, 26, 0.7);
 }
 
 .zodiac__control:focus-visible {
-  outline: 0.2rem solid rgb(var(--color-foreground));
+  outline: 0.2rem solid rgb(251 248 246);
   outline-offset: 0.2rem;
-}
-
-.zodiac__control .svg-wrapper {
-  width: 1.1rem;
-  height: 1.1rem;
-}
-
-.zodiac__control--prev .svg-wrapper {
-  transform: rotate(90deg);
-}
-
-.zodiac__control--next .svg-wrapper {
-  transform: rotate(-90deg);
 }
 
 /* Pause: two bars; play: a triangle. The button shows the action it will take. */
@@ -256,12 +242,14 @@
   display: block;
 }
 
-.zodiac__counter {
-  min-width: 5.6rem;
-  margin: 0;
-  font-size: 1.3rem;
-  letter-spacing: 0.06em;
-  font-variant-numeric: tabular-nums;
-  color: rgba(var(--color-foreground), 0.7);
-  text-align: center;
+/* Preview without photos: the intended button, not a link. */
+.zodiac__button--sample {
+  cursor: default;
+  pointer-events: none;
+}
+
+.zodiac__sample-note {
+  font-size: 1.1rem;
+  letter-spacing: 0.04em;
+  opacity: 0.85;
 }

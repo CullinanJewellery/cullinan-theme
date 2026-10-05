@@ -25,16 +25,42 @@
     endif
   endfor
 
+  comment
+    Placeholders (every slide, labelled boxes for missing photographs) show in the theme
+    editor, and on a draft preview while the temporary setting "Preview without photos" is on
+    (2026-10-05, owner). Never on the published shop: the theme must not be the live one
+    (theme.role main) and the page must be the editor, a shopifypreview.com link or an
+    unpublished theme, so even a setting left on cannot reach shoppers.
+  endcomment
+  assign is_live_theme = false
+  if theme.role == 'main'
+    assign is_live_theme = true
+  endif
+  assign is_draft_view = false
+  if request.design_mode or request.host contains 'shopifypreview.com' or theme.role == 'unpublished'
+    assign is_draft_view = true
+  endif
+  assign show_placeholders = false
+  if request.design_mode
+    assign show_placeholders = true
+  elsif section.settings.preview_placeholders and is_draft_view and is_live_theme == false
+    assign show_placeholders = true
+  endif
+  assign preview_mode = false
+  if show_placeholders and request.design_mode == false
+    assign preview_mode = true
+  endif
+
   assign show_section = false
   if ready_total > 0
     assign show_section = true
   endif
-  if request.design_mode and section.blocks.size > 0
+  if show_placeholders and section.blocks.size > 0
     assign show_section = true
   endif
 
   assign shown_total = ready_total
-  if request.design_mode
+  if show_placeholders
     assign shown_total = section.blocks.size
   endif
 -%}
@@ -62,7 +88,12 @@
 
   <div class="color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-margin">
     <div class="page-width">
-      {%- if request.design_mode and ready_total < section.blocks.size -%}
+      {%- if preview_mode -%}
+        <p class="zodiac__editor-note">
+          Временен преглед без снимки — вижда се само в черновата. Снимките, текстовете и бутоните предстоят;
+          примерният бутон не води никъде. Изключете „Preview without photos“ в редактора, когато снимките са качени.
+        </p>
+      {%- elsif request.design_mode and ready_total < section.blocks.size -%}
         <p class="zodiac__editor-note">
           Посетителите виждат само слайдовете със снимка (готови: {{ ready_total }} от {{ section.blocks.size }}).
           {%- if ready_total == 0 %} Докато няма нито една, секцията не се показва в магазина.{% endif %}
@@ -90,7 +121,7 @@
               if block.settings.image != blank or block.settings.image_mobile != blank
                 assign has_photo = true
               endif
-              if has_photo == false and request.design_mode == false
+              if has_photo == false and show_placeholders == false
                 continue
               endif
               assign shown_index = shown_index | plus: 1
@@ -146,7 +177,11 @@
                   </picture>
                 {%- else -%}
                   <div class="zodiac__placeholder">
-                    <span>Снимка за {{ sign_name | escape }} — качете я в редактора<br>(вижда се само тук)</span>
+                    {%- if preview_mode -%}
+                      <span>Място за снимка: {{ sign_name | escape }}<br>(предстои)</span>
+                    {%- else -%}
+                      <span>Снимка за {{ sign_name | escape }} — качете я в редактора<br>(вижда се само тук)</span>
+                    {%- endif -%}
                   </div>
                 {%- endif -%}
               </div>
@@ -160,6 +195,10 @@
                 {%- endif -%}
                 {%- if target_url != '' -%}
                   <a class="zodiac__button button button--primary" href="{{ target_url }}">{{ button_label | escape }}</a>
+                {%- elsif preview_mode -%}
+                  {%- comment -%} The intended button, shown but not a link: no destination is chosen yet. {%- endcomment -%}
+                  <span class="zodiac__button zodiac__button--sample button button--primary" aria-hidden="true">{{ button_label | escape }}</span>
+                  <span class="zodiac__sample-note">Примерен бутон — без връзка</span>
                 {%- elsif request.design_mode -%}
                   <p class="zodiac__editor-hint">Бутонът се показва, щом изберете продукт или колекция с продукти.</p>
                 {%- endif -%}
@@ -169,10 +208,11 @@
         </div>
 
         {%- if shown_total > 1 -%}
+          {%- comment -%}
+            One small pause/play button in the picture's top corner (2026-10-05, owner: no
+            arrows, no counter). Swiping and the left/right arrow keys still move between slides.
+          {%- endcomment -%}
           <div class="zodiac__controls" hidden>
-            <button type="button" class="zodiac__control zodiac__control--prev" data-zodiac-prev aria-label="Предишна зодия">
-              <span class="svg-wrapper" aria-hidden="true">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
-            </button>
             <button
               type="button"
               class="zodiac__control zodiac__control--toggle"
@@ -184,10 +224,6 @@
               <span class="zodiac__icon-pause" aria-hidden="true"></span>
               <span class="zodiac__icon-play" aria-hidden="true"></span>
             </button>
-            <button type="button" class="zodiac__control zodiac__control--next" data-zodiac-next aria-label="Следваща зодия">
-              <span class="svg-wrapper" aria-hidden="true">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
-            </button>
-            <p class="zodiac__counter" aria-hidden="true"><span data-zodiac-current>1</span> / {{ shown_total }}</p>
           </div>
           <p class="visually-hidden" aria-live="polite" data-zodiac-status></p>
         {%- endif -%}
@@ -209,6 +245,13 @@
     {
       "type": "paragraph",
       "content": "Visitors see only the slides with a photograph; with none, the section is hidden. The editor shows all slides, with placeholders."
+    },
+    {
+      "type": "checkbox",
+      "id": "preview_placeholders",
+      "label": "Preview without photos",
+      "info": "Temporary: shows all slides with placeholders on the draft preview link. Never shown on the published shop. Turn off once the photos are in.",
+      "default": false
     },
     {
       "type": "text",

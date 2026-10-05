@@ -2,9 +2,9 @@
   <zodiac-slides> (sections/zodiac-slides.liquid), 2026-10-05.
   Autoplay every 6 s (data-interval) with a CSS fade. It pauses while the pointer is
   over the slideshow or keyboard focus is inside it, and while the slideshow is off
-  screen or the tab is hidden; any manual move (arrows, swipe, arrow keys) stops it
+  screen or the tab is hidden; any manual move (swipe, the left/right arrow keys) stops it
   until the pause/play button is pressed. With prefers-reduced-motion it starts paused.
-  Arrows wrap round (the signs are a circle). Inactive slides are inert. A polite live
+  No arrow buttons or counter (2026-10-05, owner); moving wraps round (the signs are a circle). Inactive slides are inert. A polite live
   region announces the slide only after a manual move, never during autoplay.
 */
 if (!customElements.get('zodiac-slides')) {
@@ -16,10 +16,7 @@ if (!customElements.get('zodiac-slides')) {
         this.controls = this.querySelector('.zodiac__controls');
         if (this.slides.length < 2 || !this.controls) return;
 
-        this.prev = this.querySelector('[data-zodiac-prev]');
-        this.next = this.querySelector('[data-zodiac-next]');
         this.toggle = this.querySelector('[data-zodiac-toggle]');
-        this.current = this.querySelector('[data-zodiac-current]');
         this.status = this.querySelector('[data-zodiac-status]');
         this.interval = Number(this.dataset.interval) || 6000;
         this.index = 0;
@@ -34,8 +31,6 @@ if (!customElements.get('zodiac-slides')) {
         var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
         this.stopped = reduce.matches;
 
-        this.prev.addEventListener('click', () => this.manual(this.index - 1));
-        this.next.addEventListener('click', () => this.manual(this.index + 1));
         this.toggle.addEventListener('click', () => {
           this.stopped = !this.stopped;
           this.sync();
@@ -132,7 +127,6 @@ if (!customElements.get('zodiac-slides')) {
           slide.inert = !active;
           slide.setAttribute('aria-hidden', String(!active));
         });
-        if (this.current) this.current.textContent = this.index + 1;
         if (announce && this.status) {
           var heading = this.slides[this.index].dataset.heading;
           this.status.textContent = this.index + 1 + ' от ' + count + (heading ? ': ' + heading : '');
