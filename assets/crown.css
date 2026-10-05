@@ -5567,6 +5567,37 @@ dialog.size-guide .size-guide__intro + .size-guide__table {
   margin-top: 1.6rem;
 }
 
+/* „Как да определите размера си ↓“ above the table: small, a 44px tap height. */
+dialog.size-guide .size-guide__jump {
+  display: inline-flex;
+  align-items: center;
+  min-height: 4.4rem;
+  margin-top: 0.4rem;
+  color: rgb(var(--color-foreground));
+  font-size: 1.4rem;
+  text-decoration: underline;
+  text-decoration-thickness: 0.05rem;
+  text-underline-offset: 0.3rem;
+}
+
+dialog.size-guide .size-guide__jump:hover {
+  text-decoration-thickness: 0.1rem;
+}
+
+dialog.size-guide .size-guide__jump:focus-visible {
+  outline: 0.2rem solid rgb(var(--color-foreground));
+  outline-offset: 0.2rem;
+}
+
+dialog.size-guide .size-guide__jump + .size-guide__table {
+  margin-top: 0.8rem;
+}
+
+/* The scrolled-to section stops a little below the guide's top edge. */
+dialog.size-guide .size-guide__details {
+  scroll-margin-top: 1.6rem;
+}
+
 dialog.size-guide .size-guide__tip {
   margin: 1.2rem 0 0;
   font-size: 1.4rem;

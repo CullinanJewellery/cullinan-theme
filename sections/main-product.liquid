@@ -718,6 +718,16 @@
                         {%- if block.settings.size_guide_intro != blank -%}
                           <p class="size-guide__intro">{{ block.settings.size_guide_intro | escape }}</p>
                         {%- endif -%}
+                        {%- if block.settings.size_guide_content != blank -%}
+                          <a
+                            class="size-guide__jump"
+                            href="#SizeGuideHow-{{ section.id }}"
+                            data-size-guide-jump
+                          >
+                            {{- block.settings.size_guide_details_label | default: 'Как да определите размера си' | escape -}}
+                            <span aria-hidden="true">&nbsp;↓</span>
+                          </a>
+                        {%- endif -%}
                         <table class="size-guide__table">
                           <caption class="visually-hidden">Европейски размери на пръстени</caption>
                           <thead>
@@ -745,7 +755,7 @@
                           <p class="size-guide__tip">{{ block.settings.size_guide_tip | escape }}</p>
                         {%- endif -%}
                         {%- if block.settings.size_guide_content != blank -%}
-                          <details class="size-guide__details">
+                          <details class="size-guide__details" id="SizeGuideHow-{{ section.id }}">
                             <summary class="size-guide__summary">
                               {{- block.settings.size_guide_details_label | default: 'Как да определите размера си' | escape -}}
                             </summary>
@@ -762,6 +772,20 @@
                           if (opener) {
                             var dialog = document.getElementById(opener.getAttribute('aria-controls'));
                             if (dialog && typeof dialog.showModal === 'function') dialog.showModal();
+                            return;
+                          }
+                          // „Как да определите размера си ↓“: open the instructions under the table and
+                          // scroll the guide to them (instantly when the visitor prefers reduced motion).
+                          var jump = event.target.closest('[data-size-guide-jump]');
+                          if (jump) {
+                            var how = document.getElementById(jump.getAttribute('href').slice(1));
+                            if (!how) return;
+                            event.preventDefault();
+                            how.open = true;
+                            var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                            how.scrollIntoView({ behavior: still ? 'auto' : 'smooth', block: 'start' });
+                            var summary = how.querySelector('summary');
+                            if (summary) summary.focus({ preventScroll: true });
                             return;
                           }
                           // A click on the backdrop lands on the dialog itself (its inner box fills it).
