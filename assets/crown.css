@@ -6252,14 +6252,14 @@ html body main .banner__heading {
   line-height: 1.15;
 }
 
-html body main .collection .title-wrapper .title,
+html body main [id^="shopify-section-"][id$="__featured_collection"] .collection__title .title,
 html body main .mosaic__heading,
 html body main .zodiac__overlay-title,
 html body main .stones__heading,
 html body main .workshop__title,
 html body main .review-cards__heading,
 html body main .custom-request__heading,
-html body main .footer__social-heading {
+html body main .footer__social:not(.footer__social--contact) .footer__social-heading {
   font-size: 2.6rem;
   line-height: 1.2;
 }
@@ -6269,14 +6269,14 @@ html body main .footer__social-heading {
     font-size: 4.4rem;
   }
 
-  html body main .collection .title-wrapper .title,
+  html body main [id^="shopify-section-"][id$="__featured_collection"] .collection__title .title,
   html body main .mosaic__heading,
   html body main .zodiac__overlay-title,
   html body main .stones__heading,
   html body main .workshop__title,
   html body main .review-cards__heading,
   html body main .custom-request__heading,
-  html body main .footer__social-heading {
+  html body main .footer__social:not(.footer__social--contact) .footer__social-heading {
     font-size: 3.2rem;
   }
 }
@@ -6286,14 +6286,14 @@ html body main .footer__social-heading {
     font-size: 5.2rem;
   }
 
-  html body main .collection .title-wrapper .title,
+  html body main [id^="shopify-section-"][id$="__featured_collection"] .collection__title .title,
   html body main .mosaic__heading,
   html body main .zodiac__overlay-title,
   html body main .stones__heading,
   html body main .workshop__title,
   html body main .review-cards__heading,
   html body main .custom-request__heading,
-  html body main .footer__social-heading {
+  html body main .footer__social:not(.footer__social--contact) .footer__social-heading {
     font-size: 4rem;
   }
 }
