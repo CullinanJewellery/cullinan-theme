@@ -43,6 +43,12 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
   equal-height rule are gone). Title, step line and joined control unchanged; the control keeps one position under
   the tallest slide. Real preview at 320 and 375, all four steps, with a temporary browser-only photo; storefront
   without photos and desktop at 1440 rechecked.
+- **2026-10-05, size guide link (owner)**: „Таблица с размери“ sits at the right of the size label's row on phones too
+  (it used to drop under the size boxes below 750px). Smaller and secondary: Jost 11px, sentence case, ink at 72%,
+  thin underline (full ink on hover). A 44px-tall invisible tap area fills the space between the option above and
+  the boxes without covering either. The label keeps 12rem free and wraps; the link stays on its last line. Guide
+  dialog unchanged. Real preview, Пръстен с верижка: 375 (one line, 47px clear), 320 (label on two lines, 72px
+  clear), 1440 (127px clear); dialog opens; no sideways scroll.
 - **2026-10-05, fifth round (owner)**, real preview at 320, 375 and 1440 (no sideways scroll):
   - „Най-продавани“ confirmed live.
   - Category slider (phones): circular 44×44 arrows (disabled faded) and line indicators between them; active line
