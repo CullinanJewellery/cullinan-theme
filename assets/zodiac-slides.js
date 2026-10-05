@@ -1,11 +1,12 @@
 /*
   <zodiac-slides> (sections/zodiac-slides.liquid), 2026-10-05.
-  Autoplay every 6 s (data-interval) with a CSS fade. It pauses while the pointer is
-  over the slideshow or keyboard focus is inside it, and while the slideshow is off
-  screen or the tab is hidden; any manual move (swipe, the left/right arrow keys) stops it
-  until the pause/play button is pressed. With prefers-reduced-motion it starts paused.
-  No arrow buttons or counter (2026-10-05, owner); moving wraps round (the signs are a circle). Inactive slides are inert. A polite live
-  region announces the slide only after a manual move, never during autoplay.
+  Autoplay every 3 s (data-interval; owner, was 6) with a CSS fade. It pauses while the
+  pointer is over the pictures or keyboard focus is inside, and while the slideshow is off
+  screen or the tab is hidden. Tapping the picture, swiping, choosing a line indicator or the
+  left/right arrow keys stop it until the pause/play button is pressed; a real button on the
+  slide (a link) still opens normally. With prefers-reduced-motion it starts paused.
+  No arrow buttons or counter; moving wraps round (the signs are a circle). Inactive slides
+  are inert. A polite live region announces the slide only after a manual move.
 */
 if (!customElements.get('zodiac-slides')) {
   customElements.define(
@@ -17,8 +18,10 @@ if (!customElements.get('zodiac-slides')) {
         if (this.slides.length < 2 || !this.controls) return;
 
         this.toggle = this.querySelector('[data-zodiac-toggle]');
+        this.dotsBox = this.querySelector('.zodiac__dots');
+        this.dots = Array.from(this.querySelectorAll('[data-zodiac-go]'));
         this.status = this.querySelector('[data-zodiac-status]');
-        this.interval = Number(this.dataset.interval) || 6000;
+        this.interval = Number(this.dataset.interval) || 3000;
         this.index = 0;
         this.timer = null;
         this.hovered = false;
@@ -27,6 +30,7 @@ if (!customElements.get('zodiac-slides')) {
 
         this.classList.add('zodiac--js');
         this.controls.hidden = false;
+        if (this.dotsBox) this.dotsBox.hidden = false;
 
         var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
         this.stopped = reduce.matches;
@@ -35,6 +39,8 @@ if (!customElements.get('zodiac-slides')) {
           this.stopped = !this.stopped;
           this.sync();
         });
+
+        this.dots.forEach((dot) => dot.addEventListener('click', () => this.manual(Number(dot.dataset.zodiacGo))));
 
         // Hover pauses over the pictures only, so pressing play under them is not undone by
         // the pointer still being there; keyboard focus pauses, except on the play button.
@@ -83,6 +89,12 @@ if (!customElements.get('zodiac-slides')) {
           this.manual(this.index + (dx < 0 ? 1 : -1));
         });
         area.addEventListener('pointercancel', () => (start = null));
+        // A tap on the picture (not on its link) stops autoplay; the link itself opens as usual.
+        area.addEventListener('click', (event) => {
+          if (event.target.closest('a, button')) return;
+          this.stopped = true;
+          this.sync();
+        });
         // A swipe that ends on the button must not also follow it.
         area.addEventListener(
           'click',
@@ -126,6 +138,10 @@ if (!customElements.get('zodiac-slides')) {
           slide.classList.toggle('is-active', active);
           slide.inert = !active;
           slide.setAttribute('aria-hidden', String(!active));
+        });
+        this.dots.forEach((dot, i) => {
+          if (i === this.index) dot.setAttribute('aria-current', 'true');
+          else dot.removeAttribute('aria-current');
         });
         if (announce && this.status) {
           var heading = this.slides[this.index].dataset.heading;

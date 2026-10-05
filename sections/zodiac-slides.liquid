@@ -10,7 +10,7 @@
     in for a missing photograph.
   - The button shows only when it leads somewhere real: a product, or a collection that has
     products. No invented product details or horoscope claims; the text is optional.
-  - Changes every 6 seconds with a gentle fade; arrows, swiping on phones and a visible
+  - Changes every 3 seconds with a gentle fade (owner, 2026-10-05; was 6); line indicators, swiping and a visible
     pause/play button. Pauses on hover and keyboard focus, stops after any manual move, and
     never starts by itself when the visitor prefers reduced motion (assets/zodiac-slides.js).
   - Cropping: the frame's proportions are section settings (phone and computer apart); each
@@ -111,7 +111,7 @@
         role="region"
         aria-roledescription="карусел"
         aria-label="{{ section.settings.heading | default: 'Зодии' | escape }}"
-        data-interval="6000"
+        data-interval="3000"
       >
         <div class="zodiac__viewport">
           {%- assign shown_index = 0 -%}
@@ -209,9 +209,37 @@
 
         {%- if shown_total > 1 -%}
           {%- comment -%}
-            One small pause/play button in the picture's top corner (2026-10-05, owner: no
-            arrows, no counter). Swiping and the left/right arrow keys still move between slides.
+            Inside the picture, along the bottom (2026-10-05, owner): one short line per slide,
+            centred, the active one in the category pink, each a button with a 44px-tall tap
+            area; a small pause/play button in the lower right corner. No arrows, no counter.
+            Swiping and the left/right arrow keys also move between slides.
           {%- endcomment -%}
+          <div class="zodiac__dots" role="group" aria-label="Зодии" hidden>
+            {%- assign dot_index = 0 -%}
+            {%- for block in section.blocks -%}
+              {%- liquid
+                assign dot_has_photo = false
+                if block.settings.image != blank or block.settings.image_mobile != blank
+                  assign dot_has_photo = true
+                endif
+                if dot_has_photo == false and show_placeholders == false
+                  continue
+                endif
+              -%}
+              <button
+                type="button"
+                class="zodiac__dot"
+                data-zodiac-go="{{ dot_index }}"
+                aria-label="{{ block.settings.heading | default: 'Зодия' | escape }}"
+                {% if dot_index == 0 %}
+                  aria-current="true"
+                {% endif %}
+              >
+                <span class="zodiac__dot-line" aria-hidden="true"></span>
+              </button>
+              {%- assign dot_index = dot_index | plus: 1 -%}
+            {%- endfor -%}
+          </div>
           <div class="zodiac__controls" hidden>
             <button
               type="button"

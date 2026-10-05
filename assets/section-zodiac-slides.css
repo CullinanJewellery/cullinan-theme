@@ -56,7 +56,7 @@
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  padding: 3.2rem 6.8rem; /* clear of the pause/play button in the corner */
+  padding: 3.2rem 2rem;
   border: 0.1rem dashed rgba(var(--color-foreground), 0.45);
   background: rgb(240 232 226);
   text-align: center;
@@ -79,7 +79,7 @@
   position: absolute;
   left: 2rem;
   right: 2rem;
-  bottom: 2.4rem;
+  bottom: 6.4rem; /* above the line indicators */
   z-index: 1;
   display: flex;
   flex-direction: column;
@@ -139,7 +139,7 @@
   .zodiac__content {
     left: 4rem;
     right: 4rem;
-    bottom: 4rem;
+    bottom: 8.8rem;
     gap: 1.2rem;
   }
 
@@ -163,13 +163,13 @@
   grid-area: 1 / 1;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.8s ease, visibility 0s linear 0.8s;
+  transition: opacity 0.6s ease, visibility 0s linear 0.6s;
 }
 
 .zodiac--js .zodiac__slide.is-active {
   opacity: 1;
   visibility: visible;
-  transition: opacity 0.8s ease, visibility 0s;
+  transition: opacity 0.6s ease, visibility 0s;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -183,8 +183,8 @@
 
 .zodiac__controls {
   position: absolute;
-  top: 1.2rem;
-  right: 1.2rem;
+  bottom: 0.6rem;
+  right: 0.6rem;
   z-index: 2;
 }
 
@@ -252,4 +252,92 @@
   font-size: 1.1rem;
   letter-spacing: 0.04em;
   opacity: 0.85;
+}
+
+/* ---- line indicators (2026-10-05, owner) --------------------------------
+   Inside the picture, centred at the bottom under the words, on the same row as the
+   pause/play button but clear of it. Each is a button: a short line, with an invisible
+   tap area 4.4rem tall (1.4rem wide below 360px so twelve fit beside the corner button on
+   a 320px phone, 1.8rem up to 749px, 2.4rem on computers). Inactive lines in the page
+   colour with a faint dark edge so they show on light photos; the active one in the pink
+   of the category indicators (#E6BAB9). */
+.zodiac__dots {
+  position: absolute;
+  left: 50%;
+  bottom: 0.6rem;
+  z-index: 2;
+  display: flex;
+  transform: translateX(-50%);
+}
+
+.zodiac__dots[hidden] {
+  display: none;
+}
+
+.zodiac__dot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.4rem;
+  height: 4.4rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.zodiac__dot-line {
+  display: block;
+  width: 1rem;
+  height: 0.3rem;
+  border-radius: 0.2rem;
+  background: rgba(251, 248, 246, 0.6);
+  box-shadow: 0 0 0 0.05rem rgba(42, 30, 26, 0.35);
+  transition: background-color 0.3s;
+}
+
+.zodiac__dot[aria-current='true'] .zodiac__dot-line {
+  background: #e6bab9;
+}
+
+.zodiac__dot:hover .zodiac__dot-line {
+  background: rgba(251, 248, 246, 0.95);
+}
+
+.zodiac__dot[aria-current='true']:hover .zodiac__dot-line {
+  background: #e6bab9;
+}
+
+.zodiac__dot:focus-visible {
+  outline: 0.2rem solid rgb(251 248 246);
+  outline-offset: -0.4rem;
+}
+
+@media screen and (min-width: 360px) {
+  .zodiac__dot {
+    width: 1.8rem;
+  }
+
+  .zodiac__dot-line {
+    width: 1.2rem;
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .zodiac__dots {
+    bottom: 1.6rem;
+  }
+
+  .zodiac__dot {
+    width: 2.4rem;
+  }
+
+  .zodiac__dot-line {
+    width: 1.6rem;
+  }
+
+  .zodiac__controls {
+    bottom: 1.6rem;
+    right: 1.6rem;
+  }
 }
