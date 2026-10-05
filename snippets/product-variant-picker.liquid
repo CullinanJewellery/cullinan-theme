@@ -89,6 +89,19 @@
         if option_name_lower contains 'метал' or option_name_lower contains 'материал' or option_name_lower contains 'metal' or option_name_lower contains 'material'
           assign is_material = true
         endif
+
+        comment
+          Cullinan (2026-10-05, owner): the words above each choice are the shopper's
+          prompt, kept apart from the option's name in the Admin, so the options can be named
+          plainly „Метал“ and „Размер“ (which Search & Discovery shows as filter values)
+          without the product page losing „Изберете вашия …“. Any other option shows its name.
+        endcomment
+        assign option_label = option.name
+        if is_material
+          assign option_label = 'Изберете вашия метал'
+        elsif option_name_lower contains 'размер' or option_name_lower contains 'size'
+          assign option_label = 'Изберете вашия размер'
+        endif
       -%}
       {%- if pass == 1 and is_material == false -%}
         {%- continue -%}
@@ -121,7 +134,7 @@
       {%- if picker_type == 'swatch' -%}
         <fieldset class="js product-form__input product-form__input--swatch">
           <legend class="form__label">
-            {{ option.name }}:
+            {{ option_label }}:
             <span data-selected-value>
               {{- option.selected_value -}}
             </span>
@@ -175,7 +188,7 @@
           endif
         -%}
         <fieldset class="js product-form__input product-form__input--menu">
-          <legend class="form__label">{{ option.name }}</legend>
+          <legend class="form__label">{{ option_label }}</legend>
           <option-menu data-key="{{ section.id }}-{{ option.position }}">
             <details class="option-menu">
               <summary class="option-menu__summary">
@@ -207,7 +220,7 @@
       {%- elsif picker_type == 'button' -%}
         <fieldset class="js product-form__input product-form__input--pill">
           <legend class="form__label">
-            {{ option.name }}:
+            {{ option_label }}:
             <span data-selected-value>
               {{- option.selected_value -}}
             </span>
@@ -244,7 +257,7 @@
       {%- else -%}
         <div class="product-form__input product-form__input--dropdown">
           <label class="form__label" for="Option-{{ section.id }}-{{ option.position }}">
-            {{ option.name }}
+            {{ option_label }}
           </label>
           <div class="select">
             {%- if picker_type == 'swatch_dropdown' -%}
