@@ -52,6 +52,12 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 - **2026-10-05, size guide text (owner)**: removed the paragraph „По пръстен, който вече носите: измерете вътрешния му
   диаметър…“ from the guide (default of `size_guide_content`; no template overrides it). The table is unchanged. Real
   preview: the guide now reads intro, ring sizer, tips, the thread warning.
+- **2026-10-05, footer social block (owner)**: the large Facebook/Instagram block above the footer is no longer printed
+  on collection pages („Най-продавани“ is /collections/all) or the collections list; the small icons under the
+  newsletter stay. Still shown on Контакти (own picture and words), search, cart and other pages; homepage
+  („Вижте работата ни“) and product pages keep their own sections. Real preview: gone on /collections/all and
+  /collections; the footer menus start 47px (phone) / 56px (1440) from its top edge, the same as on product and
+  За нас pages, so no gap; homepage, product and Контакти unchanged.
 - **2026-10-05, fifth round (owner)**, real preview at 320, 375 and 1440 (no sideways scroll):
   - „Най-продавани“ confirmed live.
   - Category slider (phones): circular 44×44 arrows (disabled faded) and line indicators between them; active line
