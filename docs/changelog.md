@@ -156,6 +156,21 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
   computers, lines, 3 s, and restart on return after any stop by tap, swipe, arrow, line or key; reduced motion never
   starts it. Real preview 320 / 1440: no button, arrows on computers only, autoplay, swipe stop, off-screen hold and
   restart on return (the test pane delivers visibility only while it renders; checked with screenshots forcing frames).
+- **2026-10-05, homepage review follow-up (owner, five changes)**:
+  1. One heading scale, the opening line largest: opening 32 / 44 / 52px, every section title 26 / 32 / 40px
+     (phone / tablet / computer), one block at the end of crown.css (homepage `main` only). Before: opening 23px vs
+     „Най-продавани“ 30px on phones, 40 vs 46px on computers. Real preview: all single lines except „Всеки камък има
+     значение“ (phone) and the two-sentence custom-order title; the phone pendant stays fully visible above the text.
+  2. „Вижте всички бижута“ under the categories → /collections/all (setting all_label), the same button as
+     „Вижте всички“ under the bestsellers (phone 345×54px 12px capitals; computer 360×56px 14px).
+  3. Newsletter section „Първи научавайте“ switched off (`disabled`, restorable); the footer signup stays.
+  4. Custom-order introduction shortened to „Показваме само част от моделите на ателието. Опишете бижуто, което
+     търсите, и ще ви отговорим.“ (no repeat of the workshop's „друг камък, метал или размер“); email, Instagram and
+     Facebook links kept.
+  5. Vendor hidden on the homepage bestsellers cards (the only cards that showed it). The vendor field still says
+     „Crown Jewellery“ in admin; it appears only in Shopify's hidden tracking data.
+  Phone page 6,201 → 5,887px; page ending (custom order + social + footer) about 2,190 → 1,770px. „Вижте работата
+  ни“ and the footer social icons kept. Zodiac behaviour unchanged.
 - **2026-10-05, fifth round (owner)**, real preview at 320, 375 and 1440 (no sideways scroll):
   - „Най-продавани“ confirmed live.
   - Category slider (phones): circular 44×44 arrows (disabled faded) and line indicators between them; active line

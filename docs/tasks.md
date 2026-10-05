@@ -221,6 +221,11 @@ The section is on the homepage (after the categories) but invisible until a slid
 5. Pending checks once photos exist: the real preview at 320/375/desktop (crop, text contrast on each photo,
    autoplay, pause/play, swipe).
 
+## M. Product vendor (owner, admin)
+
+Every product's vendor is still „Crown Jewellery“. The theme no longer shows it on cards, but it goes into Shopify's
+data (and Google/Facebook product feeds later). Products → select all → Bulk edit → Vendor: „Cullinan Jewellery“.
+
 ## J. Homepage categories on phones — BUILT 2026-10-05 (two-column grid, names only, taglines removed everywhere)
 
 One column of six full-width tiles, 375×230px each, the section 1552px tall at 375px; names 15px capitals with a

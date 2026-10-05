@@ -57,9 +57,9 @@ deliberately not renamed.
 
 ## 3. Homepage (`templates/index.json`)
 
-Order (2026-10-05): hero → trust band → selected pieces → categories → zodiac slideshow → stones → workshop slides → reviews → custom
+Order (2026-10-05): hero → trust band → selected pieces → categories (+ „Вижте всички бижута“) → zodiac slideshow → stones → workshop slides → reviews → custom
 request → social → newsletter. Hidden (`"disabled": true`, kept): `hero_facts`, `image_marquee`, `silver_teaser`,
-`new_arrivals`, `atelier` („Занаят с история“, off since 2026-10-04; owner).
+`new_arrivals`, `atelier` („Занаят с история“, off since 2026-10-04; owner), `newsletter` („Първи научавайте“, off since 2026-10-05; the footer signup stays).
 
 | Section | Files | Behaviour |
 |---|---|---|
