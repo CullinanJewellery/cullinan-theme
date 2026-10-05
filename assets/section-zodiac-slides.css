@@ -108,8 +108,15 @@
   color: inherit;
 }
 
+/* The site's button (rosewood, square), lettered like the workshop button: small capitals. */
 .zodiac__button {
   margin-top: 0.6rem;
+  min-height: 4.4rem;
+  padding: 0 2.4rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 .zodiac__editor-hint {
