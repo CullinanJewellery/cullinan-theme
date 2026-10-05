@@ -151,6 +151,42 @@
                 endif
               %}
 
+              {%- comment -%}
+                Cullinan (2026-10-05, owner): only filters that help. „Наличност“ is left out
+                (every piece is made to order, so "out of stock" misleads); a size filter shows on
+                ring collections only (handle contains „пръстен“); a list with no products behind
+                any value, or a price filter where every price is 0, is not shown.
+              {%- endcomment -%}
+              {%- liquid
+                assign cj_show = true
+                assign cj_param = filter.param_name | downcase
+                assign cj_label = filter.label | downcase
+                if cj_param contains 'availability'
+                  assign cj_show = false
+                endif
+                if cj_label contains 'размер' or cj_label contains 'size' or cj_param contains 'размер' or cj_param contains 'size'
+                  assign cj_handle = results.handle | default: ''
+                  unless cj_handle contains 'пръстен'
+                    assign cj_show = false
+                  endunless
+                endif
+                if filter.type == 'list' or filter.type == 'boolean'
+                  assign cj_live = 0
+                  for value in filter.values
+                    if value.count > 0 or value.active
+                      assign cj_live = cj_live | plus: 1
+                    endif
+                  endfor
+                  if cj_live == 0
+                    assign cj_show = false
+                  endif
+                elsif filter.type == 'price_range'
+                  if filter.range_max == blank or filter.range_max <= 0
+                    assign cj_show = false
+                  endif
+                endif
+              -%}
+              {%- if cj_show -%}
               {% case filter.type %}
                 {% when 'boolean', 'list' %}
                   <details
@@ -360,7 +396,7 @@
                       </price-range>
                     </div>
                   </details>
-              {% endcase %}
+              {% endcase %}{%- endif -%}
             {%- endfor -%}
           </div>
           {% comment %} Pills after filtes on filter type horizontal {% endcomment %}
@@ -552,7 +588,43 @@
                     endif
                   %}
 
-                  {% case filter.type %}
+                  {%- comment -%}
+                Cullinan (2026-10-05, owner): only filters that help. „Наличност“ is left out
+                (every piece is made to order, so "out of stock" misleads); a size filter shows on
+                ring collections only (handle contains „пръстен“); a list with no products behind
+                any value, or a price filter where every price is 0, is not shown.
+              {%- endcomment -%}
+              {%- liquid
+                assign cj_show = true
+                assign cj_param = filter.param_name | downcase
+                assign cj_label = filter.label | downcase
+                if cj_param contains 'availability'
+                  assign cj_show = false
+                endif
+                if cj_label contains 'размер' or cj_label contains 'size' or cj_param contains 'размер' or cj_param contains 'size'
+                  assign cj_handle = results.handle | default: ''
+                  unless cj_handle contains 'пръстен'
+                    assign cj_show = false
+                  endunless
+                endif
+                if filter.type == 'list' or filter.type == 'boolean'
+                  assign cj_live = 0
+                  for value in filter.values
+                    if value.count > 0 or value.active
+                      assign cj_live = cj_live | plus: 1
+                    endif
+                  endfor
+                  if cj_live == 0
+                    assign cj_show = false
+                  endif
+                elsif filter.type == 'price_range'
+                  if filter.range_max == blank or filter.range_max <= 0
+                    assign cj_show = false
+                  endif
+                endif
+              -%}
+              {%- if cj_show -%}
+              {% case filter.type %}
                     {% when 'boolean', 'list' %}
                       <details
                         id="Details-Mobile-{{ filter.param_name | escape }}-{{ section.id }}"
@@ -748,7 +820,7 @@
                           </div>
                         </div>
                       </details>
-                  {% endcase %}
+                  {% endcase %}{%- endif -%}
                 {%- endfor -%}
               {%- endif -%}
 
