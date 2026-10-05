@@ -5296,6 +5296,118 @@ html body .facets-wrapper .facets__display {
   box-shadow: 0 1.6rem 4rem rgba(42, 30, 26, 0.1);
 }
 
+/* Phones (2026-10-05, owner): „Филтри“ with a count of selected filters on the left,
+   sorting on the right of the same bar, the product count under it. */
+.cj-bar-sort {
+  display: none;
+}
+
+.cj-filter-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.9rem;
+  height: 1.9rem;
+  margin-left: 0.6rem;
+  padding: 0 0.5rem;
+  border-radius: 1rem;
+  background: rgb(var(--color-button));
+  color: rgb(var(--color-button-text));
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1;
+}
+
+.cj-filter-count[hidden] {
+  display: none;
+}
+
+@media screen and (max-width: 749px) {
+  html body .facets-wrapper .facets-container {
+    grid-template-columns: auto minmax(0, 1fr);
+    column-gap: 1.2rem;
+    align-items: center;
+  }
+
+  html body .facets-wrapper .mobile-facets__wrapper {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  html body .facets-wrapper .mobile-facets__open {
+    min-height: 4.4rem;
+  }
+
+  html body .facets-wrapper .cj-bar-sort {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  html body .facets-wrapper .cj-bar-sort__label {
+    flex: none;
+    font-size: 1.2rem;
+    letter-spacing: 0.06em;
+    color: rgba(var(--color-foreground), 0.7);
+  }
+
+  html body .facets-wrapper .cj-bar-sort__field {
+    position: relative;
+    min-width: 0;
+  }
+
+  html body .facets-wrapper .cj-bar-sort__select {
+    width: 100%;
+    max-width: 100%;
+    min-height: 4.4rem;
+    padding: 0 2rem 0 0;
+    border: 0;
+    background: transparent;
+    color: rgb(var(--color-foreground));
+    font-family: var(--font-body-family);
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+  }
+
+  html body .facets-wrapper .cj-bar-sort__select:focus-visible {
+    outline: 0.2rem solid rgb(var(--color-foreground));
+    outline-offset: 0.2rem;
+  }
+
+  html body .facets-wrapper .cj-bar-sort .svg-wrapper {
+    position: absolute;
+    right: 0.2rem;
+    top: 50%;
+    width: 1rem;
+    height: 1rem;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+
+  html body .facets-wrapper .active-facets-mobile,
+  html body .facets-wrapper .facets-container > .product-count {
+    grid-column: 1 / -1;
+  }
+
+  /* Sorting is on the bar, so the drawer holds filters only. */
+  html body .facets-wrapper #FacetFiltersFormMobile .mobile-facets__details:has(#SortBy-mobile) {
+    display: none;
+  }
+}
+
 /* ---------------------------------------------------------------------------
    The shop's address and hours, under the footer's first column (2026-10-04)
 
