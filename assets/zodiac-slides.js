@@ -1,12 +1,14 @@
 /*
   <zodiac-slides> (sections/zodiac-slides.liquid), 2026-10-05 (owner).
   Autoplay every 3 s (data-interval) with a CSS fade, while the slideshow is on screen and
-  untouched. A tap on the picture, a swipe, an arrow (computers), a line indicator or the
-  left/right keys stop it; mouse hover and keyboard focus pause it while they last. It stops
-  while off screen and starts again whenever the visitor scrolls back to it (there is no
-  pause button). With prefers-reduced-motion it never starts. A real link on a slide opens
-  normally. Moving wraps round. Inactive slides are inert; a polite live region announces
-  the slide only after a manual move.
+  untouched. Two kinds of stop:
+  - a tap on the picture, a swipe, an arrow, a line indicator or the left/right keys stop
+    it until the visitor scrolls away and comes back (then it starts again), or presses Play;
+  - the Pause button holds it, also through scrolling away and back; only Play restarts it.
+  Mouse hover and keyboard focus (not on the button) pause it while they last; it stops
+  while off screen. With prefers-reduced-motion it starts paused and never restarts by
+  itself; Play can still start it. A real link on a slide opens normally. Moving wraps
+  round. Inactive slides are inert; a polite live region announces manual moves.
 */
 if (!customElements.get('zodiac-slides')) {
   customElements.define(
@@ -30,6 +32,20 @@ if (!customElements.get('zodiac-slides')) {
 
         this.classList.add('zodiac--js');
         this.dotsBox.hidden = false;
+        this.toggle = this.querySelector('[data-zodiac-toggle]');
+        this.userPaused = false;
+        if (this.toggle) {
+          this.toggle.hidden = false;
+          this.toggle.addEventListener('click', () => {
+            if (this.userPaused || this.stopped) {
+              this.userPaused = false;
+              this.stopped = false;
+            } else {
+              this.userPaused = true;
+            }
+            this.sync();
+          });
+        }
         [this.prev, this.next].forEach((arrow) => arrow && (arrow.hidden = false));
         if (this.prev) this.prev.addEventListener('click', () => this.manual(this.index - 1));
         if (this.next) this.next.addEventListener('click', () => this.manual(this.index + 1));
@@ -50,7 +66,7 @@ if (!customElements.get('zodiac-slides')) {
         });
         this.addEventListener('focusin', (event) => {
           var target = event.target;
-          this.focused = target.matches(':focus-visible');
+          this.focused = !target.closest('[data-zodiac-toggle]') && target.matches(':focus-visible');
           this.sync();
         });
         this.addEventListener('focusout', (event) => {
@@ -105,7 +121,9 @@ if (!customElements.get('zodiac-slides')) {
           new IntersectionObserver((entries) => {
             var nowVisible = entries[0].isIntersecting;
             // Back on screen after leaving it: autoplay starts again (not with reduced motion).
-            if (nowVisible && !this.visible && !this.reduce) this.stopped = false;
+            // Back on screen after leaving it: autoplay starts again, unless the visitor pressed
+            // Pause (or prefers reduced motion).
+            if (nowVisible && !this.visible && !this.reduce && !this.userPaused) this.stopped = false;
             this.visible = nowVisible;
             this.sync();
           }).observe(this);
@@ -149,8 +167,12 @@ if (!customElements.get('zodiac-slides')) {
       }
 
       sync() {
-        var running = !this.stopped && !this.hovered && !this.focused && this.visible && !document.hidden;
-        this.classList.toggle('is-paused', this.stopped);
+        var running = !this.stopped && !this.userPaused && !this.hovered && !this.focused && this.visible && !document.hidden;
+        var held = this.stopped || this.userPaused;
+        this.classList.toggle('is-paused', held);
+        if (this.toggle) {
+          this.toggle.setAttribute('aria-label', held ? this.toggle.dataset.labelPlay : this.toggle.dataset.labelPause);
+        }
         clearTimeout(this.timer);
         this.timer = null;
         if (running) {
