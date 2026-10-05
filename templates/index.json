@@ -672,6 +672,7 @@
     "custom_request": {
       "type": "custom-request",
       "settings": {
+        "layout": "collapsible",
         "color_scheme": "scheme-2",
         "eyebrow": "Изработка по поръчка",
         "heading": "Не виждате своето? Ще го направим.",
