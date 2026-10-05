@@ -532,6 +532,11 @@
     grid-template-rows: auto 1fr;
   }
 
+  /* While only some slides have photos, a text-only box keeps its own height. */
+  .workshop--js:has(.workshop__slide--photo) .workshop__slide:not(.workshop__slide--photo) {
+    align-items: start;
+  }
+
   .workshop--js .workshop__content,
   .workshop--text.workshop--js .workshop__content {
     max-width: none;
