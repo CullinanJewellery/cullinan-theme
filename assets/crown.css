@@ -6349,3 +6349,9 @@ html body .product .product__info-container option-menu {
 html body .product-card-wrapper .card__media .media img {
   object-fit: contain;
 }
+
+/* The frame behind a fitted photo is white, like the product photos' own ground, so a
+   white-ground photo fills the square seamlessly and only an odd-shaped one shows a margin. */
+html body .product-card-wrapper .card__media .media {
+  background-color: rgb(255 255 255);
+}
