@@ -701,7 +701,7 @@ cart-drawer cart-drawer-items {
 }
 
 /* The unit price on /cart, shown only from two pieces up (sections/main-cart-items.liquid),
-   in the drawer's quiet small type. */
+   in the drawer's quiet, small type. */
 #main-cart-items .cart-item__each {
   margin: 0.4rem 0 0;
   color: rgba(var(--color-foreground), 0.7);
