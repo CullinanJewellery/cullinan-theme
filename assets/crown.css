@@ -5620,6 +5620,18 @@ dialog.size-guide .size-guide__details .size-guide__body {
   padding-bottom: 0.4rem;
 }
 
+/* At 320px „Диаметър,“ was wider than its column: tighter headers on phones. */
+@media screen and (max-width: 749px) {
+  dialog.size-guide .size-guide__table th,
+  dialog.size-guide .size-guide__table td {
+    padding-inline: 0.6rem;
+  }
+
+  dialog.size-guide .size-guide__table thead th {
+    letter-spacing: 0.03em;
+  }
+}
+
 @media screen and (max-width: 749px) {
   dialog.size-guide .size-guide__inner {
     padding: 3.2rem 2rem 2.4rem;
