@@ -89,6 +89,17 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
   sort from the button keeps the price filter; drawer opens; ring variant 56 + бяло злато selects „56 / бяло злато /
   14К бяло злато“; bracelet shows „Изберете вашия метал“. Ordering checked with liquidjs mocks. Checklist and pending
   checks: docs/tasks.md §K.
+- **2026-10-05, navigation trail (owner)**: „Начало › Пръстени“ above collection titles and „Начало › Пръстени ›
+  name“ at the top of the product buy box, at every width (snippets/breadcrumbs.liquid; shape from hestiahome.bg,
+  Jost 12px, links 65% ink, current page full ink, › separators hidden from screen readers, wraps when long).
+  **Replaces** the desktop-only „Начало / name“ in moonmagic's grey capitals (2026-10-03); way back: git history of
+  the „Navigation trail“ block in crown.css and the product-breadcrumb markup in main-product.liquid. Category on a
+  product: the collection it was opened from (collection cards now link via /collections/…/products/…, canonical
+  stays /products/…; not on „Всички“, which Shopify redirects); opened directly, the one top-level main-menu
+  collection the piece is in, none if it is in none or several (Висулка плочка is in Висулки and Комплекти, so it
+  shows Начало › Висулка плочка when opened directly). After a variant change Dawn rewrites the address to
+  /products/…?variant=; the trail on screen stays, a reload uses the direct-product rule. Real preview: 320, 375,
+  1440; all links followed (category link opens the collection); filter buttons unchanged (169×48, 8px).
 - **2026-10-05, fifth round (owner)**, real preview at 320, 375 and 1440 (no sideways scroll):
   - „Най-продавани“ confirmed live.
   - Category slider (phones): circular 44×44 arrows (disabled faded) and line indicators between them; active line
