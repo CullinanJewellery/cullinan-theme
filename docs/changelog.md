@@ -105,6 +105,15 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
   12px; title → filters 68 → 26px (phone) and 61 → 24px (computer): title bottom margin removed, product-grid
   padding_top 36 → 24 in templates/collection.json, space above the phone buttons 16 → 8px. Real preview 320, 375,
   1440: trail on one line (a longer test name too), links and filters unchanged, no sideways scroll.
+- **2026-10-05, zodiac slideshow (owner; replaces the earlier zodiac-row and single-banner instructions)**: new
+  section after the categories, before the stones; 12 slides Овен … Риби, each with photo (+ phone photo), heading,
+  optional text, button to a product or a non-empty collection. Words on the picture, bottom-centred; autoplay 6 s
+  with a gentle fade, arrows, swipe, visible pause/play; pauses on hover/focus, stops on manual moves; reduced motion
+  starts paused. No photos yet, so shoppers see nothing: **real preview** at 320, 375 and 1440 — the section wrapper is
+  0px, categories run straight into the stones, no sideways scroll. **Local preview only** (liquidjs render of the
+  real section with the live theme's CSS, stand-in photo from the store's files, never pushed): editor view with 12
+  placeholders; text 20px from the sides / 24px from the bottom (phone), 40px (computer); autoplay 6 s, hover and
+  keyboard-focus pause, arrows wrap, swipe, ←/→, manual stop, play restart, reduced motion paused, live region.
 - **2026-10-05, fifth round (owner)**, real preview at 320, 375 and 1440 (no sideways scroll):
   - „Най-продавани“ confirmed live.
   - Category slider (phones): circular 44×44 arrows (disabled faded) and line indicators between them; active line

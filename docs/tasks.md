@@ -207,6 +207,17 @@ Hidden: „Наличност“ (made to order), a filter with no products behi
 collections; combining Метал + Камък + Цена; removing each chip; the product page after the renames (prompts,
 metal-first order, hidden colour, size guide); card swatches unchanged.
 
+## L. Zodiac slideshow — BUILT 2026-10-05; owner content open
+
+The section is on the homepage (after the categories) but invisible until a slide has a photograph.
+1. Theme editor → Homepage → „Zodiac slideshow“ → each sign: upload the photograph (wide, 2000 px+), and a portrait
+   phone photograph if the wide one crops badly; set the focal point in the image picker (Edit → Focal point).
+2. Optional short text — no horoscope claims or product details that are not true.
+3. Choose a product or a collection with products for the button (otherwise no button), and its text if not
+   „Разгледайте“.
+4. Pending checks once photos exist: the real preview at 320/375/desktop (crop, text contrast on each photo,
+   autoplay, pause/play, swipe).
+
 ## J. Homepage categories on phones — BUILT 2026-10-05 (two-column grid, names only, taglines removed everywhere)
 
 One column of six full-width tiles, 375×230px each, the section 1552px tall at 375px; names 15px capitals with a
