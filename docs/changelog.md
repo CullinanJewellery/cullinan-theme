@@ -49,6 +49,9 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
   the boxes without covering either. The label keeps 12rem free and wraps; the link stays on its last line. Guide
   dialog unchanged. Real preview, Пръстен с верижка: 375 (one line, 47px clear), 320 (label on two lines, 72px
   clear), 1440 (127px clear); dialog opens; no sideways scroll.
+- **2026-10-05, size guide text (owner)**: removed the paragraph „По пръстен, който вече носите: измерете вътрешния му
+  диаметър…“ from the guide (default of `size_guide_content`; no template overrides it). The table is unchanged. Real
+  preview: the guide now reads intro, ring sizer, tips, the thread warning.
 - **2026-10-05, fifth round (owner)**, real preview at 320, 375 and 1440 (no sideways scroll):
   - „Най-продавани“ confirmed live.
   - Category slider (phones): circular 44×44 arrows (disabled faded) and line indicators between them; active line
