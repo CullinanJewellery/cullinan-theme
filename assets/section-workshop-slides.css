@@ -522,7 +522,7 @@
     gap: 0;
   }
 
-  /* Every box is as tall as the tallest slide, so the control sits right under it. */
+  /* Every box is as tall as the tallest slide, so the control sits directly under it. */
   .workshop--js .workshop__slide,
   .workshop--text.workshop--js .workshop__slide {
     align-items: stretch;
