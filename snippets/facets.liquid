@@ -137,7 +137,28 @@
 
             <script src="{{ 'show-more.js' | asset_url }}" defer="defer"></script>
             {% comment %} Filters for both horizontal and vertical filter {% endcomment %}
+            {%- for cj_pass in (1..5) -%}
             {%- for filter in results.filters -%}
+              {%- comment -%}
+                Cullinan (2026-10-05, owner): the filters in a fixed order, whatever the order in
+                Search & Discovery: Цена, Метал, Камък, Размер, then anything else. Five passes; each
+                filter is drawn once, in the pass for its group.
+              {%- endcomment -%}
+              {%- liquid
+                assign cj_g_label = filter.label | downcase
+                assign cj_g_param = filter.param_name | downcase
+                assign cj_group = 5
+                if filter.type == 'price_range'
+                  assign cj_group = 1
+                elsif cj_g_label contains 'метал' or cj_g_param contains 'метал' or cj_g_param contains 'metal' or cj_g_param contains 'material'
+                  assign cj_group = 2
+                elsif cj_g_label contains 'камък' or cj_g_label contains 'камъни' or cj_g_param contains 'камък' or cj_g_param contains 'stone'
+                  assign cj_group = 3
+                elsif cj_g_label contains 'размер' or cj_g_label contains 'size' or cj_g_param contains 'размер' or cj_g_param contains 'size'
+                  assign cj_group = 4
+                endif
+              -%}
+              {%- if cj_group == cj_pass -%}
               {% liquid
                 assign total_active_values = total_active_values | plus: filter.active_values.size
                 assign presentation = filter.presentation | default: default_presentation
@@ -397,6 +418,8 @@
                     </div>
                   </details>
               {% endcase %}{%- endif -%}
+              {%- endif -%}
+            {%- endfor -%}
             {%- endfor -%}
           </div>
           {% comment %} Pills after filtes on filter type horizontal {% endcomment %}
@@ -578,7 +601,28 @@
               class="mobile-facets__main has-submenu gradient"
             >
               {%- if enable_filtering -%}
+                {%- for cj_pass in (1..5) -%}
                 {%- for filter in results.filters -%}
+                  {%- comment -%}
+                    Cullinan (2026-10-05, owner): the filters in a fixed order, whatever the order in
+                    Search & Discovery: Цена, Метал, Камък, Размер, then anything else. Five passes; each
+                    filter is drawn once, in the pass for its group.
+                  {%- endcomment -%}
+                  {%- liquid
+                    assign cj_g_label = filter.label | downcase
+                    assign cj_g_param = filter.param_name | downcase
+                    assign cj_group = 5
+                    if filter.type == 'price_range'
+                      assign cj_group = 1
+                    elsif cj_g_label contains 'метал' or cj_g_param contains 'метал' or cj_g_param contains 'metal' or cj_g_param contains 'material'
+                      assign cj_group = 2
+                    elsif cj_g_label contains 'камък' or cj_g_label contains 'камъни' or cj_g_param contains 'камък' or cj_g_param contains 'stone'
+                      assign cj_group = 3
+                    elsif cj_g_label contains 'размер' or cj_g_label contains 'size' or cj_g_param contains 'размер' or cj_g_param contains 'size'
+                      assign cj_group = 4
+                    endif
+                  -%}
+                  {%- if cj_group == cj_pass -%}
                   {% liquid
                     assign presentation = filter.presentation | default: default_presentation
                     if presentation == 'image'
@@ -821,6 +865,8 @@
                         </div>
                       </details>
                   {% endcase %}{%- endif -%}
+                  {%- endif -%}
+                {%- endfor -%}
                 {%- endfor -%}
               {%- endif -%}
 
