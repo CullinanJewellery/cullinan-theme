@@ -258,7 +258,7 @@
 /* ---------------------------------------------------------------------------
    Collapsible layout (homepage, 2026-10-05, owner): one column; the title and short
    introduction, then „Изпратете запитване“ with a chevron; the form and the
-   reference-photo links open below it. Collapsed, the band is only as tall as its words.
+   reference-photo links open below it. Collapsed, the band is just as tall as its words.
    --------------------------------------------------------------------------- */
 .custom-request--collapsible {
   display: block;
