@@ -522,6 +522,7 @@
   .workshop--text.workshop--js .workshop__slide--photo {
     gap: 1.6rem;
     align-items: start;
+    align-content: start;
   }
 
   .workshop--js .workshop__content,
