@@ -6339,3 +6339,13 @@ html body .product .product__info-container option-menu {
     font-size: 2.6rem;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Product card photos (2026-10-05, owner): square frames on collection pages and the
+   homepage „Най-продавани“ row, the whole piece always visible: the photo is fitted
+   inside the frame (contain), never cropped; a photo of another shape gets a quiet
+   margin of the card colour instead of losing its edges.
+   --------------------------------------------------------------------------- */
+html body .product-card-wrapper .card__media .media img {
+  object-fit: contain;
+}
