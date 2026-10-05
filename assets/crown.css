@@ -6376,8 +6376,9 @@ html body .collection .card__heading.h5 {
   }
 }
 
+/* 16px since 2026-10-05 (owner: a touch smaller than 17px; the product page keeps 22px). */
 html body .collection .price:not(.price--on-sale) {
-  font-size: 1.7rem;
+  font-size: 1.6rem;
 }
 
 @media screen and (min-width: 750px) {
