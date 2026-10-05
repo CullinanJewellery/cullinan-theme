@@ -440,8 +440,8 @@
       ],
       "settings": {
         "preview_placeholders": true,
-        "ratio_desktop": "16 / 7",
-        "ratio_mobile": "4 / 5",
+        "ratio_desktop": "16 / 9",
+        "ratio_mobile": "2 / 3",
         "color_scheme": "scheme-1",
         "margin_top": 40,
         "margin_bottom": 40
