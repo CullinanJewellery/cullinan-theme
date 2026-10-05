@@ -33,10 +33,11 @@
     comment
       Cullinan (2026-10-05): on a collection page the card opens the piece through the
       collection (/collections/…/products/…), so the product page can show Начало › the
-      collection › the piece. Shopify keeps the canonical address at /products/….
+      collection › the piece. Shopify keeps the canonical address at /products/…. Not on
+      „Всички“: Shopify redirects /collections/all/products/… to /products/… anyway.
     endcomment
     assign card_url = card_product.url
-    if template.name == 'collection' and collection and collection.handle != blank
+    if template.name == 'collection' and collection and collection.handle != blank and collection.handle != 'all'
       assign card_url = card_product.url | within: collection
     endif
     assign ratio = 1
