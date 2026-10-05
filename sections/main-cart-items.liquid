@@ -135,10 +135,13 @@
                             {{ item.final_price | money_without_trailing_zeros }}
                           </strong>
                         </div>
-                      {%- else -%}
-                        <div class="product-option">
-                          {{ item.original_price | money_without_trailing_zeros }}
-                        </div>
+                      {%- elsif item.quantity > 1 -%}
+                        {%- comment -%}
+                          Cullinan (2026-10-05, owner): the unit price only when there is more than one,
+                          as „€200 за бр.“ like the drawer; at one piece the line total says it once.
+                        {%- endcomment -%}
+                        {%- assign each_price = item.original_price | money_without_trailing_zeros -%}
+                        <p class="cart-item__each">{{ 'cullinan.cart.each' | t: price: each_price }}</p>
                       {%- endif -%}
 
                       {%- comment -%}

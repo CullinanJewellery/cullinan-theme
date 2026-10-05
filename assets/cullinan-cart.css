@@ -699,3 +699,13 @@ cart-drawer cart-drawer-items {
   flex: 0 1 auto;
   min-height: 0;
 }
+
+/* The unit price on /cart, shown only from two pieces up (sections/main-cart-items.liquid),
+   in the drawer's quiet small type. */
+#main-cart-items .cart-item__each {
+  margin: 0.4rem 0 0;
+  color: rgba(var(--color-foreground), 0.7);
+  font-size: 1.2rem;
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+}
