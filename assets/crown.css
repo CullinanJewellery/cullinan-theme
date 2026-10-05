@@ -6297,3 +6297,37 @@ html body main .footer__social:not(.footer__social--contact) .footer__social-hea
     font-size: 4rem;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Product purchase area (2026-10-05, owner): title 30px phone / 36px computer,
+   price 22px, add-to-cart 54px tall (like the site's other main buttons), the metal
+   menu full width so the choices and the button form one column. Was: title 24px,
+   price 18px, button 44/46/48px, metal menu 28rem. Colours, variants, size guide and
+   Judge.me stars unchanged.
+   --------------------------------------------------------------------------- */
+html body .product .product__info-container .product__title,
+html body .product .product__info-container .product__title > * {
+  font-size: 3rem;
+  line-height: 1.2;
+}
+
+html body .product .product__info-container .price,
+html body .product .product__info-container .price .price-item {
+  font-size: 2.2rem;
+}
+
+html body .product .product__info-container .product-form__submit.button {
+  min-height: 5.4rem;
+}
+
+html body .product .product__info-container option-menu {
+  width: 100%;
+  max-width: none;
+}
+
+@media screen and (min-width: 990px) {
+  html body .product .product__info-container .product__title,
+  html body .product .product__info-container .product__title > * {
+    font-size: 3.6rem;
+  }
+}
