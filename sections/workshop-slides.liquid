@@ -101,6 +101,8 @@
         aria-roledescription="карусел"
         aria-label="{{ region_label | escape }}"
       >
+        {%- comment -%} Phones: one step line under the title, updated by the script (2026-10-05). {%- endcomment -%}
+        <p class="workshop__current" data-workshop-current aria-hidden="true">Стъпка 1 от {{ shown_total }}</p>
         <div class="workshop__slides">
           {%- for block in section.blocks -%}
             {%- liquid

@@ -1,6 +1,6 @@
 /*
   <workshop-slides> (sections/workshop-slides.liquid), 2026-10-04.
-  Manual only: arrows, a step indicator, swiping on touch screens, ArrowLeft /
+  Manual only: arrows, a step indicator, swiping on touch screens (slides and arrows), ArrowLeft /
   ArrowRight / Home / End while focus is inside. Inactive slides are `inert`, so
   Tab never reaches them. The fade is CSS and off under reduced motion.
 */
@@ -17,6 +17,7 @@ if (!customElements.get('workshop-slides')) {
         this.next = this.querySelector('[data-workshop-next]');
         this.dots = Array.from(this.querySelectorAll('[data-workshop-go]'));
         this.status = this.querySelector('[data-workshop-status]');
+        this.current = this.querySelector('[data-workshop-current]');
         this.index = 0;
 
         this.classList.add('workshop--js');
@@ -34,22 +35,38 @@ if (!customElements.get('workshop-slides')) {
           this.go(map[event.key]);
         });
 
-        // Swipe: horizontal movement of 40px or more, more sideways than up or down, touch or pen only.
-        const area = this.querySelector('.workshop__slides');
+        // Swipe: horizontal movement of 40px or more, more sideways than up or down, touch or pen only,
+        // on the slides and on the arrow control. A click that follows a swipe is cancelled, so the
+        // swipe never also presses a button or follows a link.
         let start = null;
-        area.addEventListener('pointerdown', (event) => {
+        let swipedAt = 0;
+        const onDown = (event) => {
           if (event.pointerType === 'mouse') return;
           start = { x: event.clientX, y: event.clientY };
-        });
-        area.addEventListener('pointerup', (event) => {
+        };
+        const onUp = (event) => {
           if (!start) return;
           const dx = event.clientX - start.x;
           const dy = event.clientY - start.y;
           start = null;
           if (Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy)) return;
+          swipedAt = Date.now();
           this.go(this.index + (dx < 0 ? 1 : -1));
+        };
+        [this.querySelector('.workshop__slides'), this.controls].forEach((area) => {
+          area.addEventListener('pointerdown', onDown);
+          area.addEventListener('pointerup', onUp);
+          area.addEventListener('pointercancel', () => (start = null));
         });
-        area.addEventListener('pointercancel', () => (start = null));
+        this.addEventListener(
+          'click',
+          (event) => {
+            if (Date.now() - swipedAt > 500) return;
+            event.preventDefault();
+            event.stopPropagation();
+          },
+          true
+        );
 
         // Theme editor: selecting a slide block shows it.
         document.addEventListener('shopify:block:select', (event) => {
@@ -78,6 +95,7 @@ if (!customElements.get('workshop-slides')) {
           if (i === this.index) dot.setAttribute('aria-current', 'step');
           else dot.removeAttribute('aria-current');
         });
+        if (this.current) this.current.textContent = 'Стъпка ' + (this.index + 1) + ' от ' + this.slides.length;
         this.prev.disabled = this.index === 0;
         this.next.disabled = this.index === this.slides.length - 1;
         // A button that just became disabled would drop keyboard focus: hand it to the other arrow.

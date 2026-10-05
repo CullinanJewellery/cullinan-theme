@@ -488,3 +488,80 @@
     align-items: center;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Phones, third pass (2026-10-05, owner). The title stays above the slideshow
+   with one „Стъпка N от 4“ line under it (the script updates it; each slide's
+   own step line is hidden here). Each slide: photo when there is one, then one
+   box in the page colour holding heading, text, button and second link. One
+   joined control, two halves of 56x44px with a divider; the step marks are not
+   shown on phones. Tablet and computer unchanged.
+   --------------------------------------------------------------------------- */
+.workshop__current {
+  display: none;
+}
+
+@media screen and (max-width: 749px) {
+  .workshop--js .workshop__current {
+    display: block;
+    margin: -1rem 0 1.4rem;
+    font-family: var(--font-body-family);
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(var(--color-foreground), 0.75);
+  }
+
+  .workshop--js .workshop__step {
+    display: none;
+  }
+
+  .workshop--js .workshop__slide,
+  .workshop--text.workshop--js .workshop__slide--photo {
+    gap: 0;
+  }
+
+  .workshop--js .workshop__content,
+  .workshop--text.workshop--js .workshop__content {
+    max-width: none;
+    padding: 2rem 1.8rem 1.8rem;
+    background: rgb(251 248 246);
+  }
+
+  .workshop.workshop--js .workshop__controls,
+  .workshop--text.workshop--js .workshop__controls {
+    width: max-content;
+    margin: 1.6rem auto 0;
+    gap: 0;
+    border: 0.1rem solid rgba(var(--color-foreground), 0.35);
+    touch-action: pan-y;
+  }
+
+  .workshop--js .workshop__steps {
+    display: none;
+  }
+
+  .workshop--js .workshop__arrow {
+    width: 5.6rem;
+    height: 4.4rem;
+    border: 0;
+  }
+
+  .workshop--js .workshop__arrow--next {
+    border-left: 0.1rem solid rgba(var(--color-foreground), 0.35);
+  }
+
+  .workshop--js .workshop__arrow:hover:not([disabled]) {
+    background: rgba(var(--color-foreground), 0.06);
+  }
+
+  .workshop--js .workshop__arrow[disabled] {
+    opacity: 1;
+    color: rgba(var(--color-foreground), 0.25);
+  }
+
+  .workshop--js .workshop__arrow:focus-visible {
+    outline-offset: -0.3rem;
+  }
+}
