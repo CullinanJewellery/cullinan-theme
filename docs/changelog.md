@@ -38,6 +38,11 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
   untouched (`pan-y`). Keyboard, labels, live region and reduced motion unchanged. Tablet and computer unchanged.
   Real preview: all four steps at 320 and 375, desktop at 1440, no sideways scroll; photo order checked with an
   in-browser stand-in (no photos uploaded); swipe and click suppression with synthetic touch events.
+- **2026-10-05, workshop slides on phones, correction (owner)**: no card. The photo box holds only the photo; heading,
+  text, button and second link sit 16px below it directly on the section background (the #FBF8F6 box and the
+  equal-height rule are gone). Title, step line and joined control unchanged; the control keeps one position under
+  the tallest slide. Real preview at 320 and 375, all four steps, with a temporary browser-only photo; storefront
+  without photos and desktop at 1440 rechecked.
 - **2026-10-05, fifth round (owner)**, real preview at 320, 375 and 1440 (no sideways scroll):
   - „Най-продавани“ confirmed live.
   - Category slider (phones): circular 44×44 arrows (disabled faded) and line indicators between them; active line
