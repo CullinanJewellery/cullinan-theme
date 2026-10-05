@@ -80,6 +80,15 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
   filters, „Изчисти“ keeps the sort, badge and result count follow every change, no sideways scroll. Size and
   empty-filter rules checked locally with liquidjs mocks (11 cases) because Shopify returns no such filters yet.
   Admin and data steps: docs/tasks.md §K.
+- **2026-10-05, filters finished (owner)**: phones — „Филтри“ (filter icon, count badge) and „Сортиране“ (down
+  arrow; the native select laid over the button, invisible) are matching outlined buttons, equal width, 48px tall,
+  8px corners (shape from hestiahome.bg), ink border at 35%, Jost 13px; the bar's ruled lines dropped on phones;
+  desktop unchanged. Filter order fixed in the theme: Цена, Метал, Камък, Размер, others (five passes over the
+  filters, each drawn once). Product page prompts separated from option names („Изберете вашия метал / размер“), so
+  the options can be renamed „Метал“ / „Размер“. Real preview: 320 (141px each), 375 (169/168px), 1440 unchanged;
+  sort from the button keeps the price filter; drawer opens; ring variant 56 + бяло злато selects „56 / бяло злато /
+  14К бяло злато“; bracelet shows „Изберете вашия метал“. Ordering checked with liquidjs mocks. Checklist and pending
+  checks: docs/tasks.md §K.
 - **2026-10-05, fifth round (owner)**, real preview at 320, 375 and 1440 (no sideways scroll):
   - „Най-продавани“ confirmed live.
   - Category slider (phones): circular 44×44 arrows (disabled faded) and line indicators between them; active line

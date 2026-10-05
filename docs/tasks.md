@@ -152,37 +152,60 @@ No replacement legal text is to be written; the accountant handles legal pages.
 printed model beside its finished piece; two or three finished pieces worn; the shop front and interior; packaging
 once decided. Shot list in `photography/README.md`.
 
-## K. Collection filters — theme BUILT 2026-10-05; admin setup and product data open
+## K. Collection filters — theme BUILT 2026-10-05; product data and Search & Discovery open (owner)
 
-**What Shopify returns today** (Search & Discovery): „Наличност“ and „Цена“ only. The theme hides „Наличност“ (every
-piece is made to order), so shoppers see „Цена“. Метал, Камък and Размер appear automatically once they are set up in
-the app and the products carry consistent data; the theme already shows them with the same design.
+**Theme, done:** phones show „Филтри“ (count badge) and „Сортиране“ as matching outlined buttons; drawer with
+„Изчисти“ and „Покажи резултатите (N)“; chips remove one filter each; sorting keeps filters and clearing keeps the
+sort. Filters are drawn in the order **Цена → Метал → Камък → Размер → anything else**, whatever the order in the
+app. Recognised by name: price range; „метал“ / "metal" / "material"; „камък“ / "stone"; „размер“ / "size".
+Hidden: „Наличност“ (made to order), a filter with no products behind any value, an all-zero price filter, and
+Размер outside collections whose handle contains „пръстен“.
 
-**Theme rules already in place** (snippets/facets.liquid): a filter with no products behind any value is hidden; a
-price filter is hidden if every price is 0; a filter whose name contains „размер“ / "size" shows only on collections
-whose handle contains „пръстен“ (e.g. пръстени, мъжки-пръстени) — not on „Всички“, earrings, pendants or search.
+**Compatibility of renaming the options to „Метал“ and „Размер“ (checked in the code 2026-10-05):** safe.
+- The product page's prompts are now fixed text, not the option name: „Изберете вашия метал“ for any metal/material
+  option and „Изберете вашия размер“ for any size option (snippets/product-variant-picker.liquid). The bracelet's
+  „Jewelry material“ already shows „Изберете вашия метал“.
+- Metal-first order, cart line, size-guide link and the filter grouping all look for „метал“ / „размер“ inside the
+  name, so the plain names keep working. Variant selection works by option values, not names. Specifications read
+  the metafields (custom.metal, custom.stone …), never option names.
+- „Цветове на златото“ is the option with swatches: it gives the colour circles on product cards and is a real
+  variant axis (the ring: 8 sizes × 4 colours × 4 metals = 128 variants). The product page hides it and sets it from
+  the metal chosen („14К бяло злато“ → „бяло злато“, matched by value, not by name). **Do not delete it**: deleting
+  it would merge variants and remove the card swatches. Keeping it costs nothing; just keep each metal value naming
+  its colour (e.g. „14К бяло злато“ ↔ „бяло злато“) and „Сребро 925“ ↔ „Сребро“.
+- **Not checkable from the theme:** the type of custom.stone. No product has a value, and the storefront cannot read
+  a definition without one.
 
-**Product data needed first** (today it is inconsistent, so these filters would mislead):
-- Metal: one option with the same name on every product, e.g. „Метал“, and the same values everywhere
-  („14К жълто злато“, „14К бяло злато“, „14К розово злато“, „18К …“, „Сребро 925“). Today: „Изберете вашия метал“ on
-  the ring, „Jewelry material“ with „Silver“ on the bracelet; a second option „Цветове на златото“ repeats the colour.
-- Stone: no product has stone data. Fill the product metafield `custom.stone` (it already feeds the specification
-  list) with the same spelling everywhere, e.g. „Диамант“, „Изумруд“, „Цирконий“; leave it empty for pieces without a
-  stone.
-- Size: rings only, one option named „Размер“ with plain numbers (53, 54 …). Today the ring's option is named
-  „изберете вашия размер“ (lower case) — rename it to „Размер“; the product page's size guide link still works (it
-  looks for „размер“).
-- Prices: three of the four products are at €0, which makes the price filter's range wrong; set real prices.
+**Checklist (Shopify admin):**
+1. *Metafield definitions* — Settings → Custom data:
+   - Products → custom.stone, type **Single line text** (or "List of single line text" if one piece can have two
+     stones). Search & Discovery can filter on these types; it cannot on rich text or multi-line text. If it exists
+     with another type, create the right one before filling values.
+   - Only if a product's stone changes with its variant: Variants → custom.stone, same type. Then use the variant
+     field for **all** products (fill every variant, including single-variant products), because one filter can
+     point at one field only; two „Камък“ filters would confuse. The product page already reads the variant's
+     stone first and the product's as a fallback.
+2. *Metal* — every product with a metal choice: one option named **„Метал“**, values spelled identically everywhere,
+   e.g. „14К жълто злато“, „14К бяло злато“, „14К розово злато“, „18К жълто злато“, „Сребро 925“. Rename „Изберете
+   вашия метал“ and „Jewelry material“ to „Метал“; replace „Silver“ with the same silver value used elsewhere.
+3. *Stone* — fill custom.stone with one spelling per stone (e.g. „Диамант“, „Изумруд“, „Цирконий“, „Сапфир“,
+   „Рубин“, „Перла“, „Опал“, „Оникс“ — only those actually used). Leave it empty for pieces without a stone.
+4. *Size* — rings only: one option named **„Размер“**, values as plain numbers („53“, „54“ …), no ranges like
+   „54 55“. Rename „изберете вашия размер“ to „Размер“.
+5. *Prices* — real prices on every product and variant (three products are at €0 today, which breaks the price
+   filter's range and shows €0 on cards).
+6. *Search & Discovery* — Apps → Search & Discovery → Filters:
+   - keep **Price**, label „Цена“;
+   - Add filter → **Product option „Метал“**, label „Метал“;
+   - Add filter → **Product metafield custom.stone** (or the variant one), label „Камък“;
+   - Add filter → **Product option „Размер“**, label „Размер“;
+   - remove **Availability** (optional — the theme hides it);
+   - order them Цена, Метал, Камък, Размер and Save. The theme keeps that order even if the app's order changes.
+   - In each list filter, check the values: merge spellings the app lists twice ("value grouping").
 
-**Admin steps** (Shopify admin → Apps → Search & Discovery → Filters):
-1. Remove „Наличност“ (Availability) — optional, the theme hides it anyway.
-2. Keep „Цена“ (Price); label it „Цена“.
-3. Add filter → Product option → „Метал“ (after the option is unified); label „Метал“.
-4. Add filter → Product metafield → custom.stone; label „Камък“. If it is not offered, check under Settings →
-   Custom data → Products that custom.stone has a definition, as single-line text (or a list of it).
-5. Add filter → Product option → „Размер“; label „Размер“.
-6. Order them: Цена, Метал, Камък, Размер. Save; the draft theme picks them up on the next page load.
-Tell me when this is done and I will check every collection on the preview.
+**Pending until the data exists (not checkable now):** Метал, Камък and Размер on the preview; Размер only on ring
+collections; combining Метал + Камък + Цена; removing each chip; the product page after the renames (prompts,
+metal-first order, hidden colour, size guide); card swatches unchanged.
 
 ## J. Homepage categories on phones — BUILT 2026-10-05 (two-column grid, names only, taglines removed everywhere)
 
