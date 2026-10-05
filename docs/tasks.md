@@ -215,7 +215,10 @@ The section is on the homepage (after the categories) but invisible until a slid
 2. Optional short text — no horoscope claims or product details that are not true.
 3. Choose a product or a collection with products for the button (otherwise no button), and its text if not
    „Разгледайте“.
-4. Pending checks once photos exist: the real preview at 320/375/desktop (crop, text contrast on each photo,
+4. **Then switch off „Preview without photos“** (theme editor → the section's first setting). It is on now so
+   the draft shows all 12 slides with placeholders; it can never show on the published shop, but it should be off
+   before publishing so only the real slides appear.
+5. Pending checks once photos exist: the real preview at 320/375/desktop (crop, text contrast on each photo,
    autoplay, pause/play, swipe).
 
 ## J. Homepage categories on phones — BUILT 2026-10-05 (two-column grid, names only, taglines removed everywhere)

@@ -114,6 +114,15 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
   real section with the live theme's CSS, stand-in photo from the store's files, never pushed): editor view with 12
   placeholders; text 20px from the sides / 24px from the bottom (phone), 40px (computer); autoplay 6 s, hover and
   keyboard-focus pause, arrows wrap, swipe, ←/→, manual stop, play restart, reduced motion paused, live region.
+- **2026-10-05, zodiac slideshow, second pass (owner)**: arrows and the „N / 12“ counter removed; one small
+  pause/play button in the picture's top-right corner; autoplay 6 s, swipe and ←/→ kept. New setting „Preview without
+  photos“ (off by default) shows the 12 slides on the draft with placeholders („Място за снимка: Овен (предстои)“), the
+  sign headings and a sample button that is not a link („Примерен бутон — без връзка“), plus a note that it is a
+  temporary draft-only preview; switched on in templates/index.json for this unpublished draft. Guard: never when
+  theme.role is main; only in the editor, on a shopifypreview.com link or an unpublished theme (7 cases checked with
+  liquidjs). Real preview 320, 375, 1440: 12 slides, no links, no arrows/counter, button 44px clear of the text,
+  autoplay, pause/play labels, swipe both ways, ←/→ with live announcement, wrap Овен ← Риби, reduced motion starts
+  paused, no sideways scroll. **Turn the setting off when the photos are in** (tasks §L).
 - **2026-10-05, fifth round (owner)**, real preview at 320, 375 and 1440 (no sideways scroll):
   - „Най-продавани“ confirmed live.
   - Category slider (phones): circular 44×44 arrows (disabled faded) and line indicators between them; active line
