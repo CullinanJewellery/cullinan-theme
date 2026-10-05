@@ -298,7 +298,7 @@
   pointer-events: none;
 }
 
-/* Placeholder label in the empty band under the title, clear of the words below. */
+/* Placeholder label in the empty band under the title, clear of the words beneath. */
 .zodiac__viewport--titled .zodiac__placeholder {
   align-items: flex-start;
   padding-top: 9.6rem;
