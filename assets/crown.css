@@ -5343,6 +5343,11 @@ html body .facets-wrapper .facets__display {
     margin: 0;
   }
 
+  html body .facets-wrapper .mobile-facets__wrapper > .mobile-facets__disclosure {
+    flex: 1;
+    min-width: 0;
+  }
+
   html body .facets-wrapper .mobile-facets__open-wrapper {
     display: block;
     height: 100%;
