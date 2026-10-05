@@ -192,6 +192,20 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
   3. „Изчерпано“ 11px with tighter padding (96×25 → 78×20px at 375).
   Real preview 320 / 375 / 1440; filters, sorting, trails, swatches and links unchanged; product data and admin sorting
   untouched.
+- **2026-10-05, cart drawer and /cart (owner, four changes; cullinan-cart.css, main-cart-items.liquid)**:
+  1. /cart matches the drawer: the quiet square quantity box and the „Общо“ row (small-capitals label left, amount in
+     Prata 22px right, delivery note under it).
+  2. −, number and + are 44px squares (box 132×44px) in both; „Премахни“ a small underlined word with a 44px tap
+     area, 2rem from the box (below it on /cart phones).
+  3. „Към плащане“ 54px (was 48), colour and hover unchanged. Drawer list takes its own height (flex 0 1 auto,
+     min-height 0): short carts have the totals right under the pieces; long lists scroll above a visible footer.
+  4. /cart prints the unit price only from two pieces up („€200 за бр.“, the drawer's existing string); at one piece
+     the line total says it once.
+  Not copied to /cart: the drawer's „Връщане до 14 дни …“ and „Наложен платеж …“ (still flagged, tasks A2 / returns).
+  Real preview 375 / 1440: empty, one item, quantity 1→2, six lines (scroll), four removals, minus, empty again,
+  in the drawer and on /cart, through the real controls; cart API only to fill test carts, emptied afterwards; no
+  checkout opened. Data quirk seen: two lines read „14К жълто злато · Размер 53“ (variants differing only in the
+  hidden colour option).
 - **2026-10-05, fifth round (owner)**, real preview at 320, 375 and 1440 (no sideways scroll):
   - „Най-продавани“ confirmed live.
   - Category slider (phones): circular 44×44 arrows (disabled faded) and line indicators between them; active line
