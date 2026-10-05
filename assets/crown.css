@@ -5323,83 +5323,129 @@ html body .facets-wrapper .facets__display {
   display: none;
 }
 
+/* Phones, second pass (2026-10-05, owner): „Филтри“ and „Сортиране“ are matching
+   outlined buttons, side by side, equal width and height (48px), 8px corners (the shape
+   taken from hestiahome.bg), our ink and Jost. The ruled lines of the bar are dropped on
+   phones so the buttons do not sit inside a second frame. */
 @media screen and (max-width: 749px) {
   html body .facets-wrapper .facets-container {
-    grid-template-columns: auto minmax(0, 1fr);
-    column-gap: 1.2rem;
-    align-items: center;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: 0.8rem;
+    align-items: stretch;
+    padding-top: 1.6rem;
+    border-top: 0;
+    border-bottom: 0;
   }
 
   html body .facets-wrapper .mobile-facets__wrapper {
     grid-column: 1;
     grid-row: 1;
+    margin: 0;
   }
 
-  html body .facets-wrapper .mobile-facets__open {
-    min-height: 4.4rem;
+  html body .facets-wrapper .mobile-facets__open-wrapper {
+    display: block;
+    height: 100%;
+  }
+
+  html body .facets-wrapper .mobile-facets__open,
+  html body .facets-wrapper .cj-bar-sort {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    width: 100%;
+    min-height: 4.8rem;
+    margin: 0;
+    padding: 0 1.4rem;
+    border: 0.1rem solid rgba(var(--color-foreground), 0.35);
+    border-radius: 0.8rem;
+    background: transparent;
+    color: rgb(var(--color-foreground));
+    font-family: var(--font-body-family);
+    font-size: 1.3rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: none;
+    cursor: pointer;
+    transition: border-color 0.2s;
+  }
+
+  html body .facets-wrapper .mobile-facets__open:hover,
+  html body .facets-wrapper .cj-bar-sort:hover {
+    border-color: rgb(var(--color-foreground));
+  }
+
+  html body .facets-wrapper .mobile-facets__open .svg-wrapper {
+    width: 1.8rem;
+    height: 1.8rem;
+    margin: 0;
+  }
+
+  html body .facets-wrapper .mobile-facets__open .mobile-facets__open-label {
+    display: inline-flex;
+    align-items: center;
+    margin: 0;
+    font-size: inherit;
+    letter-spacing: inherit;
+    text-decoration: none;
+  }
+
+  html body .facets-wrapper .mobile-facets__open-wrapper:focus-visible {
+    outline: none;
+  }
+
+  html body .facets-wrapper .mobile-facets__open-wrapper:focus-visible .mobile-facets__open,
+  html body .facets-wrapper .cj-bar-sort:focus-within {
+    outline: 0.2rem solid rgb(var(--color-foreground));
+    outline-offset: 0.2rem;
   }
 
   html body .facets-wrapper .cj-bar-sort {
     grid-column: 2;
     grid-row: 1;
-    justify-self: end;
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    min-width: 0;
-    max-width: 100%;
+    position: relative;
+    justify-self: stretch;
   }
 
-  html body .facets-wrapper .cj-bar-sort__label {
-    flex: none;
-    font-size: 1.2rem;
-    letter-spacing: 0.06em;
-    color: rgba(var(--color-foreground), 0.7);
+  html body .facets-wrapper .cj-bar-sort__face {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    pointer-events: none;
+  }
+
+  html body .facets-wrapper .cj-bar-sort__face .svg-wrapper {
+    width: 1.1rem;
+    height: 1.1rem;
   }
 
   html body .facets-wrapper .cj-bar-sort__field {
-    position: relative;
-    min-width: 0;
+    position: absolute;
+    inset: 0;
   }
 
   html body .facets-wrapper .cj-bar-sort__select {
-    width: auto;
-    max-width: 100%;
-    min-height: 4.4rem;
-    padding: 0 2rem 0 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
     border: 0;
-    background: transparent;
-    color: rgb(var(--color-foreground));
-    font-family: var(--font-body-family);
-    font-size: 1.2rem;
-    font-weight: 500;
-    letter-spacing: 0.02em;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
+    opacity: 0;
+    font-size: 1.6rem;
     appearance: none;
     -webkit-appearance: none;
     cursor: pointer;
   }
 
-  html body .facets-wrapper .cj-bar-sort__select:focus-visible {
-    outline: 0.2rem solid rgb(var(--color-foreground));
-    outline-offset: 0.2rem;
-  }
-
-  html body .facets-wrapper .cj-bar-sort .svg-wrapper {
-    position: absolute;
-    right: 0.2rem;
-    top: 50%;
-    width: 1rem;
-    height: 1rem;
-    transform: translateY(-50%);
-    pointer-events: none;
-  }
-
   html body .facets-wrapper .active-facets-mobile,
   html body .facets-wrapper .facets-container > .product-count {
     grid-column: 1 / -1;
+  }
+
+  html body .facets-wrapper .facets-container > .product-count {
+    margin-top: 1.2rem;
   }
 
   /* Sorting is on the bar, so the drawer holds filters only. */

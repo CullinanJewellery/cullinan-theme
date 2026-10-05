@@ -898,7 +898,16 @@
       and the order are sent together (assets/collection-filters.js).
     {%- endcomment -%}
     <div class="cj-bar-sort medium-hide large-up-hide">
-      <label class="cj-bar-sort__label" for="SortBy-bar">{{ 'products.facets.sort_button' | t }}:</label>
+      {%- comment -%}
+        A button face („Сортиране“ and a down arrow) with the real select laid over it,
+        invisible: a tap opens the phone's own list, and screen readers read the select's
+        label and current choice (2026-10-05, owner).
+      {%- endcomment -%}
+      <span class="cj-bar-sort__face" aria-hidden="true">
+        {{- 'products.facets.sort_button' | t -}}
+        <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
+      </span>
+      <label class="visually-hidden" for="SortBy-bar">{{ 'products.facets.sort_button' | t }}</label>
       <div class="cj-bar-sort__field">
         <select id="SortBy-bar" class="cj-bar-sort__select" data-cj-sort-bar data-default="{{ results.default_sort_by | escape }}">
           {%- for option in results.sort_options -%}
@@ -909,7 +918,6 @@
             {%- endunless -%}
           {%- endfor -%}
         </select>
-        <span class="svg-wrapper" aria-hidden="true">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
       </div>
     </div>
   {%- endif -%}
