@@ -646,7 +646,7 @@ cart-drawer cart-drawer-items {
 
 /* ===========================================================================
    Comfortable taps, drawer and /cart alike (2026-10-05, owner): −, the number and +
-   are three 44px squares (the box 13.2 × 4.4rem; was 3.4rem buttons in the drawer);
+   are three 44px squares (the box 13.2 x 4.4rem; was 3.4rem buttons in the drawer);
    „Премахни“ stays a small underlined word with a 44px-tall tap area, 2rem from the box.
    =========================================================================== */
 #CartDrawer .cart-item__quantity .quantity,
