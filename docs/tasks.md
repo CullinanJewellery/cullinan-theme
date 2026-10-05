@@ -178,8 +178,8 @@ whose handle contains „пръстен“ (e.g. пръстени, мъжки-п
 1. Remove „Наличност“ (Availability) — optional, the theme hides it anyway.
 2. Keep „Цена“ (Price); label it „Цена“.
 3. Add filter → Product option → „Метал“ (after the option is unified); label „Метал“.
-4. Add filter → Product metafield → custom.stone; label „Камък“. If the metafield is not listed, first open Settings
-   → Custom data → Products → the stone definition and tick "Filtering" / "Storefront access".
+4. Add filter → Product metafield → custom.stone; label „Камък“. If it is not offered, check under Settings →
+   Custom data → Products that custom.stone has a definition, as single-line text (or a list of it).
 5. Add filter → Product option → „Размер“; label „Размер“.
 6. Order them: Цена, Метал, Камък, Размер. Save; the draft theme picks them up on the next page load.
 Tell me when this is done and I will check every collection on the preview.
