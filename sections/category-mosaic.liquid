@@ -169,6 +169,16 @@
         </button>
       </div>
     </category-slider>
+
+    {%- comment -%}
+      „Вижте всички бижута“ under the categories, to the whole catalogue (2026-10-05, owner):
+      the same solid button as „Вижте всички“ under the bestsellers row.
+    {%- endcomment -%}
+    {%- if section.settings.all_label != blank -%}
+      <div class="mosaic__all center">
+        <a class="button" href="{{ routes.all_products_collection_url }}">{{ section.settings.all_label | escape }}</a>
+      </div>
+    {%- endif -%}
   </div>
 </div>
 
@@ -179,6 +189,13 @@
   "class": "section",
   "max_blocks": 8,
   "settings": [
+    {
+      "type": "text",
+      "id": "all_label",
+      "default": "Вижте всички бижута",
+      "label": "Button to the whole catalogue",
+      "info": "Leads to all products. Empty: no button."
+    },
     {
       "type": "text",
       "id": "heading",

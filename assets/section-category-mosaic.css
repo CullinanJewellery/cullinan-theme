@@ -597,3 +597,14 @@
     width: 2rem;
   }
 }
+
+/* „Вижте всички бижута“ under the categories (2026-10-05, owner). */
+.mosaic__all {
+  margin-top: 2.4rem;
+}
+
+@media screen and (min-width: 750px) {
+  .mosaic__all {
+    margin-top: 3.2rem;
+  }
+}
