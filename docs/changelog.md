@@ -150,6 +150,12 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
   top, words 14/14/28px above the lines, arrows 16px from the edges and 116px above the words, no sideways scroll;
   autoplay, swipe stop, off-screen hold, restart on return, line and tap stop, hover pause, arrow wrap, reduced
   motion checked.
+- **2026-10-05, zodiac pause/play: restored, then removed again (owner)**: a small top-right pause/play with an
+  explicit Pause that held through scrolling was built and pushed, then the owner asked for it to be removed; it is
+  gone (markup, script, styles; the title is back to its 2rem side margins and 24px). Kept: layout, arrows on
+  computers, lines, 3 s, and restart on return after any stop by tap, swipe, arrow, line or key; reduced motion never
+  starts it. Real preview 320 / 1440: no button, arrows on computers only, autoplay, swipe stop, off-screen hold and
+  restart on return (the test pane delivers visibility only while it renders; checked with screenshots forcing frames).
 - **2026-10-05, fifth round (owner)**, real preview at 320, 375 and 1440 (no sideways scroll):
   - „Най-продавани“ confirmed live.
   - Category slider (phones): circular 44×44 arrows (disabled faded) and line indicators between them; active line
