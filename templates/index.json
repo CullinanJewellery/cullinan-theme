@@ -439,6 +439,7 @@
         "sign_ribi"
       ],
       "settings": {
+        "preview_placeholders": true,
         "ratio_desktop": "16 / 7",
         "ratio_mobile": "4 / 5",
         "color_scheme": "scheme-1",
