@@ -4,7 +4,7 @@
   untouched. A tap on the picture, a swipe, an arrow, a line indicator or the left/right
   keys stop it until the visitor scrolls away and comes back, when it starts again. Mouse
   hover and keyboard focus pause it while they last; it stops while off screen. No
-  pause/play button (owner, removed twice). With prefers-reduced-motion it never starts.
+  pause/play button (owner, removed twice). With prefers-reduced-motion it never starts at all.
   A real link on a slide opens normally. Moving wraps round. Inactive slides are inert; a
   polite live region announces manual moves.
 */
