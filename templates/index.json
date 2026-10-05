@@ -251,7 +251,7 @@
         "image_ratio": "square",
         "image_shape": "default",
         "show_secondary_image": true,
-        "show_vendor": true,
+        "show_vendor": false,
         "show_rating": false,
         "quick_add": "none",
         "columns_mobile": "2",
