@@ -6359,13 +6359,21 @@ html body .product-card-wrapper .card__media .media {
 /* ---------------------------------------------------------------------------
    Product cards, second pass (2026-10-05, owner). Phones: the grid keeps the page's
    15px side margins (was edge to edge, 2026-10-04) with a 12px gap between cards (was
-   4px), and the words line up with the picture's edge. Names 18px on phones / 20px
+   4px), and the words line up with the picture's edge. Names 17px on phones (16px below 360px) / 20px
    from 750px (were 16px), prices 17px (were 15px). Sale prices keep their own rule.
    --------------------------------------------------------------------------- */
 html body .collection .card__heading,
 html body .collection .card__heading.h5 {
-  font-size: 1.8rem;
+  font-size: 1.7rem;
   line-height: 1.25;
+}
+
+/* Narrowest phones: 16px, so a long name stays compact in a 139px card. */
+@media screen and (max-width: 359px) {
+  html body .collection .card__heading,
+  html body .collection .card__heading.h5 {
+    font-size: 1.6rem;
+  }
 }
 
 html body .collection .price:not(.price--on-sale) {
