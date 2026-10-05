@@ -10,8 +10,8 @@
     in for a missing photograph.
   - The button shows only when it leads somewhere real: a product, or a collection that has
     products. No invented product details or horoscope claims; the text is optional.
-  - Changes every 3 seconds with a gentle fade (owner, 2026-10-05; was 6); line indicators, swiping and a visible
-    pause/play button. Pauses on hover and keyboard focus, stops after any manual move, and
+  - Changes every 3 seconds with a gentle fade (owner, 2026-10-05; was 6); line indicators and swiping; no
+    pause/play button (owner). Pauses on hover and keyboard focus, stops after any manual move, and
     never starts by itself when the visitor prefers reduced motion (assets/zodiac-slides.js).
   - Cropping: the frame's proportions are section settings (phone and computer apart); each
     photograph is placed by its own focal point, set in Shopify's image editor.
@@ -211,7 +211,7 @@
           {%- comment -%}
             Inside the picture, along the bottom (2026-10-05, owner): one short line per slide,
             centred, the active one in the category pink, each a button with a 44px-tall tap
-            area; a small pause/play button in the lower right corner. No arrows, no counter.
+            area. No arrows, no counter, no pause/play button (owner, 2026-10-05).
             Swiping and the left/right arrow keys also move between slides.
           {%- endcomment -%}
           <div class="zodiac__dots" role="group" aria-label="Зодии" hidden>
@@ -239,19 +239,6 @@
               </button>
               {%- assign dot_index = dot_index | plus: 1 -%}
             {%- endfor -%}
-          </div>
-          <div class="zodiac__controls" hidden>
-            <button
-              type="button"
-              class="zodiac__control zodiac__control--toggle"
-              data-zodiac-toggle
-              aria-label="Спри автоматичното превъртане"
-              data-label-pause="Спри автоматичното превъртане"
-              data-label-play="Пусни автоматичното превъртане"
-            >
-              <span class="zodiac__icon-pause" aria-hidden="true"></span>
-              <span class="zodiac__icon-play" aria-hidden="true"></span>
-            </button>
           </div>
           <p class="visually-hidden" aria-live="polite" data-zodiac-status></p>
         {%- endif -%}

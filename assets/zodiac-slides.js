@@ -3,8 +3,9 @@
   Autoplay every 3 s (data-interval; owner, was 6) with a CSS fade. It pauses while the
   pointer is over the pictures or keyboard focus is inside, and while the slideshow is off
   screen or the tab is hidden. Tapping the picture, swiping, choosing a line indicator or the
-  left/right arrow keys stop it until the pause/play button is pressed; a real button on the
-  slide (a link) still opens normally. With prefers-reduced-motion it starts paused.
+  left/right arrow keys stop it for the rest of the visit (no pause/play button: owner,
+  2026-10-05); a real button on the slide (a link) still opens normally. With
+  prefers-reduced-motion it never starts.
   No arrow buttons or counter; moving wraps round (the signs are a circle). Inactive slides
   are inert. A polite live region announces the slide only after a manual move.
 */
@@ -14,11 +15,9 @@ if (!customElements.get('zodiac-slides')) {
     class ZodiacSlides extends HTMLElement {
       connectedCallback() {
         this.slides = Array.from(this.querySelectorAll('.zodiac__slide'));
-        this.controls = this.querySelector('.zodiac__controls');
-        if (this.slides.length < 2 || !this.controls) return;
-
-        this.toggle = this.querySelector('[data-zodiac-toggle]');
         this.dotsBox = this.querySelector('.zodiac__dots');
+        if (this.slides.length < 2 || !this.dotsBox) return;
+
         this.dots = Array.from(this.querySelectorAll('[data-zodiac-go]'));
         this.status = this.querySelector('[data-zodiac-status]');
         this.interval = Number(this.dataset.interval) || 3000;
@@ -29,21 +28,14 @@ if (!customElements.get('zodiac-slides')) {
         this.visible = true;
 
         this.classList.add('zodiac--js');
-        this.controls.hidden = false;
-        if (this.dotsBox) this.dotsBox.hidden = false;
+        this.dotsBox.hidden = false;
 
         var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
         this.stopped = reduce.matches;
 
-        this.toggle.addEventListener('click', () => {
-          this.stopped = !this.stopped;
-          this.sync();
-        });
-
         this.dots.forEach((dot) => dot.addEventListener('click', () => this.manual(Number(dot.dataset.zodiacGo))));
 
-        // Hover pauses over the pictures only, so pressing play under them is not undone by
-        // the pointer still being there; keyboard focus pauses, except on the play button.
+        // Hover over the pictures and visible keyboard focus pause it while they last.
         var frame = this.querySelector('.zodiac__viewport');
         frame.addEventListener('mouseenter', () => {
           this.hovered = true;
@@ -55,7 +47,7 @@ if (!customElements.get('zodiac-slides')) {
         });
         this.addEventListener('focusin', (event) => {
           var target = event.target;
-          this.focused = !target.closest('[data-zodiac-toggle]') && target.matches(':focus-visible');
+          this.focused = target.matches(':focus-visible');
           this.sync();
         });
         this.addEventListener('focusout', (event) => {
@@ -153,10 +145,6 @@ if (!customElements.get('zodiac-slides')) {
       sync() {
         var running = !this.stopped && !this.hovered && !this.focused && this.visible && !document.hidden;
         this.classList.toggle('is-paused', this.stopped);
-        this.toggle.setAttribute(
-          'aria-label',
-          this.stopped ? this.toggle.dataset.labelPlay : this.toggle.dataset.labelPause
-        );
         clearTimeout(this.timer);
         this.timer = null;
         if (running) {
