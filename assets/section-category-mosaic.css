@@ -608,3 +608,19 @@
     margin-top: 3.2rem;
   }
 }
+
+/* Lettered and sized like „Вижте всички“ under the bestsellers row (12px capitals,
+   54px tall, full width on phones). */
+.mosaic__all .button {
+  min-height: 5.4rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 749px) {
+  .mosaic__all .button {
+    width: 100%;
+  }
+}
