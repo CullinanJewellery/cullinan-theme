@@ -522,6 +522,16 @@
     gap: 0;
   }
 
+  /* Every box is as tall as the tallest slide, so the control sits right under it. */
+  .workshop--js .workshop__slide,
+  .workshop--text.workshop--js .workshop__slide {
+    align-items: stretch;
+  }
+
+  .workshop--js .workshop__slide--photo {
+    grid-template-rows: auto 1fr;
+  }
+
   .workshop--js .workshop__content,
   .workshop--text.workshop--js .workshop__content {
     max-width: none;
