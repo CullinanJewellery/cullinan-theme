@@ -6399,3 +6399,11 @@ html body .collection .price:not(.price--on-sale) {
     padding-inline: 0;
   }
 }
+
+/* „Изчерпано“ on product cards a touch smaller (2026-10-05, owner): 11px, tighter
+   padding (was 12px, 5px 13px), so it covers less of the photo and stays readable. */
+html body .product-card-wrapper .card__badge .badge {
+  padding: 0.3rem 0.8rem 0.4rem;
+  font-size: 1.1rem;
+  letter-spacing: 0.06rem;
+}
