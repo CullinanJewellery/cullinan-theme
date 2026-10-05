@@ -137,6 +137,19 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
   while they last, and reduced motion never starts it, so visitors keep a way to stop the motion. Indicator tap areas
   widened to 20px (below 360) / 24px. Real preview 320 / 1440: no button, 12 lines inside the frame and centred,
   autoplay 3 s once on screen, tap stops, indicator 6 selects Дева, swipe, ←/→, no sideways scroll.
+- **2026-10-05, zodiac slideshow: title over the pictures (owner)**: „Вашата зодия“ (setting overlay_title, the
+  owner's pick of four), Prata in page colour, 24px phone / 32px computer, centred at the top over a soft espresso
+  shade; also the slideshow's accessible name. Placeholder labels moved below it.
+- **2026-10-05, zodiac slideshow: taller, arrows on computers, autoplay returns (owner)**: frames phone 4:5 → 2:3
+  (new option) and computer 16:7 → 16:9 in templates/index.json (focal points keep the jewellery placed). Previous/next
+  arrows inside the picture from 750px, vertically centred; none on phones (swipe + lines). Autoplay 3 s while on
+  screen and untouched; tap, swipe, arrow, line or ←/→ stop it; hover/focus pause it; it stops off screen and starts
+  again when the section comes back into view (no pause button exists to override that); reduced motion never
+  starts it, also after returning. Placeholder label placed under the title (it had come within 12px of the sign
+  name in the taller frame). Real preview: 320 (290×435), 375 (345×518), 1440 (1300×731); title 20/20/32px from the
+  top, words 14/14/28px above the lines, arrows 16px from the edges and 116px above the words, no sideways scroll;
+  autoplay, swipe stop, off-screen hold, restart on return, line and tap stop, hover pause, arrow wrap, reduced
+  motion checked.
 - **2026-10-05, fifth round (owner)**, real preview at 320, 375 and 1440 (no sideways scroll):
   - „Най-продавани“ confirmed live.
   - Category slider (phones): circular 44×44 arrows (disabled faded) and line indicators between them; active line
