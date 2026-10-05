@@ -4485,9 +4485,28 @@ body .jdgm-write-review-modal .jdgm-write-review-modal__page--review-form-intro 
   margin: 0;
 }
 
-/* Collection page: above the title, which keeps its own spacing. */
+/* Collection page top (2026-10-05, owner): the trail a little lower under the header and a
+   little larger (13px, still the softer ink, so the 30-40px title leads); the title close to
+   the filter row (its bottom margin removed; the grid's top padding is 24 in
+   templates/collection.json). Before: trail touching the header, 25px around the title,
+   68px (phone) / 61px (computer) from the title to the filters. */
+.collection-hero .collection-hero__inner {
+  padding-top: 2rem;
+}
+
 .collection-hero .cj-breadcrumbs {
-  margin-bottom: 0.8rem;
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.collection-hero .collection-hero__title {
+  margin: 1.2rem 0 0;
+}
+
+@media screen and (min-width: 750px) {
+  .collection-hero .collection-hero__inner {
+    padding-top: 2.8rem;
+  }
 }
 
 /* ---------------------------------------------------------------------------
@@ -5373,7 +5392,7 @@ html body .facets-wrapper .facets__display {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     column-gap: 0.8rem;
     align-items: stretch;
-    padding-top: 1.6rem;
+    padding-top: 0.8rem;
     border-top: 0;
     border-bottom: 0;
   }
