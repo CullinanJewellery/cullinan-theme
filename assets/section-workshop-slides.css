@@ -517,7 +517,7 @@
     display: none;
   }
 
-  /* The photo stands alone; the text sits below it on the section background. */
+  /* The photo stands alone; the text sits under it on the section background. */
   .workshop--js .workshop__slide,
   .workshop--text.workshop--js .workshop__slide--photo {
     gap: 1.6rem;
