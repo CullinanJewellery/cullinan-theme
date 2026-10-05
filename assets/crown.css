@@ -6245,7 +6245,7 @@ recently-viewed .slider-button[disabled] .icon {
    and the section titles ranged 22-30 / 32-46px. Now one scale, the opening line
    largest: opening 32 / 44 / 52px, every section title 26 / 32 / 40px (phone /
    tablet / computer), Prata, line height 1.2. Homepage sections only (`main`); the
-   footer and other pages keep their own. Way back: delete this block.
+   footer and other pages keep their own. Way back: delete this whole block.
    --------------------------------------------------------------------------- */
 html body main .banner__heading {
   font-size: 3.2rem;
