@@ -6238,3 +6238,62 @@ recently-viewed .slider-button[disabled] .icon {
   min-width: 0;
   overflow-wrap: anywhere;
 }
+
+/* ---------------------------------------------------------------------------
+   Homepage heading scale (2026-10-05, owner). Before: the opening line was smaller
+   than the section titles under it (23 vs 30px on phones, 40 vs 46px on computers),
+   and the section titles ranged 22-30 / 32-46px. Now one scale, the opening line
+   largest: opening 32 / 44 / 52px, every section title 26 / 32 / 40px (phone /
+   tablet / computer), Prata, line height 1.2. Homepage sections only (`main`); the
+   footer and other pages keep their own. Way back: delete this block.
+   --------------------------------------------------------------------------- */
+html body main .banner__heading {
+  font-size: 3.2rem;
+  line-height: 1.15;
+}
+
+html body main .collection .title-wrapper .title,
+html body main .mosaic__heading,
+html body main .zodiac__overlay-title,
+html body main .stones__heading,
+html body main .workshop__title,
+html body main .review-cards__heading,
+html body main .custom-request__heading,
+html body main .footer__social-heading {
+  font-size: 2.6rem;
+  line-height: 1.2;
+}
+
+@media screen and (min-width: 750px) {
+  html body main .banner__heading {
+    font-size: 4.4rem;
+  }
+
+  html body main .collection .title-wrapper .title,
+  html body main .mosaic__heading,
+  html body main .zodiac__overlay-title,
+  html body main .stones__heading,
+  html body main .workshop__title,
+  html body main .review-cards__heading,
+  html body main .custom-request__heading,
+  html body main .footer__social-heading {
+    font-size: 3.2rem;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  html body main .banner__heading {
+    font-size: 5.2rem;
+  }
+
+  html body main .collection .title-wrapper .title,
+  html body main .mosaic__heading,
+  html body main .zodiac__overlay-title,
+  html body main .stones__heading,
+  html body main .workshop__title,
+  html body main .review-cards__heading,
+  html body main .custom-request__heading,
+  html body main .footer__social-heading {
+    font-size: 4rem;
+  }
+}
