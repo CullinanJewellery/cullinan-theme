@@ -1,0 +1,260 @@
+/* ===========================================================================
+   Zodiac slideshow (sections/zodiac-slides.liquid), 2026-10-05.
+   One frame (4:5 on phones, 16:7 on computers by default); the slides are stacked
+   and fade; heading, text and button on the picture, centred near the bottom over a
+   soft espresso shade; controls under the frame. Without JavaScript the slides are
+   listed one under another.
+   =========================================================================== */
+
+.zodiac__editor-note {
+  margin: 0 0 2rem;
+  padding: 1.2rem 1.6rem;
+  border: 0.1rem dashed rgba(var(--color-foreground), 0.4);
+  font-size: 1.3rem;
+  line-height: 1.5;
+}
+
+.zodiac__title {
+  margin: 0 0 2.4rem;
+  font-size: clamp(2.6rem, 3.2vw, 4rem);
+  text-align: center;
+}
+
+.zodiac {
+  display: block;
+  position: relative;
+}
+
+.zodiac__viewport {
+  display: grid;
+  gap: 1.6rem;
+}
+
+.zodiac__slide {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: var(--zodiac-ratio-mobile, 4 / 5);
+  background: rgb(240 232 226);
+}
+
+.zodiac__media,
+.zodiac__media picture,
+.zodiac__placeholder {
+  position: absolute;
+  inset: 0;
+}
+
+.zodiac__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: var(--fp-m, center);
+}
+
+.zodiac__placeholder {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 3.2rem 2rem;
+  border: 0.1rem dashed rgba(var(--color-foreground), 0.45);
+  background: rgb(240 232 226);
+  text-align: center;
+  font-size: 1.3rem;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: rgba(var(--color-foreground), 0.75);
+}
+
+/* The shade: espresso rising from the bottom, so light words read on any photograph. */
+.zodiac__slide::after {
+  content: '';
+  position: absolute;
+  inset: 45% 0 0;
+  background: linear-gradient(to top, rgba(42, 30, 26, 0.72), rgba(42, 30, 26, 0.35) 55%, rgba(42, 30, 26, 0));
+  pointer-events: none;
+}
+
+.zodiac__content {
+  position: absolute;
+  left: 2rem;
+  right: 2rem;
+  bottom: 2.4rem;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+  color: rgb(251 248 246);
+}
+
+.zodiac__heading {
+  margin: 0;
+  font-family: var(--font-heading-family);
+  font-weight: var(--font-heading-weight);
+  font-size: 2.8rem;
+  line-height: 1.15;
+  letter-spacing: 0;
+  color: inherit;
+  text-wrap: balance;
+}
+
+.zodiac__text {
+  margin: 0;
+  max-width: 46ch;
+  font-size: 1.5rem;
+  line-height: 1.55;
+  color: inherit;
+}
+
+.zodiac__button {
+  margin-top: 0.6rem;
+}
+
+.zodiac__editor-hint {
+  margin: 0.4rem 0 0;
+  padding: 0.6rem 1rem;
+  border: 0.1rem dashed rgba(251, 248, 246, 0.7);
+  font-size: 1.2rem;
+  line-height: 1.4;
+}
+
+@media screen and (min-width: 750px) {
+  .zodiac__slide {
+    aspect-ratio: var(--zodiac-ratio-desktop, 16 / 7);
+  }
+
+  .zodiac__image {
+    object-position: var(--fp-d, center);
+  }
+
+  .zodiac__content {
+    left: 4rem;
+    right: 4rem;
+    bottom: 4rem;
+    gap: 1.2rem;
+  }
+
+  .zodiac__heading {
+    font-size: 4rem;
+  }
+
+  .zodiac__text {
+    font-size: 1.6rem;
+  }
+}
+
+/* ---- the slideshow (JavaScript on) -------------------------------------- */
+
+.zodiac--js .zodiac__viewport {
+  gap: 0;
+  touch-action: pan-y;
+}
+
+.zodiac--js .zodiac__slide {
+  grid-area: 1 / 1;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.8s ease, visibility 0s linear 0.8s;
+}
+
+.zodiac--js .zodiac__slide.is-active {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.8s ease, visibility 0s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .zodiac--js .zodiac__slide,
+  .zodiac--js .zodiac__slide.is-active {
+    transition: none;
+  }
+}
+
+/* ---- controls under the frame ------------------------------------------- */
+
+.zodiac__controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  margin-top: 1.6rem;
+}
+
+.zodiac__controls[hidden] {
+  display: none;
+}
+
+.zodiac__control {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.4rem;
+  height: 4.4rem;
+  padding: 0;
+  border: 0.1rem solid rgba(var(--color-foreground), 0.35);
+  border-radius: 50%;
+  background: transparent;
+  color: rgb(var(--color-foreground));
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.zodiac__control:hover {
+  border-color: rgb(var(--color-foreground));
+}
+
+.zodiac__control:focus-visible {
+  outline: 0.2rem solid rgb(var(--color-foreground));
+  outline-offset: 0.2rem;
+}
+
+.zodiac__control .svg-wrapper {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.zodiac__control--prev .svg-wrapper {
+  transform: rotate(90deg);
+}
+
+.zodiac__control--next .svg-wrapper {
+  transform: rotate(-90deg);
+}
+
+/* Pause: two bars; play: a triangle. The button shows the action it will take. */
+.zodiac__icon-pause {
+  width: 1rem;
+  height: 1.2rem;
+  border-left: 0.3rem solid currentColor;
+  border-right: 0.3rem solid currentColor;
+}
+
+.zodiac__icon-play {
+  display: none;
+  width: 0;
+  height: 0;
+  margin-left: 0.3rem;
+  border-top: 0.65rem solid transparent;
+  border-bottom: 0.65rem solid transparent;
+  border-left: 1.1rem solid currentColor;
+}
+
+.zodiac.is-paused .zodiac__icon-pause {
+  display: none;
+}
+
+.zodiac.is-paused .zodiac__icon-play {
+  display: block;
+}
+
+.zodiac__counter {
+  min-width: 5.6rem;
+  margin: 0;
+  font-size: 1.3rem;
+  letter-spacing: 0.06em;
+  font-variant-numeric: tabular-nums;
+  color: rgba(var(--color-foreground), 0.7);
+  text-align: center;
+}

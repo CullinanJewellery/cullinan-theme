@@ -1,0 +1,344 @@
+{%- comment -%}
+  Zodiac slideshow (2026-10-05, owner; replaces the earlier zodiac-row and single-banner
+  ideas). Twelve slides, one per sign: photograph (with an optional phone photograph),
+  heading, optional short text and a button to a product or collection, the words on the
+  picture, centred near the bottom.
+
+  Rules the owner set:
+  - Shoppers see only the slides that have a photograph; with none, the section is not
+    printed at all. In the theme editor every slide shows, a labelled placeholder standing
+    in for a missing photograph.
+  - The button shows only when it leads somewhere real: a product, or a collection that has
+    products. No invented product details or horoscope claims; the text is optional.
+  - Changes every 6 seconds with a gentle fade; arrows, swiping on phones and a visible
+    pause/play button. Pauses on hover and keyboard focus, stops after any manual move, and
+    never starts by itself when the visitor prefers reduced motion (assets/zodiac-slides.js).
+  - Cropping: the frame's proportions are section settings (phone and computer apart); each
+    photograph is placed by its own focal point, set in Shopify's image editor.
+{%- endcomment -%}
+
+{%- liquid
+  assign ready_total = 0
+  for block in section.blocks
+    if block.settings.image != blank or block.settings.image_mobile != blank
+      assign ready_total = ready_total | plus: 1
+    endif
+  endfor
+
+  assign show_section = false
+  if ready_total > 0
+    assign show_section = true
+  endif
+  if request.design_mode and section.blocks.size > 0
+    assign show_section = true
+  endif
+
+  assign shown_total = ready_total
+  if request.design_mode
+    assign shown_total = section.blocks.size
+  endif
+-%}
+
+{%- if show_section -%}
+  {{ 'section-zodiac-slides.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'zodiac-slides.js' | asset_url }}" defer="defer"></script>
+
+  {%- style -%}
+    #Zodiac-{{ section.id }} {
+      --zodiac-ratio-mobile: {{ section.settings.ratio_mobile }};
+      --zodiac-ratio-desktop: {{ section.settings.ratio_desktop }};
+    }
+    .section-{{ section.id }}-margin {
+      margin-top: {{ section.settings.margin_top | times: 0.75 | round: 0 }}px;
+      margin-bottom: {{ section.settings.margin_bottom | times: 0.75 | round: 0 }}px;
+    }
+    @media screen and (min-width: 750px) {
+      .section-{{ section.id }}-margin {
+        margin-top: {{ section.settings.margin_top }}px;
+        margin-bottom: {{ section.settings.margin_bottom }}px;
+      }
+    }
+  {%- endstyle -%}
+
+  <div class="color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-margin">
+    <div class="page-width">
+      {%- if request.design_mode and ready_total < section.blocks.size -%}
+        <p class="zodiac__editor-note">
+          Посетителите виждат само слайдовете със снимка (готови: {{ ready_total }} от {{ section.blocks.size }}).
+          {%- if ready_total == 0 %} Докато няма нито една, секцията не се показва в магазина.{% endif %}
+          Маркираните полета се виждат само тук.
+        </p>
+      {%- endif -%}
+
+      {%- if section.settings.heading != blank -%}
+        <h2 class="zodiac__title h2">{{ section.settings.heading | escape }}</h2>
+      {%- endif -%}
+
+      <zodiac-slides
+        id="Zodiac-{{ section.id }}"
+        class="zodiac"
+        role="region"
+        aria-roledescription="карусел"
+        aria-label="{{ section.settings.heading | default: 'Зодии' | escape }}"
+        data-interval="6000"
+      >
+        <div class="zodiac__viewport">
+          {%- assign shown_index = 0 -%}
+          {%- for block in section.blocks -%}
+            {%- liquid
+              assign has_photo = false
+              if block.settings.image != blank or block.settings.image_mobile != blank
+                assign has_photo = true
+              endif
+              if has_photo == false and request.design_mode == false
+                continue
+              endif
+              assign shown_index = shown_index | plus: 1
+
+              assign photo = block.settings.image | default: block.settings.image_mobile
+              assign photo_mobile = block.settings.image_mobile | default: block.settings.image
+
+              assign target_url = ''
+              if block.settings.product != blank
+                assign target_url = block.settings.product.url
+              elsif block.settings.collection != blank and block.settings.collection.products_count > 0
+                assign target_url = block.settings.collection.url
+              endif
+              assign button_label = block.settings.button_label | default: 'Разгледайте'
+              assign sign_name = block.settings.heading | default: 'Зодия'
+            -%}
+            <div
+              class="zodiac__slide{% if shown_index == 1 %} is-active{% endif %}"
+              role="group"
+              aria-roledescription="слайд"
+              aria-label="{{ shown_index }} от {{ shown_total }}{% if block.settings.heading != blank %}: {{ block.settings.heading | escape }}{% endif %}"
+              data-heading="{{ block.settings.heading | escape }}"
+              {{ block.shopify_attributes }}
+            >
+              <div
+                class="zodiac__media"
+                {%- if has_photo %}
+                  style="--fp-m: {{ photo_mobile.presentation.focal_point | default: 'center' }}; --fp-d: {{ photo.presentation.focal_point | default: 'center' }};"
+                {%- endif %}
+              >
+                {%- if has_photo -%}
+                  {%- if shown_index == 1 -%}
+                    {%- assign img_loading = 'eager' -%}
+                  {%- else -%}
+                    {%- assign img_loading = 'lazy' -%}
+                  {%- endif -%}
+                  <picture>
+                    <source
+                      media="(max-width: 749px)"
+                      srcset="{{ photo_mobile | image_url: width: 750 }} 750w, {{ photo_mobile | image_url: width: 1100 }} 1100w"
+                      sizes="100vw"
+                    >
+                    {{
+                      photo
+                      | image_url: width: 2000
+                      | image_tag:
+                        loading: img_loading,
+                        widths: '750, 1100, 1500, 2000',
+                        sizes: '(min-width: 1600px) 1500px, 100vw',
+                        class: 'zodiac__image',
+                        alt: block.settings.heading
+                    }}
+                  </picture>
+                {%- else -%}
+                  <div class="zodiac__placeholder">
+                    <span>Снимка за {{ sign_name | escape }} — качете я в редактора<br>(вижда се само тук)</span>
+                  </div>
+                {%- endif -%}
+              </div>
+
+              <div class="zodiac__content">
+                {%- if block.settings.heading != blank -%}
+                  <h3 class="zodiac__heading">{{ block.settings.heading | escape }}</h3>
+                {%- endif -%}
+                {%- if block.settings.text != blank -%}
+                  <p class="zodiac__text">{{ block.settings.text | escape }}</p>
+                {%- endif -%}
+                {%- if target_url != '' -%}
+                  <a class="zodiac__button button button--primary" href="{{ target_url }}">{{ button_label | escape }}</a>
+                {%- elsif request.design_mode -%}
+                  <p class="zodiac__editor-hint">Бутонът се показва, щом изберете продукт или колекция с продукти.</p>
+                {%- endif -%}
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+
+        {%- if shown_total > 1 -%}
+          <div class="zodiac__controls" hidden>
+            <button type="button" class="zodiac__control zodiac__control--prev" data-zodiac-prev aria-label="Предишна зодия">
+              <span class="svg-wrapper" aria-hidden="true">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
+            </button>
+            <button
+              type="button"
+              class="zodiac__control zodiac__control--toggle"
+              data-zodiac-toggle
+              aria-label="Спри автоматичното превъртане"
+              data-label-pause="Спри автоматичното превъртане"
+              data-label-play="Пусни автоматичното превъртане"
+            >
+              <span class="zodiac__icon-pause" aria-hidden="true"></span>
+              <span class="zodiac__icon-play" aria-hidden="true"></span>
+            </button>
+            <button type="button" class="zodiac__control zodiac__control--next" data-zodiac-next aria-label="Следваща зодия">
+              <span class="svg-wrapper" aria-hidden="true">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
+            </button>
+            <p class="zodiac__counter" aria-hidden="true"><span data-zodiac-current>1</span> / {{ shown_total }}</p>
+          </div>
+          <p class="visually-hidden" aria-live="polite" data-zodiac-status></p>
+        {%- endif -%}
+      </zodiac-slides>
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Zodiac slideshow",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "max_blocks": 12,
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Visitors see only the slides with a photograph; with none, the section is hidden. The editor shows all slides, with placeholders."
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading above the slideshow (optional)"
+    },
+    {
+      "type": "select",
+      "id": "ratio_desktop",
+      "label": "Frame on computers",
+      "options": [
+        { "value": "16 / 7", "label": "16:7 (wide)" },
+        { "value": "16 / 9", "label": "16:9" },
+        { "value": "21 / 9", "label": "21:9 (very wide)" },
+        { "value": "3 / 2", "label": "3:2" }
+      ],
+      "default": "16 / 7"
+    },
+    {
+      "type": "select",
+      "id": "ratio_mobile",
+      "label": "Frame on phones",
+      "options": [
+        { "value": "4 / 5", "label": "4:5 (portrait)" },
+        { "value": "1 / 1", "label": "1:1 (square)" },
+        { "value": "3 / 4", "label": "3:4 (tall)" }
+      ],
+      "default": "4 / 5"
+    },
+    {
+      "type": "paragraph",
+      "content": "Each photograph is placed by its focal point: open the image in the picker and choose Edit > Focal point."
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Colour scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Space above",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Space below",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "sign",
+      "name": "Zodiac sign",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Photograph",
+          "info": "Wide, 2000 px or more. Nothing written on the picture."
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "Phone photograph (optional)",
+          "info": "Portrait. Without it, phones use the photograph above."
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Short text (optional)"
+        },
+        {
+          "type": "header",
+          "content": "Button"
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product",
+          "info": "Used first if set."
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Or a collection",
+          "info": "Not linked while it has no products."
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button text",
+          "info": "Empty: „Разгледайте“. No button without a product or a collection with products."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Zodiac slideshow",
+      "blocks": [
+        { "type": "sign", "settings": { "heading": "Овен" } },
+        { "type": "sign", "settings": { "heading": "Телец" } },
+        { "type": "sign", "settings": { "heading": "Близнаци" } },
+        { "type": "sign", "settings": { "heading": "Рак" } },
+        { "type": "sign", "settings": { "heading": "Лъв" } },
+        { "type": "sign", "settings": { "heading": "Дева" } },
+        { "type": "sign", "settings": { "heading": "Везни" } },
+        { "type": "sign", "settings": { "heading": "Скорпион" } },
+        { "type": "sign", "settings": { "heading": "Стрелец" } },
+        { "type": "sign", "settings": { "heading": "Козирог" } },
+        { "type": "sign", "settings": { "heading": "Водолей" } },
+        { "type": "sign", "settings": { "heading": "Риби" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
