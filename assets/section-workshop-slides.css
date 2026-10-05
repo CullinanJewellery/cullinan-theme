@@ -517,37 +517,24 @@
     display: none;
   }
 
+  /* The photo stands alone; the text sits below it on the section background. */
   .workshop--js .workshop__slide,
   .workshop--text.workshop--js .workshop__slide--photo {
-    gap: 0;
-  }
-
-  /* Every box is as tall as the tallest slide, so the control sits directly under it. */
-  .workshop--js .workshop__slide,
-  .workshop--text.workshop--js .workshop__slide {
-    align-items: stretch;
-  }
-
-  .workshop--js .workshop__slide--photo {
-    grid-template-rows: auto 1fr;
-  }
-
-  /* While only some slides have photos, a text-only box keeps its own height. */
-  .workshop--js:has(.workshop__slide--photo) .workshop__slide:not(.workshop__slide--photo) {
+    gap: 1.6rem;
     align-items: start;
   }
 
   .workshop--js .workshop__content,
   .workshop--text.workshop--js .workshop__content {
     max-width: none;
-    padding: 2rem 1.8rem 1.8rem;
-    background: rgb(251 248 246);
+    padding: 0;
+    background: none;
   }
 
   .workshop.workshop--js .workshop__controls,
   .workshop--text.workshop--js .workshop__controls {
     width: max-content;
-    margin: 1.6rem auto 0;
+    margin: 2rem auto 0;
     gap: 0;
     border: 0.1rem solid rgba(var(--color-foreground), 0.35);
     touch-action: pan-y;
