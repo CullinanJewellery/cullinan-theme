@@ -586,3 +586,60 @@ cart-drawer cart-drawer-items {
     font-size: 1.4rem;
   }
 }
+
+/* ===========================================================================
+   /cart matches the drawer (2026-10-05, owner): the same quiet square quantity box
+   (faint fill, no ring) and the same „Общо“ row -- small-capitals label at the left,
+   the amount in the heading font at the right, the delivery note under it.
+   =========================================================================== */
+#main-cart-items .cart-item__quantity .quantity {
+  border-radius: 0;
+  background-color: rgba(var(--color-foreground), 0.04);
+}
+
+#main-cart-items .cart-item__quantity .quantity::before,
+#main-cart-items .cart-item__quantity .quantity::after {
+  content: none;
+}
+
+#main-cart-items .cart-item__quantity .quantity__input {
+  font-size: 1.4rem;
+  font-weight: 500;
+  opacity: 1;
+}
+
+#main-cart-footer .totals {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1.6rem;
+  margin: 0;
+}
+
+#main-cart-footer .totals__total {
+  margin: 0;
+  font-family: var(--font-body-family);
+  color: rgba(var(--color-foreground), 0.7);
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+#main-cart-footer .totals__total-value {
+  margin: 0;
+  font-family: var(--font-heading-family);
+  font-size: 2.2rem;
+  font-weight: var(--font-heading-weight);
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+}
+
+#main-cart-footer .tax-note {
+  margin: 0.8rem 0 1.6rem;
+  color: rgba(var(--color-foreground), 0.7);
+  font-size: 1.2rem;
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+  text-align: left;
+}
