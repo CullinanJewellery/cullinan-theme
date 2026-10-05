@@ -711,7 +711,13 @@
                         <h2 id="SizeGuide-{{ section.id }}-title" class="size-guide__title h3">
                           {{- block.settings.size_guide_heading | escape -}}
                         </h2>
-                        <div class="size-guide__body rte">{{ block.settings.size_guide_content }}</div>
+                        {%- comment -%}
+                          2026-10-05 (owner): the table first. One line of explanation, the table,
+                          a short note, then the measuring instructions and tips collapsed.
+                        {%- endcomment -%}
+                        {%- if block.settings.size_guide_intro != blank -%}
+                          <p class="size-guide__intro">{{ block.settings.size_guide_intro | escape }}</p>
+                        {%- endif -%}
                         <table class="size-guide__table">
                           <caption class="visually-hidden">Европейски размери на пръстени</caption>
                           <thead>
@@ -735,6 +741,17 @@
                         <p class="size-guide__note">
                           Диаметърът е изчислен от обиколката и е ориентировъчен.
                         </p>
+                        {%- if block.settings.size_guide_tip != blank -%}
+                          <p class="size-guide__tip">{{ block.settings.size_guide_tip | escape }}</p>
+                        {%- endif -%}
+                        {%- if block.settings.size_guide_content != blank -%}
+                          <details class="size-guide__details">
+                            <summary class="size-guide__summary">
+                              {{- block.settings.size_guide_details_label | default: 'Как да определите размера си' | escape -}}
+                            </summary>
+                            <div class="size-guide__body rte">{{ block.settings.size_guide_content }}</div>
+                          </details>
+                        {%- endif -%}
                       </div>
                     </dialog>
                     <script>
@@ -1306,10 +1323,28 @@
           "default": "Как да определите размера"
         },
         {
+          "type": "text",
+          "id": "size_guide_intro",
+          "label": "Explanation above the table",
+          "default": "Европейският размер е вътрешната обиколка на пръстена в милиметри."
+        },
+        {
+          "type": "text",
+          "id": "size_guide_tip",
+          "label": "Note under the table",
+          "default": "За най-точен размер използвайте пръстеномер."
+        },
+        {
+          "type": "text",
+          "id": "size_guide_details_label",
+          "label": "Collapsed section title",
+          "default": "Как да определите размера си"
+        },
+        {
           "type": "richtext",
           "id": "size_guide_content",
-          "label": "Guide text",
-          "default": "<p>Работим с европейски размери — например 52, 54, 56. Числото е вътрешната обиколка на пръстена в милиметри, а не диаметърът му.</p><p><strong>Най-точно:</strong> пробвайте с пръстеномер — комплект номерирани пробни пръстени, какъвто има всеки бижутер. Пробвайте на пръста, на който ще носите бижуто.</p><ul><li>Подходящият размер минава през кокалчето с леко съпротивление и не се върти свободно.</li><li>Широката халка стои по-стегнато. Ако сте между два размера, изберете по-големия.</li><li>Мерете в края на деня, когато пръстите не са студени.</li></ul><p>Измерването с конец или хартиена лента е неточно и не го препоръчваме. Ако не сте сигурни, <a href=\"/pages/contact\">пишете ни</a> преди да поръчате.</p>"
+          "label": "Measuring instructions (collapsed)",
+          "default": "<p><strong>Най-точно:</strong> пробвайте с пръстеномер — комплект номерирани пробни пръстени, какъвто има всеки бижутер. Пробвайте на пръста, на който ще носите бижуто.</p><ul><li>Подходящият размер минава през кокалчето с леко съпротивление и не се върти свободно.</li><li>Широката халка стои по-стегнато. Ако сте между два размера, изберете по-големия.</li><li>Мерете в края на деня, когато пръстите не са студени.</li></ul><p>Измерването с конец или хартиена лента е неточно и не го препоръчваме. Ако не сте сигурни, <a href=\"/pages/contact\">пишете ни</a> преди да поръчате.</p>"
         }
       ]
     },

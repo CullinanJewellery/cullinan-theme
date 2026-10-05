@@ -5555,6 +5555,71 @@ dialog.size-guide .size-guide__note {
   opacity: 0.8;
 }
 
+/* Table first (2026-10-05, owner): one line above it, a short note under it, the
+   measuring instructions collapsed below. */
+dialog.size-guide .size-guide__intro {
+  margin: 0;
+  font-size: 1.5rem;
+  line-height: 1.55;
+}
+
+dialog.size-guide .size-guide__intro + .size-guide__table {
+  margin-top: 1.6rem;
+}
+
+dialog.size-guide .size-guide__tip {
+  margin: 1.2rem 0 0;
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+dialog.size-guide .size-guide__details {
+  margin-top: 2rem;
+  border-top: 0.1rem solid rgba(var(--color-foreground), 0.2);
+  border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.2);
+}
+
+dialog.size-guide .size-guide__summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2rem;
+  min-height: 4.8rem;
+  font-size: 1.4rem;
+  font-weight: 500;
+  cursor: pointer;
+  list-style: none;
+}
+
+dialog.size-guide .size-guide__summary::-webkit-details-marker {
+  display: none;
+}
+
+dialog.size-guide .size-guide__summary::after {
+  content: '';
+  flex: none;
+  width: 0.8rem;
+  height: 0.8rem;
+  margin-right: 0.4rem;
+  border-right: 0.15rem solid currentColor;
+  border-bottom: 0.15rem solid currentColor;
+  transform: translateY(-0.2rem) rotate(45deg);
+}
+
+dialog.size-guide .size-guide__details[open] > .size-guide__summary::after {
+  transform: translateY(0.2rem) rotate(-135deg);
+}
+
+dialog.size-guide .size-guide__summary:focus-visible {
+  outline: 0.2rem solid rgb(var(--color-foreground));
+  outline-offset: 0.2rem;
+}
+
+dialog.size-guide .size-guide__details .size-guide__body {
+  padding-bottom: 0.4rem;
+}
+
 @media screen and (max-width: 749px) {
   dialog.size-guide .size-guide__inner {
     padding: 3.2rem 2rem 2.4rem;
