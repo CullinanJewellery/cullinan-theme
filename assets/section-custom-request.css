@@ -254,3 +254,73 @@
 .custom-request__dialog .custom-request__form {
   margin-top: 2rem;
 }
+
+/* ---------------------------------------------------------------------------
+   Collapsible layout (homepage, 2026-10-05, owner): one column; the title and short
+   introduction, then „Изпратете запитване“ with a chevron; the form and the
+   reference-photo links open below it. Collapsed, the band is only as tall as its words.
+   --------------------------------------------------------------------------- */
+.custom-request--collapsible {
+  display: block;
+  max-width: 72rem;
+}
+
+.custom-request__toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  min-height: 5.4rem;
+  margin-top: 2.4rem;
+  padding: 0 3.2rem;
+  border: 0;
+  border-radius: 0;
+  background-color: rgb(var(--color-button));
+  color: rgb(var(--color-button-text));
+  font-family: var(--font-body-family);
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.custom-request__toggle:focus-visible {
+  outline: 0.2rem solid rgb(var(--color-foreground));
+  outline-offset: 0.3rem;
+}
+
+.custom-request__chevron {
+  width: 0.8rem;
+  height: 0.8rem;
+  margin-top: -0.4rem;
+  border-right: 0.15rem solid currentColor;
+  border-bottom: 0.15rem solid currentColor;
+  transform: rotate(45deg);
+  transition: transform 0.2s;
+}
+
+.custom-request__toggle[aria-expanded='true'] .custom-request__chevron {
+  margin-top: 0.4rem;
+  transform: rotate(-135deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .custom-request__chevron {
+    transition: none;
+  }
+}
+
+.custom-request__panel {
+  margin-top: 3.2rem;
+}
+
+.custom-request__panel[hidden] {
+  display: none;
+}
+
+@media screen and (max-width: 749px) {
+  .custom-request__toggle {
+    width: 100%;
+  }
+}

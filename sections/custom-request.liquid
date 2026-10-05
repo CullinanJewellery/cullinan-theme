@@ -89,6 +89,7 @@
         <p class="custom-request__text">{{ section.settings.text | escape }}</p>
       {%- endif -%}
 
+      {%- capture ways_markup -%}
       {%- if has_ways -%}
         <div class="custom-request__ways">
           <p class="custom-request__ways-label">Имате снимка? Изпратете ни я:</p>
@@ -110,6 +111,26 @@
             {%- endif -%}
           </ul>
         </div>
+      {%- endif -%}
+      {%- endcapture -%}
+      {%- unless layout == 'collapsible' -%}{{ ways_markup }}{%- endunless -%}
+
+      {%- if layout == 'collapsible' -%}
+        {%- comment -%}
+          Homepage (2026-10-05, owner): the title and a short introduction stay; the form and
+          the reference-photo links open under „Изпратете запитване“. Collapsed at first;
+          open again after sending, so the thank-you or the error shows.
+        {%- endcomment -%}
+        <button
+          type="button"
+          class="custom-request__toggle"
+          aria-expanded="false"
+          aria-controls="{{ form_id }}-panel"
+          data-request-toggle
+        >
+          {{- section.settings.toggle_label | default: 'Изпратете запитване' | escape -}}
+          <span class="custom-request__chevron" aria-hidden="true"></span>
+        </button>
       {%- endif -%}
 
       {%- if layout == 'popup' -%}
@@ -294,6 +315,26 @@
           }
         })();
       </script>
+    {%- elsif layout == 'collapsible' -%}
+      <div id="{{ form_id }}-panel" class="custom-request__panel" hidden>
+        {{ request_form }}
+        {{ ways_markup }}
+      </div>
+      <script>
+        (function () {
+          var panel = document.getElementById({{ form_id | append: '-panel' | json }});
+          if (!panel) return;
+          var toggle = panel.parentElement.querySelector('[data-request-toggle]');
+          function setOpen(open) {
+            panel.hidden = !open;
+            toggle.setAttribute('aria-expanded', String(open));
+          }
+          toggle.addEventListener('click', function () {
+            setOpen(panel.hidden);
+          });
+          if (panel.querySelector('[data-enquiry-reopen]')) setOpen(true);
+        })();
+      </script>
     {%- else -%}
       {{ request_form }}
     {%- endif -%}
@@ -337,6 +378,12 @@
         { "value": "collapsible", "label": "Button that expands the form" }
       ],
       "default": "open"
+    },
+    {
+      "type": "text",
+      "id": "toggle_label",
+      "label": "Expand button text",
+      "default": "Изпратете запитване"
     },
     {
       "type": "text",
