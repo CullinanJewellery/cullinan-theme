@@ -1,13 +1,12 @@
 /*
-  <zodiac-slides> (sections/zodiac-slides.liquid), 2026-10-05.
-  Autoplay every 3 s (data-interval; owner, was 6) with a CSS fade. It pauses while the
-  pointer is over the pictures or keyboard focus is inside, and while the slideshow is off
-  screen or the tab is hidden. Tapping the picture, swiping, choosing a line indicator or the
-  left/right arrow keys stop it for the rest of the visit (no pause/play button: owner,
-  2026-10-05); a real button on the slide (a link) still opens normally. With
-  prefers-reduced-motion it never starts.
-  No arrow buttons or counter; moving wraps round (the signs are a circle). Inactive slides
-  are inert. A polite live region announces the slide only after a manual move.
+  <zodiac-slides> (sections/zodiac-slides.liquid), 2026-10-05 (owner).
+  Autoplay every 3 s (data-interval) with a CSS fade, while the slideshow is on screen and
+  untouched. A tap on the picture, a swipe, an arrow (computers), a line indicator or the
+  left/right keys stop it; mouse hover and keyboard focus pause it while they last. It stops
+  while off screen and starts again whenever the visitor scrolls back to it (there is no
+  pause button). With prefers-reduced-motion it never starts. A real link on a slide opens
+  normally. Moving wraps round. Inactive slides are inert; a polite live region announces
+  the slide only after a manual move.
 */
 if (!customElements.get('zodiac-slides')) {
   customElements.define(
@@ -25,23 +24,27 @@ if (!customElements.get('zodiac-slides')) {
         this.timer = null;
         this.hovered = false;
         this.focused = false;
-        this.visible = true;
+        this.visible = false;
+        this.prev = this.querySelector('[data-zodiac-prev]');
+        this.next = this.querySelector('[data-zodiac-next]');
 
         this.classList.add('zodiac--js');
         this.dotsBox.hidden = false;
+        [this.prev, this.next].forEach((arrow) => arrow && (arrow.hidden = false));
+        if (this.prev) this.prev.addEventListener('click', () => this.manual(this.index - 1));
+        if (this.next) this.next.addEventListener('click', () => this.manual(this.index + 1));
 
-        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
-        this.stopped = reduce.matches;
+        this.reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        this.stopped = this.reduce;
 
         this.dots.forEach((dot) => dot.addEventListener('click', () => this.manual(Number(dot.dataset.zodiacGo))));
 
         // Hover over the pictures and visible keyboard focus pause it while they last.
-        var frame = this.querySelector('.zodiac__viewport');
-        frame.addEventListener('mouseenter', () => {
+        this.addEventListener('mouseenter', () => {
           this.hovered = true;
           this.sync();
         });
-        frame.addEventListener('mouseleave', () => {
+        this.addEventListener('mouseleave', () => {
           this.hovered = false;
           this.sync();
         });
@@ -100,7 +103,10 @@ if (!customElements.get('zodiac-slides')) {
 
         if ('IntersectionObserver' in window) {
           new IntersectionObserver((entries) => {
-            this.visible = entries[0].isIntersecting;
+            var nowVisible = entries[0].isIntersecting;
+            // Back on screen after leaving it: autoplay starts again (not with reduced motion).
+            if (nowVisible && !this.visible && !this.reduce) this.stopped = false;
+            this.visible = nowVisible;
             this.sync();
           }).observe(this);
         }

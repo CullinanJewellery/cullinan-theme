@@ -218,6 +218,13 @@
             area. No arrows, no counter, no pause/play button (owner, 2026-10-05).
             Swiping and the left/right arrow keys also move between slides.
           {%- endcomment -%}
+          {%- comment -%} Previous/next inside the picture, computers only (owner, 2026-10-05). {%- endcomment -%}
+          <button type="button" class="zodiac__arrow zodiac__arrow--prev" data-zodiac-prev aria-label="Предишна зодия" hidden>
+            <span class="svg-wrapper" aria-hidden="true">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
+          </button>
+          <button type="button" class="zodiac__arrow zodiac__arrow--next" data-zodiac-next aria-label="Следваща зодия" hidden>
+            <span class="svg-wrapper" aria-hidden="true">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
+          </button>
           <div class="zodiac__dots" role="group" aria-label="Зодии" hidden>
             {%- assign dot_index = 0 -%}
             {%- for block in section.blocks -%}
@@ -291,7 +298,7 @@
         { "value": "16 / 7", "label": "16:7 (wide)" },
         { "value": "16 / 9", "label": "16:9" },
         { "value": "21 / 9", "label": "21:9 (very wide)" },
-        { "value": "3 / 2", "label": "3:2" }
+        { "value": "3 / 2", "label": "3:2 (tall)" }
       ],
       "default": "16 / 7"
     },
@@ -302,7 +309,8 @@
       "options": [
         { "value": "4 / 5", "label": "4:5 (portrait)" },
         { "value": "1 / 1", "label": "1:1 (square)" },
-        { "value": "3 / 4", "label": "3:4 (tall)" }
+        { "value": "3 / 4", "label": "3:4 (tall)" },
+        { "value": "2 / 3", "label": "2:3 (taller)" }
       ],
       "default": "4 / 5"
     },

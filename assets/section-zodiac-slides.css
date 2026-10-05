@@ -308,3 +308,59 @@
     font-size: 3.2rem;
   }
 }
+
+/* ---- previous/next inside the picture: computers only (2026-10-05, owner) ---- */
+.zodiac__arrow {
+  display: none;
+}
+
+@media screen and (min-width: 750px) {
+  .zodiac__arrow:not([hidden]) {
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 4.4rem;
+    height: 4.4rem;
+    padding: 0;
+    border: 0.1rem solid rgba(251, 248, 246, 0.6);
+    border-radius: 50%;
+    background: rgba(42, 30, 26, 0.45);
+    color: rgb(251 248 246);
+    cursor: pointer;
+    transform: translateY(-50%);
+    transition: background-color 0.2s;
+  }
+
+  .zodiac__arrow--prev {
+    left: 1.6rem;
+  }
+
+  .zodiac__arrow--next {
+    right: 1.6rem;
+  }
+
+  .zodiac__arrow:hover {
+    background: rgba(42, 30, 26, 0.7);
+  }
+
+  .zodiac__arrow:focus-visible {
+    outline: 0.2rem solid rgb(251 248 246);
+    outline-offset: 0.2rem;
+  }
+
+  .zodiac__arrow .svg-wrapper {
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+
+  .zodiac__arrow--prev .svg-wrapper {
+    transform: rotate(90deg);
+  }
+
+  .zodiac__arrow--next .svg-wrapper {
+    transform: rotate(-90deg);
+  }
+}
