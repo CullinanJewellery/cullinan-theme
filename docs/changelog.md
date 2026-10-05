@@ -58,6 +58,13 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
   („Вижте работата ни“) and product pages keep their own sections. Real preview: gone on /collections/all and
   /collections; the footer menus start 47px (phone) / 56px (1440) from its top edge, the same as on product and
   За нас pages, so no gap; homepage, product and Контакти unchanged.
+- **2026-10-05, size guide table first (owner)**: the dialog now shows the title, one line („Европейският размер е
+  вътрешната обиколка на пръстена в милиметри.“), the table (48–64, same three columns, diameter still computed), the
+  diameter note, a visible note („За най-точен размер използвайте пръстеномер.“), then a closed <details> „Как да
+  определите размера си“ with the ring-sizer text, tips and the thread warning. New text settings
+  size_guide_intro / size_guide_tip / size_guide_details_label; size_guide_content is the collapsed part (its
+  first paragraph, which repeated the explanation, removed). Phone headers tighter so „Диаметър,“ fits at 320.
+  Real preview: 375, 320 and 1440, no sideways scroll, no clipped cells; the section opens by click and keyboard.
 - **2026-10-05, fifth round (owner)**, real preview at 320, 375 and 1440 (no sideways scroll):
   - „Най-продавани“ confirmed live.
   - Category slider (phones): circular 44×44 arrows (disabled faded) and line indicators between them; active line
