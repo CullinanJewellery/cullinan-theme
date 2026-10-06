@@ -6752,3 +6752,89 @@ html body .product-card-wrapper .card__media .media img:not(.card__photo-2) {
   outline: 0.2rem solid rgb(42 30 26);
   outline-offset: -0.6rem;
 }
+
+/* ---------------------------------------------------------------------------
+   Card cart icon (2026-10-06, owner)
+
+   A small cart, the header's own icon, in the photo's top-right corner where
+   moonmagic.com puts its heart; used for buying. No background, circle or border;
+   the shop's ink with a faint light halo so it reads on a darker photo. The tap area
+   is the whole 44x44 box. Pieces with options open Dawn's selection panel; pieces
+   without add straight to the cart (snippets/card-product.liquid). Not shown for a
+   piece that cannot be bought. The swipe guard in assets/card-photos.js cancels a
+   click that ends a swipe, so a swipe across the photo never adds anything.
+   --------------------------------------------------------------------------- */
+html body .card-wrapper .quick-add--icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  grid-row-start: auto;
+  margin: 0;
+}
+
+html body .card-wrapper .quick-add--icon modal-opener,
+html body .card-wrapper .quick-add--icon product-form,
+html body .card-wrapper .quick-add--icon form {
+  display: block;
+  margin: 0;
+}
+
+html body .card-wrapper .quick-add--icon .quick-add__submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.4rem;
+  min-width: 4.4rem;
+  height: 4.4rem;
+  min-height: 4.4rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  color: rgb(var(--color-foreground));
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+html body .card-wrapper .quick-add--icon .quick-add__submit::before,
+html body .card-wrapper .quick-add--icon .quick-add__submit::after {
+  content: none;
+}
+
+html body .card-wrapper .quick-add--icon .quick-add__submit:hover {
+  color: rgb(var(--color-button));
+}
+
+html body .card-wrapper .quick-add--icon .quick-add__submit:focus-visible {
+  outline: 0.2rem solid rgb(var(--color-foreground));
+  outline-offset: -0.4rem;
+  box-shadow: none;
+}
+
+html body .card-wrapper .quick-add--icon .quick-add__icon,
+html body .card-wrapper .quick-add--icon .quick-add__icon svg {
+  display: block;
+  width: 4rem;
+  height: 4rem;
+}
+
+html body .card-wrapper .quick-add--icon .quick-add__icon svg {
+  filter: drop-shadow(0 0 0.15rem rgba(255, 255, 255, 0.9));
+}
+
+html body .card-wrapper .quick-add--icon .loading__spinner {
+  width: 1.8rem;
+}
+
+/* The selection panel: the piece's photo, name, price, options, delivery line and
+   button. The trail, the rating link, the phone line and the trust lines stay on the
+   product page (the tabs, specifications and description are hidden by Dawn). */
+quick-add-modal .product-breadcrumb,
+quick-add-modal .rating-wrapper,
+quick-add-modal .product-phone-order,
+quick-add-modal .product-trust {
+  display: none;
+}
