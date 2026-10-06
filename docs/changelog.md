@@ -8,6 +8,36 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-06 — seven-step batch **(owner)**
+1. Product enquiry: the open form became „Попитайте за това бижу“, which opens a popup shaped like the size guide
+   (custom-request `layout`: open / popup / collapsible). Both buttons open it; piece, link and variant are still sent;
+   Escape and the backdrop close it and focus goes back; it reopens after sending to show the thank-you or the error.
+   Band on phones 762 → 409px. The thank-you message has not been seen yet, because no enquiry was sent.
+2. Card prices 17 → 16px (`.collection .price`); the product page price is unchanged (22px).
+3. Collection cards: a second photo, the first image not tied to any variant, with two dots (2.8×4.4rem tap areas).
+   Swipe or tap a dot (assets/card-photos.js); a click that ends a swipe does not open the product; `pan-y` keeps
+   vertical scrolling; a swatch returns to photo 1, which shows the chosen metal. Only the ring has such a photo
+   so far, and that photo has a logo burned in (`docs/tasks.md`).
+4. „Изчерпано“ label removed from product cards everywhere; the product page keeps its message and disabled button.
+5. Homepage custom request collapsed: heading and intro, then „Изпратете запитване“ with a chevron, which opens the form
+   and the reference-photo links (382px collapsed, 922px open at 375).
+6. Filters as connected boxes (arrangement from moonmagic.com, our colours and Jost): on computers one strip with
+   lines above and below and between the label, each filter (plus, minus when open), sorting and the count. Panels
+   hang straight from the strip, square, with no shadow. On tablets (750–989) the words „Филтриране:“ / „Сортиране:“
+   are for screen readers only and sorting shortens. Phones: „Филтри“ and „Сортиране“ are one bar running to the
+   screen edges, with a line between them (replaces the 8px buttons); drawer rows sit on lines in small capitals;
+   „Покажи резултатите (N)“ is full width with „Изчисти“ under it (it wrapped to three lines). Chosen-filter chips
+   are square. Filtering, sorting, count, removal and the drawer behaviour are Dawn’s, unchanged. Way back: the
+   „Computers, connected boxes“ and phone „Third pass“ blocks in crown.css.
+7. Cart icon on cards: Dawn’s quick add (`quick_add: standard` in collection, homepage featured collection, product
+   page featured collection), shown as the header’s cart icon in the photo’s top-right corner. 44×44 tap area, no
+   background, a faint light halo. Pieces with options open Dawn’s selection panel, which hides the trail, rating,
+   phone and trust lines. Pieces without options add directly and the cart drawer opens. Unavailable pieces show no
+   icon. Search results and related products have no quick-add setting in Dawn 16, so they show no icon. Way back:
+   set `quick_add` to `none`.
+- Steps 6–7 were built while the preview link had expired: checked in a local mock (a saved collection page with the
+  repo CSS) at 320, 375, 768 and 1440, and on the CDN. **Not yet checked on the real preview.**
+
 ## 2026-10-04 — next stage **(owner: "start the next stage")**
 - Phone hero: the picture fills its 375px square and shows the pendant (Dawn's zoom-in had made it fixed and 100vh
   tall). Desktop unchanged. Verified on the preview.
