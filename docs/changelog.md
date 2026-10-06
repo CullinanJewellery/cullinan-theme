@@ -8,6 +8,35 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-06 — row photo preview: immediate on touch **(owner, after an iPhone test)**
+- **Cause, investigated on the real preview:**
+  - The newest script was loaded, and the ring had a valid second photo (the owner's new on-hand photo, tied to no
+    variant).
+  - The card link covers the photo, but the listeners sit on the document, so it never blocked the touch.
+  - The failure came from the design of the first pass: it waited 280 ms of stillness, cancelled on any page scroll
+    event (an iPhone fires those when a touch stops momentum scrolling or the address bar resizes) and on 8px of drift.
+- **Now** (`assets/card-photo-preview.js`):
+  - The second photo shows on touch-down over the photo, with a 0.2 s crossfade.
+  - It restores on release or pointercancel (the browser cancels when it starts a page scroll or row swipe), or after
+    12px of drift.
+  - No scroll listener.
+  - A quick tap opens the product. The click after a long look (over 500 ms), a moved finger or a cancel is not
+    followed.
+  - It swaps only once the second photo has loaded.
+  - Second photo `cover`, first `contain` (Наскоро разгледани: first `contain` at every width). No iOS tap highlight.
+- **Browser checks on the real preview, 375, simulated touch events** (Най-продавани, Може да ви хареса, Наскоро
+  разгледани):
+  - Preview on at the touch, off on release.
+  - Quick tap opens the product.
+  - A long look, a vertical move plus cancel, or a horizontal move plus cancel restores the photo and opens nothing.
+  - Small jitter (5px) keeps the preview.
+  - White grounds and the 6px recently-viewed padding kept.
+  **Finger behaviour to be confirmed by the owner on an iPhone.**
+- Наскоро разгледани shows the second photo stored when a product was last viewed; the ring's entry updates the next
+  time the ring page is opened.
+
+---
+
 ## 2026-10-06 — row photos on white, recently-viewed spacing; first real-preview sweep **(owner)**
 - White behind the photos in Наскоро разгледани (was a grey tint, giving bands) and in Най-продавани / Може да ви хареса
   (was the page's marble). The photos are shot on white. Exception to "no pure white ground", design-system §8.
