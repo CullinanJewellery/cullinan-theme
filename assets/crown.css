@@ -972,9 +972,9 @@ html {
 }
 
 @media screen and (min-width: 750px) {
-  /* #EBDFD8 since 2026-10-04 (direction C moved scheme-2 from #F2F0EC). */
+  /* #F2E4DE since 2026-10-06 (owner approved the palette proposal; #EBDFD8 before). */
   [id^="shopify-section-"][id$="__new_arrivals"] .banner.banner--mobile-bottom {
-    background: #EBDFD8;
+    background: #F2E4DE;
   }
 }
 

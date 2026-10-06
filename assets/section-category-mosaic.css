@@ -439,13 +439,13 @@
    name in Prata, the sentence under it, an underlined link with a 44px tap height;
    each slide is a column with the link pushed to the bottom and room for three
    lines of text, so every link sits at the same height whatever the text length.
-   A pale-marble band (#F3EBE6, scheme-6's ground) behind the section on phones.
+   A warm greige band (#F5F3EF, scheme-6's ground since 2026-10-06; #F3EBE6 before) behind the section on phones.
    Arrows: square outlined 44x44 buttons like the workshop slides', disabled ones
    faded. Swiping and the next-slide peek unchanged. Tablet and computer unchanged.
    --------------------------------------------------------------------------- */
 @media screen and (max-width: 749px) {
   [id^='shopify-section-'][id$='__category_mosaic'] > .gradient {
-    background: #f3ebe6;
+    background: #f5f3ef;
   }
 
   .mosaic-slider__track {
