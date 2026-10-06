@@ -105,7 +105,9 @@ collection), **social band** („Още от нашите бижута“ / „�
 
 ## 5. Collection and search
 
-- Dawn's grids with `crown.css` sizing; filter and sort bar restyled (small capitals, hairlines, paper panels).
+- Dawn's grids with `crown.css` sizing. Filter and sort bar as connected boxes (2026-10-06): one ruled strip with a
+  line between parts, panels hanging from it; on phones one edge-to-edge bar „Филтри | Сортиране“ (`cj-bar-sort` hands
+  its value to the drawer's sort, `assets/collection-filters.js`). Filtering itself is Dawn's `facets.js`.
 - Search results grid is inside `.template-search__results`; the collection grid carries `#product-grid` itself.
 
 ## 6. Product cards (`snippets/card-product.liquid`, `assets/card-swatches.js`)
@@ -113,6 +115,12 @@ collection), **social band** („Още от нашите бижута“ / „�
 - Title, colour swatch circles (from the colour option), vendor line, `custom.detail` line, price.
 - A swatch is a button that swaps the card's picture and price to the variant whose material names that colour.
 - Hover: over the picture shows the second photo; over the text nothing; no lift, no zoom.
+- Collection pages: a second photo (first image tied to no variant) with two dots, swiped or tapped
+  (`assets/card-photos.js`, document-level, swipe guard cancels the click that ends a swipe).
+- Cart icon (top-right of the photo) = Dawn's quick add, `quick_add: standard` per section; markup in the
+  `quick-add--icon` branch, styles „Card cart icon“ in crown.css. Options → Dawn's panel (`quick-add.js` loads the
+  product page's `product-info`; blocks with `quick-add-hidden` or listed in crown.css are hidden there). No options →
+  `product-form.js` adds and opens the drawer. Hidden when `card_product.available` is false.
 
 ## 7. Cart drawer (`snippets/cart-drawer.liquid`, `assets/cullinan-cart.css`, `snippets/cart-item-options.liquid`)
 
