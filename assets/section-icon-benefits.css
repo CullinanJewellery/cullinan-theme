@@ -344,3 +344,24 @@
     outline-offset: -0.2rem;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Trust row in the hero button's ruby (2026-10-06, owner): headings, sentences,
+   icons with their rings and the card outlines take #D62246, the background of
+   „Разгледайте колекцията“. Card grounds, layout and the phone swipe and dots stay
+   as they are. Ruby on white is 5.0:1. Way back: delete this block (the outlines
+   were the button colour at 20%, the rings at 40%, the sentences espresso at 78%).
+   --------------------------------------------------------------------------- */
+.benefits-band .benefits__item {
+  border-color: rgb(214 34 70);
+}
+
+.benefits-band .benefit__visual {
+  border-color: rgb(214 34 70);
+  color: rgb(214 34 70);
+}
+
+.benefits-band .benefit__heading,
+.benefits-band .benefit__subline {
+  color: rgb(214 34 70);
+}
