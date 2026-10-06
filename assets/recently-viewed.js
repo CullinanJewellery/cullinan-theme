@@ -75,6 +75,8 @@
             t: this.dataset.title || '',
             u: this.dataset.url || '',
             i: this.dataset.image || '',
+            // second photo for the hover / touch-and-hold preview (2026-10-06)
+            j: this.dataset.image2 || '',
           }
         : null;
 
@@ -136,6 +138,21 @@
         img.srcset = [360, 533, 720, 940].map((width) => `${withWidth(src, width)} ${width}w`).join(', ');
         img.src = withWidth(src, 533);
         media.append(img);
+
+        // A second photo, if stored: shown only while previewing (card-photo-preview.js).
+        const second = safeImage(item.j);
+        if (second) {
+          const preview = new Image();
+          preview.className = 'recently-viewed__image recently-viewed__image--preview';
+          preview.alt = '';
+          preview.loading = 'lazy';
+          preview.decoding = 'async';
+          preview.sizes = img.sizes;
+          preview.srcset = [360, 533, 720, 940].map((width) => `${withWidth(second, width)} ${width}w`).join(', ');
+          preview.src = withWidth(second, 533);
+          media.append(preview);
+          link.setAttribute('data-photo-preview', '');
+        }
       }
 
       const title = document.createElement('p');

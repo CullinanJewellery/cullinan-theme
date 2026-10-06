@@ -42,9 +42,20 @@
       Cullinan (2026-10-05, owner): on collection pages a card can be swiped to a second
       photo. The second photo is the first one not tied to any variant (so it never shows
       another metal than the one chosen with the swatches); without one, no dots.
+      2026-10-06 (owner): in product rows (sections that show the second image on hover,
+      e.g. Най-продавани, Може да ви хареса) the same photo is a temporary preview instead:
+      hover on a computer, touch and hold on a phone (assets/card-photo-preview.js); no
+      dots, no swipe. No relevant second photo: no preview (Dawn's any-second-photo
+      hover is not used there).
     endcomment
+    assign card_photo_mode = ''
+    if template.name == 'collection'
+      assign card_photo_mode = 'swipe'
+    elsif show_secondary_image
+      assign card_photo_mode = 'preview'
+    endif
     assign card_second_media = null
-    if template.name == 'collection' and card_product.media.size > 1 and card_product.featured_media
+    if card_photo_mode != '' and card_product.media.size > 1 and card_product.featured_media
       assign variant_media_ids = ','
       for v in card_product.variants
         if v.featured_media
@@ -62,6 +73,15 @@
         assign card_second_media = m
         break
       endfor
+    endif
+    assign card_swipe = false
+    assign card_preview = false
+    if card_second_media
+      if card_photo_mode == 'swipe'
+        assign card_swipe = true
+      else
+        assign card_preview = true
+      endif
     endif
     if template.name == 'collection' and collection and collection.handle != blank and collection.handle != 'all'
       assign card_url = card_product.url | within: collection
@@ -91,6 +111,9 @@
           {% if horizontal_class %} card--horizontal{% endif %}
         "
         style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;"
+        {% if card_preview %}
+          data-photo-preview
+        {% endif %}
       >
         <div
           class="card__inner {% if settings.card_style == 'standard' %}color-{{ settings.card_color_scheme }} gradient{% endif %} ratio"
@@ -105,12 +128,12 @@
                 title link stays the one for keyboards and screen readers).
               {%- endcomment -%}
               <div
-                class="media media--transparent media--hover-effect{% if card_second_media %} card__track{% endif %}"
-                {% if card_second_media %}
+                class="media media--transparent media--hover-effect{% if card_swipe %} card__track{% endif %}"
+                {% if card_swipe %}
                   data-card-track
                 {% endif %}
               >
-                {%- if card_second_media -%}
+                {%- if card_swipe -%}
                   <a class="card__slide" href="{{ card_url }}" tabindex="-1" aria-hidden="true">
                 {%- endif -%}
                 {% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
@@ -137,8 +160,10 @@
                 {% comment %}theme-check-enable ImgLazyLoading{% endcomment %}
 
                 {%- if card_second_media -%}
+                  {%- if card_swipe -%}
                   </a>
                   <a class="card__slide" href="{{ card_url }}" tabindex="-1" aria-hidden="true">
+                  {%- endif -%}
                   <img
                     srcset="
                       {%- if card_second_media.width >= 360 -%}{{ card_second_media | image_url: width: 360 }} 360w,{%- endif -%}
@@ -149,14 +174,16 @@
                     src="{{ card_second_media | image_url: width: 533 }}"
                     sizes="(min-width: 990px) calc((100vw - 130px) / 3), calc((100vw - 42px) / 2)"
                     alt="{{ card_second_media.alt | escape }}"
-                    class="card__photo-2 motion-reduce"
+                    class="{% if card_swipe %}card__photo-2{% else %}card__photo-preview{% endif %} motion-reduce"
                     loading="lazy"
                     width="{{ card_second_media.width }}"
                     height="{{ card_second_media.height }}"
                   >
+                  {%- if card_swipe -%}
                   </a>
+                  {%- endif -%}
                 {%- endif -%}
-                {%- if card_product.media[1] != null and show_secondary_image and card_second_media == null -%}
+                {%- if card_product.media[1] != null and show_secondary_image and card_second_media == null and card_photo_mode != 'preview' -%}
                   <img
                     srcset="
                       {%- if card_product.media[1].width >= 165 -%}{{ card_product.media[1] | image_url: width: 165 }} 165w,{%- endif -%}
@@ -178,7 +205,7 @@
                 {%- endif -%}
               </div>
             </div>
-            {%- if card_second_media -%}
+            {%- if card_swipe -%}
               <div class="card__photo-dots" role="group" aria-label="Снимки">
                 <button type="button" class="card__photo-dot" data-card-photo="0" aria-label="Снимка 1 от 2" aria-pressed="true"><span aria-hidden="true"></span></button>
                 <button type="button" class="card__photo-dot" data-card-photo="1" aria-label="Снимка 2 от 2" aria-pressed="false"><span aria-hidden="true"></span></button>

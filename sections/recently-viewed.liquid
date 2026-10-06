@@ -1,6 +1,7 @@
 {{ 'component-slider.css' | asset_url | stylesheet_tag }}
 {{ 'section-recently-viewed.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'recently-viewed.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'card-photo-preview.js' | asset_url }}" defer="defer"></script>
 
 {%- comment -%}
   "You Recently Viewed", after moonmagic's own row of that name (2026-10-01, at the
@@ -48,6 +49,33 @@
   }
 {%- endstyle -%}
 
+{%- comment -%}
+  2026-10-06 (owner): a second photo for the temporary preview (hover / touch and hold,
+  assets/card-photo-preview.js), chosen like the product cards' -- the first image tied
+  to no variant, so never another metal. None: the card has no preview.
+{%- endcomment -%}
+{%- liquid
+  assign rv_second = null
+  if product and product.media.size > 1 and product.featured_media
+    assign rv_variant_ids = ','
+    for v in product.variants
+      if v.featured_media
+        assign rv_variant_ids = rv_variant_ids | append: v.featured_media.id | append: ','
+      endif
+    endfor
+    for m in product.media
+      if m.media_type != 'image' or m.id == product.featured_media.id
+        continue
+      endif
+      assign rv_key = ',' | append: m.id | append: ','
+      if rv_variant_ids contains rv_key
+        continue
+      endif
+      assign rv_second = m
+      break
+    endfor
+  endif
+-%}
 <recently-viewed
   class="recently-viewed color-{{ section.settings.color_scheme }} gradient"
   data-max="{{ section.settings.max_products }}"
@@ -60,6 +88,9 @@
     data-url="{{ product.url }}"
     {%- if product.featured_media %}
       data-image="{{ product.featured_media.preview_image | image_url }}"
+    {%- endif -%}
+    {%- if rv_second %}
+      data-image2="{{ rv_second.preview_image | image_url }}"
     {%- endif -%}
   {%- endif %}
   hidden

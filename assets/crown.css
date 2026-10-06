@@ -6978,3 +6978,52 @@ html body quick-add-modal .product .product-trust {
     white-space: nowrap;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Product rows: a temporary second-photo preview (2026-10-06, owner)
+
+   In Най-продавани and Може да ви хареса a card with a relevant second photo (the
+   first one tied to no variant, so never another metal) carries data-photo-preview;
+   assets/card-photo-preview.js sets data-previewing while the mouse is over the photo
+   or a finger rests on it. Only that attribute decides which photo shows here: these
+   rules out-rank Dawn's card hover and the older over-photo swap above. No zoom. No
+   long-press menu or text selection on the photo or the title link. Cards without a
+   relevant second photo are unchanged; collection grids (swipe and dots) untouched.
+   --------------------------------------------------------------------------- */
+html body .card-wrapper.product-card-wrapper .card[data-photo-preview] .media.media--hover-effect > img.card__photo-preview {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  transform: none;
+  transition: opacity 0.25s ease;
+}
+
+html body .card-wrapper.product-card-wrapper .card[data-photo-preview] .media.media--hover-effect > img:first-child:not(:only-child) {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.25s ease;
+}
+
+html body .card-wrapper.product-card-wrapper .card[data-photo-preview][data-previewing='true'] .media.media--hover-effect > img.card__photo-preview {
+  opacity: 1;
+}
+
+html body .card-wrapper.product-card-wrapper .card[data-photo-preview][data-previewing='true'] .media.media--hover-effect > img:first-child:not(:only-child) {
+  opacity: 0;
+}
+
+html body .card-wrapper.product-card-wrapper .card[data-photo-preview] .card__media,
+html body .card-wrapper.product-card-wrapper .card[data-photo-preview] .card__heading a {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html body .card-wrapper.product-card-wrapper .card[data-photo-preview] .media.media--hover-effect > img {
+    transition: none;
+  }
+}
