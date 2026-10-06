@@ -8,6 +8,47 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-06 — row photos on white, recently-viewed spacing; first real-preview sweep **(owner)**
+- White behind the photos in Наскоро разгледани (was a grey tint, giving bands) and in Най-продавани / Може да ви хареса
+  (was the page's marble). The photos are shot on white. Exception to "no pure white ground", design-system §8.
+- Наскоро разгледани `padding_top` 72 → 8 (product.json). It follows Може да ви хареса on the same ground, so the
+  paddings stacked into a 128px (96px on phones) blank band. On the preview it's now 68px from the related cards to
+  the title at 375. The title-to-photo gaps already match (30 / 32px). Card sizes unchanged.
+- **Real preview (new link 2026-10-06), checked at 375 unless noted:**
+  - Collection grid:
+    - Bag on the ring only. Shopify's own data shows the pendant, bracelet and earrings unavailable (0 variants in
+      stock), so their bag is hidden by design.
+    - The template re-send worked.
+    - Photos 172px; dots bottom-left; a dot tap slides to photo 2 without opening the product.
+  - Quick selection (ring):
+    - Opens with metal menu, sizes, size-guide link and delivery line; trail, phone and trust lines hidden.
+    - Real variant changes: size 57, then 14К бяло злато; the ids match Shopify's data and the photo follows.
+    - Size guide: two centred columns; Escape closes only the guide.
+    - „Добави в количката“ on one line.
+    - **Adding to the cart works:** 57 / 14К бяло злато added, the drawer opened, then the test cart was emptied (no
+      checkout opened).
+  - Direct add on a one-variant piece: **blocked by product data**. The only one-variant pieces (pendant, earrings)
+    are unavailable.
+  - Filters:
+    - Price „От 100“ gives 1 result, badge 1, „Покажи резултатите (1)“ and the square tag „€100 - €200“.
+    - Removing the tag returns 4 and keeps the sort.
+    - Sorting (price, high first) from the bar works.
+    - The connected bar at 375; the desktop strip at 1440 with its panel hanging from it (0px, no shadow).
+    - Only a price filter exists on this store (no metal or stone filters set up in Search & Discovery).
+  - Rows:
+    - Най-продавани (375 / 320): 270 / 230px, peek 78 / 63px, no bag, photos on white, preview only on the ring.
+    - Desktop: a real mouse hover shows the ring's second photo.
+    - Наскоро разгледани: on white, whole photos, the ring card with preview. Simulated hold shows it, release
+      restores and doesn't open the product.
+  - Categories: no sentences or lines; six rosewood buttons at one height; link underlined; 320 fits.
+  - Size guide on the product page: two columns, centred.
+  **Still unverified on a real phone:** finger swipe, hold timing, long-press menu.
+  **Data flags seen:**
+  - The ring's second photo has a burned-in logo.
+  - The drawer shows the yellow-gold photo for a white-gold variant (variant photos missing).
+
+---
+
 ## 2026-10-06 — product rows: second-photo preview, no bag **(owner)**
 - **Bag removed** from Най-продавани and Може да ви хареса (`quick_add: none` in index.json / product.json); the
   collection grid keeps it. Наскоро разгледани never had one.
