@@ -14,6 +14,10 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
   `#F2E4DE`, warm taupe footer `#CBBBAD`. Buttons and „Добави в количката“ unchanged. Contrast measured on the page:
   every footer text at or above 4.9:1. Table and how to apply: design-system.md §2 „Proposal 2026-10-06“. Waiting for
   the owner's decision.
+- Comparison for the owner's decision: a private review page (https://claude.ai/artifact/Bs1LXg3jxF4aRqJvzmJ3BH).
+  It shows current vs proposed on the real draft homepage, footer and custom-request band at 1440 and 375, plus
+  „Добави в количката“ at rest (rosewood `#6E3B30`) and on hover (pink `#E6BAB9`, black label), phone and desktop.
+  Not applied.
 
 ---
 
@@ -34,8 +38,8 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
   - Hover shows the cover photo (no side strips); moving away restores the first photo.
   - A click on the photo opens the product.
   - No bag or dots in rows; Наскоро разгледани shows the new on-hand photo.
-  **Physical iPhone: to be confirmed by the owner.** Row swiping and page scrolling are the browser's own (no
-  touch handlers).
+  **Physical iPhone: confirmed working by the owner (2026-10-06)**; keep as is. Row swiping and page scrolling are the
+  browser's own (no touch handlers).
 
 ---
 
