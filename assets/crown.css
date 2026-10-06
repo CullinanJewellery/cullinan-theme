@@ -7047,3 +7047,22 @@ html body [id^='shopify-section-'][id$='__featured_collection'] .product-card-wr
 html body [id^='shopify-section-'][id$='__related-products'] .product-card-wrapper .card__media {
   background-color: #fff;
 }
+
+/* ---------------------------------------------------------------------------
+   Collection pages from 750px (2026-10-06, owner: "restore the earlier desktop photo
+   presentation"): each card frame takes its first photo's own shape and the photos
+   fill it, as before the square frames of 2026-10-05 (8795aad). Phones keep the
+   square frames with the whole piece fitted inside. --ratio-percent-wide is written
+   by card-product.liquid; !important because --ratio-percent is set inline.
+   --------------------------------------------------------------------------- */
+@media screen and (min-width: 750px) {
+  html body #product-grid .product-card-wrapper .card,
+  html body #product-grid .product-card-wrapper .card__inner {
+    --ratio-percent: var(--ratio-percent-wide, 100%) !important;
+  }
+
+  html body #product-grid .product-card-wrapper .card__media .media img,
+  html body #product-grid .product-card-wrapper .card__track > .card__slide > img {
+    object-fit: cover;
+  }
+}

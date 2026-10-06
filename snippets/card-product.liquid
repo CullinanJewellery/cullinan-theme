@@ -97,6 +97,15 @@
     if ratio == 0 or ratio == null
       assign ratio = 1
     endif
+    comment
+      Wider screens on collection pages (2026-10-06, owner): the frame takes the first
+      photo's own shape again, as before the square frames of 2026-10-05; crown.css uses
+      it from 750px only, so phones keep their square frames.
+    endcomment
+    assign ratio_wide = 1
+    if card_product.featured_media.aspect_ratio > 0
+      assign ratio_wide = card_product.featured_media.aspect_ratio
+    endif
   -%}
 
   <product-component view-event-payload="{{ card_product | standard_event_data: 'view', context: product_view_context | escape }}">
@@ -112,14 +121,14 @@
           {% if card_product.featured_media == nil and settings.card_style == 'card' %} ratio{% endif %}
           {% if horizontal_class %} card--horizontal{% endif %}
         "
-        style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;"
+        style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%; --ratio-percent-wide: {{ 1 | divided_by: ratio_wide | times: 100 }}%;"
         {% if card_preview %}
           data-photo-preview
         {% endif %}
       >
         <div
           class="card__inner {% if settings.card_style == 'standard' %}color-{{ settings.card_color_scheme }} gradient{% endif %} ratio"
-          style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;"
+          style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%; --ratio-percent-wide: {{ 1 | divided_by: ratio_wide | times: 100 }}%;"
         >
           {%- if card_product.featured_media -%}
             <div class="card__media{% if image_shape and image_shape != 'default' %} shape--{{ image_shape }} color-{{ settings.card_color_scheme }} gradient{% endif %}">
