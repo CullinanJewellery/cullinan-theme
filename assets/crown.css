@@ -161,7 +161,7 @@
 */
 [id^="shopify-section-"][id$="__hero_image"] .banner__box {
   /* Ruby again since 2026-10-06 (owner: this button is the exception to the black-button rule;
-     it was black for an hour that day). */
+     it was black for about an hour that day). */
   --color-button: 214, 34, 70;
   --color-button-text: 255, 255, 255;
 }
