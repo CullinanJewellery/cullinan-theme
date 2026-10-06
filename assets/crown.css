@@ -439,12 +439,14 @@ html {
    700 capital (measured on the canvas at 12.5px: 0.3px adds 16%, 0.4px 22%, 0.5px
    27%, 0.8px 43%, 1px 54%; the 50% version was 0.075em). `currentcolor` means it
    follows the word from three-quarters black to black on hover. */
+/* Regular weight since 2026-10-06 (owner: the collection names regular instead of bold);
+   700 with a 0.03em stroke before, as described above. Size, tracking and colours unchanged. */
 .header__inline-menu .header__menu-item {
   font-size: 1.25rem;
-  font-weight: 700;
+  font-weight: 400;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  -webkit-text-stroke: 0.03em currentcolor;
+  -webkit-text-stroke: 0;
 }
 
 /* ---------------------------------------------------------------------------

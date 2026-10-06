@@ -40,6 +40,9 @@
               <summary
                 id="HeaderMenu-{{ link.handle }}"
                 class="header__menu-item list-menu__item link focus-inset"
+                {% if link.url != blank and link.url != '#' %}
+                  data-cj-menu-href="{{ link.url }}"
+                {% endif %}
               >
                 <span
                   {%- if link.child_active %}
@@ -143,3 +146,92 @@
     {%- endfor -%}
   </ul>
 </nav>
+{%- comment -%}
+  Cullinan (2026-10-06, owner): on a computer with a mouse, a menu word opens its
+  dropdown under the cursor and stays open while the cursor travels into it (a short
+  grace period covers the gap between the word and the panel); a click on the word
+  opens its own collection (the menu link's own URL). Keyboard: Enter follows the
+  link, Space still opens the dropdown. Touch screens keep Dawn's tap-to-open. The
+  phone menu is the drawer and is not touched.
+{%- endcomment -%}
+<script>
+  (function () {
+    if (window.cullinanMenuHover) return;
+    window.cullinanMenuHover = true;
+    var pointer = window.matchMedia('(hover: hover) and (pointer: fine)');
+    var timers = new WeakMap();
+
+    function menus() {
+      return document.querySelectorAll('.header__inline-menu details.mega-menu');
+    }
+
+    function open(details) {
+      clearTimeout(timers.get(details));
+      menus().forEach(function (other) {
+        if (other !== details && other.open) {
+          clearTimeout(timers.get(other));
+          other.open = false;
+          other.querySelector('summary').setAttribute('aria-expanded', 'false');
+        }
+      });
+      if (!details.open) {
+        details.open = true;
+        details.querySelector('summary').setAttribute('aria-expanded', 'true');
+      }
+    }
+
+    function closeSoon(details) {
+      clearTimeout(timers.get(details));
+      timers.set(
+        details,
+        setTimeout(function () {
+          details.open = false;
+          details.querySelector('summary').setAttribute('aria-expanded', 'false');
+        }, 250)
+      );
+    }
+
+    document.addEventListener('mouseover', function (event) {
+      if (!pointer.matches) return;
+      var details = event.target.closest && event.target.closest('.header__inline-menu details.mega-menu');
+      if (details) open(details);
+    });
+
+    document.addEventListener('mouseout', function (event) {
+      if (!pointer.matches) return;
+      var details = event.target.closest && event.target.closest('.header__inline-menu details.mega-menu');
+      if (!details) return;
+      if (event.relatedTarget && details.contains(event.relatedTarget)) return;
+      closeSoon(details);
+    });
+
+    function follow(summary, event) {
+      var href = summary.getAttribute('data-cj-menu-href');
+      if (!href) return false;
+      event.preventDefault();
+      window.location.href = href;
+      return true;
+    }
+
+    document.addEventListener(
+      'click',
+      function (event) {
+        var summary = event.target.closest && event.target.closest('.header__inline-menu details.mega-menu > summary');
+        // A mouse click (detail > 0); keyboard activation reports 0 and keeps Dawn's toggle.
+        if (!summary || !pointer.matches || event.detail === 0) return;
+        follow(summary, event);
+      },
+      true
+    );
+
+    document.addEventListener(
+      'keydown',
+      function (event) {
+        if (event.key !== 'Enter') return;
+        var summary = event.target.closest && event.target.closest('.header__inline-menu details.mega-menu > summary');
+        if (summary) follow(summary, event);
+      },
+      true
+    );
+  })();
+</script>
