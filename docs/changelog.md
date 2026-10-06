@@ -8,6 +8,25 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-06 — „Разгледайте по категория“ simplified **(owner)**
+- Phone slides: photo, name and one clear button per category („Вижте пръстените“ etc.; square rosewood, pink hover,
+  200×44, at the foot of each slide so all buttons line up). The six sentences are gone (template b77a38d, then the
+  `phone_text` field from the schema, 6cd7110); nothing replaced them.
+- Line indicators removed; the two circular arrows stay, centred; swiping and the peek unchanged.
+- „Вижте всички бижута“: an underlined 14px text link with a 44px tap height (was a solid full-width button), phones and
+  computers.
+- Desktop mosaic unchanged: it never showed the sentences (names over the photo, the whole tile is the link, no
+  button). Colours and photo shapes unchanged.
+- **Local checks only** (the current section rendered with liquidjs from the template's settings into a saved
+  homepage; repo CSS/JS):
+  - 375: slides 283px, 65px peek; buttons at one height; arrows step and disable at the ends.
+  - 320: slides 238px, 55px peek; button labels fit.
+  - 1440: same 4-column mosaic (315px tiles), the link 32px under it.
+  - No sideways scroll at any width.
+  **Pending on the real store.**
+
+---
+
 ## 2026-10-06 — larger photos in phone rows **(owner)**
 - Най-продавани and Може да ви хареса (featured-collection rows): 64vw → 72vw on phones, 270px square photos at 375
   (were 240) and 230px at 320 (were 205); 78px / 63px of the next card stays visible. Title and arrows stay on one row.
