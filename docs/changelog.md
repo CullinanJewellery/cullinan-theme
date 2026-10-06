@@ -8,6 +8,28 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-06 — row photo preview: CSS hover, as moonmagic.com **(owner)**
+- **Reference** (moonmagic.com, their own stylesheet, phone width): in slider rows (`.swiper-slide`) the second photo
+  lies over the first (absolute, opacity 0) and fades in on plain `:hover` of the photo (`opacity 0.2s
+  ease-in-out`). There's no script and no dots in rows; dots and swipe are only in their grids. On a phone the browser
+  applies `:hover` to what is touched. **Their actual finger behaviour was not observed on a physical phone.**
+- **Ours now uses the same mechanism:**
+  - Row cards wrap both photos in one product link (`.card__photo-link`) laid over the card's stretched title link
+    (`.card__inner` lifted, Dawn's inner layer click-through).
+  - The second photo fades in on `:hover` of that link, 0.2 s ease-in-out.
+  - First photo `contain`, second `cover`; the second is loaded with the card (no `loading="lazy"`).
+  - Наскоро разгледани: the same on `:hover` of its photo; the preview loads eagerly.
+  - `assets/card-photo-preview.js` and its script tags removed.
+- **Browser checks on the real preview, 375:**
+  - A finger point on the photo lands on the photo link.
+  - Hover shows the cover photo (no side strips); moving away restores the first photo.
+  - A click on the photo opens the product.
+  - No bag or dots in rows; Наскоро разгледани shows the new on-hand photo.
+  **Physical iPhone: to be confirmed by the owner.** Row swiping and page scrolling are the browser's own (no
+  touch handlers).
+
+---
+
 ## 2026-10-06 — row photo preview: immediate on touch **(owner, after an iPhone test)**
 - **Cause, investigated on the real preview:**
   - The newest script was loaded, and the ring had a valid second photo (the owner's new on-hand photo, tied to no
