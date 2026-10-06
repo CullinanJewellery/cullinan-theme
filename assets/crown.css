@@ -5126,9 +5126,12 @@ h1, h2, h3, h4, h5, h6, .h0, .h1, .h2, .h3, .h4, .h5 {
    (.template-search__results), so both are named -- the first version named
    only the collection and left search at 167px.
    --------------------------------------------------------------------------- */
+/* 2026-10-06 (owner: moderately larger photos in the phone rows): 64vw -> 72vw,
+   270px at 375px (was 240) and 230px at 320px (was 205), with about 78px / 63px of the
+   next card still showing so the row reads as swipeable. Phones only. */
 @media screen and (max-width: 749px) {
   .product-grid.slider--tablet.grid--peek.contains-card--product > .grid__item {
-    width: 64vw;
+    width: 72vw;
     max-width: none;
     min-width: 0;
   }
