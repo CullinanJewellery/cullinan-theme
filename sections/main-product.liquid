@@ -821,6 +821,22 @@
                           // A click on the backdrop lands on the dialog itself (its inner box fills it).
                           if (event.target.matches && event.target.matches('dialog.size-guide')) event.target.close();
                         });
+                        // Escape closes the guide on keydown; its keyup would then reach the card's
+                        // quick-add panel (Dawn closes that on Escape keyup) and close it too. The
+                        // keyup that follows the guide's own Escape stops here (2026-10-06).
+                        document.addEventListener(
+                          'cancel',
+                          function (event) {
+                            if (!event.target.matches || !event.target.matches('dialog.size-guide')) return;
+                            var swallow = function (keyEvent) {
+                              if (keyEvent.key !== 'Escape') return;
+                              keyEvent.stopPropagation();
+                              document.removeEventListener('keyup', swallow, true);
+                            };
+                            document.addEventListener('keyup', swallow, true);
+                          },
+                          true
+                        );
                       }
                     </script>
                   {%- endif -%}

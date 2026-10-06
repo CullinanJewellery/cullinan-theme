@@ -6832,9 +6832,10 @@ html body .card-wrapper .quick-add--icon .loading__spinner {
 /* The selection panel: the piece's photo, name, price, options, delivery line and
    button. The trail, the rating link, the phone line and the trust lines stay on the
    product page (the tabs, specifications and description are hidden by Dawn). */
-quick-add-modal .product-breadcrumb,
-quick-add-modal .rating-wrapper,
-quick-add-modal .product-phone-order,
-quick-add-modal .product-trust {
+/* Stronger than the product page's own .product .product__info-container > … rules. */
+html body quick-add-modal .product .product__info-container > .product-breadcrumb,
+html body quick-add-modal .product .product__info-container > .rating-wrapper,
+html body quick-add-modal .product .product-phone-order,
+html body quick-add-modal .product .product-trust {
   display: none;
 }
