@@ -8,6 +8,23 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-06 — larger photos in phone rows **(owner)**
+- Най-продавани and Може да ви хареса (featured-collection rows): 64vw → 72vw on phones, 270px square photos at 375
+  (were 240) and 230px at 320 (were 205); 78px / 63px of the next card stays visible. Title and arrows stay on one row.
+- Наскоро разгледани: 1.42 → 1.27 columns on phones (269px at 375, 226px at 320); on phones the photo now shows
+  whole (`contain`; it was `cover` and could crop).
+- Collection grids, tablets (750–989) and desktop unchanged. Way back: `width: 64vw` in crown.css „Product pictures on
+  a phone“, and drop the phone block in section-recently-viewed.css.
+- **Local checks only** (saved homepage and product page with the current CSS; recently viewed seeded in the mock's
+  browser storage), 320 and 375:
+  - Sizes and peeks as above; no sideways scroll.
+  - Title and arrows on one row, with the words 57–61px clear of the arrows at 320.
+  - The bag sits top-right in a row card, 44×44, and receives the tap.
+  - Desktop spot check: 390px cards, recently viewed still 3 columns.
+  **Pending on the real store.**
+
+---
+
 ## 2026-10-06 — card refinements **(owner)**
 - Bag back to the **top-right**: glyph 17 → 13px inside a 30px circle of pale rose-clay (`#EBDFD8` at 88%; the cards'
   marble white would vanish on white photos). Tap area 44×44; direct add and quick selection unchanged.

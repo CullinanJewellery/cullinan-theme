@@ -87,7 +87,8 @@ Rosewood label on rosewood button: 8.5:1. Espresso on marble white: well above 4
 - Between two coloured bands: 40px of page ground (30px on phones), done with margins, not padding.
 - Breakpoints in use: 750px (phone / tablet), 990px (tablet / computer; inline menu, 3-column grids).
 - Product grids: 3 across from 990px (cards 30% of the row, gaps share the rest), 2 across on phones with 12px side
-  margins and an 8px gap (171.5px square pictures at 375px, 144px at 320; 2026-10-06); product rows: one card plus a peek on phones (64vw ≈ 240px).
+  margins and an 8px gap (171.5px square pictures at 375px, 144px at 320; 2026-10-06); product rows: one card plus a peek on phones (72vw ≈ 270px at 375, 2026-10-06; Наскоро
+  разгледани 1.27 columns ≈ 269px).
 
 ## 5. Corners, borders, shadows
 
