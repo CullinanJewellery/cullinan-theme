@@ -612,9 +612,8 @@
   }
 
   .mosaic-slider__button:hover {
-    /* near-black since 2026-10-06 (owner: black buttons); #E6BAB9 before */
-    background-color: #2b2b2b;
-    color: #ffffff;
+    background-color: #e6bab9;
+    color: rgb(42 30 26);
   }
 
   .mosaic-slider__button:focus-visible {
