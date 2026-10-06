@@ -100,10 +100,11 @@
 
     {%- comment -%}
       Phones only (2026-10-05, owner): the same categories as a slider -- a large
-      photo, the name, one short sentence and a button to the collection. The next
-      slide shows at the edge; scroll-snap swiping; Dawn-style arrows (44x44) under
-      it, disabled at the ends; no counter, no autoplay. Hidden from 750px, where the
-      mosaic above is shown. Only tiles with a link appear here.
+      photo, the name and one button to the collection (the short sentence was removed
+      2026-10-06, owner: it repeated workshop facts). The next slide shows at the edge;
+      scroll-snap swiping; two circular arrows (44x44) under it, disabled at the ends;
+      no line indicators (removed 2026-10-06), no counter, no autoplay. Hidden from
+      750px, where the mosaic above is shown. Only tiles with a link appear here.
     {%- endcomment -%}
     <category-slider class="mosaic-slider">
       <ul class="mosaic-slider__track" role="list" aria-label="{{ section.settings.heading | default: 'Категории' | escape }}">
@@ -127,9 +128,6 @@
                 {%- endif -%}
               </a>
               <h3 class="mosaic-slider__name">{{ block.settings.label | escape }}</h3>
-              {%- if block.settings.phone_text != blank -%}
-                <p class="mosaic-slider__text">{{ block.settings.phone_text | escape }}</p>
-              {%- endif -%}
               <a class="mosaic-slider__button" href="{{ block.settings.link }}">
                 {{- block.settings.phone_button | default: 'Разгледайте' | escape -}}
                 <span class="visually-hidden">: {{ block.settings.label | escape }}</span>
@@ -142,28 +140,6 @@
         <button type="button" class="slider-button slider-button--prev" data-cat-prev aria-label="Предишна категория">
           <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
         </button>
-        {%- comment -%} Line indicators, one per slide (2026-10-05, owner, after Cartier). {%- endcomment -%}
-        {%- liquid
-          assign cat_total = 0
-          for block in section.blocks
-            if block.settings.link != blank
-              assign cat_total = cat_total | plus: 1
-            endif
-          endfor
-        -%}
-        <div class="mosaic-slider__lines" role="group" aria-label="Категории">
-          {%- for i in (1..cat_total) -%}
-            <button
-              type="button"
-              class="mosaic-slider__line"
-              data-cat-go="{{ forloop.index0 }}"
-              aria-label="Категория {{ i }} от {{ cat_total }}"
-              {% if forloop.first %}
-                aria-current="true"
-              {% endif %}
-            ></button>
-          {%- endfor -%}
-        </div>
         <button type="button" class="slider-button slider-button--next" data-cat-next aria-label="Следваща категория">
           <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
         </button>
@@ -171,12 +147,12 @@
     </category-slider>
 
     {%- comment -%}
-      „Вижте всички бижута“ under the categories, to the whole catalogue (2026-10-05, owner):
-      the same solid button as „Вижте всички“ under the bestsellers row.
+      „Вижте всички бижута“ under the categories, to the whole catalogue (2026-10-05, owner);
+      a quiet underlined text link since 2026-10-06 (owner), so the category buttons lead.
     {%- endcomment -%}
     {%- if section.settings.all_label != blank -%}
       <div class="mosaic__all center">
-        <a class="button" href="{{ routes.all_products_collection_url }}">{{ section.settings.all_label | escape }}</a>
+        <a class="mosaic__all-link" href="{{ routes.all_products_collection_url }}">{{ section.settings.all_label | escape }}</a>
       </div>
     {%- endif -%}
   </div>
@@ -193,8 +169,8 @@
       "type": "text",
       "id": "all_label",
       "default": "Вижте всички бижута",
-      "label": "Button to the whole catalogue",
-      "info": "Leads to all products. Empty: no button."
+      "label": "Link to the whole catalogue",
+      "info": "Leads to all products; an underlined text link under the categories. Empty: no link."
     },
     {
       "type": "text",
@@ -307,12 +283,6 @@
         {
           "type": "header",
           "content": "Phone slider"
-        },
-        {
-          "type": "text",
-          "id": "phone_text",
-          "label": "Short sentence (phones)",
-          "info": "One short, factual sentence shown under the name in the phone slider. Not shown on computers."
         },
         {
           "type": "text",
