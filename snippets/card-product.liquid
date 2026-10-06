@@ -547,9 +547,9 @@
           </div>
           {% assign product_form_id = 'quick-add-' | append: section_id | append: card_product.id %}
           {%- comment -%}
-            Cullinan (2026-10-06, owner): Dawn's quick add, shown as a small cart icon in the
-            photo's top-right corner (assets/crown.css „Card cart icon“), only for pieces that
-            can be bought. With options (metal, size) it opens Dawn's selection panel; with
+            Cullinan (2026-10-06, owner): Dawn's quick add, shown as a small bag icon in the
+            photo's top-left corner (assets/crown.css „Card cart icon“), only for pieces that
+            can be bought (card_product.available: some variant in stock or sold past zero). With options (metal, size) it opens Dawn's selection panel; with
             none it adds straight to the cart. The words stay for screen readers.
           {%- endcomment -%}
           {% if quick_add == 'standard' and card_product.available %}

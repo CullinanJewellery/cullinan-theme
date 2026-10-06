@@ -6749,8 +6749,9 @@ html body .product-card-wrapper .card__badge .badge {
    stays with the page (the browser decides the direction). The scroller sits above
    the card's stretched title link so the finger reaches it; each slide is itself
    the product link, so a tap still opens the piece. Two small circles at the
-   photo's bottom-right (the cart icon is top-right), each a 28x44 tap area; the
-   current one filled, the other an outline.
+   photo's bottom-left (2026-10-06, owner; the bag icon is top-left), each a 28x44
+   tap area; the current one filled, the other an outline. A card badge also sits
+   bottom-left (theme setting), so the circles move up above one when it is there.
    --------------------------------------------------------------------------- */
 /* .card__inner is its own stacking context, so the whole photo area is lifted above the
    stretched title link (z-index 1); otherwise the link takes every touch, dots included.
@@ -6811,10 +6812,14 @@ html body .product-card-wrapper .card__track > .card__slide > img {
 
 .card__photo-dots {
   position: absolute;
-  right: 0.2rem;
+  left: 0.2rem;
   bottom: 0;
   z-index: 3;
   display: flex;
+}
+
+html body .product-card-wrapper .card:has(.card__badge .badge) .card__photo-dots {
+  bottom: 3.2rem;
 }
 
 .card__photo-dot {
@@ -6853,8 +6858,8 @@ html body .product-card-wrapper .card__track > .card__slide > img {
 /* ---------------------------------------------------------------------------
    Card cart icon (2026-10-06, owner)
 
-   A small cart, the header's own icon, in the photo's top-right corner where
-   moonmagic.com puts its heart; used for buying. No background, circle or border;
+   A small bag, the header's own cart icon, in the photo's top-left corner
+   (2026-10-06, owner; first placed top-right, where moonmagic.com puts its heart). No background, circle or border;
    the shop's ink with a faint light halo so it reads on a darker photo. The tap area
    is the whole 44x44 box. Pieces with options open Dawn's selection panel; pieces
    without add straight to the cart (snippets/card-product.liquid). Not shown for a
@@ -6864,7 +6869,8 @@ html body .product-card-wrapper .card__track > .card__slide > img {
 html body .card-wrapper .quick-add--icon {
   position: absolute;
   top: 0;
-  right: 0;
+  left: 0;
+  right: auto;
   z-index: 3;
   grid-row-start: auto;
   margin: 0;
