@@ -537,7 +537,7 @@
             {{- 'icon-filter.svg' | inline_asset_content -}}
           </span>
           <span class="mobile-facets__open-label button-label medium-hide large-up-hide">
-            {%- if enable_filtering and enable_sorting and filter_type == 'horizontal' -%}
+            {%- if enable_filtering and enable_sorting and filter_type != 'drawer' -%}
               Филтри
               <span class="cj-filter-count" data-cj-filter-count{% if cj_active_count == 0 %} hidden{% endif %}>
                 <span aria-hidden="true">{{ cj_active_count }}</span>
@@ -937,7 +937,7 @@
     </details>
   </menu-drawer>
 
-  {%- if enable_sorting and enable_filtering and filter_type == 'horizontal' -%}
+  {%- if enable_sorting and enable_filtering and filter_type != 'drawer' -%}
     {%- comment -%}
       Cullinan (2026-10-05): sorting on the phone bar, beside „Филтри“, so it is one tap
       away. It hands its value to the drawer's own sort (#SortBy-mobile), so the filters
