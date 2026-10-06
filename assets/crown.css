@@ -6720,11 +6720,14 @@ html body .collection .price:not(.price--on-sale) {
   }
 }
 
+/* Third pass (2026-10-06, owner: slightly larger photos on phones): 12px side margins
+   (the grid reaches 3px into the page's 15px) and an 8px gap, so each square photo gains
+   about 4-5px (167 -> 171px at 375, 139 -> 144px at 320). Desktop unchanged. */
 @media screen and (max-width: 749px) {
   html body #product-grid.product-grid,
   html body .template-search__results .product-grid {
-    --grid-mobile-horizontal-spacing: 1.2rem;
-    margin-inline: 0;
+    --grid-mobile-horizontal-spacing: 0.8rem;
+    margin-inline: -0.3rem;
   }
 
   html body #product-grid.product-grid .card__content,
@@ -6812,7 +6815,7 @@ html body .product-card-wrapper .card__track > .card__slide > img {
 
 .card__photo-dots {
   position: absolute;
-  left: 0.2rem;
+  left: 0;
   bottom: 0;
   z-index: 3;
   display: flex;
@@ -6822,16 +6825,23 @@ html body .product-card-wrapper .card:has(.card__badge .badge) .card__photo-dots
   bottom: 3.2rem;
 }
 
+/* Closer together (2026-10-06, owner): each circle sits at the inner edge of its own
+   24x44 tap area, so the circles are 6px apart while each stays separately tappable. */
 .card__photo-dot {
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 2.8rem;
+  justify-content: flex-end;
+  width: 2.4rem;
   height: 4.4rem;
-  padding: 0;
+  padding: 0 0.3rem 0 0;
   border: 0;
   background: none;
   cursor: pointer;
+}
+
+.card__photo-dot + .card__photo-dot {
+  justify-content: flex-start;
+  padding: 0 0 0 0.3rem;
 }
 
 .card__photo-dot span {
@@ -6858,8 +6868,10 @@ html body .product-card-wrapper .card:has(.card__badge .badge) .card__photo-dots
 /* ---------------------------------------------------------------------------
    Card cart icon (2026-10-06, owner)
 
-   A small bag, the header's own cart icon, in the photo's top-left corner
-   (2026-10-06, owner; first placed top-right, where moonmagic.com puts its heart). No background, circle or border;
+   A small bag, the header's own cart icon, in the photo's top-right corner inside a
+   30px circle of pale rose-clay (#EBDFD8, scheme-2's ground; the cards' own marble
+   white would vanish on white product photos) (2026-10-06, owner; top-right, then
+   top-left, now top-right again with the circle). No background, circle or border;
    the shop's ink with a faint light halo so it reads on a darker photo. The tap area
    is the whole 44x44 box. Pieces with options open Dawn's selection panel; pieces
    without add straight to the cart (snippets/card-product.liquid). Not shown for a
@@ -6869,8 +6881,8 @@ html body .product-card-wrapper .card:has(.card__badge .badge) .card__photo-dots
 html body .card-wrapper .quick-add--icon {
   position: absolute;
   top: 0;
-  left: 0;
-  right: auto;
+  right: 0;
+  left: auto;
   z-index: 3;
   grid-row-start: auto;
   margin: 0;
@@ -6917,15 +6929,25 @@ html body .card-wrapper .quick-add--icon .quick-add__submit:focus-visible {
   box-shadow: none;
 }
 
-html body .card-wrapper .quick-add--icon .quick-add__icon,
-html body .card-wrapper .quick-add--icon .quick-add__icon svg {
-  display: block;
-  width: 4rem;
-  height: 4rem;
+html body .card-wrapper .quick-add--icon .quick-add__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: rgba(235, 223, 216, 0.88);
+  transition: background-color 0.2s;
 }
 
 html body .card-wrapper .quick-add--icon .quick-add__icon svg {
-  filter: drop-shadow(0 0 0.15rem rgba(255, 255, 255, 0.9));
+  display: block;
+  width: 3rem;
+  height: 3rem;
+}
+
+html body .card-wrapper .quick-add--icon .quick-add__submit:hover .quick-add__icon {
+  background: rgb(233 217 208);
 }
 
 html body .card-wrapper .quick-add--icon .loading__spinner {
