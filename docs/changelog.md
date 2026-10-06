@@ -8,6 +8,35 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-06 — product rows: second-photo preview, no bag **(owner)**
+- **Bag removed** from Най-продавани and Може да ви хареса (`quick_add: none` in index.json / product.json); the
+  collection grid keeps it. Наскоро разгледани never had one.
+- **Preview:** a card with a relevant second photo (the first image tied to no variant, never another metal) shows it
+  while the mouse is over the photo or a finger rests on it (about 0.3 s), and the first returns on leaving or
+  release (`assets/card-photo-preview.js`, `data-photo-preview` / `data-previewing`).
+  - Any movement, a row or page scroll, or the browser's pointercancel ends the preview.
+  - A quick tap opens the product; the release after a hold doesn't.
+  - No long-press menu on the photo.
+  - Dawn's any-second-photo hover is no longer used in these rows (it could show another metal); cards without a
+    relevant second photo don't change.
+  - Наскоро разгледани stores the same photo (`data-image2`, `j` in the browser list; older entries get it when the
+    product is viewed again).
+- No dots or swipe in rows (they never had them; the snippet now separates swipe mode on collection pages from preview
+  mode in rows). Card sizes (72vw / 1.27 columns) and collection-grid swiping and dots unchanged.
+- **Local checks only:**
+  - liquidjs with the saved live JSON of the four products: ring → collection swipe and dots, row preview with the
+    non-variant photo; the bracelet, earrings and pendant (one photo each) unchanged.
+  - Mock, 1440: hover over the photo shows the preview; the text below and leaving the card restore the first photo.
+  - Mock, 375 (simulated touch events):
+    - Hold shows the preview; release restores and doesn't open the product; a quick tap opens it.
+    - Moving 14px, a row scroll or a page scroll cancels the preview.
+    - Наскоро разгледани: same hold behaviour; one-photo cards have no preview.
+  - Mock, 320 / 375: sizes kept, no sideways scroll.
+  **Unverified until tested on a real phone:** every finger interaction (hold timing, swipe and scroll hand-off,
+  long-press menu suppression on iOS and Android). Pending on the real store.
+
+---
+
 ## 2026-10-06 — „Разгледайте по категория“ simplified **(owner)**
 - Phone slides: photo, name and one clear button per category („Вижте пръстените“ etc.; square rosewood, pink hover,
   200×44, at the foot of each slide so all buttons line up). The six sentences are gone (template b77a38d, then the
