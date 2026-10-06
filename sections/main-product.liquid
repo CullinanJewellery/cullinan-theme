@@ -735,7 +735,8 @@
                       <div class="size-guide__inner">
                         <form method="dialog" class="size-guide__close-form">
                           <button type="submit" class="size-guide__close">
-                            Затвори<span class="size-guide__cross" aria-hidden="true"></span>
+                            <span class="visually-hidden">Затвори</span>
+                            <span class="size-guide__cross" aria-hidden="true"></span>
                           </button>
                         </form>
                         <h2 id="SizeGuide-{{ section.id }}-title" class="size-guide__title h3">
@@ -761,10 +762,14 @@
                         <table class="size-guide__table">
                           <caption class="visually-hidden">Европейски размери на пръстени</caption>
                           <thead>
+                            {%- comment -%}
+                              2026-10-06 (owner): two columns. The European size already is the
+                              circumference in mm (said in the line above the table), so the
+                              circumference column only repeated it.
+                            {%- endcomment -%}
                             <tr>
-                              <th scope="col">Размер</th>
-                              <th scope="col">Обиколка, мм</th>
-                              <th scope="col">Диаметър, мм</th>
+                              <th scope="col">Размер (EU)</th>
+                              <th scope="col">Вътрешен диаметър (мм)</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -772,7 +777,6 @@
                               {%- assign ring_diameter = ring_size | times: 1.0 | divided_by: 3.14159 | round: 1 -%}
                               <tr>
                                 <th scope="row">{{ ring_size }}</th>
-                                <td>{{ ring_size }}</td>
                                 <td>{{ ring_diameter | replace: '.', ',' }}</td>
                               </tr>
                             {%- endfor -%}
