@@ -7124,3 +7124,266 @@ html body [id^='shopify-section-'][id$='__related-products'] .product-card-wrapp
     transition: none;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Filters on tablets and computers: sidebar and connected bar (2026-10-06, owner;
+   the arrangement taken from moonmagic.com's desktop filters, in our type and
+   colours). Above the sidebar and the grid, one bar ruled above and below: „Скрий
+   филтрите −“ / „Покажи филтрите +“ on the left, the count and the sort on the right.
+   The sidebar lists each filter as a row between hairlines with the plus that turns
+   into a minus (drawn by the filter-bar rules above); a hairline divides it from the
+   grid. Only Shopify's own filters (price today) and sorting, through Dawn's
+   facets.js. Phones keep the drawer. Markup: main-collection-product-grid.liquid
+   (filter_type "vertical"). `html body` because component-facets.css loads later.
+   Way back: filter_type "horizontal" in templates/collection.json.
+   --------------------------------------------------------------------------- */
+@media screen and (min-width: 750px) {
+  /* The lines are drawn on the content box, so they end where the page content does. */
+  html body .cj-filter-bar {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    min-height: 5.6rem;
+    margin-bottom: 0;
+    background:
+      linear-gradient(rgba(var(--color-foreground), 0.3), rgba(var(--color-foreground), 0.3)) top / 100% 0.1rem no-repeat content-box,
+      linear-gradient(rgba(var(--color-foreground), 0.3), rgba(var(--color-foreground), 0.3)) bottom / 100% 0.1rem no-repeat content-box;
+  }
+
+  html body .cj-filter-bar__toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 1.2rem;
+    margin: 0;
+    padding: 0 2.4rem 0 0;
+    border: 0;
+    background: none;
+    color: rgb(var(--color-foreground));
+    font-family: var(--font-body-family);
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  html body .cj-filter-bar__toggle[aria-expanded='true'] .cj-filter-bar__show,
+  html body .cj-filter-bar__toggle[aria-expanded='false'] .cj-filter-bar__hide {
+    display: none;
+  }
+
+  /* A plus that loses its upright bar to become a minus. */
+  html body .cj-filter-bar__sign {
+    position: relative;
+    flex: 0 0 auto;
+    width: 1.1rem;
+    height: 1.1rem;
+  }
+
+  html body .cj-filter-bar__sign::before,
+  html body .cj-filter-bar__sign::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 0.1rem;
+    background: currentColor;
+    transform: translateY(-50%);
+  }
+
+  html body .cj-filter-bar__sign::after {
+    transform: translateY(-50%) rotate(90deg);
+    transition: transform 0.2s ease-in-out;
+  }
+
+  html body .cj-filter-bar__toggle[aria-expanded='true'] .cj-filter-bar__sign::after {
+    transform: translateY(-50%) rotate(0deg);
+  }
+
+  html body .cj-filter-bar .facets-vertical-sort {
+    display: flex;
+    margin-left: auto;
+  }
+
+  html body .cj-filter-bar .facets-vertical-form {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: stretch;
+  }
+
+  html body .cj-filter-bar .facet-filters {
+    display: flex;
+    align-items: center;
+    padding: 0 0 0 2.4rem;
+  }
+
+  html body .cj-filter-bar .facet-filters__field {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  html body .cj-filter-bar .facet-filters__label {
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgb(var(--color-foreground));
+  }
+
+  html body .cj-filter-bar .facet-filters__sort {
+    height: auto;
+    margin: 0;
+    padding: 0 2.4rem 0 0;
+    border: 0;
+    box-shadow: none;
+    background: transparent;
+    font-family: var(--font-body-family);
+    font-size: 1.3rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgb(var(--color-foreground));
+    cursor: pointer;
+  }
+
+  html body .cj-filter-bar .facet-filters__sort:focus {
+    box-shadow: none;
+  }
+
+  html body .cj-filter-bar .facet-filters__sort:focus-visible {
+    outline: 0.2rem solid rgb(var(--color-foreground));
+    outline-offset: 0.3rem;
+  }
+
+  html body .cj-filter-bar .facet-filters__field .select::after,
+  html body .cj-filter-bar .facet-filters__field .select::before {
+    content: none;
+  }
+
+  html body .cj-filter-bar .facet-filters__field .svg-wrapper {
+    right: 0;
+  }
+
+  html body .cj-filter-bar .product-count-vertical {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0 2.4rem;
+    border-right: 0.1rem solid rgba(var(--color-foreground), 0.3);
+  }
+
+  html body .cj-filter-bar .product-count__text {
+    margin: 0;
+    font-size: 1.2rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(var(--color-foreground), 0.7);
+  }
+
+  /* The sidebar */
+  html body .facets-vertical .facets-wrapper {
+    flex: 0 0 26rem;
+    width: 26rem;
+    padding: 0 2.4rem 0 0;
+    border-right: 0.1rem solid rgba(var(--color-foreground), 0.15);
+  }
+
+  html body .facets-vertical.cj-filters-hidden .facets-wrapper {
+    display: none;
+  }
+
+  html body .facets-vertical .facets-wrapper .facets-container {
+    padding: 0;
+    border: 0;
+  }
+
+  html body .facets-vertical .facets__form-vertical {
+    width: 100%;
+  }
+
+  html body .facets-vertical .product-grid-container {
+    min-width: 0;
+    padding-top: 3.2rem;
+    padding-left: 3.2rem;
+  }
+
+  html body .facets-vertical.cj-filters-hidden .product-grid-container {
+    padding-left: 0;
+  }
+
+  /* „Филтри:“ stays as the sidebar's name for screen readers; the bar already says it. */
+  html body .facets-vertical .facets__heading--vertical {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  html body .facets-vertical .active-facets {
+    padding-top: 1.6rem;
+  }
+
+  html body .facets-vertical .active-facets:not(:has(.active-facets__button)) {
+    display: none;
+  }
+
+  html body .facets-vertical .facets__disclosure-vertical {
+    margin: 0;
+    border-top: 0;
+    border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.15);
+  }
+
+  html body .facets-vertical .facets__disclosure-vertical .facets__summary {
+    display: flex;
+    align-items: center;
+    min-height: 6.4rem;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgb(var(--color-foreground));
+  }
+
+  html body .facets-vertical .facets__disclosure-vertical .facets__summary > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  html body .facets-vertical .facets__disclosure-vertical .facets__summary .icon-caret {
+    display: none;
+  }
+
+  html body .facets-wrapper .facets__disclosure-vertical[open] > .facets__summary > div::after {
+    background: linear-gradient(currentColor, currentColor) center / 100% 0.1rem no-repeat;
+  }
+
+  html body .facets-vertical .facets__display-vertical {
+    padding: 0 0 2.4rem;
+  }
+
+  html body .facets-vertical .facets__price {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0;
+  }
+
+  html body .facets-vertical .facets__price .field {
+    flex: 1 1 0;
+    min-width: 0;
+    margin: 0;
+  }
+}
