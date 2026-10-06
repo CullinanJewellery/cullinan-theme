@@ -8,6 +8,31 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-06 — card corrections **(owner)**
+- Photo circles moved to the **bottom-left** inside the photo (the owner meant that corner); swiping unchanged. A card
+  badge also sits bottom-left (theme setting `badge_position`), so the circles move up above a badge when one shows.
+- Bag (quick add) moved to the **top-left** corner; no background, border or circle; 44×44 tap area.
+- **Why the bag was missing, most likely:** the template push that switches quick add on (9350ad8) went 55 s after the
+  snippet push and was probably dropped (pushes less than a minute apart get lost; theme guide §1), leaving
+  `quick_add` off on the store, so no card showed a bag. Re-sent (c8bf708, 3 min after the code push).
+  Availability also hides it by design: the snippet shows the bag only when `card_product.available` is true (a
+  variant in stock, or selling continues at zero). The pendant, bracelet and earrings showed „Изчерпано“ in the
+  saved pages, so they get no bag; the ring was recorded buyable on 10-05, so it should show one. Not confirmed on
+  the store (no working preview). Prices and availability were not changed.
+- **Local checks** (mock: saved pages with the current CSS/JS and card markup; a fake `/cart/add` reply) at 320 / 375 /
+  1440:
+  - Bag top-left and circles bottom-left at all widths; each receives its own taps; no sideways scroll.
+  - Circles clear a simulated badge; the snap is unchanged.
+  - One-variant card (pendant, made buyable **in the mock only**): the bag sends one add request with the card's variant
+    and opens the drawer; the page stays.
+  - Ring: the bag opens quick selection (material, sizes) and adds nothing first.
+  - Sold-out cards show no bag.
+  **Pending on the real preview:** bag visible after the template re-send; direct add and the drawer with a real
+  buyable one-variant piece (none known: the one-variant pieces are sold out, so this stays blocked by product data);
+  real variant updates in the panel; a finger swipe on a phone.
+
+---
+
 ## 2026-10-06 — size guide and card photo slide **(owner, two focused changes)**
 1. Ring-size guide (product page and quick selection, same markup): two columns, „Размер (EU)“ and „Вътрешен
    диаметър (мм)“. The circumference column is gone, because it only repeated the size; the line above the table

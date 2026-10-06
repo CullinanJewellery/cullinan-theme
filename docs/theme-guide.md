@@ -116,11 +116,11 @@ collection), **social band** („Още от нашите бижута“ / „�
 - A swatch is a button that swaps the card's picture and price to the variant whose material names that colour.
 - Hover: over the picture shows the second photo; over the text nothing; no lift, no zoom.
 - Collection pages: a second photo (first image tied to no variant). The `.media` becomes `[data-card-track]`, a
-  scroll-snap scroller with two `.card__slide` links (tabindex -1); circles bottom-right. `assets/card-photos.js` only
+  scroll-snap scroller with two `.card__slide` links (tabindex -1); circles bottom-left (raised above a badge). `assets/card-photos.js` only
   syncs the circles, handles circle taps and swatches, and cancels a click that ends a drag. `.card__inner` is a
   stacking context: on two-photo cards it is lifted above the stretched title link (z 2, cart icon z 3) and Dawn's
   inner `.card__content` has `pointer-events: none`.
-- Cart icon (top-right of the photo) = Dawn's quick add, `quick_add: standard` per section; markup in the
+- Bag icon (top-left of the photo) = Dawn's quick add, `quick_add: standard` per section; markup in the
   `quick-add--icon` branch, styles „Card cart icon“ in crown.css. Options → Dawn's panel (`quick-add.js` loads the
   product page's `product-info`; blocks with `quick-add-hidden` or listed in crown.css are hidden there). No options →
   `product-form.js` adds and opens the drawer. Hidden when `card_product.available` is false.
