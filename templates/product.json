@@ -153,7 +153,10 @@
     },
     "recently_viewed": {
       "type": "recently-viewed",
-      "settings": {}
+      "settings": {
+        "padding_top": 8,
+        "padding_bottom": 40
+      }
     },
     "disclosures": {
       "type": "disclosures",
