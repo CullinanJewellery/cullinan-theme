@@ -139,13 +139,13 @@
         img.src = withWidth(src, 533);
         media.append(img);
 
-        // A second photo, if stored: shown only while previewing (card-photo-preview.js).
+        // A second photo, if stored: fades in on hover of the photo (section CSS), loaded
+        // with the card so it is there at the first touch.
         const second = safeImage(item.j);
         if (second) {
           const preview = new Image();
           preview.className = 'recently-viewed__image recently-viewed__image--preview';
           preview.alt = '';
-          preview.loading = 'lazy';
           preview.decoding = 'async';
           preview.sizes = img.sizes;
           preview.srcset = [360, 533, 720, 940].map((width) => `${withWidth(second, width)} ${width}w`).join(', ');

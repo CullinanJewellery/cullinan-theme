@@ -6980,54 +6980,62 @@ html body quick-add-modal .product .product-trust {
 }
 
 /* ---------------------------------------------------------------------------
-   Product rows: a temporary second-photo preview (2026-10-06, owner)
+   Product rows: second photo on hover, as on moonmagic.com (2026-10-06, owner)
 
    In Най-продавани and Може да ви хареса a card with a relevant second photo (the
-   first one tied to no variant, so never another metal) carries data-photo-preview;
-   assets/card-photo-preview.js sets data-previewing while the mouse is over the photo
-   or a finger rests on it. Only that attribute decides which photo shows here: these
-   rules out-rank Dawn's card hover and the older over-photo swap above. No zoom. No
-   long-press menu or text selection on the photo or the title link. Cards without a
-   relevant second photo are unchanged; collection grids (swipe and dots) untouched.
+   first one tied to no variant, never another metal) carries data-photo-preview and
+   both photos sit inside one product link (.card__photo-link). As on moonmagic's
+   rows: the second photo lies over the first, opacity 0, and fades in on the
+   browser's own :hover of the photo, 0.2 s ease-in-out; leaving restores the first.
+   A phone applies :hover to what is touched, the same as on the reference. No script.
+   The photo area is lifted above the card's stretched title link (which otherwise
+   takes every touch and hover), and Dawn's inner layer lets touches through; the
+   link around the photos opens the product. The first photo stays whole (contain),
+   the second fills the square (cover). Collection grids (swipe and dots) untouched.
    --------------------------------------------------------------------------- */
-/* The second photo fills the square (cover); the first stays whole (contain).
-   A 0.2 s crossfade (2026-10-06, owner). */
-html body .card-wrapper.product-card-wrapper .card[data-photo-preview] .media.media--hover-effect > img.card__photo-preview {
+html body .card-wrapper.product-card-wrapper .card[data-photo-preview] .card__inner {
+  z-index: 2;
+}
+
+html body .card-wrapper.product-card-wrapper .card[data-photo-preview] .card__inner > .card__content {
+  pointer-events: none;
+}
+
+html body .card-wrapper.product-card-wrapper .card[data-photo-preview] .media > .card__photo-link {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html body .card-wrapper.product-card-wrapper .card[data-photo-preview] .card__photo-link > img {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
+  opacity: 1;
+  transform: none;
+}
+
+html body .card-wrapper.product-card-wrapper .card[data-photo-preview] .card__photo-link > img:first-child {
+  object-fit: contain;
+}
+
+html body .card-wrapper.product-card-wrapper .card[data-photo-preview] .card__photo-link > img.card__photo-preview {
   object-fit: cover;
   opacity: 0;
-  transform: none;
-  transition: opacity 0.2s ease;
+  transition: opacity 0.2s ease-in-out;
 }
 
-html body .card-wrapper.product-card-wrapper .card[data-photo-preview] .media.media--hover-effect > img:first-child:not(:only-child) {
-  object-fit: contain;
+html body .card-wrapper.product-card-wrapper .card[data-photo-preview] .card__photo-link:hover > img.card__photo-preview {
   opacity: 1;
-  transform: none;
-  transition: opacity 0.2s ease;
-}
-
-html body .card-wrapper.product-card-wrapper .card[data-photo-preview][data-previewing='true'] .media.media--hover-effect > img.card__photo-preview {
-  opacity: 1;
-}
-
-html body .card-wrapper.product-card-wrapper .card[data-photo-preview][data-previewing='true'] .media.media--hover-effect > img:first-child:not(:only-child) {
-  opacity: 0;
-}
-
-html body .card-wrapper.product-card-wrapper .card[data-photo-preview] .card__media,
-html body .card-wrapper.product-card-wrapper .card[data-photo-preview] .card__heading a {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  user-select: none;
-  -webkit-tap-highlight-color: transparent;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html body .card-wrapper.product-card-wrapper .card[data-photo-preview] .media.media--hover-effect > img {
+  html body .card-wrapper.product-card-wrapper .card[data-photo-preview] .card__photo-link > img.card__photo-preview {
     transition: none;
   }
 }

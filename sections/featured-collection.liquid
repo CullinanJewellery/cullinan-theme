@@ -9,10 +9,6 @@
 
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'card-swatches.js' | asset_url }}" defer="defer"></script>
-{%- if section.settings.show_secondary_image -%}
-  {%- comment -%} Second-photo preview on hover / touch and hold (2026-10-06, owner). {%- endcomment -%}
-  <script src="{{ 'card-photo-preview.js' | asset_url }}" defer="defer"></script>
-{%- endif -%}
 {{ 'component-swatch.css' | asset_url | stylesheet_tag }}
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
 

@@ -43,10 +43,12 @@
       photo. The second photo is the first one not tied to any variant (so it never shows
       another metal than the one chosen with the swatches); without one, no dots.
       2026-10-06 (owner): in product rows (sections that show the second image on hover,
-      e.g. Най-продавани, Може да ви хареса) the same photo is a temporary preview instead:
-      hover on a computer, touch and hold on a phone (assets/card-photo-preview.js); no
-      dots, no swipe. No relevant second photo: no preview (Dawn's any-second-photo
-      hover is not used there).
+      e.g. Най-продавани, Може да ви хареса) the same photo is a temporary preview instead,
+      as on moonmagic.com's rows: both photos inside one product link laid over the card,
+      the second fading in on the browser's own :hover of that link (0.2 s, crown.css
+      „Product rows: second photo on hover“). A phone applies :hover to what is touched.
+      No script, no dots, no swipe. No relevant second photo: no preview (Dawn's
+      any-second-photo hover is not used there).
     endcomment
     assign card_photo_mode = ''
     if template.name == 'collection'
@@ -135,6 +137,8 @@
               >
                 {%- if card_swipe -%}
                   <a class="card__slide" href="{{ card_url }}" tabindex="-1" aria-hidden="true">
+                {%- elsif card_preview -%}
+                  <a class="card__photo-link" href="{{ card_url }}" tabindex="-1" aria-hidden="true">
                 {%- endif -%}
                 {% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
                 <img
@@ -172,14 +176,19 @@
                       {{ card_second_media | image_url }} {{ card_second_media.width }}w
                     "
                     src="{{ card_second_media | image_url: width: 533 }}"
-                    sizes="(min-width: 990px) calc((100vw - 130px) / 3), calc((100vw - 42px) / 2)"
+                    sizes="(min-width: 990px) calc((100vw - 130px) / 3), {% if card_preview %}72vw{% else %}calc((100vw - 42px) / 2){% endif %}"
                     alt="{{ card_second_media.alt | escape }}"
                     class="{% if card_swipe %}card__photo-2{% else %}card__photo-preview{% endif %} motion-reduce"
-                    loading="lazy"
+                    {%- comment -%} The preview is loaded with the card, so it is there at the first touch. {%- endcomment -%}
+                    {% if card_swipe %}
+                      loading="lazy"
+                    {% else %}
+                      fetchpriority="low"
+                    {% endif %}
                     width="{{ card_second_media.width }}"
                     height="{{ card_second_media.height }}"
                   >
-                  {%- if card_swipe -%}
+                  {%- if card_swipe or card_preview -%}
                   </a>
                   {%- endif -%}
                 {%- endif -%}

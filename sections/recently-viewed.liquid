@@ -1,7 +1,6 @@
 {{ 'component-slider.css' | asset_url | stylesheet_tag }}
 {{ 'section-recently-viewed.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'recently-viewed.js' | asset_url }}" defer="defer"></script>
-<script src="{{ 'card-photo-preview.js' | asset_url }}" defer="defer"></script>
 
 {%- comment -%}
   "You Recently Viewed", after moonmagic's own row of that name (2026-10-01, at the
@@ -50,8 +49,8 @@
 {%- endstyle -%}
 
 {%- comment -%}
-  2026-10-06 (owner): a second photo for the temporary preview (hover / touch and hold,
-  assets/card-photo-preview.js), chosen like the product cards' -- the first image tied
+  2026-10-06 (owner): a second photo for the preview on hover (section CSS, as on
+  moonmagic.com's rows), chosen like the product cards' -- the first image tied
   to no variant, so never another metal. None: the card has no preview.
 {%- endcomment -%}
 {%- liquid
