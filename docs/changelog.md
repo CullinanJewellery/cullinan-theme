@@ -8,6 +8,44 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-06 (evening) — button hovers back, ruby hero and trust row, card hover, sidebar filters, menu **(owner)**
+Done one at a time, each checked on the real draft preview (desktop 1440; phones 375 and 320 where they could change).
+1. **Button hover and pressed as before the colour update**: the near-black hover/pressed block was removed and Add
+   to cart, the cart checkout (drawer and page) and the phone category button hover pink `#E6BAB9` again; the others
+   empty to an outline. Black fills, sizes and shapes kept. Checked in the loaded stylesheet rules (no `#2b2b2b` or
+   `#3a3a3a` left).
+2. **„Разгледайте колекцията“ ruby again** (`#D62246`, white label, its old outline hover): the exception to the black
+   buttons. The first push was dropped and re-sent.
+3. **Trust row in the same ruby**: headings, sentences, icons with their rings and card outlines
+   (`section-icon-benefits.css`, end). Card grounds, layout, phone swipe and dots unchanged (checked at 375: 3 cards
+   scrolling, 3 dots).
+4. **Collection cards, computers with a mouse**: the second photo fades in over the first while the pointer is on the
+   photo, and the circles are hidden. Checked with a real pointer on the ring: opacity 0 → 1 → 0. The bag is still
+   on top and the swatch still changes photo 1. At 375 the track still scrolls and the circles show. The ring is the
+   only product with two photos today.
+5. **Filters, tablets and computers**: MoonMagic's desktop filters were looked at live: a ruled bar with „Hide filters −“
+   and „Sort by +“, a 356px sidebar of accordion rows 79px tall between hairlines, 15px/600 capitals, and a sort box of
+   13px capitals. Ours now: `filter_type: vertical` (Dawn's sidebar, Shopify's own filtering and sorting), with a
+   connected bar ruled above and below holding „Скрий филтрите −“ / „Покажи филтрите +“ (new button, toggles the
+   sidebar), the count and „Сортиране по“. The sidebar is 26rem with hairline rows and the site's plus/minus, and a
+   hairline to the grid. Only the price filter exists in the store's filter settings, so only price shows; nothing
+   was added. Checked: price ≥100 → 1 of 4 with a removable box; clearing works; sorting by price, high to low, puts
+   the ring first; hiding widens the grid to 1300px.
+   **Phones**: switching the layout first lost the sort half of the phone bar (its markup was tied to `horizontal`).
+   Fixed in `facets.liquid`, and the phone bar is the same as before at 375 and 320 (two 50% halves, 48px).
+   Way back: `filter_type` "horizontal" (the connected-strip rules are still in crown.css).
+6. **Desktop menu**: the words are regular weight (400, no stroke). With a mouse, hovering a word opens its existing
+   dropdown and a 250ms grace period keeps it open across the 16px gap into the panel; one open at a time. A click
+   on the word opens the menu link's own URL; Enter does the same and Space still opens the dropdown. Touch screens
+   keep tap-to-open; the phone drawer is not touched. Links, layout, colours and spacing unchanged. Checked with a
+   real pointer: open on hover, still open in the panel, closed on leaving, Гривни replaces Пръстени, and a click on
+   Пръстени opened the rings collection.
+   Note for the owner: the menu link for „Пръстени“ is `/collections/пръстени/Пръстени` (the rings collection
+   filtered by the tag „Пръстени“). Today it shows the same ring as the plain collection; a ring without that tag
+   would not appear there.
+
+---
+
 ## 2026-10-06 — desktop photos restored, palette applied, blush footer, black buttons **(owner)**
 Done one at a time, each checked on the real draft preview at 1440, 375 and 320 (no sideways overflow). Before/after
 page: https://claude.ai/artifact/VCk9LEMzx8ffSsnoHfqeQX.

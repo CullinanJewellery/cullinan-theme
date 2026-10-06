@@ -49,9 +49,9 @@ White label on black button: 21:1. Espresso on white 16.2:1, on greige 14.6:1, o
 | `#E3CAC2` muted warm blush, lines `#C9ABA1` | Footer ground (`.footer.gradient` in `crown.css`), 2026-10-06 | Scheme-5 is shared with the hero; espresso 10.4:1, 75% text 5.5:1. `#E9D9D0` with lines `#CDB5A8` before |
 | `#F5F3EF` | Phone band behind „Разгледайте по категория“ (`section-category-mosaic.css`) | Matches scheme-6; `#F3EBE6` before |
 | `rgba(24,14,9,.66 → 0)` gradient | Over the hero photograph, from the left, ≥750px | Keeps the light hero words legible |
-| `0,0,0` (hero override of `--color-button`) | Hero button | Black like every main button since 2026-10-06; ruby `#D62246` before |
-| `#2B2B2B` hover, `#3A3A3A` pressed, white label | Every main button (end of `crown.css`, "Black main buttons"; Add to cart; cart checkout; category slider) | Owner: hover and pressed close to black |
-| `#E6BAB9` | Header icon hover line; zodiac indicators | Pink kept where it is not a button (Add to cart and cart hovers were pink until 2026-10-06) |
+| `#D62246` ruby, white label (5.0:1) | Hero button „Разгледайте колекцията“ | **Exception**, see §8 (black for about an hour on 2026-10-06, then restored by the owner) |
+| `#D62246` ruby | Homepage trust row: headings, sentences, icons, rings and card outlines (`section-icon-benefits.css`, end) | Owner 2026-10-06: matches the hero button; 5.0:1 on white |
+| `#E6BAB9` | Add to cart and cart checkout hover fill (dark label); category slider button hover on phones; header icon hover line; zodiac indicators | Hover behaviour kept from before the black buttons (owner 2026-10-06) |
 | `#B76E79` rose gold | Review stars (theme, review cards, Judge.me) | Graphic, 3.6:1 (graphics need 3:1) |
 | `rgb(0 0 0)` | Buy-box text, footer text, stones row lines, homepage social heading | **Exception**, see §8 |
 | `#1877F2`, `#C13584` | Homepage "Вижте работата ни" Facebook / Instagram buttons | **Exception**, see §8 |
@@ -78,7 +78,7 @@ Reference, sampled live on moonmagic.com (homepage, 1440 and 375):
 | Accent band: custom request (scheme-2) | `#EBDFD8` | `#F2E4DE` soft blush (between ours and their `#F2D9D1`) | 13.0:1 |
 | Footer | `#E9D9D0` pale rose-clay | proposed `#CBBBAD` warm taupe, **not used**: the owner chose a muted warm blush, applied as `#E3CAC2` | 10.4:1 |
 | Text, announcement bar | espresso | unchanged | — |
-| Buttons incl. „Добави в количката“ | rosewood `#6E3B30`, pink `#E6BAB9` hover | **black**, white label, hover `#2B2B2B`, pressed `#3A3A3A` (owner, 2026-10-06) | label 21:1 |
+| Buttons incl. „Добави в количката“ | rosewood `#6E3B30`, pink `#E6BAB9` hover | **black**, white label; hover and pressed as before the colour change (owner, 2026-10-06) | label 21:1 |
 
 Applied in `settings_data.json` (schemes 1, 2, 6; button colours in 1, 2, 5, 6, 8), the footer rule and the button
 rules in `crown.css`. Way back: the values in the "Now" column. Known side effect: product photos whose own background is not pure white show a faint edge on a white page.
@@ -132,10 +132,13 @@ rules in `crown.css`. Way back: the values in the "Now" column. Known side effec
   (hero, view-all, story, stones, Контакти, custom request; `crown.css` "Buttons, one language", `html body` prefix
   for specificity). Hero button 34rem wide.
 - **Phones**: the sizes the owner tuned per component remain (e.g. hero 4.8rem/1.4rem, others 5.4rem/1.2rem).
-- Primary: **black fill, white label** on every light scheme (2026-10-06, owner), hero included.
-- Hover/focus: near-black fill `#2B2B2B`, white label; pressed `#3A3A3A`; 0.35s colour transition; lifts 0.25rem
-  (`animations_hover_elements: vertical-lift`), no lift under reduced motion. (Until 2026-10-06 most buttons
-  emptied to an outline on hover and Add to cart turned pink.)
+- Primary: **black fill, white label** on every light scheme (2026-10-06, owner). **Exception**: the hero's
+  „Разгледайте колекцията“ stays ruby `#D62246` with a white label.
+- Hover/focus (unchanged from before the black buttons, owner 2026-10-06): the fill drops to transparent with a 1px
+  inset outline in the button colour and the label takes the button colour; Add to cart, the cart checkout and the
+  phone category button fill with `#E6BAB9` and a dark label instead. 0.35s colour transition; lifts 0.25rem
+  (`animations_hover_elements: vertical-lift`), no lift under reduced motion. No separate pressed colour.
+  (For about an hour on 2026-10-06 hover was near-black `#2B2B2B` and pressed `#3A3A3A`; reverted.)
 - Outline (secondary) buttons, arrows, text links, the newsletter button on the dark band and the Facebook /
   Instagram buttons keep their own styles.
 - Product cards do not lift or zoom on hover (switched off in `crown.css`).
@@ -155,10 +158,10 @@ rules in `crown.css`. Way back: the values in the "Now" column. Known side effec
 | Exception | Where | Reason | Status |
 |---|---|---|---|
 | Words over a photograph | Hero; Контакти banner and footer social block; newsletter; silver banner (hidden) | Owner's explicit choices (2026-09-06 to 09-21) | Current |
-| Bright ruby button `#D62246` | Hero only | Owner wanted the main button to stand out (2026-09-21, 10-04) | **Ended 2026-10-06** (all main buttons black) |
+| Bright ruby button `#D62246` | Hero only; the trust row under it takes the same ruby | Owner wants the main button to stand out (2026-09-21, 10-04; kept as the exception to the black buttons, 10-06) | Current |
 | Pure black text | Buy box, footer, stones lines, homepage social heading | Owner asked for "the blackest" text by name | Current |
 | Facebook blue / Instagram magenta buttons | Homepage "Вижте работата ни" | Owner's request (2026-09-20); 3.1:1 and 3.7:1 on the clay footer copy | Current, **flagged** (contrast, palette) |
-| Pink hover `#E6BAB9` | Header icons (Add to cart until 2026-10-06) | Kept from earlier design | Current for icons only |
+| Pink hover `#E6BAB9` | Add to cart, cart checkout, header icons | Kept from earlier design | Current |
 | Pills | About page jump links | Owner's choice 2026-09-13; navigation chips, not buttons | Current |
 | White (`#fff`) behind product photos | Наскоро разгледани, Най-продавани, Може да ви хареса | Owner's request 2026-10-06: the photos are shot on white, so whole photos in square frames show no bands | Current |
 | Round shapes on cards | Bag icon circle (top-right), photo circles (bottom-left), colour swatches | Owner's request 2026-10-06 (circle behind the bag); indicators and swatches are round by nature | Current |
@@ -187,7 +190,9 @@ rules in `crown.css`. Way back: the values in the "Now" column. Known side effec
 | Jost headings (700 / 550 / 400) | Prata 400 | 2026-10-04 |
 | Pink `#F3E1DB` / moonmagic gradient, black newsletter, black buttons | Direction C palette | 2026-10-04 |
 | Red hero button `#E63946` | Ruby `#D62246` | 2026-10-04 |
-| Rosewood buttons, ruby hero button, pink Add to cart hover | Black buttons, near-black hover | 2026-10-06 |
+| Rosewood buttons | Black buttons (hover behaviour and the ruby hero button kept) | 2026-10-06 |
+| Near-black hover `#2B2B2B` / pressed `#3A3A3A` | The earlier hover behaviour, restored | 2026-10-06 |
+| Header menu words in Jost 700 + 0.03em stroke | Jost 400, no stroke | 2026-10-06 |
 | Marble white page `#FBF8F6`, footer `#E9D9D0` | White page, blush footer `#E3CAC2` | 2026-10-06 |
 | Buy-box price 22px, card price 18px | 18px / 15px | 2026-10-04 |
 | Hero heading 57px | 40px max | 2026-10-04 |

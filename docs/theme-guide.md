@@ -49,7 +49,7 @@ deliberately not renamed.
 | Top bar | `sections/announcement-bar.liquid` | Two messages („Ръчна изработка от 1991“, „Лична грижа за всеки клиент“); utility links from the `top-bar` menu (Theme settings → Top bar); the script at its end hides bar + header on scroll down, shows on scroll up |
 | Header | `sections/header.liquid`, `header-group.json` | Logo image; menu `main-menu`; sticky; dropdown and phone drawer on scheme-6 |
 | Menu hover | `crown.css` (end) | No lift: a 1px underline (offset 0.5rem) on hover, keyboard focus and the current category, for the menu words and the dropdown links; weight 700 unchanged |
-| Mega menu | `snippets/header-mega-menu.liquid`, `header-mega-promo.liquid` | Text columns from the menu; a square picture in the corner from a `mega_menu_promo` block whose title matches the menu word (case-insensitive) |
+| Mega menu | `snippets/header-mega-menu.liquid`, `header-mega-promo.liquid` | Mouse: hover opens a word's dropdown (250ms grace into the panel), click or Enter opens the word's own link (`data-cj-menu-href`), Space toggles; touch keeps tap-to-open (inline script in the snippet, 2026-10-06). Words Jost 400. Text columns from the menu; a square picture in the corner from a `mega_menu_promo` block whose title matches the menu word (case-insensitive) |
 | Phone drawer | `snippets/header-drawer.liquid` | Category words in Prata 24px; picture row from the same promo blocks |
 | Accordion arrow | `snippets/icon-accordion-caret.liquid` | Chevron → minus; used by product tabs, FAQ, footer phone accordions, Контакти rows, metal menu |
 | Footer | `sections/footer.liquid`, `footer-group.json` | Scheme-5; exposes `--footer-padding-top` (its own padding) so the Контакти social picture can start at the footer's top edge (`.footer__social--contact.footer__social--picture`, no gap);  newsletter column + `link_column` blocks (up to six label/link pairs, optional contact email, optional **note**: plain lines such as address and hours); all text pure black; social block printed by the footer on all pages except the homepage, product pages and За нас, reading „Още от нашите бижута“ + „Разгледайте снимки и видеа във Facebook и Instagram.“ (since 2026-10-04; „Вижте работата ни“ is the homepage's own section only); on Контакти it has its own heading („Ще ни намерите и там“) and picture |
@@ -105,6 +105,11 @@ collection), **social band** („Още от нашите бижута“ / „�
 
 ## 5. Collection and search
 
+- Collection page from 750px (2026-10-06, evening): `filter_type: vertical`. A connected bar (`.cj-filter-bar` in
+  main-collection-product-grid.liquid: „Скрий/Покажи филтрите“ button toggling `.cj-filters-hidden` on
+  `.facets-vertical`, count, sort) above a 26rem sidebar of hairline rows (crown.css, "Filters on tablets and
+  computers"). The phone bar below is shared with the horizontal layout (`filter_type != drawer` in facets.liquid).
+  Search still uses the horizontal strip described next.
 - Dawn's grids with `crown.css` sizing. Filter and sort bar as connected boxes (2026-10-06): one ruled strip with a
   line between parts, panels hanging from it; on phones one edge-to-edge bar „Филтри | Сортиране“ (`cj-bar-sort` hands
   its value to the drawer's sort, `assets/collection-filters.js`). Filtering itself is Dawn's `facets.js`.
@@ -124,6 +129,10 @@ collection), **social band** („Още от нашите бижута“ / „�
   writes `--ratio-percent-wide` (the first photo's own ratio); in `#product-grid` from 750px crown.css uses it
   (`!important`, the other is inline) with `object-fit: cover`, so computers get the earlier photo-shaped cards and
   phones keep square frames with `contain` (2026-10-06).
+- Computers with a mouse (≥750px and `hover: hover`), collection grid: the two slides are stacked; the second fades
+  in (0.4s) while the pointer is over `.card__inner` and the first returns when it leaves; the circles are hidden.
+  Phones and touch tablets keep the swipe and circles. One-photo cards have no track and are unchanged (crown.css,
+  "Collection cards on a computer").
 - Product rows (Най-продавани, Може да ви хареса; sections with `show_secondary_image`): preview mode, no bag
   (`quick_add: none`). A relevant second photo fades in on CSS `:hover` of `.card__photo-link`
   (both photos in one product link over the card; as moonmagic's rows; no script). Наскоро разгледани does the same
