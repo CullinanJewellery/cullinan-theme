@@ -37,6 +37,25 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
    set `quick_add` to `none`.
 - Steps 6–7 were built while the preview link had expired: checked in a local mock (a saved collection page with the
   repo CSS) at 320, 375, 768 and 1440, and on the CDN. **Not yet checked on the real preview.**
+- **Local checks, 2026-10-06** (preview still expired; owner asked for local checks, real-preview checks pending).
+  Mock = saved collection page (10-03) and ring page (10-03, with the current size-guide markup added) with the
+  repo’s current CSS and JS, current card markup injected. Passed locally at 320 / 375 / 1440:
+  - Panel: the icon opens it, focus moves in, and Escape closes it with focus back on the icon. Material menu (four
+    metals) and size choices shown. The trail, rating, phone and trust lines are hidden; no sideways scroll.
+  - Size guide from the panel: opens above it (ids rewritten consistently), „Затвори“ returns to the panel, 284px wide
+    at 320.
+  - Photos: a swipe switches the photo and does not open the product; a vertical move doesn’t switch; a tap opens
+    the product; dots (28×44) toggle; a swatch returns to photo 1; `touch-action: pan-y`.
+  - Cart icon: flush with the photo corner, 44×44, a tap reaches the icon (not the card link) and opens the panel; a
+    swipe ending on the icon opens nothing.
+  - Filters: phone bar 160+160 at 320 and 188+188 at 375, drawer rows 56px, results button on one line, „Изчисти“ 44px;
+    desktop panel hangs from the strip (0px gap, no shadow).
+  **Fixed from these checks**: the panel still showed the trail and rating (specificity), and one Escape in the size
+  guide closed the whole panel too.
+  **Pending on the real preview**: everything above on real data; variant switching inside the panel (needs
+  Shopify’s section rendering); filtering, sorting, counts, chip removal and „Изчисти“ against Search & Discovery;
+  the current (square) card frames and labels. **Blocked by product data**: direct add and the cart drawer opening, if
+  no piece can be bought (prices and availability are not changed for testing).
 
 ## 2026-10-04 — next stage **(owner: "start the next stage")**
 - Phone hero: the picture fills its 375px square and shows the pendant (Dawn's zoom-in had made it fixed and 100vh
