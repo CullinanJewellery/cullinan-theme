@@ -8,6 +8,37 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-06 — size guide and card photo slide **(owner, two focused changes)**
+1. Ring-size guide (product page and quick selection, same markup): two columns, „Размер (EU)“ and „Вътрешен
+   диаметър (мм)“. The circumference column is gone, because it only repeated the size; the line above the table
+   still says the European size is the inner circumference in mm. Headings are centred over equal 50% columns with
+   even padding (rows 42px). The close control is a 12px cross in a 44×44 tap box („Затвори“ kept for screen
+   readers); the title stays clear of it (≥48px at 375). The jump link to the instructions is kept. In quick
+   selection at ≤419px, „Добави в количката“ fits on one line (narrower padding and letter-spacing in the panel only).
+2. Card photos: the fade became a sideways scroller with scroll snap (moonmagic.com's phone cards use the same
+   method). The photos follow the finger side by side and settle on one; each slide is the product link, out of the
+   tab order. The circles sit bottom-right (the cart icon is top-right); the current one is filled, the other an
+   outline. Shown only when a second relevant photo exists (unchanged rule).
+   **Bug found and fixed:** `.card__inner` is its own stacking context, so the card's stretched title link covered
+   the photo area, **including the earlier dots**: on a real phone they were probably never tappable (the earlier
+   test called them directly). Way back for the slide: the previous `card-photos.js` and the „Two photos per card“
+   CSS in git (commit 4ed52b1 and before).
+- **Local checks only** (preview expired; mocks from saved pages with the current CSS/JS and markup) at 320 / 375 /
+  1440:
+  - Guide: two centred columns on the product page and from the panel; the jump link opens and scrolls to the
+    instructions; the cross closes the guide; no sideways scroll.
+  - Panel button: on one line at 320.
+  - Photos: both photos visible side by side mid-drag; snapping back from 45% and on to photo 2 from 66%; circles
+    follow; tapping a circle slides to its photo; a plain tap opens the product; a click that ends a drag is cancelled;
+    a swatch returns to photo 1.
+  - Hit tests: the photo, the two circles, the cart icon and the swatches each receive their own taps.
+  - The cart icon opens the panel and doesn't follow the product link.
+  **Pending:** a real finger swipe and vertical scrolling on a phone (the tool can't drive native touch); everything
+  on the real preview; variant updates in the panel, filtering, sorting, and adding to the cart (needs a working
+  preview and buyable product data; prices and availability are not changed for testing).
+
+---
+
 ## 2026-10-06 — seven-step batch **(owner)**
 1. Product enquiry: the open form became „Попитайте за това бижу“, which opens a popup shaped like the size guide
    (custom-request `layout`: open / popup / collapsible). Both buttons open it; piece, link and variant are still sent;
