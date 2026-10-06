@@ -8,6 +8,24 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-06 — card refinements **(owner)**
+- Bag back to the **top-right**: glyph 17 → 13px inside a 30px circle of pale rose-clay (`#EBDFD8` at 88%; the cards'
+  marble white would vanish on white photos). Tap area 44×44; direct add and quick selection unchanged.
+- Photo circles 6px apart (were 21px): each circle sits at the inner edge of its own 24×44 tap area; still bottom-left
+  (raised above a badge); swiping unchanged.
+- Phones: grid margins 15 → 12px, gap 12 → 8px, so square photos grow 167 → 171.5px at 375 and 139 → 144px at 320.
+  Two columns and `object-fit: contain` kept; desktop unchanged (390px at 1440). Way back: the „Third pass“ rule in
+  crown.css (`--grid-mobile-horizontal-spacing: 1.2rem; margin-inline: 0`).
+- **Local checks only** (mock with the current CSS/JS, 320 / 375, desktop spot check):
+  - Sizes, margins and gap as above, no sideways scroll.
+  - The bag, both circles and the photo each receive their own taps.
+  - The swipe still snaps to the nearest photo.
+  - Ring bag opens quick selection; the one-variant bag (pendant made buyable in the mock only) adds once and opens
+    the drawer.
+  **Pending on the real preview:** all of it, including whether the bag shows after the template re-send.
+
+---
+
 ## 2026-10-06 — card corrections **(owner)**
 - Photo circles moved to the **bottom-left** inside the photo (the owner meant that corner); swiping unchanged. A card
   badge also sits bottom-left (theme setting `badge_position`), so the circles move up above a badge when one shows.

@@ -54,6 +54,7 @@ Rosewood label on rosewood button: 8.5:1. Espresso on marble white: well above 4
 | `rgb(0 0 0)` | Buy-box text, footer text, stones row lines, homepage social heading | **Exception**, see §8 |
 | `#1877F2`, `#C13584` | Homepage "Вижте работата ни" Facebook / Instagram buttons | **Exception**, see §8 |
 | `rgb(240 232 226)` / `rgb(233 217 208)` | Empty picture slots / menu picture slots | Warm flat placeholders, never a graphic |
+| `rgba(235,223,216,.88)` (pale rose-clay) | 30px circle behind the card bag icon (hover `#E9D9D0`) | The cards' marble white would vanish on white product photos |
 
 **Rule**: no pure white or pure black as a *ground*. Pure black text is used only where listed above.
 
@@ -85,8 +86,8 @@ Rosewood label on rosewood button: 8.5:1. Espresso on marble white: well above 4
 - Section padding is per section (Dawn ranges, step 4). Mobile padding renders at 0.75× the setting.
 - Between two coloured bands: 40px of page ground (30px on phones), done with margins, not padding.
 - Breakpoints in use: 750px (phone / tablet), 990px (tablet / computer; inline menu, 3-column grids).
-- Product grids: 3 across from 990px (cards 30% of the row, gaps share the rest), 2 across on phones edge to edge
-  with 4px gap (≈186px pictures at 375px); product rows: one card plus a peek on phones (64vw ≈ 240px).
+- Product grids: 3 across from 990px (cards 30% of the row, gaps share the rest), 2 across on phones with 12px side
+  margins and an 8px gap (171.5px square pictures at 375px, 144px at 320; 2026-10-06); product rows: one card plus a peek on phones (64vw ≈ 240px).
 
 ## 5. Corners, borders, shadows
 
@@ -128,6 +129,7 @@ Rosewood label on rosewood button: 8.5:1. Espresso on marble white: well above 4
 | Facebook blue / Instagram magenta buttons | Homepage "Вижте работата ни" | Owner's request (2026-09-20); 3.1:1 and 3.7:1 on the clay footer copy | Current, **flagged** (contrast, palette) |
 | Pink hover `#E6BAB9` | Add to cart, header icons | Kept from earlier design | Current |
 | Pills | About page jump links | Owner's choice 2026-09-13; navigation chips, not buttons | Current |
+| Round shapes on cards | Bag icon circle (top-right), photo circles (bottom-left), colour swatches | Owner's request 2026-10-06 (circle behind the bag); indicators and swatches are round by nature | Current |
 
 ## 9. Motion
 

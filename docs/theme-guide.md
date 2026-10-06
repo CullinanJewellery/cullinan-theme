@@ -120,7 +120,7 @@ collection), **social band** („Още от нашите бижута“ / „�
   syncs the circles, handles circle taps and swatches, and cancels a click that ends a drag. `.card__inner` is a
   stacking context: on two-photo cards it is lifted above the stretched title link (z 2, cart icon z 3) and Dawn's
   inner `.card__content` has `pointer-events: none`.
-- Bag icon (top-left of the photo) = Dawn's quick add, `quick_add: standard` per section; markup in the
+- Bag icon (top-right of the photo, 30px rose-clay circle) = Dawn's quick add, `quick_add: standard` per section; markup in the
   `quick-add--icon` branch, styles „Card cart icon“ in crown.css. Options → Dawn's panel (`quick-add.js` loads the
   product page's `product-info`; blocks with `quick-add-hidden` or listed in crown.css are hidden there). No options →
   `product-form.js` adds and opens the drawer. Hidden when `card_product.available` is false.
