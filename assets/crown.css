@@ -5356,6 +5356,205 @@ html body .facets-wrapper .facets__display {
   box-shadow: 0 1.6rem 4rem rgba(42, 30, 26, 0.1);
 }
 
+/* Computers, connected boxes (2026-10-06, owner; the arrangement from moonmagic.com's
+   filter bar): one strip ruled above and below, a line between each part — the
+   „Филтриране“ label, each filter, sorting, the count. Each filter is a 56px box with a
+   plus that turns into a minus when open; its panel hangs straight from the strip, square,
+   on the same line colour, no shadow. Chosen filters under the strip are square boxes too.
+   Same filtering, sorting, count, removal and „Изчисти“ as before (Dawn's facets.js). */
+@media screen and (min-width: 750px) {
+  html body .facets-wrapper .facets-container {
+    padding-top: 0;
+    border-top: 0;
+    border-bottom: 0;
+  }
+
+  html body .facets-wrapper .facets__form {
+    gap: 0;
+    margin-bottom: 0;
+  }
+
+  html body .facets-wrapper .facets__form > .facets__wrapper,
+  html body .facets-wrapper .facets__form > .facet-filters,
+  html body .facets-wrapper .facets__form > .product-count {
+    align-self: stretch;
+    display: flex;
+    align-items: stretch;
+    min-height: 5.6rem;
+    margin: 0;
+    padding: 0;
+    border-top: 0.1rem solid rgba(var(--color-foreground), 0.3);
+    border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.3);
+  }
+
+  html body .facets-wrapper .facets__wrapper {
+    flex-wrap: nowrap;
+  }
+
+  html body .facets-wrapper .facets__heading {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    margin: 0;
+    padding: 0 2.4rem 0 0;
+    border-right: 0.1rem solid rgba(var(--color-foreground), 0.3);
+    color: rgb(var(--color-foreground));
+  }
+
+  html body .facets-wrapper .facets__disclosure {
+    display: flex;
+    margin: 0;
+    border-right: 0.1rem solid rgba(var(--color-foreground), 0.3);
+  }
+
+  html body .facets-wrapper .facets__summary {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0 2.4rem;
+    color: rgb(var(--color-foreground));
+    transition: background-color 0.2s;
+  }
+
+  html body .facets-wrapper .facets__summary:hover,
+  html body .facets-wrapper .facets__disclosure[open] > .facets__summary {
+    background-color: rgba(var(--color-foreground), 0.04);
+  }
+
+  html body .facets-wrapper .facets__summary:focus-visible {
+    outline: 0.2rem solid rgb(var(--color-foreground));
+    outline-offset: -0.3rem;
+    box-shadow: none;
+  }
+
+  html body .facets-wrapper .facets__summary > div {
+    display: flex;
+    align-items: center;
+    gap: 1.4rem;
+  }
+
+  /* Plus, minus when open, in place of Dawn's caret. */
+  html body .facets-wrapper .facets__summary .icon-caret,
+  html body .facets-wrapper .facets__summary .svg-wrapper {
+    display: none;
+  }
+
+  /* The space after the last filter is open strip, as on the reference. */
+  html body .facets-wrapper .facets__disclosure:last-of-type {
+    border-right: 0;
+  }
+
+  html body .facets-wrapper .facets__summary > div::after {
+    content: '';
+    width: 1.1rem;
+    height: 1.1rem;
+    flex: 0 0 auto;
+    background:
+      linear-gradient(currentColor, currentColor) center / 100% 0.1rem no-repeat,
+      linear-gradient(currentColor, currentColor) center / 0.1rem 100% no-repeat;
+  }
+
+  html body .facets-wrapper .facets__disclosure[open] > .facets__summary > div::after {
+    background: linear-gradient(currentColor, currentColor) center / 100% 0.1rem no-repeat;
+  }
+
+  /* The panel's top edge lies on the strip's bottom line, its left edge on the line
+     before the box. */
+  html body .facets-wrapper .facets__disclosure .facets__display {
+    top: 100%;
+    left: -0.1rem;
+    border: 0.1rem solid rgba(var(--color-foreground), 0.3);
+    box-shadow: none;
+    animation: none;
+  }
+
+  html body .facets-wrapper .facets__header {
+    border-bottom-color: rgba(var(--color-foreground), 0.15);
+  }
+
+  html body .facets-wrapper .facets__form > .facet-filters {
+    padding: 0 2.4rem;
+    border-left: 0.1rem solid rgba(var(--color-foreground), 0.3);
+  }
+
+  html body .facets-wrapper .facet-filters__field {
+    align-items: center;
+  }
+
+  html body .facets-wrapper .facets__form > .product-count {
+    align-items: center;
+    padding-left: 2.4rem;
+    border-left: 0.1rem solid rgba(var(--color-foreground), 0.3);
+  }
+
+  html body .facets-wrapper .active-facets-desktop {
+    margin-top: 0;
+    padding-top: 0.4rem;
+  }
+}
+
+/* Tablets: four filters, sorting and the count share 738px. The words „Филтриране:“ and
+   „Сортиране:“ are left to screen readers, the boxes are narrower. */
+@media screen and (min-width: 750px) and (max-width: 989px) {
+  html body .facets-wrapper .facets__heading,
+  html body .facets-wrapper .facet-filters__label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  html body .facets-wrapper .facets__summary {
+    padding: 0 1.6rem;
+  }
+
+  /* The filters keep their width; sorting takes what is left and shortens its text. */
+  html body .facets-wrapper .facets__form {
+    grid-template-columns: max-content minmax(0, 1fr) max-content;
+  }
+
+  html body .facets-wrapper .facets__form > .facet-filters {
+    min-width: 0;
+    padding: 0 1.6rem;
+  }
+
+  html body .facets-wrapper .facet-filters__field,
+  html body .facets-wrapper .facet-filters__field .select {
+    min-width: 0;
+  }
+
+  html body .facets-wrapper .facet-filters__field .select__select {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  html body .facets-wrapper .facets__form > .product-count {
+    padding-left: 1.6rem;
+  }
+}
+
+/* Chosen filters (computers and phones): square boxes on the bar's line colour instead of
+   Dawn's rounded pills (2026-10-06, owner). */
+html body .facets-wrapper span.active-facets__button-inner {
+  min-height: 3.6rem;
+  padding: 0 1.2rem;
+  border-radius: 0;
+  box-shadow: 0 0 0 0.1rem rgba(var(--color-foreground), 0.3);
+  font-size: 1.3rem;
+}
+
+html body .facets-wrapper .active-facets__button:hover .active-facets__button-inner {
+  box-shadow: 0 0 0 0.1rem rgb(var(--color-foreground));
+}
+
+html body .facets-wrapper a.active-facets__button:focus-visible .active-facets__button-inner {
+  box-shadow: 0 0 0 0.1rem rgb(var(--color-foreground)), 0 0 0 0.3rem rgb(var(--color-background)),
+    0 0 0 0.5rem rgb(var(--color-foreground));
+}
+
 /* Phones (2026-10-05, owner): „Филтри“ with a count of selected filters on the left,
    sorting on the right of the same bar, the product count under it. */
 .cj-bar-sort {
@@ -5383,16 +5582,18 @@ html body .facets-wrapper .facets__display {
   display: none;
 }
 
-/* Phones, second pass (2026-10-05, owner): „Филтри“ and „Сортиране“ are matching
-   outlined buttons, side by side, equal width and height (48px), 8px corners (the shape
-   taken from hestiahome.bg), our ink and Jost. The ruled lines of the bar are dropped on
-   phones so the buttons do not sit inside a second frame. */
+/* Phones, second pass (2026-10-05, owner): „Филтри“ and „Сортиране“ side by side, equal
+   width and height (48px), our ink and Jost.
+   Third pass (2026-10-06, owner): the two are one connected bar, as on moonmagic.com: a
+   line above and below running to the screen edges, one line between the halves, square.
+   This replaces the separate 8px-cornered buttons; the icons, the count and the labels
+   stay. */
 @media screen and (max-width: 749px) {
   html body .facets-wrapper .facets-container {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    column-gap: 0.8rem;
+    column-gap: 0;
     align-items: stretch;
-    padding-top: 0.8rem;
+    padding-top: 0;
     border-top: 0;
     border-bottom: 0;
   }
@@ -5400,7 +5601,7 @@ html body .facets-wrapper .facets__display {
   html body .facets-wrapper .mobile-facets__wrapper {
     grid-column: 1;
     grid-row: 1;
-    margin: 0;
+    margin: 0 0 0 -1.5rem;
   }
 
   html body .facets-wrapper .mobile-facets__wrapper > .mobile-facets__disclosure {
@@ -5426,8 +5627,10 @@ html body .facets-wrapper .facets__display {
     min-height: 4.8rem;
     margin: 0;
     padding: 0 1.4rem;
-    border: 0.1rem solid rgba(var(--color-foreground), 0.35);
-    border-radius: 0.8rem;
+    border: 0;
+    border-top: 0.1rem solid rgba(var(--color-foreground), 0.3);
+    border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.3);
+    border-radius: 0;
     background: transparent;
     color: rgb(var(--color-foreground));
     font-family: var(--font-body-family);
@@ -5436,12 +5639,12 @@ html body .facets-wrapper .facets__display {
     letter-spacing: 0.04em;
     text-transform: none;
     cursor: pointer;
-    transition: border-color 0.2s;
+    transition: background-color 0.2s;
   }
 
   html body .facets-wrapper .mobile-facets__open:hover,
   html body .facets-wrapper .cj-bar-sort:hover {
-    border-color: rgb(var(--color-foreground));
+    background-color: rgba(var(--color-foreground), 0.04);
   }
 
   html body .facets-wrapper .mobile-facets__open .svg-wrapper {
@@ -5466,7 +5669,7 @@ html body .facets-wrapper .facets__display {
   html body .facets-wrapper .mobile-facets__open-wrapper:focus-visible .mobile-facets__open,
   html body .facets-wrapper .cj-bar-sort:focus-within {
     outline: 0.2rem solid rgb(var(--color-foreground));
-    outline-offset: 0.2rem;
+    outline-offset: -0.3rem;
   }
 
   html body .facets-wrapper .cj-bar-sort {
@@ -5474,6 +5677,9 @@ html body .facets-wrapper .facets__display {
     grid-row: 1;
     position: relative;
     justify-self: stretch;
+    width: auto;
+    margin-right: -1.5rem;
+    border-left: 0.1rem solid rgba(var(--color-foreground), 0.3);
   }
 
   html body .facets-wrapper .cj-bar-sort__face {
@@ -5518,6 +5724,67 @@ html body .facets-wrapper .facets__display {
   /* Sorting is on the bar, so the drawer holds filters only. */
   html body .facets-wrapper #FacetFiltersFormMobile .mobile-facets__details:has(#SortBy-mobile) {
     display: none;
+  }
+
+  /* The drawer in the same connected boxes (2026-10-06, owner): the filters are full-width
+     rows on lines, in the bar's small capitals; a line under the heading and above the
+     buttons. The arrows still open each filter's own panel (Dawn). */
+  html body .facets-wrapper .mobile-facets__header {
+    border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.3);
+  }
+
+  html body .facets-wrapper #FacetsWrapperMobile {
+    padding-top: 0;
+  }
+
+  html body .facets-wrapper #FacetsWrapperMobile > .mobile-facets__details {
+    border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.15);
+  }
+
+  html body .facets-wrapper #FacetsWrapperMobile > .mobile-facets__details > .mobile-facets__summary {
+    display: flex;
+    align-items: center;
+    min-height: 5.6rem;
+    padding-top: 0;
+    padding-bottom: 0;
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  html body .facets-wrapper #FacetsWrapperMobile > .mobile-facets__details > .mobile-facets__summary > div {
+    flex: 1;
+  }
+
+  html body .facets-wrapper .mobile-facets__footer {
+    border-top: 0.1rem solid rgba(var(--color-foreground), 0.3);
+  }
+
+  /* „Покажи резултатите (N)“ full width on one line (it wrapped to three lines at half
+     width), „Изчисти“ under it with a 44px tap height. */
+  html body .facets-wrapper .mobile-facets__footer {
+    flex-wrap: wrap;
+    padding: 1.6rem 2rem 0.8rem;
+  }
+
+  html body .facets-wrapper .mobile-facets__footer > * {
+    flex: 1 1 100%;
+    width: 100%;
+    margin: 0;
+  }
+
+  html body .facets-wrapper .mobile-facets__footer > .button {
+    order: -1;
+    min-height: 4.8rem;
+    padding: 0 1.2rem;
+  }
+
+  html body .facets-wrapper .mobile-facets__footer .mobile-facets__clear {
+    display: inline-flex;
+    align-items: center;
+    min-height: 4.4rem;
+    padding: 0 1.2rem;
   }
 }
 
