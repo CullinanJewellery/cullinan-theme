@@ -8,7 +8,37 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
-## 2026-10-06 — colour proposal (not applied) **(owner)**
+## 2026-10-06 — desktop photos restored, palette applied, blush footer, black buttons **(owner)**
+Done one at a time, each checked on the real draft preview at 1440, 375 and 320 (no sideways overflow). Before/after
+page: https://claude.ai/artifact/VCk9LEMzx8ffSsnoHfqeQX.
+1. **Desktop photos as before** (owner: closer to MoonMagic; not the phone layout). From git history:
+   - product page `gallery_layout` back to `columns` (the two-column mosaic of 10-02; 2826eba had made it `thumbnail`);
+   - collection cards: 8795aad had made frames square with `contain`. Restored for ≥750px only, via the new
+     `--ratio-percent-wide` (first photo's ratio) and `cover` in `#product-grid`. Measured at 1440: 390×520 portrait
+     cards, the bracelet 390×293. Phones unchanged: 172×172 at 375, 144×144 at 320, `contain`, swipe, dots and bag
+     as before; the phone product slider unchanged (320×320). Way back: delete the ≥750 block in crown.css and set
+     `gallery_layout` to `thumbnail`.
+2. **Palette applied** (owner answered "Apply proposal"): scheme-1 `#FFFFFF`, scheme-6 `#F5F3EF` (and the phone
+   category band literal), scheme-2 `#F2E4DE` (and the new-arrivals literal). Other backgrounds untouched.
+3. **Footer**: a muted warm blush `#E3CAC2` (not the proposed taupe), lines `#C9ABA1`, as its own `.footer.gradient`
+   rule, because scheme-5 stays `#E9D9D0` for the hero. Espresso 10.4:1, 75% text 5.5:1. The first push was dropped
+   (two pushes under a minute apart) and was re-sent.
+4. **Black buttons**: schemes 1, 2, 5, 6 and 8 have button `#000000` with label `#FFFFFF`, and the hero override is black too
+   (ruby `#D62246` ends). Hover and focus `#2B2B2B`, pressed `#3A3A3A`, white label, on Add to cart, the cart
+   checkout (drawer and page), the category slider, hero, view-all, atelier, stones, workshop, custom request and
+   Judge.me (its button colours too; stars stay rose gold). Checked live: Add to cart, /cart checkout (test cart
+   cleared), hero, zodiac, stones, workshop and category buttons all compute black with a white label.
+   **Kept as they are**: the zodiac's pink indicators, stars, colour swatches, arrows, text links, outline buttons, the
+   newsletter's light button on its dark band (a black one would vanish there) and the Facebook/Instagram buttons.
+   Way back: the pre-381b60d values (rosewood `#6E3B30`/`#FBF8F6`, pink `#E6BAB9` hovers).
+5. **Row photo preview untouched**: the CSS hover the owner confirmed on the iPhone was not edited, and no script
+   was added.
+- Not checked: the hover colours by a real pointer. The browser tool cannot hold a hover, so the colours were
+  confirmed in the loaded stylesheet rules instead.
+
+---
+
+## 2026-10-06 — colour proposal (applied later the same day, see above) **(owner)**
 - MoonMagic's colours sampled live. A coordinated palette was shown on the real homepage at 1440 and 375 by CSS
   injected in the browser (nothing committed to the theme): white page, warm greige bands `#F5F3EF`, blush
   `#F2E4DE`, warm taupe footer `#CBBBAD`. Buttons and „Добави в количката“ unchanged. Contrast measured on the page:

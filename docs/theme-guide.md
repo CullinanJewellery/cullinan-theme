@@ -97,7 +97,7 @@ collection), **social band** („Още от нашите бижута“ / „�
 | Trust lines | `trust_lines` block | Up to three icon + sentence lines; an empty line prints nothing. Now: cash on delivery (flagged, A2) and engraving on request; the third line (couriers) is empty since 2026-10-04 |
 | Variant picker | `snippets/product-variant-picker.liquid`, `product-variant-options.liquid`, `product-twin-*.liquid`, `assets/variant-twin-sync.js` | Metal options drawn first; pills for size; metal as a custom drop-down with colour dots; **a colour option is hidden when a material option names a colour in every value**, and both ids travel together so the right variant is chosen; sold-out computed from variants |
 | Product rows (featured collection) | Dawn `featured-collection.liquid` + `crown.css` | The numeric counter („1 / от 4“) between the arrows is hidden visually (kept for screen readers) since 2026-10-04; arrows unchanged |
-| Gallery | `snippets/product-media-gallery.liquid`, `assets/gallery-dots.js`, `crown.css` | Square tiles, no gaps; lone picture fitted; phone: full-bleed slides with dots |
+| Gallery | `snippets/product-media-gallery.liquid`, `assets/gallery-dots.js`, `crown.css` | Computer: two-column mosaic (`gallery_layout: columns` in product.json, restored 2026-10-06; "thumbnail" 10-05 to 10-06), square tiles, no gaps; lone picture fitted; phone: full-bleed slides with dots |
 | Zoom viewer | `snippets/product-media-modal.liquid`, `assets/product-modal.js`, `assets/component-product-viewer.css` | Thumbnail strip ≥990px, progress bar on phones, keyboard and swipe |
 | Recently viewed | `sections/recently-viewed.liquid`, `assets/recently-viewed.js` | localStorage list (per browser); hidden until another product is stored |
 | Questions | Dawn `disclosures` section (prints only what Shopify's product disclosures supply; nothing today) | The product page **no longer carries a copy of the За нас FAQ** (removed 2026-10-03, `1c60b42`); the FAQ lives only in `templates/page.about.json` |
@@ -120,6 +120,10 @@ collection), **social band** („Още от нашите бижута“ / „�
   syncs the circles, handles circle taps and swatches, and cancels a click that ends a drag. `.card__inner` is a
   stacking context: on two-photo cards it is lifted above the stretched title link (z 2, cart icon z 3) and Dawn's
   inner `.card__content` has `pointer-events: none`.
+- Frame shape: the template's `image_ratio` (square on collection pages) sets `--ratio-percent`. The snippet also
+  writes `--ratio-percent-wide` (the first photo's own ratio); in `#product-grid` from 750px crown.css uses it
+  (`!important`, the other is inline) with `object-fit: cover`, so computers get the earlier photo-shaped cards and
+  phones keep square frames with `contain` (2026-10-06).
 - Product rows (Най-продавани, Може да ви хареса; sections with `show_secondary_image`): preview mode, no bag
   (`quick_add: none`). A relevant second photo fades in on CSS `:hover` of `.card__photo-link`
   (both photos in one product link over the card; as moonmagic's rows; no script). Наскоро разгледани does the same
@@ -133,7 +137,7 @@ collection), **social band** („Още от нашите бижута“ / „�
 
 - 46rem sheet (full screen on phones), square; options as values only (material first, colour hidden where the page
   hides it); three reassurance lines from Theme settings → Cart (**one is the 14-day return line, flagged**);
-  checkout button square, rosewood (the scheme's button) → pink hover.
+  checkout button square, black (the scheme's button) → near-black `#2B2B2B` hover, `#3A3A3A` pressed (2026-10-06; rosewood → pink before).
 - **The `/cart` page** keeps Dawn's table layout but reads like the drawer (end of `assets/cullinan-cart.css`, scoped to
   `#main-cart-items` / `#main-cart-footer`): the same options line (`cart-item-options`), „Премахни“ in words, the same
   checkout button (48px, 15px bold capitals). Shopify's accelerated buttons (Shop Pay, PayPal) are drawn only when the

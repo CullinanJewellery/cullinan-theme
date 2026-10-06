@@ -15,7 +15,7 @@ the code is the truth and this file is out of date: fix this file.
 ## 1. Direction
 
 **"Мрамор" (direction C, chosen by the owner 2026-10-04)**: marble and rose gold. Warm, light grounds; espresso ink;
-rosewood as the one action colour; Prata headings in sentence case; Jost for everything else. Restrained, generous
+black buttons with white labels (since 2026-10-06; rosewood before); Prata headings in sentence case; Jost for everything else. Restrained, generous
 space, nothing burned into photographs.
 
 Identity comes from Cullinan's own facts (workshop in Veliko Tarnovo, handmade since 1991, own 3D designs, personal
@@ -27,16 +27,16 @@ service), not from any reference brand. References are used per question (see `C
 
 | Scheme | Background | Text | Button / label | Used for |
 |---|---|---|---|---|
-| scheme-1 | `#FBF8F6` marble white | `#2A1E1A` espresso | `#6E3B30` / `#FBF8F6` | Page ground, product cards, trust band, product page |
-| scheme-2 | `#EBDFD8` pale rose-clay | `#2A1E1A` | `#6E3B30` / `#FBF8F6` | Alternating bands: story band, custom-request band |
+| scheme-1 | `#FFFFFF` white (2026-10-06; `#FBF8F6` before) | `#2A1E1A` espresso | `#000000` / `#FFFFFF` | Page ground, product cards, trust band, product page |
+| scheme-2 | `#F2E4DE` soft blush (2026-10-06; `#EBDFD8` before) | `#2A1E1A` | `#000000` / `#FFFFFF` | Alternating bands: story band, custom-request band |
 | scheme-3 | `#2A1E1A` espresso | `#F3EAE5` | `#F3EAE5` / `#2A1E1A` | Dark bands (the newsletter section's scheme) |
 | scheme-4 | `#8C6A2E` muted gold | `#FFFFFF` | `#FFFFFF` / `#8C6A2E` | Badges and accents only |
-| scheme-5 | `#E9D9D0` rose-clay | `#2A1E1A` | `#6E3B30` / `#FBF8F6` | Hero, Контакти banner, **footer** |
-| scheme-6 | `#F3EBE6` pale marble | `#2A1E1A` | `#6E3B30` / `#FBF8F6` | Stones band, review cards, cart reassurances, **menu dropdown and phone drawer**, product-page social band |
+| scheme-5 | `#E9D9D0` rose-clay | `#2A1E1A` | `#000000` / `#FFFFFF` | Hero, Контакти banner, footer markup (the footer's own ground is a literal, below) |
+| scheme-6 | `#F5F3EF` warm greige (2026-10-06; `#F3EBE6` before) | `#2A1E1A` | `#000000` / `#FFFFFF` | Stones band, review cards, cart reassurances, **menu dropdown and phone drawer**, product-page social band |
 | scheme-7 | `#D8DFBF` milky matcha | `#221F1C` | `#3D5229` / `#FFFFFF` | Not on the homepage any more (kept) |
-| scheme-8 | `#F1E3DC` marble blush | `#2A1E1A` | `#6E3B30` / `#FBF8F6` | Контакти open-row panels, footer social hover on Контакти |
+| scheme-8 | `#F1E3DC` marble blush | `#2A1E1A` | `#000000` / `#FFFFFF` | Контакти open-row panels, footer social hover on Контакти |
 
-Rosewood label on rosewood button: 8.5:1. Espresso on marble white: well above 4.5:1.
+White label on black button: 21:1. Espresso on white 16.2:1, on greige 14.6:1, on blush 13.0:1.
 
 ### Literal colours (not in a scheme; in `assets/crown.css` or section CSS)
 
@@ -46,19 +46,22 @@ Rosewood label on rosewood button: 8.5:1. Espresso on marble white: well above 4
 | `#E1CDC2` | Hero text panel on a phone; marquee boxes | Phone panel colour |
 | `#EADBD2 → #D9C4B8` | Silver banner (hidden) | A deeper relative of the hero |
 | `#2A1E1A`, field `#382B26`, text `#F3EAE5`, outline `#85736B` | Newsletter band | Dark band with its own form colours |
-| `#CDB5A8` (`--footer-line`) | Hairlines inside the footer | The footer is scheme-5; the old pink vanished on it |
+| `#E3CAC2` muted warm blush, lines `#C9ABA1` | Footer ground (`.footer.gradient` in `crown.css`), 2026-10-06 | Scheme-5 is shared with the hero; espresso 10.4:1, 75% text 5.5:1. `#E9D9D0` with lines `#CDB5A8` before |
+| `#F5F3EF` | Phone band behind „Разгледайте по категория“ (`section-category-mosaic.css`) | Matches scheme-6; `#F3EBE6` before |
 | `rgba(24,14,9,.66 → 0)` gradient | Over the hero photograph, from the left, ≥750px | Keeps the light hero words legible |
-| `#D62246` ruby, white label (5.0:1) | Hero button only | **Exception**, see §8 |
-| `#E6BAB9` | Add to cart hover fill; header icon hover line | Kept pink hover; espresso label 9.3:1 |
+| `0,0,0` (hero override of `--color-button`) | Hero button | Black like every main button since 2026-10-06; ruby `#D62246` before |
+| `#2B2B2B` hover, `#3A3A3A` pressed, white label | Every main button (end of `crown.css`, "Black main buttons"; Add to cart; cart checkout; category slider) | Owner: hover and pressed close to black |
+| `#E6BAB9` | Header icon hover line; zodiac indicators | Pink kept where it is not a button (Add to cart and cart hovers were pink until 2026-10-06) |
 | `#B76E79` rose gold | Review stars (theme, review cards, Judge.me) | Graphic, 3.6:1 (graphics need 3:1) |
 | `rgb(0 0 0)` | Buy-box text, footer text, stones row lines, homepage social heading | **Exception**, see §8 |
 | `#1877F2`, `#C13584` | Homepage "Вижте работата ни" Facebook / Instagram buttons | **Exception**, see §8 |
 | `rgb(240 232 226)` / `rgb(233 217 208)` | Empty picture slots / menu picture slots | Warm flat placeholders, never a graphic |
 | `rgba(235,223,216,.88)` (pale rose-clay) | 30px circle behind the card bag icon (hover `#E9D9D0`) | The cards' marble white would vanish on white product photos |
 
-**Rule**: no pure white or pure black as a *ground*. Pure black text is used only where listed above.
+**Rule** (since 2026-10-06): white is the page ground; black is used for button fills and the text listed above, never as a
+band ground.
 
-### Proposal 2026-10-06: a MoonMagic-like palette (NOT applied; shown on the preview by injected CSS only)
+### Palette of 2026-10-06 (applied after the owner's approval; footer and buttons changed from the proposal)
 
 Reference, sampled live on moonmagic.com (homepage, 1440 and 375):
 - **Page and header:** white `#FFFFFF`.
@@ -73,13 +76,12 @@ Reference, sampled live on moonmagic.com (homepage, 1440 and 375):
 | Page, header, cards (scheme-1) | `#FBF8F6` marble white | `#FFFFFF` white (photos are shot on white) | 16.2:1 |
 | Soft bands: stones, workshop (scheme-6) and the phone category band | `#F3EBE6` | `#F5F3EF` warm greige (≈ their `#F5F4F0`) | 14.6:1 |
 | Accent band: custom request (scheme-2) | `#EBDFD8` | `#F2E4DE` soft blush (between ours and their `#F2D9D1`) | 13.0:1 |
-| Footer | `#E9D9D0` pale rose-clay | **`#CBBBAD` warm taupe**, lines `#B09E8F` | 8.7:1; black footer text 11.3:1; 75% espresso links 4.9:1 |
+| Footer | `#E9D9D0` pale rose-clay | proposed `#CBBBAD` warm taupe, **not used**: the owner chose a muted warm blush, applied as `#E3CAC2` | 10.4:1 |
 | Text, announcement bar | espresso | unchanged | — |
-| Buttons incl. „Добави в количката“ | rosewood `#6E3B30`, pink `#E6BAB9` hover | unchanged (kept, owner) | label 8.5:1; hover label 9.3:1 |
+| Buttons incl. „Добави в количката“ | rosewood `#6E3B30`, pink `#E6BAB9` hover | **black**, white label, hover `#2B2B2B`, pressed `#3A3A3A` (owner, 2026-10-06) | label 21:1 |
 
-Applying it would mean changing `settings_data.json` colour schemes 1, 2 and 6, plus a footer override (scheme-5 is
-shared with the hero, so the footer gets its own rule), and updating the "no pure white ground" rule (§2).
-Known side effect: product photos whose own background is not pure white show a faint edge on a white page.
+Applied in `settings_data.json` (schemes 1, 2, 6; button colours in 1, 2, 5, 6, 8), the footer rule and the button
+rules in `crown.css`. Way back: the values in the "Now" column. Known side effect: product photos whose own background is not pure white show a faint edge on a white page.
 
 ## 3. Typography
 
@@ -109,6 +111,9 @@ Known side effect: product photos whose own background is not pure white show a 
 - Section padding is per section (Dawn ranges, step 4). Mobile padding renders at 0.75× the setting.
 - Between two coloured bands: 40px of page ground (30px on phones), done with margins, not padding.
 - Breakpoints in use: 750px (phone / tablet), 990px (tablet / computer; inline menu, 3-column grids).
+- Collection cards from 750px take the first photo's own shape, photo filling the frame (restored 2026-10-06, as
+  before 2026-10-05); phones keep square frames with the whole piece fitted inside. Product page gallery on a
+  computer: two-column mosaic (`gallery_layout: columns`, restored 2026-10-06).
 - Product grids: 3 across from 990px (cards 30% of the row, gaps share the rest), 2 across on phones with 12px side
   margins and an 8px gap (171.5px square pictures at 375px, 144px at 320; 2026-10-06); product rows: one card plus a peek on phones (72vw ≈ 270px at 375, 2026-10-06; Наскоро
   разгледани 1.27 columns ≈ 269px).
@@ -117,7 +122,7 @@ Known side effect: product photos whose own background is not pure white show a 
 
 - **All corners square**: buttons, inputs, cards, media, badges, variant pills, popups (`*_radius: 0`).
   Exceptions: the round ring around trust-band icons, colour swatch circles, the About page jump-link pills.
-- Hairlines: `rgba(var(--color-button), 0.16–0.22)` (rosewood at low opacity) for dividers and card borders.
+- Hairlines: `rgba(var(--color-button), 0.16–0.22)` (black at low opacity since 2026-10-06; rosewood before) for dividers and card borders.
 - Shadows: none, except the filter dropdown panel (`0 1.6rem 4rem rgba(42,30,26,.1)`).
 
 ## 6. Buttons
@@ -127,10 +132,12 @@ Known side effect: product photos whose own background is not pure white show a 
   (hero, view-all, story, stones, Контакти, custom request; `crown.css` "Buttons, one language", `html body` prefix
   for specificity). Hero button 34rem wide.
 - **Phones**: the sizes the owner tuned per component remain (e.g. hero 4.8rem/1.4rem, others 5.4rem/1.2rem).
-- Primary: scheme button colour fill (rosewood on light schemes), label in the scheme's label colour.
-- Hover/focus: fill drops to transparent with a 1px inset outline in the button colour, label takes the button
-  colour; 0.35s colour transition; lifts 0.25rem (`animations_hover_elements: vertical-lift`), no lift under
-  reduced motion. **Exception**: Add to cart fills with `#E6BAB9` on hover.
+- Primary: **black fill, white label** on every light scheme (2026-10-06, owner), hero included.
+- Hover/focus: near-black fill `#2B2B2B`, white label; pressed `#3A3A3A`; 0.35s colour transition; lifts 0.25rem
+  (`animations_hover_elements: vertical-lift`), no lift under reduced motion. (Until 2026-10-06 most buttons
+  emptied to an outline on hover and Add to cart turned pink.)
+- Outline (secondary) buttons, arrows, text links, the newsletter button on the dark band and the Facebook /
+  Instagram buttons keep their own styles.
 - Product cards do not lift or zoom on hover (switched off in `crown.css`).
 - Not `.button` and untouched: the newsletter field button (`.field__button`), social links (`.list-social__link`).
 
@@ -148,10 +155,10 @@ Known side effect: product photos whose own background is not pure white show a 
 | Exception | Where | Reason | Status |
 |---|---|---|---|
 | Words over a photograph | Hero; Контакти banner and footer social block; newsletter; silver banner (hidden) | Owner's explicit choices (2026-09-06 to 09-21) | Current |
-| Bright ruby button `#D62246` | Hero only | Owner wants the main button to stand out (2026-09-21, 10-04) | Current |
+| Bright ruby button `#D62246` | Hero only | Owner wanted the main button to stand out (2026-09-21, 10-04) | **Ended 2026-10-06** (all main buttons black) |
 | Pure black text | Buy box, footer, stones lines, homepage social heading | Owner asked for "the blackest" text by name | Current |
 | Facebook blue / Instagram magenta buttons | Homepage "Вижте работата ни" | Owner's request (2026-09-20); 3.1:1 and 3.7:1 on the clay footer copy | Current, **flagged** (contrast, palette) |
-| Pink hover `#E6BAB9` | Add to cart, header icons | Kept from earlier design | Current |
+| Pink hover `#E6BAB9` | Header icons (Add to cart until 2026-10-06) | Kept from earlier design | Current for icons only |
 | Pills | About page jump links | Owner's choice 2026-09-13; navigation chips, not buttons | Current |
 | White (`#fff`) behind product photos | Наскоро разгледани, Най-продавани, Може да ви хареса | Owner's request 2026-10-06: the photos are shot on white, so whole photos in square frames show no bands | Current |
 | Round shapes on cards | Bag icon circle (top-right), photo circles (bottom-left), colour swatches | Owner's request 2026-10-06 (circle behind the bag); indicators and swatches are round by nature | Current |
@@ -180,5 +187,7 @@ Known side effect: product photos whose own background is not pure white show a 
 | Jost headings (700 / 550 / 400) | Prata 400 | 2026-10-04 |
 | Pink `#F3E1DB` / moonmagic gradient, black newsletter, black buttons | Direction C palette | 2026-10-04 |
 | Red hero button `#E63946` | Ruby `#D62246` | 2026-10-04 |
+| Rosewood buttons, ruby hero button, pink Add to cart hover | Black buttons, near-black hover | 2026-10-06 |
+| Marble white page `#FBF8F6`, footer `#E9D9D0` | White page, blush footer `#E3CAC2` | 2026-10-06 |
 | Buy-box price 22px, card price 18px | 18px / 15px | 2026-10-04 |
 | Hero heading 57px | 40px max | 2026-10-04 |
