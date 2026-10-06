@@ -98,7 +98,21 @@
         >
           {%- if card_product.featured_media -%}
             <div class="card__media{% if image_shape and image_shape != 'default' %} shape--{{ image_shape }} color-{{ settings.card_color_scheme }} gradient{% endif %}">
-              <div class="media media--transparent media--hover-effect">
+              {%- comment -%}
+                Two photos (2026-10-06, owner): the photo area becomes a sideways scroller with
+                two slides that follows the finger and settles on one photo (CSS scroll snap, as
+                on moonmagic.com). Each slide is the product link, out of the tab order (the
+                title link stays the one for keyboards and screen readers).
+              {%- endcomment -%}
+              <div
+                class="media media--transparent media--hover-effect{% if card_second_media %} card__track{% endif %}"
+                {% if card_second_media %}
+                  data-card-track
+                {% endif %}
+              >
+                {%- if card_second_media -%}
+                  <a class="card__slide" href="{{ card_url }}" tabindex="-1" aria-hidden="true">
+                {%- endif -%}
                 {% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
                 <img
                   srcset="
@@ -123,6 +137,8 @@
                 {% comment %}theme-check-enable ImgLazyLoading{% endcomment %}
 
                 {%- if card_second_media -%}
+                  </a>
+                  <a class="card__slide" href="{{ card_url }}" tabindex="-1" aria-hidden="true">
                   <img
                     srcset="
                       {%- if card_second_media.width >= 360 -%}{{ card_second_media | image_url: width: 360 }} 360w,{%- endif -%}
@@ -138,6 +154,7 @@
                     width="{{ card_second_media.width }}"
                     height="{{ card_second_media.height }}"
                   >
+                  </a>
                 {%- endif -%}
                 {%- if card_product.media[1] != null and show_secondary_image and card_second_media == null -%}
                   <img

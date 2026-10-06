@@ -6742,50 +6742,79 @@ html body .product-card-wrapper .card__badge .badge {
 }
 
 /* ---------------------------------------------------------------------------
-   Two photos per card on collection pages (2026-10-05, owner; assets/card-photos.js).
-   The second photo lies over the first and fades in; two small dots near the foot of
-   the photo, each with a 44px-tall tap area, above the card's stretched link. The
-   photo area pans vertically only, so a sideways swipe stays with the card.
+   Two photos per card on collection pages (2026-10-05, owner; slide 2026-10-06,
+   owner, interaction as on moonmagic.com's phone cards; assets/card-photos.js).
+   The photo area is a sideways scroller with two slides: the photos move with the
+   finger, side by side, and snap to one on release. No fade. Vertical scrolling
+   stays with the page (the browser decides the direction). The scroller sits above
+   the card's stretched title link so the finger reaches it; each slide is itself
+   the product link, so a tap still opens the piece. Two small circles at the
+   photo's bottom-right (the cart icon is top-right), each a 28x44 tap area; the
+   current one filled, the other an outline.
    --------------------------------------------------------------------------- */
-html body .product-card-wrapper .card:has(.card__photo-2) .card__inner {
-  touch-action: pan-y;
+/* .card__inner is its own stacking context, so the whole photo area is lifted above the
+   stretched title link (z-index 1); otherwise the link takes every touch, dots included.
+   The cart icon (z-index 3) stays above it. */
+html body .product-card-wrapper .card:has([data-card-track]) .card__inner {
+  z-index: 2;
 }
 
-html body .product-card-wrapper .card__media .media img.card__photo-2 {
+/* Dawn's layer over the photo inside .card__inner (hidden duplicate title, badge) lets
+   touches through to the scroller. */
+html body .product-card-wrapper .card:has([data-card-track]) .card__inner > .card__content {
+  pointer-events: none;
+}
+
+html body .product-card-wrapper .card__media .media.card__track {
+  z-index: 2;
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+html body .product-card-wrapper .card__media .media.card__track::-webkit-scrollbar {
+  display: none;
+}
+
+html body .product-card-wrapper .card__track > .card__slide {
+  position: relative;
+  top: auto;
+  left: auto;
+  display: block;
+  flex: 0 0 100%;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+html body .product-card-wrapper .card__track > .card__slide > img {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: contain;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-html body .product-card-wrapper .card[data-photo='1'] .card__media .media img.card__photo-2 {
   opacity: 1;
-}
-
-html body .product-card-wrapper .card[data-photo='1'] .card__media .media img:not(.card__photo-2) {
-  opacity: 0;
-}
-
-html body .product-card-wrapper .card__media .media img:not(.card__photo-2) {
-  transition: opacity 0.3s ease;
+  transition: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html body .product-card-wrapper .card__media .media img {
-    transition: none;
+  html body .product-card-wrapper .card__media .media.card__track {
+    scroll-behavior: auto;
   }
 }
 
 .card__photo-dots {
   position: absolute;
-  left: 50%;
+  right: 0.2rem;
   bottom: 0;
   z-index: 3;
   display: flex;
-  transform: translateX(-50%);
 }
 
 .card__photo-dot {
@@ -6802,14 +6831,17 @@ html body .product-card-wrapper .card__media .media img:not(.card__photo-2) {
 
 .card__photo-dot span {
   display: block;
+  box-sizing: border-box;
   width: 0.7rem;
   height: 0.7rem;
+  border: 0.1rem solid rgba(42, 30, 26, 0.55);
   border-radius: 50%;
-  background: rgba(42, 30, 26, 0.25);
-  transition: background-color 0.2s;
+  background: transparent;
+  transition: background-color 0.2s, border-color 0.2s;
 }
 
 .card__photo-dot[aria-pressed='true'] span {
+  border-color: rgb(42 30 26);
   background: rgb(42 30 26);
 }
 
@@ -6833,7 +6865,7 @@ html body .card-wrapper .quick-add--icon {
   position: absolute;
   top: 0;
   right: 0;
-  z-index: 2;
+  z-index: 3;
   grid-row-start: auto;
   margin: 0;
 }

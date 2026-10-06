@@ -1,74 +1,94 @@
 /*
-  Two photos per product card on collection pages (snippets/card-product.liquid,
-  2026-10-05, owner). Document-level listeners, so cards re-drawn by filtering keep
-  working. A sideways touch swipe on the photo or a tap on a dot switches photos; the
-  tap that ends a swipe does not open the product; vertical scrolling is untouched
-  (touch-action: pan-y in crown.css). Picking a colour swatch returns to photo 1, which
-  shows the chosen metal.
+  Two photos per product card on collection pages (snippets/card-product.liquid).
+  2026-10-05, owner; 2026-10-06, owner: the photo area is a sideways scroller
+  ([data-card-track], CSS scroll snap in crown.css), so the photos follow the finger
+  and settle on one by themselves. This script only:
+  - keeps the two circles (and card.dataset.photo) in step with the scroller;
+  - scrolls to a photo when its circle is tapped;
+  - returns to photo 1, which shows the chosen metal, when a colour swatch is picked;
+  - cancels a click that ends a sideways drag, so a swipe never opens the product.
+  Document-level listeners, so cards re-drawn by filtering keep working.
 */
 (function () {
   if (window.cullinanCardPhotos) return;
   window.cullinanCardPhotos = true;
 
-  function setPhoto(card, index) {
+  var still = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  function cardOf(el) {
+    var wrapper = el.closest('.card-wrapper');
+    return wrapper && wrapper.querySelector('.card');
+  }
+
+  function indexOf(track) {
+    return track.clientWidth ? Math.round(track.scrollLeft / track.clientWidth) : 0;
+  }
+
+  function mark(card, index) {
     card.dataset.photo = String(index);
     card.querySelectorAll('[data-card-photo]').forEach(function (dot) {
       dot.setAttribute('aria-pressed', String(dot.dataset.cardPhoto === String(index)));
     });
   }
 
+  function go(card, index, smooth) {
+    var track = card.querySelector('[data-card-track]');
+    if (!track) return;
+    track.scrollTo({ left: index * track.clientWidth, behavior: smooth && !still.matches ? 'smooth' : 'auto' });
+    mark(card, index);
+  }
+
+  // Scroll events do not bubble; a capturing listener on the document sees them all.
+  document.addEventListener(
+    'scroll',
+    function (event) {
+      var track = event.target;
+      if (!track.matches || !track.matches('[data-card-track]')) return;
+      track.dataset.scrolledAt = String(Date.now());
+      var card = cardOf(track);
+      if (card) mark(card, indexOf(track));
+    },
+    true
+  );
+
   var start = null;
-  var swipedAt = 0;
 
   document.addEventListener(
     'pointerdown',
     function (event) {
-      if (event.pointerType === 'mouse') return;
-      var card = event.target.closest('.card');
-      if (!card || !card.querySelector('.card__photo-2')) return;
-      var media = card.querySelector('.card__media');
-      var box = media.getBoundingClientRect();
-      if (event.clientY > box.bottom || event.clientY < box.top) return;
-      start = { card: card, x: event.clientX, y: event.clientY };
+      var track = event.target.closest && event.target.closest('[data-card-track]');
+      start = track ? { track: track, left: track.scrollLeft } : null;
     },
     { passive: true }
   );
 
-  document.addEventListener('pointerup', function (event) {
-    if (!start) return;
-    var s = start;
-    start = null;
-    var dx = event.clientX - s.x;
-    var dy = event.clientY - s.y;
-    if (Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy)) return;
-    swipedAt = Date.now();
-    setPhoto(s.card, dx < 0 ? 1 : 0);
-  });
-
-  document.addEventListener('pointercancel', function () {
-    start = null;
-  });
-
   document.addEventListener(
     'click',
     function (event) {
-      // The click that ends a swipe never opens the product.
-      if (Date.now() - swipedAt < 500 && event.target.closest('.card')) {
-        event.preventDefault();
-        event.stopPropagation();
+      // A drag on the photos is not a tap: the slide's link is not followed.
+      var track = event.target.closest('[data-card-track]');
+      if (track) {
+        var moved = start && start.track === track && Math.abs(track.scrollLeft - start.left) > 4;
+        var settling = Date.now() - Number(track.dataset.scrolledAt || 0) < 120;
+        start = null;
+        if (moved || settling) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
         return;
       }
       var dot = event.target.closest('[data-card-photo]');
       if (dot) {
         event.preventDefault();
         event.stopPropagation();
-        setPhoto(dot.closest('.card'), Number(dot.dataset.cardPhoto));
+        var dotCard = cardOf(dot);
+        if (dotCard) go(dotCard, Number(dot.dataset.cardPhoto), true);
         return;
       }
       var swatch = event.target.closest('.card__swatch button');
       if (swatch) {
-        var card = swatch.closest('.card-wrapper') && swatch.closest('.card-wrapper').querySelector('.card');
-        if (card && card.querySelector('.card__photo-2')) setPhoto(card, 0);
+        var swatchCard = cardOf(swatch);
+        if (swatchCard && swatchCard.querySelector('[data-card-track]')) go(swatchCard, 0, false);
       }
     },
     true
@@ -80,9 +100,8 @@
     function (event) {
       var swatch = event.target.closest && event.target.closest('.card__swatch button');
       if (!swatch) return;
-      var wrapper = swatch.closest('.card-wrapper');
-      var card = wrapper && wrapper.querySelector('.card');
-      if (card && card.dataset.photo === '1') setPhoto(card, 0);
+      var card = cardOf(swatch);
+      if (card && card.dataset.photo === '1') go(card, 0, false);
     },
     true
   );
