@@ -139,7 +139,9 @@ recently-viewed[hidden],
   position: relative;
   aspect-ratio: 1 / 1;
   overflow: hidden;
-  background-color: rgba(var(--color-foreground), 0.06);
+  /* White behind the photo (2026-10-06, owner): the jewellery photos are shot on white,
+     so a non-square photo shown whole no longer leaves grey bands. */
+  background-color: #fff;
 }
 
 .recently-viewed__image {

@@ -7027,3 +7027,11 @@ html body .card-wrapper.product-card-wrapper .card[data-photo-preview] .card__he
     transition: none;
   }
 }
+
+/* Product rows (Най-продавани, Може да ви хареса): white behind the photo, like
+   Наскоро разгледани (2026-10-06, owner). The photos are shot on white, so a photo shown
+   whole in its square no longer sits on the page's marble with visible bands. */
+html body [id^='shopify-section-'][id$='__featured_collection'] .product-card-wrapper .card__media,
+html body [id^='shopify-section-'][id$='__related-products'] .product-card-wrapper .card__media {
+  background-color: #fff;
+}
