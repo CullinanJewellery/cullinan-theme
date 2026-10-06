@@ -463,15 +463,15 @@ cart-drawer cart-drawer-items {
   }
 }
 
-/* moonmagic's pink on hover, as Add to cart answers it (see "Add to cart" in crown.css);
-   the label is the site's near-black because white on this pink is 1.74:1 */
+/* Near-black on hover, as Add to cart answers it (2026-10-06, owner: black buttons;
+   moonmagic's pink #E6BAB9 with a dark label before) */
 #CartDrawer .cart__checkout-button.button:not([disabled]):hover,
 #CartDrawer .cart__checkout-button.button:not([disabled]):focus-visible,
 #CartDrawer .drawer__inner-empty .button:hover,
 #CartDrawer .drawer__inner-empty .button:focus-visible {
-  background-color: #e6bab9;
-  color: rgb(var(--color-foreground));
-  box-shadow: inset 0 0 0 1px #e6bab9;
+  background-color: #2b2b2b;
+  color: #ffffff;
+  box-shadow: inset 0 0 0 1px #2b2b2b;
 }
 
 /* ---- the empty bag ------------------------------------------------------ */
@@ -576,9 +576,9 @@ cart-drawer cart-drawer-items {
 
 #main-cart-footer .cart__checkout-button.button:not([disabled]):hover,
 #main-cart-footer .cart__checkout-button.button:not([disabled]):focus-visible {
-  background-color: #e6bab9;
-  color: rgb(var(--color-foreground));
-  box-shadow: inset 0 0 0 1px #e6bab9;
+  background-color: #2b2b2b;
+  color: #ffffff;
+  box-shadow: inset 0 0 0 1px #2b2b2b;
 }
 
 @media screen and (max-width: 749px) {
