@@ -45,9 +45,31 @@
 >
   <div class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}">
     {%- paginate collection.products by section.settings.products_per_page -%}
+      {%- comment -%}
+        Cullinan (2026-10-06, owner; arrangement from moonmagic.com's desktop filters): with the
+        sidebar layout, one connected bar above the sidebar and the grid, ruled above and below:
+        a button that hides or shows the filters on the left, the count and the sort on the right.
+        Phones keep the drawer (small-hide). The button only toggles a class on .facets-vertical.
+      {%- endcomment -%}
+      {%- if section.settings.filter_type == 'vertical' -%}
+        <div class="cj-filter-bar page-width small-hide">
+          {%- if section.settings.enable_filtering and collection.filters != empty -%}
+            <button
+              type="button"
+              class="cj-filter-bar__toggle"
+              aria-controls="main-collection-filters"
+              aria-expanded="true"
+              data-cj-filter-toggle
+            >
+              <span class="cj-filter-bar__hide">Скрий филтрите</span>
+              <span class="cj-filter-bar__show">Покажи филтрите</span>
+              <span class="cj-filter-bar__sign" aria-hidden="true"></span>
+            </button>
+          {%- endif -%}
+      {%- endif -%}
       {% comment %} Sort is the first tabbable element when filter type is vertical {% endcomment %}
       {%- if section.settings.enable_sorting and section.settings.filter_type == 'vertical' -%}
-        <facet-filters-form class="facets facets-vertical-sort page-width small-hide">
+        <facet-filters-form class="facets facets-vertical-sort small-hide">
           <form class="facets-vertical-form" id="FacetSortForm">
             <div class="facet-filters sorting caption">
               <div class="facet-filters__field">
@@ -102,6 +124,23 @@
             </div>
           </form>
         </facet-filters-form>
+      {%- endif -%}
+      {%- if section.settings.filter_type == 'vertical' -%}
+        </div>
+        <script>
+          (function () {
+            if (window.cullinanFilterToggle) return;
+            window.cullinanFilterToggle = true;
+            document.addEventListener('click', function (event) {
+              var button = event.target.closest('[data-cj-filter-toggle]');
+              if (!button) return;
+              var open = button.getAttribute('aria-expanded') !== 'false';
+              button.setAttribute('aria-expanded', String(!open));
+              var layout = document.querySelector('.facets-vertical');
+              if (layout) layout.classList.toggle('cj-filters-hidden', open);
+            });
+          })();
+        </script>
       {%- endif -%}
 
       <div class="{% if section.settings.filter_type == 'vertical' %} facets-vertical page-width{% endif %}">
