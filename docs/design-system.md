@@ -58,6 +58,29 @@ Rosewood label on rosewood button: 8.5:1. Espresso on marble white: well above 4
 
 **Rule**: no pure white or pure black as a *ground*. Pure black text is used only where listed above.
 
+### Proposal 2026-10-06: a MoonMagic-like palette (NOT applied; shown on the preview by injected CSS only)
+
+Reference, sampled live on moonmagic.com (homepage, 1440 and 375):
+- **Page and header:** white `#FFFFFF`.
+- **Bands:** warm off-white `#F5F4F0` / `#FAF8F4`, blush `#F2D9D1`, one sage band `#819F79`.
+- **Dark bars:** black announcement bar and newsletter band.
+- **Text and buttons:** black text, black buttons.
+- **Pink:** `#E6BAB9` (the pink of our Add to cart hover).
+- **Footer:** white.
+
+| Role | Now | Proposed | Contrast with espresso `#2A1E1A` |
+|---|---|---|---|
+| Page, header, cards (scheme-1) | `#FBF8F6` marble white | `#FFFFFF` white (photos are shot on white) | 16.2:1 |
+| Soft bands: stones, workshop (scheme-6) and the phone category band | `#F3EBE6` | `#F5F3EF` warm greige (≈ their `#F5F4F0`) | 14.6:1 |
+| Accent band: custom request (scheme-2) | `#EBDFD8` | `#F2E4DE` soft blush (between ours and their `#F2D9D1`) | 13.0:1 |
+| Footer | `#E9D9D0` pale rose-clay | **`#CBBBAD` warm taupe**, lines `#B09E8F` | 8.7:1; black footer text 11.3:1; 75% espresso links 4.9:1 |
+| Text, announcement bar | espresso | unchanged | — |
+| Buttons incl. „Добави в количката“ | rosewood `#6E3B30`, pink `#E6BAB9` hover | unchanged (kept, owner) | label 8.5:1; hover label 9.3:1 |
+
+Applying it would mean changing `settings_data.json` colour schemes 1, 2 and 6, plus a footer override (scheme-5 is
+shared with the hero, so the footer gets its own rule), and updating the "no pure white ground" rule (§2).
+Known side effect: product photos whose own background is not pure white show a faint edge on a white page.
+
 ## 3. Typography
 
 | Role | Face | Weight | Case / tracking | Source |

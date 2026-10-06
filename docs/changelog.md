@@ -8,6 +8,15 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-06 — colour proposal (not applied) **(owner)**
+- MoonMagic's colours sampled live. A coordinated palette was shown on the real homepage at 1440 and 375 by CSS
+  injected in the browser (nothing committed to the theme): white page, warm greige bands `#F5F3EF`, blush
+  `#F2E4DE`, warm taupe footer `#CBBBAD`. Buttons and „Добави в количката“ unchanged. Contrast measured on the page:
+  every footer text at or above 4.9:1. Table and how to apply: design-system.md §2 „Proposal 2026-10-06“. Waiting for
+  the owner's decision.
+
+---
+
 ## 2026-10-06 — row photo preview: CSS hover, as moonmagic.com **(owner)**
 - **Reference** (moonmagic.com, their own stylesheet, phone width): in slider rows (`.swiper-slide`) the second photo
   lies over the first (absolute, opacity 0) and fades in on plain `:hover` of the photo (`opacity 0.2s
