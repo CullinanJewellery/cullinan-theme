@@ -172,10 +172,20 @@ recently-viewed[hidden],
 /* Second-photo preview (2026-10-06, owner; assets/card-photo-preview.js): the stored
    second photo lies over the first and shows only while previewing -- the mouse over
    the photo, or a finger resting on it. No long-press menu or selection on the card. */
-.recently-viewed__media .recently-viewed__image--preview {
+/* The first photo whole (contain) at every width, the second filling the square
+   (cover), a 0.2 s crossfade (2026-10-06, owner). */
+.recently-viewed__link[data-photo-preview] .recently-viewed__media .recently-viewed__image {
   object-fit: contain;
+}
+
+.recently-viewed__link[data-photo-preview] .recently-viewed__media .recently-viewed__image--preview {
+  object-fit: cover;
+}
+
+.recently-viewed__media .recently-viewed__image--preview {
+  object-fit: cover;
   opacity: 0;
-  transition: opacity 0.25s ease;
+  transition: opacity 0.2s ease;
 }
 
 .recently-viewed__link[data-previewing='true'] .recently-viewed__image--preview {
@@ -183,7 +193,7 @@ recently-viewed[hidden],
 }
 
 .recently-viewed__link[data-photo-preview] .recently-viewed__image:not(.recently-viewed__image--preview) {
-  transition: opacity 0.25s ease;
+  transition: opacity 0.2s ease;
 }
 
 .recently-viewed__link[data-previewing='true'] .recently-viewed__image:not(.recently-viewed__image--preview) {
@@ -194,6 +204,7 @@ recently-viewed[hidden],
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 @media (prefers-reduced-motion: reduce) {

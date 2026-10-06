@@ -6990,21 +6990,24 @@ html body quick-add-modal .product .product-trust {
    long-press menu or text selection on the photo or the title link. Cards without a
    relevant second photo are unchanged; collection grids (swipe and dots) untouched.
    --------------------------------------------------------------------------- */
+/* The second photo fills the square (cover); the first stays whole (contain).
+   A 0.2 s crossfade (2026-10-06, owner). */
 html body .card-wrapper.product-card-wrapper .card[data-photo-preview] .media.media--hover-effect > img.card__photo-preview {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   opacity: 0;
   transform: none;
-  transition: opacity 0.25s ease;
+  transition: opacity 0.2s ease;
 }
 
 html body .card-wrapper.product-card-wrapper .card[data-photo-preview] .media.media--hover-effect > img:first-child:not(:only-child) {
+  object-fit: contain;
   opacity: 1;
   transform: none;
-  transition: opacity 0.25s ease;
+  transition: opacity 0.2s ease;
 }
 
 html body .card-wrapper.product-card-wrapper .card[data-photo-preview][data-previewing='true'] .media.media--hover-effect > img.card__photo-preview {
@@ -7020,6 +7023,7 @@ html body .card-wrapper.product-card-wrapper .card[data-photo-preview] .card__he
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 @media (prefers-reduced-motion: reduce) {
