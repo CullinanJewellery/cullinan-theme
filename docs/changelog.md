@@ -8,6 +8,24 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-07 — desktop menu font, category indicators on phones, footer line **(owner)**
+Checked on the real draft preview at 1440, 375 and 320; no sideways overflow.
+1. **Desktop menu**: the words take the phone menu's collection-name face and weight: Prata at the headings' weight
+   (400) with the same 0.012em stroke. The desktop size (12.5px), tracking (0.12em) and capitals are kept, and so
+   is the colour. The dropdown arrows are hidden, and the summaries lose the arrow's 27px, so every word has 12px
+   either side. Checked with a real pointer: hover opens „Пръстени“, a click opened the rings collection, Space
+   opens the dropdown. The phone drawer is untouched (still Prata 2.4rem, sentence case).
+2. **„Разгледайте по категория“ on phones**: the previous/next arrows are gone. The line indicators, which had been
+   removed on 2026-10-06, are back in their place, one per category (6 now), centred under the slides (group centre
+   188 = block centre 188 at 375). Each is a 44px-tall button; the current one is pink `#E6BAB9`. A tap on line 3 went
+   to „Висулки“ and marked it. Swiping and the next-card peek are unchanged, and so are the cards, photos, names and
+   buttons. `category-slider.js` works without the arrows. The desktop mosaic is unchanged (the slider is hidden there).
+3. **Footer line above the address and hours**: 2px in the footer line colour `#C9ABA1`, 12px above and 12px to the
+   text. This matches the line above the social icons by „Свържете се с нас“, measured on the page (both 2px, 12 / 12).
+   It shows on the desktop column and in the phone accordion „Нека ви помогнем“. The address and hours are unchanged.
+
+---
+
 ## 2026-10-06 (evening) — button hovers back, ruby hero and trust row, card hover, sidebar filters, menu **(owner)**
 Done one at a time, each checked on the real draft preview (desktop 1440; phones 375 and 320 where they could change).
 1. **Button hover and pressed as before the colour update**: the near-black hover/pressed block was removed and Add

@@ -192,7 +192,7 @@ rules in `crown.css`. Way back: the values in the "Now" column. Known side effec
 | Red hero button `#E63946` | Ruby `#D62246` | 2026-10-04 |
 | Rosewood buttons | Black buttons (hover behaviour and the ruby hero button kept) | 2026-10-06 |
 | Near-black hover `#2B2B2B` / pressed `#3A3A3A` | The earlier hover behaviour, restored | 2026-10-06 |
-| Header menu words in Jost 700 + 0.03em stroke | Jost 400, no stroke | 2026-10-06 |
+| Header menu words in Jost 700 + 0.03em stroke | Jost 400, no stroke (10-06), then Prata like the phone menu's names, no arrows | 2026-10-06 / 10-07 |
 | Marble white page `#FBF8F6`, footer `#E9D9D0` | White page, blush footer `#E3CAC2` | 2026-10-06 |
 | Buy-box price 22px, card price 18px | 18px / 15px | 2026-10-04 |
 | Hero heading 57px | 40px max | 2026-10-04 |
