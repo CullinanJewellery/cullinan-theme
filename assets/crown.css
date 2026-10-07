@@ -8125,3 +8125,23 @@ html body .cj-wishlist__empty-text {
   margin: 0;
   font-size: 1.6rem;
 }
+
+/* Narrow phones with the „Любими“ heart (2026-10-07): three icons at the right need 40px
+   more, and below 375px the bar would overflow (345px at 320). Up to 374px only: the bar's
+   side padding 15px instead of 30, the logo 100px instead of 112 without its 7.5px side
+   padding: at most 314px, so 320 fits. From 375px nothing changes. */
+@media screen and (max-width: 374px) {
+  html body .header-wrapper .header {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  html body .header .header__heading-logo-wrapper {
+    width: 10rem;
+  }
+
+  html body .header .header__heading-link {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
