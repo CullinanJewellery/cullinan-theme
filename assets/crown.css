@@ -7790,18 +7790,33 @@ html body [id^='shopify-section-'][id$='__related-products'] .product-card-wrapp
 }
 
 /* ---------------------------------------------------------------------------
-   Collection grid beside the filters, after moonmagic.com (2026-10-07, owner: "match
-   their photo-frame sizing, grid spacing and positioning with filters both open and
-   closed"). Theirs at 1440: three columns in both states, the space between columns 5%
-   of the grid's width, 20px between rows, 30px above the first row; the cards 308px
-   wide with the filters open and 415px closed. A grid in place of Dawn's flex row, so
-   the columns follow the sidebar while it opens and closes. Tablets: two columns.
+   Collection grid beside the filters (2026-10-07, owner: "the cards and photos should
+   keep the same size when filters open or close; they should only slide slightly to
+   the left, smoothly"). Looked at again on moonmagic.com: theirs do resize (308 → 415px
+   at 1440 while their 356px column runs to 0 in about 0.3s); the owner asked for fixed
+   cards, so ours differ from theirs on purpose.
+   - The card width is worked out from the page's width, not the grid's, so it is the
+     same with the filters open or closed: the space left beside an open sidebar
+     (--cj-w: the section's width less the 356px sidebar, the 1px line and 2 x 20px)
+     shared as three columns of 30% with two 5% gaps (308px cards, 51px gaps at 1440).
+   - The grid sits in the middle of whatever room it has. With the filters open it
+     fills the room exactly; as the sidebar closes (its 0.3s width change above) the
+     room grows and the centred grid glides left, about 180px at 1440, never wider
+     than the room, so no overlap and no sideways scroll.
+   - The count and chips row above takes the grid's width, so it moves with it.
+   Tablets (750–989): two columns of 47.5% from a 280px sidebar.
    --------------------------------------------------------------------------- */
 @media screen and (min-width: 750px) {
+  html body .facets-vertical {
+    container-type: inline-size;
+    --cj-w: calc(100cqw - 32.1rem);
+  }
+
   html body .facets-vertical #product-grid.product-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    column-gap: 5%;
+    grid-template-columns: repeat(2, calc(var(--cj-w) * 0.475));
+    justify-content: center;
+    column-gap: calc(var(--cj-w) * 0.05);
     row-gap: 2rem;
     margin: 0;
     padding: 0;
@@ -7814,11 +7829,21 @@ html body [id^='shopify-section-'][id$='__related-products'] .product-card-wrapp
     margin: 0;
     padding: 0;
   }
+
+  html body .facets-vertical .cj-results {
+    width: var(--cj-w);
+    max-width: 100%;
+    margin-inline: auto;
+  }
 }
 
 @media screen and (min-width: 990px) {
+  html body .facets-vertical {
+    --cj-w: calc(100cqw - 39.7rem);
+  }
+
   html body .facets-vertical #product-grid.product-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(3, calc(var(--cj-w) * 0.3));
   }
 }
 
@@ -7864,5 +7889,68 @@ html body [id^='shopify-section-'][id$='__related-products'] .product-card-wrapp
 
   html body .section-header.shopify-section-group-header-group {
     z-index: 5;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   The dropdown, shorter (2026-10-07, owner)
+   - Height: the picture had become a 360px square flush in the panel's corner
+     (2026-10-03, after moonmagic's), which made every dropdown 404px tall. It is back
+     to its earlier look -- a square inside the page width with its label under it,
+     not in a strip -- at 180px, and the panel is its height plus 32px of air above and
+     below: about 276px. The links keep their columns and their place, 32px from the
+     top.
+   - Text: all of it black. The first-level headings (Дамски, Мъжки, …) a tenth
+     heavier (a 0.012em stroke on Jost 400) and never underlined; the links under them
+     regular, black, 14px (16px before). The picture's label black, Jost 400.
+   - The menu names in the bar are not touched.
+   --------------------------------------------------------------------------- */
+@media screen and (min-width: 990px) {
+  html body .mega-menu__content--with-promo {
+    --mega-promo-size: 18rem;
+    min-height: calc(3.2rem + var(--mega-promo-size) + 1.2rem + 2rem + 3.2rem + 2 * var(--popup-border-width, 1px));
+  }
+
+  html body .mega-menu .mega-menu__body {
+    padding-top: 3.2rem;
+    padding-bottom: 3.2rem;
+  }
+
+  html body .mega-menu .mega-menu__content--with-promo .mega-menu__body {
+    padding-right: calc(5rem + var(--mega-promo-size) + 4rem);
+  }
+
+  html body .mega-menu__content--with-promo .mega-menu__promo {
+    top: 3.2rem;
+    right: max(5rem, calc((100% - var(--page-width)) / 2 + 5rem));
+    width: var(--mega-promo-size);
+  }
+
+  html body .mega-menu__promo-label {
+    height: auto;
+    margin-top: 1.2rem;
+    color: rgb(0 0 0);
+    line-height: 2rem;
+  }
+
+  html body .mega-menu .mega-menu__content .mega-menu__link {
+    color: rgb(0 0 0);
+  }
+
+  html body .mega-menu .mega-menu__body .mega-menu__link--level-2 {
+    -webkit-text-stroke: 0.012em currentcolor;
+  }
+
+  html body .mega-menu .mega-menu__content .mega-menu__link--level-2,
+  html body .mega-menu .mega-menu__content .mega-menu__link--level-2:hover,
+  html body .mega-menu .mega-menu__content .mega-menu__link--level-2:focus-visible {
+    text-decoration: none;
+  }
+
+  html body .mega-menu .mega-menu__list .list-unstyled .mega-menu__link,
+  html body .mega-menu .mega-menu__list .list-unstyled > li:first-child .mega-menu__link {
+    font-size: 1.4rem;
+    font-weight: 400;
+    -webkit-text-stroke: 0;
   }
 }
