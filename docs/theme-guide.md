@@ -108,8 +108,10 @@ collection), **social band** („Още от нашите бижута“ / „�
 - Collection heading (sections/main-collection-banner.liquid, 2026-10-07): the name alone (no hidden „Колекция:“).
   Picture behind the breadcrumb and name: `collection.metafields.custom.heading_image` (define it in admin as a
   file/image metafield to use a separate picture), else `collection.image` (admin → collection → Image), else none
-  (plain area). Cover, focal point, a dark veil, white words; the product section's top padding moves inside so the
-  height is unchanged (crown.css, „Collection heading picture“).
+  (plain area). „Всички бижута“ (/collections/all, Shopify's built-in list) takes `all_image` / `all_title` from the
+  section's settings. Cover, focal point, a dark veil, white words; with a picture the area is a fifth taller
+  (phones 140px, computers 173px, padding split above and below) and the product section's top padding moves
+  inside (crown.css, „Collection heading picture“). Without one, the plain area at its old height.
 
 - Collection page from 750px: `filter_type: vertical`, styled after moonmagic.com's desktop filters (2026-10-07).
   - Bar `.cj-filter-bar`, full width, 72px, dark lines: „Скрий/Покажи филтрите (n)“ (toggles `.cj-filters-hidden`

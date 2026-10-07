@@ -8,6 +8,22 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-07 — collection heading picture a fifth taller; on every collection **(owner)**
+- With a picture the area is about 20% taller, the extra split above the trail and under the name:
+  - phones 117 → 140px (32px above the trail, 29px under the name);
+  - computers 144 → 173px (42 / 39px).
+  The filters still start right under it (gap 0). Without a picture the plain area keeps its old height.
+- Every collection page uses the same section, so each shows its own image and name. „Всички бижута“
+  (/collections/all) is Shopify's built-in all-products list with no image or title of its own; its picture and an
+  optional heading now come from the section's settings (theme editor → collection page → „Всички бижута“). Empty
+  heading = Shopify's name, „Продукти“.
+- **Checked with a real collection image** (the owner added one to „Пръстени“: a 1440 × 540 marble picture): 375 and
+  320 → 140px, 32/29, filters directly below, no sideways scroll; 1440 → 173px, 42/39, filters directly below.
+- **Real fallback**: „Всички бижута“, „Обеци“, „Гривни“ and „Висулки“ have no image, so they show the plain area at
+  its old height, with no broken image (checked on the preview). No simulated image was used this time.
+
+---
+
 ## 2026-10-07 — smaller phone menu names; compact desktop filters; collection heading picture **(owner)**
 1. **Phone menu**: the collection names 24 → 20.4px (−15%), still Prata 400; rows 53 → 49px (tap areas above
    44px). „Вход / Регистрация“, submenus and desktop unchanged.
