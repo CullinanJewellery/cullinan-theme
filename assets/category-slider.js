@@ -1,7 +1,7 @@
 /*
   <category-slider> (sections/category-mosaic.liquid), 2026-10-05.
-  Phones only: the arrows step one slide in the scroll-snap track and are disabled
-  at the ends; the track is a focusable region (arrow keys scroll it). No autoplay.
+  Phones only: the line indicators go to their slide and mark the current one (the
+  previous/next arrows were removed 2026-10-07; the code still handles them if present); the track is a focusable region (arrow keys scroll it). No autoplay.
   Smooth scrolling only without reduced motion. Nothing happens from 750px up.
 */
 if (!customElements.get('category-slider')) {
@@ -21,8 +21,8 @@ if (!customElements.get('category-slider')) {
 
         this.lines = Array.from(this.querySelectorAll('[data-cat-go]'));
         this.lines.forEach((line) => line.addEventListener('click', () => this.goTo(Number(line.dataset.catGo))));
-        this.prev.addEventListener('click', () => this.step(-1));
-        this.next.addEventListener('click', () => this.step(1));
+        if (this.prev) this.prev.addEventListener('click', () => this.step(-1));
+        if (this.next) this.next.addEventListener('click', () => this.step(1));
         this.track.addEventListener('scroll', () => this.update(), { passive: true });
         this.onMedia = () => this.setup();
         this.phone.addEventListener('change', this.onMedia);
@@ -70,10 +70,11 @@ if (!customElements.get('category-slider')) {
 
       update() {
         const max = this.track.scrollWidth - this.track.clientWidth;
-        this.prev.disabled = this.track.scrollLeft <= 2;
-        this.next.disabled = this.track.scrollLeft >= max - 2;
+        const atEnd = this.track.scrollLeft >= max - 2;
+        if (this.prev) this.prev.disabled = this.track.scrollLeft <= 2;
+        if (this.next) this.next.disabled = atEnd;
         // At the far end the last slide may not reach the start edge; count it as current.
-        const c = this.next.disabled ? this.slides.length - 1 : this.current();
+        const c = atEnd ? this.slides.length - 1 : this.current();
         (this.lines || []).forEach((line, i) => {
           if (i === c) line.setAttribute('aria-current', 'true');
           else line.removeAttribute('aria-current');

@@ -627,3 +627,62 @@
     margin-top: 2rem;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Category slider on phones, fourth pass (2026-10-07, owner): no previous/next
+   arrows; swiping, the next-card peek and the line indicators stay, the lines
+   centred under the slides. Each line is a 44px-tall button; the current line is
+   the pink of the site's indicators (#E6BAB9), the others faint. Cards, photos,
+   names and buttons unchanged. Way back: the arrows' markup in git before this.
+   --------------------------------------------------------------------------- */
+@media screen and (max-width: 749px) {
+  .mosaic-slider__controls {
+    justify-content: center;
+    margin-top: 1.2rem;
+  }
+
+  .mosaic-slider__lines {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+  }
+
+  .mosaic-slider__line {
+    position: relative;
+    width: 2.4rem;
+    height: 4.4rem;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+  }
+
+  .mosaic-slider__line::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 0.2rem;
+    transform: translateY(-50%);
+    background: rgba(var(--color-foreground), 0.18);
+    transition: background-color 0.25s, height 0.25s;
+  }
+
+  .mosaic-slider__line[aria-current='true']::before {
+    height: 0.3rem;
+    background: #e6bab9;
+  }
+
+  .mosaic-slider__line:focus-visible {
+    outline: 0.2rem solid rgb(var(--color-foreground));
+    outline-offset: -0.2rem;
+  }
+}
+
+@media screen and (max-width: 359px) {
+  .mosaic-slider__line {
+    width: 2rem;
+  }
+}

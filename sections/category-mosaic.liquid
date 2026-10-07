@@ -103,7 +103,7 @@
       photo, the name and one button to the collection (the short sentence was removed
       2026-10-06, owner: it repeated workshop facts). The next slide shows at the edge;
       scroll-snap swiping; two circular arrows (44x44) under it, disabled at the ends;
-      no line indicators (removed 2026-10-06), no counter, no autoplay. Hidden from
+      line indicators under it (back 2026-10-07, in place of the arrows), no counter, no autoplay. Hidden from
       750px, where the mosaic above is shown. Only tiles with a link appear here.
     {%- endcomment -%}
     <category-slider class="mosaic-slider">
@@ -136,13 +136,33 @@
           {%- endif -%}
         {%- endfor -%}
       </ul>
+      {%- comment -%}
+        Line indicators, one per slide, centred under the slides (2026-10-07, owner: no
+        previous/next arrows; swiping, the peek and tappable lines stay). Each line is a
+        44px-tall button that goes to its slide; the current one is marked.
+      {%- endcomment -%}
+      {%- liquid
+        assign cat_total = 0
+        for block in section.blocks
+          if block.settings.link != blank
+            assign cat_total = cat_total | plus: 1
+          endif
+        endfor
+      -%}
       <div class="mosaic-slider__controls" hidden>
-        <button type="button" class="slider-button slider-button--prev" data-cat-prev aria-label="Предишна категория">
-          <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
-        </button>
-        <button type="button" class="slider-button slider-button--next" data-cat-next aria-label="Следваща категория">
-          <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
-        </button>
+        <div class="mosaic-slider__lines" role="group" aria-label="Категории">
+          {%- for i in (1..cat_total) -%}
+            <button
+              type="button"
+              class="mosaic-slider__line"
+              data-cat-go="{{ forloop.index0 }}"
+              aria-label="Категория {{ i }} от {{ cat_total }}"
+              {% if forloop.first %}
+                aria-current="true"
+              {% endif %}
+            ></button>
+          {%- endfor -%}
+        </div>
       </div>
     </category-slider>
 
