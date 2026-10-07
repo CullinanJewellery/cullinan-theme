@@ -164,6 +164,7 @@ rules in `crown.css`. Way back: the values in the "Now" column. Known side effec
 | Pink hover `#E6BAB9` | Add to cart, cart checkout, header icons | Kept from earlier design | Current |
 | Pills | About page jump links | Owner's choice 2026-09-13; navigation chips, not buttons | Current |
 | White (`#fff`) behind product photos | Наскоро разгледани, Най-продавани, Може да ви хареса | Owner's request 2026-10-06: the photos are shot on white, so whole photos in square frames show no bands | Current |
+| Round-ended chips (16px radius) and round option boxes | Chosen filters above the collection grid; sort and list options | Owner 2026-10-07: desktop filters as close to moonmagic.com as possible | Current |
 | Round shapes on cards | Bag icon circle (top-right), photo circles (bottom-left), colour swatches | Owner's request 2026-10-06 (circle behind the bag); indicators and swatches are round by nature | Current |
 
 ## 9. Motion

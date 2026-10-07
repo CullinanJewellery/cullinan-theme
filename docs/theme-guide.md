@@ -105,10 +105,18 @@ collection), **social band** („Още от нашите бижута“ / „�
 
 ## 5. Collection and search
 
-- Collection page from 750px (2026-10-06, evening): `filter_type: vertical`. A connected bar (`.cj-filter-bar` in
-  main-collection-product-grid.liquid: „Скрий/Покажи филтрите“ button toggling `.cj-filters-hidden` on
-  `.facets-vertical`, count, sort) above a 26rem sidebar of hairline rows (crown.css, "Filters on tablets and
-  computers"). The phone bar below is shared with the horizontal layout (`filter_type != drawer` in facets.liquid).
+- Collection page from 750px: `filter_type: vertical`, styled after moonmagic.com's desktop filters (2026-10-07).
+  - Bar `.cj-filter-bar`, full width, 72px, dark lines: „Скрий/Покажи филтрите (n)“ (toggles `.cj-filters-hidden`
+    on `.facets-vertical`) and „Сортиране“. Sorting opens `#CjSortPanel` (buttons with `data-cj-sort-value`); the
+    real `#SortBy` select stays in the form, hidden, and is what facets.js sends.
+  - Sidebar 35.6rem against the page edge (28rem at 750–989), 79px rows; a 1px dark line to the grid.
+  - Price (facets.liquid, vertical only): „Нулиране“ (`.cj-facet-reset`, always rendered, shown by the script),
+    the range line and `<cj-price-slider>` (two unnamed range inputs writing into Shopify's price fields), then
+    the two fields with labels above.
+  - `.cj-results` at the top of `#ProductGridContainer` (so facets.js redraws it): count, chips (`.cj-chip`,
+    `facet-remove`), „Изчисти всички“; `data-cj-active` feeds the bar's count.
+  - Script `assets/collection-filters-desktop.js`; styles at the end of crown.css ("Collection filters on tablets
+    and computers, after moonmagic.com"). List filters are styled (round boxes) but none exist to test. The phone bar below is shared with the horizontal layout (`filter_type != drawer` in facets.liquid).
   Search still uses the horizontal strip described next.
 - Dawn's grids with `crown.css` sizing. Filter and sort bar as connected boxes (2026-10-06): one ruled strip with a
   line between parts, panels hanging from it; on phones one edge-to-edge bar „Филтри | Сортиране“ (`cj-bar-sort` hands

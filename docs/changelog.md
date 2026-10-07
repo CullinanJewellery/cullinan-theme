@@ -8,6 +8,44 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-07 — desktop collection filters rebuilt after MoonMagic **(owner)**
+- **Reference, inspected live** (moonmagic.com/en-eu/collections/rings, 1440):
+  - Bar: full width, 72px, 1px dark lines; „HIDE FILTERS (n) −“ / „SORT BY +“ in 15px/600 capitals with
+    1.5px tracking and 30px inner padding.
+  - Sidebar: 356px against the edge, 79px rows (24/50px padding) between faint lines, 1px dark line to the grid,
+    cards 21px from it.
+  - Open group: grey „Clear“, 40px option rows (13px/500 capitals) with 12px round boxes; selected = 8px dot.
+  - Price: range line (12px), slider (pink between 13px dark handles), two 20px fields with 9px capital labels.
+  - Above the grid: count (13px grey), chips (32px, 1px dark border, 16px radius, 13px/600 capitals, ×),
+    „Clear All“ (13px grey, underlined) at the right.
+  - Sort: a 250px panel under the bar (1px #E2E2E2, 15/13/5px padding), 30px rows with round boxes, the current
+    one underlined and filled.
+- **Ours now** (replaces the 2026-10-06 sidebar styling): the same arrangement and measurements in Jost and our
+  ink. Measured on the preview: bar 0–1425 × 72, sidebar 356, first row 79, cards from x 378.
+  - Bar: „Скрий филтрите (n) −“ and „Сортиране +“.
+  - Sort: a panel of Shopify's sort options, wider than 250px only as far as the Bulgarian names need to stay on
+    one line.
+  - Price: „Нулиране“, the range line, a two-handle slider writing into Shopify's own price fields, then
+    „От“ / „Към“.
+  - Above the grid: count, chips, „Изчисти всички“.
+  - Only the store's existing filter (price) shows; Bulgarian labels, counts and Shopify's filtering and sorting
+    are kept. List filters would get round boxes, but none exist, so that styling is untested.
+- **Deliberate difference from our square rule**: the chips are round-ended and the option boxes round, as on the
+  reference (owner asked for "as closely as possible"); design-system.md §8.
+- **Checked on the real preview (1440)**:
+  - open/close of the price group;
+  - slider to €150 → 3 of 4, chip „€0 – €150“, bar „(1)“, „Нулиране“ shown;
+  - typing 100 → 1 of 4;
+  - chip removal; „Изчисти всички“ (keeps the sort);
+  - sort panel: open, Escape and outside click close it, „Цена, от висока към ниска“ applied with the filter
+    kept;
+  - hide/show widens the grid 1069 → 1425.
+  **Phones unchanged** (375 and 320: two 50% halves, 48px, count and grid in the same place, the drawer opens,
+  no slider there).
+- Way back: git before this entry (styles, section, facets snippet, new script).
+
+---
+
 ## 2026-10-07 — desktop menu font, category indicators on phones, footer line **(owner)**
 Checked on the real draft preview at 1440, 375 and 320; no sideways overflow.
 1. **Desktop menu**: the words take the phone menu's collection-name face and weight: Prata at the headings' weight
