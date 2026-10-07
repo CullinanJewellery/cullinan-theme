@@ -7085,21 +7085,22 @@ html body [id^='shopify-section-'][id$='__related-products'] .product-card-wrapp
 }
 
 /* ---------------------------------------------------------------------------
-   Collection pages from 750px (2026-10-06, owner: "restore the earlier desktop photo
-   presentation"): each card frame takes its first photo's own shape and the photos
-   fill it, as before the square frames of 2026-10-05 (8795aad). Phones keep the
-   square frames with the whole piece fitted inside. --ratio-percent-wide is written
-   by card-product.liquid; !important because --ratio-percent is set inline.
+   Collection pages from 750px: square photo frames, as moonmagic.com's grid (2026-10-07,
+   owner: "match their photo-frame sizing"; their frames are square, 308px with the filters
+   open and 415px closed at 1440). The whole piece stays in view (contain); the photos are
+   shot on white, so the frame reads as filled. From 2026-10-06 to 10-07 each frame took
+   its first photo's own shape (--ratio-percent-wide, still written by card-product.liquid,
+   unused now). !important because --ratio-percent is set inline.
    --------------------------------------------------------------------------- */
 @media screen and (min-width: 750px) {
   html body #product-grid .product-card-wrapper .card,
   html body #product-grid .product-card-wrapper .card__inner {
-    --ratio-percent: var(--ratio-percent-wide, 100%) !important;
+    --ratio-percent: 100% !important;
   }
 
   html body #product-grid .product-card-wrapper .card__media .media img,
   html body #product-grid .product-card-wrapper .card__track > .card__slide > img {
-    object-fit: cover;
+    object-fit: contain;
   }
 }
 
@@ -7340,19 +7341,30 @@ html body [id^='shopify-section-'][id$='__related-products'] .product-card-wrapp
     padding: 0;
   }
 
+  /* Hiding and showing the filters (2026-10-07, after moonmagic.com): the column's width
+     runs to 0 and back in 0.3s and the grid beside it widens and narrows with it, so the
+     products are pushed and resized, never covered. The filters keep their own width
+     inside and are clipped; once closed they are out of the tab order (visibility). */
   html body .facets-vertical .facets-wrapper {
     flex: 0 0 35.6rem;
     width: 35.6rem;
     padding: 0;
     border-right: 0;
+    overflow: hidden;
+    visibility: visible;
+    transition: flex-basis 0.3s ease, width 0.3s ease, visibility 0s linear 0s;
   }
 
   html body .facets-vertical.cj-filters-hidden .facets-wrapper {
-    display: none;
+    flex-basis: 0;
+    width: 0;
+    visibility: hidden;
+    transition: flex-basis 0.3s ease, width 0.3s ease, visibility 0s linear 0.3s;
   }
 
   html body .facets-vertical .facets-wrapper .facets-container {
     display: block;
+    width: 35.6rem;
     padding: 0;
     border: 0;
   }
@@ -7361,15 +7373,13 @@ html body [id^='shopify-section-'][id$='__related-products'] .product-card-wrapp
     width: 100%;
   }
 
+  /* The grid: 30px above, 20px at the sides, the dark line kept at the left edge when the
+     filters are closed, as theirs. */
   html body .facets-vertical .product-grid-container {
+    flex: 1 1 auto;
     min-width: 0;
-    padding: 0 2rem 0 2.1rem;
+    padding: 3rem 2rem 0;
     border-left: 0.1rem solid rgb(var(--color-foreground));
-  }
-
-  html body .facets-vertical.cj-filters-hidden .product-grid-container {
-    padding-left: 2rem;
-    border-left: 0;
   }
 
   /* „Филтри:“ stays as the sidebar's name for screen readers; the chosen filters are
@@ -7753,14 +7763,98 @@ html body [id^='shopify-section-'][id$='__related-products'] .product-card-wrapp
 }
 
 @media screen and (min-width: 750px) and (max-width: 989px) {
-  html body .facets-vertical .facets-wrapper {
+  html body .facets-vertical .facets-wrapper,
+  html body .facets-vertical .facets-wrapper .facets-container {
     flex-basis: 28rem;
     width: 28rem;
+  }
+
+  html body .facets-vertical.cj-filters-hidden .facets-wrapper {
+    flex-basis: 0;
+    width: 0;
   }
 
   html body .facets-vertical .facets__disclosure-vertical .facets__summary,
   html body .facets-vertical .facets__display-vertical {
     padding-left: 3rem;
     padding-right: 3rem;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Collection grid beside the filters, after moonmagic.com (2026-10-07, owner: "match
+   their photo-frame sizing, grid spacing and positioning with filters both open and
+   closed"). Theirs at 1440: three columns in both states, the space between columns 5%
+   of the grid's width, 20px between rows, 30px above the first row; the cards 308px
+   wide with the filters open and 415px closed. A grid in place of Dawn's flex row, so
+   the columns follow the sidebar while it opens and closes. Tablets: two columns.
+   --------------------------------------------------------------------------- */
+@media screen and (min-width: 750px) {
+  html body .facets-vertical #product-grid.product-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 5%;
+    row-gap: 2rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  html body .facets-vertical #product-grid.product-grid > .grid__item {
+    width: auto;
+    max-width: none;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  html body .facets-vertical #product-grid.product-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html body .facets-vertical .facets-wrapper,
+  html body .facets-vertical.cj-filters-hidden .facets-wrapper {
+    transition: none;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Desktop menu (2026-10-07, owner)
+   - The words inside the dropdowns in the phone menu's face and weight for those
+     entries: Jost 400, no added stroke (they were 700 with a 0.03em stroke, the
+     picture label 600). Size, capitals and spacing unchanged.
+   - The collection names solid black at rest (75% before) and about a fifth heavier
+     under the cursor, on keyboard focus and while their dropdown is open: the stroke
+     goes from 0.012em to 0.044em (≈0.4px more at 12.5px; 0.4px added about 22% ink on
+     the canvas, 2026-10-03). A stroke never moves the letters.
+   - The header above the collection page's filter bar (z-index 4), so an open dropdown
+     is never cut by it, also with the sticky header after scrolling.
+   --------------------------------------------------------------------------- */
+@media screen and (min-width: 990px) {
+  html body .mega-menu .mega-menu__body .mega-menu__link--level-2,
+  html body .mega-menu .mega-menu__content .mega-menu__link,
+  html body .mega-menu__list .list-unstyled > li:first-child .mega-menu__link,
+  html body .mega-menu__promo-label {
+    font-family: var(--font-body-family);
+    font-weight: 400;
+    -webkit-text-stroke: 0;
+  }
+
+  html body .header__inline-menu .header__menu-item {
+    color: rgb(0 0 0);
+    transition: color 0.2s ease, -webkit-text-stroke-width 0.2s ease;
+  }
+
+  html body .header__inline-menu .header__menu-item:hover,
+  html body .header__inline-menu .header__menu-item:focus-visible,
+  html body .header__inline-menu details[open] > .header__menu-item {
+    -webkit-text-stroke-width: 0.044em;
+  }
+
+  html body .section-header.shopify-section-group-header-group {
+    z-index: 5;
   }
 }
