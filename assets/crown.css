@@ -7274,7 +7274,9 @@ html body [id^='shopify-section-'][id$='__related-products'] .product-card-wrapp
     top: calc(100% + 0.1rem);
     right: 2rem;
     z-index: 5;
-    width: 25rem;
+    /* 250px as theirs, wider only as far as the longer Bulgarian names need to stay on one line */
+    width: max-content;
+    min-width: 25rem;
     margin: 0;
     padding: 1.5rem 1.3rem 0.5rem;
     border: 0.1rem solid #e2e2e2;
@@ -7304,6 +7306,7 @@ html body [id^='shopify-section-'][id$='__related-products'] .product-card-wrapp
     letter-spacing: 0.04em;
     text-align: left;
     text-transform: uppercase;
+    white-space: nowrap;
     cursor: pointer;
   }
 
@@ -7383,6 +7386,7 @@ html body [id^='shopify-section-'][id$='__related-products'] .product-card-wrapp
     border: 0;
   }
 
+  html body .facets-vertical .active-facets-desktop > :not(.active-facets-vertical-filter),
   html body .facets-vertical .active-facets-desktop .active-facets-vertical-filter > :not(.facets__heading--vertical) {
     display: none;
   }
@@ -7410,6 +7414,7 @@ html body [id^='shopify-section-'][id$='__related-products'] .product-card-wrapp
     margin: 0;
     padding: 2.4rem 5rem;
     border: 0;
+    background: none;
     color: rgb(var(--color-foreground));
     font-family: var(--font-body-family);
     font-size: 1.5rem;
@@ -7417,6 +7422,12 @@ html body [id^='shopify-section-'][id$='__related-products'] .product-card-wrapp
     line-height: 3rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
+  }
+
+  /* No tint under the pointer or while open (the strip's rule above gives one). */
+  html body .facets-vertical .facets__disclosure-vertical .facets__summary:hover,
+  html body .facets-vertical .facets__disclosure-vertical[open] > .facets__summary {
+    background: none;
   }
 
   html body .facets-vertical .facets__disclosure-vertical[open] > .facets__summary {
@@ -7445,6 +7456,10 @@ html body [id^='shopify-section-'][id$='__related-products'] .product-card-wrapp
 
   /* Dawn's „Най-високата цена е …“; the range line below says it. */
   html body .facets-vertical .facets__header-vertical {
+    display: none;
+  }
+
+  html body .facets-vertical .cj-facet-reset[hidden] {
     display: none;
   }
 
@@ -7614,6 +7629,8 @@ html body [id^='shopify-section-'][id$='__related-products'] .product-card-wrapp
 
   html body .facets-vertical .facets__price .field__label {
     position: static;
+    align-self: flex-start;
+    text-align: left;
     margin: 0 0 0.6rem;
     color: rgb(var(--color-foreground));
     font-size: 0.9rem;

@@ -108,6 +108,7 @@
           const fields = details.querySelectorAll('price-range input');
           this.minField = fields[0];
           this.maxField = fields[1];
+          this.reset = details.querySelector('.cj-facet-reset');
           if (!this.lo || !this.hi || !this.minField || !this.maxField || !this.max) return;
 
           this.lo.addEventListener('input', () => this.fromSlider(this.lo));
@@ -155,6 +156,7 @@
             this.fill.style.left = (lo / this.max) * 100 + '%';
             this.fill.style.right = 100 - (hi / this.max) * 100 + '%';
           }
+          if (this.reset) this.reset.hidden = !(this.minField.value || this.maxField.value);
           // The handle that was moved last stays on top where the two meet.
           this.lo.style.zIndex = lo >= this.max - 1 ? '3' : '2';
         }
