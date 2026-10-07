@@ -8057,9 +8057,26 @@ html body .card-wrapper .cj-wish:focus-visible {
   outline-offset: -0.4rem;
 }
 
-html body .header__icon--wishlist .icon-heart {
-  width: 2rem;
-  height: 2rem;
+/* The header heart matched to the search, account and cart icons (2026-10-07, owner): their
+   ink is about 19 x 19.5px with ~1.1px lines at 1440 (17px icons on phones). The heart's
+   outline fills 17.25 of its 24 units, so it is drawn at 25px (21px on phones), about 19px of
+   ink wide, with its stroke at 1.05 units so the line stays ~1.1px (~0.95px on phones). Its
+   centre sits 0.6px under the box's middle, as the other icons' ink does, so no nudge.
+   Header only: the card hearts keep their own size. */
+html body .header .header__icon--wishlist .icon-heart {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+html body .header .header__icon--wishlist .icon-heart path {
+  stroke-width: 1.05;
+}
+
+@media screen and (max-width: 749px) {
+  html body .header .header__icon--wishlist .icon-heart {
+    width: 2.1rem;
+    height: 2.1rem;
+  }
 }
 
 /* The page */
