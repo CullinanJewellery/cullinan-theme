@@ -168,8 +168,25 @@
                 assign top_bar_menu = linklists['top-bar']
               endif
             -%}
-            {%- if top_bar_menu.links.size > 0 -%}
+            {%- if top_bar_menu.links.size > 0 or shop.customer_accounts_enabled -%}
               <ul class="menu-drawer__secondary list-unstyled" role="list">
+                {%- comment -%}
+                  Cullinan (2026-10-07, owner; moonmagic.com's placement): on phones the account icon
+                  leaves the header and „Вход / Регистрация“ is the first of these quieter links, right
+                  under the categories. It goes to Shopify's own sign-in (routes.account_login_url:
+                  this store uses the new customer accounts, where one page signs in or creates an
+                  account). A signed-in customer gets „Моят профил“ to the account page instead.
+                  Phones only (medium-hide): tablets keep the header icon.
+                {%- endcomment -%}
+                {%- if shop.customer_accounts_enabled -%}
+                  <li class="medium-hide large-up-hide">
+                    {%- if customer -%}
+                      <a href="{{ routes.account_url }}" class="menu-drawer__secondary-link menu-drawer__account-link focus-inset">Моят профил</a>
+                    {%- else -%}
+                      <a href="{{ routes.account_login_url }}" class="menu-drawer__secondary-link menu-drawer__account-link focus-inset">Вход / Регистрация</a>
+                    {%- endif -%}
+                  </li>
+                {%- endif -%}
                 {%- for link in top_bar_menu.links -%}
                   <li>
                     <a
