@@ -7912,10 +7912,15 @@ html body [id^='shopify-section-'][id$='__related-products'] .product-card-wrapp
      tall (≈249px wide) with its label in a 44px strip under it -- live black text, as
      agreed, since words lie over photographs here only where design-system.md §8 names
      it (theirs is white on the photo). Links 55px from the top, as theirs. */
+  /* Since the same evening (owner): the picture reaches the panel's bottom edge and the
+     label lies inside it near the bottom, as on moonmagic.com (their caption: bottom 0,
+     15/25/30px padding, a 5px shadow). The panel is the picture's height, 300px; the
+     frame keeps 390:401 (≈292px wide); the label keeps the agreed black Jost 400 with a
+     soft light glow so it reads on a photograph. */
   html body .mega-menu__content--with-promo {
-    --mega-promo-h: 25.6rem;
+    --mega-promo-h: 30rem;
     --mega-promo-size: calc(var(--mega-promo-h) * 390 / 401);
-    min-height: calc(var(--mega-promo-h) + 4.4rem + 2 * var(--popup-border-width, 1px));
+    min-height: calc(var(--mega-promo-h) + 2 * var(--popup-border-width, 1px));
   }
 
   html body .mega-menu .mega-menu__body {
@@ -7930,23 +7935,40 @@ html body [id^='shopify-section-'][id$='__related-products'] .product-card-wrapp
   html body .mega-menu__content--with-promo .mega-menu__promo {
     top: 0;
     right: 0;
+    bottom: 0;
     width: var(--mega-promo-size);
+  }
+
+  html body .mega-menu__content--with-promo .mega-menu__promo-link {
+    position: relative;
+    height: 100%;
   }
 
   html body .mega-menu__content--with-promo .mega-menu__promo-image {
     width: 100%;
-    height: var(--mega-promo-h);
+    height: 100%;
+    min-height: var(--mega-promo-h);
     aspect-ratio: auto;
     object-fit: cover;
     object-position: 50% 50%;
   }
 
   html body .mega-menu__promo-label {
-    height: 4.4rem;
+    height: auto;
     margin-top: 0;
     padding: 0 1.6rem;
     color: rgb(0 0 0);
     line-height: 4.4rem;
+  }
+
+  html body .mega-menu__content--with-promo .mega-menu__promo-label {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 1.5rem 2.5rem 3rem;
+    line-height: 1.6rem;
+    text-shadow: 0 0 0.5rem rgba(255, 255, 255, 0.8);
   }
 
   html body .mega-menu .mega-menu__content .mega-menu__link {
