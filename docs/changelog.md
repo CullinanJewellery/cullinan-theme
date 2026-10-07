@@ -8,6 +8,35 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-07 — fixed-size cards that glide; shorter dropdown with black text **(owner)**
+Checked on the real draft preview at 1440; phones at 375 unchanged.
+- **MoonMagic, inspected again** (sampled every 40ms while hiding their filters): their column runs 356 → 0px
+  in about 0.3s and their cards grow 308 → 415px; they do not keep their size. The owner asked for fixed cards that
+  slide, so ours deliberately differ.
+- **Ours**:
+  - the card width comes from the section's width less the open sidebar (a size container, `cqw`): three
+    columns of 30% with 5% gaps, the same open or closed;
+  - the grid is centred in its room, so as the sidebar's width animates (0.3s) it glides left.
+  Measured, open and closed: every card 308.4 × 430.4, frame and photo 308.4 × 308.4. The grid moves x 377 → 199
+  (294, 218, 200 in between) and the count row moves with it; page width 1425, no sideways scroll.
+  Replaces this morning's resizing grid.
+- **Dropdown text**:
+  - all black;
+  - first-level headings (Дамски, Мъжки, Гривни с циркони) Jost 400 with a 0.012em stroke (≈10% more ink),
+    never underlined, also on hover;
+  - links under them regular, black, 14px (were 16px; none exist in the menu yet, so this is not visible);
+  - the picture label black;
+  - the names in the bar unchanged.
+- **Shorter dropdown**: from 406 to 278px. The picture is back to its look before 2026-10-03 (5cd0782): a square
+  inside the page width, its label under it rather than in a strip, now 180px (360px flush in the corner before),
+  level with the links, 32px from the top. The square is kept, so nothing is stretched or cropped. It is still the
+  flat empty slot, because no picture has been uploaded.
+- Kept: hover opens, click opens the collection (Гривни → /collections/гривни checked), the header stays above
+  the filter bar.
+- Way back: git before this entry (crown.css only).
+
+---
+
 ## 2026-10-07 — desktop menu weight and layering; filters push the grid; MoonMagic's grid **(owner)**
 Checked on the real draft preview at 1440; phones at 375 unchanged.
 - **Dropdown text**: the phone menu's entries inside a category („Дамски“, „Мъжки“, „Гривни с циркони“) are Jost
