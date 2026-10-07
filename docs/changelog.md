@@ -8,6 +8,33 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-07 — smaller phone menu names; compact desktop filters; collection heading picture **(owner)**
+1. **Phone menu**: the collection names 24 → 20.4px (−15%), still Prata 400; rows 53 → 49px (tap areas above
+   44px). „Вход / Регистрация“, submenus and desktop unchanged.
+2. **Desktop filters, more compact**:
+   - bar 72 → 56px, „Скрий филтрите“ / „Сортиране“ 15 → 13px;
+   - filter rows 79 → 56px (44px while open), headings 15 → 13px;
+   - sort panel rows 30 → 26px, 12px text;
+   - option rows 40 → 34px;
+   - price line 24px, slider track 22px, fields 13px;
+   - chips 32 → 28px, 12px; count and „Изчисти всички“ 12px.
+   The sidebar width and grid padding are unchanged. Checked at 1440: cards 308.4px with 308.4 × 308.4 frames,
+   open and closed, gliding 377 → 199; price filter and sorting work. Phones unchanged.
+3. **Collection heading picture**:
+   - Source, per collection: the `custom.heading_image` metafield if the shop defines it, else the collection's own
+     image (admin → collection → Image). With neither, the plain area stays, with no broken image.
+   - Fit: cover, around the focal point, with a soft espresso veil and white breadcrumb and name. The product
+     section's top gap (24px, 18px on phones) moves inside the picture, so nothing moves.
+   - Title: the collection's name alone, „Пръстени“ (the screen-reader-only „Колекция:“ prefix removed).
+   - **Real preview: no collection has an image yet**, so the live pages show the plain state (checked: unchanged
+     at 106–226, filters at 250).
+   - **Picture state checked by simulation in the browser** on the real page, with a product photo in the same
+     markup: the area covers up to the filters (144px at 1440; to 197px at 375 and 320), and the breadcrumb, name and
+     filters stay in place (1440: 134/174/250; phones: 100/140/197). No sideways scroll.
+   - To see it for real: add an image to a collection in Shopify admin.
+
+---
+
 ## 2026-10-07 — phones: sign-in in the menu drawer, not in the header **(owner)**
 - moonmagic.com (phone menu, read from the page): „sign in / register“ comes right after the categories, the first
   of the quieter links (before Loyalty, Discover, Help), 16px regular text.

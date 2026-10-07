@@ -105,6 +105,12 @@ collection), **social band** („Още от нашите бижута“ / „�
 
 ## 5. Collection and search
 
+- Collection heading (sections/main-collection-banner.liquid, 2026-10-07): the name alone (no hidden „Колекция:“).
+  Picture behind the breadcrumb and name: `collection.metafields.custom.heading_image` (define it in admin as a
+  file/image metafield to use a separate picture), else `collection.image` (admin → collection → Image), else none
+  (plain area). Cover, focal point, a dark veil, white words; the product section's top padding moves inside so the
+  height is unchanged (crown.css, „Collection heading picture“).
+
 - Collection page from 750px: `filter_type: vertical`, styled after moonmagic.com's desktop filters (2026-10-07).
   - Bar `.cj-filter-bar`, full width, 72px, dark lines: „Скрий/Покажи филтрите (n)“ (toggles `.cj-filters-hidden`
     on `.facets-vertical`) and „Сортиране“. Sorting opens `#CjSortPanel` (buttons with `data-cj-sort-value`); the
