@@ -412,6 +412,57 @@
                           </facet-remove>
                         {%- endif -%}
                       </div>
+                      {%- if filter_type == 'vertical' -%}
+                        {%- comment -%}
+                          Cullinan (2026-10-07, owner; after moonmagic.com's desktop price filter): „Нулиране“
+                          when a price is set, the chosen range as a line, and a two-handle slider. The slider
+                          has no name, so it is never sent: it writes into Shopify's own two price fields below,
+                          which are what facets.js sends (assets/collection-filters-desktop.js).
+                        {%- endcomment -%}
+                        {%- liquid
+                          assign cj_max = filter.range_max | divided_by: 100.0 | ceil
+                          assign cj_lo = 0
+                          if filter.min_value.value != null
+                            assign cj_lo = filter.min_value.value | divided_by: 100.0 | floor
+                          endif
+                          assign cj_hi = cj_max
+                          if filter.max_value.value != null
+                            assign cj_hi = filter.max_value.value | divided_by: 100.0 | ceil
+                          endif
+                        -%}
+                        {%- if filter.min_value.value != null or filter.max_value.value != null -%}
+                          <facet-remove class="cj-facet-reset">
+                            <a href="{{ filter.url_to_remove }}">{{ 'products.facets.reset' | t }}</a>
+                          </facet-remove>
+                        {%- endif -%}
+                        <cj-price-slider class="cj-price" data-max="{{ cj_max }}" data-currency="{{ cart.currency.symbol }}">
+                          <p class="cj-price__amount" aria-hidden="true">
+                            <span data-cj-lo>{{ cart.currency.symbol }}{{ cj_lo }}</span> –
+                            <span data-cj-hi>{{ cart.currency.symbol }}{{ cj_hi }}</span>
+                          </p>
+                          <div class="cj-price__track">
+                            <span class="cj-price__fill" data-cj-fill></span>
+                            <input
+                              type="range"
+                              min="0"
+                              max="{{ cj_max }}"
+                              step="1"
+                              value="{{ cj_lo }}"
+                              aria-label="{{ 'products.facets.from' | t }}"
+                              data-cj-range="lo"
+                            >
+                            <input
+                              type="range"
+                              min="0"
+                              max="{{ cj_max }}"
+                              step="1"
+                              value="{{ cj_hi }}"
+                              aria-label="{{ 'products.facets.to' | t }}"
+                              data-cj-range="hi"
+                            >
+                          </div>
+                        </cj-price-slider>
+                      {%- endif -%}
                       <price-range class="facets__price">
                         {% render 'price-facet', filter: filter, id_prefix: 'Filter-', filter_type: filter_type %}
                       </price-range>

@@ -46,12 +46,32 @@
   <div class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}">
     {%- paginate collection.products by section.settings.products_per_page -%}
       {%- comment -%}
-        Cullinan (2026-10-06, owner; arrangement from moonmagic.com's desktop filters): with the
-        sidebar layout, one connected bar above the sidebar and the grid, ruled above and below:
-        a button that hides or shows the filters on the left, the count and the sort on the right.
-        Phones keep the drawer (small-hide). The button only toggles a class on .facets-vertical.
+        Cullinan, tablets and computers (2026-10-06; rebuilt 2026-10-07 to moonmagic.com's desktop
+        filters, owner): one full-width bar ruled above and below. On the left the button that
+        hides or shows the sidebar, with the number of chosen filters; on the right „Сортиране“,
+        which opens a small panel of the sort options (the real select stays in the form, hidden,
+        and is what Dawn's facets.js sends). Under the bar: the sidebar and the grid; above the
+        grid, the count, the chosen filters and „Изчисти всички“ (inside #ProductGridContainer, so
+        facets.js redraws them with the products). Phones keep the drawer (small-hide).
+        Script: assets/collection-filters-desktop.js.
       {%- endcomment -%}
+      {%- liquid
+        assign cj_active = 0
+        for filter in collection.filters
+          assign cj_active = cj_active | plus: filter.active_values.size
+          if filter.type == 'price_range'
+            if filter.min_value.value != null or filter.max_value.value != null
+              assign cj_active = cj_active | plus: 1
+            endif
+          endif
+        endfor
+        assign cj_all_url = collection.url
+        if collection.sort_by != blank and collection.sort_by != collection.default_sort_by
+          assign cj_all_url = cj_all_url | append: '?sort_by=' | append: collection.sort_by
+        endif
+      -%}
       {%- if section.settings.filter_type == 'vertical' -%}
+        <script src="{{ 'collection-filters-desktop.js' | asset_url }}" defer="defer"></script>
         <div class="cj-filter-bar page-width small-hide">
           {%- if section.settings.enable_filtering and collection.filters != empty -%}
             <button
@@ -63,6 +83,7 @@
             >
               <span class="cj-filter-bar__hide">Скрий филтрите</span>
               <span class="cj-filter-bar__show">Покажи филтрите</span>
+              <span class="cj-filter-bar__count" data-cj-bar-count{% if cj_active == 0 %} hidden{% endif %}>({{ cj_active }})</span>
               <span class="cj-filter-bar__sign" aria-hidden="true"></span>
             </button>
           {%- endif -%}
@@ -71,13 +92,39 @@
       {%- if section.settings.enable_sorting and section.settings.filter_type == 'vertical' -%}
         <facet-filters-form class="facets facets-vertical-sort small-hide">
           <form class="facets-vertical-form" id="FacetSortForm">
+            {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+            <div class="cj-sort" data-cj-sort>
+              <button
+                type="button"
+                class="cj-sort__toggle"
+                aria-expanded="false"
+                aria-controls="CjSortPanel"
+                data-cj-sort-toggle
+              >
+                {{ 'products.facets.sort_button' | t }}
+                <span class="cj-filter-bar__sign" aria-hidden="true"></span>
+              </button>
+              <ul class="cj-sort__panel list-unstyled" id="CjSortPanel" role="list" hidden>
+                {%- for option in collection.sort_options -%}
+                  <li>
+                    <button
+                      type="button"
+                      class="cj-sort__option"
+                      data-cj-sort-value="{{ option.value | escape }}"
+                      aria-pressed="{% if option.value == sort_by %}true{% else %}false{% endif %}"
+                    >
+                      {{ option.name | escape }}
+                    </button>
+                  </li>
+                {%- endfor -%}
+              </ul>
+            </div>
             <div class="facet-filters sorting caption">
               <div class="facet-filters__field">
                 <h2 class="facet-filters__label caption-large text-body">
                   <label for="SortBy">{{ 'products.facets.sort_by_label' | t }}</label>
                 </h2>
                 <div class="select">
-                  {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
                   <select
                     name="sort_by"
                     class="facet-filters__sort select__select caption-large"
@@ -127,20 +174,6 @@
       {%- endif -%}
       {%- if section.settings.filter_type == 'vertical' -%}
         </div>
-        <script>
-          (function () {
-            if (window.cullinanFilterToggle) return;
-            window.cullinanFilterToggle = true;
-            document.addEventListener('click', function (event) {
-              var button = event.target.closest('[data-cj-filter-toggle]');
-              if (!button) return;
-              var open = button.getAttribute('aria-expanded') !== 'false';
-              button.setAttribute('aria-expanded', String(!open));
-              var layout = document.querySelector('.facets-vertical');
-              if (layout) layout.classList.toggle('cj-filters-hidden', open);
-            });
-          })();
-        </script>
       {%- endif -%}
 
       <div class="{% if section.settings.filter_type == 'vertical' %} facets-vertical page-width{% endif %}">
@@ -170,6 +203,54 @@
             data-cascade
           {% endif %}
         >
+          {%- if section.settings.filter_type == 'vertical' -%}
+            <div class="cj-results small-hide" data-cj-active="{{ cj_active }}">
+              <p class="cj-results__count">
+                {%- if collection.products_count == collection.all_products_count -%}
+                  {{ 'products.facets.product_count_simple' | t: count: collection.products_count }}
+                {%- else -%}
+                  {{
+                    'products.facets.product_count'
+                    | t: product_count: collection.products_count, count: collection.all_products_count
+                  }}
+                {%- endif -%}
+              </p>
+              {%- if cj_active > 0 -%}
+                <ul class="cj-results__chips list-unstyled" role="list">
+                  {%- for filter in collection.filters -%}
+                    {%- for value in filter.active_values -%}
+                      <li>
+                        <facet-remove>
+                          <a href="{{ value.url_to_remove }}" class="cj-chip">
+                            {{ value.label | escape }}
+                            <span class="cj-chip__x" aria-hidden="true"></span>
+                            <span class="visually-hidden">{{ 'products.facets.clear_filter' | t }}</span>
+                          </a>
+                        </facet-remove>
+                      </li>
+                    {%- endfor -%}
+                    {%- if filter.type == 'price_range' -%}
+                      {%- if filter.min_value.value != null or filter.max_value.value != null -%}
+                        <li>
+                          <facet-remove>
+                            <a href="{{ filter.url_to_remove }}" class="cj-chip">
+                              {{ filter.min_value.value | default: 0 | money_without_trailing_zeros }} –
+                              {{ filter.max_value.value | default: filter.range_max | money_without_trailing_zeros }}
+                              <span class="cj-chip__x" aria-hidden="true"></span>
+                              <span class="visually-hidden">{{ 'products.facets.clear_filter' | t }}</span>
+                            </a>
+                          </facet-remove>
+                        </li>
+                      {%- endif -%}
+                    {%- endif -%}
+                  {%- endfor -%}
+                </ul>
+                <facet-remove class="cj-results__clear">
+                  <a href="{{ cj_all_url }}">{{ 'products.facets.clear_all' | t }}</a>
+                </facet-remove>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
           {%- if collection.products.size == 0 -%}
             <div class="collection collection--empty page-width" id="product-grid" data-id="{{ section.id }}">
               <div class="loading-overlay gradient"></div>
