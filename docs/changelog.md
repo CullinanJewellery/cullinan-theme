@@ -8,6 +8,37 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-07 — desktop menu weight and layering; filters push the grid; MoonMagic's grid **(owner)**
+Checked on the real draft preview at 1440; phones at 375 unchanged.
+- **Dropdown text**: the phone menu's entries inside a category („Дамски“, „Мъжки“, „Гривни с циркони“) are Jost
+  400, so the desktop dropdown links and the picture label „Всички пръстени“ are now Jost 400 without the added
+  stroke (were 700 + 0.03em, the label 600). Size, capitals and spacing unchanged.
+- **Collection names**: solid black at rest (75% before). Under the cursor, on keyboard focus and while open, the
+  stroke goes 0.012em → 0.044em (0.15px → 0.55px measured), about a fifth more ink. Nothing moves: the hover lift
+  has been off since 2026-10-05, and the underline stays.
+- **Overlap bug**: the collection filter bar (z-index 4) was above the sticky header (3), so it cut across an open
+  dropdown. The header is now 5 from 990px. Checked with the dropdown open over the bar, and after scrolling with
+  the sticky header over the grid: every sampled point of the panel is the dropdown.
+- **Filters open/close, after moonmagic.com** (inspected: their filter column is sticky and animates `width` 0.3s,
+  the grid beside it resizes): the sidebar's width now runs to 0 and back in 0.3s, clipped, out of the tab order
+  when closed. The grid is pushed and resized, never covered (measured mid-way: 356 → 151 → 27 → 0).
+- **Grid, as theirs at 1440**:
+  - square frames;
+  - three columns in both states, 5% between columns, 20px between rows;
+  - 30px above, 20px at the sides, the dark line kept at the left edge when closed.
+  Measured on our preview:
+  - filters open: cards at x 377 / 737 / 1097, 308px with 308×308 frames (theirs 377 / 737 / 1097, 308);
+  - closed: 21 / 505 / 990, 415px (theirs the same);
+  - first row 60px under the bar (theirs 60).
+  The count line takes 16px when no filter is chosen, and the chips' 52px when there are chips. Photos are fitted
+  (contain) so no piece is cropped; theirs fill the frame, but their photos are square. This replaces the
+  photo-shaped desktop frames of 2026-10-06. Tablets: 2 columns.
+- Preserved and re-checked: photo hover (opacity 0 → 1 with a real pointer), swatch changes photo 1, bag on top,
+  sort and price filter (3 of 4 under €150), „Изчисти всички“.
+- Way back: git before this entry (crown.css only).
+
+---
+
 ## 2026-10-07 — desktop collection filters rebuilt after MoonMagic **(owner)**
 - **Reference, inspected live** (moonmagic.com/en-eu/collections/rings, 1440):
   - Bar: full width, 72px, 1px dark lines; „HIDE FILTERS (n) −“ / „SORT BY +“ in 15px/600 capitals with
