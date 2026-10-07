@@ -7165,6 +7165,10 @@ html body [id^='shopify-section-'][id$='__related-products'] .product-card-wrapp
      handles) and two small fields with 9px capital labels;
    - above the grid: the count (13px, grey), the chosen filters as round-ended 32px chips
      and „Изчисти всички“ (13px, grey, underlined) at the right.
+   Compact since 2026-10-07 (owner: "moderately reducing oversized text, padding and
+   control heights"): bar 56px, labels 13px, rows 56px, sort rows 26px/12px, option rows
+   34px, chips 28px/12px; the sidebar width and grid padding are unchanged, so the cards
+   keep their fixed size and glide as before. Measurements above are theirs.
    Our type (Jost) and ink. Only Shopify's own filters (price today) and sorting, through
    Dawn's facets.js; markup in main-collection-product-grid.liquid and facets.liquid,
    script in collection-filters-desktop.js. Phones keep the drawer. `html body` because
@@ -7179,7 +7183,7 @@ html body [id^='shopify-section-'][id$='__related-products'] .product-card-wrapp
     align-items: stretch;
     justify-content: space-between;
     max-width: none;
-    min-height: 7.2rem;
+    min-height: 5.6rem;
     margin: 0;
     padding: 0 2rem;
     border-top: 0.1rem solid rgb(var(--color-foreground));
@@ -7198,9 +7202,9 @@ html body [id^='shopify-section-'][id$='__related-products'] .product-card-wrapp
     background: none;
     color: rgb(var(--color-foreground));
     font-family: var(--font-body-family);
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: 600;
-    line-height: 3rem;
+    line-height: 2.4rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     cursor: pointer;
@@ -7280,7 +7284,7 @@ html body [id^='shopify-section-'][id$='__related-products'] .product-card-wrapp
     width: max-content;
     min-width: 25rem;
     margin: 0;
-    padding: 1.5rem 1.3rem 0.5rem;
+    padding: 1.2rem 1.2rem 0.4rem;
     border: 0.1rem solid #e2e2e2;
     background: rgb(var(--color-background));
   }
@@ -7295,14 +7299,14 @@ html body [id^='shopify-section-'][id$='__related-products'] .product-card-wrapp
     justify-content: space-between;
     gap: 1.2rem;
     width: 100%;
-    min-height: 3rem;
+    min-height: 2.6rem;
     margin: 0;
     padding: 0.5rem 0.4rem 0.5rem 0.5rem;
     border: 0;
     background: none;
     color: rgb(var(--color-foreground));
     font-family: var(--font-body-family);
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: 400;
     line-height: 2rem;
     letter-spacing: 0.04em;
@@ -7421,16 +7425,16 @@ html body [id^='shopify-section-'][id$='__related-products'] .product-card-wrapp
   html body .facets-vertical .facets__disclosure-vertical .facets__summary {
     display: flex;
     align-items: center;
-    min-height: 7.8rem;
+    min-height: 5.6rem;
     margin: 0;
-    padding: 2.4rem 5rem;
+    padding: 1.6rem 5rem;
     border: 0;
     background: none;
     color: rgb(var(--color-foreground));
     font-family: var(--font-body-family);
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: 600;
-    line-height: 3rem;
+    line-height: 2.4rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
   }
@@ -7443,7 +7447,7 @@ html body [id^='shopify-section-'][id$='__related-products'] .product-card-wrapp
 
   html body .facets-vertical .facets__disclosure-vertical[open] > .facets__summary {
     min-height: 0;
-    padding-bottom: 0.8rem;
+    padding-bottom: 0.4rem;
   }
 
   html body .facets-vertical .facets__disclosure-vertical .facets__summary > div {
@@ -7462,7 +7466,7 @@ html body [id^='shopify-section-'][id$='__related-products'] .product-card-wrapp
   }
 
   html body .facets-vertical .facets__display-vertical {
-    padding: 1rem 5rem 1.2rem;
+    padding: 0.6rem 5rem 1.2rem;
   }
 
   /* Dawn's „Най-високата цена е …“; the range line below says it. */
@@ -7476,9 +7480,9 @@ html body [id^='shopify-section-'][id$='__related-products'] .product-card-wrapp
 
   html body .facets-vertical .cj-facet-reset a {
     display: block;
-    padding: 1rem 0;
+    padding: 0.6rem 0;
     color: rgba(var(--color-foreground), 0.6);
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     line-height: 1.6rem;
     text-decoration: underline;
     text-underline-offset: 0.3rem;
@@ -7495,10 +7499,10 @@ html body [id^='shopify-section-'][id$='__related-products'] .product-card-wrapp
     align-items: center;
     justify-content: space-between;
     gap: 1.2rem;
-    min-height: 4rem;
+    min-height: 3.4rem;
     margin: 0;
-    padding: 1rem 0;
-    font-size: 1.3rem;
+    padding: 0.7rem 0;
+    font-size: 1.2rem;
     font-weight: 500;
     line-height: 2rem;
     text-transform: uppercase;
@@ -7531,7 +7535,7 @@ html body [id^='shopify-section-'][id$='__related-products'] .product-card-wrapp
   html body .facets-vertical .cj-price__amount {
     margin: 0;
     font-size: 1.2rem;
-    line-height: 3rem;
+    line-height: 2.4rem;
     text-align: center;
     text-transform: uppercase;
     font-variant-numeric: tabular-nums;
@@ -7539,7 +7543,7 @@ html body [id^='shopify-section-'][id$='__related-products'] .product-card-wrapp
 
   html body .facets-vertical .cj-price__track {
     position: relative;
-    height: 2.6rem;
+    height: 2.2rem;
     margin: 0 1rem;
   }
 
@@ -7661,7 +7665,7 @@ html body [id^='shopify-section-'][id$='__related-products'] .product-card-wrapp
     border-radius: 0;
     box-shadow: none;
     background: rgb(var(--color-background));
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     line-height: 2rem;
   }
 
@@ -7684,7 +7688,7 @@ html body [id^='shopify-section-'][id$='__related-products'] .product-card-wrapp
   /* With only the count, the first row of photos starts 60px under the bar, as theirs
      (30px padding + the count + 14px); with chosen filters the row is the chips' 52px. */
   html body .cj-results:has(.cj-results__chips) {
-    min-height: 5.2rem;
+    min-height: 4.4rem;
     margin-top: -1rem;
     margin-bottom: 1rem;
   }
@@ -7692,7 +7696,7 @@ html body [id^='shopify-section-'][id$='__related-products'] .product-card-wrapp
   html body .cj-results__count {
     margin: 0;
     color: rgba(var(--color-foreground), 0.6);
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     line-height: 1.6rem;
   }
 
@@ -7708,13 +7712,13 @@ html body [id^='shopify-section-'][id$='__related-products'] .product-card-wrapp
     position: relative;
     display: inline-flex;
     align-items: center;
-    min-height: 3.2rem;
-    padding: 0.7rem 3.2rem 0.7rem 1.4rem;
+    min-height: 2.8rem;
+    padding: 0.5rem 3rem 0.5rem 1.2rem;
     border: 0.1rem solid rgb(var(--color-foreground));
     border-radius: 1.6rem;
     background: rgb(var(--color-background));
     color: rgb(var(--color-foreground));
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: 600;
     line-height: 1.6rem;
     text-decoration: none;
@@ -7762,9 +7766,9 @@ html body [id^='shopify-section-'][id$='__related-products'] .product-card-wrapp
 
   html body .cj-results__clear a {
     display: inline-block;
-    padding: 1.8rem 0.8rem;
+    padding: 1.4rem 0.8rem;
     color: rgba(var(--color-foreground), 0.6);
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     line-height: 1.6rem;
     text-decoration: underline;
     text-underline-offset: 0.3rem;
