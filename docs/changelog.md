@@ -8,6 +8,39 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-07 — „Любими“ wishlist; dropdown label inside the picture **(owner)**
+- **Dropdown picture** (moonmagic.com inspected: caption `position: absolute; bottom: 0`, 15/25/30px padding,
+  white 16px/600 with a 5px shadow): ours reaches the panel's bottom edge, 292 × 301 at 1440 (390:401, centred
+  cover), the panel 300px. „Всички пръстени“ lies inside it near the bottom, in the agreed black Jost 400 with a
+  soft light glow, a new named exception in design-system.md §8. Links, text, hover and layering unchanged.
+- **„Любими“** (theme only; no app, no account, no admin page):
+  - catalogue cards: a heart in the bag's place (top-right, 44 × 44 tap area, 30px circle, 18px outline heart,
+    filled when saved). It saves or removes without opening the piece or touching the cart (checked: the URL
+    stayed, cart 0 items). Every piece can be saved, even one that cannot be bought now. Homepage rows still have
+    no icons (0 found);
+  - header: a heart before the bag on phones and computers, filled while anything is saved;
+  - page: `/collections/all?view=wishlist`, titled „Любими – Cullinan Jewellery“, with the shop's own cards
+    (links, prices, colour circles, filled heart) and „Премахни“ under each. Empty: „Все още нямате любими
+    бижута.“ and „Разгледайте бижутата“ (to the catalogue). A line on the page says the list is kept in this
+    browser on this device;
+  - storage: localStorage („cullinan-wishlist“), so the list survives refreshes and later visits in the same
+    browser on the same device; another browser or device, a private window or cleared site data starts empty.
+    Nothing is sent to Shopify.
+- **Checked on the real preview**:
+  - desktop 1440: two hearts saved by real clicks, filled after a refresh, „Любими“ opened from the header heart
+    with both cards (390px square frames);
+  - phone 375: „Премахни“ and the heart each removed a card at once, then the empty state, still empty after a
+    refresh; two pieces saved by real taps showed in the catalogue's grid (172px frames) with swatches and
+    prices;
+  - preserved: swiping and dots on phones, photo hover, the swatch changing photo 1, filters.
+- **Phones under 375px**: three header icons made the bar 345px wide at 320 (sideways scroll). Up to 374px the bar's
+  side padding is now 15px (30 before) and the logo 100px (112) without its 7.5px padding, which fits at 320. From
+  375px the header is unchanged except for the added heart (the account icon moves 40px left).
+- Not done: a clean `/pages/lyubimi` address would need a page created in Shopify admin; the owner can create
+  one later and we would add a page template for it.
+
+---
+
 ## 2026-10-07 — dropdown picture after MoonMagic's picture area **(owner)**
 - **Reference, inspected** (moonmagic.com „Rings“ dropdown, 1440): the picture is 390 × 401, flush to the panel's
   top, the page's right edge and the bottom; centred cover crop; the panel is the picture's height (401); the link

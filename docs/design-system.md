@@ -165,6 +165,7 @@ rules in `crown.css`. Way back: the values in the "Now" column. Known side effec
 | Pills | About page jump links | Owner's choice 2026-09-13; navigation chips, not buttons | Current |
 | White (`#fff`) behind product photos | Наскоро разгледани, Най-продавани, Може да ви хареса | Owner's request 2026-10-06: the photos are shot on white, so whole photos in square frames show no bands | Current |
 | Round-ended chips (16px radius) and round option boxes | Chosen filters above the collection grid; sort and list options | Owner 2026-10-07: desktop filters as close to moonmagic.com as possible | Current |
+| Label over the dropdown picture | „Всички пръстени“ etc., near the picture's bottom | Owner 2026-10-07, after moonmagic.com; black Jost 400 with a light glow (theirs white) | Current |
 | Round shapes on cards | Bag icon circle (top-right), photo circles (bottom-left), colour swatches | Owner's request 2026-10-06 (circle behind the bag); indicators and swatches are round by nature | Current |
 
 ## 9. Motion
@@ -195,7 +196,8 @@ rules in `crown.css`. Way back: the values in the "Now" column. Known side effec
 | Near-black hover `#2B2B2B` / pressed `#3A3A3A` | The earlier hover behaviour, restored | 2026-10-06 |
 | Header menu words in Jost 700 + 0.03em stroke | Jost 400, no stroke (10-06), then Prata like the phone menu's names, no arrows, black, heavier on hover | 2026-10-06 / 10-07 |
 | Dropdown links Jost 700 + stroke | Jost 400, as the phone submenu; then black, headings +10% (0.012em stroke), sub-links 14px | 2026-10-07 |
-| Dropdown picture 360px flush in the corner, panel 404px | Flush top-right, MoonMagic's 390:401 frame, 249×256, label strip under it, panel 300px (an inset 180px square for a few hours first) | 2026-10-07 |
+| Dropdown picture 360px flush in the corner, panel 404px | Flush top, right and bottom, MoonMagic's 390:401 frame, 292×300, label inside near the bottom, panel 300px (an inset square, then a label strip, earlier the same day) | 2026-10-07 |
+| Bag icon on catalogue cards | Heart for „Любими“ (same place, circle and tap area) | 2026-10-07 |
 | Collection cards resizing with the filters | Fixed-size cards, centred grid glides left | 2026-10-07 |
 | Photo-shaped collection frames on computers (10-06) | Square frames, contain, MoonMagic's grid spacing | 2026-10-07 |
 | Marble white page `#FBF8F6`, footer `#E9D9D0` | White page, blush footer `#E3CAC2` | 2026-10-06 |
