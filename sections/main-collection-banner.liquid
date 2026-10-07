@@ -22,6 +22,20 @@
   if cj_hero_image != blank and cj_hero_image.width == blank
     assign cj_hero_image = collection.image
   endif
+  comment
+    „Всички бижута“ (/collections/all) is Shopify's built-in all-products list, not a collection
+    with its own image or title, so its picture and, if wished, its heading come from this
+    section's settings (theme editor → collection page → Collection banner).
+  endcomment
+  assign cj_hero_title = collection.title
+  if collection.handle == 'all'
+    if cj_hero_image == blank and section.settings.all_image != blank
+      assign cj_hero_image = section.settings.all_image
+    endif
+    if section.settings.all_title != blank
+      assign cj_hero_title = section.settings.all_title
+    endif
+  endif
   assign cj_hero_focal = 'object-position: ' | append: cj_hero_image.presentation.focal_point
 -%}
 <div class="collection-hero{% if section.settings.show_collection_image and collection.image %} collection-hero--with-image{% endif %}{% if cj_hero_image != blank %} cj-hero--image{% endif %} color-{{ section.settings.color_scheme }} gradient">
@@ -42,10 +56,10 @@
   <div class="collection-hero__inner page-width {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
     <div class="collection-hero__text-wrapper">
       {%- comment -%} Cullinan (2026-10-05): Начало › the collection, above the title. {%- endcomment -%}
-      {% render 'breadcrumbs', current: collection.title %}
+      {% render 'breadcrumbs', current: cj_hero_title %}
       {%- comment -%} The collection's name alone, „Пръстени“ (2026-10-07, owner; „Колекция:“ was a hidden prefix). {%- endcomment -%}
       <h1 class="collection-hero__title">
-        {{- collection.title | escape -}}
+        {{- cj_hero_title | escape -}}
       </h1>
 
       {%- if section.settings.show_collection_description -%}
@@ -102,6 +116,25 @@
       "id": "color_scheme",
       "label": "t:sections.all.colors.label",
       "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "„Всички бижута“ (all products)"
+    },
+    {
+      "type": "paragraph",
+      "content": "Every collection uses its own image (Shopify admin → the collection → Image) behind its heading. The all-products page has none, so its picture is chosen here."
+    },
+    {
+      "type": "image_picker",
+      "id": "all_image",
+      "label": "Heading picture for all products"
+    },
+    {
+      "type": "text",
+      "id": "all_title",
+      "label": "Heading for all products",
+      "info": "Empty: Shopify's own name for the page."
     }
   ]
 }

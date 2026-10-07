@@ -8207,8 +8207,25 @@ html body [id$='__banner']:has(.cj-hero--image) + [id$='__product-grid'] [class*
   padding-top: 0;
 }
 
+/* A fifth taller with a picture (2026-10-07, owner: "a little taller so more of the picture
+   is visible", about 20%): the extra split above the trail and under the name, so the two
+   stay balanced and the filters still follow straight after. Phones 117 → 140px
+   (20 → 32px above, 18 → 29px under); computers 144 → 173px (28 → 42px, 24 → 39px).
+   Without a picture the area is unchanged. */
+html body .collection-hero.cj-hero--image {
+  padding-bottom: 2.9rem;
+}
+
+html body .collection-hero.cj-hero--image .collection-hero__inner {
+  padding-top: 3.2rem;
+}
+
 @media screen and (min-width: 750px) {
   html body .collection-hero.cj-hero--image {
-    padding-bottom: 2.4rem;
+    padding-bottom: 3.9rem;
+  }
+
+  html body .collection-hero.cj-hero--image .collection-hero__inner {
+    padding-top: 4.2rem;
   }
 }
