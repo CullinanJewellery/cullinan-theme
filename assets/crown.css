@@ -5817,7 +5817,11 @@ html body .facets-wrapper a.active-facets__button:focus-visible .active-facets__
    (sections/footer-group.json).
    --------------------------------------------------------------------------- */
 .footer .footer-links__list .footer-links__note {
-  margin-top: 1.4rem;
+  /* A line above the address and hours (2026-10-07, owner), the same as the one above the
+     social icons by the newsletter: 2px in the footer line colour, equal space either side. */
+  margin-top: 1.2rem;
+  padding-top: 1.2rem;
+  border-top: 0.2rem solid var(--footer-line);
   font-size: 1.2rem;
   line-height: 1.8;
   letter-spacing: 0.02em;
