@@ -7676,8 +7676,16 @@ html body [id^='shopify-section-'][id$='__related-products'] .product-card-wrapp
     align-items: center;
     column-gap: 2rem;
     row-gap: 0.8rem;
+    min-height: 1.6rem;
+    margin: 0 0 1.4rem;
+  }
+
+  /* With only the count, the first row of photos starts 60px under the bar, as theirs
+     (30px padding + the count + 14px); with chosen filters the row is the chips' 52px. */
+  html body .cj-results:has(.cj-results__chips) {
     min-height: 5.2rem;
-    margin: 0 0 1.6rem;
+    margin-top: -1rem;
+    margin-bottom: 1rem;
   }
 
   html body .cj-results__count {
