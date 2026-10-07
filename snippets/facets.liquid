@@ -430,11 +430,15 @@
                             assign cj_hi = filter.max_value.value | divided_by: 100.0 | ceil
                           endif
                         -%}
-                        {%- if filter.min_value.value != null or filter.max_value.value != null -%}
-                          <facet-remove class="cj-facet-reset">
-                            <a href="{{ filter.url_to_remove }}">{{ 'products.facets.reset' | t }}</a>
-                          </facet-remove>
-                        {%- endif -%}
+                        {%- comment -%} Always there, shown by the script as soon as a price is set. {%- endcomment -%}
+                        <facet-remove
+                          class="cj-facet-reset"
+                          {% if filter.min_value.value == null and filter.max_value.value == null %}
+                            hidden
+                          {% endif %}
+                        >
+                          <a href="{{ filter.url_to_remove }}">{{ 'products.facets.reset' | t }}</a>
+                        </facet-remove>
                         <cj-price-slider class="cj-price" data-max="{{ cj_max }}" data-currency="{{ cart.currency.symbol }}">
                           <p class="cj-price__amount" aria-hidden="true">
                             <span data-cj-lo>{{ cart.currency.symbol }}{{ cj_lo }}</span> –
