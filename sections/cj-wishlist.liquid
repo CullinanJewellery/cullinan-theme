@@ -18,11 +18,14 @@
   <h1 class="cj-wishlist__title">{{ section.settings.heading | default: 'Любими' | escape }}</h1>
   <p class="cj-wishlist__note">Любимите ви се пазят в този браузър на това устройство.</p>
 
-  <ul
-    class="cj-wishlist__grid grid product-grid grid--2-col-tablet-down grid--3-col-desktop"
-    role="list"
-    data-cj-wishlist-grid
-  ></ul>
+  {%- comment -%} .collection: the catalogue's own card rules (title, price, swatches) are scoped to it. {%- endcomment -%}
+  <div class="collection">
+    <ul
+      class="cj-wishlist__grid grid product-grid grid--2-col-tablet-down grid--3-col-desktop"
+      role="list"
+      data-cj-wishlist-grid
+    ></ul>
+  </div>
 
   <div class="cj-wishlist__empty" data-cj-wishlist-empty hidden>
     <p class="cj-wishlist__empty-text">Все още нямате любими бижута.</p>
