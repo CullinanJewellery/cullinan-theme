@@ -9,13 +9,42 @@
   }
 {%- endstyle -%}
 
-<div class="collection-hero{% if section.settings.show_collection_image and collection.image %} collection-hero--with-image{% endif %} color-{{ section.settings.color_scheme }} gradient">
+{%- comment -%}
+  Cullinan (2026-10-07, owner): a picture behind the whole heading area (breadcrumb and title),
+  the same height as before, words in place over it. Per collection: a „custom.heading_image“
+  metafield if the shop defines one, otherwise the collection's own image (Shopify admin →
+  the collection → Image). Without either, the plain area as before, no broken image.
+  Cropped to cover, around the image's focal point; a soft dark veil keeps the white words
+  readable (assets/crown.css, „Collection heading picture“).
+{%- endcomment -%}
+{%- liquid
+  assign cj_hero_image = collection.metafields.custom.heading_image.value | default: collection.image
+  if cj_hero_image != blank and cj_hero_image.width == blank
+    assign cj_hero_image = collection.image
+  endif
+  assign cj_hero_focal = 'object-position: ' | append: cj_hero_image.presentation.focal_point
+-%}
+<div class="collection-hero{% if section.settings.show_collection_image and collection.image %} collection-hero--with-image{% endif %}{% if cj_hero_image != blank %} cj-hero--image{% endif %} color-{{ section.settings.color_scheme }} gradient">
+  {%- if cj_hero_image != blank -%}
+    {{
+      cj_hero_image
+      | image_url: width: 2400
+      | image_tag:
+        class: 'cj-hero__bg',
+        widths: '750, 1100, 1500, 2000, 2400',
+        sizes: '100vw',
+        loading: 'eager',
+        fetchpriority: 'high',
+        alt: '',
+        style: cj_hero_focal
+    }}
+  {%- endif -%}
   <div class="collection-hero__inner page-width {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
     <div class="collection-hero__text-wrapper">
       {%- comment -%} Cullinan (2026-10-05): Начало › the collection, above the title. {%- endcomment -%}
       {% render 'breadcrumbs', current: collection.title %}
+      {%- comment -%} The collection's name alone, „Пръстени“ (2026-10-07, owner; „Колекция:“ was a hidden prefix). {%- endcomment -%}
       <h1 class="collection-hero__title">
-        <span class="visually-hidden">{{ 'sections.collection_template.title' | t }}: </span>
         {{- collection.title | escape -}}
       </h1>
 
