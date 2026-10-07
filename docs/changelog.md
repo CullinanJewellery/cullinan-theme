@@ -8,6 +8,23 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-07 — dropdown picture after MoonMagic's picture area **(owner)**
+- **Reference, inspected** (moonmagic.com „Rings“ dropdown, 1440): the picture is 390 × 401, flush to the panel's
+  top, the page's right edge and the bottom; centred cover crop; the panel is the picture's height (401); the link
+  headings are 55px below the top; the caption is white capitals on the photo.
+- **Ours, measured on the preview**:
+  - the picture flush top-right (x 1176–1425, from the panel's top), the same 390:401 frame and centred cover
+    crop, at 249 × 256 so the panel stays compact at 302px (it was 278 with the inset 180px square, 406 before
+    today);
+  - the label „Всички пръстени“ in a 44px strip under the picture, as agreed (black Jost 400), not white on the
+    photo, because words over photographs need a named exception (design-system.md §8);
+  - links 55px from the top.
+  Dropdown above the filter bar (checked). Hover, click and the text styling are unchanged. Still the flat empty
+  slot until a picture is uploaded (header → „Mega menu image panel“).
+- Way back: git before this entry (crown.css).
+
+---
+
 ## 2026-10-07 — fixed-size cards that glide; shorter dropdown with black text **(owner)**
 Checked on the real draft preview at 1440; phones at 375 unchanged.
 - **MoonMagic, inspected again** (sampled every 40ms while hiding their filters): their column runs 356 → 0px
