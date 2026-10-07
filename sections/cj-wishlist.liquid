@@ -20,7 +20,9 @@
 
   {%- comment -%} .collection: the catalogue's own card rules (title, price, swatches) are scoped to it. {%- endcomment -%}
   <div class="collection">
+    {%- comment -%} id product-grid: the catalogue's phone grid (two columns, 12px margins); no other grid is on this page. {%- endcomment -%}
     <ul
+      id="product-grid"
       class="cj-wishlist__grid grid product-grid grid--2-col-tablet-down grid--3-col-desktop"
       role="list"
       data-cj-wishlist-grid
