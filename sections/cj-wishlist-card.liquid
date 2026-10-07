@@ -1,0 +1,31 @@
+{%- comment -%}
+  One saved piece for „Любими“ (2026-10-07). Not placed in any template: assets/wishlist.js
+  asks for it with Shopify's Section Rendering API at /products/<handle>?section_id=
+  cj-wishlist-card, so `product` is that piece. The shop's own product card (photo, name,
+  colour circles, price, link; the heart filled), then a „Премахни“ button.
+{%- endcomment -%}
+{%- if product -%}
+  <li class="grid__item cj-wishlist__item" data-handle="{{ product.handle | escape }}">
+    {% render 'card-product',
+      card_product: product,
+      media_aspect_ratio: 'square',
+      image_shape: 'default',
+      show_secondary_image: false,
+      show_vendor: false,
+      show_rating: false,
+      lazy_load: false,
+      quick_add: 'standard',
+      section_id: 'cj-wishlist'
+    %}
+    <button type="button" class="cj-wishlist__remove" data-cj-wish-remove="{{ product.handle | escape }}">
+      Премахни<span class="visually-hidden"> {{ product.title | escape }} от любими</span>
+    </button>
+  </li>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Любими: бижу",
+  "settings": []
+}
+{% endschema %}

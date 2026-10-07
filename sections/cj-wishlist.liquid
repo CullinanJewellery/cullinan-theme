@@ -1,0 +1,52 @@
+{%- comment -%}
+  „Любими“ (2026-10-07, owner; after moonmagic.com's wishlist). The saved pieces are kept in
+  this browser on this device (localStorage, key „cullinan-wishlist“; no account, no app),
+  so the page is filled by assets/wishlist.js: it asks Shopify for each saved product's card
+  (/products/<handle>?section_id=cj-wishlist-card, sections/cj-wishlist-card.liquid), which
+  is the shop's own product card with a filled heart and „Премахни“. With nothing saved, or
+  without scripts, the empty message and a button to the catalogue show instead.
+  Reached at /collections/all?view=wishlist (templates/collection.wishlist.json), so no page
+  has to be created in Shopify admin; the header's heart links there.
+{%- endcomment -%}
+{{ 'template-collection.css' | asset_url | stylesheet_tag }}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-swatch.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'card-swatches.js' | asset_url }}" defer="defer"></script>
+
+<div class="cj-wishlist page-width is-loading" data-cj-wishlist>
+  <h1 class="cj-wishlist__title">{{ section.settings.heading | default: 'Любими' | escape }}</h1>
+  <p class="cj-wishlist__note">Любимите ви се пазят в този браузър на това устройство.</p>
+
+  <ul
+    class="cj-wishlist__grid grid product-grid grid--2-col-tablet-down grid--3-col-desktop"
+    role="list"
+    data-cj-wishlist-grid
+  ></ul>
+
+  <div class="cj-wishlist__empty" data-cj-wishlist-empty hidden>
+    <p class="cj-wishlist__empty-text">Все още нямате любими бижута.</p>
+    <a class="button" href="{{ routes.all_products_collection_url }}">Разгледайте бижутата</a>
+  </div>
+
+  <noscript>
+    <div class="cj-wishlist__empty">
+      <p class="cj-wishlist__empty-text">Все още нямате любими бижута.</p>
+      <a class="button" href="{{ routes.all_products_collection_url }}">Разгледайте бижутата</a>
+    </div>
+  </noscript>
+</div>
+
+{% schema %}
+{
+  "name": "Любими",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Любими"
+    }
+  ]
+}
+{% endschema %}

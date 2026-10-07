@@ -7992,3 +7992,136 @@ html body [id^='shopify-section-'][id$='__related-products'] .product-card-wrapp
     -webkit-text-stroke: 0;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   „Любими“ (2026-10-07, owner; after moonmagic.com's wishlist hearts)
+   - On catalogue cards a heart takes the bag's place: the photo's top-right corner, a
+     44x44 tap area around the same 30px circle of pale rose-clay, an 18px outline heart
+     that fills when the piece is saved. snippets/card-product.liquid, assets/wishlist.js.
+   - In the header a heart before the bag, filled while anything is saved.
+   - The „Любими“ page (sections/cj-wishlist.liquid): title, a line saying the list is kept
+     in this browser, the shop's product cards with „Премахни“ under each, or the empty
+     message and „Разгледайте бижутата“.
+   --------------------------------------------------------------------------- */
+html body .card-wrapper .cj-wish-wrap {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 3;
+  margin: 0;
+}
+
+html body .card-wrapper .cj-wish {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.4rem;
+  height: 4.4rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  color: rgb(var(--color-foreground));
+  cursor: pointer;
+}
+
+html body .card-wrapper .cj-wish__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: rgba(235, 223, 216, 0.88);
+  transition: background-color 0.2s;
+}
+
+html body .card-wrapper .cj-wish .icon-heart {
+  display: block;
+  width: 1.8rem;
+  height: 1.8rem;
+}
+
+html body .card-wrapper .cj-wish:hover .cj-wish__icon {
+  background: rgb(233 217 208);
+}
+
+html body .card-wrapper .cj-wish[aria-pressed='true'] .icon-heart path,
+html body .header__icon--wishlist-saved .icon-heart path {
+  fill: currentColor;
+}
+
+html body .card-wrapper .cj-wish:focus-visible {
+  outline: 0.2rem solid rgb(var(--color-foreground));
+  outline-offset: -0.4rem;
+}
+
+html body .header__icon--wishlist .icon-heart {
+  width: 2rem;
+  height: 2rem;
+}
+
+/* The page */
+html body .cj-wishlist {
+  padding-top: 3.6rem;
+  padding-bottom: 6rem;
+}
+
+html body .cj-wishlist__title {
+  margin: 0;
+}
+
+html body .cj-wishlist__note {
+  margin: 0.8rem 0 3.2rem;
+  color: rgba(var(--color-foreground), 0.7);
+  font-size: 1.3rem;
+}
+
+html body .cj-wishlist.is-loading .cj-wishlist__grid:empty {
+  min-height: 30rem;
+}
+
+html body .cj-wishlist__grid[hidden] {
+  display: none;
+}
+
+html body .cj-wishlist__remove {
+  display: inline-flex;
+  align-items: center;
+  min-height: 4.4rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: rgb(var(--color-foreground));
+  font-family: var(--font-body-family);
+  font-size: 1.3rem;
+  letter-spacing: 0.04em;
+  text-decoration: underline;
+  text-underline-offset: 0.3rem;
+  cursor: pointer;
+}
+
+html body .cj-wishlist__remove:focus-visible {
+  outline: 0.2rem solid rgb(var(--color-foreground));
+  outline-offset: 0.2rem;
+}
+
+html body .cj-wishlist__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.4rem;
+  padding: 6rem 0;
+  text-align: center;
+}
+
+html body .cj-wishlist__empty[hidden] {
+  display: none;
+}
+
+html body .cj-wishlist__empty-text {
+  margin: 0;
+  font-size: 1.6rem;
+}
