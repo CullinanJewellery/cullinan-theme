@@ -439,14 +439,29 @@ html {
    700 capital (measured on the canvas at 12.5px: 0.3px adds 16%, 0.4px 22%, 0.5px
    27%, 0.8px 43%, 1px 54%; the 50% version was 0.075em). `currentcolor` means it
    follows the word from three-quarters black to black on hover. */
-/* Regular weight since 2026-10-06 (owner: the collection names regular instead of bold);
-   700 with a 0.03em stroke before, as described above. Size, tracking and colours unchanged. */
+/* Since 2026-10-07 (owner): the same family and weight as the collection names in the phone
+   menu -- Prata at the headings' weight with their 0.012em stroke ("The phone menu's category
+   words in Prata" below) -- at the desktop size, tracking and capitals. Jost 400 on 10-06;
+   Jost 700 with a 0.03em stroke before, as described above. */
 .header__inline-menu .header__menu-item {
+  font-family: var(--font-heading-family);
+  font-style: var(--font-heading-style);
   font-size: 1.25rem;
-  font-weight: 400;
+  font-weight: var(--font-heading-weight);
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  -webkit-text-stroke: 0;
+  -webkit-text-stroke: 0.012em currentcolor;
+}
+
+/* No dropdown arrows on the desktop menu (2026-10-07, owner); hover, click and keyboard
+   still open the dropdowns (snippets/header-mega-menu.liquid). The space the arrow took
+   goes, so every word has the same 12px either side. */
+.header__inline-menu .header__menu-item .icon-caret {
+  display: none;
+}
+
+.header__inline-menu summary.header__menu-item {
+  padding-right: 1.2rem;
 }
 
 /* ---------------------------------------------------------------------------
