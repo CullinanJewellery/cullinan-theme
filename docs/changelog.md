@@ -8,6 +8,14 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-07 — header heart matched to the other header icons **(owner)**
+- Measured on the preview: search, account and cart draw about 19 × 19.5px of ink with ~1.1px lines at 1440
+  (16.5px, ~0.95px on phones); the heart drew 14.4 × 12.8px. It is now 25px (21px on phones) with its stroke at
+  1.05 units: 19.1 × 17.1px ink, 1.09px line, centre 69.3 against 69.0–69.4 (phone: 16.0 × 14.4px, 0.92px, 56.5
+  against 56.2–56.6). Same 44px (phone 40px) tap boxes and spacing. Header only: the card hearts are unchanged (18px).
+
+---
+
 ## 2026-10-07 — „Любими“ wishlist; dropdown label inside the picture **(owner)**
 - **Dropdown picture** (moonmagic.com inspected: caption `position: absolute; bottom: 0`, 15/25/30px padding,
   white 16px/600 with a 5px shadow): ours reaches the panel's bottom edge, 292 × 301 at 1440 (390:401, centred
