@@ -7896,41 +7896,57 @@ html body [id^='shopify-section-'][id$='__related-products'] .product-card-wrapp
    The dropdown, shorter (2026-10-07, owner)
    - Height: the picture had become a 360px square flush in the panel's corner
      (2026-10-03, after moonmagic's), which made every dropdown 404px tall. It is back
-     to its earlier look -- a square inside the page width with its label under it,
-     not in a strip -- at 180px, and the panel is its height plus 32px of air above and
-     below: about 276px. The links keep their columns and their place, 32px from the
-     top.
+     to its earlier look, then (same day) set after moonmagic's picture area: flush
+     top-right, 390:401, the panel 300px. The links keep their columns, 55px from the top.
    - Text: all of it black. The first-level headings (Дамски, Мъжки, …) a tenth
      heavier (a 0.012em stroke on Jost 400) and never underlined; the links under them
      regular, black, 14px (16px before). The picture's label black, Jost 400.
    - The menu names in the bar are not touched.
    --------------------------------------------------------------------------- */
 @media screen and (min-width: 990px) {
+  /* The picture area after moonmagic.com's dropdown (2026-10-07, owner: "match the
+     picture area's design"; theirs at 1440: 390 x 401, flush to the panel's top, to the
+     page's right edge and to its bottom, filled and centred, the panel exactly its
+     height, the link headings 55px below the top). Ours: the same placement, frame
+     proportion (390:401) and centred fill, in a compact 300px panel: the picture 256px
+     tall (≈249px wide) with its label in a 44px strip under it -- live black text, as
+     agreed, since words lie over photographs here only where design-system.md §8 names
+     it (theirs is white on the photo). Links 55px from the top, as theirs. */
   html body .mega-menu__content--with-promo {
-    --mega-promo-size: 18rem;
-    min-height: calc(3.2rem + var(--mega-promo-size) + 1.2rem + 2rem + 3.2rem + 2 * var(--popup-border-width, 1px));
+    --mega-promo-h: 25.6rem;
+    --mega-promo-size: calc(var(--mega-promo-h) * 390 / 401);
+    min-height: calc(var(--mega-promo-h) + 4.4rem + 2 * var(--popup-border-width, 1px));
   }
 
   html body .mega-menu .mega-menu__body {
-    padding-top: 3.2rem;
+    padding-top: 5.5rem;
     padding-bottom: 3.2rem;
   }
 
   html body .mega-menu .mega-menu__content--with-promo .mega-menu__body {
-    padding-right: calc(5rem + var(--mega-promo-size) + 4rem);
+    padding-right: max(5rem, calc(var(--mega-promo-size) + 4rem - max(0px, (100% - var(--page-width)) / 2)));
   }
 
   html body .mega-menu__content--with-promo .mega-menu__promo {
-    top: 3.2rem;
-    right: max(5rem, calc((100% - var(--page-width)) / 2 + 5rem));
+    top: 0;
+    right: 0;
     width: var(--mega-promo-size);
   }
 
+  html body .mega-menu__content--with-promo .mega-menu__promo-image {
+    width: 100%;
+    height: var(--mega-promo-h);
+    aspect-ratio: auto;
+    object-fit: cover;
+    object-position: 50% 50%;
+  }
+
   html body .mega-menu__promo-label {
-    height: auto;
-    margin-top: 1.2rem;
+    height: 4.4rem;
+    margin-top: 0;
+    padding: 0 1.6rem;
     color: rgb(0 0 0);
-    line-height: 2rem;
+    line-height: 4.4rem;
   }
 
   html body .mega-menu .mega-menu__content .mega-menu__link {
