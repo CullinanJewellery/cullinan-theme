@@ -158,7 +158,7 @@ collection), **social band** („Още от нашите бижута“ / „�
   (sections/cj-wishlist-card.liquid: card-product + „Премахни“), drops products that no longer exist, shows
   „Все още нямате любими бижута.“ + „Разгледайте бижутата“ when empty. The grid carries `id="product-grid"` inside
   `.collection` so the catalogue's card and phone-grid rules apply. Header: `.header__icon--wishlist` before the bag
-  (filled while anything is saved); under 375px the bar's padding is 15px and the logo 100px so the three icons fit.
+  (filled while anything is saved). Phones (<750px): no account icon in the header; „Вход / Регистрация“ (signed in: „Моят профил“) is the first `.menu-drawer__secondary-link` in the drawer, `routes.account_login_url` / `routes.account_url` (new customer accounts: one Shopify page signs in or creates an account).
   **Storage is per browser and device**: another browser, another device, a private window or cleared site data
   starts empty; nothing is sent to Shopify or tied to an account.
 - (Until 2026-10-07) Bag icon (top-right of the photo, 30px rose-clay circle) = Dawn's quick add, `quick_add: standard` per section; markup in the

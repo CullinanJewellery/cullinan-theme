@@ -8,6 +8,24 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-07 — phones: sign-in in the menu drawer, not in the header **(owner)**
+- moonmagic.com (phone menu, read from the page): „sign in / register“ comes right after the categories, the first
+  of the quieter links (before Loyalty, Discover, Help), 16px regular text.
+- Account system checked, settings untouched: the header uses Shopify's `<shopify-account>`, and /account/login opens
+  Shopify's new customer accounts page („Влезте в акаунта си или си създайте такъв“), where one page both signs in
+  and creates an account.
+- Phones (<750px): the account icon is hidden. In the drawer, „Вход / Регистрация“ (`routes.account_login_url`) is
+  the first of „За нас“/„Контакти“, the same Jost 15px quiet link under the same hairline; a signed-in customer
+  sees „Моят профил“ (`routes.account_url`). Tablets keep the header icon (the drawer item is phone-only).
+  Search, „Любими“ and the bag stay. With two right-hand icons the header is back to its pre-heart layout, so the
+  narrow-phone squeeze added earlier today (15px padding, 100px logo under 375px) was removed. 320 fits (320px).
+- Checked on the preview: 375 and 320 header, the drawer item and its style. The link opens Shopify's sign-in via
+  the store's own domain (`/customer_authentication/redirect`); **while the store is password-protected that
+  address shows the password page instead** (the preview session doesn't apply there). /account/login opened from
+  the preview did reach the Shopify sign-in page. Desktop unchanged (account icon, menu).
+
+---
+
 ## 2026-10-07 — header heart matched to the other header icons **(owner)**
 - Measured on the preview: search, account and cart draw about 19 × 19.5px of ink with ~1.1px lines at 1440
   (16.5px, ~0.95px on phones); the heart drew 14.4 × 12.8px. It is now 25px (21px on phones) with its stroke at
