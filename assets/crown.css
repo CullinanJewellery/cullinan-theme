@@ -1876,6 +1876,18 @@ html {
   transform: none;
 }
 
+/* Sharp card photos (2026-10-11, owner: "a little bit blurry"). Dawn gives every card
+   photo area an empty 3D transform (component-card.css, `perspective(0)`, only for
+   gradient backgrounds, which our cards do not have); browsers then draw the photo as a
+   layer and soften it. Removed; `isolation` keeps the card its own stacking context, as
+   the transform did, so the heart and dots stay in their layers. `html body` because
+   component-card.css is loaded by the sections, after this file. Way back: delete. */
+html body .card--card.gradient,
+html body .card__inner.gradient {
+  transform: none;
+  isolation: isolate;
+}
+
 /* Hover on a card is split by zone, at the owner's request: the picture swaps
    to the second photo, the swatches swap to their own colour's photo (in
    card-swatches.js), and the text between them does nothing at all.
