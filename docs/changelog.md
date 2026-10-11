@@ -8,6 +8,20 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-11 — sharper product photos on cards and the phone gallery **(owner: "a little bit blurry")**
+- Cards: Dawn's empty 3D transform on `.card__inner.gradient` (component-card.css, `perspective(0)`, only for
+  gradient card backgrounds, which ours lack) is removed in crown.css; `isolation: isolate` keeps the stacking
+  context, so hearts, dots and the hover fade are unchanged (checked). Way back: delete that crown.css block.
+- Cards: `sizes` on photo 1 and Dawn's second image now describe our grid (three columns ≥990px, two below) instead
+  of Dawn's four. Before, the browser fetched a 360px photo for a 415px frame (filters closed, 1440) and stretched it;
+  now 533px. Phones at 2x: 533px for a 172px frame.
+- Product gallery on phones: the photo is full width (375px at 375), but `sizes` said 100vw − 4rem; now 100vw.
+- Checked on the real preview at 1440 and 375 (cards, hover fade, swipe dots, no sideways scroll; product page).
+- Product photos themselves (outside the repo): the first ring's photos are made in
+  `Pictures\PicturesForWebFaceInstagram` (owner's folder); metal colours matched to moonmagic.com, neutral floor shadow.
+
+---
+
 ## 2026-10-07 — collection heading picture a fifth taller; on every collection **(owner)**
 - With a picture the area is about 20% taller, the extra split above the trail and under the name:
   - phones 117 → 140px (32px above the trail, 29px under the name);
