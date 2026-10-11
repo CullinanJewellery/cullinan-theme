@@ -156,9 +156,9 @@ collection), **social band** („Още от нашите бижута“ / „�
   (`quick_add: none`). A relevant second photo fades in on CSS `:hover` of `.card__photo-link`
   (both photos in one product link over the card; as moonmagic's rows; no script). Наскоро разгледани does the same
   via `data-image2`.
-- **Photo sharpness (2026-10-11)**: card  must match our grid (3 columns ≥990px, 2 below; card-product.liquid),
-  the gallery's phone  is 100vw (product-thumbnail.liquid), and  carries no transform
-  (crown.css; a transform makes browsers soften the photo). Check  width ≥ frame width × screen density.
+- **Photo sharpness (2026-10-11)**: card `sizes` must match our grid (3 columns ≥990px, 2 below; card-product.liquid),
+  the gallery's phone `sizes` is 100vw (product-thumbnail.liquid), and `.card__inner` carries no transform
+  (crown.css; a transform makes browsers soften the photo). Check `currentSrc` width ≥ frame width × screen density.
 - **Heart (since 2026-10-07, replaces the bag)**: where a section asks for `quick_add: standard` (the catalogue grid,
   „Любими“), card-product prints `.cj-wish` (top-right, 44x44 tap area, 30px circle, `snippets/icon-heart.liquid`),
   `data-cj-wish=<handle>`, `aria-pressed`. `assets/wishlist.js` (loaded in layout/theme.liquid) saves/removes in
