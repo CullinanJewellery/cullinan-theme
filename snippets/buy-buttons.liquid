@@ -60,7 +60,7 @@
           {%- render 'gift-card-recipient-form', product: product, form: form, section: section -%}
         {%- endif -%}
 
-        <div class="product-form__buttons">
+        <div class="product-form__buttons cj-buy-row">
           {%- liquid
             assign check_against_inventory = true
             if product.selected_or_first_available_variant.inventory_management != 'shopify' or product.selected_or_first_available_variant.inventory_policy == 'continue'
@@ -92,6 +92,22 @@
               {%- endif -%}
             </span>
             {%- render 'loading-spinner' -%}
+          </button>
+          {%- comment -%}
+            „Любими“ heart in the add-to-cart button's right end (2026-10-12, owner, as on
+            moonmagic.com: a white outline heart in a square at the button's end, the label still
+            centred). A separate button laid over the add button, never inside it, so a tap saves
+            the piece (assets/wishlist.js) and never adds it to the cart. crown.css „Heart on the
+            add-to-cart button“.
+          {%- endcomment -%}
+          <button
+            type="button"
+            class="cj-wish cj-wish--buy"
+            data-cj-wish="{{ product.handle | escape }}"
+            aria-pressed="false"
+            aria-label="Любими: {{ product.title | escape }}"
+          >
+            <span class="cj-wish__icon">{% render 'icon-heart' %}</span>
           </button>
           {%- if show_dynamic_checkout -%}
             {{ form | payment_button }}

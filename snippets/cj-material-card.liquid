@@ -71,11 +71,13 @@
         <div class="cj-material__col">
           <ul class="cj-material__points" role="list">
             <li>{{ cj_first }}</li>
-            <li>Създадено да запазва блясъка си</li>
-            <li>Прецизна изработка</li>
+            {%- comment -%} White gold: the rhodium line in place of „Създадено да запазва блясъка си“ (owner, 2026-10-12). {%- endcomment -%}
             {%- if cj_key == 'white' -%}
               <li>С родиево покритие за по‑силен блясък</li>
+            {%- else -%}
+              <li>Създадено да запазва блясъка си</li>
             {%- endif -%}
+            <li>Прецизна изработка</li>
           </ul>
           <p class="cj-material__footer">Изработка, на която можете да разчитате.</p>
         </div>

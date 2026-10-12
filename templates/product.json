@@ -100,13 +100,6 @@
             "enable_quick_add": false
           }
         },
-        "phone_order": {
-          "type": "phone_order",
-          "settings": {
-            "label": "Поръчайте по телефон",
-            "phone": "+359 88 287 4895"
-          }
-        },
         "trust_lines": {
           "type": "trust_lines",
           "settings": {
@@ -127,7 +120,6 @@
         "variant_picker",
         "delivery_note",
         "buy_buttons",
-        "phone_order",
         "trust_lines",
         "shipping_tab",
         "specs",
@@ -203,22 +195,6 @@
         "padding_bottom": 72
       }
     },
-    "enquiry": {
-      "type": "custom-request",
-      "settings": {
-        "layout": "popup",
-        "eyebrow": "Запитване",
-        "heading": "Имате въпрос за това бижу?",
-        "text": "Размер, метал, камък или срок на изработка — пишете ни и ще ви отговорим. Името на бижуто и избраният вариант се добавят към съобщението.",
-        "button_label": "Изпратете въпроса",
-        "show_ways": false,
-        "color_scheme": "scheme-2",
-        "padding_top": 64,
-        "padding_bottom": 64,
-        "margin_top": 0,
-        "margin_bottom": 0
-      }
-    },
     "recently_viewed": {
       "type": "recently-viewed",
       "settings": {
@@ -231,7 +207,6 @@
   "order": [
     "main",
     "disclosures",
-    "enquiry",
     "17908484248f2d50d1",
     "may_like",
     "recently_viewed",

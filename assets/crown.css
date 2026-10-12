@@ -8451,3 +8451,70 @@ html body .collection-hero.cj-hero--image .collection-hero__inner {
   line-height: 1.35;
   color: rgba(42, 30, 26, 0.85);
 }
+
+/* ---------------------------------------------------------------------------
+   Heart on the add-to-cart button (2026-10-12, owner, as on moonmagic.com: theirs is a 54px
+   square at the right end of the black „ADD TO BAG“ with a 20px white outline heart; the label
+   stays centred). Ours is a separate button laid over the right end of „Добави в количката“
+   (snippets/buy-buttons.liquid), so saving never adds to the cart. White on the black button;
+   when the button turns pink on hover it turns dark and lifts with it. Filled when saved
+   (assets/wishlist.js sets aria-pressed). Way back: delete this block and the button.
+   --------------------------------------------------------------------------- */
+html body .cj-buy-row {
+  position: relative;
+}
+
+html body .cj-wish--buy {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--cj-buy-heart, 5.5rem);
+  height: var(--cj-buy-heart, 5.5rem);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: rgb(255 255 255);
+  cursor: pointer;
+  transition: color 0.35s ease, transform var(--duration-default, 0.2s) ease;
+}
+
+html body .cj-wish--buy .cj-wish__icon {
+  display: flex;
+}
+
+html body .cj-wish--buy .icon-heart {
+  width: 2rem;
+  height: 2rem;
+}
+
+html body .cj-wish--buy[aria-pressed='true'] .icon-heart path {
+  fill: currentColor;
+}
+
+html body .cj-wish--buy:hover .icon-heart {
+  transform: scale(1.1);
+}
+
+html body .cj-wish--buy .icon-heart {
+  transition: transform 0.2s ease;
+}
+
+html body .cj-wish--buy:focus-visible {
+  outline: 0.2rem solid rgb(255 255 255);
+  outline-offset: -0.5rem;
+}
+
+html body .cj-buy-row:has(.product-form__submit:not([disabled]):hover) .cj-wish--buy {
+  color: rgb(var(--color-foreground));
+}
+
+@media (hover: hover) {
+  html body .animate--hover-vertical-lift .cj-buy-row:has(.product-form__submit:not([disabled]):hover) .cj-wish--buy {
+    transform: translateY(-0.25rem);
+  }
+}
