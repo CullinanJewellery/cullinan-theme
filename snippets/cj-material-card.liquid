@@ -68,15 +68,17 @@
       <div class="cj-material__text">
         <p class="cj-material__eyebrow">Първокласно качество</p>
         <p class="cj-material__title">{{ cj_title }}</p>
-        <ul class="cj-material__points" role="list">
-          <li>{{ cj_first }}</li>
-          <li>Създадено да запазва блясъка си</li>
-          <li>Прецизна изработка</li>
-          {%- if cj_key == 'white' -%}
-            <li>С родиево покритие за по-силен блясък</li>
-          {%- endif -%}
-        </ul>
-        <p class="cj-material__footer">Изработка, на която можете да разчитате.</p>
+        <div class="cj-material__col">
+          <ul class="cj-material__points" role="list">
+            <li>{{ cj_first }}</li>
+            <li>Създадено да запазва блясъка си</li>
+            <li>Прецизна изработка</li>
+            {%- if cj_key == 'white' -%}
+              <li>С родиево покритие за по‑силен блясък</li>
+            {%- endif -%}
+          </ul>
+          <p class="cj-material__footer">Изработка, на която можете да разчитате.</p>
+        </div>
       </div>
     </div>
   </li>

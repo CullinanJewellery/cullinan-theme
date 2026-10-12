@@ -8346,6 +8346,8 @@ html body .collection-hero.cj-hero--image .collection-hero__inner {
    --------------------------------------------------------------------------- */
 .cj-material {
   position: relative;
+  /* the phone slider's tile sizes its content to fit; a size container needs its own width */
+  width: 100%;
   aspect-ratio: 1 / 1;
   overflow: hidden;
   container-type: inline-size;
@@ -8393,14 +8395,23 @@ html body .collection-hero.cj-hero--image .collection-hero__inner {
   letter-spacing: 0;
 }
 
-.cj-material__points {
+/* The points and the closing line share one right-hand column, so the line always follows
+   the last point (white gold has four). */
+.cj-material__col {
   position: absolute;
-  top: 38%;
-  left: 60%;
+  top: 31%;
   right: 5%;
+  bottom: 6%;
+  left: 60%;
   display: flex;
   flex-direction: column;
-  gap: 3.2cqw;
+  gap: 4cqw;
+}
+
+.cj-material__points {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4cqw;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -8434,11 +8445,7 @@ html body .collection-hero.cj-hero--image .collection-hero__inner {
 }
 
 .cj-material__footer {
-  position: absolute;
-  right: 5%;
-  bottom: 7%;
-  left: 60%;
-  margin: 0;
+  margin: auto 0 0;
   font-family: var(--font-body-family);
   font-size: 3.2cqw;
   line-height: 1.35;
