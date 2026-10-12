@@ -59,13 +59,14 @@
   }
 {%- endstyle -%}
 
+{%- comment -%}
+  popup_only (2026-10-12, owner): no band on the page, only the popup, opened by the link
+  „Попитайте за това бижу“ near the buy button (href #zapitvane).
+{%- endcomment -%}
 {%- liquid
   assign form_id = 'CustomRequest-' | append: section.id
   assign email = section.settings.email | strip
   assign layout = section.settings.layout | default: 'open'
-  comment
-    popup_only (2026-10-12, owner): no band on the page, only the popup, opened by „Попитайте за това бижу“ near the buy button. Re-sent.
-  endcomment
   assign is_popup = false
   if layout == 'popup' or layout == 'popup_only'
     assign is_popup = true
