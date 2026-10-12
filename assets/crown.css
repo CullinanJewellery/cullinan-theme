@@ -8617,3 +8617,17 @@ html body .product .product__info-container > *:has(+ .product-phone-order) .pro
 html body .product .product-phone-order + .product-trust {
   margin-top: 1rem;
 }
+
+/* Card hearts on computers only on „Любими“ (2026-10-12, owner: on a computer the heart in the
+   card's top-right corner only on the Любими page; phones keep it on collection pages too). From
+   990px the collection pages show no card heart; saving there is the header's way to Любими and the
+   heart on „Добави в количката“. Way back: delete this block. */
+@media screen and (min-width: 990px) {
+  html body .card-wrapper .cj-wish-wrap {
+    display: none;
+  }
+
+  html body .cj-wishlist .card-wrapper .cj-wish-wrap {
+    display: block;
+  }
+}
