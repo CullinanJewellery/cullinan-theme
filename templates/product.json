@@ -236,6 +236,14 @@
         "margin_top": 0,
         "margin_bottom": 0
       }
+    },
+    "recently_viewed": {
+      "type": "recently-viewed",
+      "settings": {
+        "show_row": false,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
     }
   },
   "order": [
@@ -244,6 +252,7 @@
     "enquiry",
     "17908484248f2d50d1",
     "related-products",
+    "recently_viewed",
     "social_band"
   ]
 }
