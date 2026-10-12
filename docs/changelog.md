@@ -21,7 +21,11 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 - Heart on „Добави в количката“: 24px (was 20; moonmagic 20).
 - Product page order: „Още от нашите бижута“ now above „Отзиви от клиенти“ (social_band before the Judge.me apps
   section).
-- „Може да ви хареса“: names not underlined on hover (`recently-viewed[data-static]`); „Наскоро разгледани“ keeps it.
+- „Може да ви хареса“ and (owner, same evening) „Наскоро разгледани“ on Любими: names not underlined on hover.
+- Question popup close (owner: „Затвори“ looked cut at the edge; make it like the photo zoom's): the popup reuses
+  the size guide's dialog, whose close is a 44px square for a cross alone, so the word pushed the cross past the
+  edge. Now „ЗАТВОРИ“ (13px capitals) and a thin 28px-line cross as in the zoom, 18px in from the box's edge, title
+  kept clear (crown.css „Close in the question popup“). Size guide unchanged. Checked at 1440 and 375.
 - Checked on the real preview at 1440: band 0px, link opens the popup with all fields and no scrollbar; order
   social band 1008 → reviews 1340 → Може да ви хареса 1579; hover on „Висулка плочка“ no underline; heart 24px.
 
