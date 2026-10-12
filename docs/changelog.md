@@ -8,7 +8,7 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
-## 2026-10-12 — trail links in rose gold; Може да ви хареса with arrows; Наскоро разгледани on Любими; larger phone photos **(owner)**
+## 2026-10-12 — trail links in rose gold; Може да ви хареса as a Наскоро разгледани row; Наскоро разгледани on Любими; moonmagic phone grid **(owner)**
 - Navigation trail (Начало › Пръстени): links in rose gold `#B76E79` (the review stars' colour, chosen by the owner
   over the pale `#E6BAB9` and a deeper `#A85F6B`), never underlined, hover `#9A5561`; keyboard outline kept; the
   current page and › in ink; white over a collection heading picture. crown.css „Trail links in rose gold“.
@@ -17,15 +17,24 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
   the section with the new „Show the row“ switch off (`show_row: false`, `data-record-only`): it remembers the piece and
   shows nothing. Checked: opening Висулка плочка added it, no row on the product page, Любими listed both. Way back:
   switch „Show the row“ on in product.json.
-- „Може да ви хареса“: same products and cards, now a row that scrolls with the arrows at the top right on computers
-  as well (`enable_desktop_slider: true`, up to 8 pieces; was 4 with no desktop arrows). Arrows appear only when the
-  row is longer than three; on phones it already swiped with arrows.
-- Phones, collection pages (and „Любими“): grid edge to edge with a 4px gap, photos 171.5 → 185.5px at 375 and
-  144 → 158px at 320 (owner chose two across over one); names and prices 12px from the screen edge. Product page
-  gallery and search unchanged. crown.css „Fourth pass“.
-- Checked on the real preview: 1440 (trail colour, no underline, row arrows scroll and disable at the end, Любими
-  shows the row) and 375 / 320 (grid 185.5 / 158px, no sideways scroll, gallery 375px as before, trail white on the
-  Пръстени picture).
+- „Може да ви хареса“ **(owner: "the same design and sizes like Наскоро разгледани")**: a new section,
+  `sections/cj-may-like.liquid`, in Наскоро разгледани's own design and CSS (heading, arrows top right only when the
+  row overflows, square photos with the name, hover second photo; 390px cards three across at 1440, 269px at 375).
+  Products from „Всички“ (up to 8, never the one open), drawn by Liquid; recently-viewed.js gets a `data-static` mode
+  (arrows only, nothing recorded). No price or colour circles now, as in Наскоро разгледани. Replaces Dawn's
+  featured-collection row in product.json (earlier the same day it had only been given desktop arrows). Way back: the
+  `related-products` featured-collection entry from git history.
+- Phones, collection pages (and „Любими“) **(owner: "match the size and the form of moonmagic")**: moonmagic.com
+  measured at 375 — square 173.9px frames, 10px margins, 7px gap, photos filling the frame (cover), names 10px in.
+  Ours now the same (174px; 146.5px at 320). This reverses „the whole piece always visible“ (2026-10-05) on phone
+  collection pages: a photo that is not square loses a little top and bottom. Earlier the same day: edge to edge, 4px
+  gap, contain (185.5px). crown.css „Fourth pass“; way back: delete that block.
+- Trail links on computers: on hover a hairline outline (0.012em, the site's lightest step) makes them a touch bolder
+  **(owner: "bold by 5%")**; words do not shift.
+- Checked on the real preview: 1440 (trail colour, no underline, hover outline 0.144px and deeper rose; Може да ви
+  хареса 390px cards, arrow scrolls one card and disables at the end, photos 533px; Любими shows Наскоро разгледани)
+  and 375 / 320 (Може да ви хареса 269px cards with arrows; grid 174 / 146.5px at 10..184 and 191..365, cover, no
+  sideways scroll; gallery 375px as before; trail white on the Пръстени picture).
 
 ---
 

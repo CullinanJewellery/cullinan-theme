@@ -100,6 +100,7 @@ collection), **social band** („Още от нашите бижута“ / „�
 | Gallery | `snippets/product-media-gallery.liquid`, `assets/gallery-dots.js`, `crown.css` | Computer: two-column mosaic (`gallery_layout: columns` in product.json, restored 2026-10-06; "thumbnail" 10-05 to 10-06), square tiles, no gaps; lone picture fitted; phone: full-bleed slides with dots |
 | Zoom viewer | `snippets/product-media-modal.liquid`, `assets/product-modal.js`, `assets/component-product-viewer.css` | Thumbnail strip ≥990px, progress bar on phones, keyboard and swipe |
 | Recently viewed | `sections/recently-viewed.liquid`, `assets/recently-viewed.js` | localStorage list (per browser); hidden until another product is stored. Since 2026-10-12 the row shows on „Любими“ (templates/collection.wishlist.json); the product page keeps the section with „Show the row“ off (`show_row: false`, `data-record-only`), so views are still remembered |
+| May like (row) | `sections/cj-may-like.liquid` + Recently viewed's CSS and script (`data-static`) | „Може да ви хареса“ on the product page since 2026-10-12: pieces from a collection drawn by Liquid in the Recently viewed design; the open product left out |
 | Questions | Dawn `disclosures` section (prints only what Shopify's product disclosures supply; nothing today) | The product page **no longer carries a copy of the За нас FAQ** (removed 2026-10-03, `1c60b42`); the FAQ lives only in `templates/page.about.json` |
 | Judge.me | app block | Restyled in `crown.css` (`jm-*`, `jdgm-*` selectors; fail soft) |
 
