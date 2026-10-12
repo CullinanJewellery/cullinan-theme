@@ -8,6 +8,25 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-12 (late) — „Попитайте за това бижу“ back; social band above the reviews; small fixes **(owner)**
+- The owner meant to remove the phone link and the „Запитване“ band, not „Попитайте за това бижу“: the link is back
+  (block `phone_order` with the phone number empty, so only the question link prints) and opens the same popup
+  form as before (name, email, phone optional, question, send). The enquiry section is back in product.json with
+  its `popup` layout; its band is hidden by CSS (`#zapitvane .custom-request--popup`, crown.css), so it takes no
+  room. A first attempt with a new `popup_only` layout in sections/custom-request.liquid was never taken by
+  Shopify (the page kept the old section code for several minutes, so the form showed as an open band); the
+  section file was restored to its earlier version.
+- The question popup (and the size guide, same dialog): `overflow-x: hidden`, the close cross reached 2px past
+  the box and gave it a sideways scrollbar.
+- Heart on „Добави в количката“: 24px (was 20; moonmagic 20).
+- Product page order: „Още от нашите бижута“ now above „Отзиви от клиенти“ (social_band before the Judge.me apps
+  section).
+- „Може да ви хареса“: names not underlined on hover (`recently-viewed[data-static]`); „Наскоро разгледани“ keeps it.
+- Checked on the real preview at 1440: band 0px, link opens the popup with all fields and no scrollbar; order
+  social band 1008 → reviews 1340 → Може да ви хареса 1579; hover on „Висулка плочка“ no underline; heart 24px.
+
+---
+
 ## 2026-10-12 — heart on „Добави в количката“; white gold card; no phone order or Запитване on the product page **(owner)**
 - Heart (as on moonmagic.com, measured: a 54px square at the right end of their black „ADD TO BAG“, 20px white
   outline heart, label still centred): a separate `.cj-wish--buy` button laid over the right end of our add button
