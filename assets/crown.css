@@ -8488,8 +8488,9 @@ html body .cj-wish--buy .cj-wish__icon {
 }
 
 html body .cj-wish--buy .icon-heart {
-  width: 2rem;
-  height: 2rem;
+  /* 24px (2026-10-12, owner: bigger; moonmagic 20px) */
+  width: 2.4rem;
+  height: 2.4rem;
 }
 
 html body .cj-wish--buy[aria-pressed='true'] .icon-heart path {
@@ -8526,4 +8527,16 @@ html body .cj-buy-row:has(.product-form__submit:not([disabled]):hover) .cj-wish-
     --cj-buy-heart: 4.4rem;
     top: 0.5rem;
   }
+}
+
+/* „Запитване“ as a popup only (2026-10-12, owner: the band off the product page, „Попитайте за
+   това бижу“ kept): sections/custom-request.liquid layout popup_only prints no band, only the
+   dialog; its section takes no room. */
+html body .custom-request--popup_only {
+  padding: 0 !important;
+}
+
+html body .shopify-section:has(.custom-request--popup_only) {
+  margin: 0 !important;
+  padding: 0 !important;
 }
