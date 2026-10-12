@@ -162,6 +162,7 @@ collection), **social band** („Още от нашите бижута“ / „�
 - **Photo sharpness (2026-10-11)**: card `sizes` must match our grid (3 columns ≥990px, 2 below; card-product.liquid),
   the gallery's phone `sizes` is 100vw (product-thumbnail.liquid), and `.card__inner` carries no transform
   (crown.css; a transform makes browsers soften the photo). Check `currentSrc` width ≥ frame width × screen density.
+- **Card hearts on computers (2026-10-12)**: from 990px only on „Любими“ (crown.css „Card hearts on computers only on Любими“); phones and tablets show them everywhere.
 - **Heart (since 2026-10-07, replaces the bag)**: where a section asks for `quick_add: standard` (the catalogue grid,
   „Любими“), card-product prints `.cj-wish` (top-right, 44x44 tap area, 30px circle, `snippets/icon-heart.liquid`),
   `data-cj-wish=<handle>`, `aria-pressed`. `assets/wishlist.js` (loaded in layout/theme.liquid) saves/removes in
