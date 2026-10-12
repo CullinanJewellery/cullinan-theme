@@ -68,6 +68,14 @@
       this.buttons = this.querySelector('.recently-viewed__buttons');
       if (!this.track) return;
 
+      // „Може да ви хареса“ (sections/cj-may-like.liquid, 2026-10-12): the cards come from
+      // Liquid; only the arrows are needed, and nothing is recorded
+      if ('static' in this.dataset) {
+        this.hidden = false;
+        this.setupArrows();
+        return;
+      }
+
       const max = Math.max(1, parseInt(this.dataset.max, 10) || 8);
       const current = this.dataset.handle
         ? {

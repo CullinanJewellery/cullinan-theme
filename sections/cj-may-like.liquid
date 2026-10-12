@@ -1,0 +1,219 @@
+{{ 'component-slider.css' | asset_url | stylesheet_tag }}
+{{ 'section-recently-viewed.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'recently-viewed.js' | asset_url }}" defer="defer"></script>
+
+{%- comment -%}
+  „Може да ви хареса“ (2026-10-12, owner: "the same design and sizes like Наскоро разгледани,
+  but with a different task"). The look, sizes and arrows are Наскоро разгледани's own
+  (section-recently-viewed.css, the <recently-viewed> element in assets/recently-viewed.js):
+  a heading with arrows at the top right that appear only when the row overflows, square
+  photos with the name under them, the second photo on hover, three across from 990px and
+  1.27 on a phone. Only the products differ: pieces from a collection (the product page uses
+  „Всички“), drawn here by Liquid, never the one the visitor is on. `data-static` tells the
+  script the cards are already in place, so it only sets up the arrows and records nothing.
+  Replaces Dawn's featured-collection row on the product page (before 2026-10-12: cards with
+  price and colour circles).
+{%- endcomment -%}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+{%- liquid
+  assign ml_count = 0
+  if section.settings.collection != blank
+    for p in section.settings.collection.products limit: 50
+      if product and p.id == product.id
+        continue
+      endif
+      assign ml_count = ml_count | plus: 1
+    endfor
+  endif
+-%}
+
+{%- if ml_count > 0 -%}
+  <recently-viewed class="recently-viewed color-{{ section.settings.color_scheme }} gradient" data-static>
+    <div class="recently-viewed__inner page-width section-{{ section.id }}-padding">
+      <div class="recently-viewed__header">
+        {%- if section.settings.heading != blank -%}
+          <h2 class="recently-viewed__heading">{{ section.settings.heading | escape }}</h2>
+        {%- endif -%}
+        <div class="recently-viewed__buttons" hidden>
+          <button
+            type="button"
+            class="slider-button slider-button--prev"
+            name="previous"
+            aria-label="{{ 'general.slider.previous_slide' | t }}"
+          >
+            <span class="svg-wrapper">
+              {{- 'icon-caret.svg' | inline_asset_content -}}
+            </span>
+          </button>
+          <button
+            type="button"
+            class="slider-button slider-button--next"
+            name="next"
+            aria-label="{{ 'general.slider.next_slide' | t }}"
+          >
+            <span class="svg-wrapper">
+              {{- 'icon-caret.svg' | inline_asset_content -}}
+            </span>
+          </button>
+        </div>
+      </div>
+      <ul class="recently-viewed__track" role="list">
+        {%- assign ml_shown = 0 -%}
+        {%- for p in section.settings.collection.products limit: 50 -%}
+          {%- if product and p.id == product.id -%}
+            {%- continue -%}
+          {%- endif -%}
+          {%- if ml_shown >= section.settings.products_to_show -%}
+            {%- break -%}
+          {%- endif -%}
+          {%- assign ml_shown = ml_shown | plus: 1 -%}
+          {%- liquid
+            comment
+              second photo: the first image tied to no variant (never another metal), as on the cards
+            endcomment
+            assign ml_second = null
+            if p.media.size > 1 and p.featured_media
+              assign ml_variant_ids = ','
+              for v in p.variants
+                if v.featured_media
+                  assign ml_variant_ids = ml_variant_ids | append: v.featured_media.id | append: ','
+                endif
+              endfor
+              for m in p.media
+                if m.media_type != 'image' or m.id == p.featured_media.id
+                  continue
+                endif
+                assign ml_key = ',' | append: m.id | append: ','
+                if ml_variant_ids contains ml_key
+                  continue
+                endif
+                assign ml_second = m
+                break
+              endfor
+            endif
+            assign ml_sizes = '(min-width: 990px) calc((100vw - 10rem) * 0.3), (min-width: 750px) 50vw, 80vw'
+          -%}
+          <li class="recently-viewed__item">
+            <a
+              class="recently-viewed__link"
+              href="{{ p.url }}"
+              {% if ml_second %}
+                data-photo-preview
+              {% endif %}
+            >
+              <div class="recently-viewed__media">
+                {%- if p.featured_media -%}
+                  {{
+                    p.featured_media.preview_image
+                    | image_url: width: 940
+                    | image_tag:
+                      class: 'recently-viewed__image',
+                      alt: '',
+                      loading: 'lazy',
+                      widths: '360, 533, 720, 940',
+                      sizes: ml_sizes
+                  }}
+                  {%- if ml_second -%}
+                    {{
+                      ml_second.preview_image
+                      | image_url: width: 940
+                      | image_tag:
+                        class: 'recently-viewed__image recently-viewed__image--preview',
+                        alt: '',
+                        widths: '360, 533, 720, 940',
+                        sizes: ml_sizes
+                    }}
+                  {%- endif -%}
+                {%- endif -%}
+              </div>
+              <p class="recently-viewed__title">{{ p.title | escape }}</p>
+            </a>
+          </li>
+        {%- endfor -%}
+      </ul>
+    </div>
+  </recently-viewed>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "May like (row)",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "A row of pieces from the collection below, in the design of Recently viewed: arrows at the top right, square photos with names. The product the visitor is on is left out."
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "default": "Може да ви хареса",
+      "label": "Heading"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 2,
+      "max": 12,
+      "step": 1,
+      "default": 8,
+      "label": "Most products to show"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "default": "scheme-1",
+      "label": "Colour scheme"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 72
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 40
+    }
+  ],
+  "presets": [
+    {
+      "name": "May like (row)"
+    }
+  ]
+}
+{% endschema %}

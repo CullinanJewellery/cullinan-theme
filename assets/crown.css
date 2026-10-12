@@ -4525,6 +4525,20 @@ body .jdgm-write-review-modal .jdgm-write-review-modal__page--review-form-intro 
   text-decoration: none;
 }
 
+/* Computers: a touch bolder on hover (2026-10-12, owner: "bold by 5%"). A hairline outline
+   on the letters (0.012em, the site's lightest step, as in the dropdown), so the words never
+   shift; colours as above. */
+@media screen and (min-width: 990px) and (hover: hover) {
+  .cj-breadcrumbs .cj-breadcrumbs__link {
+    -webkit-text-stroke: 0 currentcolor;
+    transition: color 0.2s ease, -webkit-text-stroke-width 0.2s ease;
+  }
+
+  .cj-breadcrumbs .cj-breadcrumbs__link:hover {
+    -webkit-text-stroke-width: 0.012em;
+  }
+}
+
 .cj-breadcrumbs__link:focus-visible {
   outline: 0.2rem solid rgb(var(--color-foreground));
   outline-offset: 0.2rem;
@@ -6803,19 +6817,29 @@ html body .collection .price:not(.price--on-sale) {
   }
 }
 
-/* Fourth pass (2026-10-12, owner: "make the picture of the products bigger" on collection
-   pages; chose two across, larger): the grid runs to the screen edges with a 4px gap, so each
-   square photo is 185.5px at 375 (was 171.5) and 158px at 320 (was 144). Names, prices and
-   colour circles keep 12px from the screen edge. Collection pages (and „Любими“, which uses the
-   same grid); search results and the product page unchanged. Way back: delete this block. */
+/* Fourth pass (2026-10-12, owner: "match the size and the form of moonmagic"). Their phone
+   grid, measured at 375: square frames 173.9px, 10px from the screen edges, 7px between the
+   columns, every photo filling its square (cover), names 10px inside the card. Ours now the
+   same: 10px margins (the grid reaches 5px into the page's 15px), a 7px gap, cover, text inset
+   10px. Reverses „the whole piece always visible“ (2026-10-05) on phone collection pages only:
+   a photo that is not square loses a little top and bottom; square photos are unchanged.
+   Collection pages and „Любими“ (same grid); search, homepage rows and the product page keep
+   their own. (Earlier the same day: edge to edge, 4px gap, contain.) Way back: delete this
+   block (back to the third pass: 12px margins, 8px gap, contain). */
 @media screen and (max-width: 749px) {
   html body #product-grid.product-grid {
-    --grid-mobile-horizontal-spacing: 0.4rem;
-    margin-inline: -1.5rem;
+    --grid-mobile-horizontal-spacing: 0.7rem;
+    margin-inline: -0.5rem;
   }
 
   html body #product-grid.product-grid .card__content {
-    padding-inline: 1.2rem;
+    padding-inline: 1rem;
+  }
+
+  html body #product-grid .product-card-wrapper .card__media .media img,
+  html body #product-grid .product-card-wrapper .card__track > .card__slide > img,
+  html body #product-grid .card-wrapper.product-card-wrapper .card[data-photo-preview] .card__photo-link > img:first-child {
+    object-fit: cover;
   }
 }
 
