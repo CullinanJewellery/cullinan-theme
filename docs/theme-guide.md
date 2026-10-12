@@ -99,7 +99,7 @@ collection), **social band** („Още от нашите бижута“ / „�
 | Product rows (featured collection) | Dawn `featured-collection.liquid` + `crown.css` | The numeric counter („1 / от 4“) between the arrows is hidden visually (kept for screen readers) since 2026-10-04; arrows unchanged |
 | Gallery | `snippets/product-media-gallery.liquid`, `assets/gallery-dots.js`, `crown.css` | Computer: two-column mosaic (`gallery_layout: columns` in product.json, restored 2026-10-06; "thumbnail" 10-05 to 10-06), square tiles, no gaps; lone picture fitted; phone: full-bleed slides with dots |
 | Zoom viewer | `snippets/product-media-modal.liquid`, `assets/product-modal.js`, `assets/component-product-viewer.css` | Thumbnail strip ≥990px, progress bar on phones, keyboard and swipe |
-| Recently viewed | `sections/recently-viewed.liquid`, `assets/recently-viewed.js` | localStorage list (per browser); hidden until another product is stored. Since 2026-10-12 on „Любими“ (templates/collection.wishlist.json), no longer on the product page; there it only shows the list, records nothing |
+| Recently viewed | `sections/recently-viewed.liquid`, `assets/recently-viewed.js` | localStorage list (per browser); hidden until another product is stored. Since 2026-10-12 the row shows on „Любими“ (templates/collection.wishlist.json); the product page keeps the section with „Show the row“ off (, ), so views are still remembered |
 | Questions | Dawn `disclosures` section (prints only what Shopify's product disclosures supply; nothing today) | The product page **no longer carries a copy of the За нас FAQ** (removed 2026-10-03, `1c60b42`); the FAQ lives only in `templates/page.about.json` |
 | Judge.me | app block | Restyled in `crown.css` (`jm-*`, `jdgm-*` selectors; fail soft) |
 

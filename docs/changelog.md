@@ -13,8 +13,10 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
   over the pale `#E6BAB9` and a deeper `#A85F6B`), never underlined, hover `#9A5561`; keyboard outline kept; the
   current page and › in ink; white over a collection heading picture. crown.css „Trail links in rose gold“.
 - Product page: „Наскоро разгледани“ removed (product.json); it now sits under the saved pieces on „Любими“
-  (collection.wishlist.json; on a page without a product it shows the list and records nothing). The product page no
-  longer records views, so the list only grows from earlier visits. Way back: re-add the section to product.json.
+  (collection.wishlist.json; on a page without a product it shows the list and records nothing). The product page keeps
+  the section with the new „Show the row“ switch off (`show_row: false`, `data-record-only`): it remembers the piece and
+  shows nothing. Checked: opening Висулка плочка added it, no row on the product page, Любими listed both. Way back:
+  switch „Show the row“ on in product.json.
 - „Може да ви хареса“: same products and cards, now a row that scrolls with the arrows at the top right on computers
   as well (`enable_desktop_slider: true`, up to 8 pieces; was 4 with no desktop arrows). Arrows appear only when the
   row is longer than three; on phones it already swiped with arrows.
