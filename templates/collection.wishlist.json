@@ -14,9 +14,17 @@
       "settings": {
         "heading": "Любими"
       }
+    },
+    "recently_viewed": {
+      "type": "recently-viewed",
+      "settings": {
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "recently_viewed"
   ]
 }

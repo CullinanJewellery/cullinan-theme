@@ -4510,6 +4510,21 @@ body .jdgm-write-review-modal .jdgm-write-review-modal__page--review-form-intro 
   text-decoration: underline;
 }
 
+/* Trail links in rose gold, never underlined (2026-10-12, owner: "pink, not underlined and
+   black"). #B76E79 is the review stars' rose gold; hover a deeper rose. The current page and
+   the › stay in ink; keyboard focus keeps its outline. Over a collection heading picture the
+   links stay white (block „Collection heading picture“). Way back: delete this block. */
+.cj-breadcrumbs .cj-breadcrumbs__link {
+  color: #b76e79;
+  text-decoration: none;
+}
+
+.cj-breadcrumbs .cj-breadcrumbs__link:hover,
+.cj-breadcrumbs .cj-breadcrumbs__link:focus-visible {
+  color: #9a5561;
+  text-decoration: none;
+}
+
 .cj-breadcrumbs__link:focus-visible {
   outline: 0.2rem solid rgb(var(--color-foreground));
   outline-offset: 0.2rem;
@@ -6785,6 +6800,22 @@ html body .collection .price:not(.price--on-sale) {
   html body #product-grid.product-grid .card__content,
   html body .template-search__results .product-grid .card__content {
     padding-inline: 0;
+  }
+}
+
+/* Fourth pass (2026-10-12, owner: "make the picture of the products bigger" on collection
+   pages; chose two across, larger): the grid runs to the screen edges with a 4px gap, so each
+   square photo is 185.5px at 375 (was 171.5) and 158px at 320 (was 144). Names, prices and
+   colour circles keep 12px from the screen edge. Collection pages (and „Любими“, which uses the
+   same grid); search results and the product page unchanged. Way back: delete this block. */
+@media screen and (max-width: 749px) {
+  html body #product-grid.product-grid {
+    --grid-mobile-horizontal-spacing: 0.4rem;
+    margin-inline: -1.5rem;
+  }
+
+  html body #product-grid.product-grid .card__content {
+    padding-inline: 1.2rem;
   }
 }
 
