@@ -8609,7 +8609,7 @@ html body .product .product-phone-order {
   margin-top: 0.4rem;
 }
 
-/* the add-to-cart form's own 25px bottom margin set the gap; 15px when the link follows it */
+/* the add-to-cart form's own 25px bottom margin set the gap; 15px when the link follows it (re-sent) */
 html body .product .product__info-container > *:has(+ .product-phone-order) .product-form {
   margin-bottom: 1.5rem;
 }
