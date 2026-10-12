@@ -8,12 +8,29 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-12 — heart on „Добави в количката“; white gold card; no phone order or Запитване on the product page **(owner)**
+- Heart (as on moonmagic.com, measured: a 54px square at the right end of their black „ADD TO BAG“, 20px white
+  outline heart, label still centred): a separate `.cj-wish--buy` button laid over the right end of our add button
+  (snippets/buy-buttons.liquid, `.cj-buy-row`), so a tap saves to „Любими“ (assets/wishlist.js) and never adds to
+  the cart. White on black; dark when the button turns pink on hover, and it lifts with it; filled when saved.
+  44px tap square under 360px, where the label reaches 257px of 320. crown.css „Heart on the add-to-cart button“.
+- White gold material card: „С родиево покритие за по‑силен блясък“ now replaces „Създадено да запазва блясъка си“
+  (three points on every card).
+- Product page (product.json): the „Поръчайте по телефон“ / „Попитайте за това бижу“ block (`phone_order`) and the
+  „Запитване — Имате въпрос за това бижу?“ section (`enquiry`, custom-request) removed. Way back: both from git
+  history of templates/product.json.
+- Checked on the real preview: 1440 (heart 54×54 in the 54px button, click saved the piece, cart stayed 0, header
+  heart filled; hover: heart dark and lifted 2.5px with the button), 375 (label ends 285, heart from 306), 320
+  (label 257, heart from 261); no phone order, no Запитване; white card text read from the server.
+
+---
+
 ## 2026-10-12 — material card in the product gallery **(owner, after moonmagic.com's material slide)**
 - The last gallery tile is a card for the selected metal (`snippets/cj-material-card.liquid`, rendered at the end
   of `product-media-gallery.liquid`, not in the quick-add view). Picture: polished metal made in Higgsfield with no
   text (`assets/cj-material-yellow|white|rose.jpg`, 1600px, ~155 KB; originals in the owner's photo folder
   „00 Карти за материали“); words drawn by the theme (CLAUDE.md: nothing burned into a photograph; Bulgarian exact).
-- Wording (owner): „Първокласно качество“ / „Жълто злато“ (etc.) / • 14К … злато, проба 585 • Създадено да запазва
+- Wording (owner; white gold changed the same day, entry above): „Първокласно качество“ / „Жълто злато“ (etc.) / • 14К … злато, проба 585 • Създадено да запазва
   блясъка си • Прецизна изработка • (white only) С родиево покритие за по‑силен блясък / „Изработка, на която можете
   да разчитате.“ New fact in CLAUDE.md: white gold is rhodium plated as the last step.
 - Metal from the selected variant's metal/material option (else any option naming „бяло / розово / жълто злато“);
