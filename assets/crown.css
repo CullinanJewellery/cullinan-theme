@@ -6801,6 +6801,41 @@ html body .collection .price:not(.price--on-sale) {
   }
 }
 
+/* Product cards, third pass (2026-10-12, owner: in rows like „Най-продавани“ on every page,
+   the names not underlined, smaller but still in proportion to the photo, the price black;
+   phones the same). Every product card (homepage rows, collection pages, Любими): names
+   17px from 750px (were 20), 15px on phones (were 17), 14px below 360px (were 16); Dawn's
+   hover underline on the name (`.underline-links-hover:hover a`) switched off; regular prices
+   in black (were the ink at 75%). Sale prices keep their ruby. Way back: delete this block. */
+html body .collection .card__heading,
+html body .collection .card__heading.h5 {
+  font-size: 1.5rem;
+}
+
+@media screen and (max-width: 359px) {
+  html body .collection .card__heading,
+  html body .collection .card__heading.h5 {
+    font-size: 1.4rem;
+  }
+}
+
+@media screen and (min-width: 750px) {
+  html body .collection .card__heading,
+  html body .collection .card__heading.h5 {
+    font-size: 1.7rem;
+  }
+}
+
+html body .product-card-wrapper .underline-links-hover:hover a,
+html body .product-card-wrapper .card__heading a:hover {
+  text-decoration: none;
+}
+
+html body .collection .price:not(.price--on-sale),
+html body .collection .price:not(.price--on-sale) .price-item {
+  color: rgb(0 0 0);
+}
+
 /* Third pass (2026-10-06, owner: slightly larger photos on phones): 12px side margins
    (the grid reaches 3px into the page's 15px) and an 8px gap, so each square photo gains
    about 4-5px (167 -> 171px at 375, 139 -> 144px at 320). Desktop unchanged. */
@@ -6827,9 +6862,12 @@ html body .collection .price:not(.price--on-sale) {
    their own. (Earlier the same day: edge to edge, 4px gap, contain.) Way back: delete this
    block (back to the third pass: 12px margins, 8px gap, contain). */
 @media screen and (max-width: 749px) {
+  /* Same day, later (owner: smaller gap, wider photos, the edges a little smaller): 4px gap
+     (was 7) and 8px from the screen edges (was 10), so each photo is 177.5px at 375 (was 174)
+     and 150px at 320 (was 146.5). */
   html body #product-grid.product-grid {
-    --grid-mobile-horizontal-spacing: 0.7rem;
-    margin-inline: -0.5rem;
+    --grid-mobile-horizontal-spacing: 0.4rem;
+    margin-inline: -0.7rem;
   }
 
   html body #product-grid.product-grid .card__content {
