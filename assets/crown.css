@@ -8520,7 +8520,7 @@ html body .cj-buy-row:has(.product-form__submit:not([disabled]):hover) .cj-wish-
 }
 
 /* Narrowest phones: the label „Добави в количката“ reaches 257px at 320, so the heart's tap
-   square is 44px there (the minimum for a finger) and starts after it. */
+   square is 44px there (the minimum for a finger) and starts after it (re-sent). */
 @media screen and (max-width: 359px) {
   html body .cj-wish--buy {
     --cj-buy-heart: 4.4rem;
