@@ -8552,10 +8552,52 @@ html body dialog.size-guide {
   overflow-x: hidden;
 }
 
-/* „Може да ви хареса“ (recently-viewed[data-static], sections/cj-may-like.liquid): names not
-   underlined on hover (2026-10-12, owner). „Наскоро разгледани“ keeps its underline. */
+/* „Може да ви хареса“ (sections/cj-may-like.liquid) and „Наскоро разгледани“ (on „Любими“): names
+   not underlined on hover (2026-10-12, owner). */
 @media (hover: hover) {
-  html body recently-viewed[data-static] .recently-viewed__link:hover .recently-viewed__title {
+  html body recently-viewed .recently-viewed__link:hover .recently-viewed__title {
     text-decoration: none;
   }
+}
+
+/* Close in the question popup (2026-10-12, owner: „Затвори“ looked cut at the edge; make it like
+   the photo zoom's „ЗАТВОРИ ✕“). The popup reuses the size guide's dialog, whose close is a 44px
+   square for a cross alone, so the word pushed the cross past the edge. Here: the word in
+   capitals and a thin cross like the zoom's (scaled to the smaller box), inside the box. */
+html body dialog.custom-request__dialog .size-guide__close-form {
+  top: 1.4rem;
+  right: 1.8rem;
+}
+
+html body dialog.custom-request__dialog .size-guide__close {
+  width: auto;
+  gap: 1rem;
+  padding: 0 0.4rem;
+  font-size: 1.3rem;
+  letter-spacing: 0.08em;
+}
+
+html body dialog.custom-request__dialog .size-guide__close:hover {
+  opacity: 0.7;
+}
+
+html body dialog.custom-request__dialog .size-guide__cross {
+  width: 2rem;
+  height: 2rem;
+}
+
+html body dialog.custom-request__dialog .size-guide__cross::before,
+html body dialog.custom-request__dialog .size-guide__cross::after {
+  left: 50%;
+  width: 2.8rem;
+  height: 0.15rem;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+html body dialog.custom-request__dialog .size-guide__cross::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+html body dialog.custom-request__dialog .size-guide__title {
+  padding-right: 12rem;
 }
