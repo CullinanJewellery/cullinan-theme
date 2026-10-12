@@ -8545,3 +8545,17 @@ html body .shopify-section:has(#zapitvane .custom-request--popup) {
   margin: 0 !important;
   padding: 0 !important;
 }
+
+/* The question popup (and the size guide, same dialog): the close cross reached 2px past the
+   box and gave it a sideways scrollbar (2026-10-12). */
+html body dialog.size-guide {
+  overflow-x: hidden;
+}
+
+/* „Може да ви хареса“ (recently-viewed[data-static], sections/cj-may-like.liquid): names not
+   underlined on hover (2026-10-12, owner). „Наскоро разгледани“ keeps its underline. */
+@media (hover: hover) {
+  html body recently-viewed[data-static] .recently-viewed__link:hover .recently-viewed__title {
+    text-decoration: none;
+  }
+}
