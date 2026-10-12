@@ -8,6 +8,25 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-12 — material card in the product gallery **(owner, after moonmagic.com's material slide)**
+- The last gallery tile is a card for the selected metal (`snippets/cj-material-card.liquid`, rendered at the end
+  of `product-media-gallery.liquid`, not in the quick-add view). Picture: polished metal made in Higgsfield with no
+  text (`assets/cj-material-yellow|white|rose.jpg`, 1600px, ~155 KB; originals in the owner's photo folder
+  „00 Карти за материали“); words drawn by the theme (CLAUDE.md: nothing burned into a photograph; Bulgarian exact).
+- Wording (owner): „Първокласно качество“ / „Жълто злато“ (etc.) / • 14К … злато, проба 585 • Създадено да запазва
+  блясъка си • Прецизна изработка • (white only) С родиево покритие за по‑силен блясък / „Изработка, на която можете
+  да разчитате.“ New fact in CLAUDE.md: white gold is rhodium plated as the last step.
+- Metal from the selected variant's metal/material option (else any option naming „бяло / розово / жълто злато“);
+  no gold value, no card. Its own `data-media-id` per metal, so Dawn swaps it with the photos on a variant change.
+- Layout: eyebrow and Prata title top left; points and closing line in one right-hand column (the line always
+  follows the last point); sizes in `cqw`, so the card scales with its tile. crown.css „Material card“.
+- Checked on the real preview: 1440 (417px tile, 13.8px points, white card follows the white choice with its four
+  points), 375 (12.4px, 27px between points and line, no overflow), 320 (10.6px, fits).
+- Known: on „Пръстен с топчета“ only size 52 has variant photos, so on other sizes Dawn does not update the gallery
+  when the metal changes (owner to link the main photos per colour group in Shopify admin).
+
+---
+
 ## 2026-10-12 — product page shows only the chosen metal's photos **(owner)**
 - Shopify ties one photo to a variant; the other photos of a metal are now marked by **alt text** in Shopify admin,
   written exactly as an option value of the product („жълто злато“, „бяло злато“, „розово злато“, or the material
