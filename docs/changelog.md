@@ -26,6 +26,9 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
   the size guide's dialog, whose close is a 44px square for a cross alone, so the word pushed the cross past the
   edge. Now „ЗАТВОРИ“ (13px capitals) and a thin 28px-line cross as in the zoom, 18px in from the box's edge, title
   kept clear (crown.css „Close in the question popup“). Size guide unchanged. Checked at 1440 and 375.
+- Space around „Попитайте за това бижу“ about a quarter less (owner: "don't overdo it"): visible gap from the
+  button to the text 39 → 29px (the add-to-cart form's 25px bottom margin is 15px when the link follows it) and
+  from the text to the line under it 34 → 24px; the link keeps its 44px tap area. Checked at 1440 and 375.
 - Checked on the real preview at 1440: band 0px, link opens the popup with all fields and no scrollbar; order
   social band 1008 → reviews 1340 → Може да ви хареса 1579; hover on „Висулка плочка“ no underline; heart 24px.
 
