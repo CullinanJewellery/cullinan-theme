@@ -89,6 +89,9 @@
         writeList(list);
       }
 
+      // record only (the product page since 2026-10-12): remember, show nothing
+      if ('recordOnly' in this.dataset) return;
+
       const shown = list.filter((item) => !current || item.h !== current.h).slice(0, max);
       if (!shown.length) {
         // only inside the theme editor: empty slots and a note, so the section can be

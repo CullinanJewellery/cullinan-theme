@@ -8,6 +8,25 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-12 — trail links in rose gold; Може да ви хареса with arrows; Наскоро разгледани on Любими; larger phone photos **(owner)**
+- Navigation trail (Начало › Пръстени): links in rose gold `#B76E79` (the review stars' colour, chosen by the owner
+  over the pale `#E6BAB9` and a deeper `#A85F6B`), never underlined, hover `#9A5561`; keyboard outline kept; the
+  current page and › in ink; white over a collection heading picture. crown.css „Trail links in rose gold“.
+- Product page: „Наскоро разгледани“ removed (product.json); it now sits under the saved pieces on „Любими“
+  (collection.wishlist.json; on a page without a product it shows the list and records nothing). The product page no
+  longer records views, so the list only grows from earlier visits. Way back: re-add the section to product.json.
+- „Може да ви хареса“: same products and cards, now a row that scrolls with the arrows at the top right on computers
+  as well (`enable_desktop_slider: true`, up to 8 pieces; was 4 with no desktop arrows). Arrows appear only when the
+  row is longer than three; on phones it already swiped with arrows.
+- Phones, collection pages (and „Любими“): grid edge to edge with a 4px gap, photos 171.5 → 185.5px at 375 and
+  144 → 158px at 320 (owner chose two across over one); names and prices 12px from the screen edge. Product page
+  gallery and search unchanged. crown.css „Fourth pass“.
+- Checked on the real preview: 1440 (trail colour, no underline, row arrows scroll and disable at the end, Любими
+  shows the row) and 375 / 320 (grid 185.5 / 158px, no sideways scroll, gallery 375px as before, trail white on the
+  Пръстени picture).
+
+---
+
 ## 2026-10-11 — sharper product photos on cards and the phone gallery **(owner: "a little bit blurry")**
 - Cards: Dawn's empty 3D transform on `.card__inner.gradient` (component-card.css, `perspective(0)`, only for
   gradient card backgrounds, which ours lack) is removed in crown.css; `isolation: isolate` keeps the stacking

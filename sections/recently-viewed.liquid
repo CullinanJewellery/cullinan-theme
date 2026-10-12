@@ -78,6 +78,10 @@
 <recently-viewed
   class="recently-viewed color-{{ section.settings.color_scheme }} gradient"
   data-max="{{ section.settings.max_products }}"
+  {%- comment -%} 2026-10-12 (owner): the row moved to „Любими“; the product page keeps this section switched to record only, so the list still grows. {%- endcomment -%}
+  {%- if section.settings.show_row == false %}
+    data-record-only
+  {%- endif %}
   {%- if request.design_mode %}
     data-design-mode
   {%- endif %}
@@ -141,6 +145,13 @@
     {
       "type": "paragraph",
       "content": "Shows the products this visitor opened before the one they are on. It stays hidden, and takes no room, until they have opened another product, so it is empty in the editor until you browse the preview first."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_row",
+      "default": true,
+      "label": "Show the row",
+      "info": "Off: nothing is shown; on a product page the product is only remembered for the row on other pages (Любими)."
     },
     {
       "type": "text",

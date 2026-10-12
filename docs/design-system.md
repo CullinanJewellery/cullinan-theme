@@ -52,7 +52,7 @@ White label on black button: 21:1. Espresso on white 16.2:1, on greige 14.6:1, o
 | `#D62246` ruby, white label (5.0:1) | Hero button „Разгледайте колекцията“ | **Exception**, see §8 (black for about an hour on 2026-10-06, then restored by the owner) |
 | `#D62246` ruby | Homepage trust row: headings, sentences, icons, rings and card outlines (`section-icon-benefits.css`, end) | Owner 2026-10-06: matches the hero button; 5.0:1 on white |
 | `#E6BAB9` | Add to cart and cart checkout hover fill (dark label); category slider button hover on phones; header icon hover line; zodiac indicators | Hover behaviour kept from before the black buttons (owner 2026-10-06) |
-| `#B76E79` rose gold | Review stars (theme, review cards, Judge.me) | Graphic, 3.6:1 (graphics need 3:1) |
+| `#B76E79` rose gold | Review stars (theme, review cards, Judge.me); links in the navigation trail (Начало › Пръстени, 2026-10-12, owner: pink, not underlined), hover `#9A5561` | Graphic, 3.6:1 (graphics need 3:1); as 12–13px link text it is below 4.5:1 — the owner chose it over the paler `#E6BAB9` (1.7:1) and the deeper `#A85F6B`; white over a collection heading picture |
 | `rgb(0 0 0)` | Buy-box text, footer text, stones row lines, homepage social heading | **Exception**, see §8 |
 | `#1877F2`, `#C13584` | Homepage "Вижте работата ни" Facebook / Instagram buttons | **Exception**, see §8 |
 | `rgb(240 232 226)` / `rgb(233 217 208)` | Empty picture slots / menu picture slots | Warm flat placeholders, never a graphic |
