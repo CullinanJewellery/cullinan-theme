@@ -8,6 +8,20 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-12 — product page shows only the chosen metal's photos **(owner)**
+- Shopify ties one photo to a variant; the other photos of a metal are now marked by **alt text** in Shopify admin,
+  written exactly as an option value of the product („жълто злато“, „бяло злато“, „розово злато“, or the material
+  „14К …“; case does not matter). `snippets/cj-metal-photo.liquid` prints "hide" for a photo whose alt text is one
+  of the product's option values that the selected variant does not have; the gallery
+  (`product-media-gallery.liquid`) and the zoom window (`product-media-modal.liquid`) skip it. Dawn's
+  product-info.js already adds and removes gallery photos from the server's HTML on every variant change, and
+  gallery-dots.js recounts the dots, so no script changed. Photos with no alt text or other text show for everyone.
+- Local test (liquidjs, sample variants): no alt / other text → shown; the selected colour → shown; another metal →
+  hidden. Real preview: no errors, „Пръстен с топчета“ unchanged (7 photos) until the alt texts are added.
+- Not changed: product cards (their hover/swipe photo is still the first photo tied to no variant).
+
+---
+
 ## 2026-10-12 (later) — product card names and prices; tighter phone grid **(owner)**
 - Every product card (homepage rows such as „Най-продавани“, collection pages, Любими): names smaller — 17px from
   750px (were 20), 15px on phones (were 17), 14px below 360px (were 16) — and never underlined on hover (Dawn's
