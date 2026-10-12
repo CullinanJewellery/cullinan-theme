@@ -8529,14 +8529,19 @@ html body .cj-buy-row:has(.product-form__submit:not([disabled]):hover) .cj-wish-
   }
 }
 
-/* „Запитване“ as a popup only (2026-10-12, owner: the band off the product page, „Попитайте за
-   това бижу“ kept): sections/custom-request.liquid layout popup_only prints no band, only the
-   dialog; its section takes no room. */
-html body .custom-request--popup_only {
+/* „Запитване“ on the product page as a popup only (2026-10-12, owner: the band off the page,
+   „Попитайте за това бижу“ kept). The section keeps its popup layout, which holds the form in a
+   dialog and opens it for every link to #zapitvane; only the band itself is hidden here, so it
+   takes no room. Way back: delete this block. */
+html body #zapitvane .custom-request--popup .custom-request__intro {
+  display: none;
+}
+
+html body #zapitvane .custom-request--popup {
   padding: 0 !important;
 }
 
-html body .shopify-section:has(.custom-request--popup_only) {
+html body .shopify-section:has(#zapitvane .custom-request--popup) {
   margin: 0 !important;
   padding: 0 !important;
 }

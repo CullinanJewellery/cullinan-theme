@@ -59,18 +59,10 @@
   }
 {%- endstyle -%}
 
-{%- comment -%}
-  popup_only (2026-10-12, owner): no band on the page, only the popup, opened by the link
-  „Попитайте за това бижу“ near the buy button (href #zapitvane).
-{%- endcomment -%}
 {%- liquid
   assign form_id = 'CustomRequest-' | append: section.id
   assign email = section.settings.email | strip
   assign layout = section.settings.layout | default: 'open'
-  assign is_popup = false
-  if layout == 'popup' or layout == 'popup_only'
-    assign is_popup = true
-  endif
   assign has_ways = false
   if section.settings.show_ways
     if email != blank or settings.social_instagram_link != blank or settings.social_facebook_link != blank
@@ -86,7 +78,6 @@
   {% endif %}
 >
   <div class="custom-request{% if layout != 'open' %} custom-request--{{ layout }}{% endif %} page-width section-{{ section.id }}-padding">
-    {%- unless layout == 'popup_only' -%}
     <div class="custom-request__intro">
       {%- if section.settings.eyebrow != blank -%}
         <p class="custom-request__eyebrow">{{ section.settings.eyebrow | escape }}</p>
@@ -159,7 +150,6 @@
         </button>
       {%- endif -%}
     </div>
-    {%- endunless -%}
 
     {%- capture request_form -%}
     {%- form 'contact', id: form_id, class: 'custom-request__form' -%}
@@ -277,7 +267,7 @@
     {%- endform -%}
     {%- endcapture -%}
 
-    {%- if is_popup -%}
+    {%- if layout == 'popup' -%}
       <dialog
         id="{{ form_id }}-dialog"
         class="size-guide custom-request__dialog color-{{ section.settings.color_scheme }}"
@@ -385,7 +375,6 @@
       "options": [
         { "value": "open", "label": "Form always open" },
         { "value": "popup", "label": "Button that opens the form in a popup" },
-        { "value": "popup_only", "label": "Popup only (no band; opened by links to #zapitvane)" },
         { "value": "collapsible", "label": "Button that expands the form" }
       ],
       "default": "open"
