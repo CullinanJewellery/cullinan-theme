@@ -130,6 +130,10 @@
           </li>
         {%- endunless -%}
       {%- endfor -%}
+      {%- comment -%} Cullinan: the material card for the selected metal, last (snippets/cj-material-card.liquid). {%- endcomment -%}
+      {%- unless limit == 1 -%}
+        {% render 'cj-material-card', product: product, section_id: section.id %}
+      {%- endunless -%}
     </ul>
     <div class="slider-buttons quick-add-hidden{% if hide_mobile_slider %} small-hide{% endif %}">
       <button

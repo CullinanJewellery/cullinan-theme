@@ -8334,3 +8334,113 @@ html body .collection-hero.cj-hero--image .collection-hero__inner {
     padding-top: 4.2rem;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Material card (2026-10-12, owner, after moonmagic.com's material slide): the last tile of
+   the product gallery (snippets/cj-material-card.liquid). A Higgsfield picture of polished
+   metal (assets/cj-material-*.jpg, no text in it) with the theme's own words over it: eyebrow
+   and metal name top left, the points in a right column, the closing line bottom right. The
+   picture is enlarged and moved so the metal piece sits in the left half, clear of the text.
+   Sizes in cqw follow the tile (phone ~375px, computer ~360px per column). Way back: delete
+   this block and the render in product-media-gallery.liquid.
+   --------------------------------------------------------------------------- */
+.cj-material {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  container-type: inline-size;
+  background-color: #f3efea;
+  color: #2a1e1a;
+}
+
+.cj-material__bg {
+  position: absolute;
+  top: -14%;
+  left: -16%;
+  width: 120%;
+  max-width: none;
+  height: 120%;
+  object-fit: cover;
+}
+
+.cj-material__text {
+  position: absolute;
+  inset: 0;
+}
+
+.cj-material__eyebrow {
+  position: absolute;
+  top: 7%;
+  left: 7%;
+  margin: 0;
+  font-family: var(--font-body-family);
+  font-size: 3.4cqw;
+  letter-spacing: 0.04em;
+  line-height: 1.3;
+  color: rgba(42, 30, 26, 0.78);
+}
+
+.cj-material__title {
+  position: absolute;
+  top: 12%;
+  left: 7%;
+  right: 7%;
+  margin: 0;
+  font-family: var(--font-heading-family);
+  font-weight: var(--font-heading-weight);
+  font-size: 7.6cqw;
+  line-height: 1.1;
+  letter-spacing: 0;
+}
+
+.cj-material__points {
+  position: absolute;
+  top: 38%;
+  left: 60%;
+  right: 5%;
+  display: flex;
+  flex-direction: column;
+  gap: 3.2cqw;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cj-material__points li {
+  position: relative;
+  padding-left: 3.4cqw;
+  font-family: var(--font-body-family);
+  font-size: 3.3cqw;
+  line-height: 1.35;
+}
+
+.cj-material__points li::before {
+  content: '';
+  position: absolute;
+  top: 0.55em;
+  left: 0;
+  width: 1.5cqw;
+  height: 1.5cqw;
+  border-radius: 50%;
+  background-color: var(--cj-material-dot, #c9a24d);
+}
+
+.cj-material--white {
+  --cj-material-dot: #a9afb5;
+}
+
+.cj-material--rose {
+  --cj-material-dot: #c88e7d;
+}
+
+.cj-material__footer {
+  position: absolute;
+  right: 5%;
+  bottom: 7%;
+  left: 60%;
+  margin: 0;
+  font-family: var(--font-body-family);
+  font-size: 3.2cqw;
+  line-height: 1.35;
+  color: rgba(42, 30, 26, 0.85);
+}

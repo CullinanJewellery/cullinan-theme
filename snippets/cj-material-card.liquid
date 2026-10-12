@@ -1,0 +1,83 @@
+{%- comment -%}
+  Material card (2026-10-12, owner, after moonmagic.com's material slide): the last tile of the
+  product gallery, for the metal of the selected variant. A picture of polished metal made in
+  Higgsfield without any text (assets/cj-material-*.jpg) with the words drawn over it by the
+  theme, so nothing is written into the photograph and the Bulgarian is always exact. Wording
+  chosen by the owner 2026-10-12 (facts in CLAUDE.md).
+
+  The metal is read from the selected variant: the option whose name says metal or material,
+  else any option; a value naming „бяло“, „розово“ or „жълто“ злато picks the card. No gold value,
+  no card. Each card has its own data-media-id, so Dawn's product-info.js swaps it with the
+  photos when the metal changes (snippets/product-media-gallery.liquid).
+
+  Accepts:
+  - product: {Object}
+  - section_id: {String}
+
+  Usage:
+  {% render 'cj-material-card', product: product, section_id: section.id %}
+{%- endcomment -%}
+{%- liquid
+  assign cj_variant = product.selected_or_first_available_variant
+  assign cj_metal_value = ''
+  for option in product.options_with_values
+    assign cj_name = option.name | downcase
+    if cj_name contains 'метал' or cj_name contains 'материал' or cj_name contains 'metal' or cj_name contains 'material'
+      assign cj_index = option.position | minus: 1
+      assign cj_metal_value = cj_variant.options[cj_index] | downcase
+      break
+    endif
+  endfor
+  if cj_metal_value == blank
+    assign cj_metal_value = cj_variant.options | join: ' ' | downcase
+  endif
+
+  assign cj_key = ''
+  if cj_metal_value contains 'бяло злато'
+    assign cj_key = 'white'
+    assign cj_title = 'Бяло злато'
+    assign cj_first = '14К бяло злато, проба 585'
+  elsif cj_metal_value contains 'розово злато'
+    assign cj_key = 'rose'
+    assign cj_title = 'Розово злато'
+    assign cj_first = '14К розово злато, проба 585'
+  elsif cj_metal_value contains 'жълто злато'
+    assign cj_key = 'yellow'
+    assign cj_title = 'Жълто злато'
+    assign cj_first = '14К жълто злато, проба 585'
+  endif
+-%}
+{%- if cj_key != blank -%}
+  {%- assign cj_image = 'cj-material-' | append: cj_key | append: '.jpg' -%}
+  <li
+    id="Slide-{{ section_id }}-cj-material-{{ cj_key }}"
+    class="product__media-item grid__item slider__slide cj-material-slide"
+    data-media-id="{{ section_id }}-cj-material-{{ cj_key }}"
+  >
+    <div class="cj-material cj-material--{{ cj_key }}">
+      <img
+        class="cj-material__bg"
+        src="{{ cj_image | asset_img_url: '1200x' }}"
+        srcset="{{ cj_image | asset_img_url: '600x' }} 600w, {{ cj_image | asset_img_url: '900x' }} 900w, {{ cj_image | asset_img_url: '1200x' }} 1200w, {{ cj_image | asset_url }} 1600w"
+        sizes="(min-width: 990px) 35vw, 100vw"
+        alt=""
+        loading="lazy"
+        width="1600"
+        height="1600"
+      >
+      <div class="cj-material__text">
+        <p class="cj-material__eyebrow">Първокласно качество</p>
+        <p class="cj-material__title">{{ cj_title }}</p>
+        <ul class="cj-material__points" role="list">
+          <li>{{ cj_first }}</li>
+          <li>Създадено да запазва блясъка си</li>
+          <li>Прецизна изработка</li>
+          {%- if cj_key == 'white' -%}
+            <li>С родиево покритие за по-силен блясък</li>
+          {%- endif -%}
+        </ul>
+        <p class="cj-material__footer">Изработка, на която можете да разчитате.</p>
+      </div>
+    </div>
+  </li>
+{%- endif -%}
