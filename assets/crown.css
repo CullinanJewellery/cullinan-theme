@@ -8601,3 +8601,14 @@ html body dialog.custom-request__dialog .size-guide__cross::after {
 html body dialog.custom-request__dialog .size-guide__title {
   padding-right: 12rem;
 }
+
+/* „Попитайте за това бижу“ closer to the button and the line under it (2026-10-12, owner: "smaller,
+   don't overdo it"): about a quarter less, the visible gap 39 → 29px above and 34 → 24px below; the
+   link keeps its 44px tap area. */
+html body .product .product-phone-order {
+  margin-top: 0.4rem;
+}
+
+html body .product .product-phone-order + .product-trust {
+  margin-top: 1rem;
+}
