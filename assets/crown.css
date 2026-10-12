@@ -8472,8 +8472,8 @@ html body .cj-wish--buy {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: var(--cj-buy-heart, 5.5rem);
-  height: var(--cj-buy-heart, 5.5rem);
+  width: var(--cj-buy-heart, 5.4rem);
+  height: var(--cj-buy-heart, 5.4rem);
   margin: 0;
   padding: 0;
   border: 0;
@@ -8514,7 +8514,7 @@ html body .cj-buy-row:has(.product-form__submit:not([disabled]):hover) .cj-wish-
 }
 
 @media (hover: hover) {
-  html body .animate--hover-vertical-lift .cj-buy-row:has(.product-form__submit:not([disabled]):hover) .cj-wish--buy {
+  html body.animate--hover-vertical-lift .cj-buy-row:has(.product-form__submit:not([disabled]):hover) .cj-wish--buy {
     transform: translateY(-0.25rem);
   }
 }
