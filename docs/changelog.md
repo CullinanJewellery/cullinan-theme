@@ -8,6 +8,18 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-12 (later) — product card names and prices; tighter phone grid **(owner)**
+- Every product card (homepage rows such as „Най-продавани“, collection pages, Любими): names smaller — 17px from
+  750px (were 20), 15px on phones (were 17), 14px below 360px (were 16) — and never underlined on hover (Dawn's
+  `.underline-links-hover`); regular prices black (were the ink at 75%); sale prices keep their ruby. crown.css
+  „Product cards, third pass“.
+- Phones, collection pages: gap between the two photos 7 → 4px, screen edges 10 → 8px; photos 174 → 177.5px at 375,
+  146.5 → 150px at 320 (crown.css „Fourth pass“).
+- Checked on the real preview: 1440 (Най-продавани names 17px, price black, no underline on hover) and 375 / 320
+  (row and grid names 15 / 14px, price black, grid 8..185.5 and 189.5..367, no sideways scroll).
+
+---
+
 ## 2026-10-12 — trail links in rose gold; Може да ви хареса as a Наскоро разгледани row; Наскоро разгледани on Любими; moonmagic phone grid **(owner)**
 - Navigation trail (Начало › Пръстени): links in rose gold `#B76E79` (the review stars' colour, chosen by the owner
   over the pale `#E6BAB9` and a deeper `#A85F6B`), never underlined, hover `#9A5561`; keyboard outline kept; the
