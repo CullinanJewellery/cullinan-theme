@@ -1,0 +1,42 @@
+{%- comment -%}
+  Photos per metal on the product page (2026-10-12, owner: "when I change the material to rose
+  gold, only the rose gold pictures should appear"). Shopify ties one photo to a variant; the
+  other photos of a metal are marked by their alt text in Shopify admin, written exactly as an
+  option value of the product, e.g. „розово злато“ or „14К розово злато“ (case does not matter).
+
+  Prints "hide" when the photo's alt text is one of this product's option values and the
+  selected variant does not have that value; prints nothing otherwise, so photos with no alt
+  text or with any other text keep showing for every variant. Used by
+  snippets/product-media-gallery.liquid and snippets/product-media-modal.liquid; Dawn's
+  product-info.js then adds and removes photos itself when the variant changes.
+
+  Accepts:
+  - media: {Object} the product media
+  - product: {Object} the product
+
+  Usage:
+  {%- capture cj_hide -%}{% render 'cj-metal-photo', media: media, product: product %}{%- endcapture -%}
+{%- endcomment -%}
+{%- liquid
+  assign cj_alt = media.alt | strip | downcase
+  if cj_alt != blank and product
+    assign cj_key = '|' | append: cj_alt | append: '|'
+    assign cj_all = '|'
+    for option in product.options_with_values
+      for value in option.values
+        assign cj_value = value | append: '' | strip | downcase
+        assign cj_all = cj_all | append: cj_value | append: '|'
+      endfor
+    endfor
+    if cj_all contains cj_key
+      assign cj_selected = '|'
+      for value in product.selected_or_first_available_variant.options
+        assign cj_value = value | append: '' | strip | downcase
+        assign cj_selected = cj_selected | append: cj_value | append: '|'
+      endfor
+      unless cj_selected contains cj_key
+        echo 'hide'
+      endunless
+    endif
+  endif
+-%}

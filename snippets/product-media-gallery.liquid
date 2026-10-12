@@ -94,6 +94,12 @@
           {% continue %}
         {% endif %}
 
+        {%- comment -%} Cullinan: a photo marked for another metal (alt text) is left out, snippets/cj-metal-photo.liquid. {%- endcomment -%}
+        {%- capture cj_hide -%}{% render 'cj-metal-photo', media: media, product: product %}{%- endcapture -%}
+        {%- if cj_hide contains 'hide' -%}
+          {% continue %}
+        {%- endif -%}
+
         {%- unless media.id == product.selected_or_first_available_variant.featured_media.id -%}
           <li
             id="Slide-{{ section.id }}-{{ media.id }}"

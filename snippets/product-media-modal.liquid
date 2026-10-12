@@ -58,6 +58,11 @@
         -%}
 
         {%- for media in product.media -%}
+          {%- comment -%} Cullinan: photos marked for another metal are left out here too (snippets/cj-metal-photo.liquid). {%- endcomment -%}
+          {%- capture cj_hide -%}{% render 'cj-metal-photo', media: media, product: product %}{%- endcapture -%}
+          {%- if cj_hide contains 'hide' -%}
+            {%- continue -%}
+          {%- endif -%}
           {%- liquid
             if section.settings.hide_variants and variant_images contains media.src or variant_images contains media.id
               assign variant_image = true
