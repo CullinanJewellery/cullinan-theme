@@ -8,6 +8,13 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-13 — no focus outline on the question popup after a tap **(owner)**
+- On an iPhone a box (the focus outline) appeared round „Затвори“ when the popup opened and round „Попитайте за
+  това бижу“ after it closed: showModal() focuses the first button, and the script put focus back on the link.
+  Now (sections/custom-request.liquid) a tap or click focuses the dialog itself (tabindex -1, no outline) and
+  nothing is refocused on closing; opened from the keyboard (click detail 0) it behaves as before, for keyboard
+  users. Not changed: the size guide popup, which has its own script.
+
 ## 2026-10-13 — material card in the zoom viewer **(owner)**
 - The owner: the gallery shows four tiles but the opened viewer only three; the material card was missing. It was
   only ever rendered in the gallery. Now snippets/product-media-modal.liquid renders it as the viewer's last slide

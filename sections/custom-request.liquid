@@ -317,7 +317,10 @@
           dialog.addEventListener('close', function () {
             if (!opener || !document.contains(opener)) return;
             if (byPointer) {
-              if (document.activeElement === opener) opener.blur();
+              // the browser puts focus back on the opener itself, just after this event
+              setTimeout(function () {
+                if (document.activeElement === opener) opener.blur();
+              }, 0);
             } else {
               opener.focus();
             }
