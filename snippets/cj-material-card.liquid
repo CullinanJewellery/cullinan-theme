@@ -10,12 +10,19 @@
   no card. Each card has its own data-media-id, so Dawn's product-info.js swaps it with the
   photos when the metal changes (snippets/product-media-gallery.liquid).
 
+  In the gallery the card opens the zoom viewer like a photo (2026-10-13, owner: it was missing
+  there); with modal: true it is printed as the viewer's last slide instead
+  (snippets/product-media-modal.liquid), data-media-id „cj-material-<key>“ in both, which is how
+  the viewer finds the slide to open on.
+
   Accepts:
   - product: {Object}
   - section_id: {String}
+  - modal: {Boolean} the viewer's slide instead of the gallery tile
 
   Usage:
   {% render 'cj-material-card', product: product, section_id: section.id %}
+  {% render 'cj-material-card', product: product, section_id: section.id, modal: true %}
 {%- endcomment -%}
 {%- liquid
   assign cj_variant = product.selected_or_first_available_variant
@@ -49,11 +56,7 @@
 -%}
 {%- if cj_key != blank -%}
   {%- assign cj_image = 'cj-material-' | append: cj_key | append: '.jpg' -%}
-  <li
-    id="Slide-{{ section_id }}-cj-material-{{ cj_key }}"
-    class="product__media-item grid__item slider__slide cj-material-slide"
-    data-media-id="{{ section_id }}-cj-material-{{ cj_key }}"
-  >
+  {%- capture cj_card -%}
     <div class="cj-material cj-material--{{ cj_key }}">
       <img
         class="cj-material__bg"
@@ -83,5 +86,28 @@
         </div>
       </div>
     </div>
-  </li>
+  {%- endcapture -%}
+  {%- if modal -%}
+    <div class="cj-material-modal" data-media-id="cj-material-{{ cj_key }}">
+      {{ cj_card }}
+    </div>
+  {%- else -%}
+    <li
+      id="Slide-{{ section_id }}-cj-material-{{ cj_key }}"
+      class="product__media-item grid__item slider__slide cj-material-slide"
+      data-media-id="{{ section_id }}-cj-material-{{ cj_key }}"
+    >
+      <modal-opener class="product__modal-opener product__modal-opener--image" data-modal="#ProductModal-{{ section_id }}">
+        {{ cj_card }}
+        <button
+          class="product__media-toggle quick-add-hidden"
+          type="button"
+          aria-haspopup="dialog"
+          data-media-id="cj-material-{{ cj_key }}"
+        >
+          <span class="visually-hidden">Отвори картата за {{ cj_title | downcase }}</span>
+        </button>
+      </modal-opener>
+    </li>
+  {%- endif -%}
 {%- endif -%}

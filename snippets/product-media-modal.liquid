@@ -75,6 +75,8 @@
             endunless
           -%}
         {%- endfor -%}
+        {%- comment -%} Cullinan (2026-10-13, owner): the material card, last, as in the gallery. {%- endcomment -%}
+        {% render 'cj-material-card', product: product, section_id: section.id, modal: true %}
       </div>
     </div>
 

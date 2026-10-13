@@ -9203,3 +9203,20 @@ html body .cj-wish.cj-wish--pop .icon-heart {
     animation: none;
   }
 }
+
+/* Material card in the zoom viewer, 2026-10-13 (owner: the card was missing when the pictures are
+   opened). The viewer lays every slide over the whole stage (component-product-viewer.css); the card
+   is the largest square that fits it, centred, the same size a square photo is drawn at. Its words
+   still scale with it (cqw on .cj-material). In the gallery the card now opens the viewer like a
+   photo (a modal-opener round it, snippets/cj-material-card.liquid). */
+product-modal.product-media-modal .product-media-modal__content > .cj-material-modal {
+  container-type: size;
+}
+
+.cj-material-modal .cj-material {
+  position: absolute;
+  inset: 0;
+  width: min(100cqw, 100cqh);
+  height: min(100cqw, 100cqh);
+  margin: auto;
+}
