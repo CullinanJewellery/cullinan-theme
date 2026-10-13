@@ -13,7 +13,10 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
   това бижу“ after it closed: showModal() focuses the first button, and the script put focus back on the link.
   Now (sections/custom-request.liquid) a tap or click focuses the dialog itself (tabindex -1, no outline) and
   nothing is refocused on closing; opened from the keyboard (click detail 0) it behaves as before, for keyboard
-  users. Not changed: the size guide popup, which has its own script.
+  users. The browser restores focus to the opener just after the close event, so the release runs a tick later.
+  Not changed: the size guide popup, which has its own script.
+- Checked on the real preview: tapping the link focuses the dialog (no outline), Затвори leaves nothing focused;
+  Enter on the link focuses Затвори and closing returns focus to the link.
 
 ## 2026-10-13 — material card in the zoom viewer **(owner)**
 - The owner: the gallery shows four tiles but the opened viewer only three; the material card was missing. It was
