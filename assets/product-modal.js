@@ -110,7 +110,10 @@ if (!customElements.get('product-modal')) {
           button.type = 'button';
           button.className = 'product-media-modal__thumb';
           button.setAttribute('aria-label', `Снимка ${index + 1} от ${slides.length}`);
-          if (slide.nodeName !== 'IMG') button.classList.add('product-media-modal__thumb--video');
+          // the material card (snippets/cj-material-card.liquid) is a picture, not a video
+          if (slide.nodeName !== 'IMG' && !slide.classList.contains('cj-material-modal')) {
+            button.classList.add('product-media-modal__thumb--video');
+          }
 
           if (source) {
             const thumb = document.createElement('img');
