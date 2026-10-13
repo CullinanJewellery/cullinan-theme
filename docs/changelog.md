@@ -8,6 +8,17 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-13 — flag and menu links on phones; top bar every 4 seconds **(owner)**
+- Top bar on phones and tablets: a 25 × 15 flag inside each message, just before the words, centred with them
+  (large-up-hide; computers keep the one between the arrows and the message).
+- The messages change every 4 seconds (header-group.json `change_slides_speed` 6 → 4).
+- Phone menu drawer (snippets/header-drawer.liquid): „Вход / Регистрация“ gets the account icon; new „Магазин“
+  with the map pin, to Google Maps in a new tab (as in the desktop panel; shown on tablets too); За нас /
+  Контакти unchanged. The flag at the right end of the Facebook / Instagram row.
+- Checked on the real preview: 375 and 320 flag before each message, centred, one line, bar 35px, data-speed 4;
+  drawer icons 20px, Магазин opens a new tab, flag right edge on the links' gutter (345 at 375, 290 at 320), level
+  with the social icons; no sideways scroll. 1440: only the flag between the arrows.
+
 ## 2026-10-13 — Bulgarian flag in the top bar **(owner)**
 - A 20 × 12 flag after За нас / Контакти, inside the links' <nav> (sections/announcement-bar.liquid), so it stays
   at the far right whatever links are added. Computers only, like the links. Way back: delete crown.css „Top bar
