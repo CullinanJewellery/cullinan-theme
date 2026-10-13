@@ -8,6 +8,18 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-13 — desktop menu panel, third pass: one column until a category opens **(owner)**
+- The owner sent swarovski.com's closed and open menu: closed, only the categories column shows (461px there);
+  a click slides a second column of the same width out beside it. Ours now does the same: 46rem closed, 92rem
+  (at most 100vw − 8rem) with a category open. The panel keeps its full width and is clipped with clip-path, so
+  the columns never reflow while moving and the hidden half takes no clicks (the dimmed page there still closes).
+- Each time the panel opens, every category is closed again (before, the last one stayed open).
+- The line above „България“ runs edge to edge of the column, as on Swarovski.
+- Checked on the real preview at 1440: closed 460px with the page dimmed beside it (a click there closes); Пръстени
+  opens the second column (920px in all), a second click slides it back; closing and reopening starts with all
+  categories closed.
+- Way back: delete crown.css „third pass“ and the `has-sub` lines in assets/cj-desktop-menu.js.
+
 ## 2026-10-13 — desktop menu panel, second pass **(owner)**
 - Button: the three burger lines are equal (26 × 2px, 18px tall overall), „Меню“ 17px with a 0.02em stroke (~10%
   bolder; 0.04em on hover).
