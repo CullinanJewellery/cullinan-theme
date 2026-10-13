@@ -13,7 +13,11 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
   at the far right whatever links are added. Computers only, like the links. Way back: delete crown.css „Top bar
   flag, 2026-10-13“ and the <svg>.
 - Checked on the real preview: 1440 flag right of Контакти, its right edge on the page gutter, bar still 35px;
-  375 hidden with the links, no sideways scroll.
+  375 hidden with the links, no sideways scroll. **(superseded the same day, next line)**
+- Moved (owner: "a little bigger and put it on the left side of the text we are changing"): now 25 × 15, between
+  the arrows and the rotating message (flex order 3; the message 4). The links on the right are back as before.
+  Checked on the real preview: 1440 arrows, flag (x 122–147, centred in the 35px bar), then the message; nothing
+  after Контакти. 375 flag hidden, messages one line, no sideways scroll.
 
 ## 2026-10-13 — shop name in the header black **(owner)**
 - "make the logo black": the header's shop name (text since the owner removed the logo picture) is `#000`
