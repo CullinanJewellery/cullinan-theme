@@ -8,6 +8,17 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-13 — hero on phones: words and button on the photograph **(owner)**
+- Owner: "a button and the text on the picture and remove the thing under the picture, maybe make it bigger" (phone).
+  templates/index.json hero `show_text_below` true → false, so Dawn lays the words over the picture; the clay panel
+  under it (since 2026-09-14, after moonmagic's stacked phone hero) is gone.
+- crown.css „Hero on a phone“: the picture is 4:5 (375 × 469 at 375px; was a square plus the panel), cut from the
+  lower part of the portrait (object-position 50% 100%) so the bell pendant sits just above the middle and the dark
+  leather fills the bottom; words centred at the bottom in marble white over an espresso gradient from the bottom
+  (on .banner__media::after, as Dawn hides .banner::before on phones); ruby square button 260px+ × 48px.
+- Computers unchanged. Not yet checked on a preview: the preview link expired (asked the owner for a new one).
+- Way back: delete the crown.css block and set show_text_below back to true.
+
 ## 2026-10-13 — ring C („Пръстен с камъчета“) photo set **(owner)**
 - From raw photos 21–34 of 11 October (thin band, beads on the upper half, three small white stones in white-metal
   bezels, plain lower half). Folder `03 Пръстен с камъчета - номер предстои`, 4K sources in чернови/4K.
