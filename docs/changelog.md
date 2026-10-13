@@ -8,6 +8,15 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-13 — Магазин to Google Maps; black top bar **(owner)**
+- „Магазин“ in the desktop menu opens Google Maps in a new tab (the contact page's „Как да стигнете“ link) instead
+  of the contact page.
+- Top bar: background black `#000` (was scheme-3 espresso; the 2026-09-13 note "not the reference's #000" is
+  reversed), messages 11px → 12.5px, arrows bolder (0.5 stroke on the caret's outline, 7.5px tall instead of 6px).
+  Only the bar changes; scheme-3 elsewhere stays. Way back: delete crown.css „Top bar, 2026-10-13“.
+- Checked on the real preview: 1440 black bar 35px, 12.5px messages, arrows 0.5 stroke, Магазин → Google Maps in a
+  new tab; 375 and 320 each message on one line, bar 35px, no sideways scroll (arrows hidden on phones as before).
+
 ## 2026-10-13 — desktop menu panel, fourth pass **(owner)**
 - „Магазин“ with a map-pin icon (assets/icon-map-pin.svg) after Вход, as Swarovski's „Stores“; it goes to the
   contact page, which has the shop's address, hours and directions.

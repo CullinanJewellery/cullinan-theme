@@ -77,7 +77,8 @@ Reference, sampled live on moonmagic.com (homepage, 1440 and 375):
 | Soft bands: stones, workshop (scheme-6) and the phone category band | `#F3EBE6` | `#F5F3EF` warm greige (≈ their `#F5F4F0`) | 14.6:1 |
 | Accent band: custom request (scheme-2) | `#EBDFD8` | `#F2E4DE` soft blush (between ours and their `#F2D9D1`) | 13.0:1 |
 | Footer | `#E9D9D0` pale rose-clay | proposed `#CBBBAD` warm taupe, **not used**: the owner chose a muted warm blush, applied as `#E3CAC2` | 10.4:1 |
-| Text, announcement bar | espresso | unchanged | — |
+| Text | espresso | unchanged | — |
+| Announcement bar (top bar) | espresso | **black `#000`** (owner, 2026-10-13: "change the color of the background to black"; messages 12.5px, bolder arrows; crown.css „Top bar, 2026-10-13“) | white text 21:1 |
 | Buttons incl. „Добави в количката“ | rosewood `#6E3B30`, pink `#E6BAB9` hover | **black**, white label; hover and pressed as before the colour change (owner, 2026-10-06) | label 21:1 |
 
 Applied in `settings_data.json` (schemes 1, 2, 6; button colours in 1, 2, 5, 6, 8), the footer rule and the button
@@ -160,6 +161,7 @@ rules in `crown.css`. Way back: the values in the "Now" column. Known side effec
 | Words over a photograph | Hero; Контакти banner and footer social block; newsletter; silver banner (hidden) | Owner's explicit choices (2026-09-06 to 09-21) | Current |
 | Bright ruby button `#D62246` | Hero only; the trust row under it takes the same ruby | Owner wants the main button to stand out (2026-09-21, 10-04; kept as the exception to the black buttons, 10-06) | Current |
 | Pure black text | Buy box, footer, stones lines, homepage social heading | Owner asked for "the blackest" text by name | Current |
+| Black `#000` band | Top bar (announcements and За нас / Контакти); dim layer behind the desktop menu (50%) | Owner 2026-10-13 ("change the color of the background to black"; black dim as on swarovski.com); the rule above keeps black off other bands | Current |
 | Facebook blue / Instagram magenta buttons | Homepage "Вижте работата ни" | Owner's request (2026-09-20); 3.1:1 and 3.7:1 on the clay footer copy | Current, **flagged** (contrast, palette) |
 | Pink hover `#E6BAB9` | Add to cart, cart checkout, header icons | Kept from earlier design | Current |
 | Pills | About page jump links | Owner's choice 2026-09-13; navigation chips, not buttons | Current |
