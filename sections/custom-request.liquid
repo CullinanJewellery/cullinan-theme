@@ -272,6 +272,7 @@
         id="{{ form_id }}-dialog"
         class="size-guide custom-request__dialog color-{{ section.settings.color_scheme }}"
         aria-labelledby="{{ form_id }}-dialog-title"
+        tabindex="-1"
       >
         <div class="size-guide__inner">
           <form method="dialog" class="size-guide__close-form">
@@ -290,16 +291,23 @@
           var dialog = document.getElementById({{ form_id | append: '-dialog' | json }});
           if (!dialog || typeof dialog.showModal !== 'function') return;
           var opener = null;
-          function open(trigger) {
+          var byPointer = false;
+          // 2026-10-13 (owner): opened by a tap or click, focus goes to the popup itself, not to
+          // „Затвори“, and is not put back on the link afterwards, so no focus outline is drawn
+          // round either (iPhone Safari drew one). Opened from the keyboard, it works as before.
+          function open(trigger, pointer) {
             opener = trigger || document.activeElement;
+            byPointer = !!pointer;
             if (!dialog.open) dialog.showModal();
+            if (byPointer) dialog.focus();
           }
           // The section's button and every link to #zapitvane (the one near the buy button).
           document.addEventListener('click', function (event) {
             var trigger = event.target.closest('[data-enquiry-open], a[href="#zapitvane"]');
             if (!trigger) return;
             event.preventDefault();
-            open(trigger);
+            // a click from the keyboard (Enter) has detail 0
+            open(trigger, event.detail > 0);
           });
           // A click on the backdrop lands on the dialog itself.
           dialog.addEventListener('click', function (event) {
@@ -307,11 +315,16 @@
           });
           // Escape and „Затвори“ close it natively; focus goes back to what opened it.
           dialog.addEventListener('close', function () {
-            if (opener && document.contains(opener)) opener.focus();
+            if (!opener || !document.contains(opener)) return;
+            if (byPointer) {
+              if (document.activeElement === opener) opener.blur();
+            } else {
+              opener.focus();
+            }
           });
           // After sending (thank-you or an error), the page reloads: show the message in the popup.
           if (dialog.querySelector('[data-enquiry-reopen]')) {
-            open(document.querySelector('[data-enquiry-open]'));
+            open(document.querySelector('[data-enquiry-open]'), true);
           }
         })();
       </script>

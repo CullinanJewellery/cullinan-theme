@@ -9220,3 +9220,11 @@ product-modal.product-media-modal .product-media-modal__content > .cj-material-m
   height: min(100cqw, 100cqh);
   margin: auto;
 }
+
+/* Question popup, 2026-10-13 (owner): opened by a tap, the popup itself takes focus
+   (sections/custom-request.liquid); it draws no outline. */
+.custom-request__dialog:focus,
+.custom-request__dialog:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
