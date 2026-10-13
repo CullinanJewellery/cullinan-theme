@@ -8,6 +8,12 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-13 — desktop menu: hovered category 5% bolder **(owner)**
+- The category under the cursor gets a 0.01em stroke (about 5%; it had the open category's 0.035em). The open
+  category, its underline and everything else in the panel are unchanged.
+- Checked on the real preview at 1440: hovering Обеци gives a 0.175px stroke (17.5px text), the open Пръстени
+  keeps 0.61px.
+
 ## 2026-10-13 — no focus outline on the question popup after a tap **(owner)**
 - On an iPhone a box (the focus outline) appeared round „Затвори“ when the popup opened and round „Попитайте за
   това бижу“ after it closed: showModal() focuses the first button, and the script put focus back on the link.
