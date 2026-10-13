@@ -242,3 +242,17 @@ second ring in the references can leak into the result.
    done locally: colour, shadow and background changes are always Higgsfield edits (owner, 2026-10-12).
 6. Check before handing over: corners 250–253, gold average close to ring A's, the piece centred to within a few
    pixels, the design matching the raw photo (count the balls).
+
+### Model tests (2026-10-13, ring C „Пръстен с камъчета“, 3 credits)
+
+- **Nano Banana 2.1** (`nano_banana_2_1`, 1.5 credits, `thinking_level: high`): new photo from the raw photos + ring
+  A as style. The design came out very faithful (three bezel-set white stones between the beads, plain lower band,
+  slim) and at the asked half size. Its gold was paler than ring A's (about 214, 185, 138) and the background greyish
+  (about 240): one more gold/background edit needed, as with Nano Banana 2.
+- In a white gold edit 2.1 kept the ring the same to 0.002 of the frame (better than 2 at keeping the piece), but
+  followed colour instructions less: the white stayed slightly warm (blue 14 below red) and the grey background was
+  not cleaned. Use 2.1 for creating the piece and for edits where the shape must not move; check colours after.
+- **Mask editing is not available** through the connection: `mask` is listed for both models but every call answers
+  "Unknown media role: mask" (no charge). It may work on the Higgsfield website's own inpaint tool.
+- Cost per final photo: generate the approved final directly at `resolution: 4k` (3 credits) instead of 1k + upscale
+  (3.5 credits); drafts at 1k (1.5). 2k is too small for the frame crop.
