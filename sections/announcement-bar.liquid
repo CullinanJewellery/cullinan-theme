@@ -188,6 +188,12 @@
             </li>
           {%- endfor -%}
         </ul>
+        {%- comment -%} 2026-10-13 (owner): the Bulgarian flag, always to the right of the links. {%- endcomment -%}
+        <svg class="utility-bar__flag" viewBox="0 0 30 18" width="20" height="12" aria-hidden="true" focusable="false">
+          <rect width="30" height="6" y="0" fill="#ffffff"/>
+          <rect width="30" height="6" y="6" fill="#00966e"/>
+          <rect width="30" height="6" y="12" fill="#d62612"/>
+        </svg>
       </nav>
     {%- endif -%}
   </div>
