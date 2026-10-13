@@ -84,6 +84,25 @@ Full list in `docs/theme-guide.md` §1. The ones that have cost the most time:
 - Build every image slot empty and make sure the layout holds; no placeholder graphics or stock images. AI images are
   allowed when the owner makes and uploads them. **Nothing is ever burned into a photograph.**
 
+## Product photo standard (owner, 2026-10-13)
+
+The owner's model for every product photo is **ring A, „Пръстен с топчета“** (its yellow gold main photo is "perfect").
+Every piece, in every metal, must look like that set: same background, light, shadow, size, centring and gold colour.
+Full recipe with the exact Higgsfield prompts: `photography/README.md` „Product photos: the ring A standard“. In short:
+- **Editing is done in Higgsfield** (nano_banana_2, then upscale_image 4K); locally only crop, measure, copy.
+- **Background** flat seamless off-white #FCFBFC edge to edge; **shadow** soft neutral grey, falling to the left, with
+  a thin darker contact shadow; no gold tint on the floor.
+- **Gold**: rich, warm, deeply polished 18K yellow (ring A's main photo is the colour reference). **White gold** must
+  match ring A's white gold photos, **rose gold** ring A's rose; new metals are made from the finished yellow photo
+  with ring A's photo of that metal as the colour reference.
+- **Three photos per piece, per metal**: 01 standing, three-quarter view; 02 lying flat seen from above at 45°;
+  03 worn on a hand on ivory linen. Silver uses the white gold photos.
+- **Size and centring**: the piece exactly centred, as large as moonmagic.com's (a slim ring at 78% of the height);
+  2048 × 2048 squares cropped from the 4K files.
+- **Design**: only from the owner's real photos of the piece; the style picture is never used as the design source
+  (ring A's design leaked into ring B's hand photo once).
+- Folders: `Pictures/PicturesForWebFaceInstagram/pictures for the website/NN Name - номер предстои/{metal, видео, чернови}`.
+
 ## References (choose per question)
 
 Sources of ideas, never templates. Do not copy any brand's wording, imagery, code, signature identity or exact

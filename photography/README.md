@@ -146,3 +146,73 @@ Rules that do not change: nothing burned into a picture (no logo, slogan, "925",
 price or badge), the same light and background across a set, and AI pictures are
 allowed and made by the owner, so long as they look like pieces the atelier can
 really make.
+
+## Product photos: the ring A standard (owner, 2026-10-13)
+
+The owner's model for every product photo is ring A, „Пръстен с топчета“ (folder `01 Пръстен с топчета - номер
+предстои`). Its yellow gold standing photo is the colour and look every other photo is held to. Short version in
+CLAUDE.md, „Product photo standard“. This is how that set was made, so the next piece comes out the same.
+
+### What stays the same on every photo
+
+| | |
+|---|---|
+| Background | flat seamless off-white **#FCFBFC** (RGB 252, 251, 252) edge to edge: no gradient, grey floor, vignette, horizon or texture. Measured on the finished files: 250–253 in every corner |
+| Shadow | soft, wide, **neutral grey** shadow on the floor, slightly to the **left**, plus a thin darker contact shadow where the band touches; **no gold colour or reflection on the floor** |
+| Light | soft diffused studio light, a bright highlight on each bead, mirror polish, no blown-out glare |
+| Yellow gold | rich, warm, deep **18K-looking yellow**, deep amber in the darker areas, warm-white highlights; not pale, not orange, not brown. Measured average of ring A's gold: about RGB 208, 165, 114 |
+| White gold | bright rhodium white: cool, clean silver-white with crisp dark mirror reflections, no gold tint. **Every ring's white gold must match ring A's white gold photos** (owner, 2026-10-13: ring B's lying-flat white came out lighter and colder, which the owner noticed) |
+| Rose gold | warm soft pink-copper, rich but elegant; match ring A's rose photos |
+| Silver | uses the white gold photos (same look) |
+| Size, place | the piece **exactly centred**, as large as on moonmagic.com: a slim upright ring fills about 78% of the height |
+| File | square, 2048 × 2048 PNG for the website, cropped from the 4K upscale; 4K originals and raw crops kept in `чернови` |
+
+### The three photos, in every metal
+
+1. **01 основна снимка** — the ring stands upright on its edge, rotated about 35° toward the camera (classic
+   three-quarter catalogue view), camera about 20° above; the band reads as an elegant oval, the plain sizing
+   section at the bottom front.
+2. **02 друг ъгъл** — the ring lies flat, seen from above at about 45°, the whole circle visible as an oval, the
+   plain section at the front; about 78% of the frame width.
+3. **03 на ръка** — a relaxed, elegant woman's hand on soft warm ivory linen, fingers together, back of the hand
+   toward the camera at a soft three-quarter angle, natural skin texture, short nude manicure, soft daylight, close
+   crop; the ring on the ring finger near its base at real scale (about 1.5–2 mm wide), the sharp hero near the
+   centre.
+
+### The steps (Higgsfield: nano_banana_2 for every edit, upscale_image 4K at the end)
+
+1. Upload the owner's raw photos of the piece (they are the **only** source of the design) and ring A's finished
+   photos (the **only** source of the style). Never use another ring's photo as the design source: ring B's first
+   hand photo came out with ring A's beads.
+2. **Yellow main photo**: references = raw photo(s) + ring A's yellow `01 основна снимка`. Prompt pattern:
+   > Premium e-commerce jewellery product photo, square 1:1, 2048 x 2048. THE RING comes ONLY from the first two
+   > reference photos (keep it identical, do not redesign, do not add anything): [exact description of the piece:
+   > band, number and kind of balls, beads, granules, plain section, stones]. EVERYTHING ELSE comes from the third
+   > reference photo, copy it exactly (do not copy its ring): the same pose (upright, same three-quarter view, same
+   > tilt and camera height), the same size in the frame and the same centred position, the same flat seamless
+   > off-white #FCFBFC background, the same soft diffused studio light, the same soft natural neutral grey shadow
+   > falling on the floor to the left with a thin darker contact shadow, and exactly the same rich, warm, highly
+   > polished 18K yellow gold colour with mirror reflections. No gold reflection on the floor, no props, no text,
+   > no logo, no other jewellery.
+
+   Make two, keep the one closest to ring A, then measure its gold against ring A's; if it is paler, one more edit
+   with ring A as the colour reference: „Change only the gold colour: make it exactly the same gold as the ring in
+   the second image …“.
+3. **Photos 02 and 03 in yellow**: references = the finished yellow main + ring A's photo 02 or 03 (pose and style
+   only) + the raw photo. Same wording: ring from the main photo, everything else from ring A's photo.
+4. **The other metals**, for each of the three photos: reference = the finished yellow photo + ring A's photo of the
+   same shot in the target metal. Prompt: „Edit the first image: change only the metal colour of the ring to [white
+   gold / rose gold], exactly the same metal colour as the ring in the second image. Keep everything else exactly the
+   same: the ring's shape, details, size, angle and position, the soft neutral grey shadow and the flat off-white
+   #FCFBFC background.“ (Before 2026-10-13 the metals were made without ring A as a colour reference, and ring B's
+   flat white drifted lighter and colder.)
+   **The on-hand photo is the exception**: there ring A's photo leaks its own ring into the edit (ring B's white
+   on-hand came out with ring A's continuous beads, 2026-10-13). For 03, use the piece's own finished photo of the target
+   metal (its 01) as the colour reference instead. Check every result for the design, not only the colour.
+   White gold tends to come out too cold: ring A's white has a very faint warm champagne undertone; if the result
+   is colder, one more edit asking for exactly that.
+5. **Upscale** every keeper to 4K (2 credits each), then crop locally to a centred square so the piece is exactly in
+   the middle at the standard size, and save 2048 × 2048 into the metal folder with the names above. Nothing else is
+   done locally: colour, shadow and background changes are always Higgsfield edits (owner, 2026-10-12).
+6. Check before handing over: corners 250–253, gold average close to ring A's, the piece centred to within a few
+   pixels, the design matching the raw photo (count the balls).

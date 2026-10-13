@@ -8,6 +8,19 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-13 — product photo standard written down; ring B redone **(owner)**
+- The owner: every photo must look like ring A („Пръстен с топчета“): background, colour, shadow. Written into
+  CLAUDE.md („Product photo standard“, short) and photography/README.md („Product photos: the ring A standard“, with
+  the exact Higgsfield prompts, measurements and checks).
+- White gold: every ring must match ring A's white gold (owner). Ring B's lying-flat white had come out lighter and
+  colder. From now on each metal is made with ring A's photo of that metal as the colour reference; ring A's white
+  has a faint warm undertone the edits tend to lose.
+- Ring B („Пръстен с гранулация“) redone in all nine photos with ring A as the only style source and its real design
+  (7 balls, granules between, plain lower part) from the owner's raw photos. Old set kept in чернови/предишна
+  версия; a side-by-side sheet with ring A in чернови. Lesson recorded: ring A's on-hand photo used as a colour
+  reference leaked its beads into ring B's white on-hand; that one uses ring B's own white photo instead.
+- Not uploaded to Shopify: the owner replaces the product photos in admin.
+
 ## 2026-10-13 — desktop menu: hovered and open category 10% bolder **(owner)**
 - The open (clicked) category also 0.02em (was 0.035em), keeping its underline. Checked on the real preview at
   1440: Пръстени open, 0.35px stroke, underlined.
