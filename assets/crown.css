@@ -9038,3 +9038,37 @@ html body .cj-dmenu__flag {
   width: 3rem;
   height: 1.8rem;
 }
+
+/* Desktop menu panel, third pass (2026-10-13, owner, as on swarovski.com): closed, the panel is
+   only the categories column (46rem; Swarovski 461px); clicking a category slides the second
+   column out beside it (92rem in all). The panel keeps its full width and is clipped, so the
+   columns never reflow while it moves; the clipped half takes no clicks (clip-path also clips
+   hit-testing), so the dimmed page there still closes the menu. The line above „България“ runs
+   edge to edge of the column. Way back: delete this block and the .has-sub lines in
+   assets/cj-desktop-menu.js. */
+@media screen and (min-width: 990px) {
+  html body .cj-dmenu__panel {
+    width: min(92rem, calc(100vw - 8rem));
+    clip-path: inset(0 calc(100% - 46rem) 0 0);
+    transition: transform 0.3s ease, clip-path 0.3s ease;
+  }
+
+  html body .cj-dmenu__panel.has-sub {
+    clip-path: inset(0 0 0 0);
+  }
+
+  html body .cj-dmenu__body {
+    grid-template-columns: 46rem minmax(0, 1fr);
+  }
+
+  html body .cj-dmenu__country {
+    margin-inline: -3.2rem;
+    padding-inline: 3.2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html body .cj-dmenu__panel {
+    transition: none;
+  }
+}

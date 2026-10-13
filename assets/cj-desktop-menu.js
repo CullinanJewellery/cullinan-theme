@@ -4,8 +4,8 @@
 
   - The button opens a panel from the left with a dimmed page behind it; ✕, a click on the
     dimmed page and Esc close it, and focus goes back to the button. While open, Tab stays inside.
-  - Every category starts closed; a click (or Enter / Space) opens its sub-collections in the right
-    column, a second click closes them (owner, 2026-10-13).
+  - Every category starts closed, also each time the panel opens again; a click (or Enter / Space)
+    slides out a second column with its sub-collections, a second click closes it (owner, 2026-10-13).
   - The panel and the dim layer are moved to <body> once, so the sticky header cannot clip or
     shift them.
 */
@@ -43,16 +43,29 @@
     }
 
     show(item) {
+      // 2026-10-13 (owner, as on swarovski.com): the panel is one column wide until a category is
+      // open; .has-sub slides the second column out (crown.css „third pass“). When the last one
+      // closes, its links stay until the column has slid back.
+      clearTimeout(this.subTimer);
+      this.panel.classList.toggle('has-sub', Boolean(item));
       this.items.forEach((other) => {
         const active = other === item;
         other.classList.toggle('is-active', active);
         other.setAttribute('aria-expanded', String(active));
         const sub = document.getElementById(other.dataset.cjDmenuTarget);
-        if (sub) sub.hidden = !active;
+        if (!sub) return;
+        if (item) sub.hidden = !active;
+        else this.subTimer = setTimeout(() => (sub.hidden = true), 300);
       });
     }
 
     open() {
+      this.show(null);
+      clearTimeout(this.subTimer);
+      this.items.forEach((other) => {
+        const sub = document.getElementById(other.dataset.cjDmenuTarget);
+        if (sub) sub.hidden = true;
+      });
       this.overlay.hidden = false;
       this.panel.hidden = false;
       this.button.setAttribute('aria-expanded', 'true');
