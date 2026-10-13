@@ -8,6 +8,19 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-13 — ring C („Пръстен с камъчета“) photo set **(owner)**
+- From raw photos 21–34 of 11 October (thin band, beads on the upper half, three small white stones in white-metal
+  bezels, plain lower half). Folder `03 Пръстен с камъчета - номер предстои`, 4K sources in чернови/4K.
+- Made by the new rules: piece created by Nano Banana 2.1 at half height, colour edits by Nano Banana 2 directly at 4K
+  (no upscale step), every photo framed by photography/frame-photo.cjs (standing 81% high, lying flat 78% wide, hand
+  not cropped). Yellow gold measured against ring A (212, 164, 116 vs 208, 165, 114), rose against ring A's rose.
+- Took several corrections, recorded for next time: the first gold fix overshot to copper; white gold came out
+  champagne twice and needed an explicit "every bead silver-white, no beige" edit; one lying-flat edit added a band and
+  a white patch to the background; a rose edit given the standing photo as colour reference returned the standing
+  ring instead of the lying-flat one (give colour edits only the photo being edited, describe the colour in words).
+- Left as is (credits ran out, 2 left): faintly lighter rectangles in the lying-flat backgrounds, the white gold
+  lying-flat beads very slightly warm.
+
 ## 2026-10-13 — ring B version 3; a fixed photo frame **(owner)**
 - The owner liked ring B's first, uncropped Higgsfield pictures (the ring at about half the height looked fine; the
   cropped versions looked "fat"), but not their gold; wants ring A's gold every time, ring A's size, and a finer ring
