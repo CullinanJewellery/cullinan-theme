@@ -213,6 +213,10 @@
       {%- endif -%}
     {%- endif -%}
 
+    {%- comment -%}
+      Cullinan (2026-10-13, owner, after swarovski.com): on computers the „☰ Меню“ panel
+      (snippets/cj-desktop-menu.liquid) replaces the row of category names; crown.css „Desktop menu panel“.
+    {%- endcomment -%}
     {%- liquid
       if section.settings.menu != blank
         if section.settings.menu_type_desktop == 'dropdown'
@@ -220,8 +224,10 @@
         elsif section.settings.menu_type_desktop != 'drawer'
           render 'header-mega-menu'
         endif
+        render 'cj-desktop-menu', section: section, menu: section.settings.menu
       endif
     %}
+    <script src="{{ 'cj-desktop-menu.js' | asset_url }}" defer="defer"></script>
 
     {%- if section.settings.logo_position == 'middle-center' -%}
       {%- if request.page_type == 'index' -%}

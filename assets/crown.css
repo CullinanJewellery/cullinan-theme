@@ -8631,3 +8631,337 @@ html body .product .product-phone-order + .product-trust {
     display: block;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Desktop menu panel (2026-10-13, owner, after swarovski.com): from 990px the row of category
+   names gives way to „☰ Меню“ at the far left of the header (snippets/cj-desktop-menu.liquid,
+   assets/cj-desktop-menu.js). The panel slides in from the left over a dimmed page: categories
+   on the left with › where they have sub-collections, the hovered / chosen one's links and
+   picture on the right, Любими / sign-in / top-bar links at the foot of the left column. Below
+   990px nothing changes (the menu drawer). Way back: delete this block and the render in
+   sections/header.liquid; the old row (header-mega-menu) is still printed, only hidden here.
+   --------------------------------------------------------------------------- */
+cj-desktop-menu {
+  display: none;
+}
+
+@media screen and (min-width: 990px) {
+  html body .header:has(> cj-desktop-menu) {
+    grid-template-areas: 'cjmenu heading icons';
+    grid-template-columns: auto 1fr auto;
+    column-gap: 2.4rem;
+  }
+
+  html body .header > cj-desktop-menu {
+    grid-area: cjmenu;
+    display: flex;
+    align-items: center;
+  }
+
+  html body .header:has(> cj-desktop-menu) .header__inline-menu {
+    display: none !important;
+  }
+}
+
+.cj-dmenu__open {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.2rem;
+  min-height: 4.4rem;
+  margin: 0;
+  padding: 0 0.4rem;
+  border: 0;
+  background: none;
+  color: rgb(var(--color-foreground));
+  font-family: var(--font-body-family);
+  font-size: 1.5rem;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+}
+
+.cj-dmenu__open:hover .cj-dmenu__open-label {
+  -webkit-text-stroke: 0.03em currentColor;
+}
+
+.cj-dmenu__burger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 2.2rem;
+  height: 1.5rem;
+}
+
+.cj-dmenu__burger span {
+  display: block;
+  height: 0.15rem;
+  background: currentColor;
+}
+
+html.cj-dmenu-open {
+  overflow: hidden;
+}
+
+.cj-dmenu__overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(42, 30, 26, 0.35);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.cj-dmenu__overlay.is-open {
+  opacity: 1;
+}
+
+.cj-dmenu__panel {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1001;
+  display: flex;
+  flex-direction: column;
+  width: min(96rem, calc(100vw - 8rem));
+  background-color: rgb(var(--color-background));
+  color: rgb(var(--color-foreground));
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+
+.cj-dmenu__panel.is-open {
+  transform: none;
+}
+
+.cj-dmenu__overlay[hidden],
+.cj-dmenu__panel[hidden],
+.cj-dmenu__subpanel[hidden] {
+  display: none;
+}
+
+.cj-dmenu__top {
+  display: flex;
+  align-items: center;
+  flex: none;
+  height: 6.4rem;
+  padding: 0 2rem;
+  border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.12);
+}
+
+.cj-dmenu__close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.4rem;
+  height: 4.4rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.cj-dmenu__cross {
+  position: relative;
+  width: 2rem;
+  height: 2rem;
+}
+
+.cj-dmenu__cross::before,
+.cj-dmenu__cross::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2.6rem;
+  height: 0.15rem;
+  background: currentColor;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.cj-dmenu__cross::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.cj-dmenu__close:hover {
+  opacity: 0.7;
+}
+
+.cj-dmenu__body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  flex: 1;
+  min-height: 0;
+}
+
+.cj-dmenu__main {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  padding: 2.4rem 3.2rem 2.4rem;
+  overflow-y: auto;
+  border-right: 0.1rem solid rgba(var(--color-foreground), 0.12);
+}
+
+.cj-dmenu__list,
+.cj-dmenu__extras,
+.cj-dmenu__sublist,
+.cj-dmenu__sub3 {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cj-dmenu__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 4.8rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font-family: var(--font-body-family);
+  font-size: 1.6rem;
+  letter-spacing: 0.02em;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.cj-dmenu__item.is-active .cj-dmenu__item-label,
+.cj-dmenu__item:hover .cj-dmenu__item-label {
+  -webkit-text-stroke: 0.035em currentColor;
+}
+
+.cj-dmenu__chevron {
+  flex: none;
+  width: 0.8rem;
+  height: 0.8rem;
+  margin-right: 0.6rem;
+  border-top: 0.15rem solid currentColor;
+  border-right: 0.15rem solid currentColor;
+  transform: rotate(45deg);
+}
+
+.cj-dmenu__extras {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin-top: auto;
+  padding-top: 3.2rem;
+}
+
+.cj-dmenu__extra {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.2rem;
+  min-height: 4rem;
+  color: rgba(var(--color-foreground), 0.85);
+  font-family: var(--font-body-family);
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+
+.cj-dmenu__extra--plain {
+  padding-left: 3.2rem;
+}
+
+.cj-dmenu__extra:hover {
+  color: rgb(var(--color-foreground));
+}
+
+.cj-dmenu__extra-icon {
+  display: inline-flex;
+  width: 2rem;
+  height: 2rem;
+}
+
+.cj-dmenu__extra-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.cj-dmenu__sub {
+  min-height: 0;
+  padding: 2.4rem 3.2rem;
+  overflow-y: auto;
+}
+
+.cj-dmenu__sublink {
+  display: block;
+  padding: 1.2rem 0;
+  color: inherit;
+  font-family: var(--font-body-family);
+  font-size: 1.6rem;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+}
+
+.cj-dmenu__sublink:hover,
+.cj-dmenu__sub3-link:hover {
+  -webkit-text-stroke: 0.035em currentColor;
+}
+
+.cj-dmenu__sub3 {
+  margin: -0.4rem 0 0.8rem 1.6rem;
+}
+
+.cj-dmenu__sub3-link {
+  display: block;
+  padding: 0.5rem 0;
+  color: rgba(var(--color-foreground), 0.78);
+  font-family: var(--font-body-family);
+  font-size: 1.4rem;
+  text-decoration: none;
+}
+
+.cj-dmenu__promo {
+  display: block;
+  margin-top: 2.4rem;
+  padding-top: 3.2rem;
+  border-top: 0.1rem solid rgba(var(--color-foreground), 0.12);
+  color: inherit;
+  text-decoration: none;
+}
+
+.cj-dmenu__promo-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.cj-dmenu__promo-image--empty {
+  background-color: #f3efea;
+}
+
+.cj-dmenu__promo-label {
+  display: block;
+  margin-top: 1.2rem;
+  font-family: var(--font-body-family);
+  font-size: 1.5rem;
+  -webkit-text-stroke: 0.035em currentColor;
+}
+
+.cj-dmenu__open:focus-visible,
+.cj-dmenu__close:focus-visible,
+.cj-dmenu__item:focus-visible,
+.cj-dmenu__sublink:focus-visible,
+.cj-dmenu__sub3-link:focus-visible,
+.cj-dmenu__extra:focus-visible,
+.cj-dmenu__promo:focus-visible {
+  outline: 0.2rem solid rgb(var(--color-foreground));
+  outline-offset: 0.2rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cj-dmenu__overlay,
+  .cj-dmenu__panel {
+    transition: none;
+  }
+}

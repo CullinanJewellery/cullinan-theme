@@ -1,0 +1,186 @@
+{%- comment -%}
+  Desktop menu panel (2026-10-13, owner, after swarovski.com): on computers (990px and up) the row of
+  category names gives way to a „☰ Меню“ button at the far left of the header. It opens a white
+  panel from the left: the header menu's top-level items in the left column (› where they have
+  sub-collections), the chosen item's sub-collections in the right column („Всички …“ first,
+  deeper links under each in smaller text, then a line and that item's picture from the header's
+  „Mega menu image panel“ block, its label in bold under it), and under the categories the quieter
+  links: „Любими“, sign-in / account, and the top-bar menu (За нас, Контакти). Phones and tablets
+  keep the menu drawer (snippets/header-drawer.liquid). Behaviour: assets/cj-desktop-menu.js;
+  styles: crown.css „Desktop menu panel“.
+
+  Accepts:
+  - section: {Object} the header section
+  - menu: {Object} the header's linklist
+
+  Usage:
+  {% render 'cj-desktop-menu', section: section, menu: section.settings.menu %}
+{%- endcomment -%}
+{%- liquid
+  assign cj_first_parent = 0
+  for link in menu.links
+    if link.links != blank
+      assign cj_first_parent = forloop.index
+      break
+    endif
+  endfor
+
+  assign top_bar_menu = settings.top_bar_menu
+  if top_bar_menu == blank
+    assign top_bar_menu = linklists['top-bar']
+  endif
+-%}
+<cj-desktop-menu class="cj-dmenu">
+  <button
+    type="button"
+    class="cj-dmenu__open focus-inset"
+    aria-expanded="false"
+    aria-controls="CjDesktopMenu"
+  >
+    <span class="cj-dmenu__burger" aria-hidden="true"><span></span><span></span><span></span></span>
+    <span class="cj-dmenu__open-label">Меню</span>
+  </button>
+
+  <div class="cj-dmenu__overlay" data-cj-dmenu-close hidden></div>
+  <div
+    id="CjDesktopMenu"
+    class="cj-dmenu__panel"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Меню"
+    hidden
+  >
+    <div class="cj-dmenu__top">
+      <button type="button" class="cj-dmenu__close focus-inset" data-cj-dmenu-close aria-label="Затвори менюто">
+        <span class="cj-dmenu__cross" aria-hidden="true"></span>
+      </button>
+    </div>
+
+    <div class="cj-dmenu__body">
+      <div class="cj-dmenu__main">
+        <ul class="cj-dmenu__list list-unstyled" role="list">
+          {%- for link in menu.links -%}
+            <li>
+              {%- if link.links != blank -%}
+                <button
+                  type="button"
+                  class="cj-dmenu__item{% if forloop.index == cj_first_parent %} is-active{% endif %}"
+                  data-cj-dmenu-target="CjDmenuSub-{{ forloop.index }}"
+                  aria-controls="CjDmenuSub-{{ forloop.index }}"
+                  aria-expanded="{% if forloop.index == cj_first_parent %}true{% else %}false{% endif %}"
+                >
+                  <span class="cj-dmenu__item-label">{{ link.title | escape }}</span>
+                  <span class="cj-dmenu__chevron" aria-hidden="true"></span>
+                </button>
+              {%- else -%}
+                <a class="cj-dmenu__item" href="{{ link.url }}" data-cj-dmenu-plain>
+                  <span class="cj-dmenu__item-label">{{ link.title | escape }}</span>
+                </a>
+              {%- endif -%}
+            </li>
+          {%- endfor -%}
+        </ul>
+
+        <ul class="cj-dmenu__extras list-unstyled" role="list">
+          <li>
+            <a class="cj-dmenu__extra" href="{{ routes.all_products_collection_url }}?view=wishlist">
+              <span class="cj-dmenu__extra-icon" aria-hidden="true">{% render 'icon-heart' %}</span>
+              Любими
+            </a>
+          </li>
+          {%- if shop.customer_accounts_enabled -%}
+            <li>
+              {%- if customer -%}
+                <a class="cj-dmenu__extra" href="{{ routes.account_url }}">
+                  <span class="cj-dmenu__extra-icon" aria-hidden="true">{{ 'icon-account.svg' | inline_asset_content }}</span>
+                  Моят профил
+                </a>
+              {%- else -%}
+                <a class="cj-dmenu__extra" href="{{ routes.account_login_url }}">
+                  <span class="cj-dmenu__extra-icon" aria-hidden="true">{{ 'icon-account.svg' | inline_asset_content }}</span>
+                  Вход / Регистрация
+                </a>
+              {%- endif -%}
+            </li>
+          {%- endif -%}
+          {%- for link in top_bar_menu.links -%}
+            <li>
+              <a class="cj-dmenu__extra cj-dmenu__extra--plain" href="{{ link.url }}">{{ link.title | escape }}</a>
+            </li>
+          {%- endfor -%}
+        </ul>
+      </div>
+
+      <div class="cj-dmenu__sub">
+        {%- for link in menu.links -%}
+          {%- if link.links != blank -%}
+            <div
+              id="CjDmenuSub-{{ forloop.index }}"
+              class="cj-dmenu__subpanel"
+              {% unless forloop.index == cj_first_parent %}
+                hidden
+              {% endunless %}
+            >
+              <ul class="cj-dmenu__sublist list-unstyled" role="list">
+                <li>
+                  <a class="cj-dmenu__sublink cj-dmenu__sublink--all" href="{{ link.url }}">
+                    Всички {{ link.title | downcase | escape }}
+                  </a>
+                </li>
+                {%- for childlink in link.links -%}
+                  <li>
+                    <a class="cj-dmenu__sublink" href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
+                    {%- if childlink.links != blank -%}
+                      <ul class="cj-dmenu__sub3 list-unstyled" role="list">
+                        {%- for grandchildlink in childlink.links -%}
+                          <li>
+                            <a class="cj-dmenu__sub3-link" href="{{ grandchildlink.url }}">{{ grandchildlink.title | escape }}</a>
+                          </li>
+                        {%- endfor -%}
+                      </ul>
+                    {%- endif -%}
+                  </li>
+                {%- endfor -%}
+              </ul>
+
+              {%- liquid
+                assign cj_menu_key = link.title | strip | downcase
+                assign cj_promo = null
+                for block in section.blocks
+                  if block.type == 'mega_menu_promo'
+                    assign cj_block_key = block.settings.menu_item | strip | downcase
+                    if cj_block_key == cj_menu_key and cj_block_key != blank
+                      assign cj_promo = block
+                      break
+                    endif
+                  endif
+                endfor
+              -%}
+              {%- if cj_promo -%}
+                <a class="cj-dmenu__promo" href="{{ cj_promo.settings.link | default: link.url }}">
+                  {%- if cj_promo.settings.image != blank -%}
+                    {{
+                      cj_promo.settings.image
+                      | image_url: width: 1000
+                      | image_tag:
+                        class: 'cj-dmenu__promo-image',
+                        widths: '450, 600, 800, 1000',
+                        sizes: '(min-width: 990px) 40rem, 100vw',
+                        loading: 'lazy',
+                        alt: ''
+                    }}
+                  {%- else -%}
+                    <span class="cj-dmenu__promo-image cj-dmenu__promo-image--empty" aria-hidden="true"></span>
+                  {%- endif -%}
+                  {%- if cj_promo.settings.label != blank -%}
+                    <span class="cj-dmenu__promo-label">{{ cj_promo.settings.label | escape }}</span>
+                  {%- endif -%}
+                </a>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</cj-desktop-menu>
