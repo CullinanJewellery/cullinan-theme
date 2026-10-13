@@ -115,6 +115,14 @@ Full recipe with the exact Higgsfield prompts: `photography/README.md` „Produc
 - **Design**: only from the owner's real photos of the piece; the style picture is never used as the design source
   (ring A's design leaked into ring B's hand photo once).
 - Folders: `Pictures/PicturesForWebFaceInstagram/pictures for the website/NN Name - номер предстои/{metal, видео, чернови}`.
+- **Credits (Higgsfield Starter plan, 270 credits a month, started 2026-10-06; check the balance before starting)**.
+  Prices: Nano Banana 2 or 2.1 draft (1k) 1.5, Nano Banana 2 at 4k 3, upscale 2 (not needed when the final is made at
+  4k). One piece, 9 photos: minimum about **32 credits** (3 drafts 4.5 + yellow, white and rose at 4k, 3 × 9 = 27;
+  silver is a free copy); realistically **35–45**, because each correction costs 3 (ring C took about 45: copper gold,
+  champagne white twice, a background patch). So about 6–7 pieces a month, or about 5 with corrections. Keep it low:
+  small drafts until the piece is right, 4k only for finals, measure every result before the next step. To save more,
+  the owner may drop the white and rose hand photos (about 6 credits a piece). Tell the owner the cost before a set and
+  the credits used after it (ring B took about 133 over four rounds, about 35 for the version kept).
 
 ## References (choose per question)
 
