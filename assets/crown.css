@@ -340,57 +340,34 @@
 }
 
 /* ---------------------------------------------------------------------------
-   Sticky top bar and header
+   Top bar and sticky header (2026-10-13, owner: "when i scroll down [show] just
+   that [the white part] and when i scroll up the same, but at the top of the
+   page the black bar too")
 
-   Both sit at the top of the screen and slide away while the visitor reads
-   down the page (2026-09-15, at the owner's request; on 2026-09-14 they stayed
-   on screen all the time, as on the reference). Scrolling down they wait
-   150px, "not in the moment but a little later", then slide up together;
-   scrolling up they come back after 10px. The script at the end of
-   sections/announcement-bar.liquid decides and sets html.sticky-bars-hidden,
-   and keeps both on screen while a menu, dropdown or the search is open, or
-   while keyboard focus is in them.
-
-   Dawn renders the bar and the header as two sections, so the bar sticks at
-   the top and the header -- Always sticky in sections/header-group.json, which
-   keeps Dawn's own hide-on-scroll out of the way -- sticks right under it, at
-   --announcement-bar-height. Hidden, each moves up by the height of both, so
-   they travel as one. The sibling selector puts the header back at the top if
-   the bar is removed. Once positioned, the bar section takes Dawn's z-index 4
-   for header-group sections, one above the header's 3.
+   The black bar is no longer sticky: it sits at the top of the page and scrolls
+   away with it, so it shows only near the top. The white header (Always sticky
+   in sections/header-group.json) stays on screen all the time, at the very top,
+   scrolling down and up alike. Before (2026-09-15 to 10-13): both were sticky
+   and slid away together while scrolling down, back on scrolling up; way back:
+   the previous version of this block and of the script at the end of
+   sections/announcement-bar.liquid (git history, commit before this one).
+   The bar section keeps Dawn's z-index 4 over the header's 3 (position:
+   relative), so its own dropdowns still open over the header.
    --------------------------------------------------------------------------- */
 
 .announcement-bar-section.shopify-section-group-header-group {
-  position: sticky;
-  top: 0;
-  transition: top 0.3s ease-out;
+  position: relative;
 }
 
 .announcement-bar-section ~ .section-header.shopify-section-header-sticky {
-  top: var(--announcement-bar-height, 0px);
-  transition: top 0.3s ease-out;
-}
-
-html.sticky-bars-hidden .announcement-bar-section.shopify-section-group-header-group {
-  top: calc(-1 * (var(--announcement-bar-height, 0px) + var(--header-height, 0px)));
-}
-
-html.sticky-bars-hidden .announcement-bar-section ~ .section-header.shopify-section-header-sticky {
-  top: calc(-1 * var(--header-height, 0px));
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .announcement-bar-section.shopify-section-group-header-group,
-  .announcement-bar-section ~ .section-header.shopify-section-header-sticky {
-    transition: none;
-  }
+  top: 0;
 }
 
 /* Jump links (the About page, the homepage teaser buttons) and keyboard focus
-   stop below the bar and header instead of under them. --header-height is
-   Dawn's name; the bar's script keeps it measured. */
+   stop below the sticky header instead of under it. --header-height is Dawn's
+   name; the bar's script keeps it measured. */
 html {
-  scroll-padding-top: calc(var(--announcement-bar-height, 0px) + var(--header-height, 0px));
+  scroll-padding-top: var(--header-height, 0px);
 }
 
 /* ---------------------------------------------------------------------------
