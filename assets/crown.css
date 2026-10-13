@@ -8646,14 +8646,22 @@ cj-desktop-menu {
 }
 
 @media screen and (min-width: 990px) {
-  html body .header:has(> cj-desktop-menu) {
+  /* Logo on the left: the button goes before it. */
+  html body .header--middle-left:has(> cj-desktop-menu) {
     grid-template-areas: 'cjmenu heading icons';
     grid-template-columns: auto 1fr auto;
     column-gap: 2.4rem;
   }
 
-  html body .header > cj-desktop-menu {
+  html body .header.header--middle-left > cj-desktop-menu {
     grid-area: cjmenu;
+  }
+
+  /* Logo in the middle (owner, theme editor 2026-10-13): the button takes the left-hand slot the
+     row of category names had. */
+  html body .header > cj-desktop-menu {
+    grid-area: navigation;
+    justify-self: start;
     display: flex;
     align-items: center;
   }
