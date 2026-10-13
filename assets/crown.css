@@ -9228,3 +9228,10 @@ product-modal.product-media-modal .product-media-modal__content > .cj-material-m
   outline: none;
   box-shadow: none;
 }
+
+/* Desktop menu panel, 2026-10-13 (owner): the category under the cursor only about 5% bolder
+   (a 0.01em stroke; 0.02em was "10%" for „Меню“), not as bold as the open one (0.035em, kept).
+   Way back: delete this rule. */
+html body .cj-dmenu__item:not(.is-active):hover .cj-dmenu__item-label {
+  -webkit-text-stroke: 0.01em currentColor;
+}
