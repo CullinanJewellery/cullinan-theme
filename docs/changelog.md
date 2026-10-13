@@ -8,6 +8,16 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-13 — desktop menu panel, fourth pass **(owner)**
+- „Магазин“ with a map-pin icon (assets/icon-map-pin.svg) after Вход, as Swarovski's „Stores“; it goes to the
+  contact page, which has the shop's address, hours and directions.
+- За нас / Контакти back to the same ink as Любими and Вход (the lighter ink of the second pass undone).
+- The dimmed page behind the panel is black at 50% (was espresso at 35%). Read "the thing we put over the
+  navigation" as this layer: the top bar is already espresso, which the owner calls black.
+- Categories and sub-collections 16px → 17.5px, arrows 8px → 9.5px („don't overdo it“).
+- Checked on the real preview at 1440: Магазин (pin icon, /pages/contact) between Вход and За нас; all five links
+  in the same ink; dim layer black 50%; categories 17.5px.
+
 ## 2026-10-13 — desktop menu panel, third pass: one column until a category opens **(owner)**
 - The owner sent swarovski.com's closed and open menu: closed, only the categories column shows (461px there);
   a click slides a second column of the same width out beside it. Ours now does the same: 46rem closed, 92rem
