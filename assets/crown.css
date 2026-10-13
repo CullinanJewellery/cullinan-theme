@@ -9072,3 +9072,29 @@ html body .cj-dmenu__flag {
     transition: none;
   }
 }
+
+/* Desktop menu panel, fourth pass (2026-10-13, owner): За нас / Контакти back to the same ink as
+   Любими and Вход (the 60% ink of the second pass is undone); the dimmed page behind the panel is
+   black instead of espresso-tinted, as on swarovski.com; categories, sub-collections and the arrows
+   a little bigger (16px → 17.5px, arrow 8px → 9.5px), kept light. Way back: delete this block. */
+html body .cj-dmenu__extra--plain {
+  color: rgba(var(--color-foreground), 0.85);
+}
+
+html body .cj-dmenu__overlay {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+html body .cj-dmenu__item,
+html body .cj-dmenu__sublink {
+  font-size: 1.75rem;
+}
+
+html body .cj-dmenu__chevron {
+  width: 0.95rem;
+  height: 0.95rem;
+}
+
+html body .cj-dmenu__extra-icon .icon-map-pin {
+  fill: currentColor;
+}

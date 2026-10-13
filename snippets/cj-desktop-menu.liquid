@@ -104,6 +104,13 @@
               {%- endif -%}
             </li>
           {%- endif -%}
+          {%- comment -%} 2026-10-13 (owner, as Swarovski's „Stores“): the shop, on the contact page with address, hours and directions. {%- endcomment -%}
+          <li>
+            <a class="cj-dmenu__extra" href="{{ pages.contact.url | default: '/pages/contact' }}">
+              <span class="cj-dmenu__extra-icon" aria-hidden="true">{{ 'icon-map-pin.svg' | inline_asset_content }}</span>
+              Магазин
+            </a>
+          </li>
           {%- for link in top_bar_menu.links -%}
             <li>
               <a class="cj-dmenu__extra cj-dmenu__extra--plain" href="{{ link.url }}">{{ link.title | escape }}</a>
