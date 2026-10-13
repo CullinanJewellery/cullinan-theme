@@ -8,7 +8,9 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
-## 2026-10-13 — desktop menu: hovered category 5% bolder **(owner)**
+## 2026-10-13 — desktop menu: hovered category 10% bolder **(owner)**
+- Then "make it 10%": 0.02em, the same as „Меню“'s 10%. Supersedes the 5% below. Checked on the real preview at
+  1440: hovering Обеци gives a 0.35px stroke.
 - The category under the cursor gets a 0.01em stroke (about 5%; it had the open category's 0.035em). The open
   category, its underline and everything else in the panel are unchanged.
 - Checked on the real preview at 1440: hovering Обеци gives a 0.175px stroke (17.5px text), the open Пръстени
