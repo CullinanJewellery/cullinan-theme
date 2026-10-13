@@ -81,7 +81,7 @@
               {{- 'icon-caret.svg' | inline_asset_content -}}
             </span>
           </button>
-          {%- comment -%} 2026-10-13 (owner): the Bulgarian flag just before the rotating message, computers only (crown.css „Top bar flag“). {%- endcomment -%}
+          {%- comment -%} 2026-10-13 (owner): the Bulgarian flag just before the rotating message, computers; phones and tablets get one inside each message (crown.css „Top bar flag“). {%- endcomment -%}
           <svg class="announcement-bar__flag small-hide medium-hide" viewBox="0 0 30 18" width="25" height="15" aria-hidden="true" focusable="false">
             <rect width="30" height="6" y="0" fill="#ffffff"/>
             <rect width="30" height="6" y="6" fill="#00966e"/>
@@ -118,6 +118,11 @@
                       >
                     {%- endif -%}
                     <p class="announcement-bar__message h5">
+                      <svg class="announcement-bar__flag-inline large-up-hide" viewBox="0 0 30 18" width="25" height="15" aria-hidden="true" focusable="false">
+                        <rect width="30" height="6" y="0" fill="#ffffff"/>
+                        <rect width="30" height="6" y="6" fill="#00966e"/>
+                        <rect width="30" height="6" y="12" fill="#d62612"/>
+                      </svg>
                       <span>{{ block.settings.text | escape }}</span>
                       {%- if block.settings.link != blank -%}
                         {{- 'icon-arrow.svg' | inline_asset_content -}}

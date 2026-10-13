@@ -9154,3 +9154,55 @@ html body .header__heading-link .h2 {
     margin-left: 0.6rem;
   }
 }
+
+/* Top bar flag on phones and tablets, 2026-10-13 (owner: "add the flag on phones too"): below
+   990px the arrows are hidden and the message is centred, so the flag sits inside each message
+   (large-up-hide), just before the words, and is centred with them. 25 x 15 as on computers;
+   the longest message (201px) plus the flag still fits one line at 320px. */
+.announcement-bar__flag-inline {
+  display: inline-block;
+  width: 2.5rem;
+  height: 1.5rem;
+  margin-right: 0.8rem;
+  vertical-align: -0.3rem;
+}
+
+/* Phone menu drawer, 2026-10-13 (owner): icons before „Вход / Регистрация“ and the new „Магазин“
+   (Google Maps), as in the desktop menu panel; За нас / Контакти stay plain, under the icons.
+   The Bulgarian flag at the right end of the Facebook / Instagram row. Way back: delete this
+   block and the markup marked 2026-10-13 in snippets/header-drawer.liquid. */
+.menu-drawer__secondary-link--icon {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.menu-drawer__secondary-icon {
+  display: inline-flex;
+  flex: none;
+  width: 2rem;
+  height: 2rem;
+}
+
+.menu-drawer__secondary-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.menu-drawer__secondary-icon .icon-map-pin {
+  fill: currentColor;
+}
+
+.menu-drawer__utility-links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.menu-drawer__flag {
+  display: block;
+  flex: none;
+  width: 2.5rem;
+  height: 1.5rem;
+  margin-left: auto;
+}

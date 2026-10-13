@@ -181,12 +181,21 @@
                 {%- if shop.customer_accounts_enabled -%}
                   <li class="medium-hide large-up-hide">
                     {%- if customer -%}
-                      <a href="{{ routes.account_url }}" class="menu-drawer__secondary-link menu-drawer__account-link focus-inset">Моят профил</a>
+                      <a href="{{ routes.account_url }}" class="menu-drawer__secondary-link menu-drawer__secondary-link--icon menu-drawer__account-link focus-inset"><span class="menu-drawer__secondary-icon" aria-hidden="true">{{ 'icon-account.svg' | inline_asset_content }}</span>Моят профил</a>
                     {%- else -%}
-                      <a href="{{ routes.account_login_url }}" class="menu-drawer__secondary-link menu-drawer__account-link focus-inset">Вход / Регистрация</a>
+                      <a href="{{ routes.account_login_url }}" class="menu-drawer__secondary-link menu-drawer__secondary-link--icon menu-drawer__account-link focus-inset"><span class="menu-drawer__secondary-icon" aria-hidden="true">{{ 'icon-account.svg' | inline_asset_content }}</span>Вход / Регистрация</a>
                     {%- endif -%}
                   </li>
                 {%- endif -%}
+                {%- comment -%} 2026-10-13 (owner): „Магазин“ with its pin, to the shop in Google Maps (as in the desktop menu panel). {%- endcomment -%}
+                <li>
+                  <a
+                    href="https://www.google.com/maps/search/?api=1&query=%D0%B1%D1%83%D0%BB.%20%D0%92%D0%B0%D1%81%D0%B8%D0%BB%20%D0%9B%D0%B5%D0%B2%D1%81%D0%BA%D0%B8%2021%2C%20%D0%92%D0%B5%D0%BB%D0%B8%D0%BA%D0%BE%20%D0%A2%D1%8A%D1%80%D0%BD%D0%BE%D0%B2%D0%BE"
+                    class="menu-drawer__secondary-link menu-drawer__secondary-link--icon focus-inset"
+                    target="_blank"
+                    rel="noopener"
+                  ><span class="menu-drawer__secondary-icon" aria-hidden="true">{{ 'icon-map-pin.svg' | inline_asset_content }}</span>Магазин</a>
+                </li>
                 {%- for link in top_bar_menu.links -%}
                   <li>
                     <a
@@ -373,6 +382,12 @@
                 {%- endif -%}
               </ul>
             {% endif %}
+            {%- comment -%} 2026-10-13 (owner): the Bulgarian flag on the right of the Facebook / Instagram row. {%- endcomment -%}
+            <svg class="menu-drawer__flag" viewBox="0 0 30 18" width="25" height="15" aria-hidden="true" focusable="false">
+              <rect width="30" height="6" y="0" fill="#ffffff"/>
+              <rect width="30" height="6" y="6" fill="#00966e"/>
+              <rect width="30" height="6" y="12" fill="#d62612"/>
+            </svg>
           </div>
         </div>
       </div>
