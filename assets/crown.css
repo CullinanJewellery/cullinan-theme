@@ -9229,9 +9229,9 @@ product-modal.product-media-modal .product-media-modal__content > .cj-material-m
   box-shadow: none;
 }
 
-/* Desktop menu panel, 2026-10-13 (owner): the category under the cursor only about 5% bolder
-   (a 0.01em stroke; 0.02em was "10%" for „Меню“), not as bold as the open one (0.035em, kept).
+/* Desktop menu panel, 2026-10-13 (owner): the category under the cursor about 10% bolder (5% first, owner asked for 10%)
+   (a 0.02em stroke; 0.02em was "10%" for „Меню“), not as bold as the open one (0.035em, kept).
    Way back: delete this rule. */
 html body .cj-dmenu__item:not(.is-active):hover .cj-dmenu__item-label {
-  -webkit-text-stroke: 0.01em currentColor;
+  -webkit-text-stroke: 0.02em currentColor;
 }
