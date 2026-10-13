@@ -102,8 +102,16 @@ Full recipe with the exact Higgsfield prompts: `photography/README.md` „Produc
   finished yellow photo of the same piece.
 - **Three photos per piece, per metal**: 01 standing, three-quarter view; 02 lying flat seen from above at 45°;
   03 worn on a hand on ivory linen. Silver uses the white gold photos.
-- **Size and centring**: the piece exactly centred, as large as moonmagic.com's (a slim ring at 78% of the height);
-  2048 × 2048 squares cropped from the 4K files.
+- **The frame (owner, 2026-10-13: the same size and position for every piece)**: ring A's, applied by
+  `photography/frame-photo.cjs` to every finished 4K file, never by eye. 01 standing: the piece is 80.7% of the
+  height, centred at 50% across / 51.3% down. 02 lying flat: 78% of the width, centred at 50% / 50.8%. 03 on the hand:
+  not cropped. Output 2048 × 2048. Let Higgsfield make the piece smaller in the picture (about half the height) and
+  let the script enlarge it: a piece generated large looks heavy (owner: ring B looked "fat").
+- **On the hand the ring must look fine and real-sized** (about 1.2–1.5 mm band for a slim ring), never chunky or
+  rough (owner, 2026-10-13).
+- **Yellow gold must be ring A's gold every time** (owner, twice): after any yellow photo, measure the gold against
+  ring A's main photo (about RGB 208, 165, 114) and do a gold-only edit with ring A's main photo as the colour
+  reference if it is paler.
 - **Design**: only from the owner's real photos of the piece; the style picture is never used as the design source
   (ring A's design leaked into ring B's hand photo once).
 - Folders: `Pictures/PicturesForWebFaceInstagram/pictures for the website/NN Name - номер предстои/{metal, видео, чернови}`.

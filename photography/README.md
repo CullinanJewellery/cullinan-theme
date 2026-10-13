@@ -164,7 +164,7 @@ CLAUDE.md, „Product photo standard“. This is how that set was made, so the n
 | White gold | a clean, **neutral**, bright rhodium white, like platinum: silver-white with crisp neutral grey and dark reflections, **no yellow, beige or champagne cast** (owner, 2026-10-13: the first white photos of both rings looked yellowish; they measured blue 13–20 below red on the metal; aim for blue within about 5 of red) |
 | Rose gold | warm soft pink-copper, rich but elegant; match ring A's rose photos |
 | Silver | uses the white gold photos (same look) |
-| Size, place | the piece **exactly centred**, as large as on moonmagic.com: a slim upright ring fills about 78% of the height |
+| Size, place | **the frame**: 01 standing, the piece 80.7% of the height, centre 50% / 51.3%; 02 lying flat, 78% of the width, centre 50% / 50.8%; 03 hand not cropped. Applied by `photography/frame-photo.cjs`, never by eye (owner, 2026-10-13) |
 | File | square, 2048 × 2048 PNG for the website, cropped from the 4K upscale; 4K originals and raw crops kept in `чернови` |
 
 ### The three photos, in every metal
@@ -178,6 +178,24 @@ CLAUDE.md, „Product photo standard“. This is how that set was made, so the n
    toward the camera at a soft three-quarter angle, natural skin texture, short nude manicure, soft daylight, close
    crop; the ring on the ring finger near its base at real scale (about 1.5–2 mm wide), the sharp hero near the
    centre.
+
+### The frame and why the piece is generated small (owner, 2026-10-13)
+
+The owner wants every piece to sit the same way on the site, like the structured product grids on other shops.
+The frame is measured from ring A and lives in `photography/frame-photo.cjs`:
+
+```
+npm i sharp            (once, in any scratch folder; set NODE_PATH to its node_modules)
+node photography/frame-photo.cjs 1 "<4K standing>.png"   "<metal>/01 основна снимка - <metal>.png"
+node photography/frame-photo.cjs 2 "<4K lying flat>.png" "<metal>/02 друг ъгъл - <metal>.png"
+node photography/frame-photo.cjs 3 "<4K on hand>.png"    "<metal>/03 на ръка - <metal>.png"
+```
+
+It finds the piece, crops a square so the piece lands at the frame's size and centre, and saves 2048 × 2048; it
+prints the measured size and centre so the result can be checked. **Ask Higgsfield for the piece at about half the
+picture's height** and let the script enlarge it: ring B generated big in the frame looked heavy ("fat"); generated
+at half the height and enlarged by the crop it kept its fine look (owner's choice of ring B's first, uncropped
+pictures). On the hand, ask for a fine, real-sized ring (about 1.2–1.5 mm band for a slim ring), never chunky.
 
 ### Never change the jewellery (owner, 2026-10-13)
 

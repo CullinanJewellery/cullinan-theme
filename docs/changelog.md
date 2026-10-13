@@ -8,6 +8,19 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-13 — ring B version 3; a fixed photo frame **(owner)**
+- The owner liked ring B's first, uncropped Higgsfield pictures (the ring at about half the height looked fine; the
+  cropped versions looked "fat"), but not their gold; wants ring A's gold every time, ring A's size, and a finer ring
+  on the hand. Asked: size like ring A now (80.7% of the height); base = those two pictures.
+- Version 3: the two pictures got a gold-only edit with ring A's main photo as the colour reference (ring unchanged,
+  outline identical to 0.002); white (neutral, no reference) and rose (ring A's rose as reference) from them; the hand
+  re-edited to a finer, real-sized ring with ring A's gold, white and rose from it. Then cropped by the new
+  `photography/frame-photo.cjs` to ring A's frame (01: 80.9% high, centre 0.500/0.514; 02: 78.0% wide, centre
+  0.500/0.508); hand photos cropped by hand to ring A's hand framing. Version 2 kept in чернови/версия 2 (от днес),
+  4K sources in чернови/версия 3 - 4K, a sheet with ring A in чернови.
+- The frame, the "generate small, crop to the frame" rule, the fine ring on the hand and "ring A's gold every time" are
+  in CLAUDE.md („Product photo standard“) and photography/README.md; frame-photo.cjs is tracked (.gitignore).
+
 ## 2026-10-13 — white gold without the yellow cast; "never change the jewellery" **(owner)**
 - The owner: "I did not say to change the jewelry"; written into CLAUDE.md („Product photo standard“) and
   photography/README.md: an edit changes only what was asked; the piece stays exactly as in the photo being edited.
