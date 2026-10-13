@@ -4,8 +4,8 @@
 
   - The button opens a panel from the left with a dimmed page behind it; ✕, a click on the
     dimmed page and Esc close it, and focus goes back to the button. While open, Tab stays inside.
-  - A category in the left column shows its sub-collections in the right column when the pointer
-    rests on it or when it is clicked / chosen with the keyboard.
+  - Every category starts closed; a click (or Enter / Space) opens its sub-collections in the right
+    column, a second click closes them (owner, 2026-10-13).
   - The panel and the dim layer are moved to <body> once, so the sticky header cannot clip or
     shift them.
 */
@@ -30,13 +30,11 @@
       );
 
       this.items = Array.from(this.panel.querySelectorAll('[data-cj-dmenu-target]'));
+      // 2026-10-13 (owner): every category starts closed; a click opens it, a second click closes it.
       this.items.forEach((item) => {
-        item.addEventListener('click', () => this.show(item));
-        item.addEventListener('mouseenter', () => {
-          clearTimeout(this.hoverTimer);
-          this.hoverTimer = setTimeout(() => this.show(item), 90);
-        });
-        item.addEventListener('mouseleave', () => clearTimeout(this.hoverTimer));
+        item.addEventListener('click', () =>
+          this.show(item.getAttribute('aria-expanded') === 'true' ? null : item)
+        );
       });
     }
 

@@ -2,7 +2,7 @@
   Desktop menu panel (2026-10-13, owner, after swarovski.com): on computers (990px and up) the row of
   category names gives way to a „☰ Меню“ button at the far left of the header. It opens a white
   panel from the left: the header menu's top-level items in the left column (› where they have
-  sub-collections), the chosen item's sub-collections in the right column („Всички …“ first,
+  sub-collections; all closed when the panel opens, a click opens one, 2026-10-13), the chosen item's sub-collections in the right column („Всички …“ first,
   deeper links under each in smaller text, then a line and that item's picture from the header's
   „Mega menu image panel“ block, or the collection's own picture when the block has none; the label
   in bold under it), and under the categories the quieter
@@ -65,10 +65,10 @@
               {%- if link.links != blank -%}
                 <button
                   type="button"
-                  class="cj-dmenu__item{% if forloop.index == cj_first_parent %} is-active{% endif %}"
+                  class="cj-dmenu__item"
                   data-cj-dmenu-target="CjDmenuSub-{{ forloop.index }}"
                   aria-controls="CjDmenuSub-{{ forloop.index }}"
-                  aria-expanded="{% if forloop.index == cj_first_parent %}true{% else %}false{% endif %}"
+                  aria-expanded="false"
                 >
                   <span class="cj-dmenu__item-label">{{ link.title | escape }}</span>
                   <span class="cj-dmenu__chevron" aria-hidden="true"></span>
@@ -110,6 +110,17 @@
             </li>
           {%- endfor -%}
         </ul>
+
+        {%- comment -%} 2026-10-13 (owner, as on swarovski.com): a line, the country and its flag. {%- endcomment -%}
+        <div class="cj-dmenu__country">
+          <span>България</span>
+          <svg class="cj-dmenu__flag" viewBox="0 0 30 18" width="30" height="18" aria-hidden="true" focusable="false">
+            <rect width="30" height="6" y="0" fill="#ffffff"/>
+            <rect width="30" height="6" y="6" fill="#00966e"/>
+            <rect width="30" height="6" y="12" fill="#d62612"/>
+            <rect width="29" height="17" x="0.5" y="0.5" fill="none" stroke="rgba(42,30,26,0.25)"/>
+          </svg>
+        </div>
       </div>
 
       <div class="cj-dmenu__sub">
@@ -118,9 +129,7 @@
             <div
               id="CjDmenuSub-{{ forloop.index }}"
               class="cj-dmenu__subpanel"
-              {% unless forloop.index == cj_first_parent %}
-                hidden
-              {% endunless %}
+              hidden
             >
               <ul class="cj-dmenu__sublist list-unstyled" role="list">
                 <li>

@@ -8978,3 +8978,63 @@ html body .cj-dmenu__overlay:not([hidden]) {
     transition: none;
   }
 }
+
+/* Desktop menu panel, second pass (2026-10-13, owner): the hamburger bigger with three equal
+   2px lines (1.5px lines rounded unevenly); „Меню“ 17px and about 10% bolder; the open category
+   bold and underlined (categories start closed, a click opens one); За нас / Контакти start under
+   the icons, in a lighter ink; a line, then „България“ with the flag on the right. */
+html body .cj-dmenu__open {
+  font-size: 1.7rem;
+  gap: 1.4rem;
+}
+
+html body .cj-dmenu__open-label {
+  -webkit-text-stroke: 0.02em currentColor;
+}
+
+html body .cj-dmenu__open:hover .cj-dmenu__open-label {
+  -webkit-text-stroke: 0.04em currentColor;
+}
+
+html body .cj-dmenu__burger {
+  width: 2.6rem;
+  height: 1.8rem;
+}
+
+html body .cj-dmenu__burger span {
+  height: 0.2rem;
+}
+
+html body .cj-dmenu__item.is-active .cj-dmenu__item-label {
+  text-decoration: underline;
+  text-decoration-thickness: 0.1rem;
+  text-underline-offset: 0.5rem;
+}
+
+html body .cj-dmenu__extra--plain {
+  padding-left: 0;
+  color: rgba(var(--color-foreground), 0.6);
+}
+
+html body .cj-dmenu__extra--plain:hover {
+  color: rgb(var(--color-foreground));
+}
+
+html body .cj-dmenu__country {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.6rem;
+  margin-top: 1.6rem;
+  padding-top: 1.6rem;
+  border-top: 0.1rem solid rgba(var(--color-foreground), 0.12);
+  color: rgba(var(--color-foreground), 0.85);
+  font-family: var(--font-body-family);
+  font-size: 1.5rem;
+}
+
+html body .cj-dmenu__flag {
+  flex: none;
+  width: 3rem;
+  height: 1.8rem;
+}
