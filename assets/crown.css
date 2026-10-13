@@ -8658,7 +8658,7 @@ cj-desktop-menu {
   }
 
   /* Logo in the middle (owner, theme editor 2026-10-13): the button takes the left-hand slot the
-     row of category names had. */
+     row of category names had (re-sent). */
   html body .header > cj-desktop-menu {
     grid-area: navigation;
     justify-self: start;
