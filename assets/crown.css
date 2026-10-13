@@ -9098,3 +9098,30 @@ html body .cj-dmenu__chevron {
 html body .cj-dmenu__extra-icon .icon-map-pin {
   fill: currentColor;
 }
+
+/* Top bar, 2026-10-13 (owner): black instead of scheme-3's warm near-black (reverses the
+   2026-09-13 choice above; way back: delete this block), the messages a little bigger
+   (11px → 12.5px) and the arrows bolder: the caret's 1-unit outline gets a 0.5 stroke, about 1.5×
+   as thick, and is drawn slightly larger. Only the bar: scheme-3 elsewhere is unchanged. */
+html body .announcement-bar-section .utility-bar.gradient {
+  background: #000;
+}
+
+html body .announcement-bar__message {
+  font-size: 1.25rem;
+}
+
+html body .announcement-bar .slider-button {
+  color: rgb(var(--color-foreground));
+}
+
+html body .announcement-bar .slider-button .icon {
+  height: 0.75rem;
+  overflow: visible;
+}
+
+html body .announcement-bar .slider-button .icon path {
+  stroke: currentColor;
+  stroke-width: 0.5;
+  stroke-linejoin: round;
+}

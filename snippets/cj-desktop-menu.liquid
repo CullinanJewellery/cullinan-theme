@@ -104,9 +104,14 @@
               {%- endif -%}
             </li>
           {%- endif -%}
-          {%- comment -%} 2026-10-13 (owner, as Swarovski's „Stores“): the shop, on the contact page with address, hours and directions. {%- endcomment -%}
+          {%- comment -%} 2026-10-13 (owner, as Swarovski's „Stores“): the shop in Google Maps, the same link as the contact page's „Как да стигнете“. {%- endcomment -%}
           <li>
-            <a class="cj-dmenu__extra" href="{{ pages.contact.url | default: '/pages/contact' }}">
+            <a
+              class="cj-dmenu__extra"
+              href="https://www.google.com/maps/search/?api=1&query=%D0%B1%D1%83%D0%BB.%20%D0%92%D0%B0%D1%81%D0%B8%D0%BB%20%D0%9B%D0%B5%D0%B2%D1%81%D0%BA%D0%B8%2021%2C%20%D0%92%D0%B5%D0%BB%D0%B8%D0%BA%D0%BE%20%D0%A2%D1%8A%D1%80%D0%BD%D0%BE%D0%B2%D0%BE"
+              target="_blank"
+              rel="noopener"
+            >
               <span class="cj-dmenu__extra-icon" aria-hidden="true">{{ 'icon-map-pin.svg' | inline_asset_content }}</span>
               Магазин
             </a>
