@@ -9183,3 +9183,23 @@ html body .header__heading-link .h2 {
   height: 1.5rem;
   margin-left: auto;
 }
+
+/* Heart pop, 2026-10-13 (owner: "when i add something in любими the heart to get bigger"): on
+   saving (assets/wishlist.js adds .cj-wish--pop), the pressed heart grows to 1.35x and settles
+   back in 0.45s, already filled. Removing does not animate. None with reduced motion. Way back:
+   delete this block and the pop lines in assets/wishlist.js. */
+@keyframes cj-heart-pop {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.35); }
+  100% { transform: scale(1); }
+}
+
+html body .cj-wish.cj-wish--pop .icon-heart {
+  animation: cj-heart-pop 0.45s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html body .cj-wish.cj-wish--pop .icon-heart {
+    animation: none;
+  }
+}

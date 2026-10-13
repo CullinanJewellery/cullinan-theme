@@ -85,6 +85,16 @@
         var saved = heart.getAttribute('aria-pressed') !== 'true';
         set(heart.dataset.cjWish, saved);
         if (!saved) removeCard(heart.dataset.cjWish);
+        // 2026-10-13 (owner): saving makes the heart grow for a moment (crown.css „Heart pop“).
+        if (saved) {
+          heart.classList.remove('cj-wish--pop');
+          void heart.offsetWidth;
+          heart.classList.add('cj-wish--pop');
+          heart.addEventListener('animationend', function done() {
+            heart.classList.remove('cj-wish--pop');
+            heart.removeEventListener('animationend', done);
+          });
+        }
         return;
       }
       var remove = event.target.closest && event.target.closest('[data-cj-wish-remove]');
