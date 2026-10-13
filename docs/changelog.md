@@ -8,6 +8,15 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-13 — header always on screen; black bar only at the top **(owner)**
+- Owner: on scrolling down and up only the white header shows; the black bar appears when back at the top. The
+  bar is no longer sticky (scrolls away with the page); the header sticks at top 0 and no longer hides while
+  scrolling down. Reverses 2026-09-15 (both bars slid away scrolling down, came back scrolling up). The bar's
+  script now only measures --announcement-bar-height / --header-height. Way back: git history of crown.css
+  „Sticky top bar and header“ and the script at the end of sections/announcement-bar.liquid.
+- Checked on the real preview: 1440 header at top 0 at 800, 2500 and back up at 1500 (bar off screen), bar and
+  header back at the top at 0; 375 the same, the menu drawer opens right under the header mid-page.
+
 ## 2026-10-13 — flag and menu links on phones; top bar every 4 seconds **(owner)**
 - Top bar on phones and tablets: a 25 × 15 flag inside each message, just before the words, centred with them
   (large-up-hide; computers keep the one between the arrows and the message).
