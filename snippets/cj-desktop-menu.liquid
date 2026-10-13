@@ -4,7 +4,8 @@
   panel from the left: the header menu's top-level items in the left column (› where they have
   sub-collections), the chosen item's sub-collections in the right column („Всички …“ first,
   deeper links under each in smaller text, then a line and that item's picture from the header's
-  „Mega menu image panel“ block, its label in bold under it), and under the categories the quieter
+  „Mega menu image panel“ block, or the collection's own picture when the block has none; the label
+  in bold under it), and under the categories the quieter
   links: „Любими“, sign-in / account, and the top-bar menu (За нас, Контакти). Phones and tablets
   keep the menu drawer (snippets/header-drawer.liquid). Behaviour: assets/cj-desktop-menu.js;
   styles: crown.css „Desktop menu panel“.
@@ -156,11 +157,30 @@
                   endif
                 endfor
               -%}
-              {%- if cj_promo -%}
-                <a class="cj-dmenu__promo" href="{{ cj_promo.settings.link | default: link.url }}">
-                  {%- if cj_promo.settings.image != blank -%}
+              {%- liquid
+                assign cj_img = blank
+                if cj_promo and cj_promo.settings.image != blank
+                  assign cj_img = cj_promo.settings.image
+                elsif link.type == 'collection_link' and link.object.image != blank
+                  assign cj_img = link.object.image
+                endif
+                assign cj_title_lower = link.title | downcase
+                assign cj_label = 'Всички ' | append: cj_title_lower
+                assign cj_href = link.url
+                if cj_promo
+                  if cj_promo.settings.label != blank
+                    assign cj_label = cj_promo.settings.label
+                  endif
+                  if cj_promo.settings.link != blank
+                    assign cj_href = cj_promo.settings.link
+                  endif
+                endif
+              -%}
+              {%- if cj_promo or cj_img != blank -%}
+                <a class="cj-dmenu__promo" href="{{ cj_href }}">
+                  {%- if cj_img != blank -%}
                     {{
-                      cj_promo.settings.image
+                      cj_img
                       | image_url: width: 1000
                       | image_tag:
                         class: 'cj-dmenu__promo-image',
@@ -172,9 +192,7 @@
                   {%- else -%}
                     <span class="cj-dmenu__promo-image cj-dmenu__promo-image--empty" aria-hidden="true"></span>
                   {%- endif -%}
-                  {%- if cj_promo.settings.label != blank -%}
-                    <span class="cj-dmenu__promo-label">{{ cj_promo.settings.label | escape }}</span>
-                  {%- endif -%}
+                  <span class="cj-dmenu__promo-label">{{ cj_label | escape }}</span>
                 </a>
               {%- endif -%}
             </div>

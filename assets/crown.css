@@ -8722,6 +8722,11 @@ html.cj-dmenu-open {
   opacity: 1;
 }
 
+/* Dawn hides empty <div>s (base.css div:empty); the dim layer is one, so it is shown explicitly. */
+html body .cj-dmenu__overlay:not([hidden]) {
+  display: block;
+}
+
 .cj-dmenu__panel {
   position: fixed;
   top: 0;
