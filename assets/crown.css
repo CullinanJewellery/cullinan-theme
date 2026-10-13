@@ -9133,24 +9133,24 @@ html body .header__heading-link .h2 {
   color: #000;
 }
 
-/* Top bar flag, 2026-10-13 (owner): a small Bulgarian flag (20 x 12) after the top-bar links,
-   inside their <nav>, so it stays at the far right however many links there are. The list's
-   -1.2rem right margin (which put the last word on the gutter) goes; the flag sits on the gutter
-   instead, 0.4rem past the last link's own 1.2rem padding. Way back: delete this block and the
-   <svg> in sections/announcement-bar.liquid. */
-.utility-bar__links {
-  display: flex;
-  align-items: center;
-}
+/* Top bar flag, 2026-10-13 (owner): a Bulgarian flag (25 x 15) just before the rotating
+   message, after the two arrows (first it sat after the links on the right, 20 x 12; the owner
+   moved it and asked for it a little bigger). The arrows take flex order 1 and 2 and the messages
+   3 (rules near the top of this file); the flag goes between them. Computers only (small-hide /
+   medium-hide on the <svg>). Way back: delete this block and the <svg> in
+   sections/announcement-bar.liquid. */
+@media screen and (min-width: 990px) {
+  html body .utility-bar__grid--links .announcement-bar .slider {
+    order: 4;
+  }
 
-html body .utility-bar__links .utility-bar__links-list {
-  margin-right: 0;
-}
-
-.utility-bar__flag {
-  display: block;
-  flex: none;
-  width: 2rem;
-  height: 1.2rem;
-  margin-left: 0.4rem;
+  .announcement-bar__flag {
+    display: block;
+    flex: none;
+    order: 3;
+    align-self: center;
+    width: 2.5rem;
+    height: 1.5rem;
+    margin-left: 0.6rem;
+  }
 }
