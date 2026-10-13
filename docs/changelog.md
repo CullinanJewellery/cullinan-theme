@@ -8,6 +8,19 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-13 — desktop menu panel, second pass **(owner)**
+- Button: the three burger lines are equal (26 × 2px, 18px tall overall), „Меню“ 17px with a 0.02em stroke (~10%
+  bolder; 0.04em on hover).
+- Every category starts closed; a click opens its sub-collections, a second click closes them. Hover no longer
+  opens anything. The open category is bold and underlined (1px line, 5px below). Supersedes „hovered or chosen one
+  a touch bolder“ below.
+- За нас / Контакти line up with Любими and Вход (under the icons, not the text) and use a lighter ink (60% of the
+  text colour).
+- Under them a line, then „България“ on the left and a small Bulgarian flag (inline SVG) on the right, as on
+  swarovski.com. Written in Bulgarian; the owner wrote "Bulgaria".
+- Checked on the real preview at 1440: nothing open at first; Пръстени opens on click, underlined and bolder;
+  country row at the foot of the left column, flag inside it. Phones unchanged (component hidden below 990px).
+
 ## 2026-10-13 — desktop „☰ Меню“ panel after swarovski.com **(owner)**
 - From 990px the row of category names is hidden and a „☰ Меню“ button opens a white panel from the left over a
   dimmed page (snippets/cj-desktop-menu.liquid, assets/cj-desktop-menu.js, crown.css „Desktop menu panel“; rendered
