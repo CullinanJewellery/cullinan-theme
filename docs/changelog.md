@@ -8,6 +8,13 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-13 — material card in the zoom viewer **(owner)**
+- The owner: the gallery shows four tiles but the opened viewer only three; the material card was missing. It was
+  only ever rendered in the gallery. Now snippets/product-media-modal.liquid renders it as the viewer's last slide
+  (`cj-material-card` with `modal: true`, data-media-id „cj-material-<key>“), the largest centred square the
+  stage allows; the gallery tile is wrapped in a modal-opener so clicking it opens the viewer on the card. Metal
+  changes swap it with the rest of the viewer's content (product-info.js).
+
 ## 2026-10-13 — heart grows when a piece is saved **(owner)**
 - Saving to „Любими“ (card hearts and the buy-box heart) makes the pressed heart grow to 1.35× and settle back in
   0.45s (assets/wishlist.js adds .cj-wish--pop; crown.css „Heart pop“). Removing does not animate; none with
