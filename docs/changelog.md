@@ -8,6 +8,13 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-13 — Bulgarian flag in the top bar **(owner)**
+- A 20 × 12 flag after За нас / Контакти, inside the links' <nav> (sections/announcement-bar.liquid), so it stays
+  at the far right whatever links are added. Computers only, like the links. Way back: delete crown.css „Top bar
+  flag, 2026-10-13“ and the <svg>.
+- Checked on the real preview: 1440 flag right of Контакти, its right edge on the page gutter, bar still 35px;
+  375 hidden with the links, no sideways scroll.
+
 ## 2026-10-13 — shop name in the header black **(owner)**
 - "make the logo black": the header's shop name (text since the owner removed the logo picture) is `#000`
   instead of Dawn's link ink, espresso at 75%. Way back: delete crown.css „Shop name in the header, 2026-10-13“.
