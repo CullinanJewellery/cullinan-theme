@@ -13,15 +13,6 @@
   "sections": {
     "announcement-bar": {
       "type": "announcement-bar",
-      "settings": {
-        "color_scheme": "scheme-3",
-        "show_line_separator": true,
-        "show_social": false,
-        "auto_rotate": true,
-        "change_slides_speed": 6,
-        "enable_country_selector": false,
-        "enable_language_selector": false
-      },
       "blocks": {
         "announcement-bar-3": {
           "type": "announcement",
@@ -41,25 +32,19 @@
       "block_order": [
         "announcement-bar-3",
         "announcement-bar-5"
-      ]
+      ],
+      "settings": {
+        "auto_rotate": true,
+        "change_slides_speed": 6,
+        "color_scheme": "scheme-3",
+        "show_line_separator": true,
+        "show_social": false,
+        "enable_country_selector": false,
+        "enable_language_selector": false
+      }
     },
     "header": {
       "type": "header",
-      "settings": {
-        "color_scheme": "scheme-1",
-        "menu_color_scheme": "scheme-6",
-        "logo_position": "middle-left",
-        "menu": "main-menu",
-        "menu_type_desktop": "mega",
-        "sticky_header_type": "always",
-        "show_line_separator": true,
-        "enable_country_selector": false,
-        "enable_language_selector": false,
-        "mobile_logo_position": "center",
-        "margin_bottom": 0,
-        "padding_top": 12,
-        "padding_bottom": 12
-      },
       "blocks": {
         "mega-promo-rings": {
           "type": "mega_menu_promo",
@@ -81,7 +66,22 @@
       "block_order": [
         "mega-promo-rings",
         "mega-promo-bracelets"
-      ]
+      ],
+      "settings": {
+        "logo_position": "middle-center",
+        "mobile_logo_position": "center",
+        "menu": "main-menu",
+        "menu_type_desktop": "mega",
+        "sticky_header_type": "always",
+        "show_line_separator": true,
+        "color_scheme": "scheme-1",
+        "menu_color_scheme": "scheme-6",
+        "enable_country_selector": false,
+        "enable_language_selector": false,
+        "margin_bottom": 0,
+        "padding_top": 12,
+        "padding_bottom": 12
+      }
     }
   },
   "order": [
