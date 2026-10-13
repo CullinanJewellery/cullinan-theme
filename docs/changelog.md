@@ -8,6 +8,28 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-13 — desktop „☰ Меню“ panel after swarovski.com **(owner)**
+- From 990px the row of category names is hidden and a „☰ Меню“ button opens a white panel from the left over a
+  dimmed page (snippets/cj-desktop-menu.liquid, assets/cj-desktop-menu.js, crown.css „Desktop menu panel“; rendered
+  in sections/header.liquid after the old menu, which is still printed but hidden). Left column: the header menu's
+  top-level items (› where they have children; the hovered or chosen one a touch bolder), and at its foot Любими,
+  Вход / Регистрация (Моят профил when signed in) and the top-bar links. Right column: „Всички …“, the children
+  (grandchildren under each, smaller), a line, and a picture: the header's „Mega menu image panel“ block for that
+  item, or the collection's own picture when the block has none (Пръстени shows its marble), label in bold under it.
+  ✕, a click on the dimmed page or Esc closes; focus returns to the button; Tab stays inside while open. Panel
+  960px wide at 1440 (min(96rem, 100vw − 8rem)), moved to <body> by the script so the sticky header cannot clip it.
+- The owner changed the header in the theme editor the same morning (commits 11203695 / b44f2f8c): logo picture
+  removed (the shop name prints as text) and logo position `middle-center`. Kept as the owner set it; the button
+  takes the left slot the category row had (with the logo on the left it would go before the logo).
+- Dawn hides empty divs (`div:empty`), so the dim layer is shown explicitly.
+- Phones and tablets unchanged (menu drawer).
+- Checked on the real preview at 1440: button left, name centred, icons right; panel opens with Пръстени (Всички
+  пръстени, Дамкси, Мъжки, marble picture), hovering Гривни shows Гривни с циркони; Esc closes and focus returns;
+  page scroll locked only while open. 375: drawer as before, no sideways scroll.
+- Noticed, not changed (admin data): the menu item „Дамкси“ (should read „Дамски“).
+
+---
+
 ## 2026-10-12 (late) — „Попитайте за това бижу“ back; social band above the reviews; small fixes **(owner)**
 - The owner meant to remove the phone link and the „Запитване“ band, not „Попитайте за това бижу“: the link is back
   (block `phone_order` with the phone number empty, so only the question link prints) and opens the same popup
