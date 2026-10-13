@@ -9125,3 +9125,10 @@ html body .announcement-bar .slider-button .icon path {
   stroke-width: 0.5;
   stroke-linejoin: round;
 }
+
+/* Shop name in the header, 2026-10-13 (owner: "make the logo black"): pure black instead of
+   Dawn's link ink (espresso at 75%). The heading stroke follows currentColor. Way back: delete. */
+html body .header__heading-link,
+html body .header__heading-link .h2 {
+  color: #000;
+}
