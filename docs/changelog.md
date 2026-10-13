@@ -8,6 +8,14 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-13 — heart grows when a piece is saved **(owner)**
+- Saving to „Любими“ (card hearts and the buy-box heart) makes the pressed heart grow to 1.35× and settle back in
+  0.45s (assets/wishlist.js adds .cj-wish--pop; crown.css „Heart pop“). Removing does not animate; none with
+  reduced motion. The header heart is unchanged.
+- Checked on the real preview (375, collection page): saving adds the class and the heart animation runs 450ms,
+  1.35× at its peak, back to 1×; removing does not pop. The pane was in the background, so the motion was
+  stepped through by script rather than watched.
+
 ## 2026-10-13 — header always on screen; black bar only at the top **(owner)**
 - Owner: on scrolling down and up only the white header shows; the black bar appears when back at the top. The
   bar is no longer sticky (scrolls away with the page); the header sticks at top 0 and no longer hides while
