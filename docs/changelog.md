@@ -8,7 +8,9 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
-## 2026-10-13 — desktop menu: hovered category 10% bolder **(owner)**
+## 2026-10-13 — desktop menu: hovered and open category 10% bolder **(owner)**
+- The open (clicked) category also 0.02em (was 0.035em), keeping its underline. Checked on the real preview at
+  1440: Пръстени open, 0.35px stroke, underlined.
 - Then "make it 10%": 0.02em, the same as „Меню“'s 10%. Supersedes the 5% below. Checked on the real preview at
   1440: hovering Обеци gives a 0.35px stroke.
 - The category under the cursor gets a 0.01em stroke (about 5%; it had the open category's 0.035em). The open
