@@ -8,6 +8,10 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-13 — shop name in the header black **(owner)**
+- "make the logo black": the header's shop name (text since the owner removed the logo picture) is `#000`
+  instead of Dawn's link ink, espresso at 75%. Way back: delete crown.css „Shop name in the header, 2026-10-13“.
+
 ## 2026-10-13 — Магазин to Google Maps; black top bar **(owner)**
 - „Магазин“ in the desktop menu opens Google Maps in a new tab (the contact page's „Как да стигнете“ link) instead
   of the contact page.
