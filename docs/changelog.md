@@ -14,6 +14,10 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
   (`cj-material-card` with `modal: true`, data-media-id „cj-material-<key>“), the largest centred square the
   stage allows; the gallery tile is wrapped in a modal-opener so clicking it opens the viewer on the card. Metal
   changes swap it with the rest of the viewer's content (product-info.js).
+- Its thumbnail had the video play mark (any slide that is not an <img> got it); assets/product-modal.js now
+  leaves the card out of that. Checked on the real preview (Пръстен с топчета): 1440 four thumbnails, the card
+  opens from its tile, 720px square, no play mark; 375 after choosing 14К бяло злато the viewer's last slide is the
+  white gold card (rhodium line), full width, progress bar with four steps, no sideways scroll.
 
 ## 2026-10-13 — heart grows when a piece is saved **(owner)**
 - Saving to „Любими“ (card hearts and the buy-box heart) makes the pressed heart grow to 1.35× and settle back in
