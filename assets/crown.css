@@ -9237,3 +9237,63 @@ html body .cj-dmenu__item.is-active .cj-dmenu__item-label,
 html body .cj-dmenu__item:not(.is-active):hover .cj-dmenu__item-label {
   -webkit-text-stroke: 0.02em currentColor;
 }
+
+/* ---------------------------------------------------------------------------
+   Hero on a phone: words and button on the photograph (2026-10-13, owner: "a button and
+   the text on the picture, remove the thing under the picture, maybe make it bigger").
+   templates/index.json show_text_below is false, so Dawn lays the words over the picture
+   and the clay panel under it is gone (the panel rules above are keyed to
+   banner--mobile-bottom and no longer reach the hero).
+   - The picture is 4:5 (375 x 469 at 375px, was a 375px square plus the panel), cut from the
+     lower part of the portrait (object-position 50% 100%): the bell pendant sits just above
+     the middle and the dark leather fills the bottom, where the words go.
+   - Words at the bottom, centred, marble white like the computer hero, over a soft espresso
+     gradient from the bottom on the picture's own overlay layer (Dawn hides .banner::before
+     on phones). Heading, line and the ruby square button keep their sizes.
+   Computers unchanged. Way back: delete this block and set show_text_below back to true.
+   --------------------------------------------------------------------------- */
+@media screen and (max-width: 749px) {
+  html body [id^="shopify-section-"][id$="__hero_image"] .banner:not(.banner--mobile-bottom) .banner__content {
+    min-height: 0;
+    aspect-ratio: 4 / 5;
+    align-items: flex-end;
+    justify-content: center;
+  }
+
+  html body [id^="shopify-section-"][id$="__hero_image"] .banner:not(.banner--mobile-bottom):has(.banner__media:not(.banner__media--empty)) .banner__media img {
+    object-position: 50% 100%;
+  }
+
+  html body [id^="shopify-section-"][id$="__hero_image"] .banner:not(.banner--mobile-bottom):has(.banner__media:not(.banner__media--empty)) .banner__media::after {
+    opacity: 1;
+    background: linear-gradient(0deg, rgba(24, 14, 9, 0.72) 0%, rgba(24, 14, 9, 0.5) 24%, rgba(24, 14, 9, 0) 50%);
+  }
+
+  html body [id^="shopify-section-"][id$="__hero_image"] .banner:not(.banner--mobile-bottom):has(.banner__media:not(.banner__media--empty)) .banner__box {
+    --color-foreground: 251, 248, 246;
+    color: #FBF8F6;
+    background: transparent;
+    padding: 0 2rem 3.2rem;
+  }
+
+  html body [id^="shopify-section-"][id$="__hero_image"] .banner:not(.banner--mobile-bottom) .banner__box > .banner__heading {
+    margin: 0;
+  }
+
+  html body [id^="shopify-section-"][id$="__hero_image"] .banner:not(.banner--mobile-bottom) .banner__box > .banner__text {
+    margin: 0.8rem 0 0;
+    font-size: 1.6rem;
+    line-height: 1.3;
+  }
+
+  html body [id^="shopify-section-"][id$="__hero_image"] .banner:not(.banner--mobile-bottom) .banner__box > .banner__buttons {
+    margin: 2rem 0 0;
+  }
+
+  html body [id^="shopify-section-"][id$="__hero_image"] .banner:not(.banner--mobile-bottom) .banner__buttons .button {
+    min-width: 26rem;
+    min-height: 4.8rem;
+    padding: 0 2.4rem;
+    font-size: 1.4rem;
+  }
+}
