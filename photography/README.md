@@ -161,7 +161,7 @@ CLAUDE.md, „Product photo standard“. This is how that set was made, so the n
 | Shadow | soft, wide, **neutral grey** shadow on the floor, slightly to the **left**, plus a thin darker contact shadow where the band touches; **no gold colour or reflection on the floor** |
 | Light | soft diffused studio light, a bright highlight on each bead, mirror polish, no blown-out glare |
 | Yellow gold | rich, warm, deep **18K-looking yellow**, deep amber in the darker areas, warm-white highlights; not pale, not orange, not brown. Measured average of ring A's gold: about RGB 208, 165, 114 |
-| White gold | bright rhodium white: cool, clean silver-white with crisp dark mirror reflections, no gold tint. **Every ring's white gold must match ring A's white gold photos** (owner, 2026-10-13: ring B's lying-flat white came out lighter and colder, which the owner noticed) |
+| White gold | a clean, **neutral**, bright rhodium white, like platinum: silver-white with crisp neutral grey and dark reflections, **no yellow, beige or champagne cast** (owner, 2026-10-13: the first white photos of both rings looked yellowish; they measured blue 13–20 below red on the metal; aim for blue within about 5 of red) |
 | Rose gold | warm soft pink-copper, rich but elegant; match ring A's rose photos |
 | Silver | uses the white gold photos (same look) |
 | Size, place | the piece **exactly centred**, as large as on moonmagic.com: a slim upright ring fills about 78% of the height |
@@ -178,6 +178,13 @@ CLAUDE.md, „Product photo standard“. This is how that set was made, so the n
    toward the camera at a soft three-quarter angle, natural skin texture, short nude manicure, soft daylight, close
    crop; the ring on the ring finger near its base at real scale (about 1.5–2 mm wide), the sharp hero near the
    centre.
+
+### Never change the jewellery (owner, 2026-10-13)
+
+An edit changes only what was asked: a colour, the background, the shadow. The piece stays exactly as it is in the
+photo being edited (design, every ball and granule, thickness, size, angle, position). Compare every result with the
+photo it came from before keeping it. Give an edit only the photo being edited as its reference when possible; a
+second ring in the references can leak into the result.
 
 ### The steps (Higgsfield: nano_banana_2 for every edit, upscale_image 4K at the end)
 
@@ -209,8 +216,9 @@ CLAUDE.md, „Product photo standard“. This is how that set was made, so the n
    **The on-hand photo is the exception**: there ring A's photo leaks its own ring into the edit (ring B's white
    on-hand came out with ring A's continuous beads, 2026-10-13). For 03, use the piece's own finished photo of the target
    metal (its 01) as the colour reference instead. Check every result for the design, not only the colour.
-   White gold tends to come out too cold: ring A's white has a very faint warm champagne undertone; if the result
-   is colder, one more edit asking for exactly that.
+   White gold tends to pick up a warm, yellowish cast from the yellow photo it is made from: measure it (blue should
+   be within about 5 of red on the metal) and, if warm, one more edit: „change only the colour of the metal … clean,
+   neutral, bright white, no yellow, beige or champagne cast“, with no other picture as a reference.
 5. **Upscale** every keeper to 4K (2 credits each), then crop locally to a centred square so the piece is exactly in
    the middle at the standard size, and save 2048 × 2048 into the metal folder with the names above. Nothing else is
    done locally: colour, shadow and background changes are always Higgsfield edits (owner, 2026-10-12).

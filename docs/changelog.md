@@ -8,6 +8,16 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-13 — white gold without the yellow cast; "never change the jewellery" **(owner)**
+- The owner: "I did not say to change the jewelry"; written into CLAUDE.md („Product photo standard“) and
+  photography/README.md: an edit changes only what was asked; the piece stays exactly as in the photo being edited.
+- White gold looked yellowish on both rings (the owner sent ring B's and ring A's lying-flat white). Measured: blue
+  13–20 below red on the metal in all white photos, ring A's included (the earlier note that ring A's white has a
+  "warm champagne undertone" to be matched is withdrawn). All six white photos (both rings, 01–03) re-edited in
+  Higgsfield with only the photo itself as reference: "change only the colour of the metal … clean, neutral, bright
+  white, no yellow". After: blue within 2–5 of red; rings unchanged. Silver copies refreshed. The yellowish versions
+  are in each ring's чернови/бяло злато с жълт оттенък.
+
 ## 2026-10-13 — product photo standard written down; ring B redone **(owner)**
 - The owner: every photo must look like ring A („Пръстен с топчета“): background, colour, shadow. Written into
   CLAUDE.md („Product photo standard“, short) and photography/README.md („Product photos: the ring A standard“, with

@@ -92,9 +92,14 @@ Full recipe with the exact Higgsfield prompts: `photography/README.md` „Produc
 - **Editing is done in Higgsfield** (nano_banana_2, then upscale_image 4K); locally only crop, measure, copy.
 - **Background** flat seamless off-white #FCFBFC edge to edge; **shadow** soft neutral grey, falling to the left, with
   a thin darker contact shadow; no gold tint on the floor.
-- **Gold**: rich, warm, deeply polished 18K yellow (ring A's main photo is the colour reference). **White gold** must
-  match ring A's white gold photos, **rose gold** ring A's rose; new metals are made from the finished yellow photo
-  with ring A's photo of that metal as the colour reference.
+- **Never change the jewellery (owner, 2026-10-13: "I did not say to change the jewelry")**: an edit changes only
+  what the owner asked for (a colour, the background, the shadow). The piece stays exactly as it is in the photo being
+  edited: same design, every ball and granule, thickness, size, angle and position. Check every result against the
+  photo it came from, not only against the colour asked for.
+- **Gold**: rich, warm, deeply polished 18K yellow (ring A's main photo is the colour reference). **Rose gold** matches
+  ring A's rose. **White gold is a clean, neutral, bright white, no yellow, beige or champagne cast** (owner,
+  2026-10-13: both rings' white looked yellowish; measured blue 13–20 below red). New metals are made from the
+  finished yellow photo of the same piece.
 - **Three photos per piece, per metal**: 01 standing, three-quarter view; 02 lying flat seen from above at 45°;
   03 worn on a hand on ivory linen. Silver uses the white gold photos.
 - **Size and centring**: the piece exactly centred, as large as moonmagic.com's (a slim ring at 78% of the height);
