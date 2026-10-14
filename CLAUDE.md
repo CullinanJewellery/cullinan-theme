@@ -115,20 +115,20 @@ Full recipe with the exact Higgsfield prompts: `photography/README.md` „Produc
 - **Design**: only from the owner's real photos of the piece; the style picture is never used as the design source
   (ring A's design leaked into ring B's hand photo once).
 - Folders: `Pictures/PicturesForWebFaceInstagram/pictures for the website/NN Name - номер предстои/{metal, видео, чернови}`.
-- **Credits: budget about 18 per piece (owner, 2026-10-14: "spend for the 9 pictures like 18 credits")**. Higgsfield
-  Starter plan, 270 credits a month (started 2026-10-06); check the balance before starting. Prices: Nano Banana 2/2.1
-  at 1k 1.5, at 2k 2, at 4k 3; GPT Image 2.5 (`gpt_image_2_5`, quality medium, 2k) **1**; upscale 2. **2k is enough**
-  (the site shows photos at most about 1000px wide; frame-photo.cjs resizes to 2048); no 4k, no upscale.
-  The 18-credit way, 9 photos:
-  1. The three yellow photos (standing, lying flat, hand): Nano Banana 2.1 at 2k, the piece from the raw photos and
-     ring A's photo as style and gold reference in one step, piece at about half the height: 3 × 2 = 6.
-  2. White and rose for each (6 photos): GPT Image 2.5, medium, 2k, only the yellow photo as input, the colour in
-     words: 6 × 1 = 6. Tested 2026-10-14 on ring C: the ring identical to 0.001 of the frame, the rose equal to the
-     approved one (222, 163, 144 vs 224, 160, 145), clean background.
-  3. Silver: free copy of white. Total about 12, leaving about 6 for corrections (1–2 each). Stop and tell the owner
+- **Credits: budget about 18 per piece, finals at 4k (owner, 2026-10-14: "spend for the 9 pictures like 18
+  credits"; then: "they need to be 4k, the quality looks better")**. Higgsfield Starter plan, 270 credits a month
+  (started 2026-10-06); check the balance before starting. Prices at 4k: Nano Banana 2/2.1 **3**, GPT Image 2.5
+  (`gpt_image_2_5`, quality medium) **1.25**; at 2k 2 and 1; upscale 2 (not used: finals are made at 4k).
+  The way, 9 photos at 4k:
+  1. The three yellow photos (standing, lying flat, hand): Nano Banana 2.1 at 4k, the piece from the raw photos and
+     ring A's photo as style and gold reference in one step, piece at about half the height: 3 × 3 = 9.
+  2. White and rose for each (6 photos): GPT Image 2.5, medium, 4k, only the yellow photo as input, the colour in
+     words: 6 × 1.25 = 7.5. Tested 2026-10-14 on ring C (at 2k): the ring identical to 0.001 of the frame, the rose
+     equal to the approved one (222, 163, 144 vs 224, 160, 145), clean background.
+  3. Silver: free copy of white. Total **16.5**; about 1.5 left for one GPT fix inside 18. Stop and tell the owner
      before going over 18.
-  Measure every result before the next step. Tell the owner the credits used after each set. History: ring B took
-  about 133 over four rounds, ring C about 45 at 4k; both before this budget.
+  Measure every result before the next step. Tell the owner the cost before a set and the credits used after it.
+  History: ring B took about 133 over four rounds, ring C about 45; both before this budget.
 
 ## References (choose per question)
 

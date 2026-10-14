@@ -257,7 +257,7 @@ second ring in the references can leak into the result.
 - Cost per final photo: generate the approved final directly at `resolution: 4k` (3 credits) instead of 1k + upscale
   (3.5 credits); drafts at 1k (1.5). 2k is too small for the frame crop.
 
-### The 18-credit set (owner, 2026-10-14)
+### The 18-credit set (owner, 2026-10-14; finals at 4k, 16.5 credits)
 
 The owner set a budget of about 18 credits for a piece's 9 photos. GPT Image 2.5 (`gpt_image_2_5`, quality
 `medium`, resolution `2k`) costs 1 credit and was tested on ring C's lying-flat photo (yellow to rose): the ring
