@@ -14,9 +14,10 @@
   Usage (needs sharp, NODE_PATH as for check-photo.cjs):
     node metal-swap.cjs <white|rose> <yellow.png> <out.png> [--hand x0,y0,x1,y1]
 
-  --hand is EXPERIMENTAL and not good enough (test 2026-10-14, lesson 32): gold in shadow has skin's hue, so those
-  beads stayed gold and the white came out patchy; a few skin highlights turned into pale specks. Do not use it for
-  finished photos.
+  --hand: the owner saw the test (ring A and ring C, 2026-10-14) and said "it works, i like it". Its weak points
+  (lesson 32): gold in shadow has skin's hue, so shaded beads can stay gold, and a few skin highlights can turn into
+  pale specks. For every worn photo (hand, ear, neck, wrist) show the owner the result, ask whether they like it,
+  and say what more work could improve it before it is final.
   --hand (photos on a hand): skin is warm like gold, so warmth alone would tint the finger. Only pixels inside the box
   (fractions of the photo, round the ring) whose hue is gold's change: measured on ring A's hand photo, skin is hue
   12–27°, the gold 27–36° and more. The weight ramps in from hue 24° to 29° and from saturation 0.15 to 0.25, so

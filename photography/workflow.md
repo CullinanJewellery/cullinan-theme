@@ -43,7 +43,9 @@ whole photo shrunk (owner, 2026-10-14).
    (`compare-sheet.cjs`: raw photos left, the new photo right, the stone count in the note). **Wait for the owner's
    OK** before the other four photos, which are all built from it. A wrong ring then costs one photo, not a set.
 5. **Make the others** with the prompt files (yellow lying flat or hand). **White and rose: `metal-swap.cjs` from
-   the finished, framed yellow photo** (free; no model, so nothing but the colour changes). Log each call.
+   the finished, framed yellow photo** (free; no model, so nothing but the colour changes). Worn photos (hand,
+   body) too, with `--hand`: **show them to the owner, ask whether they like them and what more could be done to
+   make them look better** (owner, 2026-10-14; lesson 32). Log each call.
 6. **Check every result before the next step**: `node photography/check-photo.cjs <metal> <file> [source]` for the
    numbers (gold, white, background, seams, ring unchanged against its source); then by eye against `staging.md` and
    the piece sheet (counts, stone direction, rhodium, inside). Log pass/fail and why.

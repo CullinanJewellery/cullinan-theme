@@ -121,3 +121,7 @@ Each line: what went wrong, the rule now, where it came from. Newest last.
     of the cups fall in the skin's range. The lit beads turned white, the shaded ones stayed gold (patchy two-tone),
     and a few skin highlights became pale specks. Fine on the lying photos (everything else there is white or grey).
     → A hand photo needs an exact outline of the ring before its colour can be changed on the computer.
+    **Owner's verdict on the test: "it works, i like it."** Rule (owner, 2026-10-14): worn photos (on a hand or
+    anywhere on the body) are made with `metal-swap.cjs --hand`, shown to the owner with the question whether they
+    like them, and with any further work that could make them look better (e.g. the shaded beads), before they are
+    final.
