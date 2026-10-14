@@ -1,5 +1,9 @@
 # White and rose 01 standing (metal swap)
 
+**On hold (owner, 2026-10-14, lesson 31):** GPT Image 2.5 redraws the whole photo, so the white and rose versions
+differ from the yellow in quality, stones, background and sharpness; the owner wants only the colour changed. Do not
+use this file until the owner has chosen the method.
+
 Model `gpt_image_2_5`, `quality: medium`, `resolution: 4k` (1.25 credits each).
 Input: **only** the passed yellow 01 standing photo (lesson 2). Colour in words.
 

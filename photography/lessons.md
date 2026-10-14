@@ -106,3 +106,10 @@ Each line: what went wrong, the rule now, where it came from. Newest last.
     stone has to show (2026-10-14: "for the hand the stones can't been seen all, it is normal"). The stones come out
     too big for three beads to fit between them. The lying photos, where the ring is large, got three. → For the
     hand, give the model a real photo of the ring on a hand, or make the ring larger in the picture.
+31. **A "colour change" by GPT Image 2.5 is a new photo.** The owner, on ring C's white and rose (2026-10-14): "the
+    quality of the different colors are not the same … i just need the color to change, nothing else". GPT redraws
+    the whole picture in its own style and at 2880 px: stones, reflections, background (white 246, rose 244 against
+    yellow 247) and sharpness all differ from the yellow photo (Nano Banana, 4096 px). Lesson 12's "ring identical"
+    measured only the outline. → A metal version must change only the metal's colour. Options put to the owner: a
+    pixel recolour of the gold on the computer (exact, free; needs the owner's OK as a local edit) or a Nano Banana
+    colour edit (same model as the yellow, still a redraw). Waiting for the owner's choice.
