@@ -39,6 +39,13 @@ SIZE: the ring about 60% of the picture's width, centred, with empty background 
 No gold reflection on the floor, no props, no text, no logo, no other jewellery.
 ```
 
+Rhodium on stone cups, when the owner wants it clearly visible (lesson 23): "the whole flat front face of each cup,
+the ring of metal round each stone, is bright white rhodium, like a white frame round every stone; the sides of the
+cups and the beads stay yellow gold."
+
+Counts the model gets wrong (lesson 22): if the raw photos do not show the piece in this pose, ask for a raw photo
+lying flat from the front first; wording alone did not get ring C's three beads per gap in four tries.
+
 Why the POSITION reads as it does (2026-10-14, ring C): the holes are behind the stones, on the inside of the front
 half, so from the front they are hidden; the inside that shows is the back, plain half, smooth gold. Stones spread
 over half the ring (9 to 3 o'clock) cannot all face the camera: the middle one does, the end ones are seen from the

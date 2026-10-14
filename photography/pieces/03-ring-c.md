@@ -13,7 +13,9 @@ zoomed in on 2026-10-14.
 - **The stones are zircons (cubic zirconia)**: clear and colourless, brilliant cut, sparkling like small diamonds.
   Never milky, white-opaque or grey (owner, 2026-10-14: the redo's stones were "not realistic", from the word
   "white stones" in the old description).
-- Between neighbouring stones three to four small gold beads, slightly irregular (handmade).
+- Between neighbouring stones **exactly three** small gold beads, slightly irregular (handmade): stone, three beads,
+  stone, three beads, stone … the same in all four gaps, also next to the middle stone (owner, 2026-10-14: "they need
+  to be the same because in that way it is a different ring"; both lying tries drew two next to the middle stone).
 - Lower half: thin, plain, polished gold band.
 - **Rhodium**: the cup each stone sits in is rhodium (white) on its visible face. Seen straight from the side, only
   the rounded corners of the cup show a little white; the rest of the cup and the band are yellow gold. The two
@@ -43,7 +45,9 @@ Cost: 3 + 3 + 1.25 + 1.25 = 8.5 credits.
 > upper half of the band sit exactly FIVE small round clear, colourless, brilliant-cut cubic zirconia stones that
 > sparkle like small diamonds (never milky or white-opaque) — one at the top centre and two on each side,
 > evenly spaced at about 9, 10:30, 12, 1:30 and 3 o'clock, so the two lowest sit level with the middle of the ring —
-> with three to four small, slightly irregular handmade gold beads between neighbouring stones. Each
+> with exactly THREE small, slightly irregular handmade gold beads between every pair of neighbouring stones (stone,
+> three beads, stone, three beads, stone, three beads, stone, three beads, stone: the same in all four gaps, also
+> next to the middle stone). Each
 > stone sits in a small round cup whose visible top face is white rhodium; seen from the side only the rounded
 > corners of the cup show a little white, the rest of the cup and the whole band are yellow gold. The two lowest
 > stones' white runs slightly further down into the plain band. The stones face outward from the band. The upper half
@@ -68,3 +72,10 @@ Cost: 3 + 3 + 1.25 + 1.25 = 8.5 credits.
   little pale both times (blue 126 vs 114), a horizon band on the first, a faint band on the second, and two beads
   instead of three next to the middle stone on both. Piece at 11.5 credits; the set would pass 18: **waiting for
   the owner** (lessons 19–21).
+- Owner (2026-10-14, after the two tries): three beads in every gap (sheet corrected); the gold of the tries (about
+  215, 173, 126) is "close enough", try to bring it closer. One more try approved in substance. Then: make the
+  white rhodium more visible.
+- Try 3 (job 0800af4f) and an edit of it (job 5cefe1e2), 6 credits: still **two beads in every gap**; the edit made
+  the rhodium clearly visible (lesson 23). Both failed the checker, not sent. **Ring C at 17.5 credits: stopped**
+  (lesson 22). Next step proposed to the owner: a raw phone photo of the ring lying flat, seen from the front a
+  little above, so the model copies the real bead layout.

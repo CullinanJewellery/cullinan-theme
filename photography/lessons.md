@@ -59,3 +59,12 @@ Each line: what went wrong, the rule now, where it came from. Newest last.
 21. **"Three to four beads" became two in the middle.** Both lying tries put two beads between the middle stone and
     its neighbours (three elsewhere). → Give an exact count for every gap ("exactly three beads between every pair
     of neighbouring stones, also next to the middle stone"). (Ring C, 2026-10-14.)
+22. **Words do not fix a count Nano Banana 2.1 will not draw.** With "exactly THREE beads … three, three, three,
+    three" a third lying try drew two in every gap, and an edit asking for smaller beads so three fit changed
+    nothing. Its beads stay large, and two fill the space between two cups. The raw photos show the ring standing,
+    never in the lying pose, so the model has no picture of that layout to copy. → Before generating a pose the
+    raw photos do not show, ask for a raw photo in that pose (for stone rings: lying flat, seen from the front a
+    little above). Stop after two wrong counts; do not spend a third try on wording. (Ring C, 2026-10-14, 9 credits.)
+23. **Rhodium shows when the prompt says where it is**: "the whole flat front face of each cup, the ring of metal
+    round each stone, is bright white rhodium … like a white frame round every stone; the sides of the cups and the
+    beads stay yellow gold" made the white clearly visible, as the owner asked. (Ring C, 2026-10-14.)
