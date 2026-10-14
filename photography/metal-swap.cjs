@@ -12,7 +12,16 @@
   warm, so white is set a hair cool instead, the owner's rule "no yellow, beige or champagne"; rose 214, 160, 128).
 
   Usage (needs sharp, NODE_PATH as for check-photo.cjs):
-    node metal-swap.cjs <white|rose> <yellow.png> <out.png>
+    node metal-swap.cjs <white|rose> <yellow.png> <out.png> [--hand x0,y0,x1,y1]
+
+  --hand is EXPERIMENTAL and not good enough (test 2026-10-14, lesson 32): gold in shadow has skin's hue, so those
+  beads stayed gold and the white came out patchy; a few skin highlights turned into pale specks. Do not use it for
+  finished photos.
+  --hand (photos on a hand): skin is warm like gold, so warmth alone would tint the finger. Only pixels inside the box
+  (fractions of the photo, round the ring) whose hue is gold's change: measured on ring A's hand photo, skin is hue
+  12–27°, the gold 27–36° and more. The weight ramps in from hue 24° to 29° and from saturation 0.15 to 0.25, so
+  edges blend; near-white highlights and the gold's reflections of the skin stay as they are (a polished white ring
+  reflects skin too).
 */
 const sharp = require('sharp');
 
@@ -34,27 +43,52 @@ function targetOffset(kind) {
   return t.map((v) => v - L);
 }
 
+// hue (degrees) and saturation of a pixel
+function hs(r, g, b) {
+  const mx = Math.max(r, g, b), mn = Math.min(r, g, b), d = mx - mn;
+  if (!d) return [0, 0];
+  let h = mx === r ? 60 * (((g - b) / d) % 6) : mx === g ? 60 * ((b - r) / d + 2) : 60 * ((r - g) / d + 4);
+  if (h < 0) h += 360;
+  return [h, d / mx];
+}
+const ramp = (v, a, b) => Math.min(1, Math.max(0, (v - a) / (b - a)));
+// on a hand: gold hue (24–29° in, 50–60° out) and enough colour (saturation 0.15–0.25)
+function handWeight(r, g, b) {
+  const [h, s] = hs(r, g, b);
+  return Math.min(ramp(h, 24, 29), 1 - ramp(h, 50, 60)) * ramp(s, 0.15, 0.25);
+}
+
 (async () => {
-  const [kind, src, dst] = process.argv.slice(2);
-  if (!['white', 'rose'].includes(kind) || !src || !dst) throw new Error('usage: node metal-swap.cjs <white|rose> <yellow.png> <out.png>');
+  const args = process.argv.slice(2);
+  const hi = args.indexOf('--hand');
+  const box = hi >= 0 ? args.splice(hi, 2)[1].split(',').map(Number) : null;
+  const [kind, src, dst] = args;
+  if (!['white', 'rose'].includes(kind) || !src || !dst) throw new Error('usage: node metal-swap.cjs <white|rose> <yellow.png> <out.png> [--hand x0,y0,x1,y1]');
   const { data, info } = await sharp(src).removeAlpha().raw().toBuffer({ resolveWithObject: true });
-  const ch = info.channels;
+  const ch = info.channels, W = info.width, H = info.height;
+  const inBox = (i) => {
+    if (!box) return true;
+    const x = (i % W) / W, y = Math.floor(i / W) / H;
+    return x >= box[0] && x <= box[2] && y >= box[1] && y <= box[3];
+  };
+  const pixelWeight = (i, r, g, b) => (box ? (inBox(i) ? handWeight(r, g, b) : 0) : weight(r, b));
 
   // the yellow photo's average gold offset (pixels clearly gold), to measure each pixel's warmth against
   const avg = [0, 0, 0];
   let n = 0;
-  for (let p = 0; p < data.length; p += ch) {
+  for (let p = 0, i = 0; p < data.length; p += ch, i++) {
     const r = data[p], g = data[p + 1], b = data[p + 2];
-    if (r - b > 45) { const L = lum(r, g, b); avg[0] += r - L; avg[1] += g - L; avg[2] += b - L; n++; }
+    const gold = box ? inBox(i) && handWeight(r, g, b) === 1 : r - b > 45;
+    if (gold) { const L = lum(r, g, b); avg[0] += r - L; avg[1] += g - L; avg[2] += b - L; n++; }
   }
   const yo = avg.map((v) => v / n);
   const ynorm = Math.hypot(...yo);
   const to = targetOffset(kind);
 
   const out = Buffer.from(data);
-  for (let p = 0; p < data.length; p += ch) {
+  for (let p = 0, i = 0; p < data.length; p += ch, i++) {
     const r = data[p], g = data[p + 1], b = data[p + 2];
-    const w = weight(r, b);
+    const w = pixelWeight(i, r, g, b);
     if (!w) continue;
     const L = lum(r, g, b);
     // how warm this pixel is, along the yellow gold's direction (0 = neutral, 1 = average gold)

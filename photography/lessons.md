@@ -116,3 +116,8 @@ Each line: what went wrong, the rule now, where it came from. Newest last.
     it kept every pixel that is not metal; white 166, 165, 169 (neutral), rose 230, 176, 144 (lighter than ring A's
     rose because it keeps the yellow photo's brightness). First version left a gold glow on the floor under the white
     ring (only red − blue > 25 was changed); the weight now starts at 8, just above the background.
+32. **On a hand, colour alone cannot find the gold.** Test (owner's request, 2026-10-14) of `metal-swap.cjs --hand`
+    on ring A's and ring C's hand photos: skin is hue 12–27°, lit gold 27–36°, but gold in shadow and the gold sides
+    of the cups fall in the skin's range. The lit beads turned white, the shaded ones stayed gold (patchy two-tone),
+    and a few skin highlights became pale specks. Fine on the lying photos (everything else there is white or grey).
+    → A hand photo needs an exact outline of the ring before its colour can be changed on the computer.
