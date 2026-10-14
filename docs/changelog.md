@@ -8,6 +8,15 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-14 — five photos per piece; photo budget **(owner)**
+- Budget per piece set by the owner: about 18 credits, finals at 4k, then five photos instead of nine: yellow gold
+  standing, lying flat and on the hand; white and rose gold standing only; silver = the white photo. About 11.5
+  credits (Nano Banana 2.1 4k for yellow, GPT Image 2.5 medium 4k for the metal swaps; tested at 2k on ring C).
+  CLAUDE.md „Product photo standard“ and photography/README.md.
+- Product page: when white or rose gold is chosen, the gallery shows only that metal's photo and the material card
+  (owner's choice; this is what snippets/cj-metal-photo.liquid already does from each photo's alt text). No code
+  change. Rings A, B and C keep their full nine-photo sets.
+
 ## 2026-10-13 — hero on phones: words and button on the photograph **(owner)**
 - Owner: "a button and the text on the picture and remove the thing under the picture, maybe make it bigger" (phone).
   templates/index.json hero `show_text_below` true → false, so Dawn lays the words over the picture; the clay panel
