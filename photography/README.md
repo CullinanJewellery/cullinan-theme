@@ -265,3 +265,7 @@ stayed identical (outline to 0.001), the stones' white settings stayed white, th
 the background stayed clean. So: yellow photos with Nano Banana 2.1 at 2k (2 each, piece and ring A's gold in one
 step), white and rose with GPT Image 2.5 medium 2k (1 each), silver copied. About 12 credits, 6 spare for
 corrections. Everything at 2k; frame-photo.cjs makes the 2048 square. CLAUDE.md „Credits“ has the steps.
+
+**Five photos per piece since 2026-10-14 (owner):** yellow gold standing, lying flat and on the hand; white and rose
+gold standing only; silver = the white photo. About 11.5 credits at 4k (3 × 3 + 2 × 1.25). Rings A, B and C keep
+their full sets.
