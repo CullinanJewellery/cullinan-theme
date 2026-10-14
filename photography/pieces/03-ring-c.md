@@ -105,3 +105,7 @@ Cost: 3 + 3 + 1.25 + 1.25 = 8.5 credits.
   (raw-photo guide, new view for stone rings). Then the 1716a697 recipe (Nano Banana 2.1, `prompts/02-yellow-lying.md`
   „Earlier: Nano Banana“ with the BACKGROUND paragraph) with the lying raw photo as the design reference, the exact
   bead count and equal sizes in words, ring A for the look.
+- Owner: "use the last photo you just made" → yellow 01 = a7e0aefe (framed). Made from it: white 01 (4f4144ea) and rose
+  01 (2295b8c2), GPT Image 2.5 colour changes, 3 beads in every gap, framed; silver = white. Saved to the metal
+  folders; the 2026-10-13 set moved to . Hand: three tries, all two beads per gap
+  (lesson 30), not used; **waiting for the owner** on how to make the hand photo. Ring C at about 54 credits.

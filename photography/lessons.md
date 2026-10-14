@@ -101,3 +101,8 @@ Each line: what went wrong, the rule now, where it came from. Newest last.
     look the owner chose and give it what it lacks (here: a real photo of the pose, so it copies the layout).
     Nano Banana keeps the layout of a single input photo but also its look; given two similar photos it copies the
     second whole (45008794, a7e0aefe, 2026-10-14).
+30. **On the hand the ring is small, and both models draw two beads per gap.** Ring C, three tries (Nano Banana
+    0d8487c9; GPT high 98b78dd5, c7ae3084), even with the row written out and with the owner's rule that not every
+    stone has to show (2026-10-14: "for the hand the stones can't been seen all, it is normal"). The stones come out
+    too big for three beads to fit between them. The lying photos, where the ring is large, got three. → For the
+    hand, give the model a real photo of the ring on a hand, or make the ring larger in the picture.

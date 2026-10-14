@@ -54,7 +54,7 @@ function metal(img, kind) {
 // blur is a few pixels wide) at the piece's left and right ends against its centre. Ring C, 2026-10-14: the photo
 // the owner called blurred scored 0.38; a sharp Nano Banana one 0.64. Standing photos are not checked: their far arc
 // is softer by nature (ring A's main photo scores 0.46).
-async function focus(file) {
+async function focus(file, o) {
   const { data, info } = await sharp(file).removeAlpha().raw().toBuffer({ resolveWithObject: true });
   const W = info.width, H = info.height;
   const g = new Float32Array(W * H);
@@ -65,6 +65,10 @@ async function focus(file) {
       const x = i % W, y = (i / W) | 0;
       if (x < x0) x0 = x; if (x > x1) x1 = x; if (y < y0) y0 = y; if (y > y1) y1 = y;
     }
+  }
+  // white gold and silver have no warm pixels: use the piece's outline instead
+  if (x1 - x0 < 0.1 * W) {
+    x0 = Math.round(o.x0 * W); x1 = Math.round(o.x1 * W); y0 = Math.round(o.y0 * H); y1 = Math.round(o.y1 * H);
   }
   const w = x1 - x0;
   const peak = (a, b) => {
@@ -172,7 +176,7 @@ function background(img, o) {
   if (Math.abs(bg.tint) > 6) fails.push(`background tinted (red−blue ${bg.tint})`);
 
   if (lying) {
-    const f = await focus(file);
+    const f = await focus(file, o);
     out.focus = f;
     if (f.ratio < 0.6) fails.push(`ends blurred: the sharpest detail at the ends is ${Math.round(f.ratio * 100)}% of the centre's (aim at least 60%; ask for everything in focus)`);
   }
