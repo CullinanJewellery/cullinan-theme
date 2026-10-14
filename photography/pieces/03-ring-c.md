@@ -63,3 +63,8 @@ Cost: 3 + 3 + 1.25 + 1.25 = 8.5 credits.
   gold darker and less rich (200, 161, 116 vs 211, 167, 116), duller polish (metal highlights 205 vs 216, after two
   GPT Image 2.5 gold repaints); stones milky instead of clear zircons; and for stone rings the main photo must be the
   moonmagic lying photo. Next: yellow 01 lying (main) in one Nano Banana 2.1 step, no gold repaints (lesson 16).
+- Yellow 01 lying, two tries (2026-10-14, jobs 56ccf173, 1716a697; 6 credits): both **failed** the checker, not sent.
+  Right: five clear zircons, thin white rims, flat, end stones from the side, back half smooth inside. Wrong: gold a
+  little pale both times (blue 126 vs 114), a horizon band on the first, a faint band on the second, and two beads
+  instead of three next to the middle stone on both. Piece at 11.5 credits; the set would pass 18: **waiting for
+  the owner** (lessons 19–21).

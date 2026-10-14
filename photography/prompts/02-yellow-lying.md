@@ -19,20 +19,31 @@ stone rings (`staging.md`).
 Premium e-commerce jewellery product photo, square 1:1.
 <THE PIECE description from the piece sheet, with the stone type (e.g. clear sparkling cubic zirconia)>
 Ignore the stand, cup, fingers and everything else in the first reference photos.
-FROM THE LAST REFERENCE PHOTO take only the look, never its ring or its pose: the same flat seamless off-white
-#FCFBFC background edge to edge, as bright and clean; the same soft diffused studio light; the same soft natural
-neutral grey shadow with a thin darker contact shadow; exactly the same rich, warm, deeply polished 18K yellow gold
-with bright mirror reflections and strong highlights (not pale, not dull, not orange, not copper).
+FROM THE LAST REFERENCE PHOTO take only the look, never its ring or its pose: the same soft diffused studio light;
+the same soft natural neutral grey shadow with a thin darker contact shadow; exactly the same rich, warm, deeply
+polished 18K yellow gold with bright mirror reflections and strong highlights (not pale, not dull, not orange, not
+copper).
+BACKGROUND: one single seamless sweep of bright off-white #FCFBFC, the same even tone from the top edge to the bottom
+edge and from left to right, as bright and clean as the last reference photo. There is no horizon, no table edge, no
+wall, no line or step between the surface and the background, no lighter or darker panels or bands anywhere.
 POSITION: the ring lies FLAT on the surface (not tilted, not standing), seen from the front and a little above, about
-25-30 degrees. The part of the band with the stones is at the front, nearest the camera; its stones sit on the
-front edge of the band and face the camera, round, clear and sparkling in their cups. The plain part of the band is
-at the back, higher in the picture, and its inside is visible, showing only the small round holes behind the stones.
-Physically real: no stone or setting turned sideways; nothing floats; a soft contact shadow where the band touches
-the surface.
+25-30 degrees. The half of the band with the stones <and the beads> is at the front, nearest the camera; its stones
+sit on the outer front edge of the band and face outward, toward the camera: the middle stone faces the camera
+straight on, round, clear and sparkling in its cup; the stones either side turn gradually with the curve of the
+band, and the two end stones, at the far left and far right of the ring, are seen more from the side. The plain half
+of the band is at the back, higher in the picture; its inside is visible and is plain, smooth, polished gold. The
+small holes behind the stones are on the inside of the front half, facing away from the camera, so they do not show.
+Physically real: every stone stays set in the band facing outward from it, none turned upward or inward; nothing
+floats; a soft contact shadow where the band touches the surface.
 SIZE: the ring about 60% of the picture's width, centred, with empty background around it.
 No gold reflection on the floor, no props, no text, no logo, no other jewellery.
 ```
 
-Check: counts; stones face the camera and look like real zircons; inside shows only holes; gold, shine and
+Why the POSITION reads as it does (2026-10-14, ring C): the holes are behind the stones, on the inside of the front
+half, so from the front they are hidden; the inside that shows is the back, plain half, smooth gold. Stones spread
+over half the ring (9 to 3 o'clock) cannot all face the camera: the middle one does, the end ones are seen from the
+side. (The first version said the back half's inside shows "only the holes": impossible.)
+
+Check: counts; stones face outward and look like real zircons; the back half's inside is plain gold; gold, shine and
 background with check-photo.cjs. **A fail is never sent to the owner and never patched with a GPT gold repaint
 (lesson 16): fix the prompt and make it again.**

@@ -50,3 +50,12 @@ Each line: what went wrong, the rule now, where it came from. Newest last.
     (Owner, 2026-10-14.)
 18. **Moonmagic's stone rings lie flat, not tilted**, seen from the front a little above, the stones on the front
     edge facing the camera. For stone rings that is the main photo; no standing photo (owner, 2026-10-14 „A“).
+19. **A lying photo invites a horizon.** Ring C's first lying try drew a table/wall line (background 247, band 6.7).
+    A BACKGROUND paragraph ("one single seamless sweep … no horizon, no table edge, no wall, no line or step …")
+    brought it to 251–255 with a faint band (2.6). Keep the paragraph in every lying prompt. (2026-10-14.)
+20. **Nano Banana 2.1 draws ring A's gold a little pale in a fresh photo.** Three fresh ring C photos from ring A's
+    photo as the look reference: blue 126–131 against ring A's 114 (red and green close), polish fine (217–219).
+    Saying "as saturated as the reference, mid-tones #D0A572" did not move it. Not solved yet. (2026-10-14.)
+21. **"Three to four beads" became two in the middle.** Both lying tries put two beads between the middle stone and
+    its neighbours (three elsewhere). → Give an exact count for every gap ("exactly three beads between every pair
+    of neighbouring stones, also next to the middle stone"). (Ring C, 2026-10-14.)
