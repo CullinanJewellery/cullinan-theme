@@ -107,5 +107,5 @@ Cost: 3 + 3 + 1.25 + 1.25 = 8.5 credits.
   bead count and equal sizes in words, ring A for the look.
 - Owner: "use the last photo you just made" → yellow 01 = a7e0aefe (framed). Made from it: white 01 (4f4144ea) and rose
   01 (2295b8c2), GPT Image 2.5 colour changes, 3 beads in every gap, framed; silver = white. Saved to the metal
-  folders; the 2026-10-13 set moved to . Hand: three tries, all two beads per gap
+  folders; the 2026-10-13 set moved to `чернови/стар комплект 2026-10-13`. Hand: three tries, all two beads per gap
   (lesson 30), not used; **waiting for the owner** on how to make the hand photo. Ring C at about 54 credits.
