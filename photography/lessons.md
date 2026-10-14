@@ -73,3 +73,10 @@ Each line: what went wrong, the rule now, where it came from. Newest last.
     edits put three beads in the two middle gaps but left the two outer, foreshortened gaps at two, twice, and each
     pass moved the gold (to 221, 183, 127, lemony). → Do not chain edits to fix a count; get a raw photo in the pose.
     (Ring C, 2026-10-14, 2.5 credits.)
+25. **Start over instead of circling (owner, 2026-10-14).** After two failed tries, do not edit the failures: write
+    a new prompt from everything the owner said and make a fresh photo from the raw photos. Ring C's fresh GPT Image
+    2.5 photo (medium, 4k, two variants for 2.5 credits) got three beads in all four gaps at the first go, where
+    Nano Banana 2.1 had drawn two in four tries. What made the difference: the row written out ("stone, bead, bead,
+    bead, stone, …, twelve beads in total"), beads "a little smaller than a stone's cup", and GPT's better counting.
+    It was also sharper (14 against 7.5–10), with a bright background (251) and strong polish (230); the gold came a
+    little yellow (216, 180, 127). One variant turned two stones pink: make two variants and pick.

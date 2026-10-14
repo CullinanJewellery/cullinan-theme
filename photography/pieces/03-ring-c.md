@@ -82,3 +82,8 @@ Cost: 3 + 3 + 1.25 + 1.25 = 8.5 credits.
 - Owner: "just make them three", "don't blur it". Mask inpaint refused by Higgsfield (not charged); two GPT Image 2.5
   edits (jobs 0be4ebfd, 03968e7d, 2.5 credits): middle gaps three beads, outer gaps still two, gold lemony. Not
   sent. **Ring C at 20 credits: stopped** (lesson 24).
+- Owner: start over with a new prompt, learn from the errors. Fresh GPT Image 2.5 photo from the raw photos
+  (`prompts/02-yellow-lying.md`, GPT version; jobs 79515bc9 = A, f367c5c3 = B; 2.5 credits): **A has 3, 3, 3, 3
+  beads**, five clear zircons, white rims, background 251, polish 230, sharp; gold 216, 180, 127 (a little yellow).
+  Sent to the owner with the comparison sheet (`чернови/2026-10-14 нов комплект`). Ring C at 22.5 credits.
+  **Waiting for the owner's OK.**
