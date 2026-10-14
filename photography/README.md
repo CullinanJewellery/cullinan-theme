@@ -256,3 +256,12 @@ second ring in the references can leak into the result.
   "Unknown media role: mask" (no charge). It may work on the Higgsfield website's own inpaint tool.
 - Cost per final photo: generate the approved final directly at `resolution: 4k` (3 credits) instead of 1k + upscale
   (3.5 credits); drafts at 1k (1.5). 2k is too small for the frame crop.
+
+### The 18-credit set (owner, 2026-10-14)
+
+The owner set a budget of about 18 credits for a piece's 9 photos. GPT Image 2.5 (`gpt_image_2_5`, quality
+`medium`, resolution `2k`) costs 1 credit and was tested on ring C's lying-flat photo (yellow to rose): the ring
+stayed identical (outline to 0.001), the stones' white settings stayed white, the rose matched the approved one and
+the background stayed clean. So: yellow photos with Nano Banana 2.1 at 2k (2 each, piece and ring A's gold in one
+step), white and rose with GPT Image 2.5 medium 2k (1 each), silver copied. About 12 credits, 6 spare for
+corrections. Everything at 2k; frame-photo.cjs makes the 2048 square. CLAUDE.md „Credits“ has the steps.
