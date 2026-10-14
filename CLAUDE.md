@@ -127,8 +127,8 @@ Full recipe with the exact Higgsfield prompts: `photography/README.md` „Produc
   (ring A's design leaked into ring B's hand photo once).
 - Folders: `Pictures/PicturesForWebFaceInstagram/pictures for the website/NN Name - номер предстои/{metal, видео, чернови}`.
 - **Credits: about 11.5 per piece, at most 18, finals at 4k (owner, 2026-10-14: "spend for the 9 pictures like 18
-  credits"; then: "they need to be 4k, the quality looks better")**. Higgsfield Starter plan, 270 credits a month
-  (started 2026-10-06); check the balance before starting. Prices at 4k: Nano Banana 2/2.1 **3**, GPT Image 2.5
+  credits"; then: "they need to be 4k, the quality looks better")**. Higgsfield Plus plan, 1,200 credits a month
+  (since 2026-10-14; Starter, 270 a month, from 2026-10-06); check the balance before starting. Prices at 4k: Nano Banana 2/2.1 **3**, GPT Image 2.5
   (`gpt_image_2_5`, quality medium) **1.25**; at 2k 2 and 1; upscale 2 (not used: finals are made at 4k).
   The way, 5 photos at 4k (owner's choice 2026-10-14):
   1. The three yellow photos (standing, lying flat, hand): Nano Banana 2.1 at 4k, the piece from the raw photos and
@@ -137,8 +137,8 @@ Full recipe with the exact Higgsfield prompts: `photography/README.md` „Produc
      in words: 2 × 1.25 = 2.5. Tested 2026-10-14 on ring C (at 2k): the ring identical to 0.001 of the frame, the
      rose equal to the approved one (222, 163, 144 vs 224, 160, 145), clean background.
   3. Silver: free copy of white. Total **11.5 credits**; up to 18 with corrections. Stop and tell the owner before
-     going over 18. Starter (270 a month) gives about 20–23 pieces; Plus (the owner's offer: 1,200 a month, €59)
-     about 90–100.
+     going over 18. Plus (1,200 a month, €59) gives about 90–100 pieces; Starter
+     (270 a month) gave about 20–23.
   Measure every result before the next step. Tell the owner the cost before a set and the credits used after it.
   History: ring B took about 133 over four rounds, ring C about 45; both before this budget.
 

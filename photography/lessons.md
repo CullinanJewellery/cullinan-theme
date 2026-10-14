@@ -29,3 +29,13 @@ Each line: what went wrong, the rule now, where it came from. Newest last.
     rhodium starts and stops (piece sheet). (Owner, 2026-10-14.)
 12. **Cheap model works for colour swaps.** GPT Image 2.5 (medium) changed yellow to rose on ring C with the ring
     identical and the right rose, for 1 credit at 2k / 1.25 at 4k. → Use it for white and rose. (2026-10-14.)
+13. **Gold words overshoot; a number lands.** On ring C's redo, GPT Image 2.5 told "deeper, more saturated" turned a
+    pale gold (215, 174, 131) into lemon brass (211, 164, 83). The next edit, "about a third less saturated, mid-tones
+    close to #D0A572" (ring A's 208, 165, 114), landed at 196, 157, 113, visually ring A's gold. → In gold edits name
+    the target hex and how far to move, not only a direction. GPT Image 2.5 "4k" returns 2880 × 2880. (2026-10-14.)
+14. **The checker's outline includes the contact shadow.** After a colour edit it reported the ring "moved 0.012"; the
+    gold alone moved 0.004 (the shadow had lightened). → When the outline fails after a colour edit, compare the gold
+    outline (red − blue > 40) before calling it a changed ring. (Ring C, 2026-10-14.)
+15. **Nano Banana 2.1 ignored "about half the height"** and drew ring C at 0.78 of the height. With the thin wire and
+    small beads it did not look heavy; frame-photo.cjs barely changes it. Keep the line; judge heaviness by eye.
+    (Ring C, 2026-10-14.)
