@@ -38,7 +38,8 @@ the band and face outward.
 | Shot | How the ring sits | What must be true |
 |---|---|---|
 | 01 standing (main) | Upright on the lower shank, three-quarter view, camera slightly above, so the front arc and the inside of the band read as an oval (ring A). | The decorated top faces the camera; the back of the band behind it shows only plain metal and the small holes. |
-| 02 lying flat | **Tilted back on the surface, its decorated part facing the camera** (as moonmagic shows stone rings; owner, 2026-10-14). The ring rests on the back of its shank; the stones face the camera, round and upright in their settings; the inside of the band is visible behind them. | Stones face the camera, not sideways. From the inside only the small holes show. A plain band (no stones) may lie flat as ring A and B do. |
+| 02 lying flat | Plain bands (ring A, B): flat, seen from above at about 45°. **Stone rings: this is the main photo, next row.** | A plain band's whole circle reads as an oval. |
+| Stone rings: 01 lying (main) | **Flat on the surface, not tilted** (as moonmagic shows stone rings; owner, 2026-10-14 „A“), seen from the front and a little above (about 25–30°). The stone part of the band is at the front, its stones on the front edge facing the camera; the plain part at the back, higher in the picture, its inside visible. No standing photo for stone rings. | Stones face the camera, round, never sideways. From the inside only the small holes show. Stones as the sheet names them (zircons: clear and sparkling, never milky). |
 | 03 on the hand | Ring finger, near its base, decorated part on top of the finger, real scale. | Stones face up/out from the finger; the part under the finger is the plain lower shank. |
 
 - **Bands of beads or balls (ring A):** beads all round or as in the raw photos; count them roughly and keep their size.

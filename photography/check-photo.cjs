@@ -4,17 +4,18 @@
   piece sheet.
 
   Usage (needs sharp: `npm i sharp` in any folder, NODE_PATH pointing at its node_modules):
-    node check-photo.cjs <metal yellow|white|rose> <photo.png> [source.png] [--framed standing|lying]
+    node check-photo.cjs <metal yellow|white|rose> <photo.png> [source.png] [--framed standing|lying] [--hand]
 
   - metal: checks the metal colour against the targets below.
   - source: for a colour edit, the photo it was made from; the piece's outline must not have moved.
+  - --hand: a photo on the hand (skin counts as metal there, so the shine check is skipped).
   - --framed: after frame-photo.cjs, checks size and centre against ring A's frame.
   Prints one JSON line (for photography/log/) and PASS or FAIL with reasons.
 */
 const sharp = require('sharp');
 
 const TARGET = {
-  yellow: { rgb: [208, 165, 114], tol: 8 },
+  yellow: { rgb: [208, 165, 114], tol: 8, shine: 212 },
   rose: { rgb: [218, 160, 136], tol: 14 },
 };
 
@@ -30,15 +31,21 @@ function px(img, x, y) {
 
 function metal(img, kind) {
   const s = [0, 0, 0];
+  const lum = [];
   let n = 0;
   for (let y = 0; y < 512; y++) {
     for (let x = 0; x < 512; x++) {
       const [r, g, b] = px(img, x, y);
       const take = kind === 'white' ? (r + g + b) / 3 < 200 && Math.max(r, g, b) - Math.min(r, g, b) < 60 : r - b > 45;
-      if (take) { s[0] += r; s[1] += g; s[2] += b; n++; }
+      if (take) { s[0] += r; s[1] += g; s[2] += b; n++; lum.push(0.3 * r + 0.59 * g + 0.11 * b); }
     }
   }
-  return n ? s.map((v) => Math.round(v / n)) : null;
+  if (!n) return null;
+  lum.sort((p, q) => p - q);
+  const avg = s.map((v) => Math.round(v / n));
+  // polish: how bright the metal's highlights are (95th percentile); ring A's yellow main photo is 216
+  avg.shine = Math.round(lum[Math.floor(0.95 * (lum.length - 1))]);
+  return avg;
 }
 
 function outline(img) {
@@ -91,6 +98,8 @@ function background(img, o) {
   const args = process.argv.slice(2);
   const fi = args.indexOf('--framed');
   const framed = fi >= 0 ? args.splice(fi, 2)[1] : null;
+  const hi = args.indexOf('--hand');
+  const hand = hi >= 0 && args.splice(hi, 1).length > 0;
   const [kind, file, source] = args;
   if (!kind || !file) throw new Error('usage: node check-photo.cjs <yellow|white|rose> <photo> [source] [--framed standing|lying]');
   const img = await load(file);
@@ -98,7 +107,8 @@ function background(img, o) {
   const out = { file, kind };
 
   const m = metal(img, kind);
-  out.metal = m;
+  out.metal = m && [m[0], m[1], m[2]];
+  if (m) out.shine = m.shine;
   if (!m) fails.push('no metal found');
   else if (kind === 'white') {
     if (m[2] - m[0] < -5) fails.push(`white has a warm cast (blue ${m[2] - m[0]} below red; aim within 5)`);
@@ -110,13 +120,15 @@ function background(img, o) {
       const hint = kind === 'yellow' ? (d[2] > 0 || d[1] > 0 ? 'paler than ring A: deeper, more saturated' : 'too deep/copper: lighter, more yellow') : 'off the rose target';
       fails.push(`${kind} gold ${m.join(',')} vs ${t.rgb.join(',')} (${hint})`);
     }
+    if (t.shine && !hand && m.shine < t.shine) fails.push(`gold dull: highlights ${m.shine}, ring A's are 216 (aim at least ${t.shine})`);
   }
 
   const o = outline(img);
   out.outline = o;
   const bg = background(img, o);
   out.background = bg;
-  if (bg.min < 245) fails.push(`background too dark or grey at the edges (${bg.min})`);
+  // ring A's background is 250–252; 246 already reads grey next to it (ring C redo, owner 2026-10-14)
+  if (bg.min < 249) fails.push(`background too dark or grey at the edges (${bg.min})`);
   if (bg.max - bg.min > 8) fails.push(`background uneven: a patch or band (${bg.min}–${bg.max})`);
   if (bg.step > 2.5) fails.push(`background has a seam or band (a jump of ${bg.step} between neighbouring rows)`);
   if (Math.abs(bg.tint) > 6) fails.push(`background tinted (red−blue ${bg.tint})`);

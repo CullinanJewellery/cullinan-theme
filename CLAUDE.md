@@ -113,6 +113,11 @@ Full recipe with the exact Higgsfield prompts: `photography/README.md` „Produc
 - **Five photos per piece (owner, 2026-10-14)**: yellow gold 01 standing (three-quarter view), 02 lying flat seen
   from above at 45°, 03 worn on a hand on ivory linen; white gold and rose gold 01 standing only. Silver uses the
   white gold photo. (Rings A, B, C were made with all three photos in every metal, before this.)
+  **Rings with stones (owner, 2026-10-14 „A“): four photos, no standing one.** The main photo lies flat like
+  moonmagic's stone rings (seen from the front a little above, stones on the front edge facing the camera); then the
+  hand; white and rose are made from the lying photo. 8.5 credits. Name the stone type in prompts (ring C: clear,
+  sparkling zircons, never milky). Yellow gold is never repainted with GPT Image 2.5 (it dulls the polish): a failed
+  yellow is made again, and a photo the checker fails is never sent to the owner (`photography/lessons.md` 16–18).
 - **The frame (owner, 2026-10-13: the same size and position for every piece)**: ring A's, applied by
   `photography/frame-photo.cjs` to every finished 4K file, never by eye. 01 standing: the piece is 80.7% of the
   height, centred at 50% across / 51.3% down. 02 lying flat: 78% of the width, centred at 50% / 50.8%. 03 on the hand:

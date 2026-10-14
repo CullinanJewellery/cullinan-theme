@@ -22,8 +22,11 @@ No gold reflection on the floor, no props, no text, no logo, no other jewellery.
 
 Check: counts against the sheet; gold ≈ 208, 165, 114; background even; ring at about half height.
 
-Gold or background off: one edit with `gpt_image_2_5`, `quality: medium`, `resolution: 4k` (1.25 credits), this photo
-as the only input (lesson 2), the target as a number (lesson 13):
+Stone rings have no standing photo: their main photo is the lying one (`02-yellow-lying.md`, owner 2026-10-14).
+
+**Yellow gold off, or dull: do not repaint it with GPT Image 2.5** (lesson 16: two repaints took the polish off ring
+C's redo and the owner rejected it). Make the photo again with a corrected prompt (3 credits). The GPT edit below is
+kept only for a background-only fix (then say "keep the gold exactly as it is"):
 ```
 Edit this product photo. Keep the photo exactly the same: the ring's exact design, every bead, every stone and its
 white rim, the holes, the band, its size, angle and position, the light and the shadow. Change only the gold colour:

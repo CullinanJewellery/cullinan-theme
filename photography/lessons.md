@@ -39,3 +39,14 @@ Each line: what went wrong, the rule now, where it came from. Newest last.
 15. **Nano Banana 2.1 ignored "about half the height"** and drew ring C at 0.78 of the height. With the thin wire and
     small beads it did not look heavy; frame-photo.cjs barely changes it. Keep the line; judge heaviness by eye.
     (Ring C, 2026-10-14.)
+16. **GPT gold repaints dull the polish; "pass*" is not a pass.** Ring C's redo was repainted twice with GPT Image 2.5
+    and sent with gold 200, 161, 116 (ring A 211, 167, 116), highlights 205 (ring A 216) and background 246 (ring A
+    251); the checker had failed it. The owner: not the same as ring A, background, gold and polish differ. → Never
+    repaint yellow gold with GPT Image 2.5; make the photo again in one Nano Banana 2.1 step with ring A's photo as
+    the look reference. The checker now fails a background under 249 and gold highlights under 212 (ring A 216; `--hand` skips it). Never send the
+    owner a photo the checker fails. (Owner, 2026-10-14.)
+17. **"White stones" draws milky stones.** → Name the stone: ring C's are zircons, "clear, colourless, brilliant-cut
+    cubic zirconia that sparkle like small diamonds, never milky". Ask the owner the stone type for every piece.
+    (Owner, 2026-10-14.)
+18. **Moonmagic's stone rings lie flat, not tilted**, seen from the front a little above, the stones on the front
+    edge facing the camera. For stone rings that is the main photo; no standing photo (owner, 2026-10-14 „A“).
