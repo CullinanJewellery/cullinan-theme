@@ -100,6 +100,8 @@ the metal; from inside a band only the small holes behind the stones show; stone
 with the stones facing the camera (moonmagic).
 Full recipe with the exact Higgsfield prompts: `photography/README.md` „Product photos: the ring A standard“. In short:
 - **Editing is done in Higgsfield** (nano_banana_2, then upscale_image 4K); locally only crop, measure, copy.
+  Two exceptions the owner approved on 2026-10-14: `photography/gold-match.cjs` moves only the yellow gold to ring A's
+  measured gold (no model hit it), and `frame-photo.cjs` may extend a flat off-white border by copying its edge.
 - **Background** flat seamless off-white #FCFBFC edge to edge; **shadow** soft neutral grey, falling to the left, with
   a thin darker contact shadow; no gold tint on the floor.
 - **Never change the jewellery (owner, 2026-10-13: "I did not say to change the jewelry")**: an edit changes only
@@ -125,7 +127,8 @@ Full recipe with the exact Higgsfield prompts: `photography/README.md` „Produc
   white gold photo. (Rings A, B, C were made with all three photos in every metal, before this.)
   **Rings with stones (owner, 2026-10-14 „A“): four photos, no standing one.** The main photo lies flat like
   moonmagic's stone rings (seen from the front a little above, stones on the front edge facing the camera); then the
-  hand; white and rose are made from the lying photo. 8.5 credits. Name the stone type in prompts (ring C: clear,
+  hand; white and rose are made from the lying photo. The main photo: two GPT Image 2.5 variants at high quality
+  (8.5 credits), then `gold-match.cjs` (`photography/prompts/02-yellow-lying.md`). Name the stone type in prompts (ring C: clear,
   sparkling zircons, never milky). Yellow gold is never repainted with GPT Image 2.5 (it dulls the polish): a failed
   yellow is made again, and a photo the checker fails is never sent to the owner (`photography/lessons.md` 16–18).
 - **The frame (owner, 2026-10-13: the same size and position for every piece)**: ring A's, applied by
@@ -136,8 +139,8 @@ Full recipe with the exact Higgsfield prompts: `photography/README.md` „Produc
 - **On the hand the ring must look fine and real-sized** (about 1.2–1.5 mm band for a slim ring), never chunky or
   rough (owner, 2026-10-13).
 - **Yellow gold must be ring A's gold every time** (owner, twice): after any yellow photo, measure the gold against
-  ring A's main photo (about RGB 208, 165, 114) and do a gold-only edit with ring A's main photo as the colour
-  reference if it is paler.
+  ring A's main photo (about RGB 208, 165, 114); if it is off, run `photography/gold-match.cjs` (owner's choice,
+  2026-10-14; Higgsfield gold edits went pale, brass or copper and dulled the polish, lessons 13–16, 27).
 - **Design**: only from the owner's real photos of the piece; the style picture is never used as the design source
   (ring A's design leaked into ring B's hand photo once).
 - Folders: `Pictures/PicturesForWebFaceInstagram/pictures for the website/NN Name - номер предстои/{metal, видео, чернови}`.

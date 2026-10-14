@@ -14,8 +14,9 @@
   Usage (needs sharp: `npm i sharp` in any folder, run from there or with NODE_PATH):
     node frame-photo.cjs <shot 1|2|3> <4K source.png> <output.png>
 
-  If the piece is too small in the source to reach the frame without leaving the picture, the
-  script says so instead of padding: ask Higgsfield for the piece larger in the frame.
+  If the frame reaches past the picture (the piece is large or off-centre in the source), the border is
+  extended by copying its edge, but only when every edge of the photo is flat off-white background;
+  otherwise the script stops: ask Higgsfield for the piece smaller and centred.
 */
 const sharp = require('sharp');
 
@@ -41,12 +42,27 @@ async function findPiece(file) {
   return { w: (x1 - x0) / 1024, h: (y1 - y0) / 1024, cx: (x0 + x1) / 2048, cy: (y0 + y1) / 2048 };
 }
 
+// true when a 16 px strip along every edge is plain off-white background: bright (248+) and colourless
+async function flatBorder(file) {
+  const { data, info } = await sharp(file).resize(1024, 1024, { fit: 'fill' }).raw().toBuffer({ resolveWithObject: true });
+  for (let y = 0; y < 1024; y++) {
+    for (let x = 0; x < 1024; x++) {
+      if (x >= 16 && x < 1008 && y >= 16 && y < 1008) continue;
+      const i = (y * 1024 + x) * info.channels;
+      const r = data[i], g = data[i + 1], b = data[i + 2];
+      if (Math.min(r, g, b) < 248 || Math.max(r, g, b) - Math.min(r, g, b) > 6) return false;
+    }
+  }
+  return true;
+}
+
 (async () => {
   const [shot, src, out] = process.argv.slice(2);
   if (!shot || !src || !out) throw new Error('usage: node frame-photo.cjs <1|2|3> <source> <output>');
   const meta = await sharp(src).metadata();
   const W = meta.width, H = meta.height;
   let left = 0, top = 0, side = Math.min(W, H);
+  let img = sharp(src);
   const f = FRAME[shot];
   if (f) {
     const p = await findPiece(src);
@@ -55,10 +71,19 @@ async function findPiece(file) {
     left = Math.round(p.cx * W - f.cx * side);
     top = Math.round(p.cy * H - f.cy * side);
     if (left < 0 || top < 0 || left + side > W || top + side > H) {
-      throw new Error(`the piece is too big or too close to the edge for the frame (crop ${left},${top} side ${side} in ${W}x${H})`);
+      // The frame reaches past the photo. Only when the whole border is flat off-white background (no shadow, no
+      // piece) is it extended by copying its edge, which cannot be seen (ring C, 2026-10-14: about 100 px at the top).
+      const pad = { left: Math.max(0, -left), top: Math.max(0, -top), right: Math.max(0, left + side - W), bottom: Math.max(0, top + side - H) };
+      if (!(await flatBorder(src))) {
+        throw new Error(`the piece is too big or too close to the edge for the frame (crop ${left},${top} side ${side} in ${W}x${H}), and the border is not flat background`);
+      }
+      img = sharp(await sharp(src).extend({ ...pad, extendWith: 'copy' }).png().toBuffer());
+      left += pad.left;
+      top += pad.top;
+      console.log(`border extended by copying its edge: ${JSON.stringify(pad)} px`);
     }
   }
-  await sharp(src).extract({ left, top, width: side, height: side }).resize(2048, 2048, { kernel: 'lanczos3' }).png().toFile(out);
+  await img.extract({ left, top, width: side, height: side }).resize(2048, 2048, { kernel: 'lanczos3' }).png().toFile(out);
   const q = f ? await findPiece(out) : null;
   console.log(out, q ? `piece ${f.measure}=${(f.measure === 'h' ? q.h : q.w).toFixed(3)} centre ${q.cx.toFixed(3)},${q.cy.toFixed(3)}` : 'hand photo, not cropped');
 })();

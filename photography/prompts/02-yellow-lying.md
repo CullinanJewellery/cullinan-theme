@@ -15,11 +15,70 @@ this order, the piece's raw photos (1–3 clearest, cropped to the ring), then r
 (`d3489c52-abd2-4c39-be89-cfc835b71a0c`) for gold, polish, light, background and shadow only. Pose: moonmagic's
 stone rings (`staging.md`).
 
-### First choice: GPT Image 2.5 (worked on ring C at the first go, lesson 25)
+### First choice: GPT Image 2.5, then gold-match.cjs (ring C passed this way, lessons 25–28)
 
-Model `gpt_image_2_5`, `quality: medium`, `resolution: 4k` (returns 2880 px), **`count: 2`** (2 × 1.25 = 2.5 credits;
-pick the better one). Same references and order as above. Write the decorated row out element by element and give
-the total; Nano Banana 2.1 drew the wrong bead count in four tries (lessons 21, 22).
+1. `gpt_image_2_5`, **`quality: high`**, `resolution: 4k` (returns 2880 px), **`count: 2`** (2 × 4.25 = 8.5 credits;
+   pick the better one). Same references and order as above. Write the decorated row out element by element, give
+   the total, say which parts are equal, ask for everything in focus (lessons 21, 22, 26). Nano Banana 2.1 drew the
+   wrong bead count in four tries.
+2. `node gold-match.cjs <photo> <out>`: moves only the gold to ring A's (owner's OK, 2026-10-14). GPT draws the gold
+   lighter and yellower and no prompt fixed it; a Nano Banana gold edit went copper and soft (lesson 27). Free.
+3. `node check-photo.cjs yellow <out> --lying`, then `frame-photo.cjs 2`, then the check again with `--framed lying`.
+
+The prompt that passed (ring C, jobs 5e2cbfb3 / a66b969d). Since the medium-quality version below it adds: all
+stones and beads "EXACTLY THE SAME SIZE … never bigger", the white frame "clearly wider than a thin line", the FOCUS
+paragraph, icy white stones "never … yellow or champagne", the gold described as "warm honey-amber … soft peachy
+warmth" and "ultra-detailed, crisp, high-end macro product photography".
+
+```
+Create a premium e-commerce jewellery product photo, square 1:1, of the real gold ring shown in the first three
+reference photos (phone photos of the same ring standing in a paper cup: ignore the cup, the slot and the fingers).
+The last reference photo shows only the photographic look to copy (background, light, shadow, gold colour and
+polish): do not copy its ring or its pose.
+
+THE RING, copied exactly, nothing added or removed:
+- A thin, delicate, handmade 18K yellow gold ring.
+- FIVE small round stones, all exactly the same size: clear, colourless, brilliant-cut cubic zirconia that sparkle
+  like small diamonds, icy white with crisp facets (never milky, grey, yellow or champagne).
+- Between every two neighbouring stones there are exactly THREE small round polished gold beads, never two, never
+  four. The row reads: stone, bead, bead, bead, stone, bead, bead, bead, stone, bead, bead, bead, stone, bead, bead,
+  bead, stone. Twelve beads in total. ALL TWELVE BEADS ARE EXACTLY THE SAME SIZE: the beads in the two outer gaps
+  are the same size as the beads beside the middle stone, never bigger. Each bead is a little smaller than a
+  stone's cup.
+- Each stone sits in a small round cup, all five cups the same size. The whole flat front face of each cup is bright
+  white rhodium and must be clearly seen: a distinct, bright white frame round every stone, clearly wider than a
+  thin line. The sides of the cups and all the beads are yellow gold.
+- The other half of the ring is a thin, plain, smooth, polished gold band.
+
+POSITION, like a luxury jeweller's catalogue photo of a stone ring: the ring lies FLAT on the surface (not tilted,
+not standing), seen from the front and a little above, about 25-30 degrees. The half with the stones and beads is at
+the front, nearest the camera. The middle stone faces the camera straight on; the stones either side turn gradually
+with the curve of the band; the two end stones, at the far left and far right of the ring, are seen more from the
+side. The three beads in each outer gap are seen at an angle, all three clearly visible and the same size as the
+others. The plain half of the band is at the back, higher in the picture; its inside is visible and is plain, smooth
+gold with no holes. Physically real: every stone faces outward from the band, nothing floats, a soft contact shadow
+where the band touches the surface.
+
+FOCUS: everything in sharp focus from the far left end to the far right end and the back of the band, like a
+focus-stacked high-end catalogue photo. The end stones and their beads are exactly as sharp and detailed as the
+middle stone. No depth-of-field blur, no soft focus anywhere on the ring.
+
+LOOK, from the last reference photo: one seamless sweep of bright off-white #FCFBFC from edge to edge and corner to
+corner, as bright at the corners as in the centre, no horizon, no table edge, no vignette, no reflections on the
+surface; soft diffused studio light; a soft natural neutral grey shadow with a thin darker contact shadow. The gold
+exactly like the last reference photo: a warm honey-amber 18K yellow gold with a soft peachy warmth (mid-tones about
+RGB 208, 165, 114), deeply polished with bright mirror highlights; not lemon-yellow, not greenish, not pale, not
+orange, not rose, not copper.
+
+The ring fills about 65% of the picture's width, centred. Ultra-detailed, crisp, high-end macro product photography.
+No props, no text, no logo, no other jewellery.
+```
+
+Ring C: both variants 3, 3, 3, 3 equal beads; B chosen (clearer white frames); gold 224, 185, 133 → gold-match.cjs →
+206, 167, 116; framed, it passes every check. Still lighter than ring A: the shadow under the ring.
+
+Earlier medium-quality version (jobs 79515bc9, f367c5c3; the owner found the ends blurred, the end beads bigger, one
+variant with pink stones):
 
 ```
 Create a premium e-commerce jewellery product photo, square 1:1, of the real gold ring shown in the first three
@@ -59,8 +118,7 @@ The ring fills about 65% of the picture's width, centred. Pin-sharp, crisp and i
 blur. No props, no text, no logo, no other jewellery.
 ```
 
-Ring C result (jobs 79515bc9, f367c5c3): A 3, 3, 3, 3 beads, background 251, polish 230, sharp; gold 216, 180, 127
-(a little yellow). B: two stones pink. The gold is still the open point.
+Result: A 3, 3, 3, 3 beads but the end beads bigger and the ends blurred (38%), gold 216, 180, 127; B two stones pink.
 
 ### Earlier: Nano Banana 2.1 (bead count wrong in four tries on ring C)
 

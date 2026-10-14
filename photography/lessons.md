@@ -91,3 +91,7 @@ Each line: what went wrong, the rule now, where it came from. Newest last.
     beads, clear white frames). A Nano Banana 2.1 gold-only edit with ring A's photo as colour reference overshot to
     copper (210, 148, 97), dulled the polish (209) and halved the detail sharpness. → Do not chain gold edits; the
     owner decides how to match the gold (ring C, 2026-10-14, 11.5 credits).
+28. **The gold was only lighter, so a curve fixed it exactly.** Measured, GPT's gold had ring A's colour offset (red,
+    green, blue around the brightness) but was brighter (191 against 172). `gold-match.cjs` darkens the gold's
+    mid-tones and keeps the offset: 224, 185, 133 → 206, 167, 116 (ring A 208, 165, 114), polish 214, nothing else
+    touched, focus unchanged. Owner's choice over more Higgsfield tries (2026-10-14). Measure before choosing a fix.

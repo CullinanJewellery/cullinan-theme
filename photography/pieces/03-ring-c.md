@@ -90,4 +90,10 @@ Cost: 3 + 3 + 1.25 + 1.25 = 8.5 credits.
   (`prompts/02-yellow-lying.md`, GPT version; jobs 79515bc9 = A, f367c5c3 = B; 2.5 credits): **A has 3, 3, 3, 3
   beads**, five clear zircons, white rims, background 251, polish 230, sharp; gold 216, 180, 127 (a little yellow).
   Sent to the owner with the comparison sheet (`чернови/2026-10-14 нов комплект`). Ring C at 22.5 credits.
-  **Waiting for the owner's OK.**
+  Owner's review: ends blurred, end beads bigger than the middle ones, white rims too thin, gold not ring A's,
+  quality could be better; zircons liked (rules written: CLAUDE.md, staging §1, lesson 26).
+- Fresh pair at high quality (jobs 5e2cbfb3, a66b969d; 8.5 credits) + a Nano Banana gold edit of B (da52b067, 3
+  credits, failed: copper and soft). Owner chose a colour-only fix on the computer: `gold-match.cjs` on B → gold 206,
+  167, 116, polish 214; framed (border extended 102 px at the top by copying the flat background): **passes every
+  check**. Sent for the owner's OK: `чернови/2026-10-14 нов комплект/01 основна снимка (легнал) - жълто злато - за
+  одобрение 2.png`. Ring C at 34 credits. Next after the OK: hand, white, rose.

@@ -15,7 +15,8 @@ happen once.
 | `lessons.md` | Short rules learned from failures. Read before every piece; add to it after every piece. |
 | `log/NN-name.jsonl` | One line per Higgsfield call: date, step, model, settings, inputs, prompt file, job id, credits, measurements, verdict, reason. |
 | `check-photo.cjs` | Measures a result and says pass or fail with reasons. |
-| `frame-photo.cjs` | Puts a finished photo into ring A's frame. |
+| `frame-photo.cjs` | Puts a finished photo into ring A's frame (extends a flat off-white border if it must). |
+| `gold-match.cjs` | Moves only the yellow gold to ring A's measured gold; nothing else changes (owner's OK, 2026-10-14). |
 | `compare-sheet.cjs` | One image for the owner: raw photo(s) left, new photo(s) right, with a note (e.g. the stone count). |
 | `raw-photo-guide.md` | In Bulgarian, for whoever photographs the pieces in the shop: six views, a close-up, plain background. |
 | `upload-checklist.md` | The owner's Shopify steps per piece: Latin file names, alt text = the metal value, a picture for every variant. |
@@ -45,8 +46,9 @@ whole photo shrunk (owner, 2026-10-14).
 6. **Check every result before the next step**: `node photography/check-photo.cjs <metal> <file> [source]` for the
    numbers (gold, white, background, seams, ring unchanged against its source); then by eye against `staging.md` and
    the piece sheet (counts, stone direction, rhodium, inside). Log pass/fail and why.
-7. **On a fail**: the smallest fix (colour-only, background-only); a new kind of failure → a lesson; a prompt that
-   caused it → improve the prompt file.
+7. **On a fail**: yellow gold off → `gold-match.cjs` (free); anything in the piece itself (counts, sizes, blur) →
+   a fresh photo from the raw photos with a corrected prompt, never edits of the failure (owner, 2026-10-14: "we are
+   like in a circle"). A new kind of failure → a lesson; a prompt that caused it → improve the prompt file.
 8. **Frame** each passed photo with `frame-photo.cjs` (and `check-photo.cjs --framed`), save to the piece's folder,
    and send the owner the final comparison sheet with all five photos.
 9. **Hand over** `upload-checklist.md` for the Shopify upload; when the owner says it is uploaded, check the product
