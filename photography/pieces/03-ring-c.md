@@ -97,3 +97,11 @@ Cost: 3 + 3 + 1.25 + 1.25 = 8.5 credits.
   167, 116, polish 214; framed (border extended 102 px at the top by copying the flat background): **passes every
   check**. Sent for the owner's OK: `чернови/2026-10-14 нов комплект/01 основна снимка (легнал) - жълто злато - за
   одобрение 2.png`. Ring C at 34 credits. Next after the OK: hand, white, rose.
+- Owner's review: every bead the size of the side ones; the gold and quality of the gold-matched GPT photo are not
+  the same; **the look of job 1716a697 (Nano Banana 2.1 lying try 2) is good: its gold, shadows and quality** (the
+  owner's look reference now). Two Nano Banana tries to put GPT B's layout into that look failed (45008794 copied
+  1716a697 whole; a7e0aefe kept B's layout and B's yellow look): 6 credits, ring C at 40.
+- **Next (owner's choice):** the owner takes a phone photo of ring C lying flat, from the front a little above
+  (raw-photo guide, new view for stone rings). Then the 1716a697 recipe (Nano Banana 2.1, `prompts/02-yellow-lying.md`
+  „Earlier: Nano Banana“ with the BACKGROUND paragraph) with the lying raw photo as the design reference, the exact
+  bead count and equal sizes in words, ring A for the look.

@@ -95,3 +95,9 @@ Each line: what went wrong, the rule now, where it came from. Newest last.
     green, blue around the brightness) but was brighter (191 against 172). `gold-match.cjs` darkens the gold's
     mid-tones and keeps the offset: 224, 185, 133 → 206, 167, 116 (ring A 208, 165, 114), polish 214, nothing else
     touched, focus unchanged. Owner's choice over more Higgsfield tries (2026-10-14). Measure before choosing a fix.
+29. **Matching numbers is not matching the look.** The owner rejected the gold-matched GPT photo ("the color … you
+    didn't do the same and the quality is different") and chose Nano Banana 2.1's own photo (1716a697) as the look:
+    its gold, shadows and quality. The look is how a model renders, not one average colour. → Keep the model whose
+    look the owner chose and give it what it lacks (here: a real photo of the pose, so it copies the layout).
+    Nano Banana keeps the layout of a single input photo but also its look; given two similar photos it copies the
+    second whole (45008794, a7e0aefe, 2026-10-14).

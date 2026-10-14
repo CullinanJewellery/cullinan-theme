@@ -127,8 +127,10 @@ Full recipe with the exact Higgsfield prompts: `photography/README.md` „Produc
   white gold photo. (Rings A, B, C were made with all three photos in every metal, before this.)
   **Rings with stones (owner, 2026-10-14 „A“): four photos, no standing one.** The main photo lies flat like
   moonmagic's stone rings (seen from the front a little above, stones on the front edge facing the camera); then the
-  hand; white and rose are made from the lying photo. The main photo: two GPT Image 2.5 variants at high quality
-  (8.5 credits), then `gold-match.cjs` (`photography/prompts/02-yellow-lying.md`). Name the stone type in prompts (ring C: clear,
+  hand; white and rose are made from the lying photo. **The look is Nano Banana 2.1's** (owner, 2026-10-14: ring C's
+  job 1716a697 has the right gold, shadows and quality; the GPT Image 2.5 + `gold-match.cjs` photo did not). Ask for a
+  raw phone photo of the piece lying flat (raw-photo guide) so the model copies the real layout
+  (`photography/prompts/02-yellow-lying.md`, lesson 29). Name the stone type in prompts (ring C: clear,
   sparkling zircons, never milky). Yellow gold is never repainted with GPT Image 2.5 (it dulls the polish): a failed
   yellow is made again, and a photo the checker fails is never sent to the owner (`photography/lessons.md` 16–18).
 - **The frame (owner, 2026-10-13: the same size and position for every piece)**: ring A's, applied by

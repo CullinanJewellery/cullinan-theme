@@ -15,7 +15,15 @@ this order, the piece's raw photos (1–3 clearest, cropped to the ring), then r
 (`d3489c52-abd2-4c39-be89-cfc835b71a0c`) for gold, polish, light, background and shadow only. Pose: moonmagic's
 stone rings (`staging.md`).
 
-### First choice: GPT Image 2.5, then gold-match.cjs (ring C passed this way, lessons 25–28)
+### The look the owner chose is Nano Banana 2.1's (2026-10-14, lesson 29)
+
+Ring C's job 1716a697 (made with the Nano Banana prompt below the GPT one, with the BACKGROUND paragraph) has the
+gold, shadows and quality the owner wants; its only fault was the bead count, because no raw photo showed the ring
+lying. **Next stone ring: get a raw phone photo of it lying flat first (raw-photo guide), give it as the first
+design reference, write the row out element by element and the equal sizes, ring A last for the look.** The GPT
+route below gets counts right but the owner rejected its look, even after `gold-match.cjs`.
+
+### GPT Image 2.5, then gold-match.cjs (passed the checker on ring C; the owner rejected the look, lessons 25–29)
 
 1. `gpt_image_2_5`, **`quality: high`**, `resolution: 4k` (returns 2880 px), **`count: 2`** (2 × 4.25 = 8.5 credits;
    pick the better one). Same references and order as above. Write the decorated row out element by element, give
