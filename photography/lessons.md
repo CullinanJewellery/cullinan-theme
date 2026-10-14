@@ -112,4 +112,7 @@ Each line: what went wrong, the rule now, where it came from. Newest last.
     yellow 247) and sharpness all differ from the yellow photo (Nano Banana, 4096 px). Lesson 12's "ring identical"
     measured only the outline. → A metal version must change only the metal's colour. Options put to the owner: a
     pixel recolour of the gold on the computer (exact, free; needs the owner's OK as a local edit) or a Nano Banana
-    colour edit (same model as the yellow, still a redraw). Waiting for the owner's choice.
+    colour edit (same model as the yellow, still a redraw). **Owner chose the computer: `metal-swap.cjs`.** On ring C
+    it kept every pixel that is not metal; white 166, 165, 169 (neutral), rose 230, 176, 144 (lighter than ring A's
+    rose because it keeps the yellow photo's brightness). First version left a gold glow on the floor under the white
+    ring (only red − blue > 25 was changed); the weight now starts at 8, just above the background.

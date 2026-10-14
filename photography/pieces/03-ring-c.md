@@ -109,6 +109,10 @@ Cost: 3 + 3 + 1.25 + 1.25 = 8.5 credits.
   01 (2295b8c2), GPT Image 2.5 colour changes, 3 beads in every gap, framed; silver = white. Saved to the metal
   folders; the 2026-10-13 set moved to `чернови/стар комплект 2026-10-13`. Hand: three tries, all two beads per gap
   (lesson 30), not used. Ring C at about 54 credits.
+- White and rose redone with `metal-swap.cjs` from the framed yellow (owner: the GPT versions' quality differed;
+  "just the color to change"): white 166, 165, 169, rose 230, 176, 144; stones, frames, background, shadow and
+  sharpness identical to the yellow. Silver = white. GPT versions kept in `чернови/2026-10-14 нов комплект/GPT
+  цветове (заменени)`.
 - **Hand (owner's choice, 2026-10-14):** a real phone photo of ring C on a hand (raw-photo guide, „на ръка“), then a
   Nano Banana 2.1 look edit with that photo as the only input (it keeps the layout of a single input, lesson 29), about
   3 credits. **Waiting for the owner's photo.**

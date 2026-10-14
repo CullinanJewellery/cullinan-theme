@@ -100,8 +100,10 @@ the metal; from inside a band only the small holes behind the stones show; stone
 with the stones facing the camera (moonmagic).
 Full recipe with the exact Higgsfield prompts: `photography/README.md` „Product photos: the ring A standard“. In short:
 - **Editing is done in Higgsfield** (nano_banana_2, then upscale_image 4K); locally only crop, measure, copy.
-  Two exceptions the owner approved on 2026-10-14: `photography/gold-match.cjs` moves only the yellow gold to ring A's
-  measured gold (no model hit it), and `frame-photo.cjs` may extend a flat off-white border by copying its edge.
+  Exceptions the owner approved on 2026-10-14: `photography/gold-match.cjs` moves only the yellow gold to ring A's
+  measured gold (no model hit it); `frame-photo.cjs` may extend a flat off-white border by copying its edge; and
+  **white and rose are made with `photography/metal-swap.cjs` from the finished yellow photo**, changing only the
+  metal's colour ("i just need the color to change, nothing else": a model's colour change redraws the whole photo).
 - **Background** flat seamless off-white #FCFBFC edge to edge; **shadow** soft neutral grey, falling to the left, with
   a thin darker contact shadow; no gold tint on the floor.
 - **Never change the jewellery (owner, 2026-10-13: "I did not say to change the jewelry")**: an edit changes only
@@ -127,7 +129,7 @@ Full recipe with the exact Higgsfield prompts: `photography/README.md` „Produc
   white gold photo. (Rings A, B, C were made with all three photos in every metal, before this.)
   **Rings with stones (owner, 2026-10-14 „A“): four photos, no standing one.** The main photo lies flat like
   moonmagic's stone rings (seen from the front a little above, stones on the front edge facing the camera); then the
-  hand; white and rose are made from the lying photo. **The look is Nano Banana 2.1's** (owner, 2026-10-14: ring C's
+  hand; white and rose are made from the lying photo with `metal-swap.cjs` (free). **The look is Nano Banana 2.1's** (owner, 2026-10-14: ring C's
   job 1716a697 has the right gold, shadows and quality; the GPT Image 2.5 + `gold-match.cjs` photo did not). Ask for a
   raw phone photo of the piece lying flat (raw-photo guide) so the model copies the real layout
   (`photography/prompts/02-yellow-lying.md`, lesson 29). Name the stone type in prompts (ring C: clear,

@@ -17,6 +17,7 @@ happen once.
 | `check-photo.cjs` | Measures a result and says pass or fail with reasons. |
 | `frame-photo.cjs` | Puts a finished photo into ring A's frame (extends a flat off-white border if it must). |
 | `gold-match.cjs` | Moves only the yellow gold to ring A's measured gold; nothing else changes (owner's OK, 2026-10-14). |
+| `metal-swap.cjs` | White and rose from the finished yellow photo: only the metal's colour changes (owner's choice, 2026-10-14). |
 | `compare-sheet.cjs` | One image for the owner: raw photo(s) left, new photo(s) right, with a note (e.g. the stone count). |
 | `raw-photo-guide.md` | In Bulgarian, for whoever photographs the pieces in the shop: six views, a close-up, plain background. |
 | `upload-checklist.md` | The owner's Shopify steps per piece: Latin file names, alt text = the metal value, a picture for every variant. |
@@ -41,8 +42,8 @@ whole photo shrunk (owner, 2026-10-14).
 4. **Make yellow 01 standing first** (3 credits), check it (step 6), and **send the owner a comparison sheet**
    (`compare-sheet.cjs`: raw photos left, the new photo right, the stone count in the note). **Wait for the owner's
    OK** before the other four photos, which are all built from it. A wrong ring then costs one photo, not a set.
-5. **Make the other four** with the prompt files (yellow lying flat, yellow hand, white and rose standing).
-   Log each call.
+5. **Make the others** with the prompt files (yellow lying flat or hand). **White and rose: `metal-swap.cjs` from
+   the finished, framed yellow photo** (free; no model, so nothing but the colour changes). Log each call.
 6. **Check every result before the next step**: `node photography/check-photo.cjs <metal> <file> [source]` for the
    numbers (gold, white, background, seams, ring unchanged against its source); then by eye against `staging.md` and
    the piece sheet (counts, stone direction, rhodium, inside). Log pass/fail and why.

@@ -1,8 +1,9 @@
 # White and rose 01 standing (metal swap)
 
-**On hold (owner, 2026-10-14, lesson 31):** GPT Image 2.5 redraws the whole photo, so the white and rose versions
-differ from the yellow in quality, stones, background and sharpness; the owner wants only the colour changed. Do not
-use this file until the owner has chosen the method.
+**Replaced (owner, 2026-10-14, lesson 31): use `photography/metal-swap.cjs`, not a model.**
+`node metal-swap.cjs white <framed yellow.png> <out.png>` and the same with `rose`; then `check-photo.cjs` and a look
+at full size next to the yellow. Silver = a copy of white. GPT Image 2.5 below redraws the whole photo, so its white
+and rose differed from the yellow in quality, stones, background and sharpness; kept only as history.
 
 Model `gpt_image_2_5`, `quality: medium`, `resolution: 4k` (1.25 credits each).
 Input: **only** the passed yellow 01 standing photo (lesson 2). Colour in words.
