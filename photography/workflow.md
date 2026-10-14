@@ -20,6 +20,15 @@ happen once.
 | `raw-photo-guide.md` | In Bulgarian, for whoever photographs the pieces in the shop: six views, a close-up, plain background. |
 | `upload-checklist.md` | The owner's Shopify steps per piece: Latin file names, alt text = the metal value, a picture for every variant. |
 
+## Where to run it (2026-10-14)
+
+The raw photos and the piece folders are on the owner's computer
+(`C:\Users\Nitro V\Pictures\PicturesForWebFaceInstagram\pictures for the website\`). Run photo work in a session on
+that computer (Claude Desktop app, or `claude remote-control` in the repository folder). A cloud session cannot open
+those folders, and its network policy blocks downloads from Higgsfield's CDN; it can only view and measure images
+inside Higgsfield's own sandbox (`sandbox_exec`). Look at raw photos at full size, cropped to the piece, never the
+whole photo shrunk (owner, 2026-10-14).
+
 ## The steps for a new piece (approval gate, comparison sheet and checklists added 2026-10-14, owner)
 
 1. **Raw photos** taken by `raw-photo-guide.md` (six views and a close-up). If views are missing or blurred, ask
