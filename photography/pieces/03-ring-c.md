@@ -108,4 +108,7 @@ Cost: 3 + 3 + 1.25 + 1.25 = 8.5 credits.
 - Owner: "use the last photo you just made" → yellow 01 = a7e0aefe (framed). Made from it: white 01 (4f4144ea) and rose
   01 (2295b8c2), GPT Image 2.5 colour changes, 3 beads in every gap, framed; silver = white. Saved to the metal
   folders; the 2026-10-13 set moved to `чернови/стар комплект 2026-10-13`. Hand: three tries, all two beads per gap
-  (lesson 30), not used; **waiting for the owner** on how to make the hand photo. Ring C at about 54 credits.
+  (lesson 30), not used. Ring C at about 54 credits.
+- **Hand (owner's choice, 2026-10-14):** a real phone photo of ring C on a hand (raw-photo guide, „на ръка“), then a
+  Nano Banana 2.1 look edit with that photo as the only input (it keeps the layout of a single input, lesson 29), about
+  3 credits. **Waiting for the owner's photo.**
