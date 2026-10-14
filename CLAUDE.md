@@ -93,7 +93,9 @@ jewellery sits and is photographed, every kind) and `photography/lessons.md`; fi
 from **every** raw photo examined zoomed in (counts of stones, beads, prongs; where rhodium starts and stops; what the
 inside shows) and **ask the owner about anything not certain before spending a credit** (ring C: three stones drawn,
 it has five). Prompts in `photography/prompts/`; check every result with `photography/check-photo.cjs` and by eye;
-log each call in `photography/log/`; add new lessons after each piece. **Physically real**: stones face outward from
+log each call in `photography/log/`; add new lessons after each piece. **Make yellow 01 first and wait for
+the owner's OK** (comparison sheet: `photography/compare-sheet.cjs`) before the other four; raw photos by
+`photography/raw-photo-guide.md` (Bulgarian, for the shop); the owner uploads with `photography/upload-checklist.md`. **Physically real**: stones face outward from
 the metal; from inside a band only the small holes behind the stones show; stone rings lying down are tilted back
 with the stones facing the camera (moonmagic).
 Full recipe with the exact Higgsfield prompts: `photography/README.md` „Product photos: the ring A standard“. In short:

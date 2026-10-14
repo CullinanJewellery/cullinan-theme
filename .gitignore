@@ -19,6 +19,7 @@ photography/*
 !photography/README.md
 !photography/frame-photo.cjs
 !photography/check-photo.cjs
+!photography/compare-sheet.cjs
 !photography/*.md
 !photography/pieces/
 !photography/prompts/

@@ -16,20 +16,32 @@ happen once.
 | `log/NN-name.jsonl` | One line per Higgsfield call: date, step, model, settings, inputs, prompt file, job id, credits, measurements, verdict, reason. |
 | `check-photo.cjs` | Measures a result and says pass or fail with reasons. |
 | `frame-photo.cjs` | Puts a finished photo into ring A's frame. |
+| `compare-sheet.cjs` | One image for the owner: raw photo(s) left, new photo(s) right, with a note (e.g. the stone count). |
+| `raw-photo-guide.md` | In Bulgarian, for whoever photographs the pieces in the shop: six views, a close-up, plain background. |
+| `upload-checklist.md` | The owner's Shopify steps per piece: Latin file names, alt text = the metal value, a picture for every variant. |
 
-## The steps for a new piece
+## The steps for a new piece (approval gate, comparison sheet and checklists added 2026-10-14, owner)
 
-1. **Examine every raw photo zoomed in.** Fill the piece sheet from `pieces/_template.md`: counts, two-tone areas,
+1. **Raw photos** taken by `raw-photo-guide.md` (six views and a close-up). If views are missing or blurred, ask
+   for them before anything else.
+2. **Examine every raw photo zoomed in.** Fill the piece sheet from `pieces/_template.md`: counts, two-tone areas,
    inside, shots. Anything not certain: ask the owner, write the answer in the sheet. **No credits before this.**
-2. **Tell the owner the plan and the cost** (five photos, about 11.5 credits at 4k; CLAUDE.md „Credits“).
-3. **Generate** with the prompt files, pasting the piece's description. Log each call.
-4. **Check every result before the next step**: `node photography/check-photo.cjs <step> <file>` for the numbers
-   (gold, white, background, frame, ring unchanged against its source); then look at it against `staging.md` and the
-   piece sheet (counts, stone direction, rhodium, inside). Log pass/fail and why.
-5. **On a fail**: fix with the smallest edit (colour-only, background-only), and add a lesson if it is a new kind of
-   failure; improve the prompt file if the prompt caused it.
-6. **Frame** each passed photo with `frame-photo.cjs`, save to the piece's folder.
-7. **Report to the owner**: credits used, first-time passes, failures and what was learned; update `lessons.md`.
+3. **Tell the owner the plan and the cost** (five photos, about 11.5 credits at 4k; CLAUDE.md „Credits“).
+4. **Make yellow 01 standing first** (3 credits), check it (step 6), and **send the owner a comparison sheet**
+   (`compare-sheet.cjs`: raw photos left, the new photo right, the stone count in the note). **Wait for the owner's
+   OK** before the other four photos, which are all built from it. A wrong ring then costs one photo, not a set.
+5. **Make the other four** with the prompt files (yellow lying flat, yellow hand, white and rose standing).
+   Log each call.
+6. **Check every result before the next step**: `node photography/check-photo.cjs <metal> <file> [source]` for the
+   numbers (gold, white, background, seams, ring unchanged against its source); then by eye against `staging.md` and
+   the piece sheet (counts, stone direction, rhodium, inside). Log pass/fail and why.
+7. **On a fail**: the smallest fix (colour-only, background-only); a new kind of failure → a lesson; a prompt that
+   caused it → improve the prompt file.
+8. **Frame** each passed photo with `frame-photo.cjs` (and `check-photo.cjs --framed`), save to the piece's folder,
+   and send the owner the final comparison sheet with all five photos.
+9. **Hand over** `upload-checklist.md` for the Shopify upload; when the owner says it is uploaded, check the product
+   page on the preview (each metal, two sizes) and update the piece sheet's status.
+10. **Report**: credits used, first-time passes, failures and what was learned; update `lessons.md`.
 
 ## Measured targets (check-photo.cjs)
 
