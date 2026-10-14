@@ -106,6 +106,16 @@ Full recipe with the exact Higgsfield prompts: `photography/README.md` „Produc
   what the owner asked for (a colour, the background, the shadow). The piece stays exactly as it is in the photo being
   edited: same design, every ball and granule, thickness, size, angle and position. Check every result against the
   photo it came from, not only against the colour asked for.
+- **Parts that are the same stay the same (owner, 2026-10-14)**: equal beads, stones, cups or links are equal in the
+  photo; perspective may make the farther ones a little smaller, never bigger. Ring C's photo with bigger beads at
+  the ends than beside the middle stone was rejected: "it is just making it worse".
+- **Rhodium is clearly seen (owner, 2026-10-14: "that is why it is put on the jewelry")**: wherever the atelier put
+  rhodium (e.g. the frame round each stone), it shows as a clear white area in every photo, never a hairline.
+- **Everything sharp (owner, 2026-10-14)**: the whole piece in focus, like a focus-stacked catalogue photo, never a
+  shallow depth of field. The models blur the ends and the back on their own, so every prompt says so and
+  `check-photo.cjs` compares the ends' sharpness with the centre.
+- **Stones: ask the owner what they are** before the first prompt for any piece with stones (ring C: zircons), so
+  the photo shows that stone, never a random one (owner, 2026-10-14).
 - **Gold**: rich, warm, deeply polished 18K yellow (ring A's main photo is the colour reference). **Rose gold** matches
   ring A's rose. **White gold is a clean, neutral, bright white, no yellow, beige or champagne cast** (owner,
   2026-10-13: both rings' white looked yellowish; measured blue 13–20 below red). New metals are made from the

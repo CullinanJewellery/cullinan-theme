@@ -34,7 +34,8 @@ whole photo shrunk (owner, 2026-10-14).
 1. **Raw photos** taken by `raw-photo-guide.md` (six views and a close-up). If views are missing or blurred, ask
    for them before anything else.
 2. **Examine every raw photo zoomed in.** Fill the piece sheet from `pieces/_template.md`: counts, two-tone areas,
-   inside, shots. Anything not certain: ask the owner, write the answer in the sheet. **No credits before this.**
+   inside, shots. Anything not certain: ask the owner, write the answer in the sheet. **If the piece has stones, ask
+   the owner what they are** (owner, 2026-10-14). **No credits before this.**
 3. **Tell the owner the plan and the cost** (five photos, about 11.5 credits at 4k; CLAUDE.md „Credits“).
 4. **Make yellow 01 standing first** (3 credits), check it (step 6), and **send the owner a comparison sheet**
    (`compare-sheet.cjs`: raw photos left, the new photo right, the stone count in the note). **Wait for the owner's
@@ -57,6 +58,9 @@ whole photo shrunk (owner, 2026-10-14).
 - Yellow gold: average of the metal close to ring A's main photo, RGB 208, 165, 114 (each within about 10).
 - Rose gold: close to 214, 160, 128 / ring C rose 222, 163, 144.
 - White gold: blue within 5 of red on the metal (neutral, no yellow).
-- Background corners 248–255 and even (no patch: border brightness spread under 8 outside the shadow side).
+- Background 249–255 at the edges and even (no patch: border brightness spread under 8 outside the shadow side).
+- Gold highlights (polish) at least 212 (ring A 216).
+- Focus (lying photos, `--lying`): the sharpest detail at the piece's left and right ends at least 60% of the centre's,
+  at full resolution (no depth-of-field blur; ring C's blurred photo scored 38%).
 - Frame (after frame-photo.cjs): standing height 0.807 ±0.01, centre 0.500/0.513 ±0.005; lying flat width 0.780.
 - Ring unchanged in a colour edit: outline (bounding box) within 0.005 of the source.

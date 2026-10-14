@@ -20,14 +20,21 @@ Sources at the end; where the sources are thin, the rule is plain physics of how
 4. **Count everything from the raw photos before the first prompt:** stones, beads/balls, links, prongs, sections.
    Write the numbers in the piece's sheet (`photography/pieces/`). If a count cannot be seen with certainty in the
    raw photos, **ask the owner before spending a credit** (owner, 2026-10-14).
-5. **Two-tone metal is exact:** rhodium (white) is only where the atelier put it. Describe where it starts and stops
-   (see ring C). Everything else stays the piece's gold.
+5. **Two-tone metal is exact and visible:** rhodium (white) is only where the atelier put it, and there it is clearly
+   seen: the atelier puts it on so that it shows (owner, 2026-10-14). Describe where it starts and stops (see ring C)
+   and how it looks from the camera (ring C: a white frame round every stone). Everything else stays the piece's gold.
 6. **Gravity:** chains hang or lie in natural curves; pendants hang straight down from their bail; drop earrings
    hang vertically; a piece lying down touches the surface where it would really rest, with a contact shadow there.
 7. **Scale:** on a hand, ear or neck the piece is its real size (a slim ring band is about 1.2–1.5 mm). Never
    enlarged for effect.
 8. **Pairs match:** two earrings are mirror images, same size, same angle logic.
 9. **One piece per photo** unless it is a set; no props touching the piece; no text.
+10. **Parts that are the same stay the same:** equal beads, stones, cups, links are drawn equal; perspective may make
+    the farther ones a little smaller, never bigger (owner, 2026-10-14).
+11. **Everything in focus:** the whole piece sharp from end to end, like a focus-stacked catalogue photo; no shallow
+    depth of field at the ends or the back (owner, 2026-10-14). Not for the hand photo's background.
+12. **Stones are the real kind:** ask the owner what the stones are before the first prompt and name them in it
+    (owner, 2026-10-14).
 
 ## 2. Rings
 
@@ -80,7 +87,9 @@ All pieces of the set in one photo, each obeying its own rules above, none touch
 
 - [ ] Every raw photo opened and examined zoomed in (not just one or two).
 - [ ] Counts written: stones, beads/balls, prongs, links, sections.
-- [ ] Two-tone areas described (where the white/rhodium starts and stops).
+- [ ] Stone type asked of the owner and written (e.g. clear zircons).
+- [ ] Two-tone areas described (where the white/rhodium starts and stops, and that it must be clearly seen).
+- [ ] Equal parts named as equal (all beads the same size, all stones the same size).
 - [ ] Inside/back described (holes, hallmark, plain).
 - [ ] Unclear points asked of the owner, answers written in the sheet.
 - [ ] Shots chosen for the piece's kind (§2–§6), with the position for each.

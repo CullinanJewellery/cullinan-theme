@@ -80,3 +80,9 @@ Each line: what went wrong, the rule now, where it came from. Newest last.
     bead, stone, …, twelve beads in total"), beads "a little smaller than a stone's cup", and GPT's better counting.
     It was also sharper (14 against 7.5–10), with a bright background (251) and strong polish (230); the gold came a
     little yellow (216, 180, 127). One variant turned two stones pink: make two variants and pick.
+26. **The owner's review of that photo (2026-10-14):** the ends were blurred, the beads at the ends were bigger than
+    beside the middle stone, the white rims too thin, the gold not ring A's, the quality could be better; the
+    zircons were liked. Measured: the end stones half as sharp as the middle ones (14–17 against 34): the model's own
+    shallow depth of field; no file asked for blur. → Every prompt asks for everything in focus and for equal parts;
+    `check-photo.cjs` now fails a photo whose ends are much softer than its centre; rhodium as a clearly visible white
+    frame; GPT Image 2.5 at `quality: high` for finals; ask the stone type for every piece (CLAUDE.md, staging §1).

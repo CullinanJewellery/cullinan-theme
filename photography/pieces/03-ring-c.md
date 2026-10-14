@@ -17,7 +17,11 @@ zoomed in on 2026-10-14.
   stone, three beads, stone … the same in all four gaps, also next to the middle stone (owner, 2026-10-14: "they need
   to be the same because in that way it is a different ring"; both lying tries drew two next to the middle stone).
 - Lower half: thin, plain, polished gold band.
-- **Rhodium**: the cup each stone sits in is rhodium (white) on its visible face. Seen straight from the side, only
+- **All twelve beads are the same size, all five stones and cups are the same size** (owner, 2026-10-14: the photo
+  with bigger beads at the ends than in the middle was rejected).
+- **Rhodium, clearly seen** (owner, 2026-10-14: "that is why it is put on the jewelry"): from the front, the whole
+  flat face of each cup is a white frame round the stone, plainly visible, never a hairline.
+  The cup each stone sits in is rhodium (white) on its visible face. Seen straight from the side, only
   the rounded corners of the cup show a little white; the rest of the cup and the band are yellow gold. The two
   lowest stones' white runs a little further down into the plain band.
 - Inside the band: the upper half has no separate smooth band, it is the row of beads and cups itself, so from inside

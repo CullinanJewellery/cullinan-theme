@@ -4,11 +4,13 @@
   piece sheet.
 
   Usage (needs sharp: `npm i sharp` in any folder, NODE_PATH pointing at its node_modules):
-    node check-photo.cjs <metal yellow|white|rose> <photo.png> [source.png] [--framed standing|lying] [--hand]
+    node check-photo.cjs <metal yellow|white|rose> <photo.png> [source.png] [--framed standing|lying] [--hand] [--lying]
 
   - metal: checks the metal colour against the targets below.
   - source: for a colour edit, the photo it was made from; the piece's outline must not have moved.
   - --hand: a photo on the hand (skin counts as metal there, so the shine check is skipped).
+  - --lying: a lying photo; also checks focus: the piece's ends at least 60% as sharp as its centre (no depth-of-field
+    blur; owner, 2026-10-14).
   - --framed: after frame-photo.cjs, checks size and centre against ring A's frame.
   Prints one JSON line (for photography/log/) and PASS or FAIL with reasons.
 */
@@ -46,6 +48,40 @@ function metal(img, kind) {
   // polish: how bright the metal's highlights are (95th percentile); ring A's yellow main photo is 216
   avg.shine = Math.round(lum[Math.floor(0.95 * (lum.length - 1))]);
   return avg;
+}
+
+// focus (lying photos): the sharpest detail (99th percentile of |Laplacian|, at full resolution, where depth-of-field
+// blur is a few pixels wide) at the piece's left and right ends against its centre. Ring C, 2026-10-14: the photo
+// the owner called blurred scored 0.38; a sharp Nano Banana one 0.64. Standing photos are not checked: their far arc
+// is softer by nature (ring A's main photo scores 0.46).
+async function focus(file) {
+  const { data, info } = await sharp(file).removeAlpha().raw().toBuffer({ resolveWithObject: true });
+  const W = info.width, H = info.height;
+  const g = new Float32Array(W * H);
+  let x0 = W, x1 = 0, y0 = H, y1 = 0;
+  for (let i = 0, p = 0; i < W * H; i++, p += 3) {
+    g[i] = 0.3 * data[p] + 0.59 * data[p + 1] + 0.11 * data[p + 2];
+    if (data[p] - data[p + 2] > 40) {
+      const x = i % W, y = (i / W) | 0;
+      if (x < x0) x0 = x; if (x > x1) x1 = x; if (y < y0) y0 = y; if (y > y1) y1 = y;
+    }
+  }
+  const w = x1 - x0;
+  const peak = (a, b) => {
+    a = Math.max(1, Math.round(a)); b = Math.min(W - 1, Math.round(b));
+    const v = [];
+    for (let y = Math.max(1, y0); y < Math.min(H - 1, y1); y++) for (let x = a; x < b; x++) {
+      const i = y * W + x;
+      v.push(Math.abs(4 * g[i] - g[i - 1] - g[i + 1] - g[i - W] - g[i + W]));
+    }
+    v.sort((p, q) => p - q);
+    return v.length ? Math.round(v[Math.floor(0.99 * (v.length - 1))]) : 0;
+  };
+  const cx = (x0 + x1) / 2;
+  const left = peak(x0, x0 + 0.15 * w);
+  const centre = peak(cx - 0.1 * w, cx + 0.1 * w);
+  const right = peak(x1 - 0.15 * w, x1);
+  return { left, centre, right, ratio: centre ? Number((Math.min(left, right) / centre).toFixed(2)) : 0 };
 }
 
 function outline(img) {
@@ -100,6 +136,8 @@ function background(img, o) {
   const framed = fi >= 0 ? args.splice(fi, 2)[1] : null;
   const hi = args.indexOf('--hand');
   const hand = hi >= 0 && args.splice(hi, 1).length > 0;
+  const li = args.indexOf('--lying');
+  const lying = li >= 0 && args.splice(li, 1).length > 0;
   const [kind, file, source] = args;
   if (!kind || !file) throw new Error('usage: node check-photo.cjs <yellow|white|rose> <photo> [source] [--framed standing|lying]');
   const img = await load(file);
@@ -132,6 +170,12 @@ function background(img, o) {
   if (bg.max - bg.min > 8) fails.push(`background uneven: a patch or band (${bg.min}–${bg.max})`);
   if (bg.step > 2.5) fails.push(`background has a seam or band (a jump of ${bg.step} between neighbouring rows)`);
   if (Math.abs(bg.tint) > 6) fails.push(`background tinted (red−blue ${bg.tint})`);
+
+  if (lying) {
+    const f = await focus(file);
+    out.focus = f;
+    if (f.ratio < 0.6) fails.push(`ends blurred: the sharpest detail at the ends is ${Math.round(f.ratio * 100)}% of the centre's (aim at least 60%; ask for everything in focus)`);
+  }
 
   if (source) {
     const s = outline(await load(source));

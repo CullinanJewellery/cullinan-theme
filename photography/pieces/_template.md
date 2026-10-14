@@ -6,8 +6,9 @@ Raw photos: which files, how many, date. All examined zoomed in on (date).
 ## The piece
 
 - Kind (ring band / ring with stones / solitaire / studs / drops / pendant / bracelet …) — see `../staging.md`.
-- Metal and colour areas (where any rhodium/white starts and stops).
-- Counts: stones …, beads/balls …, prongs …, links …, sections …
+- Stones: what they are (**ask the owner**, e.g. clear zircons), colour, cut.
+- Metal and colour areas (where any rhodium/white starts and stops; it must be clearly seen in the photos).
+- Counts: stones …, beads/balls …, prongs …, links …, sections … Which parts are equal in size (they stay equal).
 - Shape and texture of each part (plain, beaded, granulated, twisted …).
 - Inside / back: what shows (holes behind stones, hallmark, plain).
 - Questions asked of the owner and the answers (date).
