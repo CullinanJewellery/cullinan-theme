@@ -79,3 +79,6 @@ Cost: 3 + 3 + 1.25 + 1.25 = 8.5 credits.
   the rhodium clearly visible (lesson 23). Both failed the checker, not sent. **Ring C at 17.5 credits: stopped**
   (lesson 22). Next step proposed to the owner: a raw phone photo of the ring lying flat, seen from the front a
   little above, so the model copies the real bead layout.
+- Owner: "just make them three", "don't blur it". Mask inpaint refused by Higgsfield (not charged); two GPT Image 2.5
+  edits (jobs 0be4ebfd, 03968e7d, 2.5 credits): middle gaps three beads, outer gaps still two, gold lemony. Not
+  sent. **Ring C at 20 credits: stopped** (lesson 24).

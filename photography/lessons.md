@@ -68,3 +68,8 @@ Each line: what went wrong, the rule now, where it came from. Newest last.
 23. **Rhodium shows when the prompt says where it is**: "the whole flat front face of each cup, the ring of metal
     round each stone, is bright white rhodium … like a white frame round every stone; the sides of the cups and the
     beads stay yellow gold" made the white clearly visible, as the owner asked. (Ring C, 2026-10-14.)
+24. **No masks on Higgsfield; GPT edits fix counts only where the gap faces the camera.** Nano Banana 2.1's "mask"
+    role is listed but refused on submit ("Unknown media role: mask", not charged; also 2026-10-13). GPT Image 2.5
+    edits put three beads in the two middle gaps but left the two outer, foreshortened gaps at two, twice, and each
+    pass moved the gold (to 221, 183, 127, lemony). → Do not chain edits to fix a count; get a raw photo in the pose.
+    (Ring C, 2026-10-14, 2.5 credits.)
