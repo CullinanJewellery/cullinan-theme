@@ -269,3 +269,10 @@ corrections. Everything at 2k; frame-photo.cjs makes the 2048 square. CLAUDE.md 
 **Five photos per piece since 2026-10-14 (owner):** yellow gold standing, lying flat and on the hand; white and rose
 gold standing only; silver = the white photo. About 11.5 credits at 4k (3 × 3 + 2 × 1.25). Rings A, B and C keep
 their full sets.
+
+## The workflow (2026-10-14)
+
+Since 2026-10-14 every piece follows `workflow.md`: `staging.md` (how real jewellery sits), a sheet per piece in
+`pieces/`, prompts in `prompts/`, `check-photo.cjs` for every result, a log in `log/`, and `lessons.md`. Ring C's
+sheet (`pieces/03-ring-c.md`) is the first, with the owner's corrections (five stones, rhodium only on the stone cups,
+stones facing the camera when lying down).

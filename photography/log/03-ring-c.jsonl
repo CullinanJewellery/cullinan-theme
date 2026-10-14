@@ -1,0 +1,22 @@
+{"date":"2026-10-13","step":"test","model":"nano_banana_2_1","res":"1k","credits":1.5,"job":"a57e9a21","verdict":"fail","reasons":["3 stones drawn, the ring has 5 (counted from 2 raw photos)","gold pale 214,185,138","background grey 240"]}
+{"date":"2026-10-13","step":"test-mask","model":"nano_banana_2","credits":0,"verdict":"fail","reasons":["mask role rejected: Unknown media role: mask (also on 2.1); not charged"]}
+{"date":"2026-10-13","step":"test-white","model":"nano_banana_2_1","res":"1k","credits":1.5,"job":"722388c8","verdict":"fail","reasons":["ring kept (outline 0.002) but white warm (blue 14 below red) and background not cleaned"]}
+{"date":"2026-10-13","step":"yellow-standing gold fix","model":"nano_banana_2","res":"4k","credits":3,"job":"e3448558","verdict":"fail","reasons":["gold overshot to copper 202,153,103"]}
+{"date":"2026-10-13","step":"yellow-standing gold fix 2","model":"nano_banana_2","res":"4k","credits":3,"job":"1779cedf","verdict":"pass","reasons":["gold 212,164,116"]}
+{"date":"2026-10-13","step":"yellow-lying","model":"nano_banana_2_1","res":"1k","credits":1.5,"job":"f286296b","verdict":"fail","reasons":["settings turned sideways with holes visible: impossible (owner 2026-10-14)","3 stones instead of 5"]}
+{"date":"2026-10-13","step":"yellow-lying gold fix","model":"nano_banana_2","res":"4k","credits":3,"job":"94832838","verdict":"fail","reasons":["background band and white patch (seam 3.7)"]}
+{"date":"2026-10-13","step":"yellow-lying background fix","model":"nano_banana_2","res":"4k","credits":3,"job":"1da976b4","verdict":"pass*","reasons":["background fixed; geometry still wrong (found by owner later)"]}
+{"date":"2026-10-13","step":"yellow-hand","model":"nano_banana_2_1","res":"1k","credits":1.5,"job":"248f0686","verdict":"pass*","reasons":["3 stones instead of 5 (found by owner later)"]}
+{"date":"2026-10-13","step":"yellow-hand gold fix","model":"nano_banana_2","res":"4k","credits":3,"job":"edc18c6c","verdict":"pass","reasons":[]}
+{"date":"2026-10-13","step":"white-standing","model":"nano_banana_2","res":"4k","credits":3,"job":"7dfdcb09","verdict":"fail","reasons":["white champagne (blue 20 below red)","background pink-beige"]}
+{"date":"2026-10-13","step":"white-standing fix","model":"nano_banana_2","res":"4k","credits":3,"job":"f1f69796","verdict":"pass","reasons":["blue 7 below red; background faint rectangles"]}
+{"date":"2026-10-13","step":"rose-standing","model":"nano_banana_2","res":"4k","credits":3,"job":"3ce4c291","verdict":"pass","reasons":["214,158,137"]}
+{"date":"2026-10-13","step":"white-lying","model":"nano_banana_2","res":"4k","credits":3,"job":"070180ba","verdict":"fail","reasons":["beads champagne, band white"]}
+{"date":"2026-10-13","step":"rose-lying","model":"nano_banana_2","res":"4k","credits":3,"job":"65995298","verdict":"fail","reasons":["returned the standing ring: copied the second reference picture"]}
+{"date":"2026-10-13","step":"white-hand","model":"nano_banana_2","res":"4k","credits":3,"job":"96e31d09","verdict":"pass","reasons":[]}
+{"date":"2026-10-13","step":"rose-hand","model":"nano_banana_2","res":"4k","credits":3,"job":"af0b8916","verdict":"pass","reasons":[]}
+{"date":"2026-10-13","step":"white-lying fix","model":"nano_banana_2","res":"4k","credits":3,"job":"32c76717","verdict":"fail*","reasons":["still slightly warm (blue 13 below red)"]}
+{"date":"2026-10-13","step":"rose-lying redo","model":"nano_banana_2","res":"4k","credits":3,"job":"d8104945","verdict":"fail","reasons":["too orange 223,166,134"]}
+{"date":"2026-10-13","step":"rose-lying fix","model":"nano_banana_2","res":"4k","credits":3,"job":"c4c8ac69","verdict":"pass","reasons":["224,160,145"]}
+{"date":"2026-10-14","step":"test rose swap","model":"gpt_image_2_5","res":"2k","quality":"medium","credits":1,"job":"6be87cda","verdict":"pass","reasons":["ring identical (0.001), rose 222,163,144, background clean"]}
+{"date":"2026-10-14","step":"owner review","verdict":"fail","reasons":["5 stones, not 3","rhodium only on the stone cups' visible face and rounded corners","lying flat must show the stones facing the camera; sideways settings are impossible"],"next":"redo with pieces/03-ring-c.md and the five-photo set"}

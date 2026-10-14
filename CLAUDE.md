@@ -88,6 +88,14 @@ Full list in `docs/theme-guide.md` §1. The ones that have cost the most time:
 
 The owner's model for every product photo is **ring A, „Пръстен с топчета“** (its yellow gold main photo is "perfect").
 Every piece, in every metal, must look like that set: same background, light, shadow, size, centring and gold colour.
+**Workflow (owner, 2026-10-14): `photography/workflow.md`.** Before every piece read `photography/staging.md` (how real
+jewellery sits and is photographed, every kind) and `photography/lessons.md`; fill a sheet in `photography/pieces/`
+from **every** raw photo examined zoomed in (counts of stones, beads, prongs; where rhodium starts and stops; what the
+inside shows) and **ask the owner about anything not certain before spending a credit** (ring C: three stones drawn,
+it has five). Prompts in `photography/prompts/`; check every result with `photography/check-photo.cjs` and by eye;
+log each call in `photography/log/`; add new lessons after each piece. **Physically real**: stones face outward from
+the metal; from inside a band only the small holes behind the stones show; stone rings lying down are tilted back
+with the stones facing the camera (moonmagic).
 Full recipe with the exact Higgsfield prompts: `photography/README.md` „Product photos: the ring A standard“. In short:
 - **Editing is done in Higgsfield** (nano_banana_2, then upscale_image 4K); locally only crop, measure, copy.
 - **Background** flat seamless off-white #FCFBFC edge to edge; **shadow** soft neutral grey, falling to the left, with
