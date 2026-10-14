@@ -86,3 +86,8 @@ Each line: what went wrong, the rule now, where it came from. Newest last.
     shallow depth of field; no file asked for blur. → Every prompt asks for everything in focus and for equal parts;
     `check-photo.cjs` now fails a photo whose ends are much softer than its centre; rhodium as a clearly visible white
     frame; GPT Image 2.5 at `quality: high` for finals; ask the stone type for every piece (CLAUDE.md, staging §1).
+27. **Neither model hits ring A's gold, from opposite sides.** GPT Image 2.5 (fresh, high) gave 221–224, 182–185,
+    127–133: yellower and paler, whatever the prompt says about colour; its structure was right (3, 3, 3, 3 equal
+    beads, clear white frames). A Nano Banana 2.1 gold-only edit with ring A's photo as colour reference overshot to
+    copper (210, 148, 97), dulled the polish (209) and halved the detail sharpness. → Do not chain gold edits; the
+    owner decides how to match the gold (ring C, 2026-10-14, 11.5 credits).
