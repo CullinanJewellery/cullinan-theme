@@ -42,18 +42,26 @@ async function findPiece(file) {
   return { w: (x1 - x0) / 1024, h: (y1 - y0) / 1024, cx: (x0 + x1) / 2048, cy: (y0 + y1) / 2048 };
 }
 
-// true when a 16 px strip along every edge is plain off-white background: bright (248+) and colourless
+// true when a 16 px strip along every edge is plain, even, light background (no shadow, no piece): on each side
+// the brightness varies by at most 6 (2nd to 98th percentile), stays above 240, and is nearly colourless
 async function flatBorder(file) {
   const { data, info } = await sharp(file).resize(1024, 1024, { fit: 'fill' }).raw().toBuffer({ resolveWithObject: true });
+  const sides = { top: [], bottom: [], left: [], right: [] };
   for (let y = 0; y < 1024; y++) {
     for (let x = 0; x < 1024; x++) {
-      if (x >= 16 && x < 1008 && y >= 16 && y < 1008) continue;
+      const k = y < 16 ? 'top' : y >= 1008 ? 'bottom' : x < 16 ? 'left' : x >= 1008 ? 'right' : null;
+      if (!k) continue;
       const i = (y * 1024 + x) * info.channels;
       const r = data[i], g = data[i + 1], b = data[i + 2];
-      if (Math.min(r, g, b) < 248 || Math.max(r, g, b) - Math.min(r, g, b) > 6) return false;
+      if (Math.max(r, g, b) - Math.min(r, g, b) > 10) return false;
+      sides[k].push((r + g + b) / 3);
     }
   }
-  return true;
+  return Object.values(sides).every((l) => {
+    l.sort((a, b) => a - b);
+    const lo = l[Math.floor(0.02 * l.length)], hi = l[Math.floor(0.98 * l.length)];
+    return lo > 240 && hi - lo <= 6;
+  });
 }
 
 (async () => {
