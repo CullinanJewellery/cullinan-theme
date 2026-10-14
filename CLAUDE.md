@@ -155,14 +155,15 @@ Full recipe with the exact Higgsfield prompts: `photography/README.md` „Produc
   The way, 5 photos at 4k (owner's choice 2026-10-14):
   1. The three yellow photos (standing, lying flat, hand): Nano Banana 2.1 at 4k, the piece from the raw photos and
      ring A's photo as style and gold reference in one step, piece at about half the height: 3 × 3 = 9.
-  2. White and rose standing photos: GPT Image 2.5, medium, 4k, only the yellow standing photo as input, the colour
-     in words: 2 × 1.25 = 2.5. Tested 2026-10-14 on ring C (at 2k): the ring identical to 0.001 of the frame, the
-     rose equal to the approved one (222, 163, 144 vs 224, 160, 145), clean background.
-  3. Silver: free copy of white. Total **11.5 credits**; up to 18 with corrections. Stop and tell the owner before
-     going over 18. Plus (1,200 a month, €59) gives about 90–100 pieces; Starter
-     (270 a month) gave about 20–23.
+  2. White and rose: **free**, `photography/metal-swap.cjs` on the finished yellow photo (owner, 2026-10-14: only the
+     colour changes; GPT Image 2.5's "colour change" redrew the whole photo, lesson 31).
+  3. Silver: free copy of white. So the credits go only on the yellow photos: about 9 for a plain band (three yellow),
+     about 6 for a stone ring (lying main photo and the hand from the owner's phone photo); up to 18 with
+     corrections. Stop and tell the owner before going over 18. Plus (1,200 a month, €59) gives well over 100 pieces;
+     Starter (270 a month) gave about 20–23.
   Measure every result before the next step. Tell the owner the cost before a set and the credits used after it.
-  History: ring B took about 133 over four rounds, ring C about 45; both before this budget.
+  History: ring B took about 133 over four rounds; ring C about 45 for the first set and about 54 more on 2026-10-14
+  while the method was found (lessons 13–31).
 
 ## References (choose per question)
 
