@@ -18,6 +18,7 @@ happen once.
 | `frame-photo.cjs` | Puts a finished photo into ring A's frame (extends a flat off-white border if it must). |
 | `gold-match.cjs` | Moves only the yellow gold to ring A's measured gold; nothing else changes (owner's OK, 2026-10-14). |
 | `metal-swap.cjs` | White and rose from the finished yellow photo: only the metal's colour changes (owner's choice, 2026-10-14). |
+| `bg-even.cjs` | Evens a tiled background to one tone; the piece, shadow and stones untouched (owner's OK, 2026-10-15). Run before framing. |
 | `compare-sheet.cjs` | One image for the owner: raw photo(s) left, new photo(s) right, with a note (e.g. the stone count). |
 | `raw-photo-guide.md` | In Bulgarian, for whoever photographs the pieces in the shop: six views, a close-up, plain background. |
 | `upload-checklist.md` | The owner's Shopify steps per piece: Latin file names, alt text = the metal value, a picture for every variant. |

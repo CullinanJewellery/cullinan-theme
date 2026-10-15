@@ -22,6 +22,7 @@ photography/*
 !photography/compare-sheet.cjs
 !photography/gold-match.cjs
 !photography/metal-swap.cjs
+!photography/bg-even.cjs
 !photography/*.md
 !photography/pieces/
 !photography/prompts/
