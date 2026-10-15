@@ -49,3 +49,15 @@ zoomed in on 2026-10-15. Clearest: 60–62 (front: the swirl round the stone), 5
   0.809, centre 0.500/0.514). Checker: all pass except the lying-photo focus number (0.50; the stone's facets sit in
   the centre window; ring A's own main photo scores 0.46; both ends crisp at full size). Sent for the owner's OK:
   `чернови/01 основна снимка - жълто злато - за одобрение.png` with the comparison sheet. Ring E at 6 credits.
+- Owner: the model is perfect, but the gold is not polished the same everywhere (the lower half of each arm and the
+  bottom of the band look satin; ring A is polished all over). Two polish edits (2a2591d2, 0d627bf4; 6 credits) did
+  not change the finish; a computer polish test (de-grain + local contrast) was rejected by the owner (lesson 38).
+  **Owner: keep the current finish** (the same as ring D's). Yellow 01 approved as sent.
+- White, rose, silver (= white) with `metal-swap.cjs --stone 0.37,0.141,0.533,0.267` (the box moved with the frame):
+  white 187,183,183, rose 213,160,128 (ring A's), the stone unchanged. Saved to the metal folders.
+- Hand (f60fcf66, 3 credits; recipe of ring D's approved hand photo): right except grooves on both arms. Edit
+  (996b951a, 3 credits): the upper-left arm plain; the swirl looks the same turned halfway round, so either arm may
+  carry the grooves, only one does. The edit turned the whole photo pinker; colours put back to the photo before the
+  edit on the computer (one gain and offset per channel, measured outside the ring; nothing moves), stone cleared
+  (`stone-clear.cjs`). Ring gold 215,166,116 (ring D's approved hand 216,162,107). Sent for the owner's review:
+  `чернови/03 на ръка - жълто злато - за одобрение.png`. **Ring E at 18 credits (the limit).**
