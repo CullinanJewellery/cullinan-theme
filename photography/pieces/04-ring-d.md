@@ -8,11 +8,11 @@ front and above. Clearest: 44 and 45 (from above: the four claws and the S of th
 ## The piece
 
 - Kind: **solitaire** (one main stone) — see `../staging.md` §2.
-- **Stone:** one round brilliant-cut stone, clear and colourless, with a little rainbow fire (photo 44). **Type:
-  ask the owner** (zircon or diamond?). About two and a half to three times as wide as the band.
+- **Stone:** one round brilliant-cut **zircon (cubic zirconia)** (owner, 2026-10-15), clear and colourless, with a
+  little rainbow fire (photo 44). About two and a half to three times as wide as the band.
 - **Setting:** four claws (prongs) with small rounded tips, rising from a small gold basket under the stone
-  (photos 44, 45, 46, 49). **Claw colour: ask the owner** — the tips look paler than the band in photo 38 (nearly
-  white) and pale gold in 44 and 46: white rhodium on the claws, or only the light?
+  (photos 44, 45, 46, 49). **Claws yellow gold like the band** (owner, 2026-10-15; the pale tips in photo 38 are the
+  light). No rhodium on this ring.
 - **Band (shank):** thin, plain, polished yellow gold with a flat outer face and soft edges, the same width all
   round (about 1.5–2 mm). Near the head the two sides of the band are **offset in a gentle S (bypass)**: one side
   rises and passes in front of the head, the other comes up behind it (photos 44, 45, 37, 38).
@@ -20,7 +20,8 @@ front and above. Clearest: 44 and 45 (from above: the four claws and the S of th
 - Inside the band: plain polished gold with a small hallmark stamp (photos 39, 40, 47). In photos: plain, **no
   text or engraving** (a model writes gibberish).
 - Parts that are equal: the four claws (same thickness and height).
-- Questions asked of the owner (2026-10-15): stone type; claw colour; a phone photo in the new pose (below).
+- Questions asked of the owner (2026-10-15) and answers: stone → zircon; claws → yellow gold; main photo → the owner
+  takes a phone photo of ring D in the new pose first, and the model copies it.
 
 ## Shots (owner, 2026-10-15)
 
@@ -33,12 +34,16 @@ front and above. Clearest: 44 and 45 (from above: the four claws and the S of th
 ## Description to paste into prompts
 
 > THE RING (only from the raw photos, do not add or remove anything): a thin, delicate 18K yellow gold solitaire
-> ring. One round brilliant-cut <stone type> stone, clear and colourless, sparkling, held high by exactly FOUR claws
-> with small rounded tips (<claw colour>), rising from a small gold basket under the stone. The stone is about two
+> ring. One round brilliant-cut cubic zirconia stone, clear and colourless, sparkling like a small diamond (never
+> milky or grey), held high by exactly FOUR yellow gold claws with small rounded tips, rising from a small gold
+> basket under the stone. The stone is about two
 > and a half times as wide as the band. The band is thin, plain and polished, with a flat outer face and soft edges,
 > the same width all round; near the head its two sides are offset in a gentle S (bypass): one side passes in front
 > of the head, the other behind it. No other stones, no engraving or text. Slim and fine, not chunky.
 
 ## Status
 
-- 2026-10-15: all raw photos examined; sheet written; questions to the owner; no credits spent.
+- 2026-10-15: all raw photos examined; sheet written; owner answered (zircon, yellow claws, phone photo in the
+  pose). **Waiting for the owner's phone photos** (pose, and on a hand). No credits spent.
+- Plan and cost: yellow 01 in the pose, Nano Banana 2.1 from the phone photo, ring A for the look (3 credits a try);
+  hand from the phone photo, the shop's look (about 3); white, rose, silver free. About 6 credits.
