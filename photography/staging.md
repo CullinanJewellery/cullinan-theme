@@ -54,7 +54,11 @@ the band and face outward.
   from the band along the top; the setting colour (rhodium rim) exactly as described in the piece's sheet.
 - **Solitaire (one main stone, ring D):** the main stone's table faces the camera in the main photo, tilted toward
   the camera by about 10–20° for sparkle; prongs or bezel exactly as in the raw photos (count prongs). The shank
-  narrows or stays even exactly as the raw photos show.
+  narrows or stays even exactly as the raw photos show. **Main photo pose (owner, 2026-10-15, from a catalogue photo
+  of a solitaire, pose only — never its design, text or brand):** the ring tipped back in a three-quarter view, seen
+  from the front a little above; the head with the stone at the upper left, the stone's table facing up and toward
+  the camera, every claw visible; the band sweeps down and to the right as an oval, its inside visible at the lower
+  right. Described in words in prompts; the catalogue photo is not given to the model (lesson 1).
 
 ## 3. Earrings
 

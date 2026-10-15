@@ -1,0 +1,44 @@
+# Ring D — solitaire (Bulgarian name and catalogue number to come)
+
+Folder: `pictures for the website/04 <name> - номер предстои` (to be made when the owner names the piece).
+Raw photos: `raw pictures for use`, numbers 35–49 of 11 October 2026 (20261011_135856 … 141039), all 15 examined
+zoomed in on 2026-10-15. 35–36: far away in a light box, dim (no new detail); 37–49: on the paper cup, from the side,
+front and above. Clearest: 44 and 45 (from above: the four claws and the S of the band), 47–49 (side), 41 (front).
+
+## The piece
+
+- Kind: **solitaire** (one main stone) — see `../staging.md` §2.
+- **Stone:** one round brilliant-cut stone, clear and colourless, with a little rainbow fire (photo 44). **Type:
+  ask the owner** (zircon or diamond?). About two and a half to three times as wide as the band.
+- **Setting:** four claws (prongs) with small rounded tips, rising from a small gold basket under the stone
+  (photos 44, 45, 46, 49). **Claw colour: ask the owner** — the tips look paler than the band in photo 38 (nearly
+  white) and pale gold in 44 and 46: white rhodium on the claws, or only the light?
+- **Band (shank):** thin, plain, polished yellow gold with a flat outer face and soft edges, the same width all
+  round (about 1.5–2 mm). Near the head the two sides of the band are **offset in a gentle S (bypass)**: one side
+  rises and passes in front of the head, the other comes up behind it (photos 44, 45, 37, 38).
+- Counts: 1 stone, 4 claws, no other stones, no beads.
+- Inside the band: plain polished gold with a small hallmark stamp (photos 39, 40, 47). In photos: plain, **no
+  text or engraving** (a model writes gibberish).
+- Parts that are equal: the four claws (same thickness and height).
+- Questions asked of the owner (2026-10-15): stone type; claw colour; a phone photo in the new pose (below).
+
+## Shots (owner, 2026-10-15)
+
+| Shot | Position |
+|---|---|
+| Yellow 01 (main) | **The owner's pose for one-stone rings** (reference shown 2026-10-15, a catalogue photo of a solitaire; pose only): the ring tipped back in a three-quarter view, seen from the front a little above; the head with the stone at the upper left, the stone's table facing up and toward the camera with all four claws visible; the band sweeps down and to the right as an oval, its inside visible at the lower right. |
+| Yellow hand | From the owner's phone photo of ring D on a hand (lesson 30), then the shop's look; ask the owner whether they like it. |
+| White, rose, silver | `metal-swap.cjs` from the finished yellow photos (free); the hand with `--hand`, owner reviews. |
+
+## Description to paste into prompts
+
+> THE RING (only from the raw photos, do not add or remove anything): a thin, delicate 18K yellow gold solitaire
+> ring. One round brilliant-cut <stone type> stone, clear and colourless, sparkling, held high by exactly FOUR claws
+> with small rounded tips (<claw colour>), rising from a small gold basket under the stone. The stone is about two
+> and a half times as wide as the band. The band is thin, plain and polished, with a flat outer face and soft edges,
+> the same width all round; near the head its two sides are offset in a gentle S (bypass): one side passes in front
+> of the head, the other behind it. No other stones, no engraving or text. Slim and fine, not chunky.
+
+## Status
+
+- 2026-10-15: all raw photos examined; sheet written; questions to the owner; no credits spent.
