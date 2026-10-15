@@ -9,7 +9,9 @@
   blends the gold's edges). Shape, size and sharpness do not change.
 
   Usage (needs sharp, NODE_PATH as for check-photo.cjs):
-    node gold-match.cjs <in.png> <out.png> [--target r,g,b]
+    node gold-match.cjs <in.png> <out.png> [--target r,g,b] [--stone x0,y0,x1,y1 ...]
+  --stone: a box round each stone; inside, only clearly gold pixels change (red − blue from 35, fully from 55), so
+  the stone and its reflections stay as they are (as in metal-swap.cjs).
   --target: another gold to match, e.g. an earlier approved photo of the same piece (ring D, 2026-10-15: each Nano
   Banana edit drifted the gold paler, so it goes back to the first photo's 217,178,132). With a target, the gold's
   colour (its warmth round the brightness) is moved to the target's too, not only its brightness.
@@ -25,16 +27,26 @@ const MOVE_COLOUR = ti >= 0;
 const TARGET_L = lum(...TARGET);
 
 // how much of a pixel is gold: none below red − blue 25 (white, grey, background), all above 55
-const weight = (r, b) => Math.min(1, Math.max(0, (r - b - 25) / 30));
+const weightAll = (r, b) => Math.min(1, Math.max(0, (r - b - 25) / 30));
+const STONES = [];
+for (let si = process.argv.indexOf('--stone'); si >= 0; si = process.argv.indexOf('--stone')) STONES.push(process.argv.splice(si, 2)[1].split(',').map(Number));
+// set per photo in apply(): width and height, to place each pixel against the stone boxes
+let IMG = { W: 1, H: 1 };
+const inStone = (i) => {
+  const x = (i % IMG.W) / IMG.W, y = Math.floor(i / IMG.W) / IMG.H;
+  return STONES.some(([x0, y0, x1, y1]) => x >= x0 && x <= x1 && y >= y0 && y <= y1);
+};
+const weight = (r, b, i) => (STONES.length && inStone(i) ? Math.min(1, Math.max(0, (r - b - 35) / 20)) : weightAll(r, b));
 
 // shift: optional colour move { yo: the photo's average gold offset, delta: target offset − that offset }; each pixel
 // gets it in proportion to how warm it is (its offset along the average gold's), so highlights and shadows follow
-function apply(data, ch, gamma, shift) {
+function apply(data, ch, gamma, shift, size) {
+  IMG = size || IMG;
   const out = Buffer.from(data);
   const yn = shift ? shift.yo[0] ** 2 + shift.yo[1] ** 2 + shift.yo[2] ** 2 : 0;
-  for (let p = 0; p < data.length; p += ch) {
+  for (let p = 0, i = 0; p < data.length; p += ch, i++) {
     const r = data[p], g = data[p + 1], b = data[p + 2];
-    const w = weight(r, b);
+    const w = weight(r, b, i);
     if (!w) continue;
     const L = lum(r, g, b);
     const d = w * (255 * Math.pow(L / 255, gamma) - L);
@@ -89,7 +101,7 @@ function measure(data, ch) {
   let lo = 0.5, hi = 2.5;
   for (let i = 0; i < 30; i++) {
     const mid = (lo + hi) / 2;
-    const m = measure(apply(small.data, small.info.channels, mid, shift), small.info.channels);
+    const m = measure(apply(small.data, small.info.channels, mid, shift, { W: small.info.width, H: small.info.height }), small.info.channels);
     if (lum(...m.rgb) > TARGET_L) lo = mid; else hi = mid;
   }
   const gamma = (lo + hi) / 2;
@@ -97,7 +109,7 @@ function measure(data, ch) {
   // apply it to the full-size photo
   const full = await sharp(src).removeAlpha().raw().toBuffer({ resolveWithObject: true });
   const { width, height, channels } = full.info;
-  await sharp(apply(full.data, channels, gamma, shift), { raw: { width, height, channels } }).png().toFile(dst);
+  await sharp(apply(full.data, channels, gamma, shift, { W: width, H: height }), { raw: { width, height, channels } }).png().toFile(dst);
 
   const check = await sharp(dst).resize(512, 512, { fit: 'fill' }).removeAlpha().raw().toBuffer({ resolveWithObject: true });
   const after = measure(check.data, check.info.channels);

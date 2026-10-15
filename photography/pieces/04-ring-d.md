@@ -67,3 +67,6 @@ front and above. Clearest: 44 and 45 (from above: the four claws and the S of th
 - Owner approved yellow 01 („make the white rose and silver“). White, rose and silver (= white) made with
   `metal-swap.cjs` (free) and saved with the yellow in the metal folders. **Left: the hand photo**, waiting for the
   owner's phone photo of ring D on a hand.
+- 2026-10-15 (owner: all metals the same as ring A; the white had touched the stone): yellow to ring A's gold,
+  white and rose with ring A's targets, a stone box so the stone stays untouched. Previous versions in
+  `чернови/преди цветовете на пръстен А`.

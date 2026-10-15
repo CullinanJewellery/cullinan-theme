@@ -116,3 +116,6 @@ Cost: 3 + 3 + 1.25 + 1.25 = 8.5 credits.
 - **Hand (owner's choice, 2026-10-14):** a real phone photo of ring C on a hand (raw-photo guide, „на ръка“), then a
   Nano Banana 2.1 look edit with that photo as the only input (it keeps the layout of a single input, lesson 29), about
   3 credits. **Waiting for the owner's photo.**
+- 2026-10-15 (owner: all metals the same as ring A): background evened, yellow to ring A's gold, white and rose
+  remade with ring A's targets, five stone boxes so the stones stay untouched. Previous versions in
+  `чернови/преди цветовете на пръстен А`. Still to do: the hand photo.

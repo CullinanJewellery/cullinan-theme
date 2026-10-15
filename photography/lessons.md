@@ -138,6 +138,14 @@ Each line: what went wrong, the rule now, where it came from. Newest last.
     claws stay exactly as they are") did it, and the computer put the stone and gold back to the first photo's colours
     (`stone-clear.cjs --like`, `gold-match.cjs --target`). Ask the owner to mark the part when words are unclear.
     (Ring D, 2026-10-15.)
+36. **Every metal can be made ring A's on the computer, and stones must be fenced off.** Owner (2026-10-15): make
+    all the gold, white and rose the same as ring A's, for free; and "for the white gold you touch the stone" — the
+    colour change had also recoloured the gold's faint reflections inside ring D's stone. Ring A measured on the ring
+    itself: yellow 208,165,113, white 188,184,184 (13 levels brighter), rose 213,160,128. Now: `gold-match.cjs
+    --target 208,165,113` for the yellow, then `metal-swap.cjs` (ring A targets) for white and rose, both with a
+    `--stone` box round every stone (inside, only clearly gold pixels change: the stone's own pixels are below red −
+    blue 30, claws 50–100). Rings C and D now match ring A within a few levels, stones changed by 0.000–0.002 on
+    average. Ring B was already within about 5. (2026-10-15.)
 34. **Nano Banana's 4k backgrounds come in tiles** 2–3 levels apart (ring D: 252 against 254.5): invisible at first,
     a lighter strip once framed. `bg-even.cjs` evens them; protect stones by their detail, not with boxes (an
     unevened box shows as a patch). (Ring D, 2026-10-15.)
