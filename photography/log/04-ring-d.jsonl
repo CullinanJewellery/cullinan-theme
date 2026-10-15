@@ -16,3 +16,4 @@
 {"date":"2026-10-15","step":"owner: likes the yellow hand photo (saved as жълто злато/03 на ръка); white on the hand: keep improving the computer way"}
 {"date":"2026-10-15","step":"metal-swap --hand, connected fill through shaded-gold colours (hue 15.5+, sat 0.6+)","credits":0,"verdict":"fail: band white but the mask leaked into the skin's shadow along the band (grey patches); reverted to the previous rule (lesson 37)"}
 {"date":"2026-10-15","step":"owner: no preference on white-on-hand; tried an outline: copy with the ring painted magenta","model":"nano_banana_2_1","res":"4k","inputs":["65e6fdc2 only"],"credits":3,"job":"66c544c9","verdict":"fail: the painted ring was wider and blobby and shifted; best alignment covered 11% of the real gold; outline tool removed"}
+{"date":"2026-10-15","step":"owner: no white hand photo. Ring D finished: yellow 01 (main), yellow 03 on the hand, white 01, rose 01, silver 01 (= white); 18 credits"}

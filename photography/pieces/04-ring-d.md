@@ -73,3 +73,6 @@ front and above. Clearest: 44 and 45 (from above: the four claws and the S of th
 - Hand: AI photo (job 65e6fdc2, 3 credits) approved by the owner, saved as `жълто злато/03 на ръка - жълто злато.png`.
   White and rose on the hand: the computer way works for rose; for white, shaded gold and skin share a colour
   (lesson 37), so it is not clean yet; waiting for the owner. Ring D at 15 credits.
+- **Finished (2026-10-15):** owner: no white hand photo. In the folders: yellow 01 (main) and 03 on the hand; white,
+  rose and silver 01 (ring A's colours). The rose-on-hand test is not used. 18 credits. Next: the Shopify upload
+  (`../upload-checklist.md`) and the piece's name.
