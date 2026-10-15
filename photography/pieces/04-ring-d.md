@@ -10,8 +10,11 @@ front and above. Clearest: 44 and 45 (from above: the four claws and the S of th
 - Kind: **solitaire** (one main stone) — see `../staging.md` §2.
 - **Stone:** one round brilliant-cut **zircon (cubic zirconia)** (owner, 2026-10-15), clear and colourless, with a
   little rainbow fire (photo 44). About two and a half to three times as wide as the band.
-- **Setting:** the stone is held **only by four claws** (prongs) with small rounded tips. They rise straight up from
-  where the band's two ends meet, past the stone, and curl over its edge. **Under the stone there is nothing: no
+- **Setting:** the stone is held **only by four claws** (prongs) with small rounded tips. They rise from where the
+  band's two ends meet, past the stone, and curl over its edge. **The claws are squarish, flat-sided bars, a little
+  thick, not thin round wires; they lean slightly inward toward the bottom (a gentle V); at the bottom they curve
+  together and join the band in a rounded U, seen from the front** (owner, 2026-10-15, with a sketch of the U; photos
+  47, 49). Small, just visible differences. **Under the stone there is nothing: no
   ring, collar, gallery or basket**, only open space between the claws (owner, 2026-10-15: "the stone is hold by the
   four prongs only"; my first sheet said "a small gold basket" and the first photo drew one; photos 39, 41, 47, 49). **Claws yellow gold like the band** (owner, 2026-10-15; the pale tips in photo 38 are the
   light). No rhodium on this ring.
@@ -37,9 +40,10 @@ front and above. Clearest: 44 and 45 (from above: the four claws and the S of th
 
 > THE RING (only from the raw photos, do not add or remove anything): a thin, delicate 18K yellow gold solitaire
 > ring. One round brilliant-cut cubic zirconia stone, clear and colourless, sparkling like a small diamond (never
-> milky or grey), held high ONLY by exactly FOUR yellow gold claws with small rounded tips: they rise straight up
-> from where the band's two ends meet and curl over the stone's edge. Under the stone there is no ring, collar or
-> basket, only open space between the four claws. The stone is about two
+> milky or grey), held high ONLY by exactly FOUR yellow gold claws with small rounded tips. The claws are squarish,
+> flat-sided bars, a little thick, leaning slightly inward toward the bottom like a gentle V; at the bottom they
+> curve together and join the band in a rounded U (seen from the front); at the top they curl over the stone's edge.
+> Under the stone there is no ring, collar or basket, only a little open space between the claws above the U. The stone is about two
 > and a half times as wide as the band. The band is thin, plain and polished, with a flat outer face and soft edges,
 > the same width all round; near the head its two sides are offset in a gentle S (bypass): one side passes in front
 > of the head, the other behind it. No other stones, no engraving or text. Slim and fine, not chunky.
