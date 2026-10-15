@@ -64,3 +64,6 @@ front and above. Clearest: 44 and 45 (from above: the four claws and the S of th
   background evened, framed as standing. Sent: `чернови/01 основна снимка - жълто злато - за одобрение 3.png`.
   Ring D at 12 credits. (The claw shape in the sheet above was the owner's earlier request; the approved direction is
   now the first photo's claws without the collar.)
+- Owner approved yellow 01 („make the white rose and silver“). White, rose and silver (= white) made with
+  `metal-swap.cjs` (free) and saved with the yellow in the metal folders. **Left: the hand photo**, waiting for the
+  owner's phone photo of ring D on a hand.
