@@ -58,3 +58,9 @@ front and above. Clearest: 44 and 45 (from above: the four claws and the S of th
   perfect except the ring under the stone (my sheet's mistake, lesson 33). One-input edit removed it (08cd9b78, 3
   credits); background evened with `bg-even.cjs` (owner's OK), framed as standing. Sent for the owner's OK:
   `чернови/01 основна снимка - жълто злато - за одобрение 2.png`. 6 credits so far.
+- Owner asked for squarer, thicker claws in a V joined by a U (edit 51ce6825, 3 credits); then "not yet" and marked
+  on the FIRST photo the collar under the stone: remove only that. Edit of the first photo (ee0a7210, 3 credits),
+  then on the computer: gold back to the first photo's (218,178,132), the stone's cast back to the first photo's,
+  background evened, framed as standing. Sent: `чернови/01 основна снимка - жълто злато - за одобрение 3.png`.
+  Ring D at 12 credits. (The claw shape in the sheet above was the owner's earlier request; the approved direction is
+  now the first photo's claws without the collar.)

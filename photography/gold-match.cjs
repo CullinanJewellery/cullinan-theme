@@ -9,32 +9,56 @@
   blends the gold's edges). Shape, size and sharpness do not change.
 
   Usage (needs sharp, NODE_PATH as for check-photo.cjs):
-    node gold-match.cjs <in.png> <out.png>
+    node gold-match.cjs <in.png> <out.png> [--target r,g,b]
+  --target: another gold to match, e.g. an earlier approved photo of the same piece (ring D, 2026-10-15: each Nano
+  Banana edit drifted the gold paler, so it goes back to the first photo's 217,178,132). With a target, the gold's
+  colour (its warmth round the brightness) is moved to the target's too, not only its brightness.
   Prints the gold before and after, measured as check-photo.cjs measures it. Then run check-photo.cjs on the result.
 */
 const sharp = require('sharp');
 
-// ring A's yellow main photo, as check-photo.cjs measures it (pixels with red − blue > 45 at 512 px)
-const TARGET = [208, 165, 114];
 const lum = (r, g, b) => 0.3 * r + 0.59 * g + 0.11 * b;
+// ring A's yellow main photo, as check-photo.cjs measures it (pixels with red − blue > 45 at 512 px), or --target
+const ti = process.argv.indexOf('--target');
+const TARGET = ti >= 0 ? process.argv.splice(ti, 2)[1].split(',').map(Number) : [208, 165, 114];
+const MOVE_COLOUR = ti >= 0;
 const TARGET_L = lum(...TARGET);
 
 // how much of a pixel is gold: none below red − blue 25 (white, grey, background), all above 55
 const weight = (r, b) => Math.min(1, Math.max(0, (r - b - 25) / 30));
 
-function apply(data, ch, gamma) {
+// shift: optional colour move { yo: the photo's average gold offset, delta: target offset − that offset }; each pixel
+// gets it in proportion to how warm it is (its offset along the average gold's), so highlights and shadows follow
+function apply(data, ch, gamma, shift) {
   const out = Buffer.from(data);
+  const yn = shift ? shift.yo[0] ** 2 + shift.yo[1] ** 2 + shift.yo[2] ** 2 : 0;
   for (let p = 0; p < data.length; p += ch) {
     const r = data[p], g = data[p + 1], b = data[p + 2];
     const w = weight(r, b);
     if (!w) continue;
     const L = lum(r, g, b);
     const d = w * (255 * Math.pow(L / 255, gamma) - L);
-    out[p] = Math.max(0, Math.min(255, Math.round(r + d)));
-    out[p + 1] = Math.max(0, Math.min(255, Math.round(g + d)));
-    out[p + 2] = Math.max(0, Math.min(255, Math.round(b + d)));
+    let c = [0, 0, 0];
+    if (shift) {
+      const s = Math.max(0, ((r - L) * shift.yo[0] + (g - L) * shift.yo[1] + (b - L) * shift.yo[2]) / yn);
+      c = shift.delta.map((v) => w * s * v);
+    }
+    out[p] = Math.max(0, Math.min(255, Math.round(r + d + c[0])));
+    out[p + 1] = Math.max(0, Math.min(255, Math.round(g + d + c[1])));
+    out[p + 2] = Math.max(0, Math.min(255, Math.round(b + d + c[2])));
   }
   return out;
+}
+
+// the average offset of the clearly gold pixels (red − blue > 45) from their brightness
+function goldOffset(data, ch) {
+  const o = [0, 0, 0];
+  let n = 0;
+  for (let p = 0; p < data.length; p += ch) {
+    const r = data[p], g = data[p + 1], b = data[p + 2];
+    if (r - b > 45) { const L = lum(r, g, b); o[0] += r - L; o[1] += g - L; o[2] += b - L; n++; }
+  }
+  return o.map((v) => v / n);
 }
 
 function measure(data, ch) {
@@ -56,10 +80,16 @@ function measure(data, ch) {
   // find the curve on a 512 px copy, measured exactly as check-photo.cjs does
   const small = await sharp(src).resize(512, 512, { fit: 'fill' }).removeAlpha().raw().toBuffer({ resolveWithObject: true });
   const before = measure(small.data, small.info.channels);
+  let shift = null;
+  if (MOVE_COLOUR) {
+    const yo = goldOffset(small.data, small.info.channels);
+    const to = TARGET.map((v) => v - TARGET_L);
+    shift = { yo, delta: to.map((v, i) => v - yo[i]) };
+  }
   let lo = 0.5, hi = 2.5;
   for (let i = 0; i < 30; i++) {
     const mid = (lo + hi) / 2;
-    const m = measure(apply(small.data, small.info.channels, mid), small.info.channels);
+    const m = measure(apply(small.data, small.info.channels, mid, shift), small.info.channels);
     if (lum(...m.rgb) > TARGET_L) lo = mid; else hi = mid;
   }
   const gamma = (lo + hi) / 2;
@@ -67,7 +97,7 @@ function measure(data, ch) {
   // apply it to the full-size photo
   const full = await sharp(src).removeAlpha().raw().toBuffer({ resolveWithObject: true });
   const { width, height, channels } = full.info;
-  await sharp(apply(full.data, channels, gamma), { raw: { width, height, channels } }).png().toFile(dst);
+  await sharp(apply(full.data, channels, gamma, shift), { raw: { width, height, channels } }).png().toFile(dst);
 
   const check = await sharp(dst).resize(512, 512, { fit: 'fill' }).removeAlpha().raw().toBuffer({ resolveWithObject: true });
   const after = measure(check.data, check.info.channels);

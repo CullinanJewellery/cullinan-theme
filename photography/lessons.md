@@ -131,6 +131,13 @@ Each line: what went wrong, the rule now, where it came from. Newest last.
     the raw photos show; for every part under or behind a stone say what is there and what is not ("no ring, collar
     or basket"). A one-input Nano Banana edit removed it and kept the rest (outline moved 0.002), but tinted the stone
     a touch violet. (Ring D, 2026-10-15, 3 credits.)
+35. **Edit from the photo the owner approved, and name only the part to change.** Ring D: an edit that described how
+    the claws should run reshaped them; edits stacked on edits tinted the stone more lilac each time (red − green 4 →
+    7 → 10) and paled the gold (217,178,132 → 225,179,141). The owner marked the part on the first photo ("just
+    remove the thing i marked … everything else the same"); one edit of the first photo naming only that part ("the
+    claws stay exactly as they are") did it, and the computer put the stone and gold back to the first photo's colours
+    (`stone-clear.cjs --like`, `gold-match.cjs --target`). Ask the owner to mark the part when words are unclear.
+    (Ring D, 2026-10-15.)
 34. **Nano Banana's 4k backgrounds come in tiles** 2–3 levels apart (ring D: 252 against 254.5): invisible at first,
     a lighter strip once framed. `bg-even.cjs` evens them; protect stones by their detail, not with boxes (an
     unevened box shows as a patch). (Ring D, 2026-10-15.)

@@ -107,6 +107,8 @@ Full recipe with the exact Higgsfield prompts: `photography/README.md` „Produc
   Worn photos (hand, body) get the same with `--hand`; the owner reviews each one: ask whether they like it and offer
   any further work that would make it look better (owner, 2026-10-14). `photography/bg-even.cjs` evens a tiled
   background (Nano Banana 4k tiles 2–3 levels apart) without touching the piece, its shadow or stones (owner, 2026-10-15).
+  After a Nano Banana edit, `stone-clear.cjs` and `gold-match.cjs --target` put a stone's and the gold's colour back
+  to the approved photo's (each edit drifts them; owner's OK, 2026-10-15).
 - **Background** flat seamless off-white #FCFBFC edge to edge; **shadow** soft neutral grey, falling to the left, with
   a thin darker contact shadow; no gold tint on the floor.
 - **Never change the jewellery (owner, 2026-10-13: "I did not say to change the jewelry")**: an edit changes only
