@@ -57,10 +57,57 @@ function hs(r, g, b) {
   return [h, d / mx];
 }
 const ramp = (v, a, b) => Math.min(1, Math.max(0, (v - a) / (b - a)));
-// on a hand: gold hue (24–29° in, 50–60° out) and enough colour (saturation 0.15–0.25)
+// on a hand: gold hue (24–29° in, 50–60° out) and enough colour (saturation 0.15–0.25); also hue 21–24° when strongly
+// saturated (ring D's hand photo, 2026-10-15: skin at 21° is mid-saturated, gold there is above 0.5)
 function handWeight(r, g, b) {
   const [h, s] = hs(r, g, b);
-  return Math.min(ramp(h, 24, 29), 1 - ramp(h, 50, 60)) * ramp(s, 0.15, 0.25);
+  const out = 1 - ramp(h, 50, 60);
+  const main = Math.min(ramp(h, 24, 29), out) * ramp(s, 0.15, 0.25);
+  const deep = Math.min(ramp(h, 20, 22), out) * ramp(s, 0.45, 0.55);
+  return Math.max(main, deep);
+}
+// shaded gold reaches into the skin's hues, but only next to the gold: pixels within R px of clear gold that are
+// strongly saturated and not too red (hue 12°+, saturation 0.4+) join it; then the edge is softened over 2 px
+function handMask(data, W, H, ch, box) {
+  const x0 = Math.round(box[0] * W), x1 = Math.round(box[2] * W), y0 = Math.round(box[1] * H), y1 = Math.round(box[3] * H);
+  const bw = x1 - x0, bh = y1 - y0, R = 6;
+  const core = new Float32Array(bw * bh), near = new Uint8Array(bw * bh);
+  for (let y = 0; y < bh; y++) for (let x = 0; x < bw; x++) {
+    const p = ((y + y0) * W + x + x0) * ch;
+    core[y * bw + x] = handWeight(data[p], data[p + 1], data[p + 2]);
+  }
+  // dilate the clear gold (weight over 0.5) by R px: rows, then columns
+  const rowD = new Uint8Array(bw * bh);
+  for (let y = 0; y < bh; y++) for (let x = 0; x < bw; x++) {
+    if (core[y * bw + x] <= 0.5) continue;
+    for (let d = -R; d <= R; d++) { const xx = x + d; if (xx >= 0 && xx < bw) rowD[y * bw + xx] = 1; }
+  }
+  for (let x = 0; x < bw; x++) for (let y = 0; y < bh; y++) {
+    if (!rowD[y * bw + x]) continue;
+    for (let d = -R; d <= R; d++) { const yy = y + d; if (yy >= 0 && yy < bh) near[yy * bw + x] = 1; }
+  }
+  const w = new Float32Array(bw * bh);
+  for (let y = 0; y < bh; y++) for (let x = 0; x < bw; x++) {
+    const i = y * bw + x;
+    let v = core[i];
+    if (near[i] && v < 1) {
+      const p = ((y + y0) * W + x + x0) * ch;
+      const [h, s] = hs(data[p], data[p + 1], data[p + 2]);
+      if (h <= 55) v = Math.max(v, ramp(h, 12, 16) * ramp(s, 0.4, 0.55));
+    }
+    w[i] = v;
+  }
+  // soften: 5 x 5 box average
+  const soft = new Float32Array(bw * bh);
+  for (let y = 0; y < bh; y++) for (let x = 0; x < bw; x++) {
+    let a = 0, n = 0;
+    for (let dy = -2; dy <= 2; dy++) for (let dx = -2; dx <= 2; dx++) {
+      const yy = y + dy, xx = x + dx;
+      if (yy >= 0 && yy < bh && xx >= 0 && xx < bw) { a += w[yy * bw + xx]; n++; }
+    }
+    soft[y * bw + x] = Math.max(w[y * bw + x] > 0.99 ? 1 : 0, a / n);
+  }
+  return { get: (i) => { const x = (i % W) - x0, y = Math.floor(i / W) - y0; return x >= 0 && x < bw && y >= 0 && y < bh ? soft[y * bw + x] : 0; } };
 }
 
 (async () => {
@@ -82,8 +129,9 @@ function handWeight(r, g, b) {
     const x = (i % W) / W, y = Math.floor(i / W) / H;
     return stones.some(([x0, y0, x1, y1]) => x >= x0 && x <= x1 && y >= y0 && y <= y1);
   };
+  const hm = box ? handMask(data, W, H, ch, box) : null;
   const pixelWeight = (i, r, g, b) => {
-    if (box) return inBox(i) ? handWeight(r, g, b) : 0;
+    if (box) return hm.get(i);
     if (stones.length && inStone(i)) return ramp(r - b, 35, 55);
     return weight(r, b);
   };
