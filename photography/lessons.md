@@ -156,3 +156,14 @@ Each line: what went wrong, the rule now, where it came from. Newest last.
 34. **Nano Banana's 4k backgrounds come in tiles** 2–3 levels apart (ring D: 252 against 254.5): invisible at first,
     a lighter strip once framed. `bg-even.cjs` evens them; protect stones by their detail, not with boxes (an
     unevened box shows as a patch). (Ring D, 2026-10-15.)
+38. **The polish is set when the photo is made; an edit cannot change it.** Ring E (2026-10-15): the owner saw the
+    lower half of each arm and the bottom of the band satin (fine grain, flat soft gradient) while the head was glassy;
+    ring A is polished everywhere. Two Nano Banana one-input edits ("mirror polish everywhere"; then the jeweller's
+    set-up in words: white tent, thin black strips, bright edge line, darker middle, second highlight) left the finish
+    as it was (lower third: gradient 10.6 → 10.1 and 9.6; dark reflections 3.3% → 2.8% and 2.7%; the first also turned
+    the background cream). A computer test (de-grain + local contrast) brought the numbers to ring A's but the owner
+    did not like it: retouchers say overall contrast and blur make metal look flat; a polished band needs crisp
+    reflections painted along its curve. Why it happens: polished gold is a mirror; where the band reflects the plain
+    white floor and tent it looks satin. → Put the reflection set-up in the prompt of the FIRST photo (white tent with
+    thin black strips, the same crisp reflections along the whole band, no grain), and check the lower band at full
+    size before anything else. Ring D's main photo measures the same in its lower band. 6 credits.
