@@ -70,3 +70,6 @@ front and above. Clearest: 44 and 45 (from above: the four claws and the S of th
 - 2026-10-15 (owner: all metals the same as ring A; the white had touched the stone): yellow to ring A's gold,
   white and rose with ring A's targets, a stone box so the stone stays untouched. Previous versions in
   `чернови/преди цветовете на пръстен А`.
+- Hand: AI photo (job 65e6fdc2, 3 credits) approved by the owner, saved as `жълто злато/03 на ръка - жълто злато.png`.
+  White and rose on the hand: the computer way works for rose; for white, shaded gold and skin share a colour
+  (lesson 37), so it is not clean yet; waiting for the owner. Ring D at 15 credits.

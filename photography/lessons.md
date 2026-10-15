@@ -146,6 +146,13 @@ Each line: what went wrong, the rule now, where it came from. Newest last.
     `--stone` box round every stone (inside, only clearly gold pixels change: the stone's own pixels are below red −
     blue 30, claws 50–100). Rings C and D now match ring A within a few levels, stones changed by 0.000–0.002 on
     average. Ring B was already within about 5. (2026-10-15.)
+37. **On a hand, gold in deep shadow and skin in shadow are the same colour.** Ring D's hand photo, measured
+    (2026-10-15): shaded gold hue 16–23° saturation 0.63–0.94; the skin's shadow right beside the band the same.
+    Three computer rules for white: plain hue (the shaded band stayed gold); hue plus nearby saturated pixels (the band
+    whiter, a few grey marks on lit skin); a connected fill through shaded-gold colours (the band white, but it leaked
+    into the skin's shadow along the band: grey patches). Kept the second, gentlest. Rose works with any of them (rose
+    is close to gold). → White on a hand needs an outline of the ring that does not come from colour, or a model's
+    colour change; the owner decides. (2026-10-15.)
 34. **Nano Banana's 4k backgrounds come in tiles** 2–3 levels apart (ring D: 252 against 254.5): invisible at first,
     a lighter strip once framed. `bg-even.cjs` evens them; protect stones by their detail, not with boxes (an
     unevened box shows as a patch). (Ring D, 2026-10-15.)
