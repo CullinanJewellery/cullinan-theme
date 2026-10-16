@@ -119,3 +119,8 @@ Cost: 3 + 3 + 1.25 + 1.25 = 8.5 credits.
 - 2026-10-15 (owner: all metals the same as ring A): background evened, yellow to ring A's gold, white and rose
   remade with ring A's targets, five stone boxes so the stones stay untouched. Previous versions in
   `чернови/преди цветовете на пръстен А`. Still to do: the hand photo.
+- 2026-10-16, owner's new hand (`../prompts/03-yellow-hand.md`): on the bare hand 4223debe (job 64d8a5a4, 3 credits):
+  small and dainty on the ring finger, white rims, but **two beads between the stones** again (lesson 30). Draft in
+  `чернови/03 на ръка - нова ръка - две топчета, не е готова.png`. Owner: **leave C for now**. Proposed way when we
+  come back: let GPT Image 2.5 (which counted three before) redraw only a small square round the ring and put it back
+  on the computer (needs the owner's OK: a new kind of computer step).

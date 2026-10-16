@@ -61,3 +61,9 @@ zoomed in on 2026-10-15. Clearest: 60–62 (front: the swirl round the stone), 5
   edit on the computer (one gain and offset per channel, measured outside the ring; nothing moves), stone cleared
   (`stone-clear.cjs`). Ring gold 215,166,116 (ring D's approved hand 216,162,107). Sent for the owner's review:
   `чернови/03 на ръка - жълто злато - за одобрение.png`. **Ring E at 18 credits (the limit).**
+- 2026-10-16, owner: a new hand for rings B–E (more feminine, a visible manicure, the ring smaller, zoomed out, five
+  nails; `../prompts/03-yellow-hand.md`). Ring E was the test: a first new hand (523acddb), the owner's corrections
+  (ring smaller, white nails, diamond-like zircon, a hand model's hand; an edit e2b530a9 changed only the nails), a
+  fresh photo with every point (4ed08d1e) — **owner: "i like it"** — grooves fixed to one arm (5a7a2c11), colours put
+  back to 4ed08d1e. Saved as `жълто злато/03 на ръка - жълто злато.png`. Ring E at 30 credits (12 over the limit, for
+  the owner's new request).

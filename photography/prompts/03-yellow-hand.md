@@ -41,6 +41,32 @@ THE HAND: a professional hand model's hand for fine jewellery: flawless, smooth,
 visible wrinkles, creases or dry texture on the knuckles and fingers; slender, graceful fingers; neat cuticles.
 ```
 
+**Approved (owner, 2026-10-16): ring E's hand photo (job 4ed08d1e, grooves fixed in 5a7a2c11) — "i like it".** For
+the other rings the owner asked for the ring smaller still and the white nails quieter ("not that catchy for the
+eye"). **The hand reference for every next piece is the bare hand, Higgsfield job `4223debe-fb3c-4e80-9efd-127de4b2567d`**
+(ring E's approved hand with the ring removed and the nails a sheer, quieter milky white). A bare hand cannot leak a
+ring's design (lesson 1). Inputs: the piece's approved yellow photo(s), then the bare hand last. Prompt (rings B, C,
+D, 2026-10-16, 3 credits each):
+
+```
+Photorealistic fine-jewellery photograph: the hand from the LAST reference image wearing the exact ring from the
+first reference image(s).
+THE RING, exactly as in the first image, nothing added or removed: <the piece sheet's description; stones crystal
+clear like small well-cut diamonds: crisp facets, bright white sparkle, never cloudy or grey>. <Which part sits on
+top of the finger and faces up; the plain band goes round underneath.>
+THE RING IS SMALL AND DAINTY: <sizes, e.g. stones about 2 mm, the band about 1.2 mm>, so it looks delicate and
+elegant on the finger, smaller than a close-up makes rings look, never big or heavy.
+THE HAND exactly as in the last reference image: the same hand, skin, pose, the same sheer milky-white almond nails,
+the same linen and light. The ring on the ring finger near its base (the fourth finger counting from the thumb).
+Frame it a little wider than the last reference so the wrist shows: the whole hand with all five nails visible.
+The ring pin-sharp, polished warm yellow gold. A natural, real photograph. No other jewellery, no text, no logo.
+Square 1:1.
+```
+
+Check: the ring on the ring finger (the finger next to the little finger), the design and counts, the stone's tint
+(`stone-clear.cjs` when lilac or pink). Ring C (five stones, three beads between) came out with two beads between the
+stones again (lesson 30); owner: leave C for now.
+
 ## Ring A's hand (rings A, B, D, E until 2026-10-15)
 
 Model `nano_banana_2_1`, `resolution: 4k`, `thinking_level: high` (3 credits).

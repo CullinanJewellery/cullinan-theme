@@ -8,6 +8,17 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-16 — a new hand for the hand photos, from ring B on **(owner)**
+- Owner: a lot more feminine hand, a visible but not long manicure, the ring smaller and elegant, zoomed out so the
+  whole hand and all five nails show; then: the ring smaller still, white nails that do not catch the eye, the zircon
+  crystal clear like a diamond, a hand model's hand. Ring A keeps its own hand photo.
+- Ring E's new hand photo approved ("i like it"); the same hand without a ring is now the hand reference
+  (Higgsfield job 4223debe): rings B and D remade on it and kept; ring C left for now (the model draws two beads
+  between its stones, it has three). Old hand photos kept in each ring's `чернови/стара ръка`. Prompt and rules:
+  `photography/prompts/03-yellow-hand.md`, CLAUDE.md „Product photo standard“.
+- Not changed: ring B's white and rose hand photos still show the old hand (they appear when a customer picks white
+  or rose); waiting for the owner.
+
 ## 2026-10-14 — five photos per piece; photo budget **(owner)**
 - Budget per piece set by the owner: about 18 credits, finals at 4k, then five photos instead of nine: yellow gold
   standing, lying flat and on the hand; white and rose gold standing only; silver = the white photo. About 11.5

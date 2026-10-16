@@ -76,3 +76,6 @@ front and above. Clearest: 44 and 45 (from above: the four claws and the S of th
 - **Finished (2026-10-15):** owner: no white hand photo. In the folders: yellow 01 (main) and 03 on the hand; white,
   rose and silver 01 (ring A's colours). The rose-on-hand test is not used. 18 credits. Next: the Shopify upload
   (`../upload-checklist.md`) and the piece's name.
+- 2026-10-16, owner's new hand (`../prompts/03-yellow-hand.md`): on the bare hand 4223debe (job a4ec85f5, 3 credits),
+  smaller ring, four claws, the S, nothing under the stone; the stone's lilac tint cleared with `stone-clear.cjs`.
+  Owner kept it: `жълто злато/03 на ръка - жълто злато.png`; the old hand photo in `чернови/стара ръка`. 21 credits.
