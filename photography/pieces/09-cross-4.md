@@ -1,0 +1,41 @@
+# Cross 4 — small flared cross with ridged arms (Bulgarian name and catalogue number to come)
+
+Folder: `pictures for the website/09 <name> - номер предстои` (made when the main photo is approved).
+Raw photos (`raw pictures for use`, 12 October 2026): hanging `20261012_164537148_iOS.jpg`,
+`20261012_164540250_iOS.jpg` (my listing: 116–117); lying `20261012_164616307_iOS.jpg`, `20261012_164626231_iOS.jpg`,
+`20261012_164628595_iOS.jpg` (118–120; clearest); in the fingers, side and back `20261012_164657539_iOS.jpg`,
+`20261012_164659867_iOS.jpg`, `20261012_164701606_iOS.jpg` (121–123). All eight examined zoomed in on 2026-10-16.
+Shown to the owner as „Кръст 4“.
+
+## The piece
+
+- Kind: small pendant cross (`../staging.md` §4).
+- Stones: none.
+- Metal: polished yellow gold only.
+- Shape: a small cross whose four arms flare gently toward square-cut ends; each arm is raised along its middle into a
+  soft ridge (a gentle V-shaped, faceted profile), so the light runs in a bright line down the centre of every arm and
+  the ridges meet at the centre; the arm ends are cut square with small chamfers. The lower arm the longest. Seen
+  from the side (121–123) the arms are light, folded-looking gold (a hollow, stamped back), not a thick slab.
+- Bail: a small loop on top with a round jump ring through it.
+- Counts: 4 arms, 1 loop, 1 jump ring. Left and right arms equal.
+- Nothing uncertain was found, so no question was asked about this cross.
+
+## Shots (owner, 2026-10-16)
+
+| Shot | Position |
+|---|---|
+| Yellow 01 (main) | Lying flat, front up, seen from above at a slight angle, as in `20261012_164616307_iOS.jpg`; the jump ring at the top. No chain. Framed by height (`frame-photo.cjs` 1). |
+| Yellow on the neck | Worn on a fine gold chain at real size. |
+| White, rose, silver | `metal-swap.cjs` from the yellow photos. |
+
+## Description to paste into prompts
+
+> THE CROSS (only from the reference photos, do not add or remove anything): a small, delicate 18K yellow gold
+> pendant cross. Its four arms flare gently toward square-cut ends with small chamfers; each arm rises along its
+> middle into a soft ridge, so a bright line of light runs down the centre of every arm and the ridges meet at the
+> centre; the lower arm is the longest. Highly polished. A small loop on top with a round jump ring through it. No
+> stones, no texture, no text.
+
+## Status
+
+- 2026-10-16: all raw photos examined; nothing to ask; no credits yet. Plan: main 3 credits, neck 3.
