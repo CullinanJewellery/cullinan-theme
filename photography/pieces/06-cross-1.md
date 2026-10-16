@@ -33,8 +33,8 @@ examined zoomed in on 2026-10-16; they are nearly the same view (front). Shown t
 ## Description to paste into prompts
 
 > THE CROSS (only from the reference photos, do not add or remove anything): a small 18K yellow gold pendant cross.
-> Its four arms flare out toward their ends, each end rounded with a soft point; the lower arm is the longest. A thin
-> two thin parallel lines with a fine milled, beaded texture run along the middle of every arm, forming a narrow
+> Its four arms flare out toward their ends, each end rounded with a soft point; the lower arm is the longest.
+> Two thin parallel lines with a fine milled, beaded texture run along the middle of every arm, forming a narrow
 > inner cross, and curve outward toward the flared ends; the gold on both sides of them is smooth and highly
 > polished. All of it bright polished yellow gold: in the reference photos the faces look dark brown
 > only because they reflect a dark room; there is no enamel and no dark colour on the piece. A small round loop on
