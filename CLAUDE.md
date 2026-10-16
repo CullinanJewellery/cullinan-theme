@@ -148,7 +148,9 @@ Full recipe with the exact Higgsfield prompts: `photography/README.md` „Produc
   not cropped. Output 2048 × 2048. Let Higgsfield make the piece smaller in the picture (about half the height) and
   let the script enlarge it: a piece generated large looks heavy (owner: ring B looked "fat").
 - **On the hand the ring must look fine and real-sized** (about 1.2–1.5 mm band for a slim ring), never chunky or
-  rough (owner, 2026-10-13).
+  rough (owner, 2026-10-13). **New hand from ring B on (owner, 2026-10-16; ring A keeps its own):** a lot more
+  feminine, a medium manicure that is visible but not long, the ring a little smaller so it looks elegant, zoomed out
+  so the whole hand and all five nails show. Prompt: `photography/prompts/03-yellow-hand.md`.
 - **Yellow gold must be ring A's gold every time** (owner, twice): after any yellow photo, measure the gold against
   ring A's main photo (about RGB 208, 165, 114); if it is off, run `photography/gold-match.cjs` (owner's choice,
   2026-10-14; Higgsfield gold edits went pale, brass or copper and dulled the polish, lessons 13–16, 27).

@@ -1,5 +1,31 @@
 # Yellow 03 on the hand
 
+**New hand (owner, 2026-10-16), for every piece after ring A (rings B, C, D, E and later; ring A keeps its hand):**
+a lot more feminine hand; a longer manicure that is just visible, not too long; the ring a little smaller on the hand,
+small enough to look elegant, not big; zoomed out so the whole hand shows, with all five nails visible (the old
+photos showed two). Ring A's hand photo is no longer the hand reference for these pieces: the model copies the hand
+it is given, so the new hand is described in words (below) until the owner approves one; then that approved photo is
+the hand reference for the next pieces.
+
+```
+THE RING'S SIZE: small, fine and elegant on the hand, a little smaller than a close-up makes rings look: the band
+about 1.2 mm wide <and the stone about N mm across>, so the decorated part is no wider than about a quarter of the
+finger. Never big, heavy or chunky.
+THE HAND: a slender, graceful, feminine adult woman's hand with long, slim fingers and smooth, even, light skin.
+Softly shaped almond nails of medium length, clearly visible past the fingertips but not long or dramatic, with a
+neat, glossy nude-pink manicure. Relaxed elegant pose: the hand resting on soft warm ivory linen, seen from above at
+a slight angle, fingers gently together and slightly curved, the thumb relaxed beside the hand so that its nail
+shows too. The ring on the ring finger near its base, <the decorated part> on top of the finger facing the camera;
+the plain band goes round under the finger.
+FRAMING: zoomed out so the whole hand is in the picture, from the wrist to the fingertips, with all FIVE fingernails
+clearly visible; the hand fills about two thirds of the square, with linen around it. Soft, even, natural daylight.
+The ring pin-sharp. A natural, real photograph, not CGI. No other jewellery, no text, no logo. Square 1:1.
+```
+
+Check: five nails visible, nails medium (not long), the ring small and fine, the design exactly the piece's.
+
+## Ring A's hand (rings A, B, D, E until 2026-10-15)
+
 Model `nano_banana_2_1`, `resolution: 4k`, `thinking_level: high` (3 credits).
 References: the passed yellow 01 standing photo (the ring), one raw photo, then ring A's yellow hand photo for the
 hand and framing only (Higgsfield media `37d2fabd-42ac-4708-942b-089043af420a`). Watch for design leaking from
