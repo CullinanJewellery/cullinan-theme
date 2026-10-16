@@ -24,6 +24,23 @@ The ring pin-sharp. A natural, real photograph, not CGI. No other jewellery, no 
 
 Check: five nails visible, nails medium (not long), the ring small and fine, the design exactly the piece's.
 
+Owner on the first test (ring E, job 523acddb, 2026-10-16): the ring still looked too big (measured: the swirl
+covered about two thirds of the finger's width; real size is about a third) — make only the ring smaller; nails
+white or close to it (milky white); the zircon must look crystal clear like a diamond, as stones look in a premium
+catalogue (Glamira was the owner's example, shown in chat, described in words, never given to the model); the hand
+a beautiful hand model's hand. So the prompt above becomes:
+
+```
+THE RING'S SIZE: the decorated part about one third of the finger's width, the stone about one sixth of it, the
+band about 1.2 mm: fine and delicate, elegant on the finger.
+THE STONE: crystal clear, a brilliant-cut stone that looks like a well-cut diamond in a fine jewellery catalogue
+photo: crisp, sharp facets with strong contrast between bright white and dark facets, bright white sparkle and a
+touch of rainbow fire. Never cloudy, milky, grey, hazy or soft.
+THE NAILS: almond, medium length, a soft glossy milky white.
+THE HAND: a professional hand model's hand for fine jewellery: flawless, smooth, even, luminous skin with no
+visible wrinkles, creases or dry texture on the knuckles and fingers; slender, graceful fingers; neat cuticles.
+```
+
 ## Ring A's hand (rings A, B, D, E until 2026-10-15)
 
 Model `nano_banana_2_1`, `resolution: 4k`, `thinking_level: high` (3 credits).
