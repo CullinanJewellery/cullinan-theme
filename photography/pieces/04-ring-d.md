@@ -79,3 +79,4 @@ front and above. Clearest: 44 and 45 (from above: the four claws and the S of th
 - 2026-10-16, owner's new hand (`../prompts/03-yellow-hand.md`): on the bare hand 4223debe (job a4ec85f5, 3 credits),
   smaller ring, four claws, the S, nothing under the stone; the stone's lilac tint cleared with `stone-clear.cjs`.
   Owner kept it: `жълто злато/03 на ръка - жълто злато.png`; the old hand photo in `чернови/стара ръка`. 21 credits.
+- 2026-10-16, owner: white and rose on the hand by the free colour change: `metal-swap.cjs --hand --hue 0.55,0.46,0.71,0.6 / 13,17` (rose with `--relative`), lesson 39. Saved as `03 на ръка` in the white, rose and silver folders. Free.

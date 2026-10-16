@@ -16,8 +16,9 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
   (Higgsfield job 4223debe): rings B and D remade on it and kept; ring C left for now (the model draws two beads
   between its stones, it has three). Old hand photos kept in each ring's `чернови/стара ръка`. Prompt and rules:
   `photography/prompts/03-yellow-hand.md`, CLAUDE.md „Product photo standard“.
-- Not changed: ring B's white and rose hand photos still show the old hand (they appear when a customer picks white
-  or rose); waiting for the owner.
+- Owner: white and rose on the hand with the free colour change too. Rings E, B and D now have the hand photo in
+  every metal (silver = white), made from the yellow with `metal-swap.cjs --hand --hue --relative` (lesson 39).
+  Ring B's old-hand white, rose and silver hand photos moved to its `чернови/стара ръка`.
 
 ## 2026-10-14 — five photos per piece; photo budget **(owner)**
 - Budget per piece set by the owner: about 18 credits, finals at 4k, then five photos instead of nine: yellow gold

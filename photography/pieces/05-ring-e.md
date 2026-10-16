@@ -67,3 +67,4 @@ zoomed in on 2026-10-15. Clearest: 60–62 (front: the swirl round the stone), 5
   fresh photo with every point (4ed08d1e) — **owner: "i like it"** — grooves fixed to one arm (5a7a2c11), colours put
   back to 4ed08d1e. Saved as `жълто злато/03 на ръка - жълто злато.png`. Ring E at 30 credits (12 over the limit, for
   the owner's new request).
+- 2026-10-16, owner: white and rose on the hand by the free colour change: `metal-swap.cjs --hand --hue 0.52,0.45,0.73,0.62 / 20,24` (rose with `--relative`), lesson 39. Saved as `03 на ръка` in the white, rose and silver folders. Free.

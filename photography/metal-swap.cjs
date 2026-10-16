@@ -14,6 +14,10 @@
 
   Usage (needs sharp, NODE_PATH as for check-photo.cjs):
     node metal-swap.cjs <white|rose> <yellow.png> <out.png> [--stone x0,y0,x1,y1 ...] [--hand x0,y0,x1,y1]
+                        [--hue a,b] [--relative]
+  --hue a,b (with --hand): gold starts at hue a°, fully from b°; measure skin and gold in the box first (new hand of
+  2026-10-16: 13,17 for rings B and D, 20,24 for ring E's warmer photo). Also turns the gold's pale shine.
+  --relative (rose on a hand): ring A's step from yellow to rose, added to the photo's own gold.
 
   --stone (one per stone, a box round it, fractions of the photo): inside, only clearly gold pixels change (red − blue
   from 35, fully from 55: the claws), so the stone and its reflections stay exactly as they are (owner, 2026-10-15:
@@ -57,11 +61,15 @@ function hs(r, g, b) {
   return [h, d / mx];
 }
 const ramp = (v, a, b) => Math.min(1, Math.max(0, (v - a) / (b - a)));
+// --hue a,b: where gold starts on this photo's hand (the new, paler hand of 2026-10-16: skin at 0–12°, gold 12–32° on
+// rings B and D; ring E's warmer photo: skin up to about 20°, gold from 20°). Without it, ring A's hand values below.
+let HUE = null;
 // on a hand: gold hue (24–29° in, 50–60° out) and enough colour (saturation 0.15–0.25); also hue 21–24° when strongly
 // saturated (ring D's hand photo, 2026-10-15: skin at 21° is mid-saturated, gold there is above 0.5)
 function handWeight(r, g, b) {
   const [h, s] = hs(r, g, b);
   const out = 1 - ramp(h, 50, 60);
+  if (HUE) return Math.min(ramp(h, HUE[0], HUE[1]), out) * ramp(s, 0.15, 0.25);
   const main = Math.min(ramp(h, 24, 29), out) * ramp(s, 0.15, 0.25);
   const deep = Math.min(ramp(h, 20, 22), out) * ramp(s, 0.45, 0.55);
   return Math.max(main, deep);
@@ -93,7 +101,15 @@ function handMask(data, W, H, ch, box) {
     if (near[i] && v < 1) {
       const p = ((y + y0) * W + x + x0) * ch;
       const [h, s] = hs(data[p], data[p + 1], data[p + 2]);
-      if (h <= 55) v = Math.max(v, ramp(h, 12, 16) * ramp(s, 0.4, 0.55));
+      if (!HUE && h <= 55) v = Math.max(v, ramp(h, 12, 16) * ramp(s, 0.4, 0.55));
+      if (HUE && h <= 55) {
+        // shaded gold a little below the floor, strongly saturated
+        v = Math.max(v, ramp(h, HUE[0] - 4, HUE[0]) * ramp(s, 0.4, 0.55));
+        // the gold's pale shine (bright, hardly coloured, warm): it stayed peach on white claws (ring D, 2026-10-16)
+        const mx = Math.max(data[p], data[p + 1], data[p + 2]);
+        // (only gold-coloured shine: bright skin next to the ring is pinker and must stay as it is)
+        if (s < 0.2 && h >= HUE[0]) v = Math.max(v, ramp(mx, 200, 215) * ramp(s, 0.03, 0.06));
+      }
     }
     w[i] = v;
   }
@@ -106,6 +122,13 @@ function handMask(data, W, H, ch, box) {
       if (yy >= 0 && yy < bh && xx >= 0 && xx < bw) { a += w[yy * bw + xx]; n++; }
     }
     soft[y * bw + x] = Math.max(w[y * bw + x] > 0.99 ? 1 : 0, a / n);
+    // with --hue, the soft edge does not reach into skin-coloured pixels: on the thin rings of the new hand a 2 px
+    // edge turned the skin next to a white ring grey (2026-10-16)
+    if (HUE && !w[y * bw + x]) {
+      const p = ((y + y0) * W + x + x0) * ch;
+      const [h] = hs(data[p], data[p + 1], data[p + 2]);
+      if (h < HUE[0] - 4 || h > 55) soft[y * bw + x] = 0;
+    }
   }
   return { get: (i) => { const x = (i % W) - x0, y = Math.floor(i / W) - y0; return x >= 0 && x < bw && y >= 0 && y < bh ? soft[y * bw + x] : 0; } };
 }
@@ -114,6 +137,10 @@ function handMask(data, W, H, ch, box) {
   const args = process.argv.slice(2);
   const hi = args.indexOf('--hand');
   const box = hi >= 0 ? args.splice(hi, 2)[1].split(',').map(Number) : null;
+  const ui = args.indexOf('--hue');
+  if (ui >= 0) HUE = args.splice(ui, 2)[1].split(',').map(Number);
+  const ri = args.indexOf('--relative');
+  const relative = ri >= 0 && !!args.splice(ri, 1);
   const stones = [];
   for (let si = args.indexOf('--stone'); si >= 0; si = args.indexOf('--stone')) stones.push(args.splice(si, 2)[1].split(',').map(Number));
   const [kind, src, dst] = args;
@@ -146,7 +173,11 @@ function handMask(data, W, H, ch, box) {
   }
   const yo = avg.map((v) => v / n);
   const ynorm = Math.hypot(...yo);
-  const to = targetOffset(kind);
+  // --relative (rose on a hand): the warm light already makes the hand photo's yellow orange-pink, so ring A's rose
+  // looks like it; move the photo's own gold by ring A's step from yellow to rose instead (ring E, 2026-10-16)
+  const to = relative
+    ? yo.map((v, c) => v + targetOffset(kind)[c] - targetOffset('yellow')[c])
+    : targetOffset(kind);
   // brightness: lift the metal by the target's difference from yellow, keeping white highlights at white
   srcL /= n;
   const f = (255 - (srcL + liftOf(kind))) / (255 - srcL);

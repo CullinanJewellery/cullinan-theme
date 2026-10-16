@@ -167,3 +167,14 @@ Each line: what went wrong, the rule now, where it came from. Newest last.
     white floor and tent it looks satin. → Put the reflection set-up in the prompt of the FIRST photo (white tent with
     thin black strips, the same crisp reflections along the whole band, no grain), and check the lower band at full
     size before anything else. Ring D's main photo measures the same in its lower band. 6 credits.
+39. **On the new hand, measure where gold starts before the colour change.** Owner (2026-10-16): make white and rose
+    on the hand with the free colour change too. On the new, paler hand the gold is more orange than on ring A's
+    hand photo: skin at hue 0–12° and gold 12–32° (rings B, D); ring E's warmer photo skin up to about 20°, gold from
+    20°. `metal-swap.cjs` started at 24°, so claws and shaded band stayed gold. Now: measure a hue histogram in the
+    ring's box, then `--hand <box> --hue a,b` (13,17 for B and D; 20,24 for E). Two more fixes: the 2 px soft edge
+    must not reach skin-coloured pixels (it greyed the skin touching a white ring), and the gold's pale shine is
+    turned only when it is gold-coloured (bright pink skin next to the ring had gone grey). Rose: the hand photo's
+    yellow is already orange-pink under the warm light, so ring A's rose looked like it; `--relative` adds ring A's
+    step from yellow to rose to the photo's own gold. Rings E, B, D: white, rose and silver on the hand, 0.24–0.40% of
+    pixels changed, all on the rings. Lesson 37's limit (gold in deep shadow = skin in shadow) mattered less here: the
+    rings are small and the light even. Free.
