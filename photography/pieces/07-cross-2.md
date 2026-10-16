@@ -53,3 +53,7 @@ zoomed in on 2026-10-16. Shown to the owner as „Кръст 2 — лице А /
 ## Status
 
 - 2026-10-16: all raw photos examined; owner's answers written; no credits yet. Plan: side Б 3, side А 3, neck 3.
+- Side Б (job 3fcce472) and side А (4e5bfc07), 3 credits each: white rhodium panel with the Crucifixion (white 223,
+  neutral, untouched by the gold fix), the Mother of God side with the bail's cross; scrolls drawn a little more ornate and
+  the field reaching a little lower on the bottom arm than on the real cross. Gold to ring A's, background evened,
+  framed by height. Checker passes. Sent for the owner's OK (`07 Двустранен кръст - номер предстои/чернови`).

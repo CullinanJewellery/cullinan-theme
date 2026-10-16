@@ -12,9 +12,10 @@ examined zoomed in on 2026-10-16; they are nearly the same view (front). Shown t
 - Metal: polished yellow gold only. **The dark red-brown faces in the raw photos are polished gold reflecting the dark
   room** (owner, 2026-10-16), so in the photos they are bright polished gold.
 - Shape: a Latin cross whose four arms flare out toward their ends, each end rounded with a soft point; the lower arm
-  is the longest. A thin raised gold outline with a fine milled (beaded) texture runs just inside the edge of every
-  arm, and a thin groove line runs along the middle of each arm, meeting in a small cross at the centre, so each arm's
-  face is split into two smooth polished halves.
+  is the longest. Two thin parallel lines with a fine milled (beaded) texture run along the middle of every arm, forming
+  a narrow inner cross; toward the flared ends they curve outward with the edges. Smooth polished gold on both sides.
+  (Corrected 2026-10-16 after comparing the first photo with `20261012_162807954_iOS.jpg` up close: my first note put
+  the lines at the edges.)
 - Bail: a small round loop on top of the cross with a round jump ring through it.
 - Back: not seen in the raw photos (never shown: the cross lies front up).
 - Counts: 4 arms, 1 loop, 1 jump ring. Equal parts: the left and right arms are equal; the outline is the same width
@@ -41,4 +42,7 @@ examined zoomed in on 2026-10-16; they are nearly the same view (front). Shown t
 
 ## Status
 
-- 2026-10-16: all raw photos examined; owner's answers written; no credits yet. Plan: main 3 credits, neck 3.
+- 2026-10-16: all raw photos examined; owner's answers written. Plan: main 3 credits, neck 3.
+- Main photo (job ecb44190, 3 credits): matches the real cross (inner milled lines, flared ends, loop and jump ring);
+  gold to ring A's, background evened, framed by height (`frame-photo.cjs` 1). Checker passes. Sent for the owner's OK:
+  `06 Кръст с кант - номер предстои/чернови/01 основна снимка - жълто злато - за одобрение.png` (working name).

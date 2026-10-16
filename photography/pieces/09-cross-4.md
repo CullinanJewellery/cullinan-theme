@@ -39,3 +39,6 @@ Shown to the owner as „Кръст 4“.
 ## Status
 
 - 2026-10-16: all raw photos examined; nothing to ask; no credits yet. Plan: main 3 credits, neck 3.
+- First try (c3180759, 3 credits) came out turned diagonally with the jump ring standing up: not sent. Again with
+  "perfectly upright" (eac045f6, 3 credits): matches the real cross. Gold to ring A's, background evened, framed by
+  height. Checker passes. Sent for the owner's OK (`09 Малък кръст - номер предстои/чернови`).

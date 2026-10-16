@@ -36,3 +36,5 @@ Raw photos (`raw pictures for use`, 12 October 2026): hanging `20261012_16402945
 ## Status
 
 - 2026-10-16: all raw photos examined; owner's answer written; no credits yet. Plan: main 3 credits, neck 3.
+- Main photo (job a93cc51f, 3 credits): plain bevelled cross with the large bail; gold (pale 223, 191, 149) to ring A's,
+  background evened, framed by height. Checker passes. Sent for the owner's OK (`08 Гладък кръст - номер предстои/чернови`).
