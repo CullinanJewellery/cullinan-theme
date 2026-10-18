@@ -178,3 +178,13 @@ Each line: what went wrong, the rule now, where it came from. Newest last.
     step from yellow to rose to the photo's own gold. Rings E, B, D: white, rose and silver on the hand, 0.24–0.40% of
     pixels changed, all on the rings. Lesson 37's limit (gold in deep shadow = skin in shadow) mattered less here: the
     rings are small and the light even. Free.
+40. **One background for every piece, with no protected rectangle.** Owner (2026-10-18), on the crosses' metals:
+    "not the same background as the rings … I can see like a square behind them". Measured: the first `bg-even.cjs`
+    left every 8 px cell near the metal as it was, so a rectangle round each cross stayed at 252–253 while the rest
+    went to 254; and each photo went to its own median (254 on crosses 2B, 3, 4 and ring E; 251–252 on ring A). The
+    checker's background test (minimum ≥ 249) passed them all. Version 2: the background is flooded in from the edges
+    through colourless, smooth pixels (it stops at the piece's outline), set to ring A's 251, 251, 253, and the shadow
+    is kept as its depth below the surrounding background, read from a smoothed copy (grain is not shadow), with the
+    first 5 levels treated as tile steps and a soft fade at its edge. Checked in a 15× contrast view, where a
+    1-level step shows: clean on all five cross photos, gold pixels changed 0. → Run `bg-even.cjs` (v2) on every
+    finished main photo and look at it in the contrast view before sending.

@@ -106,7 +106,9 @@ Full recipe with the exact Higgsfield prompts: `photography/README.md` „Produc
   metal's colour ("i just need the color to change, nothing else": a model's colour change redraws the whole photo).
   Worn photos (hand, body) get the same with `--hand` (on the new hand: `--hue` measured per photo, `--relative` for rose; lesson 39); the owner reviews each one: ask whether they like it and offer
   any further work that would make it look better (owner, 2026-10-14). `photography/bg-even.cjs` evens a tiled
-  background (Nano Banana 4k tiles 2–3 levels apart) without touching the piece, its shadow or stones (owner, 2026-10-15).
+  background (Nano Banana 4k tiles 2–3 levels apart) without touching the piece, its shadow or stones (owner, 2026-10-15);
+  since 2026-10-18 (version 2) every background becomes ring A's measured 251, 251, 253, flooded in from the edges, so
+  no rectangle stays round the piece (owner saw "a square behind them"; lesson 40).
   After a Nano Banana edit, `stone-clear.cjs` and `gold-match.cjs --target` put a stone's and the gold's colour back
   to the approved photo's (each edit drifts them; owner's OK, 2026-10-15). **Every piece's metals are ring A's
   (owner, 2026-10-15):** yellow with `gold-match.cjs --target 208,165,113`, white and rose with `metal-swap.cjs`
