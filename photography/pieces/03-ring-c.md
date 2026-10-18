@@ -125,3 +125,6 @@ Cost: 3 + 3 + 1.25 + 1.25 = 8.5 credits.
   come back: let GPT Image 2.5 (which counted three before) redraw only a small square round the ring and put it back
   on the computer (needs the owner's OK: a new kind of computer step).
 - 2026-10-18, owner: every piece the same background: `bg-even.cjs` v2 (ring A's 251, 251, 253) on yellow 01, the same pixels copied to white, rose, silver (aligned). Previous files in `чернови/преди общия фон 2026-10-18`. Free.
+- 2026-10-18: hand photo at the real size with the owner's photo of ring C on their finger as the guide (it shows three
+  beads between the stones; 46e5e2ba, 3 credits): small and right-sized, but **two beads between the stones again**.
+  Not used; draft in `чернови`. Waiting for the owner on the next way.

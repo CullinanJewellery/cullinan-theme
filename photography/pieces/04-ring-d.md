@@ -81,3 +81,7 @@ front and above. Clearest: 44 and 45 (from above: the four claws and the S of th
   Owner kept it: `жълто злато/03 на ръка - жълто злато.png`; the old hand photo in `чернови/стара ръка`. 21 credits.
 - 2026-10-16, owner: white and rose on the hand by the free colour change: `metal-swap.cjs --hand --hue 0.55,0.46,0.71,0.6 / 13,17` (rose with `--relative`), lesson 39. Saved as `03 на ръка` in the white, rose and silver folders. Free.
 - 2026-10-18, owner: every piece the same background: `bg-even.cjs` v2 (ring A's 251, 251, 253) on yellow 01, the same pixels copied to white, rose, silver (aligned). Previous files in `чернови/преди общия фон 2026-10-18`. Free.
+- 2026-10-18, owner: hand photos at the real size from the owner's own photo. Ring D first (the furthest off: stone
+  40% of the finger, real about 25%): fresh on the bare hand (4406c2d5, 3 credits), stone about 30%. **Owner: good.**
+  Saved in every metal (`metal-swap.cjs --hand 0.55,0.48,0.70,0.60 --hue 15,19`, rose `--relative`); the larger one in
+  `чернови/стара ръка`.
