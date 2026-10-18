@@ -46,3 +46,4 @@ Raw photos (`raw pictures for use`, 12 October 2026): hanging `20261012_16402945
   cross** (someone wearing it) at real size. New raw photos from chat in `raw pictures for use/2026-10-18 от чата`.
 - New photos from the owner (2026-10-18): `кръст 3 - отпред 1/2.jpg`, `кръст 3 - в шепа 1/2/3.jpg` (the cuts visible).
   New photo from `отпред 1` and `в шепа 2` (job 719488ef, 3 credits): cuts copied from the photos.
+- **Owner (2026-10-18): "the model is great"** — yellow 01 approved (job 719488ef), saved to `жълто злато`.

@@ -67,3 +67,7 @@ zoomed in on 2026-10-16. Shown to the owner as „Кръст 2 — лице А /
 - New photos from the owner (2026-10-18): `кръст 2 - лице Б (Разпятие).jpg`, `кръст 2 - лице А (Богородица) 1.jpg`, `… 2.jpg`.
   New photos made from them: side Б job 01d5db8f, side А job 7a1cdfd2 (3 credits each), cross 4's photo as the polish
   reference only.
+- Owner (2026-10-18): the photos made from the new pictures are less detailed and "the things inside it are not the
+  same"; **the first versions were better**: keep them and only add what is missing. Side Б (3fcce472): nothing missing,
+  kept as it was. Side А (4e5bfc07): the scrolls must be white rhodium; edit of only that (job 6e778e57, 3 credits).
+  The rejected versions in `чернови/от новите снимки (отхвърлени)`.
