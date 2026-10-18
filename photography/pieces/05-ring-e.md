@@ -13,7 +13,7 @@ zoomed in on 2026-10-15. Clearest: 60–62 (front: the swirl round the stone), 5
 - **Head:** the band's two ends wrap round the stone from opposite sides, like a swirl: one end comes from the upper
   left and curls down round the stone's left side, the other from the lower right and curls up round its right side.
   The curled gold holds the stone; there are no claws and no separate cup.
-- **Band:** thin, polished yellow gold. One side plain and smooth; **the other side with fine grooves along it (two
+- **Band:** thin, polished yellow gold. One side plain and smooth; **the other side with **exactly two waves: two rounded ridges with one groove between them** (owner, 2026-10-18: "3 waves they have to be two"; first written as two
   or three thin ridges) — grooves in one band, not separate strands** (owner, 2026-10-15) — photos 56–59, 62.
   Which arm: the arm that curls **under the front** of the stone is grooved; the arm that curls **over the top** of it
   is plain (photos 62 and 56; seen from the back, 52, the grooved arm is on the left). The first try grooved both.
@@ -35,8 +35,8 @@ zoomed in on 2026-10-15. Clearest: 60–62 (front: the swirl round the stone), 5
 > ends wrap round one small round brilliant-cut cubic zirconia stone from opposite sides, like a swirl: one end curls
 > round the stone's left side, the other round its right side, and the curled gold holds the stone (no claws, no
 > separate cup). The stone is clear and colourless, sparkling like a small diamond, about one and a half times the
-> band's width. The band is thin and polished; one side is plain and smooth, the other has two or three fine
-> grooves running along it (one band, not separate strands). Plain inside, no text. Slim and fine, not chunky.
+> band's width. The band is thin and polished; one side is plain and smooth, the other has exactly two rounded waves
+> (two ridges with one groove between them) running along it (one band, not separate strands). Plain inside, no text. Slim and fine, not chunky.
 
 ## Status
 
