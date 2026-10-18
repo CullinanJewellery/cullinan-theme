@@ -124,3 +124,4 @@ Cost: 3 + 3 + 1.25 + 1.25 = 8.5 credits.
   `чернови/03 на ръка - нова ръка - две топчета, не е готова.png`. Owner: **leave C for now**. Proposed way when we
   come back: let GPT Image 2.5 (which counted three before) redraw only a small square round the ring and put it back
   on the computer (needs the owner's OK: a new kind of computer step).
+- 2026-10-18, owner: every piece the same background: `bg-even.cjs` v2 (ring A's 251, 251, 253) on yellow 01, the same pixels copied to white, rose, silver (aligned). Previous files in `чернови/преди общия фон 2026-10-18`. Free.

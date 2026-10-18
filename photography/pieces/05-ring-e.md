@@ -68,3 +68,4 @@ zoomed in on 2026-10-15. Clearest: 60–62 (front: the swirl round the stone), 5
   back to 4ed08d1e. Saved as `жълто злато/03 на ръка - жълто злато.png`. Ring E at 30 credits (12 over the limit, for
   the owner's new request).
 - 2026-10-16, owner: white and rose on the hand by the free colour change: `metal-swap.cjs --hand --hue 0.52,0.45,0.73,0.62 / 20,24` (rose with `--relative`), lesson 39. Saved as `03 на ръка` in the white, rose and silver folders. Free.
+- 2026-10-18, owner: every piece the same background: `bg-even.cjs` v2 (ring A's 251, 251, 253) on yellow 01, the same pixels copied to white, rose, silver (aligned). Previous files in `чернови/преди общия фон 2026-10-18`. Free.

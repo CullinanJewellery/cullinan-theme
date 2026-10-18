@@ -8,6 +8,12 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-18 — one background for every product photo **(owner)**
+- Owner saw "a square behind" some crosses and backgrounds not matching the rings. `photography/bg-even.cjs` v2:
+  every main photo (rings B–E in every metal, all crosses) now has ring A's background (251, 251, 253) edge to edge,
+  with the soft shadow kept and no rectangle round the piece; ring A unchanged. Lesson 40. Previous ring files in
+  each ring's `чернови/преди общия фон 2026-10-18`. Hand photos (linen) not touched.
+
 ## 2026-10-16 — a new hand for the hand photos, from ring B on **(owner)**
 - Owner: a lot more feminine hand, a visible but not long manicure, the ring smaller and elegant, zoomed out so the
   whole hand and all five nails show; then: the ring smaller still, white nails that do not catch the eye, the zircon
