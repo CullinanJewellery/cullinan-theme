@@ -77,3 +77,7 @@ zoomed in on 2026-10-16. Shown to the owner as „Кръст 2 — лице А /
 - Worn photo (owner, 2026-10-18: colours that make the cross stand out; cross 3 keeps its ivory one): black boat-neck
   top, warm grey background, neutral skin, fine 1 mm gold chain at 45 cm, real size (25 mm, side Б to the front, job 7f5867f1, 3 credits). Saved as
   `жълто злато/03 на шията - жълто злато.png`.
+- Owner (2026-10-18): the cross a little smaller on the neck, and a worn photo of the other side too. Side Б: edit of
+  7f5867f1, the cross about 12–15% smaller (08d2637a, 3 credits), colours put back. Side А: edit of that photo with the
+  approved side А as the second reference (2e150688, 3 credits), same size and place. Saved as `жълто злато/03 на шията
+  - лице Б` and `04 на шията - лице А`; the larger first one in `чернови/стара снимка на шията`.
