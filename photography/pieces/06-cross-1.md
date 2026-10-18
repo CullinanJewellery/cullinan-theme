@@ -61,3 +61,6 @@ examined zoomed in on 2026-10-16; they are nearly the same view (front). Shown t
   now smooth raised lines (the earlier beading gone; the owner's photos look smooth too: asked). Sent for the OK.
 - **Owner (2026-10-18): approved** (da88a078). Length **22.6 mm** with the jump ring (owner measures with the ring the
   chain goes through). Yellow, white, rose, silver (= white) saved to the metal folders (`metal-swap.cjs`, free).
+- Worn photo (owner, 2026-10-18: colours that make the cross stand out; cross 3 keeps its ivory one): black boat-neck
+  top, warm grey background, neutral skin, fine 1 mm gold chain at 45 cm, real size (22.6 mm, job 740fc127, 3 credits). Saved as
+  `жълто злато/03 на шията - жълто злато.png`.

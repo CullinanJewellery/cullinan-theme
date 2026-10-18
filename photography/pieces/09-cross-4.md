@@ -48,3 +48,6 @@ Shown to the owner as „Кръст 4“.
   frame by height (`frame-photo.cjs` 1), `bg-even.cjs`, `gold-match.cjs --target 208,165,113`. **One worn photo per
   cross** (someone wearing it) at real size. New raw photos from chat in `raw pictures for use/2026-10-18 от чата`.
 - Length **21 mm** with the jump ring (the smallest). Every metal saved.
+- Worn photo (owner, 2026-10-18: colours that make the cross stand out; cross 3 keeps its ivory one): black boat-neck
+  top, warm grey background, neutral skin, fine 1 mm gold chain at 45 cm, real size (21 mm, job 10b8127f, 3 credits). Saved as
+  `жълто злато/03 на шията - жълто злато.png`.

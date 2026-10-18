@@ -74,3 +74,6 @@ zoomed in on 2026-10-16. Shown to the owner as „Кръст 2 — лице А /
 - **Owner (2026-10-18): approved** — side Б 3fcce472 (01, main), side А 6e778e57 (02, white scrolls). Length **25 mm**
   with the bail. Every metal saved for both sides (`metal-swap.cjs`; the rhodium parts stay white). Front for the
   worn photo: side Б (the Crucifixion), unless the owner says otherwise.
+- Worn photo (owner, 2026-10-18: colours that make the cross stand out; cross 3 keeps its ivory one): black boat-neck
+  top, warm grey background, neutral skin, fine 1 mm gold chain at 45 cm, real size (25 mm, side Б to the front, job 7f5867f1, 3 credits). Saved as
+  `жълто злато/03 на шията - жълто злато.png`.
