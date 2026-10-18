@@ -46,3 +46,9 @@ examined zoomed in on 2026-10-16; they are nearly the same view (front). Shown t
 - Main photo (job ecb44190, 3 credits): matches the real cross (inner milled lines, flared ends, loop and jump ring);
   gold to ring A's, background evened, framed by height (`frame-photo.cjs` 1). Checker passes. Sent for the owner's OK:
   `06 Кръст с кант - номер предстои/чернови/01 основна снимка - жълто злато - за одобрение.png` (working name).
+- Owner (2026-10-16): **more flat** (the first photo looked domed and thick); polished like cross 4 (realistic
+  high polish). New photo with both in the prompt and cross 4's photo as the polish reference only (job 5e0f42e9, 3
+  credits). **No photo on a woman:** the owner will send a photo of them wearing a cross, so the size is right.
+- 2026-10-18, owner: **the same setting for every cross** (the same size in the frame, background and gold): ring A's
+  frame by height (`frame-photo.cjs` 1), `bg-even.cjs`, `gold-match.cjs --target 208,165,113`. **One worn photo per
+  cross** (someone wearing it) at real size. New raw photos from chat in `raw pictures for use/2026-10-18 от чата`.

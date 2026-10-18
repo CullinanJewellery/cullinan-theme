@@ -42,3 +42,8 @@ Shown to the owner as „Кръст 4“.
 - First try (c3180759, 3 credits) came out turned diagonally with the jump ring standing up: not sent. Again with
   "perfectly upright" (eac045f6, 3 credits): matches the real cross. Gold to ring A's, background evened, framed by
   height. Checker passes. Sent for the owner's OK (`09 Малък кръст - номер предстои/чернови`).
+- **Owner: "he is good"** (2026-10-16): yellow 01 approved; its polish is the model for all the crosses. No photo on
+  a woman (owner sends one).
+- 2026-10-18, owner: **the same setting for every cross** (the same size in the frame, background and gold): ring A's
+  frame by height (`frame-photo.cjs` 1), `bg-even.cjs`, `gold-match.cjs --target 208,165,113`. **One worn photo per
+  cross** (someone wearing it) at real size. New raw photos from chat in `raw pictures for use/2026-10-18 от чата`.

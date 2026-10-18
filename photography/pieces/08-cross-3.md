@@ -38,3 +38,11 @@ Raw photos (`raw pictures for use`, 12 October 2026): hanging `20261012_16402945
 - 2026-10-16: all raw photos examined; owner's answer written; no credits yet. Plan: main 3 credits, neck 3.
 - Main photo (job a93cc51f, 3 credits): plain bevelled cross with the large bail; gold (pale 223, 191, 149) to ring A's,
   background evened, framed by height. Checker passes. Sent for the owner's OK (`08 Гладък кръст - номер предстои/чернови`).
+- Owner (2026-10-16): **the flat cuts are much bigger, about one third of a side**: the front of every arm is a wide
+  sloping facet, a flat middle strip and a wide sloping facet, about a third each; polished like cross 4. New photo
+  (job 58d9bde6, 3 credits). No photo on a woman (owner sends one).
+- 2026-10-18, owner: **the same setting for every cross** (the same size in the frame, background and gold): ring A's
+  frame by height (`frame-photo.cjs` 1), `bg-even.cjs`, `gold-match.cjs --target 208,165,113`. **One worn photo per
+  cross** (someone wearing it) at real size. New raw photos from chat in `raw pictures for use/2026-10-18 от чата`.
+- New photos from the owner (2026-10-18): `кръст 3 - отпред 1/2.jpg`, `кръст 3 - в шепа 1/2/3.jpg` (the cuts visible).
+  New photo from `отпред 1` and `в шепа 2` (job 719488ef, 3 credits): cuts copied from the photos.

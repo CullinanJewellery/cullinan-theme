@@ -13,8 +13,10 @@ zoomed in on 2026-10-16. Shown to the owner as „Кръст 2 — лице А /
 
 - Kind: pendant cross, two-sided (`../staging.md` §4).
 - Stones: none.
-- Metal: yellow gold; **on side Б the raised field with the Crucifixion is white rhodium** (owner, 2026-10-16) and must
-  clearly show white; everything else is yellow gold. **The dark areas round the panels and inside the scrolls are
+- Metal: yellow gold with white rhodium, different on each side: **side Б — the whole inner panel with the Crucifixion
+  is white rhodium**, the frame, scrolls and bail gold (owner, 2026-10-16); **side А — the four scroll ornaments are
+  white rhodium**, the field with the Mother of God, the frame and the bail gold (owner, 2026-10-18, from the new
+  photos). The white must clearly show white. **The dark areas round the panels and inside the scrolls are
   only shadow** in the deep parts (owner): all gold, not blackened, not enamel.
 - Shape (both sides): an Orthodox-style cross, the arms with straight sides, each arm ending in a pair of curling
   scroll ornaments (C-scrolls), at the top, left, right and bottom; a raised frame along the edge of the cross and a
@@ -57,3 +59,11 @@ zoomed in on 2026-10-16. Shown to the owner as „Кръст 2 — лице А /
   neutral, untouched by the gold fix), the Mother of God side with the bail's cross; scrolls drawn a little more ornate and
   the field reaching a little lower on the bottom arm than on the real cross. Gold to ring A's, background evened,
   framed by height. Checker passes. Sent for the owner's OK (`07 Двустранен кръст - номер предстои/чернови`).
+- Owner (2026-10-16): **do not touch cross 2, neither side**; the owner will take better photos of it and send them.
+  The two drafts stay in `чернови` unused.
+- 2026-10-18, owner: **the same setting for every cross** (the same size in the frame, background and gold): ring A's
+  frame by height (`frame-photo.cjs` 1), `bg-even.cjs`, `gold-match.cjs --target 208,165,113`. **One worn photo per
+  cross** (someone wearing it) at real size. New raw photos from chat in `raw pictures for use/2026-10-18 от чата`.
+- New photos from the owner (2026-10-18): `кръст 2 - лице Б (Разпятие).jpg`, `кръст 2 - лице А (Богородица) 1.jpg`, `… 2.jpg`.
+  New photos made from them: side Б job 01d5db8f, side А job 7a1cdfd2 (3 credits each), cross 4's photo as the polish
+  reference only.
