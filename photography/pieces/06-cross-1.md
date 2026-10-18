@@ -52,3 +52,10 @@ examined zoomed in on 2026-10-16; they are nearly the same view (front). Shown t
 - 2026-10-18, owner: **the same setting for every cross** (the same size in the frame, background and gold): ring A's
   frame by height (`frame-photo.cjs` 1), `bg-even.cjs`, `gold-match.cjs --target 208,165,113`. **One worn photo per
   cross** (someone wearing it) at real size. New raw photos from chat in `raw pictures for use/2026-10-18 от чата`.
+- Owner (2026-10-18), with new photos in the white box (`raw pictures for use/2026-10-18 от чата/кръст 1 - в бялата
+  кутия 1–3.jpg`): **the only difference** is the lines: on the real cross the two lines of every arm are close together
+  near the centre (a narrow band, about a fifth of the arm) and spread out toward the flared end, ending at its two
+  corners. Edit of the second try b11f78d7, only the lines (job 8018d678, 3 credits).
+- The edit kept the lines where they were (8018d678; an edit keeps the input's shapes). Fresh photo from the white-box
+  photos (da88a078, 3 credits): the lines close together near the centre and out to the corners, flat; the lines are
+  now smooth raised lines (the earlier beading gone; the owner's photos look smooth too: asked). Sent for the OK.
