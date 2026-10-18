@@ -59,3 +59,5 @@ examined zoomed in on 2026-10-16; they are nearly the same view (front). Shown t
 - The edit kept the lines where they were (8018d678; an edit keeps the input's shapes). Fresh photo from the white-box
   photos (da88a078, 3 credits): the lines close together near the centre and out to the corners, flat; the lines are
   now smooth raised lines (the earlier beading gone; the owner's photos look smooth too: asked). Sent for the OK.
+- **Owner (2026-10-18): approved** (da88a078). Length **22.6 mm** with the jump ring (owner measures with the ring the
+  chain goes through). Yellow, white, rose, silver (= white) saved to the metal folders (`metal-swap.cjs`, free).

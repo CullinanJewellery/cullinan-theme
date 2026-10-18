@@ -71,3 +71,6 @@ zoomed in on 2026-10-16. Shown to the owner as „Кръст 2 — лице А /
   same"; **the first versions were better**: keep them and only add what is missing. Side Б (3fcce472): nothing missing,
   kept as it was. Side А (4e5bfc07): the scrolls must be white rhodium; edit of only that (job 6e778e57, 3 credits).
   The rejected versions in `чернови/от новите снимки (отхвърлени)`.
+- **Owner (2026-10-18): approved** — side Б 3fcce472 (01, main), side А 6e778e57 (02, white scrolls). Length **25 mm**
+  with the bail. Every metal saved for both sides (`metal-swap.cjs`; the rhodium parts stay white). Front for the
+  worn photo: side Б (the Crucifixion), unless the owner says otherwise.
