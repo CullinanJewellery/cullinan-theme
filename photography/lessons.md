@@ -206,3 +206,10 @@ Each line: what went wrong, the rule now, where it came from. Newest last.
     gold of luminance 232 so a large highlight reads warm, not white. Then the metals as usual
     (`metal-swap.cjs --hand --hue 15,19`, rose `--relative`; 13,17 greyed the skin). The checker's "moved" test reads
     the outline by gold colour, so a setting that turns gold "grows" the piece (0.006): expected, not a move.
+42. **A change of shape cannot be made cleanly on the computer at hand-photo size.** Owner (2026-10-19), ring E's
+    hand photo: remove the third wave with a free edit. The grooved arm is about 30 px wide in the 2048 photo, each
+    ridge 5–12 px. Automatic groove tracking locked onto the wrong dark lines; with the grooves traced by hand on
+    matched cross-sections, rebuilding the cross-section (two ridges meeting in one groove) gave two waves in the
+    middle of the arm, but every version left a jagged edge, a seam or streaks where the arm turns. Colour changes
+    (gold-match, metal-swap, rhodium-off) work locally because no pixel moves; a change in the piece's form needs a
+    model (or a new photo). → Say so before trying; show the owner the best try next to the photo.

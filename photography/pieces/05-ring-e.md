@@ -79,3 +79,8 @@ zoomed in on 2026-10-15. Clearest: 60–62 (front: the swirl round the stone), 5
   tiled the background; the hand photo still shows three ridges and the stone turned champagne. Not used, not sent.
   **Ring E at about 39 credits.** Next way proposed to the owner before any more credits (an edit with the owner's raw
   close-up of the grooved arm as a second input, so the model copies the real two ridges).
+- 2026-10-19, owner: no more credits for it; "if you can remove the 3 wave with your free edits try it", for the hand
+  photo only (not the main photo). Tried on the computer (5 versions: the two grooves traced by hand on matched
+  cross-sections, the arm's cross-section rebuilt so two ridges meet in one groove). Best try reads as two waves in
+  the middle of the arm, but its top edge is jagged and the right end smeared; not used. Draft and comparison in
+  `чернови/03 на ръка - две вълни, компютърен опит …`. The saved hand photo is unchanged (lesson 42).
