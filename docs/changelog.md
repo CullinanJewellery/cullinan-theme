@@ -8,6 +8,14 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-19 — ring C has no rhodium **(owner)**
+- Owner: ring C („Пръстен с камъчета“) is made without rhodium; remove it with the free edit and keep the hand photo
+  already made. New `photography/rhodium-off.cjs` turns the white setting round each stone into the photo's own gold
+  (stones and everything else unchanged); ring C's main photo and hand photo redone in every metal. Its piece sheet no
+  longer asks for white cups (the 2026-10-14 "rhodium clearly seen" rule stays for pieces that have rhodium). Rhodium
+  versions kept in ring C's `чернови`. Lesson 41. Free.
+- Ring E: the two edits to make the grooved arm two waves instead of three did not work (6 credits); not used.
+
 ## 2026-10-18 — one background for every product photo **(owner)**
 - Owner saw "a square behind" some crosses and backgrounds not matching the rings. `photography/bg-even.cjs` v2:
   every main photo (rings B–E in every metal, all crosses) now has ring A's background (251, 251, 253) edge to edge,

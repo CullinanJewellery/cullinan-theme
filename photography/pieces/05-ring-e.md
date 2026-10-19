@@ -72,3 +72,10 @@ zoomed in on 2026-10-15. Clearest: 60–62 (front: the swirl round the stone), 5
 - 2026-10-18: hand photo a little smaller (real size from the owner's photo): edit of the approved hand photo, the ring
   about 12% smaller (5ae735ff, 3 credits), colours put back, every metal (`--hand 0.52,0.45,0.73,0.62 --hue 20,24`).
   The previous one in `чернови/стара ръка (по-голям)`.
+- 2026-10-18/19, owner: "the ring has 3 waves they have to be two". Checked: the grooved arm shows three ridges (two
+  grooves) in yellow 01 and in the hand photo; the raw photos show two ridges with one groove. One-input edits of the
+  saved yellow 01 (0a1fd73e) and the saved hand photo (cc7afad0), 6 credits: **both failed** — the main photo still
+  reads as three ridges and the edit also grooved the curl under the stone (the approved design has it smooth) and
+  tiled the background; the hand photo still shows three ridges and the stone turned champagne. Not used, not sent.
+  **Ring E at about 39 credits.** Next way proposed to the owner before any more credits (an edit with the owner's raw
+  close-up of the grooved arm as a second input, so the model copies the real two ridges).

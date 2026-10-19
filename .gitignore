@@ -24,6 +24,7 @@ photography/*
 !photography/metal-swap.cjs
 !photography/bg-even.cjs
 !photography/stone-clear.cjs
+!photography/rhodium-off.cjs
 !photography/*.md
 !photography/pieces/
 !photography/prompts/

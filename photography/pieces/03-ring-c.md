@@ -19,11 +19,9 @@ zoomed in on 2026-10-14.
 - Lower half: thin, plain, polished gold band.
 - **All twelve beads are the same size, all five stones and cups are the same size** (owner, 2026-10-14: the photo
   with bigger beads at the ends than in the middle was rejected).
-- **Rhodium, clearly seen** (owner, 2026-10-14: "that is why it is put on the jewelry"): from the front, the whole
-  flat face of each cup is a white frame round the stone, plainly visible, never a hairline.
-  The cup each stone sits in is rhodium (white) on its visible face. Seen straight from the side, only
-  the rounded corners of the cup show a little white; the rest of the cup and the band are yellow gold. The two
-  lowest stones' white runs a little further down into the plain band.
+- **No rhodium** (owner, 2026-10-19: "for ring C there is no rhodium"): every cup is yellow gold like the rest of the
+  ring; in white and rose the cups are the ring's own metal. (Until 2026-10-19 this sheet said the cups' faces were
+  white rhodium, clearly seen; the photos showed that and were corrected with `rhodium-off.cjs`.)
 - Inside the band: the upper half has no separate smooth band, it is the row of beads and cups itself, so from inside
   it shows the rounded backs of the beads and a small round hole behind each stone (open back); the lower half is
   plain, smooth gold. (Corrected 2026-10-14 from raw photos 21, 28, 29, 33, owner's OK; it read "only a hole behind
@@ -39,7 +37,7 @@ For rings with stones the **main photo is the moonmagic-style lying photo**; the
 |---|---|
 | Yellow 01 lying (main) | Lies **flat** on the surface (not tilted), seen from the front and a little above (about 25–30°), like moonmagic's stone rings: the stone half of the band at the front, the five stones on its front edge facing the camera, round and sparkling in their cups; the plain half of the band at the back, higher in the picture, its inside visible. |
 | Yellow 02 hand | Ring finger near the base, the stones on top of the finger, real scale. |
-| White 01, rose 01 | From yellow 01 lying, metal colour only. The rhodium cups stay white in every metal. |
+| White 01, rose 01 | From yellow 01 lying, metal colour only. The cups are the ring's metal (no rhodium). |
 
 Cost: 3 + 3 + 1.25 + 1.25 = 8.5 credits.
 
@@ -52,9 +50,8 @@ Cost: 3 + 3 + 1.25 + 1.25 = 8.5 credits.
 > with exactly THREE small, slightly irregular handmade gold beads between every pair of neighbouring stones (stone,
 > three beads, stone, three beads, stone, three beads, stone, three beads, stone: the same in all four gaps, also
 > next to the middle stone). Each
-> stone sits in a small round cup whose visible top face is white rhodium; seen from the side only the rounded
-> corners of the cup show a little white, the rest of the cup and the whole band are yellow gold. The two lowest
-> stones' white runs slightly further down into the plain band. The stones face outward from the band. The upper half
+> stone sits in a small round yellow gold cup (no rhodium, no white metal anywhere on the ring). The stones face
+> outward from the band. The upper half
 > is the row of beads and cups itself: on the inside of the band it shows the rounded backs of the beads and a small
 > round hole behind each stone, never a stone or a setting. The lower half is a thin, plain, polished gold band,
 > smooth inside and out. Slim and fine, not chunky.
@@ -128,3 +125,18 @@ Cost: 3 + 3 + 1.25 + 1.25 = 8.5 credits.
 - 2026-10-18: hand photo at the real size with the owner's photo of ring C on their finger as the guide (it shows three
   beads between the stones; 46e5e2ba, 3 credits): small and right-sized, but **two beads between the stones again**.
   Not used; draft in `чернови`. Waiting for the owner on the next way.
+- 2026-10-19, owner: **no rhodium on ring C**, "use the free edit and remove it", and keep the hand photo already made
+  (46e5e2ba, two beads between the stones) and edit its colours. `rhodium-off.cjs` (new, lesson 41) on yellow 01: the
+  five white cups take the photo's own gold; stone pixels changed 0, nothing outside the cups changed; white, rose and
+  silver remade with `metal-swap.cjs` and the five stone boxes. Hand photo: `rhodium-off.cjs --hand` on the three
+  visible cups (gold sampled from the beads, `--gold-hue 16`), framed (shot 3), metals with
+  `metal-swap.cjs --hand 0.535,0.525,0.64,0.61 --hue 15,19` (rose `--relative`); saved as `03 на ръка` in every
+  metal folder. The rhodium versions: `чернови/с родий (до 2026-10-19)` (main) and `чернови/03 на ръка - истински
+  размер …` (hand). Review sheet: `чернови/пръстен C без родий - преди и след.jpg`. Free; ring C still at about 60
+  credits.
+  Measured ellipses, centre x, y, semi-axes, angle (px of the 2048 main photo; stone / outer): (261, 1093.75, 61,
+  33.75, 85.5°) / (265, 1092, 79, 45, 84°); (577.75, 1223.5, 59.25, 53.75, 84°) / (580, 1228, 78, 67, 87°);
+  (1024.25, 1272, 66.5, 62, −3°) / (1023, 1270, 80, 80, 0°); (1470, 1228.75, 61.25, 57.25, 86.5°) / (1469, 1229, 78,
+  69, 95°); (1790, 1097.5, 60, 32.5, 97.5°) / (1783, 1097, 79, 43, 95°). Hand (px of the 4096 photo, 0°): (2298,
+  2188.5, 23, 26.5) / (2300, 2192, 30.5, 33); (2430.5, 2265, 31.5, 32) / (2432, 2267, 36, 36.5); (2551, 2364, 25,
+  28) / (2545, 2365.5, 35, 31.5, 10°).

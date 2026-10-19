@@ -188,3 +188,21 @@ Each line: what went wrong, the rule now, where it came from. Newest last.
     first 5 levels treated as tile steps and a soft fade at its edge. Checked in a 15× contrast view, where a
     1-level step shows: clean on all five cross photos, gold pixels changed 0. → Run `bg-even.cjs` (v2) on every
     finished main photo and look at it in the contrast view before sending.
+41. **A piece without rhodium: turn the white setting gold on the computer, with measured ellipses.** Owner
+    (2026-10-19), ring C: "there is no rhodium so use the free edit and remove it". `rhodium-off.cjs` gives every
+    colourless pixel of each setting the colour this photo's own gold has at that brightness (the median gold pixel per
+    luminance level; rhodium's extra 13 levels taken off). What failed first: finding the stone by its facets also took
+    the smooth rim (closing joined them), and a flood through colourless pixels ran onto the floor shadow, which is as
+    colourless as rhodium. What works: two ellipses per stone, measured by eye on a gridded 3–4× close-up and drawn
+    back on it (the stone's, fitted to the dark line where stone meets setting, then refined by the darkest-line fit;
+    and the setting's outer edge); nothing within 2.5 px of the stone's ellipse changes and dark facet lines near it
+    never change (a dark facet turned gold showed as a brown dot); up to 8 px past the outer ellipse only strictly
+    colourless pixels follow (the floor beside gold is warm, red − blue 15–20); the thin grey bevel and 1–2 px gaps
+    between new gold and old gold change too. Margins are true pixels along both axes (scaled by the short axis they
+    reached 4.5 px into the narrow end stones). Check: stone pixels changed 0, nothing outside the settings changed.
+    **On a hand** the white setting reflects the skin and gold in shadow has skin's hue, so no colour test separates
+    them: `--hand` changes everything inside the outer ellipse but the stone (grown 1 px), samples gold only from
+    pixels of gold's hue (`--gold-hue`, measured: ring C's beads 16–24°, skin 4–12°), and caps highlight colour at the
+    gold of luminance 232 so a large highlight reads warm, not white. Then the metals as usual
+    (`metal-swap.cjs --hand --hue 15,19`, rose `--relative`; 13,17 greyed the skin). The checker's "moved" test reads
+    the outline by gold colour, so a setting that turns gold "grows" the piece (0.006): expected, not a move.

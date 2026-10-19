@@ -110,7 +110,9 @@ Full recipe with the exact Higgsfield prompts: `photography/README.md` „Produc
   since 2026-10-18 (version 2) every background becomes ring A's measured 251, 251, 253, flooded in from the edges, so
   no rectangle stays round the piece (owner saw "a square behind them"; lesson 40).
   After a Nano Banana edit, `stone-clear.cjs` and `gold-match.cjs --target` put a stone's and the gold's colour back
-  to the approved photo's (each edit drifts them; owner's OK, 2026-10-15). **Every piece's metals are ring A's
+  to the approved photo's (each edit drifts them; owner's OK, 2026-10-15). A piece made without rhodium that a
+  photo shows white round the stones: `photography/rhodium-off.cjs` gives the setting the photo's own gold (owner,
+  2026-10-19, ring C; lesson 41). **Every piece's metals are ring A's
   (owner, 2026-10-15):** yellow with `gold-match.cjs --target 208,165,113`, white and rose with `metal-swap.cjs`
   (ring A's measured white and rose), always with a `--stone` box round every stone so stones stay untouched.
 - **Background** flat seamless off-white #FCFBFC edge to edge; **shadow** soft neutral grey, falling to the left, with
