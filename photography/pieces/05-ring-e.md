@@ -84,3 +84,7 @@ zoomed in on 2026-10-15. Clearest: 60–62 (front: the swirl round the stone), 5
   cross-sections, the arm's cross-section rebuilt so two ridges meet in one groove). Best try reads as two waves in
   the middle of the arm, but its top edge is jagged and the right end smeared; not used. Draft and comparison in
   `чернови/03 на ръка - две вълни, компютърен опит …`. The saved hand photo is unchanged (lesson 42).
+- 2026-10-19, owner chose attempt 5 ("i liked the one you send with the full hand"): saved as `03 на ръка` in yellow;
+  white, rose and silver made from it with `metal-swap.cjs --hand 0.52,0.45,0.73,0.62 --hue 20,24` (rose
+  `--relative`). The three-wave hand photos in `чернови/три вълни (до 2026-10-19)`. Main photo unchanged (three
+  waves, owner: only the hand photo). Free.
