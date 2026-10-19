@@ -51,3 +51,8 @@ Shown to the owner as „Кръст 4“.
 - Worn photo (owner, 2026-10-18: colours that make the cross stand out; cross 3 keeps its ivory one): black boat-neck
   top, warm grey background, neutral skin, fine 1 mm gold chain at 45 cm, real size (21 mm, job 10b8127f, 3 credits). Saved as
   `жълто злато/03 на шията - жълто злато.png`.
+- 2026-10-19, owner: the worn photos in every metal. White, rose (and silver = white) made from the yellow worn
+  photo with the free colour change: `metal-swap.cjs --hand` in two passes (the lower chain and the cross from hue
+  25°, the top of the chain by the neck from 27°, where the skin is warmer), small isolated changed specks removed,
+  and inside a tight box round the cross the strongly saturated gold (the cross's gold is pinker than the chain's).
+  Changed pixels checked on a map: only the chain and the cross. Free.

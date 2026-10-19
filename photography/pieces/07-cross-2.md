@@ -81,3 +81,11 @@ zoomed in on 2026-10-16. Shown to the owner as „Кръст 2 — лице А /
   7f5867f1, the cross about 12–15% smaller (08d2637a, 3 credits), colours put back. Side А: edit of that photo with the
   approved side А as the second reference (2e150688, 3 credits), same size and place. Saved as `жълто злато/03 на шията
   - лице Б` and `04 на шията - лице А`; the larger first one in `чернови/стара снимка на шията`.
+- 2026-10-19, owner: the worn photos in every metal. White, rose (and silver = white) made from the yellow worn
+  photo with the free colour change: `metal-swap.cjs --hand` in two passes (the lower chain and the cross from hue
+  25°, the top of the chain by the neck from 27°, where the skin is warmer), small isolated changed specks removed,
+  and inside a tight box round the cross the strongly saturated gold (the cross's gold is pinker than the chain's).
+  Changed pixels checked on a map: only the chain and the cross. Free.
+  Side Б: on the left of the cross the frame is lit exactly like the skin (same hue and saturation), so in the
+  white photo the left scroll and part of the left frame stay a little rose; mirroring the right side's mask was
+  tried and left a grey halo on the skin, not used.

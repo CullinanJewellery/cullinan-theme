@@ -50,3 +50,8 @@ Raw photos (`raw pictures for use`, 12 October 2026): hanging `20261012_16402945
 - Length **25 mm** with the bail; **the atelier also makes a bigger version, 29 mm** (owner, 2026-10-18: a size
   option for the product). Every metal saved. Worn photo: first test of the worn look (job 16172d77, 3 credits).
 - **Owner: likes the worn photo** (16172d77, ivory top): kept as it is, saved as `жълто злато/03 на шията - жълто злато.png`.
+- 2026-10-19, owner: the worn photos in every metal. White, rose (and silver = white) made from the yellow worn
+  photo with the free colour change: `metal-swap.cjs --hand` in two passes (the lower chain and the cross from hue
+  25°, the top of the chain by the neck from 27°, where the skin is warmer), small isolated changed specks removed,
+  and inside a tight box round the cross the strongly saturated gold (the cross's gold is pinker than the chain's).
+  Changed pixels checked on a map: only the chain and the cross. Free.
