@@ -33,3 +33,6 @@ Main photo lying flat like ring C (all stones facing the camera); hand photo on 
 
 - 2026-10-19: try 1 (94fda789, 3 credits) right except 4 tiny stones per side instead of 5; try 2 (4731da89, 3
   credits) came out standing upright. 6 credits. Waiting for the owner (keep try 1 or a phone photo lying flat).
+- 2026-10-19: owner chose the diagonal pose (Glamira Sosiego as the pose example) and a slim band; approved 809307c9.
+  Yellow 01 gold to ring A's, background evened, framed by height; white, rose, silver free. Hand photo dbf53a19 on
+  the bare hand, at the owner's real size; metals free. **Finished, every metal.** About 45 credits for F and G together.
