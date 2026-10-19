@@ -37,3 +37,8 @@ Main photo lying flat like ring C (all stones facing the camera); hand photo on 
 - 2026-10-19: two lying tries (533170be, c6dbca7f; 6 credits) both read as three parallel bands with too many stones
   (6+6, 7+7): no raw photo shows the ring lying flat, and from above the back of the band looks like a third band.
   Not sent. Lesson 29 again: ask for a phone photo of the ring lying flat first.
+- 2026-10-19: owner's corrections: third band removed, flipped (owner's own picture), Glamira Sosiego as the pose
+  example (tipped on its side, diagonal, seen from above), curved bands from the owner's hand photo; approved
+  76610487 (the curve edit 96234911 added a band and was not used). Yellow 01 to ring A's gold, framed by height;
+  white, rose, silver free. Hand photo 8e8e07fd on the bare hand at real size; metals free (white: the small stones'
+  setting stays slightly warm). **Finished, every metal.**
