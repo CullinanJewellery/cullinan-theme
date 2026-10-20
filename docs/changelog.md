@@ -8,6 +8,14 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-20 — phone menu: sub-menu header like moonmagic; social box back **(owner)**
+- Owner: the opened category's back button should be like moonmagic.com's. Measured there (375px): 47px row, the name
+  centred, uppercase, 15px, weight 500, letter-spacing 1.4px, a thin „‹“ at the left. Ours now the same on Jost and our
+  ink, the chevron at the 3rem link column (`snippets/header-drawer.liquid` chevron instead of Dawn's ←; crown.css
+  „Phone menu: sub-menu header as on moonmagic.com“).
+- Owner: the box behind the flag and the Facebook/Instagram icons is back, in the colour it had on the greige drawer
+  (#EFEDE9); earlier today it had been made transparent with the white drawer. Way back: delete that crown.css block.
+
 ## 2026-10-20 — phone menu in the desktop menu's colours **(owner)**
 - Owner: the opened menu should look the same on a phone as on a computer. The phone drawer moves from scheme-6 greige
   `#F5F3EF` to scheme-1 white (`header-group.json` `menu_color_scheme`), loses the tinted strip under its links, its quiet

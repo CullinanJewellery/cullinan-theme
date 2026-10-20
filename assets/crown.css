@@ -9300,13 +9300,9 @@ html body .cj-dmenu__item:not(.is-active):hover .cj-dmenu__item-label {
 
 /* ===== Phone menu drawer: the same colours as the desktop menu panel (2026-10-20, owner: "the same color for a
    phone as for computer"). The drawer is on scheme-1 (white, header-group.json menu_color_scheme, was scheme-6
-   greige); here the tinted strip under the links goes, the quiet links take the desktop's 0.85 ink, and the dim
+   greige); the quiet links take the desktop's 0.85 ink, and the dim
    layer behind the drawer (header-drawer) is the desktop's black at 50%. Way back: delete this block and set scheme-6 again. ===== */
 @media screen and (max-width: 989px) {
-  html body #menu-drawer .menu-drawer__utility-links {
-    background-color: transparent;
-  }
-
   html body #menu-drawer .menu-drawer__secondary-link {
     color: rgba(var(--color-foreground), 0.85);
   }
@@ -9315,5 +9311,45 @@ html body .cj-dmenu__item:not(.is-active):hover .cj-dmenu__item-label {
   html.js body header-drawer > details > summary::before,
   html.js body menu-drawer > details > summary::before {
     background: rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* ===== Phone menu: sub-menu header as on moonmagic.com (2026-10-20, owner) =====
+   Measured there at 375px: a 47px row, the category name centred, uppercase, 15px, weight 500, letter-spacing
+   1.4px, black; a thin „‹“ at the left edge of the link column. Ours: the same row on our Jost and ink, the
+   chevron at our 3rem column. And the box behind the flag and the social icons is back (owner): the colour it had on
+   the greige drawer, #EFEDE9. Way back: delete this block (and the chevron in snippets/header-drawer.liquid). ===== */
+@media screen and (max-width: 989px) {
+  html body #menu-drawer .menu-drawer__close-button {
+    position: relative;
+    justify-content: center;
+    min-height: 4.7rem;
+    padding: 1.2rem 5rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    text-align: center;
+    color: rgb(var(--color-foreground));
+  }
+
+  html body #menu-drawer .menu-drawer__close-button .svg-wrapper {
+    position: absolute;
+    left: 3rem;
+    top: 50%;
+    width: 0.8rem;
+    height: 1.6rem;
+    margin: 0;
+    transform: translateY(-50%);
+  }
+
+  html body #menu-drawer .menu-drawer__close-button .cj-drawer-back {
+    display: block;
+    width: 0.8rem;
+    height: 1.6rem;
+  }
+
+  html body #menu-drawer .menu-drawer__utility-links {
+    background-color: #efede9;
   }
 }
