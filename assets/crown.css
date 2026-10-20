@@ -9301,7 +9301,7 @@ html body .cj-dmenu__item:not(.is-active):hover .cj-dmenu__item-label {
 /* ===== Phone menu drawer: the same colours as the desktop menu panel (2026-10-20, owner: "the same color for a
    phone as for computer"). The drawer is on scheme-1 (white, header-group.json menu_color_scheme, was scheme-6
    greige); here the tinted strip under the links goes, the quiet links take the desktop's 0.85 ink, and the dim
-   layer behind the drawer is the desktop's black at 50%. Way back: delete this block and set scheme-6 again. ===== */
+   layer behind the drawer (header-drawer) is the desktop's black at 50%. Way back: delete this block and set scheme-6 again. ===== */
 @media screen and (max-width: 989px) {
   html body #menu-drawer .menu-drawer__utility-links {
     background-color: transparent;
