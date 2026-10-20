@@ -2,7 +2,7 @@
   Desktop menu panel (2026-10-13, owner, after swarovski.com): on computers (990px and up) the row of
   category names gives way to a „☰ Меню“ button at the far left of the header. It opens a white
   panel from the left: the header menu's top-level items in the left column (› where they have
-  sub-collections; all closed when the panel opens, a click opens one, 2026-10-13), the chosen item's sub-collections in the right column („Всички …“ first,
+  sub-collections; all closed when the panel opens, a click opens one, 2026-10-13), the chosen item's sub-collections in the right column (exactly the Navigation's links,
   deeper links under each in smaller text, then a line and that item's picture from the header's
   „Mega menu image panel“ block, or the collection's own picture when the block has none; the label
   in bold under it), and under the categories the quieter
@@ -143,12 +143,11 @@
               class="cj-dmenu__subpanel"
               hidden
             >
+              {%- comment -%}
+                2026-10-20 (owner): no „Всички …“ line of the theme's own here any more; the owner adds that
+                link in Shopify's Navigation where they want it, and the theme's copy doubled it.
+              {%- endcomment -%}
               <ul class="cj-dmenu__sublist list-unstyled" role="list">
-                <li>
-                  <a class="cj-dmenu__sublink cj-dmenu__sublink--all" href="{{ link.url }}">
-                    Всички {{ link.title | downcase | escape }}
-                  </a>
-                </li>
                 {%- for childlink in link.links -%}
                   <li>
                     <a class="cj-dmenu__sublink" href="{{ childlink.url }}">{{ childlink.title | escape }}</a>

@@ -8,6 +8,12 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-20 — menu panel: no automatic „Всички …“ line **(owner)**
+- Owner: the desktop menu panel showed its own „Всички пръстени“ above the sub-collections, doubling the link the owner
+  manages in Shopify Navigation. Removed from `snippets/cj-desktop-menu.liquid`; the right column now lists exactly the
+  Navigation's links. The label under the menu picture (header „Mega menu image panel“ blocks) is unchanged. Way back:
+  revert this entry's commit.
+
 ## 2026-10-20 — card hover photo follows the chosen metal **(owner)**
 - Owner: on a card, picking the rose circle and then hovering showed the yellow hand photo. The second photo is now the
   first free (not variant-linked) photo whose alt text names the metal of the shown variant, and each swatch carries its
