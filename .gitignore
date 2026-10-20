@@ -25,6 +25,7 @@ photography/*
 !photography/bg-even.cjs
 !photography/stone-clear.cjs
 !photography/rhodium-off.cjs
+!photography/polish-curve.cjs
 !photography/*.md
 !photography/pieces/
 !photography/prompts/

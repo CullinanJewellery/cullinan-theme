@@ -213,3 +213,8 @@ Each line: what went wrong, the rule now, where it came from. Newest last.
     middle of the arm, but every version left a jagged edge, a seam or streaks where the arm turns. Colour changes
     (gold-match, metal-swap, rhodium-off) work locally because no pixel moves; a change in the piece's form needs a
     model (or a new photo). → Say so before trying; show the owner the best try next to the photo.
+43. **A flat gold can be deepened on the computer with a tone curve, not a filter.** Owner (2026-10-20): every main
+    photo copies ring A's polish (checker shine at least 212). Ring G's approved photo measured 205. `polish-curve.cjs`
+    (a per-pixel S-curve on gold pixels round their own mid tone, then `gold-match.cjs`) gave 213 at 0.25 and 218 at
+    0.4; nothing moved, nothing drawn, stones untouched. **Owner chose 0.4.** The earlier rejected test (lesson 38)
+    used a spatial local-contrast filter, which invents texture; a tone curve only spreads the existing tones.

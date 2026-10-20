@@ -112,7 +112,8 @@ Full recipe with the exact Higgsfield prompts: `photography/README.md` „Produc
   After a Nano Banana edit, `stone-clear.cjs` and `gold-match.cjs --target` put a stone's and the gold's colour back
   to the approved photo's (each edit drifts them; owner's OK, 2026-10-15). A piece made without rhodium that a
   photo shows white round the stones: `photography/rhodium-off.cjs` gives the setting the photo's own gold (owner,
-  2026-10-19, ring C; lesson 41). **Every piece's metals are ring A's
+  2026-10-19, ring C; lesson 41). A main photo flatter than ring A (shine under 212): `photography/polish-curve.cjs`
+  then `gold-match.cjs` (owner's OK, 2026-10-20; lesson 43). **Every piece's metals are ring A's
   (owner, 2026-10-15):** yellow with `gold-match.cjs --target 208,165,113`, white and rose with `metal-swap.cjs`
   (ring A's measured white and rose), always with a `--stone` box round every stone so stones stay untouched.
 - **Background** flat seamless off-white #FCFBFC edge to edge; **shadow** soft neutral grey, falling to the left, with
