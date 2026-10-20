@@ -9311,6 +9311,7 @@ html body .cj-dmenu__item:not(.is-active):hover .cj-dmenu__item-label {
     color: rgba(var(--color-foreground), 0.85);
   }
 
+  html.js body header-drawer > details > summary::before,
   html.js body menu-drawer > details > summary::before {
     background: rgba(0, 0, 0, 0.5);
   }
