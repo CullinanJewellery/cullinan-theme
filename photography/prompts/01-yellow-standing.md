@@ -16,6 +16,7 @@ same rich, warm, highly polished 18K yellow gold colour with mirror reflections 
 <Stone rings only:> In this three-quarter view the stones on the near half of the arc face the camera, round in their
 cups; a stone on the far side of the ring is seen from inside the band, so there only its small round hole shows.
 SIZE: the ring fills only about half of the picture's height, centred, with empty background around it.
+<QUALITY block from 00-main-quality.md, unchanged>
 Physically real: every stone faces outward from the band; from inside the band only small round holes show.
 No gold reflection on the floor, no props, no text, no logo, no other jewellery.
 ```

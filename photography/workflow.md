@@ -35,6 +35,24 @@ those folders, and its network policy blocks downloads from Higgsfield's CDN; it
 inside Higgsfield's own sandbox (`sandbox_exec`). Look at raw photos at full size, cropped to the piece, never the
 whole photo shrunk (owner, 2026-10-14).
 
+## Ring A's quality: what every main photo must copy (owner, 2026-10-20)
+
+Ring A's main photo (`pictures for the website/01 Пръстен с топчета - номер предстои/жълто злато/01 основна снимка -
+жълто злато.png`, Higgsfield `d3489c52-abd2-4c39-be89-cfc835b71a0c`) is the standard. Every main photo copies:
+
+- **Deep polish.** Every bead or curve has a bright highlight, a dark mirror band and a mid tone. Strong contrast
+  inside the metal, never flat even gold. (Checker: gold highlights at least 212; ring A has 216.)
+1. **The shadow.** A soft, neutral grey shadow falling to the left, plus a thin darker contact line where the piece
+   touches the floor. Never shadowless, never a gold tint on the floor.
+2. **The background.** Flat off-white #FCFBFC, 250–252 at the edges, even, no patches or bands.
+3. **Sharp everywhere.** Edges crisp from front to back, like a focus-stacked photo, no soft or blurred ends.
+4. **The gold.** Ring A's colour, 208, 165, 114, rich and warm, not lemon, not copper.
+5. **The size.** About half the picture's height when generated; the frame script enlarges it to ring A's 80.7%.
+
+Every main-photo prompt includes the block in `prompts/00-main-quality.md`. **Before sending the owner any main
+photo:** put it next to ring A's main photo in one picture and compare the polish and points 1–5 by eye. If it looks
+flatter than ring A (or fails any point), do not send it as finished: tell the owner and decide together what to do.
+
 ## The steps for a new piece (approval gate, comparison sheet and checklists added 2026-10-14, owner)
 
 1. **Raw photos** taken by `raw-photo-guide.md` (six views and a close-up). If views are missing or blurred, ask
@@ -46,6 +64,8 @@ whole photo shrunk (owner, 2026-10-14).
 4. **Make yellow 01 standing first** (3 credits), check it (step 6), and **send the owner a comparison sheet**
    (`compare-sheet.cjs`: raw photos left, the new photo right, the stone count in the note). **Wait for the owner's
    OK** before the other four photos, which are all built from it. A wrong ring then costs one photo, not a set.
+   **Also put it next to ring A's main photo** and compare the polish and points 1–5 above (owner, 2026-10-20); if
+   it is flatter than ring A, tell the owner before going on.
 5. **Make the others** with the prompt files (yellow lying flat or hand). **Yellow to ring A's gold with
    `gold-match.cjs --target 208,165,113`, then white and rose with `metal-swap.cjs` from the finished, framed yellow
    photo** (free; no model, so nothing but the colour changes); **a `--stone x0,y0,x1,y1` box round every stone in

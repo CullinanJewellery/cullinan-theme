@@ -151,6 +151,7 @@ small holes behind the stones are on the inside of the front half, facing away f
 Physically real: every stone stays set in the band facing outward from it, none turned upward or inward; nothing
 floats; a soft contact shadow where the band touches the surface.
 SIZE: the ring about 60% of the picture's width, centred, with empty background around it.
+<QUALITY block from 00-main-quality.md, unchanged>
 No gold reflection on the floor, no props, no text, no logo, no other jewellery.
 ```
 
@@ -169,3 +170,26 @@ side. (The first version said the back half's inside shows "only the holes": imp
 Check: counts; stones face outward and look like real zircons; the back half's inside is plain gold; gold, shine and
 background with check-photo.cjs. **A fail is never sent to the owner and never patched with a GPT gold repaint
 (lesson 16): fix the prompt and make it again.**
+
+## Rings with a centre stone: 01 diagonal, the main photo (owner, 2026-10-19, rings F and G)
+
+The owner's pose for rings with a centre stone, from Glamira's "Sosiego" main photo (pose only, described in words,
+never given to the model): the ring tipped on its side, diagonal, seen from high above, stones at the upper left.
+What made it work: the owner's own hand photo of the piece as the FIRST reference (true thickness and curve), a raw
+photo second, an approved design picture if there is one, ring A last for the look.
+
+```
+Premium e-commerce jewellery product photo, square 1:1.
+THE RING: the real ring in the FIRST two reference photos (on a finger, and in a paper cup; ignore the finger, the
+cup and the background). <THE PIECE description from the piece sheet: bands, curves, thickness in mm, stones>.
+POSITION, like a classic online-jeweller main photo: the ring tipped over and resting leaning on the side of its band,
+placed diagonally, the camera looking down from high above (about 60 degrees); the top of the ring with the centre
+stone at the upper left, stones facing up toward the camera, the band sweeping down to the lower right, the ring
+opening seen as a tilted oval with the inside visible. Nothing floats; a soft contact shadow.
+THE LOOK from the LAST reference image only (never its ring).
+<QUALITY block from 00-main-quality.md, unchanged>
+Stones clear and colourless, icy white, crisp facets. No props, no text, no logo, no other jewellery.
+```
+
+Then `gold-match.cjs --target 208,165,113`, `bg-even.cjs`, `frame-photo.cjs 1` (by height; the lying frame crops
+this pose too tight), metals with `metal-swap.cjs --stone` boxes. Ring F: 76610487, ring G: 809307c9.
