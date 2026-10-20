@@ -8,6 +8,12 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-20 — phone menu in the desktop menu's colours **(owner)**
+- Owner: the opened menu should look the same on a phone as on a computer. The phone drawer moves from scheme-6 greige
+  `#F5F3EF` to scheme-1 white (`header-group.json` `menu_color_scheme`), loses the tinted strip under its links, its quiet
+  links take the desktop's 0.85 ink and its dim layer the desktop's black at 50% (crown.css „Phone menu drawer: the
+  same colours“). Way back: delete that block and set `menu_color_scheme` to scheme-6.
+
 ## 2026-10-20 — menu panel: no automatic „Всички …“ line **(owner)**
 - Owner: the desktop menu panel showed its own „Всички пръстени“ above the sub-collections, doubling the link the owner
   manages in Shopify Navigation. Removed from `snippets/cj-desktop-menu.liquid`; the right column now lists exactly the

@@ -32,7 +32,7 @@ service), not from any reference brand. References are used per question (see `C
 | scheme-3 | `#2A1E1A` espresso | `#F3EAE5` | `#F3EAE5` / `#2A1E1A` | Dark bands (the newsletter section's scheme) |
 | scheme-4 | `#8C6A2E` muted gold | `#FFFFFF` | `#FFFFFF` / `#8C6A2E` | Badges and accents only |
 | scheme-5 | `#E9D9D0` rose-clay | `#2A1E1A` | `#000000` / `#FFFFFF` | Hero, Контакти banner, footer markup (the footer's own ground is a literal, below) |
-| scheme-6 | `#F5F3EF` warm greige (2026-10-06; `#F3EBE6` before) | `#2A1E1A` | `#000000` / `#FFFFFF` | Stones band, review cards, cart reassurances, **menu dropdown and phone drawer**, product-page social band |
+| scheme-6 | `#F5F3EF` warm greige (2026-10-06; `#F3EBE6` before) | `#2A1E1A` | `#000000` / `#FFFFFF` | Stones band, review cards, cart reassurances, product-page social band (the phone drawer moved to scheme-1 on 2026-10-20, to match the desktop menu panel) |
 | scheme-7 | `#D8DFBF` milky matcha | `#221F1C` | `#3D5229` / `#FFFFFF` | Not on the homepage any more (kept) |
 | scheme-8 | `#F1E3DC` marble blush | `#2A1E1A` | `#000000` / `#FFFFFF` | Контакти open-row panels, footer social hover on Контакти |
 
