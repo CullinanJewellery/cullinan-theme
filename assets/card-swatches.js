@@ -63,6 +63,14 @@ if (!customElements.get('card-swatches')) {
         this.image.src = button.dataset.imageSrc;
         this.image.srcset = button.dataset.imageSrcset;
         if (button.dataset.imageAlt) this.image.alt = button.dataset.imageAlt;
+
+        // The second photo (hover / swipe) follows the metal too: each metal's hand photo
+        // (2026-10-20, owner: a rose card showed the yellow hand on hover).
+        const second = this.querySelector('.card__photo-2, .card__photo-preview');
+        if (second && button.dataset.secondSrc) {
+          second.src = button.dataset.secondSrc;
+          second.srcset = button.dataset.secondSrcset;
+        }
       }
 
       applyPrice(button) {

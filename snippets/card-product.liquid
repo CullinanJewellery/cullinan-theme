@@ -64,6 +64,32 @@
           assign variant_media_ids = variant_media_ids | append: v.featured_media.id | append: ','
         endif
       endfor
+      comment
+        2026-10-20 (owner): each metal has its own hand photo, marked by its alt text (an option
+        value, e.g. „розово злато“, as snippets/cj-metal-photo.liquid reads it). The second photo
+        is then the first free photo whose alt names the metal of the variant that owns the first
+        photo; each swatch carries its own metal's one (data-second-*, swapped by
+        card-swatches.js). A free photo marked with another metal is never the second photo;
+        products without such alt texts keep the first free photo, as before.
+      endcomment
+      assign card_metal_alts = '|'
+      for option in card_product.options_with_values
+        for value in option.values
+          assign card_value_down = value | append: '' | strip | downcase
+          assign card_metal_alts = card_metal_alts | append: card_value_down | append: '|'
+        endfor
+      endfor
+      assign card_owner_options = '|'
+      for v in card_product.variants
+        if v.featured_media.id == card_product.featured_media.id
+          for value in v.options
+            assign card_value_down = value | append: '' | strip | downcase
+            assign card_owner_options = card_owner_options | append: card_value_down | append: '|'
+          endfor
+          break
+        endif
+      endfor
+      assign card_plain_second = null
       for m in card_product.media
         if m.media_type != 'image' or m.id == card_product.featured_media.id
           continue
@@ -72,9 +98,22 @@
         if variant_media_ids contains m_key
           continue
         endif
-        assign card_second_media = m
-        break
+        assign m_alt = m.alt | strip | downcase
+        assign m_alt_key = '|' | append: m_alt | append: '|'
+        if m_alt != blank and card_metal_alts contains m_alt_key
+          if card_owner_options contains m_alt_key
+            assign card_second_media = m
+            break
+          endif
+          continue
+        endif
+        if card_plain_second == null
+          assign card_plain_second = m
+        endif
       endfor
+      if card_second_media == null
+        assign card_second_media = card_plain_second
+      endif
     endif
     assign card_swipe = false
     assign card_preview = false
@@ -411,6 +450,33 @@
                               assign swatch_saved_percent = swatch_variant.compare_at_price | minus: swatch_variant.price | times: 100.0 | divided_by: swatch_variant.compare_at_price | round
                             endif
                           endif
+                          comment
+                            This swatch's own second photo: the first free photo whose alt names
+                            one of its variant's option values (see the top of this snippet).
+                          endcomment
+                          assign swatch_second = null
+                          if card_second_media and swatch_variant
+                            assign swatch_options = '|'
+                            for sv in swatch_variant.options
+                              assign card_value_down = sv | append: '' | strip | downcase
+                              assign swatch_options = swatch_options | append: card_value_down | append: '|'
+                            endfor
+                            for m in card_product.media
+                              if m.media_type != 'image'
+                                continue
+                              endif
+                              assign m_key = ',' | append: m.id | append: ','
+                              if variant_media_ids contains m_key
+                                continue
+                              endif
+                              assign m_alt = m.alt | strip | downcase
+                              assign m_alt_key = '|' | append: m_alt | append: '|'
+                              if m_alt != blank and swatch_options contains m_alt_key
+                                assign swatch_second = m
+                                break
+                              endif
+                            endfor
+                          endif
                           if swatch_media and card_product.featured_media and swatch_media.id == card_product.featured_media.id and card_pressed_taken == false
                             assign swatch_pressed = true
                             assign card_pressed_taken = true
@@ -440,6 +506,15 @@
                                 {{ swatch_media | image_url }} {{ swatch_media.width }}w
                               "
                               data-image-alt="{{ swatch_media.alt | escape }}"
+                            {%- endif %}
+                            {%- if swatch_second %}
+                              data-second-src="{{ swatch_second | image_url: width: 533 }}"
+                              data-second-srcset="
+                                {%- if swatch_second.width >= 360 -%}{{ swatch_second | image_url: width: 360 }} 360w,{%- endif -%}
+                                {%- if swatch_second.width >= 533 -%}{{ swatch_second | image_url: width: 533 }} 533w,{%- endif -%}
+                                {%- if swatch_second.width >= 720 -%}{{ swatch_second | image_url: width: 720 }} 720w,{%- endif -%}
+                                {{ swatch_second | image_url }} {{ swatch_second.width }}w
+                              "
                             {%- endif %}
                           >
                             {% render 'swatch', swatch: value.swatch %}

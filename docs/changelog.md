@@ -8,6 +8,12 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-20 — card hover photo follows the chosen metal **(owner)**
+- Owner: on a card, picking the rose circle and then hovering showed the yellow hand photo. The second photo is now the
+  first free (not variant-linked) photo whose alt text names the metal of the shown variant, and each swatch carries its
+  own metal's second photo (`snippets/card-product.liquid`, `assets/card-swatches.js`). Free photos marked with another
+  metal are never the second photo; products without such alt texts work as before. Way back: revert this entry's commit.
+
 ## 2026-10-19 — ring C has no rhodium **(owner)**
 - Owner: ring C („Пръстен с камъчета“) is made without rhodium; remove it with the free edit and keep the hand photo
   already made. New `photography/rhodium-off.cjs` turns the white setting round each stone into the photo's own gold
