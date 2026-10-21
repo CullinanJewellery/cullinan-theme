@@ -137,7 +137,8 @@
    something was typed): a thin line after it, then the cross. */
 .cj-search .cj-search__clear,
 .cj-search .cj-search__clear.hidden {
-  display: inline-flex;
+  /* !important: Dawn's .hidden is display: none !important, and search-form.js adds it while the line is empty */
+  display: inline-flex !important;
   align-items: center;
   min-height: 2.4rem;
   margin-left: 0.8rem;
