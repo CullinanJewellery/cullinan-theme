@@ -15,7 +15,7 @@ the code is the truth and this file is out of date: fix this file.
 ## 1. Direction
 
 **"Мрамор" (direction C, chosen by the owner 2026-10-04)**: marble and rose gold. Warm, light grounds; espresso ink;
-black buttons with white labels (since 2026-10-06; rosewood before); Prata headings in sentence case; Jost for everything else. Restrained, generous
+black buttons with white labels (since 2026-10-06; rosewood before); Jost for everything: headings and names in Jost 500 capitals with 0.06em tracking (since 2026-10-21, „moonmagic Jost“; Prata before), the shop name in the header still Prata as the logo. Restrained, generous
 space, nothing burned into photographs.
 
 Identity comes from Cullinan's own facts (workshop in Veliko Tarnovo, handmade since 1991, own 3D designs, personal
@@ -88,7 +88,9 @@ rules in `crown.css`. Way back: the values in the "Now" column. Known side effec
 
 | Role | Face | Weight | Case / tracking | Source |
 |---|---|---|---|---|
-| Headings (`h1`–`h6`, `.h0`–`.h5`) | **Prata** ("Prata Theme"), Georgia fallback | 400 (its only weight) + `-webkit-text-stroke: 0.012em` (≈ +21% ink) | Sentence case, `letter-spacing: 0` | `snippets/theme-fonts.liquid`, end of `crown.css` |
+| Headings (`h1`–`h6`, `.h0`–`.h5`) and names (product names, zodiac, workshop steps, drop-downs) | **Jost** ("Jost Theme") | 500, no stroke | **Capitals**, `letter-spacing: 0.06em`, `--font-heading-scale: 0.88` (owner 2026-10-21; Prata 400 sentence case before) | `snippets/theme-fonts.liquid`, crown.css „Headings in Jost capitals“ |
+| Shop name in the header | Prata (logo) | 400 + 0.012em stroke | Capitals, 0.22em | crown.css „Headings in Jost capitals“ |
+| Meanings beside/under names | Jost Italic | 400 | Normal letters | crown.css stone blocks |
 | Text | **Jost** ("Jost Theme"), variable 300–700 | 400 | Normal | `snippets/theme-fonts.liquid` |
 | Small labels, buttons, eyebrows, legends | Jost | 500–700 | Capitals, 0.08–0.14em | Component rules |
 | Header menu words | Jost | 700 + 0.03em stroke | Capitals | `crown.css` |
@@ -193,6 +195,7 @@ rules in `crown.css`. Way back: the values in the "Now" column. Known side effec
 | Rope line under the hero claims and above the footer | Removed | 2026-10-04 |
 | Capitals strip under the hero (`hero_facts`) | Hidden; trust band replaces it | 2026-10-04 |
 | Jost headings (700 / 550 / 400) | Prata 400 | 2026-10-04 |
+| Prata 400 headings, sentence case | Jost 500 capitals, 0.06em (owner: Prata "ugly"; „moonmagic Jost“) | 2026-10-21 |
 | Pink `#F3E1DB` / moonmagic gradient, black newsletter, black buttons | Direction C palette | 2026-10-04 |
 | Red hero button `#E63946` | Ruby `#D62246` | 2026-10-04 |
 | Rosewood buttons | Black buttons (hover behaviour and the ruby hero button kept) | 2026-10-06 |

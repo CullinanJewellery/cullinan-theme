@@ -8,6 +8,18 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-21 — all headings and names in Jost capitals („moonmagic Jost“) **(owner)**
+- Owner, after a four-way font comparison (artifact https://claude.ai/artifact/HLYsi2wciKSRFpQyyqEAiC): Prata is "ugly";
+  every heading and name in option В, Jost 500 in capitals with 0.06em tracking — section titles, collection titles,
+  zodiac names, workshop steps, product names (product page, rows, cart), the product page drop-downs and everything
+  like them; the italic meanings stay Jost Italic in normal letters. Done centrally: the heading font in
+  `snippets/theme-fonts.liquid` is Jost 500 (was Prata 400, since 2026-10-04 direction C), and crown.css „Headings in
+  Jost capitals“ adds the capitals and tracking with !important over the sections' Prata-era `text-transform: none`,
+  removes the Prata stroke, sets --font-heading-scale 0.88. Kept: the shop name in the header in Prata (logo);
+  small text in heading tags (top bar, filter count, captions, cart total label); the empty-filter sentence. The phone
+  menu's category words take the desktop panel's Jost 400, no stroke. Way back: delete those blocks and set Prata 400
+  in theme-fonts.liquid.
+
 ## 2026-10-21 — stone collection pages: meaning beside the name, text under it **(owner)**
 - Owner: like moonmagic.com's Moonstone page („MOONSTONE“ *Intuition* and a short paragraph), with the owner's own
   text pasted in Shopify. A stone collection's title now carries its meaning beside it in italic, in the stone's colour

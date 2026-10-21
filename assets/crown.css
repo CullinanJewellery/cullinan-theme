@@ -9579,3 +9579,11 @@ html body .header__heading-link .h2 {
     -webkit-text-stroke: 0;
   }
 }
+
+/* The empty-filter message („Няма бижута с избраните филтри. Махнете някой от филтрите…“) is a sentence in an h2,
+   so it keeps normal letters under the Jost-capitals headings rule above (2026-10-21). */
+html body .collection--empty .title-wrapper .title {
+  text-transform: none !important;
+  letter-spacing: 0 !important;
+  font-weight: 400;
+}
