@@ -9471,7 +9471,7 @@ html body .collection-hero .collection-hero__description b {
    come from a bulleted list the owner writes under the text in the collection's Description (Shopify's list
    button); the dot takes the stone's colour (--cj-stone-colour on the heading, snippets/cj-menu-stone.liquid
    part „colour“), our ink elsewhere. Computer: paragraph left, qualities right; phone: under the paragraph.
-   Way back: delete this block. ===== */
+   Way back: delete this block (columns kept close to the text). ===== */
 html body .collection-hero .collection-hero__description ul {
   display: flex;
   flex-wrap: wrap;
