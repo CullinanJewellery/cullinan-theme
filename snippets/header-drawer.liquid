@@ -83,7 +83,8 @@
                                       aria-current="page"
                                     {% endif %}
                                   >
-                                    {{ childlink.title | escape }}
+                                    {%- render 'cj-menu-stone', link: childlink, class: 'cj-menu-stone' -%}
+                                    <span class="cj-menu-label">{{ childlink.title | escape }}</span>
                                   </a>
                                 {%- else -%}
                                   <details id="Details-menu-drawer-{{ link.handle }}-{{ childlink.handle }}">
@@ -127,7 +128,8 @@
                                                 aria-current="page"
                                               {% endif %}
                                             >
-                                              {{ grandchildlink.title | escape }}
+                                              {%- render 'cj-menu-stone', link: grandchildlink, class: 'cj-menu-stone' -%}
+                                              <span class="cj-menu-label">{{ grandchildlink.title | escape }}</span>
                                             </a>
                                           </li>
                                         {%- endfor -%}

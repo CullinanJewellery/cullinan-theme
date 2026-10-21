@@ -150,12 +150,18 @@
               <ul class="cj-dmenu__sublist list-unstyled" role="list">
                 {%- for childlink in link.links -%}
                   <li>
-                    <a class="cj-dmenu__sublink" href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
+                    <a class="cj-dmenu__sublink" href="{{ childlink.url }}">
+                      {%- render 'cj-menu-stone', link: childlink, class: 'cj-menu-stone' -%}
+                      <span class="cj-menu-label">{{ childlink.title | escape }}</span>
+                    </a>
                     {%- if childlink.links != blank -%}
                       <ul class="cj-dmenu__sub3 list-unstyled" role="list">
                         {%- for grandchildlink in childlink.links -%}
                           <li>
-                            <a class="cj-dmenu__sub3-link" href="{{ grandchildlink.url }}">{{ grandchildlink.title | escape }}</a>
+                            <a class="cj-dmenu__sub3-link" href="{{ grandchildlink.url }}">
+                              {%- render 'cj-menu-stone', link: grandchildlink, class: 'cj-menu-stone' -%}
+                              <span class="cj-menu-label">{{ grandchildlink.title | escape }}</span>
+                            </a>
                           </li>
                         {%- endfor -%}
                       </ul>

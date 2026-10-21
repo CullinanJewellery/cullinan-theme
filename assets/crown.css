@@ -9353,3 +9353,41 @@ html body .cj-dmenu__item:not(.is-active):hover .cj-dmenu__item-label {
     background-color: #efede9;
   }
 }
+
+/* ===== Menu sub-links: stone pictures and the pink hover, as on moonmagic.com (2026-10-21, owner) =====
+   Stones: moonmagic's „By Gemstones“ puts a 30px round stone cut-out 8px before each stone's name; ours are the
+   homepage stone tiles' pictures (snippets/cj-menu-stone.liquid), desktop panel and phone drawer alike.
+   Hover: moonmagic turns a sub-link pink and underlines it; ours in our pink for text links, rose gold #B76E79 (the
+   navigation trail's pink, chosen by the owner over moonmagic's paler #E6BAB9), underline in the same pink, and 5%
+   bolder (text-stroke 0.01em; the 10% of the categories is 0.02em). The colour, line and weight go on the name only,
+   never on the stone picture. Way back: delete this block and the cj-menu-stone renders. ===== */
+html body .cj-dmenu__sublink,
+html body .cj-dmenu__sub3-link,
+html body #menu-drawer .menu-drawer__submenu a.menu-drawer__menu-item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+html body .cj-menu-stone {
+  flex: 0 0 auto;
+  width: 3rem;
+  height: 3rem;
+  object-fit: contain;
+}
+
+html body .cj-dmenu__sublink:hover,
+html body .cj-dmenu__sub3-link:hover {
+  -webkit-text-stroke: 0;
+}
+
+html body .cj-dmenu__sublink:hover .cj-menu-label,
+html body .cj-dmenu__sub3-link:hover .cj-menu-label,
+html body #menu-drawer .menu-drawer__submenu a.menu-drawer__menu-item:hover .cj-menu-label {
+  color: #b76e79;
+  text-decoration: underline;
+  text-decoration-color: #b76e79;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.35em;
+  -webkit-text-stroke: 0.01em #b76e79;
+}

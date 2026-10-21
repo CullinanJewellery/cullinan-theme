@@ -1,0 +1,38 @@
+{%- comment -%}
+  A stone's small round picture before its name in the menus (2026-10-21, owner, as moonmagic.com's „By
+  Gemstones“: a 30px round stone cut-out, 8px before the name). The pictures are the stone tiles' own files from the
+  homepage „Всеки камък има значение“ section (templates/index.json „stones“), found in Shopify Files by name.
+  Prints nothing for a link that is not one of these stone collections, or when the file is missing.
+
+  Accepts:
+  - link: {Object} a menu link
+  - class: {String} the image's class
+
+  Usage:
+  {% render 'cj-menu-stone', link: childlink, class: 'cj-dmenu__stone' %}
+{%- endcomment -%}
+{%- liquid
+  assign cj_stone_file = ''
+  if link.type == 'collection_link' and link.object
+    case link.object.handle
+      when 'диаманти'
+        assign cj_stone_file = 'ChatGPT_Image_Sep_29_2026_07_44_01_PM.png'
+      when 'сапфири'
+        assign cj_stone_file = 'ChatGPT_Image_Sep_29_2026_07_44_09_PM.png'
+      when 'рубини'
+        assign cj_stone_file = 'ChatGPT_Image_Sep_29_2026_07_44_14_PM.png'
+      when 'изумруди'
+        assign cj_stone_file = 'ChatGPT_Image_Sep_29_2026_07_44_18_PM.png'
+      when 'перли'
+        assign cj_stone_file = 'ChatGPT_Image_Sep_29_2026_07_44_05_PM.png'
+      when 'циркони'
+        assign cj_stone_file = 'ChatGPT_Image_Sep_29_2026_07_43_02_PM.png'
+    endcase
+  endif
+  if cj_stone_file != ''
+    assign cj_stone = images[cj_stone_file]
+    if cj_stone != blank
+      echo cj_stone | image_url: width: 96 | image_tag: class: class, width: 30, height: 30, loading: 'lazy', alt: ''
+    endif
+  endif
+-%}

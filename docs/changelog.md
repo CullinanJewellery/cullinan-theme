@@ -8,6 +8,16 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-21 — menus: stone pictures and a pink hover on sub-links **(owner)**
+- Owner: stone pictures in the menu like moonmagic's „By Gemstones“ (a 30px round stone before the name, 8px gap,
+  measured there at 1440px), on the desktop panel and the phone drawer. New `snippets/cj-menu-stone.liquid` finds the
+  homepage stone tiles' own pictures in Shopify Files by collection (диаманти, сапфири, рубини, изумруди, перли,
+  циркони); other links get none.
+- Owner: sub-links turn pink on hover, underlined in pink and 5% bolder, as moonmagic's (theirs `#E6BAB9`); ours rose
+  gold `#B76E79`, the navigation trail's pink, stroke 0.01em, on desktop and phone (replaces the 0.035em hover stroke
+  of the desktop sub-links). crown.css „Menu sub-links: stone pictures and the pink hover“. Way back: delete that block
+  and the cj-menu-stone renders.
+
 ## 2026-10-20 — phone menu: sub-menu header like moonmagic; social box back **(owner)**
 - Owner: the opened category's back button should be like moonmagic.com's. Measured there (375px): 47px row, the name
   centred, uppercase, 15px, weight 500, letter-spacing 1.4px, a thin „‹“ at the left. Ours now the same on Jost and our
