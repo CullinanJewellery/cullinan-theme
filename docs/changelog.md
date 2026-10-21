@@ -14,7 +14,10 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
   (диаманти/циркони #5F7689, сапфири #2B4C9B, рубини #A8243B, изумруди #1F7A4D, перли #8F7A5E; white over a heading
   picture), from `snippets/cj-menu-stone.liquid` part „hero“. The text is the collection's Description in Shopify admin
   (already shown by the banner); styled 1.7rem / 1.6, at most 66rem, bold kept (crown.css „Stone collections: meaning
-  beside the name“). Not done: moonmagic's stone picture and bullet list on the right.
+  beside the name“). Not done: moonmagic's stone picture on the right.
+- Owner: the three qualities as moonmagic's, written by the owner as a bulleted list under the text in the Description:
+  small capitals after a dot in the stone's colour; right of the paragraph from 990px, under it on phones (crown.css
+  „Stone collections: the three qualities“; the stone colour now sits on the whole heading, part „colour“).
 
 ## 2026-10-21 — stone meanings: name over meaning, also in the menu **(owner)**
 - Owner: in „Всеки камък има значение“ the small word above the name was unclear; like moonmagic.com („MOONSTONE“ /

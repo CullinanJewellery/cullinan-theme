@@ -38,7 +38,8 @@
   endif
   assign cj_hero_focal = 'object-position: ' | append: cj_hero_image.presentation.focal_point
 -%}
-<div class="collection-hero{% if section.settings.show_collection_image and collection.image %} collection-hero--with-image{% endif %}{% if cj_hero_image != blank %} cj-hero--image{% endif %} color-{{ section.settings.color_scheme }} gradient">
+{%- capture cj_stone_colour -%}{%- render 'cj-menu-stone', handle: collection.handle, part: 'colour' -%}{%- endcapture -%}
+<div{% if cj_stone_colour != blank %} style="--cj-stone-colour: {{ cj_stone_colour }};"{% endif %} class="collection-hero{% if section.settings.show_collection_image and collection.image %} collection-hero--with-image{% endif %}{% if cj_hero_image != blank %} cj-hero--image{% endif %} color-{{ section.settings.color_scheme }} gradient">
   {%- if cj_hero_image != blank -%}
     {{
       cj_hero_image

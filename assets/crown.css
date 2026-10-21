@@ -9464,3 +9464,67 @@ html body .collection-hero .collection-hero__description b {
     font-size: 1.7rem;
   }
 }
+
+/* ===== Stone collections: the three qualities, as moonmagic.com (2026-10-21, owner) =====
+   moonmagic lists three qualities beside the text (PROTECTIVE ENERGY, INNER BALANCE, EMOTIONAL HEALING): small
+   letter-spaced capitals, each after a dot in the stone's colour, in two columns to the right of the paragraph. Ours
+   come from a bulleted list the owner writes under the text in the collection's Description (Shopify's list
+   button); the dot takes the stone's colour (--cj-stone-colour on the heading, snippets/cj-menu-stone.liquid
+   part „colour“), our ink elsewhere. Computer: paragraph left, qualities right; phone: under the paragraph.
+   Way back: delete this block. ===== */
+html body .collection-hero .collection-hero__description ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem 2.4rem;
+  margin: 1.4rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+html body .collection-hero .collection-hero__description li {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+html body .collection-hero .collection-hero__description li::before {
+  content: '';
+  flex: 0 0 auto;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  background: var(--cj-stone-colour, rgb(var(--color-foreground)));
+}
+
+html body .collection-hero.cj-hero--image .collection-hero__description li::before {
+  background: #ffffff;
+}
+
+@media screen and (min-width: 990px) {
+  html body .collection-hero .collection-hero__title + .collection-hero__description:has(ul) {
+    display: grid;
+    grid-template-columns: minmax(0, 60rem) auto;
+    column-gap: 6.4rem;
+    align-items: center;
+    max-width: none;
+  }
+
+  html body .collection-hero .collection-hero__description:has(ul) > p {
+    grid-column: 1;
+  }
+
+  html body .collection-hero .collection-hero__description:has(ul) > ul {
+    grid-column: 2;
+    grid-row: 1 / span 9;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 1.2rem 3.2rem;
+    margin: 0;
+  }
+}

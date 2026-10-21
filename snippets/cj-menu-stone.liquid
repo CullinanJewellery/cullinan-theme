@@ -17,7 +17,8 @@
   - link: {Object} a menu link
   - class: {String} the image's class
   - handle: {String} a collection handle, instead of a link (optional)
-  - part: {String} 'meaning' for the meaning, 'hero' for the collection heading's meaning; the picture otherwise
+  - part: {String} 'meaning' for the meaning, 'hero' for the collection heading's meaning, 'colour' for the stone's
+    colour alone (empty for other collections); the picture otherwise
 
   Usage:
   {% render 'cj-menu-stone', link: childlink, class: 'cj-menu-stone' %}
@@ -59,7 +60,9 @@
         assign cj_stone_colour = '#5f7689'
     endcase
   endif
-  if part == 'hero'
+  if part == 'colour'
+    echo cj_stone_colour
+  elsif part == 'hero'
     if cj_stone_meaning != ''
       echo '<span class="cj-hero__meaning" style="--cj-stone-colour: ' | append: cj_stone_colour | append: '">' | append: cj_stone_meaning | append: '</span>'
     endif
