@@ -11,7 +11,16 @@
   {%- if predictive_search.performed -%}
     {%- liquid
       assign cj_products = predictive_search.resources.products
-      assign cj_suggest_count = predictive_search.resources.queries.size | plus: predictive_search.resources.collections.size
+      comment
+        Only collections that have pieces (no link to an empty collection; Shopify suggests empty ones too).
+      endcomment
+      assign cj_full_collections = 0
+      for collection in predictive_search.resources.collections
+        if collection.products_count > 0
+          assign cj_full_collections = cj_full_collections | plus: 1
+        endif
+      endfor
+      assign cj_suggest_count = predictive_search.resources.queries.size | plus: cj_full_collections
       assign total_results = cj_products.size | plus: cj_suggest_count
     -%}
     <div id="predictive-search-results-groups-wrapper" class="cj-search__panel">
@@ -33,6 +42,7 @@
                 </li>
               {%- endfor -%}
               {%- for collection in predictive_search.resources.collections -%}
+                {%- if collection.products_count == 0 -%}{%- continue -%}{%- endif -%}
                 <li id="predictive-search-option-collection-{{ forloop.index }}" role="option" aria-selected="false">
                   <a href="{{ collection.url }}" class="cj-search__popular-link" tabindex="-1">
                     {{- collection.title | escape -}}
