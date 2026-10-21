@@ -47,7 +47,7 @@
   color: rgb(42 30 26);
   /* The dim layer over the page. The sticky header is the containing block of anything fixed inside it, so a
      fixed backdrop would stop at the header; a shadow this large reaches every edge of the screen. A click on
-     it lands on the page outside the search, which details-modal.js treats as a close. */
+     it lands on the page outside the search, which details-modal.js treats as a close (2026-10-21). */
   box-shadow: 0 0 0 200vmax rgba(0, 0, 0, 0.46);
 }
 
