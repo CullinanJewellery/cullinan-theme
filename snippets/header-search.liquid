@@ -1,12 +1,23 @@
 {% comment %}
   Renders a header search modal. Should be used with 'header.liquid'
 
+  Cullinan (2026-10-21, owner: the search „like theirs“, moonmagic.com): a white bar across the top of the screen
+  over the dimmed page — the search icon, one large underlined line to type in, „Изчисти“ and the cross — and under it
+  a panel: before typing the popular searches and the bestsellers (sections/cj-search-start, fetched on first open by
+  assets/cj-search.js), while typing the results (sections/predictive-search). Dawn's details-modal and
+  predictive-search elements stay, so opening, closing, Esc, the arrow keys and the screen-reader announcements work
+  as before. The close button must stay the modal's first button[type="button"] (assets/details-modal.js).
+
   Accepts:
   - input_id: {String} Id for the search input element (required)
 
   Usage:
   {% render 'header-search', input_id: 'My-Id'%}
 {% endcomment %}
+
+{{ 'cj-search.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'cj-search.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'card-swatches.js' | asset_url }}" defer="defer"></script>
 
 <details-modal class="header__search">
   <details>
@@ -25,30 +36,40 @@
       </span>
     </summary>
     <div
-      class="search-modal modal__content gradient"
+      class="search-modal modal__content cj-search"
       role="dialog"
       aria-modal="true"
       aria-label="{{ 'general.search.search' | t }}"
     >
       <div class="modal-overlay"></div>
-      <div
-        class="search-modal__content{% if settings.inputs_shadow_vertical_offset != 0 and settings.inputs_shadow_vertical_offset < 0 %} search-modal__content-top{% else %} search-modal__content-bottom{% endif %}"
-        tabindex="-1"
-      >
+      <div class="search-modal__content cj-search__sheet" tabindex="-1">
+        <button
+          type="button"
+          class="search-modal__close-button modal__close-button cj-search__close focus-inset"
+          aria-label="{{ 'accessibility.close' | t }}"
+        >
+          <span class="svg-wrapper">
+            {{- 'icon-close.svg' | inline_asset_content -}}
+          </span>
+        </button>
         {%- if settings.predictive_search_enabled -%}
-          <predictive-search class="search-modal__form" data-loading-text="{{ 'accessibility.loading' | t }}">
+          <predictive-search class="search-modal__form cj-search__form" data-loading-text="{{ 'accessibility.loading' | t }}">
         {%- else -%}
-          <search-form class="search-modal__form">
+          <search-form class="search-modal__form cj-search__form">
         {%- endif -%}
         <form action="{{ routes.search_url }}" method="get" role="search" class="search search-modal__form">
-          <div class="field">
+          <div class="cj-search__bar">
+            <span class="cj-search__icon" aria-hidden="true">
+              {{- 'icon-search.svg' | inline_asset_content -}}
+            </span>
+            <label class="visually-hidden" for="{{ input_id }}">{{ 'general.search.search' | t }}</label>
             <input
-              class="search__input field__input"
+              class="search__input cj-search__input"
               id="{{ input_id }}"
               type="search"
               name="q"
               value="{{ search.terms | escape }}"
-              placeholder="{{ 'general.search.search' | t }}"
+              placeholder="Търсете бижу, метал или камък"
               {%- if settings.predictive_search_enabled -%}
                 role="combobox"
                 aria-expanded="false"
@@ -62,26 +83,19 @@
                 spellcheck="false"
               {%- endif -%}
             >
-            <label class="field__label" for="{{ input_id }}">{{ 'general.search.search' | t }}</label>
             <input type="hidden" name="options[prefix]" value="last">
             <button
               type="reset"
-              class="reset__button field__button{% if search.terms == blank %} hidden{% endif %}"
-              aria-label="{{ 'general.search.reset' | t }}"
+              class="reset__button cj-search__clear{% if search.terms == blank %} hidden{% endif %}"
             >
-              <span class="svg-wrapper">
-                {{- 'icon-reset.svg' | inline_asset_content -}}
-              </span>
-            </button>
-            <button class="search__button field__button" aria-label="{{ 'general.search.search' | t }}">
-              <span class="svg-wrapper">
-                {{- 'icon-search.svg' | inline_asset_content -}}
-              </span>
+              Изчисти
             </button>
           </div>
 
+          <div class="cj-search__start" data-cj-search-start></div>
+
           {%- if settings.predictive_search_enabled -%}
-            <div class="predictive-search predictive-search--header" tabindex="-1" data-predictive-search>
+            <div class="predictive-search predictive-search--header cj-search__results" tabindex="-1" data-predictive-search>
               {%- render 'loading-spinner', class: 'predictive-search__loading-state' -%}
             </div>
 
@@ -93,15 +107,6 @@
         {%- else -%}
           </search-form>
         {%- endif -%}
-        <button
-          type="button"
-          class="search-modal__close-button modal__close-button link link--text focus-inset"
-          aria-label="{{ 'accessibility.close' | t }}"
-        >
-          <span class="svg-wrapper">
-            {{- 'icon-close.svg' | inline_asset_content -}}
-          </span>
-        </button>
       </div>
     </div>
   </details>

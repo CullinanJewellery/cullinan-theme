@@ -1,0 +1,50 @@
+{%- comment -%}
+  „Популярни търсения“ in the search (2026-10-21, owner, as moonmagic.com's „Popular searches“; owner: „add all the
+  products“). Built from the header menu itself: every collection it links to (top level and the levels under it)
+  that has at least one product, each once, in menu order. So a new collection with pieces appears here by itself and
+  an empty one never does (no link to an empty collection).
+
+  Usage:
+  {% render 'cj-search-popular' %}
+{%- endcomment -%}
+{%- liquid
+  assign cj_menu = linklists['main-menu']
+  assign cj_seen = '|'
+-%}
+{%- capture cj_items -%}
+  {%- for link in cj_menu.links -%}
+    {%- if link.type == 'collection_link' and link.object.products_count > 0 -%}
+      {%- assign cj_key = '|' | append: link.object.handle | append: '|' -%}
+      {%- unless cj_seen contains cj_key -%}
+        {%- assign cj_seen = cj_seen | append: link.object.handle | append: '|' -%}
+        <li><a class="cj-search__popular-link" href="{{ link.object.url }}">{{ link.object.title | escape }}</a></li>
+      {%- endunless -%}
+    {%- endif -%}
+    {%- for child in link.links -%}
+      {%- if child.type == 'collection_link' and child.object.products_count > 0 -%}
+        {%- assign cj_key = '|' | append: child.object.handle | append: '|' -%}
+        {%- unless cj_seen contains cj_key -%}
+          {%- assign cj_seen = cj_seen | append: child.object.handle | append: '|' -%}
+          <li><a class="cj-search__popular-link" href="{{ child.object.url }}">{{ child.object.title | escape }}</a></li>
+        {%- endunless -%}
+      {%- endif -%}
+      {%- for grandchild in child.links -%}
+        {%- if grandchild.type == 'collection_link' and grandchild.object.products_count > 0 -%}
+          {%- assign cj_key = '|' | append: grandchild.object.handle | append: '|' -%}
+          {%- unless cj_seen contains cj_key -%}
+            {%- assign cj_seen = cj_seen | append: grandchild.object.handle | append: '|' -%}
+            <li><a class="cj-search__popular-link" href="{{ grandchild.object.url }}">{{ grandchild.object.title | escape }}</a></li>
+          {%- endunless -%}
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endfor -%}
+  {%- endfor -%}
+{%- endcapture -%}
+{%- if cj_items != blank -%}
+  <div class="cj-search__popular">
+    <h2 class="cj-search__label">Популярни търсения</h2>
+    <ul class="cj-search__popular-list list-unstyled" role="list">
+      {{- cj_items -}}
+    </ul>
+  </div>
+{%- endif -%}

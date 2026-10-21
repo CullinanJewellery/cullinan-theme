@@ -1,0 +1,40 @@
+{%- comment -%}
+  What the search shows before anything is typed (2026-10-21, owner: „don't keep it like theirs, add it“): the
+  popular searches on the left and the bestsellers as product cards on the right, so the search is never empty.
+  moonmagic.com shows its „Popular searches“ and „Most loved“ only once something is typed.
+
+  Not placed on any page: assets/cj-search.js fetches it (/?section_id=cj-search-start) the first time the search
+  opens, so no page carries these cards until someone opens the search. The bestsellers are the homepage row's own
+  collection, „all“ (templates/index.json, Най-продавани), its first eight.
+{%- endcomment -%}
+<div class="cj-search__panel">
+  {%- render 'cj-search-popular' -%}
+
+  {%- assign cj_best = collections['all'] -%}
+  {%- if cj_best.products_count > 0 -%}
+    <div class="cj-search__products">
+      <h2 class="cj-search__label">Най-продавани</h2>
+      <ul class="cj-search__grid list-unstyled" role="list">
+        {%- for product in cj_best.products limit: 8 -%}
+          <li class="cj-search__card">
+            {% render 'card-product',
+              card_product: product,
+              media_aspect_ratio: 'square',
+              lazy_load: true,
+              show_secondary_image: true,
+              section_id: section.id,
+              product_view_context: 'search'
+            %}
+          </li>
+        {%- endfor -%}
+      </ul>
+    </div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Search: before typing",
+  "settings": []
+}
+{% endschema %}

@@ -8,6 +8,20 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-21 — search like moonmagic, with a first view **(owner)**
+- Owner: the search „like theirs“ (moonmagic.com, measured at 1440px and 375px: the page dimmed 46%, a white sheet from
+  the top, icon + a 30px underlined input across the width + „CLEAR | ✕“, then „Popular searches“ left and the
+  products as full cards, four in a row; phones two). Ours (`snippets/header-search.liquid`, `assets/cj-search.css`):
+  the same sheet in Jost normal letters, „Изчисти“ and the cross; results (`sections/predictive-search.liquid`,
+  rewritten) show Shopify's suggestions and „Популярни търсения“ left, the site's own product cards right (up to
+  eight: `predictive-search.js` asks for 8), „Вижте всички резултати за „…““ under them, a sentence when nothing is
+  found. Dawn's details-modal and predictive-search elements stay (Esc, arrows, live region).
+- Owner: "add all the products" to the popular searches and show something before typing ("don't keep it like
+  theirs"). „Популярни търсения“ is built from the header menu: every collection it links to that has products
+  (`snippets/cj-search-popular.liquid`). Before typing the panel shows those and the bestsellers (the homepage
+  row's collection „all“, first 8) as cards: `sections/cj-search-start.liquid`, fetched on first open by
+  `assets/cj-search.js`, so pages do not carry the cards. Way back: revert this entry's commit.
+
 ## 2026-10-21 — collection heading picture above the text on phones **(owner)**
 - Owner: on a phone the heading text covered the whole picture. Under 750px a collection's heading picture is now a
   full-width 4:3 band above the text, no veil, and the name, meaning, description and qualities sit under it on white

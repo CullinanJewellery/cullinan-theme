@@ -180,7 +180,8 @@ class PredictiveSearch extends SearchForm {
 
     const searchDeferred = this.dispatchSearchUpdateEvent(searchTerm);
 
-    fetch(`${routes.predictive_search_url}?q=${encodeURIComponent(searchTerm)}&section_id=predictive-search`, {
+    // Cullinan (2026-10-21): eight pieces, shown as product cards in the search panel.
+    fetch(`${routes.predictive_search_url}?q=${encodeURIComponent(searchTerm)}&section_id=predictive-search&resources[limit]=8&resources[limit_scope]=each`, {
       signal: this.abortController.signal,
     })
       .then((response) => {
