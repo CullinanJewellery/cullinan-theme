@@ -15,7 +15,8 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
   like them; the italic meanings stay Jost Italic in normal letters. Done centrally: the heading font in
   `snippets/theme-fonts.liquid` is Jost 500 (was Prata 400, since 2026-10-04 direction C), and crown.css „Headings in
   Jost capitals“ adds the capitals and tracking with !important over the sections' Prata-era `text-transform: none`,
-  removes the Prata stroke, sets --font-heading-scale 0.88. Kept: the shop name in the header in Prata (logo);
+  removes the Prata stroke, sets --font-heading-scale 0.88. Kept: the shop name in the header in Prata (logo) — then the same day the owner asked for it in Jost too (500,
+  its own 0.22em tracking; Prata no longer preloaded);
   small text in heading tags (top bar, filter count, captions, cart total label); the empty-filter sentence. The phone
   menu's category words take the desktop panel's Jost 400, no stroke. Way back: delete those blocks and set Prata 400
   in theme-fonts.liquid.

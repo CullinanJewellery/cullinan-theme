@@ -9540,8 +9540,8 @@ html body .collection-hero.cj-hero--image .collection-hero__description li::befo
    `!important` on purpose: many sections set their headings to `text-transform: none` for Prata's sentence case,
    and this is one site-wide rule that has to win over all of them.
    Kept as they were: small text set in heading tags (the top bar's messages, the filter bar's count, notices,
-   captions, the cart's total label), the meaning beside a stone's name (Jost italic, normal letters), and the shop
-   name in the header, which stays in Prata as the logo. The phone menu's category words take the desktop menu
+   captions, the cart's total label) and the meaning beside a stone's name (Jost italic, normal letters). The shop
+   name in the header keeps its own wider tracking (below). The phone menu's category words take the desktop menu
    panel's Jost 400, normal letters, no stroke.
    Way back: delete this block and set the heading font in snippets/theme-fonts.liquid back to Prata 400. ===== */
 :root {
@@ -9563,13 +9563,15 @@ html body .collection-hero .cj-hero__meaning {
   letter-spacing: 0 !important;
 }
 
+/* The shop name: Jost too since 2026-10-21 (owner: "make the logo in jost too"; Prata until then), at 500 with
+   the name's own wider 0.22em tracking. */
 html body .header__heading,
 html body .header__heading-link .h2 {
-  font-family: "Prata Theme", Georgia, "Times New Roman", serif;
-  font-weight: 400;
+  font-family: var(--font-heading-family);
+  font-weight: 500;
   letter-spacing: 0.22em !important;
   text-transform: uppercase !important;
-  -webkit-text-stroke: 0.012em currentcolor !important;
+  -webkit-text-stroke: 0 !important;
 }
 
 @media screen and (max-width: 989px) {

@@ -33,8 +33,6 @@
 {%- comment -%}theme-check-disable AssetPreload{%- endcomment -%}
 <link rel="preload" as="font" href="{{ 'font-jost-normal-cyrillic.woff2' | asset_url }}" type="font/woff2" crossorigin>
 <link rel="preload" as="font" href="{{ 'font-jost-normal-latin.woff2' | asset_url }}" type="font/woff2" crossorigin>
-<link rel="preload" as="font" href="{{ 'font-prata-normal-cyrillic.woff2' | asset_url }}" type="font/woff2" crossorigin>
-<link rel="preload" as="font" href="{{ 'font-prata-normal-latin.woff2' | asset_url }}" type="font/woff2" crossorigin>
 {%- comment -%}theme-check-enable AssetPreload{%- endcomment -%}
 
 <style>
@@ -130,8 +128,8 @@
        this, so changing it changes them all. Buttons, prices, menu items and
        form labels do not. Georgia stands in only if the Prata files fail to
        load, and has Cyrillic. */
-    /* 2026-10-21 (owner: „moonmagic Jost“ for every heading and name): Jost 500. Prata stays loaded for the
-       shop name in the header only (crown.css „Headings in Jost capitals“). */
+    /* 2026-10-21 (owner: „moonmagic Jost“ for every heading and name): Jost 500. The shop name in the header too
+       since the same day; Prata is no longer used (its files stay, not preloaded). */
     --font-heading-family: "Jost Theme", "Segoe UI", Arial, sans-serif;
     --font-heading-style: normal;
     --font-heading-weight: 500;
