@@ -8,6 +8,12 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-21 — the shop name in Bodoni Moda **(owner)**
+- Owner, an hour after Cinzel: Bodoni Moda (option 4 of the logo comparison) with "a little bit more space between
+  the text": 500, 0.18em tracking (the comparison showed 0.12em). Self-hosted `assets/font-bodoni-moda-latin.woff2`
+  (15 KB, Google Fonts, SIL OFL, Latin only), preloaded; `font-cinzel-latin.woff2` removed. Way back: the font-family
+  line in crown.css „The shop name“.
+
 ## 2026-10-21 — the shop name in Cinzel **(owner)**
 - Owner chose option 3 of the logo comparison (https://claude.ai/artifact/HLYsi2wciKSRFpQyyqEAiC): Cinzel, classic Roman
   capitals like a hallmark. Self-hosted (`assets/font-cinzel-latin.woff2`, 15 KB, Google Fonts, SIL OFL; Latin only,

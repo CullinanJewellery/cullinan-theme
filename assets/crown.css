@@ -9560,13 +9560,14 @@ html body .collection-hero .cj-hero__meaning {
   letter-spacing: 0 !important;
 }
 
-/* The shop name: Cinzel 500 since 2026-10-21 (owner chose option 3 of the logo comparison: classic Roman capitals,
-   like a hallmark; Jost for an hour before, Prata until then), self-hosted in snippets/theme-fonts.liquid. */
+/* The shop name: Bodoni Moda 500 since 2026-10-21 (owner chose option 4 of the logo comparison, "a little bit more
+   space between the text": 0.18em, the comparison had 0.12em; Cinzel and Jost for an hour each before, Prata until
+   then), self-hosted in snippets/theme-fonts.liquid. */
 html body .header__heading,
 html body .header__heading-link .h2 {
-  font-family: "Cinzel Theme", Georgia, "Times New Roman", serif;
+  font-family: "Bodoni Moda Theme", Didot, Georgia, "Times New Roman", serif;
   font-weight: 500;
-  letter-spacing: 0.14em !important;
+  letter-spacing: 0.18em !important;
   text-transform: uppercase !important;
   -webkit-text-stroke: 0 !important;
 }
