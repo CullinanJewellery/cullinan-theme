@@ -56,8 +56,7 @@
   {%- endif -%}
   <div class="collection-hero__inner page-width {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
     <div class="collection-hero__text-wrapper">
-      {%- comment -%} Cullinan (2026-10-05): Начало › the collection, above the title. {%- endcomment -%}
-      {% render 'breadcrumbs', current: cj_hero_title %}
+      {%- comment -%} No „Начало › the collection“ trail since 2026-10-21 (owner: more room for the title and text, and for a heading picture); it was above the title from 2026-10-05. {%- endcomment -%}
       {%- comment -%} The collection's name alone, „Пръстени“ (2026-10-07, owner; „Колекция:“ was a hidden prefix). {%- endcomment -%}
       {%- comment -%}
         2026-10-21 (owner, as moonmagic.com's „MOONSTONE Intuition“): a stone collection's meaning beside its name,

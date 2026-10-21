@@ -4550,7 +4550,7 @@ body .jdgm-write-review-modal .jdgm-write-review-modal__page--review-form-intro 
 }
 
 .collection-hero .collection-hero__title {
-  margin: 1.2rem 0 0;
+  margin: 0;
 }
 
 @media screen and (min-width: 750px) {

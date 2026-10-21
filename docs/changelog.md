@@ -8,6 +8,12 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-21 — no „Начало › …“ trail on collection pages **(owner)**
+- Owner: remove „Начало › Циркони“ above a collection's title, for more room for the title and text and for a heading
+  picture. Removed from `sections/main-collection-banner.liquid` (all collection pages); the title now starts at the
+  banner's top padding (its 1.2rem top margin under the trail is 0). Product pages keep their trail. Way back: the
+  render line in the banner (since 2026-10-05).
+
 ## 2026-10-21 — the shop name in Bodoni Moda **(owner)**
 - Owner, an hour after Cinzel: Bodoni Moda (option 4 of the logo comparison) with "a little bit more space between
   the text": 500, 0.18em tracking (the comparison showed 0.12em). Self-hosted `assets/font-bodoni-moda-latin.woff2`
