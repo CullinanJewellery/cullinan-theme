@@ -402,7 +402,14 @@
     z-index: 2;
   }
 
+  /* Closer to the line after „Изчисти“ (about 12px) and a bigger cross, as moonmagic's (owner, 2026-10-21) */
   .cj-search .cj-search__bar {
-    margin-right: 10.4rem;
+    margin-right: 7rem;
+  }
+
+  .cj-search .cj-search__close .svg-wrapper,
+  .cj-search .cj-search__close svg {
+    width: 2.6rem;
+    height: 2.6rem;
   }
 }
