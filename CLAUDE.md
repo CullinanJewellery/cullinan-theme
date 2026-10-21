@@ -197,8 +197,8 @@ Measurements from the 2026-10-04 research are in the archive ("Reference sites, 
 ## Design in one paragraph
 
 Direction C, "Мрамор", with the palette of 2026-10-06: white page, warm greige and soft blush bands, a muted blush
-footer, espresso ink, black buttons with white labels, **Prata** headings in
-sentence case and **Jost** text (self-hosted with Cyrillic), square corners and square buttons, whole-number prices,
+footer, espresso ink, black buttons with white labels, **Jost** for everything (self-hosted with Cyrillic): headings and names
+in Jost 500 capitals since 2026-10-21 („moonmagic Jost“; Prata before), the shop name still Prata as the logo, square corners and square buttons, whole-number prices,
 generous space. Deliberate exceptions (words over the hero photo, the ruby hero button, pure-black text in named places, brand-coloured
 social buttons) are listed with reasons in `docs/design-system.md` §8. Things the owner likes
 and wants kept: the colour circles on product cards, the material choice on the product page, the stones section,
