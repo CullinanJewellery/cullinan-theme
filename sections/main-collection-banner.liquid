@@ -70,7 +70,42 @@
       </h1>
 
       {%- if section.settings.show_collection_description -%}
-        <div class="collection-hero__description rte">{{ collection.description }}</div>
+        {%- comment -%}
+          2026-10-21 (owner): the three qualities may be typed as lines starting with „•“ (they were, on all six
+          stones) instead of with Shopify's list button. Such lines become a real list here, so they take the
+          qualities' look (crown.css „Stone collections: the three qualities“). Text without „•“ is printed as it is.
+        {%- endcomment -%}
+        {%- liquid
+          assign cj_desc = collection.description
+          if cj_desc contains '•'
+            assign cj_parts = cj_desc | split: '•'
+            assign cj_intro = cj_parts.first | strip
+            for i in (1..3)
+              assign cj_tail = cj_intro | slice: -4, 4
+              if cj_tail == '<br>'
+                assign cj_intro = cj_intro | remove_last: '<br>' | strip
+              endif
+              assign cj_tail = cj_intro | slice: -3, 3
+              if cj_tail == '<p>'
+                assign cj_intro = cj_intro | remove_last: '<p>' | strip
+              endif
+            endfor
+            assign cj_tail = cj_intro | slice: -4, 4
+            if cj_intro contains '<p' and cj_tail != '</p>'
+              assign cj_intro = cj_intro | append: '</p>'
+            endif
+            capture cj_items
+              for part in cj_parts offset: 1
+                assign cj_item = part | strip_html | strip
+                if cj_item != blank
+                  echo '<li>' | append: cj_item | append: '</li>'
+                endif
+              endfor
+            endcapture
+            assign cj_desc = cj_intro | append: '<ul>' | append: cj_items | append: '</ul>'
+          endif
+        -%}
+        <div class="collection-hero__description rte">{{ cj_desc }}</div>
       {%- endif -%}
     </div>
 

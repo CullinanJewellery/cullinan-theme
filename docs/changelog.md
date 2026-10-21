@@ -17,7 +17,8 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
   beside the name“). Not done: moonmagic's stone picture on the right.
 - Owner: the three qualities as moonmagic's, written by the owner as a bulleted list under the text in the Description:
   small capitals after a dot in the stone's colour; right of the paragraph from 990px, under it on phones (crown.css
-  „Stone collections: the three qualities“; the stone colour now sits on the whole heading, part „colour“).
+  „Stone collections: the three qualities“; the stone colour now sits on the whole heading, part „colour“). The owner typed the qualities as lines starting with „•“ on all six stones; the banner
+  turns such lines into the list itself (`sections/main-collection-banner.liquid`), so either way works.
 
 ## 2026-10-21 — stone meanings: name over meaning, also in the menu **(owner)**
 - Owner: in „Всеки камък има значение“ the small word above the name was unclear; like moonmagic.com („MOONSTONE“ /
