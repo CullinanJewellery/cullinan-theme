@@ -12,7 +12,7 @@
 
   {%- assign cj_best = collections['all'] -%}
   {%- if cj_best.products_count > 0 -%}
-    <div class="cj-search__products">
+    <div class="cj-search__products collection">
       <h2 class="cj-search__label">Най-продавани</h2>
       <ul class="cj-search__grid list-unstyled" role="list">
         {%- for product in cj_best.products limit: 8 -%}

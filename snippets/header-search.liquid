@@ -15,6 +15,9 @@
   {% render 'header-search', input_id: 'My-Id'%}
 {% endcomment %}
 
+{%- comment -%} The product cards' own styles, as the homepage rows load them (featured-collection). {%- endcomment -%}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-swatch.css' | asset_url | stylesheet_tag }}
 {{ 'cj-search.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'cj-search.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'card-swatches.js' | asset_url }}" defer="defer"></script>
