@@ -390,3 +390,19 @@
 .section-header:has(.header__search details[open] > .cj-search) {
   z-index: 1002;
 }
+
+/* Computers: the cross further in from the edge (owner, 2026-10-21: it sat against the sheet's scrollbar and was
+   hard to click), and a bigger click area; the bar leaves room for it. */
+@media screen and (min-width: 750px) {
+  .cj-search .cj-search__close {
+    top: 1.6rem;
+    right: 4.8rem;
+    width: 5.6rem;
+    height: 5.6rem;
+    z-index: 2;
+  }
+
+  .cj-search .cj-search__bar {
+    margin-right: 10.4rem;
+  }
+}
