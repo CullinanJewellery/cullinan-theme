@@ -92,11 +92,16 @@
                   <span class="stones__image stones__image--empty"></span>
                 {%- endif -%}
               </span>
-              {%- if block.settings.meaning != blank -%}
-                <span class="stones__meaning">{{ block.settings.meaning | escape }}</span>
-              {%- endif -%}
+              {%- comment -%}
+                2026-10-21 (owner, as moonmagic.com): the name first, in bold capitals, and the stone's meaning under
+                it in italic („Диамант“ / „Вечна любов“). The same meanings are in the menu
+                (snippets/cj-menu-stone.liquid): change both together.
+              {%- endcomment -%}
               {%- if block.settings.name != blank -%}
                 <span class="stones__name">{{ block.settings.name | escape }}</span>
+              {%- endif -%}
+              {%- if block.settings.meaning != blank -%}
+                <span class="stones__meaning">{{ block.settings.meaning | escape }}</span>
               {%- endif -%}
             {%- endcapture -%}
 

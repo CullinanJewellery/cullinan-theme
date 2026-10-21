@@ -8,6 +8,16 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-21 — stone meanings: name over meaning, also in the menu **(owner)**
+- Owner: in „Всеки камък има значение“ the small word above the name was unclear; like moonmagic.com („MOONSTONE“ /
+  *Intuition*) the name now comes first in bold capitals and the meaning under it in italic
+  (`sections/stone-meanings.liquid`, `section-stone-meanings.css` end). New meanings, the owner's OK: Диамант *Вечна
+  любов*, Сапфир *Мъдрост и вярност*, Рубин *Страст и любов*, Изумруд *Надежда*, Перла *Чистота и нежност*, Циркон
+  *Яснота и блясък* (were Завинаги, Дълбочина, Страст, Рядкост, Класика, Блясък; `templates/index.json`).
+- The same meanings in italic under each stone in the desktop panel and the phone drawer, as moonmagic's menu
+  (`snippets/cj-menu-stone.liquid` part „meaning“; crown.css „Menu stones: the meaning under the name“). The words
+  live in two places (the template and the snippet): change both together.
+
 ## 2026-10-21 — menu stone pictures sharp on phones **(owner)**
 - Owner: the stone pictures looked blurry on a phone. `image_tag` had offered only a 30px file for the 30px spot; now 60,
   90 and 120px with `sizes: 30px`, so 2× and 3× screens load a sharp one (`snippets/cj-menu-stone.liquid`). Same

@@ -416,3 +416,37 @@ a.stones__tile:hover .stones__name {
     font-size: 1.2rem;
   }
 }
+
+/* --- Name over meaning, as moonmagic.com (2026-10-21, owner) -------------------
+   moonmagic's stones read „MOONSTONE“ in 600 capitals, then „Intuition“ in italic under it. Ours: the name takes
+   the label look the meaning had (capitals, 600, 0.08em), the meaning goes under it in Jost italic at the size the
+   name had. Pure black stays (the exception noted above). Hover still underlines the name. */
+.stones__name {
+  margin-top: 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.stones__meaning {
+  margin-top: 0.4rem;
+  font-size: 1.5rem;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+@media screen and (max-width: 749px) {
+  .stones__name {
+    margin-top: 0;
+    font-size: 1.3rem;
+    letter-spacing: 0.04em;
+  }
+
+  .stones__meaning {
+    font-size: 1.4rem;
+    letter-spacing: 0;
+  }
+}

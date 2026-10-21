@@ -9391,3 +9391,27 @@ html body #menu-drawer .menu-drawer__submenu a.menu-drawer__menu-item:hover .cj-
   text-underline-offset: 0.35em;
   -webkit-text-stroke: 0.01em #b76e79;
 }
+
+/* ===== Menu stones: the meaning under the name, as moonmagic.com (2026-10-21, owner) =====
+   moonmagic: „MOONSTONE“ and under it „Intuition“ in italic, beside the stone. Ours: the name as every other sub-link,
+   the meaning (snippets/cj-menu-stone.liquid, the homepage stones' own words) under it in Jost italic, a little smaller
+   and quieter; on hover it takes the same pink, without the underline. ===== */
+html body .cj-menu-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+html body .cj-menu-meaning {
+  margin-top: 0.1rem;
+  font-size: 1.4rem;
+  font-style: italic;
+  line-height: 1.3;
+  color: rgba(var(--color-foreground), 0.7);
+}
+
+html body .cj-dmenu__sublink:hover .cj-menu-meaning,
+html body .cj-dmenu__sub3-link:hover .cj-menu-meaning,
+html body #menu-drawer .menu-drawer__submenu a.menu-drawer__menu-item:hover .cj-menu-meaning {
+  color: #b76e79;
+}
