@@ -8,6 +8,12 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-21 — collection heading picture above the text on phones **(owner)**
+- Owner: on a phone the heading text covered the whole picture. Under 750px a collection's heading picture is now a
+  full-width 4:3 band above the text, no veil, and the name, meaning, description and qualities sit under it on white
+  in their usual colours (crown.css „Collection heading picture on phones“). Computers unchanged (picture behind the
+  words). Way back: delete that block.
+
 ## 2026-10-21 — no „Начало › …“ trail on collection pages **(owner)**
 - Owner: remove „Начало › Циркони“ above a collection's title, for more room for the title and text and for a heading
   picture. Removed from `sections/main-collection-banner.liquid` (all collection pages); the title now starts at the

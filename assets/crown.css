@@ -9587,3 +9587,53 @@ html body .collection--empty .title-wrapper .title {
   letter-spacing: 0 !important;
   font-weight: 400;
 }
+
+/* ===== Collection heading picture on phones: the picture above the text (2026-10-21, owner) =====
+   Owner: on a phone the text (name, meaning, description, qualities) took the whole picture. Under 750px the
+   heading picture is now its own full-width band above the text (4:3, cropped around its focal point, no veil), and
+   the words sit under it on the page's white in their usual colours (the stone's colour for the meaning and the
+   dots). Computers keep the picture behind the words. Way back: delete this block. ===== */
+@media screen and (max-width: 749px) {
+  html body .collection-hero.cj-hero--image {
+    overflow: visible;
+    padding-bottom: 1.8rem;
+    background: rgb(var(--color-background));
+    --color-foreground: 42, 30, 26;
+  }
+
+  html body .collection-hero.cj-hero--image .cj-hero__bg {
+    position: static;
+    display: block;
+    z-index: auto;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+
+  html body .collection-hero.cj-hero--image::after {
+    display: none;
+  }
+
+  html body .collection-hero.cj-hero--image .collection-hero__inner {
+    padding-top: 2rem;
+  }
+
+  html body .collection-hero.cj-hero--image .collection-hero__title,
+  html body .collection-hero.cj-hero--image .collection-hero__description {
+    color: rgb(42 30 26);
+  }
+
+  html body .collection-hero.cj-hero--image .cj-hero__meaning {
+    color: var(--cj-stone-colour, rgb(42 30 26));
+  }
+
+  html body .collection-hero.cj-hero--image .collection-hero__description li::before {
+    background: var(--cj-stone-colour, rgb(42 30 26));
+  }
+
+  html body [id$='__banner']:has(.cj-hero--image) + [id$='__product-grid'] [class*='__product-grid-padding'] {
+    padding-top: revert-layer;
+  }
+}
