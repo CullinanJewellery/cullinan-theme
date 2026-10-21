@@ -9360,7 +9360,7 @@ html body .cj-dmenu__item:not(.is-active):hover .cj-dmenu__item-label {
    Hover: moonmagic turns a sub-link pink and underlines it; ours in our pink for text links, rose gold #B76E79 (the
    navigation trail's pink, chosen by the owner over moonmagic's paler #E6BAB9), underline in the same pink, and 5%
    bolder (text-stroke 0.01em; the 10% of the categories is 0.02em). The colour, line and weight go on the name only,
-   never on the stone picture. Way back: delete this block and the cj-menu-stone renders. ===== */
+   never on the stone picture itself. Way back: delete this block and the cj-menu-stone renders. ===== */
 html body .cj-dmenu__sublink,
 html body .cj-dmenu__sub3-link,
 html body #menu-drawer .menu-drawer__submenu a.menu-drawer__menu-item {
