@@ -9415,3 +9415,52 @@ html body .cj-dmenu__sub3-link:hover .cj-menu-meaning,
 html body #menu-drawer .menu-drawer__submenu a.menu-drawer__menu-item:hover .cj-menu-meaning {
   color: #b76e79;
 }
+
+/* ===== Stone collections: meaning beside the name, text under it, as moonmagic.com (2026-10-21, owner) =====
+   Measured on moonmagic's Moonstone page (1440px): „MOONSTONE“ 41px, then on the same line „Intuition“ 30px italic
+   in the stone's colour; under it the collection text at 18px / 28px, at most 660px wide, a phrase in bold. Ours keeps
+   our Prata title, the meaning beside it in Jost italic at 0.62em of the title in the stone's colour (set by
+   snippets/cj-menu-stone.liquid; white over a heading picture), and the collection's Description from Shopify admin
+   under it at 1.7rem / 1.6 (1.6rem on phones), at most 66rem wide, bold kept. Way back: delete this block and the
+   render in sections/main-collection-banner.liquid. ===== */
+html body .collection-hero .cj-hero__meaning {
+  display: inline-block;
+  margin-left: 0.5em;
+  font-family: var(--font-body-family);
+  font-size: 0.62em;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0;
+  color: var(--cj-stone-colour, rgb(var(--color-foreground)));
+}
+
+html body .collection-hero.cj-hero--image .cj-hero__meaning {
+  color: #ffffff;
+}
+
+html body .collection-hero .collection-hero__title + .collection-hero__description {
+  max-width: 66rem;
+  margin: 1.2rem 0 0;
+  font-size: 1.6rem;
+  line-height: 1.6;
+  color: rgb(var(--color-foreground));
+}
+
+html body .collection-hero .collection-hero__description p {
+  margin: 0;
+}
+
+html body .collection-hero .collection-hero__description p + p {
+  margin-top: 0.8rem;
+}
+
+html body .collection-hero .collection-hero__description strong,
+html body .collection-hero .collection-hero__description b {
+  font-weight: 600;
+}
+
+@media screen and (min-width: 750px) {
+  html body .collection-hero .collection-hero__title + .collection-hero__description {
+    font-size: 1.7rem;
+  }
+}

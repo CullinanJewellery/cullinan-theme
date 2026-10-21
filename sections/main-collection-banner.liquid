@@ -58,8 +58,14 @@
       {%- comment -%} Cullinan (2026-10-05): Начало › the collection, above the title. {%- endcomment -%}
       {% render 'breadcrumbs', current: cj_hero_title %}
       {%- comment -%} The collection's name alone, „Пръстени“ (2026-10-07, owner; „Колекция:“ was a hidden prefix). {%- endcomment -%}
+      {%- comment -%}
+        2026-10-21 (owner, as moonmagic.com's „MOONSTONE Intuition“): a stone collection's meaning beside its name,
+        in italic, in the stone's colour (snippets/cj-menu-stone.liquid, the same words as the menu and the homepage
+        stones). The text under it is the collection's own Description in Shopify admin.
+      {%- endcomment -%}
       <h1 class="collection-hero__title">
-        {{- cj_hero_title | escape -}}
+        <span class="cj-hero__name">{{- cj_hero_title | escape -}}</span>
+        {%- render 'cj-menu-stone', handle: collection.handle, part: 'hero' -%}
       </h1>
 
       {%- if section.settings.show_collection_description -%}

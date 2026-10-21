@@ -8,6 +8,14 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-21 — stone collection pages: meaning beside the name, text under it **(owner)**
+- Owner: like moonmagic.com's Moonstone page („MOONSTONE“ *Intuition* and a short paragraph), with the owner's own
+  text pasted in Shopify. A stone collection's title now carries its meaning beside it in italic, in the stone's colour
+  (диаманти/циркони #5F7689, сапфири #2B4C9B, рубини #A8243B, изумруди #1F7A4D, перли #8F7A5E; white over a heading
+  picture), from `snippets/cj-menu-stone.liquid` part „hero“. The text is the collection's Description in Shopify admin
+  (already shown by the banner); styled 1.7rem / 1.6, at most 66rem, bold kept (crown.css „Stone collections: meaning
+  beside the name“). Not done: moonmagic's stone picture and bullet list on the right.
+
 ## 2026-10-21 — stone meanings: name over meaning, also in the menu **(owner)**
 - Owner: in „Всеки камък има значение“ the small word above the name was unclear; like moonmagic.com („MOONSTONE“ /
   *Intuition*) the name now comes first in bold capitals and the meaning under it in italic
