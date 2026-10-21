@@ -9530,3 +9530,52 @@ html body .collection-hero.cj-hero--image .collection-hero__description li::befo
     margin: 0;
   }
 }
+
+/* ===== Headings in Jost capitals, as moonmagic.com (2026-10-21, owner) =====
+   The owner chose „moonmagic Jost“ (option В of the font comparison: Jost 500 in capitals, 0.06em tracking) for
+   every heading and name: section titles, collection titles (Рубин), zodiac names, the workshop steps (Наш
+   собствен дизайн), product names on the product page, in rows and in the cart, the product page's drop-downs
+   (Доставка и връщане …), and everything like them. The heading font itself is Jost since today
+   (snippets/theme-fonts.liquid); this block adds the capitals and tracking and takes away the Prata-era stroke.
+   `!important` on purpose: many sections set their headings to `text-transform: none` for Prata's sentence case,
+   and this is one site-wide rule that has to win over all of them.
+   Kept as they were: small text set in heading tags (the top bar's messages, the filter bar's count, notices,
+   captions, the cart's total label), the meaning beside a stone's name (Jost italic, normal letters), and the shop
+   name in the header, which stays in Prata as the logo. The phone menu's category words take the desktop menu
+   panel's Jost 400, normal letters, no stroke.
+   Way back: delete this block and set the heading font in snippets/theme-fonts.liquid back to Prata 400. ===== */
+:root {
+  --font-heading-scale: 0.88;
+}
+
+:is(h1, h2, h3, h4, h5, h6, .h0, .h1, .h2, .h3, .h4, .h5,
+  .cart-disclosure-modal__title, .cart-item__name, .mosaic-slider__name, .social-band__heading,
+  .workshop__heading, .zodiac__heading, .zodiac__overlay-title, .cj-material__title, .accordion__title):not(
+  .announcement-bar__message, .text-body, .cart__empty-text, .totals__total, .caption-with-letter-spacing,
+  .header__heading, .visually-hidden) {
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+  -webkit-text-stroke: 0 !important;
+}
+
+html body .collection-hero .cj-hero__meaning {
+  text-transform: none !important;
+  letter-spacing: 0 !important;
+}
+
+html body .header__heading,
+html body .header__heading-link .h2 {
+  font-family: "Prata Theme", Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  letter-spacing: 0.22em !important;
+  text-transform: uppercase !important;
+  -webkit-text-stroke: 0.012em currentcolor !important;
+}
+
+@media screen and (max-width: 989px) {
+  html body #menu-drawer .menu-drawer__navigation > .menu-drawer__menu > li > a.menu-drawer__menu-item,
+  html body #menu-drawer .menu-drawer__navigation > .menu-drawer__menu > li > details > summary.menu-drawer__menu-item {
+    font-weight: 400;
+    -webkit-text-stroke: 0;
+  }
+}
