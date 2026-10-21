@@ -369,3 +369,9 @@
     width: 100%;
   }
 }
+
+/* The header section is z-index 3 and the black top bar above it 4, so the open search (inside the header) would
+   sit under the top bar. While it is open the header section comes forward. */
+.section-header:has(.header__search details[open] > .cj-search) {
+  z-index: 1002;
+}
