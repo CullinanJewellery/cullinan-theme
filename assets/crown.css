@@ -9512,6 +9512,7 @@ html body .collection-hero.cj-hero--image .collection-hero__description li::befo
     grid-template-columns: minmax(0, 60rem) auto;
     column-gap: 6.4rem;
     align-items: center;
+    justify-content: start;
     max-width: none;
   }
 
@@ -9523,7 +9524,8 @@ html body .collection-hero.cj-hero--image .collection-hero__description li::befo
     grid-column: 2;
     grid-row: 1 / span 9;
     display: grid;
-    grid-template-columns: repeat(2, auto);
+    grid-template-columns: repeat(2, max-content);
+    justify-content: start;
     gap: 1.2rem 3.2rem;
     margin: 0;
   }
