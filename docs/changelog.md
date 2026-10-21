@@ -8,6 +8,13 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-21 — the shop name in Cinzel **(owner)**
+- Owner chose option 3 of the logo comparison (https://claude.ai/artifact/HLYsi2wciKSRFpQyyqEAiC): Cinzel, classic Roman
+  capitals like a hallmark. Self-hosted (`assets/font-cinzel-latin.woff2`, 15 KB, Google Fonts, SIL OFL; Latin only,
+  the name is Latin) and preloaded in `snippets/theme-fonts.liquid`; crown.css sets it on the header name at 500 with
+  0.14em tracking (Jost 0.22em for an hour before, Prata until today). Way back: the font-family line in crown.css
+  „The shop name“.
+
 ## 2026-10-21 — headings in „Само Jost“ (normal letters) **(owner)**
 - Owner, later the same day: "make every heading in Само Jost" (option Б of the comparison: Jost 500, normal letters).
   The forced capitals, 0.06em tracking and --font-heading-scale 0.88 of the entry below are removed; every heading

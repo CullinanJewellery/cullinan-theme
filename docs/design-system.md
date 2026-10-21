@@ -15,7 +15,7 @@ the code is the truth and this file is out of date: fix this file.
 ## 1. Direction
 
 **"Мрамор" (direction C, chosen by the owner 2026-10-04)**: marble and rose gold. Warm, light grounds; espresso ink;
-black buttons with white labels (since 2026-10-06; rosewood before); Jost for everything: headings and names in Jost 500, normal letters (since 2026-10-21, „Само Jost“; Prata before), the shop name in the header too. Restrained, generous
+black buttons with white labels (since 2026-10-06; rosewood before); Jost for everything: headings and names in Jost 500, normal letters (since 2026-10-21, „Само Jost“; Prata before), the shop name in the header in Cinzel (Roman capitals, as a logo). Restrained, generous
 space, nothing burned into photographs.
 
 Identity comes from Cullinan's own facts (workshop in Veliko Tarnovo, handmade since 1991, own 3D designs, personal
@@ -89,7 +89,7 @@ rules in `crown.css`. Way back: the values in the "Now" column. Known side effec
 | Role | Face | Weight | Case / tracking | Source |
 |---|---|---|---|---|
 | Headings (`h1`–`h6`, `.h0`–`.h5`) and names (product names, zodiac, workshop steps, drop-downs) | **Jost** ("Jost Theme") | 500, no stroke | Normal letters, the section's own case and tracking (owner 2026-10-21, „Само Jost“; capitals for a few hours that day; Prata 400 before) | `snippets/theme-fonts.liquid`, crown.css „Headings in Jost capitals“ |
-| Shop name in the header | Jost (since 2026-10-21; Prata before) | 500, no stroke | Capitals, 0.22em | crown.css „Headings in Jost capitals“ |
+| Shop name in the header | **Cinzel** ("Cinzel Theme", self-hosted Latin; since 2026-10-21, owner's pick; Prata before) | 500, no stroke | Capitals, 0.14em | crown.css „Headings in Jost capitals“ |
 | Meanings beside/under names | Jost Italic | 400 | Normal letters | crown.css stone blocks |
 | Text | **Jost** ("Jost Theme"), variable 300–700 | 400 | Normal | `snippets/theme-fonts.liquid` |
 | Small labels, buttons, eyebrows, legends | Jost | 500–700 | Capitals, 0.08–0.14em | Component rules |
