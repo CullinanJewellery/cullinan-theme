@@ -8,6 +8,13 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-21 — headings in „Само Jost“ (normal letters) **(owner)**
+- Owner, later the same day: "make every heading in Само Jost" (option Б of the comparison: Jost 500, normal letters).
+  The forced capitals, 0.06em tracking and --font-heading-scale 0.88 of the entry below are removed; every heading
+  keeps the case its section gives it (sentence case for titles and names, spaced capitals only for small labels such
+  as the trust row and the footer columns), Jost 500, no stroke. The shop name stays in Jost capitals (its own rule).
+  Way back to the capitals: restore that rule from the entry below (commit 90917fa3).
+
 ## 2026-10-21 — all headings and names in Jost capitals („moonmagic Jost“) **(owner)**
 - Owner, after a four-way font comparison (artifact https://claude.ai/artifact/HLYsi2wciKSRFpQyyqEAiC): Prata is "ugly";
   every heading and name in option В, Jost 500 in capitals with 0.06em tracking — section titles, collection titles,

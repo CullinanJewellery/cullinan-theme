@@ -9544,17 +9544,14 @@ html body .collection-hero.cj-hero--image .collection-hero__description li::befo
    name in the header keeps its own wider tracking (below). The phone menu's category words take the desktop menu
    panel's Jost 400, normal letters, no stroke.
    Way back: delete this block and set the heading font in snippets/theme-fonts.liquid back to Prata 400. ===== */
-:root {
-  --font-heading-scale: 0.88;
-}
-
+/* Same day, later (owner: "make every heading in Само Jost", option Б): no forced capitals or tracking any more;
+   every heading keeps the case it had before the switch (sentence case for titles and names, capitals only where a
+   section draws a small spaced label), in Jost 500. The Prata-era stroke stays off. The rule that forced capitals
+   (0.06em, --font-heading-scale 0.88) was here from 2026-10-21 morning; way back to it: see docs/changelog.md. */
 :is(h1, h2, h3, h4, h5, h6, .h0, .h1, .h2, .h3, .h4, .h5,
   .cart-disclosure-modal__title, .cart-item__name, .mosaic-slider__name, .social-band__heading,
   .workshop__heading, .zodiac__heading, .zodiac__overlay-title, .cj-material__title, .accordion__title):not(
-  .announcement-bar__message, .text-body, .cart__empty-text, .totals__total, .caption-with-letter-spacing,
-  .header__heading, .visually-hidden) {
-  text-transform: uppercase !important;
-  letter-spacing: 0.06em !important;
+  .header__heading) {
   -webkit-text-stroke: 0 !important;
 }
 
