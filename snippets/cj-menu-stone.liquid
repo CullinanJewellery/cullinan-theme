@@ -2,7 +2,8 @@
   A stone's small round picture before its name in the menus (2026-10-21, owner, as moonmagic.com's „By
   Gemstones“: a 30px round stone cut-out, 8px before the name). The pictures are the stone tiles' own files from the
   homepage „Всеки камък има значение“ section (templates/index.json „stones“), found in Shopify Files by name.
-  Prints nothing at all for a link that is not one of these stone collections, or when the file is missing.
+  Loaded at 60, 90 or 120px for the screen (2026-10-21, owner: blurry on phones when only a 30px file was
+  offered). Prints nothing at all for a link that is not one of these stone collections, or when the file is missing.
 
   Accepts:
   - link: {Object} a menu link
@@ -32,7 +33,7 @@
   if cj_stone_file != ''
     assign cj_stone = images[cj_stone_file]
     if cj_stone != blank
-      echo cj_stone | image_url: width: 96 | image_tag: class: class, width: 30, height: 30, loading: 'lazy', alt: ''
+      echo cj_stone | image_url: width: 120 | image_tag: class: class, width: 30, height: 30, widths: '60, 90, 120', sizes: '30px', loading: 'lazy', alt: ''
     endif
   endif
 -%}

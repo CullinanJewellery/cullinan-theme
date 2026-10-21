@@ -8,6 +8,11 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-21 — menu stone pictures sharp on phones **(owner)**
+- Owner: the stone pictures looked blurry on a phone. `image_tag` had offered only a 30px file for the 30px spot; now 60,
+  90 and 120px with `sizes: 30px`, so 2× and 3× screens load a sharp one (`snippets/cj-menu-stone.liquid`). Same
+  pictures, same size on screen.
+
 ## 2026-10-21 — menus: stone pictures and a pink hover on sub-links **(owner)**
 - Owner: stone pictures in the menu like moonmagic's „By Gemstones“ (a 30px round stone before the name, 8px gap,
   measured there at 1440px), on the desktop panel and the phone drawer. New `snippets/cj-menu-stone.liquid` finds the
