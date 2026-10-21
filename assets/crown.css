@@ -9634,6 +9634,7 @@ html body .collection--empty .title-wrapper .title {
   }
 
   html body [id$='__banner']:has(.cj-hero--image) + [id$='__product-grid'] [class*='__product-grid-padding'] {
-    padding-top: revert-layer;
+    /* the grid's own top gap on phones (18px), which the picture-behind rule takes away */
+    padding-top: 1.8rem;
   }
 }
