@@ -250,9 +250,12 @@
   text-underline-offset: 0.35em;
 }
 
+/* moonmagic's search cards: 250px pictures, four in a row at 1440px (owner, 2026-10-21: "the same size like in
+   moonmagic"). As many 25rem columns as fit, so a narrower screen shows fewer, never smaller. */
 .cj-search .cj-search__grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fill, 25rem);
+  justify-content: start;
   gap: 2.8rem 1.6rem;
   margin: 0;
   padding: 0;
@@ -305,11 +308,7 @@
   color: #000000;
 }
 
-@media screen and (max-width: 989px) {
-  .cj-search .cj-search__grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
+
 
 /* Phones: the bar, then the list, then the cards two in a row (moonmagic's phone layout) */
 @media screen and (max-width: 749px) {
@@ -356,9 +355,10 @@
     gap: 0 2rem;
   }
 
+  /* moonmagic's phone search: two cards of about 145px */
   .cj-search .cj-search__grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 2.4rem 1rem;
+    grid-template-columns: repeat(2, minmax(0, 14.6rem));
+    gap: 2.4rem 1.2rem;
   }
 
   .cj-search .cj-search__all {
