@@ -8,6 +8,11 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-22 — sharper colour circles **(owner)**
+- Owner: the colour circles looked low quality. `snippets/swatch.liquid` asked Shopify for a 50px-wide picture (shorter
+  still for a wide one), enlarged on 2-3x screens; now a 160px square cut around the focal point. Checked in code only:
+  the preview link had expired. Way back: `width: 50` in that line.
+
 ## 2026-10-21 — search like moonmagic, with a first view **(owner)**
 - Owner: the search „like theirs“ (moonmagic.com, measured at 1440px and 375px: the page dimmed 46%, a white sheet from
   the top, icon + a 30px underlined input across the width + „CLEAR | ✕“, then „Popular searches“ left and the
