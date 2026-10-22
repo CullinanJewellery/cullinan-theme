@@ -8,6 +8,12 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-22 — trust row cards filled **(owner)**
+- Owner: the three cards under the hero (Наложен платеж, Доставка с Еконт и Спиди, Гравиране и грижа) looked empty;
+  "make it look cool". Each card now has a soft ruby wash (#FDF3F4 → #F8E1E5) inside its ruby outline, the icon in a
+  solid ruby circle in white, and lifts 3px with a soft ruby shadow on hover on computers (none with reduced motion).
+  Text stays ruby. `section-icon-benefits.css` „Filled cards“. Way back: delete that block.
+
 ## 2026-10-22 — the chosen colour circle as moonmagic **(owner)**
 - Owner: the ring that appears round a colour circle on hover should look like moonmagic's. Theirs (measured): a 1px
   light grey ring #C1C1C6, 6px clear of a 22px picture. Ours: the same ring 4px clear of our 18/20px circle, in place

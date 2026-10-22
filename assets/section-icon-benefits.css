@@ -365,3 +365,36 @@
 .benefits-band .benefit__subline {
   color: rgb(214 34 70);
 }
+
+/* ---------------------------------------------------------------------------
+   Filled cards (2026-10-22, owner: the boxes "stay empty … make it look cool")
+   Each card takes a soft wash of the hero's ruby (#FDF3F4 to #F8E1E5, top to bottom) inside its ruby outline,
+   the icon sits in a solid ruby circle in white, and on a computer a card lifts 3px with a soft ruby shadow under
+   the pointer (none with reduced motion). Headings and sentences stay ruby: on the wash they read at 4.6:1 and
+   better. Way back: delete this block.
+   --------------------------------------------------------------------------- */
+.benefits-band .benefits__item,
+.benefits-band .benefits__item:nth-child(n) {
+  background: linear-gradient(180deg, #fdf3f4 0%, #f8e1e5 100%);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.benefits-band .benefit__visual {
+  border-color: rgb(214 34 70);
+  background: rgb(214 34 70);
+  color: #ffffff;
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .benefits-band .benefits__item:hover {
+    transform: translateY(-0.3rem);
+    box-shadow: 0 1.2rem 2.4rem -1.4rem rgba(214, 34, 70, 0.45);
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .benefits-band .benefits__item,
+  .benefits-band .benefits__item:nth-child(n) {
+    background: linear-gradient(180deg, #fdf3f4 0%, #f8e1e5 100%);
+  }
+}
