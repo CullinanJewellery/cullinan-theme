@@ -8,6 +8,11 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-22 — bigger category boxes, edge to edge **(owner)**
+- Owner: the boxes of „Разгледайте по категория“ bigger, as moonmagic's (measured: an edge-to-edge band, 12px gaps,
+  347px squares in four columns). Ours on computers: the same edge-to-edge band and 12px gaps; five columns for eight
+  categories give about 275px squares at 1440px (249px before). `section-category-mosaic.css` „Bigger boxes“.
+
 ## 2026-10-22 — „Разгледайте по категория“: the menu's categories **(owner)**
 - Owner: the categories from Пръстени on, Аксесоари only on phones; on computers two more boxes, one above the other.
   Computers: eight tiles in five columns (`section-category-mosaic.css`, :has 7th tile): Пръстени (tall), Обеци /

@@ -694,3 +694,20 @@
     grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 }
+
+/* Bigger boxes, as moonmagic.com (2026-10-22, owner). Measured there at 1440px: the category boxes run edge to edge
+   across the whole screen (no page margins), 12px apart: 347px squares and 714px tall boxes in four columns. Ours,
+   on computers: the same edge-to-edge band and 12px gaps; with five columns for our eight categories that is about
+   275px squares and 562px tall boxes at 1440px (249px before, inside the page margins). The heading keeps the page
+   margin, as theirs does. The band is clipped by its section so it never makes the page scroll sideways. */
+@media screen and (min-width: 990px) {
+  .shopify-section:has(> .gradient > .mosaic) {
+    overflow-x: clip;
+  }
+
+  .mosaic .mosaic__grid {
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    gap: 1.2rem;
+  }
+}
