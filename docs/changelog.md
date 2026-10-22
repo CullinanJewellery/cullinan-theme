@@ -8,6 +8,13 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-22 — category boxes arranged, with a line under each name **(owner)**
+- Owner approved: tall boxes for Пръстени (left) and Вяра и закрила (right, in place of Гривни, which is empty);
+  Обеци / Гривни, Висулки / Комплекти, Камъни / Зодии in the squares; Аксесоари stays phone-only. A short line under
+  each name, as moonmagic's: За всеки ден и за специалния повод; Фини акценти, които се носят цял ден; Малки бижута с
+  голямо значение; Кръстове и символи на вярата; Всеки камък има своето значение; Деликатни гривни за всеки ден;
+  Бижута, създадени да се носят заедно; Бижу с вашия знак (`templates/index.json`, editable in the theme editor).
+
 ## 2026-10-22 — bigger category boxes, edge to edge **(owner)**
 - Owner: the boxes of „Разгледайте по категория“ bigger, as moonmagic's (measured: an edge-to-edge band, 12px gaps,
   347px squares in four columns). Ours on computers: the same edge-to-edge band and 12px gaps; five columns for eight

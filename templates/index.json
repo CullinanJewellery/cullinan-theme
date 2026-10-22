@@ -268,7 +268,7 @@
           "settings": {
             "size": "tall",
             "label": "Пръстени",
-            "subline": "",
+            "subline": "За всеки ден и за специалния повод.",
             "link": "/collections/пръстени",
             "phone_button": "Вижте пръстените"
           }
@@ -278,7 +278,7 @@
           "settings": {
             "size": "standard",
             "label": "Обеци",
-            "subline": "",
+            "subline": "Фини акценти, които се носят цял ден.",
             "link": "/collections/обеци",
             "phone_button": "Вижте обеците"
           }
@@ -288,7 +288,7 @@
           "settings": {
             "size": "standard",
             "label": "Висулки",
-            "subline": "",
+            "subline": "Малки бижута с голямо значение.",
             "link": "/collections/висулки",
             "phone_button": "Вижте висулките"
           }
@@ -296,9 +296,9 @@
         "t4": {
           "type": "tile",
           "settings": {
-            "size": "tall",
+            "size": "standard",
             "label": "Гривни",
-            "subline": "",
+            "subline": "Деликатни гривни за всеки ден.",
             "link": "/collections/гривни",
             "phone_button": "Вижте гривните"
           }
@@ -308,7 +308,7 @@
           "settings": {
             "size": "standard",
             "label": "Зодии",
-            "subline": "",
+            "subline": "Бижу с вашия знак.",
             "link": "/collections/зодии",
             "phone_button": "Вижте зодиите"
           }
@@ -318,7 +318,7 @@
           "settings": {
             "size": "standard",
             "label": "Комплекти",
-            "subline": "",
+            "subline": "Бижута, създадени да се носят заедно.",
             "link": "/collections/комплекти",
             "phone_button": "Вижте комплектите"
           }
@@ -328,7 +328,7 @@
           "settings": {
             "size": "standard",
             "label": "Камъни",
-            "subline": "",
+            "subline": "Всеки камък има своето значение.",
             "link": "/collections/камъни",
             "phone_button": "Вижте камъните"
           }
@@ -336,9 +336,9 @@
         "t8": {
           "type": "tile",
           "settings": {
-            "size": "standard",
+            "size": "tall",
             "label": "Вяра и закрила",
-            "subline": "",
+            "subline": "Кръстове и символи на вярата.",
             "link": "/collections/вяра-и-закрила",
             "phone_button": "Вижте колекцията"
           }
@@ -358,11 +358,11 @@
         "t1",
         "t2",
         "t3",
-        "t4",
-        "t5",
-        "t6",
-        "t7",
         "t8",
+        "t7",
+        "t4",
+        "t6",
+        "t5",
         "t9"
       ],
       "settings": {
