@@ -56,6 +56,7 @@ if (!customElements.get('benefits-slider')) {
         this.cycleIndex = 0;
         this.cycleStep = 1;
         this.phoneStep = 1;
+        this.phoneIndex = 0;
         this.list.addEventListener('mouseenter', () => { this.paused = true; this.lift(-1); });
         // Phones (2026-10-22, owner: move as on the computer): the row slides to the next card on the same beat; a
         // touch pauses it for 8 seconds so it never fights a finger.
@@ -82,9 +83,15 @@ if (!customElements.get('benefits-slider')) {
         if (this.phone.matches) {
           if (Date.now() - (this.touchedAt || 0) < 8000) return;
           const last = this.items.length - 1;
-          const at = this.current();
-          if (at + this.phoneStep > last || at + this.phoneStep < 0) this.phoneStep *= -1;
-          this.goTo(at + this.phoneStep);
+          // Its own count, not the scroll position (which lags while a smooth scroll runs); after a swipe it
+          // continues from the card the visitor left in view.
+          if (this.touchedAt && this.touchedAt !== this.syncedTouch) {
+            this.phoneIndex = this.current();
+            this.syncedTouch = this.touchedAt;
+          }
+          if (this.phoneIndex + this.phoneStep > last || this.phoneIndex + this.phoneStep < 0) this.phoneStep *= -1;
+          this.phoneIndex += this.phoneStep;
+          this.goTo(this.phoneIndex);
           return;
         }
         if (!this.cycling()) {
