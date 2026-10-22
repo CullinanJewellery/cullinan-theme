@@ -9638,3 +9638,20 @@ html body .collection--empty .title-wrapper .title {
     padding-top: 1.8rem;
   }
 }
+
+/* ===== Colour circles: the chosen one as moonmagic.com (2026-10-22, owner) =====
+   Measured on moonmagic's collection cards (1440px): the metal picture is a 22px circle inside a 34px one, and the
+   chosen circle gets a 1px light grey ring (#C1C1C6) on the outer edge, 6px clear of the picture; the others none.
+   Ours keep their smaller 18/20px pictures (owner's size) and take the same ring 4px clear, in place of the tight
+   dark double ring; the circles stand a little further apart so the rings never touch. A hover picks a circle on
+   our cards (card-swatches.js), so this is also what a hover shows. Way back: delete this block. ===== */
+html body .collection .card__swatches {
+  gap: 1.4rem;
+  padding-left: 0.5rem;
+}
+
+html body .collection .card__swatch button[aria-pressed="true"] .swatch {
+  box-shadow:
+    0 0 0 0.4rem rgb(var(--color-background)),
+    0 0 0 0.5rem #c1c1c6;
+}

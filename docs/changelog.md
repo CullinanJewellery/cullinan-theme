@@ -8,6 +8,11 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-22 — the chosen colour circle as moonmagic **(owner)**
+- Owner: the ring that appears round a colour circle on hover should look like moonmagic's. Theirs (measured): a 1px
+  light grey ring #C1C1C6, 6px clear of a 22px picture. Ours: the same ring 4px clear of our 18/20px circle, in place
+  of the tight dark double ring; circles 1.4rem apart (crown.css „Colour circles: the chosen one as moonmagic“).
+
 ## 2026-10-22 — sharper colour circles **(owner)**
 - Owner: the colour circles looked low quality. `snippets/swatch.liquid` asked Shopify for a 50px-wide picture (shorter
   still for a wide one), enlarged on 2-3x screens; now a 160px square cut around the focal point. Checked in code only:
