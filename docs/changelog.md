@@ -19,6 +19,7 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 - Owner: the boxes of „Разгледайте по категория“ bigger, as moonmagic's (measured: an edge-to-edge band, 12px gaps,
   347px squares in four columns). Ours on computers: the same edge-to-edge band and 12px gaps; five columns for eight
   categories give about 275px squares at 1440px (249px before). `section-category-mosaic.css` „Bigger boxes“.
+  Then (owner: too big and too close to the screen's edges): 32px from each edge, about 262px squares.
 
 ## 2026-10-22 — „Разгледайте по категория“: the menu's categories **(owner)**
 - Owner: the categories from Пръстени on, Аксесоари only on phones; on computers two more boxes, one above the other.

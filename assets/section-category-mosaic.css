@@ -705,9 +705,11 @@
     overflow-x: clip;
   }
 
+  /* Same day (owner: "a little bit smaller … they are at the edges of the website which is bad"): 32px from each
+     edge of the screen instead of touching it, so about 262px squares at 1440px. */
   .mosaic .mosaic__grid {
-    margin-left: calc(50% - 50vw);
-    margin-right: calc(50% - 50vw);
+    margin-left: calc(50% - 50vw + 3.2rem);
+    margin-right: calc(50% - 50vw + 3.2rem);
     gap: 1.2rem;
   }
 }
