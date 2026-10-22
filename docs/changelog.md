@@ -53,6 +53,8 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 - Owner: on computers the cards lift by themselves, one at a time, every 4 seconds, back and forth (1, 2, 3, 2, 1 …),
   as if hovered (.is-lifted, `benefits-slider.js`); pointing at the row pauses it; not on phones (the card in view
   lifts), not with reduced motion, not while the row is off screen.
+- Owner: phones move the same way: every 4 seconds the row slides to the next card, back and forth (1, 2, 3, 2, 1 …),
+  and the card in view lifts; a touch pauses it for 8 seconds; none with reduced motion or off screen.
 
 ## 2026-10-22 — the chosen colour circle as moonmagic **(owner)**
 - Owner: the ring that appears round a colour circle on hover should look like moonmagic's. Theirs (measured): a 1px

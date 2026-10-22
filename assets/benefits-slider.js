@@ -55,7 +55,11 @@ if (!customElements.get('benefits-slider')) {
         // reduced motion, on phones (there the card in view lifts) or while the row is off screen.
         this.cycleIndex = 0;
         this.cycleStep = 1;
+        this.phoneStep = 1;
         this.list.addEventListener('mouseenter', () => { this.paused = true; this.lift(-1); });
+        // Phones (2026-10-22, owner: move as on the computer): the row slides to the next card on the same beat; a
+        // touch pauses it for 8 seconds so it never fights a finger.
+        this.list.addEventListener('touchstart', () => { this.touchedAt = Date.now(); }, { passive: true });
         this.list.addEventListener('mouseleave', () => { this.paused = false; this.lift(this.cycleIndex); });
         this.visible = true;
         if ('IntersectionObserver' in window) {
@@ -74,11 +78,20 @@ if (!customElements.get('benefits-slider')) {
       }
 
       tick() {
+        if (this.reduce.matches || !this.visible || document.hidden) return;
+        if (this.phone.matches) {
+          if (Date.now() - (this.touchedAt || 0) < 8000) return;
+          const last = this.items.length - 1;
+          const at = this.current();
+          if (at + this.phoneStep > last || at + this.phoneStep < 0) this.phoneStep *= -1;
+          this.goTo(at + this.phoneStep);
+          return;
+        }
         if (!this.cycling()) {
           this.lift(-1);
           return;
         }
-        if (this.paused || !this.visible || document.hidden) return;
+        if (this.paused) return;
         const last = this.items.length - 1;
         if (this.cycleIndex + this.cycleStep > last || this.cycleIndex + this.cycleStep < 0) this.cycleStep *= -1;
         this.cycleIndex += this.cycleStep;
