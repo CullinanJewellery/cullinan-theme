@@ -218,3 +218,7 @@ Each line: what went wrong, the rule now, where it came from. Newest last.
     (a per-pixel S-curve on gold pixels round their own mid tone, then `gold-match.cjs`) gave 213 at 0.25 and 218 at
     0.4; nothing moved, nothing drawn, stones untouched. **Owner chose 0.4.** The earlier rejected test (lesson 38)
     used a spatial local-contrast filter, which invents texture; a tone curve only spreads the existing tones.
+44. **A small 3D detail cannot be described into a photo; it needs a sharp photo of it.** Ring G's head (2026-10-22):
+    four edits (12 credits) from tiny, dark raw crops, a written description and the owner's sketch each drew a
+    different wrong shape (box with a hole, eight-claw crown, V and O, a row of round holes). When a detail is smaller
+    than about 50 px in every raw photo, ask for a close-up of it before the first credit.
