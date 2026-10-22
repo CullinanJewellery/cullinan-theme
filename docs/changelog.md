@@ -8,6 +8,13 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-22 — phones: tap the photo to open; tinted ring on the chosen colour **(owner)**
+- Owner: on a phone a tap on a card's photo should open the piece. In the product rows the second photo appeared on
+  :hover, which a phone applies to the first tap (since 2026-10-06), so the first tap only swapped the photo. The
+  preview now needs a hovering pointer (`@media (hover: none)` keeps it hidden); a tap opens the product.
+- Owner: the chosen colour circle's ring should have colour, as moonmagic's: their outer disc is filled
+  rgba(208,205,205,0.28) inside the #C1C1C6 ring. Ours: a 4px #F2F1F1 halo inside the 1px #C1C1C6 ring.
+
 ## 2026-10-22 — trust row cards filled **(owner)**
 - Owner: the three cards under the hero (Наложен платеж, Доставка с Еконт и Спиди, Гравиране и грижа) looked empty;
   "make it look cool". Each card now has a soft ruby wash (#FDF3F4 → #F8E1E5) inside its ruby outline, the icon in a

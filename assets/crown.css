@@ -9655,3 +9655,25 @@ html body .collection .card__swatch button[aria-pressed="true"] .swatch {
     0 0 0 0.4rem rgb(var(--color-background)),
     0 0 0 0.5rem #c1c1c6;
 }
+
+/* ===== Phones: a tap on a card's photo opens the piece (2026-10-22, owner) =====
+   The rows' second photo appeared on :hover, and a phone applies :hover to the first tap, so a tap on the photo
+   showed the other photo and only a second tap opened the piece (set so on 2026-10-06). The owner: a tap on the
+   photo opens the product. The preview now needs a real pointer that hovers (a mouse); on touch screens the photo is
+   just the link. Way back: delete this block. ===== */
+@media (hover: none) {
+  html body .card-wrapper.product-card-wrapper .card[data-photo-preview] .card__photo-link:hover > img.card__photo-preview {
+    opacity: 0;
+  }
+}
+
+/* ===== Colour circles: moonmagic's tinted ring (2026-10-22, owner: „the ring has a color like in moonmagic … so
+   you can see better what you pick“) =====
+   Measured on moonmagic: the chosen circle's outer 34px disc is filled with rgba(208, 205, 205, 0.28) (#F2F1F1 on
+   white) inside the 1px #C1C1C6 ring, so a soft grey halo surrounds the metal; the others have neither. Ours: the
+   same halo 4px wide inside the same ring. Replaces the white gap of the rule above. */
+html body .collection .card__swatch button[aria-pressed="true"] .swatch {
+  box-shadow:
+    0 0 0 0.4rem #f2f1f1,
+    0 0 0 0.5rem #c1c1c6;
+}
