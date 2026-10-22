@@ -13,6 +13,9 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
   "make it look cool". Each card now has a soft ruby wash (#FDF3F4 → #F8E1E5) inside its ruby outline, the icon in a
   solid ruby circle in white, and lifts 3px with a soft ruby shadow on hover on computers (none with reduced motion).
   Text stays ruby. `section-icon-benefits.css` „Filled cards“. Way back: delete that block.
+- Owner: the same lift on phones while swiping. `benefits-slider.js` marks the card in view (.is-current, the one
+  whose dot is filled); it rises 3px with the ruby shadow; the row has 0.6rem above and 2rem below so the lift and the
+  shadow are not cut off. None with reduced motion.
 
 ## 2026-10-22 — the chosen colour circle as moonmagic **(owner)**
 - Owner: the ring that appears round a colour circle on hover should look like moonmagic's. Theirs (measured): a 1px
