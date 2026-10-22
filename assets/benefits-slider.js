@@ -49,9 +49,44 @@ if (!customElements.get('benefits-slider')) {
         this.list.addEventListener('scroll', this.onScroll, { passive: true });
         this.phone.addEventListener('change', this.onMedia);
         this.setup();
+
+        // 2026-10-22 (owner): on wider screens the cards take turns lifting, as if hovered, every 4 seconds, back and
+        // forth (1, 2, 3, 2, 1, 2 …). Pointing at the row pauses it (the hovered card lifts by CSS); none with
+        // reduced motion, on phones (there the card in view lifts) or while the row is off screen.
+        this.cycleIndex = 0;
+        this.cycleStep = 1;
+        this.list.addEventListener('mouseenter', () => { this.paused = true; this.lift(-1); });
+        this.list.addEventListener('mouseleave', () => { this.paused = false; this.lift(this.cycleIndex); });
+        this.visible = true;
+        if ('IntersectionObserver' in window) {
+          new IntersectionObserver((entries) => { this.visible = entries[0].isIntersecting; }).observe(this.list);
+        }
+        this.timer = setInterval(() => this.tick(), 4000);
+        this.lift(0);
+      }
+
+      cycling() {
+        return !this.phone.matches && !this.reduce.matches;
+      }
+
+      lift(index) {
+        this.items.forEach((item, i) => item.classList.toggle('is-lifted', this.cycling() && i === index));
+      }
+
+      tick() {
+        if (!this.cycling()) {
+          this.lift(-1);
+          return;
+        }
+        if (this.paused || !this.visible || document.hidden) return;
+        const last = this.items.length - 1;
+        if (this.cycleIndex + this.cycleStep > last || this.cycleIndex + this.cycleStep < 0) this.cycleStep *= -1;
+        this.cycleIndex += this.cycleStep;
+        this.lift(this.cycleIndex);
       }
 
       disconnectedCallback() {
+        if (this.timer) clearInterval(this.timer);
         if (this.phone) this.phone.removeEventListener('change', this.onMedia);
       }
 
