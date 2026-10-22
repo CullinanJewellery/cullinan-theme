@@ -8,6 +8,14 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-22 — „Разгледайте по категория“: the menu's categories **(owner)**
+- Owner: the categories from Пръстени on, Аксесоари only on phones; on computers two more boxes, one above the other.
+  Computers: eight tiles in five columns (`section-category-mosaic.css`, :has 7th tile): Пръстени (tall), Обеци /
+  Комплекти, Висулки / Камъни, Гривни (tall), Зодии / Вяра и закрила; Диаманти became Камъни (its parent). Phones: the
+  same in the slider plus Аксесоари (a ninth block, shown only there; max_blocks 9).
+- A tile whose collection has no products is shown on computers but is not a link, and is left out of the phone
+  slider, until the collection has a product (no link to an empty collection; checked live, nothing to update).
+
 ## 2026-10-22 — phones: tap the photo to open; tinted ring on the chosen colour **(owner)**
 - Owner: on a phone a tap on a card's photo should open the piece. In the product rows the second photo appeared on
   :hover, which a phone applies to the first tap (since 2026-10-06), so the first tap only swapped the photo. The

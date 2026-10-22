@@ -686,3 +686,11 @@
     width: 2rem;
   }
 }
+
+/* Eight tiles (2026-10-22, owner: the menu's categories from Пръстени to Вяра и закрила, no Аксесоари): a fifth
+   column of two squares, one above the other, after the second tall tile. Six tiles keep the four columns. */
+@media screen and (min-width: 990px) {
+  .mosaic__grid:has(> .mosaic__item:nth-child(7)) {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}

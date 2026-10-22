@@ -38,14 +38,29 @@
 
     <ul
       class="mosaic__grid mosaic__grid--caption-{{ section.settings.caption_position }}"
+      data-cj-note="computers: the first eight tiles; a ninth and later appear only in the phone slider (2026-10-22, owner)"
       role="list"
       style="--mosaic-gap: {{ section.settings.gap }}px; --mosaic-scrim: {{ section.settings.scrim_opacity | divided_by: 100.0 }};"
     >
-      {%- for block in section.blocks -%}
+      {%- comment -%}
+        The mosaic shows at most eight tiles (2026-10-22, owner: Аксесоари only in the phone slider); a ninth block
+        is for the phone slider below.
+      {%- endcomment -%}
+      {%- for block in section.blocks limit: 8 -%}
         {%- liquid
           assign has_link = false
           if block.settings.link != blank
             assign has_link = true
+          endif
+          comment
+            2026-10-22: a tile that points to a collection with no products is shown but not a link (no link to an
+            empty collection); it becomes one by itself once the collection has a product.
+          endcomment
+          if has_link and block.settings.link contains '/collections/'
+            assign cj_handle = block.settings.link | split: '/collections/' | last | split: '?' | first | split: '/' | first | url_decode
+            if collections[cj_handle].products_count == 0
+              assign has_link = false
+            endif
           endif
         -%}
         <li
@@ -109,7 +124,19 @@
     <category-slider class="mosaic-slider">
       <ul class="mosaic-slider__track" role="list" aria-label="{{ section.settings.heading | default: 'Категории' | escape }}">
         {%- for block in section.blocks -%}
-          {%- if block.settings.link != blank -%}
+          {%- liquid
+            assign cj_slide = false
+            if block.settings.link != blank
+              assign cj_slide = true
+              if block.settings.link contains '/collections/'
+                assign cj_handle = block.settings.link | split: '/collections/' | last | split: '?' | first | split: '/' | first | url_decode
+                if collections[cj_handle].products_count == 0
+                  assign cj_slide = false
+                endif
+              endif
+            endif
+          -%}
+          {%- if cj_slide -%}
             <li class="mosaic-slider__slide">
               <a class="mosaic-slider__media" href="{{ block.settings.link }}" tabindex="-1" aria-hidden="true">
                 {%- if block.settings.image != blank -%}
@@ -145,7 +172,16 @@
         assign cat_total = 0
         for block in section.blocks
           if block.settings.link != blank
-            assign cat_total = cat_total | plus: 1
+            assign cj_count = true
+            if block.settings.link contains '/collections/'
+              assign cj_handle = block.settings.link | split: '/collections/' | last | split: '?' | first | split: '/' | first | url_decode
+              if collections[cj_handle].products_count == 0
+                assign cj_count = false
+              endif
+            endif
+            if cj_count
+              assign cat_total = cat_total | plus: 1
+            endif
           endif
         endfor
       -%}
@@ -183,7 +219,7 @@
   "name": "Category mosaic",
   "tag": "section",
   "class": "section",
-  "max_blocks": 8,
+  "max_blocks": 9,
   "settings": [
     {
       "type": "text",
