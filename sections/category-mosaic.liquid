@@ -124,21 +124,30 @@
     <category-slider class="mosaic-slider">
       <ul class="mosaic-slider__track" role="list" aria-label="{{ section.settings.heading | default: 'Категории' | escape }}">
         {%- for block in section.blocks -%}
+          {%- comment -%}
+            2026-10-22 (owner: every category in the slider): a category whose collection has no products yet shows
+            its name and „Очаквайте скоро“, not a link.
+          {%- endcomment -%}
           {%- liquid
             assign cj_slide = false
+            assign cj_soon = false
             if block.settings.link != blank
               assign cj_slide = true
               if block.settings.link contains '/collections/'
                 assign cj_handle = block.settings.link | split: '/collections/' | last | split: '?' | first | split: '/' | first | url_decode
                 if collections[cj_handle].products_count == 0
-                  assign cj_slide = false
+                  assign cj_soon = true
                 endif
               endif
             endif
           -%}
           {%- if cj_slide -%}
             <li class="mosaic-slider__slide">
+              {%- if cj_soon -%}
+                <span class="mosaic-slider__media mosaic-slider__media--soon" aria-hidden="true">
+              {%- else -%}
               <a class="mosaic-slider__media" href="{{ block.settings.link }}" tabindex="-1" aria-hidden="true">
+              {%- endif -%}
                 {%- if block.settings.image != blank -%}
                   {{
                     block.settings.image
@@ -153,12 +162,16 @@
                 {%- else -%}
                   <span class="mosaic-slider__image mosaic-slider__image--empty"></span>
                 {%- endif -%}
-              </a>
+              {%- if cj_soon -%}</span>{%- else -%}</a>{%- endif -%}
               <h3 class="mosaic-slider__name">{{ block.settings.label | escape }}</h3>
-              <a class="mosaic-slider__button" href="{{ block.settings.link }}">
-                {{- block.settings.phone_button | default: 'Разгледайте' | escape -}}
-                <span class="visually-hidden">: {{ block.settings.label | escape }}</span>
-              </a>
+              {%- if cj_soon -%}
+                <span class="mosaic-slider__soon">Очаквайте скоро</span>
+              {%- else -%}
+                <a class="mosaic-slider__button" href="{{ block.settings.link }}">
+                  {{- block.settings.phone_button | default: 'Разгледайте' | escape -}}
+                  <span class="visually-hidden">: {{ block.settings.label | escape }}</span>
+                </a>
+              {%- endif -%}
             </li>
           {%- endif -%}
         {%- endfor -%}
@@ -172,16 +185,7 @@
         assign cat_total = 0
         for block in section.blocks
           if block.settings.link != blank
-            assign cj_count = true
-            if block.settings.link contains '/collections/'
-              assign cj_handle = block.settings.link | split: '/collections/' | last | split: '?' | first | split: '/' | first | url_decode
-              if collections[cj_handle].products_count == 0
-                assign cj_count = false
-              endif
-            endif
-            if cj_count
-              assign cat_total = cat_total | plus: 1
-            endif
+            assign cat_total = cat_total | plus: 1
           endif
         endfor
       -%}

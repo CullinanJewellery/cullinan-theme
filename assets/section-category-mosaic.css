@@ -706,10 +706,28 @@
   }
 
   /* Same day (owner: "a little bit smaller … they are at the edges of the website which is bad"): 32px from each
-     edge of the screen instead of touching it, so about 262px squares at 1440px. */
+     edge of the screen instead of touching it; then "a little bit smaller": 52px, about 254px squares at 1440px. */
   .mosaic .mosaic__grid {
-    margin-left: calc(50% - 50vw + 3.2rem);
-    margin-right: calc(50% - 50vw + 3.2rem);
+    margin-left: calc(50% - 50vw + 5.2rem);
+    margin-right: calc(50% - 50vw + 5.2rem);
     gap: 1.2rem;
   }
+}
+
+/* Phones (2026-10-22, owner: all the categories in the slider): a category without products yet is shown with its
+   name and a quiet „Очаквайте скоро“ in place of the button, not as a link (no link to an empty collection); it gets
+   its button by itself once it has a product. */
+.mosaic-slider__soon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 4.4rem;
+  font-size: 1.3rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(var(--color-foreground), 0.6);
+}
+
+.mosaic-slider__media--soon {
+  pointer-events: none;
 }

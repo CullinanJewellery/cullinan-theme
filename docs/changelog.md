@@ -8,6 +8,12 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-22 — smaller category boxes; every category in the phone slider **(owner)**
+- Computers: 52px from each screen edge, about 254px squares at 1440px (owner: "a little bit smaller").
+- Phones: all nine categories in the slider (owner: "i want all of them there"). One without products yet shows its
+  name and „Очаквайте скоро“ in place of the button and is not a link (no link to an empty collection); it gets its
+  button by itself with its first product. `sections/category-mosaic.liquid`, `section-category-mosaic.css` end.
+
 ## 2026-10-22 — category boxes arranged, with a line under each name **(owner)**
 - Owner approved: tall boxes for Пръстени (left) and Вяра и закрила (right, in place of Гривни, which is empty);
   Обеци / Гривни, Висулки / Комплекти, Камъни / Зодии in the squares; Аксесоари stays phone-only. A short line under
