@@ -307,20 +307,50 @@
           "type": "tile",
           "settings": {
             "size": "standard",
-            "label": "Комплекти",
+            "label": "Зодии",
             "subline": "",
-            "link": "/collections/комплекти",
-            "phone_button": "Вижте комплектите"
+            "link": "/collections/зодии",
+            "phone_button": "Вижте зодиите"
           }
         },
         "t6": {
           "type": "tile",
           "settings": {
             "size": "standard",
-            "label": "Диаманти",
+            "label": "Комплекти",
             "subline": "",
-            "link": "/collections/диаманти",
-            "phone_button": "Вижте диамантите"
+            "link": "/collections/комплекти",
+            "phone_button": "Вижте комплектите"
+          }
+        },
+        "t7": {
+          "type": "tile",
+          "settings": {
+            "size": "standard",
+            "label": "Камъни",
+            "subline": "",
+            "link": "/collections/камъни",
+            "phone_button": "Вижте камъните"
+          }
+        },
+        "t8": {
+          "type": "tile",
+          "settings": {
+            "size": "standard",
+            "label": "Вяра и закрила",
+            "subline": "",
+            "link": "/collections/вяра-и-закрила",
+            "phone_button": "Вижте колекцията"
+          }
+        },
+        "t9": {
+          "type": "tile",
+          "settings": {
+            "size": "standard",
+            "label": "Аксесоари",
+            "subline": "",
+            "link": "/collections/аксесоари",
+            "phone_button": "Вижте аксесоарите"
           }
         }
       },
@@ -330,7 +360,10 @@
         "t3",
         "t4",
         "t5",
-        "t6"
+        "t6",
+        "t7",
+        "t8",
+        "t9"
       ],
       "settings": {
         "heading": "Разгледайте по категория",
