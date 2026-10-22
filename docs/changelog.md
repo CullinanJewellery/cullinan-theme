@@ -8,6 +8,15 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-22 — phone categories as a vertical gallery **(owner)**
+- Owner: the phone categories should scroll down, not sideways, and catch the eye. The mosaic grid is now the phone
+  layout too (the sideways slider is hidden): wide 16:10 boxes for Пръстени, Вяра и закрила and Аксесоари, pairs of
+  squares between them; name (and the line, on wide boxes) over the soft shade; a white round arrow on boxes that
+  link; „Очаквайте скоро“ on empty ones (also on computers), not links; a slight press on tap. Each box rises 24px
+  and fades in as it scrolls into view, the second of a pair a beat later (`assets/cj-reveal.js`); nothing moves
+  with reduced motion. Computers keep eight tiles; the ninth is phone-only. `section-category-mosaic.css` „Phones: a
+  vertical gallery“. Way back: delete that block and the cj-reveal script tag.
+
 ## 2026-10-22 — smaller category boxes; every category in the phone slider **(owner)**
 - Computers: 52px from each screen edge, about 254px squares at 1440px (owner: "a little bit smaller").
 - Phones: all nine categories in the slider (owner: "i want all of them there"). One without products yet shows its

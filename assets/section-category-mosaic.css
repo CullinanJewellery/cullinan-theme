@@ -731,3 +731,148 @@
 .mosaic-slider__media--soon {
   pointer-events: none;
 }
+
+/* ---------------------------------------------------------------------------
+   Phones: a vertical gallery (2026-10-22, owner: "not to scroll to the left or right but down and up … something
+   that catches the eye"). Replaces the sideways slider on phones; computers keep the mosaic.
+   - Rhythm: the two tall categories (Пръстени, Вяра и закрила) and the ninth (Аксесоари) run the full width at
+     16:10; the others come in pairs of squares: wide, pair, wide, pair, pair, wide.
+   - Each box: the name and its line at the bottom over the soft espresso shade, a small white round arrow at the
+     bottom right; a box presses in a little when tapped.
+   - Empty categories: a small „Очаквайте скоро“ label at the top left, not a link (no link to an empty collection).
+   - On scroll, each box rises 24px and fades in (assets/cj-reveal.js), the second of a pair a beat later; nothing
+     moves with reduced motion. Way back: delete this block and the reveal script tag; the slider below returns.
+   --------------------------------------------------------------------------- */
+.mosaic__arrow,
+.mosaic__soon {
+  display: none;
+}
+
+.mosaic__soon {
+  position: absolute;
+  top: 1.2rem;
+  left: 1.2rem;
+  z-index: 1;
+  padding: 0.4rem 0.9rem;
+  background: rgba(255, 255, 255, 0.88);
+  color: rgb(42 30 26);
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.mosaic__item--soon .mosaic__soon {
+  display: block;
+}
+
+.mosaic__item {
+  position: relative;
+}
+
+@media screen and (min-width: 750px) {
+  .mosaic__item--phone-only {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .mosaic .mosaic__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.2rem;
+  }
+
+  .mosaic .mosaic-slider {
+    display: none;
+  }
+
+  .mosaic__item--tall,
+  .mosaic__item--phone-only {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+
+  .mosaic__item--tall .mosaic__media,
+  .mosaic__item--phone-only .mosaic__media {
+    aspect-ratio: 16 / 10;
+  }
+
+  .mosaic__item--standard:not(.mosaic__item--phone-only) .mosaic__media {
+    aspect-ratio: 1 / 1;
+  }
+
+  .mosaic__grid--caption-over .mosaic__caption {
+    padding: 4rem 5.2rem 1.4rem 1.4rem;
+  }
+
+  .mosaic__grid--caption-over .mosaic__label {
+    font-size: 1.5rem;
+    letter-spacing: 0.06em;
+  }
+
+  .mosaic__grid--caption-over .mosaic__subline {
+    display: none;
+  }
+
+  .mosaic__item--tall .mosaic__caption,
+  .mosaic__item--phone-only .mosaic__caption {
+    padding: 6rem 6rem 1.8rem 1.8rem;
+  }
+
+  .mosaic__item--tall .mosaic__label,
+  .mosaic__item--phone-only .mosaic__label {
+    font-size: 2rem;
+  }
+
+  .mosaic__grid--caption-over .mosaic__item--tall .mosaic__subline,
+  .mosaic__grid--caption-over .mosaic__item--phone-only .mosaic__subline {
+    display: block;
+    margin-top: 0.4rem;
+    font-size: 1.35rem;
+  }
+
+  .mosaic__arrow {
+    position: absolute;
+    right: 1.2rem;
+    bottom: 1.2rem;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.2rem;
+    height: 3.2rem;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.92);
+    color: rgb(42 30 26);
+  }
+
+  .mosaic__item--tall .mosaic__arrow,
+  .mosaic__item--phone-only .mosaic__arrow {
+    right: 1.6rem;
+    bottom: 1.6rem;
+    width: 3.8rem;
+    height: 3.8rem;
+  }
+
+  .mosaic__tile .mosaic__media {
+    transition: transform 0.25s ease;
+  }
+
+  .mosaic__tile:active .mosaic__media {
+    transform: scale(0.98);
+  }
+}
+
+@media screen and (max-width: 749px) and (prefers-reduced-motion: no-preference) {
+  .mosaic__grid.cj-reveal-on > .mosaic__item {
+    opacity: 0;
+    transform: translateY(2.4rem);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .mosaic__grid.cj-reveal-on > .mosaic__item.is-in {
+    opacity: 1;
+    transform: none;
+  }
+}

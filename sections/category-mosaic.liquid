@@ -1,6 +1,7 @@
 {{ 'component-slider.css' | asset_url | stylesheet_tag }}
 {{ 'section-category-mosaic.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'category-slider.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'cj-reveal.js' | asset_url }}" defer="defer"></script>
 
 {%- comment -%}
   A mosaic of category tiles.
@@ -38,15 +39,16 @@
 
     <ul
       class="mosaic__grid mosaic__grid--caption-{{ section.settings.caption_position }}"
+      data-cj-reveal
       data-cj-note="computers: the first eight tiles; a ninth and later appear only in the phone slider (2026-10-22, owner)"
       role="list"
       style="--mosaic-gap: {{ section.settings.gap }}px; --mosaic-scrim: {{ section.settings.scrim_opacity | divided_by: 100.0 }};"
     >
       {%- comment -%}
-        The mosaic shows at most eight tiles (2026-10-22, owner: Аксесоари only in the phone slider); a ninth block
-        is for the phone slider below.
+        Computers show the first eight tiles; a ninth (Аксесоари) appears only on phones, where this grid is the
+        vertical gallery since 2026-10-22 (section-category-mosaic.css „Phones: a vertical gallery“).
       {%- endcomment -%}
-      {%- for block in section.blocks limit: 8 -%}
+      {%- for block in section.blocks -%}
         {%- liquid
           assign has_link = false
           if block.settings.link != blank
@@ -63,8 +65,15 @@
             endif
           endif
         -%}
+        {%- liquid
+          assign cj_tile_soon = false
+          if block.settings.link != blank and has_link == false
+            assign cj_tile_soon = true
+          endif
+        -%}
         <li
-          class="mosaic__item mosaic__item--{{ block.settings.size }}"
+          class="mosaic__item mosaic__item--{{ block.settings.size }}{% if forloop.index > 8 %} mosaic__item--phone-only{% endif %}{% if cj_tile_soon %} mosaic__item--soon{% endif %}"
+          style="--cj-i: {{ forloop.index0 }};"
           {{ block.shopify_attributes }}
         >
           {%- capture tile -%}
@@ -96,6 +105,13 @@
                 {%- if block.settings.subline != blank -%}
                   <span class="mosaic__subline">{{ block.settings.subline | escape }}</span>
                 {%- endif -%}
+              </span>
+            {%- endif -%}
+            {%- if cj_tile_soon -%}
+              <span class="mosaic__soon">Очаквайте скоро</span>
+            {%- elsif has_link -%}
+              <span class="mosaic__arrow" aria-hidden="true">
+                <svg viewBox="0 0 16 16" width="16" height="16" focusable="false"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </span>
             {%- endif -%}
           {%- endcapture -%}
