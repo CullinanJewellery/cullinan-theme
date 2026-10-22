@@ -99,6 +99,10 @@ if (!customElements.get('benefits-slider')) {
           if (i === c) dot.setAttribute('aria-current', 'true');
           else dot.removeAttribute('aria-current');
         });
+        // 2026-10-22 (owner): on phones the card in view lifts with the soft ruby shadow the computer shows on
+        // hover (section-icon-benefits.css „Filled cards“).
+        const on = this.phone.matches;
+        this.items.forEach((item, i) => item.classList.toggle('is-current', on && i === c));
       }
     }
   );

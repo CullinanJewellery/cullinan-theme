@@ -398,3 +398,21 @@
     background: linear-gradient(180deg, #fdf3f4 0%, #f8e1e5 100%);
   }
 }
+
+/* Phones (2026-10-22, owner: the same lift as on a computer while swiping): the card in view (.is-current, set by
+   assets/benefits-slider.js) rises 3px with the soft ruby shadow; the row gets room above and below so the lift and
+   the shadow are not cut off by its sideways scrolling. None with reduced motion. */
+@media screen and (max-width: 749px) {
+  .benefits-band .benefits__grid {
+    padding-top: 0.6rem;
+    padding-bottom: 2rem;
+    margin-bottom: -1.4rem;
+  }
+}
+
+@media screen and (max-width: 749px) and (prefers-reduced-motion: no-preference) {
+  .benefits-band .benefits__item.is-current {
+    transform: translateY(-0.3rem);
+    box-shadow: 0 1.2rem 2.4rem -1.4rem rgba(214, 34, 70, 0.45);
+  }
+}
