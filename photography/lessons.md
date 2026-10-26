@@ -230,3 +230,12 @@ Each line: what went wrong, the rule now, where it came from. Newest last.
     symbol is copied from a zoomed crop of the raw photo given as its own reference (the coin's ♏ is drawn as three
     columns under a wavy line, not the font's curly m), and a smaller piece gets `frame-photo.cjs --size` so the
     customer sees it is smaller (coins 0.72 against the openwork's 0.807).
+46. **Pendants: copy the construction from the sharpest photo, and the light from our own cross, not from the raw.**
+    Owner (2026-10-26), after the corrected Scorpio tests: "do you think I am happy with it". The owner's new photos
+    hung on a nylon thread (Leo coin, Libra openwork) showed what every pendant of a family shares: a plain tapered
+    bail (a folded flat strip), a flat jump ring of sheet gold, and on the coins a fine woven (cross-hatched) texture
+    with the figure flat and mirror polished, no raised rim. Edits of the earlier tests kept their wrong bail, rim,
+    domed figures and line texture. Made new from scratch with only two references, the sharp raw crop (construction)
+    and cross 08's finished main photo (light: straight front view, flat mirror gold in a soft gradient, never black):
+    both right at the first try, shine 229 and 226. The owner: "you are the one with the knowledge": choose the light
+    per kind of piece (flat pieces like the cross, not ring A's dark mirror bands), and say why.
