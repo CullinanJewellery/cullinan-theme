@@ -222,3 +222,11 @@ Each line: what went wrong, the rule now, where it came from. Newest last.
     four edits (12 credits) from tiny, dark raw crops, a written description and the owner's sketch each drew a
     different wrong shape (box with a hole, eight-claw crown, V and O, a row of round holes). When a detail is smaller
     than about 50 px in every raw photo, ask for a close-up of it before the first credit.
+45. **Flat mirror gold needs a light tent, or it turns black.** Zodiac pendants (owner, 2026-10-26): the openwork
+    Greek-key frame and the coin's figures are flat and mirror polished; the quality block's "dark mirror band" made
+    the model put black reflections on them ("a lot of black points that are looking bad"). The fix that worked (one
+    edit each): "lit as in a jewellery light tent with large soft white panels, so every flat mirror surface reflects
+    bright warm gold with soft gradients; no black patches". Polish still measured 218 and 223. Also: a small sign or
+    symbol is copied from a zoomed crop of the raw photo given as its own reference (the coin's ♏ is drawn as three
+    columns under a wavy line, not the font's curly m), and a smaller piece gets `frame-photo.cjs --size` so the
+    customer sees it is smaller (coins 0.72 against the openwork's 0.807).

@@ -12,7 +12,9 @@
   are Higgsfield edits, owner 2026-10-12).
 
   Usage (needs sharp: `npm i sharp` in any folder, run from there or with NODE_PATH):
-    node frame-photo.cjs <shot 1|2|3> <4K source.png> <output.png>
+    node frame-photo.cjs <shot 1|2|3> <4K source.png> <output.png> [--size 0.72]
+  --size replaces the piece's share of the frame, for a piece that must look smaller than the others (owner,
+  2026-10-26: the zodiac coins are smaller than the openwork zodiac pendants, so the coin photos use 0.72).
 
   If the frame reaches past the picture (the piece is large or off-centre in the source), the border is
   extended by copying its edge, but only when every edge of the photo is flat off-white background;
@@ -65,13 +67,14 @@ async function flatBorder(file) {
 }
 
 (async () => {
-  const [shot, src, out] = process.argv.slice(2);
+  const [shot, src, out, ...rest] = process.argv.slice(2);
+  const si = rest.indexOf('--size');
   if (!shot || !src || !out) throw new Error('usage: node frame-photo.cjs <1|2|3> <source> <output>');
   const meta = await sharp(src).metadata();
   const W = meta.width, H = meta.height;
   let left = 0, top = 0, side = Math.min(W, H);
   let img = sharp(src);
-  const f = FRAME[shot];
+  const f = FRAME[shot] && { ...FRAME[shot], ...(si >= 0 ? { size: +rest[si + 1] } : {}) };
   if (f) {
     const p = await findPiece(src);
     const piece = f.measure === 'h' ? p.h * H : p.w * W;
