@@ -255,3 +255,6 @@ Each line: what went wrong, the rule now, where it came from. Newest last.
     the scorpion … you made it in here" (test 1, c876c67c). Copying a figure from an earlier generated photo into the
     approved photo (edit of the approved Libra with the earlier photo as the second reference) worked at once; a raw
     photo or a description did not (two tries). Before a new try, look through the earlier results for the part.
+51. **Ask before every credit (owner, 2026-10-26: "you have to ask before you do anything because I see things that
+    are wrong").** For the zodiac signs: show the result and ask before any fix or new try, even when the fix looks
+    obvious; the owner sees errors I miss (Capricorn's horn touching the ring, Virgo's pose, the archer's arrow).
