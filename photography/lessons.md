@@ -247,3 +247,7 @@ Each line: what went wrong, the rule now, where it came from. Newest last.
 48. **Not every dark line is a fault.** Owner (2026-10-26): the Libra with its wall lines removed by `wall-lines.cjs`
     "looks bad"; the photo as the model made it (test 3, 89c6f120) was chosen. The thin darker walls give the frame
     its depth. Keep `wall-lines.cjs` for reference only; show the owner a removal before treating it as a method.
+49. **Zodiac signs: only a sharp close-up gives the right figure.** Leo and Libra (sharp photos on a thread) were right
+    at the first try; the openwork Scorpio from a soft raw photo came out as a generic scorpion twice (6 credits), even
+    with a zoomed crop and a written description. For every sign ask for a close-up like the thread photos before the
+    first credit (lesson 44).
