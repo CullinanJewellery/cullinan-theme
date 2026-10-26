@@ -251,3 +251,7 @@ Each line: what went wrong, the rule now, where it came from. Newest last.
     at the first try; the openwork Scorpio from a soft raw photo came out as a generic scorpion twice (6 credits), even
     with a zoomed crop and a written description. For every sign ask for a close-up like the thread photos before the
     first credit (lesson 44).
+50. **Reuse a figure that is already right.** Owner (2026-10-26): "the only thing you need to change is the model of
+    the scorpion … you made it in here" (test 1, c876c67c). Copying a figure from an earlier generated photo into the
+    approved photo (edit of the approved Libra with the earlier photo as the second reference) worked at once; a raw
+    photo or a description did not (two tries). Before a new try, look through the earlier results for the part.
