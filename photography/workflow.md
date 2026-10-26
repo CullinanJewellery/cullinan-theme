@@ -21,6 +21,7 @@ happen once.
 | `bg-even.cjs` | Evens a tiled background to one tone; the piece, shadow and stones untouched (owner's OK, 2026-10-15). Run before framing. |
 | `stone-clear.cjs` | Takes a colour cast out of a clear stone (e.g. back to an approved photo's); setting and background untouched (owner's OK, 2026-10-15). |
 | `polish-curve.cjs` | Deepens a flat yellow gold (tone curve on gold only, then gold-match) when shine is below 212 (owner's OK, 2026-10-20; lesson 43). |
+| `wall-lines.cjs` | Fills the thin dark side-wall lines of a flat openwork piece with the gold beside them, below the bail (owner, 2026-10-26, Libra; lesson 47). |
 | `rhodium-off.cjs` | For a piece the atelier makes without rhodium: the white setting round each stone takes the photo's own gold; stones untouched (owner, 2026-10-19; lesson 41). |
 | `gold-match.cjs --target r,g,b` | Gold back to a given gold, e.g. the piece's first approved photo after edits drifted it. |
 | `compare-sheet.cjs` | One image for the owner: raw photo(s) left, new photo(s) right, with a note (e.g. the stone count). |

@@ -239,3 +239,8 @@ Each line: what went wrong, the rule now, where it came from. Newest last.
     and cross 08's finished main photo (light: straight front view, flat mirror gold in a soft gradient, never black):
     both right at the first try, shine 229 and 226. The owner: "you are the one with the knowledge": choose the light
     per kind of piece (flat pieces like the cross, not ring A's dark mirror bands), and say why.
+47. **Dark wall lines on a flat openwork piece: fill them from the gold beside them, never lift every dark pixel.**
+    Owner (2026-10-26), Libra: no dark lines inside the circle. A Higgsfield edit (3 credits) only softened them. A
+    global lift of dark gold flattened the polish (shine 215) and left black specks where near-black pixels were
+    skipped. `wall-lines.cjs` replaces only thin dark pixels with the mean gold face within 10 px (a second pass at
+    6 px catches dots on the outer edge), below the bail: lines gone, polish kept (216).
