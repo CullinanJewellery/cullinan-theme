@@ -244,3 +244,6 @@ Each line: what went wrong, the rule now, where it came from. Newest last.
     global lift of dark gold flattened the polish (shine 215) and left black specks where near-black pixels were
     skipped. `wall-lines.cjs` replaces only thin dark pixels with the mean gold face within 10 px (a second pass at
     6 px catches dots on the outer edge), below the bail: lines gone, polish kept (216).
+48. **Not every dark line is a fault.** Owner (2026-10-26): the Libra with its wall lines removed by `wall-lines.cjs`
+    "looks bad"; the photo as the model made it (test 3, 89c6f120) was chosen. The thin darker walls give the frame
+    its depth. Keep `wall-lines.cjs` for reference only; show the owner a removal before treating it as a method.
