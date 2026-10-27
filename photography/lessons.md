@@ -266,3 +266,7 @@ Each line: what went wrong, the rule now, where it came from. Newest last.
     `metal-swap.cjs --hand` turned it grey; it is dark (brightness 50-76) where the chain is bright (above 170).
     Restoring the original wherever brightness is under 120, outside a box round the pendant, cleaned it. A cool grey
     background also helps (the warm greige one was picked up as gold).
+54. **When the figure's size and place matter, edit the owner's photo, not ours.** Openwork Leo (2026-10-27): three
+    edits of the approved Libra photo with the raw crop as a second reference drew the lion too big or touching the
+    ring. Making the raw crop the first image ("turn this photo into a catalogue photo like the second; keep the
+    pendant exactly, change only the photography") kept the lion's size, design and place at the first try.
