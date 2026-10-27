@@ -261,3 +261,8 @@ Each line: what went wrong, the rule now, where it came from. Newest last.
 52. **Relative size comes from the owner's worn photos, not from coin sizes in words.** 2026-10-27: on the owner's neck
     photos a zodiac coin is ~148 px tall with its bail against ~219 px for an openwork pendant (two thirds). The coins
     at 72% of the frame looked almost as big as the openwork at 80.7%; reframed at 55% (owner's OK), free.
+53. **Worn photos in other metals on the computer: separate skin from chain by brightness, not by colour.** 2026-10-27,
+    zodiac neck photos: in shadow, skin has gold's hue and saturation (hue 23-28, saturation 0.55-0.70), so
+    `metal-swap.cjs --hand` turned it grey; it is dark (brightness 50-76) where the chain is bright (above 170).
+    Restoring the original wherever brightness is under 120, outside a box round the pendant, cleaned it. A cool grey
+    background also helps (the warm greige one was picked up as gold).
