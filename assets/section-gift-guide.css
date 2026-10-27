@@ -168,3 +168,20 @@
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
+
+/* The mirror (owner, 2026-10-27, for Вяра и закрила): the words, the button and the shade on the right; computers
+   only, phones keep the words over the bottom of the photograph. */
+@media screen and (min-width: 750px) {
+  .gift-guide--right .gift-guide__content {
+    margin-left: auto;
+    text-align: right;
+  }
+
+  .gift-guide--right::after {
+    background: linear-gradient(270deg, rgba(24, 14, 9, 0.5) 0%, rgba(24, 14, 9, 0.3) 45%, rgba(24, 14, 9, 0) 70%);
+  }
+
+  .gift-guide--right.gift-guide--empty {
+    background: radial-gradient(120% 140% at 15% 50%, rgb(110 72 60) 0%, rgb(42 30 26) 70%);
+  }
+}

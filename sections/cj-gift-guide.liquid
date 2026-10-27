@@ -13,9 +13,11 @@
   Every word, the link and the photographs are settings (theme editor → Homepage → Gift guide).
   2026-10-27, owner: „this section have to be for zodiac signs“: on the homepage it carries the zodiac words and
   links to the zodiac collection; the section itself stays general (any heading, any link).
+  2026-10-27, owner: „the same section but a mirror one“ for Вяра и закрила: „Words on: Right“ puts the words, the
+  button and the shade on the right (computers; phones as before).
 {%- endcomment -%}
 
-<div class="gift-guide{% if section.settings.image == blank %} gift-guide--empty{% endif %}">
+<div class="gift-guide{% if section.settings.content_side == 'right' %} gift-guide--right{% endif %}{% if section.settings.image == blank %} gift-guide--empty{% endif %}">
   <div class="gift-guide__media">
     {%- if section.settings.image != blank -%}
       {%- if section.settings.image_mobile != blank -%}
@@ -101,6 +103,17 @@
   "tag": "section",
   "class": "section section-gift-guide",
   "settings": [
+    {
+      "type": "select",
+      "id": "content_side",
+      "label": "Words on",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right (mirror)" }
+      ],
+      "default": "left",
+      "info": "Computers. On phones the words sit over the bottom of the photograph either way."
+    },
     {
       "type": "image_picker",
       "id": "image",
