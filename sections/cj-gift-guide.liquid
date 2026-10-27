@@ -41,6 +41,8 @@
           }}
         </picture>
       {%- else -%}
+        {%- comment -%} The focal point is assigned first: a filter inside image_tag's arguments applies to the whole tag. {%- endcomment -%}
+        {%- assign cj_band_focal = section.settings.image.presentation.focal_point | prepend: 'object-position: ' -%}
         {{
           section.settings.image
           | image_url: width: 2400
@@ -50,7 +52,7 @@
             sizes: '100vw',
             loading: 'lazy',
             alt: section.settings.image.alt,
-            style: section.settings.image.presentation.focal_point | prepend: 'object-position: '
+            style: cj_band_focal
         }}
       {%- endif -%}
     {%- endif -%}

@@ -71,8 +71,8 @@ Full list in `docs/theme-guide.md` §1. The ones that have cost the most time:
 - Two to three minutes between pushes; re-send a dropped file with a byte changed.
 - Pushed assets can be read at `https://2fp38p-az.myshopify.com/cdn/shop/t/2/assets/<file>?v=<anything>`; Liquid, JSON
   and locales can only be seen on a preview.
-- Preview links expire; only the owner can make one. Current (2026-10-22):
-  https://zv8zvbjgewztnhrw-107185537364.shopifypreview.com
+- Preview links expire; only the owner can make one. Current (2026-10-27):
+  https://11ikuhxdjtknpwf3-107185537364.shopifypreview.com
 
 ## How we work
 
