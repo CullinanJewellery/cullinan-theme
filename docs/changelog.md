@@ -8,6 +8,15 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-10-27 — gift guide band in place of the zodiac section **(owner)**
+- Owner: the homepage zodiac section changed to one like moonmagic's „Moon Magic's GIFT GUIDE“ (measured: a 570px
+  photograph band across the width; white two-line heading 65px, sentence 22px, outlined white button 485 × 72 on the
+  left). New `sections/cj-gift-guide.liquid` + `section-gift-guide.css`: the same band in Jost, a soft shade on the
+  left, an espresso band until a photograph is set; phones 4:5 with the words over the lower part. Copy (editable):
+  „Cullinan / Идеи за подарък“, „Ръчно изработени бижута от злато и сребро за рожден ден, имен ден, годишнина и всеки
+  специален повод.“, button „Изберете подарък“ → all products. The zodiac section is kept but disabled
+  (`templates/index.json` "disabled": true); way back: enable it and remove gift_guide from the order.
+
 ## 2026-10-22 — phone categories as a vertical gallery **(owner)**
 - Owner: the phone categories should scroll down, not sideways, and catch the eye. The mosaic grid is now the phone
   layout too (the sideways slider is hidden): wide 16:10 boxes for Пръстени, Вяра и закрила and Аксесоари, pairs of
