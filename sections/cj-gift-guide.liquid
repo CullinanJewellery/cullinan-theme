@@ -10,7 +10,9 @@
   our capitals and tracking). A soft dark shade on the left keeps the white words readable over any photograph. With
   no photograph yet the band is espresso, so the white words still read and nothing moves once a photograph lands.
   Phones: the photograph at 4:5 with the words over its lower part; a separate phone photograph can be set.
-  Every word, the link and the photographs are settings (theme editor → Homepage → Идеи за подарък).
+  Every word, the link and the photographs are settings (theme editor → Homepage → Photo band).
+  2026-10-27, owner: „this section have to be for zodiac signs“: on the homepage it carries the zodiac words and
+  links to the zodiac collection; the section itself stays general (any heading, any link).
 {%- endcomment -%}
 
 <div class="gift-guide{% if section.settings.image == blank %} gift-guide--empty{% endif %}">
@@ -69,7 +71,22 @@
       {%- if section.settings.text != blank -%}
         <div class="gift-guide__text">{{ section.settings.text }}</div>
       {%- endif -%}
-      {%- if section.settings.button_label != blank and section.settings.button_link != blank -%}
+      {%- liquid
+        comment
+          Never a link to an empty collection: a collection link whose collection has no pieces yet shows
+          „Очаквайте скоро“ instead of the button, and becomes the button by itself once pieces are added.
+        endcomment
+        assign cj_band_soon = false
+        if section.settings.button_link contains '/collections/'
+          assign cj_handle = section.settings.button_link | split: '/collections/' | last | split: '?' | first | split: '/' | first | url_decode
+          if cj_handle != 'all' and collections[cj_handle].products_count == 0
+            assign cj_band_soon = true
+          endif
+        endif
+      -%}
+      {%- if cj_band_soon -%}
+        <p class="gift-guide__soon">Очаквайте скоро</p>
+      {%- elsif section.settings.button_label != blank and section.settings.button_link != blank -%}
         <a class="gift-guide__button" href="{{ section.settings.button_link }}">{{ section.settings.button_label | escape }}</a>
       {%- endif -%}
     </div>
@@ -78,7 +95,7 @@
 
 {% schema %}
 {
-  "name": "Gift guide",
+  "name": "Photo band",
   "tag": "section",
   "class": "section section-gift-guide",
   "settings": [
@@ -126,7 +143,7 @@
   ],
   "presets": [
     {
-      "name": "Gift guide"
+      "name": "Photo band"
     }
   ]
 }

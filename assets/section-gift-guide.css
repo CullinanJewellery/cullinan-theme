@@ -156,3 +156,15 @@
     font-size: 1.4rem;
   }
 }
+
+/* The linked collection has no pieces yet: a quiet line in the button's place, never a link to an empty page */
+.gift-guide__soon {
+  display: inline-block;
+  margin: 3.6rem 0 0;
+  padding: 0.8rem 0;
+  border-bottom: 0.1rem solid rgba(255, 255, 255, 0.6);
+  font-size: 1.4rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
