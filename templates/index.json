@@ -293,26 +293,6 @@
             "phone_button": "Вижте висулките"
           }
         },
-        "t8": {
-          "type": "tile",
-          "settings": {
-            "size": "tall",
-            "label": "Вяра и закрила",
-            "subline": "Кръстове и символи на вярата.",
-            "link": "/collections/вяра-и-закрила",
-            "phone_button": "Вижте колекцията"
-          }
-        },
-        "t7": {
-          "type": "tile",
-          "settings": {
-            "size": "standard",
-            "label": "Камъни",
-            "subline": "Всеки камък има своето значение.",
-            "link": "/collections/камъни",
-            "phone_button": "Вижте камъните"
-          }
-        },
         "t4": {
           "type": "tile",
           "settings": {
@@ -333,20 +313,10 @@
             "phone_button": "Вижте комплектите"
           }
         },
-        "t5": {
-          "type": "tile",
-          "settings": {
-            "size": "standard",
-            "label": "Зодии",
-            "subline": "Бижу с вашия знак.",
-            "link": "/collections/зодии",
-            "phone_button": "Вижте зодиите"
-          }
-        },
         "t9": {
           "type": "tile",
           "settings": {
-            "size": "standard",
+            "size": "tall",
             "label": "Аксесоари",
             "subline": "",
             "link": "/collections/аксесоари",
@@ -358,12 +328,9 @@
         "t1",
         "t2",
         "t3",
-        "t8",
-        "t7",
+        "t9",
         "t4",
-        "t6",
-        "t5",
-        "t9"
+        "t6"
       ],
       "settings": {
         "all_label": "Вижте всички бижута",
