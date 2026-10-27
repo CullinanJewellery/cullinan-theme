@@ -1565,3 +1565,12 @@ Owner: „the same section but a mirror one but for Вяра и закрила�
 shade on the right on computers (phones unchanged). Homepage section `faith_band`: „Знак на вяра“ / „Вяра и закрила“
 / „Малък знак, който да ви пази всеки ден.“ / „Разгледайте колекцията“ → `/collections/вяра-и-закрила`; the
 collection is still empty, so the band shows „Очаквайте скоро“ until pieces are added. No photo yet (espresso band).
+
+### 2026-10-27 — „Разгледайте по категория“: six tiles; Вяра и закрила band mirrored on phones
+Owner: remove Зодии, Вяра и закрила and Камъни from the category boxes (computer and phone; both now have their own
+homepage bands or menu entries), Аксесоари in Вяра и закрила's place. Order now Пръстени (tall), Обеци, Висулки,
+Аксесоари (tall), Гривни, Комплекти: four columns on computers, the boxes kept at the approved size (258px at 1440px)
+with the band centred. Way back: the removed blocks were t8 „Вяра и закрила“ (tall, „Кръстове и символи на вярата.“,
+/collections/вяра-и-закрила, „Вижте колекцията“), t7 „Камъни“ („Всеки камък има своето значение.“, /collections/камъни,
+„Вижте камъните“), t5 „Зодии“ („Бижу с вашия знак.“, /collections/зодии, „Вижте зодиите“); Аксесоари was standard and last.
+Вяра и закрила band on phones: words aligned right (owner: „I want it mirrored“; the zodiac band's are on the left).
