@@ -270,3 +270,6 @@ Each line: what went wrong, the rule now, where it came from. Newest last.
     edits of the approved Libra photo with the raw crop as a second reference drew the lion too big or touching the
     ring. Making the raw crop the first image ("turn this photo into a catalogue photo like the second; keep the
     pendant exactly, change only the photography") kept the lion's size, design and place at the first try.
+55. **Shopify takes product images up to 20 MB and 5000 x 5000 px.** A 4K PNG worn photo is 32-33 MB, too big. Every
+    final photo is saved at 2048 x 2048 (main photos already were, by `frame-photo.cjs`); worn photos are resized to
+    2048 too (at most about 8 MB), with the 4K original kept in the piece's чернови (owner, 2026-10-27).
