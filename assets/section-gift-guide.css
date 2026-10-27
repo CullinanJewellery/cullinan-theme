@@ -1,0 +1,158 @@
+/*
+  Gift guide band (sections/cj-gift-guide.liquid), 2026-10-27, after moonmagic.com's „Moon Magic's GIFT GUIDE“.
+  Measured there at 1440px: a 570px photograph band across the whole width; heading 65px in two lines, sentence 22px,
+  outlined white button 485 × 72 (1px border, 22px capitals, 2.2px tracking), all on the left.
+*/
+.gift-guide {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  min-height: clamp(42rem, 40vw, 62rem);
+  overflow: hidden;
+  background: rgb(42 30 26);
+  color: rgb(255 255 255);
+}
+
+.gift-guide__media {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+
+.gift-guide__media picture,
+.gift-guide__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.gift-guide__image {
+  object-fit: cover;
+}
+
+/* The shade that keeps white words readable over a light photograph; stronger on the left, where they sit. */
+.gift-guide::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(90deg, rgba(24, 14, 9, 0.5) 0%, rgba(24, 14, 9, 0.3) 45%, rgba(24, 14, 9, 0) 70%);
+}
+
+/* No photograph yet: a deep espresso band with a soft warm glow, so the white words read and the band looks finished. */
+.gift-guide--empty {
+  background: radial-gradient(120% 140% at 85% 50%, rgb(110 72 60) 0%, rgb(42 30 26) 70%);
+}
+
+.gift-guide--empty::after {
+  display: none;
+}
+
+.gift-guide__inner {
+  width: 100%;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+.gift-guide__content {
+  max-width: 52rem;
+}
+
+.gift-guide__heading {
+  margin: 0;
+  color: inherit;
+  font-family: var(--font-heading-family);
+  font-weight: 400;
+  line-height: 1.12;
+  text-wrap: balance;
+}
+
+.gift-guide__eyebrow,
+.gift-guide__title {
+  display: block;
+}
+
+.gift-guide__eyebrow {
+  font-size: clamp(3.2rem, 3.6vw, 5.2rem);
+}
+
+.gift-guide__title {
+  font-size: clamp(4rem, 4.5vw, 6.5rem);
+}
+
+.gift-guide__text {
+  margin-top: 2.4rem;
+  font-size: 1.9rem;
+  line-height: 1.5;
+}
+
+.gift-guide__text p {
+  margin: 0;
+}
+
+.gift-guide__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: min(100%, 44rem);
+  min-height: 6.4rem;
+  margin-top: 3.6rem;
+  padding: 0 2.4rem;
+  border: 0.1rem solid rgb(255 255 255);
+  color: rgb(255 255 255);
+  font-size: 1.6rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.gift-guide__button:hover {
+  background: rgb(255 255 255);
+  color: rgb(42 30 26);
+}
+
+.gift-guide__button:focus-visible {
+  outline: 0.2rem solid rgb(255 255 255);
+  outline-offset: 0.3rem;
+}
+
+/* Phones: an upright 4:5 band, the words over its lower part on a shade that rises from the bottom. */
+@media screen and (max-width: 749px) {
+  .gift-guide {
+    align-items: flex-end;
+    min-height: 0;
+    aspect-ratio: 4 / 5;
+  }
+
+  .gift-guide::after {
+    background: linear-gradient(0deg, rgba(24, 14, 9, 0.68) 0%, rgba(24, 14, 9, 0.35) 45%, rgba(24, 14, 9, 0) 70%);
+  }
+
+  .gift-guide__inner {
+    padding-top: 3.2rem;
+    padding-bottom: 3.2rem;
+  }
+
+  .gift-guide__eyebrow {
+    font-size: 2.6rem;
+  }
+
+  .gift-guide__title {
+    font-size: 3.4rem;
+  }
+
+  .gift-guide__text {
+    margin-top: 1.4rem;
+    font-size: 1.6rem;
+  }
+
+  .gift-guide__button {
+    width: 100%;
+    min-height: 5.2rem;
+    margin-top: 2.4rem;
+    font-size: 1.4rem;
+  }
+}
