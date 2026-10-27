@@ -293,34 +293,14 @@
             "phone_button": "Вижте висулките"
           }
         },
-        "t4": {
+        "t8": {
           "type": "tile",
           "settings": {
-            "size": "standard",
-            "label": "Гривни",
-            "subline": "Деликатни гривни за всеки ден.",
-            "link": "/collections/гривни",
-            "phone_button": "Вижте гривните"
-          }
-        },
-        "t5": {
-          "type": "tile",
-          "settings": {
-            "size": "standard",
-            "label": "Зодии",
-            "subline": "Бижу с вашия знак.",
-            "link": "/collections/зодии",
-            "phone_button": "Вижте зодиите"
-          }
-        },
-        "t6": {
-          "type": "tile",
-          "settings": {
-            "size": "standard",
-            "label": "Комплекти",
-            "subline": "Бижута, създадени да се носят заедно.",
-            "link": "/collections/комплекти",
-            "phone_button": "Вижте комплектите"
+            "size": "tall",
+            "label": "Вяра и закрила",
+            "subline": "Кръстове и символи на вярата.",
+            "link": "/collections/вяра-и-закрила",
+            "phone_button": "Вижте колекцията"
           }
         },
         "t7": {
@@ -333,14 +313,34 @@
             "phone_button": "Вижте камъните"
           }
         },
-        "t8": {
+        "t4": {
           "type": "tile",
           "settings": {
-            "size": "tall",
-            "label": "Вяра и закрила",
-            "subline": "Кръстове и символи на вярата.",
-            "link": "/collections/вяра-и-закрила",
-            "phone_button": "Вижте колекцията"
+            "size": "standard",
+            "label": "Гривни",
+            "subline": "Деликатни гривни за всеки ден.",
+            "link": "/collections/гривни",
+            "phone_button": "Вижте гривните"
+          }
+        },
+        "t6": {
+          "type": "tile",
+          "settings": {
+            "size": "standard",
+            "label": "Комплекти",
+            "subline": "Бижута, създадени да се носят заедно.",
+            "link": "/collections/комплекти",
+            "phone_button": "Вижте комплектите"
+          }
+        },
+        "t5": {
+          "type": "tile",
+          "settings": {
+            "size": "standard",
+            "label": "Зодии",
+            "subline": "Бижу с вашия знак.",
+            "link": "/collections/зодии",
+            "phone_button": "Вижте зодиите"
           }
         },
         "t9": {
@@ -366,6 +366,7 @@
         "t9"
       ],
       "settings": {
+        "all_label": "Вижте всички бижута",
         "heading": "Разгледайте по категория",
         "color_scheme": "scheme-1",
         "caption_position": "over",
@@ -381,73 +382,121 @@
         "sign_oven": {
           "type": "sign",
           "settings": {
-            "heading": "Овен"
+            "heading": "Овен",
+            "text": "",
+            "product": "",
+            "collection": "",
+            "button_label": ""
           }
         },
         "sign_telec": {
           "type": "sign",
           "settings": {
-            "heading": "Телец"
+            "heading": "Телец",
+            "text": "",
+            "product": "",
+            "collection": "",
+            "button_label": ""
           }
         },
         "sign_bliznaci": {
           "type": "sign",
           "settings": {
-            "heading": "Близнаци"
+            "heading": "Близнаци",
+            "text": "",
+            "product": "",
+            "collection": "",
+            "button_label": ""
           }
         },
         "sign_rak": {
           "type": "sign",
           "settings": {
-            "heading": "Рак"
+            "heading": "Рак",
+            "text": "",
+            "product": "",
+            "collection": "",
+            "button_label": ""
           }
         },
         "sign_lav": {
           "type": "sign",
           "settings": {
-            "heading": "Лъв"
+            "heading": "Лъв",
+            "text": "",
+            "product": "",
+            "collection": "",
+            "button_label": ""
           }
         },
         "sign_deva": {
           "type": "sign",
           "settings": {
-            "heading": "Дева"
+            "heading": "Дева",
+            "text": "",
+            "product": "",
+            "collection": "",
+            "button_label": ""
           }
         },
         "sign_vezni": {
           "type": "sign",
           "settings": {
-            "heading": "Везни"
+            "heading": "Везни",
+            "text": "",
+            "product": "",
+            "collection": "",
+            "button_label": ""
           }
         },
         "sign_skorpion": {
           "type": "sign",
           "settings": {
-            "heading": "Скорпион"
+            "heading": "Скорпион",
+            "text": "",
+            "product": "",
+            "collection": "",
+            "button_label": ""
           }
         },
         "sign_strelec": {
           "type": "sign",
           "settings": {
-            "heading": "Стрелец"
+            "heading": "Стрелец",
+            "text": "",
+            "product": "",
+            "collection": "",
+            "button_label": ""
           }
         },
         "sign_kozirog": {
           "type": "sign",
           "settings": {
-            "heading": "Козирог"
+            "heading": "Козирог",
+            "text": "",
+            "product": "",
+            "collection": "",
+            "button_label": ""
           }
         },
         "sign_vodolei": {
           "type": "sign",
           "settings": {
-            "heading": "Водолей"
+            "heading": "Водолей",
+            "text": "",
+            "product": "",
+            "collection": "",
+            "button_label": ""
           }
         },
         "sign_ribi": {
           "type": "sign",
           "settings": {
-            "heading": "Риби"
+            "heading": "Риби",
+            "text": "",
+            "product": "",
+            "collection": "",
+            "button_label": ""
           }
         }
       },
@@ -465,15 +514,28 @@
         "sign_vodolei",
         "sign_ribi"
       ],
+      "disabled": true,
       "settings": {
         "preview_placeholders": true,
+        "overlay_title": "Вашата зодия",
+        "heading": "",
         "ratio_desktop": "16 / 9",
         "ratio_mobile": "2 / 3",
         "color_scheme": "scheme-1",
         "margin_top": 40,
         "margin_bottom": 40
-      },
-      "disabled": true
+      }
+    },
+    "gift_guide": {
+      "type": "cj-gift-guide",
+      "settings": {
+        "image": "shopify://shop_images/01_0da8794e-39ed-4bfc-87f6-5d4d418ebaf3.png",
+        "eyebrow": "Вашият знак",
+        "heading": "Бижута по зодия",
+        "text": "<p>Вашата зодия, изработена на ръка в ателието ни във Велико Търново. Бижу за вас или подарък за близък човек.</p>",
+        "button_label": "Намерете своята зодия",
+        "button_link": "/collections/зодии"
+      }
     },
     "stones": {
       "type": "stone-meanings",
@@ -668,12 +730,12 @@
             "max_width": 1100,
             "corner_styling": "soft",
             "quote_marks_style": "serif",
-            "card_color": "#F3EBE6",
-            "stars_and_quote_marks_color": "#B76E79",
-            "text_color": "#2A1E1A",
-            "arrows_color": "#2A1E1A",
+            "card_color": "#f3ebe6",
+            "stars_and_quote_marks_color": "#b76e79",
+            "text_color": "#2a1e1a",
+            "arrows_color": "#2a1e1a",
             "show_border": false,
-            "border_color": "#B76E79",
+            "border_color": "#b76e79",
             "show_drop_shadow": false,
             "transition_speed": 5,
             "header_text": "",
@@ -701,6 +763,8 @@
       "type": "custom-request",
       "settings": {
         "layout": "collapsible",
+        "toggle_label": "Изпратете запитване",
+        "popup_button_label": "Попитайте за това бижу",
         "color_scheme": "scheme-2",
         "eyebrow": "Изработка по поръчка",
         "heading": "Не виждате своето? Ще го направим.",
@@ -820,7 +884,6 @@
     },
     "newsletter": {
       "type": "newsletter",
-      "disabled": true,
       "blocks": {
         "heading": {
           "type": "heading",
@@ -845,6 +908,7 @@
         "paragraph",
         "email_form"
       ],
+      "disabled": true,
       "settings": {
         "button_label": "Абонирайте се",
         "footnote": "Отписвате се с едно кликване.",
@@ -855,16 +919,6 @@
         "overlay_opacity": 30,
         "padding_top": 72,
         "padding_bottom": 40
-      }
-    },
-    "gift_guide": {
-      "type": "cj-gift-guide",
-      "settings": {
-        "eyebrow": "Вашият знак",
-        "heading": "Бижута по зодия",
-        "text": "<p>Вашата зодия, изработена на ръка в ателието ни във Велико Търново. Бижу за вас или подарък за близък човек.</p>",
-        "button_label": "Намерете своята зодия",
-        "button_link": "/collections/зодии"
       }
     }
   },
