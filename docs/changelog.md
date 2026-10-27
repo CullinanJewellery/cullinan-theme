@@ -1558,3 +1558,10 @@ Same day, after the owner's preview: "object-position:" showed as text where the
 inside `image_tag`'s arguments applied to the whole tag; the focal point is now assigned first). Heading and sentence
 smaller (title clamp 3–4.6rem, first line 2.2–3.4rem, sentence 1.7rem; phone 2.8 / 2 / 1.5rem). Sentence now
 „Знакът, под който сте родени, винаги близо до сърцето.“ (owner: short, to touch the soul, no atelier facts).
+
+### 2026-10-27 — Homepage: Вяра и закрила band (mirror)
+Owner: „the same section but a mirror one but for Вяра и закрила“, between „Всеки камък има значение“ and „Как се
+ражда едно бижу“. `cj-gift-guide` got a „Words on“ setting (left / right); right puts the words, the button and the
+shade on the right on computers (phones unchanged). Homepage section `faith_band`: „Знак на вяра“ / „Вяра и закрила“
+/ „Малък знак, който да ви пази всеки ден.“ / „Разгледайте колекцията“ → `/collections/вяра-и-закрила`; the
+collection is still empty, so the band shows „Очаквайте скоро“ until pieces are added. No photo yet (espresso band).
