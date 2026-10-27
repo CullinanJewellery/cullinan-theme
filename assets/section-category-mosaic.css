@@ -876,3 +876,13 @@
     transform: none;
   }
 }
+
+/* Six tiles (2026-10-27, owner: Зодии, Вяра и закрила and Камъни out, Аксесоари tall where Вяра и закрила was): four
+   columns — Пръстени tall, two squares over two, Аксесоари tall. The boxes keep the size the owner approved for
+   five columns (about 254px at 1440px), so the band is narrower and centred instead of growing the boxes. */
+@media screen and (min-width: 990px) {
+  .mosaic .mosaic__grid:not(:has(> .mosaic__item:nth-child(7))) {
+    margin-left: calc(50% - 0.4 * (100vw - 15.2rem) - 1.8rem);
+    margin-right: calc(50% - 0.4 * (100vw - 15.2rem) - 1.8rem);
+  }
+}
