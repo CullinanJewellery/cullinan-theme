@@ -526,6 +526,17 @@
         "margin_bottom": 40
       }
     },
+    "faith_band": {
+      "type": "cj-gift-guide",
+      "settings": {
+        "content_side": "right",
+        "eyebrow": "Знак на вяра",
+        "heading": "Вяра и закрила",
+        "text": "<p>Малък знак, който да ви пази всеки ден.</p>",
+        "button_label": "Разгледайте колекцията",
+        "button_link": "/collections/вяра-и-закрила"
+      }
+    },
     "gift_guide": {
       "type": "cj-gift-guide",
       "settings": {
@@ -932,6 +943,7 @@
     "zodiac",
     "gift_guide",
     "stones",
+    "faith_band",
     "workshop",
     "atelier",
     "review_cards",
