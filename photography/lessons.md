@@ -258,3 +258,6 @@ Each line: what went wrong, the rule now, where it came from. Newest last.
 51. **Ask before every credit (owner, 2026-10-26: "you have to ask before you do anything because I see things that
     are wrong").** For the zodiac signs: show the result and ask before any fix or new try, even when the fix looks
     obvious; the owner sees errors I miss (Capricorn's horn touching the ring, Virgo's pose, the archer's arrow).
+52. **Relative size comes from the owner's worn photos, not from coin sizes in words.** 2026-10-27: on the owner's neck
+    photos a zodiac coin is ~148 px tall with its bail against ~219 px for an openwork pendant (two thirds). The coins
+    at 72% of the frame looked almost as big as the openwork at 80.7%; reframed at 55% (owner's OK), free.
