@@ -1554,3 +1554,7 @@ The gift-guide-style band (`sections/cj-gift-guide.liquid`) keeps its look; only
 „Намерете своята зодия“ linking to `/collections/зодии`. Added with it, because of the no-empty-links rule: while the
 linked collection has no pieces the button shows „Очаквайте скоро“ instead (as the category boxes do). The 12-sign
 zodiac slideshow stays switched off.
+Same day, after the owner's preview: "object-position:" showed as text where the photo is (the `prepend` filter
+inside `image_tag`'s arguments applied to the whole tag; the focal point is now assigned first). Heading and sentence
+smaller (title clamp 3–4.6rem, first line 2.2–3.4rem, sentence 1.7rem; phone 2.8 / 2 / 1.5rem). Sentence now
+„Знакът, под който сте родени, винаги близо до сърцето.“ (owner: short, to touch the soul, no atelier facts).
