@@ -1546,3 +1546,11 @@ page: https://claude.ai/artifact/VCk9LEMzx8ffSsnoHfqeQX.
 ## 2026-09-06 to 09-12
 - Fork of Dawn 16 connected to Shopify; first palette and fonts (settings file was being rejected until values were put
   inside their ranges); hero words over the photograph agreed as the first exception; name back to Cullinan Jewellery.
+
+### 2026-10-27 — Homepage band: zodiac words
+Owner: „this section have to be for zodiac signs“, then „what i meant is for the text don't change anything else“.
+The gift-guide-style band (`sections/cj-gift-guide.liquid`) keeps its look; only its words changed in
+`templates/index.json`: „Вашият знак“ / „Бижута по зодия“, a sentence about the zodiac pieces, the button
+„Намерете своята зодия“ linking to `/collections/зодии`. Added with it, because of the no-empty-links rule: while the
+linked collection has no pieces the button shows „Очаквайте скоро“ instead (as the category boxes do). The 12-sign
+zodiac slideshow stays switched off.
