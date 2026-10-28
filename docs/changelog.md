@@ -1574,3 +1574,20 @@ with the band centred. Way back: the removed blocks were t8 „Вяра и за�
 /collections/вяра-и-закрила, „Вижте колекцията“), t7 „Камъни“ („Всеки камък има своето значение.“, /collections/камъни,
 „Вижте камъните“), t5 „Зодии“ („Бижу с вашия знак.“, /collections/зодии, „Вижте зодиите“); Аксесоари was standard and last.
 Вяра и закрила band on phones: words aligned right (owner: „I want it mirrored“; the zodiac band's are on the left).
+
+### 2026-10-28 — Stones as a product option („like glamira“)
+Owner: stones on the product page like glamira.bg; first white and green zircon, same price; the colour circles stay,
+taken from the material. Shopify allows three options, and rings already had size, material and colour, so products
+with stones drop the colour option (it only repeated the material).
+- `snippets/cj-metal-swatch.liquid` (new): the colour option's circle pictures (Files by name) for a material value;
+  silver a plain grey. `swatch.liquid` draws it when a value has no swatch (`metal:`).
+- `card-product.liquid`: no option with swatches → the circles come from the material option (picks that material's
+  variant and photo, as before).
+- Product page (`product-variant-picker.liquid`, `product-variant-options.liquid` 'stone'): an option named Камък /
+  Камъни / stone / gem is drawn as picture tiles (`assets/cj-stone-tiles.css`: square tiles, picture over name, the
+  chosen one framed in espresso; glamira looked at 2026-10-28: 7 stone tiles in a grid, dark frame). Order: metal,
+  stone, size. Pictures: the option's own swatch picture if it has one, else `snippets/cj-stone-picture.liquid` (menu
+  stone files by the words in the value; green zircon uses the emerald picture until its own is uploaded). The metal
+  menu's dot falls back to the metal circle.
+- Products that still have the colour option look exactly as before (checked on the preview: metal dot, 16 cards
+  with circles). The new path is untested until a product has a Камък option.
