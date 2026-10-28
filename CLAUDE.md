@@ -57,7 +57,8 @@ launch the store.
   against the goal, but record the reason and the way back in `docs/changelog.md` and tell the owner plainly.
 - Verify on desktop and phone (Cyrillic, variants, forms, navigation, keyboard, overflow). **Report local checks
   (mocks, scripts) separately from checks on the real Shopify preview.**
-- Product titles are descriptive; old catalogue codes belong in the SKU field.
+- Product titles are short symbolic names (owner, 2026-10-28; list in `docs/product-names.md`), the kind of piece in
+  Product type; old catalogue codes belong in the SKU field.
 - **Bulgarian copy (owner, 2026-10-04)**: natural, clear language that suits a jewellery atelier. No forced
   metaphors, no exaggerated promises, nothing that sounds translated from English.
 - Keep detail in `docs/changelog.md`, not here.
