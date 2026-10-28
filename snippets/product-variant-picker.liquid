@@ -78,7 +78,11 @@
       list the options in the Admin's order as before. A product with no such
       option draws exactly as it did.
     {%- endcomment -%}
-    {%- for pass in (1..2) -%}
+    {%- comment -%}
+      Three passes since 2026-10-28: the metal, then the stone (owner: „like glamira for the stones“, where the
+      stones come before the size), then the rest.
+    {%- endcomment -%}
+    {%- for pass in (1..3) -%}
     {%- for option in product.options_with_values -%}
       {%- if shown_option and option.position == hidden_option.position -%}
         {%- continue -%}
@@ -88,6 +92,10 @@
         assign is_material = false
         if option_name_lower contains 'метал' or option_name_lower contains 'материал' or option_name_lower contains 'metal' or option_name_lower contains 'material'
           assign is_material = true
+        endif
+        assign is_stone = false
+        if option_name_lower contains 'камък' or option_name_lower contains 'камъни' or option_name_lower contains 'stone' or option_name_lower contains 'gem'
+          assign is_stone = true
         endif
 
         comment
@@ -99,6 +107,8 @@
         assign option_label = option.name
         if is_material
           assign option_label = 'Изберете вашия метал'
+        elsif is_stone
+          assign option_label = 'Изберете камък'
         elsif option_name_lower contains 'размер' or option_name_lower contains 'size'
           assign option_label = 'Изберете вашия размер'
         endif
@@ -106,7 +116,10 @@
       {%- if pass == 1 and is_material == false -%}
         {%- continue -%}
       {%- endif -%}
-      {%- if pass == 2 and is_material -%}
+      {%- if pass == 2 and is_stone == false -%}
+        {%- continue -%}
+      {%- endif -%}
+      {%- if pass == 3 and is_material or pass == 3 and is_stone -%}
         {%- continue -%}
       {%- endif -%}
       {%- liquid
@@ -131,7 +144,34 @@
           assign use_menu = true
         endif
       -%}
-      {%- if picker_type == 'swatch' -%}
+      {%- if is_stone and picker_type != 'dropdown' -%}
+        {%- comment -%}
+          The stones as picture tiles (2026-10-28, owner: „like glamira for the stones in the product page“). Glamira
+          shows a grid of square tiles, the stone's picture with its name under it, the chosen one framed. Ours: the
+          same idea in the site's own look (assets/cj-stone-tiles.css); the pictures are the menu's stone pictures
+          (snippets/cj-stone-picture.liquid), or the value's own swatch picture when the option has one. The tiles
+          are the option's own radio inputs, so choosing a stone changes the photos, the price and the cart as the
+          metal does.
+        {%- endcomment -%}
+        {{ 'cj-stone-tiles.css' | asset_url | stylesheet_tag }}
+        <fieldset class="js product-form__input product-form__input--stone">
+          <legend class="form__label">
+            {{ option_label }}:
+            <span data-selected-value>
+              {{- option.selected_value -}}
+            </span>
+          </legend>
+          <div class="cj-stone-tiles">
+            {% render 'product-variant-options',
+              product: product,
+              option: option,
+              block: block,
+              picker_type: 'stone',
+              twin: twin
+            %}
+          </div>
+        </fieldset>
+      {%- elsif picker_type == 'swatch' -%}
         <fieldset class="js product-form__input product-form__input--swatch">
           <legend class="form__label">
             {{ option_label }}:
@@ -185,6 +225,14 @@
             assign menu_dot = menu_dot_source.swatch.image | image_url: width: 50 | prepend: 'url(' | append: ')'
           elsif menu_dot_source.swatch.color
             assign menu_dot = 'rgb(' | append: menu_dot_source.swatch.color.rgb | append: ')'
+          else
+            capture menu_dot
+              render 'cj-metal-swatch', name: option.selected_value.name, width: 50
+            endcapture
+            assign menu_dot = menu_dot | strip
+            if menu_dot == ''
+              assign menu_dot = null
+            endif
           endif
         -%}
         <fieldset class="js product-form__input product-form__input--menu">

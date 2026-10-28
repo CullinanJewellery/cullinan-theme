@@ -1,0 +1,36 @@
+{%- comment -%}
+  A stone's picture for a stone option value (2026-10-28, owner: the stone choice „like glamira“). The same files as
+  the menu's stone pictures (snippets/cj-menu-stone.liquid, Shopify Files by name), chosen by the words in the value:
+  „Бял циркон“ the zircon, „Зелен циркон“ the green stone (the emerald picture until a zircon one is uploaded; then
+  give the „Камък“ option swatches with pictures in the Admin and those are used instead), „Рубин“ the ruby, and so on.
+  Prints nothing for a value it does not know; the tile then shows the name alone.
+
+  Accepts:
+  - name: {String} the option value's name
+
+  Usage:
+  {% render 'cj-stone-picture', name: value.name %}
+{%- endcomment -%}
+{%- liquid
+  assign cj_stone_down = name | append: '' | downcase
+  assign cj_stone_file = ''
+  if cj_stone_down contains 'зелен' or cj_stone_down contains 'изумруд' or cj_stone_down contains 'green' or cj_stone_down contains 'emerald'
+    assign cj_stone_file = 'ChatGPT_Image_Sep_29_2026_07_44_18_PM.png'
+  elsif cj_stone_down contains 'рубин' or cj_stone_down contains 'червен' or cj_stone_down contains 'ruby'
+    assign cj_stone_file = 'ChatGPT_Image_Sep_29_2026_07_44_14_PM.png'
+  elsif cj_stone_down contains 'сапфир' or cj_stone_down contains 'син' or cj_stone_down contains 'sapphire'
+    assign cj_stone_file = 'ChatGPT_Image_Sep_29_2026_07_44_09_PM.png'
+  elsif cj_stone_down contains 'перл' or cj_stone_down contains 'pearl'
+    assign cj_stone_file = 'ChatGPT_Image_Sep_29_2026_07_44_05_PM.png'
+  elsif cj_stone_down contains 'диамант' or cj_stone_down contains 'diamond'
+    assign cj_stone_file = 'ChatGPT_Image_Sep_29_2026_07_44_01_PM.png'
+  elsif cj_stone_down contains 'циркон' or cj_stone_down contains 'zircon'
+    assign cj_stone_file = 'ChatGPT_Image_Sep_29_2026_07_43_02_PM.png'
+  endif
+  if cj_stone_file != ''
+    assign cj_stone_image = images[cj_stone_file]
+    if cj_stone_image != blank
+      echo cj_stone_image | image_url: width: 180 | image_tag: width: 60, height: 60, widths: '60, 120, 180', sizes: '60px', loading: 'lazy', alt: ''
+    endif
+  endif
+-%}

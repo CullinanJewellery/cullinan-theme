@@ -353,12 +353,41 @@
                 as before. Price, availability and the variant id follow the paired
                 variant too.
               {%- endcomment -%}
+              {%- comment -%}
+                A product without a colour option (2026-10-28, owner: stones need the third option, „the circle
+                colors stay the same … just to be on jewelry material“): the circles come from the material option,
+                each value drawn as its metal (snippets/cj-metal-swatch.liquid), and pick that material's variant.
+              {%- endcomment -%}
+              {%- liquid
+                assign card_metal_position = 0
+                assign card_has_swatches = false
+                for option in card_product.options_with_values
+                  if option.values.first.swatch != blank
+                    assign card_has_swatches = true
+                    break
+                  endif
+                endfor
+                unless card_has_swatches
+                  for option in card_product.options_with_values
+                    assign card_option_down = option.name | downcase
+                    if card_option_down contains 'метал' or card_option_down contains 'материал' or card_option_down contains 'metal' or card_option_down contains 'material'
+                      capture card_metal_dot
+                        render 'cj-metal-swatch', name: option.values.first.name
+                      endcapture
+                      if option.values.size > 1 and card_metal_dot != blank
+                        assign card_metal_position = option.position
+                      endif
+                      break
+                    endif
+                  endfor
+                endunless
+              -%}
               {%- for option in card_product.options_with_values -%}
-                {%- if option.values.first.swatch != blank -%}
+                {%- if option.values.first.swatch != blank or option.position == card_metal_position -%}
                   {%- assign card_pressed_taken = false -%}
                   <ul class="card__swatches" role="list">
                     {%- for value in option.values limit: 5 -%}
-                      {%- if value.swatch != blank -%}
+                      {%- if value.swatch != blank or option.position == card_metal_position -%}
                         {%- liquid
                           assign swatch_variant = value.variant
                           assign swatch_media = null
@@ -517,7 +546,7 @@
                               "
                             {%- endif %}
                           >
-                            {% render 'swatch', swatch: value.swatch %}
+                            {% render 'swatch', swatch: value.swatch, metal: value.name %}
                             <span class="visually-hidden">{{ value.name }}</span>
                           </button>
                         </li>

@@ -169,6 +169,33 @@
       {{ value -}}
       {{ label_unavailable }}
     </label>
+  {%- elsif picker_type == 'stone' -%}
+    {%- comment -%} Cullinan (2026-10-28): a stone tile, its picture over its name (product-variant-picker.liquid). {%- endcomment -%}
+    <input
+      type="radio"
+      id="{{ input_id }}"
+      name="{{ input_name | escape }}"
+      value="{{ escaped_value }}"
+      form="{{ product_form_id }}"
+      {% if value.selected %}
+        checked
+      {% endif %}
+      {% if option_disabled %}
+        class="disabled"
+      {% endif %}
+      {{ input_dataset }}
+    >
+    <label for="{{ input_id }}" class="cj-stone-tile">
+      <span class="cj-stone-tile__picture" aria-hidden="true">
+        {%- if value.swatch.image -%}
+          {{ value.swatch.image | image_url: width: 180, height: 180, crop: 'center' | image_tag: width: 60, height: 60, widths: '60, 120, 180', sizes: '60px', loading: 'lazy', alt: '' }}
+        {%- else -%}
+          {%- render 'cj-stone-picture', name: value.name -%}
+        {%- endif -%}
+      </span>
+      <span class="cj-stone-tile__name">{{ value }}</span>
+      {{- label_unavailable -}}
+    </label>
   {%- elsif picker_type == 'menu' -%}
     {%- liquid
       assign menu_dot_source = value
@@ -180,6 +207,14 @@
         assign menu_dot = menu_dot_source.swatch.image | image_url: width: 50 | prepend: 'url(' | append: ')'
       elsif menu_dot_source.swatch.color
         assign menu_dot = 'rgb(' | append: menu_dot_source.swatch.color.rgb | append: ')'
+      else
+        capture menu_dot
+          render 'cj-metal-swatch', name: value.name, width: 50
+        endcapture
+        assign menu_dot = menu_dot | strip
+        if menu_dot == ''
+          assign menu_dot = null
+        endif
       endif
     -%}
     <input

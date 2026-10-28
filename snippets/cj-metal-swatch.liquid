@@ -1,0 +1,38 @@
+{%- comment -%}
+  The metal circle for a material value (2026-10-28, owner: products with stones drop the separate colour option, and
+  „the circle colors stay the same … just to be on jewelry material“). Shopify allows three options; a ring with size,
+  material and stone has no room for the colour option whose swatches drew the circles, so a material value with no
+  swatch of its own gets the same picture the colour option's swatches use (Shopify Files, by name).
+
+  Prints a CSS background value — url(…) or rgb(…) — or nothing when the value names no metal.
+
+  Accepts:
+  - name: {String} the option value's name, e.g. „14К жълто злато“
+  - width: {Number} the file's width in px (optional, 160 by default)
+
+  Usage:
+  {%- capture dot -%}{% render 'cj-metal-swatch', name: value.name %}{%- endcapture -%}
+{%- endcomment -%}
+{%- liquid
+  assign cj_metal_down = name | append: '' | downcase
+  assign cj_metal_file = ''
+  assign cj_metal_rgb = ''
+  if cj_metal_down contains 'бяло злато' or cj_metal_down contains 'white gold'
+    assign cj_metal_file = 'ChatGPT_Image_Sep_27_2026_06_12_59_PM.png'
+  elsif cj_metal_down contains 'розово злато' or cj_metal_down contains 'rose gold'
+    assign cj_metal_file = 'ChatGPT_Image_Sep_26_2026_05_00_24_PM.png'
+  elsif cj_metal_down contains 'жълто злато' or cj_metal_down contains 'yellow gold'
+    assign cj_metal_file = 'ChatGPT_Image_Sep_26_2026_04_59_35_PM.png'
+  elsif cj_metal_down contains 'сребро' or cj_metal_down contains 'silver'
+    assign cj_metal_rgb = 'rgb(201 203 207)'
+  endif
+  assign cj_metal_width = width | default: 160
+  if cj_metal_file != ''
+    assign cj_metal_image = images[cj_metal_file]
+    if cj_metal_image != blank
+      echo cj_metal_image | image_url: width: cj_metal_width, height: cj_metal_width, crop: 'center' | prepend: 'url(' | append: ')'
+    endif
+  elsif cj_metal_rgb != ''
+    echo cj_metal_rgb
+  endif
+-%}
