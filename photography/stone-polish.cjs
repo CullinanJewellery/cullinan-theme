@@ -11,13 +11,15 @@
 
   Usage (needs sharp, NODE_PATH as for check-photo.cjs):
     node stone-polish.cjs <in.png> <out.png> [--gamma 1.6] [--contrast 1.4] [--sharpen 1.2] x0,y0,x1,y1 [x0,y0,x1,y1 ...]
-  Boxes are fractions of the photo, as for metal-swap.cjs --stone.
+  Boxes are fractions of the photo, as for metal-swap.cjs --stone. --round uses the ellipse inside each box, for a
+  single stone close to the floor, so its shadow is not touched (ring C, 2026-10-29: the box corners greyed the floor).
 */
 const sharp = require('sharp');
 
 const args = process.argv.slice(2);
 const opt = (name, def) => { const i = args.indexOf(name); if (i < 0) return def; const v = +args[i + 1]; args.splice(i, 2); return v; };
 const CONTRAST = opt('--contrast', 1.4), SHARPEN = opt('--sharpen', 1.2), GAMMA = opt('--gamma', 1.6);
+const ri = args.indexOf('--round'); const ROUND = ri >= 0; if (ROUND) args.splice(ri, 1);
 const [src, out, ...bx] = args;
 
 (async () => {
@@ -31,7 +33,7 @@ const [src, out, ...bx] = args;
   for (let y = 0; y < H; y++) {
     for (let x = 0; x < W; x++) {
       const fx = x / W, fy = y / H;
-      if (!boxes.some((b) => fx >= b[0] && fx <= b[2] && fy >= b[1] && fy <= b[3])) continue;
+      if (!boxes.some((b) => (ROUND ? ((fx - (b[0] + b[2]) / 2) / ((b[2] - b[0]) / 2)) ** 2 + ((fy - (b[1] + b[3]) / 2) / ((b[3] - b[1]) / 2)) ** 2 <= 1 : fx >= b[0] && fx <= b[2] && fy >= b[1] && fy <= b[3]))) continue;
       const i = (y * W + x) * 3;
       const r = A.data[i], g = A.data[i + 1], b = A.data[i + 2];
       if (Math.abs(r - 251) < 6 && Math.abs(g - 251) < 6 && Math.abs(b - 253) < 6) continue; // background
