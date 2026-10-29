@@ -134,8 +134,9 @@ Full recipe with the exact Higgsfield prompts: `photography/README.md` „Produc
 - **Stones: ask the owner what they are** before the first prompt for any piece with stones (ring C: zircons), so
   the photo shows that stone, never a random one (owner, 2026-10-14). **Every stone looks like a premium online
   jeweller's (owner, 2026-10-29, ring G: "from now on ... like that")**: crisp icy colourless white, sharp facets with
-  dark pavilion contrast, pin-point sparkle, a little fire; never pink, lilac, grey or milky. Made by a stones-only
-  Nano Banana edit of the finished yellow photo, put back with `photography/stone-look.cjs` (lesson 56).
+  dark pavilion contrast, pin-point sparkle, a little fire; never pink, lilac, grey or milky. Asked for in the first
+  prompt, with ring G's finished photo as the stone reference, so it costs nothing extra; only if the stones still
+  come out soft, a stones-only edit (3 credits) put back with `photography/stone-look.cjs` (lesson 56).
 - **Gold**: rich, warm, deeply polished 18K yellow (ring A's main photo is the colour reference). **Rose gold** matches
   ring A's rose. **White gold is a clean, neutral, bright white, no yellow, beige or champagne cast** (owner,
   2026-10-13: both rings' white looked yellowish; measured blue 13–20 below red). New metals are made from the

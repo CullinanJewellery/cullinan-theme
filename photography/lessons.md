@@ -282,4 +282,7 @@ Each line: what went wrong, the rule now, where it came from. Newest last.
     3a6185a8). The edit redraws everything a little, so `stone-look.cjs` takes from it only the stone pixels inside
     the stone boxes and keeps the approved gold, head and background; then white and rose with `metal-swap.cjs`. A
     first version also took the flat background inside the boxes and left visible rectangles: background is excluded.
-    Budget it as one extra edit per stone piece (so about 9 credits for a stone ring, not 6).
+    **For a new piece no extra edit is planned** (owner asked, 2026-10-29, why it should cost more): the stone
+    description goes into the first prompt, and ring G's finished yellow photo (`11 Пръстен с камък в средата/жълто
+    злато/01 ...`) is added as the stone reference, so the stones come out right in the same 3 credits. The stones-only
+    edit is the fallback, only when they still come out soft or tinted, and for pieces that were finished before.
