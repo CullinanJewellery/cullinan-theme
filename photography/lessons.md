@@ -273,3 +273,13 @@ Each line: what went wrong, the rule now, where it came from. Newest last.
 55. **Shopify takes product images up to 20 MB and 5000 x 5000 px.** A 4K PNG worn photo is 32-33 MB, too big. Every
     final photo is saved at 2048 x 2048 (main photos already were, by `frame-photo.cjs`); worn photos are resized to
     2048 too (at most about 8 MB), with the 4K original kept in the piece's чернови (owner, 2026-10-27).
+56. **Stones look like a premium online jeweller's, on every piece with stones** (owner, 2026-10-29, ring G, after
+    seeing them: "from now on i want the stones for every jewelry we make with stones to be like that"). The model's
+    own stones come out soft, flat, often pink or lilac. One Nano Banana 2.1 edit of the finished yellow photo (3
+    credits) with the prompt "change ONLY the look of the stones ... crisp and icy colourless white ... sharp facets
+    with strong contrast between bright white and deep dark grey-black facets in the pavilion; a bright star in the
+    table; pin-point sparkles; a few small flashes of rainbow fire; never milky, cloudy, flat, pink or lilac" (job
+    3a6185a8). The edit redraws everything a little, so `stone-look.cjs` takes from it only the stone pixels inside
+    the stone boxes and keeps the approved gold, head and background; then white and rose with `metal-swap.cjs`. A
+    first version also took the flat background inside the boxes and left visible rectangles: background is excluded.
+    Budget it as one extra edit per stone piece (so about 9 credits for a stone ring, not 6).
