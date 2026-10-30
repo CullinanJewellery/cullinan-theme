@@ -293,3 +293,10 @@ Each line: what went wrong, the rule now, where it came from. Newest last.
     the "gold" over the whole photo, skin included, and pushed the chain to neon with yellow specks on the skin.
     `gold-only-merge.cjs` finds the gold by comparing with the white version (made by metal-swap with the photo's
     own settings) and moves only those pixels by the fixed ratio new / old.
+58. **A circle frame must be a true circle; never send one that is not** (owner, 2026-10-30, openwork Virgin Mary:
+    "fix the ring it is not a good one i didn't saw it"). The model drew the outer ring bulging on the left and
+    flat at the top; I had noted "ring slightly uneven" and sent it anyway, and the owner approved it without
+    seeing. Fixed with one edit of the approved yellow (3 credits): "change ONLY the frame circle into a perfect
+    circle, same diameter, centre, thickness; keep everything else pixel for pixel", real phone photo as second
+    image. Measure roundness (fit a circle to the outer gold edge, deviation under about 2% of the radius) and look
+    at it before sending any round pendant; a defect I see goes in the message to the owner, not only in the log.
