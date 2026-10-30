@@ -21,6 +21,7 @@ happen once.
 | `bg-even.cjs` | Evens a tiled background to one tone; the piece, shadow and stones untouched (owner's OK, 2026-10-15). Run before framing. |
 | `stone-clear.cjs` | Takes a colour cast out of a clear stone (e.g. back to an approved photo's); setting and background untouched (owner's OK, 2026-10-15). |
 | `polish-curve.cjs` | Deepens a flat yellow gold (tone curve on gold only, then gold-match) when shine is below 212 (owner's OK, 2026-10-20; lesson 43). |
+| `rhodium-to-gold.cjs` | Turns a white rhodium area the model drew where the piece is gold into yellow gold, inside a polygon (owner, 2026-10-30). |
 | `gold-only-merge.cjs` | Moves the gold of a worn photo (hand, neck) to a new yellow, only where the gold is: found by comparing with the white version (owner, 2026-10-30; lesson 57). |
 | `stone-look.cjs` | After the stones-only edit of a finished yellow photo, takes only the new stones into the approved photo; everything else stays (owner, 2026-10-29; lesson 56). |
 | `wall-lines.cjs` | Fills the thin dark side-wall lines of a flat openwork piece with the gold beside them, below the bail (owner, 2026-10-26, Libra; lesson 47). |
