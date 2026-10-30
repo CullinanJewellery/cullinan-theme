@@ -21,6 +21,7 @@ happen once.
 | `bg-even.cjs` | Evens a tiled background to one tone; the piece, shadow and stones untouched (owner's OK, 2026-10-15). Run before framing. |
 | `stone-clear.cjs` | Takes a colour cast out of a clear stone (e.g. back to an approved photo's); setting and background untouched (owner's OK, 2026-10-15). |
 | `polish-curve.cjs` | Deepens a flat yellow gold (tone curve on gold only, then gold-match) when shine is below 212 (owner's OK, 2026-10-20; lesson 43). |
+| `gold-only-merge.cjs` | Moves the gold of a worn photo (hand, neck) to a new yellow, only where the gold is: found by comparing with the white version (owner, 2026-10-30; lesson 57). |
 | `stone-look.cjs` | After the stones-only edit of a finished yellow photo, takes only the new stones into the approved photo; everything else stays (owner, 2026-10-29; lesson 56). |
 | `wall-lines.cjs` | Fills the thin dark side-wall lines of a flat openwork piece with the gold beside them, below the bail (owner, 2026-10-26, Libra; lesson 47). |
 | `rhodium-off.cjs` | For a piece the atelier makes without rhodium: the white setting round each stone takes the photo's own gold; stones untouched (owner, 2026-10-19; lesson 41). |
@@ -49,7 +50,7 @@ Ring A's main photo (`pictures for the website/01 Пръстен с топчет
    touches the floor. Never shadowless, never a gold tint on the floor.
 2. **The background.** Flat off-white #FCFBFC, 250–252 at the edges, even, no patches or bands.
 3. **Sharp everywhere.** Edges crisp from front to back, like a focus-stacked photo, no soft or blurred ends.
-4. **The gold.** Ring A's colour, 208, 165, 114, rich and warm, not lemon, not copper.
+4. **The gold.** Ring A's colour, 212, 172, 104, rich and warm, not lemon, not copper.
 5. **The size.** About half the picture's height when generated; the frame script enlarges it to ring A's 80.7%.
 
 Every main-photo prompt includes the block in `prompts/00-main-quality.md`. **Before sending the owner any main
@@ -70,7 +71,7 @@ flatter than ring A (or fails any point), do not send it as finished: tell the o
    **Also put it next to ring A's main photo** and compare the polish and points 1–5 above (owner, 2026-10-20); if
    it is flatter than ring A, tell the owner before going on.
 5. **Make the others** with the prompt files (yellow lying flat or hand). **Yellow to ring A's gold with
-   `gold-match.cjs --target 208,165,113`, then white and rose with `metal-swap.cjs` from the finished, framed yellow
+   `gold-match.cjs --target 212,172,104`, then white and rose with `metal-swap.cjs` from the finished, framed yellow
    photo** (free; no model, so nothing but the colour changes); **a `--stone x0,y0,x1,y1` box round every stone in
    both** (owner, 2026-10-15: the stone must not change). Worn photos (hand,
    body) too, with `--hand`: **show them to the owner, ask whether they like them and what more could be done to
@@ -89,7 +90,7 @@ flatter than ring A (or fails any point), do not send it as finished: tell the o
 
 ## Measured targets (check-photo.cjs)
 
-- Yellow gold: average of the metal close to ring A's main photo, RGB 208, 165, 114 (each within about 10).
+- Yellow gold: average of the metal close to ring A's main photo, RGB 212, 172, 104 (each within about 10).
 - Rose gold: close to 214, 160, 128 / ring C rose 222, 163, 144.
 - White gold: blue within 5 of red on the metal (neutral, no yellow).
 - Background 249–255 at the edges and even (no patch: border brightness spread under 8 outside the shadow side).

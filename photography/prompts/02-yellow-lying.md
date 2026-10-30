@@ -75,7 +75,7 @@ LOOK, from the last reference photo: one seamless sweep of bright off-white #FCF
 corner, as bright at the corners as in the centre, no horizon, no table edge, no vignette, no reflections on the
 surface; soft diffused studio light; a soft natural neutral grey shadow with a thin darker contact shadow. The gold
 exactly like the last reference photo: a warm honey-amber 18K yellow gold with a soft peachy warmth (mid-tones about
-RGB 208, 165, 114), deeply polished with bright mirror highlights; not lemon-yellow, not greenish, not pale, not
+RGB 212, 172, 104), deeply polished with bright mirror highlights; not lemon-yellow, not greenish, not pale, not
 orange, not rose, not copper.
 
 The ring fills about 65% of the picture's width, centred. Ultra-detailed, crisp, high-end macro product photography.
@@ -191,5 +191,5 @@ THE LOOK from the LAST reference image only (never its ring).
 Stones clear and colourless, icy white, crisp facets. No props, no text, no logo, no other jewellery.
 ```
 
-Then `gold-match.cjs --target 208,165,113`, `bg-even.cjs`, `frame-photo.cjs 1` (by height; the lying frame crops
+Then `gold-match.cjs --target 212,172,104`, `bg-even.cjs`, `frame-photo.cjs 1` (by height; the lying frame crops
 this pose too tight), metals with `metal-swap.cjs --stone` boxes. Ring F: 76610487, ring G: 809307c9.

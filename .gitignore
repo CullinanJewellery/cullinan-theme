@@ -29,6 +29,7 @@ photography/*
 !photography/wall-lines.cjs
 !photography/stone-look.cjs
 !photography/stone-polish.cjs
+!photography/gold-only-merge.cjs
 !photography/*.md
 !photography/pieces/
 !photography/prompts/

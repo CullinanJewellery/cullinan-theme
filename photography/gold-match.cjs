@@ -22,7 +22,7 @@ const sharp = require('sharp');
 const lum = (r, g, b) => 0.3 * r + 0.59 * g + 0.11 * b;
 // ring A's yellow main photo, as check-photo.cjs measures it (pixels with red − blue > 45 at 512 px), or --target
 const ti = process.argv.indexOf('--target');
-const TARGET = ti >= 0 ? process.argv.splice(ti, 2)[1].split(',').map(Number) : [208, 165, 114];
+const TARGET = ti >= 0 ? process.argv.splice(ti, 2)[1].split(',').map(Number) : [212, 172, 104]; // the owner's yellow since 2026-10-30, further from rose (ring A's 208, 165, 114 before)
 const MOVE_COLOUR = ti >= 0;
 const TARGET_L = lum(...TARGET);
 

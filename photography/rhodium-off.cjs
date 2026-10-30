@@ -37,7 +37,7 @@ const sharp = require('sharp');
 const lum = (r, g, b) => 0.3 * r + 0.59 * g + 0.11 * b;
 const ramp = (v, a, b) => Math.min(1, Math.max(0, (v - a) / (b - a)));
 // ring A's yellow and white, measured on the ring (as in metal-swap.cjs)
-const YELLOW_L = lum(208, 165, 113), WHITE_L = lum(188, 184, 184);
+const YELLOW_L = lum(212, 172, 104), WHITE_L = lum(188, 184, 184);
 // rhodium's brightness back to gold's: the inverse of metal-swap.cjs's lift for white
 const f = (255 - WHITE_L) / (255 - YELLOW_L);
 const toGoldL = (L) => Math.max(0, 255 - (255 - L) / f);

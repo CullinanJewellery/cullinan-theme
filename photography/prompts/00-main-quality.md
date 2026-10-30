@@ -11,10 +11,10 @@ SHADOW: a soft, neutral grey shadow falling to the left, plus a thin darker cont
 floor. Never shadowless, never a gold tint on the floor.
 BACKGROUND: flat off-white #FCFBFC from edge to edge, even, no patches, bands, panels or vignette.
 SHARP EVERYWHERE: every edge crisp from front to back, like a focus-stacked photo; no soft or blurred ends.
-GOLD: ring A's colour, about RGB 208, 165, 114: rich and warm 18K yellow gold, not lemon, not pale, not copper, not pink.
+GOLD: ring A's colour, about RGB 212, 172, 104: rich and warm 18K yellow gold, not lemon, not pale, not copper, not pink.
 SIZE: the piece about half the picture's height, centred, with empty background around it.
 ```
 
-The checker measures the polish (gold highlights at least 212; ring A has 216), the gold (208, 165, 114), the
+The checker measures the polish (gold highlights at least 212; ring A has 216), the gold (212, 172, 104), the
 background (250–252 at the edges) and the ends' sharpness. The frame script then enlarges the piece to ring A's
 80.7% of the height. Before sending any main photo, compare it with ring A by eye (`workflow.md`, step 4).

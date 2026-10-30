@@ -286,3 +286,10 @@ Each line: what went wrong, the rule now, where it came from. Newest last.
     description goes into the first prompt, and ring G's finished yellow photo (`11 Пръстен с камък в средата/жълто
     злато/01 ...`) is added as the stone reference, so the stones come out right in the same 3 credits. The stones-only
     edit is the fallback, only when they still come out soft or tinted, and for pieces that were finished before.
+57. **Yellow gold must read clearly yellow next to rose** (owner, 2026-10-30: "make the yellow gold more brighter or
+    at least not be that close to the rose gold"). Ring A's 208, 165, 114 and the rose 213, 160, 128 differ almost only
+    in blue, so the two looked alike. Test on the spiral ring: A 212, 172, 104 (owner's choice), B 216, 180, 98
+    (lemony, brassy). The new yellow is the standard. On worn photos `gold-match.cjs` must not be used: it measures
+    the "gold" over the whole photo, skin included, and pushed the chain to neon with yellow specks on the skin.
+    `gold-only-merge.cjs` finds the gold by comparing with the white version (made by metal-swap with the photo's
+    own settings) and moves only those pixels by the fixed ratio new / old.

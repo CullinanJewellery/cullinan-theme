@@ -21,7 +21,7 @@ Physically real: every stone faces outward from the band; from inside the band o
 No gold reflection on the floor, no props, no text, no logo, no other jewellery.
 ```
 
-Check: counts against the sheet; gold ≈ 208, 165, 114; background even; ring at about half height.
+Check: counts against the sheet; gold ≈ 212, 172, 104; background even; ring at about half height.
 
 Stone rings have no standing photo: their main photo is the lying one (`02-yellow-lying.md`, owner 2026-10-14).
 
