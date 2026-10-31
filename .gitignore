@@ -31,6 +31,7 @@ photography/*
 !photography/stone-polish.cjs
 !photography/gold-only-merge.cjs
 !photography/rhodium-to-gold.cjs
+!photography/neutral-white.cjs
 !photography/*.md
 !photography/pieces/
 !photography/prompts/

@@ -300,3 +300,10 @@ Each line: what went wrong, the rule now, where it came from. Newest last.
     circle, same diameter, centre, thickness; keep everything else pixel for pixel", real phone photo as second
     image. Measure roundness (fit a circle to the outer gold edge, deviation under about 2% of the radius) and look
     at it before sending any round pendant; a defect I see goes in the message to the owner, not only in the log.
+59. **Each Nano Banana edit drifts white rhodium towards pink/lilac; measure it before the colours** (2026-10-31,
+    tree with white leaves). After three edits of the same photo the white leaves read lilac (green 201 -> 194 while
+    red and blue stayed), and `metal-swap.cjs` carried it into the white and rose versions. `neutral-white.cjs` sets
+    every pixel whose green is below both red and blue back to neutral (gold and rose never are); run it on the yellow
+    and again on the white and rose made from it. Compare a white part with the first try zoomed in before sending
+    the metals. A free local fill of a groove on a flat gold leaf did not work: the two halves differ in shading and
+    every patch showed; that needs the AI edit or is left (owner chose to leave it).
