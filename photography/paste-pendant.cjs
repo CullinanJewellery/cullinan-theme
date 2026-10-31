@@ -10,7 +10,7 @@
 
   Usage (needs sharp, NODE_PATH as for check-photo.cjs):
     node paste-pendant.cjs <main.png> <worn.png> <out.png> --cx X --top Y --height H [--shadow 0.28]
-                           [--open [--dark 120] [--near 24]]
+                           [--open [--dark 120] [--near 24]] [--mask <yellow.png or cut-out>]
   X, Y, H in pixels of the worn photo: H is the pendant's full height including the bail.
   Measure them on the drawn pendant first; the pasted one must cover it (make H a little larger if needed),
   or use a worn photo with the chain only (no pendant drawn), as for the new pendants (2026-10-31).
@@ -23,13 +23,18 @@ const opt = (k, d) => { const i = args.indexOf(k); return i >= 0 ? +args[i + 1] 
 const [mainP, wornP, outP] = args;
 const CX = opt('--cx'), TOP = opt('--top'), HT = opt('--height'), SH = opt('--shadow', 0.28);
 const OPEN = args.includes('--open'), DARK = opt('--dark', 120), NEAR = opt('--near', 24);
+const MASKP = args.includes('--mask') ? args[args.indexOf('--mask') + 1] : null;
 
 (async () => {
-  const meta = await sharp(mainP).metadata();
-  const { data, info } = await sharp(mainP).removeAlpha().raw().toBuffer({ resolveWithObject: true });
+  // --mask: the pendant's shape is found on this file (the yellow photo or its cut-out) and the colours are
+  // taken from <main.png> (the white or rose photo made from it, same geometry)
+  const shapeP = MASKP || mainP;
+  const meta = await sharp(shapeP).metadata();
+  const { data, info } = await sharp(shapeP).removeAlpha().raw().toBuffer({ resolveWithObject: true });
   const W = info.width, H = info.height, N = W * H;
+  const col = MASKP ? await sharp(mainP).removeAlpha().resize(W, H).raw().toBuffer() : data;
   // a cut-out with its own transparency (e.g. Higgsfield's background remover) is used as it is
-  const given = meta.hasAlpha ? await sharp(mainP).extractChannel(3).raw().toBuffer() : null;
+  const given = meta.hasAlpha ? await sharp(shapeP).extractChannel(3).raw().toBuffer() : null;
   const gold = new Uint8Array(N);
   for (let p = 0; p < N; p++) {
     const r = data[p * 3], g = data[p * 3 + 1], b = data[p * 3 + 2], mx = Math.max(r, g, b);
@@ -107,7 +112,7 @@ const OPEN = args.includes('--open'), DARK = opt('--dark', 120), NEAR = opt('--n
   const rgba = Buffer.alloc(bw * bh * 4);
   for (let y = 0; y < bh; y++) for (let x = 0; x < bw; x++) {
     const p = (y + y0) * W + x + x0, q = (y * bw + x) * 4;
-    rgba[q] = data[p * 3]; rgba[q + 1] = data[p * 3 + 1]; rgba[q + 2] = data[p * 3 + 2]; rgba[q + 3] = a1[p];
+    rgba[q] = col[p * 3]; rgba[q + 1] = col[p * 3 + 1]; rgba[q + 2] = col[p * 3 + 2]; rgba[q + 3] = a1[p];
   }
   const scale = HT / bh, nw = Math.round(bw * scale), nh = Math.round(HT);
   const piece = await sharp(rgba, { raw: { width: bw, height: bh, channels: 4 } }).resize(nw, nh, { kernel: 'lanczos3' }).png().toBuffer();
