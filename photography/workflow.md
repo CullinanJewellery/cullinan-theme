@@ -24,6 +24,7 @@ happen once.
 | `rhodium-to-gold.cjs` | Turns a white rhodium area the model drew where the piece is gold into yellow gold, inside a polygon (owner, 2026-10-30). |
 | `gold-only-merge.cjs` | Moves the gold of a worn photo (hand, neck) to a new yellow, only where the gold is: found by comparing with the white version (owner, 2026-10-30; lesson 57). |
 | `neutral-white.cjs` | Takes a pink or lilac cast off white rhodium parts (and the shadow seen through openings) after Nano Banana edits drifted it; gold and rose untouched. Run on the yellow, and again on the white and rose made from it (owner, 2026-10-31; lesson 59). |
+| `paste-pendant.cjs` | Neck photos: cuts the approved pendant out of its main photo and places it exactly over the one the model drew (bail top on the chain, same height), with a soft contact shadow, so the worn pendant is the approved one (owner, 2026-10-31: "the models must be exact the same"). |
 | `stone-look.cjs` | After the stones-only edit of a finished yellow photo, takes only the new stones into the approved photo; everything else stays (owner, 2026-10-29; lesson 56). |
 | `wall-lines.cjs` | Fills the thin dark side-wall lines of a flat openwork piece with the gold beside them, below the bail (owner, 2026-10-26, Libra; lesson 47). |
 | `rhodium-off.cjs` | For a piece the atelier makes without rhodium: the white setting round each stone takes the photo's own gold; stones untouched (owner, 2026-10-19; lesson 41). |
