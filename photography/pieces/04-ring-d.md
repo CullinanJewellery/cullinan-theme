@@ -85,3 +85,7 @@ front and above. Clearest: 44 and 45 (from above: the four claws and the S of th
   40% of the finger, real about 25%): fresh on the bare hand (4406c2d5, 3 credits), stone about 30%. **Owner: good.**
   Saved in every metal (`metal-swap.cjs --hand 0.55,0.48,0.70,0.60 --hue 15,19`, rose `--relative`); the larger one in
   `чернови/стара ръка`.
+
+## Stone sizes (owner, 2026-11-01)
+
+Zircon: 3.5 mm.

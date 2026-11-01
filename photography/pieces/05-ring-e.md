@@ -88,3 +88,7 @@ zoomed in on 2026-10-15. Clearest: 60–62 (front: the swirl round the stone), 5
   white, rose and silver made from it with `metal-swap.cjs --hand 0.52,0.45,0.73,0.62 --hue 20,24` (rose
   `--relative`). The three-wave hand photos in `чернови/три вълни (до 2026-10-19)`. Main photo unchanged (three
   waves, owner: only the hand photo). Free.
+
+## Stone sizes (owner, 2026-11-01)
+
+Zircon: 2.5 mm.

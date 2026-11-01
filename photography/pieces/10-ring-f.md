@@ -42,3 +42,7 @@ Main photo lying flat like ring C (all stones facing the camera); hand photo on 
   76610487 (the curve edit 96234911 added a band and was not used). Yellow 01 to ring A's gold, framed by height;
   white, rose, silver free. Hand photo 8e8e07fd on the bare hand at real size; metals free (white: the small stones'
   setting stays slightly warm). **Finished, every metal.**
+
+## Stone sizes (owner, 2026-11-01)
+
+Centre zircon 2.75 mm; the others 1.25 mm.

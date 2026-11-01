@@ -38,3 +38,7 @@ Main photo lying flat like ring C (all stones facing the camera); hand photo on 
   the bare hand, at the owner's real size; metals free. **Finished, every metal.** About 45 credits for F and G together.
 - 2026-10-20: main photo polish 205 (below ring A's 212 minimum): `polish-curve.cjs` 0.4 + gold-match → 218; owner:
   "use the stronger one". White, rose, silver remade from it. Previous files in `чернови/преди блясъка`. Free.
+
+## Stone sizes (owner, 2026-11-01)
+
+Centre zircon 3.5 mm; the two smaller ones 1.5 mm; the smallest ones 1.25 mm.
