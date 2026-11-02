@@ -1639,3 +1639,7 @@ champagne sand #EFE3D3 instead of blush (a CSS override in `section-promise-band
 44px, heading 18px, line 17px on computers (phones 40 / 16 / 15px); new icons gold-bars (three stacked bars, two
 sparkles) and delivery-truck (truck with a heart, speed lines) in `icon-benefit.liquid`; phones: two items at a time,
 swiped, with two long thin arrows under them as beornare.com (`assets/promise-band.js`, <promise-slider>).
+Third round (owner's screenshots): the gap still was not there, because Dawn's `.section + .section` (spacing 0) beat
+a one-class rule; now `.shopify-section.section.section-promise-band`. The band is lower (32px inner space on
+computers, 28px on phones). Phones: the arrows replaced by beornare's line — a light track with a dark part sized to
+the share in view, moved as the row scrolls (`assets/promise-band.js`).

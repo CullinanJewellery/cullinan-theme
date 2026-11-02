@@ -178,7 +178,7 @@
    „.section + .section { margin-top: … }“ (base.css, spacing between sections set to 0) is stronger than a single
    class, so the gap is set with the section wrapper's two classes. The band itself is lower: 32px above and below the content on computers, 28px on phones
    (beornare's is about 210px tall at 1440px; ours was about 250px). */
-.section.section-promise-band {
+.shopify-section.section.section-promise-band {
   margin-top: 5.6rem;
   margin-bottom: 5.6rem;
 }
@@ -189,7 +189,7 @@
 }
 
 @media screen and (max-width: 749px) {
-  .section.section-promise-band {
+  .shopify-section.section.section-promise-band {
     margin-top: 4rem;
     margin-bottom: 4rem;
   }
