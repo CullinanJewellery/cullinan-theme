@@ -1649,3 +1649,4 @@ Owner: the small icons under the newsletter like birse.bg's footer, in circles w
 browser (Cloudflare), so the size is our own: a 4.4rem espresso circle with the icon in white at 2rem; on hover or
 focus it fills with Facebook blue or Instagram's gradient (as the big footer buttons) and lifts. The big „Последвайте
 ни“ / „Харесайте ни“ buttons are untouched. `assets/crown.css` „Round buttons“; way back: delete that block.
+Same day, owner: the circles a little smaller: 4.4rem → 3.8rem, icon 2rem → 1.8rem.
