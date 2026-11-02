@@ -1643,3 +1643,9 @@ Third round (owner's screenshots): the gap still was not there, because Dawn's `
 a one-class rule; now `.shopify-section.section.section-promise-band`. The band is lower (32px inner space on
 computers, 28px on phones). Phones: the arrows replaced by beornare's line — a light track with a dark part sized to
 the share in view, moved as the row scrolls (`assets/promise-band.js`).
+
+### 2026-11-02 — Footer Instagram and Facebook icons in circles (after birse.bg)
+Owner: the small icons under the newsletter like birse.bg's footer, in circles with a background. birse.bg blocks the
+browser (Cloudflare), so the size is our own: a 4.4rem espresso circle with the icon in white at 2rem; on hover or
+focus it fills with Facebook blue or Instagram's gradient (as the big footer buttons) and lifts. The big „Последвайте
+ни“ / „Харесайте ни“ buttons are untouched. `assets/crown.css` „Round buttons“; way back: delete that block.

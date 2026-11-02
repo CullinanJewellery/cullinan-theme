@@ -2688,6 +2688,51 @@ card-swatches {
   }
 }
 
+/*
+  Round buttons (owner, 2026-11-02, after birse.bg's footer: the icons in circles with a background, "cool").
+  birse.bg blocked the browser, so the size is ours: a 4.4rem espresso circle (a full tap target) with the icon in
+  white at 2rem. On hover or focus the circle fills with the network's own colour, as the big footer buttons already
+  do (Facebook blue, Instagram's gradient), and lifts like every other button. Way back: delete this block.
+*/
+.footer .footer-subscribe__social .list-social__link {
+  justify-content: center;
+  width: 4.4rem;
+  height: 4.4rem;
+  padding: 0;
+  border-radius: 50%;
+  background: rgb(var(--color-foreground));
+  color: rgb(255 255 255);
+  transition: background 0.3s ease, transform 0.2s cubic-bezier(0, 0, 0.3, 1);
+}
+
+.footer .footer-subscribe__social .list-social__link .icon {
+  width: 2rem;
+  height: 2rem;
+  min-width: 2rem;
+}
+
+.footer .footer-subscribe__social .list-social__link--facebook:hover,
+.footer .footer-subscribe__social .list-social__link--facebook:focus-visible {
+  background: #1877f2;
+}
+
+.footer .footer-subscribe__social .list-social__link--instagram:hover,
+.footer .footer-subscribe__social .list-social__link--instagram:focus-visible {
+  background: linear-gradient(45deg, #833ab4 0%, #e1306c 50%, #fd1d1d 100%);
+}
+
+.footer .footer-subscribe__social .list-social__link:focus-visible {
+  outline: 0.2rem solid rgb(var(--color-foreground));
+  outline-offset: 0.3rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .footer .footer-subscribe__social .list-social__link:hover,
+  .footer .footer-subscribe__social .list-social__link:focus-visible {
+    transform: translateY(-0.25rem);
+  }
+}
+
 @media screen and (min-width: 750px) {
   .footer .footer__blocks-wrapper > .footer-block--subscribe.grid__item {
     flex: 0 1 26rem;
