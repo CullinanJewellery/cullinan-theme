@@ -925,7 +925,7 @@
         "p1": {
           "type": "promise",
           "settings": {
-            "icon": "gold-bar",
+            "icon": "gold-bars",
             "heading": "Благородни метали",
             "text": "Истинско злато и сребро, нежни към кожата."
           }
@@ -941,7 +941,7 @@
         "p3": {
           "type": "promise",
           "settings": {
-            "icon": "delivery-van",
+            "icon": "delivery-truck",
             "heading": "Безплатна доставка",
             "text": "Подаряваме доставката при по-голяма поръчка."
           }

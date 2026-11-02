@@ -1634,3 +1634,8 @@ Jost capitals. On the product page right after the product, on the homepage befo
 Върнете го до 14 дни.“; „Безплатна доставка“ / „Подаряваме доставката при по-голяма поръчка.“ No „без алергии“
 claim until the atelier confirms the alloys are nickel-free; no amount until the owner sets one (Shopify shipping
 must match).
+Second round (owner): the band touched the section above → 5.6rem space above and below (4rem on phones); background
+champagne sand #EFE3D3 instead of blush (a CSS override in `section-promise-band.css`; remove it to go back); icons
+44px, heading 18px, line 17px on computers (phones 40 / 16 / 15px); new icons gold-bars (three stacked bars, two
+sparkles) and delivery-truck (truck with a heart, speed lines) in `icon-benefit.liquid`; phones: two items at a time,
+swiped, with two long thin arrows under them as beornare.com (`assets/promise-band.js`, <promise-slider>).
