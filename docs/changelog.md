@@ -1651,3 +1651,7 @@ focus it fills with Facebook blue or Instagram's gradient (as the big footer but
 ни“ / „Харесайте ни“ buttons are untouched. `assets/crown.css` „Round buttons“; way back: delete that block.
 Same day, owner: the circles a little smaller: 4.4rem → 3.8rem, icon 2rem → 1.8rem.
 Then, owner: only the circle smaller, the icon stays as it was: icon back to 2rem.
+Then, owner: the Facebook icon „like birse“: the round buttons under the newsletter now show the bare „f“
+(`assets/icon-facebook-f.svg`, chosen in `snippets/social-icons.liquid` for the `footer-subscribe__social` row only);
+the logo with its own circle stays everywhere else. birse.bg was still blocked, so this is the usual bare „f“ of
+round social buttons. Way back: remove the if in the snippet.

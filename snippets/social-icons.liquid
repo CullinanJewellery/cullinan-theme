@@ -14,7 +14,12 @@
     <li class="list-social__item">
       <a href="{{ settings.social_facebook_link }}" class="link list-social__link list-social__link--facebook">
         <span class="svg-wrapper">
-          {{- 'icon-facebook.svg' | inline_asset_content -}}
+          {%- comment -%} The round icons under the newsletter use the bare „f“ (owner, 2026-11-02: „like birse“); the logo's own circle would sit inside our circle. {%- endcomment -%}
+          {%- if class contains 'footer-subscribe__social' -%}
+            {{- 'icon-facebook-f.svg' | inline_asset_content -}}
+          {%- else -%}
+            {{- 'icon-facebook.svg' | inline_asset_content -}}
+          {%- endif -%}
         </span>
         <span class="list-social__label" aria-hidden="true">Харесайте ни</span>
         <span class="visually-hidden">{{ 'general.social.links.facebook' | t }}</span>
