@@ -1618,3 +1618,8 @@ sentence 15px. Last block of `assets/section-icon-benefits.css`.
 Owner: „спокойно“ / „спокойствие“ repeated in the last two boxes. Kept in Връщане и замяна („14 дни, за да решите
 спокойно.“, where it fits best); Гаранция now „Грижим се за бижуто и след покупката.“ (the atelier cleans and repairs
 pieces after a sale).
+
+### 2026-11-02 — „Вижте работата ни“: the follower line
+Owner: replace „Последвайте @cullinan_jewellery.bg за нови модели и снимки от работата в ателието.“ with something
+like „над 2000 човека ни следват“ (owner's figure). Now: „Над 2000 души вече следят как се раждат нашите бижута.
+Станете един от тях.“ Homepage only; the footer's own text is unchanged. Update the number when it grows.
