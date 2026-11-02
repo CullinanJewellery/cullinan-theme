@@ -1,7 +1,8 @@
 /*
   Promise band on phones (sections/cj-promise-band.liquid, 2026-11-02, owner: as beornare.com, „the lines down when
-  you swipe“). The list scrolls sideways (CSS scroll-snap); the two thin arrows under it move it one item at a time
-  and fade at either end. Above 749px the list is a plain grid and the arrows are hidden by CSS.
+  you swipe“ — their screenshot: a thin light line across the band with a dark part that shows where the row is).
+  The list scrolls sideways (CSS scroll-snap); this sizes the dark part to the share of the row in view and slides it
+  as the row scrolls. Above 749px the list is a plain grid and the line is hidden by CSS.
 */
 if (!customElements.get('promise-slider')) {
   customElements.define(
@@ -9,31 +10,25 @@ if (!customElements.get('promise-slider')) {
     class PromiseSlider extends HTMLElement {
       connectedCallback() {
         this.list = this.querySelector('.promise-band__list');
-        this.prev = this.querySelector('[data-promise-prev]');
-        this.next = this.querySelector('[data-promise-next]');
-        if (!this.list || !this.prev || !this.next) return;
-        this.prev.addEventListener('click', () => this.move(-1));
-        this.next.addEventListener('click', () => this.move(1));
+        this.track = this.querySelector('.promise-band__progress');
+        this.bar = this.querySelector('.promise-band__progress-bar');
+        if (!this.list || !this.track || !this.bar) return;
         this.list.addEventListener('scroll', () => this.update(), { passive: true });
         window.addEventListener('resize', () => this.update());
         this.update();
       }
 
-      step() {
-        const item = this.list.firstElementChild;
-        if (!item) return this.list.clientWidth;
-        const gap = parseFloat(getComputedStyle(this.list).columnGap) || 0;
-        return item.getBoundingClientRect().width + gap;
-      }
-
-      move(direction) {
-        this.list.scrollBy({ left: direction * this.step(), behavior: 'smooth' });
-      }
-
       update() {
-        const max = this.list.scrollWidth - this.list.clientWidth;
-        this.prev.disabled = this.list.scrollLeft <= 2;
-        this.next.disabled = this.list.scrollLeft >= max - 2;
+        const total = this.list.scrollWidth;
+        const visible = this.list.clientWidth;
+        if (!total || !visible) return;
+        const share = Math.min(1, visible / total);
+        const max = total - visible;
+        const progress = max > 0 ? this.list.scrollLeft / max : 0;
+        const trackWidth = this.track.clientWidth;
+        const barWidth = trackWidth * share;
+        this.bar.style.width = barWidth + 'px';
+        this.bar.style.transform = 'translateX(' + (trackWidth - barWidth) * progress + 'px)';
       }
     }
   );

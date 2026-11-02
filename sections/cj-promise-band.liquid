@@ -17,8 +17,8 @@
   >
     {%- comment -%}
       Phones (2026-11-02, owner: „like in his website the lines down when you swipe“): beornare shows two of the three
-      at a time, swiped sideways, with two long thin arrows under them. <promise-slider> (assets/promise-band.js) moves
-      the row one item per arrow and greys out the arrow at either end; without it the row still swipes.
+      at a time, swiped sideways, with a thin line under them whose dark part moves with the swipe (owner's screenshot,
+      2026-11-02). <promise-slider> (assets/promise-band.js) sizes and moves the dark part; without it the row still swipes.
     {%- endcomment -%}
     <promise-slider class="promise-band__slider">
     <ul class="promise-band__list" role="list" tabindex="-1">
@@ -34,14 +34,7 @@
         </li>
       {%- endfor -%}
     </ul>
-    <div class="promise-band__arrows">
-      <button type="button" class="promise-band__arrow" data-promise-prev aria-label="Назад">
-        <svg viewBox="0 0 44 12" aria-hidden="true" focusable="false"><path d="M43 6H1.5M6.5 1 1.5 6l5 5" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-      <button type="button" class="promise-band__arrow" data-promise-next aria-label="Напред">
-        <svg viewBox="0 0 44 12" aria-hidden="true" focusable="false"><path d="M1 6h41.5M37.5 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-    </div>
+    <div class="promise-band__progress" aria-hidden="true"><span class="promise-band__progress-bar"></span></div>
     </promise-slider>
   </div>
 </div>

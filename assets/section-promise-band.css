@@ -69,7 +69,7 @@
 
 /* ---------------------------------------------------------------------------
    2026-11-02, owner, second round: space from the section above (the band touched it), a different background,
-   bigger icons and words, and on phones a sideways row with two thin arrows under it, as beornare.com.
+   bigger icons and words, and on phones a sideways row with a thin progress line under it, as beornare.com.
    --------------------------------------------------------------------------- */
 .section-promise-band {
   margin-top: 5.6rem;
@@ -96,7 +96,7 @@
   font-size: 1.7rem;
 }
 
-.promise-band__arrows {
+.promise-band__progress {
   display: none;
 }
 
@@ -111,7 +111,7 @@
     padding-right: 0;
   }
 
-  /* Two at a time, the third reached by swiping or the arrows */
+  /* Two at a time, the third reached by swiping */
   .promise-band__list {
     display: flex;
     gap: 1.6rem;
@@ -145,45 +145,57 @@
     font-size: 1.5rem;
   }
 
-  .promise-band__arrows {
-    display: flex;
-    justify-content: center;
-    gap: 2.4rem;
-    margin-top: 2.4rem;
+  /* The line under the row (beornare's): a light track the width of the band's text, the dark part the share of the
+     row in view, moved by assets/promise-band.js as the row scrolls. */
+  .promise-band__progress {
+    display: block;
+    position: relative;
+    height: 0.3rem;
+    margin: 2.8rem 1.6rem 0;
+    border-radius: 0.2rem;
+    background: rgba(var(--color-foreground), 0.18);
+    overflow: hidden;
   }
 
-  .promise-band__arrow {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 6.4rem;
-    height: 4.4rem;
-    padding: 0;
-    border: 0;
-    background: none;
-    color: rgb(var(--color-foreground));
-    cursor: pointer;
-    transition: opacity 0.2s ease;
-  }
-
-  .promise-band__arrow svg {
-    width: 4.4rem;
-    height: 1.2rem;
-  }
-
-  .promise-band__arrow:disabled {
-    opacity: 0.3;
-    cursor: default;
-  }
-
-  .promise-band__arrow:focus-visible {
-    outline: 0.2rem solid rgb(var(--color-foreground));
-    outline-offset: 0.2rem;
+  .promise-band__progress-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 66%;
+    border-radius: 0.2rem;
+    background: rgb(var(--color-foreground));
   }
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .promise-band__list {
     scroll-behavior: smooth;
+  }
+}
+
+/* Third round (owner, 2026-11-02: still no gap, and the band too tall). Dawn's
+   „.section + .section { margin-top: … }“ (base.css, spacing between sections set to 0) is stronger than a single
+   class, so the gap is set with the section wrapper's two classes. The band itself is lower: 32px above and below the content on computers, 28px on phones
+   (beornare's is about 210px tall at 1440px; ours was about 250px). */
+.section.section-promise-band {
+  margin-top: 5.6rem;
+  margin-bottom: 5.6rem;
+}
+
+.promise-band__inner.page-width {
+  padding-top: 3.2rem !important;
+  padding-bottom: 3.2rem !important;
+}
+
+@media screen and (max-width: 749px) {
+  .section.section-promise-band {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+  }
+
+  .promise-band__inner.page-width {
+    padding-top: 2.8rem !important;
+    padding-bottom: 2.8rem !important;
   }
 }
