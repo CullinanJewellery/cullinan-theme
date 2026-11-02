@@ -37,6 +37,21 @@
       <h2 class="mosaic__heading">{{ section.settings.heading | escape }}</h2>
     {%- endif -%}
 
+    {%- comment -%}
+      Phones only (2026-11-02, owner: „like glamira“): a short paragraph and the link to the whole catalogue under the
+      heading, before the sideways row, as glamira.bg's „Колекции“. Hidden from 750px.
+    {%- endcomment -%}
+    {%- if section.settings.intro != blank or section.settings.all_label != blank -%}
+      <div class="mosaic__intro">
+        {%- if section.settings.intro != blank -%}
+          <p class="mosaic__intro-text">{{ section.settings.intro | escape }}</p>
+        {%- endif -%}
+        {%- if section.settings.all_label != blank -%}
+          <a class="mosaic__all-link" href="{{ routes.all_products_collection_url }}">{{ section.settings.all_label | escape }}</a>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
     <ul
       class="mosaic__grid mosaic__grid--caption-{{ section.settings.caption_position }}"
       data-cj-reveal
@@ -180,6 +195,9 @@
                 {%- endif -%}
               {%- if cj_soon -%}</span>{%- else -%}</a>{%- endif -%}
               <h3 class="mosaic-slider__name">{{ block.settings.label | escape }}</h3>
+              {%- if block.settings.subline != blank -%}
+                <p class="mosaic-slider__text">{{ block.settings.subline | escape }}</p>
+              {%- endif -%}
               {%- if cj_soon -%}
                 <span class="mosaic-slider__soon">Очаквайте скоро</span>
               {%- else -%}
@@ -253,6 +271,12 @@
       "id": "heading",
       "default": "Разгледайте по категория",
       "label": "Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "intro",
+      "label": "Text under the heading (phones)",
+      "info": "Shown on phones only, above the sideways row. Empty: no text."
     },
     {
       "type": "color_scheme",

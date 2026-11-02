@@ -1655,3 +1655,14 @@ Then, owner: the Facebook icon „like birse“: the round buttons under the new
 (`assets/icon-facebook-f.svg`, chosen in `snippets/social-icons.liquid` for the `footer-subscribe__social` row only);
 the logo with its own circle stays everywhere else. birse.bg was still blocked, so this is the usual bare „f“ of
 round social buttons. Way back: remove the if in the snippet.
+
+### 2026-11-02 — Phone categories like glamira.bg's „Колекции“ **(owner)**
+Owner (with screenshots of ours and glamira's): the phone „Разгледайте по категория“ like glamira's „Колекции“, their
+background, our font. Measured at 375px: white band, 24px heading left, 14px paragraph and underlined link, then a
+sideways row of 290 × 400 photos 6px apart, each with its name (24px), one line and an underlined link, no arrows.
+Ours, phones only: white band, heading 2.4rem Jost 500 left, a new „intro“ setting (phones only) with the
+„Вижте всички бижута“ link under it (the link at the bottom is hidden on phones), the sideways slider again in place
+of the 2026-10-22 vertical gallery (reversed at the owner's request), slides 77% wide at 29:40, name 2.4rem, the
+tile's subline, the tile's button words as an underlined link; empty categories „Очаквайте скоро“. Computers
+unchanged. `section-category-mosaic.css` „Phones like glamira.bg“; way back: delete that block (the gallery returns)
+and empty the intro.

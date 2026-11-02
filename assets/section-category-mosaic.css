@@ -886,3 +886,129 @@
     margin-right: calc(50% - 0.4 * (100vw - 15.2rem) - 1.8rem);
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Phones like glamira.bg's „Колекции“ (2026-11-02, owner: „make it like theirs … the font should be like ours“).
+   Measured there at 375px: a white band; the heading 24px at the left; a 14px paragraph and an underlined link
+   under it; then a sideways row of tall photos, 290 × 400 (77% of the screen, the next one showing), 6px apart,
+   each with its name (24px) 25px under the photo, one line of text and an underlined link. No arrows or lines.
+   Ours: the same, in Jost (headings Jost 500), espresso, our sublines and button words; empty photo slots keep the
+   blush shade. This replaces the vertical gallery of 2026-10-22 on phones (that is sideways again, at the owner's
+   request). Computers and tablets unchanged. Way back: delete this block; the gallery above returns.
+   --------------------------------------------------------------------------- */
+.mosaic__intro {
+  display: none;
+}
+
+@media screen and (max-width: 749px) {
+  [id^='shopify-section-'][id$='__category_mosaic'] > .gradient {
+    background: #ffffff;
+  }
+
+  .mosaic .mosaic__heading {
+    margin: 0;
+    font-size: 2.4rem;
+    line-height: 1.15;
+    text-align: left;
+  }
+
+  .mosaic .mosaic__intro {
+    display: block;
+    margin: 1.4rem 0 2.4rem;
+  }
+
+  .mosaic__intro-text {
+    margin: 0;
+    font-size: 1.5rem;
+    line-height: 1.45;
+    color: rgb(var(--color-foreground));
+  }
+
+  .mosaic__intro .mosaic__all-link {
+    min-height: 4.4rem;
+    font-size: 1.4rem;
+    font-weight: 500;
+    letter-spacing: 0;
+  }
+
+  .mosaic .mosaic__all {
+    display: none;
+  }
+
+  .mosaic .mosaic__grid {
+    display: none;
+  }
+
+  .mosaic .mosaic-slider {
+    display: block;
+  }
+
+  .mosaic .mosaic-slider__controls {
+    display: none;
+  }
+
+  .mosaic .mosaic-slider__track {
+    gap: 0.6rem;
+    margin: 0 -1.5rem;
+    padding: 0 1.5rem;
+    scroll-padding-inline: 1.5rem;
+  }
+
+  .mosaic .mosaic-slider__slide {
+    flex: 0 0 77%;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .mosaic .mosaic-slider__media {
+    aspect-ratio: 29 / 40;
+  }
+
+  .mosaic .mosaic-slider__name {
+    margin: 2.4rem 0 0;
+    font-size: 2.4rem;
+    line-height: 1.1;
+    text-transform: none;
+  }
+
+  .mosaic-slider__text {
+    margin: 1.2rem 0 0;
+    max-width: 26rem;
+    font-size: 1.5rem;
+    line-height: 1.45;
+    color: rgb(var(--color-foreground));
+  }
+
+  .mosaic .mosaic-slider__button,
+  .mosaic .mosaic-slider__button:hover,
+  .mosaic .mosaic-slider__button:focus-visible {
+    margin-top: auto;
+    padding: 1.2rem 0 0;
+    min-width: 0;
+    min-height: 4.4rem;
+    justify-content: flex-start;
+    background: none;
+    box-shadow: none;
+    color: rgb(var(--color-foreground));
+    font-size: 1.4rem;
+    font-weight: 500;
+    letter-spacing: 0;
+    text-transform: none;
+    text-decoration: underline;
+    text-decoration-thickness: 0.1rem;
+    text-underline-offset: 0.4rem;
+  }
+
+  .mosaic .mosaic-slider__button:hover {
+    text-decoration-thickness: 0.2rem;
+  }
+
+  .mosaic .mosaic-slider__soon {
+    margin-top: auto;
+    padding-top: 1.2rem;
+    justify-content: flex-start;
+    font-size: 1.4rem;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+}
