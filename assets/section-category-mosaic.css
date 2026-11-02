@@ -890,7 +890,7 @@
 /* ---------------------------------------------------------------------------
    Phones like glamira.bg's „Колекции“ (2026-11-02, owner: „make it like theirs … the font should be like ours“).
    Measured there at 375px: a white band; the heading 24px at the left; a 14px paragraph and an underlined link
-   under it; then a sideways row of tall photos, 290 × 400 (77% of the screen, the next one showing), 6px apart,
+   under it; then a sideways row of tall photos, 290 × 400 (84% of the row, the next one showing), 6px apart,
    each with its name (24px) 25px under the photo, one line of text and an underlined link. No arrows or lines.
    Ours: the same, in Jost (headings Jost 500), espresso, our sublines and button words; empty photo slots keep the
    blush shade. This replaces the vertical gallery of 2026-10-22 on phones (that is sideways again, at the owner's
@@ -955,7 +955,7 @@
   }
 
   .mosaic .mosaic-slider__slide {
-    flex: 0 0 77%;
+    flex: 0 0 84%;
     align-items: flex-start;
     text-align: left;
   }
