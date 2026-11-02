@@ -1615,3 +1615,6 @@ Order (owner's OK): Ръчна изработка, Сертификат, Пре�
 Sizes (owner: computer bigger „but not too much“, phone icon and text a little bigger): computers about 15% larger
 (circle 64px, icon 30px, heading and sentence 16px, more inner space); phones circle 56px, icon 26px, heading 14px,
 sentence 15px. Last block of `assets/section-icon-benefits.css`.
+Owner: „спокойно“ / „спокойствие“ repeated in the last two boxes. Kept in Връщане и замяна („14 дни, за да решите
+спокойно.“, where it fits best); Гаранция now „Грижим се за бижуто и след покупката.“ (the atelier cleans and repairs
+pieces after a sale).
