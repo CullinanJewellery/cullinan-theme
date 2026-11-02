@@ -62,38 +62,58 @@
     "benefits": {
       "type": "icon-benefits",
       "blocks": {
-        "b1": {
+        "c1": {
           "type": "benefit",
           "settings": {
             "visual": "icon",
-            "icon": "cash",
-            "heading": "Наложен платеж",
-            "subline": "Плащате в брой, когато получите пратката."
+            "icon": "certificate",
+            "heading": "Сертификат",
+            "subline": "Всяко бижу получава индивидуален сертификат."
           }
         },
-        "b3": {
+        "c2": {
           "type": "benefit",
           "settings": {
             "visual": "icon",
-            "icon": "delivery-van",
-            "heading": "Доставка с Еконт и Спиди",
-            "subline": "До офис или адрес в цялата страна."
+            "icon": "hammer",
+            "heading": "Ръчна изработка",
+            "subline": "На пазара от 1991 г."
           }
         },
-        "b4": {
+        "c3": {
           "type": "benefit",
           "settings": {
             "visual": "icon",
-            "icon": "engraving-pen",
-            "heading": "Гравиране и грижа",
-            "subline": "Гравираме по желание, почистваме и ремонтираме."
+            "icon": "calendar-14",
+            "heading": "Връщане и замяна",
+            "subline": "14 дни, за да върнете или замените бижуто."
+          }
+        },
+        "c4": {
+          "type": "benefit",
+          "settings": {
+            "visual": "icon",
+            "icon": "magnifier",
+            "heading": "Преглед и тест",
+            "subline": "Отворете и пробвайте бижуто, преди да платите."
+          }
+        },
+        "c5": {
+          "type": "benefit",
+          "settings": {
+            "visual": "icon",
+            "icon": "shield",
+            "heading": "Гаранция",
+            "subline": "Всяко бижу е с гаранция."
           }
         }
       },
       "block_order": [
-        "b1",
-        "b3",
-        "b4"
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5"
       ],
       "settings": {
         "color_scheme": "scheme-1",

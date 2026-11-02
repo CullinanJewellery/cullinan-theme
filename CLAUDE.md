@@ -34,9 +34,11 @@ Only these, unless the owner confirms more. Never invent policies, prices, warra
 - The atelier cleans and repairs pieces after a sale (terms unknown).
 - Shop: бул. Васил Левски 21, Велико Търново; Mon–Fri 09:30–19:00, Sat 10:00–18:00, Sun closed. Phone +359 88 287 4895
   (shown as a call button, never printed as text).
-- **Not confirmed, never claimed**: the returns policy for made-to-order pieces (the 14-day wording that exists is
-  flagged, `docs/tasks.md`), free delivery or a delivery price, packaging, warranty, certificates with a piece,
-  engraving price or limit, a named designer, a number of designs.
+- **Owner, 2026-11-02 (homepage trust row)**: every piece gets an individual certificate; 14 days to return or
+  exchange; the parcel can be opened and tried before paying (преглед и тест); every piece has a warranty. Terms
+  (warranty length, return conditions) are not given: never state them; the policy pages must say the same (accountant).
+- **Not confirmed, never claimed**: free delivery or a delivery price, packaging, warranty length or terms, return
+  conditions beyond the 14 days, engraving price or limit, a named designer, a number of designs.
 
 ## What this repository is
 

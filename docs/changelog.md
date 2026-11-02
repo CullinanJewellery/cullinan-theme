@@ -1595,3 +1595,15 @@ with stones drop the colour option (it only repeated the material).
   menu's dot falls back to the metal circle.
 - Products that still have the colour option look exactly as before (checked on the preview: metal dot, 16 cards
   with circles). The new path is untested until a product has a Камък option.
+
+### 2026-11-02 — Homepage trust row: five new promises
+Owner: remove Наложен платеж / Доставка с Еконт и Спиди / Гравиране и грижа and put Сертификат, Ръчна изработка (with
+„На пазара от 1991 г.“ under it), Връщане и замяна (icon: a calendar with 14), Преглед и тест, Гаранция, made like the
+row being replaced. Same section (`icon-benefits`), same filled ruby cards, lifts and phone slider; five boxes in one
+row on computers. New icons in `snippets/icon-benefit.liquid`: calendar-14 (the number drawn as strokes), magnifier,
+shield. Words: „Всяко бижу получава индивидуален сертификат.“ / „На пазара от 1991 г.“ / „14 дни, за да върнете или
+замените бижуто.“ / „Отворете и пробвайте бижуто, преди да платите.“ / „Всяко бижу е с гаранция.“ The facts are the
+owner's (CLAUDE.md updated); warranty length and return conditions are not stated. Way back: the old blocks were b1
+cash „Наложен платеж“ / „Плащате в брой, когато получите пратката.“, b3 delivery-van „Доставка с Еконт и Спиди“ / „До
+офис или адрес в цялата страна.“, b4 engraving-pen „Гравиране и грижа“ / „Гравираме по желание, почистваме и
+ремонтираме.“
