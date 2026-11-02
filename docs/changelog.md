@@ -1623,3 +1623,14 @@ pieces after a sale).
 Owner: replace „Последвайте @cullinan_jewellery.bg за нови модели и снимки от работата в ателието.“ with something
 like „над 2000 човека ни следват“ (owner's figure). Now: „Над 2000 души вече следят как се раждат нашите бижута.
 Станете един от тях.“ Homepage only; the footer's own text is unchanged. Update the number when it grows.
+
+### 2026-11-02 — Promise band (after beornare.com)
+Owner: beornare.com's band (under the product and on the homepage: three thin icons, bold capitals, a light line on
+a warm peach band) „with our font and background color“: precious metals that are kind to the skin, 14 days to
+return, free delivery by order value (amount to be decided). New `sections/cj-promise-band.liquid` +
+`assets/section-promise-band.css`: soft blush scheme-2, espresso line icons (no circle, unlike the ruby trust row),
+Jost capitals. On the product page right after the product, on the homepage before „Вижте работата ни“. Words:
+„Благородни метали“ / „Истинско злато и сребро, нежни към кожата.“; „14 дни за връщане“ / „Не е точно за вас?
+Върнете го до 14 дни.“; „Безплатна доставка“ / „Подаряваме доставката при по-голяма поръчка.“ No „без алергии“
+claim until the atelier confirms the alloys are nickel-free; no amount until the owner sets one (Shopify shipping
+must match).

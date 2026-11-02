@@ -918,6 +918,45 @@
         "padding_top": 72,
         "padding_bottom": 40
       }
+    },
+    "promise_band": {
+      "type": "cj-promise-band",
+      "blocks": {
+        "p1": {
+          "type": "promise",
+          "settings": {
+            "icon": "gold-bar",
+            "heading": "Благородни метали",
+            "text": "Истинско злато и сребро, нежни към кожата."
+          }
+        },
+        "p2": {
+          "type": "promise",
+          "settings": {
+            "icon": "calendar-14",
+            "heading": "14 дни за връщане",
+            "text": "Не е точно за вас? Върнете го до 14 дни."
+          }
+        },
+        "p3": {
+          "type": "promise",
+          "settings": {
+            "icon": "delivery-van",
+            "heading": "Безплатна доставка",
+            "text": "Подаряваме доставката при по-голяма поръчка."
+          }
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3"
+      ],
+      "settings": {
+        "color_scheme": "scheme-2",
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
     }
   },
   "order": [
@@ -937,6 +976,7 @@
     "custom_request",
     "silver_teaser",
     "new_arrivals",
+    "promise_band",
     "social_follow",
     "newsletter"
   ]
