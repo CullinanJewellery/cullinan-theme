@@ -1,0 +1,68 @@
+/*
+  Promise band (sections/cj-promise-band.liquid), 2026-11-02, after beornare.com's band under the product. Measured
+  there at 1440px: a full-width warm band about 210px tall, three equal centred columns; a ~22px thin line icon, a
+  bold capital heading (~18px), a light ~14px line. Ours: soft blush (scheme-2), espresso icons at 3.2rem with the
+  line icons' own 1.25px stroke, Jost 500 capitals with a little tracking, the line at 1.5rem in espresso 75%.
+*/
+.promise-band__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+  gap: 3.2rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.promise-band__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-width: 0;
+}
+
+.promise-band__icon {
+  display: flex;
+  width: 3.2rem;
+  height: 3.2rem;
+  color: rgb(var(--color-foreground));
+}
+
+.promise-band__icon .benefit__icon {
+  width: 100%;
+  height: 100%;
+  stroke-width: 1.25px;
+}
+
+.promise-band__heading {
+  margin: 1.4rem 0 0;
+  font-family: var(--font-body-family);
+  font-size: 1.6rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  line-height: 1.3;
+  text-transform: uppercase;
+  color: rgb(var(--color-foreground));
+  text-wrap: balance;
+}
+
+.promise-band__text {
+  max-width: 34ch;
+  margin: 0.8rem 0 0;
+  font-size: 1.5rem;
+  line-height: 1.55;
+  color: rgba(var(--color-foreground), 0.75);
+  text-wrap: pretty;
+}
+
+/* Phones: the three stacked, each with room above and below */
+@media screen and (max-width: 749px) {
+  .promise-band__list {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.8rem;
+  }
+
+  .promise-band__heading {
+    font-size: 1.5rem;
+  }
+}
