@@ -1612,3 +1612,6 @@ Same day, owner: „make everything cool“; the lines under the headings now: �
 „Спокойствие с всяко бижу.“
 Order (owner's OK): Ръчна изработка, Сертификат, Преглед и тест (the middle on computers), Връщане и замяна,
 Гаранция — the customer's questions in turn: who made it, is it real, what if something goes wrong.
+Sizes (owner: computer bigger „but not too much“, phone icon and text a little bigger): computers about 15% larger
+(circle 64px, icon 30px, heading and sentence 16px, more inner space); phones circle 56px, icon 26px, heading 14px,
+sentence 15px. Last block of `assets/section-icon-benefits.css`.

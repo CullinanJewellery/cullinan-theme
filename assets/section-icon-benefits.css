@@ -429,3 +429,53 @@
     transition: transform 0.5s ease, box-shadow 0.5s ease;
   }
 }
+
+/* Bigger (2026-11-02, owner: „for computer make the section bigger but not too much; for phone make the icon and
+   the text a little bit bigger“). Computers about 15% larger throughout: the card's inner space, the ruby circle
+   (56 → 64px), the icon (26 → 30px), the heading (14 → 16px) and the sentence (14.5 → 16px). Phones: the circle
+   48 → 56px, the icon 22 → 26px, the heading 12 → 14px, the sentence 13 → 15px. Way back: delete this block. */
+@media screen and (min-width: 990px) {
+  .benefits-band .benefits__item {
+    padding: 4rem 2.4rem 3.6rem;
+  }
+
+  .benefits-band .benefit__visual {
+    width: 6.4rem;
+    height: 6.4rem;
+  }
+
+  .benefits-band .benefit__icon {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .benefits-band .benefit__heading {
+    margin-top: 2rem;
+    font-size: 1.6rem;
+  }
+
+  .benefits-band .benefit__subline {
+    margin-top: 1rem;
+    font-size: 1.6rem;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .benefits-band .benefit__visual {
+    width: 5.6rem;
+    height: 5.6rem;
+  }
+
+  .benefits-band .benefit__icon {
+    width: 2.6rem;
+    height: 2.6rem;
+  }
+
+  .benefits-band .benefit__heading {
+    font-size: 1.4rem;
+  }
+
+  .benefits-band .benefit__subline {
+    font-size: 1.5rem;
+  }
+}
