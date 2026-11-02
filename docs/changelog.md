@@ -1610,3 +1610,5 @@ cash „Наложен платеж“ / „Плащате в брой, кога
 Same day, owner: „make everything cool“; the lines under the headings now: „Всяко бижу идва със свой сертификат.“ /
 „Създаваме бижута от 1991 г.“ / „14 дни, за да решите спокойно.“ / „Пробвайте бижуто, преди да платите.“ /
 „Спокойствие с всяко бижу.“
+Order (owner's OK): Ръчна изработка, Сертификат, Преглед и тест (the middle on computers), Връщане и замяна,
+Гаранция — the customer's questions in turn: who made it, is it real, what if something goes wrong.
