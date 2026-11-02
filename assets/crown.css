@@ -2691,7 +2691,7 @@ card-swatches {
 /*
   Round buttons (owner, 2026-11-02, after birse.bg's footer: the icons in circles with a background, "cool").
   birse.bg blocked the browser, so the size is ours: a 3.8rem espresso circle (4.4rem first; owner: a little smaller) with the icon in
-  white at 1.8rem. On hover or focus the circle fills with the network's own colour, as the big footer buttons already
+  white at 2rem. On hover or focus the circle fills with the network's own colour, as the big footer buttons already
   do (Facebook blue, Instagram's gradient), and lifts like every other button. Way back: delete this block.
 */
 .footer .footer-subscribe__social .list-social__link {
@@ -2706,9 +2706,9 @@ card-swatches {
 }
 
 .footer .footer-subscribe__social .list-social__link .icon {
-  width: 1.8rem;
-  height: 1.8rem;
-  min-width: 1.8rem;
+  width: 2rem;
+  height: 2rem;
+  min-width: 2rem;
 }
 
 .footer .footer-subscribe__social .list-social__link--facebook:hover,

@@ -1650,3 +1650,4 @@ browser (Cloudflare), so the size is our own: a 4.4rem espresso circle with the 
 focus it fills with Facebook blue or Instagram's gradient (as the big footer buttons) and lifts. The big „Последвайте
 ни“ / „Харесайте ни“ buttons are untouched. `assets/crown.css` „Round buttons“; way back: delete that block.
 Same day, owner: the circles a little smaller: 4.4rem → 3.8rem, icon 2rem → 1.8rem.
+Then, owner: only the circle smaller, the icon stays as it was: icon back to 2rem.
