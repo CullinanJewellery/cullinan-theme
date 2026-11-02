@@ -66,3 +66,124 @@
     font-size: 1.5rem;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   2026-11-02, owner, second round: space from the section above (the band touched it), a different background,
+   bigger icons and words, and on phones a sideways row with two thin arrows under it, as beornare.com.
+   --------------------------------------------------------------------------- */
+.section-promise-band {
+  margin-top: 5.6rem;
+  margin-bottom: 5.6rem;
+}
+
+/* Champagne sand: a warm, light gold-beige that belongs with the gold rather than the blush bands around it.
+   Espresso on it is 13.3:1. Way back: remove this rule and the band takes its colour scheme (soft blush) again. */
+.promise-band.gradient {
+  background: #efe3d3;
+}
+
+.promise-band__icon {
+  width: 4.4rem;
+  height: 4.4rem;
+}
+
+.promise-band__heading {
+  margin-top: 1.6rem;
+  font-size: 1.8rem;
+}
+
+.promise-band__text {
+  font-size: 1.7rem;
+}
+
+.promise-band__arrows {
+  display: none;
+}
+
+@media screen and (max-width: 749px) {
+  .section-promise-band {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+  }
+
+  .promise-band__inner {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* Two at a time, the third reached by swiping or the arrows */
+  .promise-band__list {
+    display: flex;
+    gap: 1.6rem;
+    padding: 0 1.6rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 1.6rem;
+    scrollbar-width: none;
+    overscroll-behavior-x: contain;
+  }
+
+  .promise-band__list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .promise-band__item {
+    flex: 0 0 calc((100% - 1.6rem) / 2);
+    scroll-snap-align: start;
+  }
+
+  .promise-band__icon {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  .promise-band__heading {
+    font-size: 1.6rem;
+  }
+
+  .promise-band__text {
+    font-size: 1.5rem;
+  }
+
+  .promise-band__arrows {
+    display: flex;
+    justify-content: center;
+    gap: 2.4rem;
+    margin-top: 2.4rem;
+  }
+
+  .promise-band__arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 6.4rem;
+    height: 4.4rem;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: rgb(var(--color-foreground));
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+  }
+
+  .promise-band__arrow svg {
+    width: 4.4rem;
+    height: 1.2rem;
+  }
+
+  .promise-band__arrow:disabled {
+    opacity: 0.3;
+    cursor: default;
+  }
+
+  .promise-band__arrow:focus-visible {
+    outline: 0.2rem solid rgb(var(--color-foreground));
+    outline-offset: 0.2rem;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .promise-band__list {
+    scroll-behavior: smooth;
+  }
+}
