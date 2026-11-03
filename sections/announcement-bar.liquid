@@ -247,7 +247,7 @@
           if (y <= section.offsetHeight + header.offsetHeight) {
             set('');
           } else if (
-            header.querySelector('details[open], [aria-expanded="true"], :focus-visible') ||
+            header.querySelector('details[open], :focus-visible') ||
             root.classList.contains('cj-dmenu-open')
           ) {
             set('up');
