@@ -71,7 +71,7 @@
       <ul class="cj-withdrawal__notes">
         {%- if shop.refund_policy != blank -%}
           <li>
-            Условията са описани в <a href="{{ shop.refund_policy.url }}">{{ shop.refund_policy.title | escape }}</a>.
+            Условията за връщане са описани в <a href="{{ shop.refund_policy.url }}">политиката за връщане</a>.
           </li>
         {%- endif -%}
         {%- if section.settings.notes != blank -%}
@@ -210,9 +210,9 @@
             name="contact[IBAN за възстановяване]"
             autocomplete="off"
             spellcheck="false"
-            placeholder="IBAN за възстановяване на сумата (при наложен платеж)"
+            placeholder="IBAN (при наложен платеж)"
           >
-          <label class="field__label" for="{{ form_id }}-iban">IBAN за възстановяване на сумата (при наложен платеж)</label>
+          <label class="field__label" for="{{ form_id }}-iban">IBAN (при наложен платеж)</label>
         </div>
 
         <button type="submit" class="custom-request__button">
