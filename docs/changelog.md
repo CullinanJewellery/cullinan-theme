@@ -8,6 +8,9 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-03 — draft terms of service (Bulgarian) for the accountant **(owner)**
+- `docs/legal/terms-draft.md`: Shopify's automatic Общи условия rewritten for a Bulgarian made-to-order jeweller (trader details, order and contract steps, cash on delivery, risk passing on receipt, 5–20 working days, links to the return policy). Shopify's clauses that do not hold for EU consumers were removed. Not in Shopify: the owner pastes it after the accountant's check. Way back: delete the file.
+
 ## 2026-10-30 — brighter yellow gold, further from rose **(owner)**
 - All finished yellow photos moved from ring A's gold (208, 165, 114) to 212, 172, 104 (owner chose option A of a test on the spiral ring): the old yellow and the rose looked almost the same. Main photos with `gold-match.cjs`, worn photos with the new `photography/gold-only-merge.cjs` (only the gold changes, found by comparing with the white version; gold-match alone turned worn gold lemon and spotted the skin). White, rose and silver unchanged. Checker, gold-match default, prompts and workflow use the new value.
 - Way back: every previous yellow file is in its piece's `чернови/преди по-жълтото злато`; copy it back, and set 208, 165, 114 in `check-photo.cjs` and `gold-match.cjs`.
