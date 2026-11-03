@@ -29,6 +29,9 @@ deliberately not renamed.
   The minifier strips spaces after colons and quotes in attribute selectors, rewrites `rgba()` to hex and `inset` to
   four properties, and escapes Cyrillic in `content` strings: search for what it writes. Liquid, JSON and locales
   cannot be checked this way.
+- **Experiments theme (owner, 2026-11-03)**: the branch `fluid-sizes` is connected as a second unpublished draft
+  („cullinan-theme/fluid-sizes“). Try a change there first when the owner wants to see it before the main draft;
+  merge into `main` only on their OK, then bring the branch level with `main` again. Never publish either.
 - **Preview links expire.** Only the owner can make one (Online Store → Themes → draft → Preview → Share preview).
   Current: `https://nk3y2mxf2uxdl497-107185537364.shopifypreview.com` (2026-10-04).
 - **Local checks are not live checks.** A local mock (saved page + repo CSS, served over http) catches layout errors
@@ -204,6 +207,8 @@ collection), **social band** („Още от нашите бижута“ / „�
 
 ## 9. Tools
 
+- `tools/px-to-rem.mjs <file.css>`: turns fixed px sizes (3px and up) in declarations into rem; leaves 1–2px,
+  breakpoints, selectors and comments. Section spacing written from settings uses `| divided_by: 10.0 }}rem`.
 - `tools/validate-templates.mjs`: checks templates and section groups against section schemas; app blocks
   (`shopify://apps/...`) are skipped. One known non-problem: Dawn's 404 has no schema.
 - Design System artifact republish: re-read it first (Artifact `list` with scope files, compare the size of

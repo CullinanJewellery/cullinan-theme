@@ -109,6 +109,10 @@ rules in `crown.css`. Way back: the values in the "Now" column. Known side effec
 
 ## 4. Layout and spacing
 
+- **Fluid sizes (owner, 2026-11-03)**: the root size (`layout/theme.liquid`) is 10px on a 375px phone and on 750–1440px
+  screens (where every measurement below was approved), 9.3px at 320, up to 10.5px on larger phones, up to 12px on
+  big monitors. Every size is in rem so it follows; write new sizes in rem (px / 10), never px, except 1–2px lines
+  and media-query breakpoints. `tools/px-to-rem.mjs` converts a file. The px figures below are at the root of 10px.
 - Page width 1400px; Dawn's page gutter (1.5rem phone, 5rem from 750px).
 - Grid spacing: 24px horizontal, 40px vertical (`config/settings_data.json`).
 - Section padding is per section (Dawn ranges, step 4). Mobile padding renders at 0.75× the setting.

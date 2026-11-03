@@ -1675,3 +1675,5 @@ connected as a second unpublished theme. (1) The root size in `layout/theme.liqu
 fixed px sizes of 3px or more left in CSS declarations into rem (hairlines, breakpoints and comments untouched).
 (3) 207 section spacings written from settings (padding, margins, gaps, page-section and grid spacing) from px to
 rem. Image `sizes` and logo widths stay px. Way back: do not merge the branch.
+Merged into `main` on 2026-11-03 at the owner's request („i like it put it in the main draft“). The branch and its
+draft theme stay as the experiments theme (`docs/theme-guide.md` §1). Way back: revert commit 4164af52.
