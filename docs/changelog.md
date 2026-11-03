@@ -8,6 +8,9 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-03 — delivery time 3–20 working days **(owner)**
+- Owner: some pieces are already made, so delivery takes 3–20 working days depending on the piece (was 5–20, making and delivery). Changed in the terms and shipping policy drafts and the CLAUDE.md facts. The site still says „Изработка и доставка: 5–20 работни дни“ (product page note and accordion, cart, About page) until the owner approves new wording. Way back: 5–20 in the same places.
+
 ## 2026-11-03 — draft shipping policy (Bulgarian) for the accountant **(owner)**
 - `docs/legal/shipping-policy-draft.md`: Shopify's automatic shipping policy rewritten (Bulgaria only, Econt and Speedy, 5–20 working days, inspection before paying, refused parcels, lost parcels at our risk, cancellation). UK/EU customs and "1 working day" removed. Delivery price and free delivery left in brackets (not confirmed). Not in Shopify: the owner pastes it. Way back: delete the file.
 

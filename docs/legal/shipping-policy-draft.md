@@ -5,7 +5,7 @@ only in Bulgaria with Econt and Speedy. **Not legal advice.** The accountant mus
 (Settings → Policies → Shipping policy). Everything in [square brackets] is the owner's decision or a fact still
 missing. The owner pastes it into Shopify themselves.
 
-Removed from Shopify's text: "processed within 1 working day" (pieces are made to order, 5–20 working days); the UK and
+Removed from Shopify's text: "processed within 1 working day" (some pieces are ready, others are made to order: 3–20 working days, owner 2026-11-03); the UK and
 EU customs sections (we ship only in Bulgaria); "delivery times are not guaranteed"; "we will help you work with the
 carrier" for lost parcels (the risk is ours until the customer receives the parcel); refunds "to the original payment
 method" (cash on delivery is refunded by bank transfer).
@@ -18,8 +18,8 @@ method" (cash on delivery is refunded by bank transfer).
 Доставяме в цяла България с Еконт и Спиди, до офис на куриера или до адрес по Ваш избор.
 [Вземане от магазина ни на бул. „Васил Левски“ 21, Велико Търново: добавете, ако го предлагате.]
 
-Срок за изработка и доставка
-Всяко бижу се изработва на ръка след поръчката. Изработката и доставката заедно отнемат 5–20 работни дни от потвърждаването на поръчката. Срокът за бижу, изработено по Ваше желание (с друг камък, метал, размер или гравиране), се уговаря с Вас при поръчката.
+Срок за доставка
+Някои бижута са готови, а други изработваме на ръка след поръчката. Затова срокът за доставка е 3–20 работни дни от потвърждаването на поръчката, според бижуто. Срокът за бижу, изработено по Ваше желание (с друг камък, метал, размер или гравиране), се уговаря с Вас при поръчката.
 След като получим поръчката, ще я потвърдим по имейл или по телефона. Когато изпратим бижуто, ще получите номер на пратката, с който да я следите на сайта на куриера.
 Ако не можем да спазим срока, ще Ви уведомим. Тогава можете да изчакате или да откажете поръчката, като Ви върнем всичко платено.
 
