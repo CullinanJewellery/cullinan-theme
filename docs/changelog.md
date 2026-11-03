@@ -8,6 +8,14 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-03 — withdrawal form, ring size page, new policy clauses **(owner)**
+- After the research on Bulgarian jewellers (`docs/legal/research-2026-11-03.md`), owner: "start with 2 to 4".
+- New `sections/cj-withdrawal.liquid` + `templates/page.withdrawal.json`: online withdrawal form (EU Directive 2023/2673, from 19 June 2026), modelled on Selina's; Shopify contact form, subject „Отказ от договора“. Not reachable until the owner creates the page in admin (after the return policy is published) and it is linked.
+- New `sections/cj-size-guide.liquid` + `templates/page.size-guide.json`: the ring size table and instructions as a page (Palladium, Selina, Silenti have one). The product popup is unchanged.
+- Drafts: terms get the weight clause (Palladium), size made as chosen with a bracketed "some cannot be resized", a full deposit clause in brackets (Victoria Gold); shipping and returns ask for a courier damage report (not a condition: the risk is ours until delivery); returns ask for good packing and mention the online form.
+- Warranty page: text in `docs/legal/warranty-page-draft.md` for the owner to paste as a Shopify page, only together with the return policy (its terms may not be on the site before, CLAUDE.md).
+- Way back: delete the two sections and templates; the drafts' previous text is in git.
+
 ## 2026-11-03 — draft privacy policy (Bulgarian, GDPR) for the accountant **(owner)**
 - `docs/legal/privacy-policy-draft.md`: Shopify's automatic privacy policy rewritten with what the GDPR requires (legal basis per use, named recipients: Shopify, Econt, Speedy, the accountant, Google; retention periods; КЗЛД complaint; one-month reply). Card data, UK sections and cross-site advertising removed; cookies for statistics/ads in brackets. Not in Shopify: the owner pastes it. Way back: delete the file.
 - `docs/legal/contact-information-draft.md`: trader details for Shopify's Contact information policy (company, shop, hours, email, supervisory bodies; phone left out).

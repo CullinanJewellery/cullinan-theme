@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "size_guide": {
+      "type": "cj-size-guide",
+      "settings": {}
+    }
+  },
+  "order": [
+    "size_guide"
+  ]
+}

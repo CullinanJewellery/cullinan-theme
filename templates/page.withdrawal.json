@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "withdrawal": {
+      "type": "cj-withdrawal",
+      "settings": {}
+    }
+  },
+  "order": [
+    "withdrawal"
+  ]
+}

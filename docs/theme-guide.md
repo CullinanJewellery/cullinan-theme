@@ -204,6 +204,13 @@ collection), **social band** („Още от нашите бижута“ / „�
 - **Контакти** (`templates/page.contact.json`): `page-banner` (picture, veil) → `contact-methods` rows: e-mail form,
   phone (button only), shop (address, hours, map link).
 - `main-page.liquid` has `show_title` (off where the template brings its own heading).
+- **Отказ от договора** (`templates/page.withdrawal.json`, `sections/cj-withdrawal.liquid`, 2026-11-03): the EU
+  online withdrawal function. Shopify's contact form with subject „Отказ от договора“ (name, email, order number,
+  phone, dates, pieces, IBAN); the owner confirms receipt by email. Uses `section-custom-request.css`. Live once the
+  owner creates a page with this template, after the return policy is published.
+- **Размери на пръстени** (`templates/page.size-guide.json`, `sections/cj-size-guide.liquid`, 2026-11-03): the
+  product popup's table (EU 48–64) and instructions as a page; its words are its own settings, defaults copied
+  from the popup. Change both if the wording changes.
 
 ## 9. Tools
 
