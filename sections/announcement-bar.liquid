@@ -230,7 +230,45 @@
             root.style.setProperty('--header-height', header.offsetHeight + 'px');
           }).observe(header);
         }
+        if (header) watchScroll(header);
       });
+
+      // 2026-11-03 (owner): scrolling down shows only the black bar, scrolling up only the header; both at the top
+      // (crown.css „Top bar and sticky header“). The header stays while a menu in it is open.
+      function watchScroll(header) {
+        var last = window.scrollY;
+        var ticking = false;
+        var set = function (mode) {
+          root.classList.toggle('cj-scroll-down', mode === 'down');
+          root.classList.toggle('cj-scroll-up', mode === 'up');
+        };
+        var update = function () {
+          ticking = false;
+          var y = window.scrollY;
+          var moved = Math.abs(y - last) > 6;
+          if (y <= section.offsetHeight + header.offsetHeight) {
+            set('');
+          } else if (
+            header.querySelector('details[open], [aria-expanded="true"], :focus-visible') ||
+            root.classList.contains('cj-dmenu-open')
+          ) {
+            set('up');
+          } else if (moved) {
+            set(y > last ? 'down' : 'up');
+          }
+          if (moved) last = y;
+        };
+        window.addEventListener(
+          'scroll',
+          function () {
+            if (!ticking) {
+              ticking = true;
+              window.requestAnimationFrame(update);
+            }
+          },
+          { passive: true }
+        );
+      }
     })();
   </script>
 </div>

@@ -363,6 +363,39 @@
   top: 0;
 }
 
+/* Since 2026-11-03 (owner: "when i scroll down my navigation [should] stop appearing, i just want the black thing to
+   appear, and when i go up … the navigation just appears and the black thing disappears"). At the top of the page
+   both show, in their places. Scrolling down, the black bar stays at the top and the white header slides away under
+   it; scrolling up, the header slides back and the bar slides away. The script at the end of
+   sections/announcement-bar.liquid sets cj-scroll-down / cj-scroll-up on <html>, and keeps the header while it has a
+   menu open. Reverses 2026-10-13 (the bar scrolled away, the header always showed); way back: delete this part and
+   the scroll lines of that script. */
+.announcement-bar-section.shopify-section-group-header-group {
+  position: sticky;
+  top: 0;
+  z-index: 4;
+  transition: transform 0.3s ease;
+}
+
+.section-header.shopify-section-header-sticky {
+  transition: transform 0.3s ease;
+}
+
+html.cj-scroll-down .section-header.shopify-section-header-sticky {
+  transform: translateY(-100%);
+}
+
+html.cj-scroll-up .announcement-bar-section.shopify-section-group-header-group {
+  transform: translateY(-100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .announcement-bar-section.shopify-section-group-header-group,
+  .section-header.shopify-section-header-sticky {
+    transition: none;
+  }
+}
+
 /* Jump links (the About page, the homepage teaser buttons) and keyboard focus
    stop below the sticky header instead of under it. --header-height is Dawn's
    name; the bar's script keeps it measured. */

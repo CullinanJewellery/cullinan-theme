@@ -1677,3 +1677,10 @@ fixed px sizes of 3px or more left in CSS declarations into rem (hairlines, brea
 rem. Image `sizes` and logo widths stay px. Way back: do not merge the branch.
 Merged into `main` on 2026-11-03 at the owner's request („i like it put it in the main draft“). The branch and its
 draft theme stay as the experiments theme (`docs/theme-guide.md` §1). Way back: revert commit 4164af52.
+
+### 2026-11-03 — Black bar while scrolling down, header while scrolling up **(owner)**
+Owner: scrolling down, the white header should go and only the black bar show; scrolling up, the header comes back
+and the black bar goes. At the top of the page both show. The bar is sticky again; `cj-scroll-down` / `cj-scroll-up`
+on <html> from the script in `sections/announcement-bar.liquid` slide one or the other away (0.3s; none with reduced
+motion); the header stays while one of its menus is open or a key has focus in it. Reverses 2026-10-13 („Top bar and
+sticky header“ in crown.css); way back: delete the 2026-11-03 part of that block and `watchScroll`.
