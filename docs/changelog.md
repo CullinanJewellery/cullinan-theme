@@ -8,6 +8,9 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-03 — draft shipping policy (Bulgarian) for the accountant **(owner)**
+- `docs/legal/shipping-policy-draft.md`: Shopify's automatic shipping policy rewritten (Bulgaria only, Econt and Speedy, 5–20 working days, inspection before paying, refused parcels, lost parcels at our risk, cancellation). UK/EU customs and "1 working day" removed. Delivery price and free delivery left in brackets (not confirmed). Not in Shopify: the owner pastes it. Way back: delete the file.
+
 ## 2026-11-03 — draft terms of service (Bulgarian) for the accountant **(owner)**
 - `docs/legal/terms-draft.md`: Shopify's automatic Общи условия rewritten for a Bulgarian made-to-order jeweller (trader details, order and contract steps, cash on delivery, risk passing on receipt, 5–20 working days, links to the return policy). Shopify's clauses that do not hold for EU consumers were removed. Not in Shopify: the owner pastes it after the accountant's check. Way back: delete the file.
 
