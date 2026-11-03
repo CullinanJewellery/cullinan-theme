@@ -387,8 +387,10 @@ html:not(.cj-scroll-up) .announcement-bar-section ~ .section-header.shopify-sect
   top: var(--announcement-bar-height, 0px);
 }
 
+/* Up by its own height and the bar's: it starts under the bar, and on computers it is layered above the bar
+   (z-index 5), so moving it by its own height alone left its lower half over the bar (owner's screenshot, 1920px). */
 html.cj-scroll-down .section-header.shopify-section-header-sticky {
-  transform: translateY(-100%);
+  transform: translateY(calc(-100% - var(--announcement-bar-height, 0px)));
 }
 
 html.cj-scroll-up .announcement-bar-section.shopify-section-group-header-group {
