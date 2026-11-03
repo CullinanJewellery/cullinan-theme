@@ -36,9 +36,11 @@ Only these, unless the owner confirms more. Never invent policies, prices, warra
   (shown as a call button, never printed as text).
 - **Owner, 2026-11-02 (homepage trust row)**: every piece gets an individual certificate; 14 days to return or
   exchange; the parcel can be opened and tried before paying (преглед и тест); every piece has a warranty. Terms
-  (warranty length, return conditions) are not given: never state them; the policy pages must say the same (accountant).
-- **Not confirmed, never claimed**: free delivery or a delivery price, packaging, warranty length or terms, return
-  conditions beyond the 14 days, engraving price or limit, a named designer, a number of designs.
+  are in the draft return policy (owner, 2026-11-03, `docs/legal/returns-policy-draft.md`, not yet checked by the
+  accountant): engraved pieces and pieces made in a stone, metal or size not offered on the site cannot be returned;
+  the customer pays return shipping and a refused parcel, unless it is our mistake; warranty 14 days, covering a
+  stone that falls out and a broken clasp. State none of this on the site until the policy is published.
+- **Not confirmed, never claimed**: free delivery or a delivery price, packaging, engraving price or limit, a named designer, a number of designs.
 
 ## What this repository is
 
