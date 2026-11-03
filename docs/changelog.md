@@ -1666,3 +1666,12 @@ of the 2026-10-22 vertical gallery (reversed at the owner's request), slides 77%
 tile's subline, the tile's button words as an underlined link; empty categories „Очаквайте скоро“. Computers
 unchanged. `section-category-mosaic.css` „Phones like glamira.bg“; way back: delete that block (the gallery returns)
 and empty the intro.
+
+### 2026-11-03 — Fluid sizes, on the branch `fluid-sizes` only **(owner)**
+Owner: sizes in % so every device gets the best size, tried apart from the draft first. Branch `fluid-sizes`, to be
+connected as a second unpublished theme. (1) The root size in `layout/theme.liquid` is fluid: 10px as before on a
+375px phone and on 750–1440px screens; 9.3px at 320, 10.2 at 390, 10.5 from 414 to 749; 10.8 at 1680, 11.7 at 1920,
+12 from 2160; half percentage so a larger text setting still enlarges it. (2) `tools/px-to-rem.mjs` turned the 56
+fixed px sizes of 3px or more left in CSS declarations into rem (hairlines, breakpoints and comments untouched).
+(3) 207 section spacings written from settings (padding, margins, gaps, page-section and grid spacing) from px to
+rem. Image `sizes` and logo widths stay px. Way back: do not merge the branch.

@@ -166,7 +166,7 @@ a.stones__tile:focus-visible {
 a.stones__tile:hover .stones__name {
   text-decoration: underline;
   text-decoration-thickness: 1px;
-  text-underline-offset: 4px;
+  text-underline-offset: 0.4rem;
 }
 
 /* --- The button ------------------------------------------------------------ */

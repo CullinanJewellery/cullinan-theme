@@ -53,7 +53,7 @@ a.pagination__item:hover::after {
   display: block;
   width: 2rem;
   position: absolute;
-  bottom: 8px;
+  bottom: 0.8rem;
   left: 50%;
   transform: translateX(-50%);
   background-color: currentColor;

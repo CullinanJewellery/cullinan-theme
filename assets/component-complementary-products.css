@@ -31,7 +31,7 @@ product-recommendations:not(.is-accordion) .complementary-products__container {
 }
 
 .complementary-slide.complementary-slide--standard > ul {
-  gap: calc(var(--grid-mobile-vertical-spacing) + 8px);
+  gap: calc(var(--grid-mobile-vertical-spacing) + 0.8rem);
 }
 
 @media screen and (min-width: 750px) {
@@ -40,7 +40,7 @@ product-recommendations:not(.is-accordion) .complementary-products__container {
   }
 
   .complementary-slide.complementary-slide--standard > ul {
-    gap: calc(var(--grid-desktop-vertical-spacing) + 8px);
+    gap: calc(var(--grid-desktop-vertical-spacing) + 0.8rem);
   }
 }
 

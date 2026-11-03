@@ -43,7 +43,7 @@
 .marquee__item {
   flex: 0 0 auto;
   box-sizing: border-box;
-  margin: 0 var(--marquee-gap, 24px) 0 0;
+  margin: 0 var(--marquee-gap, 2.4rem) 0 0;
   /*
     Trimmed from 1.4rem, 2026-09-22 at the owner's request ("the box is
     long... cut a little bit of the box down and up so it can look...
@@ -91,7 +91,7 @@
     Each item occupies its own width plus one gap, so the number visible across
     the viewport is exactly the setting.
   */
-  width: calc(100vw / var(--marquee-visible, 6) - var(--marquee-gap, 24px));
+  width: calc(100vw / var(--marquee-visible, 6) - var(--marquee-gap, 2.4rem));
 }
 
 @media screen and (min-width: 750px) {
@@ -267,7 +267,7 @@
 
 @media screen and (max-width: 989px) {
   .marquee__item {
-    width: calc(100vw / 3 - var(--marquee-gap, 24px));
+    width: calc(100vw / 3 - var(--marquee-gap, 2.4rem));
   }
 }
 
@@ -288,7 +288,7 @@
 */
 @media screen and (max-width: 749px) {
   .marquee__item {
-    width: calc(100vw / 2.435 - var(--marquee-gap, 24px));
+    width: calc(100vw / 2.435 - var(--marquee-gap, 2.4rem));
     /*
       0.8rem widened to 1.9rem alongside the base rule above, to square
       the box here too. A happy match with the fix just above this one:

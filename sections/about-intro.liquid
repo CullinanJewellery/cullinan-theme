@@ -17,7 +17,7 @@
 <div class="about-intro color-{{ section.settings.color_scheme }} gradient">
   <div
     class="about-intro__inner page-width"
-    style="--about-intro-pt: {{ section.settings.padding_top }}px; --about-intro-pb: {{ section.settings.padding_bottom }}px;"
+    style="--about-intro-pt: {{ section.settings.padding_top | divided_by: 10.0 }}rem; --about-intro-pb: {{ section.settings.padding_bottom | divided_by: 10.0 }}rem;"
   >
     {%- if section.settings.heading != blank -%}
       <h1 class="about-intro__heading">{{ section.settings.heading | escape }}</h1>

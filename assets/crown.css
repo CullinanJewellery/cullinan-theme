@@ -1469,7 +1469,7 @@ html {
 .visual-menu__link:hover .visual-menu__name {
   text-decoration: underline;
   text-decoration-thickness: 1px;
-  text-underline-offset: 4px;
+  text-underline-offset: 0.4rem;
 }
 
 @media screen and (max-width: 989px) {

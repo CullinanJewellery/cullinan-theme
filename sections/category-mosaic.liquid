@@ -19,14 +19,14 @@
 
 {%- style -%}
   .section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.padding_top | times: 0.6 | round: 0 }}px;
-    padding-bottom: {{ section.settings.padding_bottom | times: 0.6 | round: 0 }}px;
+    padding-top: {{ section.settings.padding_top | times: 0.6 | round: 0 | divided_by: 10.0 }}rem;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.6 | round: 0 | divided_by: 10.0 }}rem;
   }
 
   @media screen and (min-width: 750px) {
     .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
+      padding-top: {{ section.settings.padding_top | divided_by: 10.0 }}rem;
+      padding-bottom: {{ section.settings.padding_bottom | divided_by: 10.0 }}rem;
     }
   }
 {%- endstyle -%}
@@ -57,7 +57,7 @@
       data-cj-reveal
       data-cj-note="computers: the first eight tiles; a ninth and later appear only in the phone slider (2026-10-22, owner)"
       role="list"
-      style="--mosaic-gap: {{ section.settings.gap }}px; --mosaic-scrim: {{ section.settings.scrim_opacity | divided_by: 100.0 }};"
+      style="--mosaic-gap: {{ section.settings.gap | divided_by: 10.0 }}rem; --mosaic-scrim: {{ section.settings.scrim_opacity | divided_by: 100.0 }};"
     >
       {%- comment -%}
         Computers show the first eight tiles; a ninth (Аксесоари) appears only on phones, where this grid is the

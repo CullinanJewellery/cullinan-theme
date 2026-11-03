@@ -1059,8 +1059,8 @@ a.product__text {
   position: absolute;
   display: flex;
   align-items: center;
-  height: 48px;
-  width: 48px;
+  height: 4.8rem;
+  width: 4.8rem;
 }
 
 .product__modal-opener .path {
@@ -1191,8 +1191,8 @@ a.product__text {
 
 .product__inventory .svg-wrapper,
 .product__inventory svg {
-  width: 15px;
-  height: 15px;
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 .product--no-media .product__inventory {
@@ -1299,8 +1299,8 @@ a.product__text {
 
 .product-media-container.constrain-height {
   /* arbitrary offset value based on average theme spacing and header height */
-  --viewport-offset: 400px;
-  --constrained-min-height: 300px;
+  --viewport-offset: 40rem;
+  --constrained-min-height: 30rem;
   --constrained-height: max(var(--constrained-min-height), calc(100vh - var(--viewport-offset)));
   margin-right: auto;
   margin-left: auto;
@@ -1342,8 +1342,8 @@ a.product__text {
   }
 
   .product-media-container.constrain-height {
-    --viewport-offset: 170px;
-    --constrained-min-height: 500px;
+    --viewport-offset: 17rem;
+    --constrained-min-height: 50rem;
   }
 
   .product-media-container.media-fit-cover,
@@ -1435,8 +1435,8 @@ a.product__text {
   left: 0.28rem;
   z-index: 5;
   top: 0.4rem;
-  width: 10px;
-  height: 9px;
+  width: 1rem;
+  height: 0.9rem;
 }
 
 .recipient-form > input[type='checkbox']:checked + label .icon-checkmark {

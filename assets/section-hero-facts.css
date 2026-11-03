@@ -40,7 +40,7 @@
   justify-content: space-between;
   align-items: flex-start;
   gap: 0.9rem;
-  max-width: var(--hero-facts-max, 1000px);
+  max-width: var(--hero-facts-max, 100rem);
   margin: 0 auto;
   padding: 0 2rem;
   list-style: none;

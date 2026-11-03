@@ -47,8 +47,8 @@ quantity-popover .quick-order-list-remove-button .button {
 
 .quantity-popover__info-button--icon-with-label svg {
   flex-shrink: 0;
-  width: 15px;
-  height: 14px;
+  width: 1.5rem;
+  height: 1.4rem;
 }
 
 .quantity-popover__info-button--open {
@@ -65,8 +65,8 @@ quantity-popover .quick-order-list-remove-button .button {
 
 .quantity-popover__info-button--icon-only svg {
   transition: transform var(--duration-default) ease;
-  width: 15px;
-  height: 14px;
+  width: 1.5rem;
+  height: 1.4rem;
 }
 
 @media screen and (max-width: 989px) {

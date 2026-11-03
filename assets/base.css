@@ -653,8 +653,8 @@ h3 .icon-arrow,
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  width: 20px;
-  height: 20px;
+  width: 2rem;
+  height: 2rem;
 }
 
 .svg-wrapper > svg {
@@ -2192,12 +2192,12 @@ input[type='checkbox'] {
 
 .announcement-bar .slider-button--next {
   margin-right: -1.5rem;
-  min-width: 44px;
+  min-width: 4.4rem;
 }
 
 .announcement-bar .slider-button--prev {
   margin-left: -1.5rem;
-  min-width: 44px;
+  min-width: 4.4rem;
 }
 
 .announcement-bar .slider-button--next:focus-visible,
@@ -2547,8 +2547,8 @@ input[type='checkbox'] {
 }
 
 .header__icon .svg-wrapper {
-  width: 44px;
-  height: 44px;
+  width: 4.4rem;
+  height: 4.4rem;
 }
 
 .header__icon::after {
@@ -3433,7 +3433,7 @@ details-disclosure > details {
     .card__inner
     .card__media:before {
     background-image: var(--easter-egg);
-    background-size: 250px 250px;
+    background-size: 25rem 25rem;
     mix-blend-mode: color-dodge;
     pointer-events: none;
     z-index: 2;

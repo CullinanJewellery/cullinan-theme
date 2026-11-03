@@ -96,7 +96,7 @@
 }
 
 .select .icon-caret {
-  width: 10px;
+  width: 1rem;
 }
 
 .facet-filters button {
@@ -386,7 +386,7 @@
 .facets-layout-grid--image .facets__label:has(:focus-visible) {
   outline-color: rgba(var(--color-foreground), 0.5);
   outline-width: 0.2rem;
-  box-shadow: 0px 0px 3px 1px rgba(var(--color-foreground), 0.25);
+  box-shadow: 0px 0px 0.3rem 1px rgba(var(--color-foreground), 0.25);
 }
 
 /* Focused state */
@@ -1034,8 +1034,8 @@ input.mobile-facets__checkbox {
   top: 1.9rem;
   left: 2.8rem;
   visibility: hidden;
-  width: 11px;
-  height: 9px;
+  width: 1.1rem;
+  height: 0.9rem;
 }
 
 .mobile-facets__label > input[type='checkbox']:checked ~ .icon-checkmark {

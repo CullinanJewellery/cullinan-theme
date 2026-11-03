@@ -188,13 +188,13 @@
         --drawer-shadow-vertical-offset: {{ settings.drawer_shadow_vertical_offset }}px;
         --drawer-shadow-blur-radius: {{ settings.drawer_shadow_blur }}px;
 
-        --spacing-sections-desktop: {{ settings.spacing_sections }}px;
-        --spacing-sections-mobile: {% if settings.spacing_sections < 24 %}{{ settings.spacing_sections }}{% else %}{{ settings.spacing_sections | times: 0.7 | round | at_least: 20 }}{% endif %}px;
+        --spacing-sections-desktop: {{ settings.spacing_sections | divided_by: 10.0 }}rem;
+        --spacing-sections-mobile: {% if settings.spacing_sections < 24 %}{{ settings.spacing_sections | divided_by: 10.0 }}{% else %}{{ settings.spacing_sections | times: 0.7 | round | at_least: 20 | divided_by: 10.0 }}{% endif %}rem;
 
-        --grid-desktop-vertical-spacing: {{ settings.spacing_grid_vertical }}px;
-        --grid-desktop-horizontal-spacing: {{ settings.spacing_grid_horizontal }}px;
-        --grid-mobile-vertical-spacing: {{ settings.spacing_grid_vertical | divided_by: 2 }}px;
-        --grid-mobile-horizontal-spacing: {{ settings.spacing_grid_horizontal | divided_by: 2 }}px;
+        --grid-desktop-vertical-spacing: {{ settings.spacing_grid_vertical | divided_by: 10.0 }}rem;
+        --grid-desktop-horizontal-spacing: {{ settings.spacing_grid_horizontal | divided_by: 10.0 }}rem;
+        --grid-mobile-vertical-spacing: {{ settings.spacing_grid_vertical | divided_by: 2 | divided_by: 10.0 }}rem;
+        --grid-mobile-horizontal-spacing: {{ settings.spacing_grid_horizontal | divided_by: 2 | divided_by: 10.0 }}rem;
 
         --text-boxes-border-opacity: {{ settings.text_boxes_border_opacity | divided_by: 100.0 }};
         --text-boxes-border-width: {{ settings.text_boxes_border_thickness }}px;
@@ -245,6 +245,23 @@
         box-sizing: border-box;
         font-size: calc(var(--font-body-scale) * 62.5%);
         height: 100%;
+      }
+
+      /* Fluid sizes (branch fluid-sizes, 2026-11-03, owner: the best size on every device, not fixed px). Every rem on
+         the site follows this root. It is 10px, as before, on a 375px phone and on screens from 750 to 1440px, the
+         widths the design was approved at; it grows with the screen on wider phones (to 10.5px) and big monitors (to
+         12px) and shrinks on small phones (to 9px). Half of it is a percentage, so a customer's own larger text
+         setting still makes everything larger. */
+      @media screen and (max-width: 749px) {
+        html {
+          font-size: calc(var(--font-body-scale) * clamp(56.25%, calc(31.25% + 1.3333vw), 65.625%));
+        }
+      }
+
+      @media screen and (min-width: 1441px) {
+        html {
+          font-size: calc(var(--font-body-scale) * clamp(62.5%, calc(31.25% + 0.3472vw), 75%));
+        }
       }
 
       body {

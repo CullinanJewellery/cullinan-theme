@@ -18,13 +18,13 @@
 
 {%- style -%}
   .section-{{ section.id }}-banner {
-    min-height: {{ section.settings.min_height | times: 0.65 | round: 0 }}px;
+    min-height: {{ section.settings.min_height | times: 0.65 | round: 0 | divided_by: 10.0 }}rem;
     --page-banner-veil: {{ section.settings.overlay_opacity | divided_by: 100.0 }};
   }
 
   @media screen and (min-width: 750px) {
     .section-{{ section.id }}-banner {
-      min-height: {{ section.settings.min_height }}px;
+      min-height: {{ section.settings.min_height | divided_by: 10.0 }}rem;
     }
   }
 {%- endstyle -%}
