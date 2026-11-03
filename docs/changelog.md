@@ -10,6 +10,7 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ## 2026-11-03 — draft privacy policy (Bulgarian, GDPR) for the accountant **(owner)**
 - `docs/legal/privacy-policy-draft.md`: Shopify's automatic privacy policy rewritten with what the GDPR requires (legal basis per use, named recipients: Shopify, Econt, Speedy, the accountant, Google; retention periods; КЗЛД complaint; one-month reply). Card data, UK sections and cross-site advertising removed; cookies for statistics/ads in brackets. Not in Shopify: the owner pastes it. Way back: delete the file.
+- `docs/legal/contact-information-draft.md`: trader details for Shopify's Contact information policy (company, shop, hours, email, supervisory bodies; phone left out).
 
 ## 2026-11-03 — delivery time 3–20 working days **(owner)**
 - Owner: some pieces are already made, so delivery takes 3–20 working days depending on the piece (was 5–20, making and delivery). Changed in the terms and shipping policy drafts and the CLAUDE.md facts. On the owner's OK the site follows: product page note („Доставка:“ „3–20 работни дни“), product delivery accordion and About page („Доставка: 3–20 работни дни.“, with „по поръчка“ / „Всяко бижу се изработва по поръчка.“ removed because it is no longer true for every piece), cart line 2 default. The owner did not want a sentence about ready pieces added. Way back: „Изработка и доставка: 5–20 работни дни“ and the removed words, in `templates/product.json`, `templates/page.about.json`, `config/settings_schema.json`.
