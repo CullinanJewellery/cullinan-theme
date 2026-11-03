@@ -1684,3 +1684,5 @@ and the black bar goes. At the top of the page both show. The bar is sticky agai
 on <html> from the script in `sections/announcement-bar.liquid` slide one or the other away (0.3s; none with reduced
 motion); the header stays while one of its menus is open or a key has focus in it. Reverses 2026-10-13 („Top bar and
 sticky header“ in crown.css); way back: delete the 2026-11-03 part of that block and `watchScroll`.
+Same day, owner's screenshot at 1920px: scrolling down, half the header stayed over the black bar (the header is
+layered above the bar on computers and moved only by its own height). It now moves by its height plus the bar's.
