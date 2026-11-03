@@ -32,8 +32,8 @@ payment-provider or checkout setting is to be changed from here.**
    (Customize → product → Variant picker → Ring size guide). Guide and За нас FAQ now agree (2026-10-04): a European
    size is the inner circumference in millimetres, not the diameter.
 3. ~~Buying information~~ done 2026-10-04 as far as confirmed facts allow: engraving line added; delivery tab says
-   office or address and "another stone, metal or size". 5–20 days confirmed as making + delivery: every
-   place reads „Изработка и доставка: 5–20 работни дни“. Still open: the cash-on-delivery lines (A2); the returns sentence (C); the
+   office or address and "another stone, metal or size". Delivery 3–20 working days (owner, 2026-11-03; some pieces are ready): every
+   place reads „Доставка: 3–20 работни дни“. Still open: the cash-on-delivery lines (A2); the returns sentence (C); the
    „Качество и детайли“ prose is general (585 or 750) until per-product metafields are filled.
    Original brief: **Buying information** near the purchase controls (confirmed facts only), details in the accordions; distinguish
    production time from shipping time if the business confirms the split; consistency between product page, cart and
