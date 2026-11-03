@@ -1,0 +1,215 @@
+{%- comment -%}
+  Ring size guide as a page of its own (2026-11-03, owner: "start with 2 to 4"; Palladium,
+  Selina and Silenti each have one). The same table and words as the product page's popup
+  (sections/main-product.liquid, Variant picker > Ring size guide): European sizes 48-64,
+  diameter worked out from the circumference. The words here are this section's own
+  settings, with the popup's text as defaults; change both if the wording changes.
+  The styles copy the popup's (assets/crown.css, dialog.size-guide), scoped to this page.
+  Live only when the owner creates a page with the template page.size-guide.
+{%- endcomment -%}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 | divided_by: 10.0 }}rem;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 | divided_by: 10.0 }}rem;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top | divided_by: 10.0 }}rem;
+      padding-bottom: {{ section.settings.padding_bottom | divided_by: 10.0 }}rem;
+    }
+  }
+
+  .cj-size-page {
+    max-width: 64rem;
+  }
+
+  .cj-size-page__title {
+    margin: 0;
+  }
+
+  .cj-size-page__intro {
+    margin: 1.6rem 0 0;
+    font-size: 1.6rem;
+    line-height: 1.6;
+  }
+
+  .cj-size-page__table {
+    width: 100%;
+    margin-top: 2.4rem;
+    border-collapse: collapse;
+    font-size: 1.5rem;
+    font-variant-numeric: tabular-nums;
+    table-layout: fixed;
+  }
+
+  .cj-size-page__table th,
+  .cj-size-page__table td {
+    padding: 0.8rem;
+    border: 0;
+    border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.15);
+    text-align: left;
+  }
+
+  .cj-size-page__table thead th {
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .cj-size-page__table tbody th {
+    font-weight: 600;
+  }
+
+  .cj-size-page__note {
+    margin: 1.2rem 0 0;
+    font-size: 1.3rem;
+    opacity: 0.8;
+  }
+
+  .cj-size-page__tip {
+    margin: 1.2rem 0 0;
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+
+  .cj-size-page__how {
+    margin-top: 3.2rem;
+  }
+
+  .cj-size-page__how h2 {
+    margin: 0 0 1.2rem;
+  }
+
+  .cj-size-page__body {
+    font-size: 1.6rem;
+    line-height: 1.65;
+  }
+
+  .cj-size-page__body ul {
+    padding-left: 1.8rem;
+  }
+{%- endstyle -%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width section-{{ section.id }}-padding">
+    <div class="cj-size-page">
+      {%- if section.settings.heading != blank -%}
+        <h1 class="cj-size-page__title h2">{{ section.settings.heading | escape }}</h1>
+      {%- endif -%}
+      {%- if section.settings.intro != blank -%}
+        <p class="cj-size-page__intro">{{ section.settings.intro | escape }}</p>
+      {%- endif -%}
+
+      <table class="cj-size-page__table">
+        <caption class="visually-hidden">Европейски размери на пръстени</caption>
+        <thead>
+          <tr>
+            <th scope="col">Размер (EU)</th>
+            <th scope="col">Вътрешен диаметър (мм)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {%- for ring_size in (48..64) -%}
+            {%- assign ring_diameter = ring_size | times: 1.0 | divided_by: 3.14159 | round: 1 -%}
+            <tr>
+              <th scope="row">{{ ring_size }}</th>
+              <td>{{ ring_diameter | replace: '.', ',' }}</td>
+            </tr>
+          {%- endfor -%}
+        </tbody>
+      </table>
+      <p class="cj-size-page__note">Диаметърът е изчислен от обиколката и е ориентировъчен.</p>
+      {%- if section.settings.tip != blank -%}
+        <p class="cj-size-page__tip">{{ section.settings.tip | escape }}</p>
+      {%- endif -%}
+
+      {%- if section.settings.content != blank -%}
+        <div class="cj-size-page__how">
+          {%- if section.settings.how_heading != blank -%}
+            <h2 class="h3">{{ section.settings.how_heading | escape }}</h2>
+          {%- endif -%}
+          <div class="cj-size-page__body rte">{{ section.settings.content }}</div>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Ring size guide",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "The product page's ring size guide as a page: a table of European sizes 48-64 and the measuring instructions. The popup on product pages has its own copy of these words (Variant picker > Ring size guide)."
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Как да определите размера"
+    },
+    {
+      "type": "text",
+      "id": "intro",
+      "label": "Explanation above the table",
+      "default": "Европейският размер е вътрешната обиколка на пръстена в милиметри."
+    },
+    {
+      "type": "text",
+      "id": "tip",
+      "label": "Note under the table",
+      "default": "За най-точен размер използвайте пръстеномер."
+    },
+    {
+      "type": "text",
+      "id": "how_heading",
+      "label": "Instructions heading",
+      "default": "Как да определите размера си"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Measuring instructions",
+      "default": "<p><strong>Най-точно:</strong> пробвайте с пръстеномер — комплект номерирани пробни пръстени, какъвто има всеки бижутер. Пробвайте на пръста, на който ще носите бижуто.</p><ul><li>Подходящият размер минава през кокалчето с леко съпротивление и не се върти свободно.</li><li>Широката халка стои по-стегнато. Ако сте между два размера, изберете по-големия.</li><li>Мерете в края на деня, когато пръстите не са студени.</li></ul><p>Измерването с конец или хартиена лента е неточно и не го препоръчваме. Ако не сте сигурни, <a href=\"/pages/contact\">пишете ни</a> преди да поръчате.</p>"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 52
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 52
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ring size guide"
+    }
+  ]
+}
+{% endschema %}
