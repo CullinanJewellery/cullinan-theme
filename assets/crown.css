@@ -378,7 +378,13 @@
 }
 
 .section-header.shopify-section-header-sticky {
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, top 0.3s ease;
+}
+
+/* Near the top and while scrolling down the header stays under the bar, not behind it; only the header-alone state
+   (scrolling up) puts it at the very top. */
+html:not(.cj-scroll-up) .announcement-bar-section ~ .section-header.shopify-section-header-sticky {
+  top: var(--announcement-bar-height, 0px);
 }
 
 html.cj-scroll-down .section-header.shopify-section-header-sticky {
