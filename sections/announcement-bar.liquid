@@ -237,13 +237,11 @@
       // (crown.css „Top bar and sticky header“). The header stays while a menu in it is open.
       function watchScroll(header) {
         var last = window.scrollY;
-        var ticking = false;
         var set = function (mode) {
           root.classList.toggle('cj-scroll-down', mode === 'down');
           root.classList.toggle('cj-scroll-up', mode === 'up');
         };
         var update = function () {
-          ticking = false;
           var y = window.scrollY;
           var moved = Math.abs(y - last) > 6;
           if (y <= section.offsetHeight + header.offsetHeight) {
@@ -258,16 +256,7 @@
           }
           if (moved) last = y;
         };
-        window.addEventListener(
-          'scroll',
-          function () {
-            if (!ticking) {
-              ticking = true;
-              window.requestAnimationFrame(update);
-            }
-          },
-          { passive: true }
-        );
+        window.addEventListener('scroll', update, { passive: true });
       }
     })();
   </script>
