@@ -39,7 +39,9 @@ Only these, unless the owner confirms more. Never invent policies, prices, warra
   are in the draft return policy (owner, 2026-11-03, `docs/legal/returns-policy-draft.md`, not yet checked by the
   accountant): engraved pieces and pieces made in a stone, metal or size not offered on the site cannot be returned;
   the customer pays return shipping and a refused parcel, unless it is our mistake; warranty 14 days, covering a
-  stone that falls out and a broken clasp. State none of this on the site until the policy is published.
+  stone that falls out and a broken clasp; every customer period is 14 working days, holidays not counted;
+  exchange: our mistake, we pay both ways; theirs, a piece of the same price or the same piece in another size (they
+  pay the extra gold), delivery theirs; made-to-size or engraved pieces are not exchanged. State none of this on the site until the policy is published.
 - **Not confirmed, never claimed**: free delivery or a delivery price, packaging, engraving price or limit, a named designer, a number of designs.
 
 ## What this repository is
