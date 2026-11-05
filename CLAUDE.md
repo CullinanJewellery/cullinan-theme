@@ -159,7 +159,9 @@ Full recipe with the exact Higgsfield prompts: `photography/README.md` „Produc
   sparkling zircons, never milky). Yellow gold is never repainted with GPT Image 2.5 (it dulls the polish): a failed
   yellow is made again, and a photo the checker fails is never sent to the owner (`photography/lessons.md` 16–18).
 - **The frame (owner, 2026-10-13: the same size and position for every piece)**: ring A's, applied by
-  `photography/frame-photo.cjs` to every finished 4K file, never by eye. 01 standing: the piece is 80.7% of the
+  `photography/frame-photo.cjs` to every finished 4K file, never by eye. **Since 2026-11-05 every new main photo uses
+  shot `c`: the piece centred exactly at 50% / 50%, 70% of the height, even if some shadow is cut** (owner, red ring:
+  "from now on ... even if it cuts some of the shadow"; lesson 63). Older pieces, ring A's frame: 01 standing: the piece is 80.7% of the
   height, centred at 50% across / 51.3% down. 02 lying flat: 78% of the width, centred at 50% / 50.8%. 03 on the hand:
   not cropped. Output 2048 × 2048. Let Higgsfield make the piece smaller in the picture (about half the height) and
   let the script enlarge it: a piece generated large looks heavy (owner: ring B looked "fat").

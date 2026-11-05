@@ -325,3 +325,10 @@ Each line: what went wrong, the rule now, where it came from. Newest last.
     step. When the background is tiles of different flat levels, use `tile-even.cjs` (divide by each tile's level, so
     the shadow keeps its darkness), then flood only near-neutral 247-255. For a long shadow, frame ring and shadow
     together (centre the pair, keep the whole shadow in), not the ring alone.
+63. **Frame every new main photo with `frame-photo.cjs c`: the piece centred exactly at 50% / 50%, 70% of the height,
+    even if some of the shadow is cut (owner, 2026-11-05, red ring: "i like the left one i want you when you do the
+    free edit from now on to do it like that even if it cuts some of the shadow").** This replaces lesson 62's
+    "frame ring and shadow together": the owner did not like the ring off-centre ("stop moving to the left the ring
+    i want it in the center"). The older frames 1 and 2 stay on the pieces already made. A piece kind with its own
+    size (e.g. the zodiac coins, 0.55) keeps it, still centred. With a red stone, `check-photo.cjs` reads the white
+    metal as warm because the stone is in its average: measure the band alone.

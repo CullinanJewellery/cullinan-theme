@@ -32,3 +32,8 @@ Raw: eb91ac35 3690a019 f15ae845 ed35834f f6c36d1c 4807d6d7 aa3f2090. To be exami
 
 - 2026-11-05: ring main photo 08c1b423 (3 credits), design right at the first try; gold-match with a stone box,
   bg-even, frame 1, leftover panels (2–3 levels) flooded to 251,251,253; sent for the owner's OK.
+- 2026-11-05: shadow restored with `tile-even.cjs` (lesson 62). Owner chose the ring centred exactly at 50% / 50%,
+  70% of the height, the shadow a little cut at the left ("i like the left one"); that is now the frame for every
+  free framing (`frame-photo.cjs c`, lesson 63). White and rose with `metal-swap.cjs` (stone box
+  0.345,0.165,0.645,0.43), the ruby put back from the yellow by hue; silver = white. White band measured
+  216, 212, 212 (the checker's "warm cast" is the red stone in its average). Ring main photos done in all metals.
