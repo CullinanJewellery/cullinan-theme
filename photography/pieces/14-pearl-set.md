@@ -40,3 +40,5 @@ Raw: 4622b475 (three-quarter), 4a5700e2 (front).
 ## Status
 
 - 2026-11-05: plan and cost told (set by set; rings 6, studs 6, pendant 3 credits); ring main photo next.
+- 2026-11-05: ring try 1 (e087c536, 3 credits): claws straight prongs, pearl pink, panels; waiting for the owner.
+- 2026-11-05: studs main photo 7765aaef (3 credits), design right at the first try; gold-match with pearl boxes, bg-even, frame 2; saved as yellow 01, sent for the OK.
