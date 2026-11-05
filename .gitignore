@@ -18,6 +18,7 @@ node_modules
 photography/*
 !photography/README.md
 !photography/frame-photo.cjs
+!photography/tile-even.cjs
 !photography/check-photo.cjs
 !photography/compare-sheet.cjs
 !photography/gold-match.cjs

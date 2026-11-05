@@ -320,3 +320,8 @@ Each line: what went wrong, the rule now, where it came from. Newest last.
     330°) after gold-match, or measure the stone before and after. And the standard frame (0.807 of the height) cut the
     diagonal ring's long shadow at the left and bottom; the owner: "you cut too much". Measure ring plus shadow first
     and frame with `--size` so the whole shadow stays in (0.70 here).
+62. **`bg-even.cjs` can erase a soft shadow that crosses the model's background tiles (owner, 2026-11-05, red ring:
+    "look how the shadow is seen").** Compare the shadow with the raw result in a contrast view after every background
+    step. When the background is tiles of different flat levels, use `tile-even.cjs` (divide by each tile's level, so
+    the shadow keeps its darkness), then flood only near-neutral 247-255. For a long shadow, frame ring and shadow
+    together (centre the pair, keep the whole shadow in), not the ring alone.
