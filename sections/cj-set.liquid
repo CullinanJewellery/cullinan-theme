@@ -1,0 +1,259 @@
+{{ 'component-slider.css' | asset_url | stylesheet_tag }}
+{{ 'section-recently-viewed.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'recently-viewed.js' | asset_url }}" defer="defer"></script>
+
+{%- comment -%}
+  „От същия комплект“ (2026-11-05, owner chose option B: every piece of a set -- earrings,
+  pendant, ring -- is its own product, bought on its own; the set links them; no set price).
+
+  Which set: the product metafield custom.komplekt, a collection reference (definition made
+  in Shopify admin > Settings > Custom data > Products). Each set is a small collection of its
+  pieces, e.g. „Комплект Луна“. A product with no set, or a set with no other piece, shows
+  nothing. `fallback_collection` exists only to test the row on the experiments theme while
+  no set has been entered; on main it stays empty.
+
+  The row is May like's (sections/cj-may-like.liquid) and so Recently viewed's design
+  (section-recently-viewed.css, <recently-viewed data-static> for the arrows only), with a
+  price under each name and a link to the whole set. Each card opens the piece in the metal
+  chosen on this page when that piece has the same metal (option named „метал“ / „материал“ /
+  metal / material, as in snippets/product-variant-picker.liquid), with that variant's photo.
+  No add button: each piece needs its own metal or size, chosen on its page.
+{%- endcomment -%}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 | divided_by: 10.0 }}rem;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 | divided_by: 10.0 }}rem;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top | divided_by: 10.0 }}rem;
+      padding-bottom: {{ section.settings.padding_bottom | divided_by: 10.0 }}rem;
+    }
+  }
+
+  .cj-set__price {
+    margin: 0.4rem 0 0;
+    font-size: 1.5rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .cj-set__all {
+    display: inline-flex;
+    align-items: center;
+    min-height: 4.4rem;
+    margin-top: 1.2rem;
+    color: rgb(var(--color-foreground));
+    font-size: 1.5rem;
+    text-decoration: underline;
+    text-decoration-thickness: 0.05rem;
+    text-underline-offset: 0.3rem;
+  }
+
+  .cj-set__all:hover {
+    text-decoration-thickness: 0.1rem;
+  }
+{%- endstyle -%}
+
+{%- liquid
+  assign set = null
+  if product.metafields.custom.komplekt.value != blank
+    assign set = product.metafields.custom.komplekt.value
+  elsif section.settings.fallback_collection != blank
+    assign set = section.settings.fallback_collection
+  endif
+
+  assign set_count = 0
+  if set
+    for p in set.products limit: 12
+      if p.id == product.id
+        continue
+      endif
+      assign set_count = set_count | plus: 1
+    endfor
+  endif
+
+  comment
+    the metal chosen on this page
+  endcomment
+  assign here_metal = blank
+  assign here_variant = product.selected_or_first_available_variant
+  for option in product.options_with_values
+    assign o = option.name | downcase
+    if o contains 'метал' or o contains 'материал' or o contains 'metal' or o contains 'material'
+      assign here_metal = here_variant.options[forloop.index0]
+      break
+    endif
+  endfor
+-%}
+
+{%- if set_count > 0 -%}
+  <recently-viewed class="recently-viewed color-{{ section.settings.color_scheme }} gradient" data-static>
+    <div class="recently-viewed__inner page-width section-{{ section.id }}-padding">
+      <div class="recently-viewed__header">
+        {%- if section.settings.heading != blank -%}
+          <h2 class="recently-viewed__heading">{{ section.settings.heading | escape }}</h2>
+        {%- endif -%}
+        <div class="recently-viewed__buttons" hidden>
+          <button
+            type="button"
+            class="slider-button slider-button--prev"
+            name="previous"
+            aria-label="{{ 'general.slider.previous_slide' | t }}"
+          >
+            <span class="svg-wrapper">
+              {{- 'icon-caret.svg' | inline_asset_content -}}
+            </span>
+          </button>
+          <button
+            type="button"
+            class="slider-button slider-button--next"
+            name="next"
+            aria-label="{{ 'general.slider.next_slide' | t }}"
+          >
+            <span class="svg-wrapper">
+              {{- 'icon-caret.svg' | inline_asset_content -}}
+            </span>
+          </button>
+        </div>
+      </div>
+      <ul class="recently-viewed__track" role="list">
+        {%- for p in set.products limit: 12 -%}
+          {%- if p.id == product.id -%}
+            {%- continue -%}
+          {%- endif -%}
+          {%- liquid
+            assign v_match = null
+            if here_metal != blank
+              for option in p.options_with_values
+                assign o = option.name | downcase
+                if o contains 'метал' or o contains 'материал' or o contains 'metal' or o contains 'material'
+                  assign idx = forloop.index0
+                  for v in p.variants
+                    if v.options[idx] == here_metal
+                      if v.available or v_match == null
+                        assign v_match = v
+                      endif
+                      if v.available
+                        break
+                      endif
+                    endif
+                  endfor
+                  break
+                endif
+              endfor
+            endif
+
+            assign card_url = p.url
+            assign card_media = p.featured_media
+            assign card_price = p.price
+            assign card_varies = p.price_varies
+            if v_match
+              assign card_url = v_match.url
+              if v_match.featured_media
+                assign card_media = v_match.featured_media
+              endif
+              assign card_price = v_match.price
+              assign card_varies = false
+            endif
+            assign set_sizes = '(min-width: 990px) calc((100vw - 10rem) * 0.3), (min-width: 750px) 50vw, 80vw'
+          -%}
+          <li class="recently-viewed__item">
+            <a class="recently-viewed__link" href="{{ card_url }}">
+              <div class="recently-viewed__media">
+                {%- if card_media -%}
+                  {{
+                    card_media.preview_image
+                    | image_url: width: 940
+                    | image_tag:
+                      class: 'recently-viewed__image',
+                      alt: '',
+                      loading: 'lazy',
+                      widths: '360, 533, 720, 940',
+                      sizes: set_sizes
+                  }}
+                {%- endif -%}
+              </div>
+              <p class="recently-viewed__title">{{ p.title | escape }}</p>
+              <p class="cj-set__price">
+                {%- if card_varies -%}от {% endif -%}
+                {{- card_price | money_without_trailing_zeros -}}
+              </p>
+            </a>
+          </li>
+        {%- endfor -%}
+      </ul>
+      {%- if section.settings.all_label != blank -%}
+        <a class="cj-set__all" href="{{ set.url }}">{{ section.settings.all_label | escape }}</a>
+      {%- endif -%}
+    </div>
+  </recently-viewed>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Set (row)",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "The other pieces of this product's set, from the product metafield custom.komplekt (a collection). Hidden when the product has no set."
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "default": "От същия комплект",
+      "label": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "all_label",
+      "default": "Вижте целия комплект",
+      "label": "Link to the whole set"
+    },
+    {
+      "type": "collection",
+      "id": "fallback_collection",
+      "label": "Test collection",
+      "info": "Only for testing: shown on every product without a set. Leave empty."
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "default": "scheme-1",
+      "label": "Colour scheme"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 40
+    }
+  ],
+  "presets": [
+    {
+      "name": "Set (row)"
+    }
+  ]
+}
+{% endschema %}
