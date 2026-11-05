@@ -8,6 +8,14 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-05 — sets: „От същия комплект“ row on the product page **(owner)**
+- Owner chose option B: each piece of a set (earrings, pendant, ring) is its own product, bought on its own; the set links them. No set price or discount for now. "The deliver can be free" for sets: an idea, not configured (it is a shipping setting: ask first).
+- New `sections/cj-set.liquid`, added to `templates/product.json` under the buy box (before „Може да харесате“). It reads the product metafield `custom.komplekt` (a collection with the set's pieces) and shows the other pieces in May like's row design, each with its price, opening in the metal chosen on the page when the piece has it; link „Вижте целия комплект“ to the set collection. Hidden when a product has no set, so nothing shows until the owner enters sets.
+- Tested on the main preview with a temporary template (test collection „циркони“), desktop and 375 px: three cards, photos, metal kept in the links, no overflow. Template removed.
+- The „Комплекти“ menu link stays although its collection is still empty (owner: "no it should stay"); flagged in `docs/tasks.md` §E.
+- Way back: remove the `set` entry from `templates/product.json`, then delete the section.
+
+
 ## 2026-11-03 — withdrawal form, ring size page, new policy clauses **(owner)**
 - After the research on Bulgarian jewellers (`docs/legal/research-2026-11-03.md`), owner: "start with 2 to 4".
 - New `sections/cj-withdrawal.liquid` + `templates/page.withdrawal.json`: online withdrawal form (EU Directive 2023/2673, from 19 June 2026), modelled on Selina's; Shopify contact form, subject „Отказ от договора“. Not reachable until the owner creates the page in admin (after the return policy is published) and it is linked.

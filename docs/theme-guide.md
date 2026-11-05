@@ -208,6 +208,11 @@ collection), **social band** („Още от нашите бижута“ / „�
   online withdrawal function. Shopify's contact form with subject „Отказ от договора“ (name, email, order number,
   phone, dates, pieces, IBAN); the owner confirms receipt by email. Uses `section-custom-request.css`. Live once the
   owner creates a page with this template, after the return policy is published.
+- **От същия комплект** (`sections/cj-set.liquid`, in `templates/product.json` after `main`, 2026-11-05): the other
+  pieces of the product's set, from the product metafield `custom.komplekt` (collection reference; definition made
+  in admin). Cards reuse `section-recently-viewed.css` / `<recently-viewed data-static>`; each opens the variant with
+  the same metal value (option named метал/материал/metal/material) and its photo and price. `fallback_collection`
+  is for testing only and stays empty on main.
 - **Размери на пръстени** (`templates/page.size-guide.json`, `sections/cj-size-guide.liquid`, 2026-11-03): the
   product popup's table (EU 48–64) and instructions as a page; its words are its own settings, defaults copied
   from the popup. Change both if the wording changes.
