@@ -34,11 +34,16 @@ Raw: d7dd29fc 59c76300 7a72af1a (pair), 7d5ada32 (front, held), 8c54e8ce 72f9f69
 
 Raw: 4622b475 (three-quarter), 4a5700e2 (front).
 
-- One white cultured pearl held between curved flat gold strips, under a plain tapered folded bail. To be examined
-  in detail before its prompt.
+- Examined 2026-11-05: a plain polished bail of one flat strip folded back, wide at the top and tapering down (about
+  as long as the pearl is wide); a small round jump ring; one white cultured pearl (about 7–8 mm) held by two long
+  flat strips that meet on top of the pearl and curve down round it like an open wishbone, one across the front-left,
+  one down the right side, each ending in a small point below the middle. No other claws, no cup.
+- Main photo lying flat, upright, framed by height (frame 1) like the crosses; worn photo on the neck later.
 
 ## Status
 
 - 2026-11-05: plan and cost told (set by set; rings 6, studs 6, pendant 3 credits); ring main photo next.
 - 2026-11-05: ring try 1 (e087c536, 3 credits): claws straight prongs, pearl pink, panels; waiting for the owner.
 - 2026-11-05: studs main photo 7765aaef (3 credits), design right at the first try; gold-match with pearl boxes, bg-even, frame 2; saved as yellow 01, sent for the OK.
+- 2026-11-05: owner: colours for ring and studs. White, rose with metal-swap.cjs and pearl boxes, silver = white; free.
+- 2026-11-05: pendant main photo 1910a69d (3 credits), right at the first try; gold-match, bg-even, frame 1, one panel evened; sent for the OK. Credits so far: 9.
