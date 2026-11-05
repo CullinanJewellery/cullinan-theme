@@ -314,3 +314,9 @@ Each line: what went wrong, the rule now, where it came from. Newest last.
     and the straight phone photo (4a5700e2) is made as a front view only for pasting on the neck. For a piece with a
     pearl or any non-gold part, `paste-pendant.cjs` cuts it away (it keeps only gold): give it a cut-out PNG made by
     flooding the flat 251,251,253 background from the edges (pearl kept), and clear the light hole inside the jump ring.
+61. **Red (and other coloured) stones are not protected by `--stone` boxes; a long shadow needs a smaller frame
+    (2026-11-05, red ring).** Inside a stone box `gold-match.cjs` still changes pixels whose red − blue is over 35, and
+    a ruby-red stone is, so the stone turned orange. Put the stone back from the source by hue (red under 22° or over
+    330°) after gold-match, or measure the stone before and after. And the standard frame (0.807 of the height) cut the
+    diagonal ring's long shadow at the left and bottom; the owner: "you cut too much". Measure ring plus shadow first
+    and frame with `--size` so the whole shadow stays in (0.70 here).
