@@ -38,7 +38,8 @@ Raw: 4622b475 (three-quarter), 4a5700e2 (front).
   as long as the pearl is wide); a small round jump ring; one white cultured pearl (about 7–8 mm) held by two long
   flat strips that meet on top of the pearl and curve down round it like an open wishbone, one across the front-left,
   one down the right side, each ending in a small point below the middle. No other claws, no cup.
-- Main photo lying flat, upright, framed by height (frame 1) like the crosses; worn photo on the neck later.
+- Owner, 2026-11-05: main photo = the angle of 4622b475 exactly (three-quarter, bail seen from the side, jump ring
+  edge-on); neck photo = the straight view of 4a5700e2. Never straighten or turn the pendant.
 
 ## Status
 
@@ -47,3 +48,4 @@ Raw: 4622b475 (three-quarter), 4a5700e2 (front).
 - 2026-11-05: studs main photo 7765aaef (3 credits), design right at the first try; gold-match with pearl boxes, bg-even, frame 2; saved as yellow 01, sent for the OK.
 - 2026-11-05: owner: colours for ring and studs. White, rose with metal-swap.cjs and pearl boxes, silver = white; free.
 - 2026-11-05: pendant main photo 1910a69d (3 credits), right at the first try; gold-match, bg-even, frame 1, one panel evened; sent for the OK. Credits so far: 9.
+- 2026-11-05: owner rejected 1910a69d (turned to face the camera). Main 3769a24f and front view 2f4a465f (6 credits); neck photo by paste on nkbase (free); both sent for the OK. Credits so far: 15.

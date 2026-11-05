@@ -307,3 +307,10 @@ Each line: what went wrong, the rule now, where it came from. Newest last.
     and again on the white and rose made from it. Compare a white part with the first try zoomed in before sending
     the metals. A free local fill of a groove on a flat gold leaf did not work: the two halves differ in shading and
     every patch showed; that needs the AI edit or is left (owner chose to leave it).
+60. **A pendant's main photo copies the owner's best angle as it is; never straighten it (owner, 2026-11-05, pearl
+    pendant).** Asked for "perfectly upright, front up", the model turned the pearl pendant to face the camera and the
+    jump ring flat; the owner: "it is not the same ... don't change the model or the positions". The main photo is now
+    an edit of the three-quarter phone photo (4622b475: bail seen from the side with its fold open, jump ring edge-on),
+    and the straight phone photo (4a5700e2) is made as a front view only for pasting on the neck. For a piece with a
+    pearl or any non-gold part, `paste-pendant.cjs` cuts it away (it keeps only gold): give it a cut-out PNG made by
+    flooding the flat 251,251,253 background from the edges (pearl kept), and clear the light hole inside the jump ring.
