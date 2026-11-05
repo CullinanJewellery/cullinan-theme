@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "set": {
+      "type": "cj-set",
+      "settings": {
+        "fallback_collection": "циркони"
+      }
+    }
+  },
+  "order": [
+    "set"
+  ]
+}

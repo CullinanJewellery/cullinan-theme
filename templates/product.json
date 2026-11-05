@@ -178,6 +178,16 @@
         "margin_bottom": 0
       }
     },
+    "set": {
+      "type": "cj-set",
+      "settings": {
+        "heading": "От същия комплект",
+        "all_label": "Вижте целия комплект",
+        "color_scheme": "scheme-1",
+        "padding_top": 56,
+        "padding_bottom": 40
+      }
+    },
     "may_like": {
       "type": "cj-may-like",
       "settings": {
@@ -269,6 +279,7 @@
   },
   "order": [
     "main",
+    "set",
     "promise_band",
     "disclosures",
     "enquiry",
