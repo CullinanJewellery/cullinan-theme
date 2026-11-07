@@ -332,3 +332,4 @@ Each line: what went wrong, the rule now, where it came from. Newest last.
     i want it in the center"). The older frames 1 and 2 stay on the pieces already made. A piece kind with its own
     size (e.g. the zodiac coins, 0.55) keeps it, still centred. With a red stone, `check-photo.cjs` reads the white
     metal as warm because the stone is in its average: measure the band alone.
+    **2026-11-07: 76% of the height, not 70%** (owner: "make the ring a little bit bigger"; chose 76 from 70/74/78/82).

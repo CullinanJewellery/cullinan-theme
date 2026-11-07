@@ -37,3 +37,5 @@ Raw: eb91ac35 3690a019 f15ae845 ed35834f f6c36d1c 4807d6d7 aa3f2090. To be exami
   free framing (`frame-photo.cjs c`, lesson 63). White and rose with `metal-swap.cjs` (stone box
   0.345,0.165,0.645,0.43), the ruby put back from the yellow by hue; silver = white. White band measured
   216, 212, 212 (the checker's "warm cast" is the red stone in its average). Ring main photos done in all metals.
+- 2026-11-07: owner wanted the ring a little bigger; chose 76% of the height. All four metals reframed (70% versions in
+  `чернови/преди - 70 процента`). Rose PASS; white band 215, 211, 211.

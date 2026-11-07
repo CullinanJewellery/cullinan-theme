@@ -13,8 +13,8 @@
 
   Usage (needs sharp: `npm i sharp` in any folder, run from there or with NODE_PATH):
     node frame-photo.cjs <shot c|1|2|3> <4K source.png> <output.png> [--size 0.55]
-  Shot c (since 2026-11-05, the default for every new main photo): the piece centred at 50% / 50%, 70% of the
-  height, even if the frame cuts some of its shadow. 1 and 2 are the older frames (ring A to the pearl set).
+  Shot c (since 2026-11-05, the default for every new main photo): the piece centred at 50% / 50%, 76% of the
+  height (owner, 2026-11-07: "a little bit bigger"; 70% before), even if the frame cuts some of its shadow. 1 and 2 are the older frames (ring A to the pearl set).
   --size replaces the piece's share of the frame, for a piece that must look smaller than the others (owner,
   2026-10-26: the zodiac coins are smaller than the openwork zodiac pendants; 2026-10-27, measured on the owner's neck
   photos, a coin is about two thirds of an openwork pendant's height, so the coin photos use 0.55).
@@ -29,9 +29,9 @@ const FRAME = {
   1: { measure: 'h', size: 0.807, cx: 0.5, cy: 0.513 },
   2: { measure: 'w', size: 0.78, cx: 0.5, cy: 0.508 },
   // c: the owner's frame for every free framing from 2026-11-05 on (red ring: "i like the left one ... from now on
-  // ... even if it cuts some of the shadow"): the piece itself centred exactly, 70% of the height; the shadow may
+  // ... even if it cuts some of the shadow"): the piece itself centred exactly, 76% of the height (2026-11-07, 70% before); the shadow may
   // be cut at the edge.
-  c: { measure: 'h', size: 0.70, cx: 0.5, cy: 0.5 },
+  c: { measure: 'h', size: 0.76, cx: 0.5, cy: 0.5 },
 };
 
 async function findPiece(file) {

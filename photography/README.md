@@ -164,7 +164,7 @@ CLAUDE.md, „Product photo standard“. This is how that set was made, so the n
 | White gold | a clean, **neutral**, bright rhodium white, like platinum: silver-white with crisp neutral grey and dark reflections, **no yellow, beige or champagne cast** (owner, 2026-10-13: the first white photos of both rings looked yellowish; they measured blue 13–20 below red on the metal; aim for blue within about 5 of red) |
 | Rose gold | warm soft pink-copper, rich but elegant; match ring A's rose photos |
 | Silver | uses the white gold photos (same look) |
-| Size, place | **the frame**: since 2026-11-05 every new main photo `frame-photo.cjs c`, the piece centred at 50% / 50%, 70% of the height, even if some shadow is cut (owner; lesson 63). Before: 01 standing, the piece 80.7% of the height, centre 50% / 51.3%; 02 lying flat, 78% of the width, centre 50% / 50.8%; 03 hand not cropped. Applied by `photography/frame-photo.cjs`, never by eye (owner, 2026-10-13) |
+| Size, place | **the frame**: since 2026-11-05 every new main photo `frame-photo.cjs c`, the piece centred at 50% / 50%, 76% of the height (owner, 2026-11-07; 70% on 2026-11-05), even if some shadow is cut (owner; lesson 63). Before: 01 standing, the piece 80.7% of the height, centre 50% / 51.3%; 02 lying flat, 78% of the width, centre 50% / 50.8%; 03 hand not cropped. Applied by `photography/frame-photo.cjs`, never by eye (owner, 2026-10-13) |
 | File | square, 2048 × 2048 PNG for the website, cropped from the 4K upscale; 4K originals and raw crops kept in `чернови` |
 
 ### The three photos, in every metal
