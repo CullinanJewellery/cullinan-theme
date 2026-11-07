@@ -355,3 +355,8 @@ Each line: what went wrong, the rule now, where it came from. Newest last.
     band with the same numbers, because of the white between them: the owner chose `gold-deepen.cjs ... 1.25 0.94`
     (option 2 of 4) for ring A, and the same for its rose (owner: "deeper"); then rings 02, 03 and 04 the same (the owner chose deeper even for the smooth band of 04). Worn photos cannot be matched this way: skin has gold's hue and turned yellow and
     blotchy (ring A's hand) — they stay as they are.
+68. **All finished main and lying photos reframed with `frame-photo.cjs c` (76% of the larger side, centred; owner,
+    2026-11-07: "make them all the same size"), crop only.** Shot c now measures the larger of height and width, so
+    a lying ring (wider than tall) is 76% of the width. `--extend` copies the edge when a shadow reaches it. Never
+    even or flood the background while reframing (owner: "don't touch the shadows keep the original ones"); the
+    first pass did and was redone from `чернови/преди рамката 2026-11-07`. Worn photos are not reframed.

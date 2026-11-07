@@ -13,6 +13,7 @@
 
   Usage (needs sharp: `npm i sharp` in any folder, run from there or with NODE_PATH):
     node frame-photo.cjs <shot c|1|2|3> <4K source.png> <output.png> [--size 0.55]
+  --extend: copy the edge outward even when a shadow reaches it (2026-11-07, reframing finished photos; check by eye).
   Shot c (since 2026-11-05, the default for every new main photo): the piece centred at 50% / 50%, 76% of the
   height (owner, 2026-11-07: "a little bit bigger"; 70% before), even if the frame cuts some of its shadow. 1 and 2 are the older frames (ring A to the pearl set).
   --size replaces the piece's share of the frame, for a piece that must look smaller than the others (owner,
@@ -31,7 +32,7 @@ const FRAME = {
   // c: the owner's frame for every free framing from 2026-11-05 on (red ring: "i like the left one ... from now on
   // ... even if it cuts some of the shadow"): the piece itself centred exactly, 76% of the height (2026-11-07, 70% before); the shadow may
   // be cut at the edge.
-  c: { measure: 'h', size: 0.76, cx: 0.5, cy: 0.5 },
+  c: { measure: 'max', size: 0.76, cx: 0.5, cy: 0.5 }, // the larger of height and width (a lying ring is wider than tall; owner 2026-11-07: all pieces the same size)
 };
 
 async function findPiece(file) {
@@ -84,7 +85,7 @@ async function flatBorder(file) {
   const f = FRAME[shot] && { ...FRAME[shot], ...(si >= 0 ? { size: +rest[si + 1] } : {}) };
   if (f) {
     const p = await findPiece(src);
-    const piece = f.measure === 'h' ? p.h * H : p.w * W;
+    const piece = f.measure === 'max' ? Math.max(p.h * H, p.w * W) : f.measure === 'h' ? p.h * H : p.w * W;
     side = Math.round(piece / f.size);
     left = Math.round(p.cx * W - f.cx * side);
     top = Math.round(p.cy * H - f.cy * side);
@@ -92,7 +93,7 @@ async function flatBorder(file) {
       // The frame reaches past the photo. Only when the whole border is flat off-white background (no shadow, no
       // piece) is it extended by copying its edge, which cannot be seen (ring C, 2026-10-14: about 100 px at the top).
       const pad = { left: Math.max(0, -left), top: Math.max(0, -top), right: Math.max(0, left + side - W), bottom: Math.max(0, top + side - H) };
-      if (!(await flatBorder(src))) {
+      if (!rest.includes('--extend') && !(await flatBorder(src))) {
         throw new Error(`the piece is too big or too close to the edge for the frame (crop ${left},${top} side ${side} in ${W}x${H}), and the border is not flat background`);
       }
       img = sharp(await sharp(src).extend({ ...pad, extendWith: 'copy' }).png().toBuffer());
@@ -103,5 +104,5 @@ async function flatBorder(file) {
   }
   await img.extract({ left, top, width: side, height: side }).resize(2048, 2048, { kernel: 'lanczos3' }).png().toFile(out);
   const q = f ? await findPiece(out) : null;
-  console.log(out, q ? `piece ${f.measure}=${(f.measure === 'h' ? q.h : q.w).toFixed(3)} centre ${q.cx.toFixed(3)},${q.cy.toFixed(3)}` : 'hand photo, not cropped');
+  console.log(out, q ? `piece ${f.measure}=${(f.measure === 'max' ? Math.max(q.h, q.w) : f.measure === 'h' ? q.h : q.w).toFixed(3)} centre ${q.cx.toFixed(3)},${q.cy.toFixed(3)}` : 'hand photo, not cropped');
 })();
