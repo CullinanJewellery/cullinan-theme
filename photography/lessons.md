@@ -368,3 +368,8 @@ Each line: what went wrong, the rule now, where it came from. Newest last.
     are coloured in the white photo are skipped (otherwise the darks went too deep); and a pearl's edge reflects gold
     in the yellow photo, so the pearl ring needs `--keep` round the pearl (it turned grey at the prongs). Silver is
     the white file. Worn photos are not changed. Originals in `чернови/преди белия цвят 2026-11-07`.
+70. **Only the rings share one frame size; other pieces keep their own (owner, 2026-11-07, crosses: "don't do the
+    frame the one we made before is good ... the crosses are with different sizes they are not like the rings").**
+    Crosses, pendants, earrings and sets get only the new colours (yellow and rose: `gold-look-match.cjs` with the red
+    ring + `gold-deepen.cjs 1.25 0.94`; white: `white-look-match.cjs`; silver = white); their crop is left as it was.
+    Crosses 06–09 done this way; originals in `чернови/преди цветовете 2026-11-07`.
