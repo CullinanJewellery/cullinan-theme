@@ -20,6 +20,7 @@ photography/*
 !photography/frame-photo.cjs
 !photography/tile-even.cjs
 !photography/rose-darker.cjs
+!photography/gold-look-match.cjs
 !photography/check-photo.cjs
 !photography/compare-sheet.cjs
 !photography/gold-match.cjs
