@@ -143,7 +143,7 @@ Full recipe with the exact Higgsfield prompts: `photography/README.md` „Produc
   dark pavilion contrast, pin-point sparkle, a little fire; never pink, lilac, grey or milky. Asked for in the first
   prompt, with ring G's finished photo as the stone reference, so it costs nothing extra; only if the stones still
   come out soft, a stones-only edit (3 credits) put back with `photography/stone-look.cjs` (lesson 56).
-- **Gold**: rich, warm, deeply polished yellow at 210, 169, 109 (since 2026-11-07, between ring A's and 2026-10-30's 212, 172, 104; ring A's polish is still the reference). **Rose gold** is 202, 152, 122 since 2026-11-07 (5% darker than ring A's; owner: "a little bit too bright"), before that matched
+- **Gold**: rich, warm, deeply polished yellow at 210, 169, 109 (since 2026-11-07, between ring A's and 2026-10-30's 212, 172, 104; ring A's polish is still the reference). One yellow for both 14K and 18K (owner, 2026-11-07: "they will be the same color"). **Rose gold** is 202, 152, 122 since 2026-11-07 (5% darker than ring A's; owner: "a little bit too bright"), before that matched
   ring A's rose. **White gold is a clean, neutral, bright white, no yellow, beige or champagne cast** (owner,
   2026-10-13: both rings' white looked yellowish; measured blue 13–20 below red). New metals are made from the
   finished yellow photo of the same piece.
