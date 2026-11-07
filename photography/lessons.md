@@ -347,3 +347,11 @@ Each line: what went wrong, the rule now, where it came from. Newest last.
     whole hand differs, and a box round the ring still darkened skin specks (skin and rose share hue 15-29 deg). Its
     yellow hand is kept with the change limited to a box round the ring (skin unchanged by eye); its rose hand stays
     as it was. Check every result with a change map (where pixels moved) and a zoom on the skin.
+67. **The same measured gold looks different on different pieces; match the look, not the average (owner, 2026-11-07:
+    "i want the color on one ring to look the same on all of the others").** Ring A and the red ring both measured
+    about 210,169,109 but ring A's gold leaned orange (hue 36 deg, median brightness 223) and the red ring's yellow
+    (45 deg, 244). `gold-look-match.cjs` maps hue, saturation and brightness of the gold onto a reference photo's
+    (the red ring's, `15 .../Пръстен/жълто злато/01`). Thin pieces (beads, chains) still look lighter than a wide
+    band with the same numbers, because of the white between them: the owner chose `gold-deepen.cjs ... 1.25 0.94`
+    (option 2 of 4) for ring A. Worn photos cannot be matched this way: skin has gold's hue and turned yellow and
+    blotchy (ring A's hand) — they stay as they are.
