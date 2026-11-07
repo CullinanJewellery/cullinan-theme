@@ -384,3 +384,9 @@ Each line: what went wrong, the rule now, where it came from. Newest last.
     one step (yellow, rose, white, silver, backup, before/after sheet), and the `photo-checker` agent
     (`.claude/agents/photo-checker.md`) checks the result zoomed in. Words: the loop the chain goes through is the
     **bail** (ухо / халка за синджира); the small round ring joining it to the pendant is the **jump ring** (халкичка).
+72. **A white photo made from yellow keeps the gold's pink glow outside the metal (owner, 2026-11-07: "check all the
+    places").** The backdrop seen through openwork, the walls of the openings and the shadow round a sign were pink,
+    because metal-swap.cjs only changes clearly gold pixels. `photography/white-neutral.cjs` gives everything that is
+    not metal the backdrop's own tint, keeping its brightness; strongly coloured pixels (a stone's fire, a ruby) and
+    `--stone` boxes (a pearl) are left alone. Part of `recolour-piece.cjs`. Ring 01 (ring A) is the only piece whose
+    backdrop is not exactly 251, 251, 253 (252–253, one or two levels, not visible); ring 11's corner is its shadow.

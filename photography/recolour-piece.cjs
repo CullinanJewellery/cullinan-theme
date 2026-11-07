@@ -67,7 +67,8 @@ async function sheet(rows, out) {
     run('gold-look-match.cjs', [REF_Y, src('y'), out('ym')]);
     run('gold-deepen.cjs', [out('ym'), out('y'), '1.25', '0.94']);
     if (fs.existsSync(src('r'))) { run('gold-look-match.cjs', [REF_R, src('r'), out('rm')]); run('gold-deepen.cjs', [out('rm'), out('r'), '1.25', '0.94']); }
-    run('metal-swap.cjs', ['white', out('ym'), out('w'), ...stones]);
+    run('metal-swap.cjs', ['white', out('ym'), out('wg'), ...stones]);
+    run('white-neutral.cjs', [out('wg'), out('ym'), out('w'), ...stones]);
     rows.push([[src('y'), `${k} жълто сега`], [out('y'), 'ново'], [src('r'), 'розово сега'], [out('r'), 'ново'], [src('w'), 'бяло сега'], [out('w'), 'ново']]);
     if (save) {
       fs.mkdirSync(backup, { recursive: true });
