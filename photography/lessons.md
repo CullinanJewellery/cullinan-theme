@@ -360,3 +360,11 @@ Each line: what went wrong, the rule now, where it came from. Newest last.
     a lying ring (wider than tall) is 76% of the width. `--extend` copies the edge when a shadow reaches it. Never
     even or flood the background while reframing (owner: "don't touch the shadows keep the original ones"); the
     first pass did and was redone from `чернови/преди рамката 2026-11-07`. Worn photos are not reframed.
+69. **White gold has a standard too: the red ring's white (owner, 2026-11-07: "we should have a color for the white
+    gold too").** All whites were already neutral (blue about 4 below red), but the red ring's was much brighter
+    (median 223 against about 200), so the others looked grey beside it. `white-look-match.cjs` maps the brightness
+    of the metal (found with the yellow photo of the same frame) onto the red ring's white and gives it the same tint;
+    stones, background and shadow are not touched. Two traps: the ruby is "gold" in the yellow mask, so pixels that
+    are coloured in the white photo are skipped (otherwise the darks went too deep); and a pearl's edge reflects gold
+    in the yellow photo, so the pearl ring needs `--keep` round the pearl (it turned grey at the prongs). Silver is
+    the white file. Worn photos are not changed. Originals in `чернови/преди белия цвят 2026-11-07`.

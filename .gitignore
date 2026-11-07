@@ -22,6 +22,7 @@ photography/*
 !photography/rose-darker.cjs
 !photography/gold-look-match.cjs
 !photography/gold-deepen.cjs
+!photography/white-look-match.cjs
 !photography/check-photo.cjs
 !photography/compare-sheet.cjs
 !photography/gold-match.cjs
