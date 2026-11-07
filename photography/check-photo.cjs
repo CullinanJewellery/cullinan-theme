@@ -17,7 +17,7 @@
 const sharp = require('sharp');
 
 const TARGET = {
-  yellow: { rgb: [212, 172, 104], tol: 8, shine: 212 }, // the owner's yellow since 2026-10-30 (ring A's was 208, 165, 114)
+  yellow: { rgb: [210, 169, 109], tol: 8, shine: 212 }, // the owner's yellow since 2026-11-07, between ring A's 208, 165, 114 and 2026-10-30's 212, 172, 104
   rose: { rgb: [218, 160, 136], tol: 14 },
 };
 

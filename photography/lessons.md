@@ -333,3 +333,7 @@ Each line: what went wrong, the rule now, where it came from. Newest last.
     size (e.g. the zodiac coins, 0.55) keeps it, still centred. With a red stone, `check-photo.cjs` reads the white
     metal as warm because the stone is in its average: measure the band alone.
     **2026-11-07: 76% of the height, not 70%** (owner: "make the ring a little bit bigger"; chose 76 from 70/74/78/82).
+64. **Yellow gold is 210, 169, 109 since 2026-11-07** (owner, shown on the red ring old 208,165,114 / A 212,172,104 /
+    B 216,180,98: "something between A and the old one"; then "i want the standard yellow to be the one between A and
+    the oldest"). Defaults changed in gold-match, check-photo, gold-only-merge (now --from 212,172,104 --to
+    210,169,109), rhodium-off, rhodium-to-gold and the prompts. White 188,184,184 and rose 213,160,128 (ring A's) unchanged.
