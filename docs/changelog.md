@@ -43,6 +43,7 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 - 2026-11-07: rose gold 5% darker, 202, 152, 122 (owner: "a little bit too bright"). Way back: `RING_A.rose` in `photography/metal-swap.cjs` to 213, 160, 128 and the checker's rose to 218, 160, 136. Earlier pieces not yet moved.
 - 2026-11-07: white gold standard = the red ring's white, made with the new `photography/white-look-match.cjs` on every ring's white main and lying photos (silver copied from it); worn photos unchanged **(owner)**. Way back: copy the files in each ring's `чернови/преди белия цвят 2026-11-07` back to `бяло злато` and `сребро`.
 - 2026-11-07: crosses 06–09 moved to the new yellow, rose and white (colours only; owner: their frame stays, only rings share one size) **(owner)**. Way back: copy back `чернови/преди цветовете 2026-11-07` in each cross folder.
+- 2026-11-07: `photography/recolour-piece.cjs` (one-step colour pass) and the `photo-checker` agent (`.claude/agents/photo-checker.md`) added **(owner)**; whites of pieces with rhodium parts are made with metal-swap from the look-matched yellow (lesson 71). Way back: delete both files.
 - Way back: every previous yellow file is in its piece's `чернови/преди по-жълтото злато`; copy it back, and set 208, 165, 114 in `check-photo.cjs` and `gold-match.cjs`.
 
 ## 2026-10-27 — gift guide band in place of the zodiac section **(owner)**

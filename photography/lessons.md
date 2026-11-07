@@ -373,3 +373,14 @@ Each line: what went wrong, the rule now, where it came from. Newest last.
     Crosses, pendants, earrings and sets get only the new colours (yellow and rose: `gold-look-match.cjs` with the red
     ring + `gold-deepen.cjs 1.25 0.94`; white: `white-look-match.cjs`; silver = white); their crop is left as it was.
     Crosses 06–09 done this way; originals in `чернови/преди цветовете 2026-11-07`.
+71. **White = metal-swap from the look-matched yellow, the way the red ring's white was made (owner, 2026-11-07,
+    zodiac pendants: "the white zodiacs are actually bad they have white outside the jewelry ... the ring that hold
+    the other ring for the chain ... there is white there too").** `white-look-match.cjs` changes only what is gold in
+    the yellow photo, so the rhodium sign stayed grey beside a bright frame ("you missed some places"); trying to find
+    the whole piece by its outline (`--piece`) whitened the backdrop inside the openwork and the hole of the jump ring.
+    `metal-swap.cjs white` on the yellow photo after `gold-look-match.cjs` (before `gold-deepen.cjs`) gives 218, 214, 214,
+    brightness 176/225/236, against the red ring's 214, 210, 210 and 168/223/233, with nothing outside the gold touched
+    and rhodium parts left as they are. `photography/recolour-piece.cjs` now does the whole colour pass for a piece in
+    one step (yellow, rose, white, silver, backup, before/after sheet), and the `photo-checker` agent
+    (`.claude/agents/photo-checker.md`) checks the result zoomed in. Words: the loop the chain goes through is the
+    **bail** (ухо / халка за синджира); the small round ring joining it to the pendant is the **jump ring** (халкичка).
