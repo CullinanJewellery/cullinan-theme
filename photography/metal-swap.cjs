@@ -18,6 +18,7 @@
   --hue a,b (with --hand): gold starts at hue a°, fully from b°; measure skin and gold in the box first (new hand of
   2026-10-16: 13,17 for rings B and D, 20,24 for ring E's warmer photo). Also turns the gold's pale shine.
   --relative (rose on a hand): ring A's step from yellow to rose, added to the photo's own gold.
+  --target r,g,b: use this colour for the metal instead of ring A's (2026-11-07: testing a darker rose).
 
   --stone (one per stone, a box round it, fractions of the photo): inside, only clearly gold pixels change (red − blue
   from 35, fully from 55: the claws), so the stone and its reflections stay exactly as they are (owner, 2026-10-15:
@@ -143,7 +144,11 @@ function handMask(data, W, H, ch, box) {
   const relative = ri >= 0 && !!args.splice(ri, 1);
   const stones = [];
   for (let si = args.indexOf('--stone'); si >= 0; si = args.indexOf('--stone')) stones.push(args.splice(si, 2)[1].split(',').map(Number));
+  // --target r,g,b: replaces the metal's colour (and so its brightness against the yellow)
+  const tgi = args.indexOf('--target');
+  const tgt = tgi >= 0 ? args.splice(tgi, 2)[1].split(',').map(Number) : null;
   const [kind, src, dst] = args;
+  if (tgt) RING_A[kind] = tgt;
   if (!['white', 'rose'].includes(kind) || !src || !dst) throw new Error('usage: node metal-swap.cjs <white|rose> <yellow.png> <out.png> [--stone x0,y0,x1,y1 ...] [--hand x0,y0,x1,y1]');
   const { data, info } = await sharp(src).removeAlpha().raw().toBuffer({ resolveWithObject: true });
   const ch = info.channels, W = info.width, H = info.height;
