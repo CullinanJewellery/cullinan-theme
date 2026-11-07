@@ -10,7 +10,7 @@
 
   Targets (owner, 2026-10-15: "the same as A ring's colour"): ring A's white and rose main photos, measured on the
   ring itself: white 188, 184, 184 (and 13 levels brighter than ring A's yellow, so white is lifted by that much,
-  highlights kept), rose 213, 160, 128 (as bright as the yellow). Make the yellow ring A's first (gold-match.cjs).
+  highlights kept), rose 213, 160, 128 (as bright as the yellow; since 2026-11-07 5% darker, 202, 152, 122). Make the yellow ring A's first (gold-match.cjs).
 
   Usage (needs sharp, NODE_PATH as for check-photo.cjs):
     node metal-swap.cjs <white|rose> <yellow.png> <out.png> [--stone x0,y0,x1,y1 ...] [--hand x0,y0,x1,y1]
@@ -43,7 +43,7 @@ const lum = (r, g, b) => 0.3 * r + 0.59 * g + 0.11 * b;
 const weight = (r, b) => Math.min(1, Math.max(0, (r - b - 8) / 20));
 
 // ring A's metals, measured on the ring itself (2026-10-15)
-const RING_A = { yellow: [208, 165, 113], white: [188, 184, 184], rose: [213, 160, 128] };
+const RING_A = { yellow: [208, 165, 113], white: [188, 184, 184], rose: [202, 152, 122] }; // rose 5% darker than ring A's 213, 160, 128 (owner, 2026-11-07: "a little bit too bright")
 // the target metal's colour as an offset from its own brightness (red, green, blue minus luminance)
 function targetOffset(kind) {
   const t = RING_A[kind];

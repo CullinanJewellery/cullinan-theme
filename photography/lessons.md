@@ -337,3 +337,6 @@ Each line: what went wrong, the rule now, where it came from. Newest last.
     B 216,180,98: "something between A and the old one"; then "i want the standard yellow to be the one between A and
     the oldest"). Defaults changed in gold-match, check-photo, gold-only-merge (now --from 212,172,104 --to
     210,169,109), rhodium-off, rhodium-to-gold and the prompts. White 188,184,184 and rose 213,160,128 (ring A's) unchanged.
+65. **Rose gold is 202, 152, 122 since 2026-11-07, 5% darker than ring A's 213, 160, 128** (owner, red ring: "the
+    rose gold might be a little bit too bright"; chose 5% from 5/10/15%). Default in `metal-swap.cjs`; the checker's
+    rose is now 215, 154, 130 (measured). `metal-swap.cjs --target r,g,b` tries any other colour.

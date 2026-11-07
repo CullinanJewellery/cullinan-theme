@@ -40,6 +40,7 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 ## 2026-10-30 — brighter yellow gold, further from rose **(owner)**
 - All finished yellow photos moved from ring A's gold (208, 165, 114) to 212, 172, 104 (owner chose option A of a test on the spiral ring): the old yellow and the rose looked almost the same. Main photos with `gold-match.cjs`, worn photos with the new `photography/gold-only-merge.cjs` (only the gold changes, found by comparing with the white version; gold-match alone turned worn gold lemon and spotted the skin). White, rose and silver unchanged. Checker, gold-match default, prompts and workflow use the new value.
 - 2026-11-07: standard yellow gold moved to 210, 169, 109, halfway between ring A's 208, 165, 114 and 212, 172, 104 (owner, on the red ring). Way back: set the defaults in `photography/gold-match.cjs`, `check-photo.cjs`, `gold-only-merge.cjs` to 212, 172, 104. Earlier pieces not yet moved.
+- 2026-11-07: rose gold 5% darker, 202, 152, 122 (owner: "a little bit too bright"). Way back: `RING_A.rose` in `photography/metal-swap.cjs` to 213, 160, 128 and the checker's rose to 218, 160, 136. Earlier pieces not yet moved.
 - Way back: every previous yellow file is in its piece's `чернови/преди по-жълтото злато`; copy it back, and set 208, 165, 114 in `check-photo.cjs` and `gold-match.cjs`.
 
 ## 2026-10-27 — gift guide band in place of the zodiac section **(owner)**
