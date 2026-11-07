@@ -340,3 +340,10 @@ Each line: what went wrong, the rule now, where it came from. Newest last.
 65. **Rose gold is 202, 152, 122 since 2026-11-07, 5% darker than ring A's 213, 160, 128** (owner, red ring: "the
     rose gold might be a little bit too bright"; chose 5% from 5/10/15%). Default in `metal-swap.cjs`; the checker's
     rose is now 215, 154, 130 (measured). `metal-swap.cjs --target r,g,b` tries any other colour.
+66. **Moving finished photos to the 2026-11-07 colours: yellow with `gold-only-merge.cjs` (defaults now 212,172,104 ->
+    210,169,109), rose with the new `rose-darker.cjs` (same result as metal-swap's darker rose, mean 0.2 levels off on
+    the red ring); both find the metal by comparing with the piece's white photo.** That only works when the white
+    photo was made from the yellow one (same skin, same floor). Ring A's three hand photos were made separately: the
+    whole hand differs, and a box round the ring still darkened skin specks (skin and rose share hue 15-29 deg). Its
+    yellow hand is kept with the change limited to a box round the ring (skin unchanged by eye); its rose hand stays
+    as it was. Check every result with a change map (where pixels moved) and a zoom on the skin.
