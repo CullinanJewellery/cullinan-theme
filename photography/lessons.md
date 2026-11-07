@@ -353,5 +353,5 @@ Each line: what went wrong, the rule now, where it came from. Newest last.
     (45 deg, 244). `gold-look-match.cjs` maps hue, saturation and brightness of the gold onto a reference photo's
     (the red ring's, `15 .../Пръстен/жълто злато/01`). Thin pieces (beads, chains) still look lighter than a wide
     band with the same numbers, because of the white between them: the owner chose `gold-deepen.cjs ... 1.25 0.94`
-    (option 2 of 4) for ring A. Worn photos cannot be matched this way: skin has gold's hue and turned yellow and
+    (option 2 of 4) for ring A, and the same for its rose (owner: "deeper"). Worn photos cannot be matched this way: skin has gold's hue and turned yellow and
     blotchy (ring A's hand) — they stay as they are.
