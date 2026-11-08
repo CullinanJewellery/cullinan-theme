@@ -137,6 +137,10 @@ White, rose and silver for every photo: free (`recolour-piece.cjs`). Check the H
 - A photo on the ear: yes. Set by set.
 - Still open: what the stones are.
 
+## Owner, 2026-11-08 (second answer)
+
+- All stones are zircons.
+
 ## Questions for the owner (before any credits)
 
 1. **Stones**: what are they? Clear, colourless zircons (like rings C and G), or something else? All three pieces the

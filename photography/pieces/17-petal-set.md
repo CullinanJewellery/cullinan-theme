@@ -165,6 +165,10 @@ Order: set by set as for sets 14 and 15: ring main first, the owner's OK, then t
 - A photo on the ear: yes. Set by set.
 - Still open: what the stones are; whether the pendant and ring have the same white inside ("just the inside" read as: every piece of the set, to confirm).
 
+## Owner, 2026-11-08 (second answer)
+
+- All stones are zircons. **Only the earrings have the white (rhodium) inside**; the ring and the pendant are all yellow gold.
+
 ## Questions for the owner (before any credits)
 
 1. **Stones:** what are they? They look like clear colourless round brilliant zircons in all three pieces (ring
