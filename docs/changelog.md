@@ -8,6 +8,9 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-08 — CAD: heart bands that swell at the front **(owner)**
+- `cad/heart-swell/`: hers 3.5 to 4.6 mm, his 4.5 to 5.8 mm, stones 1.3 / 1.6 mm, six beads (owner asked for six and bigger stones). The V-shaped edge running into the heart from the Pinterest picture was deliberately not modelled: it is what identifies that ring. Not printed yet.
+
 ## 2026-11-08 — CAD: pair of bands with a three-stone heart **(owner)**
 - `cad/heart-bands/`: hers size 54 / 3.5 mm, his size 62 / 4.5 mm, 14K yellow, 1.6 mm thick; own measurements for a common motif seen on a Pinterest pin (no photo, name or text of the other seller to be used). Defaults chosen because the owner did not give sizes. Not printed yet.
 
