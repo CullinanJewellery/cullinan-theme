@@ -8,6 +8,11 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-08 — free 3D modelling set-up and a test ring **(owner)**
+- Owner wants jewellery models from free software only. Installed Python 3.12, Blender 4.5 LTS, FreeCAD 1.1; `cad/.venv` has CadQuery, trimesh, pymeshfix (not in git, nor `cad/*/out`).
+- `cad/test-ring/`: `build.py` (parametric ring, STL + STEP), `render.py` (Blender preview), `meshcheck.py`. Size 54, 14K yellow, Elegoo Saturn 4 Ultra 16K with BlueCast X-Wax. True size, no shrinkage allowance yet: measure the first print and casting. Not printed yet.
+- Nothing on the site changed. Way back: delete `cad/`.
+
 ## 2026-11-05 — sets: „От същия комплект“ row on the product page **(owner)**
 - Owner chose option B: each piece of a set (earrings, pendant, ring) is its own product, bought on its own; the set links them. No set price or discount for now. "The deliver can be free" for sets: an idea, not configured (it is a shipping setting: ask first).
 - New `sections/cj-set.liquid`, added to `templates/product.json` under the buy box (before „Може да харесате“). It reads the product metafield `custom.komplekt` (a collection with the set's pieces) and shows the other pieces in May like's row design, each with its price, opening in the metal chosen on the page when the piece has it; link „Вижте целия комплект“ to the set collection. Hidden when a product has no set, so nothing shows until the owner enters sets.
