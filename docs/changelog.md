@@ -8,6 +8,9 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-08 — CAD: V-shaped heart bands **(owner)**
+- `cad/heart-v/`: stones 1.5 / 1.75 mm (owner). The whole band bends into a soft V at the front, both edges together; no cut in an edge and none running into the heart, at least 0.4 mm of polished band between each edge and the heart. Hers 3.5 to 5.2 mm, his 4.5 to 6.0 mm (wider so the bigger heart fits). STL only. Not printed yet.
+
 ## 2026-11-08 — CAD: print mesh fixed (wedge in the heart)
 - Owner spotted a wedge inside the heart. MeshFix had closed a tessellation gap with a sloped patch; watertight and volume checks passed. `cad/meshtools.py` now makes the print mesh by Manifold booleans and compares the top with its mirror image. Both heart pairs rebuilt; the test ring passes the new check.
 
