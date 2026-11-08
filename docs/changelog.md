@@ -8,6 +8,9 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-08 — CAD: stone holes as in the owner's own file **(owner)**
+- Measured the owner's `newRing4.stl`: a straight hole 0.49 mm wide, about half the seat (about 0.96 mm), meeting the seat cone near the stone's tip. `cad/heart-top-v/` now does the same: hole 50% of the stone (0.75 / 0.88 mm), no funnel. Not printed yet.
+
 ## 2026-11-08 — CAD: V in the top edge only, smooth band **(owner)**
 - `cad/heart-top-v/`: owner saw flat patches on the outside and did not like the V on the bottom edge. The band is now generated as a fine grid (95% of bends under 1.7 degrees); bottom edge straight, soft V in the top edge only. Hers 5.0 mm, his 5.8 mm all round, so the heart fits under the V. The V stops above the heart (0.43 / 0.50 mm of polished band between them); the Pinterest ring's V running into the heart was deliberately not modelled. Not printed yet.
 

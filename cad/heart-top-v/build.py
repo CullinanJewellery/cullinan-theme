@@ -3,7 +3,7 @@
 Specification (mm):
 - Hers: size 54, 5.0 wide. His: size 62, 5.8 wide. 1.6 thick at the centre, low domed top, comfort-fit inside.
 - Bottom edge straight. Top edge dips in a soft V (0.5 / 0.55 deep) that stops above the heart: a polished strip stays between.
-- Three round stones, 1.5 (hers) / 1.75 (his); six beads; open back under each stone.
+- Three round stones, 1.5 (hers) / 1.75 (his); six beads; a straight hole half the stone's diameter under each stone.
 - The band is generated directly as a fine grid (no flat patches). True size: no shrinkage allowance yet. STL only.
 """
 import math, sys
@@ -77,8 +77,9 @@ def make(name, size, W, stone, d, t=1.6):
               .threePointArc(ml, tl).close().extrude(-3).val())
     centres = [(c_, zL), (-c_, zL), (0, zB)]
     Rs = stone / 2 + 0.02; pav = stone * 0.43; girdle = floor + 0.02
-    rh = 0.35 * stone; db = (Rs - rh) * math.tan(math.radians(41)); rb = (sp - 0.45) / 2
-    seats = [(cq.Workplane("XY").polyline([(0, r - 2), (rb, r - 2), (rb, r + 0.1), (rh, r + 0.7), (rh, girdle - db), (Rs, girdle), (Rs, girdle + 1), (0, girdle + 1)]).close()
+    # as in the owner's newRing4.stl: straight hole about half the stone, starting where the stone's cone ends
+    rh = 0.25 * stone; db = (Rs - rh) * pav / (stone / 2); rb = rh
+    seats = [(cq.Workplane("XY").polyline([(0, r - 2), (rh, r - 2), (rh, girdle - db), (Rs, girdle), (Rs, girdle + 1), (0, girdle + 1)]).close()
               .revolve(360, (0, 0, 0), (0, 1, 0)).translate((x, 0, z))).val() for x, z in centres]
     br = 0.28 * u; by = floor + 0.12 * u
     midz = (zL + zB) / 2; out = 0.424 * u
@@ -101,7 +102,7 @@ def make(name, size, W, stone, d, t=1.6):
         g = hull.copy(); g.apply_translation((x, girdle, z + zs)); st.append(g)
     trimesh.util.concatenate(st).export(OUT / f"{name}-stones.stl")
     print(f"{name}: watertight {m.is_watertight} bodies {m.body_count} faces {len(m.faces)} volume {m.volume:.1f} weight {m.volume/1000*DENSITY_14K:.2f} g bbox {np.round(m.bounds[1]-m.bounds[0],2)} "
-          f"heart {2*(c_+R):.2f} x {h:.2f}; strip V to heart {(W-d-h)/2:.2f}; beads {2*br:.2f}; web between seats {sp-2*Rs:.2f}; opening {2*rb:.2f}; hole {2*rh:.2f}; culet to finger {girdle-pav-r:.2f}")
+          f"heart {2*(c_+R):.2f} x {h:.2f}; strip V to heart {(W-d-h)/2:.2f}; beads {2*br:.2f}; web between seats {sp-2*Rs:.2f}; hole {2*rh:.2f}, starts {girdle-db-r:.2f} above the finger; culet to finger {girdle-pav-r:.2f}")
     assert m.is_watertight and m.body_count == 1
 
 make("hers-54", 54, 5.0, 1.5, 0.5)
