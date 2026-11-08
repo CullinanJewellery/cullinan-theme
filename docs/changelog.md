@@ -8,6 +8,9 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-08 — CAD: print mesh fixed (wedge in the heart)
+- Owner spotted a wedge inside the heart. MeshFix had closed a tessellation gap with a sloped patch; watertight and volume checks passed. `cad/meshtools.py` now makes the print mesh by Manifold booleans and compares the top with its mirror image. Both heart pairs rebuilt; the test ring passes the new check.
+
 ## 2026-11-08 — CAD: heart bands that swell at the front **(owner)**
 - `cad/heart-swell/`: hers 3.5 to 4.6 mm, his 4.5 to 5.8 mm, stones 1.3 / 1.6 mm, six beads (owner asked for six and bigger stones). The V-shaped edge running into the heart from the Pinterest picture was deliberately not modelled: it is what identifies that ring. Not printed yet.
 

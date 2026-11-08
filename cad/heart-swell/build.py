@@ -9,7 +9,10 @@ Output per ring: out/<name>.stl + .step (gold only), out/<name>-stones.stl (prev
 """
 import math
 from pathlib import Path
-import numpy as np, cadquery as cq, trimesh, pymeshfix
+import sys
+import numpy as np, cadquery as cq, trimesh
+sys.path.insert(0, str(Path(__file__).parent.parent))
+import meshtools as mt
 
 OUT = Path(__file__).parent / "out"; OUT.mkdir(exist_ok=True)
 DENSITY_14K = 13.1
@@ -86,13 +89,14 @@ def make(name, size, w0, w, stone, t=1.6, sag=0.25, inner_sag=0.22):
     print(" after beads", ring.isValid(), round(ring.Volume(),1), len(ring.Solids()))
     # files
     cq.exporters.export(cq.Workplane(obj=ring), str(OUT / f"{name}.step"))
-    v, f = ring.tessellate(0.005, 0.1)
-    m = trimesh.Trimesh(np.array([p.toTuple() for p in v]), np.array(f), process=False); m.merge_vertices(digits_vertex=6)
-    raw_vol, raw_ok = abs(m.volume), m.is_watertight
-    print(" tess", len(m.vertices), len(m.faces), m.is_watertight)
-    fix = pymeshfix.MeshFix(np.asarray(m.vertices), np.asarray(m.faces)); fix.repair()
-    m = trimesh.Trimesh(fix.points, fix.faces, process=True); m.fix_normals(); m.export(OUT / f"{name}.stl")
+    # print mesh: same cuts and beads, done on closed meshes (meshtools.py)
+    M = mt.to_manifold(band) - mt.to_manifold(recess)
+    for x in seats: M = M - mt.to_manifold(x)
+    for x in beads: M = M + mt.to_manifold(x)
+    m = mt.to_trimesh(M); m.fix_normals(); m.export(OUT / f"{name}.stl")
     m = trimesh.load(OUT / f"{name}.stl")
+    raw_vol, raw_ok = m.volume, m.is_watertight
+    mt.mirror_check(m, name)
     # stones
     def rp(rad, y, n, off=0): return [(rad * math.cos(2 * math.pi * (i + off) / n), y, rad * math.sin(2 * math.pi * (i + off) / n)) for i in range(n)]
     s, cr = stone / 2, stone * 0.16
