@@ -1747,3 +1747,14 @@ motion); the header stays while one of its menus is open or a key has focus in i
 sticky header“ in crown.css); way back: delete the 2026-11-03 part of that block and `watchScroll`.
 Same day, owner's screenshot at 1920px: scrolling down, half the header stayed over the black bar (the header is
 layered above the bar on computers and moved only by its own height). It now moves by its height plus the bar's.
+
+## 2026-11-08: red set earrings and pendant; new colours on sets 13 and 14
+
+- Sets 13 (9 pendants) and 14 (pearl pendant and studs) moved to the standard yellow, rose and white with
+  `recolour-piece.cjs` (owner's go-ahead); old files in each piece's `чернови/преди цветовете 2026-11-08`. Worn photos not
+  touched. The pearl pendant's white 02 now has the same size as its yellow and rose (it was about 4% larger).
+- `recolour-piece.cjs`: `--stone` now protects pearls in yellow and rose too; `--pearl-reflect` for pearls that mirror the gold.
+- Red set: earrings (the pair) and pendant (01 stone facing the camera, 02 from the side) made and saved in every metal,
+  9 credits. New: `tile-shadow-even.cjs` (background one colour, whole shadow kept), `metals-from-yellow.cjs` (all metals of a
+  new piece). The neck and ear photos wait for the measurements from the owner.
+- The photos' claw tips are rounder and the stone brighter than the real piece; the owner saw this and approved them.

@@ -146,8 +146,8 @@ Full recipe with the exact Higgsfield prompts: `photography/README.md` „Produc
 - **Gold**: rich, warm, deeply polished yellow at 210, 169, 109 (since 2026-11-07, between ring A's and 2026-10-30's 212, 172, 104; ring A's polish is still the reference). One yellow for both 14K and 18K (owner, 2026-11-07: "they will be the same color"). **Rose gold** is 202, 152, 122 since 2026-11-07 (5% darker than ring A's; owner: "a little bit too bright"), before that matched
   ring A's rose. **White gold is a clean, neutral, bright white, no yellow, beige or champagne cast** (owner,
   2026-10-13: both rings' white looked yellowish; measured blue 13–20 below red). **White gold is the red ring's white since
-  2026-11-07** (owner: "we should have a color for the white gold too"): `photography/white-look-match.cjs` with the
-  red ring as reference (metal about 214, 210, 210; brightness 168/223/233 at 10/50/90%); silver is its copy. New
+  2026-11-07** (owner: "we should have a color for the white gold too"): made with `photography/metal-swap.cjs` from the look-matched yellow, then `photography/white-neutral.cjs` (`recolour-piece.cjs`; new pieces `metals-from-yellow.cjs`), matching the
+  red ring (metal about 214, 210, 210; brightness 168/223/233 at 10/50/90%); silver is its copy. New
   metals are made from the finished yellow photo of the same piece.
 - **Five photos per piece (owner, 2026-10-14)**: yellow gold 01 standing (three-quarter view), 02 lying flat seen
   from above at 45°, 03 worn on a hand on ivory linen; white gold and rose gold 01 standing only. Silver uses the
