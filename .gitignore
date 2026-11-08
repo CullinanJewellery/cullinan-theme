@@ -25,6 +25,7 @@ photography/*
 !photography/white-look-match.cjs
 !photography/recolour-piece.cjs
 !photography/white-neutral.cjs
+!photography/tile-shadow-even.cjs
 !photography/check-photo.cjs
 !photography/compare-sheet.cjs
 !photography/gold-match.cjs

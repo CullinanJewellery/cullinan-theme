@@ -154,6 +154,13 @@ none from the side or back. Clearest: e89010d8 (the lock and the leaf), 41282224
 
 White, rose and silver for every photo: free (`recolour-piece.cjs`). Check the Higgsfield balance before starting.
 
+## Owner's answers (2026-11-08)
+
+- Ring: **4 leaves with white rhodium, each with ONE stone held by TWO prongs** (small, hard to see even by eye).
+- Pendant: one leaf, one stone, two prongs. Earrings: **mirrored pair**, each one leaf and one stone, white rhodium.
+- A photo on the ear: yes. Set by set.
+- Still open: what the stones are.
+
 ## Questions for the owner (before any credits)
 
 1. **Stones**: what are they? Clear, colourless zircons (like rings C and G), or something else? The same in all

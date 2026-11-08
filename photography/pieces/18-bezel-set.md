@@ -130,6 +130,13 @@ behind: the butterfly). Clearest: dbc42e81 front, a3f4d449 and 2be49e9e construc
 
 White, rose and silver for every photo: free (`recolour-piece.cjs`). Check the Higgsfield balance before starting.
 
+## Owner's answers (2026-11-08)
+
+- The samples are white gold. Yellow and rose versions are plain yellow and rose, **no white parts**.
+- No more photos of the ring are needed ("you don't need").
+- A photo on the ear: yes. Set by set.
+- Still open: what the stones are.
+
 ## Questions for the owner (before any credits)
 
 1. **Stones**: what are they? Clear, colourless zircons (like rings C and G), or something else? All three pieces the

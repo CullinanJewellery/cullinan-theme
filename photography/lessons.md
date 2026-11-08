@@ -390,3 +390,14 @@ Each line: what went wrong, the rule now, where it came from. Newest last.
     not metal the backdrop's own tint, keeping its brightness; strongly coloured pixels (a stone's fire, a ruby) and
     `--stone` boxes (a pearl) are left alone. Part of `recolour-piece.cjs`. Ring 01 (ring A) is the only piece whose
     backdrop is not exactly 251, 251, 253 (252–253, one or two levels, not visible); ring 11's corner is its shadow.
+73. **A pearl needs protecting in the yellow and rose colour pass too (2026-11-07, pearl pendant).** `gold-look-match.cjs`
+    and `gold-deepen.cjs` map every warm pixel, so a pearl's lustre came out in yellow blotches and the white inherited
+    them. `recolour-piece.cjs --stone` now gives back the old pixels inside the box except clearly gold ones;
+    `--pearl-reflect` for pearls that mirror the gold (studs, pendant 01): reflections stay in yellow and rose, and in
+    white they take the pearl's own colour.
+74. **Background on a 4k render with a long shadow: `tile-shadow-even.cjs` (2026-11-08, red earrings and pendant).**
+    `bg-even.cjs` cut the shadow at a tile 5 levels lighter; `tile-even.cjs` divided the piece too and, in tiles mostly
+    covered by the piece, turned a stone magenta and left blue patches. The new script reads each tile's level from
+    its background only and never touches the piece. Tile lines in these renders: x 983, 1950, 2916, 3890; y 983, 1966,
+    2916, 3480 (check the contrast view: stretch 235–255). `check-photo.cjs` counts a red stone as metal: measure gold
+    alone (hue 25–70).

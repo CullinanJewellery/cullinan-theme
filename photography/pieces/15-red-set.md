@@ -174,6 +174,12 @@ Asked with file names (2026-11-07); answers to be written here.
 7. **Worn photos.** Pendant: the same neck as the pearl pendant, with a fine yellow gold chain? Earrings: there is
    no ear photo yet; may I make one (3 credits; colours of hair and skin my choice, said with the result)?
 
+## Owner's answers (2026-11-08)
+
+- Earrings: the main photo shows the pair; the two are the same. A photo on the ear: yes.
+- Pendant: **it has a small jump ring** between the bail and the setting (owner's zoomed picture of 3690a019). Replaces "jump ring 0" and the bracket in the description above.
+- Set by set, as before. Not answered, kept as proposed: clasp closed, two loops at the earring's joint, pendant main at the angle of aa3f2090.
+
 ## Status
 
 - 2026-11-05: ring main photo 08c1b423 (3 credits), design right at the first try; gold-match with a stone box,
@@ -185,3 +191,4 @@ Asked with file names (2026-11-07); answers to be written here.
   216, 212, 212 (the checker's "warm cast" is the red stone in its average). Ring main photos done in all metals.
 - 2026-11-07: owner wanted the ring a little bigger; chose 76% of the height. All four metals reframed (70% versions in
   `чернови/преди - 70 процента`). Rose PASS; white band 215, 211, 211.
+- 2026-11-08: yellow main photos: earrings 612ee965 (the pair), pendant 5190051c (angle of aa3f2090, with jump ring), 3 credits each; tile-shadow-even, gold-look-match, gold-deepen, frame c; gold 220,190,100; sent for the OK, not saved yet.
