@@ -171,3 +171,6 @@ White, rose and silver for every photo: free (`recolour-piece.cjs`). Check the H
 ## Status
 
 - 2026-11-07: all nine raw photos examined zoomed in; sheet written; questions above sent to the owner. Credits: 0.
+- 2026-11-08: yellow main photos of ring, pendant and studs made (9 credits) and approved by the owner; rose, white and
+  silver made free; all saved in the piece folders. The ring's stone is paler than the others (darkest facets 137);
+  the owner saw this and accepted it. Neck, ear and hand photos not made.

@@ -401,3 +401,7 @@ Each line: what went wrong, the rule now, where it came from. Newest last.
     its background only and never touches the piece. Tile lines in these renders: x 983, 1950, 2916, 3890; y 983, 1966,
     2916, 3480 (check the contrast view: stretch 235–255). `check-photo.cjs` counts a red stone as metal: measure gold
     alone (hue 25–70).
+75. **A stone's pale facets can turn peach in rose, even inside `--stone` boxes (2026-11-08, bezel pendant).** The
+    soft-rose step of `metals-from-yellow.cjs` reads cream facets (red − blue 6 to 45) as pale gold and does not look at
+    the boxes. After rose, copy the stone's pale pixels back from the finished yellow inside an ellipse just within the
+    stone (red − blue under 45 in yellow, full strength; fading out by 60), and check the rose zoomed in.
