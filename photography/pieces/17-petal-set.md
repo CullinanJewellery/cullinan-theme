@@ -199,3 +199,5 @@ Order: set by set as for sets 14 and 15: ring main first, the owner's OK, then t
 ## Status
 
 - 2026-11-07: raw photos examined, sheet written; waiting for the owner's answers. Credits used: 0.
+
+- 2026-11-08: owner: for the ring use only the raw photos where it stands up (ccdfcef3, dfe485fc), not the three lying on the card. Yellow main photos approved ("everything is good"); saved in all metals. Credits used: 9. Worn photos still to come.
