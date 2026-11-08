@@ -81,7 +81,7 @@ def make(name, size, w0, w, stone, d, t=1.6, sag=0.25, inner_sag=0.22):
     beads = [cq.Solid.makeSphere(br, V(x + 0.0013, by, z + 0.0017), V(0.31, 0.83, 0.47), -90, 90, 360) for x, z in pts]
     print(name, "band", band.isValid(), round(band.Volume(),1), "recess", recess.isValid(), type(recess).__name__, round(recess.Volume(),2))
     # print mesh: same cuts and beads, done on closed meshes (meshtools.py)
-    B = mt.to_manifold(band).refine_to_length(0.12).to_mesh()
+    B = mt.to_manifold(band, tol=0.002, ang=0.04).refine_to_length(0.25).to_mesh()  # fine enough that no facets print
     v3 = np.array(B.vert_properties)[:, :3].astype(float)
     th = np.arctan2(v3[:, 0], v3[:, 1])
     rho, A = 0.05, 0.45  # radians: rounding of the point, length of the V's arms
@@ -92,9 +92,9 @@ def make(name, size, w0, w, stone, d, t=1.6, sag=0.25, inner_sag=0.22):
     M = mf.Manifold(mf.Mesh(v3.astype(np.float32), np.asarray(B.tri_verts, dtype=np.uint32)))
     assert M.status() == mf.Error.NoError, M.status()
     sh = V(0, 0, -d)
-    M = M - mt.to_manifold(recess.translate(sh))
-    for x in seats: M = M - mt.to_manifold(x.translate(sh))
-    for x in beads: M = M + mt.to_manifold(x.translate(sh))
+    M = M - mt.to_manifold(recess.translate(sh), tol=0.002, ang=0.06)
+    for x in seats: M = M - mt.to_manifold(x.translate(sh), tol=0.002, ang=0.06)
+    for x in beads: M = M + mt.to_manifold(x.translate(sh), tol=0.002, ang=0.06)
     m = mt.to_trimesh(M); m.fix_normals(); m.export(OUT / f"{name}.stl")
     m = trimesh.load(OUT / f"{name}.stl")
     raw_vol, raw_ok = m.volume, m.is_watertight

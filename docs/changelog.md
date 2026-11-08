@@ -8,6 +8,9 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-08 — CAD: finer print mesh for the V bands **(owner)**
+- Owner compared with their own STL: mine had visible flat strips. `cad/heart-v/build.py` now exports at tol 0.002 / 0.04 rad: about 1.7M and 1.9M triangles, 95% of curved-surface bends under 3.2 degrees (9.4 before). A finer setting gave a 386 MB file and was dropped.
+
 ## 2026-11-08 — CAD: open backs under the stones **(owner)**
 - `cad/heart-v/`: each seat is now a 41-degree bearing, a hole 70% of the stone and a countersink widening towards the finger (hers 1.05 to 1.60 mm, his 1.22 to 1.94 mm; 0.45 mm of metal between openings). STL files hold the gold only. Not printed yet.
 
