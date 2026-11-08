@@ -8,6 +8,10 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-08 — CAD: new model from the owner's own AI image, V cut into a chevron heart **(owner)**
+- New folder `cad/heart-notch/`; the two earlier models were not changed. Hers 4.0 wide, five 0.8 stones, 4.07 g; his 5.0 wide, five 0.93 stones, 5.64 g, finished in 14K. Top edge cut in a sharp V, chevron pocket following it, 16° fold with a crease to the bottom edge, 9 prongs, countersunk holes, inner channel away from the heart. Print files ×1.0638 (6% estimate). Not printed yet.
+- Reverses my earlier refusal to run the V into the heart: the owner says this image is their own AI design. Way back: `cad/heart-top-v/` is the version that stops above the heart.
+
 ## 2026-11-08 — CAD: new model, slim bands with a bevelled heart of six stones **(owner)**
 - New folder `cad/heart-pave/`, a separate model; `cad/heart-top-v/` was not changed. Hers 4.8 wide, stones 0.8; his 5.6 wide, stones 0.93; 10 shared prongs; inner channel; 4.51 g / 5.87 g finished in 14K. Print files scaled ×1.0638 (6% estimate). Not printed yet.
 - The reference pin folds the band's top edge into the heart; this model keeps both edges straight, the same line as the earlier pins.
