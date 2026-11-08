@@ -26,6 +26,7 @@ photography/*
 !photography/recolour-piece.cjs
 !photography/white-neutral.cjs
 !photography/tile-shadow-even.cjs
+!photography/metals-from-yellow.cjs
 !photography/check-photo.cjs
 !photography/compare-sheet.cjs
 !photography/gold-match.cjs

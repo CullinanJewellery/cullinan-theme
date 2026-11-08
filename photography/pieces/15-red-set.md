@@ -192,3 +192,4 @@ Asked with file names (2026-11-07); answers to be written here.
 - 2026-11-07: owner wanted the ring a little bigger; chose 76% of the height. All four metals reframed (70% versions in
   `чернови/преди - 70 процента`). Rose PASS; white band 215, 211, 211.
 - 2026-11-08: yellow main photos: earrings 612ee965 (the pair), pendant 5190051c (angle of aa3f2090, with jump ring), 3 credits each; tile-shadow-even, gold-look-match, gold-deepen, frame c; gold 220,190,100; sent for the OK, not saved yet.
+- 2026-11-08: owner approved the earrings and both pendant photos ("we are going to use the two pictures"). Pendant 01 = the front view (ece69ec0), 02 отстрани = the side view (5190051c). All metals saved (metals-from-yellow.cjs --red-stone). Worn photos next.
