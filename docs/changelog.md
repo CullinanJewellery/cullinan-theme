@@ -8,6 +8,9 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-08 — CAD: open backs under the stones **(owner)**
+- `cad/heart-v/`: each seat is now a 41-degree bearing, a hole 70% of the stone and a countersink widening towards the finger (hers 1.05 to 1.60 mm, his 1.22 to 1.94 mm; 0.45 mm of metal between openings). STL files hold the gold only. Not printed yet.
+
 ## 2026-11-08 — CAD: V-shaped heart bands **(owner)**
 - `cad/heart-v/`: stones 1.5 / 1.75 mm (owner). The whole band bends into a soft V at the front, both edges together; no cut in an edge and none running into the heart, at least 0.4 mm of polished band between each edge and the heart. Hers 3.5 to 5.2 mm, his 4.5 to 6.0 mm (wider so the bigger heart fits). STL only. Not printed yet.
 

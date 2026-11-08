@@ -30,9 +30,12 @@ def imp(f, m, M, smooth):
 TILT = math.radians(50)
 objs = {}
 def ring(name, y, outer, d):
+    global HM
     M = Matrix.Translation((0, y, outer)) @ Matrix.Rotation(TILT, 4, 'Y') @ Matrix.Rotation(math.pi / 2, 4, 'X')
+    if name == 'hers-54': HM = M
     objs.setdefault(name, [imp(name + '.stl', G, M, True), imp(name + '-stones.stl', S, M, False)])
     return M @ Vector((0, outer, -d)), (M.to_3x3() @ Vector((0, 1, 0))).normalized()
+HM = None
 h_top, h_n = ring('hers-54', -3.9, 54 / (2 * math.pi) + 1.6, 1.2)
 ring('his-62', 4.3, 62 / (2 * math.pi) + 1.6, 1.35)
 bpy.ops.mesh.primitive_plane_add(size=800, location=(0, 0, 0)); bpy.context.object.data.materials.append(mat('f', floor))
@@ -55,3 +58,15 @@ z = (loc - h_top).normalized(); up = Vector((0, -1, 0)); x = up.cross(z).normali
 cam.matrix_world = Matrix((x, y, z)).transposed().to_4x4() @ Matrix.Identity(4)
 cam.location = loc
 sc.render.filepath = os.path.join(OUT, 'view-2-heart-close.png'); bpy.ops.render.render(write_still=True)
+
+# what is printed: no stones
+for o in bpy.data.objects:
+    if o.type == 'MESH' and o.data.materials and o.data.materials[0].name == 's': o.hide_render = True
+sc.render.filepath = os.path.join(OUT, 'view-3-printed-no-stones.png'); bpy.ops.render.render(write_still=True)
+# from inside the ring, looking at the holes
+r_ = 54 / (2 * math.pi); d_ = 1.2
+loc = HM @ Vector((0, 2.2, -d_)); tgt = HM @ Vector((0, r_, -d_))
+z = (loc - tgt).normalized(); up = (HM.to_3x3() @ Vector((0, 0, 1))).normalized(); x = up.cross(z).normalized(); y = z.cross(x)
+cam.matrix_world = Matrix((x, y, z)).transposed().to_4x4(); cam.location = loc; cd.lens = 32
+L = bpy.data.lights.new('in', 'POINT'); L.energy = 120; L.shadow_soft_size = 0.8; o = bpy.data.objects.new('in', L); sc.collection.objects.link(o); o.location = loc
+sc.render.filepath = os.path.join(OUT, 'view-4-inside-holes.png'); bpy.ops.render.render(write_still=True)

@@ -4,7 +4,7 @@ Specification (mm):
 - Hers: size 54, 3.5 wide at the back, 5.2 at the heart. His: size 62, 4.5 and 6.0. 1.6 thick at the centre.
 - The whole band bends into a soft V at the front: both edges move together, so the V is a shape of the band and no
   cut is made in an edge. A polished strip of at least 0.4 stays between each edge and the heart.
-- Three round stones, 1.5 (hers) / 1.75 (his); six beads, three per stone.
+- Three round stones, 1.5 (hers) / 1.75 (his); six beads, three per stone. Open back under each stone: hole 70% of the stone, widening towards the finger.
 - True size: no shrinkage allowance yet. STL only: the V is applied to the mesh, so there is no STEP file.
 """
 import math
@@ -66,9 +66,12 @@ def make(name, size, w0, w, stone, d, t=1.6, sag=0.25, inner_sag=0.22):
     # note: Workplane("XZ") local y is world Z
     centres = [(c, zL), (-c, zL), (0, zB)]
     Rs = stone / 2 + 0.02; pav = stone * 0.43; girdle = floor + 0.02
+    # open back: a 41-degree bearing for the stone, a hole 70% of its diameter, then a countersink widening towards the finger
+    rh = 0.35 * stone; db = (Rs - rh) * math.tan(math.radians(41)); rb = (sp - 0.45) / 2
+    print(name, f"hole {2*rh:.2f}, opening inside {2*rb:.2f}, metal between openings {sp-2*rb:.2f}, ledge {Rs-rh:.2f}")
     seats = []
     for x, z in centres:
-        seats.append((cq.Workplane("XY").polyline([(0, r - 2), (0.35 * k, r - 2), (0.35 * k, girdle - pav), (Rs, girdle), (Rs, girdle + 1), (0, girdle + 1)]).close()
+        seats.append((cq.Workplane("XY").polyline([(0, r - 2), (rb, r - 2), (rb, r + 0.1), (rh, r + 0.7), (rh, girdle - db), (Rs, girdle), (Rs, girdle + 1), (0, girdle + 1)]).close()
                       .revolve(360, (0, 0, 0), (0, 1, 0)).translate((x, 0, z))).val())
     # beads
     br = 0.25 * k; by = floor + 0.12 * k
