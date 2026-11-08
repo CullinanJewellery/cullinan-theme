@@ -8,6 +8,10 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-08 — CAD: new model, slim bands with a bevelled heart of six stones **(owner)**
+- New folder `cad/heart-pave/`, a separate model; `cad/heart-top-v/` was not changed. Hers 4.8 wide, stones 0.8; his 5.6 wide, stones 0.93; 10 shared prongs; inner channel; 4.51 g / 5.87 g finished in 14K. Print files scaled ×1.0638 (6% estimate). Not printed yet.
+- The reference pin folds the band's top edge into the heart; this model keeps both edges straight, the same line as the earlier pins.
+
 ## 2026-11-08 — CAD: lighter rings, built as masters for a rubber mould **(owner)**
 - `cad/heart-top-v/`: open channel inside the band, wall 1.0, rails 0.8, solid under the heart and at the bottom; inner face flat across the middle so the size holds. Finished weight in 14K: hers 4.77 g (was 5.48), his 6.21 g (was 7.22).
 - Files are now `*-final-size.stl` (true size, for checking) and `*-PRINT.stl` (scaled ×1.0638 for 6% shrinkage through print, master, rubber, wax and final casting). 6% is an estimate from published figures until the atelier measures its own chain; `SHRINK` in `build.py`. Not printed yet. Way back: set `WALL` to the band thickness and `SHRINK` to 0.
