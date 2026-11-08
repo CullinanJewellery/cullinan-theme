@@ -56,6 +56,40 @@ Other settings:
 From the owner's own file (`newRing4.stl`): a straight hole about half the stone's diameter, starting where the stone's
 cone ends. Not a wide funnel. Check it against "depth at most twice the diameter".
 
+## Models that become a master for a rubber mould
+
+Our chain (owner, 2026-11-08): print in X-Wax → burnout and cast → workers finish the metal master → rubber mould →
+wax injector → cast the production pieces. The dimensions must survive all of it.
+
+**Shrinkage.** It happens at each step and is compensated once, in the first model; a metal master then shrinks the same
+as any other master. Design every dimension at the finished size, then scale the whole print file up, seats included.
+
+| Published figure (linear) | Source |
+|---|---|
+| 6–12% or more, master to reproduction | Stuller |
+| about 5–6% with vulcanised moulds; master half a size larger | wax-carving guides |
+| wax about 2.5%, metal about 1%, modern rubbers about 0 (about 3.5% in all) | Artistry of Gold, via search only |
+| rubber alone 0.1–2.3%, depending on the type | Castaldo product listings |
+| X-Wax itself: no published figure found | |
+
+We start from **6%** (`SHRINK` in `build.py`), which is an estimate. Sources agree that only your own process gives the real number: measure a printed
+piece, its casting, the master, a wax and a final casting, then replace the value. On a ring 2% is about one size.
+
+**Polishing** also takes metal, unevenly: most on outer edges and interior corners. Stuller's standards allow up to 0.2 mm.
+
+**Making a piece lighter, in a form that can be moulded:**
+- Hollow from the inside or back, as an open shape. A closed hollow needs soluble wax cores and is rarely worth it.
+- No undercuts: every part of the hollow must be visible from the direction the rubber is pulled.
+- Even walls. Thickness changes must be gradual, never abrupt: sudden thick-to-thin causes shrinkage porosity.
+- Structural walls at least 0.8 mm after finishing, so 1.0 mm in the model. Standard injection wax struggled to fill a
+  0.98 mm shank in one published case, so long runs below about 1 mm need a test first.
+- Leave continuous thicker paths (rails) so wax and metal can reach the heavy part.
+- Leave solid metal where the sprue goes and where a ring is cut for resizing (my own judgement, usual practice).
+- If the channel removes the part that touches the finger, make what remains touch at the same radius, or the size changes.
+
+**Details the rubber must reproduce:** a thin deep hole makes a thin rubber rod that the wax pushes aside (0.6 mm wide
+by 4.5 mm deep was a failure), so keep depth at most twice the width. Workers cut air vents from every high point, such as prong tips.
+
 ## How we build, so the mesh is clean
 
 - CadQuery for shapes, Manifold for booleans. Do not rely on automatic mesh repair (MeshFix filled a gap with a wedge).
@@ -76,5 +110,16 @@ cone ends. Not a wide funnel. Check it against "depth at most twice the diameter
 - Cooksongold, 3D Precious Metal Printing Design Guidelines (claws 0.5, structural 0.8):
   https://www.cooksongold.com/downloads/files/Cooksongold%203D%20Precious%20Metal%20Printing%20Design%20Guidelines.pdf
 - Materialise gold design guide (features at least 0.35 wide, 0.4 tall), seen through search only: the page no longer opens.
-- Ganoksin on seats and setters opening cast holes:
+- Ganoksin on seats, setters opening cast holes, hollowing, gradual tapers and rubber rods (Kate Wolf):
   https://www.ganoksin.com/article/revising-milled-cadcam-models-for-manufacturing
+- Stuller, Creating Master Models, Design & Shrinkage:
+  https://www.stuller.com/benchjeweler/resources/bencharticles/view/creating-master-models/
+- Even hollowed walls on a master for a rubber mould: https://www.ganoksin.com/article/making-950-palladium-signet-ring/
+- Thin shanks, injection filling, uniform sections: https://www.ganoksin.com/article/overcoming-lightweight-casting-challenges/
+- Cutting the rubber, air vents: https://www.ganoksin.com/article/cutting-rubber-mold/
+- Porosity from abrupt section changes: https://www.romanoff.com/blog/porosity-the-facts
+- Castaldo Rapido datasheet: https://www.cousinsuk.com/pdf/products/9331_castaldo-rapido-datasheet-2021-secure.pdf
+- Forum and guide figures for 5–6%: https://orchid.ganoksin.com/t/shrinkage-in-casting/12500,
+  https://art925.wordpress.com/2023/05/19/basic-wax-carving-for-rings-lost-wax-casting/
+- Artistry of Gold, mould shrinkage (search summary only; the site would not open):
+  https://www.artistryofgold.com/AOGmoldShrinkage.php

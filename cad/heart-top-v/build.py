@@ -5,7 +5,9 @@ Specification (mm):
 - Bottom edge straight. Top edge dips in a soft V (0.5 / 0.55 deep) that stops above the heart: a polished strip stays between.
 - Three round stones, 1.5 (hers) / 1.75 (his); six real prongs (see ../JEWELLERY-CAD-BASICS.md): tapered posts, dome from table height,
   overlapping the girdle; a straight hole half the stone's diameter under each stone.
-- The band is generated directly as a fine grid (no flat patches). True size: no shrinkage allowance yet. STL only.
+- Lighter inside (rubber-mould master rules in ../JEWELLERY-CAD-BASICS.md): an open channel in the inner face, 1.0 wall, 0.8 rails at both edges,
+  solid under the heart and at the bottom (sprue, resizing). No undercut: the channel is a height field seen from the ring's axis.
+- The band is generated directly as a fine grid (no flat patches). All dimensions here are the FINISHED ring; the print file is scaled up by SHRINK.
 """
 import math, sys
 from pathlib import Path
@@ -14,6 +16,11 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 import meshtools as mt
 OUT = Path(__file__).parent / "out"; OUT.mkdir(exist_ok=True)
 DENSITY_14K = 13.1
+SHRINK = 0.06     # whole chain: print -> cast master -> rubber -> injected wax -> final casting. Replace with the atelier's measured value.
+WALL, RAIL, EDGE = 1.0, 0.8, 0.4   # channel: metal left under it, solid rail at each edge, width of the sloped side
+T1, T2, RAMP = 0.38, math.pi - 0.32, 0.22   # angle from the heart where the channel starts / ends, ramp length (radians)
+def S(x):
+    x = np.clip(x, 0, 1); return x * x * (3 - 2 * x)
 V = cq.Vector
 THETAS = 1440
 
@@ -22,11 +29,11 @@ def tang(px, pz, cx, cz, R, side):
     L = math.sqrt(D * D - R * R); t = a + side * b
     return (px + L * math.cos(t), pz + L * math.sin(t))
 
-def profile(r, top, W, sag=0.25, inner_sag=0.22, corner=0.18):
+def profile(r, top, W, sag=0.25, inner_sag=0.22, corner=0.18, flat=0.0):
     """Closed cross-section (radius, z), z from -W/2 to W/2, rounded corners."""
     def arc(h_edge, h_mid, n):
         z = np.linspace(-W / 2, W / 2, n); return h_edge + (h_mid - h_edge) * (1 - (z / (W / 2)) ** 2), z
-    ri, zi = arc(r + inner_sag, r, 130)
+    zi = np.linspace(-W / 2, W / 2, 130); ri = r + inner_sag * (np.maximum(np.abs(zi) - flat, 0) / (W / 2 - flat)) ** 2   # flat where the rails touch the finger, so the size does not change
     ro, zo = arc(top - sag, top, 170)
     A, B = np.array([r + inner_sag, -W / 2]), np.array([r + inner_sag, W / 2])
     C, D = np.array([top - sag, W / 2]), np.array([top - sag, -W / 2])
@@ -37,13 +44,15 @@ def profile(r, top, W, sag=0.25, inner_sag=0.22, corner=0.18):
     side_up = np.linspace(B + [corner, 0], C - [corner, 0], 14); side_dn = np.linspace(D - [corner, 0], A + [corner, 0], 14)
     pts = [inner, bez(inner[-1], B, side_up[0])[1:-1], side_up, bez(side_up[-1], C, outer[0])[1:-1], outer,
            bez(outer[-1], D, side_dn[0])[1:-1], side_dn, bez(side_dn[-1], A, inner[0])[1:-1]]
-    return np.vstack(pts)
+    return np.vstack(pts), len(inner)
 
 def make(name, size, W, stone, d, t=1.6):
     u = stone / 1.5
     r = size / (2 * math.pi); top = r + t
     # band grid
-    P = profile(r, top, W); nj = len(P)
+    Zc = W / 2 - RAIL
+    P, ni = profile(r, top, W, flat=Zc); nj = len(P); sag = 0.25
+    zin = P[:ni, 1]; hollow = (top - sag * (zin / (W / 2)) ** 2 - WALL - P[:ni, 0]) * S((Zc - np.abs(zin)) / EDGE)
     th = np.linspace(-math.pi, math.pi, THETAS, endpoint=False)
     rho, A = 0.04, 0.26
     s_ = (np.sqrt(th * th + rho * rho) - rho) / A
@@ -53,7 +62,9 @@ def make(name, size, W, stone, d, t=1.6):
     for i, a in enumerate(th):
         zt = W / 2 - d * f[i]
         z = -W / 2 + (P[:, 1] + W / 2) / W * (zt + W / 2)
-        verts[i * nj:(i + 1) * nj] = np.c_[P[:, 0] * np.sin(a), P[:, 0] * np.cos(a), z]
+        k = S((abs(a) - T1) / RAMP) * S((T2 - abs(a)) / RAMP)
+        rad = P[:, 0].copy(); rad[:ni] += k * hollow
+        verts[i * nj:(i + 1) * nj] = np.c_[rad * np.sin(a), rad * np.cos(a), z]
     tris = []
     i_ = np.arange(THETAS)[:, None]; j_ = np.arange(nj)[None, :]
     a = (i_ * nj + j_).ravel(); b = (((i_ + 1) % THETAS) * nj + j_).ravel()
@@ -103,8 +114,18 @@ def make(name, size, W, stone, d, t=1.6):
     rs = [pc] + [pr] * 5
     for (x, z), a_ in zip(pts, rs): M = M + mt.to_manifold(prong(x, z, a_, 1.0 if abs(z - pts[1][1]) < 1e-9 else 1.14).translate(sh), **q)   # the side prongs stay straight: the groove beside them must stay at least 0.3 wide
     for x in seats: M = M - mt.to_manifold(x.translate(sh), **q)
-    m = mt.to_trimesh(M); m.fix_normals(); m.export(OUT / f"{name}.stl")
-    m = trimesh.load(OUT / f"{name}.stl")
+    m = mt.to_trimesh(M); m.fix_normals(); m.export(OUT / f"{name}-final-size.stl")
+    m = trimesh.load(OUT / f"{name}-final-size.stl")
+    big = m.copy(); big.apply_scale(1 / (1 - SHRINK)); big.export(OUT / f"{name}-PRINT.stl")
+    # cross-section through the sides of the ring: real wall and rail, measured on the finished mesh
+    sec = m.section(plane_origin=(0, 0, 0), plane_normal=(0, 1, 0))
+    pts_ = np.vstack([e for e in sec.discrete if e[:, 0].mean() > 0])
+    zb = np.linspace(-Zc + EDGE, Zc - EDGE, 21); th_ = []
+    for z_ in zb:
+        q_ = pts_[np.abs(pts_[:, 2] - z_) < 0.06, 0]; th_.append(q_.max() - q_.min())
+    np.save(OUT / f"{name}-section.npy", pts_)
+    print(f"  channel: wall measured {min(th_):.3f}-{max(th_):.3f} under the channel (target {WALL}); rails {RAIL}; side slope width {EDGE}; depth {float(hollow.max()):.2f}; finger contact at r {r:.2f}; inner section min radius {pts_[:,0].min():.3f}")
+    print(f"  print file x{1/(1-SHRINK):.4f}: inner diameter {2*r/(1-SHRINK):.2f} (finished {2*r:.2f}), width {W/(1-SHRINK):.2f}, stone seat {stone/(1-SHRINK):.2f}")
     mt.mirror_check(m, name)
     def rp(rad, y, n, off=0): return [(rad * math.cos(2 * math.pi * (i + off) / n), y, rad * math.sin(2 * math.pi * (i + off) / n)) for i in range(n)]
     s, cr = stone / 2, stone * 0.16

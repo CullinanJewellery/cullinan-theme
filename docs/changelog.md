@@ -8,6 +8,11 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-08 — CAD: lighter rings, built as masters for a rubber mould **(owner)**
+- `cad/heart-top-v/`: open channel inside the band, wall 1.0, rails 0.8, solid under the heart and at the bottom; inner face flat across the middle so the size holds. Finished weight in 14K: hers 4.77 g (was 5.48), his 6.21 g (was 7.22).
+- Files are now `*-final-size.stl` (true size, for checking) and `*-PRINT.stl` (scaled ×1.0638 for 6% shrinkage through print, master, rubber, wax and final casting). 6% is an estimate from published figures until the atelier measures its own chain; `SHRINK` in `build.py`. Not printed yet. Way back: set `WALL` to the band thickness and `SHRINK` to 0.
+- `cad/JEWELLERY-CAD-BASICS.md`: new section on master models for rubber moulds.
+
 ## 2026-11-08 — CAD: real prongs, slightly bigger heart, basics guide **(owner)**
 - New `cad/JEWELLERY-CAD-BASICS.md`: minimums and prong rules from Stuller's CAD/CAM standards, RhinoArtisan and others; to be followed on every model.
 - `cad/heart-top-v/`: the six balls are now posts rooted 0.3 mm in the metal, low dome from table height, overlapping the girdle (seat cuts at most 23% of the prong). Prongs 0.64 (centre 0.70) hers, 0.75 (centre 0.82) his. Stones stand 0.12 higher, pavilion just resting on the seat. Heart 4.06 × 3.83 hers (was 3.80 × 3.64), 4.74 × 4.47 his (was 4.43 × 4.25). Band width unchanged. Not printed yet. Way back: `git log cad/heart-top-v/build.py`.

@@ -33,7 +33,7 @@ def ring(name, y, outer, d):
     global HM
     M = Matrix.Translation((0, y, outer)) @ Matrix.Rotation(TILT, 4, 'Y') @ Matrix.Rotation(math.pi / 2, 4, 'X')
     if name == 'hers-54': HM = M
-    objs.setdefault(name, [imp(name + '.stl', G, M, True), imp(name + '-stones.stl', S, M, False)])
+    objs.setdefault(name, [imp(name + '-final-size.stl', G, M, True), imp(name + '-stones.stl', S, M, False)])
     return M @ Vector((0, outer, -d)), (M.to_3x3() @ Vector((0, 1, 0))).normalized()
 HM = None
 h_top, h_n = ring('hers-54', -4.3, 54 / (2 * math.pi) + 1.6, 0.25)
