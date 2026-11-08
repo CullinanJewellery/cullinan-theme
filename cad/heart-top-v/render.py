@@ -58,11 +58,22 @@ z = (loc - h_top).normalized(); up = Vector((0, -1, 0)); x = up.cross(z).normali
 cam.matrix_world = Matrix((x, y, z)).transposed().to_4x4() @ Matrix.Identity(4)
 cam.location = loc
 sc.render.filepath = os.path.join(OUT, 'view-2-heart-close.png'); bpy.ops.render.render(write_still=True)
+def low(name):
+    T = (HM.to_3x3() @ Vector((1, 0, 0))).normalized()
+    loc = h_top + (h_n * 0.5 + T * 0.87).normalized() * 24
+    z = (loc - h_top).normalized(); x = Vector((0, -1, 0)).cross(z).normalized(); y = z.cross(x)
+    cam.matrix_world = Matrix((x, y, z)).transposed().to_4x4(); cam.location = loc
+    sc.render.filepath = os.path.join(OUT, name); bpy.ops.render.render(write_still=True)
+low('view-5-prongs-low-angle.png')
+loc = h_top + h_n * 24 + Vector((0, -2.5, 0))
+z = (loc - h_top).normalized(); up = Vector((0, -1, 0)); x = up.cross(z).normalized(); y = z.cross(x)
+cam.matrix_world = Matrix((x, y, z)).transposed().to_4x4(); cam.location = loc
 
 # what is printed: no stones
 for o in bpy.data.objects:
     if o.type == 'MESH' and o.data.materials and o.data.materials[0].name == 's': o.hide_render = True
 sc.render.filepath = os.path.join(OUT, 'view-3-printed-no-stones.png'); bpy.ops.render.render(write_still=True)
+low('view-6-prongs-low-angle-no-stones.png')
 # from inside the ring, looking at the holes
 r_ = 54 / (2 * math.pi); d_ = 0.25
 loc = HM @ Vector((0, 2.2, -d_)); tgt = HM @ Vector((0, r_, -d_))

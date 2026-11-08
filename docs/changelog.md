@@ -8,6 +8,10 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-08 — CAD: real prongs, slightly bigger heart, basics guide **(owner)**
+- New `cad/JEWELLERY-CAD-BASICS.md`: minimums and prong rules from Stuller's CAD/CAM standards, RhinoArtisan and others; to be followed on every model.
+- `cad/heart-top-v/`: the six balls are now posts rooted 0.3 mm in the metal, low dome from table height, overlapping the girdle (seat cuts at most 23% of the prong). Prongs 0.64 (centre 0.70) hers, 0.75 (centre 0.82) his. Stones stand 0.12 higher, pavilion just resting on the seat. Heart 4.06 × 3.83 hers (was 3.80 × 3.64), 4.74 × 4.47 his (was 4.43 × 4.25). Band width unchanged. Not printed yet. Way back: `git log cad/heart-top-v/build.py`.
+
 ## 2026-11-08 — CAD: stone holes as in the owner's own file **(owner)**
 - Measured the owner's `newRing4.stl`: a straight hole 0.49 mm wide, about half the seat (about 0.96 mm), meeting the seat cone near the stone's tip. `cad/heart-top-v/` now does the same: hole 50% of the stone (0.75 / 0.88 mm), no funnel. Not printed yet.
 

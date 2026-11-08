@@ -3,7 +3,8 @@
 Specification (mm):
 - Hers: size 54, 5.0 wide. His: size 62, 5.8 wide. 1.6 thick at the centre, low domed top, comfort-fit inside.
 - Bottom edge straight. Top edge dips in a soft V (0.5 / 0.55 deep) that stops above the heart: a polished strip stays between.
-- Three round stones, 1.5 (hers) / 1.75 (his); six beads; a straight hole half the stone's diameter under each stone.
+- Three round stones, 1.5 (hers) / 1.75 (his); six real prongs (see ../JEWELLERY-CAD-BASICS.md): tapered posts, dome from table height,
+  overlapping the girdle; a straight hole half the stone's diameter under each stone.
 - The band is generated directly as a fine grid (no flat patches). True size: no shrinkage allowance yet. STL only.
 """
 import math, sys
@@ -63,10 +64,10 @@ def make(name, size, W, stone, d, t=1.6):
     M = mf.Manifold(mf.Mesh(verts.astype(np.float32), F.astype(np.uint32)))
     assert M.status() == mf.Error.NoError, M.status()
     # heart layout (x, z about the band's centre at the front)
-    sp, c_, R = 1.7 * u, 0.85 * u, 1.05 * u
-    dzb = math.sqrt(sp * sp - c_ * c_); drop = dzb + 1.12 * u; h = R + drop
+    sp, c_, R = 1.7 * u, 0.85 * u, 1.18 * u
+    dzb = math.sqrt(sp * sp - c_ * c_); drop = dzb + 1.18 * u; h = R + drop
     zL = h / 2 - R; zB = zL - dzb; zP = zL - drop
-    zs = -d / 2
+    zs = -d / 2 + 0.02 * u   # a little up: the rim above the lobes is wider than at the point
     floor = top - 0.34
     tr = tang(0, zP, c_, zL, R, -1); tl = (-tr[0], tr[1])
     cusp = zL + math.sqrt(R * R - c_ * c_)
@@ -76,33 +77,60 @@ def make(name, size, W, stone, d, t=1.6):
     recess = (cq.Workplane('XZ', origin=(0, floor, 0)).moveTo(0, zP).lineTo(*tr).threePointArc(mr, (0, cusp))
               .threePointArc(ml, tl).close().extrude(-3).val())
     centres = [(c_, zL), (-c_, zL), (0, zB)]
-    Rs = stone / 2 + 0.02; pav = stone * 0.43; girdle = floor + 0.02
+    Rs = stone / 2 + 0.02; pav = stone * 0.43; girdle = floor + 0.12 * u   # stone stands on its prongs, pavilion barely resting on the seat
     # as in the owner's newRing4.stl: straight hole about half the stone, starting where the stone's cone ends
     rh = 0.25 * stone; db = (Rs - rh) * pav / (stone / 2); rb = rh
-    seats = [(cq.Workplane("XY").polyline([(0, r - 2), (rh, r - 2), (rh, girdle - db), (Rs, girdle), (Rs, girdle + 1), (0, girdle + 1)]).close()
+    crown = stone * 0.16; Rt = stone * 0.275
+    # the cutter is the stone itself (pavilion, girdle, crown), so it notches the prong only where the stone really is
+    seats = [(cq.Workplane("XY").polyline([(0, r - 2), (rh, r - 2), (rh, girdle - db), (Rs, girdle), (Rs, girdle + 0.05), (Rt + 0.02, girdle + crown + 0.02), (0, girdle + crown + 0.02)]).close()
               .revolve(360, (0, 0, 0), (0, 1, 0)).translate((x, 0, z))).val() for x, z in centres]
-    br = 0.28 * u; by = floor + 0.12 * u
-    midz = (zL + zB) / 2; out = 0.424 * u
-    around = lambda cx, deg, dd=0.80 * u: (cx + dd * math.cos(math.radians(deg)), zL + dd * math.sin(math.radians(deg)))
+    # prongs: post wider at the foot, dome starts at table height, rooted 0.3 into the metal
+    pd = 0.64 * u; pr = pd / 2; lap = 0.14 * u; dist = stone / 2 + pr - lap
+    pc = 0.70 * u / 2   # the centre prong serves three stones and sits furthest from them: a little thicker
+    table = girdle + crown
+    def prong(x, z, pr, flare=1.14):
+        hd, foot = 0.5 * pr, pr * flare; tip = table + hd; rd = (pr * pr + hd * hd) / (2 * hd); am_ = math.asin(pr / rd) / 2
+        return (cq.Workplane("XY").moveTo(0, floor - 0.3).lineTo(foot, floor - 0.3).lineTo(foot, floor).lineTo(pr, girdle).lineTo(pr, table)
+                .threePointArc((rd * math.sin(am_), tip - rd + rd * math.cos(am_)), (0, tip)).close()
+                .revolve(360, (0, 0, 0), (0, 1, 0)).translate((x, 0, z))).val()
+    tip = table + 0.5 * pr
+    midz = (zL + zB) / 2; out = math.sqrt(dist * dist - c_ * c_) - 0.01 * u
+    around = lambda cx, deg: (cx + dist * math.cos(math.radians(deg)), zL + dist * math.sin(math.radians(deg)))
     pts = [(0, (2 * zL + zB) / 3), (c_ / 2 + out * 0.866, midz - out * 0.5), (-c_ / 2 - out * 0.866, midz - out * 0.5),
-           around(c_, 55), around(-c_, 125), (0, zB - 0.82 * u)]
-    beads = [cq.Solid.makeSphere(br, V(x + 0.0013, by, z + 0.0017), V(0.31, 0.83, 0.47), -90, 90, 360) for x, z in pts]
+           around(c_, 55), around(-c_, 125), (0, zB - dist)]
     sh = V(0, 0, zs); q = dict(tol=0.001, ang=0.03)
     M = M - mt.to_manifold(recess.translate(sh), **q)
+    rs = [pc] + [pr] * 5
+    for (x, z), a_ in zip(pts, rs): M = M + mt.to_manifold(prong(x, z, a_, 1.0 if abs(z - pts[1][1]) < 1e-9 else 1.14).translate(sh), **q)   # the side prongs stay straight: the groove beside them must stay at least 0.3 wide
     for x in seats: M = M - mt.to_manifold(x.translate(sh), **q)
-    for x in beads: M = M + mt.to_manifold(x.translate(sh), **q)
     m = mt.to_trimesh(M); m.fix_normals(); m.export(OUT / f"{name}.stl")
     m = trimesh.load(OUT / f"{name}.stl")
     mt.mirror_check(m, name)
     def rp(rad, y, n, off=0): return [(rad * math.cos(2 * math.pi * (i + off) / n), y, rad * math.sin(2 * math.pi * (i + off) / n)) for i in range(n)]
     s, cr = stone / 2, stone * 0.16
     hull = trimesh.convex.convex_hull(np.array(rp(s * .55, cr, 8) + rp(s * .8, cr * .55, 8, .5) + rp(s, .03, 16, .25) + rp(s, 0, 16, .25) + rp(s * .55, -pav * .52, 8) + [(0, -pav, 0)]))
+    # rule checks (JEWELLERY-CAD-BASICS.md)
+    laps = [stone / 2 - min(math.hypot(x - cx, z - cz) - a_ for cx, cz in centres) for (x, z), a_ in zip(pts, rs)]
+    def seg(px, pz, ax, az, bx, bz):
+        vx, vz = bx - ax, bz - az; k = max(0, min(1, ((px - ax) * vx + (pz - az) * vz) / ((vx * vx + vz * vz) or 1))); return math.hypot(px - ax - k * vx, pz - az - k * vz)
+    ts = np.linspace(a0, a1, 400); arcs = [(c_ + R * math.cos(t), zL + R * math.sin(t)) for t in ts]
+    outline = [(0, zP), tr] + arcs + [(-x, z) for x, z in arcs[::-1]] + [tl, (0, zP)]
+    wall = [min(seg(x, z, *outline[i], *outline[i + 1]) for i in range(len(outline) - 1)) - a_ for (x, z), a_ in zip(pts, rs)]
+    def rim_top():
+        best = 9
+        for x, z in arcs:
+            s1 = (math.sqrt((x / top) ** 2 + rho * rho) - rho) / A
+            f1 = 1 - s1 if s1 < s0 else (v0 * (1 - (s1 - s0) / (2 * v0)) ** 2 if s1 < s0 + 2 * v0 else 0)
+            best = min(best, W / 2 - d * f1 - (z + zs))
+        return best
+    print(f"  prong {pd:.2f}, centre {2*pc:.2f}, foot +14%, over girdle {tip-girdle:.2f}, root 0.30; overlap of girdle {[round(l,3) for l in laps]} = {max(l/(2*a_)*100 for l,a_ in zip(laps,rs)):.0f}% of the prong at most; "
+          f"table {table-top:+.2f} from band top, prong tip {tip-top:+.2f}; prong edge to heart wall (negative = grown from the wall) {[round(w,3) for w in wall]}; rim above lobes {rim_top():.2f}, rim at the point {W/2+zP+zs:.2f}; girdle gap {sp-stone:.2f}")
     st = []
     for x, z in centres:
         g = hull.copy(); g.apply_translation((x, girdle, z + zs)); st.append(g)
     trimesh.util.concatenate(st).export(OUT / f"{name}-stones.stl")
     print(f"{name}: watertight {m.is_watertight} bodies {m.body_count} faces {len(m.faces)} volume {m.volume:.1f} weight {m.volume/1000*DENSITY_14K:.2f} g bbox {np.round(m.bounds[1]-m.bounds[0],2)} "
-          f"heart {2*(c_+R):.2f} x {h:.2f}; strip V to heart {(W-d-h)/2:.2f}; beads {2*br:.2f}; web between seats {sp-2*Rs:.2f}; hole {2*rh:.2f}, starts {girdle-db-r:.2f} above the finger; culet to finger {girdle-pav-r:.2f}")
+          f"heart {2*(c_+R):.2f} x {h:.2f}; web between seats at the floor {sp-2*(rh+(Rs-rh)*(db-(girdle-floor))/db):.2f}; hole {2*rh:.2f}, starts {girdle-db-r:.2f} above the finger; culet to finger {girdle-pav-r:.2f}")
     assert m.is_watertight and m.body_count == 1
 
 make("hers-54", 54, 5.0, 1.5, 0.5)
