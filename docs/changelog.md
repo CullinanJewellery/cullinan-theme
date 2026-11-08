@@ -8,6 +8,9 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-08 — CAD: pair of bands with a three-stone heart **(owner)**
+- `cad/heart-bands/`: hers size 54 / 3.5 mm, his size 62 / 4.5 mm, 14K yellow, 1.6 mm thick; own measurements for a common motif seen on a Pinterest pin (no photo, name or text of the other seller to be used). Defaults chosen because the owner did not give sizes. Not printed yet.
+
 ## 2026-11-08 — free 3D modelling set-up and a test ring **(owner)**
 - Owner wants jewellery models from free software only. Installed Python 3.12, Blender 4.5 LTS, FreeCAD 1.1; `cad/.venv` has CadQuery, trimesh, pymeshfix (not in git, nor `cad/*/out`).
 - `cad/test-ring/`: `build.py` (parametric ring, STL + STEP), `render.py` (Blender preview), `meshcheck.py`. Size 54, 14K yellow, Elegoo Saturn 4 Ultra 16K with BlueCast X-Wax. True size, no shrinkage allowance yet: measure the first print and casting. Not printed yet.
