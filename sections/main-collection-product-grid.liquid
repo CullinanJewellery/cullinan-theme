@@ -5,6 +5,21 @@
 {{ 'component-swatch.css' | asset_url | stylesheet_tag }}
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
 
+{%- comment -%}
+  Комплекти (2026-11-09, owner: "have the filters and be the same as the other pages"): on this collection each set
+  is one grid item (snippets/cj-set-card.liquid), found through its products' custom.komplekt, so filters and sorting
+  work as on any collection. Everything on one page, so that a set's pieces are never split across two pages. A
+  product with no set stays an ordinary card.
+{%- endcomment -%}
+{%- assign cj_sets_page = false -%}
+{%- assign cj_per_page = section.settings.products_per_page -%}
+{%- if collection.handle == 'комплекти' -%}
+  {%- assign cj_sets_page = true -%}
+  {%- assign cj_per_page = 250 -%}
+  {{ 'section-cj-sets.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'cj-set-card.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
 {% if section.settings.image_shape == 'blob' %}
   {{ 'mask-blobs.css' | asset_url | stylesheet_tag }}
 {%- endif -%}
@@ -44,7 +59,7 @@
   data-collection-id="{{ collection.id }}"
 >
   <div class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}">
-    {%- paginate collection.products by section.settings.products_per_page -%}
+    {%- paginate collection.products by cj_per_page -%}
       {%- comment -%}
         Cullinan, tablets and computers (2026-10-06; rebuilt 2026-10-07 to moonmagic.com's desktop
         filters, owner): one full-width bar ruled above and below. On the left the button that
@@ -279,13 +294,38 @@
                 id="product-grid"
                 data-id="{{ section.id }}"
                 class="
-                  grid product-grid grid--{{ section.settings.columns_mobile }}-col-tablet-down
+                  grid product-grid grid--{% if cj_sets_page %}1{% else %}{{ section.settings.columns_mobile }}{% endif %}-col-tablet-down
                   grid--{{ section.settings.columns_desktop }}-col-desktop
+                  {% if cj_sets_page %} cj-sets-grid{% endif %}
                   {% if section.settings.quick_add == 'bulk' %} collection-quick-add-bulk{% endif %}
                 "
               >
                 {% assign skip_card_product_styles = false %}
+                {%- assign cj_seen = ',' -%}
+                {%- if template.suffix == 'set-test' -%}
+                  <li class="grid__item">{%- render 'cj-set-card', set: collections['циркони'], label: 'Вижте комплекта' -%}</li>
+                {%- endif -%}
                 {%- for product in collection.products -%}
+                  {%- if cj_sets_page -%}
+                    {%- assign cj_set = product.metafields.custom.komplekt.value -%}
+                    {%- if cj_set != blank and cj_set.products_count > 1 -%}
+                      {%- assign cj_key = ',' | append: cj_set.id | append: ',' -%}
+                      {%- if cj_seen contains cj_key -%}
+                        {%- continue -%}
+                      {%- endif -%}
+                      {%- assign cj_seen = cj_seen | append: cj_set.id | append: ',' -%}
+                      <li
+                        class="grid__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                        {% if settings.animations_reveal_on_scroll %}
+                          data-cascade
+                          style="--animation-order: {{ forloop.index }};"
+                        {% endif %}
+                      >
+                        {%- render 'cj-set-card', set: cj_set, label: 'Вижте комплекта' -%}
+                      </li>
+                      {%- continue -%}
+                    {%- endif -%}
+                  {%- endif -%}
                   {% assign lazy_load = false %}
                   {%- if forloop.index > 2 -%}
                     {%- assign lazy_load = true -%}

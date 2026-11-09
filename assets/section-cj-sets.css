@@ -1,36 +1,12 @@
-/* The Комплекти page as sets (2026-11-09, owner). sections/cj-sets.liquid.
-   Same family as „От същия комплект“ in the buy box: a greige panel, white tiles, black text. */
-
-.cj-sets {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 3.2rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-@media screen and (min-width: 990px) {
-  .cj-sets {
-    grid-template-columns: repeat(2, minmax(0, 66rem));
-    justify-content: center;
-    gap: 4rem;
-  }
-
-  .cj-sets > li:only-child {
-    grid-column: 1 / -1;
-    justify-self: center;
-    width: min(66rem, 100%);
-  }
-}
-
-.cj-sets > li:empty {
-  display: none;
-}
+/* The Комплекти page (2026-11-09, owner). A set is one item of the page's normal grid, about the size of a product
+   card. snippets/cj-set-card.liquid, sections/main-collection-product-grid.liquid.
+   Same family as „От същия комплект“ in the buy box: a greige panel, white tiles, black text.
+   Hover: the tile turns our pink (#E6BAB9); the photo stays as it is, so the gold is never tinted. */
 
 .cj-set-card {
   display: block;
-  padding: 1.2rem;
+  height: 100%;
+  padding: 0.8rem;
   background-color: #f5f3ef;
   color: rgb(0 0 0);
 }
@@ -40,8 +16,8 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 0 1.6rem;
-  padding: 0.4rem 0.4rem 1.2rem;
+  gap: 0 1.2rem;
+  padding: 0 0.2rem 0.4rem;
 }
 
 .cj-set-card__titles {
@@ -50,7 +26,7 @@
 
 .cj-set-card__title {
   margin: 0;
-  font-size: 2.2rem;
+  font-size: 1.6rem;
   font-weight: 500;
   line-height: 1.2;
 }
@@ -63,13 +39,13 @@
 .cj-set-card__title a:hover {
   text-decoration: underline;
   text-decoration-thickness: 0.1rem;
-  text-underline-offset: 0.4rem;
+  text-underline-offset: 0.3rem;
 }
 
 .cj-set-card__current {
-  margin: 0.2rem 0 0;
-  font-size: 1.3rem;
-  line-height: 1.4;
+  margin: 0.1rem 0 0;
+  font-size: 1.2rem;
+  line-height: 1.3;
 }
 
 .cj-set-card__all {
@@ -77,7 +53,7 @@
   align-items: center;
   min-height: 4.4rem;
   color: rgb(0 0 0);
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   text-decoration: underline;
   text-decoration-thickness: 0.05rem;
   text-underline-offset: 0.3rem;
@@ -90,7 +66,7 @@
 .cj-set-card__stage {
   display: flex;
   align-items: flex-start;
-  gap: 0.4rem;
+  gap: 0.2rem;
 }
 
 .cj-set-card__layers {
@@ -101,7 +77,7 @@
 .cj-set-card__layer {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.8rem;
+  gap: 0.6rem;
 }
 
 .cj-set-card[data-picked] .cj-set-card__layer {
@@ -125,10 +101,11 @@
   display: flex;
   flex-direction: column;
   min-width: 0;
+  padding: 0.5rem;
   background-color: #fff;
   color: rgb(0 0 0);
   text-decoration: none;
-  transition: box-shadow 0.2s ease;
+  transition: background-color 0.2s ease;
 }
 
 .cj-set-card__tile--lead,
@@ -147,12 +124,9 @@
   background-color: #fcfbfc;
 }
 
-/* Computers: a wider top photo, so a whole set fits on one screen. Phones keep it square. */
-@media screen and (min-width: 750px) {
-  .cj-set-card__tile--lead .cj-set-card__photo,
-  .cj-set-card__tile:last-child:nth-child(2) .cj-set-card__photo {
-    aspect-ratio: 16 / 10;
-  }
+.cj-set-card__tile--lead .cj-set-card__photo,
+.cj-set-card__tile:last-child:nth-child(2) .cj-set-card__photo {
+  aspect-ratio: 16 / 10;
 }
 
 .cj-set-card__photo img {
@@ -167,38 +141,38 @@
   flex-wrap: wrap;
   align-items: baseline;
   justify-content: space-between;
-  gap: 0.1rem 1.2rem;
-  padding: 1rem 1.2rem 1.2rem;
+  gap: 0 0.8rem;
+  padding: 0.5rem 0.2rem 0.1rem;
 }
 
 .cj-set-card__name {
   min-width: 0;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   font-weight: 500;
   line-height: 1.25;
   overflow-wrap: anywhere;
 }
 
 .cj-set-card__price {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
 
 .cj-set-card__rail {
-  flex: 0 0 4.4rem;
+  flex: 0 0 3.2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 0.4rem;
+  padding-top: 0.2rem;
 }
 
 .cj-set-card__metal {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 4.4rem;
-  height: 4.8rem;
+  width: 3.2rem;
+  height: 3.6rem;
   padding: 0;
   border: 0;
   background: none;
@@ -207,19 +181,18 @@
 
 .cj-set-card__dot {
   display: block;
-  width: 2.4rem;
-  height: 2.4rem;
+  width: 1.8rem;
+  height: 1.8rem;
   border-radius: 50%;
   background: var(--set-dot, rgb(201 203 207)) center / cover no-repeat;
   box-shadow: inset 0 0 0 0.1rem rgba(0, 0, 0, 0.12);
-  transition: box-shadow 0.2s ease;
 }
 
 /* The chosen circle: the same halo as the circles on the product cards, on the panel's colour. */
 .cj-set-card__metal[aria-pressed='true'] .cj-set-card__dot {
   box-shadow:
-    0 0 0 0.3rem #f5f3ef,
-    0 0 0 0.4rem rgb(0 0 0);
+    0 0 0 0.4rem #f5f3ef,
+    0 0 0 0.5rem #c1c1c6;
 }
 
 .cj-set-card__metal:focus-visible {
@@ -236,17 +209,28 @@
 
 @media (hover: hover) {
   .cj-set-card__tile:hover {
-    box-shadow: inset 0 0 0 0.1rem rgb(0 0 0);
+    background-color: #e6bab9;
   }
 }
 
+/* Phones: one per row, with a thumb-sized column of circles. */
 @media screen and (max-width: 749px) {
-  .cj-set-card__title {
-    font-size: 2rem;
+  .cj-set-card__rail {
+    flex-basis: 4.4rem;
   }
 
-  .cj-set-card__caption {
-    padding: 0.8rem 1rem 1rem;
+  .cj-set-card__metal {
+    width: 4.4rem;
+    height: 4.4rem;
+  }
+
+  .cj-set-card__dot {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .cj-set-card__title {
+    font-size: 1.7rem;
   }
 
   .cj-set-card__name,
@@ -256,12 +240,11 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .cj-set-card__layer {
+  .cj-set-card[data-picked] .cj-set-card__layer {
     animation: none;
   }
 
-  .cj-set-card__tile,
-  .cj-set-card__dot {
+  .cj-set-card__tile {
     transition: none;
   }
 }
