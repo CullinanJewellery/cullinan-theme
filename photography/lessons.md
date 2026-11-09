@@ -405,3 +405,7 @@ Each line: what went wrong, the rule now, where it came from. Newest last.
     soft-rose step of `metals-from-yellow.cjs` reads cream facets (red − blue 6 to 45) as pale gold and does not look at
     the boxes. After rose, copy the stone's pale pixels back from the finished yellow inside an ellipse just within the
     stone (red − blue under 45 in yellow, full strength; fading out by 60), and check the rose zoomed in.
+76. **White gold looks like the white floor when a piece is cut out (2026-11-09, home tile).** `collection-compose.cjs`
+    made the white ring's band see-through and punched a dark reflection out of a rose band as a hole. White and rose
+    have the yellow photo's exact shape, so pass `--mask <yellow photo>` after each white or rose `--piece`, and look
+    at every placed ring zoomed in. Its pixel report above 0 also means another ring is covering this one: move them apart.
