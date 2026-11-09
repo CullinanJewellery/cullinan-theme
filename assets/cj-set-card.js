@@ -39,6 +39,7 @@ if (!customElements.get('cj-set-card')) {
         const button = this.buttons[index];
         if (button.getAttribute('aria-pressed') === 'true') return;
 
+        this.dataset.picked = 'true';
         this.buttons.forEach((other, otherIndex) => {
           other.setAttribute('aria-pressed', otherIndex === index ? 'true' : 'false');
         });
