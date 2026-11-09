@@ -4,8 +4,8 @@ Read this before modelling any piece, and check the finished model against it. T
 sources listed at the end, summarised in my own words. Each piece and each caster differs: if the atelier's casting or
 setting shows something else, the atelier's result wins and goes in this file.
 
-Our production: Elegoo Saturn 4 Ultra 16K (14 x 19 µm), BlueCast X-Wax, cast in 14K. Models are true size until we have
-measured shrinkage from a printed and cast piece.
+Our production: Elegoo Saturn 4 Ultra 16K (14 x 19 µm), BlueCast X-Wax, cast in 14K. Models are designed at finished size
+and the print file is scaled up for shrinkage (see "Models that become a master for a rubber mould").
 
 ## Parts of a round stone
 
