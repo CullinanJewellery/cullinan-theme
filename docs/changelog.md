@@ -8,6 +8,11 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-09 — sets: „От същия комплект“ moved into the buy box, new design **(owner)**
+- Owner: under „Попитайте за това бижу“, something like moonmagic's option rows, "make it cool". New `set_picker` block (`snippets/cj-set-picker.liquid`): greige panel, small-capitals label, „Вижте целия комплект“ at the right, one white row per other piece with a 66px photo, name, kind of piece, metal circle and name, price and arrow. The rows follow the metal chosen on the page (`assets/product-info.js`). No set total (no set price for now) and no add button (each piece needs its own metal or size).
+- Replaces the row section under the buy box (2026-11-05, in May like's design). Way back: remove `set_picker` from `templates/product.json` and restore the `set` section entry (see commit 959230d5); `sections/cj-set.liquid` is still in the theme.
+- Checked on the real preview at 375 and 1440 px: place in the buy box, photos, prices, links, no overflow, and the switch from yellow to white gold changing every row (photo, link, circle, metal name), with a temporary template, since removed. Not seen with real data: the kind of piece, because the products used have no Product type yet.
+
 ## 2026-11-09 — sets: first set connected in Shopify, row checked on the real preview **(owner)**
 - The owner made the `custom.komplekt` definition and a first test set of three products. „От същия комплект“ shows the other two pieces on each of the three, at 375 and 1440 px, no overflow, link to the set collection correct. Not tested: keeping the chosen metal, because these test products have no metal options. No theme code changed.
 

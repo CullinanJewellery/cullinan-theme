@@ -208,11 +208,13 @@ collection), **social band** („Още от нашите бижута“ / „�
   online withdrawal function. Shopify's contact form with subject „Отказ от договора“ (name, email, order number,
   phone, dates, pieces, IBAN); the owner confirms receipt by email. Uses `section-custom-request.css`. Live once the
   owner creates a page with this template, after the return policy is published.
-- **От същия комплект** (`sections/cj-set.liquid`, in `templates/product.json` after `main`, 2026-11-05): the other
-  pieces of the product's set, from the product metafield `custom.komplekt` (collection reference; definition made
-  in admin). Cards reuse `section-recently-viewed.css` / `<recently-viewed data-static>`; each opens the variant with
-  the same metal value (option named метал/материал/metal/material) and its photo and price. `fallback_collection`
-  is for testing only and stays empty on main.
+- **От същия комплект** (`set_picker` block of `main-product`, under `phone_order`; `snippets/cj-set-picker.liquid`,
+  crown.css at the end, 2026-11-09): the other pieces of the product's set, from the product metafield
+  `custom.komplekt` (collection reference; definition made in admin). One white row per piece on a greige panel; each
+  opens the variant with the same metal value (option named метал/материал/metal/material) and shows its photo, metal
+  and price. `assets/product-info.js` swaps `CjSet-<section id>` on a variant change, so the rows follow the chosen
+  metal. Hidden in the quick-add panel. `fallback_collection` is for testing only and stays empty on main.
+  `sections/cj-set.liquid` (the row of 2026-11-05) is no longer in any template; kept for the way back.
 - **Размери на пръстени** (`templates/page.size-guide.json`, `sections/cj-size-guide.liquid`, 2026-11-03): the
   product popup's table (EU 48–64) and instructions as a page; its words are its own settings, defaults copied
   from the popup. Change both if the wording changes.
