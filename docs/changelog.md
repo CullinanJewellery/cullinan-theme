@@ -8,6 +8,9 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-09 — set cards: metal circles in the head, „Вижте комплекта“ removed **(owner)**
+- Owner: remove the link and put the colours in its place. The circles left the column at the right of the photos and sit in a row at the right of the set's name; the photos gain the column's width. The set's name stays the link to the whole set. Way back: revert this commit.
+
 ## 2026-11-09 — sets: the photo follows the metal on products with a Color option **(owner)**
 - Owner added colours to the test set and the photos did not change. Those products have a Color option as well as the material (nine variants), with the photos on Color; the set code took the first variant of the material, always yellow Color. `cj-set-tile.liquid` and `cj-set-picker.liquid` now use `product-twin-option` / `product-twin-match` as the product page does. Checked on the real preview with a real pointer on the rose circle and by changing the metal on the product page: photos and links change on all pieces.
 

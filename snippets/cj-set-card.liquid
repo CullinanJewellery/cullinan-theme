@@ -1,6 +1,6 @@
 {%- comment -%}
-  A set on the Комплекти page (2026-11-09, owner: "the ring product above, the earrings and the pendant, the colors to
-  the right side, the colors of the products in the set will change just from there").
+  A set on the Комплекти page (2026-11-09, owner: "the ring product above, the earrings and the pendant, the colors of
+  the products in the set will change just from there"; the circles sit in the head, right of the name).
 
   Up to three pieces: the ring on top (Product type or title says „пръстен“; otherwise the set's first piece), the next
   two under it. One „layer“ of tiles per metal, only the first visible; assets/cj-set-card.js switches layers from the
@@ -9,10 +9,9 @@
 
   Accepts:
   - set: {Object} the set's collection
-  - label: {String} the link to the whole set
 
   Usage:
-  {% render 'cj-set-card', set: set, label: 'Вижте комплекта' %}
+  {% render 'cj-set-card', set: set %}
 {%- endcomment -%}
 {%- if set.products_count > 1 -%}
   {%- liquid
@@ -55,28 +54,6 @@
           <p class="cj-set-card__current" aria-live="polite" data-current>{{ metal_list.first | escape }}</p>
         {%- endif -%}
       </div>
-      <a class="cj-set-card__all" href="{{ set.url }}">{{ label | escape }}</a>
-    </div>
-    <div class="cj-set-card__stage">
-      <div class="cj-set-card__layers">
-        {%- for layer in layers -%}
-          {%- assign layer_metal = '' -%}
-          {%- if metal_list.size > 0 -%}
-            {%- assign layer_metal = layer -%}
-          {%- endif -%}
-          <div class="cj-set-card__layer" {% unless forloop.first %}hidden{% endunless %}>
-            {%- render 'cj-set-tile', p: lead, metal: layer_metal, lead: true -%}
-            {%- assign shown = 0 -%}
-            {%- for p in set.products limit: 12 -%}
-              {%- if p.id == lead.id or shown >= 2 -%}
-                {%- continue -%}
-              {%- endif -%}
-              {%- assign shown = shown | plus: 1 -%}
-              {%- render 'cj-set-tile', p: p, metal: layer_metal, lead: false -%}
-            {%- endfor -%}
-          </div>
-        {%- endfor -%}
-      </div>
       {%- if metal_list.size > 1 -%}
         <div class="cj-set-card__rail" role="group" aria-label="Метал">
           {%- for m in metal_list -%}
@@ -94,6 +71,25 @@
           {%- endfor -%}
         </div>
       {%- endif -%}
+    </div>
+    <div class="cj-set-card__layers">
+      {%- for layer in layers -%}
+        {%- assign layer_metal = '' -%}
+        {%- if metal_list.size > 0 -%}
+          {%- assign layer_metal = layer -%}
+        {%- endif -%}
+        <div class="cj-set-card__layer" {% unless forloop.first %}hidden{% endunless %}>
+          {%- render 'cj-set-tile', p: lead, metal: layer_metal, lead: true -%}
+          {%- assign shown = 0 -%}
+          {%- for p in set.products limit: 12 -%}
+            {%- if p.id == lead.id or shown >= 2 -%}
+              {%- continue -%}
+            {%- endif -%}
+            {%- assign shown = shown | plus: 1 -%}
+            {%- render 'cj-set-tile', p: p, metal: layer_metal, lead: false -%}
+          {%- endfor -%}
+        </div>
+      {%- endfor -%}
     </div>
   </cj-set-card>
 {%- endif -%}

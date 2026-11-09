@@ -13,7 +13,6 @@
 
 .cj-set-card__head {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 0 1.2rem;
@@ -22,6 +21,7 @@
 
 .cj-set-card__titles {
   min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .cj-set-card__title {
@@ -46,32 +46,6 @@
   margin: 0.1rem 0 0;
   font-size: 1.2rem;
   line-height: 1.3;
-}
-
-.cj-set-card__all {
-  display: inline-flex;
-  align-items: center;
-  min-height: 4.4rem;
-  color: rgb(0 0 0);
-  font-size: 1.2rem;
-  text-decoration: underline;
-  text-decoration-thickness: 0.05rem;
-  text-underline-offset: 0.3rem;
-}
-
-.cj-set-card__all:hover {
-  text-decoration-thickness: 0.1rem;
-}
-
-.cj-set-card__stage {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.2rem;
-}
-
-.cj-set-card__layers {
-  flex: 1 1 auto;
-  min-width: 0;
 }
 
 .cj-set-card__layer {
@@ -159,12 +133,13 @@
   white-space: nowrap;
 }
 
+/* In the head, right of the name; a set with many metals wraps instead of squeezing the name. */
 .cj-set-card__rail {
-  flex: 0 0 3.2rem;
+  flex: none;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 0.2rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  max-width: 60%;
 }
 
 .cj-set-card__metal {
@@ -201,7 +176,6 @@
 }
 
 .cj-set-card__tile:focus-visible,
-.cj-set-card__all:focus-visible,
 .cj-set-card__title a:focus-visible {
   outline: 0.2rem solid rgb(0 0 0);
   outline-offset: 0.2rem;
@@ -213,12 +187,8 @@
   }
 }
 
-/* Phones: one per row, with a thumb-sized column of circles. */
+/* Phones: one per row, with thumb-sized circles. */
 @media screen and (max-width: 749px) {
-  .cj-set-card__rail {
-    flex-basis: 4.4rem;
-  }
-
   .cj-set-card__metal {
     width: 4.4rem;
     height: 4.4rem;
