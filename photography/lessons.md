@@ -409,3 +409,8 @@ Each line: what went wrong, the rule now, where it came from. Newest last.
     made the white ring's band see-through and punched a dark reflection out of a rose band as a hole. White and rose
     have the yellow photo's exact shape, so pass `--mask <yellow photo>` after each white or rose `--piece`, and look
     at every placed ring zoomed in. Its pixel report above 0 also means another ring is covering this one: move them apart.
+77. **Scene pictures with several pieces: the AI makes the whole picture (owner, 2026-11-09, home tile: "use ai for the
+    pictures ... not you to cut").** Pasted rings looked like stickers: white-studio light, no contact with the cloth.
+    Nano Banana 2.1 at 4k, the finished photos as references and each ring's stone counts in the prompt, gave rich light
+    and real contact in one try. The rings are redrawn, so compare each with its original zoomed in and tell the owner
+    what differs. Ask for the rings inside the safe zone; here they span 20–82% of the height, too tall for the tile.
