@@ -9763,3 +9763,202 @@ html body .collection .card__swatch button[aria-pressed="true"] .swatch {
     0 0 0 0.4rem #f2f1f1,
     0 0 0 0.5rem #c1c1c6;
 }
+
+/* ---------------------------------------------------------------------------
+   „От същия комплект“ in the buy box (2026-11-09, owner: under „Попитайте за това
+   бижу“, something like moonmagic's option rows). snippets/cj-set-picker.liquid.
+   A greige panel (scheme-6's ground) with one white row per piece; the photos are
+   shot on off-white, so the piece seems to sit on the row. Text in the buy box's
+   black. Narrow column: the price sits under the name; wide: at the right.
+   Way back: remove the set_picker block from templates/product.json and restore
+   the `set` section there.
+   --------------------------------------------------------------------------- */
+html body .product .product__info-container > .cj-set-picker {
+  container-type: inline-size;
+  margin-top: 1.2rem;
+  padding: 1.2rem 1.6rem 1.6rem;
+  background-color: #f5f3ef;
+  color: rgb(0 0 0);
+}
+
+html body .product .cj-set-picker + .product-trust {
+  margin-top: 1.6rem;
+}
+
+html body quick-add-modal .product .cj-set-picker {
+  display: none;
+}
+
+.cj-set-picker__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 1.6rem;
+  margin-bottom: 0.4rem;
+}
+
+.cj-set-picker__legend {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+html body .product a.cj-set-picker__all {
+  display: inline-flex;
+  align-items: center;
+  min-height: 4.4rem;
+  color: rgb(0 0 0);
+  font-size: 1.3rem;
+  text-decoration: underline;
+  text-decoration-thickness: 0.05rem;
+  text-underline-offset: 0.3rem;
+}
+
+html body .product a.cj-set-picker__all:hover {
+  text-decoration-thickness: 0.1rem;
+}
+
+.cj-set-picker__list {
+  display: grid;
+  gap: 0.8rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+html body .product a.cj-set-picker__row {
+  display: grid;
+  grid-template-columns: 6.6rem minmax(0, 1fr) 1.2rem;
+  grid-template-areas:
+    'photo text arrow'
+    'photo price arrow';
+  grid-template-rows: 1fr 1fr;
+  column-gap: 1.2rem;
+  align-items: center;
+  padding: 0.8rem 1.4rem 0.8rem 0.8rem;
+  background-color: #fff;
+  color: rgb(0 0 0);
+  text-decoration: none;
+  transition: box-shadow 0.2s ease;
+}
+
+.cj-set-picker__photo {
+  grid-area: photo;
+  display: block;
+  width: 6.6rem;
+  height: 6.6rem;
+  background-color: rgb(240 232 226);
+}
+
+.cj-set-picker__photo:has(img) {
+  background-color: #fcfbfc;
+}
+
+.cj-set-picker__photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.cj-set-picker__text {
+  grid-area: text;
+  align-self: end;
+  min-width: 0;
+}
+
+.cj-set-picker__name {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+.cj-set-picker__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.1rem 0.8rem;
+  margin-top: 0.2rem;
+  font-size: 1.2rem;
+  line-height: 1.35;
+}
+
+.cj-set-picker__metal {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+html body .product .cj-set-picker__metal .option-menu__dot {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.cj-set-picker__price {
+  grid-area: price;
+  align-self: start;
+  margin-top: 0.3rem;
+  font-size: 1.4rem;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.cj-set-picker__arrow {
+  grid-area: arrow;
+  display: block;
+  transition: transform 0.2s ease;
+}
+
+.cj-set-picker__arrow svg {
+  display: block;
+  width: 1.2rem;
+  height: auto;
+  transform: rotate(-90deg);
+}
+
+@container (min-width: 38rem) {
+  html body .product a.cj-set-picker__row {
+    grid-template-columns: 6.6rem minmax(0, 1fr) auto 1.2rem;
+    grid-template-areas: 'photo text price arrow';
+    grid-template-rows: auto;
+  }
+
+  .cj-set-picker__text,
+  .cj-set-picker__price {
+    align-self: center;
+    margin-top: 0;
+  }
+}
+
+@media (hover: hover) {
+  html body .product a.cj-set-picker__row:hover {
+    box-shadow: inset 0 0 0 0.1rem rgb(0 0 0);
+  }
+
+  html body .product a.cj-set-picker__row:hover .cj-set-picker__arrow {
+    transform: translateX(0.3rem);
+  }
+}
+
+html body .product a.cj-set-picker__row:focus-visible {
+  outline: 0.2rem solid rgb(0 0 0);
+  outline-offset: 0.2rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html body .product a.cj-set-picker__row,
+  .cj-set-picker__arrow {
+    transition: none;
+  }
+
+  html body .product a.cj-set-picker__row:hover .cj-set-picker__arrow {
+    transform: none;
+  }
+}

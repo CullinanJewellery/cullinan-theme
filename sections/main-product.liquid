@@ -904,6 +904,8 @@
                       {%- endif -%}
                     </p>
                   {%- endif -%}
+                {%- when 'set_picker' -%}
+                  {%- render 'cj-set-picker', product: product, block: block, section_id: section.id -%}
                 {%- when 'trust_lines' -%}
                   {%- comment -%}
                     Cullinan (2026-10-04, wave 2): up to three short reassurances under the button, the
@@ -1479,6 +1481,35 @@
           "label": "Question link",
           "info": "Jumps to the Custom request section on the product page, whose form adds the piece's name, link and chosen variant. Hidden when the page has no such section. Leave empty to hide.",
           "default": "Попитайте за това бижу"
+        }
+      ]
+    },
+    {
+      "type": "set_picker",
+      "name": "From the same set",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "The other pieces of this product's set, from the product metafield custom.komplekt (a collection). Hidden when the product has no set."
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "От същия комплект"
+        },
+        {
+          "type": "text",
+          "id": "all_label",
+          "label": "Link to the whole set",
+          "default": "Вижте целия комплект"
+        },
+        {
+          "type": "collection",
+          "id": "fallback_collection",
+          "label": "Test collection",
+          "info": "Only for testing: shown on every product without a set. Leave empty."
         }
       ]
     },

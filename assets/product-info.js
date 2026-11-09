@@ -205,6 +205,8 @@ if (!customElements.get('product-info')) {
           updateSourceFromDestination('price');
           // Cullinan: the spec list follows the selected variant (sections/main-product.liquid, product_specs).
           updateSourceFromDestination('ProductSpecs');
+          // Cullinan: the set rows show the chosen metal (snippets/cj-set-picker.liquid).
+          updateSourceFromDestination('CjSet');
           updateSourceFromDestination('Sku', ({ classList }) => classList.contains('hidden'));
           updateSourceFromDestination('Inventory', ({ innerText }) => innerText === '');
           updateSourceFromDestination('Volume');

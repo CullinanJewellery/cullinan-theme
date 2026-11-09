@@ -1,0 +1,165 @@
+{%- comment -%}
+  „От същия комплект“ in the buy box (2026-11-09, owner: under „Попитайте за това бижу“, something
+  like moonmagic's option rows, "make it cool"). Moonmagic's row is a 66px picture, capitals and an
+  arrow at the far right, under a small label. Ours is a greige panel holding one white row per
+  other piece of the set: photo, name, kind of piece, metal circle and name, price, arrow. Photos
+  are shot on off-white, so on a white row the piece seems to sit on the row itself.
+
+  Which set: the product metafield custom.komplekt, a collection reference. Prints nothing when
+  the product has no set or the set has no other piece. `fallback_collection` exists only to test
+  on a temporary template and stays empty on the real one.
+
+  Each row opens the piece in the metal chosen on this page when that piece has the same metal,
+  with that variant's photo and price. assets/product-info.js swaps this block when the customer
+  changes the variant (`CjSet-<section id>`), so the rows follow the choice without a script here.
+  No add button: each piece needs its own metal or size, chosen on its page.
+
+  Accepts:
+  - product: {Object} the page's product
+  - block: {Object} the block, for its settings and editor attributes
+  - section_id: {String} the section's id
+
+  Usage:
+  {% render 'cj-set-picker', product: product, block: block, section_id: section.id %}
+{%- endcomment -%}
+{%- liquid
+  assign set = null
+  if product.metafields.custom.komplekt.value != blank
+    assign set = product.metafields.custom.komplekt.value
+  elsif block.settings.fallback_collection != blank
+    assign set = block.settings.fallback_collection
+  endif
+
+  assign set_count = 0
+  if set
+    for p in set.products limit: 12
+      if p.id == product.id
+        continue
+      endif
+      assign set_count = set_count | plus: 1
+    endfor
+  endif
+
+  comment
+    the metal chosen on this page
+  endcomment
+  assign here_metal = blank
+  assign here_variant = product.selected_or_first_available_variant
+  for option in product.options_with_values
+    assign o = option.name | downcase
+    if o contains 'метал' or o contains 'материал' or o contains 'metal' or o contains 'material'
+      assign here_metal = here_variant.options[forloop.index0]
+      break
+    endif
+  endfor
+-%}
+
+{%- if set_count > 0 -%}
+  <div id="CjSet-{{ section_id }}" class="cj-set-picker" {{ block.shopify_attributes }}>
+    <div class="cj-set-picker__head">
+      <p class="cj-set-picker__legend" id="CjSetLegend-{{ section_id }}">{{ block.settings.heading | escape }}</p>
+      {%- if block.settings.all_label != blank -%}
+        <a class="cj-set-picker__all" href="{{ set.url }}">{{ block.settings.all_label | escape }}</a>
+      {%- endif -%}
+    </div>
+    <ul class="cj-set-picker__list" role="list" aria-labelledby="CjSetLegend-{{ section_id }}">
+      {%- for p in set.products limit: 12 -%}
+        {%- if p.id == product.id -%}
+          {%- continue -%}
+        {%- endif -%}
+        {%- liquid
+          assign v_match = null
+          assign dot_value = null
+          if here_metal != blank
+            for option in p.options_with_values
+              assign o = option.name | downcase
+              if o contains 'метал' or o contains 'материал' or o contains 'metal' or o contains 'material'
+                assign idx = forloop.index0
+                for v in p.variants
+                  if v.options[idx] == here_metal
+                    if v.available or v_match == null
+                      assign v_match = v
+                    endif
+                    if v.available
+                      break
+                    endif
+                  endif
+                endfor
+                for value in option.values
+                  if value.name == here_metal
+                    assign dot_value = value
+                  endif
+                endfor
+                break
+              endif
+            endfor
+          endif
+
+          assign row_url = p.url
+          assign row_media = p.featured_media
+          assign row_price = p.price
+          assign row_varies = p.price_varies
+          assign row_metal = ''
+          assign row_dot = ''
+          if v_match
+            assign row_url = v_match.url
+            if v_match.featured_media
+              assign row_media = v_match.featured_media
+            endif
+            assign row_price = v_match.price
+            assign row_varies = false
+            assign row_metal = here_metal
+            if dot_value.swatch.image
+              assign row_dot = dot_value.swatch.image | image_url: width: 50 | prepend: 'url(' | append: ')'
+            elsif dot_value.swatch.color
+              assign row_dot = 'rgb(' | append: dot_value.swatch.color.rgb | append: ')'
+            else
+              capture row_dot
+                render 'cj-metal-swatch', name: here_metal, width: 50
+              endcapture
+              assign row_dot = row_dot | strip
+            endif
+          endif
+        -%}
+        <li>
+          <a class="cj-set-picker__row" href="{{ row_url }}">
+            <span class="cj-set-picker__photo">
+              {%- if row_media -%}
+                {{
+                  row_media.preview_image
+                  | image_url: width: 200
+                  | image_tag: alt: '', loading: 'lazy', widths: '132, 200', sizes: '66px'
+                }}
+              {%- endif -%}
+            </span>
+            <span class="cj-set-picker__text">
+              <span class="cj-set-picker__name">{{ p.title | escape }}</span>
+              {%- if p.type != blank or row_metal != '' -%}
+                <span class="cj-set-picker__meta">
+                  {%- if p.type != blank -%}
+                    <span>{{ p.type | escape }}</span>
+                  {%- endif -%}
+                  {%- if row_metal != '' -%}
+                    <span class="cj-set-picker__metal">
+                      {%- if row_dot != '' -%}
+                        <span class="option-menu__dot" style="--option-dot: {{ row_dot }};"></span>
+                      {%- endif -%}
+                      {{- row_metal | escape -}}
+                    </span>
+                  {%- endif -%}
+                </span>
+              {%- endif -%}
+            </span>
+            <span class="cj-set-picker__price">
+              {%- if row_varies -%}от {% endif -%}
+              {{- row_price | money_without_trailing_zeros -}}
+            </span>
+            <span class="cj-set-picker__arrow" aria-hidden="true">
+              {{- 'icon-caret.svg' | inline_asset_content -}}
+            </span>
+          </a>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+{%- endif -%}
