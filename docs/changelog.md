@@ -8,6 +8,9 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-09 — sets: the photo follows the metal on products with a Color option **(owner)**
+- Owner added colours to the test set and the photos did not change. Those products have a Color option as well as the material (nine variants), with the photos on Color; the set code took the first variant of the material, always yellow Color. `cj-set-tile.liquid` and `cj-set-picker.liquid` now use `product-twin-option` / `product-twin-match` as the product page does. Checked on the real preview with a real pointer on the rose circle and by changing the metal on the product page: photos and links change on all pieces.
+
 ## 2026-11-09 — Комплекти page: smaller, in the normal grid with filters, pink hover **(owner)**
 - Owner: "way too big", wants the filters and the same page as the others, and on hover no lines round the white box but our pink. The set cards moved from their own section (`cj-sets`, deleted) into `main-collection-product-grid`: same filter sidebar, sort bar, count and three columns; card 308 × 447 px at 1440 (was 660 wide, 813 tall); one per row on phones, 464 px tall. Tile hover is `#E6BAB9`, no outline; the photo itself keeps its own ground, so the pink shows round it and behind the name and price, and the gold is not tinted.
 - Products without a set now stay as ordinary cards on the page. The buy-box rows on the product page keep their black outline on hover: the owner spoke about this page. Way back: `git revert` of this commit and of 7813de4e.
