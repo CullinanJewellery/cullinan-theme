@@ -8,6 +8,9 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-09 — Terms draft: fuller paragraph on photos **(owner)**
+- `docs/legal/terms-draft.md`, section 3: now also covers size on screen, 14K and 18K shown in one shade, stones differing from the photo, and a sentence saying some photos are edited or made with computer programs from the real piece. Based on how Pomellato, Tiffany, Van Cleef & Arpels, Ole Lynggaard, Jessica McCormack, Moon Magic and Kirkorian handle this; our own wording. Still a draft for the accountant, not on the site. Way back: `git revert` of this commit.
+
 ## 2026-11-08 — CAD: new model from the owner's own AI image, V cut into a chevron heart **(owner)**
 - New folder `cad/heart-notch/`; the two earlier models were not changed. Hers 4.0 wide, five 0.8 stones, 4.07 g; his 5.0 wide, five 0.93 stones, 5.64 g, finished in 14K. Top edge cut in a sharp V, chevron pocket following it, 16° fold with a crease to the bottom edge, 9 prongs, countersunk holes, inner channel away from the heart. Print files ×1.0638 (6% estimate). Not printed yet.
 - Reverses my earlier refusal to run the V into the heart: the owner says this image is their own AI design. Way back: `cad/heart-top-v/` is the version that stops above the heart.
