@@ -1,0 +1,88 @@
+{%- comment -%}
+  One piece of a set card on the Комплекти page, shown in one metal: photo, name, price; opens the piece in that metal.
+  A piece without that metal shows its own first photo and price and opens as it is.
+
+  Accepts:
+  - p: {Object} the product
+  - metal: {String} the metal value, or '' when the set has no metals
+  - lead: {Boolean} the large tile on top
+
+  Usage:
+  {% render 'cj-set-tile', p: piece, metal: 'x', lead: true %}
+{%- endcomment -%}
+{%- liquid
+  assign v_match = null
+  assign v_media = null
+  assign price_min = null
+  assign price_max = null
+
+  if metal != ''
+    for option in p.options_with_values
+      assign o = option.name | downcase
+      if o contains 'метал' or o contains 'материал' or o contains 'metal' or o contains 'material'
+        assign idx = forloop.index0
+        for v in p.variants
+          if v.options[idx] == metal
+            if v_match == null or v.available and v_match.available == false
+              assign v_match = v
+            endif
+            if v_media == null and v.featured_media
+              assign v_media = v.featured_media
+            endif
+            if price_min == null or v.price < price_min
+              assign price_min = v.price
+            endif
+            if price_max == null or v.price > price_max
+              assign price_max = v.price
+            endif
+          endif
+        endfor
+        break
+      endif
+    endfor
+  endif
+
+  assign tile_url = p.url
+  assign tile_media = p.featured_media
+  assign tile_price = p.price
+  assign tile_varies = p.price_varies
+  if v_match
+    assign tile_url = v_match.url
+    if v_media
+      assign tile_media = v_media
+    endif
+    assign tile_price = price_min
+    assign tile_varies = false
+    if price_min != price_max
+      assign tile_varies = true
+    endif
+  endif
+
+  if lead
+    assign tile_width = 1100
+    assign tile_widths = '560, 800, 1100'
+    assign tile_sizes = '(min-width: 990px) 560px, 85vw'
+  else
+    assign tile_width = 600
+    assign tile_widths = '280, 420, 600'
+    assign tile_sizes = '(min-width: 990px) 280px, 42vw'
+  endif
+-%}
+<a class="cj-set-card__tile{% if lead %} cj-set-card__tile--lead{% endif %}" href="{{ tile_url }}">
+  <span class="cj-set-card__photo">
+    {%- if tile_media -%}
+      {{
+        tile_media.preview_image
+        | image_url: width: tile_width
+        | image_tag: alt: '', loading: 'lazy', widths: tile_widths, sizes: tile_sizes
+      }}
+    {%- endif -%}
+  </span>
+  <span class="cj-set-card__caption">
+    <span class="cj-set-card__name">{{ p.title | escape }}</span>
+    <span class="cj-set-card__price">
+      {%- if tile_varies -%}от {% endif -%}
+      {{- tile_price | money_without_trailing_zeros -}}
+    </span>
+  </span>
+</a>

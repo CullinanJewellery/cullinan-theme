@@ -1,0 +1,99 @@
+{%- comment -%}
+  A set on the Комплекти page (2026-11-09, owner: "the ring product above, the earrings and the pendant, the colors to
+  the right side, the colors of the products in the set will change just from there").
+
+  Up to three pieces: the ring on top (Product type or title says „пръстен“; otherwise the set's first piece), the next
+  two under it. One „layer“ of tiles per metal, only the first visible; assets/cj-set-card.js switches layers from the
+  circles, so every piece changes together. Without the script the first metal simply stays. A set with fewer than two
+  pieces prints nothing.
+
+  Accepts:
+  - set: {Object} the set's collection
+  - label: {String} the link to the whole set
+
+  Usage:
+  {% render 'cj-set-card', set: set, label: 'Вижте комплекта' %}
+{%- endcomment -%}
+{%- if set.products_count > 1 -%}
+  {%- liquid
+    assign lead = set.products.first
+    for p in set.products limit: 12
+      assign kind = p.type | downcase
+      assign name = p.title | downcase
+      if kind contains 'пръстен' or name contains 'пръстен'
+        assign lead = p
+        break
+      endif
+    endfor
+
+    assign metals = '|'
+    for p in set.products limit: 12
+      for option in p.options_with_values
+        assign o = option.name | downcase
+        if o contains 'метал' or o contains 'материал' or o contains 'metal' or o contains 'material'
+          for value in option.values
+            assign key = '|' | append: value.name | append: '|'
+            unless metals contains key
+              assign metals = metals | append: value.name | append: '|'
+            endunless
+          endfor
+          break
+        endif
+      endfor
+    endfor
+    assign metal_list = metals | remove_first: '|' | split: '|'
+    assign layers = metal_list
+    if metal_list.size == 0
+      assign layers = 'none' | split: ','
+    endif
+  -%}
+  <cj-set-card class="cj-set-card">
+    <div class="cj-set-card__head">
+      <div class="cj-set-card__titles">
+        <h2 class="cj-set-card__title"><a href="{{ set.url }}">{{ set.title | escape }}</a></h2>
+        {%- if metal_list.size > 0 -%}
+          <p class="cj-set-card__current" aria-live="polite" data-current>{{ metal_list.first | escape }}</p>
+        {%- endif -%}
+      </div>
+      <a class="cj-set-card__all" href="{{ set.url }}">{{ label | escape }}</a>
+    </div>
+    <div class="cj-set-card__stage">
+      <div class="cj-set-card__layers">
+        {%- for layer in layers -%}
+          {%- assign layer_metal = '' -%}
+          {%- if metal_list.size > 0 -%}
+            {%- assign layer_metal = layer -%}
+          {%- endif -%}
+          <div class="cj-set-card__layer" {% unless forloop.first %}hidden{% endunless %}>
+            {%- render 'cj-set-tile', p: lead, metal: layer_metal, lead: true -%}
+            {%- assign shown = 0 -%}
+            {%- for p in set.products limit: 12 -%}
+              {%- if p.id == lead.id or shown >= 2 -%}
+                {%- continue -%}
+              {%- endif -%}
+              {%- assign shown = shown | plus: 1 -%}
+              {%- render 'cj-set-tile', p: p, metal: layer_metal, lead: false -%}
+            {%- endfor -%}
+          </div>
+        {%- endfor -%}
+      </div>
+      {%- if metal_list.size > 1 -%}
+        <div class="cj-set-card__rail" role="group" aria-label="Метал">
+          {%- for m in metal_list -%}
+            {%- capture dot -%}{%- render 'cj-metal-swatch', name: m, width: 80 -%}{%- endcapture -%}
+            <button
+              type="button"
+              class="cj-set-card__metal"
+              aria-pressed="{% if forloop.first %}true{% else %}false{% endif %}"
+              aria-label="{{ m | escape }}"
+              title="{{ m | escape }}"
+              data-metal="{{ m | escape }}"
+            >
+              <span class="cj-set-card__dot"{% assign dot = dot | strip %}{% if dot != '' %} style="--set-dot: {{ dot }};"{% endif %}></span>
+            </button>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </cj-set-card>
+{%- endif -%}
