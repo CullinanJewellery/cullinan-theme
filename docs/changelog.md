@@ -8,6 +8,9 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-09 — set cards: second photo on hover, for the chosen metal **(owner)**
+- Owner: hovering a piece in a set should change its photo like the other products, with the chosen colour. `cj-set-tile.liquid` picks the second photo by card-product.liquid's rule per metal; it fades in (0.4s) on the tile under the pointer, mouse only. A piece with no free photo has no change. Way back: revert this commit.
+
 ## 2026-11-09 — set cards: metal circles in the head, „Вижте комплекта“ removed **(owner)**
 - Owner: remove the link and put the colours in its place. The circles left the column at the right of the photos and sit in a row at the right of the set's name; the photos gain the column's width. The set's name stays the link to the whole set. Way back: revert this commit.
 

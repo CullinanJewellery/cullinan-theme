@@ -117,8 +117,9 @@ collection), **social band** („Още от нашите бижута“ / „�
   `комплекти`, each set is one item of the normal grid (found through each product's `custom.komplekt`), so filters and
   sorting work as elsewhere. All products on one page (250), so a set is never split across pages; one column on phones.
   Ring on top (Product type or title says „пръстен“, else the set's first piece), two more under it. One layer of tiles
-  per metal; the circles, in a row right of the set's name, switch layers. A set of one piece and a product with no set
-  stay ordinary cards.
+  per metal; the circles, in a row right of the set's name, switch layers. With a mouse, a tile shows its second photo
+  for that metal while the pointer is on it (the rule of `card-product.liquid`). A set of one piece and a product with
+  no set stay ordinary cards.
 - Collection heading (sections/main-collection-banner.liquid, 2026-10-07): the name alone (no hidden „Колекция:“).
   Picture behind the breadcrumb and name: `collection.metafields.custom.heading_image` (define it in admin as a
   file/image metafield to use a separate picture), else `collection.image` (admin → collection → Image), else none

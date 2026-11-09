@@ -87,6 +87,72 @@
     endif
   endif
 
+  comment
+    The second photo, shown while the pointer is on the tile; the same choice as snippets/card-product.liquid: the first
+    photo tied to no variant whose alt names an option value of this tile's variant, else the first such photo whose
+    alt names no option value at all. A photo marked with another metal is never used.
+  endcomment
+  assign tile_second = null
+  if p.media.size > 1 and tile_media
+    assign free_ids = ','
+    for v in p.variants
+      if v.featured_media
+        assign free_ids = free_ids | append: v.featured_media.id | append: ','
+      endif
+    endfor
+
+    assign all_values = '|'
+    for option in p.options_with_values
+      for value in option.values
+        assign value_down = value | append: '' | strip | downcase
+        assign all_values = all_values | append: value_down | append: '|'
+      endfor
+    endfor
+
+    assign owner = v_match
+    if owner == null
+      for v in p.variants
+        if v.featured_media.id == tile_media.id
+          assign owner = v
+          break
+        endif
+      endfor
+    endif
+    assign owner_values = '|'
+    if owner
+      for value in owner.options
+        assign value_down = value | append: '' | strip | downcase
+        assign owner_values = owner_values | append: value_down | append: '|'
+      endfor
+    endif
+
+    assign plain_second = null
+    for m in p.media
+      if m.media_type != 'image' or m.id == tile_media.id
+        continue
+      endif
+      assign m_key = ',' | append: m.id | append: ','
+      if free_ids contains m_key
+        continue
+      endif
+      assign m_alt = m.alt | strip | downcase
+      assign m_alt_key = '|' | append: m_alt | append: '|'
+      if m_alt != blank and all_values contains m_alt_key
+        if owner_values contains m_alt_key
+          assign tile_second = m
+          break
+        endif
+        continue
+      endif
+      if plain_second == null
+        assign plain_second = m
+      endif
+    endfor
+    if tile_second == null
+      assign tile_second = plain_second
+    endif
+  endif
+
   if lead
     assign tile_width = 700
     assign tile_widths = '280, 420, 700'
@@ -105,6 +171,13 @@
         | image_url: width: tile_width
         | image_tag: alt: '', loading: 'lazy', widths: tile_widths, sizes: tile_sizes
       }}
+      {%- if tile_second -%}
+        {{
+          tile_second.preview_image
+          | image_url: width: tile_width
+          | image_tag: alt: '', class: 'cj-set-card__second', loading: 'lazy', widths: tile_widths, sizes: tile_sizes
+        }}
+      {%- endif -%}
     {%- endif -%}
   </span>
   <span class="cj-set-card__caption">

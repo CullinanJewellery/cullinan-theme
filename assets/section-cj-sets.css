@@ -88,6 +88,7 @@
 }
 
 .cj-set-card__photo {
+  position: relative;
   display: block;
   aspect-ratio: 1;
   overflow: hidden;
@@ -108,6 +109,15 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
+}
+
+/* The second photo: over the first, on the photos' own ground so the first never shows round it. */
+.cj-set-card__photo .cj-set-card__second {
+  position: absolute;
+  inset: 0;
+  background-color: #fcfbfc;
+  opacity: 0;
+  transition: opacity 0.4s ease;
 }
 
 .cj-set-card__caption {
@@ -185,6 +195,10 @@
   .cj-set-card__tile:hover {
     background-color: #e6bab9;
   }
+
+  .cj-set-card__tile:hover .cj-set-card__second {
+    opacity: 1;
+  }
 }
 
 /* Phones: one per row, with thumb-sized circles. */
@@ -214,7 +228,8 @@
     animation: none;
   }
 
-  .cj-set-card__tile {
+  .cj-set-card__tile,
+  .cj-set-card__photo .cj-set-card__second {
     transition: none;
   }
 }
