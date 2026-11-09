@@ -8,6 +8,9 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-09 — sets: first set connected in Shopify, row checked on the real preview **(owner)**
+- The owner made the `custom.komplekt` definition and a first test set of three products. „От същия комплект“ shows the other two pieces on each of the three, at 375 and 1440 px, no overflow, link to the set collection correct. Not tested: keeping the chosen metal, because these test products have no metal options. No theme code changed.
+
 ## 2026-11-09 — Terms draft: fuller paragraph on photos **(owner)**
 - `docs/legal/terms-draft.md`, section 3: now also covers size on screen, 14K and 18K shown in one shade, stones differing from the photo, and a sentence saying some photos are edited or made with computer programs from the real piece. Based on how Pomellato, Tiffany, Van Cleef & Arpels, Ole Lynggaard, Jessica McCormack, Moon Magic and Kirkorian handle this; our own wording. Still a draft for the accountant, not on the site. Way back: `git revert` of this commit.
 
