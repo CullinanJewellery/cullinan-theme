@@ -112,6 +112,13 @@ collection), **social band** („Още от нашите бижута“ / „�
 
 ## 5. Collection and search
 
+- **Комплекти page as sets** (`sections/cj-sets.liquid`, `snippets/cj-set-card.liquid`, `cj-set-tile.liquid`,
+  `assets/section-cj-sets.css`, `cj-set-card.js`, 2026-11-09): between the banner and the grid in
+  `templates/collection.json`, active only on the collection whose handle is in its settings (`комплекти`). One card per
+  set, found through each product's `custom.komplekt`; with at least one set it hides the next section (grid and
+  filters), with none it prints nothing. Ring on top (Product type or title says „пръстен“, else the set's first piece),
+  two more under it. One layer of tiles per metal; the circles switch layers. A set of one piece is not drawn; products
+  with no set do not appear while sets exist. `test_collection` is for a temporary template only.
 - Collection heading (sections/main-collection-banner.liquid, 2026-10-07): the name alone (no hidden „Колекция:“).
   Picture behind the breadcrumb and name: `collection.metafields.custom.heading_image` (define it in admin as a
   file/image metafield to use a separate picture), else `collection.image` (admin → collection → Image), else none

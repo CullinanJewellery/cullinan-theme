@@ -8,6 +8,11 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-09 — Комплекти page: one card per set, metal circles change the whole set **(owner)**
+- Owner: the ring above, the earrings and pendant, the colours at the right, changing every piece of the set from there; "think of something cool". New section `cj-sets` before the grid in `templates/collection.json`: greige card per set, ring large on top, two pieces under it, each with its own name and price; metal circles in a column at the right switch photos, prices and links of all pieces together, with the metal's name under the set's name. No set total (no set price for now).
+- Nothing new in the admin: sets are read from each product's `custom.komplekt`. The ring is found through Product type or a title with „пръстен“. Way back: remove `sets` from `templates/collection.json`; the normal grid returns.
+- Checked on the real preview at 375 and 1440 px: grid hidden only on Комплекти, three pieces per card, switching metals by click and by pointing, photos, prices and links per metal, no overflow, other collections unchanged. Metals tested with a temporary template on real rings, since removed; a set with real earrings, pendant and ring in several metals does not exist yet.
+
 ## 2026-11-09 — sets: „От същия комплект“ moved into the buy box, new design **(owner)**
 - Owner: under „Попитайте за това бижу“, something like moonmagic's option rows, "make it cool". New `set_picker` block (`snippets/cj-set-picker.liquid`): greige panel, small-capitals label, „Вижте целия комплект“ at the right, one white row per other piece with a 66px photo, name, kind of piece, metal circle and name, price and arrow. The rows follow the metal chosen on the page (`assets/product-info.js`). No set total (no set price for now) and no add button (each piece needs its own metal or size).
 - Replaces the row section under the buy box (2026-11-05, in May like's design). Way back: remove `set_picker` from `templates/product.json` and restore the `set` section entry (see commit 959230d5); `sections/cj-set.liquid` is still in the theme.
