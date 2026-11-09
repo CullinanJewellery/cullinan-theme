@@ -8,6 +8,11 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-09 — Комплекти page: smaller, in the normal grid with filters, pink hover **(owner)**
+- Owner: "way too big", wants the filters and the same page as the others, and on hover no lines round the white box but our pink. The set cards moved from their own section (`cj-sets`, deleted) into `main-collection-product-grid`: same filter sidebar, sort bar, count and three columns; card 308 × 447 px at 1440 (was 660 wide, 813 tall); one per row on phones, 464 px tall. Tile hover is `#E6BAB9`, no outline; the photo itself keeps its own ground, so the pink shows round it and behind the name and price, and the gold is not tinted.
+- Products without a set now stay as ordinary cards on the page. The buy-box rows on the product page keep their black outline on hover: the owner spoke about this page. Way back: `git revert` of this commit and of 7813de4e.
+- Checked on the real preview at 375 and 1440 px: filters and sort present, sorting redraws the cards and their circles still work, real hover gives the pink with no outline, no overflow.
+
 ## 2026-11-09 — Комплекти page: one card per set, metal circles change the whole set **(owner)**
 - Owner: the ring above, the earrings and pendant, the colours at the right, changing every piece of the set from there; "think of something cool". New section `cj-sets` before the grid in `templates/collection.json`: greige card per set, ring large on top, two pieces under it, each with its own name and price; metal circles in a column at the right switch photos, prices and links of all pieces together, with the metal's name under the set's name. No set total (no set price for now).
 - Nothing new in the admin: sets are read from each product's `custom.komplekt`. The ring is found through Product type or a title with „пръстен“. Way back: remove `sets` from `templates/collection.json`; the normal grid returns.

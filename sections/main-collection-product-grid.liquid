@@ -302,9 +302,6 @@
               >
                 {% assign skip_card_product_styles = false %}
                 {%- assign cj_seen = ',' -%}
-                {%- if template.suffix == 'set-test' -%}
-                  <li class="grid__item">{%- render 'cj-set-card', set: collections['циркони'], label: 'Вижте комплекта' -%}</li>
-                {%- endif -%}
                 {%- for product in collection.products -%}
                   {%- if cj_sets_page -%}
                     {%- assign cj_set = product.metafields.custom.komplekt.value -%}
