@@ -24,6 +24,10 @@
   }
 }
 
+.cj-sets > li:empty {
+  display: none;
+}
+
 .cj-set-card {
   display: block;
   padding: 1.2rem;

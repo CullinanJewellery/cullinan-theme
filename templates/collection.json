@@ -17,6 +17,15 @@
         "color_scheme": "scheme-1"
       }
     },
+    "sets": {
+      "type": "cj-sets",
+      "settings": {
+        "handle": "комплекти",
+        "all_label": "Вижте комплекта",
+        "padding_top": 24,
+        "padding_bottom": 56
+      }
+    },
     "product-grid": {
       "type": "main-collection-product-grid",
       "settings": {
@@ -40,6 +49,7 @@
   },
   "order": [
     "banner",
+    "sets",
     "product-grid"
   ]
 }
