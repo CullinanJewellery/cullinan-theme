@@ -88,6 +88,11 @@
   endif
 
   comment
+    Through the page's collection, so the piece's navigation trail says Комплекти (as card-product.liquid does).
+  endcomment
+  assign tile_url = tile_url | within: collection
+
+  comment
     The second photo, shown while the pointer is on the tile; the same choice as snippets/card-product.liquid: the first
     photo tied to no variant whose alt names an option value of this tile's variant, else the first such photo whose
     alt names no option value at all. A photo marked with another metal is never used.

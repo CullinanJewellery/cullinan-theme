@@ -102,38 +102,74 @@
               {%- endcomment -%}
               {%- comment -%}
                 2026-10-05 (owner): Начало › category › the piece, at every width (snippets/
-                breadcrumbs.liquid). The category is the collection the piece was opened from
-                (cards on collection pages link through it); opened directly, it is the one
-                top-level menu category the piece belongs to, and none when it belongs to
-                none or to several, rather than guessing.
+                breadcrumbs.liquid).
+                2026-11-09 (owner): the trail follows the main menu, whose top words are groups
+                over the collections: Начало › Пръстени › Дамски Пръстени › the piece. A group's
+                own collection is its first collection link („Всички пръстени“) and gives one
+                level only. Opened from a collection, that collection is looked up; opened
+                directly, the piece's collections, and the first group in menu order wins, so
+                the kind of piece comes before Камъни or Зодии. A collection not in the menu
+                stands alone; a piece in no menu collection has no category.
               {%- endcomment -%}
               {%- liquid
+                assign bc_top_title = ''
+                assign bc_top_url = ''
                 assign bc_title = ''
                 assign bc_url = ''
+                assign bc_ids = ','
                 if collection and collection.handle != blank
                   assign bc_title = collection.title
                   assign bc_url = collection.url
+                  assign bc_ids = bc_ids | append: collection.id | append: ','
                 else
-                  assign bc_matches = 0
-                  for menu_link in linklists['main-menu'].links
-                    if menu_link.type == 'collection_link' and menu_link.object
-                      for product_collection in product.collections
-                        if product_collection.id == menu_link.object.id
-                          assign bc_matches = bc_matches | plus: 1
-                          assign bc_title = menu_link.object.title
-                          assign bc_url = menu_link.object.url
-                        endif
-                      endfor
+                  for product_collection in product.collections
+                    assign bc_ids = bc_ids | append: product_collection.id | append: ','
+                  endfor
+                endif
+
+                for menu_link in linklists['main-menu'].links
+                  assign bc_home = null
+                  if menu_link.type == 'collection_link' and menu_link.object
+                    assign bc_home = menu_link.object
+                  else
+                    for menu_child in menu_link.links
+                      if menu_child.type == 'collection_link' and menu_child.object
+                        assign bc_home = menu_child.object
+                        break
+                      endif
+                    endfor
+                  endif
+                  if bc_home == null
+                    continue
+                  endif
+
+                  assign bc_child = null
+                  for menu_child in menu_link.links
+                    if menu_child.type == 'collection_link' and menu_child.object and menu_child.object.id != bc_home.id
+                      assign bc_key = ',' | append: menu_child.object.id | append: ','
+                      if bc_ids contains bc_key
+                        assign bc_child = menu_child.object
+                        break
+                      endif
                     endif
                   endfor
-                  if bc_matches != 1
-                    assign bc_title = ''
-                    assign bc_url = ''
+
+                  assign bc_key = ',' | append: bc_home.id | append: ','
+                  if bc_child
+                    assign bc_top_title = menu_link.title
+                    assign bc_top_url = bc_home.url
+                    assign bc_title = bc_child.title
+                    assign bc_url = bc_child.url
+                    break
+                  elsif bc_ids contains bc_key
+                    assign bc_title = menu_link.title
+                    assign bc_url = bc_home.url
+                    break
                   endif
-                endif
+                endfor
               -%}
               <div class="product-breadcrumb">
-                {% render 'breadcrumbs', current: product.title, parent_title: bc_title, parent_url: bc_url, home_label: section.settings.breadcrumb_home_label %}
+                {% render 'breadcrumbs', current: product.title, top_title: bc_top_title, top_url: bc_top_url, parent_title: bc_title, parent_url: bc_url, home_label: section.settings.breadcrumb_home_label %}
               </div>
             {%- endif -%}
 

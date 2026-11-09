@@ -6,18 +6,26 @@
 
   Accepts:
   - current: {String} the page you are on (collection or product title)
+  - top_title: {String} optional group above the category (Пръстени over Дамски Пръстени)
+  - top_url: {String} optional group link
   - parent_title: {String} optional category name
   - parent_url: {String} optional category link
   - home_label: {String} optional, default „Начало“
 
   Usage:
-  {% render 'breadcrumbs', current: product.title, parent_title: title, parent_url: url %}
+  {% render 'breadcrumbs', current: product.title, top_title: group, top_url: group_url, parent_title: title, parent_url: url %}
 {% endcomment %}
 <nav class="cj-breadcrumbs" aria-label="Навигационна пътека">
   <ol class="cj-breadcrumbs__list">
     <li class="cj-breadcrumbs__item">
       <a class="cj-breadcrumbs__link" href="{{ routes.root_url }}">{{ home_label | default: 'Начало' | escape }}</a>
     </li>
+    {%- if top_title != blank and top_url != blank -%}
+      <li class="cj-breadcrumbs__item">
+        <span class="cj-breadcrumbs__sep" aria-hidden="true">›</span>
+        <a class="cj-breadcrumbs__link" href="{{ top_url }}">{{ top_title | escape }}</a>
+      </li>
+    {%- endif -%}
     {%- if parent_title != blank and parent_url != blank -%}
       <li class="cj-breadcrumbs__item">
         <span class="cj-breadcrumbs__sep" aria-hidden="true">›</span>
