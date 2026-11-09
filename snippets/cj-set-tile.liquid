@@ -21,7 +21,36 @@
       assign o = option.name | downcase
       if o contains 'метал' or o contains 'материал' or o contains 'metal' or o contains 'material'
         assign idx = forloop.index0
+
+        comment
+          A product can have a Color option beside the material (product-twin-option.liquid); the photos hang on the
+          Color, so only the variants whose Color is the one this material names count.
+        endcomment
+        assign twin_idx = -1
+        assign twin_name = ''
+        capture twin_pair
+          render 'product-twin-option', product: p
+        endcapture
+        assign twin_positions = twin_pair | strip | split: ','
+        if twin_positions.size == 2
+          assign hidden_index = twin_positions[0] | minus: 1
+          assign shown_index = twin_positions[1] | minus: 1
+          if shown_index == idx
+            assign hidden_option = p.options_with_values[hidden_index]
+            capture twin_name
+              render 'product-twin-match', colour_option: hidden_option, material_name: metal
+            endcapture
+            assign twin_name = twin_name | strip
+            if twin_name != ''
+              assign twin_idx = hidden_index
+            endif
+          endif
+        endif
+
         for v in p.variants
+          if twin_idx >= 0 and v.options[twin_idx] != twin_name
+            continue
+          endif
           if v.options[idx] == metal
             if v_match == null or v.available and v_match.available == false
               assign v_match = v

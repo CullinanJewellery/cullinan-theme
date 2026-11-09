@@ -75,7 +75,35 @@
               assign o = option.name | downcase
               if o contains 'метал' or o contains 'материал' or o contains 'metal' or o contains 'material'
                 assign idx = forloop.index0
+
+                comment
+                  A Color option beside the material: the photos hang on the Color (product-twin-option.liquid).
+                endcomment
+                assign twin_idx = -1
+                assign twin_name = ''
+                capture twin_pair
+                  render 'product-twin-option', product: p
+                endcapture
+                assign twin_positions = twin_pair | strip | split: ','
+                if twin_positions.size == 2
+                  assign hidden_index = twin_positions[0] | minus: 1
+                  assign shown_index = twin_positions[1] | minus: 1
+                  if shown_index == idx
+                    assign hidden_option = p.options_with_values[hidden_index]
+                    capture twin_name
+                      render 'product-twin-match', colour_option: hidden_option, material_name: here_metal
+                    endcapture
+                    assign twin_name = twin_name | strip
+                    if twin_name != ''
+                      assign twin_idx = hidden_index
+                    endif
+                  endif
+                endif
+
                 for v in p.variants
+                  if twin_idx >= 0 and v.options[twin_idx] != twin_name
+                    continue
+                  endif
                   if v.options[idx] == here_metal
                     if v.available or v_match == null
                       assign v_match = v
