@@ -105,6 +105,7 @@
       "type": "split-story",
       "settings": {
         "anchor": "materiali",
+        "image": "shopify://shop_images/about-materials-atelier.jpg",
         "media_position": "right",
         "color_scheme": "scheme-1",
         "heading": "Нашите материали",
