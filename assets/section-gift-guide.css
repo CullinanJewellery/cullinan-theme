@@ -144,8 +144,10 @@
     aspect-ratio: 4 / 5;
   }
 
+  /* A little darker on phones (owner, 2026-11-10), where the words sit over the pieces. */
   .gift-guide__content::before {
     inset: -3.2rem -2.4rem;
+    background: radial-gradient(closest-side, rgba(24, 14, 9, 0.68) 0%, rgba(24, 14, 9, 0.56) 55%, rgba(24, 14, 9, 0) 100%);
   }
 
   .gift-guide__inner {
