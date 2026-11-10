@@ -6728,6 +6728,11 @@ recently-viewed .slider-button[disabled] .icon {
   .collection .collection__title .title {
     padding-right: 10.4rem;
   }
+
+  /* A line under the heading (Нови бижута, 2026-11-11) is then the last line, where the arrows sit: the same room. */
+  .collection .collection__title .collection__description {
+    padding-right: 10.4rem;
+  }
 }
 
 @media screen and (min-width: 750px) and (max-width: 989px) {
