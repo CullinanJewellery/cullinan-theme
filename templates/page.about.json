@@ -259,7 +259,7 @@
         "title": "Нови бижута",
         "heading_size": "h1",
         "description": "<p>Най-новото от ателието ни във Велико Търново.</p>",
-        "show_description": true,
+        "show_description": false,
         "description_style": "body",
         "columns_desktop": 3,
         "enable_desktop_slider": true,
