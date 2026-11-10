@@ -94,7 +94,18 @@
   color: rgba(var(--color-foreground), 0.8);
 }
 
-/* Computers with a mouse: the circle warms to our pink and its outer ring closes in. */
+/* The lit look: a mouse over a point on computers, and the point the scroll has reached (assets/cj-design-points.js,
+   owner 2026-11-11: down first to last, up last to first; it replaced a 3-second loop on phones). The circle warms to
+   our pink and its outer ring closes in. */
+.design-points__item.is-active .design-points__icon {
+  background-color: #e6bab9;
+}
+
+.design-points__item.is-active .design-points__icon::after {
+  inset: -0.3rem;
+  border-color: rgba(42, 30, 26, 0.35);
+}
+
 @media (hover: hover) {
   .design-points__item:hover .design-points__icon {
     background-color: #e6bab9;
@@ -106,51 +117,8 @@
   }
 }
 
-/* Touch screens (no hover): the hover look passes from circle to circle by itself, 3 seconds each (owner, 2026-11-11:
-   "for phone the same but you don't touch, it just happens every 3 seconds"). One cycle is 3s × the number of
-   points; each circle starts its turn 3s after the one before. */
-@media (hover: none) {
-  .design-points__icon {
-    animation: design-point-turn calc(var(--point-count, 4) * 3s) linear infinite;
-    animation-delay: calc(var(--point-index, 0) * 3s);
-  }
-
-  .design-points__icon::after {
-    animation: design-point-ring calc(var(--point-count, 4) * 3s) linear infinite;
-    animation-delay: calc(var(--point-index, 0) * 3s);
-  }
-}
-
-/* Pink for the first quarter of a four-point cycle (3 of 12 seconds), with short fades in and out. */
-@keyframes design-point-turn {
-  0% {
-    background-color: #fff;
-  }
-  4%,
-  22% {
-    background-color: #e6bab9;
-  }
-  27%,
-  100% {
-    background-color: #fff;
-  }
-}
-
-@keyframes design-point-ring {
-  0% {
-    inset: -0.5rem;
-    border-color: rgba(42, 30, 26, 0.18);
-  }
-  4%,
-  22% {
-    inset: -0.2rem;
-    border-color: rgba(42, 30, 26, 0.35);
-  }
-  27%,
-  100% {
-    inset: -0.5rem;
-    border-color: rgba(42, 30, 26, 0.18);
-  }
+.design-points__list-wrap {
+  display: block;
 }
 
 @media screen and (max-width: 989px) {
@@ -174,45 +142,61 @@
   }
 }
 
-/* Phones: one column; the icon stays beside the words so each point reads as one line of thought. */
+/* Phones: one column; the icon stays beside the words so each point reads as one line of thought. Made more compact
+   on 2026-11-11 (owner: "a little bit bigger than it should be"); before: padding 5.6rem, gap 3.6rem, list margin
+   4rem, circle 7.2rem (icon 3.6rem), title 1.8rem, body 1.5rem, heading from 3.2rem. */
 @media screen and (max-width: 749px) {
   .design-points__inner {
-    padding-top: 5.6rem;
-    padding-bottom: 5.6rem;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  .design-points__heading {
+    font-size: 2.6rem;
+  }
+
+  .design-points__lead {
+    margin-top: 1rem;
+    font-size: 1.5rem;
   }
 
   .design-points__list {
     grid-template-columns: minmax(0, 1fr);
-    gap: 3.6rem;
-    margin-top: 4rem;
+    gap: 2.4rem;
+    margin-top: 2.8rem;
   }
 
   .design-points__item {
-    grid-template-columns: 7.2rem minmax(0, 1fr);
+    grid-template-columns: 5.6rem minmax(0, 1fr);
     align-items: start;
-    gap: 2rem;
+    gap: 1.6rem;
   }
 
   .design-points__icon {
-    width: 7.2rem;
-    height: 7.2rem;
+    width: 5.6rem;
+    height: 5.6rem;
   }
 
   .design-points__icon::after {
-    inset: -0.5rem;
+    inset: -0.4rem;
   }
 
   .design-points__icon .benefit__icon {
-    width: 3.6rem;
-    height: 3.6rem;
+    width: 2.8rem;
+    height: 2.8rem;
+  }
+
+  .design-points__text {
+    gap: 0.4rem;
   }
 
   .design-points__title {
-    font-size: 1.8rem;
+    font-size: 1.7rem;
   }
 
   .design-points__body {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
+    line-height: 1.55;
   }
 }
 

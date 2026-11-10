@@ -1,4 +1,5 @@
 {{ 'section-cj-design-points.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'cj-design-points.js' | asset_url }}" defer="defer"></script>
 
 {%- comment -%}
   „Нашият дизайн“ on the About page (2026-11-11, owner: like moonmagic.com's „Our Designs“, with our things and our
@@ -29,6 +30,7 @@
     {%- endif -%}
 
     {%- if section.blocks.size > 0 -%}
+      <design-points-list class="design-points__list-wrap">
       <ul class="design-points__list" role="list">
         {%- for block in section.blocks -%}
           <li
@@ -38,7 +40,7 @@
             {% endif %}
             {{ block.shopify_attributes }}
           >
-            <span class="design-points__icon" aria-hidden="true" style="--point-index: {{ forloop.index0 }}; --point-count: {{ section.blocks.size }};">
+            <span class="design-points__icon" aria-hidden="true">
               {%- render 'icon-benefit', icon: block.settings.icon -%}
             </span>
             <span class="design-points__text">
@@ -52,6 +54,7 @@
           </li>
         {%- endfor -%}
       </ul>
+      </design-points-list>
     {%- endif -%}
   </div>
 </div>
