@@ -62,15 +62,6 @@
     "benefits": {
       "type": "icon-benefits",
       "blocks": {
-        "c1": {
-          "type": "benefit",
-          "settings": {
-            "visual": "icon",
-            "icon": "certificate",
-            "heading": "Сертификат",
-            "subline": "Всяко бижу идва със свой сертификат."
-          }
-        },
         "c2": {
           "type": "benefit",
           "settings": {
@@ -80,13 +71,13 @@
             "subline": "Създаваме бижута от 1991 г."
           }
         },
-        "c3": {
+        "c1": {
           "type": "benefit",
           "settings": {
             "visual": "icon",
-            "icon": "calendar-14",
-            "heading": "Връщане и замяна",
-            "subline": "14 дни, за да решите спокойно."
+            "icon": "certificate",
+            "heading": "Сертификат",
+            "subline": "Всяко бижу идва със свой сертификат."
           }
         },
         "c4": {
@@ -96,6 +87,15 @@
             "icon": "magnifier",
             "heading": "Преглед и тест",
             "subline": "Пробвайте бижуто, преди да платите."
+          }
+        },
+        "c3": {
+          "type": "benefit",
+          "settings": {
+            "visual": "icon",
+            "icon": "calendar-14",
+            "heading": "Връщане и замяна",
+            "subline": "14 дни, за да решите спокойно."
           }
         },
         "c5": {
@@ -287,6 +287,7 @@
           "type": "tile",
           "settings": {
             "size": "tall",
+            "image": "shopify://shop_images/home-tile-rings.jpg",
             "label": "Пръстени",
             "subline": "За всеки ден и за специалния повод.",
             "link": "/collections/пръстени",
@@ -313,6 +314,16 @@
             "phone_button": "Вижте висулките"
           }
         },
+        "t9": {
+          "type": "tile",
+          "settings": {
+            "size": "tall",
+            "label": "Аксесоари",
+            "subline": "",
+            "link": "/collections/аксесоари",
+            "phone_button": "Вижте аксесоарите"
+          }
+        },
         "t4": {
           "type": "tile",
           "settings": {
@@ -331,16 +342,6 @@
             "subline": "Бижута, създадени да се носят заедно.",
             "link": "/collections/комплекти",
             "phone_button": "Вижте комплектите"
-          }
-        },
-        "t9": {
-          "type": "tile",
-          "settings": {
-            "size": "tall",
-            "label": "Аксесоари",
-            "subline": "",
-            "link": "/collections/аксесоари",
-            "phone_button": "Вижте аксесоарите"
           }
         }
       },
@@ -514,20 +515,10 @@
         "margin_bottom": 40
       }
     },
-    "faith_band": {
-      "type": "cj-gift-guide",
-      "settings": {
-        "content_side": "right",
-        "eyebrow": "Знак на вяра",
-        "heading": "Вяра и закрила",
-        "text": "<p>Малък знак, който да ви пази всеки ден.</p>",
-        "button_label": "Разгледайте колекцията",
-        "button_link": "/collections/вяра-и-закрила"
-      }
-    },
     "gift_guide": {
       "type": "cj-gift-guide",
       "settings": {
+        "content_side": "left",
         "image": "shopify://shop_images/01_0da8794e-39ed-4bfc-87f6-5d4d418ebaf3.png",
         "eyebrow": "Вашият знак",
         "heading": "Бижута по зодия",
@@ -611,6 +602,17 @@
         "margin_bottom": 40,
         "padding_top": 88,
         "padding_bottom": 88
+      }
+    },
+    "faith_band": {
+      "type": "cj-gift-guide",
+      "settings": {
+        "content_side": "right",
+        "eyebrow": "Знак на вяра",
+        "heading": "Вяра и закрила",
+        "text": "<p>Малък знак, който да ви пази всеки ден.</p>",
+        "button_label": "Разгледайте колекцията",
+        "button_link": "/collections/вяра-и-закрила"
       }
     },
     "workshop": {
@@ -871,6 +873,45 @@
         "show_text_below": true
       }
     },
+    "promise_band": {
+      "type": "cj-promise-band",
+      "blocks": {
+        "p1": {
+          "type": "promise",
+          "settings": {
+            "icon": "gold-bars",
+            "heading": "Благородни метали",
+            "text": "Истинско злато и сребро, нежни към кожата."
+          }
+        },
+        "p2": {
+          "type": "promise",
+          "settings": {
+            "icon": "calendar-14",
+            "heading": "14 дни за връщане",
+            "text": "Не е точно за вас? Върнете го до 14 дни."
+          }
+        },
+        "p3": {
+          "type": "promise",
+          "settings": {
+            "icon": "delivery-truck",
+            "heading": "Безплатна доставка",
+            "text": "Подаряваме доставката при по-голяма поръчка."
+          }
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3"
+      ],
+      "settings": {
+        "color_scheme": "scheme-2",
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
+    },
     "social_follow": {
       "type": "social-follow",
       "settings": {
@@ -918,45 +959,6 @@
         "overlay_opacity": 30,
         "padding_top": 72,
         "padding_bottom": 40
-      }
-    },
-    "promise_band": {
-      "type": "cj-promise-band",
-      "blocks": {
-        "p1": {
-          "type": "promise",
-          "settings": {
-            "icon": "gold-bars",
-            "heading": "Благородни метали",
-            "text": "Истинско злато и сребро, нежни към кожата."
-          }
-        },
-        "p2": {
-          "type": "promise",
-          "settings": {
-            "icon": "calendar-14",
-            "heading": "14 дни за връщане",
-            "text": "Не е точно за вас? Върнете го до 14 дни."
-          }
-        },
-        "p3": {
-          "type": "promise",
-          "settings": {
-            "icon": "delivery-truck",
-            "heading": "Безплатна доставка",
-            "text": "Подаряваме доставката при по-голяма поръчка."
-          }
-        }
-      },
-      "block_order": [
-        "p1",
-        "p2",
-        "p3"
-      ],
-      "settings": {
-        "color_scheme": "scheme-2",
-        "padding_top": 48,
-        "padding_bottom": 48
       }
     }
   },
