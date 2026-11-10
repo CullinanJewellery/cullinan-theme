@@ -71,6 +71,7 @@
       "type": "split-story",
       "settings": {
         "anchor": "istoriya",
+        "image": "shopify://shop_images/about-story-hands_183c9512-6dd9-43a9-ad3b-6b48a7a375d9.jpg",
         "media_position": "left",
         "color_scheme": "scheme-2",
         "heading": "Нашата история",
