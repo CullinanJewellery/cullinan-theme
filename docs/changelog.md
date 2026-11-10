@@ -8,6 +8,9 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-10 — Зодии and Вяра и закрила bands: white button, outline on hover **(owner)**
+- Owner: the button white, and the current look (white outline) only on hover; phones the same. `section-gift-guide.css`: filled white with espresso letters at rest; outlined on hover (mouse only) and while pressed. Way back: revert this commit.
+
 ## 2026-11-09 — product page trail follows the main menu **(owner)**
 - Owner: „Начало › Дамски Пръстени › dasd“ is missing Пръстени; every product, from any collection, should be like that. The menu's top words are groups, not collections, so the old lookup found nothing. `main-product.liquid` now finds the collection in the menu: group › collection › piece; a group's first collection („Всички …“) gives one level. Opened directly, the first group in menu order that holds the piece, then its sub-collection; **this reverses 2026-10-05's „none when it belongs to several“**, which left most pieces without a category now that pieces sit in many collections. `cj-set-tile.liquid` links through Комплекти. Way back: revert this commit.
 

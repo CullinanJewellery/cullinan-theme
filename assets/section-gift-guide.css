@@ -100,7 +100,8 @@
   margin-top: 3.6rem;
   padding: 0 2.4rem;
   border: 0.1rem solid rgb(255 255 255);
-  color: rgb(255 255 255);
+  background-color: rgb(255 255 255);
+  color: rgb(42 30 26);
   font-size: 1.6rem;
   font-weight: 500;
   letter-spacing: 0.14em;
@@ -109,9 +110,18 @@
   transition: background-color 0.25s ease, color 0.25s ease;
 }
 
-.gift-guide__button:hover {
-  background: rgb(255 255 255);
-  color: rgb(42 30 26);
+/* 2026-11-10 (owner): white at rest; the outlined look (the old rest state) on hover, and while pressed on a phone.
+   Way back: swap the colours of the button and this rule again. */
+.gift-guide__button:active {
+  background-color: transparent;
+  color: rgb(255 255 255);
+}
+
+@media (hover: hover) {
+  .gift-guide__button:hover {
+    background-color: transparent;
+    color: rgb(255 255 255);
+  }
 }
 
 .gift-guide__button:focus-visible {
