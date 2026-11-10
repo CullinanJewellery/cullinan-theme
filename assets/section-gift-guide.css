@@ -31,22 +31,29 @@
   object-fit: cover;
 }
 
-/* The shade that keeps white words readable over a light photograph; stronger on the left, where they sit. */
-.gift-guide::after {
+/* The shade that keeps the white words readable: since 2026-11-10 (owner: "the shadow be just to the text") a soft
+   glow behind the words and the button only, fading out just beyond them, so the rest of the photograph stays clear.
+   Before: a gradient over 70% of the band from the words' side (phones: from the bottom). Way back: revert the commit. */
+.gift-guide__content {
+  position: relative;
+}
+
+.gift-guide__content::before {
   content: '';
   position: absolute;
-  inset: 0;
+  inset: -6rem -9rem;
   z-index: -1;
-  background: linear-gradient(90deg, rgba(24, 14, 9, 0.5) 0%, rgba(24, 14, 9, 0.3) 45%, rgba(24, 14, 9, 0) 70%);
+  background: radial-gradient(closest-side, rgba(24, 14, 9, 0.55) 0%, rgba(24, 14, 9, 0.45) 55%, rgba(24, 14, 9, 0) 100%);
+  pointer-events: none;
+}
+
+.gift-guide--empty .gift-guide__content::before {
+  display: none;
 }
 
 /* No photograph yet: a deep espresso band with a soft warm glow, so the white words read and the band looks finished. */
 .gift-guide--empty {
   background: radial-gradient(120% 140% at 85% 50%, rgb(110 72 60) 0%, rgb(42 30 26) 70%);
-}
-
-.gift-guide--empty::after {
-  display: none;
 }
 
 .gift-guide__inner {
@@ -129,7 +136,7 @@
   outline-offset: 0.3rem;
 }
 
-/* Phones: an upright 4:5 band, the words over its lower part on a shade that rises from the bottom. */
+/* Phones: an upright 4:5 band, the words over its lower part on their own soft shade. */
 @media screen and (max-width: 749px) {
   .gift-guide {
     align-items: flex-end;
@@ -137,8 +144,8 @@
     aspect-ratio: 4 / 5;
   }
 
-  .gift-guide::after {
-    background: linear-gradient(0deg, rgba(24, 14, 9, 0.68) 0%, rgba(24, 14, 9, 0.35) 45%, rgba(24, 14, 9, 0) 70%);
+  .gift-guide__content::before {
+    inset: -3.2rem -2.4rem;
   }
 
   .gift-guide__inner {
@@ -185,10 +192,6 @@
   .gift-guide--right .gift-guide__content {
     margin-left: auto;
     text-align: right;
-  }
-
-  .gift-guide--right::after {
-    background: linear-gradient(270deg, rgba(24, 14, 9, 0.5) 0%, rgba(24, 14, 9, 0.3) 45%, rgba(24, 14, 9, 0) 70%);
   }
 
   .gift-guide--right.gift-guide--empty {

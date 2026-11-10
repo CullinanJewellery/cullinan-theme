@@ -8,6 +8,9 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-10 — Зодии and Вяра и закрила bands: the shade only behind the words **(owner)**
+- Owner: "make the shadow be just to the text". The band-wide gradient (70% of the band from the words' side; phones from the bottom) is replaced by a soft radial glow behind the words and the button, fading out just beyond them; the rest of the photo is clear. `section-gift-guide.css`. Way back: revert this commit.
+
 ## 2026-11-10 — Зодии and Вяра и закрила bands: white button, outline on hover **(owner)**
 - Owner: the button white, and the current look (white outline) only on hover; phones the same. `section-gift-guide.css`: filled white with espresso letters at rest; outlined on hover (mouse only) and while pressed. Way back: revert this commit.
 
