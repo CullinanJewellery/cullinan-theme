@@ -1,0 +1,133 @@
+{{ 'section-cj-design-points.css' | asset_url | stylesheet_tag }}
+
+{%- comment -%}
+  „Нашият дизайн“ on the About page (2026-11-11, owner: like moonmagic.com's „Our Designs“, with our things and our
+  design). Their idea: a centred heading over four points in two columns, each a large line icon beside a short title
+  and two lines of text. Ours: the site's thin line icons (snippets/icon-benefit.liquid) in a soft blush circle, Jost,
+  espresso ink, a lead line under the heading, and the points rising in one after another on scroll (the theme's
+  reveal, when it is on). One column on phones. Only facts from CLAUDE.md go in the text.
+
+  The Anchor setting gives the section an id, so the jump link at the top of the page reaches it.
+{%- endcomment -%}
+
+<div
+  {% if section.settings.anchor != blank %}
+    id="{{ section.settings.anchor | strip | escape }}"
+  {% endif %}
+  class="design-points color-{{ section.settings.color_scheme }} gradient"
+>
+  <div class="design-points__inner page-width">
+    {%- if section.settings.heading != blank or section.settings.lead != blank -%}
+      <div class="design-points__head">
+        {%- if section.settings.heading != blank -%}
+          <h2 class="design-points__heading">{{ section.settings.heading | escape }}</h2>
+        {%- endif -%}
+        {%- if section.settings.lead != blank -%}
+          <p class="design-points__lead">{{ section.settings.lead | escape }}</p>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <ul class="design-points__list" role="list">
+        {%- for block in section.blocks -%}
+          <li
+            class="design-points__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+            {% if settings.animations_reveal_on_scroll %}
+              data-cascade style="--animation-order: {{ forloop.index }};"
+            {% endif %}
+            {{ block.shopify_attributes }}
+          >
+            <span class="design-points__icon" aria-hidden="true">
+              {%- render 'icon-benefit', icon: block.settings.icon -%}
+            </span>
+            <span class="design-points__text">
+              {%- if block.settings.title != blank -%}
+                <span class="design-points__title">{{ block.settings.title | escape }}</span>
+              {%- endif -%}
+              {%- if block.settings.text != blank -%}
+                <span class="design-points__body">{{ block.settings.text | escape }}</span>
+              {%- endif -%}
+            </span>
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Design points",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "text",
+      "id": "anchor",
+      "label": "Anchor",
+      "info": "Letters, numbers and dashes. A jump link with the same target scrolls here."
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "default": "Нашият дизайн",
+      "label": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "lead",
+      "label": "Line under the heading"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "point",
+      "name": "Point",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "default": "hammer",
+          "options": [
+            { "value": "model-3d", "label": "3D model" },
+            { "value": "hammer", "label": "Hammer" },
+            { "value": "brilliant", "label": "Brilliant" },
+            { "value": "gem", "label": "Gem" },
+            { "value": "magnifier", "label": "Magnifier" },
+            { "value": "certificate", "label": "Certificate" },
+            { "value": "shield", "label": "Shield" },
+            { "value": "ring", "label": "Ring" },
+            { "value": "ring-tools", "label": "Ring and tools" },
+            { "value": "engraving-pen", "label": "Engraving pen" },
+            { "value": "gold-bars", "label": "Gold bars" }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Design points"
+    }
+  ]
+}
+{% endschema %}
