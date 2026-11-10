@@ -4048,6 +4048,12 @@ card-swatches {
    rules out. The text half ships empty on purpose.
    --------------------------------------------------------------------------- */
 
+/* 2026-11-11: the line sits in a wrapper that follows the chosen variant (ready or made to order); the wrapper adds no
+   box of its own, so the line keeps its spacing. */
+.product-delivery-note-wrap {
+  display: contents;
+}
+
 .product .product-delivery-note {
   /* 2.4rem: 24px between this line and the button, the same as between the options
      above it and this line (see the variant-selects rule below). 3.4rem (34px)

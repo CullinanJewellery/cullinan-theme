@@ -207,6 +207,7 @@ if (!customElements.get('product-info')) {
           updateSourceFromDestination('ProductSpecs');
           // Cullinan: the set rows show the chosen metal (snippets/cj-set-picker.liquid).
           updateSourceFromDestination('CjSet');
+          updateSourceFromDestination('DeliveryNote');
           updateSourceFromDestination('Sku', ({ classList }) => classList.contains('hidden'));
           updateSourceFromDestination('Inventory', ({ innerText }) => innerText === '');
           updateSourceFromDestination('Volume');

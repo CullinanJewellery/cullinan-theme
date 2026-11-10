@@ -887,25 +887,54 @@
                     when both fields are empty, the same guard the collapsible tabs use, so
                     it can sit in the template before the shop has a delivery time to state.
                   {%- endcomment -%}
-                  {%- if block.settings.label != blank or block.settings.text != blank -%}
-                    <p class="product-delivery-note" {{ block.shopify_attributes }}>
-                      {%- if block.settings.show_icon -%}
-                        <span class="product-delivery-note__icon" aria-hidden="true">
-                          {{- 'icon-truck.svg' | inline_asset_content -}}
-                        </span>
-                      {%- endif -%}
-                      {%- if block.settings.label != blank -%}
-                        <span class="product-delivery-note__label">
-                          {{- block.settings.label | escape -}}
-                        </span>
-                      {%- endif -%}
-                      {%- if block.settings.text != blank -%}
-                        <span class="product-delivery-note__text">
-                          {{- block.settings.text | escape -}}
-                        </span>
-                      {%- endif -%}
-                    </p>
-                  {%- endif -%}
+                  {%- comment -%}
+                    2026-11-11 (owner): two delivery times. A variant with pieces in stock (Shopify tracks its
+                    quantity and it is above 0) is ready: 3–5 working days. Any other variant that can be bought
+                    is made to order: 10–15 working days, then up to 2 for delivery. The line follows the chosen
+                    variant (DeliveryNote id, assets/product-info.js). A variant that cannot be bought shows none.
+                  {%- endcomment -%}
+                  {%- liquid
+                    assign dn_variant = product.selected_or_first_available_variant
+                    assign dn_ready = false
+                    if dn_variant.inventory_management == 'shopify' and dn_variant.inventory_quantity > 0
+                      assign dn_ready = true
+                    endif
+                    assign dn_label = block.settings.label
+                    assign dn_text = block.settings.text
+                    if dn_ready
+                      if block.settings.ready_label != blank or block.settings.ready_text != blank
+                        assign dn_label = block.settings.ready_label
+                        assign dn_text = block.settings.ready_text
+                      endif
+                    endif
+                    assign dn_show = false
+                    if dn_variant.available
+                      if dn_label != blank or dn_text != blank
+                        assign dn_show = true
+                      endif
+                    endif
+                  -%}
+                  <div id="DeliveryNote-{{ section.id }}" class="product-delivery-note-wrap" {{ block.shopify_attributes }}>
+                    {%- if dn_show -%}
+                      <p class="product-delivery-note">
+                        {%- if block.settings.show_icon -%}
+                          <span class="product-delivery-note__icon" aria-hidden="true">
+                            {{- 'icon-truck.svg' | inline_asset_content -}}
+                          </span>
+                        {%- endif -%}
+                        {%- if dn_label != blank -%}
+                          <span class="product-delivery-note__label">
+                            {{- dn_label | escape -}}
+                          </span>
+                        {%- endif -%}
+                        {%- if dn_text != blank -%}
+                          <span class="product-delivery-note__text">
+                            {{- dn_text | escape -}}
+                          </span>
+                        {%- endif -%}
+                      </p>
+                    {%- endif -%}
+                  </div>
                 {%- when 'phone_order' -%}
                   {%- comment -%}
                     Cullinan (2026-10-04, luxury wave 1): a small "order by phone" link under the
@@ -1478,15 +1507,28 @@
         {
           "type": "text",
           "id": "label",
-          "label": "Bold label",
+          "label": "Made to order: bold label",
+          "info": "Shown for a variant with no pieces in stock (or whose quantity Shopify does not track).",
           "default": "Изработка по поръчка:"
         },
         {
           "type": "text",
           "id": "text",
-          "label": "Text after it",
-          "info": "Replace with the shop's own delivery time when it is settled, e.g. Доставка до 5-7 работни дни.",
-          "default": "Доставка с Еконт и Спиди"
+          "label": "Made to order: text after it",
+          "default": "10–15 работни дни + доставка до 2 дни"
+        },
+        {
+          "type": "text",
+          "id": "ready_label",
+          "label": "In stock: bold label",
+          "info": "Shown when the chosen variant has pieces in stock (Shopify tracks its quantity and it is above 0).",
+          "default": "В наличност:"
+        },
+        {
+          "type": "text",
+          "id": "ready_text",
+          "label": "In stock: text after it",
+          "default": "доставка 3–5 работни дни"
         }
       ]
     },
