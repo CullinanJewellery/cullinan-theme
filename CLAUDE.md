@@ -43,7 +43,12 @@ Only these, unless the owner confirms more. Never invent policies, prices, warra
   stone that falls out and a broken clasp; every customer period is 14 calendar days (owner: no more than the law); complaints answered within 2 working days;
   exchange: our mistake, we pay both ways; theirs, a piece of the same price or the same piece in another size (they
   pay the extra gold), delivery theirs; made-to-size or engraved pieces are not exchanged. State none of this on the site until the policy is published.
-- **Not confirmed, never claimed**: free delivery or a delivery price, packaging, engraving price or limit, a named designer, a number of designs.
+- **Owner, 2026-11-11**: delivery is free on orders over €500; below that the price depends on the order (no figure
+  given). Every piece arrives in a box. Some ring models can be resized later, for a fee. Stones: some natural, some
+  lab-created, depending on the piece (owner not certain; say so per piece only when known). Every piece carries its
+  hallmark (проба). Allergies: owner wanted „не предизвикват алергии“; not confirmed (white gold alloys may contain
+  nickel), so the site says only "noble metals; ask us if allergic" until the atelier confirms nickel-free.
+- **Not confirmed, never claimed**: a delivery price figure, engraving price or limit, a named designer, a number of designs, "hypoallergenic".
 
 ## What this repository is
 
@@ -237,6 +242,6 @@ Do not read the whole archive into a session; open the part you need.
 
 ## Waiting on the owner (summary)
 
-Returns policy for made-to-order pieces; free delivery and its terms; delivery price; engraving terms; packaging;
+Returns policy for made-to-order pieces; delivery price below €500 (Admin shipping rates must match the €500 rule); engraving terms; nickel in the alloys;
 price range of the first fifty; which payment methods are enabled; product data and photographs. Details and the
 Shopify-admin checklist: `docs/tasks.md`.

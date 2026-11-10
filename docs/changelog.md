@@ -8,6 +8,16 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-11 — Owner's answers: free delivery over €500, box, resizing, stones, hallmark **(owner)**
+- FAQ tab gains „Колко струва доставката?“, „Идва ли бижуто в кутия?“, „Естествени ли са камъните?“, „Подходящо ли е при
+  чувствителна кожа?“, „Може ли размерът на пръстена да се промени по-късно?“, and the hallmark line in „Истинско злато
+  ли е?“. The promise band (home and product page) says „при поръчка над 500 €“ instead of „при по-голяма поръчка“;
+  the delivery tab says it too.
+- Not done as asked: the owner wanted „не предизвикват алергии“; it is a health claim they are unsure of (white gold
+  can contain nickel), so the answer says noble metals and "ask us if you are allergic". Way to the owner's wording:
+  replace that answer in templates/product.json → faq_tab once the atelier confirms nickel-free alloys.
+- Return exclusions (owner: yes) wait for the published returns policy. Way back for all: revert the commit.
+
 ## 2026-11-11 — Product page: „Често задавани въпроси“ tab **(owner)**
 - Owner: find what people ask most on the Bulgarian sites and the global brands and put it on the product page. Research (two agents, 9 Bulgarian and 9 global sites): the topics most asked are delivery, ring size, returns/exchange, certificate/real gold, warranty, payment and cash on delivery with inspection, gift packaging, care, resizing, made to order, engraving, the shop. Kirkorian, BeOrnare and Hestia put a product FAQ on the product page. New `collapsible_tab` block `faq_tab` after „За камъка“ in `templates/product.json`, ten questions answered only from the facts list (size, ready or made to order with 3–20 days, cash on delivery with inspection, 585/750 gold and 925 silver, certificate and warranty, return/exchange within 14 days, another stone/metal/size, engraving, cleaning and repair, the shop). Not answered until the owner confirms: gift box, resizing after purchase, nickel-free alloys, natural or lab stones per piece, hallmark stamp, delivery price and the free-delivery amount, return exclusions (engraved and made-to-measure pieces, to add when the returns policy is published). Way back: remove `faq_tab` from the template.
 

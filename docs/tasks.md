@@ -86,10 +86,12 @@ payment-provider or checkout setting is to be changed from here.**
 | Decision | Why it matters | Where it would go |
 |---|---|---|
 | **Returns policy**, especially for made-to-order pieces | The site must not promise returns it cannot honour | Trust band, product lines, FAQ, delivery tab, cart line |
-| **Free delivery** (never / always / above €X) | Hestiahome-style trust card; not a design choice | Trust band, product lines, delivery tab |
+| ~~Free delivery~~ answered 2026-11-11: free over €500. **Owner: set Admin → Shipping rates to free over €500** (checkout, owner's action) | Trust band, FAQ and delivery tab now say it | Done on the site |
 | Delivery price | Delivery tab, cart | |
 | Engraving price, character limit, extra time | Engraving claim exists without terms | Product page, FAQ |
-| Packaging (what a piece arrives in) | Photograph and a line | Product page |
+| ~~Packaging~~ answered 2026-11-11: every piece arrives in a box (in the FAQ). A photograph of the box still wanted | Photograph | Product page |
+| Nickel-free alloys? (owner wanted „не предизвикват алергии“) | Health claim; only with the atelier's confirmation | FAQ „чувствителна кожа“ |
+| Return exclusions (engraved, made to size) — owner: yes | State only when the returns policy is published | FAQ, delivery tab |
 | Price range of the first ~50 pieces | Homepage hierarchy, navigation | |
 | Cleaning and repair terms | Confirmed as offered; terms unknown | Care tab, footer |
 | Payment setup (see A2): firm registration, then Shopify Payments / PayPal / COD at checkout | Footer icons are hidden until then; COD lines are unverified; cart express buttons show | Footer, payment tab, trust lines, cart |
