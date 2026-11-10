@@ -207,8 +207,10 @@ collection), **social band** („Още от нашите бижута“ / „�
 
 ## 8. Story pages
 
-- **За нас** (`templates/page.about.json`): `about-intro` (jump-link pills) → four `split-story` panels (anchors
-  istoriya, vdahnovenie, dizain, materiali) → questions (anchor vaprosi).
+- **За нас** (`templates/page.about.json`): `about-intro` (jump-link pills) → `split-story` panels istoriya and
+  vdahnovenie → `cj-design-points` (anchor dizain, since 2026-11-11: centred heading, four points in two columns, each
+  an `icon-benefit` icon in a blush circle with a fine outer ring, title and text; one column on phones; circle turns
+  pink on hover) → `split-story` materiali → questions (anchor vaprosi).
 - **Контакти** (`templates/page.contact.json`): `page-banner` (picture, veil) → `contact-methods` rows: e-mail form,
   phone (button only), shop (address, hours, map link).
 - `main-page.liquid` has `show_title` (off where the template brings its own heading).

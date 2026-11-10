@@ -8,6 +8,12 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-11 — За нас: „Нашата история“ new lead and text **(owner)**
+- Owner: keep the title, change the rest, "something like a symbol for a start". The ring as a circle without beginning or end; only true facts (1991, Велико Търново, the atelier); the garage line removed at the owner's wish. Before: „Бижуто може да пази спомен за цял живот.“ / „През 1991 година един гараж във Велико Търново стана нашата първа работилница. Днес в ателието ни се раждат … със същото внимание, с което започнахме.“
+
+## 2026-11-11 — За нас: „Нашият дизайн“ as four points, after moonmagic's „Our Designs“ **(owner)**
+- Owner: remove ours and make it like moonmagic's, with our things and design. Their section measured at 1440: centred 50px heading, 2 × 2 grid, 130px line icon beside a 20px title and 18px text. New `sections/cj-design-points.liquid` + `section-cj-design-points.css` replace the `split-story` „design“ panel (text beside an empty picture slot): heading and lead kept, four points from the facts list only (own 3D model; handmade in Велико Търново since 1991; stones appraised by an HRD-qualified specialist, gold 14/18K; certificate, warranty, cleaning and repair after purchase), our line icons in a blush circle with a fine ring that closes in and turns pink on hover, reveal on scroll. New `model-3d` icon in `icon-benefit.liquid`. Way back: put the `design` split-story back in `page.about.json` (git history) and drop `design_points`.
+
 ## 2026-11-10 — Зодии and Вяра и закрила bands: the shade only behind the words **(owner)**
 - Owner: "make the shadow be just to the text". The band-wide gradient (70% of the band from the words' side; phones from the bottom) is replaced by a soft radial glow behind the words and the button, fading out just beyond them; the rest of the photo is clear. `section-gift-guide.css`. Way back: revert this commit.
 - Same day, owner: "a little darker on phone": phones 0.68 / 0.56 (computers stay 0.55 / 0.45).
