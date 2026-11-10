@@ -8,6 +8,14 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-11 — Two delivery times: in stock 3–5 working days, made to order 10–15 + up to 2 **(owner)**
+- Replaces „Доставка: 3–20 работни дни“ everywhere. The line above the button (delivery_note) now has an in-stock pair
+  („В наличност: доставка 3–5 работни дни“) and a made-to-order pair („Изработка по поръчка: 10–15 работни дни +
+  доставка до 2 дни“), chosen from the selected variant's stock (tracked and above 0 = in stock; untracked counts as
+  made to order, the safer promise) and swapped on variant change (DeliveryNote id in product-info.js). Delivery tab,
+  FAQ „Готово ли е бижуто…“, About page FAQ and the cart line (setting default, „до 5 … до 17“) say the same.
+- Assumed: the owner's "10–15 days" are working days. Way back: revert both commits (section, then template).
+
 ## 2026-11-11 — Owner's answers: free delivery over €500, box, resizing, stones, hallmark **(owner)**
 - FAQ tab gains „Колко струва доставката?“, „Идва ли бижуто в кутия?“, „Естествени ли са камъните?“, „Подходящо ли е при
   чувствителна кожа?“, „Може ли размерът на пръстена да се промени по-късно?“, and the hallmark line in „Истинско злато
