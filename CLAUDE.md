@@ -27,6 +27,7 @@ Only these, unless the owner confirms more. Never invent policies, prices, warra
   polished (owner, 2026-10-12, from the atelier). Material cards may say each gold is „създадено да запазва
   блясъка си“ (owner's own wording, 2026-10-12).
 - Engraving on request (name, date or message); terms unknown.
+- A chain can be added to a pendant if the customer wants one, chosen like the parts of a set (owner, 2026-11-10); chain price and kinds not yet given, so never say a chain is included.
 - Some pieces are ready, others are made to order; delivery takes 3–20 working days depending on the piece (owner, 2026-11-03; wording „Доставка: 3–20 работни дни“); a piece can be made with another stone, metal or size.
 - Delivery with Econt and Speedy to an office or address in Bulgaria. Cash on delivery is the **intended** method, but
   its checkout configuration is unverified and no online payment method is set up yet (`docs/tasks.md` A2): never
