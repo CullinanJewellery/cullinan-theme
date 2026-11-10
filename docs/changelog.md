@@ -8,6 +8,9 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-11 — Нашият дизайн: the hover look plays by itself on touch screens **(owner)**
+- Owner liked the hover and wants it on phones without touching, every 3 seconds. `(hover: none)`: each circle turns pink with its ring closing in for about 3 s, one after another (CSS animation, delay by `--point-index`, cycle 3 s × points); none under reduced motion. Computers unchanged. Way back: delete the „Touch screens“ block and the two keyframes in `section-cj-design-points.css`.
+
 ## 2026-11-11 — За нас: „Нашата история“ new lead and text **(owner)**
 - Owner: keep the title, change the rest, "something like a symbol for a start". The ring as a circle without beginning or end; only true facts (1991, Велико Търново, the atelier); the garage line removed at the owner's wish. Before: „Бижуто може да пази спомен за цял живот.“ / „През 1991 година един гараж във Велико Търново стана нашата първа работилница. Днес в ателието ни се раждат … със същото внимание, с което започнахме.“
 

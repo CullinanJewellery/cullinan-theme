@@ -38,7 +38,7 @@
             {% endif %}
             {{ block.shopify_attributes }}
           >
-            <span class="design-points__icon" aria-hidden="true">
+            <span class="design-points__icon" aria-hidden="true" style="--point-index: {{ forloop.index0 }}; --point-count: {{ section.blocks.size }};">
               {%- render 'icon-benefit', icon: block.settings.icon -%}
             </span>
             <span class="design-points__text">
