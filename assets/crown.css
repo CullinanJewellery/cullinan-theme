@@ -1417,6 +1417,26 @@ html {
   box-shadow: inset 0 0 0 1px rgb(var(--color-button));
 }
 
+/* 2026-11-11 („Нови бижута“, About page): two buttons side by side; the second is the outline (the first's hover
+   look) and fills on hover. Phones: stacked, full width. */
+.collection .collection__view-all--two {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.6rem;
+}
+
+.collection .collection__view-all .collection__second-button {
+  background-color: transparent;
+  color: rgb(var(--color-button));
+  box-shadow: inset 0 0 0 1px rgb(var(--color-button));
+}
+
+.collection .collection__view-all .collection__second-button:hover,
+.collection .collection__view-all .collection__second-button:focus-visible {
+  background-color: rgb(var(--color-button));
+  color: rgb(var(--color-button-text));
+}
+
 @media screen and (max-width: 749px) {
   .collection .collection__view-all .button {
     width: 100%;

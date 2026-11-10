@@ -115,8 +115,18 @@
 
         {%- if section.settings.collection.products.size > 0 -%}
           {% assign lazy_load = false %}
+          {%- comment -%}
+            Cullinan (2026-11-11, „Нови бижута“ on the About page): "Newest first" sorts the collection's first 50
+            pieces by the date they were added, before the page of cards is cut.
+          {%- endcomment -%}
+          {%- if section.settings.sort_newest -%}
+            {%- assign fc_list = section.settings.collection.products | sort: 'created_at' | reverse -%}
+          {%- endif -%}
           {% paginate section.settings.collection.products by section.settings.products_to_show %}
-            {%- for product in section.settings.collection.products limit: section.settings.products_to_show -%}
+            {%- unless section.settings.sort_newest -%}
+              {%- assign fc_list = section.settings.collection.products -%}
+            {%- endunless -%}
+            {%- for product in fc_list limit: section.settings.products_to_show -%}
               {%- comment -%} Cullinan: never show the product the visitor is already on. {%- endcomment -%}
               {%- if current_product_id and product.id == current_product_id -%}
                 {%- continue -%}
@@ -214,9 +224,23 @@
     </slider-component>
 
     {%- if section.settings.show_view_all and section.settings.collection != blank -%}
-      <div class="center collection__view-all page-width{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+      {%- comment -%}
+        Cullinan (2026-11-11): the first button may link elsewhere than the collection (e.g. sorted newest first),
+        and a second, outlined button can stand beside it (moonmagic's About page ends with two).
+      {%- endcomment -%}
+      {%- liquid
+        assign fc_first_url = section.settings.collection.url
+        if section.settings.view_all_url != blank
+          assign fc_first_url = section.settings.view_all_url
+        endif
+        assign fc_second = false
+        if section.settings.second_label != blank and section.settings.second_url != blank
+          assign fc_second = true
+        endif
+      -%}
+      <div class="center collection__view-all page-width{% if fc_second %} collection__view-all--two{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
         <a
-          href="{{ section.settings.collection.url }}"
+          href="{{ fc_first_url }}"
           class="{% if section.settings.view_all_style == 'link' %}link underlined-link{% elsif section.settings.view_all_style == 'solid' %}button{% else %}button button--secondary{% endif %}"
           aria-label="{{ 'sections.featured_collection.view_all_label' | t: collection_name: section.settings.collection.title | escape }}"
         >
@@ -230,6 +254,11 @@
 
           {%- endif -%}
         </a>
+        {%- if fc_second -%}
+          <a href="{{ section.settings.second_url }}" class="button collection__second-button">
+            {{- section.settings.second_label | escape -}}
+          </a>
+        {%- endif -%}
       </div>
     {%- endif -%}
     {% if section.settings.image_shape == 'arch' %}
@@ -369,6 +398,30 @@
       "default": "Вижте всички",
       "info": "Leave empty to use the theme's default wording."
 
+    },
+    {
+      "type": "url",
+      "id": "view_all_url",
+      "label": "Button link",
+      "info": "Leave empty to link to the collection."
+    },
+    {
+      "type": "text",
+      "id": "second_label",
+      "label": "Second button text",
+      "info": "An outlined button beside the first. Shown only with a link."
+    },
+    {
+      "type": "url",
+      "id": "second_url",
+      "label": "Second button link"
+    },
+    {
+      "type": "checkbox",
+      "id": "sort_newest",
+      "label": "Newest first",
+      "info": "Shows the pieces added most recently first.",
+      "default": false
     },
 
     {
