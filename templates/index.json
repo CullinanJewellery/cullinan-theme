@@ -308,6 +308,7 @@
           "type": "tile",
           "settings": {
             "size": "standard",
+            "image": "shopify://shop_images/home-tile-pendants.jpg",
             "label": "Висулки",
             "subline": "Малки бижута с голямо значение.",
             "link": "/collections/висулки",
