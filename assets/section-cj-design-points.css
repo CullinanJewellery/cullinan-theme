@@ -45,7 +45,8 @@
   gap: 3.2rem;
 }
 
-/* The icon in a soft blush circle with a fine ring just outside it, like a stone in its setting. */
+/* The icon in a white circle (the section is the blush scheme-2) with a fine ring just outside it, like a stone in
+   its setting. */
 .design-points__icon {
   position: relative;
   display: flex;
@@ -54,7 +55,7 @@
   width: 11.6rem;
   height: 11.6rem;
   border-radius: 50%;
-  background: #f2e4de;
+  background: #fff;
   color: rgb(42 30 26);
   transition: background-color 0.4s ease, transform 0.4s ease;
 }
