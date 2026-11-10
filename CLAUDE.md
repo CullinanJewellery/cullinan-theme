@@ -29,7 +29,7 @@ Only these, unless the owner confirms more. Never invent policies, prices, warra
 - Engraving on request (name, date or message); terms unknown.
 - A chain can be added to a pendant if the customer wants one, chosen like the parts of a set (owner, 2026-11-10); chain price and kinds not yet given, so never say a chain is included.
 - Some pieces are ready, others are made to order (owner, 2026-11-11, replacing „3–20 работни дни“ of 2026-11-03): pieces in
-  stock arrive in 3–5 working days; made-to-order pieces take 10–15 days to make, then about 2 days to deliver. The
+  stock arrive in 3–5 working days; made-to-order pieces arrive in 10–15 working days (owner: no separate 2 days). The
   product page line follows the variant's Shopify stock (quantity tracked and above 0 = in stock). A piece can be made
   with another stone, metal or size.
 - Delivery with Econt and Speedy to an office or address in Bulgaria. Cash on delivery is the **intended** method, but
