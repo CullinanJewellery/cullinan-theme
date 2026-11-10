@@ -298,6 +298,7 @@
           "type": "tile",
           "settings": {
             "size": "standard",
+            "image": "shopify://shop_images/home-tile-earrings.jpg",
             "label": "Обеци",
             "subline": "Фини акценти, които се носят цял ден.",
             "link": "/collections/обеци",
