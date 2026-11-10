@@ -250,6 +250,39 @@
         "padding_top": 80,
         "padding_bottom": 96
       }
+    },
+    "new_arrivals": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "all",
+        "products_to_show": 8,
+        "title": "Нови бижута",
+        "heading_size": "h1",
+        "description": "<p>Най-новото от ателието ни във Велико Търново.</p>",
+        "show_description": true,
+        "description_style": "body",
+        "columns_desktop": 3,
+        "enable_desktop_slider": true,
+        "full_width": true,
+        "show_view_all": true,
+        "view_all_label": "Вижте новите бижута",
+        "view_all_url": "/collections/all?sort_by=created-descending",
+        "second_label": "Най-продаваните",
+        "second_url": "/collections/all?sort_by=best-selling",
+        "sort_newest": true,
+        "view_all_style": "solid",
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
     }
   },
   "order": [
@@ -259,6 +292,7 @@
     "inspiration",
     "design_points",
     "materials",
-    "faq"
+    "faq",
+    "new_arrivals"
   ]
 }
