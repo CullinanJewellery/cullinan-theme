@@ -522,6 +522,7 @@
       "settings": {
         "content_side": "left",
         "image": "shopify://shop_images/home-zodiac-band_17556e60-8a92-48ee-86fe-b1b79cbed151.jpg",
+        "image_mobile": "shopify://shop_images/home-zodiac-band-phone.jpg",
         "eyebrow": "Вашият знак",
         "heading": "Бижута по зодия",
         "text": "<p>Знакът, под който сте родени, винаги близо до сърцето.</p>",
