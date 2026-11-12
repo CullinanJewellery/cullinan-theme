@@ -10,7 +10,7 @@ Raw photos: 29 phone photos from the owner, 2026-11-12 (one on the table and one
   in a small gold bead. One gold motif in the middle, linked to the cord by a small ring at each side, and one gold
   bead on the cord at each side of the motif.
 - Beads: diamond-cut (faceted lines) on most designs; plain polished round on 06, 07, 08, 09.
-- **The two end beads at the back are the same beads as the two at the front, same kind and size, on every bracelet** (owner, 2026-11-12: "the balls that are in the back they are the same as the one that are in front"). Say so in every prompt.
+- End beads at the back: the owner first asked for them to match the front beads, then kept 01 with small plain back beads to save credits (2026-11-12). Ask the owner before spending credits on them for the other designs.
 - Every part the owner's piece shows plain is plain and smooth (01: the model added diamond-cut lines to the big heart; owner: "just a normal heart").
 - Metal: yellow gold as photographed (karat to confirm).
 
@@ -51,4 +51,4 @@ Raw photos: 29 phone photos from the owner, 2026-11-12 (one on the table and one
 - 2026-11-12: raw photos sorted into folders, weights recorded; questions answered.
 - 2026-11-12: 01 yellow main photo (3 credits, job 1b75230c), framed at 84% of the width; sent for the OK before the others.
 - 2026-11-12: owner: big heart plain, back beads same as front. Edit refused by the service, so 01 was made again (job aeff0905): plain hearts, four identical diamond-cut beads. Bracelet 01 so far 9.25 credits. Sent for the OK.
-- 2026-11-12: owner accepted 01 as it is ("leave it with the balls that are there, stop wasting more credits"). No more edits to 01.
+- 2026-11-12: owner chose the earlier photo (plain hearts, small plain end beads at the back) over aeff0905: "i want you use this one", "stop wasting more credits". That photo is the main photo again; aeff0905 kept in чернови. No more edits to 01.
