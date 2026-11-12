@@ -10,7 +10,7 @@ Raw photos: 29 phone photos from the owner, 2026-11-12 (one on the table and one
   in a small gold bead. One gold motif in the middle, linked to the cord by a small ring at each side, and one gold
   bead on the cord at each side of the motif.
 - Beads: diamond-cut (faceted lines) on most designs; plain polished round on 06, 07, 08, 09.
-- End beads at the back: the owner first asked for them to match the front beads, then kept 01 with small plain back beads to save credits (2026-11-12). Ask the owner before spending credits on them for the other designs.
+- End beads at the back match the front beads, said in every prompt (owner, 2026-11-12: "make them match the front"); if a result still shows smaller ones, keep it rather than pay for a fix. 01 keeps its small plain back beads (owner chose that photo).
 - Every part the owner's piece shows plain is plain and smooth (01: the model added diamond-cut lines to the big heart; owner: "just a normal heart").
 - Metal: yellow gold as photographed (karat to confirm).
 
@@ -52,3 +52,5 @@ Raw photos: 29 phone photos from the owner, 2026-11-12 (one on the table and one
 - 2026-11-12: 01 yellow main photo (3 credits, job 1b75230c), framed at 84% of the width; sent for the OK before the others.
 - 2026-11-12: owner: big heart plain, back beads same as front. Edit refused by the service, so 01 was made again (job aeff0905): plain hearts, four identical diamond-cut beads. Bracelet 01 so far 9.25 credits. Sent for the OK.
 - 2026-11-12: owner chose the earlier photo (plain hearts, small plain end beads at the back) over aeff0905: "i want you use this one", "stop wasting more credits". That photo is the main photo again; aeff0905 kept in чернови. No more edits to 01.
+- Dark areas in the owner's phone photos are the mirror polish reflecting the room, not black metal (owner, 2026-11-12); every prompt says so.
+- 2026-11-12: main photos of 02–14 made in one round (13 × 3 credits; 12 made twice, the first had stones on the toes, so 42), plus 01 on the wrist (3). Five results had a faint blurred copy of the bracelet above it; `ghost-clear.cjs` paints only the background rows above the bracelet. 06's one stray dot painted out. Gold moved to 209,167,111 by hue, bg-even, frame c 0.84. Credits 410.25 → 365.25 (45). Sent for the owner's look.
