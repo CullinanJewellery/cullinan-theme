@@ -130,7 +130,7 @@ Full recipe with the exact Higgsfield prompts: `photography/README.md` „Produc
   photo shows white round the stones: `photography/rhodium-off.cjs` gives the setting the photo's own gold (owner,
   2026-10-19, ring C; lesson 41). A main photo flatter than ring A (shine under 212): `photography/polish-curve.cjs`
   then `gold-match.cjs` (owner's OK, 2026-10-20; lesson 43). **Every piece's metals are ring A's
-  (owner, 2026-10-15):** yellow with `gold-match.cjs --target 210,169,109`, white and rose with `metal-swap.cjs`
+  (owner, 2026-10-15):** yellow with `gold-match.cjs --target 209,167,111`, white and rose with `metal-swap.cjs`
   (ring A's measured white and rose), always with a `--stone` box round every stone so stones stay untouched.
 - **Background** flat seamless off-white #FCFBFC edge to edge; **shadow** soft neutral grey, falling to the left, with
   a thin darker contact shadow; no gold tint on the floor.
@@ -152,11 +152,11 @@ Full recipe with the exact Higgsfield prompts: `photography/README.md` „Produc
   dark pavilion contrast, pin-point sparkle, a little fire; never pink, lilac, grey or milky. Asked for in the first
   prompt, with ring G's finished photo as the stone reference, so it costs nothing extra; only if the stones still
   come out soft, a stones-only edit (3 credits) put back with `photography/stone-look.cjs` (lesson 56).
-- **Gold**: rich, warm, deeply polished yellow at 210, 169, 109 (since 2026-11-07, between ring A's and 2026-10-30's 212, 172, 104; ring A's polish is still the reference). One yellow for both 14K and 18K (owner, 2026-11-07: "they will be the same color"). **Rose gold** is 202, 152, 122 since 2026-11-07 (5% darker than ring A's; owner: "a little bit too bright"), before that matched
+- **Gold**: rich, warm, deeply polished yellow at 209, 167, 111 (since 2026-11-12, between ring A's 208, 165, 114 and 2026-11-07's 210, 169, 109; ring A's polish is still the reference). One yellow for both 14K and 18K (owner, 2026-11-07: "they will be the same color"). **Rose gold** is 202, 152, 122 since 2026-11-07 (5% darker than ring A's; owner: "a little bit too bright"), before that matched
   ring A's rose. **White gold is a clean, neutral, bright white, no yellow, beige or champagne cast** (owner,
   2026-10-13: both rings' white looked yellowish; measured blue 13–20 below red). **White gold is the red ring's white since
   2026-11-07** (owner: "we should have a color for the white gold too"): made with `photography/metal-swap.cjs` from the look-matched yellow, then `photography/white-neutral.cjs` (`recolour-piece.cjs`; new pieces `metals-from-yellow.cjs`), matching the
-  red ring (metal about 214, 210, 210; brightness 168/223/233 at 10/50/90%); silver is its copy. New
+  red ring (metal about 209, 204, 204 since 2026-11-12, 3% darker than before; owner: "too bright"); silver is its copy. New
   metals are made from the finished yellow photo of the same piece.
 - **Five photos per piece (owner, 2026-10-14)**: yellow gold 01 standing (three-quarter view), 02 lying flat seen
   from above at 45°, 03 worn on a hand on ivory linen; white gold and rose gold 01 standing only. Silver uses the
@@ -180,7 +180,7 @@ Full recipe with the exact Higgsfield prompts: `photography/README.md` „Produc
   rough (owner, 2026-10-13). **New hand from ring B on (owner, 2026-10-16; ring A keeps its own):** a lot more
   feminine, a medium manicure that is visible but not long, the ring a little smaller so it looks elegant, zoomed out
   so the whole hand and all five nails show. Prompt: `photography/prompts/03-yellow-hand.md`.
-- **Yellow gold is RGB 210, 169, 109 every time (owner, 2026-11-07: "between A and the oldest"; 212, 172, 104 from 2026-10-30, option A: "yellow ... not that close to the rose
+- **Yellow gold is RGB 209, 167, 111 every time (owner, 2026-11-12: between ring A's and 2026-11-07's 210, 169, 109, "between A and the oldest"; 212, 172, 104 from 2026-10-30, option A: "yellow ... not that close to the rose
   gold")**; ring A's 208, 165, 114 read nearly as rose. All finished yellow photos were moved to it (main photos with
   `gold-match.cjs`, worn photos with `photography/gold-only-merge.cjs`; previous files in each piece's `чернови/преди
   по-жълтото злато`; lesson 57). After any yellow photo measure the gold; if it is off, run `photography/gold-match.cjs` (owner's choice,

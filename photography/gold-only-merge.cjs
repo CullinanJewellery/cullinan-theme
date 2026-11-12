@@ -12,14 +12,14 @@
   skin included, and on worn photos pushed the gold to lemon (first run, 2026-10-30, rejected before saving).
 
   Usage (needs sharp, NODE_PATH as for check-photo.cjs):
-    node gold-only-merge.cjs <yellow original> <white version> <out> [--from 212,172,104] [--to 210,169,109]
+    node gold-only-merge.cjs <yellow original> <white version> <out> [--from 210,169,109] [--to 209,167,111]
 */
 const sharp = require('sharp');
 
 (async () => {
   const args = process.argv.slice(2);
   const opt = (n, d) => { const i = args.indexOf(n); return i < 0 ? d : args.splice(i, 2)[1].split(',').map(Number); };
-  const FROM = opt('--from', [212, 172, 104]), TO = opt('--to', [210, 169, 109]);
+  const FROM = opt('--from', [210, 169, 109]), TO = opt('--to', [209, 167, 111]);
   const K = TO.map((v, k) => v / FROM[k]);
   const [yf, wf, out] = args;
   if (!out) throw new Error('usage: node gold-only-merge.cjs <yellow> <white> <out>');

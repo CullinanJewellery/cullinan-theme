@@ -11,9 +11,12 @@
     node white-neutral.cjs <white.png> <the yellow it was made from> <out.png> [--stone x0,y0,x1,y1 ...]
   Strongly coloured pixels (more than 25 levels between channels: a stone's fire, a ruby) are left as they are; the glow
   is faint. --stone: boxes (fractions of the photo) left exactly as they are, for a pearl (pink, but faint).
+  2026-11-12: the metal itself is also made 3% darker (owner: the white was "too bright"; chose 3% from 3/6/9% on the
+  red ring). Way back: set DARKER to 1.
 */
 const sharp = require('sharp');
 const BG = [-2 / 3, -2 / 3, 4 / 3]; // 251, 251, 253 as offsets from its brightness
+const DARKER = 0.97; // white metal 3% darker than metal-swap's (owner, 2026-11-12)
 (async () => {
   const [wf, yf, out, ...rest] = process.argv.slice(2);
   if (!out) throw new Error('usage: node white-neutral.cjs <white> <yellow> <out> [--stone box ...]');
@@ -23,11 +26,14 @@ const BG = [-2 / 3, -2 / 3, 4 / 3]; // 251, 251, 253 as offsets from its brightn
   const W = info.width, H = info.height, o = Buffer.from(d); let n = 0;
   for (let i = 0; i < W * H; i++) {
     const p = i * 3, metal = Math.min(1, Math.max(0, (Y[p] - Y[p + 2] - 8) / 20)), k = 1 - metal;
+    if (metal && Math.max(d[p], d[p + 1], d[p + 2]) - Math.min(d[p], d[p + 1], d[p + 2]) <= 25) {
+      for (let c = 0; c < 3; c++) o[p + c] = Math.round(d[p + c] * (1 - metal * (1 - DARKER)));
+    }
     if (!k) continue;
     if (boxes.length) { const x = (i % W) / W, y = Math.floor(i / W) / H; if (boxes.some((b) => x >= b[0] && x <= b[2] && y >= b[1] && y <= b[3])) continue; }
     if (Math.max(d[p], d[p + 1], d[p + 2]) - Math.min(d[p], d[p + 1], d[p + 2]) > 25) continue; // a stone's fire, a ruby: its own colour
     const L = (d[p] + d[p + 1] + d[p + 2]) / 3;
-    for (let c = 0; c < 3; c++) o[p + c] = Math.max(0, Math.min(255, Math.round(d[p + c] + k * (L + BG[c] - d[p + c]))));
+    for (let c = 0; c < 3; c++) o[p + c] = Math.max(0, Math.min(255, Math.round(o[p + c] + k * (L * (1 - metal * (1 - DARKER)) + BG[c] - o[p + c]))));
     if (Math.abs(o[p] - d[p]) + Math.abs(o[p + 2] - d[p + 2]) > 1) n++;
   }
   await sharp(o, { raw: { width: W, height: H, channels: 3 } }).png().toFile(out);

@@ -53,7 +53,7 @@ Ring A's main photo (`pictures for the website/01 Пръстен с топчет
    touches the floor. Never shadowless, never a gold tint on the floor.
 2. **The background.** Flat off-white #FCFBFC, 250–252 at the edges, even, no patches or bands.
 3. **Sharp everywhere.** Edges crisp from front to back, like a focus-stacked photo, no soft or blurred ends.
-4. **The gold.** Ring A's colour, 210, 169, 109, rich and warm, not lemon, not copper.
+4. **The gold.** Ring A's colour, 209, 167, 111, rich and warm, not lemon, not copper.
 5. **The size.** About half the picture's height when generated; the frame script enlarges it to ring A's 80.7%.
 
 Every main-photo prompt includes the block in `prompts/00-main-quality.md`. **Before sending the owner any main
@@ -74,7 +74,7 @@ flatter than ring A (or fails any point), do not send it as finished: tell the o
    **Also put it next to ring A's main photo** and compare the polish and points 1–5 above (owner, 2026-10-20); if
    it is flatter than ring A, tell the owner before going on.
 5. **Make the others** with the prompt files (yellow lying flat or hand). **Yellow to ring A's gold with
-   `gold-match.cjs --target 210,169,109`, then white and rose with `metal-swap.cjs` from the finished, framed yellow
+   `gold-match.cjs --target 209,167,111`, then white and rose with `metal-swap.cjs` from the finished, framed yellow
    photo** (free; no model, so nothing but the colour changes); **a `--stone x0,y0,x1,y1` box round every stone in
    both** (owner, 2026-10-15: the stone must not change). Worn photos (hand,
    body) too, with `--hand`: **show them to the owner, ask whether they like them and what more could be done to
@@ -93,7 +93,7 @@ flatter than ring A (or fails any point), do not send it as finished: tell the o
 
 ## Measured targets (check-photo.cjs)
 
-- Yellow gold: average of the metal close to ring A's main photo, RGB 210, 169, 109 (each within about 10).
+- Yellow gold: average of the metal close to ring A's main photo, RGB 209, 167, 111 (each within about 10).
 - Rose gold: close to 214, 160, 128 / ring C rose 222, 163, 144.
 - White gold: blue within 5 of red on the metal (neutral, no yellow).
 - Background 249–255 at the edges and even (no patch: border brightness spread under 8 outside the shadow side).

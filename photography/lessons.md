@@ -414,3 +414,8 @@ Each line: what went wrong, the rule now, where it came from. Newest last.
     Nano Banana 2.1 at 4k, the finished photos as references and each ring's stone counts in the prompt, gave rich light
     and real contact in one try. The rings are redrawn, so compare each with its original zoomed in and tell the owner
     what differs. Ask for the rings inside the safe zone; here they span 20–82% of the height, too tall for the tile.
+78. **Yellow 209, 167, 111 and white 3% darker since 2026-11-12** (owner, on the red ring: yellow "between the 1 one
+    and the 3" = ring A's and 2026-11-07's; white "a little bit darker because right now it is to bright", 3% chosen
+    from 3/6/9%). Finished photos moved with a fixed ratio on the metal only: the metal is where the yellow and white
+    photos of the same view differ (warm pixels for yellow, neutral ones for white), so skin, stones and the floor stay.
+    Show colour choices on one finished piece side by side, never as flat swatches (owner: "a picture of the ring").
