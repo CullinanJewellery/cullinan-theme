@@ -39,6 +39,7 @@ const piece=new Float32Array(W*H);const D5=5;for(let i=0;i<W*H;i++){if(!keep[i])
 const t=n=>path.join(od,id+n);
 execFileSync(process.execPath,[path.join(P,'red-cord.cjs'),'mask',Y,'x',t('-m.png')]);
 const fb=box.map((v,k)=>(v/(k%2?H:W)).toFixed(4)).join(',');
+await s(Buffer.from(piece.map(v=>Math.round(v*255))),{raw:{width:W,height:H,channels:1}}).png().toFile(t('-piece.png'));
 const out={};for(const kind of ['rose','white']){const args=[path.join(P,'metal-swap.cjs'),kind,t('-m.png'),t('-'+kind+'-s.png'),'--hand',fb,'--hue',hue];if(kind==='rose')args.push('--relative');
  out[kind]=execFileSync(process.execPath,args).toString().trim();
  const sw=await s(t('-'+kind+'-s.png')).removeAlpha().raw().toBuffer();const r=Buffer.from(o);
