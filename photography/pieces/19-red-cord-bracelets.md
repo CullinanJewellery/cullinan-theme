@@ -51,3 +51,4 @@ Raw photos: 29 phone photos from the owner, 2026-11-12 (one on the table and one
 - 2026-11-12: raw photos sorted into folders, weights recorded; questions answered.
 - 2026-11-12: 01 yellow main photo (3 credits, job 1b75230c), framed at 84% of the width; sent for the OK before the others.
 - 2026-11-12: owner: big heart plain, back beads same as front. Edit refused by the service, so 01 was made again (job aeff0905): plain hearts, four identical diamond-cut beads. Bracelet 01 so far 9.25 credits. Sent for the OK.
+- 2026-11-12: owner accepted 01 as it is ("leave it with the balls that are there, stop wasting more credits"). No more edits to 01.
