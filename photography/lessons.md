@@ -419,3 +419,4 @@ Each line: what went wrong, the rule now, where it came from. Newest last.
     from 3/6/9%). Finished photos moved with a fixed ratio on the metal only: the metal is where the yellow and white
     photos of the same view differ (warm pixels for yellow, neutral ones for white), so skin, stones and the floor stay.
     Show colour choices on one finished piece side by side, never as flat swatches (owner: "a picture of the ring").
+79. **Design details come only from the owner's piece, never from the model's idea of "luxury"** (2026-11-12, bracelet 01: the model added diamond-cut lines to a plain heart because the beads had them). Say "plain, smooth" for every part that is plain. When an edit is merged back, take only the changed part's pixels (a colour mask), never a box: a box carried the edit's lighter background and showed as a square.
