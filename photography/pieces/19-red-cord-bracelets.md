@@ -19,7 +19,7 @@ Raw photos: 29 phone photos from the owner, 2026-11-12 (one on the table and one
 | 01 | Две сърца | two interlocked open hearts | diamond-cut | 0.65 | 123eba57, f64e5dec (bead), d427336f |
 | 02 | Малък кръст | small plain cross | diamond-cut | 0.46 | aa480e11, 5e46bb0e |
 | 03 | Кръст с мрежа | cross with a lattice pattern | diamond-cut | 0.64 | 09fd4bff, 3ee8e137 |
-| 04 | Кръст с камък | cross with lines, a small clear stone in the centre | diamond-cut | 0.74? (to confirm) | 8b84a471, c979dd04 |
+| 04 | Кръст с камък | cross with lines, a small clear stone in the centre | diamond-cut | 0.74 | 8b84a471, c979dd04 |
 | 05 | Дърво на живота | tree of life in a ring | diamond-cut | 0.74 | abeb512f, ea58632c |
 | 06 | Дълъг гладък кръст | long smooth polished cross | plain | 0.98 | 2a3b51d3, 53563eb2 |
 | 07 | Кръст с двойна линия | cross with a double-line edge | plain | 0.94 | 4b2f5040, d1615146 |
@@ -31,13 +31,11 @@ Raw photos: 29 phone photos from the owner, 2026-11-12 (one on the table and one
 | 13 | Цвете с камък | flower of four heart-shaped petals, a small clear stone in the centre | diamond-cut | 0.71 | a9bbabf1, ffa81983 |
 | 14 | Ажурен кръст | openwork cross with diamond-cut lines | diamond-cut | 0.60 | e7495125, e3a2ffe3 |
 
-## Questions for the owner (2026-11-12)
+## Owner's answers (2026-11-12)
 
-- 04: weight 0.74? (the message has 0.74 twice, next to 04 and 05).
-- 08: two sizes of plate (0.85 g / 18.34 mm and 1.05 g / 21.27 mm)? For engraving? Photo blank?
-- Stones in 04 and 13: zircons?
-- Karat; also in white or rose gold?
-- Cord: red only?
+- 04 weighs 0.74 g. 08: two sizes (0.85 g / 18.34 mm plate, 1.05 g / 21.27 mm), for engraving, photographed blank.
+- Stones in 04 and 13: zircons. Gold 14K; every design can also be made in white or rose gold, same price.
+- Cord: red only. 01: the small heart is white gold (seen in the raw photos), the large one yellow.
 
 ## Shots (planned)
 
@@ -48,4 +46,5 @@ Raw photos: 29 phone photos from the owner, 2026-11-12 (one on the table and one
 
 ## Status
 
-- 2026-11-12: raw photos sorted into folders, weights recorded; questions sent; no credits spent.
+- 2026-11-12: raw photos sorted into folders, weights recorded; questions answered.
+- 2026-11-12: 01 yellow main photo (3 credits, job 1b75230c), framed at 84% of the width; sent for the OK before the others.
