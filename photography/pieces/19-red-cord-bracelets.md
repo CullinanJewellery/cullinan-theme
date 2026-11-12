@@ -10,6 +10,8 @@ Raw photos: 29 phone photos from the owner, 2026-11-12 (one on the table and one
   in a small gold bead. One gold motif in the middle, linked to the cord by a small ring at each side, and one gold
   bead on the cord at each side of the motif.
 - Beads: diamond-cut (faceted lines) on most designs; plain polished round on 06, 07, 08, 09.
+- **The two end beads at the back are the same beads as the two at the front, same kind and size, on every bracelet** (owner, 2026-11-12: "the balls that are in the back they are the same as the one that are in front"). Say so in every prompt.
+- Every part the owner's piece shows plain is plain and smooth (01: the model added diamond-cut lines to the big heart; owner: "just a normal heart").
 - Metal: yellow gold as photographed (karat to confirm).
 
 ## Designs
@@ -48,3 +50,4 @@ Raw photos: 29 phone photos from the owner, 2026-11-12 (one on the table and one
 
 - 2026-11-12: raw photos sorted into folders, weights recorded; questions answered.
 - 2026-11-12: 01 yellow main photo (3 credits, job 1b75230c), framed at 84% of the width; sent for the OK before the others.
+- 2026-11-12: owner: big heart plain, back beads same as front. Edit refused by the service, so 01 was made again (job aeff0905): plain hearts, four identical diamond-cut beads. Bracelet 01 so far 9.25 credits. Sent for the OK.
