@@ -25,3 +25,11 @@ different from crosses 1–4 (`кръстове - въпроси/кръстов�
 ## Status
 
 - 2026-11-14: sorted and examined; questions asked; no credits spent.
+
+## Православен кръст (owner, 2026-11-14: 7f0dbc9e front; ede5f765, 28a388cc back)
+
+- Three-bar Orthodox cross (short top bar, main bar, slanted lower bar, left end higher in the photo... right end up
+  as seen from the front: copy from 7f0dbc9e), yellow gold with a polished bevelled border and a fine stippled ground.
+- Front: the crucified figure **white (rhodium)**, polished, with a halo; "ІНЦІ" on the top bar; small letters at the
+  foot (to copy exactly from the photo). Back: "Спаси и Сохрани" across the main bar, stippled ground, bevelled edges
+  with small cut notches; hallmark on the bail. Tapered polished bail.

@@ -13,3 +13,5 @@ Folder: `pictures for the website/22 Пръстен с шест зъба - но�
 ## Status
 
 - 2026-11-14: raw photos sorted and examined; questions asked; no credits spent.
+- 2026-11-14: four more raw photos (0ce3b290 side, 9176d63d, 33d2bb58, c9756700); 0ce3b290 shows the side: the basket's
+  petal-shaped openings and a thin gallery under the stone, the band tapering into it.
