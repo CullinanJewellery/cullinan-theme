@@ -14,3 +14,11 @@ Folder: `pictures for the website/25 Комплект цвете - номер п
 
 - The metal is **rose gold**. The stones are **zircons**: white (clear) and red (ruby-coloured).
 - As always, yellow 01 is made first; rose comes from it with metal-swap, so the rose photo matches the real piece.
+
+## 3D model renders (owner, 2026-11-14)
+
+Saved in `25 Комплект цвете - номер предстои/3D модел`: the pendant from the front (clear, red, **green** stone) and
+from the side. They confirm the design used in the yellow 01 redo (job 7ae9ecff): each petal is an outer wall and an
+inner marquise wall, the floor between them closed, the only opening inside the inner marquise; six ball claws; bail
+on a jump ring through a loop on the top petal. The side view shows the petals are deep, layered walls, not flat.
+A green stone version appears in the renders: asked the owner whether it is sold and what the stone is.
