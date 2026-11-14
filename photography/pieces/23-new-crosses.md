@@ -37,3 +37,6 @@ different from crosses 1–4 (`кръстове - въпроси/кръстов�
 ## Owner's answers (2026-11-14)
 
 - Православен кръст: a photo of each side (front and back). The figure stays **white** in every metal version.
+- 2026-11-14: Православен кръст yellow photos saved: 01 front (job dc9d1ff4, unchanged on the owner's word, resized to
+  2048) and 02 back (job d066c367, background flattened, gold matched to the front). Both measure a little paler than
+  209,167,111 and the front's background has faint bands; left as they are unless the owner asks.
