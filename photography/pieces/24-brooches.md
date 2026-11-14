@@ -24,3 +24,7 @@ Folder: `pictures for the website/24 Брошки - номер предстои/
   stone is a clear zircon.
 - 2026-11-14: main photos in four metals: Роза (31959eea, 6 stones on the white crescent, pin tip right of the head),
   Панделка с камък (d169b273). Worn photos not made yet.
+- 2026-11-14 (later): owner: the first photos missed parts. Панделка remade (64bbe3b0: yellow gold claws, thin wire along
+  the top of the stone, pin tip behind the leaf). Роза remade (a154a3ff: pin tip above the head, pin behind the stem,
+  beaded rim on the crescent). Lesson: zoom every raw photo and list every part (pin ends, claws and their colour) in
+  the first prompt.
