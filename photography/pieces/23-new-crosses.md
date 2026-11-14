@@ -41,3 +41,6 @@ different from crosses 1–4 (`кръстове - въпроси/кръстов�
   2048) and 02 back (job d066c367, background flattened, gold matched to the front). Both measure a little paler than
   209,167,111 and the front's background has faint bands; left as they are unless the owner asks.
 - 2026-11-14: rose and white gold made free from the yellow (front and back); the figure stays white in rose.
+- 2026-11-14 (later): raw files re-sorted by content (they had been filed under wrong ids): Разпятие front 940807a4,
+  c64a8f6f; back 191a2736, af92171f; Кръст с шарка 2c16f2a3. Разпятие front (9957461f) and back (3c26ad3e, text
+  corrected to „спаси и сохрани“) and Кръст с шарка (7cd03056) done in four metals, frame 80.7% like crosses 06–09.

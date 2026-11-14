@@ -27,3 +27,5 @@ rule, lesson 81); white and rose 01 free with metal-swap. About 9 credits.
 ## Status
 
 - 2026-11-14: raw photos sorted and examined; questions asked; no credits spent.
+- 2026-11-14: 01 standing (5a4149f7, ghost above the bangle flattened locally) and 02 from above (cc9b4f87) done in four
+  metals, framed at 78% of the width. Wrist photo not made yet.

@@ -19,3 +19,6 @@ Folder: `pictures for the website/24 Брошки - номер предстои/
 ## Status
 
 - 2026-11-14: sorted and examined; questions asked; no credits spent.
+- 2026-11-14 (later): raw files re-sorted by content: Роза 1a0171e9, 5e664a49, 73879472, ab87a583, worn 8545928d;
+  Панделка 35347bca (table), worn 09552427. Owner: the rose has **6** clear stones on the white crescent; the ribbon's
+  stone is a clear zircon.

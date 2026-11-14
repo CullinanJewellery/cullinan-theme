@@ -41,3 +41,8 @@ ed4179b7, eed429b4, bfdec3d7 (on the table); pendant 8117aa1e, 9aace288, 6c8d152
 ## Status
 
 - 2026-11-14: raw photos sorted and examined; questions asked; no credits spent.
+
+## Owner's answers (2026-11-14)
+
+- All stones clear zircons (the pendant's small one too: show it crisp icy white).
+- Versions: yellow with white, rose with white, and all white.
