@@ -16,3 +16,4 @@ Folder: `pictures for the website/22 Пръстен с шест зъба - но�
 - 2026-11-14: four more raw photos (0ce3b290 side, 9176d63d, 33d2bb58, c9756700); 0ce3b290 shows the side: the basket's
   petal-shaped openings and a thin gallery under the stone, the band tapering into it.
 - Owner, 2026-11-14: the stone is a clear zircon.
+- 2026-11-14: main photo lying (f860ff0c, six claws) in four metals, frame c. Hand photo not made yet.

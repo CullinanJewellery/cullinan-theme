@@ -46,3 +46,5 @@ ed4179b7, eed429b4, bfdec3d7 (on the table); pendant 8117aa1e, 9aace288, 6c8d152
 
 - All stones clear zircons (the pendant's small one too: show it crisp icy white).
 - Versions: yellow with white, rose with white, and all white.
+- 2026-11-14: main photos of the ring (90b7c256, lying), earrings (91871c48, claw tips whitened locally) and pendant
+  (c260279b) saved in жълто и бяло, розово и бяло and бяло злато. Ring shows three claws on the large stone.
