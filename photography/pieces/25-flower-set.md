@@ -9,3 +9,8 @@ Folder: `pictures for the website/25 Комплект цвете - номер п
 - Two stone versions of the same design: clear (67401bac, 9b30e8bb; studs 890d3cda, 92251ac8) and red (45dc4924,
   35531692; studs 7b619c39).
 - **Metal looks pinkish (rose gold?) in every photo**, unlike the other yellow pieces: ask.
+
+## Owner's answers (2026-11-14)
+
+- The metal is **rose gold**. The stones are **zircons**: white (clear) and red (ruby-coloured).
+- As always, yellow 01 is made first; rose comes from it with metal-swap, so the rose photo matches the real piece.

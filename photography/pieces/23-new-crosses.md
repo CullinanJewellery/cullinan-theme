@@ -33,3 +33,7 @@ different from crosses 1–4 (`кръстове - въпроси/кръстов�
 - Front: the crucified figure **white (rhodium)**, polished, with a halo; "ІНЦІ" on the top bar; small letters at the
   foot (to copy exactly from the photo). Back: "Спаси и Сохрани" across the main bar, stippled ground, bevelled edges
   with small cut notches; hallmark on the bail. Tapered polished bail.
+
+## Owner's answers (2026-11-14)
+
+- Православен кръст: a photo of each side (front and back). The figure stays **white** in every metal version.
