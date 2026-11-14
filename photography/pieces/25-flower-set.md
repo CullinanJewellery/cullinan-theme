@@ -22,3 +22,4 @@ from the side. They confirm the design used in the yellow 01 redo (job 7ae9ecff)
 inner marquise wall, the floor between them closed, the only opening inside the inner marquise; six ball claws; bail
 on a jump ring through a loop on the top petal. The side view shows the petals are deep, layered walls, not flat.
 A green stone version appears in the renders: asked the owner whether it is sold and what the stone is.
+- Owner, 2026-11-14: the earrings are the same model as the pendant, only smaller (so the renders apply to the studs too).
