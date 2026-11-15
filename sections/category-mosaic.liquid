@@ -179,9 +179,11 @@
               {%- else -%}
               <a class="mosaic-slider__media" href="{{ block.settings.link }}" tabindex="-1" aria-hidden="true">
               {%- endif -%}
-                {%- if block.settings.image != blank -%}
+                {%- comment -%} 2026-11-15 (owner): a tile may have its own phone picture; without one, the main one. {%- endcomment -%}
+                {%- assign cj_slide_image = block.settings.image_phone | default: block.settings.image -%}
+                {%- if cj_slide_image != blank -%}
                   {{
-                    block.settings.image
+                    cj_slide_image
                     | image_url: width: 900
                     | image_tag:
                       class: 'mosaic-slider__image',
@@ -362,6 +364,12 @@
           "id": "image",
           "label": "Image",
           "info": "Leave empty until the photography exists — a flat tile is shown."
+        },
+        {
+          "type": "image_picker",
+          "id": "image_phone",
+          "label": "Phone image",
+          "info": "Optional. Shown in the phone row (about 290 × 400, upright 3:4). Empty: the image above is used."
         },
         {
           "type": "text",
