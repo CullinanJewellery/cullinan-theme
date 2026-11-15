@@ -302,8 +302,8 @@
           "type": "tile",
           "settings": {
             "size": "standard",
-            "image": "shopify://shop_images/home-tile-earrings_3c563da6-e390-4999-8393-02bb81f52441.jpg",
-            "image_phone": "shopify://shop_images/home-tile-earrings-phone_063164fd-ca7b-4eb7-b139-c645f70da54b.jpg",
+            "image": "shopify://shop_images/home-tile-earrings_3d077292-0405-4c40-8ca1-fc6ca4a44946.jpg",
+            "image_phone": "shopify://shop_images/home-tile-earrings-phone_99fbe1ec-bac4-4ad5-906a-0e5a03381d11.jpg",
             "label": "Обеци",
             "subline": "Фини акценти, които се носят цял ден.",
             "link": "/collections/обеци",
@@ -326,8 +326,8 @@
           "type": "tile",
           "settings": {
             "size": "tall",
-            "image": "shopify://shop_images/home-tile-accessories_84549a5b-d2c6-42e1-a83f-14c3b7d30834.jpg",
-            "image_phone": "shopify://shop_images/home-tile-accessories-phone_774a9aed-d4b3-4ac3-ac9c-efe845f2a387.jpg",
+            "image": "shopify://shop_images/home-tile-accessories_7554bd73-7c4f-44c8-80a8-e47a48ba42c1.jpg",
+            "image_phone": "shopify://shop_images/home-tile-accessories-phone_63d6f927-2087-47e1-bbdc-38b71d2b6791.jpg",
             "label": "Аксесоари",
             "subline": "",
             "link": "/collections/аксесоари",
