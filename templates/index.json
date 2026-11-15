@@ -326,6 +326,8 @@
           "type": "tile",
           "settings": {
             "size": "tall",
+            "image": "shopify://shop_images/home-tile-accessories_84549a5b-d2c6-42e1-a83f-14c3b7d30834.jpg",
+            "image_phone": "shopify://shop_images/home-tile-accessories-phone_774a9aed-d4b3-4ac3-ac9c-efe845f2a387.jpg",
             "label": "Аксесоари",
             "subline": "",
             "link": "/collections/аксесоари",
