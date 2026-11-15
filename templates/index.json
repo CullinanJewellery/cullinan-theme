@@ -266,6 +266,10 @@
         "full_width": true,
         "show_view_all": true,
         "view_all_label": "Вижте всички",
+        "view_all_url": "",
+        "second_label": "",
+        "second_url": "",
+        "sort_newest": false,
         "view_all_style": "solid",
         "color_scheme": "scheme-1",
         "image_ratio": "square",
@@ -340,6 +344,7 @@
           "type": "tile",
           "settings": {
             "size": "standard",
+            "image": "shopify://shop_images/home-tile-sets.jpg",
             "label": "Комплекти",
             "subline": "Бижута, създадени да се носят заедно.",
             "link": "/collections/комплекти",
