@@ -301,6 +301,7 @@
         "t2": {
           "type": "tile",
           "settings": {
+            "desktop_position": 6,
             "size": "standard",
             "image": "shopify://shop_images/home-tile-earrings_3305754a-7451-40b7-bccf-763e4c790344.jpg",
             "image_phone": "shopify://shop_images/home-tile-earrings-phone_99fbe1ec-bac4-4ad5-906a-0e5a03381d11.jpg",
@@ -349,6 +350,7 @@
         "t6": {
           "type": "tile",
           "settings": {
+            "desktop_position": 2,
             "size": "standard",
             "image": "shopify://shop_images/home-tile-sets_10ae7d8c-507c-4234-8784-9f90c77adcc0.jpg",
             "image_phone": "shopify://shop_images/home-tile-sets-phone_5b07c4bc-9b31-4adb-9d97-54840338c8af.jpg",
@@ -361,11 +363,11 @@
       },
       "block_order": [
         "t1",
-        "t6",
+        "t2",
         "t3",
         "t9",
         "t4",
-        "t2"
+        "t6"
       ],
       "settings": {
         "all_label": "Вижте всички бижута",
