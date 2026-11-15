@@ -8,6 +8,12 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-15 — Phone category row: words on the photos; Обеци and Комплекти swap everywhere **(owner)**
+- Owner: on phones the text on the pictures like on computers, no „Вижте …“, the same size as now; and the swap on
+  phones too. The slide is one link (the photo) with the name 2.4rem and line 1.5rem in white over the espresso shade;
+  „Очаквайте скоро“ as the computer's corner label. Block order t1, t6, t3, t9, t4, t2 (both screens); the computer
+  positions were cleared (the setting stays for later). Way back: revert commit edd103ce.
+
 ## 2026-11-11 — Two delivery times: in stock 3–5 working days, made to order 10–15 + up to 2 **(owner)**
 - Replaces „Доставка: 3–20 работни дни“ everywhere. The line above the button (delivery_note) now has an in-stock pair
   („В наличност: доставка 3–5 работни дни“) and a made-to-order pair („Изработка по поръчка: 10–15 работни дни +
