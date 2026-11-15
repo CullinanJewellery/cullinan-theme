@@ -6,6 +6,7 @@ metal on a dark satin background, with a cut-off letter at the left. Examined zo
 
 ## The piece
 
+- Size (owner, 2026-11-15): a little smaller than the rose brooch (about 5 cm), so roughly 4–4.5 cm.
 - Kind: pendant shaped like a bullet. It is a long cylinder, about 4.5 times as long as it is wide.
 - Top: a flat round disc a little wider than the body. Under the disc is a narrower ring with a groove, then a small step
   down to the body. A fixed, solid oval eye (bail) rises from the centre of the disc. It is thick, round in section and
