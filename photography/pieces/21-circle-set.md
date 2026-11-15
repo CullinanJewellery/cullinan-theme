@@ -49,3 +49,4 @@ ed4179b7, eed429b4, bfdec3d7 (on the table); pendant 8117aa1e, 9aace288, 6c8d152
 - 2026-11-14: main photos of the ring (90b7c256, lying), earrings (91871c48, claw tips whitened locally) and pendant
   (c260279b) saved in жълто и бяло, розово и бяло and бяло злато. Ring shows three claws on the large stone.
 - 2026-11-15: owner asked for the ring standing like the other rings, not lying; remade (3f9df3af, 3 credits) in ring 15's pose and saved in all three versions; the lying photos are in чернови/преди изправения пръстен.
+- 2026-11-15: owner: the earrings' large-stone claws are white (as made). Pink floor tint under the earrings removed (free); rose and white remade from the cleaned yellow.
