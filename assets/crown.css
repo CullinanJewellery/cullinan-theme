@@ -3472,6 +3472,32 @@ card-swatches {
 }
 
 /*
+  Pinterest beside them (2026-11-16, owner: "the same button like the other two but in red ... the exact same color
+  they use for their logo"): Pinterest's own red, #E60023, with white on hover, exactly as Facebook's blue works.
+*/
+.footer__social:not(.footer__social--contact) .list-social__link--pinterest {
+  color: #e60023;
+  box-shadow: inset 0 0 0 1px #e60023;
+}
+
+.footer__social:not(.footer__social--contact) .list-social__link--pinterest:hover,
+.footer__social:not(.footer__social--contact) .list-social__link--pinterest:active,
+.footer__social:not(.footer__social--contact) .list-social__link--pinterest:focus-visible {
+  background-color: #e60023;
+  color: #ffffff;
+  box-shadow: inset 0 0 0 1px #e60023;
+}
+
+/* Phones: three buttons do not fit in one row at a readable size, so the third (Pinterest) starts a second row, the
+   same size as the two above it (2026-11-16). */
+@media screen and (max-width: 749px) {
+  .footer__social:not(.footer__social--contact) .footer__list-social {
+    flex-wrap: wrap;
+    row-gap: 1.2rem;
+  }
+}
+
+/*
   A background picture behind the Контакти social block, full-bleed to the
   page's own edges like the Контакти banner above it -- at the owner's
   request (2026-09-15; two tries got this wrong first, see the comment in

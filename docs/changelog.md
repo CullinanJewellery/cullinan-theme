@@ -8,6 +8,12 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-16 — „Вижте работата ни“: Pinterest button in Pinterest red **(owner)**
+- A third button beside „Харесайте ни“ (Facebook) and „Последвайте ни“ (Instagram): „Вдъхновете се“ with the Pinterest
+  logo, the same box, outlined in Pinterest's own red #E60023 and filled red with white on hover (crown.css, homepage
+  only, like the other two). On phones the third button starts a second row at the same size (also in the product
+  page's social band, which lists the same links). Way back: revert the commit; empty the Pinterest link to hide it.
+
 ## 2026-11-16 — Footer: Pinterest icon **(owner)**
 - Theme settings → Social media → Pinterest: https://www.pinterest.com/cullinanjewellerybg/ (the owner's pin.it link,
   without its invite tracking). The round icons under the newsletter show a bare „p“ (assets/icon-pinterest-p.svg,

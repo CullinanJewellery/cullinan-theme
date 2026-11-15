@@ -129,6 +129,14 @@
   would need about 150px each for ПОСЛЕДВАЙТЕ НИ and cannot have it, so they
   stack at the full width instead of overflowing the page.
 */
+/* A third button (Pinterest, 2026-11-16) starts a second row on phones instead of pushing the page wider. */
+@media screen and (max-width: 749px) {
+  .social-band .social-band__buttons {
+    flex-wrap: wrap;
+    row-gap: 1.2rem;
+  }
+}
+
 @media screen and (max-width: 359px) {
   .social-band .social-band__buttons {
     flex-direction: column;
