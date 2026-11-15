@@ -1027,3 +1027,77 @@
     text-transform: none;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Phones: the words on the photograph (2026-11-15, owner: "the text to go in the pictures like for computer ... just
+   the text ... the same size like it is now for phone"). The name (2.4rem) and its line (1.5rem) sit at the bottom of
+   each photo over the computer tiles' espresso shade, in white; the whole photo is the link; „Вижте …“ is gone; a
+   category without products shows the computer's small „Очаквайте скоро“ label in the top corner. An empty photo
+   slot keeps the blush shade with the words in espresso. Way back: revert the commit.
+   --------------------------------------------------------------------------- */
+@media screen and (max-width: 749px) {
+  .mosaic .mosaic-slider__media {
+    position: relative;
+    display: block;
+    width: 100%;
+    color: rgb(255 255 255);
+    text-decoration: none;
+  }
+
+  .mosaic .mosaic-slider__caption {
+    position: absolute;
+    inset: auto 0 0 0;
+    display: block;
+    padding: 6rem 1.8rem 2rem;
+    background-image: linear-gradient(0deg, rgba(42, 30, 26, 0.55), rgba(42, 30, 26, 0));
+  }
+
+  .mosaic .mosaic-slider__name {
+    display: block;
+    margin: 0;
+    font-size: 2.4rem;
+    line-height: 1.1;
+    text-transform: none;
+    color: rgb(255 255 255);
+  }
+
+  .mosaic .mosaic-slider__text {
+    display: block;
+    margin: 0.8rem 0 0;
+    max-width: 26rem;
+    font-size: 1.5rem;
+    line-height: 1.45;
+    color: rgb(255 255 255);
+  }
+
+  .mosaic .mosaic-slider__media:has(.mosaic-slider__image--empty) .mosaic-slider__caption {
+    background-image: none;
+  }
+
+  .mosaic .mosaic-slider__media:has(.mosaic-slider__image--empty) .mosaic-slider__name,
+  .mosaic .mosaic-slider__media:has(.mosaic-slider__image--empty) .mosaic-slider__text {
+    color: rgb(42 30 26);
+  }
+
+  .mosaic .mosaic-slider__soon {
+    position: absolute;
+    top: 1.2rem;
+    left: 1.2rem;
+    z-index: 1;
+    display: block;
+    min-height: 0;
+    margin: 0;
+    padding: 0.4rem 0.9rem;
+    background: rgba(255, 255, 255, 0.88);
+    color: rgb(42 30 26);
+    font-size: 1.05rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .mosaic .mosaic-slider__media:focus-visible {
+    outline: 0.2rem solid rgb(42 30 26);
+    outline-offset: 0.3rem;
+  }
+}

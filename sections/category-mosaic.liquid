@@ -174,10 +174,14 @@
           -%}
           {%- if cj_slide -%}
             <li class="mosaic-slider__slide">
+              {%- comment -%}
+                2026-11-15 (owner): the name and its line sit on the photograph, as on computers, and the whole photo
+                is the link; no „Вижте …“ link under it. A category with no products shows „Очаквайте скоро“ on it.
+              {%- endcomment -%}
               {%- if cj_soon -%}
-                <span class="mosaic-slider__media mosaic-slider__media--soon" aria-hidden="true">
+                <span class="mosaic-slider__media mosaic-slider__media--soon">
               {%- else -%}
-              <a class="mosaic-slider__media" href="{{ block.settings.link }}" tabindex="-1" aria-hidden="true">
+              <a class="mosaic-slider__media" href="{{ block.settings.link }}">
               {%- endif -%}
                 {%- comment -%} 2026-11-15 (owner): a tile may have its own phone picture; without one, the main one. {%- endcomment -%}
                 {%- assign cj_slide_image = block.settings.image_phone | default: block.settings.image -%}
@@ -195,19 +199,16 @@
                 {%- else -%}
                   <span class="mosaic-slider__image mosaic-slider__image--empty"></span>
                 {%- endif -%}
+                <span class="mosaic-slider__caption">
+                  <span class="mosaic-slider__name" role="heading" aria-level="3">{{ block.settings.label | escape }}</span>
+                  {%- if block.settings.subline != blank -%}
+                    <span class="mosaic-slider__text">{{ block.settings.subline | escape }}</span>
+                  {%- endif -%}
+                </span>
+                {%- if cj_soon -%}
+                  <span class="mosaic-slider__soon">Очаквайте скоро</span>
+                {%- endif -%}
               {%- if cj_soon -%}</span>{%- else -%}</a>{%- endif -%}
-              <h3 class="mosaic-slider__name">{{ block.settings.label | escape }}</h3>
-              {%- if block.settings.subline != blank -%}
-                <p class="mosaic-slider__text">{{ block.settings.subline | escape }}</p>
-              {%- endif -%}
-              {%- if cj_soon -%}
-                <span class="mosaic-slider__soon">Очаквайте скоро</span>
-              {%- else -%}
-                <a class="mosaic-slider__button" href="{{ block.settings.link }}">
-                  {{- block.settings.phone_button | default: 'Разгледайте' | escape -}}
-                  <span class="visually-hidden">: {{ block.settings.label | escape }}</span>
-                </a>
-              {%- endif -%}
             </li>
           {%- endif -%}
         {%- endfor -%}
@@ -402,7 +403,7 @@
           "type": "text",
           "id": "phone_button",
           "label": "Button text (phones)",
-          "info": "Empty: „Разгледайте“."
+          "info": "Not shown since 2026-11-15: on phones the whole photo is the link."
         }
       ]
     }
