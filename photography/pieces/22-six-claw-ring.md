@@ -17,3 +17,4 @@ Folder: `pictures for the website/22 Пръстен с шест зъба - но�
   petal-shaped openings and a thin gallery under the stone, the band tapering into it.
 - Owner, 2026-11-14: the stone is a clear zircon.
 - 2026-11-14: main photo lying (f860ff0c, six claws) in four metals, frame c. Hand photo not made yet.
+- 2026-11-15: remade standing like the other rings (d83fef9e, 3 credits), tulip crown with six claws as in the raw close-ups; saved in four metals; the lying photos are in чернови/преди изправения пръстен.
