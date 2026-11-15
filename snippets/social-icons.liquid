@@ -69,9 +69,14 @@
   {%- endif -%}
   {%- if settings.social_pinterest_link != blank -%}
     <li class="list-social__item">
-      <a href="{{ settings.social_pinterest_link }}" class="link list-social__link">
+      <a href="{{ settings.social_pinterest_link }}" class="link list-social__link list-social__link--pinterest">
         <span class="svg-wrapper">
-          {{- 'icon-pinterest.svg' | inline_asset_content -}}
+          {%- comment -%} 2026-11-16 (owner): Pinterest beside Facebook and Instagram; in the round icons the bare „p“, like the bare „f“. {%- endcomment -%}
+          {%- if class contains 'footer-subscribe__social' -%}
+            {{- 'icon-pinterest-p.svg' | inline_asset_content -}}
+          {%- else -%}
+            {{- 'icon-pinterest.svg' | inline_asset_content -}}
+          {%- endif -%}
         </span>
         <span class="visually-hidden">{{ 'general.social.links.pinterest' | t }}</span>
       </a>

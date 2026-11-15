@@ -8,6 +8,11 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-16 — Footer: Pinterest icon **(owner)**
+- Theme settings → Social media → Pinterest: https://www.pinterest.com/cullinanjewellerybg/ (the owner's pin.it link,
+  without its invite tracking). The round icons under the newsletter show a bare „p“ (assets/icon-pinterest-p.svg,
+  our own drawing) that fills Pinterest red #E60023 on hover. Way back: empty the Pinterest link in theme settings.
+
 ## 2026-11-15 — Phone category row: words on the photos; Обеци and Комплекти swap everywhere **(owner)**
 - Owner: on phones the text on the pictures like on computers, no „Вижте …“, the same size as now; and the swap on
   phones too. The slide is one link (the photo) with the name 2.4rem and line 1.5rem in white over the espresso shade;
