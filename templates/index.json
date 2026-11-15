@@ -313,7 +313,8 @@
           "type": "tile",
           "settings": {
             "size": "standard",
-            "image_phone": "shopify://shop_images/home-tile-pendants-phone.jpg",
+            "image": "shopify://shop_images/home-tile-pendants_238cdc30-4ac5-4de9-b5af-b852c7bc87ae.jpg",
+            "image_phone": "shopify://shop_images/home-tile-pendants-phone_d89589c2-4033-4d7f-abdd-622b73e7c96d.jpg",
             "label": "Висулки",
             "subline": "Малки бижута с голямо значение.",
             "link": "/collections/висулки",
