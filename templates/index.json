@@ -334,6 +334,8 @@
           "type": "tile",
           "settings": {
             "size": "standard",
+            "image": "shopify://shop_images/home-tile-bracelets.jpg",
+            "image_phone": "shopify://shop_images/home-tile-bracelets-phone.jpg",
             "label": "Гривни",
             "subline": "Деликатни гривни за всеки ден.",
             "link": "/collections/гривни",
