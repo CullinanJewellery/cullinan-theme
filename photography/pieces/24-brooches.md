@@ -28,3 +28,4 @@ Folder: `pictures for the website/24 Брошки - номер предстои/
   the top of the stone, pin tip behind the leaf). Роза remade (a154a3ff: pin tip above the head, pin behind the stem,
   beaded rim on the crescent). Lesson: zoom every raw photo and list every part (pin ends, claws and their colour) in
   the first prompt.
+- 2026-11-15: worn photos. Панделка with the stone fixed: `жълто злато/03 носена - жълто злато.png` (c68d1750 + stone from 4f89069a; on a charcoal wool jacket lapel). Роза: 4d1f12e3 and d77dc1d2 made, but at worn size the model draws the crescent's stones wrong (pavé or about 8 grey ones instead of 6); waiting for the owner. 18 credits in all for the three worn photos (with the bangle).

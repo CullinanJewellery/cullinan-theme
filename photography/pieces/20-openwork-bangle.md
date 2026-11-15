@@ -29,3 +29,4 @@ rule, lesson 81); white and rose 01 free with metal-swap. About 9 credits.
 - 2026-11-14: raw photos sorted and examined; questions asked; no credits spent.
 - 2026-11-14: 01 standing (5a4149f7, ghost above the bangle flattened locally) and 02 from above (cc9b4f87) done in four
   metals, framed at 78% of the width. Wrist photo not made yet.
+- 2026-11-15: wrist photo 9811222f (3 credits): back of the hand, ivory cashmere sleeve, warm taupe background; gold only nudged to 209,167,111. Saved as `жълто злато/03 на китката - жълто злато.png`, original in `чернови`.
