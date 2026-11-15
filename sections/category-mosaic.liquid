@@ -88,7 +88,7 @@
         -%}
         <li
           class="mosaic__item mosaic__item--{{ block.settings.size }}{% if forloop.index > 8 %} mosaic__item--phone-only{% endif %}{% if cj_tile_soon %} mosaic__item--soon{% endif %}"
-          style="--cj-i: {{ forloop.index0 }};"
+          style="--cj-i: {{ forloop.index0 }}; --cj-order: {{ block.settings.desktop_position | default: forloop.index }};"
           {{ block.shopify_attributes }}
         >
           {%- capture tile -%}
@@ -370,6 +370,12 @@
           "id": "image_phone",
           "label": "Phone image",
           "info": "Optional. Shown in the phone row (about 290 × 400, upright 3:4). Empty: the image above is used."
+        },
+        {
+          "type": "number",
+          "id": "desktop_position",
+          "label": "Position on computers",
+          "info": "Optional: 1 = first. Empty: its place in this list. Phones always follow the list."
         },
         {
           "type": "text",

@@ -880,6 +880,14 @@
 /* Six tiles (2026-10-27, owner: Зодии, Вяра и закрила and Камъни out, Аксесоари tall where Вяра и закрила was): four
    columns — Пръстени tall, two squares over two, Аксесоари tall. The boxes keep the size the owner approved for
    five columns (about 254px at 1440px), so the band is narrower and centred instead of growing the boxes. */
+/* Computers: a tile may take another place than in the block list (2026-11-15, owner: Обеци and Комплекти swapped
+   on computers only); --cj-order is its „Position on computers“, else its place in the list. Phones follow the list. */
+@media screen and (min-width: 990px) {
+  .mosaic__grid > .mosaic__item {
+    order: var(--cj-order, 0);
+  }
+}
+
 /* Computers: the words sit lower on each tile (2026-11-15, owner: "a little bit down"); bottom padding 3.2rem before. */
 @media screen and (min-width: 990px) {
   .mosaic__grid--caption-over .mosaic__caption {
