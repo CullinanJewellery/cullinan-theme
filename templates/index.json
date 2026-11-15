@@ -302,8 +302,8 @@
           "type": "tile",
           "settings": {
             "size": "standard",
-            "image": "shopify://shop_images/home-tile-earrings_2a24cf55-000e-461f-8664-a77712214755.jpg",
-            "image_phone": "shopify://shop_images/home-tile-earrings-phone.jpg",
+            "image": "shopify://shop_images/home-tile-earrings_3c563da6-e390-4999-8393-02bb81f52441.jpg",
+            "image_phone": "shopify://shop_images/home-tile-earrings-phone_063164fd-ca7b-4eb7-b139-c645f70da54b.jpg",
             "label": "Обеци",
             "subline": "Фини акценти, които се носят цял ден.",
             "link": "/collections/обеци",
