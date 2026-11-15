@@ -344,7 +344,8 @@
           "type": "tile",
           "settings": {
             "size": "standard",
-            "image": "shopify://shop_images/home-tile-sets_f6b19617-9d62-457c-9418-ec102ff0f174.jpg",
+            "image": "shopify://shop_images/home-tile-sets_7aec288a-5ccc-4e20-a9b1-0a5d37a118c0.jpg",
+            "image_phone": "shopify://shop_images/home-tile-sets-phone.jpg",
             "label": "Комплекти",
             "subline": "Бижута, създадени да се носят заедно.",
             "link": "/collections/комплекти",
