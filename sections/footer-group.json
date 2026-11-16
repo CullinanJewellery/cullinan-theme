@@ -35,6 +35,27 @@
             "show_email": false
           }
         },
+        "orders": {
+          "type": "link_column",
+          "settings": {
+            "heading": "Поръчки и условия",
+            "note": "",
+            "menu": "",
+            "link_1_label": "Доставка",
+            "link_1": "/policies/shipping-policy",
+            "link_2_label": "Връщане и замяна",
+            "link_2": "/policies/refund-policy",
+            "link_3_label": "Общи условия",
+            "link_3": "/policies/terms-of-service",
+            "link_4_label": "Поверителност",
+            "link_4": "/policies/privacy-policy",
+            "link_5_label": "",
+            "link_5": "",
+            "link_6_label": "",
+            "link_6": "",
+            "show_email": false
+          }
+        },
         "about": {
           "type": "link_column",
           "settings": {
@@ -80,6 +101,7 @@
       },
       "block_order": [
         "help",
+        "orders",
         "about",
         "collections"
       ],
@@ -97,7 +119,7 @@
         "social_text_contact": "Можете да ни пишете и във Facebook или Instagram — ще ви отговорим възможно най-скоро.",
         "social_image_contact": "shopify://shop_images/ChatGPT_Image_Sep_15_2026_12_04_20_PM.png",
         "social_image_overlay_contact": 0,
-        "show_social": true,
+        "show_social": false,
         "enable_country_selector": true,
         "enable_language_selector": false,
         "payment_enable": false,

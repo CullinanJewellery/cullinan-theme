@@ -8,6 +8,12 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-16 — Footer: no follow block; a „Поръчки и условия“ column; homepage „Вижте работата ни“ back **(owner)**
+- I misread the previous request: the owner wanted the follow block out of the **footer**, not the homepage section. Homepage social_follow enabled again; footer show_social off (the „Още от нашите бижута“ block on cart, search and other pages and „Ще ни намерите и там“ on Контакти are gone). The round icons under the newsletter stay.
+- New footer column „Поръчки и условия“ (second): Доставка, Връщане и замяна, Общи условия, Поверителност. The bottom row skips any policy a column already links to, so it keeps Информация за контакт, Правна информация and Предпочитания за бисквитките. On computers four columns and the newsletter fit one row (gap 4.8rem, columns 20rem).
+- Privacy draft: the cookie choice can be changed from „Предпочитания за бисквитките“ (Shopify's banner is already on).
+- Way back: show_social true, remove the orders block, revert footer.liquid and the crown.css rule.
+
 ## 2026-11-16 — „Вижте работата ни“ hidden on the homepage **(owner)**
 - Owner: does not want the section („Над 2000 души вече следят…“) above the footer anywhere. The homepage social_follow section is disabled ("disabled": true in index.json), not deleted. The footer's own social block on other pages (cart: „Още от нашите бижута“; Контакти: „Ще ни намерите и там“) is unchanged. Way back: remove the disabled line.
 

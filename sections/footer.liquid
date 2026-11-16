@@ -543,8 +543,23 @@
         </small>
         <small class="copyright__content">{{ powered_by_link }}</small>
         {%- if section.settings.show_policy -%}
+          {%- comment -%}
+            A policy already linked from a footer column (Поръчки и условия, owner 2026-11-16:
+            the important ones easy to find) is not repeated in this small bottom row.
+          {%- endcomment -%}
+          {%- capture footer_column_links -%}
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'link_column' -%}
+                {{- block.settings.link_1 }}|{{ block.settings.link_2 }}|{{ block.settings.link_3 }}|{{ block.settings.link_4 }}|{{ block.settings.link_5 }}|{{ block.settings.link_6 }}|
+              {%- endif -%}
+            {%- endfor -%}
+          {%- endcapture -%}
           <ul class="policies list-unstyled">
             {%- for policy in shop.policies -%}
+              {%- assign policy_key = policy.url | append: '|' -%}
+              {%- if policy != blank and footer_column_links contains policy_key -%}
+                {%- continue -%}
+              {%- endif -%}
               {%- if policy != blank -%}
                 <li>
                   <small class="copyright__content"

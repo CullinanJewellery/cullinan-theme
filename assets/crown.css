@@ -10026,3 +10026,15 @@ html body .product a.cj-set-picker__row:focus-visible {
   }
 }
 
+
+/* Four link columns (Поръчки и условия added 2026-11-16) and the newsletter in one row on computers. */
+@media screen and (min-width: 990px) {
+  .footer .footer__blocks-wrapper:has(> .footer-block--links ~ .footer-block--links ~ .footer-block--links ~ .footer-block--links) {
+    column-gap: 4.8rem;
+    flex-wrap: nowrap;
+  }
+
+  .footer .footer__blocks-wrapper:has(> .footer-block--links ~ .footer-block--links ~ .footer-block--links ~ .footer-block--links) > .footer-block--links.grid__item {
+    flex: 0 1 20rem;
+  }
+}
