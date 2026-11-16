@@ -214,16 +214,6 @@
             "row_content": "<p>Да, до 14 дни от получаването. Пишете ни и ще ви насочим.</p>",
             "page": ""
           }
-        },
-        "q_shop": {
-          "type": "collapsible_row",
-          "settings": {
-            "heading": "Мога ли да видя бижутата на живо?",
-            "only_for": "",
-            "icon": "none",
-            "row_content": "<p>Да, в магазина ни на бул. Васил Левски 21 във Велико Търново.</p>",
-            "page": ""
-          }
         }
       },
       "block_order": [
@@ -232,8 +222,7 @@
         "q_care",
         "q_madetoorder",
         "q_delivery",
-        "q_returns",
-        "q_shop"
+        "q_returns"
       ],
       "settings": {
         "anchor": "vaprosi",

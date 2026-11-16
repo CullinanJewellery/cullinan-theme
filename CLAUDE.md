@@ -7,7 +7,7 @@ search it when you need the reason behind something, do not load it by default.
 ## The business
 
 Cullinan Jewellery: handmade 14K and 18K gold jewellery (and silver 925), made in an atelier in Veliko Tarnovo,
-Bulgaria, trading since 1991. Physical shop at бул. Васил Левски 21. Roughly 4,000 designs exist (the owner's
+Bulgaria, trading since 1991. The physical shop at бул. Васил Левски 21 is not the company's (owner, 2026-11-16). Roughly 4,000 designs exist (the owner's
 figure; the old site, studio-cullinan.com, lists 2,038); a curated ~50 go online first.
 
 - Customers: mostly Bulgarian women aged 30–55, buying for themselves or as gifts; local and regional first.
@@ -36,8 +36,8 @@ Only these, unless the owner confirms more. Never invent policies, prices, warra
   its checkout configuration is unverified and no online payment method is set up yet (`docs/tasks.md` A2): never
   claim online payments are ready.
 - The atelier cleans and repairs pieces after a sale (terms unknown).
-- Shop: бул. Васил Левски 21, Велико Търново; Mon–Fri 09:30–19:00, Sat 10:00–18:00, Sun closed. Phone +359 88 287 4895
-  (shown as a call button, never printed as text).
+- **The shop is not ours (owner, 2026-11-16)**: only its address, бул. Васил Левски 21, Велико Търново, stays in the footer,
+  with no note; no hours, no "visit us", nothing in policies. Phone +359 88 287 4895 is the owner's (call button, never printed).
 - **Owner, 2026-11-02 (homepage trust row)**: every piece gets an individual certificate; 14 days to return or
   exchange; the parcel can be opened and tried before paying (преглед и тест); every piece has a warranty. Terms
   are in the draft return policy (owner, 2026-11-03, `docs/legal/returns-policy-draft.md`, not yet checked by the
@@ -47,7 +47,7 @@ Only these, unless the owner confirms more. Never invent policies, prices, warra
   exchange: our mistake, we pay both ways; theirs, a piece of the same price or the same piece in another size (they
   pay the extra gold), delivery theirs; made-to-size or engraved pieces are not exchanged. State none of this on the site until the policy is published.
 - **Owner, 2026-11-11**: delivery is free on orders over €500; below that the price depends on the order (no figure
-  given). Every piece arrives in a box. Some ring models can be resized later, for a fee. Stones: some natural, some
+  given). Every piece arrives in a box. Rings cannot be resized after they are made (owner, 2026-11-16, replacing 2026-11-11). Stones: some natural, some
   lab-created, depending on the piece (owner not certain; say so per piece only when known). Every piece carries its
   hallmark (проба). Allergies: owner wanted „не предизвикват алергии“; not confirmed (white gold alloys may contain
   nickel), so the site says only "noble metals; ask us if allergic" until the atelier confirms nickel-free.

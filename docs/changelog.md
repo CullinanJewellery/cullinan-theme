@@ -8,6 +8,12 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-16 — The physical shop off the site; rings not resizable; consent cookies in the privacy text **(owner)**
+- Owner: the shop at бул. Васил Левски 21 is not theirs; only its address stays in the footer, no note. Removed: footer hours and the „Магазин във Велико Търново“ link; the shop card on Контакти (email and phone remain); the About FAQ „Мога ли да видя бижутата на живо?“; the product FAQ question of the same kind. The phone and the 1991 story are the owner's and stay.
+- Rings cannot be resized later (owner, replacing 2026-11-11): product FAQ and terms say so.
+- Owner agreed to statistics and advertising cookies: the privacy draft says Google and Meta cookies are used only with consent. Before publishing it: Shopify cookie banner on, Google & YouTube and Facebook & Instagram apps connected by the owner.
+- Way back: revert the commit (the removed blocks are in git history).
+
 ## 2026-11-16 — Policy drafts: physical shop removed, last brackets closed **(owner)**
 - Owner: nothing in common with the physical shop (бул. Васил Левски 21). Removed from every policy draft and the warranty page: the shop address, opening hours, "visit us in the shop", complaints in the shop, pickup from the shop. Contact is email and phone; the legal address is the company seat.
 - Invoice lines and the analytics-cookie sentence removed for now (no Google Analytics or Meta Pixel installed; invoices are the accountant's call). Add them back from git history when needed.
