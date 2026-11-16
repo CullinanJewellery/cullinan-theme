@@ -547,7 +547,18 @@
   "shopify": {
     "checkout": {
       "shop_policies": {
-        "privacy_policy": "Политика за поверителност"
+        "privacy_policy": "Политика за поверителност",
+        "refund_policy": "Политика за връщане"
+      }
+    }
+  },
+  "customer_accounts": {
+    "returns_and_cancellations": {
+      "request_withdrawal_page": {
+        "return_policy_heading": "Политика за връщане"
+      },
+      "estimated_refund_summary_card": {
+        "refund_policy": "Политика за връщане"
       }
     }
   }
