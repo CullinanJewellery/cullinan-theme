@@ -8,6 +8,15 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-16 — Policy drafts: the owner's nine answers applied **(owner)**
+- Not VAT-registered: the VAT brackets are gone; terms say prices carry no VAT; contact information says so too.
+- Payments: cash on delivery and card online. The card lines (terms, refund by card, privacy payment provider) go into Shopify only once card payment is really enabled.
+- Deposit for high-value and personalised pieces; on cancellation only the cost of work done and materials is kept.
+- Reviews: only verified buyers, positive and negative shown under the same rules (the owner's practice of keeping unverified good reviews and removing bad ones is not allowed; told to the owner).
+- Resizing: some models can be resized later, for a fee. Account line kept.
+- Still bracketed: invoice lines (accountant), analytics cookies (owner deciding), physical-shop mentions (waiting on the owner before removing them site-wide).
+- Way back: revert the commit.
+
 ## 2026-11-16 — Policy drafts: company details, date, delivery times and free delivery filled in **(owner)**
 - From the owner's registry printout: „Кулинан Джулари“ ЕООД, ЕИК 208990435, seat in Велико Търново (docs/legal
   returns, privacy, terms, shipping, contact information). Date 16.11.2026; delivery 3–5 / 10–15 working days (was

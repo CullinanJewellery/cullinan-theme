@@ -52,8 +52,8 @@ Only these, unless the owner confirms more. Never invent policies, prices, warra
   hallmark (проба). Allergies: owner wanted „не предизвикват алергии“; not confirmed (white gold alloys may contain
   nickel), so the site says only "noble metals; ask us if allergic" until the atelier confirms nickel-free.
 - **The company (registry printout, owner, 2026-11-16)**: „Кулинан Джулари“ ЕООД (CULLINAN JEWELRY Ltd.), ЕИК 208990435,
-  registered 12.11.2026; seat: гр. Велико Търново 5000, ул. „Баба Мота“ № 16, вх. А, ет. 3, ап. 9. VAT registration
-  unknown. Used only in the legal texts (docs/legal), never the manager's name.
+  registered 12.11.2026; seat: гр. Велико Търново 5000, ул. „Баба Мота“ № 16, вх. А, ет. 3, ап. 9. Not VAT-registered (owner, 2026-11-16). Intended payments: cash on
+  delivery and card (owner, 2026-11-16). Used only in the legal texts (docs/legal), never the manager's name.
 - **Not confirmed, never claimed**: a delivery price figure, engraving price or limit, a named designer, a number of designs, "hypoallergenic".
 
 ## What this repository is
