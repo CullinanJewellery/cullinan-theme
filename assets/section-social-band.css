@@ -131,7 +131,7 @@
 */
 /* Phones: only the two buttons; Pinterest is shown from 750px (2026-11-16, owner: two buttons on phones). */
 @media screen and (max-width: 749px) {
-  .social-band .social-band__buttons .list-social__item:has(.list-social__link--pinterest) {
+  .social-band .social-band__buttons .list-social__item.list-social__item:has(.list-social__link--pinterest) {
     display: none;
   }
 }

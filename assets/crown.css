@@ -3491,7 +3491,8 @@ card-swatches {
 /* Phones: only Facebook and Instagram (2026-11-16, owner: "for phone the pinterest button can't appear ... i want two").
    The round Pinterest icon under the newsletter stays. */
 @media screen and (max-width: 749px) {
-  .footer__list-social .list-social__item:has(.list-social__link--pinterest) {
+  /* Five classes: the homepage block sets its items to display: block with four. */
+  .footer__social .footer__list-social .list-social__item.list-social__item:has(.list-social__link--pinterest) {
     display: none;
   }
 }
