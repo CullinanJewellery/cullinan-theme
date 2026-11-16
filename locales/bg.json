@@ -549,7 +549,8 @@
       "shop_policies": {
         "privacy_policy": "Политика за поверителност",
         "refund_policy": "Политика за връщане",
-        "terms_of_service": "Общи условия"
+        "terms_of_service": "Общи условия",
+        "legal_notice": "Гаранция"
       },
       "marketing": {
         "sms": {
