@@ -8,6 +8,12 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-16 — Policy drafts: physical shop removed, last brackets closed **(owner)**
+- Owner: nothing in common with the physical shop (бул. Васил Левски 21). Removed from every policy draft and the warranty page: the shop address, opening hours, "visit us in the shop", complaints in the shop, pickup from the shop. Contact is email and phone; the legal address is the company seat.
+- Invoice lines and the analytics-cookie sentence removed for now (no Google Analytics or Meta Pixel installed; invoices are the accountant's call). Add them back from git history when needed.
+- Paste-ready copies (text only) written to "Claude outputs/policies/" (not in git). The site itself (footer, FAQ, About, Контакти) still mentions the shop: next step, after the owner says what stays.
+- Way back: revert the commit.
+
 ## 2026-11-16 — Policy drafts: the owner's nine answers applied **(owner)**
 - Not VAT-registered: the VAT brackets are gone; terms say prices carry no VAT; contact information says so too.
 - Payments: cash on delivery and card online. The card lines (terms, refund by card, privacy payment provider) go into Shopify only once card payment is really enabled.
