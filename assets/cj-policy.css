@@ -274,7 +274,7 @@
 }
 
 .cj-policy__help-text {
-  margin: -1.2rem 0 0;
+  margin: 0.8rem 0 0;
   font-size: 1.5rem;
   line-height: 1.6;
   color: rgba(var(--cj-ink), 0.8);
@@ -343,9 +343,6 @@
     padding: 4rem 4.8rem;
   }
 
-  .cj-policy__help-text {
-    margin: 0.8rem 0 0;
-  }
 }
 
 @media screen and (min-width: 990px) {
