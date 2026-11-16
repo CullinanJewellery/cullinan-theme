@@ -8,6 +8,12 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-16 — Policy drafts: company details, date, delivery times and free delivery filled in **(owner)**
+- From the owner's registry printout: „Кулинан Джулари“ ЕООД, ЕИК 208990435, seat in Велико Търново (docs/legal
+  returns, privacy, terms, shipping, contact information). Date 16.11.2026; delivery 3–5 / 10–15 working days (was
+  3–20); free delivery over 500 €. Warranty was already 14 days. Still blank: VAT, card payment, deposit, invoices,
+  customer accounts, analytics cookies, pickup in the shop, review checks. The owner pastes them into Shopify.
+
 ## 2026-11-16 — Pinterest button on computers only **(owner)**
 - Owner: three buttons on a phone look bad; two there. Below 750px the Pinterest button is hidden in „Вижте работата ни“,
   the Контакти footer block and the product page's social band; the second-row rule is gone. The round Pinterest
