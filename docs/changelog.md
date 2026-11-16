@@ -8,6 +8,9 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-16 — „Разгледайте по категория“: Комплекти and Обеци swapped on phones only **(owner)**
+- Phones follow the block order, now Пръстени, Обеци, Висулки, Аксесоари, Гривни, Комплекти. Computers keep Пръстени, Комплекти, Висулки, Аксесоари, Гривни, Обеци through „Position on computers“ (desktop_position 1–6 on every tile). Way back: block order t1, t6, t3, t9, t4, t2 and empty positions.
+
 ## 2026-11-16 — Policy pages redesigned **(owner)**
 - Owner: the policies looked empty and badly placed. assets/cj-policy.js (loaded only on /policies/, right after the content, so no flash) rebuilds Shopify's plain text into: a blush band with „Поръчки и условия“, the title and „Последна актуализация“; a table of contents (sticky on computers, drop-down on phones; the section in view marked); sections with headings (numbered ones with a small gold number), rose-gold bullet lists, gold-numbered steps, linked emails and websites; a closing „Имате въпрос?“ box (greige, black button to Контакти) and links to the other policies. Jost throughout, theme colours. Spec at the top of assets/cj-policy.css. Without JavaScript the page stays Shopify's own.
 - /policies/legal-notice (where the owner pasted the warranty) is titled „Гаранция“ (layout replace in title and h1).

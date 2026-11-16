@@ -295,7 +295,8 @@
             "label": "Пръстени",
             "subline": "За всеки ден и за специалния повод.",
             "link": "/collections/пръстени",
-            "phone_button": "Вижте пръстените"
+            "phone_button": "Вижте пръстените",
+            "desktop_position": 1
           }
         },
         "t2": {
@@ -307,7 +308,8 @@
             "label": "Обеци",
             "subline": "Фини акценти, които се носят цял ден.",
             "link": "/collections/обеци",
-            "phone_button": "Вижте обеците"
+            "phone_button": "Вижте обеците",
+            "desktop_position": 6
           }
         },
         "t3": {
@@ -319,7 +321,8 @@
             "label": "Висулки",
             "subline": "Малки бижута с голямо значение.",
             "link": "/collections/висулки",
-            "phone_button": "Вижте висулките"
+            "phone_button": "Вижте висулките",
+            "desktop_position": 3
           }
         },
         "t9": {
@@ -331,7 +334,8 @@
             "label": "Аксесоари",
             "subline": "",
             "link": "/collections/аксесоари",
-            "phone_button": "Вижте аксесоарите"
+            "phone_button": "Вижте аксесоарите",
+            "desktop_position": 4
           }
         },
         "t4": {
@@ -343,7 +347,8 @@
             "label": "Гривни",
             "subline": "Деликатни гривни за всеки ден.",
             "link": "/collections/гривни",
-            "phone_button": "Вижте гривните"
+            "phone_button": "Вижте гривните",
+            "desktop_position": 5
           }
         },
         "t6": {
@@ -355,17 +360,18 @@
             "label": "Комплекти",
             "subline": "Бижута, създадени да се носят заедно.",
             "link": "/collections/комплекти",
-            "phone_button": "Вижте комплектите"
+            "phone_button": "Вижте комплектите",
+            "desktop_position": 2
           }
         }
       },
       "block_order": [
         "t1",
-        "t6",
+        "t2",
         "t3",
         "t9",
         "t4",
-        "t2"
+        "t6"
       ],
       "settings": {
         "all_label": "Вижте всички бижута",
