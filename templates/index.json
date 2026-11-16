@@ -931,6 +931,7 @@
     },
     "social_follow": {
       "type": "social-follow",
+      "disabled": true,
       "settings": {
         "color_scheme": "scheme-1",
         "heading": "Вижте работата ни",

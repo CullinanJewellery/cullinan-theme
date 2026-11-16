@@ -8,6 +8,9 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-16 — „Вижте работата ни“ hidden on the homepage **(owner)**
+- Owner: does not want the section („Над 2000 души вече следят…“) above the footer anywhere. The homepage social_follow section is disabled ("disabled": true in index.json), not deleted. The footer's own social block on other pages (cart: „Още от нашите бижута“; Контакти: „Ще ни намерите и там“) is unchanged. Way back: remove the disabled line.
+
 ## 2026-11-16 — The physical shop off the site; rings not resizable; consent cookies in the privacy text **(owner)**
 - Owner: the shop at бул. Васил Левски 21 is not theirs; only its address stays in the footer, no note. Removed: footer hours and the „Магазин във Велико Търново“ link; the shop card on Контакти (email and phone remain); the About FAQ „Мога ли да видя бижутата на живо?“; the product FAQ question of the same kind. The phone and the 1991 story are the owner's and stay.
 - Rings cannot be resized later (owner, replacing 2026-11-11): product FAQ and terms say so.
