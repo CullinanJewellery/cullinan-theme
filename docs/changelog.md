@@ -8,6 +8,11 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-16 — Pinterest button on computers only **(owner)**
+- Owner: three buttons on a phone look bad; two there. Below 750px the Pinterest button is hidden in „Вижте работата ни“,
+  the Контакти footer block and the product page's social band; the second-row rule is gone. The round Pinterest
+  icon under the newsletter stays on every screen. Way back: revert the commit.
+
 ## 2026-11-16 — „Вижте работата ни“: Pinterest button in Pinterest red **(owner)**
 - A third button beside „Харесайте ни“ (Facebook) and „Последвайте ни“ (Instagram): „Вдъхновете се“ with the Pinterest
   logo, the same box, outlined in Pinterest's own red #E60023 and filled red with white on hover (crown.css, homepage

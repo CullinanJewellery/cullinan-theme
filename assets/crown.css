@@ -3488,12 +3488,11 @@ card-swatches {
   box-shadow: inset 0 0 0 1px #e60023;
 }
 
-/* Phones: three buttons do not fit in one row at a readable size, so the third (Pinterest) starts a second row, the
-   same size as the two above it (2026-11-16). */
+/* Phones: only Facebook and Instagram (2026-11-16, owner: "for phone the pinterest button can't appear ... i want two").
+   The round Pinterest icon under the newsletter stays. */
 @media screen and (max-width: 749px) {
-  .footer__social:not(.footer__social--contact) .footer__list-social {
-    flex-wrap: wrap;
-    row-gap: 1.2rem;
+  .footer__list-social .list-social__item:has(.list-social__link--pinterest) {
+    display: none;
   }
 }
 
