@@ -28,7 +28,7 @@
   var isNum = function (s) { return /^\d+\.\s+\S/.test(s); };
   var isHeading = function (s) {
     s = s.replace(/^##\s*/, '');
-    return s.length > 0 && s.length <= 80 && s.indexOf(':') === -1 && !END.test(s) && !isList(s);
+    return s.length > 0 && s.length <= 80 && s.indexOf(':') === -1 && !END.test(s) && !isList(s) && !/www.|@|https?:/.test(s);
   };
 
   // 1. Paragraphs into logical lines.
@@ -63,7 +63,9 @@
       if (/^Последна актуализация/i.test(line)) { meta = line; return; }
       var raw = line.replace(/^##\s*/, '');
       var startsBlock = li === 0;
-      if (isHeading(line) && (startsBlock || /^##/.test(line))) {
+      var prevLine = li > 0 ? lines[li - 1] : '';
+      // Inside one pasted block a heading sits on its own line; a short line after a line ending in a colon is a list entry.
+      if (isHeading(line) && (startsBlock || /^##/.test(line) || !/:$/.test(prevLine))) {
         // A first line that only repeats the page title is dropped.
         if (bi === 0 && raw.toLowerCase() === title.toLowerCase() && !sections.length && !current.items.length) return;
         pushSection();
