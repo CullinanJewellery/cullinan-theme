@@ -49,8 +49,8 @@
             "link_3": "/policies/terms-of-service",
             "link_4_label": "Поверителност",
             "link_4": "/policies/privacy-policy",
-            "link_5_label": "",
-            "link_5": "",
+            "link_5_label": "Гаранция",
+            "link_5": "/policies/legal-notice",
             "link_6_label": "",
             "link_6": "",
             "show_email": false

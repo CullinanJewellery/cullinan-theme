@@ -9,6 +9,7 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 ---
 
 ## 2026-11-16 — Shipping policy title: „Политика за доставка“
+- Also twitter:title. The owner put the Гаранция text into Shopify's Legal notice policy: the footer column „Поръчки и условия“ links it as „Гаранция“ (/policies/legal-notice), so the bottom row no longer lists it.
 - The owner renamed the other policy titles in Edit default theme content; Shopify offers no field for the shipping policy title. layout/theme.liquid replaces „Правила за извършване на доставка“ with „Политика за доставка“ in the page title and in the content of /policies/ pages only; meta-tags.liquid does the same for og:title. Way back: revert the commit.
 
 ## 2026-11-16 — Footer: no follow block; a „Поръчки и условия“ column; homepage „Вижте работата ни“ back **(owner)**
