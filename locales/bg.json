@@ -548,7 +548,18 @@
     "checkout": {
       "shop_policies": {
         "privacy_policy": "Политика за поверителност",
-        "refund_policy": "Политика за връщане"
+        "refund_policy": "Политика за връщане",
+        "terms_of_service": "Общи условия"
+      },
+      "marketing": {
+        "sms": {
+          "disclaimer": {
+            "terms_of_service": "Общи условия"
+          }
+        },
+        "disclaimer": {
+          "terms_of_service": "Общи условия"
+        }
       }
     }
   },
