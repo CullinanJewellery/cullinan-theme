@@ -44,7 +44,7 @@
     parts.forEach(function (s) {
       var prev = lines[lines.length - 1];
       var wrapped = prev && prev.length > 80 && !END.test(prev) && !isList(s) && !isNum(s);
-      var listCont = prev && (isList(prev) || isNum(prev)) && !END.test(prev) && !isList(s) && !isNum(s) && !isHeading(s);
+      var listCont = prev && (isList(prev) || isNum(prev)) && !isHeading(prev) && !END.test(prev) && !isList(s) && !isNum(s) && !isHeading(s);
       if (wrapped || listCont) lines[lines.length - 1] = prev + ' ' + s;
       else lines.push(s);
     });
