@@ -8,6 +8,11 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-16 — Policy pages redesigned **(owner)**
+- Owner: the policies looked empty and badly placed. assets/cj-policy.js (loaded only on /policies/, right after the content, so no flash) rebuilds Shopify's plain text into: a blush band with „Поръчки и условия“, the title and „Последна актуализация“; a table of contents (sticky on computers, drop-down on phones; the section in view marked); sections with headings (numbered ones with a small gold number), rose-gold bullet lists, gold-numbered steps, linked emails and websites; a closing „Имате въпрос?“ box (greige, black button to Контакти) and links to the other policies. Jost throughout, theme colours. Spec at the top of assets/cj-policy.css. Without JavaScript the page stays Shopify's own.
+- /policies/legal-notice (where the owner pasted the warranty) is titled „Гаранция“ (layout replace in title and h1).
+- Way back: remove the policy lines from layout/theme.liquid and the two assets.
+
 ## 2026-11-16 — Shipping policy title: „Политика за доставка“
 - Also twitter:title. The owner put the Гаранция text into Shopify's Legal notice policy: the footer column „Поръчки и условия“ links it as „Гаранция“ (/policies/legal-notice), so the bottom row no longer lists it.
 - The owner renamed the other policy titles in Edit default theme content; Shopify offers no field for the shipping policy title. layout/theme.liquid replaces „Правила за извършване на доставка“ with „Политика за доставка“ in the page title and in the content of /policies/ pages only; meta-tags.liquid does the same for og:title. Way back: revert the commit.

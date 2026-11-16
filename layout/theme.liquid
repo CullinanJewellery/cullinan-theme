@@ -15,7 +15,7 @@
     <title>
       {%- comment -%} „Любими“ is the catalogue's wishlist view (templates/collection.wishlist.json). {%- endcomment -%}
       {%- comment -%} Shopify's own Bulgarian title for the shipping policy („Правила за извършване на доставка“) cannot be edited in admin; ours is used (2026-11-16). {%- endcomment -%}
-      {%- if template == 'collection.wishlist' -%}Любими{%- else -%}{{ page_title | replace: 'Правила за извършване на доставка', 'Политика за доставка' }}{%- endif -%}
+      {%- if template == 'collection.wishlist' -%}Любими{%- else -%}{%- if request.path contains '/policies/legal-notice' -%}{{ page_title | replace: 'Правна информация', 'Гаранция' }}{%- else -%}{{ page_title | replace: 'Правила за извършване на доставка', 'Политика за доставка' }}{%- endif -%}{%- endif -%}
       {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
       {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
       {%- unless page_title contains shop.name and template != 'collection.wishlist' %} &ndash; {{ shop.name }}{% endunless -%}
@@ -290,6 +290,7 @@
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
     {{ 'crown.css' | asset_url | stylesheet_tag }}
+    {%- if request.path contains '/policies/' -%}{{ 'cj-policy.css' | asset_url | stylesheet_tag }}{%- endif -%}
     <link rel="stylesheet" href="{{ 'component-cart-items.css' | asset_url }}" media="print" onload="this.media='all'">
 
     {%- if settings.cart_type == 'drawer' -%}
@@ -343,7 +344,51 @@
       data-template="{{ template.name }}"
     >
       {%- if request.path contains '/policies/' -%}
-        {{ content_for_layout | replace: 'Правила за извършване на доставка', 'Политика за доставка' }}
+        {%- if request.path contains '/policies/legal-notice' -%}
+          {{ content_for_layout | replace: '<h1>Правна информация</h1>', '<h1>Гаранция</h1>' }}
+        {%- else -%}
+          {{ content_for_layout | replace: 'Правила за извършване на доставка', 'Политика за доставка' }}
+        {%- endif -%}
+        {%- comment -%} Closing block of the policy pages, moved into place by cj-policy.js (2026-11-16). {%- endcomment -%}
+        <template id="cj-policy-extra">
+          <aside class="cj-policy__more page-width">
+            <div class="cj-policy__more-inner">
+              <div class="cj-policy__help color-scheme-6 gradient">
+                <div>
+                  <p class="cj-policy__help-title">Имате въпрос?</p>
+                  <p class="cj-policy__help-text">Пишете ни и ще ви отговорим възможно най-скоро.</p>
+                </div>
+                <a class="button" href="/pages/contact">Свържете се с нас</a>
+              </div>
+              <div class="cj-policy__others">
+                <p class="cj-policy__others-label">Още условия</p>
+                <ul class="cj-policy__others-list">
+                  {%- for policy in shop.policies -%}
+                    {%- if policy != blank and request.path != policy.url -%}
+                      {%- liquid
+                        assign policy_label = policy.title
+                        case policy.url
+                          when '/policies/shipping-policy'
+                            assign policy_label = 'Доставка'
+                          when '/policies/refund-policy'
+                            assign policy_label = 'Връщане и замяна'
+                          when '/policies/terms-of-service'
+                            assign policy_label = 'Общи условия'
+                          when '/policies/privacy-policy'
+                            assign policy_label = 'Поверителност'
+                          when '/policies/legal-notice'
+                            assign policy_label = 'Гаранция'
+                        endcase
+                      -%}
+                      <li><a href="{{ policy.url }}">{{ policy_label | escape }}</a></li>
+                    {%- endif -%}
+                  {%- endfor -%}
+                </ul>
+              </div>
+            </div>
+          </aside>
+        </template>
+        <script src="{{ 'cj-policy.js' | asset_url }}"></script>
       {%- else -%}
         {{ content_for_layout }}
       {%- endif -%}

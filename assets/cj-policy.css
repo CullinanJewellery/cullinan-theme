@@ -1,0 +1,398 @@
+/*
+  Policy pages (/policies/*), 2026-11-16. Built by assets/cj-policy.js from Shopify's plain policy text.
+
+  Spec:
+  - Header band in scheme-2 (soft blush): eyebrow „Поръчки и условия“ (Jost 500, capitals, 0.14em), the policy title
+    (Jost 500, 3.2rem phone → 4.4rem computer), „Последна актуализация“ under it. Centred.
+  - Computers (990px+): table of contents on the left (26rem, sticky under the header, the section in view in espresso
+    with a 2px line), text on the right up to 68 characters wide. Phones: the contents as a drop-down under the band.
+  - Sections divided by a hairline; heading Jost 500 2.2rem / 2.4rem, numbered sections with a small muted-gold number.
+  - Text Jost 400 1.6rem / 1.75; bullet lists with a small square rose-gold mark; numbered steps with gold numbers.
+  - Closing block on warm greige (scheme-6): „Имате въпрос?“ with a black button to Контакти, and the other policies.
+  Square corners, no shadows, only the theme's colours.
+*/
+
+.cj-policy {
+  --cj-ink: 42, 30, 26;
+  --cj-gold: #8c6a2e;
+  --cj-rose: #b76e79;
+  color: rgb(var(--cj-ink));
+}
+
+/* Header band */
+.cj-policy__hero {
+  padding: 4.4rem 0 3.6rem;
+  text-align: center;
+}
+
+.cj-policy__eyebrow {
+  margin: 0 0 1.2rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(var(--cj-ink), 0.7);
+}
+
+.cj-policy .cj-policy__title {
+  margin: 0 auto;
+  max-width: 24ch;
+  font-family: var(--font-heading-family);
+  font-weight: 500;
+  font-size: 3.2rem;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  text-wrap: balance;
+  color: rgb(var(--cj-ink));
+}
+
+.cj-policy__meta {
+  margin: 1.4rem 0 0;
+  font-size: 1.3rem;
+  letter-spacing: 0.04em;
+  color: rgba(var(--cj-ink), 0.7);
+}
+
+/* Layout */
+.cj-policy__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 2.4rem;
+  padding-top: 2.4rem;
+  padding-bottom: 5.6rem;
+}
+
+.cj-policy__article {
+  min-width: 0;
+  max-width: 68ch;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Table of contents */
+.cj-policy__toc {
+  min-width: 0;
+}
+
+.cj-policy__toc-details {
+  border-top: 1px solid rgba(var(--cj-ink), 0.16);
+  border-bottom: 1px solid rgba(var(--cj-ink), 0.16);
+}
+
+.cj-policy__toc-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.4rem 0;
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  list-style: none;
+}
+
+.cj-policy__toc-label::-webkit-details-marker {
+  display: none;
+}
+
+.cj-policy__toc-label::after {
+  content: '';
+  width: 0.8rem;
+  height: 0.8rem;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: translateY(-0.2rem) rotate(45deg);
+  transition: transform 0.2s ease;
+}
+
+.cj-policy__toc-details[open] .cj-policy__toc-label::after {
+  transform: translateY(0.2rem) rotate(-135deg);
+}
+
+.cj-policy__toc-list {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 1.6rem;
+  display: grid;
+  gap: 0.2rem;
+}
+
+.cj-policy__toc-list a {
+  display: block;
+  padding: 0.6rem 0 0.6rem 1.4rem;
+  border-left: 2px solid transparent;
+  font-size: 1.4rem;
+  line-height: 1.45;
+  color: rgba(var(--cj-ink), 0.72);
+  text-decoration: none;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.cj-policy__toc-list a:hover,
+.cj-policy__toc-list a:focus-visible {
+  color: rgb(var(--cj-ink));
+  border-left-color: rgba(var(--cj-ink), 0.3);
+}
+
+.cj-policy__toc-list a.is-active {
+  color: rgb(var(--cj-ink));
+  border-left-color: rgb(var(--cj-ink));
+  font-weight: 500;
+}
+
+/* Sections */
+.cj-policy__section {
+  padding-top: 3.2rem;
+  margin-top: 3.2rem;
+  border-top: 1px solid rgba(var(--cj-ink), 0.12);
+  scroll-margin-top: calc(var(--header-height, 7rem) + 2rem);
+}
+
+.cj-policy__section:first-child {
+  padding-top: 0;
+  margin-top: 0;
+  border-top: 0;
+}
+
+.cj-policy .cj-policy__heading {
+  margin: 0 0 1.6rem;
+  font-family: var(--font-heading-family);
+  font-weight: 500;
+  font-size: 2.2rem;
+  line-height: 1.3;
+  letter-spacing: 0.01em;
+  color: rgb(var(--cj-ink));
+}
+
+.cj-policy__num {
+  display: block;
+  margin-bottom: 0.6rem;
+  font-family: var(--font-body-family);
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: var(--cj-gold);
+}
+
+.cj-policy__article p,
+.cj-policy__article li {
+  font-size: 1.6rem;
+  line-height: 1.75;
+  letter-spacing: 0.02em;
+  color: rgba(var(--cj-ink), 0.84);
+}
+
+.cj-policy__article p {
+  margin: 0 0 1.2rem;
+}
+
+.cj-policy__article p:last-child {
+  margin-bottom: 0;
+}
+
+.cj-policy__article a {
+  color: rgb(var(--cj-ink));
+  text-decoration: underline;
+  text-underline-offset: 0.3rem;
+  text-decoration-thickness: 1px;
+  overflow-wrap: anywhere;
+}
+
+.cj-policy__article a:hover {
+  color: var(--cj-rose);
+}
+
+.cj-policy__list,
+.cj-policy__steps {
+  margin: 0 0 1.6rem;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.8rem;
+}
+
+.cj-policy__list:last-child,
+.cj-policy__steps:last-child {
+  margin-bottom: 0;
+}
+
+.cj-policy__list li {
+  position: relative;
+  padding-left: 2.2rem;
+}
+
+.cj-policy__list li::before {
+  content: '';
+  position: absolute;
+  left: 0.2rem;
+  top: 1.15rem;
+  width: 0.6rem;
+  height: 0.6rem;
+  background: var(--cj-rose);
+}
+
+.cj-policy__steps {
+  counter-reset: cj-step calc(var(--cj-start, 1) - 1);
+}
+
+.cj-policy__steps li {
+  position: relative;
+  padding-left: 3.6rem;
+  counter-increment: cj-step;
+}
+
+.cj-policy__steps li::before {
+  content: counter(cj-step, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 0.15rem;
+  font-size: 1.3rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--cj-gold);
+}
+
+/* Closing block */
+.cj-policy__more {
+  padding-bottom: 6.4rem;
+}
+
+.cj-policy__help {
+  display: grid;
+  gap: 2rem;
+  justify-items: start;
+  padding: 3.2rem 2.4rem;
+}
+
+.cj-policy__help-title {
+  margin: 0;
+  font-family: var(--font-heading-family);
+  font-weight: 500;
+  font-size: 2.4rem;
+  line-height: 1.25;
+}
+
+.cj-policy__help-text {
+  margin: -1.2rem 0 0;
+  font-size: 1.5rem;
+  line-height: 1.6;
+  color: rgba(var(--cj-ink), 0.8);
+}
+
+.cj-policy__others {
+  margin-top: 3.2rem;
+}
+
+.cj-policy__others-label {
+  margin: 0 0 1.2rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(var(--cj-ink), 0.7);
+}
+
+.cj-policy__others-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.cj-policy__others-list a {
+  display: inline-block;
+  padding: 1rem 1.6rem;
+  border: 1px solid rgba(var(--cj-ink), 0.22);
+  font-size: 1.4rem;
+  line-height: 1.3;
+  color: rgb(var(--cj-ink));
+  text-decoration: none;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.cj-policy__others-list a:hover,
+.cj-policy__others-list a:focus-visible {
+  background: #f2e4de;
+  border-color: rgba(var(--cj-ink), 0.4);
+}
+
+@media screen and (min-width: 750px) {
+  .cj-policy__hero {
+    padding: 6.4rem 0 5.6rem;
+  }
+
+  .cj-policy .cj-policy__title {
+    font-size: 4.4rem;
+  }
+
+  .cj-policy__layout {
+    padding-top: 5.6rem;
+    padding-bottom: 7.2rem;
+  }
+
+  .cj-policy .cj-policy__heading {
+    font-size: 2.4rem;
+  }
+
+  .cj-policy__help {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    padding: 4rem 4.8rem;
+  }
+
+  .cj-policy__help-text {
+    margin: 0.8rem 0 0;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .cj-policy--toc .cj-policy__layout {
+    grid-template-columns: 26rem minmax(0, 1fr);
+    column-gap: 8rem;
+    align-items: start;
+  }
+
+  .cj-policy--toc .cj-policy__article {
+    margin: 0;
+  }
+
+  .cj-policy__toc {
+    position: sticky;
+    top: calc(var(--header-height, 7rem) + 2.4rem);
+    max-height: calc(100vh - var(--header-height, 7rem) - 4.8rem);
+    overflow-y: auto;
+  }
+
+  .cj-policy__toc-details {
+    border: 0;
+  }
+
+  .cj-policy__toc-label {
+    pointer-events: none;
+    padding-top: 0;
+  }
+
+  .cj-policy__toc-label::after {
+    display: none;
+  }
+
+  .cj-policy--toc .cj-policy__more .cj-policy__more-inner {
+    margin-left: calc(26rem + 8rem);
+    max-width: 68ch;
+  }
+
+  .cj-policy:not(.cj-policy--toc) .cj-policy__more .cj-policy__more-inner {
+    max-width: 68ch;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 989px) {
+  .cj-policy__more .cj-policy__more-inner {
+    max-width: 68ch;
+    margin: 0 auto;
+  }
+}
