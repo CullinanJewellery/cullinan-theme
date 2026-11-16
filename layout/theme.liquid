@@ -14,7 +14,8 @@
 
     <title>
       {%- comment -%} „Любими“ is the catalogue's wishlist view (templates/collection.wishlist.json). {%- endcomment -%}
-      {%- if template == 'collection.wishlist' -%}Любими{%- else -%}{{ page_title }}{%- endif -%}
+      {%- comment -%} Shopify's own Bulgarian title for the shipping policy („Правила за извършване на доставка“) cannot be edited in admin; ours is used (2026-11-16). {%- endcomment -%}
+      {%- if template == 'collection.wishlist' -%}Любими{%- else -%}{{ page_title | replace: 'Правила за извършване на доставка', 'Политика за доставка' }}{%- endif -%}
       {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
       {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
       {%- unless page_title contains shop.name and template != 'collection.wishlist' %} &ndash; {{ shop.name }}{% endunless -%}
@@ -341,7 +342,11 @@
       tabindex="-1"
       data-template="{{ template.name }}"
     >
-      {{ content_for_layout }}
+      {%- if request.path contains '/policies/' -%}
+        {{ content_for_layout | replace: 'Правила за извършване на доставка', 'Политика за доставка' }}
+      {%- else -%}
+        {{ content_for_layout }}
+      {%- endif -%}
     </main>
 
     {% sections 'footer-group' %}

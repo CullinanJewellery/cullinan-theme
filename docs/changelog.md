@@ -8,6 +8,9 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-16 — Shipping policy title: „Политика за доставка“
+- The owner renamed the other policy titles in Edit default theme content; Shopify offers no field for the shipping policy title. layout/theme.liquid replaces „Правила за извършване на доставка“ with „Политика за доставка“ in the page title and in the content of /policies/ pages only; meta-tags.liquid does the same for og:title. Way back: revert the commit.
+
 ## 2026-11-16 — Footer: no follow block; a „Поръчки и условия“ column; homepage „Вижте работата ни“ back **(owner)**
 - I misread the previous request: the owner wanted the follow block out of the **footer**, not the homepage section. Homepage social_follow enabled again; footer show_social off (the „Още от нашите бижута“ block on cart, search and other pages and „Ще ни намерите и там“ on Контакти are gone). The round icons under the newsletter stay.
 - New footer column „Поръчки и условия“ (second): Доставка, Връщане и замяна, Общи условия, Поверителност. The bottom row skips any policy a column already links to, so it keeps Информация за контакт, Правна информация and Предпочитания за бисквитките. On computers four columns and the newsletter fit one row (gap 4.8rem, columns 20rem).
