@@ -8,6 +8,15 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-17 — Yellow gold standard „F“; photos rebuilt from the AI originals **(owner)**
+- Owner: after many stacked edits the gold differed in colour, brightness and polish, and free recolours sometimes coloured the area round the piece. Cause: the old scripts (gold-match.cjs and others) moved only the mean colour, and their weighting reached pixels next to the metal.
+- New `photography/gold-standard.cjs`: a gradient map on the metal only (brightness at percentiles 2/10/50/90/99.5 → five fixed gold colours), always run on the Higgsfield AI original; a pixel outside the metal that changes stops the script (spill check). On ring A and ring B it gives the same gold (218, 185, 128 and 218, 183, 125).
+- The owner compared options C, F, H, M on rings A and B next to Tiffany, Cartier, Bulgari, Mejuri and moonmagic, asked for a second opinion and chose F. The luxury brands' gold measures about 219, 187, 133 (`reports/Luxury gold photo standard.md`).
+- New `photography/bg-soft.cjs`: bg-even.cjs cut most of ring A's soft shadow and left a ragged end; bg-soft brings the paper to exactly 251, 251, 253 with a smooth gain and keeps the whole shadow.
+- `check-photo.cjs` yellow target 218, 185, 128 (tolerance 8), shine at least 222.
+- Ring A is redone first, one photo at a time with the owner's OK; the finished files are replaced only after approval.
+- Way back: yellow target 209, 167, 111 in check-photo.cjs and gold-match.cjs as before; the old finals stay in each piece folder until replaced, then in `чернови`.
+
 ## 2026-11-16 — „Разгледайте по категория“: Комплекти and Обеци swapped on phones only **(owner)**
 - Phones follow the block order, now Пръстени, Обеци, Висулки, Аксесоари, Гривни, Комплекти. Computers keep Пръстени, Комплекти, Висулки, Аксесоари, Гривни, Обеци through „Position on computers“ (desktop_position 1–6 on every tile). Way back: block order t1, t6, t3, t9, t4, t2 and empty positions.
 

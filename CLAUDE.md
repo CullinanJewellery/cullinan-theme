@@ -155,7 +155,7 @@ Full recipe with the exact Higgsfield prompts: `photography/README.md` „Produc
   dark pavilion contrast, pin-point sparkle, a little fire; never pink, lilac, grey or milky. Asked for in the first
   prompt, with ring G's finished photo as the stone reference, so it costs nothing extra; only if the stones still
   come out soft, a stones-only edit (3 credits) put back with `photography/stone-look.cjs` (lesson 56).
-- **Gold**: rich, warm, deeply polished yellow at 209, 167, 111 (since 2026-11-12, between ring A's 208, 165, 114 and 2026-11-07's 210, 169, 109; ring A's polish is still the reference). One yellow for both 14K and 18K (owner, 2026-11-07: "they will be the same color"). **Rose gold** is 202, 152, 122 since 2026-11-07 (5% darker than ring A's; owner: "a little bit too bright"), before that matched
+- **Gold**: rich, warm, deeply polished yellow, standard „F“ since 2026-11-17 (see below; 209, 167, 111 from 2026-11-12, between ring A's 208, 165, 114 and 2026-11-07's 210, 169, 109; ring A's polish is still the reference). One yellow for both 14K and 18K (owner, 2026-11-07: "they will be the same color"). **Rose gold** is 202, 152, 122 since 2026-11-07 (5% darker than ring A's; owner: "a little bit too bright"), before that matched
   ring A's rose. **White gold is a clean, neutral, bright white, no yellow, beige or champagne cast** (owner,
   2026-10-13: both rings' white looked yellowish; measured blue 13–20 below red). **White gold is the red ring's white since
   2026-11-07** (owner: "we should have a color for the white gold too"): made with `photography/metal-swap.cjs` from the look-matched yellow, then `photography/white-neutral.cjs` (`recolour-piece.cjs`; new pieces `metals-from-yellow.cjs`), matching the
@@ -183,11 +183,14 @@ Full recipe with the exact Higgsfield prompts: `photography/README.md` „Produc
   rough (owner, 2026-10-13). **New hand from ring B on (owner, 2026-10-16; ring A keeps its own):** a lot more
   feminine, a medium manicure that is visible but not long, the ring a little smaller so it looks elegant, zoomed out
   so the whole hand and all five nails show. Prompt: `photography/prompts/03-yellow-hand.md`.
-- **Yellow gold is RGB 209, 167, 111 every time (owner, 2026-11-12: between ring A's and 2026-11-07's 210, 169, 109, "between A and the oldest"; 212, 172, 104 from 2026-10-30, option A: "yellow ... not that close to the rose
-  gold")**; ring A's 208, 165, 114 read nearly as rose. All finished yellow photos were moved to it (main photos with
-  `gold-match.cjs`, worn photos with `photography/gold-only-merge.cjs`; previous files in each piece's `чернови/преди
-  по-жълтото злато`; lesson 57). After any yellow photo measure the gold; if it is off, run `photography/gold-match.cjs` (owner's choice,
-  2026-10-14; Higgsfield gold edits went pale, brass or copper and dulled the polish, lessons 13–16, 27).
+- **Yellow gold is the standard „F“ since 2026-11-17 (owner: "use F"; measured about 218, 185, 128, shine p95 about 228)**:
+  `photography/gold-standard.cjs` maps the metal's whole tone scale (five fixed gold colours at fixed brightness
+  percentiles) on the **AI original** (the Higgsfield 4K file in `чернови`), never on an edited copy, so colour,
+  brightness and polish match on every piece and nothing outside the metal changes (spill check). Then
+  `photography/bg-soft.cjs` (paper exactly 251, 251, 253, the AI's whole shadow kept), `frame-photo.cjs c`,
+  `check-photo.cjs yellow`. Pieces are redone one by one with the owner's OK (ring A first). Before: 209, 167, 111
+  (2026-11-12) with `gold-match.cjs`, which moved only the mean colour (changelog 2026-11-17; research:
+  `reports/Luxury gold photo standard.md`).
 - **Design**: only from the owner's real photos of the piece; the style picture is never used as the design source
   (ring A's design leaked into ring B's hand photo once).
 - Folders: `Pictures/PicturesForWebFaceInstagram/pictures for the website/NN Name - номер предстои/{metal, видео, чернови}`.

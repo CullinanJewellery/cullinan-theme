@@ -28,6 +28,8 @@ photography/*
 !photography/tile-shadow-even.cjs
 !photography/metals-from-yellow.cjs
 !photography/check-photo.cjs
+!photography/gold-standard.cjs
+!photography/bg-soft.cjs
 !photography/compare-sheet.cjs
 !photography/gold-match.cjs
 !photography/metal-swap.cjs

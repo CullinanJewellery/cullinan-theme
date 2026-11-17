@@ -17,7 +17,7 @@
 const sharp = require('sharp');
 
 const TARGET = {
-  yellow: { rgb: [209, 167, 111], tol: 8, shine: 212 }, // the owner's yellow since 2026-11-12, between ring A's 208, 165, 114 and 2026-11-07's 210, 169, 109
+  yellow: { rgb: [218, 185, 128], tol: 8, shine: 222 }, // gold „F“ since 2026-11-17 (owner; made by gold-standard.cjs from the AI original; luxury brands measure 212–229 / 173–195 / 124–144, shine 221–241: reports/Luxury gold photo standard.md). 209, 167, 111 from 2026-11-12 before.
   rose: { rgb: [215, 154, 130], tol: 14 }, // measured on the red ring with the 5% darker rose (2026-11-07; 218, 160, 136 before)
 };
 
