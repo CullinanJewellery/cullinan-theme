@@ -30,6 +30,7 @@
                turn read olive; −6° matched the approved F main photo by eye (lesson 84).
   --metal yellow|rose|white: which metal to make (default yellow, F). Rose and white are made from the same yellow AI
                original, so the three metals have the same light, polish and outline (silver is a copy of white).
+  --keep-red: red stones and red cord (hue under 22° or over 330°) are not metal and keep their bytes (lesson 61).
   --stops: five colours r,g,b separated by "/", replacing F (for trials only; the shop's standard is F).
   --mask file.png: also writes the metal mask (white = changed fully), to check by eye.
 
@@ -68,6 +69,7 @@ const ST = STOPS.length === 5 ? STOPS : METALS[METAL];
 const MASK = take('--mask');
 const ONLY = take('--only');
 const TURN = take('--turn');
+const KEEPRED = args.includes('--keep-red'); if (KEEPRED) args.splice(args.indexOf('--keep-red'), 1);
 const KEEP = args.includes('--keep-light'); if (KEEP) args.splice(args.indexOf('--keep-light'), 1);
 const [inp, out] = args;
 if (!inp || !out) { console.error('usage: node gold-standard.cjs in.png out.png [options]'); process.exit(1); }
@@ -94,6 +96,7 @@ const hue = (r, g, b) => {
     if (r < b) continue;
     const spread = Math.max(r, g, b) - Math.min(r, g, b);
     let wt = Math.min(1, Math.max(0, (spread - 18) / 22));
+    if (KEEPRED && wt > 0) { const h = hue(r, g, b); if (h < 22 || h > 330) wt = 0; }
     if (HUEW && wt > 0) { const h = hue(r, g, b); if (h < HUEW[0] || h > HUEW[1]) wt = 0; }
     if (only) wt *= only[i] / 255;
     w[i] = wt;

@@ -30,6 +30,8 @@ photography/*
 !photography/check-photo.cjs
 !photography/gold-standard.cjs
 !photography/bg-soft.cjs
+!photography/find-source.cjs
+!photography/rebuild-piece.cjs
 !photography/compare-sheet.cjs
 !photography/gold-match.cjs
 !photography/metal-swap.cjs
