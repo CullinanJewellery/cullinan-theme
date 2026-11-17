@@ -70,6 +70,8 @@ payment-provider or checkout setting is to be changed from here.**
 2. Settings → Custom data → **Variants**: `custom.metal`, `custom.proba`, `custom.weight_g`, `custom.dimensions`;
    **plus the five stone fields** (`custom.stone`, `custom.stone_count`, `custom.stone_size`, `custom.stone_weight_ct`,
    `custom.cut`, same types) for any product whose stone differs by variant.
+   Weights the owner has given: „Пръстен с топчета“ (ring A) **1.5 g** (owner, 2026-11-17; enter 1.5 in `custom.weight_g`
+   on every variant; the „2,4 г“ in an earlier message was only an example).
 3. **The rules the theme applies** (variant value always first):
    - One variant: variant value, else the product value — for every field.
    - Several variants: metal, proba, weight and dimensions come **only from each variant** (product values ignored),

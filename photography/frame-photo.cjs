@@ -13,6 +13,8 @@
 
   Usage (needs sharp: `npm i sharp` in any folder, run from there or with NODE_PATH):
     node frame-photo.cjs <shot c|1|2|3> <4K source.png> <output.png> [--size 0.55]
+  --like <yellow source.png>: find the piece on that photo instead (white and rose made from the same yellow original get
+    exactly the yellow's crop; white metal is hard to find against white paper; 2026-11-17).
   --extend: copy the edge outward even when a shadow reaches it (2026-11-07, reframing finished photos; check by eye).
   Shot c (since 2026-11-05, the default for every new main photo): the piece centred at 50% / 50%, 76% of the
   height (owner, 2026-11-07: "a little bit bigger"; 70% before), even if the frame cuts some of its shadow. 1 and 2 are the older frames (ring A to the pearl set).
@@ -84,7 +86,8 @@ async function flatBorder(file) {
   let img = sharp(src);
   const f = FRAME[shot] && { ...FRAME[shot], ...(si >= 0 ? { size: +rest[si + 1] } : {}) };
   if (f) {
-    const p = await findPiece(src);
+    const li = rest.indexOf('--like');
+    const p = await findPiece(li >= 0 ? rest[li + 1] : src);
     const piece = f.measure === 'max' ? Math.max(p.h * H, p.w * W) : f.measure === 'h' ? p.h * H : p.w * W;
     side = Math.round(piece / f.size);
     left = Math.round(p.cx * W - f.cx * side);

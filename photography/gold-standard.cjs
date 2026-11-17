@@ -28,6 +28,8 @@
                rendered them in the scene's light and only turns its hue (YCbCr chroma angle, negative = toward
                yellow). Ring A's hand, 2026-11-17: the ring sat at −44.5° against F's −58°, but on pink skin the full
                turn read olive; −6° matched the approved F main photo by eye (lesson 84).
+  --metal yellow|rose|white: which metal to make (default yellow, F). Rose and white are made from the same yellow AI
+               original, so the three metals have the same light, polish and outline (silver is a copy of white).
   --stops: five colours r,g,b separated by "/", replacing F (for trials only; the shop's standard is F).
   --mask file.png: also writes the metal mask (white = changed fully), to check by eye.
 
@@ -38,6 +40,13 @@
 const sharp = require('sharp');
 
 const F = [[118, 78, 28], [182, 136, 70], [228, 190, 128], [246, 224, 172], [253, 245, 212]];
+// rose and white (2026-11-17): the owner's approved rose (202, 152, 122 standard) and white (209, 204, 204 standard),
+// measured on the red ring's finished photos at the same tone positions as its yellow, so they keep their approved look
+const METALS = {
+  yellow: F,
+  rose: [[110, 55, 26], [178, 110, 73], [239, 177, 143], [241, 190, 159], [248, 224, 204]], // check-photo ≈ 220, 162, 128 like ring A's and ring B's approved rose (the red ring's own measure includes its stone)
+  white: [[116, 109, 107], [166, 161, 161], [219, 215, 215], [229, 225, 225], [242, 239, 236]],
+};
 const QS = [0.02, 0.1, 0.5, 0.9, 0.995];
 
 const args = process.argv.slice(2);
@@ -53,7 +62,9 @@ const boxArg = BOXS ? nums(BOXS) : null;
 const HUE = take('--hue');
 const HUEW = HUE ? nums(HUE) : null;
 const STOPS = (take('--stops') || '').split('/').filter(Boolean).map(nums);
-const ST = STOPS.length === 5 ? STOPS : F;
+const METAL = take('--metal') || 'yellow';
+if (!METALS[METAL]) { console.error('--metal yellow|rose|white'); process.exit(1); }
+const ST = STOPS.length === 5 ? STOPS : METALS[METAL];
 const MASK = take('--mask');
 const ONLY = take('--only');
 const TURN = take('--turn');
@@ -88,10 +99,34 @@ const hue = (r, g, b) => {
     w[i] = wt;
     if (wt > 0.9) Ls.push(lum(r, g, b));
   }
+  // rose and white: the soft rim (a mix of gold and paper, spread 4–18) kept a yellow outline round the piece (ring A,
+  // 2026-11-17); within 3 px of full metal a warm pixel changes fully from spread 12. Neutral paper and the grey shadow
+  // (spread under 4) are never touched. Yellow keeps the rim as it was (its photos were approved that way).
+  if (METAL !== 'yellow') {
+    const full = new Uint8Array(N);
+    for (let i = 0; i < N; i++) full[i] = w[i] > 0.9 ? 1 : 0;
+    let near = full;
+    for (let k = 0; k < 3; k++) {
+      const n2 = Uint8Array.from(near);
+      for (let y = 1; y < H - 1; y++) for (let x = 1; x < W - 1; x++) { const i = y * W + x; if (!near[i] && (near[i - 1] || near[i + 1] || near[i - W] || near[i + W])) n2[i] = 1; }
+      near = n2;
+    }
+    for (let i = 0; i < N; i++) {
+      if (!near[i] || w[i] > 0.9 || (only && !only[i])) continue;
+      const x = i % W, y = (i / W) | 0;
+      if (boxArg && !inside(boxArg, x, y)) continue;
+      if (STONES.some((st) => inside(st, x, y))) continue;
+      const r = data[3 * i], g = data[3 * i + 1], b = data[3 * i + 2];
+      if (r < b) continue;
+      const spread = Math.max(r, g, b) - Math.min(r, g, b);
+      w[i] = Math.max(w[i], Math.min(1, Math.max(0, (spread - 4) / 8)));
+    }
+  }
   if (Ls.length < 1000) { console.error('too few metal pixels found:', Ls.length); process.exit(1); }
   Ls.sort((a, b) => a - b);
   const PL = QS.map((q) => Ls[Math.floor(q * (Ls.length - 1))]);
   const SL = ST.map((c) => lum(c[0], c[1], c[2]));
+  const FL = F.map((c) => lum(c[0], c[1], c[2]));
   const o = Buffer.from(data);
   for (let i = 0; i < N; i++) {
     if (!w[i]) continue;
@@ -109,7 +144,20 @@ const hue = (r, g, b) => {
     while (k < 4 && L > P[k]) k++;
     const f = Math.min(1, Math.max(0, (L - P[k - 1]) / (P[k] - P[k - 1] || 1)));
     const c = [0, 1, 2].map((j) => ST[k - 1][j] + (ST[k][j] - ST[k - 1][j]) * f);
-    if (KEEP) { const q = L / (lum(c[0], c[1], c[2]) || 1); for (let j = 0; j < 3; j++) c[j] = Math.min(255, c[j] * q); }
+    if (KEEP) {
+      // rose and white keep their studio brightness against yellow: lifted by the ratio of their stops to F's at this tone
+      let kk = 1;
+      while (kk < 4 && L > FL[kk]) kk++;
+      const ff = Math.min(1, Math.max(0, (L - FL[kk - 1]) / (FL[kk] - FL[kk - 1] || 1)));
+      const ratio = (SL[kk - 1] / FL[kk - 1]) * (1 - ff) + (SL[kk] / FL[kk]) * ff;
+      const L2 = Math.min(250, L * ratio);
+      let k2 = 1;
+      while (k2 < 4 && L2 > SL[k2]) k2++;
+      const f2 = Math.min(1, Math.max(0, (L2 - SL[k2 - 1]) / (SL[k2] - SL[k2 - 1] || 1)));
+      for (let j = 0; j < 3; j++) c[j] = ST[k2 - 1][j] + (ST[k2][j] - ST[k2 - 1][j]) * f2;
+      const q = L2 / (lum(c[0], c[1], c[2]) || 1);
+      for (let j = 0; j < 3; j++) c[j] = Math.min(255, c[j] * q);
+    }
     for (let j = 0; j < 3; j++) {
       o[3 * i + j] = Math.round(data[3 * i + j] + (c[j] - data[3 * i + j]) * w[i]);
     }

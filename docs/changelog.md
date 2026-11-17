@@ -15,6 +15,7 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 - New `photography/bg-soft.cjs`: bg-even.cjs cut most of ring A's soft shadow and left a ragged end; bg-soft brings the paper to exactly 251, 251, 253 with a smooth gain and keeps the whole shadow.
 - `check-photo.cjs` yellow target 218, 185, 128 (tolerance 8), shine at least 222.
 - Ring A is redone first, one photo at a time with the owner's OK; the finished files are replaced only after approval.
+- Same day, rose and white **(owner: "the rose and white gold can we do them too")**: `gold-standard.cjs --metal rose|white` maps the same yellow AI original with five rose or white colours (rose ≈ 220, 162, 128 by check-photo, like ring A's and ring B's approved rose; white = the red ring's approved white, ring A measures 204, 202, 203 against its old 207, 203, 203). `frame-photo.cjs --like <yellow>` gives every metal the yellow's crop. Hand photos: ring outline from the AI yellow/white difference, yellow `--turn -6`, rose and white `--keep-light` (brightness against yellow as in the studio photos). Ring A's nine photos replaced (silver = white); old ones in `чернови/преди злато F 2026-11-17`. No credits.
 - Way back: yellow target 209, 167, 111 in check-photo.cjs and gold-match.cjs as before; the old finals stay in each piece folder until replaced, then in `чернови`.
 
 ## 2026-11-16 — „Разгледайте по категория“: Комплекти and Обеци swapped on phones only **(owner)**
