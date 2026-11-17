@@ -18,6 +18,16 @@
   --box x0,y0,x1,y1 (fractions): only inside this box may anything change (worn photos: the ring, not the skin).
   --hue lo,hi: only pixels whose hue (degrees, HSV) is in this window count as metal (worn photos: skin is ~10–30°,
                this gold ~35–50°); default no window.
+  --only file.png: a grey mask the size of the photo; only where it is white may anything change (worn photos: the
+               ring's exact outline, e.g. from the difference between the AI yellow and white versions of the same
+               photo, where skin and gold have the same hue; ring A's hand, 2026-11-17).
+  --keep-light: worn photos. Each metal pixel keeps its own brightness and only takes F's colour at that brightness
+               (the five stops placed by their own luminance), because the scene's light differs from the studio's
+               (ring A's hand: the percentile map lifted the gold to the studio brightness and it went flat and pale).
+  --turn deg: worn photos (use this, not --keep-light). Keeps every metal pixel's brightness and saturation as the AI
+               rendered them in the scene's light and only turns its hue (YCbCr chroma angle, negative = toward
+               yellow). Ring A's hand, 2026-11-17: the ring sat at −44.5° against F's −58°, but on pink skin the full
+               turn read olive; −6° matched the approved F main photo by eye (lesson 84).
   --stops: five colours r,g,b separated by "/", replacing F (for trials only; the shop's standard is F).
   --mask file.png: also writes the metal mask (white = changed fully), to check by eye.
 
@@ -45,6 +55,9 @@ const HUEW = HUE ? nums(HUE) : null;
 const STOPS = (take('--stops') || '').split('/').filter(Boolean).map(nums);
 const ST = STOPS.length === 5 ? STOPS : F;
 const MASK = take('--mask');
+const ONLY = take('--only');
+const TURN = take('--turn');
+const KEEP = args.includes('--keep-light'); if (KEEP) args.splice(args.indexOf('--keep-light'), 1);
 const [inp, out] = args;
 if (!inp || !out) { console.error('usage: node gold-standard.cjs in.png out.png [options]'); process.exit(1); }
 
@@ -60,6 +73,7 @@ const hue = (r, g, b) => {
   const { data, info } = await sharp(inp).removeAlpha().raw().toBuffer({ resolveWithObject: true });
   const W = info.width, H = info.height, N = W * H, w = new Float32Array(N);
   const inside = (b, x, y) => x >= b[0] * W && x <= b[2] * W && y >= b[1] * H && y <= b[3] * H;
+  const only = ONLY ? await sharp(ONLY).resize(W, H).extractChannel(0).raw().toBuffer() : null;
   const Ls = [];
   for (let i = 0; i < N; i++) {
     const x = i % W, y = (i / W) | 0;
@@ -70,22 +84,34 @@ const hue = (r, g, b) => {
     const spread = Math.max(r, g, b) - Math.min(r, g, b);
     let wt = Math.min(1, Math.max(0, (spread - 18) / 22));
     if (HUEW && wt > 0) { const h = hue(r, g, b); if (h < HUEW[0] || h > HUEW[1]) wt = 0; }
+    if (only) wt *= only[i] / 255;
     w[i] = wt;
     if (wt > 0.9) Ls.push(lum(r, g, b));
   }
   if (Ls.length < 1000) { console.error('too few metal pixels found:', Ls.length); process.exit(1); }
   Ls.sort((a, b) => a - b);
   const PL = QS.map((q) => Ls[Math.floor(q * (Ls.length - 1))]);
+  const SL = ST.map((c) => lum(c[0], c[1], c[2]));
   const o = Buffer.from(data);
   for (let i = 0; i < N; i++) {
     if (!w[i]) continue;
+    if (TURN) {
+      const a = (+TURN * Math.PI) / 180, r = data[3 * i], g = data[3 * i + 1], b = data[3 * i + 2];
+      const Y = 0.299 * r + 0.587 * g + 0.114 * b, Cb = -0.168736 * r - 0.331264 * g + 0.5 * b, Cr = 0.5 * r - 0.418688 * g - 0.081312 * b;
+      const x = Cr * Math.cos(a) - Cb * Math.sin(a), y = Cr * Math.sin(a) + Cb * Math.cos(a);
+      const c = [Y + 1.402 * x, Y - 0.344136 * y - 0.714136 * x, Y + 1.772 * y];
+      for (let j = 0; j < 3; j++) o[3 * i + j] = Math.round(data[3 * i + j] + (Math.max(0, Math.min(255, c[j])) - data[3 * i + j]) * w[i]);
+      continue;
+    }
     const L = lum(data[3 * i], data[3 * i + 1], data[3 * i + 2]);
+    const P = KEEP ? SL : PL;
     let k = 1;
-    while (k < 4 && L > PL[k]) k++;
-    const f = Math.min(1, Math.max(0, (L - PL[k - 1]) / (PL[k] - PL[k - 1] || 1)));
+    while (k < 4 && L > P[k]) k++;
+    const f = Math.min(1, Math.max(0, (L - P[k - 1]) / (P[k] - P[k - 1] || 1)));
+    const c = [0, 1, 2].map((j) => ST[k - 1][j] + (ST[k][j] - ST[k - 1][j]) * f);
+    if (KEEP) { const q = L / (lum(c[0], c[1], c[2]) || 1); for (let j = 0; j < 3; j++) c[j] = Math.min(255, c[j] * q); }
     for (let j = 0; j < 3; j++) {
-      const c = ST[k - 1][j] + (ST[k][j] - ST[k - 1][j]) * f;
-      o[3 * i + j] = Math.round(data[3 * i + j] + (c - data[3 * i + j]) * w[i]);
+      o[3 * i + j] = Math.round(data[3 * i + j] + (c[j] - data[3 * i + j]) * w[i]);
     }
   }
   let spill = 0;
