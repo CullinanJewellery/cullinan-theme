@@ -14,6 +14,12 @@
               --grow px (worn: grow the outline into the metal's hue, default 24 at 4K; 0 off)  --hue-lo deg
               --turn deg (worn yellow; overrides the measured turn)   --erode px (worn mask, default 3 at 4K)
               --metals yellow,rose,white (default all three)
+              --outline shapes.json (worn; the owner's point 2, 2026-11-18: the metal drawn by hand, free): shapes in the
+                finished photo's 2048 × 2048 frame, {"keep":[…], "zone":[…], "cut":[…]}; a shape is
+                {"circle":[cx,cy,r]}, {"box":[x0,y0,x1,y1]}, {"poly":[[x,y],…]} (filled) or {"line":[[x,y],…],"w":px}
+                (a chain or band, drawn with that width). keep = always metal; zone = metal only inside (the automatic
+                outline and its growth are clipped to it); cut = never metal (skin, pearl, fabric). Without a white
+                photo of the shot the outline is keep only.
   3. Writes <work>/<photo> - <metal>.png (2048²) and <work>/<photo> - сравнение.jpg (old above, new below, with a zoom).
      Nothing in the piece folder is changed. Check by eye and with check-photo.cjs, then:
   4. node rebuild-piece.cjs --save <piece dir> "<photo name>" <work dir>
@@ -43,24 +49,46 @@ async function save(dir, photo, work) {
   }
 }
 
-async function crop(src, out, [l, t, side]) {
+// a crop past the source's edge: studio photos are padded with the paper colour (copying the edge made streaks and a
+// faint rectangle on the zodiac coins, 2026-11-17); worn photos copy the edge as before
+async function crop(src, out, [l, t, side], studio) {
   const m = await sharp(src).metadata();
   let img = sharp(src), L = l, T = t;
   const pad = { left: Math.max(0, -l), top: Math.max(0, -t), right: Math.max(0, l + side - m.width), bottom: Math.max(0, t + side - m.height) };
-  if (pad.left || pad.top || pad.right || pad.bottom) { img = sharp(await sharp(src).extend({ ...pad, extendWith: 'copy' }).png().toBuffer()); L += pad.left; T += pad.top; }
+  if (pad.left || pad.top || pad.right || pad.bottom) { img = sharp(await sharp(src).removeAlpha().extend({ ...pad, ...(studio ? { background: { r: 251, g: 251, b: 253 } } : { extendWith: 'copy' }) }).png().toBuffer()); L += pad.left; T += pad.top; }
   await img.extract({ left: L, top: T, width: side, height: side }).resize(2048, 2048, { kernel: 'lanczos3' }).png().toFile(out);
 }
 
+// a mask in the finished photo's frame (w × h, 0/1) placed into the source's frame (W × H), 0–255
+async function toSource(m, w, h, [l, t, side], W, H) {
+  const placed = await sharp(Buffer.from(m.map((v) => v * 255)), { raw: { width: w, height: h, channels: 1 } }).resize(side, side).png().toBuffer();
+  const cl = Math.max(0, -l), ct = Math.max(0, -t);
+  const piece = await sharp(placed).extract({ left: cl, top: ct, width: Math.min(side - cl, W - Math.max(0, l)), height: Math.min(side - ct, H - Math.max(0, t)) }).png().toBuffer();
+  return sharp({ create: { width: W, height: H, channels: 3, background: '#000' } }).composite([{ input: piece, left: Math.max(0, l), top: Math.max(0, t) }]).extractChannel(0).raw().toBuffer();
+}
+
+// hand-drawn shapes (2048 frame) → 0/1 mask of w × h
+async function drawShapes(list, w, h) {
+  const k = w / 2048, P = (pts) => pts.map(([x, y]) => `${x * k},${y * k}`).join(' ');
+  const el = list.map((s) => s.circle ? `<circle cx="${s.circle[0] * k}" cy="${s.circle[1] * k}" r="${s.circle[2] * k}"/>`
+    : s.box ? `<rect x="${s.box[0] * k}" y="${s.box[1] * k}" width="${(s.box[2] - s.box[0]) * k}" height="${(s.box[3] - s.box[1]) * k}"/>`
+    : s.poly ? `<polygon points="${P(s.poly)}"/>`
+    : s.line ? `<polyline points="${P(s.line)}" fill="none" stroke="#fff" stroke-width="${(s.w || 6) * k}" stroke-linecap="round" stroke-linejoin="round"/>` : '').join('');
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}"><rect width="100%" height="100%" fill="#000"/><g fill="#fff">${el}</g></svg>`;
+  const r = await sharp(Buffer.from(svg)).extractChannel(0).raw().toBuffer();
+  const o = new Uint8Array(w * h); for (let i = 0; i < w * h; i++) o[i] = r[i] > 127 ? 1 : 0; return o;
+}
+
 // worn: metal outline in the finished photo's frame (saturation drop yellow → white), placed into the source's frame
-async function wornMask(dir, photo, src, [l, t, side], out, erode, maskWhite, grow, hueLo) {
+async function wornMask(dir, photo, src, [l, t, side], out, erode, maskWhite, grow, hueLo, outline) {
   const meta = await sharp(src).metadata(), W = meta.width, H = meta.height;
   let A, B, w, h;
   if (maskWhite) {
     A = await sharp(src).removeAlpha().raw().toBuffer(); B = await sharp(maskWhite).resize(W, H).removeAlpha().raw().toBuffer(); w = W; h = H;
   } else {
     const yf = file(dir, photo, 'yellow'), wf = file(dir, photo, 'white');
-    if (!fs.existsSync(wf)) throw new Error('no white photo to take the outline from: ' + wf + ' (use --mask-white)');
-    A = await sharp(yf).resize(2048, 2048).removeAlpha().raw().toBuffer(); B = await sharp(wf).resize(2048, 2048).removeAlpha().raw().toBuffer(); w = 2048; h = 2048;
+    if (!fs.existsSync(wf) && !outline) throw new Error('no white photo to take the outline from: ' + wf + ' (use --mask-white or --outline)');
+    A = await sharp(yf).resize(2048, 2048).removeAlpha().raw().toBuffer(); B = fs.existsSync(wf) ? await sharp(wf).resize(2048, 2048).removeAlpha().raw().toBuffer() : A; w = 2048; h = 2048;
   }
   const N = w * h, sat = (p, i) => Math.max(p[i], p[i + 1], p[i + 2]) - Math.min(p[i], p[i + 1], p[i + 2]);
   let m = new Uint8Array(N);
@@ -78,30 +106,38 @@ async function wornMask(dir, photo, src, [l, t, side], out, erode, maskWhite, gr
   while (st.length) { const i = st.pop(); if (ext[i] || m[i]) continue; ext[i] = 1; const x = i % w; if (x > 0) st.push(i - 1); if (x < w - 1) st.push(i + 1); if (i >= w) st.push(i - w); if (i < N - w) st.push(i + w); }
   for (let i = 0; i < N; i++) if (!ext[i]) m[i] = 1;
   m = morph(m, Math.max(1, Math.round(erode * w / 4096)), 0);
+  let zoneF = null;
+  if (outline) {
+    const sh = JSON.parse(fs.readFileSync(outline, 'utf8'));
+    const ras = async (list) => list && list.length ? drawShapes(list, w, h) : null;
+    const keep = await ras(sh.keep), zone = await ras(sh.zone), cut = await ras(sh.cut);
+    for (let i = 0; i < N; i++) { if (zone && !zone[i]) m[i] = 0; if (keep && keep[i]) m[i] = 1; if (cut && cut[i]) m[i] = 0; }
+    zoneF = zone || keep; // growth stays inside what was drawn
+    if (cut) for (let i = 0; i < N; i++) if (cut[i]) zoneF[i] = 0;
+  }
   const buf = Buffer.from(m.map((v) => v * 255));
   let mask = sharp(buf, { raw: { width: w, height: h, channels: 1 } });
   if (maskWhite) { await mask.blur(1.5).png().toFile(out); return; }
   // from the finished frame back into the source's frame
-  const placed = await mask.resize(side, side).png().toBuffer();
-  const cl = Math.max(0, -l), ct = Math.max(0, -t);
-  const piece = await sharp(placed).extract({ left: cl, top: ct, width: Math.min(side - cl, W - Math.max(0, l)), height: Math.min(side - ct, H - Math.max(0, t)) }).png().toBuffer();
-  const full = await sharp({ create: { width: W, height: H, channels: 3, background: '#000' } }).composite([{ input: piece, left: Math.max(0, l), top: Math.max(0, t) }]).extractChannel(0).raw().toBuffer();
+  const full = await toSource(m, w, h, [l, t, side], W, H);
   const sm = new Uint8Array(W * H); for (let i = 0; i < W * H; i++) sm[i] = full[i] > 127 ? 1 : 0;
-  if (grow > 0) await growMask(src, sm, W, H, Math.round(grow * W / 4096), hueLo);
+  let zs = null;
+  if (zoneF) { const z = await toSource(zoneF, w, h, [l, t, side], W, H); zs = new Uint8Array(W * H); for (let i = 0; i < W * H; i++) zs[i] = z[i] > 127 ? 1 : 0; }
+  if (grow > 0) await growMask(src, sm, W, H, Math.round(grow * W / 4096), hueLo, zs);
   await sharp(Buffer.from(sm.map((v) => v * 255)), { raw: { width: W, height: H, channels: 1 } }).blur(1.5).png().toFile(out);
 }
 
 // the old white photos missed parts of the metal (the back of a band), so the outline taken from them is grown into
 // neighbouring pixels with the metal's own hue (the sure pixels' median minus 8°, never under 20°) and clear colour;
 // skin must be clearly redder than the gold (ring B's hand: skin 10–15°, gold 30–38°). --grow 0 turns it off.
-async function growMask(src, m, W, H, steps, hueLoArg) {
+async function growMask(src, m, W, H, steps, hueLoArg, zone) {
   const d = await sharp(src).removeAlpha().raw().toBuffer();
   const hue = (i) => { const r = d[3 * i], g = d[3 * i + 1], b = d[3 * i + 2], mx = Math.max(r, g, b), mn = Math.min(r, g, b), q = mx - mn; if (!q) return 0; let h = mx === r ? ((g - b) / q) % 6 : mx === g ? (b - r) / q + 2 : (r - g) / q + 4; return (h * 60 + 360) % 360; };
   const hs = []; for (let i = 0; i < W * H; i++) if (m[i]) { const r = d[3 * i], g = d[3 * i + 1], b = d[3 * i + 2]; if (Math.max(r, g, b) - Math.min(r, g, b) > 40) hs.push(hue(i)); }
   hs.sort((a, b) => a - b);
   const lo = hueLoArg !== undefined ? hueLoArg : Math.max(20, (hs[Math.floor(0.5 * hs.length)] || 30) - 8); // the sure pixels' edge holds some skin, so the median, never under 20°
   console.log(`grow: metal hue median ${(hs[Math.floor(0.5 * hs.length)] || 0).toFixed(1)}°, growing into hue ≥ ${lo.toFixed(1)}° for ${steps} px`);
-  const ok = (i) => { const r = d[3 * i], g = d[3 * i + 1], b = d[3 * i + 2]; if (Math.max(r, g, b) - Math.min(r, g, b) < 25) return false; const h = hue(i); return h >= lo && h < 75; };
+  const ok = (i) => { if (zone && !zone[i]) return false; const r = d[3 * i], g = d[3 * i + 1], b = d[3 * i + 2]; if (Math.max(r, g, b) - Math.min(r, g, b) < 25) return false; const h = hue(i); return h >= lo && h < 75; };
   let front = []; for (let i = 0; i < W * H; i++) if (m[i]) front.push(i);
   for (let k = 0; k < steps && front.length; k++) {
     const next = [];
@@ -139,7 +175,7 @@ async function sheet(dir, photo, work, metals) {
   if (a[0] === '--save') return save(a[1], a[2], a[3]);
   const take = (n, many) => { const o = []; for (let i = a.indexOf(n); i >= 0; i = a.indexOf(n)) o.push(a.splice(i, 2)[1]); return many ? o : o[0]; };
   const keepRed = a.includes('--keep-red'); if (keepRed) a.splice(a.indexOf('--keep-red'), 1);
-  const stones = take('--stone', true), turnArg = take('--turn'), erode = +(take('--erode') || 3), maskWhite = take('--mask-white');
+  const stones = take('--stone', true), turnArg = take('--turn'), erode = +(take('--erode') || 3), maskWhite = take('--mask-white'), outline = take('--outline');
   const grow = +(take('--grow') ?? 24), hueLoS = take('--hue-lo'), hueLo = hueLoS === undefined ? undefined : +hueLoS;
   const metals = (take('--metals') || 'yellow,rose,white').split(',');
   const [dir, photo, src, cropS, kind, work] = a;
@@ -152,12 +188,12 @@ async function sheet(dir, photo, work, metals) {
     for (const m of metals) {
       run('gold-standard.cjs', [src, tmp(m + 'f'), '--metal', m, ...st]);
       run('bg-soft.cjs', [tmp(m + 'f'), tmp(m + 's')]);
-      await crop(tmp(m + 's'), path.join(work, `${photo} - ${m}.png`), cr);
+      await crop(tmp(m + 's'), path.join(work, `${photo} - ${m}.png`), cr, true);
       fs.unlinkSync(tmp(m + 'f')); fs.unlinkSync(tmp(m + 's'));
     }
   } else {
     const mask = tmp('mask');
-    await wornMask(dir, photo, src, cr, mask, erode, maskWhite, grow, hueLo);
+    await wornMask(dir, photo, src, cr, mask, erode, maskWhite, grow, hueLo, outline);
     let turn = turnArg;
     if (turn === undefined) { const ang = await hueAngle(src, mask); turn = String(Math.max(-15, Math.min(15, -50.5 - ang)).toFixed(1)); console.log(`metal hue angle ${ang.toFixed(1)}°, yellow turn ${turn}°`); }
     for (const m of metals) {
