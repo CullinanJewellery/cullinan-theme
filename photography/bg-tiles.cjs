@@ -17,6 +17,7 @@
     node bg-tiles.cjs <in.png> <out.png>      (prints the seams found and each cell's offset)
 */
 const THR = +(process.env.BG_TILES_THR || 0.8); // levels; the faintest panel the owner noticed was 1–2
+const MAXS = +(process.env.BG_TILES_MAX || 9); // a deeper step is a shadow (23 Православен: its panels are 10 levels, BG_TILES_MAX=14)
 const G = 16, WD = 24; // a seam is a ramp 30–60 px wide: compare the paper 16–40 px either side
 const MIN = 160; // smallest cell side, px at 4K-ish sizes
 
@@ -70,7 +71,7 @@ function untile(data, W, H, mm) {
   const cells = [], seams = [];
   (function split(r, depth) {
     const s = r.x1 - r.x0 >= 2 * MIN || r.y1 - r.y0 >= 2 * MIN ? seam(r) : { d: 0 };
-    if (depth < 8 && Math.abs(s.d) >= THR && Math.abs(s.d) <= 9) { // deeper than 9 is a shadow, not a tile
+    if (depth < 8 && Math.abs(s.d) >= THR && Math.abs(s.d) <= MAXS) { // deeper is a shadow, not a tile
       seams.push({ dir: s.dir, at: s.at, step: +s.d.toFixed(2), in: [r.x0, r.y0, r.x1, r.y1] });
       if (s.dir === 'v') { split({ ...r, x1: s.at }, depth + 1); split({ ...r, x0: s.at }, depth + 1); }
       else { split({ ...r, y1: s.at }, depth + 1); split({ ...r, y0: s.at }, depth + 1); }
