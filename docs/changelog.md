@@ -8,6 +8,11 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-19 — „Качество и детайли“ for the exact piece **(owner)**
+- Owner: the section should describe the exact piece and change when the metal (or stone) changes, like moonmagic (their panel: the selected metal first, then the piece's stone, size, cut, ct and metal weight, then shared quality text).
+- Metal and proba now come from the selected variant's material option („14К жълто злато“ → „Жълто злато 14 карата“, 585) when no metafield gives them; weight, stones and dimensions still come from the metafields (shown only when filled). Below the list one paragraph for the chosen metal only (14K or 18K line; white = rhodium last; yellow/rose = polished and made to keep the shine; silver = 925 with rhodium), then handmade in the atelier from our own 3D model, hallmark and individual certificate; the HRD Antwerp line only on pieces with stone data. The template's general text (585 or 750, silver, HRD) is emptied, since it named every metal at once.
+- Way back: revert this commit and put the old text back in templates/product.json („specs“ block content).
+
 ## 2026-11-17 — Yellow gold standard „F“; photos rebuilt from the AI originals **(owner)**
 - Owner: after many stacked edits the gold differed in colour, brightness and polish, and free recolours sometimes coloured the area round the piece. Cause: the old scripts (gold-match.cjs and others) moved only the mean colour, and their weighting reached pixels next to the metal.
 - New `photography/gold-standard.cjs`: a gradient map on the metal only (brightness at percentiles 2/10/50/90/99.5 → five fixed gold colours), always run on the Higgsfield AI original; a pixel outside the metal that changes stops the script (spill check). On ring A and ring B it gives the same gold (218, 185, 128 and 218, 183, 125).
