@@ -145,17 +145,46 @@
           assign sizes = full_width
         endif
       -%}
-      {{
-        section.settings.image
-        | image_url: width: 3840
-        | image_tag:
-          width: section.settings.image.width,
-          height: image_height,
-          class: image_class,
-          sizes: sizes,
-          widths: widths,
-          fetchpriority: fetch_priority
-      }}
+      {%- comment -%}
+        Phone image (2026-11-19, experiments theme, Christmas): when set, phones (under 750px) get their own
+        picture, like the gift-guide bands; computers keep Image. Styles in crown.css („Hero phone image“).
+      {%- endcomment -%}
+      {%- if section.settings.image_mobile != blank and section.settings.image_2 == blank -%}
+        <picture>
+          <source
+            media="(max-width: 749px)"
+            srcset="
+              {{ section.settings.image_mobile | image_url: width: 750 }} 750w,
+              {{ section.settings.image_mobile | image_url: width: 1100 }} 1100w,
+              {{ section.settings.image_mobile | image_url: width: 1500 }} 1500w
+            "
+            sizes="100vw"
+          >
+          {{
+            section.settings.image
+            | image_url: width: 3840
+            | image_tag:
+              width: section.settings.image.width,
+              height: image_height,
+              class: image_class,
+              sizes: sizes,
+              widths: widths,
+              fetchpriority: fetch_priority
+          }}
+        </picture>
+      {%- else -%}
+        {{
+          section.settings.image
+          | image_url: width: 3840
+          | image_tag:
+            width: section.settings.image.width,
+            height: image_height,
+            class: image_class,
+            sizes: sizes,
+            widths: widths,
+            fetchpriority: fetch_priority
+        }}
+      {%- endif -%}
     </div>
   {%- elsif section.settings.image_2 == blank -%}
     <div class="banner__media media{% if section.settings.image == blank and section.settings.image_2 == blank %} banner__media--empty{% endif %}{% if section.settings.image_2 != blank %} banner__media-half{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
@@ -318,6 +347,12 @@
       "type": "image_picker",
       "id": "image",
       "label": "t:sections.image-banner.settings.image.label"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Снимка за телефон",
+      "info": "По желание. На телефон се показва тази снимка вместо първата (4:5)."
     },
     {
       "type": "image_picker",

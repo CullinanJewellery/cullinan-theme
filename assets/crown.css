@@ -10089,3 +10089,45 @@ html body main [id^="shopify-section-"][id$="__hero_image"] .banner .banner__box
     background: #d9b77e;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Hero phone image (2026-11-19, experiments theme): image-banner wraps Image in a <picture> when a phone
+   image is set. The picture takes no box of its own, and its img gets every rule Dawn and this file give a
+   direct > img child (fill, cover, the zoom-in on scroll, the phone square).
+   --------------------------------------------------------------------------- */
+.banner__media > picture {
+  display: contents;
+}
+
+.banner__media > picture > img {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.animate--zoom-in > picture > img {
+  transition: scale var(--duration-short) linear;
+  scale: var(--zoom-in-ratio);
+}
+
+.banner__media.animate--zoom-in > picture > img {
+  position: fixed;
+  height: 100vh;
+}
+
+@media screen and (max-width: 749px) {
+  [id^="shopify-section-"][id$="__hero_image"] .banner .banner__media.animate--zoom-in > picture > img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+  }
+}
