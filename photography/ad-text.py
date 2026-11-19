@@ -21,7 +21,9 @@ def width(fs,s,track=0):
 def draw(d,fs,s,cx,y,fill,track=0):
     x=cx-width(fs,s,track)/2
     for ch in s:
-        f=pick(fs,ch); d.text((x,y),ch,font=f,fill=fill); x+=f.getlength(ch)+track
+        f=pick(fs,ch)
+        if ch!=" ": d.text((x,y),ch,font=f,fill=fill)
+        x+=f.getlength(ch)+track
 def make(src,out,kicker,lines,sub,top):
     im=Image.open(src).convert('RGB'); W,H=im.size
     # soft dark gradient behind the text block
@@ -45,5 +47,5 @@ def make(src,out,kicker,lines,sub,top):
     print(out,'text ends at',y,'of',H)
     im.save(out+'.png'); im.resize((2160,2682)).save(out+'.jpg',quality=93)
     im.resize((W//4,H//4)).save(out+'-s.jpg',quality=88)
-make(B+'ads2/c0.png',B+'ads2/t01','РЪЧНА ИЗРАБОТКА  ·  ЗЛАТО',['Създадена,','за да бъде забелязана'],['Червен циркон в цвят рубин,','обгърнат в полирано злато'],3180)
+make(B+'ads2/c0.png',B+'ads2/t01','РЪЧНА ИЗРАБОТКА  ·  ЗЛАТО',['Създадена,','за да бъде забелязана'],['Червеното на страстта и любовта –','подарък за човек, когото обичате'],3180)
 make(B+'ads2/c1.png',B+'ads2/t02','РЪЧНА ИЗРАБОТКА  ·  ЗЛАТО',['Светлина отвътре'],['Отворената основа пропуска светлината','и камъкът грее'],3420)
