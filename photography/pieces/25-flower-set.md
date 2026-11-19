@@ -23,3 +23,9 @@ inner marquise wall, the floor between them closed, the only opening inside the 
 on a jump ring through a loop on the top petal. The side view shows the petals are deep, layered walls, not flat.
 A green stone version appears in the renders: asked the owner whether it is sold and what the stone is.
 - Owner, 2026-11-14: the earrings are the same model as the pendant, only smaller (so the renders apply to the studs too).
+
+## Size (owner, 2026-11-19)
+
+- The pendant is **only a little bigger than a stud** (owner: "not that big, a little bit bigger than the earrings").
+  The first Christmas ads drew it about twice a stud's width: wrong. In every picture with both, the pendant's flower
+  is about 1.3 times a stud's width.
