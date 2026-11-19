@@ -51,8 +51,8 @@
             "link_4": "/policies/privacy-policy",
             "link_5_label": "Гаранция",
             "link_5": "/policies/legal-notice",
-            "link_6_label": "",
-            "link_6": "",
+            "link_6_label": "Отказ от договора",
+            "link_6": "/pages/отказ-от-договора?view=withdrawal",
             "show_email": false
           }
         },
