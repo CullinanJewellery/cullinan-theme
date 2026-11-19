@@ -8,6 +8,11 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-19 — „Качество и детайли“ opens from the right; smaller text **(owner)**
+- Owner: "i like how it is open at the right side in moon magic". The row now opens a panel from the right (native <dialog>; measured on moonmagic: half the screen on a computer, whole width on a phone, dark veil, spaced capital title with a cross, 14px text, 0.3s slide). Escape, the cross and a click on the veil close it. Text in the panel 14px (owner: the gold text smaller). The handmade/3D model/certificate paragraph removed (owner: "i don't want that").
+- Stone and stone size rows already exist (custom.stone, custom.stone_size); they show once filled per product.
+- Way back: revert this commit (the block becomes an in-place accordion again).
+
 ## 2026-11-19 — „Качество и детайли“ for the exact piece **(owner)**
 - Owner: the section should describe the exact piece and change when the metal (or stone) changes, like moonmagic (their panel: the selected metal first, then the piece's stone, size, cut, ct and metal weight, then shared quality text).
 - Metal and proba now come from the selected variant's material option („14К жълто злато“ → „Жълто злато 14 карата“, 585) when no metafield gives them; weight, stones and dimensions still come from the metafields (shown only when filled). Below the list one paragraph for the chosen metal only (14K or 18K line; white = rhodium last; yellow/rose = polished and made to keep the shine; silver = 925 with rhodium), then handmade in the atelier from our own 3D model, hallmark and individual certificate; the HRD Antwerp line only on pieces with stone data. The template's general text (585 or 750, silver, HRD) is emptied, since it named every metal at once.
