@@ -479,7 +479,7 @@
                       opens a panel from the right instead of unfolding in place. A native
                       <dialog> (showModal) sits in the top layer, so no sticky or transformed
                       ancestor can clip it, and it gives Escape, focus trapping and a backdrop.
-                      It stays inside <product-info>, so product-info.js still finds
+                      It stays inside <product-info> (and inside its row), so product-info.js still finds
                       #ProductSpecs and refreshes it on every variant change.
                     {%- endcomment -%}
                     {%- assign cj_drawer_id = 'CjDetails-' | append: block.id | append: '-' | append: section.id -%}
