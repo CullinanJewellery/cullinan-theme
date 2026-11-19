@@ -430,3 +430,11 @@ Each line: what went wrong, the rule now, where it came from. Newest last.
 83. **Colour drift came from stacking edits and matching only the mean (2026-11-17).** Every new yellow photo starts from the AI original and goes through `gold-standard.cjs` (whole tone scale, metal only, spill check), never through gold-match.cjs on an edited copy. **bg-even.cjs can cut a long soft shadow** (ring A: ragged end at the left); use `bg-soft.cjs`, which keeps the shadow whole, and look at the shadow's ends zoomed in.
 
 84. **Worn photos: turn the hue, keep the scene's light (2026-11-17, ring A's hand).** Skin and gold share the hue (15–30°) and colour, so the ring's outline comes from the AI white-gold version of the same photo: where saturation drops between yellow and white is exactly the ring (shrunk 6 px at 4K, feathered) → `gold-standard.cjs --only mask.png`. The studio tone map (and `--keep-light`) lifted or flattened the gold to studio values and read pale or olive; `--turn -6` (only the hue, toward yellow) matched the approved F main photo by eye. On pink skin a full numeric turn (−13.5°) reads olive: judge next to the main photo, not by the number.
+
+## Ads with several pieces: lay them out first (2026-11-19, set 25)
+
+Two rounds drew the star pendant almost twice a stud's width though every prompt gave the ratio; the owner: "the
+pendant is a little bit bigger than the earrings". A model guesses relative sizes. Fix that worked first time:
+`photography/ad-layout.py` cuts each piece from its finished yellow 01 photo and lays them out at true relative size on
+grey; that layout goes in as image 1 ("keep the pieces exactly where and as big as they are; replace only the grey"),
+the product photos as detail references. The AI still makes the whole picture (no pasting into the final).
