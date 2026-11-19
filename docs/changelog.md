@@ -22,6 +22,13 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 - 2026-11-19, the yellow spots **(owner: "fix this things the yellow spot ... check all the jewelry")**: the AI paints gold light on the paper next to the metal (inside openings, round two-tone figures, at shadow edges); bg-soft keeps those pixels as part of the piece and the recolour turned them gold. New `photography/glow-clean.cjs` fills them from the surrounding paper and shadow (found on the yellow, the same mask used for rose and white; strong gold and rhodium are never touched). `pearl-clean.cjs`: the yellow gold's reflection in the 14 earrings' pearls becomes the pearl's own tint in white and rose (softened to 60% in yellow). Run on the seven main photos and on 41 other studio photos where the scan found glow (worn photos have no paper and were not scanned; the 14 pearl ring and pendant were left, the scan hit the pearl). A first rose pass that also searched the rose photo on its own trimmed light metal edges; `rose-edge-restore.cjs` put those pixels back from the same photo's yellow, and rose now uses the yellow's mask only.
 - Way back: yellow target 209, 167, 111 in check-photo.cjs and gold-match.cjs as before; the old finals stay in each piece folder until replaced, then in `чернови`.
 
+## 2026-11-19 — Christmas hero photo and words (experiments theme only) **(owner)**
+- Photo: Higgsfield Christmas version of the bell hero (emerald velvet, tree lights, fir; bell unchanged), computer 16:9 5504 px and a phone photo (outpaint, then crop 2:3 with lips and bell both seen). 8 credits.
+- image-banner: new setting „Снимка за телефон“ (picture source under 750px); the phone hero is 2:3 when it is set.
+- Words: heading 36/52/64px, line 16/19px balanced, eyebrow 12.5/14px, soft text shadow; ruby button full width on phones (52px), 300x60 on computers; line „Ръчна изработка. Всяко бижу пристига в кутия.“, button „Изберете подарък“; the Christmas band now says the engraving and „Разгледайте бижутата“.
+- An editor save from an older session overwrote these words once (Update from Shopify 1d7dfe0c); restored in 3249dd70.
+- Not on main (owner: „just for Christmas“).
+
 ## 2026-11-19 — Christmas, on the experiments theme only (branch fluid-sizes) **(owner)**
 - Owner: „for Christmas should we change something ... make them in fluid-sizes, there I can see how it will look“. fluid-sizes was fast-forwarded to main first (it had no commits of its own).
 - Hero: a first text block „Весела Коледа“, small spaced capitals with a thin champagne-gold line (both sides on phones); CSS at the end of crown.css.
