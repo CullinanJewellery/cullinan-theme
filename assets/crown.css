@@ -10333,7 +10333,7 @@ html body .collection-hero .cj-xmas-eyebrow::before {
   background: #d9b77e;
 }
 
-html body .collection-hero {
+html body .collection-hero.collection-hero.gradient {
   background: radial-gradient(120% 160% at 85% 40%, #2e5a4a 0%, #1f3d33 55%, #142a22 100%);
   --color-foreground: 243, 234, 229;
 }
