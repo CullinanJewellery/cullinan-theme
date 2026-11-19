@@ -7,10 +7,34 @@
     <meta name="theme-color" content="">
     <link rel="canonical" href="{{ canonical_url }}">
 
+    {%- comment -%}
+      Favicon (2026-11-19): a „C“ in the shop name's Bodoni Moda, espresso on soft blush, until the owner picks one
+      under Theme settings → Logo → Favicon (that one then wins).
+    {%- endcomment -%}
     {%- if settings.favicon != blank -%}
       <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+    {%- else -%}
+      <link rel="icon" type="image/png" sizes="180x180" href="{{ 'cj-favicon.png' | asset_url }}">
+      <link rel="apple-touch-icon" href="{{ 'cj-favicon.png' | asset_url }}">
     {%- endif -%}
 
+    {%- comment -%}
+      Description for Google and shared links (2026-11-19). Shopify's own (Preferences, a collection's or product's
+      SEO description) always wins; these lines only fill pages that have none, from the facts in CLAUDE.md.
+    {%- endcomment -%}
+    {%- liquid
+      assign cj_description = page_description
+      if cj_description == blank
+        case request.page_type
+          when 'collection'
+            assign cj_description = collection.title | append: ' от ' | append: shop.name | append: ': бижута, изработени на ръка в ателие във Велико Търново, където работим от 1991 г.'
+          when 'product'
+            assign cj_description = product.title | append: ' от ' | append: shop.name | append: ': бижу, изработено на ръка в ателие във Велико Търново, където работим от 1991 г.'
+          else
+            assign cj_description = 'Бижута от злато 14 и 18 карата и сребро 925, изработени на ръка в ателие във Велико Търново от 1991 г. Доставка с Еконт и Спиди.'
+        endcase
+      endif
+    -%}
 
     <title>
       {%- comment -%} „Любими“ is the catalogue's wishlist view (templates/collection.wishlist.json). {%- endcomment -%}
@@ -21,11 +45,9 @@
       {%- unless page_title contains shop.name and template != 'collection.wishlist' %} &ndash; {{ shop.name }}{% endunless -%}
     </title>
 
-    {% if page_description %}
-      <meta name="description" content="{{ page_description | escape }}">
-    {% endif %}
+    <meta name="description" content="{{ cj_description | escape }}">
 
-    {% render 'meta-tags' %}
+    {% render 'meta-tags', cj_description: cj_description %}
 
     <script type="module">
       import * as StandardEvents from 'https://cdn.shopify.com/storefront/standard-events.js';
