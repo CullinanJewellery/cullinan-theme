@@ -8,6 +8,9 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-19 — Homepage five boxes: polished gold circles, no wash **(owner)**
+- Owner: "make the red circles yellow ones but polished and remove in the boxes the background". The ruby circles are now polished yellow gold (gradient from the gold standard with a highlight and edge shade; icon white with a faint shadow); the blush wash inside each box is gone. Ruby outline, ruby words and the lift unchanged. Block at the end of assets/section-icon-benefits.css; way back: delete it.
+
 ## 2026-11-19 — Every product-page row opens from the right **(owner)**
 - Owner: "make the others open from the side too". Доставка и връщане, Грижа за бижуто, За камъка and Често задавани въпроси (all collapsible_tab blocks in main-product) now open the same side panel as Качество и детайли; the opening script moved to snippets/cj-side-panel-script.liquid, rendered by each panel block and run once. Texts unchanged.
 - Way back: revert this commit (the rows unfold in place again).
