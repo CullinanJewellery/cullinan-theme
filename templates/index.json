@@ -29,14 +29,14 @@
         "text": {
           "type": "text",
           "settings": {
-            "text": "Не се сваля. Ръчна изработка.",
+            "text": "Ръчна изработка. Всяко бижу пристига в кутия.",
             "text_style": "body"
           }
         },
         "buttons": {
           "type": "buttons",
           "settings": {
-            "button_label_1": "Разгледайте колекцията",
+            "button_label_1": "Изберете подарък",
             "button_link_1": "shopify://collections/all",
             "button_style_secondary_1": false,
             "button_label_2": "",
@@ -299,8 +299,8 @@
         "content_side": "left",
         "eyebrow": "Коледа",
         "heading": "Подарък, който остава",
-        "text": "<p>Всяко бижу пристига в кутия. По желание гравираме име, дата или послание.</p>",
-        "button_label": "Изберете подарък",
+        "text": "<p>По желание гравираме име, дата или кратко послание.</p>",
+        "button_label": "Разгледайте бижутата",
         "button_link": "/collections/all"
       }
     },
