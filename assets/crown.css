@@ -10131,3 +10131,11 @@ html body main [id^="shopify-section-"][id$="__hero_image"] .banner .banner__box
     object-position: 50% 50%;
   }
 }
+
+/* Hero with a phone image (2026-11-19, owner: lips and the pendant both seen on phones): the phone hero is
+   2:3 instead of 4:5, so the lips sit near the top, the pendant above the words and the dress under them. */
+@media screen and (max-width: 749px) {
+  html body [id^="shopify-section-"][id$="__hero_image"] .banner:not(.banner--mobile-bottom):has(.banner__media > picture) .banner__content {
+    aspect-ratio: 2 / 3;
+  }
+}
