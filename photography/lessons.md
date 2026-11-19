@@ -438,3 +438,6 @@ pendant is a little bit bigger than the earrings". A model guesses relative size
 `photography/ad-layout.py` cuts each piece from its finished yellow 01 photo and lays them out at true relative size on
 grey; that layout goes in as image 1 ("keep the pieces exactly where and as big as they are; replace only the grey"),
 the product photos as detail references. The AI still makes the whole picture (no pasting into the final).
+- Do not give an earlier picture as "scene reference" when the layout changes: the model copies the earlier sizes
+  and ignores the new layout (round 4, 6 credits lost). Describe the scene in words and give only the layout and
+  the product photos. Owner, 2026-11-19: do not retouch the gold colour of ad pictures afterwards unless asked.
