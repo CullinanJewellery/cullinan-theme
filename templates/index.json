@@ -53,7 +53,8 @@
       ],
       "settings": {
         "show_review_rating": true,
-        "image": "shopify://shop_images/ChatGPT_Image_Aug_31_2026_08_09_00_PM.png",
+        "image": "shopify://shop_images/42eae47f184999839d84168f49f4c13f.jpg",
+        "image_mobile": "shopify://shop_images/e15005cf46899c210db0405c5bf3ff84.jpg",
         "video_url": "",
         "image_overlay_opacity": 0,
         "image_height": "large",
@@ -311,11 +312,11 @@
           "settings": {
             "size": "tall",
             "image": "shopify://shop_images/home-tile-rings.jpg",
+            "desktop_position": 1,
             "label": "Пръстени",
             "subline": "За всеки ден и за специалния повод.",
             "link": "/collections/пръстени",
-            "phone_button": "Вижте пръстените",
-            "desktop_position": 1
+            "phone_button": "Вижте пръстените"
           }
         },
         "t2": {
@@ -324,11 +325,11 @@
             "size": "standard",
             "image": "shopify://shop_images/home-tile-earrings_3305754a-7451-40b7-bccf-763e4c790344.jpg",
             "image_phone": "shopify://shop_images/home-tile-earrings-phone_99fbe1ec-bac4-4ad5-906a-0e5a03381d11.jpg",
+            "desktop_position": 6,
             "label": "Обеци",
             "subline": "Фини акценти, които се носят цял ден.",
             "link": "/collections/обеци",
-            "phone_button": "Вижте обеците",
-            "desktop_position": 6
+            "phone_button": "Вижте обеците"
           }
         },
         "t3": {
@@ -337,11 +338,11 @@
             "size": "standard",
             "image": "shopify://shop_images/home-tile-pendants_1e2d17b8-4a07-45af-9e5c-a368800d6cff.jpg",
             "image_phone": "shopify://shop_images/home-tile-pendants-phone_dbde08d2-50cf-4593-90cf-f58ac4083cb4.jpg",
+            "desktop_position": 3,
             "label": "Висулки",
             "subline": "Малки бижута с голямо значение.",
             "link": "/collections/висулки",
-            "phone_button": "Вижте висулките",
-            "desktop_position": 3
+            "phone_button": "Вижте висулките"
           }
         },
         "t9": {
@@ -350,11 +351,11 @@
             "size": "tall",
             "image": "shopify://shop_images/home-tile-accessories_72246641-3afc-47e4-9f09-dd5d742ab3a2.jpg",
             "image_phone": "shopify://shop_images/home-tile-accessories-phone_63d6f927-2087-47e1-bbdc-38b71d2b6791.jpg",
+            "desktop_position": 4,
             "label": "Аксесоари",
             "subline": "",
             "link": "/collections/аксесоари",
-            "phone_button": "Вижте аксесоарите",
-            "desktop_position": 4
+            "phone_button": "Вижте аксесоарите"
           }
         },
         "t4": {
@@ -363,11 +364,11 @@
             "size": "standard",
             "image": "shopify://shop_images/home-tile-bracelets_265fde56-0954-45f5-b813-271ddaae3c58.jpg",
             "image_phone": "shopify://shop_images/home-tile-bracelets-phone_e727d827-cf7d-4018-9828-3a495c60f598.jpg",
+            "desktop_position": 5,
             "label": "Гривни",
             "subline": "Деликатни гривни за всеки ден.",
             "link": "/collections/гривни",
-            "phone_button": "Вижте гривните",
-            "desktop_position": 5
+            "phone_button": "Вижте гривните"
           }
         },
         "t6": {
@@ -376,11 +377,11 @@
             "size": "standard",
             "image": "shopify://shop_images/home-tile-sets_10ae7d8c-507c-4234-8784-9f90c77adcc0.jpg",
             "image_phone": "shopify://shop_images/home-tile-sets-phone_5b07c4bc-9b31-4adb-9d97-54840338c8af.jpg",
+            "desktop_position": 2,
             "label": "Комплекти",
             "subline": "Бижута, създадени да се носят заедно.",
             "link": "/collections/комплекти",
-            "phone_button": "Вижте комплектите",
-            "desktop_position": 2
+            "phone_button": "Вижте комплектите"
           }
         }
       },
