@@ -10239,3 +10239,45 @@ html body main [id$="__xmas_band"] .gift-guide__button {
 .footer.gradient .footer-block__heading {
   color: #d9b77e;
 }
+
+/* Christmas footer text (2026-11-19): the footer's own rules set its links and small print in pure black; on
+   emerald they turn light, scoped to the footer only (!important because the black is set in several places). */
+html body .footer.gradient :is(a, p, small, span, label, li, address, .footer__copyright, .copyright__content):not(.list-social__link) {
+  color: rgb(243, 234, 229) !important;
+}
+
+html body .footer.gradient a:not(.list-social__link):hover {
+  color: #d9b77e !important;
+}
+
+html body .footer.gradient .field__input {
+  color: rgb(243, 234, 229) !important;
+  background: transparent;
+}
+
+html body .footer.gradient .field::after,
+html body .footer.gradient .field:hover::after {
+  box-shadow: 0 0 0 1px rgba(243, 234, 229, 0.6);
+}
+
+html body .footer.gradient .field__label,
+html body .footer.gradient .field__input::placeholder,
+html body .footer.gradient .newsletter-form__button {
+  color: rgba(243, 234, 229, 0.8) !important;
+}
+
+html body .footer.gradient .list-social__link {
+  background: transparent !important;
+  border: 1px solid rgba(217, 183, 126, 0.7);
+  color: #f3eae5 !important;
+}
+
+html body .footer.gradient .list-social__link svg {
+  color: #f3eae5;
+  fill: currentColor;
+}
+
+html body .footer.gradient .list-social__link:hover {
+  background: #d9b77e !important;
+  color: #1f3d33 !important;
+}
