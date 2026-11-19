@@ -479,3 +479,43 @@
     font-size: 1.5rem;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Polished gold circles, no card wash (2026-11-19, owner: "make the red circles
+   yellow ones but polished and remove in the boxes the background"). The circle
+   is drawn like polished yellow gold: a diagonal run from a pale highlight
+   through the site's gold standard (about 218, 185, 128 and 209, 167, 111) to a
+   deeper warm shade and back, with a soft inner highlight at the top and a thin
+   shade at the bottom edge, as light falls on a curved polished surface. The
+   icon stays white with a faint shadow so it holds on the light parts. The
+   cards lose their blush wash (transparent); outline, words and the lift stay.
+   Way back: delete this block.
+   --------------------------------------------------------------------------- */
+.benefits-band .benefit__visual,
+.benefits-band .benefits__item .benefit__visual {
+  border-color: transparent;
+  background:
+    radial-gradient(120% 80% at 30% 18%, rgba(255, 248, 228, 0.85) 0%, rgba(255, 248, 228, 0) 45%),
+    linear-gradient(140deg, #f3dfaf 0%, #dab77c 28%, #b98c4e 52%, #e2c48a 72%, #a97a3e 100%);
+  box-shadow:
+    inset 0 0.1rem 0.2rem rgba(255, 252, 240, 0.7),
+    inset 0 -0.2rem 0.4rem rgba(110, 72, 28, 0.35),
+    0 0.3rem 0.8rem -0.3rem rgba(120, 82, 34, 0.45);
+  color: #ffffff;
+}
+
+.benefits-band .benefit__visual .benefit__icon {
+  filter: drop-shadow(0 0.1rem 0.1rem rgba(96, 62, 22, 0.45));
+}
+
+.benefits-band .benefits__item,
+.benefits-band .benefits__item:nth-child(n) {
+  background: transparent;
+}
+
+@media screen and (max-width: 749px) {
+  .benefits-band .benefits__item,
+  .benefits-band .benefits__item:nth-child(n) {
+    background: transparent;
+  }
+}
