@@ -12,6 +12,13 @@
     "hero_image": {
       "type": "image-banner",
       "blocks": {
+        "xmas": {
+          "type": "text",
+          "settings": {
+            "text": "Весела Коледа",
+            "text_style": "caption-with-letter-spacing"
+          }
+        },
         "heading": {
           "type": "heading",
           "settings": {
@@ -39,6 +46,7 @@
         }
       },
       "block_order": [
+        "xmas",
         "heading",
         "text",
         "buttons"
@@ -282,6 +290,17 @@
         "swipe_on_mobile": true,
         "padding_top": 64,
         "padding_bottom": 64
+      }
+    },
+    "xmas_band": {
+      "type": "cj-gift-guide",
+      "settings": {
+        "content_side": "left",
+        "eyebrow": "Коледа",
+        "heading": "Подарък, който остава",
+        "text": "<p>Всяко бижу пристига в кутия. По желание гравираме име, дата или послание.</p>",
+        "button_label": "Изберете подарък",
+        "button_link": "/collections/all"
       }
     },
     "category_mosaic": {
@@ -991,6 +1010,7 @@
     "hero_facts",
     "image_marquee",
     "featured_collection",
+    "xmas_band",
     "category_mosaic",
     "zodiac",
     "gift_guide",

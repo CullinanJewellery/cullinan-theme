@@ -22,6 +22,13 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 - 2026-11-19, the yellow spots **(owner: "fix this things the yellow spot ... check all the jewelry")**: the AI paints gold light on the paper next to the metal (inside openings, round two-tone figures, at shadow edges); bg-soft keeps those pixels as part of the piece and the recolour turned them gold. New `photography/glow-clean.cjs` fills them from the surrounding paper and shadow (found on the yellow, the same mask used for rose and white; strong gold and rhodium are never touched). `pearl-clean.cjs`: the yellow gold's reflection in the 14 earrings' pearls becomes the pearl's own tint in white and rose (softened to 60% in yellow). Run on the seven main photos and on 41 other studio photos where the scan found glow (worn photos have no paper and were not scanned; the 14 pearl ring and pendant were left, the scan hit the pearl). A first rose pass that also searched the rose photo on its own trimmed light metal edges; `rose-edge-restore.cjs` put those pixels back from the same photo's yellow, and rose now uses the yellow's mask only.
 - Way back: yellow target 209, 167, 111 in check-photo.cjs and gold-match.cjs as before; the old finals stay in each piece folder until replaced, then in `чернови`.
 
+## 2026-11-19 — Christmas, on the experiments theme only (branch fluid-sizes) **(owner)**
+- Owner: „for Christmas should we change something ... make them in fluid-sizes, there I can see how it will look“. fluid-sizes was fast-forwarded to main first (it had no commits of its own).
+- Hero: a first text block „Весела Коледа“, small spaced capitals with a thin champagne-gold line (both sides on phones); CSS at the end of crown.css.
+- Announcement bar: first line „Всяко бижу пристига в кутия, готово за подарък“ (fact: every piece arrives in a box, owner 2026-11-11).
+- Homepage: a Christmas band (cj-gift-guide, no photo yet so it is espresso) after Най-продавани: „Коледа / Подарък, който остава / Всяко бижу пристига в кутия. По желание гравираме име, дата или послание.“, button „Изберете подарък“ → all products.
+- Not on main. Way back: delete the blocks xmas (hero), xmas-box (bar), the section xmas_band and the CSS block.
+
 ## 2026-11-19 — „Отказ от договора“ in the footer **(owner)**
 - The owner created the page (default template, since the published theme has no `page.withdrawal`) and made it visible. Footer column „Поръчки и условия“, link 6: `/pages/отказ-от-договора?view=withdrawal`, so this theme shows the form. After this theme is published: choose the template withdrawal on the page and drop `?view=`. Way back: empty link 6.
 

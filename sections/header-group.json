@@ -14,6 +14,13 @@
     "announcement-bar": {
       "type": "announcement-bar",
       "blocks": {
+        "xmas-box": {
+          "type": "announcement",
+          "settings": {
+            "text": "Всяко бижу пристига в кутия, готово за подарък",
+            "link": ""
+          }
+        },
         "announcement-bar-3": {
           "type": "announcement",
           "settings": {
@@ -30,6 +37,7 @@
         }
       },
       "block_order": [
+        "xmas-box",
         "announcement-bar-3",
         "announcement-bar-5"
       ],
