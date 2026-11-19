@@ -124,6 +124,8 @@ No replacement legal text is to be written; the accountant handles legal pages.
 | Menu: „Дамкси“ typo; Дамски/Мъжки collections empty | Main menu | Fix spelling; fill or remove |
 | Stone collections empty except Циркони, Диаманти, Камъни | Collections | Tag products (stones row links them — see E) |
 | Availability shown correctly? | Inventory | Do not change inventory to make pages look finished |
+| Withdrawal page created 2026-11-19, **hidden**, default template (the published theme has no `page.withdrawal`) | Pages → „Отказ от договора“, `/pages/отказ-от-договора` | When the returns policy is published: owner sets Visible; link it in the footer column „Поръчки и условия“ as `/pages/отказ-от-договора?view=withdrawal`; after this theme is published, choose the template withdrawal and drop `?view=` |
+| Ring size page not wanted (owner, 2026-11-19: the product page has the guide) | — | `page.size-guide` stays unused |
 
 ## E. Unresolved conflicts in the documentation (flagged, not guessed)
 
