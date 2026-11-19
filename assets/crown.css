@@ -10348,3 +10348,9 @@ html body .collection-hero .collection-hero__description,
 html body .collection-hero .collection-hero__description * {
   color: #f3eae5;
 }
+
+/* The stone's word (e.g. „Надежда“) is drawn in the stone's own colour;
+   emerald or sapphire would vanish on the Christmas band, so it is gold here. */
+html body .collection-hero.collection-hero.gradient .cj-hero__meaning {
+  color: #d9b77e;
+}
