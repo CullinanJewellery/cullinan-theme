@@ -519,3 +519,36 @@
     background: transparent;
   }
 }
+
+/* Emerald words and gold outlines (2026-11-19, owner: "make for the main the same
+   thing you made for christmas" for these boxes): words emerald #1F3D33 (11:1 on
+   white), outline champagne gold #D9B77E instead of ruby, the lift's shadow warm
+   gold instead of ruby. Same as the experiments theme's Christmas block.
+   Way back: delete this block (ruby outline, words and shadow come back). */
+.benefits-band .benefits__item,
+.benefits-band .benefits__item:nth-child(n) {
+  border-color: #d9b77e;
+}
+
+.benefits-band .benefit__heading,
+.benefits-band .benefit__subline {
+  color: #1f3d33;
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .benefits-band .benefits__item:hover {
+    box-shadow: 0 1.2rem 2.4rem -1.4rem rgba(150, 112, 52, 0.5);
+  }
+}
+
+@media screen and (max-width: 749px) and (prefers-reduced-motion: no-preference) {
+  .benefits-band .benefits__item.is-current {
+    box-shadow: 0 1.2rem 2.4rem -1.4rem rgba(150, 112, 52, 0.5);
+  }
+}
+
+@media screen and (min-width: 750px) and (prefers-reduced-motion: no-preference) {
+  .benefits-band .benefits__item.is-lifted {
+    box-shadow: 0 1.2rem 2.4rem -1.4rem rgba(150, 112, 52, 0.5);
+  }
+}
