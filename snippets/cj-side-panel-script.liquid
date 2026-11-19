@@ -1,0 +1,43 @@
+{%- comment -%}
+  Opens and closes the product page's side panels (Качество и детайли, Доставка и
+  връщане, Грижа за бижуто, За камъка, Често задавани въпроси; owner, 2026-11-19,
+  like moonmagic). Rendered by every panel block; runs once per page.
+  A row's button carries data-cj-drawer-open="<dialog id>"; the ✕ carries
+  data-cj-drawer-close; a click on the veil (the <dialog> itself) or Escape closes it
+  after the 0.28s slide-out (assets/crown.css, .cj-drawer).
+{%- endcomment -%}
+<script>
+  (function () {
+    if (window.cjDrawerReady) return;
+    window.cjDrawerReady = true;
+    function shut(d) {
+      if (!d.open || d.classList.contains('is-closing')) return;
+      d.classList.add('is-closing');
+      var done = function () {
+        d.classList.remove('is-closing');
+        d.close();
+      };
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return done();
+      setTimeout(done, 280);
+    }
+    document.addEventListener('click', function (e) {
+      var opener = e.target.closest('[data-cj-drawer-open]');
+      if (opener) {
+        var d = document.getElementById(opener.getAttribute('data-cj-drawer-open'));
+        if (d && !d.open) d.showModal();
+        return;
+      }
+      var closer = e.target.closest('[data-cj-drawer-close]');
+      if (closer) return shut(closer.closest('dialog'));
+      if (e.target.matches && e.target.matches('dialog.cj-drawer[open]')) shut(e.target);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'Escape') return;
+      var d = document.querySelector('dialog.cj-drawer[open]');
+      if (d) {
+        e.preventDefault();
+        shut(d);
+      }
+    });
+  })();
+</script>

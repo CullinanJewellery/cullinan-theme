@@ -8,6 +8,10 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-19 — Every product-page row opens from the right **(owner)**
+- Owner: "make the others open from the side too". Доставка и връщане, Грижа за бижуто, За камъка and Често задавани въпроси (all collapsible_tab blocks in main-product) now open the same side panel as Качество и детайли; the opening script moved to snippets/cj-side-panel-script.liquid, rendered by each panel block and run once. Texts unchanged.
+- Way back: revert this commit (the rows unfold in place again).
+
 ## 2026-11-19 — „Качество и детайли“ opens from the right; smaller text **(owner)**
 - Owner: "i like how it is open at the right side in moon magic". The row now opens a panel from the right (native <dialog>; measured on moonmagic: half the screen on a computer, whole width on a phone, dark veil, spaced capital title with a cross, 14px text, 0.3s slide). Escape, the cross and a click on the veil close it. Text in the panel 14px (owner: the gold text smaller). The handmade/3D model/certificate paragraph removed (owner: "i don't want that").
 - Stone and stone size rows already exist (custom.stone, custom.stone_size); they show once filled per product.
