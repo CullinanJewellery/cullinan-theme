@@ -8,6 +8,9 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-19 — Christmas: homepage five boxes in emerald and gold (experiments theme only) **(owner)**
+- On top of main's gold circles and no wash: words emerald #1F3D33 (owner), outline champagne gold #D9B77E and a warm gold lift shadow (my call, so ruby and green do not meet). Way back: delete the Christmas block at the end of assets/section-icon-benefits.css.
+
 ## 2026-11-19 — Homepage five boxes: polished gold circles, no wash **(owner)**
 - Owner: "make the red circles yellow ones but polished and remove in the boxes the background". The ruby circles are now polished yellow gold (gradient from the gold standard with a highlight and edge shade; icon white with a faint shadow); the blush wash inside each box is gone. Ruby outline, ruby words and the lift unchanged. Block at the end of assets/section-icon-benefits.css; way back: delete it.
 
