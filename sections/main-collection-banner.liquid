@@ -63,6 +63,8 @@
         in italic, in the stone's colour (snippets/cj-menu-stone.liquid, the same words as the menu and the homepage
         stones). The text under it is the collection's own Description in Shopify admin.
       {%- endcomment -%}
+      {%- comment -%} Christmas (2026-11-19, experiments theme only): the hero's „Весела Коледа“ line above the name. {%- endcomment -%}
+      <p class="cj-xmas-eyebrow">Весела Коледа</p>
       <h1 class="collection-hero__title">
         <span class="cj-hero__name">{{- cj_hero_title | escape -}}</span>
         {%- render 'cj-menu-stone', handle: collection.handle, part: 'hero' -%}

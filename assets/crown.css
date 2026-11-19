@@ -10281,3 +10281,70 @@ html body .footer.gradient .list-social__link:hover {
   background: #d9b77e !important;
   color: #1f3d33 !important;
 }
+
+/* ---------------------------------------------------------------------------
+   Christmas, product page and collections (2026-11-19, experiments theme; owner chose: the gift and
+   engraving lines under the buy button; „Весела Коледа“ above a collection's name; the title band in
+   emerald instead of the marble picture). Way back: delete this block and the markup marked Christmas in
+   main-product.liquid and main-collection-banner.liquid.
+   --------------------------------------------------------------------------- */
+.cj-xmas-gift {
+  display: grid;
+  gap: 0.8rem;
+  margin: 1.6rem 0 0;
+  padding: 1.4rem 0 0;
+  border-top: 1px solid rgba(217, 183, 126, 0.55);
+}
+
+.cj-xmas-gift li {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.4rem;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+  color: rgba(42, 30, 26, 0.85);
+}
+
+.cj-xmas-gift__icon {
+  flex: none;
+  width: 2rem;
+  height: 2rem;
+  color: #b08d4c;
+}
+
+html body .collection-hero .cj-xmas-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin: 0 0 0.8rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: #d9b77e;
+}
+
+html body .collection-hero .cj-xmas-eyebrow::before {
+  content: "";
+  flex: 0 0 3.2rem;
+  height: 1px;
+  background: #d9b77e;
+}
+
+html body .collection-hero {
+  background: radial-gradient(120% 160% at 85% 40%, #2e5a4a 0%, #1f3d33 55%, #142a22 100%);
+  --color-foreground: 243, 234, 229;
+}
+
+html body .collection-hero .cj-hero__bg,
+html body .collection-hero.cj-hero--image::after {
+  display: none;
+}
+
+html body .collection-hero .collection-hero__title,
+html body .collection-hero .collection-hero__description,
+html body .collection-hero .collection-hero__description * {
+  color: #f3eae5;
+}
