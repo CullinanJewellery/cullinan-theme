@@ -10240,7 +10240,7 @@ html body main [id$="__xmas_band"] .gift-guide__button {
   color: #d9b77e;
 }
 
-/* Christmas footer text (2026-11-19): the footer's own rules set its links and small print in pure black; on
+/* Christmas footer text (2026-11-19, re-sent): the footer's own rules set its links and small print in pure black; on
    emerald they turn light, scoped to the footer only (!important because the black is set in several places). */
 html body .footer.gradient :is(a, p, small, span, label, li, address, .footer__copyright, .copyright__content):not(.list-social__link) {
   color: rgb(243, 234, 229) !important;
