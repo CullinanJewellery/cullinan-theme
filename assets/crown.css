@@ -10043,7 +10043,7 @@ html body .product a.cj-set-picker__row:focus-visible {
    „Весела Коледа“ on the hero (owner, 2026-11-19: smaller text, the Christmas mood, not only selling).
    The hero's first text block, style caption-with-letter-spacing: small spaced capitals in the hero's
    marble white, Jost 500, a thin champagne-gold line before it (both sides on phones, where the words
-   are centred). Seasonal: hide or delete the block „Весела Коледа“ in the theme editor after the holidays.
+   are centred). Seasonal (re-sent 2026-11-19): hide or delete the block „Весела Коледа“ in the theme editor after the holidays.
    --------------------------------------------------------------------------- */
 html body main [id^="shopify-section-"][id$="__hero_image"] .banner .banner__box > .banner__text.caption-with-letter-spacing.caption-with-letter-spacing {
   display: flex;
