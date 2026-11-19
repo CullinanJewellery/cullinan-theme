@@ -308,22 +308,42 @@
                     a control that does nothing is the one thing that rule rules out.
                   {%- endcomment -%}
                   {%- if block.settings.content != blank or block.settings.page != blank -%}
-                    <div class="product__accordion accordion quick-add-hidden" {{ block.shopify_attributes }}>
-                      <details id="Details-{{ block.id }}-{{ section.id }}">
-                        <summary>
-                          <div class="summary__title">
-                            {% render 'icon-accordion', icon: block.settings.icon %}
-                            <h2 class="h4 accordion__title inline-richtext">
-                              {{ block.settings.heading | default: block.settings.page.title | escape }}
-                            </h2>
-                          </div>
-                          {% render 'icon-accordion-caret' %}
-                        </summary>
-                        <div class="accordion__content rte" id="ProductAccordion-{{ block.id }}-{{ section.id }}">
+                    {%- comment -%}
+                      2026-11-19 (owner): opens from the right like Качество и детайли
+                      (see product_specs below for the why of <dialog>).
+                    {%- endcomment -%}
+                    {%- assign cj_drawer_id = 'CjPanel-' | append: block.id | append: '-' | append: section.id -%}
+                    <div class="product__accordion accordion quick-add-hidden cj-drawer-row" {{ block.shopify_attributes }}>
+                      <button
+                        type="button"
+                        class="cj-drawer-row__button"
+                        aria-haspopup="dialog"
+                        aria-controls="{{ cj_drawer_id }}"
+                        data-cj-drawer-open="{{ cj_drawer_id }}"
+                      >
+                        <span class="summary__title">
+                          {% render 'icon-accordion', icon: block.settings.icon %}
+                          <span class="h4 accordion__title inline-richtext">
+                            {{- block.settings.heading | default: block.settings.page.title | escape -}}
+                          </span>
+                        </span>
+                        <span class="cj-drawer-row__arrow" aria-hidden="true"></span>
+                      </button>
+                      <dialog id="{{ cj_drawer_id }}" class="cj-drawer" aria-labelledby="{{ cj_drawer_id }}-title">
+                        <div class="cj-drawer__head">
+                          <h2 class="cj-drawer__title" id="{{ cj_drawer_id }}-title">
+                            {{ block.settings.heading | default: block.settings.page.title | escape }}
+                          </h2>
+                          <button type="button" class="cj-drawer__close" data-cj-drawer-close aria-label="Затвори">
+                            <span aria-hidden="true"></span>
+                          </button>
+                        </div>
+                        <div class="cj-drawer__body rte" id="ProductAccordion-{{ block.id }}-{{ section.id }}">
                           {{ block.settings.content }}
                           {{ block.settings.page.content }}
                         </div>
-                      </details>
+                      </dialog>
+                      {%- render 'cj-side-panel-script' -%}
                     </div>
                   {%- endif -%}
                 {%- when 'product_specs' -%}
@@ -591,41 +611,7 @@
                           {{ block.settings.page.content }}
                         </div>
                     </dialog>
-                    <script>
-                      (function () {
-                        if (window.cjDrawerReady) return;
-                        window.cjDrawerReady = true;
-                        function shut(d) {
-                          if (!d.open || d.classList.contains('is-closing')) return;
-                          d.classList.add('is-closing');
-                          var done = function () {
-                            d.classList.remove('is-closing');
-                            d.close();
-                          };
-                          if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return done();
-                          setTimeout(done, 280);
-                        }
-                        document.addEventListener('click', function (e) {
-                          var opener = e.target.closest('[data-cj-drawer-open]');
-                          if (opener) {
-                            var d = document.getElementById(opener.getAttribute('data-cj-drawer-open'));
-                            if (d && !d.open) d.showModal();
-                            return;
-                          }
-                          var closer = e.target.closest('[data-cj-drawer-close]');
-                          if (closer) return shut(closer.closest('dialog'));
-                          if (e.target.matches && e.target.matches('dialog.cj-drawer[open]')) shut(e.target);
-                        });
-                        document.addEventListener('keydown', function (e) {
-                          if (e.key !== 'Escape') return;
-                          var d = document.querySelector('dialog.cj-drawer[open]');
-                          if (d) {
-                            e.preventDefault();
-                            shut(d);
-                          }
-                        });
-                      })();
-                    </script>
+                    {%- render 'cj-side-panel-script' -%}
                     </div>
                   {%- endif -%}
                 {%- when 'quantity_selector' -%}
