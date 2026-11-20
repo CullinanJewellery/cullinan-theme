@@ -8,6 +8,14 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-20 — Second spot pass; openwork zodiac frames opened; photos-ready list **(owner)**
+- Owner: "check all of the jewelry again … if we are going to be profesionals", "not over do", but done "corectly … like ring A C, even if i zoom". Second pass on 101 studio shots (`photography/spot-clean-2/`): spots and shadow blotches on the paper; jewellery pixels byte-identical (checked on every file). Copies before it in each piece's `чернови/преди петната 2 2026-11-20`.
+- 12 openwork zodiacs (owner chose "Yes, open them"): the gold F step had painted the paper inside the Greek-key frame gold; the openings now show neutral paper like the real piece. Built from one clean key unit placed on each of the frame's 8 units (no drips, the rim keeps its thickness, walls and bevels the photo shows stay gold); figures keep their exact bytes. Way back: the backup copies.
+- Пчела: grey smudges beside the legs in the wing openings removed, wing-vein shine kept, body untouched.
+- Not applied to the 14 red-cord bracelets: the pass turned the cord's soft pink shadow into a hard grey edge, so they stay as they were.
+- Seen, not changed (owner to decide): a pinkish tint on the rhodium figures in the yellow and rose zodiac photos; cream patches on the white gold of rings 04 and 05.
+- `docs/photos-ready.md`: which pieces' photos are finished for the Shopify upload session, and which are not (21, 22).
+
 ## 2026-11-20 — Spots on the backgrounds removed, every metal **(owner)**
 - Owner: tinted spots on the paper (the bee had big yellow ones) after the gold F recolouring; "the only thing that you are touching is the jewelry", and white and rose spots too. `photography/spot-clean.py` outlines the jewellery from the AI original and neutralises any tint outside the outline (same brightness, paper's grey); no jewellery pixel changes. 389 studio photos checked, 221 fixed in every metal; copies before the fix in each piece's `чернови/преди петната 2026-11-19`.
 - Роза brooch: small gold specks left beside the stem were replaced with the surrounding paper, only outside the metal (about 1,000 px per photo); copies in `чернови/преди точките 2026-11-20`. Dots touching the stem's edge were left, as they are part of its outline.
