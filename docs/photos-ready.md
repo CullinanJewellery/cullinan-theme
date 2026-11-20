@@ -2,7 +2,7 @@
 
 The list to start uploading from in the next session. A piece is **ready** when its main photo exists in every metal it
 is offered in, the owner has approved it, and the 2026-11-20 spot-cleaning pass has been applied (background spots,
-shadow blotches; the openwork zodiac frames opened so the paper shows through, as on the real piece).
+shadow blotches).
 How to upload: `photography/upload-checklist.md` (Latin file names, alt text = the metal option value, a picture per
 metal group). Product titles: `docs/product-names.md`.
 
@@ -25,7 +25,7 @@ folder: `01 основна снимка` (main), then `02 …` (another angle) a
 | 09 Малък кръст | 1 cross | 01, 03 neck | |
 | 10 Пръстен с две халки | 1 ring | 01, 03 hand | |
 | 11 Пръстен с камък в средата | 1 ring | 01, 03 hand | |
-| 12 Зодии | 12 openwork (ажурен) + 11 coins (монета) | 01, 03 neck (Рак coin: 01 only) | no Везни or Водолей coin; see "Tidy before upload" |
+| 12 Зодии | 12 openwork (ажурен) + 11 coins (монета) | 01, 03 neck (Рак coin: 01 only) | no Везни or Водолей coin; openwork frames still show the floor painted gold (owner to choose: AI edit or keep); see "Tidy before upload" |
 | 13 Нови висулки | Ангел, Богородица ажурна, Богородица голям медальон, Богородица малък медальон, Богородица с ореол, Дърво с бели листа, Дърво с възел, Дърво със сърца, Пчела | 01, 03 neck | |
 | 13 Нови висулки | Детелина, Колибри | 01 only | real sizes not known yet; no neck photo |
 | 14 Комплект с перла | pendant, earrings, ring | pendant 01, 02 front, 03 neck; earrings and ring 01 | |
