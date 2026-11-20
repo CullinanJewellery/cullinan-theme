@@ -8,6 +8,9 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-20 — Top bar: every message on one row on phones **(owner)**
+- Owner: no message on two rows on a phone. Measured at 360px: a message has about 246px beside the star (12.25px capitals, about 30 letters). Christmas bar (experiments only): „Поръчки за Коледа до 7 декември“ (was „… – до 7 декември включително“; the product page keeps „включително“) and „Всяко бижу пристига в кутия“ (was „…, готово за подарък“). Main's two messages already fit (158 and 196px); nothing changed there. Rule for new messages: about 30 letters at most.
+
 ## 2026-11-20 — Christmas: last order day in the top bar (experiments theme only) **(owner)**
 - First message of the green bar: „Поръчки за Коледа – до 7 декември включително“, with the same gold star as the others (owner offered a clock or a red hat; kept the star so the bar stays calm). announcement-bar.liquid leaves out any message naming „7 декември“ from 8 December on, so it disappears by itself. Way back: delete the xmas-date block in sections/header-group.json and the skip in announcement-bar.liquid.
 
