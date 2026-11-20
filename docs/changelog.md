@@ -8,6 +8,11 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-20 — Spots on the backgrounds removed, every metal **(owner)**
+- Owner: tinted spots on the paper (the bee had big yellow ones) after the gold F recolouring; "the only thing that you are touching is the jewelry", and white and rose spots too. `photography/spot-clean.py` outlines the jewellery from the AI original and neutralises any tint outside the outline (same brightness, paper's grey); no jewellery pixel changes. 389 studio photos checked, 221 fixed in every metal; copies before the fix in each piece's `чернови/преди петната 2026-11-19`.
+- Роза brooch: small gold specks left beside the stem were replaced with the surrounding paper, only outside the metal (about 1,000 px per photo); copies in `чернови/преди точките 2026-11-20`. Dots touching the stem's edge were left, as they are part of its outline.
+- Checked only for faint tint (no usable AI original to outline from): 23 Кръст с шарка, 23 Разпятие 01, 21 Обеци. 13 Дърво с бели листа keeps a thin gold band that may be the leaf's edge.
+
 ## 2026-11-19 — Homepage five boxes: emerald words, gold outlines (main) **(owner)**
 - Owner: "make for the main the same thing you made for christmas" for these boxes. Words emerald #1F3D33, outline champagne gold #D9B77E, warm gold lift shadow, on top of the gold circles and no wash. The ruby stays on the buttons and elsewhere. Way back: delete the last block of assets/section-icon-benefits.css.
 
