@@ -93,14 +93,35 @@
             data-autoplay="{{ section.settings.auto_rotate }}"
             data-speed="{{ section.settings.change_slides_speed }}"
           >
+            {%- comment -%}
+              Christmas (experiments theme only, 2026-11-20): a message that names
+              „7 декември“ (the last order day for Christmas) is left out from
+              8 December on, in the shop's time zone; numbering counts only the
+              messages shown.
+            {%- endcomment -%}
+            {%- liquid
+              assign cj_today = 'now' | date: '%Y%m%d' | plus: 0
+              assign cj_total = 0
+              for block in section.blocks
+                if cj_today > 20261207 and block.settings.text contains '7 декември'
+                  continue
+                endif
+                assign cj_total = cj_total | plus: 1
+              endfor
+              assign cj_n = 0
+            -%}
             {%- for block in section.blocks -%}
+              {%- if cj_today > 20261207 and block.settings.text contains '7 декември' -%}
+                {%- continue -%}
+              {%- endif -%}
+              {%- assign cj_n = cj_n | plus: 1 -%}
               <div
                 class="slideshow__slide slider__slide grid__item grid--1-col"
-                id="Slide-{{ section.id }}-{{ forloop.index }}"
+                id="Slide-{{ section.id }}-{{ cj_n }}"
                 {{ block.shopify_attributes }}
                 role="group"
                 aria-roledescription="{{ 'sections.announcements.announcement' | t }}"
-                aria-label="{{ forloop.index }} {{ 'general.slider.of' | t }} {{ forloop.length }}"
+                aria-label="{{ cj_n }} {{ 'general.slider.of' | t }} {{ cj_total }}"
                 tabindex="-1"
               >
                 <div
