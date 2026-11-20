@@ -8,6 +8,9 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-20 — Christmas: last order day on the product page (experiments theme only) **(owner)**
+- Owner (from their father): the last order day for Christmas is 7 December, included. Under the gift-box line: calendar icon and „Поръчайте до 7 декември включително, за да го получите за Коледа“. Shown while the shop's date is 7 December or earlier, then hidden by itself. Way back: delete the cj-xmas-gift__date item in main-product.liquid.
+
 ## 2026-11-19 — Christmas: homepage five boxes in emerald and gold (experiments theme only) **(owner)**
 - On top of main's gold circles and no wash: words emerald #1F3D33 (owner), outline champagne gold #D9B77E and a warm gold lift shadow (my call, so ruby and green do not meet). Way back: delete the Christmas block at the end of assets/section-icon-benefits.css.
 

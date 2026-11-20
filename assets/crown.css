@@ -10554,3 +10554,9 @@ html:has(dialog.cj-drawer[open]) {
   margin-top: 1.6rem;
   color: rgba(var(--color-foreground), 0.8);
 }
+
+/* Christmas last-order line on the product page (experiments theme only). */
+.cj-xmas-gift__date strong {
+  font-weight: 600;
+  color: #1f3d33;
+}
