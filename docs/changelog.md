@@ -8,6 +8,9 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-20 — Christmas: last order day in the top bar (experiments theme only) **(owner)**
+- First message of the green bar: „Поръчки за Коледа – до 7 декември включително“, with the same gold star as the others (owner offered a clock or a red hat; kept the star so the bar stays calm). announcement-bar.liquid leaves out any message naming „7 декември“ from 8 December on, so it disappears by itself. Way back: delete the xmas-date block in sections/header-group.json and the skip in announcement-bar.liquid.
+
 ## 2026-11-20 — Christmas: last order day on the product page (experiments theme only) **(owner)**
 - Owner (from their father): the last order day for Christmas is 7 December, included. Under the gift-box line: calendar icon and „Поръчайте до 7 декември включително, за да го получите за Коледа“. Shown while the shop's date is 7 December or earlier, then hidden by itself. Way back: delete the cj-xmas-gift__date item in main-product.liquid.
 
