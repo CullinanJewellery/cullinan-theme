@@ -8,6 +8,9 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-21 — FAQ sensitive skin: ligature without nickel, no responsibility for skin reactions **(owner)**
+- Owner: the gold is alloyed with a ligature that contains no nickel; and "we don't take responsibility" for a skin's reaction (explicit instruction after being told such a sentence cannot remove legal liability). FAQ answer now says both. Way back: the previous answer is in the entry below.
+
 ## 2026-11-21 — Promise band „A“: espresso and gold; skin wording **(owner)**
 - Owner: make the band (home and product page) "more luxury and cool"; chose A of two mockups. `section-promise-band.css`: espresso #2A1E1A band, gold line icons, ivory tracked capitals with a short gold hairline under each, warm-ivory line (9:1), gold dividers between columns, gold swipe line on phones; `promise-band.js` fades the three columns up one after another on first view (not with reduced motion, nothing hidden without JS). Way back: delete the 2026-11-21 block at the end of the CSS and `reveal()` in the JS.
 - Wording (owner: remove the nickel line, say every skin is different): band „Истинско злато и сребро, нежни към кожата.“ → „Злато 14 и 18 карата и сребро 925.“ (a promise about skin was not confirmed); FAQ „Подходящо ли е при чувствителна кожа?“ now says every skin can react in its own way and to ask before ordering. The owner also asked for a "no responsibility" sentence: not added, it is legal text (ask first; under consumer law it cannot remove liability), waiting for the owner/accountant.

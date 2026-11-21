@@ -49,8 +49,9 @@ Only these, unless the owner confirms more. Never invent policies, prices, warra
 - **Owner, 2026-11-11**: delivery is free on orders over €500; below that the price depends on the order (no figure
   given). Every piece arrives in a box. Rings cannot be resized after they are made (owner, 2026-11-16, replacing 2026-11-11). Stones: some natural, some
   lab-created, depending on the piece (owner not certain; say so per piece only when known). Every piece carries its
-  hallmark (проба). Allergies: owner wanted „не предизвикват алергии“; not confirmed (white gold alloys may contain
-  nickel), so the site says only "noble metals; ask us if allergic" until the atelier confirms nickel-free.
+  hallmark (проба). Allergies: the gold is alloyed with a ligature without nickel (owner,
+  2026-11-21); the FAQ says so, that every skin reacts in its own way, and that we take no responsibility for a
+  skin's reaction (owner's explicit wish). Never „хипоалергенно“ or „не предизвикват алергии“.
 - **The company (registry printout, owner, 2026-11-16)**: „Кулинан Джулари“ ЕООД (CULLINAN JEWELRY Ltd.), ЕИК 208990435,
   registered 12.11.2026; seat: гр. Велико Търново 5000, ул. „Баба Мота“ № 16, вх. А, ет. 3, ап. 9. Not VAT-registered (owner, 2026-11-16). Intended payments: cash on
   delivery and card (owner, 2026-11-16). Used only in the legal texts (docs/legal), never the manager's name.
@@ -252,6 +253,6 @@ Do not read the whole archive into a session; open the part you need.
 
 ## Waiting on the owner (summary)
 
-Returns policy for made-to-order pieces; delivery price below €500 (Admin shipping rates must match the €500 rule); engraving terms; nickel in the alloys;
+Returns policy for made-to-order pieces; delivery price below €500 (Admin shipping rates must match the €500 rule); engraving terms;
 price range of the first fifty; which payment methods are enabled; product data and photographs. Details and the
 Shopify-admin checklist: `docs/tasks.md`.
