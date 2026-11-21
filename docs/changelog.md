@@ -8,6 +8,10 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-21 — Promise band „A“: espresso and gold; skin wording **(owner)**
+- Owner: make the band (home and product page) "more luxury and cool"; chose A of two mockups. `section-promise-band.css`: espresso #2A1E1A band, gold line icons, ivory tracked capitals with a short gold hairline under each, warm-ivory line (9:1), gold dividers between columns, gold swipe line on phones; `promise-band.js` fades the three columns up one after another on first view (not with reduced motion, nothing hidden without JS). Way back: delete the 2026-11-21 block at the end of the CSS and `reveal()` in the JS.
+- Wording (owner: remove the nickel line, say every skin is different): band „Истинско злато и сребро, нежни към кожата.“ → „Злато 14 и 18 карата и сребро 925.“ (a promise about skin was not confirmed); FAQ „Подходящо ли е при чувствителна кожа?“ now says every skin can react in its own way and to ask before ordering. The owner also asked for a "no responsibility" sentence: not added, it is legal text (ask first; under consumer law it cannot remove liability), waiting for the owner/accountant.
+
 ## 2026-11-21 — Side panels: no focus ring on the ✕ when a panel opens **(owner)**
 - Owner (phone): opening „Доставка и връщане“ showed a framed, shadowed ✕ until the next tap. `showModal()` focuses the first button and the phone drew Dawn's focus ring. `snippets/cj-side-panel-script.liquid` now focuses the panel itself (tabindex -1); `crown.css` `dialog.cj-drawer:focus` has no outline. Tab still reaches the ✕ with its ring. Way back: remove the two added lines.
 

@@ -199,3 +199,102 @@
     padding-bottom: 2.8rem !important;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   2026-11-21, owner chose „A“ (more luxury): a dark espresso band with gold.
+   Spec: background espresso #2A1E1A edge to edge; the line icons in gold #D9B77E (same drawings, 1.2px line);
+   headings ivory #F4EDE3, Jost 500 capitals at 1.4rem (1.3rem on phones) with 0.2em tracking; a 2.6rem gold
+   hairline (#B08D4C) under each heading; the line under it warm ivory #CDBFAF (9:1 on espresso); thin gold
+   dividers between the columns (gold at 35%); on phones the swipe line is gold. The three columns fade up one after
+   another when the band first comes into view (assets/promise-band.js adds .is-revealed; nothing moves with reduced
+   motion, and without JavaScript nothing is hidden). Way back: delete this block and the reveal lines in
+   promise-band.js; the band returns to champagne sand with espresso icons.
+   --------------------------------------------------------------------------- */
+.promise-band.gradient {
+  background: #2a1e1a;
+}
+
+.promise-band__icon {
+  color: #d9b77e;
+}
+
+.promise-band__icon .benefit__icon {
+  stroke-width: 1.2px;
+}
+
+.promise-band__heading {
+  font-size: 1.4rem;
+  letter-spacing: 0.2em;
+  color: #f4ede3;
+}
+
+.promise-band__heading::after {
+  content: '';
+  display: block;
+  width: 2.6rem;
+  height: 1px;
+  margin: 1.2rem auto 0;
+  background: #b08d4c;
+}
+
+.promise-band__text {
+  margin-top: 1.2rem;
+  font-size: 1.5rem;
+  color: #cdbfaf;
+}
+
+@media screen and (min-width: 750px) {
+  .promise-band__list {
+    gap: 0;
+  }
+
+  .promise-band__item {
+    padding: 0 2.4rem;
+  }
+
+  .promise-band__item + .promise-band__item {
+    border-left: 1px solid rgba(217, 183, 126, 0.35);
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .promise-band__heading {
+    font-size: 1.3rem;
+  }
+
+  .promise-band__text {
+    font-size: 1.4rem;
+  }
+
+  .promise-band__item + .promise-band__item {
+    border-left: 1px solid rgba(217, 183, 126, 0.35);
+    padding-left: 1.6rem;
+  }
+
+  .promise-band__progress {
+    background: rgba(217, 183, 126, 0.25);
+  }
+
+  .promise-band__progress-bar {
+    background: #d9b77e;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .promise-band__slider.is-waiting .promise-band__item {
+    opacity: 0;
+    transform: translateY(1.2rem);
+  }
+
+  .promise-band__slider .promise-band__item {
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .promise-band__slider .promise-band__item:nth-child(2) {
+    transition-delay: 0.15s;
+  }
+
+  .promise-band__slider .promise-band__item:nth-child(3) {
+    transition-delay: 0.3s;
+  }
+}

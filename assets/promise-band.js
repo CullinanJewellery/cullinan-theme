@@ -12,10 +12,27 @@ if (!customElements.get('promise-slider')) {
         this.list = this.querySelector('.promise-band__list');
         this.track = this.querySelector('.promise-band__progress');
         this.bar = this.querySelector('.promise-band__progress-bar');
+        this.reveal();
         if (!this.list || !this.track || !this.bar) return;
         this.list.addEventListener('scroll', () => this.update(), { passive: true });
         window.addEventListener('resize', () => this.update());
         this.update();
+      }
+
+      // 2026-11-21 (owner, look „A“): the three columns fade up one after another the first time the band comes
+      // into view. Hidden only once this script runs, and never with reduced motion (CSS).
+      reveal() {
+        if (!('IntersectionObserver' in window)) return;
+        this.classList.add('is-waiting');
+        const observer = new IntersectionObserver(
+          (entries) => {
+            if (!entries.some((entry) => entry.isIntersecting)) return;
+            this.classList.remove('is-waiting');
+            observer.disconnect();
+          },
+          { threshold: 0.25 }
+        );
+        observer.observe(this);
       }
 
       update() {
