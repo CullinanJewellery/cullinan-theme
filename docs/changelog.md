@@ -8,6 +8,9 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-21 — Side panels: no focus ring on the ✕ when a panel opens **(owner)**
+- Same as main: the panel takes the focus on open (`snippets/cj-side-panel-script.liquid`), `dialog.cj-drawer:focus` has no outline (`crown.css`).
+
 ## 2026-11-21 — Product page: tax and shipping line removed **(owner)**
 - Same as main: the line „С включени данъци. Доставката се изчислява при плащане.“ removed from the price block of `sections/main-product.liquid`. Way back: restore the `product__tax` div from git history.
 
