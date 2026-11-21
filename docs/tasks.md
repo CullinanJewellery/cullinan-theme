@@ -5,6 +5,8 @@ apart: theme work we can do now, decisions only the owner can make, and Shopify-
 
 ## N. Shopify admin audit before launch (2026-11-21, read-only; nothing changed)
 
+**Done 2026-11-21 (owner's OK):** 1 cash on delivery active (Manual → Cash on Delivery, with a short Bulgarian note; cards wait for the bank account); 3 shipping phone **required**; 4 business details saved (Private corporation „Кулинан Джулари“ ЕООД, ЕИК, seat address; the owner added the representative themself); 6 product-page tax line removed in the theme (both branches); 7 home page title „Cullinan Jewelry | Бижута от злато и сребро, ръчна изработка“ and meta description saved, **sharing image still to upload** (`Claude outputs/share-A-blush.png`, owner's choice A; Online Store → Preferences → Add image); 10 product definitions custom.metal, proba, weight_g (text, „3,2“), stone, stone_count (integer), stone_size, dimensions; variant definitions metal, proba, weight_g, dimensions (owner: no stone weight, no cut). Reminder for 6 Dec scheduled (plan €1 → €27). Open: 2 delivery (owner to choose app or two fixed prices), 9 products with the photos, 8 domain later.
+
 Read in the owner's signed-in admin at the owner's request. Order = what blocks a sale first.
 
 | # | Area | Found | Needed (owner decides; checkout/payments only with the owner's OK) |
