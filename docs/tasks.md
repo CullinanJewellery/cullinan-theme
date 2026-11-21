@@ -3,6 +3,27 @@
 Kept current: remove an item when it is done (and add a line to `docs/changelog.md`). Three kinds of work are kept
 apart: theme work we can do now, decisions only the owner can make, and Shopify-admin data.
 
+## N. Shopify admin audit before launch (2026-11-21, read-only; nothing changed)
+
+Read in the owner's signed-in admin at the owner's request. Order = what blocks a sale first.
+
+| # | Area | Found | Needed (owner decides; checkout/payments only with the owner's OK) |
+|---|---|---|---|
+| 1 | Payments | Shopify Payments "Complete setup"; PayPal "Setup incomplete"; **Manual payment methods empty: no cash on delivery** | No order can be paid. Add COD (Manual → Cash on delivery) and/or finish Shopify Payments with the company (ЕООД registered 12.11.2026); then a test order |
+| 2 | Shipping | One rate „Стандартна“ **лв.8.99, free from лв.70**, 3–5 business days (leva, old) | Rates in EUR; free over €500 (site says so); a price below €500 (owner to give); maybe office vs address and made-to-order time |
+| 3 | Checkout | Shipping phone **optional**; company/VAT fields off | Phone required (Econt/Speedy call the customer) |
+| 4 | Store details | "Add business details" open; entity "My Store - entity"; address without вх./ет./ап. | Company „Кулинан Джулари“ ЕООД, ЕИК 208990435, full seat address |
+| 5 | Policies | All six **published**, texts are our drafts (refund dated 16.11.2026) | Accountant's check still not confirmed |
+| 6 | Taxes | Not collecting (not VAT-registered) | Product page prints „С включени данъци“: ask the accountant or hide the line |
+| 7 | SEO / sharing | Home page title and meta description empty; Google preview shows 2fp38p-az.myshopify.com; no social sharing image | Title, description, 1200×628 image |
+| 8 | Domain / e-mail | Only 2fp38p-az.myshopify.com; customer e-mails come from store+107185537364@shopifyemail.com (Gmail cannot send) | Buy or connect a domain (e.g. cullinan…bg) and a domain e-mail |
+| 9 | Products | 34 active; **test products active**: dsfsd, sdfsdf, dasd, Пръстен1; vendor mixed „Cullinan Jewelry“/„Jewellery“; odd categories (Водолек-ажур = Body Jewelry, М кръст = Jewelry); inventory mostly not tracked (all show made to order); some €0 | Test products to draft/delete; real prices; categories; stock where pieces are ready |
+| 10 | Custom data | No custom.* product definitions; **no variant metafield definitions** | Create them (see D) before weights/stones can be entered |
+| 11 | Store access | Private mode on (password) | Correct until launch |
+| 12 | Theme | Published theme is Horizon (default); ours is the unpublished draft | Publish ours at launch, only with the owner's OK |
+| 13 | Plan | Basic, €1/month until 7 Dec 2026, then €27/month | Owner aware |
+| 14 | Privacy | Cookie banner automated, privacy policy published | OK |
+
 ## A. Known theme bugs
 
 None open. (Phone hero crop fixed and verified on the preview, 2026-10-04.)
