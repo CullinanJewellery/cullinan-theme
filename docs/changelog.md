@@ -8,6 +8,9 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-21 — Promise band: first line „Благородни метали за ежедневно носене.“ **(owner)**
+- Owner's pick from the offered lines. Before: „Само благородни метали, приятни за носене всеки ден.“
+
 ## 2026-11-21 — Promise band: first line tied to its heading **(owner)**
 - Owner: the line should connect to „Нежни към кожата“. Now „Само благородни метали, приятни за носене всеки ден.“
 
