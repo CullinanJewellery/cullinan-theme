@@ -10098,6 +10098,12 @@ dialog.cj-drawer {
   overflow: hidden;
 }
 
+/* The panel takes the focus when it opens (cj-side-panel-script), so no ring round it. */
+dialog.cj-drawer:focus {
+  outline: none;
+  box-shadow: none;
+}
+
 dialog.cj-drawer[open] {
   display: flex;
   flex-direction: column;

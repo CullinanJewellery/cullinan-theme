@@ -8,6 +8,9 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-21 — Side panels: no focus ring on the ✕ when a panel opens **(owner)**
+- Owner (phone): opening „Доставка и връщане“ showed a framed, shadowed ✕ until the next tap. `showModal()` focuses the first button and the phone drew Dawn's focus ring. `snippets/cj-side-panel-script.liquid` now focuses the panel itself (tabindex -1); `crown.css` `dialog.cj-drawer:focus` has no outline. Tab still reaches the ✕ with its ring. Way back: remove the two added lines.
+
 ## 2026-11-21 — Shopify admin: payments, checkout, company, fields, Google texts **(owner)**
 - Owner approved the audit plan (tasks N). Done in admin: cash on delivery; phone required at checkout; business details (ЕООД, ЕИК, seat); 7 product + 4 variant metafield definitions matching the keys the specs block reads (no stone weight, no cut); home page title and meta description in the big brands' pattern (name, what we make, craft); share image A (blush, logo lettering, „БИЖУТА ОТ ЗЛАТО И СРЕБРО · ОТ 1991“) made at 1200×630, waiting for upload. Way back: each setting can be changed back in the same admin page.
 
