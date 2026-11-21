@@ -8,6 +8,9 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-21 — Promise band „A“: espresso and gold; skin wording **(owner)**
+- Same as main: `section-promise-band.css` and `promise-band.js` from main (espresso band, gold icons and lines, columns fade up); band line „Злато 14 и 18 карата и сребро 925.“; FAQ sensitive-skin answer without the nickel line. No "no responsibility" sentence (legal text, waiting).
+
 ## 2026-11-21 — Side panels: no focus ring on the ✕ when a panel opens **(owner)**
 - Same as main: the panel takes the focus on open (`snippets/cj-side-panel-script.liquid`), `dialog.cj-drawer:focus` has no outline (`crown.css`).
 
