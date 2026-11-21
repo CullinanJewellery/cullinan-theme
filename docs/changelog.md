@@ -8,6 +8,9 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-21 — Product page: tax and shipping line removed **(owner)**
+- `sections/main-product.liquid` price block: the line „С включени данъци. Доставката се изчислява при плащане.“ is gone (owner: "i don't want that to be written"; the company is not VAT-registered). The cart drawer's own line and `featured-product.liquid` are unchanged. Way back: restore the `product__tax` div from git history (commit before this one).
+
 ## 2026-11-21 — Openwork zodiacs remade from the AI originals; owner's fix list **(owner)**
 - Owner: redo the 12 openwork zodiacs from the original AI photos, "how at the first time", with no colour between the holes. Each sign's original in `чернови` (the one matching the approved model) re-run through `gold-standard.cjs` with the new `--keep-sat`: pixels much less saturated than the metal at the same brightness (the floor of the channels, shadows) keep their own colour, so the floor no longer turns gold. Then `bg-soft.cjs` and framed to the approved photo's exact size and position. Yellow, rose, white; silver = white. Рак: only the inner disc taken from the approved photo (its original was already framed). The rhodium figures' pink-magenta cast neutralised. Copies before: `<sign> - ажурен/чернови/преди отворените канали 2026-11-21/`. The neck photos were not changed.
 - Rings 04 and 05: the cream patches on the white gold (white, silver 01) removed; ring 05 keeps a faint lighter shape (brightness only). Copies: `чернови/преди кремавите петна 2026-11-21/`.
