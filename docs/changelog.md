@@ -8,6 +8,9 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-21 — FAQ sensitive skin: no nickel, no "ask us" **(owner)**
+- Owner: nothing about nickel on the site, and no invitation to ask about allergies ("i am not a doctor"). The answer is now: noble metals (585, 750, 925); every skin is different and can react in its own way; we cannot foresee every skin's reaction and take no responsibility for it.
+
 ## 2026-11-21 — FAQ sensitive skin: ligature without nickel, no responsibility for skin reactions **(owner)**
 - Same as main (templates/product.json FAQ).
 
