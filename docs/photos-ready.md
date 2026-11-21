@@ -46,7 +46,7 @@ folder: `01 основна снимка` (main), then `02 …` (another angle) a
 
 | Folder | Why |
 |---|---|
-| 21 Комплект с кръгове | main photos (01) ready; worn photos (ring on the hand, earring on the ear, pendant on the neck) made 2026-11-21, waiting for the owner's OK |
+| 21 Комплект с кръгове | 01 all three; 03 earring on the ear and pendant on the neck (yellow and white, approved 2026-11-21); the ring on the hand remade, waiting for the OK |
 
 ## Tidy before upload
 
