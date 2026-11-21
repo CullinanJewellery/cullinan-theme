@@ -39,14 +39,14 @@ folder: `01 основна снимка` (main), then `02 …` (another angle) a
 | 24 Брошки | Панделка с камък, Роза | 01, 03 worn | |
 | 25 Комплект цвете | pendant and earrings, each with white, green or red stone | 01 | |
 | 26 Игла за вратовръзка | 1 tie pin | 01 | |
+| 21 Комплект с кръгове | pendant, earrings, ring (white; yellow and white; rose and white) | 01; yellow and white also 03 (ring on the hand, earring on the ear, pendant on the neck) | worn photos approved 2026-11-21 |
 | 22 Пръстен с шест зъба | 1 ring (white, green, red stone) | 01 | owner, 2026-11-21: the right ring |
 | 27 Висулка куршум | 1 pendant | 01 | owner, 2026-11-21: no white beads; the current photos are right |
 
 ## Not ready
 
-| Folder | Why |
-|---|---|
-| 21 Комплект с кръгове | 01 all three; 03 earring on the ear and pendant on the neck (yellow and white, approved 2026-11-21); the ring on the hand remade, waiting for the OK |
+None (2026-11-21).
+
 
 ## Tidy before upload
 
