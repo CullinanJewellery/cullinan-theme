@@ -8,6 +8,9 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-21 — Product page: tax and shipping line removed **(owner)**
+- Same as main: the line „С включени данъци. Доставката се изчислява при плащане.“ removed from the price block of `sections/main-product.liquid`. Way back: restore the `product__tax` div from git history.
+
 ## 2026-11-20 — Top bar: every message on one row on phones **(owner)**
 - Owner: no message on two rows on a phone. Measured at 360px: a message has about 246px beside the star (12.25px capitals, about 30 letters). Christmas bar (experiments only): „Поръчки за Коледа до 7 декември“ (was „… – до 7 декември включително“; the product page keeps „включително“) and „Всяко бижу пристига в кутия“ (was „…, готово за подарък“). Main's two messages already fit (158 and 196px); nothing changed there. Rule for new messages: about 30 letters at most.
 
