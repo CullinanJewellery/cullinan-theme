@@ -8,6 +8,9 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-21 — FAQ sensitive skin: ligature without nickel, no responsibility for skin reactions **(owner)**
+- Same as main (templates/product.json FAQ).
+
 ## 2026-11-21 — Promise band „A“: espresso and gold; skin wording **(owner)**
 - Same as main: `section-promise-band.css` and `promise-band.js` from main (espresso band, gold icons and lines, columns fade up); band line „Злато 14 и 18 карата и сребро 925.“; FAQ sensitive-skin answer without the nickel line. No "no responsibility" sentence (legal text, waiting).
 
