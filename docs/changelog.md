@@ -8,6 +8,9 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-21 — Promise band: „нежни към кожата“ back **(owner)**
+- Owner asked for the first promise's line back: „Истинско злато и сребро, нежни към кожата.“ (home and product page).
+
 ## 2026-11-21 — FAQ sensitive skin: no nickel, no "ask us" **(owner)**
 - Owner: nothing about nickel on the site, and no invitation to ask about allergies ("i am not a doctor"). The answer is now: noble metals (585, 750, 925); every skin is different and can react in its own way; we cannot foresee every skin's reaction and take no responsibility for it.
 

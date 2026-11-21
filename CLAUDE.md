@@ -51,7 +51,7 @@ Only these, unless the owner confirms more. Never invent policies, prices, warra
   lab-created, depending on the piece (owner not certain; say so per piece only when known). Every piece carries its
   hallmark (проба). Allergies (owner, 2026-11-21): the gold's ligature has no nickel, but the
   site never mentions nickel and never invites allergy questions ("i am not a doctor"). The FAQ says only: noble
-  metals, every skin reacts in its own way, we take no responsibility for a skin's reaction. Never „хипоалергенно“.
+  metals, every skin reacts in its own way, we take no responsibility for a skin's reaction. The promise band keeps „нежни към кожата“ (owner). Never „хипоалергенно“.
 - **The company (registry printout, owner, 2026-11-16)**: „Кулинан Джулари“ ЕООД (CULLINAN JEWELRY Ltd.), ЕИК 208990435,
   registered 12.11.2026; seat: гр. Велико Търново 5000, ул. „Баба Мота“ № 16, вх. А, ет. 3, ап. 9. Not VAT-registered (owner, 2026-11-16). Intended payments: cash on
   delivery and card (owner, 2026-11-16). Used only in the legal texts (docs/legal), never the manager's name.
