@@ -11,3 +11,9 @@ Run with `python -I` from a work folder that holds `inv.json` (the studio photos
 
 Not used on the red-cord bracelets (19): the pass made the cord's soft pink shadow a hard grey edge, so those photos
 stay as they were. Backups of every replaced file: `<piece>/чернови/преди петната 2 2026-11-20/<metal>/`.
+
+## 2026-11-21: openwork zodiacs remade instead
+
+The zodiacs were redone from the AI originals with `gold-standard.cjs --keep-sat` (pixels much less saturated than the
+metal at the same brightness, such as the channel floors, keep their own colour, so they are not painted gold), then
+`bg-soft.cjs` and framed to the approved photo (scale and offset from the outline, refined by correlation).

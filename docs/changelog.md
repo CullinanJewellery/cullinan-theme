@@ -8,6 +8,15 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-21 — Openwork zodiacs remade from the AI originals; owner's fix list **(owner)**
+- Owner: redo the 12 openwork zodiacs from the original AI photos, "how at the first time", with no colour between the holes. Each sign's original in `чернови` (the one matching the approved model) re-run through `gold-standard.cjs` with the new `--keep-sat`: pixels much less saturated than the metal at the same brightness (the floor of the channels, shadows) keep their own colour, so the floor no longer turns gold. Then `bg-soft.cjs` and framed to the approved photo's exact size and position. Yellow, rose, white; silver = white. Рак: only the inner disc taken from the approved photo (its original was already framed). The rhodium figures' pink-magenta cast neutralised. Copies before: `<sign> - ажурен/чернови/преди отворените канали 2026-11-21/`. The neck photos were not changed.
+- Rings 04 and 05: the cream patches on the white gold (white, silver 01) removed; ring 05 keeps a faint lighter shape (brightness only). Copies: `чернови/преди кремавите петна 2026-11-21/`.
+- Bracelets (19): dust specks on the paper removed from 22 main photos (only small specks away from the piece; the cord untouched). Copies: `чернови/преди праха 2026-11-21/`.
+- Православен кръст: silver folder added (copy of white gold, 01 and 02).
+- Owner answers: the `.1.jpg` files are their Shopify-size copies (keep, upload those); 22 is the right ring; the bullet pendant has no white beads (photos right).
+- Set 21: worn photos made (ring on the bare hand 4223debe, earring on the ear, pendant on the neck; Nano Banana 2.1, 4k), waiting for the owner's OK. Sizes estimated from the photos and weights, not given.
+- `docs/weights-and-sizes.md`: every weight and size given so far, for the Shopify product fields, and what to ask.
+
 ## 2026-11-20 — Second spot pass; photos-ready list **(owner)**
 - Owner: "check all of the jewelry again … if we are going to be profesionals", "not over do", but done "corectly … like ring A C, even if i zoom". Second pass on 101 studio shots (`photography/spot-clean-2/`): spots and shadow blotches on the paper; jewellery pixels byte-identical (checked on every file). Copies before it in each piece's `чернови/преди петната 2 2026-11-20`.
 - 12 openwork zodiacs: opening the Greek-key channels (owner chose "Yes, open them") is **not done**. Three local methods were tried (watershed, colour of the pre-F photo, one key unit placed on all 8); each left ragged edges or slivers of the gold-painted floor at 2× zoom, because the AI drew the floor fading softly into the walls. The zodiacs got the ordinary spot pass only. Options for the owner: an AI edit per photo in Higgsfield, or keep them as they are.

@@ -1,4 +1,4 @@
-# Photos ready for Shopify (2026-11-20)
+# Photos ready for Shopify (2026-11-21)
 
 The list to start uploading from in the next session. A piece is **ready** when its main photo exists in every metal it
 is offered in, the owner has approved it, and the 2026-11-20 spot-cleaning pass has been applied (background spots,
@@ -25,7 +25,7 @@ folder: `01 основна снимка` (main), then `02 …` (another angle) a
 | 09 Малък кръст | 1 cross | 01, 03 neck | |
 | 10 Пръстен с две халки | 1 ring | 01, 03 hand | |
 | 11 Пръстен с камък в средата | 1 ring | 01, 03 hand | |
-| 12 Зодии | 12 openwork (ажурен) + 11 coins (монета) | 01, 03 neck (Рак coin: 01 only) | no Везни or Водолей coin; openwork frames still show the floor painted gold (owner to choose: AI edit or keep); see "Tidy before upload" |
+| 12 Зодии | 12 openwork (ажурен) + 11 coins (монета) | 01, 03 neck (Рак coin: 01 only) | no Везни or Водолей coin; openwork 01 photos remade 2026-11-21 from the AI originals, the frames' channels open (neck photos not changed) |
 | 13 Нови висулки | Ангел, Богородица ажурна, Богородица голям медальон, Богородица малък медальон, Богородица с ореол, Дърво с бели листа, Дърво с възел, Дърво със сърца, Пчела | 01, 03 neck | |
 | 13 Нови висулки | Детелина, Колибри | 01 only | real sizes not known yet; no neck photo |
 | 14 Комплект с перла | pendant, earrings, ring | pendant 01, 02 front, 03 neck; earrings and ring 01 | |
@@ -33,24 +33,26 @@ folder: `01 основна снимка` (main), then `02 …` (another angle) a
 | 16 Комплект с листа | pendant, earrings, ring | 01 (ring also 02 from above) | worn photos not made |
 | 17 Комплект с венчелистче | pendant, earrings, ring | 01 | worn photos not made |
 | 18 Комплект с камък в обков | pendant, earrings, ring | 01 | worn photos not made; the ring's stone is paler (owner accepted) |
-| 19 Гривни с червен конец | 14 bracelets | 01, 03 wrist; yellow, white, rose | no silver photos (made in gold only) |
+| 19 Гривни с червен конец | 14 bracelets | 01, 03 wrist; yellow, white, rose | no silver photos (made in gold only); dust specks cleaned 2026-11-21, the cord untouched |
 | 20 Ажурна гривна | 1 bangle | 01, 02 from above; yellow also 03 wrist | |
-| 23 Нови кръстове | Кръст с шарка, Православен кръст, Разпятие | 01 (Православен and Разпятие also 02 back) | Православен кръст has no silver photo |
+| 23 Нови кръстове | Кръст с шарка, Православен кръст, Разпятие | 01 (Православен and Разпятие also 02 back) | Православен кръст silver added 2026-11-21 (copy of white gold) |
 | 24 Брошки | Панделка с камък, Роза | 01, 03 worn | |
 | 25 Комплект цвете | pendant and earrings, each with white, green or red stone | 01 | |
 | 26 Игла за вратовръзка | 1 tie pin | 01 | |
-| 27 Висулка куршум | 1 pendant | 01 | owner to say whether yellow and rose should have white (rhodium) beads |
+| 22 Пръстен с шест зъба | 1 ring (white, green, red stone) | 01 | owner, 2026-11-21: the right ring |
+| 27 Висулка куршум | 1 pendant | 01 | owner, 2026-11-21: no white beads; the current photos are right |
 
 ## Not ready
 
 | Folder | Why |
 |---|---|
-| 21 Комплект с кръгове | no finished photos yet (raw photos sorted, questions asked 2026-11-14) |
-| 22 Пръстен с шест зъба | owner, 2026-11-15: "again it is not the same ring"; confirm the current photo (and the green and red stone versions) before uploading |
+| 21 Комплект с кръгове | main photos (01) ready; worn photos (ring on the hand, earring on the ear, pendant on the neck) made 2026-11-21, waiting for the owner's OK |
 
 ## Tidy before upload
 
-- Zodiac neck photos: most metal folders hold a second copy, `03 на шията - <metal>.1.jpg`, beside the `.png`.
-  Upload the `.png`; ask the owner whether the `.1.jpg` copies can be removed.
+- `.1.jpg` files (zodiac neck photos and others): the owner's smaller copies, made because the `.png` was too big for
+  Shopify. **Upload the `.1.jpg` where one exists**, otherwise the `.png`; keep both.
+- Weights and sizes for the product fields: `docs/weights-and-sizes.md`.
 - Spot-cleaning backups are in each piece's `чернови/преди петната 2 2026-11-20/<metal>/` (the files as they were before
-  this pass).
+  this pass). 2026-11-21 backups: zodiacs `чернови/преди отворените канали 2026-11-21/`, rings 04 and 05
+  `чернови/преди кремавите петна 2026-11-21/`, bracelets `чернови/преди праха 2026-11-21/`.
