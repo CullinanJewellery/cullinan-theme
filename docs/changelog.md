@@ -8,6 +8,9 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-21 — Promise band: first heading „Нежни към кожата“ **(owner)**
+- Owner: the heading „Благородни метали“ becomes „Нежни към кожата“ (or a better text of my choice); the line under it is now „Истинско злато 14 и 18 карата и сребро 925.“ so the two do not repeat. Way back: heading „Благородни метали“, line „Истинско злато и сребро, нежни към кожата.“
+
 ## 2026-11-21 — Promise band: „нежни към кожата“ back **(owner)**
 - Owner asked for the first promise's line back: „Истинско злато и сребро, нежни към кожата.“ (home and product page).
 
