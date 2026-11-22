@@ -8,6 +8,20 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-22 — Every piece in its stone and theme collections **(owner)**
+- Owner: "i said twice that i want every jewelry to be in his collection why aren't they in". The kind collections
+  (Пръстени, Обеци, Висулки, Гривни, Комплекти) were full, but the stone and theme ones missed pieces. Added in admin
+  (Products → Add to collection): Обеци с циркони +5 (now 6), Пръстени с циркони +4 (11), Камъни +30 (32, every piece
+  with a stone, pearls included), Вяра и закрила +25 (26: the red-cord bracelets, Богородица, Ангел and the crosses);
+  earlier the same day Циркон (28), Комплекти с циркони (17), Висулки с циркони (7). Zircons only where the owner
+  confirmed them (photo sheets 16–25).
+- Checked on the preview with `/collections/<handle>/products.json`: all 87 products are in at least one collection;
+  the 7 in only one are plain pieces without stones (Дантела, Дърво ×3, Пчела, Колибри, Детелина).
+- Not added: Роза (stone type not known: in Камъни, not Циркон); Розетка's green stone (unknown). Diamond, ruby,
+  sapphire, emerald, opal, onyx, topaz, citrine collections and Мъжки пръстени stay empty: no such pieces yet.
+- Way back: admin → Collections → the collection → remove the product (or Products → select → Remove from collection).
+  Red-cord bracelets in „Вяра и закрила“ were my reading of them as protection talismans; remove them there if not wanted.
+
 ## 2026-11-22 — Орбита: metals in the same order as every piece, yellow first **(owner)**
 - Owner: "i want them to be in the same order not to start with the light if there are more product like this make
   them that way". Checked all 87: only the three Орбита pieces started with white (84 go жълто, бяло, розово; Искра too).
