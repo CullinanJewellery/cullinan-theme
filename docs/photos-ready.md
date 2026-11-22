@@ -1,5 +1,7 @@
 # Photos ready for Shopify (2026-11-21)
 
+**Uploaded 2026-11-22: all 87 products are live on Shopify (active), with these photos** (changelog 2026-11-22; generator `tools/products-csv.py`). New photos of a piece: re-run `tools/upload-copies.cjs`, upload to Files, edit the product.
+
 **Owner, 2026-11-22: everything is ready.** The new worn photos (set 21, every metal) and ring 05's fixed white and silver 01 were the last changes.
 
 The list to start uploading from in the next session. A piece is **ready** when its main photo exists in every metal it
