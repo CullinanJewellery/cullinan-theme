@@ -16,7 +16,12 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
   `docs/archive/products-before-2026-11-22.md`.
 - CSV overwrite of an existing product failed silently (and a test showed it would reduce variants to one), so
   overwrite was not used. Linking "Color" to `shopify.color-pattern` also made the import fail; Color is plain.
-- Only "Пръстени" is an automatic collection (Category = Rings); every other collection is manual and is filled by hand.
+- Only "Пръстени" is an automatic collection (Category = Rings); every other collection is manual and was filled by
+  hand (type, tag and the old picks: Home page, Камъни, Най-продавани, Вяра и закрила). "Пръстени с диаманти" was not
+  given Заедно again: its stones are zircons.
+- Without swatches the Color row came back on every product page. `snippets/product-twin-option.liquid` now also takes
+  an option named Color/Colour/Цвят as the hidden colour when no option has swatches. Way back: remove the
+  `unless hidden_option` block.
 - Way back: delete the imported products and import the old ones again from the backup table (photos are local).
 
 ## 2026-11-22 — Product names: one word that pictures the design **(owner)**

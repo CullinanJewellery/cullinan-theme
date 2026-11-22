@@ -253,7 +253,7 @@ for stem, word, meaning, w, stone in RC:
     extra = None
     dims = None
     if stem == '08-plochka':
-        extra = ('Размер на плочката', ['18 мм', '21 мм'])
+        extra = ('Плочка', ['18 мм', '21 мм'])
         dims = 'Плочка: 18,3 мм или 21,3 мм'
     add(f'cherven-konets-{stem[3:]}', f'Червен конец – {word}', 'Гривна', f'19-grivni-s-cherven-konets-{stem}',
         f'Червеният конец от векове се връзва за здраве и закрила. Златният знак върху него казва нещо лично: '
@@ -318,7 +318,7 @@ HEAD = ['Handle', 'Title', 'Body (HTML)', 'Vendor', 'Product Category', 'Type', 
         'Тегло (г) (product.metafields.custom.weight_g)', 'Камък (product.metafields.custom.stone)',
         'Брой камъни (product.metafields.custom.stone_count)',
         'Размер на камъка (product.metafields.custom.stone_size)', 'Размери (product.metafields.custom.dimensions)']
-COLOR_LINK = ''  # linking to shopify.color-pattern made the import fail silently (2026-11-22)
+COLOR_LINK = ''  # a CSV cannot link Color to shopify.color-pattern (the import fails or ignores it); the theme hides Color by name
 
 
 def rows(p):
