@@ -17,6 +17,7 @@ node_modules
 # Photography staging — the folder and its README are tracked, the pictures are not
 photography/*
 !photography/README.md
+!photography/worn-metals/
 !photography/frame-photo.cjs
 !photography/tile-even.cjs
 !photography/rose-darker.cjs
