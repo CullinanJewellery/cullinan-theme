@@ -10,9 +10,10 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ## 2026-11-22 — Two-tone gold circles **(owner)**
 - Owner on Орбита's card (three grey circles): "why is this ring only with this colors". „14К жълто и бяло злато“ and
-  „14К розово и бяло злато“ contain „бяло злато“, so `snippets/cj-metal-swatch.liquid` drew them as white gold. Now a
-  diagonal circle, yellow or rose upper left, white lower right (one CSS gradient, photo-standard colours), on cards,
-  the product page menu and the set picker (main and fluid-sizes). Checked on the preview.
+  „14К розово и бяло злато“ contain „бяло злато“, so `snippets/cj-metal-swatch.liquid` drew them as white gold.
+  First tried a split yellow/white gradient circle; owner: "don't add things like that i want them to be the same as
+  the other colors". Now yellow-and-white uses the yellow gold circle picture and rose-and-white the rose gold one
+  (main and fluid-sizes).
 - Way back: delete the two „и бяло“ branches at the top of the snippet.
 
 ## 2026-11-22 — Card colour circles work again; tablet photo size **(owner)**
