@@ -8,6 +8,13 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-22 — Product names: one word that pictures the design **(owner)**
+- After comparing Ole Lynggaard, Pomellato and Van Cleef & Arpels: families named by an image, the title adds the kind
+  („Луна – висулка“). Full list in `docs/product-names.md`; rings and zodiacs lose their 2026-10-28 virtue names
+  (way back: that file's „Earlier names“ table). Crosses Вяра/Надежда/Любов/София unchanged.
+- `tools/upload-copies.cjs`: Shopify upload copies of every finished photo (Latin names, ≤2048 px, JPEG 92, colours
+  measured identical) in `pictures for the website/_за качване/`.
+
 ## 2026-11-21 — Promise band: first line „Благородни метали за ежедневно носене.“ **(owner)**
 - Owner's pick from the offered lines. Before: „Само благородни метали, приятни за носене всеки ден.“
 

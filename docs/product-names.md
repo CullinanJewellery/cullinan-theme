@@ -1,4 +1,43 @@
-# Product names (owner, 2026-10-28)
+# Product names
+
+## Current scheme (owner, 2026-11-22: "okay upload them")
+
+After a look at how big houses name pieces (Ole Lynggaard: Lotus, Snakes, Leaves; Pomellato: Nudo „naked“, Catene
+„chains“, Sabbia „sand“; Van Cleef & Arpels: „Frivole pendant, small model“): **one Bulgarian word that pictures the
+design**; pieces that belong together share it and the title adds the kind („Луна – висулка“); where the piece itself
+is the picture (Богородица, a bee, a sign of the zodiac) that word is the name. Kind of piece also in Product type.
+Handles (web addresses) keep their old words. Replaces the 2026-10-28 virtue names for rings and zodiacs below.
+
+| Folder | Piece | Title |
+|---|---|---|
+| 01 | Пръстен с топчета (ring A) | Мъниста |
+| 02 | Пръстен с гранулация | Зърна |
+| 03 | Пръстен с камъчета | Роса |
+| 04 | Пръстен с един камък | Искра |
+| 05 | Пръстен спирала | Вихър |
+| 10 | Пръстен с две халки | Заедно |
+| 11 | Пръстен с камък в средата | Съзвездие |
+| 22 | Пръстен с шест зъба | Корона |
+| 06–09 | the four crosses | Вяра, Надежда, Любов, София (unchanged; match to folders by photo) |
+| 23 | Православен кръст / Разпятие / Кръст с шарка | Молитва / Спаси и съхрани / Шевица (if the pattern looks embroidered) |
+| 12 | zodiacs | „<Знак> – монета“, „<Знак> – ажур“ |
+| 13 | Богородица ×4 | Богородица – ажурна / голям медальон / малък медальон / с ореол |
+| 13 | Ангел, Детелина, Колибри, Пчела | the same words |
+| 13 | three trees | Дърво – бели листа / възел / сърца |
+| 14 | pearl set | Луна – висулка / обеци / пръстен |
+| 15 | red stone set | Жар – … |
+| 16 | leaf set | Листопад – … |
+| 17 | petal set | Цвят – … |
+| 18 | stone in a bezel | Капка – … |
+| 21 | circles | Орбита – … |
+| 25 | eight-petal flower | Розетка – висулка / обеци |
+| 19 | red cord bracelets | Червен конец – <the charm> (две сърца, малък кръст …) |
+| 20 | openwork bangle | Дантела |
+| 24 | brooches | Панделка, Роза |
+| 26 | tie pin | Игла за вратовръзка |
+| 27 | bullet pendant | Куршум |
+
+## Earlier names (owner, 2026-10-28; kept for finding pieces)
 
 Owner: „for every product i need a name … i don't need a description of how a jewelry looks i need a name something
 that simvolise the jewelry“. Each product gets a short symbolic name as its title; the old descriptive title is kept
