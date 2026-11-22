@@ -8,6 +8,17 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-22 — Set collections and each set piece's „Комплект“ **(owner)**
+- Owner: "you need to put them in their collection you forgot that". The menu's collections were already filled after
+  the import; what was missing was each set's own collection, which „От същия комплект“ on the product page and the
+  set cards on „Комплекти“ read through the product metafield `custom.komplekt`.
+- Admin only, no theme change: seven automatic collections „Комплект Жар / Капка / Листопад / Луна / Орбита / Розетка /
+  Цвят“ (condition: title contains „<Name> –“), and the 20 set products' „Комплект“ field set in the bulk editor.
+- Checked on the preview: all 20 product pages show „От същия комплект“; „Комплекти“ shows 7 set cards (20 pieces),
+  phone and desktop.
+- Noticed, not changed: there are two diamond-set collections, „Kомплекти с диаманти“ (Latin K) and „Комплекти с диаманти“.
+- Way back: clear the „Комплект“ field in the bulk editor and delete the seven collections.
+
 ## 2026-11-22 — „Детайли“ moved into „Качество и детайли“; description with „Покажи повече“ **(owner)**
 - Owner: "детайли ... should be качество и детайли ... i don't want it to be seen there" and "the text in the
   description should be with show more because it is too much". The description block prints only the text before
