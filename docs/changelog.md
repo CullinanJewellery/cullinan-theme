@@ -8,6 +8,17 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-22 — Card colour circles work again; tablet photo size **(owner)**
+- Owner: "most of the pieces can't change the colors and the quality is bad". Since the CSV import the card circles
+  come from the material option, and Shopify's `value.variant` pairs a material with the first Color value, a variant
+  that does not exist: every circle but the first had no variant or photo. `snippets/card-product.liquid` now takes the
+  first variant of that material with a photo (main and fluid-sizes). Checked: all 69 cards on the preview, each circle
+  its own photo; clicking cycles yellow/white/rose. Product pages and set cards were already switching.
+- Quality: the uploaded copies match the originals (2048 px, PSNR above 50 dB) and desktop/phone fetch photos at least
+  the size shown. One fault found: at 750–989 px the gallery's `sizes` said half the page while one photo fills the
+  column, so the browser fetched ~70% of the size shown; `snippets/product-thumbnail.liquid` now says the column width.
+- Way back: remove the "Circles drawn from the material option" block; restore `calc((100vw - 11.5rem) / 2)`.
+
 ## 2026-11-22 — Set collections and each set piece's „Комплект“ **(owner)**
 - Owner: "you need to put them in their collection you forgot that". The menu's collections were already filled after
   the import; what was missing was each set's own collection, which „От същия комплект“ on the product page and the
