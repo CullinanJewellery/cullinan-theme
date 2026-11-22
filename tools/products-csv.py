@@ -222,7 +222,7 @@ for part, w in (('visulka', '3,00'), ('obetsi', '3,95'), ('prasten', '2,70')):
             'prasten': 'Кръг и полумесец в две злата обгръщат искрящ камък. Пръстен с характер, част от комплекта '
                        'Орбита.'}[part]
     add(f'orbita-{part}', f'Орбита – {word}', kind, f'21-komplekt-s-kragove-{part}', text, weight=w,
-        metals=['w', 'yw', 'rw'], sizes=SIZES if part == 'prasten' else None, tags=['Комплекти'])
+        metals=['yw', 'w', 'rw'], sizes=SIZES if part == 'prasten' else None, tags=['Комплекти'])
 for part, w in (('visulka', '1,65'), ('obetsi', None)):
     kind, word = KIND[part]
     text = {'visulka': 'Цвете с осем венчелистчета и камък в средата – мотив, познат от българската шевица и резба. '
