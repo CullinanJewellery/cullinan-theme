@@ -158,10 +158,9 @@ No replacement legal text is to be written; the accountant handles legal pages.
 3. Ruby hero button vs restraint: an owner exception, kept.
 4. The old "fourteen rules" (archive) treated small prices and few sections as rules; the owner's brief says they are not
    universal. Prices are currently 18px/15px; revisit only with a reason (readability first).
-5. The „Комплекти“ menu link (owner, 2026-11-05: "it should stay") holds only the owner's first test set since
-   2026-11-09 (test products dsfsd, sdfsdf, dasd, price €0, set collection asdasdasdas). Before launch replace them
-   with real sets: real product names and prices, and a new set collection with a real name (its web address does not
-   follow a later change of title).
+5. ~~The „Комплекти“ menu link holds only the owner's test set~~ Resolved 2026-11-22: it holds the seven real sets
+   (20 pieces, collections „Комплект <Name>“). Left over: the empty test collection „asdasdasdas“ (delete only with the
+   owner's OK); most set pieces are still at €0.
 
 ## G. Workshop slides and proposals awaiting the owner
 
