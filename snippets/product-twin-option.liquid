@@ -25,6 +25,10 @@
   A product with a colour option alone, or a colour and a size, prints nothing: hiding
   its only way to choose a colour would make the other colours unbuyable.
 
+  Since 2026-11-22 an option named "Color" (or "Colour", „Цвят“) counts as the colour option
+  when no option has swatches: the products imported from a CSV cannot link their colour to
+  the swatch metaobjects, and the colour row came back on every page.
+
   Accepts:
   - product: {Object} product object.
 
@@ -43,6 +47,16 @@
       break
     endif
   endfor
+
+  unless hidden_option
+    for candidate in product.options_with_values
+      assign candidate_name = candidate.name | downcase | strip
+      if candidate_name == 'color' or candidate_name == 'colour' or candidate_name == 'цвят'
+        assign hidden_option = candidate
+        break
+      endif
+    endfor
+  endunless
 
   if hidden_option
     for candidate in product.options_with_values
