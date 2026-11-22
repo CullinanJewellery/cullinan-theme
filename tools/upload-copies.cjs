@@ -7,7 +7,7 @@ const fs = require('fs'), path = require('path');
 const sharp = require('sharp'); // set NODE_PATH to a node_modules with sharp (photography/README.md)
 const ROOT = 'C:/Users/Nitro V/Pictures/PicturesForWebFaceInstagram/pictures for the website';
 const OUT = path.join(ROOT, '_за качване');
-const METALS = { 'жълто злато': 'zhalto', 'бяло злато': 'byalo', 'розово злато': 'rozovo', 'сребро': 'srebro' };
+const METALS = { 'жълто и бяло злато': 'zhalto-byalo', 'розово и бяло злато': 'rozovo-byalo', 'жълто злато': 'zhalto', 'бяло злато': 'byalo', 'розово злато': 'rozovo', 'сребро': 'srebro' };
 const map = { а:'a',б:'b',в:'v',г:'g',д:'d',е:'e',ж:'zh',з:'z',и:'i',й:'y',к:'k',л:'l',м:'m',н:'n',о:'o',п:'p',р:'r',с:'s',т:'t',у:'u',ф:'f',х:'h',ц:'ts',ч:'ch',ш:'sh',щ:'sht',ъ:'a',ь:'y',ю:'yu',я:'ya' };
 const lat = (s) => s.toLowerCase().replace(/ - номер предстои/g, '').split('').map((c) => map[c] ?? c).join('')
   .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');

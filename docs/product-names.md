@@ -19,7 +19,7 @@ Handles (web addresses) keep their old words. Replaces the 2026-10-28 virtue nam
 | 11 | Пръстен с камък в средата | Съзвездие |
 | 22 | Пръстен с шест зъба | Корона |
 | 06–09 | the four crosses | Вяра, Надежда, Любов, София (unchanged; match to folders by photo) |
-| 23 | Православен кръст / Разпятие / Кръст с шарка | Молитва / Спаси и съхрани / Шевица (if the pattern looks embroidered) |
+| 23 | Православен кръст / Разпятие / Кръст с шарка | Молитва / Спаси и съхрани / Блясък (its pattern is faceted engraving, not embroidery) |
 | 12 | zodiacs | „<Знак> – монета“, „<Знак> – ажур“ |
 | 13 | Богородица ×4 | Богородица – ажурна / голям медальон / малък медальон / с ореол |
 | 13 | Ангел, Детелина, Колибри, Пчела | the same words |

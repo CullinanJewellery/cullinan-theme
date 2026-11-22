@@ -8,6 +8,17 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-22 — All ready products uploaded to Shopify, new names and descriptions **(owner)**
+- Owner: "upload them", "not as drafts, delete the old ones", descriptions "like in moonmagic". The 30 old products were
+  deleted and 87 imported as active from `tools/products-csv.py` (CSV import, photos from Shopify Files by CDN URL,
+  alt text = the material value so the theme's metal photo switching works). Old prices kept; new pieces at €0 until
+  the owner gives prices. Backup of the old products (ids, prices, collection membership):
+  `docs/archive/products-before-2026-11-22.md`.
+- CSV overwrite of an existing product failed silently (and a test showed it would reduce variants to one), so
+  overwrite was not used. Linking "Color" to `shopify.color-pattern` also made the import fail; Color is plain.
+- Only "Пръстени" is an automatic collection (Category = Rings); every other collection is manual and is filled by hand.
+- Way back: delete the imported products and import the old ones again from the backup table (photos are local).
+
 ## 2026-11-22 — Product names: one word that pictures the design **(owner)**
 - After comparing Ole Lynggaard, Pomellato and Van Cleef & Arpels: families named by an image, the title adds the kind
   („Луна – висулка“). Full list in `docs/product-names.md`; rings and zodiacs lose their 2026-10-28 virtue names
