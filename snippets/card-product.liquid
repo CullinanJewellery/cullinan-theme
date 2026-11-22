@@ -448,6 +448,32 @@
                             assign swatch_media = swatch_variant.featured_media
                           endif
 
+                          comment
+                            Circles drawn from the material option (2026-11-22, owner: "most of the pieces can't
+                            change the colors"): Shopify's value.variant pairs the material with the first value of
+                            the other options (e.g. Color „жълто злато“), a variant that does not exist, so every
+                            circle but the first had no variant and no photo. Take the first variant of this
+                            material that has a photo.
+                          endcomment
+                          if option.position == card_metal_position and swatch_media == null
+                            assign own_first = null
+                            for candidate in card_product.variants
+                              if candidate.options[colour_slot] == value.name
+                                unless own_first
+                                  assign own_first = candidate
+                                endunless
+                                if candidate.featured_media
+                                  assign swatch_variant = candidate
+                                  assign swatch_media = candidate.featured_media
+                                  break
+                                endif
+                              endif
+                            endfor
+                            if swatch_variant == null and own_first
+                              assign swatch_variant = own_first
+                            endif
+                          endif
+
                           if swatch_media == null and twin_slot >= 0
                             assign donor_media = null
                             assign donors_agree = true
