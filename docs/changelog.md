@@ -8,6 +8,13 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-22 — Two-tone gold circles **(owner)**
+- Owner on Орбита's card (three grey circles): "why is this ring only with this colors". „14К жълто и бяло злато“ and
+  „14К розово и бяло злато“ contain „бяло злато“, so `snippets/cj-metal-swatch.liquid` drew them as white gold. Now a
+  diagonal circle, yellow or rose upper left, white lower right (one CSS gradient, photo-standard colours), on cards,
+  the product page menu and the set picker (main and fluid-sizes). Checked on the preview.
+- Way back: delete the two „и бяло“ branches at the top of the snippet.
+
 ## 2026-11-22 — Card colour circles work again; tablet photo size **(owner)**
 - Owner: "most of the pieces can't change the colors and the quality is bad". Since the CSV import the card circles
   come from the material option, and Shopify's `value.variant` pairs a material with the first Color value, a variant
