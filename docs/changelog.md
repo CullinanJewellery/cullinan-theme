@@ -8,6 +8,17 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-22 — „Детайли“ moved into „Качество и детайли“; description with „Покажи повече“ **(owner)**
+- Owner: "детайли ... should be качество и детайли ... i don't want it to be seen there" and "the text in the
+  description should be with show more because it is too much". The description block prints only the text before
+  `<p><strong>Детайли</strong></p>`, cut to three lines with „Покажи повече“ / „Покажи по-малко“
+  (`assets/cj-description-more.js`, button only when the text is longer). The product_specs panel reads that list:
+  "Label: value" lines become rows under Метал and Проба, the others a short list; the gold line is skipped (Метал
+  and Проба say it) except a two-colour one; while the list exists the metafield rows other than metal and proba are
+  not printed. Two-colour gold now reads „Жълто и бяло злато“ / „Розово и бяло злато“ in Метал.
+- The product data is unchanged (the list stays in the description in Admin).
+- Way back: revert this commit.
+
 ## 2026-11-22 — All ready products uploaded to Shopify, new names and descriptions **(owner)**
 - Owner: "upload them", "not as drafts, delete the old ones", descriptions "like in moonmagic". The 30 old products were
   deleted and 87 imported as active from `tools/products-csv.py` (CSV import, photos from Shopify Files by CDN URL,

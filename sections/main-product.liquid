@@ -267,10 +267,32 @@
                     {%- endif -%}
                   </p>
                 {%- when 'description' -%}
-                  {%- if product.description != blank -%}
+                  {%- comment -%}
+                    2026-11-22 (owner): the „Детайли“ list of the description is not shown here; it is
+                    printed in „Качество и детайли“ (product_specs below). The text above it is cut to
+                    three lines with „Покажи повече“ ("it is too much"); the button only appears when
+                    the text is longer (assets/cj-description-more.js). Without the script the whole
+                    text shows.
+                  {%- endcomment -%}
+                  {%- assign cj_desc_intro = product.description | split: '<p><strong>Детайли</strong></p>' | first -%}
+                  {%- if cj_desc_intro != blank -%}
                     <div class="product__description rte quick-add-hidden" {{ block.shopify_attributes }}>
-                      {{ product.description }}
+                      <cj-description-more class="cj-desc-more">
+                        <div class="cj-desc-more__text" id="CjDesc-{{ section.id }}">{{ cj_desc_intro }}</div>
+                        <button
+                          type="button"
+                          class="cj-desc-more__toggle"
+                          aria-controls="CjDesc-{{ section.id }}"
+                          aria-expanded="false"
+                          data-more="Покажи повече"
+                          data-less="Покажи по-малко"
+                          hidden
+                        >
+                          Покажи повече
+                        </button>
+                      </cj-description-more>
                     </div>
+                    <script src="{{ 'cj-description-more.js' | asset_url }}" defer="defer"></script>
                   {%- endif -%}
                 {%- when 'sku' -%}
                   <p
@@ -408,7 +430,13 @@
                         assign cj_karat = '14'
                         assign cj_proba = '585'
                       endif
-                      if cj_mat contains 'бяло'
+                      if cj_mat contains 'жълто и бяло'
+                        assign cj_colour = 'yellow'
+                        assign cj_metal_label = 'Жълто и бяло злато'
+                      elsif cj_mat contains 'розово и бяло'
+                        assign cj_colour = 'rose'
+                        assign cj_metal_label = 'Розово и бяло злато'
+                      elsif cj_mat contains 'бяло'
                         assign cj_colour = 'white'
                         assign cj_metal_label = 'Бяло злато'
                       elsif cj_mat contains 'розово'
@@ -423,6 +451,51 @@
                       endif
                     endif
                     assign spec_keys = 'metal,proba,weight_g,stone,stone_count,stone_size,stone_weight_ct,cut,dimensions' | split: ','
+                    comment
+                      2026-11-22 (owner: „Детайли“ belongs in „Качество и детайли“, not in the
+                      description). The description's list after <p><strong>Детайли</strong></p>
+                      is read here: "Label: value" lines become rows, the rest a short list. The
+                      gold line is left out (Метал and Проба say it, per variant), except a
+                      two-colour one. While the list exists, the metafield rows other than metal
+                      and proba are not printed, so nothing shows twice.
+                    endcomment
+                    assign cj_detail_rows = ''
+                    assign cj_detail_notes = ''
+                    assign cj_desc_parts = product.description | split: '<p><strong>Детайли</strong></p>'
+                    if cj_desc_parts.size > 1
+                      assign cj_items = cj_desc_parts.last | split: '<li>'
+                      for cj_item in cj_items
+                        assign cj_line = cj_item | split: '</li>' | first | strip_html | strip
+                        if cj_line == blank
+                          continue
+                        endif
+                        if cj_line contains '(585)' or cj_line contains '(750)'
+                          unless cj_line contains 'два цвята'
+                            continue
+                          endunless
+                        endif
+                        if cj_line contains ': '
+                          assign cj_label = cj_line | split: ': ' | first
+                          assign cj_value = cj_line | remove_first: cj_label | remove_first: ': '
+                          capture cj_row
+                            echo '<div class="product-specs__row"><dt class="product-specs__label">'
+                            echo cj_label | escape
+                            echo '</dt><dd class="product-specs__value">'
+                            echo cj_value | escape
+                            echo '</dd></div>'
+                          endcapture
+                          assign cj_detail_rows = cj_detail_rows | append: cj_row
+                        else
+                          assign cj_note = cj_line | escape
+                          assign cj_detail_notes = cj_detail_notes | append: '<li>' | append: cj_note | append: '</li>'
+                        endif
+                      endfor
+                    endif
+                    assign cj_has_detail_list = false
+                    if cj_detail_rows != blank or cj_detail_notes != blank
+                      assign cj_has_detail_list = true
+                      assign spec_keys = 'metal,proba' | split: ','
+                    endif
                     assign spec_no_fallback_list = 'metal,proba,weight_g,dimensions'
                     assign spec_stone_keys = 'stone,stone_count,stone_size,stone_weight_ct,cut' | split: ','
                     assign spec_many = false
@@ -565,8 +638,11 @@
                                   {%- endif -%}
                                 {%- endfor -%}
                               {%- endcapture -%}
-                              {%- if spec_rows != blank -%}
-                                <dl class="product-specs">{{ spec_rows }}</dl>
+                              {%- if spec_rows != blank or cj_detail_rows != blank -%}
+                                <dl class="product-specs">{{ spec_rows }}{{ cj_detail_rows }}</dl>
+                              {%- endif -%}
+                              {%- if cj_detail_notes != blank -%}
+                                <ul class="product-specs__notes">{{ cj_detail_notes }}</ul>
                               {%- endif -%}
                               {%- if cj_colour != blank -%}
                                 <div class="product-specs__about">

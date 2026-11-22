@@ -10244,3 +10244,58 @@ html:has(dialog.cj-drawer[open]) {
   margin-top: 1.6rem;
   color: rgba(var(--color-foreground), 0.8);
 }
+
+/* ---------------------------------------------------------------------------
+   2026-11-22 (owner): the description's „Детайли“ list lives in „Качество и
+   детайли“. Lines without a label (handmade, box and certificate, no chain)
+   sit under the rows as a quiet list, same 14px as the panel's text.
+   --------------------------------------------------------------------------- */
+.cj-drawer__body .product-specs__notes {
+  margin: 0 0 1.6rem;
+  padding-left: 1.8rem;
+  font-size: 1.4rem;
+  line-height: 1.6;
+  color: rgb(var(--color-foreground));
+}
+
+.cj-drawer__body .product-specs__notes li {
+  margin: 0 0 0.4rem;
+}
+
+/* The description above the price: three lines, then „Покажи повече“
+   (owner, 2026-11-22: "the text ... should be with show more").
+   assets/cj-description-more.js adds .is-clamped only when the text is longer. */
+.cj-desc-more__text.is-clamped {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
+}
+
+.cj-desc-more__text > :last-child {
+  margin-bottom: 0;
+}
+
+.cj-desc-more__toggle {
+  margin: 0.6rem 0 0;
+  padding: 0.4rem 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-size: 1.3rem;
+  letter-spacing: 0.02em;
+  color: rgb(var(--color-foreground));
+  text-decoration: underline;
+  text-underline-offset: 0.3rem;
+  cursor: pointer;
+}
+
+.cj-desc-more__toggle:hover {
+  text-decoration-thickness: 0.2rem;
+}
+
+.cj-desc-more__toggle:focus-visible {
+  outline: 0.2rem solid rgb(var(--color-foreground));
+  outline-offset: 0.3rem;
+}
