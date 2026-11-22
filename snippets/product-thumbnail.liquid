@@ -46,8 +46,9 @@
 -%}
 
 {%- comment -%} Phones: the gallery runs edge to edge (crown.css), so a photo is the full screen width, not 4rem less (2026-10-11, sharper photos). {%- endcomment -%}
+{%- comment -%} Tablets, 750-989px (2026-11-22, owner: "the quality is bad"): crown.css shows one photo across the whole gallery column there, not two, so the hint is the column's width; Dawn's "half the page less 11.5rem" made the browser fetch a photo about 70% of the size shown. {%- endcomment -%}
 {%- capture sizes -%}
-  (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | times: media_width | divided_by: desktop_columns | round }}px, (min-width: 990px) calc({{ media_width | times: 100 | divided_by: desktop_columns }}vw - 10rem), (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw / {{ mobile_columns }})
+  (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | times: media_width | divided_by: desktop_columns | round }}px, (min-width: 990px) calc({{ media_width | times: 100 | divided_by: desktop_columns }}vw - 10rem), (min-width: 750px) {{ media_width | times: 100 | round }}vw, calc(100vw / {{ mobile_columns }})
 {%- endcapture -%}
 
 <div
