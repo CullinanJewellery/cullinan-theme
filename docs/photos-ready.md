@@ -1,5 +1,7 @@
 # Photos ready for Shopify (2026-11-21)
 
+**Owner, 2026-11-22: everything is ready.** The new worn photos (set 21, every metal) and ring 05's fixed white and silver 01 were the last changes.
+
 The list to start uploading from in the next session. A piece is **ready** when its main photo exists in every metal it
 is offered in, the owner has approved it, and the 2026-11-20 spot-cleaning pass has been applied (background spots,
 shadow blotches).
@@ -29,10 +31,10 @@ folder: `01 основна снимка` (main), then `02 …` (another angle) a
 | 13 Нови висулки | Ангел, Богородица ажурна, Богородица голям медальон, Богородица малък медальон, Богородица с ореол, Дърво с бели листа, Дърво с възел, Дърво със сърца, Пчела | 01, 03 neck | |
 | 13 Нови висулки | Детелина, Колибри | 01 only | real sizes not known yet; no neck photo |
 | 14 Комплект с перла | pendant, earrings, ring | pendant 01, 02 front, 03 neck; earrings and ring 01 | |
-| 15 Комплект с червен камък | pendant, earrings, ring | pendant 01, 02 side; earrings and ring 01 | worn photos not made |
-| 16 Комплект с листа | pendant, earrings, ring | 01 (ring also 02 from above) | worn photos not made |
-| 17 Комплект с венчелистче | pendant, earrings, ring | 01 | worn photos not made |
-| 18 Комплект с камък в обков | pendant, earrings, ring | 01 | worn photos not made; the ring's stone is paler (owner accepted) |
+| 15 Комплект с червен камък | pendant, earrings, ring | pendant 01, 02 side; earrings and ring 01 | worn photos exist (owner, 2026-11-21), not in these folders |
+| 16 Комплект с листа | pendant, earrings, ring | 01 (ring also 02 from above) | worn photos exist (owner, 2026-11-21), not in these folders |
+| 17 Комплект с венчелистче | pendant, earrings, ring | 01 | worn photos exist (owner, 2026-11-21), not in these folders |
+| 18 Комплект с камък в обков | pendant, earrings, ring | 01 | worn photos exist (owner, 2026-11-21), not in these folders; the ring's stone is paler (owner accepted) |
 | 19 Гривни с червен конец | 14 bracelets | 01, 03 wrist; yellow, white, rose | no silver photos (made in gold only); dust specks cleaned 2026-11-21, the cord untouched |
 | 20 Ажурна гривна | 1 bangle | 01, 02 from above; yellow also 03 wrist | |
 | 23 Нови кръстове | Кръст с шарка, Православен кръст, Разпятие | 01 (Православен and Разпятие also 02 back) | Православен кръст silver added 2026-11-21 (copy of white gold) |
