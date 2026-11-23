@@ -29,6 +29,13 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
   The manual „Вяра и закрила“ collection lost the other 7 (цвете, стъпки, безкрайност, сърце, плочка, дърво на
   живота, две сърца): 26 → 19 pieces. All 14 stay in „Гривни“ (15 with Дантела). Verified on the preview. Way back:
   remove the „кръст“ condition and rename; add the 7 back to „Вяра и закрила“ in admin.
+- **Same day, owner: zodiac signs in calendar order** (Овен, Телец, Близнаци, Рак, Лъв, Дева, Везни, Скорпион,
+  Стрелец, Козирог, Водолей, Риби; монета before ажур) in three places: „Висулки“ (positions 27–48), „Зодии“ (switched
+  from „Most relevant“ to manual; it was Риби → Овен) and the twelve sign links under „Зодии“ in the main menu (were
+  in no clear order). Verified on the preview. Admin notes: the collection „Move → To the end“ per sign works from a
+  script; the menu only reorders with keyboard drag (space, Up, space) and needs ~2 s between keys, or presses are
+  lost; one „Зодии“ save left two pieces one place off, fixed with „Move → To position“ and checked after a reload.
+  Way back: „Зодии“ sort back to „Most relevant“; reorder by hand.
 
 ## 2026-11-23 — Item numbers from the old site; missing weights **(owner)**
 - Owner: find each piece's number on studio-cullinan.com by its picture, put it in Shopify's field for an item number
