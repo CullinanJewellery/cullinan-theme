@@ -8,6 +8,20 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-23 — Collection extras: two tiles, an end note, a strip of three **(owner)**
+- Owner sent moonmagic's collection grid (a light and a black promise tile among the products, „You've seen all
+  products“ with a button, a band of three) : "can we add things like that ... in every collection make our better if
+  you can make them luxury art and cool".
+- `snippets/cj-collection-extras.liquid`, rendered in `sections/main-collection-product-grid.liquid`:
+  „Купувайте спокойно“ (soft blush: certificate, 14 days return or exchange, look and try before paying, warranty)
+  after the 4th piece, or after the last in a collection of 4 or fewer; „Качество във всеки детайл“ (espresso and
+  gold: gold 14K/18K and silver 925, stones appraised by an HRD-qualified specialist, handmade since 1991, every piece in
+  a box) after the 10th; page 1 only; one product's place on a computer, the full row on a phone (moonmagic's phone
+  version could not be measured: their tiles render late). „Видяхте всички бижута от тази колекция.“ + „Разгледайте
+  всички бижута“ (/collections/all) on the last page; a greige strip of three (free delivery over €500, handmade in our
+  atelier since 1991, a certificate for every piece) at the foot. Only facts from CLAUDE.md. Look: `assets/crown.css`
+  „Collection extras“. Way back: delete the snippet, its renders and the CSS block.
+
 ## 2026-11-23 — Worn photos of sets 15–18, Детелина, Колибри in every metal **(owner)**
 - Owner approved the 14 worn drafts: "all of these are good for use make the colors". Yellow promoted to the metal
   folders; white, rose and silver (= white) made free from them. The rings of sets 15 (red stone) and 18 (stone in a
