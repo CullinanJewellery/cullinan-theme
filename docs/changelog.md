@@ -8,6 +8,27 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-23 — Item numbers from the old site; missing weights **(owner)**
+- Owner: find each piece's number on studio-cullinan.com by its picture, put it in Shopify's field for an item number
+  or the description; add weights (and stone sizes) only where ours are missing, never change the ones we have.
+- All 2,038 old products scraped (code, photo, „Артикулен №“, „Тегло“); our 87 photos matched by eye with side-by-side
+  sheets, every pair checked. 80 pieces matched; list with old names and weights: `docs/item-numbers.md`.
+  Not matched, left blank: Корона, Заедно (closest old rings are other designs), Куршум, Роза (not on the old site),
+  Листопад – обеци (no match), Червен конец – кръст с камък (2469 without the stone), Орбита – обеци (2687 has a
+  lever-back, ours differ). Zodiac pendants: the old site has one code per series (ажур 1919, монета 1870).
+- The code is in every variant's **SKU** (Shopify's item number; it also prints on orders), typed in the bulk editor and
+  checked on the preview (all 513 variants match). `sections/main-product.liquid` shows it as the last row of
+  „Качество и детайли“, „Артикулен номер“, from the selected variant.
+- Weights: the old weights agree with ours within about 0.2 g on the 49 pieces that had both, which confirms the
+  matches. Added „Тегло: … г“ to the description list of the 14 pieces without one (Игла 5,50; Листопад – висулка
+  0,90; Розетка – обеци 1,30; Капка – пръстен 2,75; Богородица – с ореол 1,70; Листопад – пръстен 1,65; Жар – пръстен
+  3,40; Вяра 0,77; Надежда 0,60; Любов 1,05; Искра 1,80; Вихър 1,15; Роса 0,86; Съзвездие 1,40). Not added: zodiac
+  (series weight, not per sign) and Червен конец – плочка (two plate sizes, one old weight). The `weight_g` metafield
+  was not filled for these (the page reads the description list). Stone sizes: the old site gives none.
+- Not yet in `tools/products-csv.py` (a reimport would drop SKUs and these weights; take them from `docs/item-numbers.md`).
+- Way back: clear the SKU column in the bulk editor; delete the „Тегло“ line in those descriptions; remove the
+  `cj_sku_row` capture in `main-product.liquid`.
+
 ## 2026-11-22 — Every piece in its stone and theme collections **(owner)**
 - Owner: "i said twice that i want every jewelry to be in his collection why aren't they in". The kind collections
   (Пръстени, Обеци, Висулки, Гривни, Комплекти) were full, but the stone and theme ones missed pieces. Added in admin
