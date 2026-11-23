@@ -8,6 +8,25 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-23 — Cart drawer: total and button at the foot, „Може да харесате също“ **(owner)**
+- Owner saw the free delivery bar mocked in the drawer and on /cart: "to big ... don't do it" (it stays on the product
+  page only). Then: "move at end of the вашата количка the button към плащане with the things that are with him also
+  we can add you may also like ... the place there is small so make everything fit good and when we add a product it
+  should be looking good to".
+- **Reverses 2026-10-05** („Checkout reach“: footer right under the pieces): the reassurances, total and „Към плащане“
+  are pinned at the foot again; the pieces and the strip scroll above them. The pinned block is tighter (paddings,
+  12px reassurances, 20px total, 52px button): about 250px instead of 334px.
+- `snippets/cj-cart-recs.liquid`: Shopify's related recommendations for the newest piece in the bag, minus pieces in
+  the bag, at €0 or sold out, at most 8, as a sideways strip of 12rem cards (picture, name, price) on #FAF8F5 under the
+  pieces; hidden when empty; links only (no quick add: most pieces need a metal). Rendered in
+  `snippets/cart-drawer.liquid`; look in `assets/cullinan-cart.css` (end). `.drawer__contents` gets min-width 0 so
+  the strip scrolls on its own.
+- Judge.me's cart widget was an empty 90px box under the pieces (no reviews yet): hidden only while empty (`:has()`),
+  so it returns by itself with content.
+- Checked on the draft: computer and phone (375×667), one and two pieces, no sideways scroll.
+- Way back: `#CartDrawer cart-drawer-items` back to `flex: 0 1 auto`, delete the last blocks of cullinan-cart.css and
+  the render.
+
 ## 2026-11-23 — Ангел pendant: clean openwork **(owner)**
 - Owner: the spots in the openings were too big; "do the thing that we did on the zodiac signs ажурни". The three 01
   photos were remade free from the AI original as the zodiacs were (gold standard F with --keep-sat, soft background,
