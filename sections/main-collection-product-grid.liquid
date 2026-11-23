@@ -304,7 +304,7 @@
                 {%- assign cj_seen = ',' -%}
                 {%- comment -%}
                   Collection extras (owner, 2026-11-23, after moonmagic): the light tile after the 4th piece, the
-                  dark one after the 10th, on the first page only; snippets/cj-collection-extras.liquid.
+                  dark one after the 12th (the middle column on a computer, a full row on a phone; owner, 2026-11-23), on the first page only; snippets/cj-collection-extras.liquid.
                 {%- endcomment -%}
                 {%- assign cj_n = 0 -%}
                 {%- assign cj_total = collection.products.size -%}
@@ -334,7 +334,7 @@
                       {%- if cj_extras -%}
                         {%- if cj_n == 4 and cj_total > 4 -%}
                           {%- render 'cj-collection-extras', part: 'trust' -%}
-                        {%- elsif cj_n == 10 and cj_total > 10 -%}
+                        {%- elsif cj_n == 12 and cj_total > 12 -%}
                           {%- render 'cj-collection-extras', part: 'quality' -%}
                         {%- endif -%}
                       {%- endif -%}
@@ -371,7 +371,7 @@
                   {%- if cj_extras -%}
                     {%- if cj_n == 4 and cj_total > 4 -%}
                       {%- render 'cj-collection-extras', part: 'trust' -%}
-                    {%- elsif cj_n == 10 and cj_total > 10 -%}
+                    {%- elsif cj_n == 12 and cj_total > 12 -%}
                       {%- render 'cj-collection-extras', part: 'quality' -%}
                     {%- endif -%}
                   {%- endif -%}
@@ -389,9 +389,6 @@
                 {%- render 'cj-collection-extras', part: 'end' -%}
               {%- endif -%}
             </div>
-            <div class="cj-coll-strip-wrap">
-              {%- render 'cj-collection-extras', part: 'strip' -%}
-            </div>
           {%- endif -%}
         </div>
       </div>
@@ -399,6 +396,10 @@
     {% if section.settings.image_shape == 'arch' %}
       {{ 'mask-arch.svg' | inline_asset_content }}
     {%- endif -%}
+  </div>
+  {%- comment -%} the strip of three across the whole page, like moonmagic's (owner, 2026-11-23) {%- endcomment -%}
+  <div class="cj-coll-strip-wrap">
+    {%- render 'cj-collection-extras', part: 'strip' -%}
   </div>
 </collection-component>
 

@@ -10827,3 +10827,31 @@ html body .cj-coll-strip-wrap {
     white-space: nowrap;
   }
 }
+
+/* collection extras, third pass (2026-11-23, owner): a line under the end note like moonmagic's; the strip across the
+   whole page width (rendered after the section's padded box), its items kept to the page's width inside */
+html body .cj-coll-end {
+  width: 100%;
+  padding-bottom: 4.8rem;
+  border-bottom: 0.1rem solid rgba(42, 30, 26, 0.3);
+}
+
+html body .cj-coll-strip-wrap {
+  margin-top: 0;
+  background: #f5f3ef;
+}
+
+html body .cj-coll-strip {
+  max-width: var(--page-width, 120rem);
+  margin: 0 auto;
+}
+
+html body .cj-coll-strip__item + .cj-coll-strip__item {
+  border-left: 0.1rem solid #e4ddd5;
+}
+
+@media screen and (max-width: 749px) {
+  html body .cj-coll-end {
+    padding-bottom: 3.6rem;
+  }
+}

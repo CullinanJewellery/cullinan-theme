@@ -8,6 +8,13 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-23 — Collection extras, second round **(owner)**
+- Owner: a line at the end like moonmagic's under „Видяхте всички бижута…“; the strip of three across the whole page
+  ("make the size for the hole page like moomagic did it"); „Качество във всеки детайл“ in the centre like the other
+  tile. Done: a hairline under the end note; the strip moved after the section's padded box, full width on greige,
+  items kept to the page width; the dark tile after the 12th piece (middle column on a computer, a full row on a phone)
+  instead of the 10th. Way back: git history of `sections/main-collection-product-grid.liquid` and `assets/crown.css`.
+
 ## 2026-11-23 — Collection extras: two tiles, an end note, a strip of three **(owner)**
 - Owner sent moonmagic's collection grid (a light and a black promise tile among the products, „You've seen all
   products“ with a button, a band of three) : "can we add things like that ... in every collection make our better if
