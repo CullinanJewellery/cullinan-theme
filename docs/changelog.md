@@ -8,6 +8,21 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-23 — Collection colour for the dots and the bold words **(owner)**
+- Owner: dot colours linked with each collection (zodiacs too), and the bold words of the description in the same
+  colour, still bold.
+- `sections/main-collection-banner.liquid` sets `--cj-stone-colour` per collection; `assets/crown.css` „Collection
+  colour: dots and bold words“ colours `strong` in descriptions that have qualities (plain categories keep the ink).
+- Every colour reads as text on the greige (≥4.5:1 on #F5F3EF); the sign colours of the morning that were too light
+  were darkened in their own hue: Телец #4f7f4b→#4a7747, Близнаци #c9a227→#856b1a, Рак #8fa1b5→#616d7b,
+  Лъв #d97b29→#a15b1e, Дева #8a7f3a→#776d32, Везни #d08ea0→#8d616d, Водолей #2f86b0→#287397, Риби #3f9488→#347970
+  (Овен, Скорпион, Стрелец, Козирог unchanged). New: Богородици #2f4f8a (Marian blue), Вяра и закрила #88692d (icon
+  gold), Кръстове #7d2a35 (Orthodox crimson), Червен конец с кръст #b0242f (the thread). Stones
+  (`snippets/cj-menu-stone.liquid`, also the meaning beside a stone's name): Перли #8f7a5e→#7e6b53, Циркони and
+  Диаманти #5f7689→#596f81; the „с перли“ / „с циркони“ collections take their stone's colour.
+- Checked on the draft theme (every handle carries its colour; phone view of Близнаци, Везни, Богородици, Червен
+  конец с кръст). Way back: revert commit 936a48e8.
+
 ## 2026-11-23 — Qualities in one row on every collection **(owner)**
 - Owner: the three qualities in one row wherever they are. Computers showed them in two columns beside the text on
   stone, faith and red-thread collections (the 2026-10-21 moonmagic layout); now every collection uses the zodiac
