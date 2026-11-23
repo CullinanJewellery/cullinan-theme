@@ -55,7 +55,13 @@
           this.price = +d.price;
           this.variant = d.variant;
           this.render();
-          if (typeof subscribe !== 'function' || typeof PUB_SUB_EVENTS === 'undefined') return;
+          // The theme's pub/sub scripts are deferred, so they may not exist yet when this runs.
+          if (typeof subscribe === 'function' && typeof PUB_SUB_EVENTS !== 'undefined') this.listen();
+          else window.addEventListener('DOMContentLoaded', () => this.listen(), { once: true });
+        }
+        listen() {
+          if (this.unsubCart || typeof subscribe !== 'function' || typeof PUB_SUB_EVENTS === 'undefined') return;
+          const d = this.dataset;
           this.unsubVariant = subscribe(PUB_SUB_EVENTS.variantChange, (e) => {
             const v = e && e.data && e.data.variant;
             if (!v || (e.data.sectionId && e.data.sectionId !== d.section)) return;
