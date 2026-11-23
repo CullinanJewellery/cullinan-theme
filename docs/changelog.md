@@ -8,6 +8,27 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-23 — Zodiac headings in one row; „зодия“ instead of „знак“ **(owner)**
+- Owner: on every zodiac collection the three qualities (e.g. Смелост · Енергия · Начало) in one row, also on phones;
+  the phone heading text was too big and badly placed; „знакът“ wording replaced with „зодия“ everywhere; the
+  homepage band „Вашият знак“ → „Вашата зодия“; the sentence „Знакът, под който сте родени, винаги близо до сърцето.“
+  disliked.
+- Theme (commit 8da26612): `sections/main-collection-banner.liquid` adds `cj-hero--zodiac` on „Зодии“ and the twelve
+  sign collections (handles listed there); `assets/crown.css` „Zodiac collections: heading“: qualities never wrap
+  (one row), phones centre the heading, text 1.5rem / 1.6, qualities 1.1rem; under 360px tighter spacing; computers
+  put the row under the text. Stone collections unchanged. Checked on the draft theme at 320, 375 and 1440: one row,
+  no sideways scroll.
+- Homepage band (`templates/index.json`, gift_guide): eyebrow „Вашата зодия“, text „Висулки от злато за всяка от
+  дванайсетте зодии – за вас или за подарък.“
+- Admin (not in git): the twelve sign collections' descriptions say „зодията на …“ (Овен also „Родените в тази
+  зодия“); all 22 zodiac pendants: „със знака на X“ → „със зодия X“, „Знакът на X –“ → „Зодия X –“, „Знакът стои в
+  средата“ → „Символът на зодията стои в средата“, „Личен знак и красив подарък“ → „Лично бижу и красив подарък“.
+  Checked on the storefront: no „знак“ left in those 22 products, the 12 collections or the homepage.
+- Left as they are: „знак“ in non-zodiac pieces (red-thread bracelets, Пчела, Детелина, Дърво, Богородица, Надежда),
+  where it means a sign or symbol, not a zodiac.
+- Way back: remove the class line and the crown.css block; the old homepage texts are „Вашият знак“ and
+  „Знакът, под който сте родени, винаги близо до сърцето.“; the old product wordings are listed above.
+
 ## 2026-11-23 — „Вяра и закрила“ menu: Богородици and Гривни с червен конец; Висулки order **(owner)**
 - Owner asked for crosses, Богородици and the red-thread bracelets under „Вяра и закрила“, asked whether the tree of
   life belongs there, and whether crosses and zodiac signs should leave „Висулки“; my advice was accepted („do all of it“).
