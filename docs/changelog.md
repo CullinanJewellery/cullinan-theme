@@ -8,6 +8,11 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-23 — Free delivery bar counts only the cart **(owner)**
+- Owner, with an empty cart: "it should be zero there why is there money i don't have anything in the shoping car".
+  The bar no longer adds the piece on screen (moonmagic's way); it shows only the cart: empty cart = empty bar,
+  „Остават ви €500“; it moves after „Добави в количката“. Way back: git history of `snippets/cj-free-delivery.liquid`.
+
 ## 2026-11-23 — Free delivery bar on the product page **(owner)**
 - Owner sent moonmagic.com's „You're €105,05 away from your Free Birth Chart“ bar: the same for free delivery over
   €500. moonmagic counts the piece on screen as if added (€235,95 − €129,95 = €105,05); ours does the same, plus the
