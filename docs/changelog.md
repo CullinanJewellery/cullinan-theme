@@ -12,7 +12,7 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 - Owner: "към плащане now is to much at the end and make it like moonmagic (just where it is placed)". Measured live:
   moonmagic's bag ends total → CHECKOUT → payment logos, the button's foot about 85px above the screen's foot. Ours:
   total → „Към плащане“ → the tax and delivery note (moved from above the button, centred, 11px), 36px below it, so
-  the button sits about 80px up. No payment logos: no payment method is set up yet. Way back: the note back into
+  the button sits about 85px up (46px under the note). No payment logos: no payment method is set up yet. Way back: the note back into
   `.cart-drawer__footer` in `snippets/cart-drawer.liquid`, delete the last block of `assets/cullinan-cart.css`.
 - Owner: the zodiac pendants are gold only. Checked: none of the 22 has a silver variant and no zodiac text mentions
   silver; the homepage band („Висулки от злато“) stays.

@@ -911,7 +911,7 @@ cart-drawer cart-drawer-items {
 #CartDrawer .drawer__footer > .tax-note {
   display: block;
   margin: 0;
-  padding: 1.2rem 2.4rem calc(3.6rem + env(safe-area-inset-bottom, 0px));
+  padding: 1.2rem 2.4rem calc(4.6rem + env(safe-area-inset-bottom, 0px));
   text-align: center;
   color: rgba(var(--color-foreground), 0.7);
   font-size: 1.1rem;
