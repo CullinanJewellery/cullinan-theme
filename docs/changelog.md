@@ -8,6 +8,17 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-23 — Free delivery bar on the product page **(owner)**
+- Owner sent moonmagic.com's „You're €105,05 away from your Free Birth Chart“ bar: the same for free delivery over
+  €500. moonmagic counts the piece on screen as if added (€235,95 − €129,95 = €105,05); ours does the same, plus the
+  cart, the piece counted once if already in the cart.
+- `snippets/cj-free-delivery.liquid` (custom element, updates on variant-change and cart-update), rendered under the
+  price in `sections/main-product.liquid`; look in `assets/crown.css` „Free delivery bar“: greige box, square
+  corners, parcel icon in gold, „Остават ви **€X** до безплатна доставка“ (X rounded up) / „**Безплатна доставка** за
+  вашата поръчка“, a 4px bar from espresso to gold.
+- Reminder: Shopify admin's shipping rate is still leva 8.99, free from 70 leva (docs/tasks.md A2); the owner must set
+  it to free from €500 so checkout matches the bar. Way back: delete the render, the snippet and the CSS block.
+
 ## 2026-11-23 — „Злато“ and „сребро“ in bold black **(owner)**
 - Owner: wherever a text says the pieces are made in gold or silver, those words bold and black, "just be seen
   better".
