@@ -1,0 +1,98 @@
+{%- comment -%}
+  Free delivery bar under the product price (2026-11-23, owner, after moonmagic.com's „You're €105 away from your
+  Free Birth Chart“). Delivery is free on orders over €500 (owner, 2026-11-11).
+  - The sum is what is already in the cart plus the piece on screen (its chosen variant), the piece counted once if
+    it is already in the cart, as moonmagic counts it.
+  - Under €500: „Остават ви €X до безплатна доставка“ (X rounded up to whole euros); from €500: „Безплатна доставка
+    за вашата поръчка“. A thin bar shows how far along the order is.
+  - Updates on a new metal or size (variant-change) and after adding to the cart (cart-update, reads /cart.js).
+  - Look: crown.css „Free delivery bar“. Shopify admin's free shipping rate must start at €500 too (docs/tasks.md).
+
+  Accepts:
+  - product: {Object}
+  - section_id: {String}
+
+  Usage:
+  {% render 'cj-free-delivery', product: product, section_id: section.id %}
+{%- endcomment -%}
+{%- liquid
+  assign cj_fd_variant = product.selected_or_first_available_variant
+  assign cj_fd_in_cart = false
+  for item in cart.items
+    if item.variant_id == cj_fd_variant.id
+      assign cj_fd_in_cart = true
+    endif
+  endfor
+  assign cj_fd_ids = cart.items | map: 'variant_id' | join: ','
+-%}
+<cj-free-delivery
+  class="cj-free-delivery"
+  data-threshold="50000"
+  data-cart-total="{{ cart.total_price }}"
+  data-cart-ids=",{{ cj_fd_ids }},"
+  data-price="{{ cj_fd_variant.price }}"
+  data-variant="{{ cj_fd_variant.id }}"
+  data-section="{{ section_id }}"
+>
+  <div class="cj-free-delivery__row">
+    <svg class="cj-free-delivery__icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round">
+      <path d="M3.5 7.5 12 3l8.5 4.5v9L12 21l-8.5-4.5z"/><path d="M3.5 7.5 12 12l8.5-4.5M12 12v9M7.8 5.2l8.5 4.6"/>
+    </svg>
+    <p class="cj-free-delivery__text" aria-live="polite"></p>
+  </div>
+  <div class="cj-free-delivery__track" aria-hidden="true"><span class="cj-free-delivery__fill"></span></div>
+</cj-free-delivery>
+<script>
+  if (!customElements.get('cj-free-delivery')) {
+    customElements.define(
+      'cj-free-delivery',
+      class extends HTMLElement {
+        connectedCallback() {
+          const d = this.dataset;
+          this.threshold = +d.threshold;
+          this.cartTotal = +d.cartTotal;
+          this.cartIds = d.cartIds;
+          this.price = +d.price;
+          this.variant = d.variant;
+          this.render();
+          if (typeof subscribe !== 'function' || typeof PUB_SUB_EVENTS === 'undefined') return;
+          this.unsubVariant = subscribe(PUB_SUB_EVENTS.variantChange, (e) => {
+            const v = e && e.data && e.data.variant;
+            if (!v || (e.data.sectionId && e.data.sectionId !== d.section)) return;
+            this.price = v.price;
+            this.variant = String(v.id);
+            this.render();
+          });
+          this.unsubCart = subscribe(PUB_SUB_EVENTS.cartUpdate, () => {
+            fetch(window.Shopify && Shopify.routes ? Shopify.routes.root + 'cart.js' : '/cart.js')
+              .then((r) => r.json())
+              .then((c) => {
+                this.cartTotal = c.total_price;
+                this.cartIds = ',' + c.items.map((i) => i.variant_id).join(',') + ',';
+                this.render();
+              })
+              .catch(() => {});
+          });
+        }
+        disconnectedCallback() {
+          if (this.unsubVariant) this.unsubVariant();
+          if (this.unsubCart) this.unsubCart();
+        }
+        render() {
+          const inCart = this.cartIds.indexOf(',' + this.variant + ',') !== -1;
+          const sum = this.cartTotal + (inCart ? 0 : this.price);
+          const left = this.threshold - sum;
+          const text = this.querySelector('.cj-free-delivery__text');
+          if (left > 0) {
+            text.innerHTML = 'Остават ви <strong>€' + Math.ceil(left / 100) + '</strong> до безплатна доставка';
+          } else {
+            text.innerHTML = '<strong>Безплатна доставка</strong> за вашата поръчка';
+          }
+          const pct = Math.max(0, Math.min(100, (sum / this.threshold) * 100));
+          this.querySelector('.cj-free-delivery__fill').style.width = pct + '%';
+          this.classList.toggle('is-free', left <= 0);
+        }
+      }
+    );
+  }
+</script>

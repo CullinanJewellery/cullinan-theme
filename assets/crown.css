@@ -10428,3 +10428,60 @@ html:has(dialog.cj-drawer[open]) {
   outline: 0.2rem solid rgb(var(--color-foreground));
   outline-offset: 0.3rem;
 }
+
+/* ===== Free delivery bar (2026-11-23, owner, after moonmagic.com's birth-chart bar) =====
+   Under the product price (snippets/cj-free-delivery.liquid): a greige box, square corners as the rest of the site,
+   a small parcel icon and one line („Остават ви €X до безплатна доставка“), then a thin bar filling from espresso to
+   gold. Way back: delete this block and the render in sections/main-product.liquid. ===== */
+html body .cj-free-delivery {
+  display: block;
+  margin: 1.2rem 0 0.4rem;
+  padding: 1.1rem 1.4rem 1.3rem;
+  background: #f5f3ef;
+  border: 1px solid #e8e1da;
+  color: #2a1e1a;
+}
+
+html body .cj-free-delivery__row {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+html body .cj-free-delivery__icon {
+  flex: 0 0 auto;
+  color: #8c6a2e;
+}
+
+html body .cj-free-delivery__text {
+  margin: 0;
+  font-size: 1.35rem;
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+}
+
+html body .cj-free-delivery__text strong {
+  font-weight: 600;
+  color: #000000;
+}
+
+html body .cj-free-delivery__track {
+  height: 0.4rem;
+  margin-top: 1rem;
+  background: #e5ddd6;
+  overflow: hidden;
+}
+
+html body .cj-free-delivery__fill {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, #2a1e1a 0%, #8c6a2e 100%);
+  transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html body .cj-free-delivery__fill {
+    transition: none;
+  }
+}
