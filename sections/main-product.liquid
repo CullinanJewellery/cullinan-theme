@@ -499,7 +499,8 @@
                               if cj_opt_down contains 'material' or cj_opt_down contains 'метал' or cj_opt_down contains 'color' or cj_opt_down contains 'цвят'
                                 continue
                               endif
-                              assign cj_sel = spec_variant.options[cj_opt.position | minus: 1]
+                              assign cj_opt_index = cj_opt.position | minus: 1
+                              assign cj_sel = spec_variant.options[cj_opt_index]
                               for cj_v in cj_opt.values
                                 if cj_v == cj_sel
                                   assign cj_part = cj_parts[forloop.index0] | strip
