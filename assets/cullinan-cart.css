@@ -898,3 +898,27 @@ cart-drawer cart-drawer-items {
 #CartDrawer #jdgm-cart-drawer-widget:not(:has(.jm-cart-mode-body > *)) {
   display: none;
 }
+
+/* „Към плащане“ where moonmagic has CHECKOUT (2026-11-23, owner: "към плащане now is to much at the end and make it
+   like moonmagic (just where it is placed)"). moonmagic: the total, then the button, then a row of payment logos, the
+   button's foot about 85px above the screen's foot. Ours: the total, the button, then the tax and delivery note
+   (moved under the button in snippets/cart-drawer.liquid), centred, with the same room below. Way back: move the
+   <small class="tax-note"> back into .cart-drawer__footer and delete this block. */
+#CartDrawer .cart__ctas {
+  padding: 1.2rem 2.4rem 0;
+}
+
+#CartDrawer .drawer__footer > .tax-note {
+  display: block;
+  margin: 0;
+  padding: 1.2rem 2.4rem calc(3.6rem + env(safe-area-inset-bottom, 0px));
+  text-align: center;
+  color: rgba(var(--color-foreground), 0.7);
+  font-size: 1.1rem;
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+}
+
+#CartDrawer .cart-drawer__footer {
+  padding-bottom: 0;
+}
