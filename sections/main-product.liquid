@@ -477,6 +477,45 @@
                         if cj_line contains ': '
                           assign cj_label = cj_line | split: ': ' | first
                           assign cj_value = cj_line | remove_first: cj_label | remove_first: ': '
+                          comment
+                            2026-11-23 (owner, Червен конец – плочка: "make … a size for the plate to choose between
+                            the two and weights are different"): a value written as „0,85 / 1,05 г“ or „18,3 мм или
+                            21,3 мм“ holds one figure per value of an option with as many values (not metal or
+                            colour), in the same order. Only the selected variant's figure is shown; the unit
+                            written once at the end is kept. The panel re-renders on every variant change.
+                          endcomment
+                          assign cj_parts = ''
+                          if cj_value contains ' / '
+                            assign cj_parts = cj_value | split: ' / '
+                          elsif cj_value contains ' или '
+                            assign cj_parts = cj_value | split: ' или '
+                          endif
+                          if cj_parts != '' and cj_parts.size > 1
+                            for cj_opt in product.options_with_values
+                              assign cj_opt_down = cj_opt.name | downcase
+                              if cj_opt.values.size != cj_parts.size
+                                continue
+                              endif
+                              if cj_opt_down contains 'material' or cj_opt_down contains 'метал' or cj_opt_down contains 'color' or cj_opt_down contains 'цвят'
+                                continue
+                              endif
+                              assign cj_sel = spec_variant.options[cj_opt.position | minus: 1]
+                              for cj_v in cj_opt.values
+                                if cj_v == cj_sel
+                                  assign cj_part = cj_parts[forloop.index0] | strip
+                                  assign cj_last = cj_parts.last | strip
+                                  unless cj_part contains ' '
+                                    if cj_last contains ' '
+                                      assign cj_unit = cj_last | split: ' ' | last
+                                      assign cj_part = cj_part | append: ' ' | append: cj_unit
+                                    endif
+                                  endunless
+                                  assign cj_value = cj_part
+                                endif
+                              endfor
+                              break
+                            endfor
+                          endif
                           capture cj_row
                             echo '<div class="product-specs__row"><dt class="product-specs__label">'
                             echo cj_label | escape
