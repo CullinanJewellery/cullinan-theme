@@ -9757,6 +9757,26 @@ html body .collection-hero.cj-hero--zodiac .collection-hero__description li {
   }
 }
 
+/* ===== Collection heading on warm greige (2026-11-23, owner: "use the thing you wrote") =====
+   A collection without a heading picture gets the stones band's warm greige (#F5F3EF, scheme-6) behind its title,
+   description and qualities, edge to edge, from under the header down to the filter bar's top line with no white
+   strip between: the grid's own top gap (24px, 18px on phones) moves into the band. Collections with a heading
+   picture keep the picture. Way back: delete this block. ===== */
+html body .collection-hero:not(.cj-hero--image) {
+  background: #f5f3ef;
+  padding-bottom: 2.4rem;
+}
+
+html body [id$='__banner']:has(.collection-hero:not(.cj-hero--image)) + [id$='__product-grid'] [class*='__product-grid-padding'] {
+  padding-top: 0;
+}
+
+@media screen and (min-width: 750px) {
+  html body .collection-hero:not(.cj-hero--image) {
+    padding-bottom: 3.2rem;
+  }
+}
+
 /* ===== Headings in Jost capitals, as moonmagic.com (2026-10-21, owner) =====
    The owner chose „moonmagic Jost“ (option В of the font comparison: Jost 500 in capitals, 0.06em tracking) for
    every heading and name: section titles, collection titles (Рубин), zodiac names, the workshop steps (Наш
