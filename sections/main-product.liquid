@@ -271,10 +271,10 @@
                 {%- when 'description' -%}
                   {%- comment -%}
                     2026-11-22 (owner): the „Детайли“ list of the description is not shown here; it is
-                    printed in „Качество и детайли“ (product_specs below). The text above it is cut to
-                    three lines with „Покажи повече“ ("it is too much"); the button only appears when
-                    the text is longer (assets/cj-description-more.js). Without the script the whole
-                    text shows.
+                    printed in „Качество и детайли“ (product_specs below). The text above it shows its
+                    first sentence, then „Прочетете повече“ opens the whole text (owner, 2026-11-23;
+                    three lines with „Покажи повече“ from 2026-11-22); the button only appears when
+                    there is more (assets/cj-description-more.js). Without the script the whole text shows.
                   {%- endcomment -%}
                   {%- assign cj_desc_intro = product.description | split: '<p><strong>Детайли</strong></p>' | first -%}
                   {%- if cj_desc_intro != blank -%}
@@ -286,11 +286,11 @@
                           class="cj-desc-more__toggle"
                           aria-controls="CjDesc-{{ section.id }}"
                           aria-expanded="false"
-                          data-more="Покажи повече"
+                          data-more="Прочетете повече"
                           data-less="Покажи по-малко"
                           hidden
                         >
-                          Покажи повече
+                          Прочетете повече
                         </button>
                       </cj-description-more>
                     </div>

@@ -1,8 +1,9 @@
 {%- comment -%}
   „Може да харесате също“ in the cart drawer (2026-11-23, owner: "we can add you may also like ... the place there is
   small so make everything fit good").
-  - A sideways strip of small cards (square picture, name, price), under the pieces, inside the scrolling list, so
-    the pinned total and „Към плащане“ never lose space to it.
+  - One white framed card at a time (picture left; name, price, „Разгледайте“ right), the next one peeking in, two
+    arrows beside the heading (second design, 2026-11-23, owner did not like the row of small squares); under the
+    pieces, inside the scrolling list, so the pinned total and „Към плащане“ never lose space to it.
   - Products: Shopify's related recommendations for the newest piece in the cart (cart.items.first), read from
     /recommendations/products.json. Pieces already in the cart, pieces at €0 and sold-out pieces are left out; at
     most 8. Nothing at all is drawn when none is left.
@@ -79,24 +80,53 @@
                 this.esc(p.url) +
                 '"><span class="cj-cart-recs__media">' +
                 pic +
-                '</span><span class="cj-cart-recs__name">' +
+                '</span><span class="cj-cart-recs__body"><span class="cj-cart-recs__name">' +
                 this.esc(p.title) +
                 '</span><span class="cj-cart-recs__price">' +
                 from +
                 this.money(p.price) +
-                '</span></a></li>'
+                '</span><span class="cj-cart-recs__cta" aria-hidden="true">Разгледайте</span></span></a></li>'
               );
             })
             .join('');
           const h = this.esc(this.dataset.heading);
+          const arrow = (dir, label, d) =>
+            '<button type="button" class="cj-cart-recs__arrow" data-dir="' + dir + '" aria-label="' + label +
+            '"><svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="' +
+            d + '"/></svg></button>';
+          const arrows =
+            list.length > 1
+              ? '<div class="cj-cart-recs__arrows">' +
+                arrow('-1', 'Предишно', 'M10 3 5 8l5 5') +
+                arrow('1', 'Следващо', 'M6 3l5 5-5 5') +
+                '</div>'
+              : '';
           this.innerHTML =
-            '<h3 class="cj-cart-recs__heading">' +
+            '<div class="cj-cart-recs__head"><h3 class="cj-cart-recs__heading">' +
             h +
-            '</h3><ul class="cj-cart-recs__list" role="list" aria-label="' +
+            '</h3>' +
+            arrows +
+            '</div><ul class="cj-cart-recs__list" role="list" aria-label="' +
             h +
             '">' +
             cards +
             '</ul>';
+          const ul = this.querySelector('.cj-cart-recs__list');
+          const btns = this.querySelectorAll('.cj-cart-recs__arrow');
+          const sync = () => {
+            if (!btns.length) return;
+            btns[0].disabled = ul.scrollLeft <= 2;
+            btns[1].disabled = ul.scrollLeft + ul.clientWidth >= ul.scrollWidth - 2;
+          };
+          btns.forEach((b) =>
+            b.addEventListener('click', () => {
+              const item = ul.querySelector('.cj-cart-recs__item');
+              const step = item ? item.getBoundingClientRect().width + 10 : ul.clientWidth;
+              ul.scrollBy({ left: step * Number(b.dataset.dir), behavior: 'smooth' });
+            })
+          );
+          ul.addEventListener('scroll', sync, { passive: true });
+          requestAnimationFrame(sync);
           this.hidden = false;
         }
       }

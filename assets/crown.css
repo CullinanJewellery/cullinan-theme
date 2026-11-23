@@ -4003,7 +4003,8 @@ card-swatches {
 }
 
 .product .product__description {
-  font-size: 1.4rem;
+  /* 13px since 2026-11-23 (owner: "make the text for the description smaller"); 14px before */
+  font-size: 1.3rem;
 }
 /* ---------------------------------------------------------------------------
    Buy box: the words in black, and a tighter top
@@ -10391,15 +10392,15 @@ html:has(dialog.cj-drawer[open]) {
   margin: 0 0 0.4rem;
 }
 
-/* The description above the price: three lines, then „Покажи повече“
-   (owner, 2026-11-22: "the text ... should be with show more").
-   assets/cj-description-more.js adds .is-clamped only when the text is longer. */
-.cj-desc-more__text.is-clamped {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
-  line-clamp: 3;
-  overflow: hidden;
+/* The description above the price: its first sentence, then „Прочетете повече“, which opens the whole text
+   (owner, 2026-11-23; three lines with „Покажи повече“ from 2026-11-22). assets/cj-description-more.js writes the
+   sentence into .cj-desc-more__lead and hides the full text only when there is more than that sentence. */
+.cj-desc-more__lead {
+  margin: 0;
+}
+
+.cj-desc-more.is-short .cj-desc-more__text {
+  display: none;
 }
 
 .cj-desc-more__text > :last-child {
@@ -10434,12 +10435,13 @@ html:has(dialog.cj-drawer[open]) {
    make the eye see it": the site's ruby #D62246 (hero button, homepage trust row) on the trust row's ruby wash.
    A ruby badge with a parcel (a check from €500), „Остават ви €X до безплатна доставка“ with the amount in ruby, the
    carriers on a second line, then a 6px bar in ruby with „€500“ at its end; a soft shine runs along the fill.
+   Smaller on 2026-11-23 (owner: "to big for both phone and computer"): 13px text, 26px badge, 4px bar, tighter box.
    Way back: git history of this block (espresso-to-gold on greige before), or delete it and the render in
    sections/main-product.liquid. ===== */
 html body .cj-free-delivery {
   display: block;
-  margin: 1.4rem 0 0.6rem;
-  padding: 1.3rem 1.5rem 1.2rem;
+  margin: 1rem 0 0.4rem;
+  padding: 0.9rem 1.2rem 1rem;
   background: linear-gradient(135deg, #fdf3f4 0%, #f8e1e5 100%);
   border: 1px solid #f0c9d1;
   color: #2a1e1a;
@@ -10448,7 +10450,7 @@ html body .cj-free-delivery {
 html body .cj-free-delivery__row {
   display: flex;
   align-items: center;
-  gap: 1.1rem;
+  gap: 0.9rem;
 }
 
 html body .cj-free-delivery__badge {
@@ -10456,8 +10458,8 @@ html body .cj-free-delivery__badge {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 3.2rem;
-  height: 3.2rem;
+  width: 2.6rem;
+  height: 2.6rem;
   border-radius: 50%;
   background: #d62246;
   color: #ffffff;
@@ -10478,8 +10480,8 @@ html body .cj-free-delivery__copy {
 
 html body .cj-free-delivery__text {
   margin: 0;
-  font-size: 1.45rem;
-  line-height: 1.35;
+  font-size: 1.3rem;
+  line-height: 1.3;
   letter-spacing: 0.01em;
   color: #2a1e1a;
 }
@@ -10490,16 +10492,16 @@ html body .cj-free-delivery__text strong {
 }
 
 html body .cj-free-delivery__note {
-  margin: 0.2rem 0 0;
-  font-size: 1.2rem;
+  margin: 0.1rem 0 0;
+  font-size: 1.1rem;
   line-height: 1.35;
   color: rgba(42, 30, 26, 0.72);
 }
 
 html body .cj-free-delivery__track {
   position: relative;
-  height: 0.6rem;
-  margin: 1.2rem 3.8rem 0 0;
+  height: 0.4rem;
+  margin: 0.8rem 3.6rem 0 0;
   background: #f1c9d1;
 }
 
@@ -10533,7 +10535,7 @@ html body .cj-free-delivery__goal {
   left: 100%;
   margin-left: 0.8rem;
   transform: translateY(-50%);
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 600;
   line-height: 1;
   color: #c41d3f;
@@ -10548,4 +10550,10 @@ html body .cj-free-delivery__goal {
     animation: none;
     display: none;
   }
+}
+
+/* the parcel and the tick inside the smaller badge (2026-11-23) */
+html body .cj-free-delivery__badge svg {
+  width: 1.3rem;
+  height: 1.3rem;
 }

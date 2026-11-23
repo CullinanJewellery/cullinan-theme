@@ -8,6 +8,23 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-23 — Cart drawer lighter, new „Може да харесате също“, smaller delivery bar, description „Прочетете повече“ **(owner)**
+- Owner: remove the note under „Към плащане“ and move the button "a little bit down"; remove the three lines above
+  „Общо“; more space between the pieces and „Може да харесате също“ ("don't over do it"); "i don't think i like
+  design for може да харесате също"; the free delivery bar "to big for both phone and computer"; the description:
+  "the first sentence apear then ... прочете повече"; "make the text for the description smaller".
+- Drawer (`snippets/cart-drawer.liquid`, `assets/cullinan-cart.css`): tax note and the reassurance list no longer
+  rendered (settings cart_trust_1..3 kept); the button's foot 52px above the panel's foot (87px with the note); 20px
+  between the last piece and the strip.
+- `snippets/cj-cart-recs.liquid`, second design after moonmagic's bag: one white framed card at a time (84% wide, the
+  next peeking), picture 84px left, name, price and a small black „Разгледайте“ right, two square arrows beside the
+  heading (disabled at the ends); lilac ground #F7EFF5 kept.
+- Free delivery bar (`assets/crown.css`): text 14.5 → 13px, note 12 → 11px, badge 32 → 26px, bar 6 → 4px, box padding
+  13/15 → 9/12px.
+- Description: first sentence, then „Прочетете повече“ (the polite form the site uses; the owner wrote „прочете“),
+  „Покажи по-малко“ when open (`assets/cj-description-more.js`, `sections/main-product.liquid`); text 14 → 13px.
+- Way back: git history of these files.
+
 ## 2026-11-23 — „Може да харесате също“ on soft lilac pink **(owner)**
 - Owner: the strip's background "purplepink but whiter and soft or choose a cooler that would fit better": #F7EFF5
   (was #FAF8F5), hairline #EADBE6; the empty picture square is the photos' own #FCFBFC so photos sit cleanly on it.
