@@ -638,8 +638,22 @@
                                   {%- endif -%}
                                 {%- endfor -%}
                               {%- endcapture -%}
-                              {%- if spec_rows != blank or cj_detail_rows != blank -%}
-                                <dl class="product-specs">{{ spec_rows }}{{ cj_detail_rows }}</dl>
+                              {%- comment -%}
+                                2026-11-23 (owner: the item numbers from the old site, „if shopify has something
+                                for item number you can add this there“): Shopify's item number is the variant's
+                                SKU, so the old catalogue code („Артикулен №“ on studio-cullinan.com) is kept there
+                                and shown as the last row. It follows the selected variant like the other rows.
+                              {%- endcomment -%}
+                              {%- capture cj_sku_row -%}
+                                {%- if spec_variant.sku != blank -%}
+                                  <div class="product-specs__row">
+                                    <dt class="product-specs__label">Артикулен номер</dt>
+                                    <dd class="product-specs__value">{{ spec_variant.sku | escape }}</dd>
+                                  </div>
+                                {%- endif -%}
+                              {%- endcapture -%}
+                              {%- if spec_rows != blank or cj_detail_rows != blank or cj_sku_row != blank -%}
+                                <dl class="product-specs">{{ spec_rows }}{{ cj_detail_rows }}{{ cj_sku_row }}</dl>
                               {%- endif -%}
                               {%- if cj_detail_notes != blank -%}
                                 <ul class="product-specs__notes">{{ cj_detail_notes }}</ul>
