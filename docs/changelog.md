@@ -8,6 +8,21 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-23 — Collection descriptions rewritten like the zodiacs; Пръстени without its picture **(owner)**
+- Owner on the first set: should read like the zodiacs, built on the collection's own title; no 3D model or Veliko
+  Tarnovo (kept „Дамски пръстени“ minus the 3D sentence); evocative and for women, as moonmagic.com writes its
+  collections („Earrings for Every Mood“), and for men where a piece is for men; I choose where the three qualities
+  go; metal never gold alone, silver too.
+- The 29 texts (Shopify admin, collection Description) are now „[Title] е/са **…**. One sentence.“; three qualities
+  only where the collection has a meaning (Богородици, Вяра и закрила, Кръстове, Червен конец с кръст and the
+  „с перли“ / „с циркони“ collections, using Перли's and Циркони's qualities); categories and sets have none.
+  Аксесоари speaks to her (brooch) and him (tie pin). Every text is kept in `docs/collection-descriptions.json`
+  (collection id → HTML) so it can be restored or reused; the first set of the same day is superseded.
+- Пръстени: its collection image (a pink marble picture, admin thumbnail 8cada0f5da411a64e756606bb036f1ed) removed in
+  admin, so its heading is the greige band like every other collection. Way back: add an image to the collection.
+- Checked on the draft theme, phone 375 (Пръстени, Кръстове, Обеци с перли, Аксесоари) and computer: no
+  sideways scroll, qualities in one row; storefront data: no description mentions 3D or Велико Търново.
+
 ## 2026-11-23 — A description for every collection; zodiac dots in each sign's colour **(owner)**
 - Owner: descriptions for all collections, existing ones kept; fix the text position and check phones; the three
   quality dots a different colour for every zodiac sign.
