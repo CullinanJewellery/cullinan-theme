@@ -700,6 +700,10 @@ cart-drawer cart-drawer-items {
   /* 2026-11-23 (owner): the footer back at the foot of the panel; see „Footer at the foot“ at the end */
   flex: 1 1 auto;
   min-height: 0;
+  /* the strip bleeds into the side paddings; no sideways scrollbar for the whole list */
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-width: thin;
 }
 
 /* The unit price on /cart, shown only from two pieces up (sections/main-cart-items.liquid),
