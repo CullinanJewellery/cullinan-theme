@@ -28,6 +28,11 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 - Not yet in `tools/products-csv.py` (a reimport would drop SKUs and these weights; take them from `docs/item-numbers.md`).
 - Way back: clear the SKU column in the bulk editor; delete the „Тегло“ line in those descriptions; remove the
   `cj_sku_row` capture in `main-product.liquid`.
+- Owner's answers (same day): Орбита – обеци are 2687 (SKU added). Червен конец – кръст с камък is not 2469 (left
+  blank). Zodiac codes 1919/1870: the owner will check. Плочка: its weights were already in the description
+  („0,85 / 1,05 г“, my check missed them); the owner wants the figure to follow the chosen plate, so a details value
+  written „a / b“ or „a или b“ now shows only the selected option's figure (18 мм → 0,85 г and 18,3 мм; 21 мм → 1,05 г
+  and 21,3 мм). Only that piece has such values. Way back: remove the `cj_parts` block in `main-product.liquid`.
 
 ## 2026-11-22 — Every piece in its stone and theme collections **(owner)**
 - Owner: "i said twice that i want every jewelry to be in his collection why aren't they in". The kind collections
