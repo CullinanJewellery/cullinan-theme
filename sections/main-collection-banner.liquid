@@ -48,6 +48,38 @@
   endif
 -%}
 {%- capture cj_stone_colour -%}{%- render 'cj-menu-stone', handle: collection.handle, part: 'colour' -%}{%- endcapture -%}
+{%- comment -%}
+  2026-11-23 (owner): each zodiac sign's three qualities get dots in the sign's own colour (the colour usually linked
+  with the sign, toned to the palette). Only the dots use it: a sign has no coloured meaning beside its name.
+{%- endcomment -%}
+{%- liquid
+  case collection.handle
+    when 'овен'
+      assign cj_stone_colour = '#b3362f'
+    when 'телец'
+      assign cj_stone_colour = '#4f7f4b'
+    when 'близнаци'
+      assign cj_stone_colour = '#c9a227'
+    when 'рак'
+      assign cj_stone_colour = '#8fa1b5'
+    when 'лъв'
+      assign cj_stone_colour = '#d97b29'
+    when 'дева'
+      assign cj_stone_colour = '#8a7f3a'
+    when 'везни'
+      assign cj_stone_colour = '#d08ea0'
+    when 'скорпион'
+      assign cj_stone_colour = '#6e1f3c'
+    when 'стрелец'
+      assign cj_stone_colour = '#6b4194'
+    when 'козирог'
+      assign cj_stone_colour = '#6a5444'
+    when 'водолей'
+      assign cj_stone_colour = '#2f86b0'
+    when 'риби'
+      assign cj_stone_colour = '#3f9488'
+  endcase
+-%}
 <div{% if cj_stone_colour != blank %} style="--cj-stone-colour: {{ cj_stone_colour }};"{% endif %} class="collection-hero{% if section.settings.show_collection_image and collection.image %} collection-hero--with-image{% endif %}{% if cj_hero_image != blank %} cj-hero--image{% endif %}{% if cj_is_zodiac %} cj-hero--zodiac{% endif %} color-{{ section.settings.color_scheme }} gradient">
   {%- if cj_hero_image != blank -%}
     {{

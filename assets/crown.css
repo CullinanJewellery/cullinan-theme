@@ -9700,45 +9700,51 @@ html body .collection-hero.cj-hero--zodiac .collection-hero__description li {
   white-space: nowrap;
 }
 
+/* 2026-11-23, later (owner: "if the position of the text is not good fix that and look how it looks on phone"):
+   the phone layout above, first made for the zodiacs, now holds for every collection heading (stones, categories,
+   sets, the text under a heading picture): centred, 15px text with balanced lines, qualities in one centred row.
+   Way back: put `.cj-hero--zodiac` back after `.collection-hero` in the two phone blocks below. */
 @media screen and (max-width: 749px) {
-  html body .collection-hero.cj-hero--zodiac .collection-hero__text-wrapper {
+  html body .collection-hero .collection-hero__text-wrapper {
     text-align: center;
   }
 
-  html body .collection-hero.cj-hero--zodiac .collection-hero__title + .collection-hero__description {
+  html body .collection-hero .collection-hero__title + .collection-hero__description {
     margin: 1rem auto 0;
     font-size: 1.5rem;
     line-height: 1.6;
   }
 
-  html body .collection-hero.cj-hero--zodiac .collection-hero__description p {
+  html body .collection-hero .collection-hero__description p {
     text-wrap: balance;
   }
 
-  html body .collection-hero.cj-hero--zodiac .collection-hero__description ul {
+  html body .collection-hero .collection-hero__description ul {
     justify-content: center;
+    flex-wrap: nowrap;
     gap: 0 1.8rem;
     margin-top: 1.4rem;
   }
 
-  html body .collection-hero.cj-hero--zodiac .collection-hero__description li {
+  html body .collection-hero .collection-hero__description li {
     gap: 0.6rem;
+    white-space: nowrap;
     font-size: 1.1rem;
     letter-spacing: 0.08em;
   }
 
-  html body .collection-hero.cj-hero--zodiac .collection-hero__description li::before {
+  html body .collection-hero .collection-hero__description li::before {
     width: 0.5rem;
     height: 0.5rem;
   }
 }
 
 @media screen and (max-width: 359px) {
-  html body .collection-hero.cj-hero--zodiac .collection-hero__description ul {
+  html body .collection-hero .collection-hero__description ul {
     gap: 0 1.2rem;
   }
 
-  html body .collection-hero.cj-hero--zodiac .collection-hero__description li {
+  html body .collection-hero .collection-hero__description li {
     gap: 0.5rem;
     letter-spacing: 0.04em;
   }
