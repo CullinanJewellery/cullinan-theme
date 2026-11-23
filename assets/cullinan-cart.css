@@ -775,7 +775,7 @@ cart-drawer cart-drawer-items {
   border-bottom: 0;
 }
 
-/* the form is a wrapping flex row; without this the strip's width pushed the whole list wider */
+/* the form is a wrapping flex row; without this the strip's width pushed the whole list wider (re-sent) */
 #CartDrawer .drawer__contents {
   flex: 1 1 100%;
   min-width: 0;
