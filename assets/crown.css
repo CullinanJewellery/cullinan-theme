@@ -10430,58 +10430,122 @@ html:has(dialog.cj-drawer[open]) {
 }
 
 /* ===== Free delivery bar (2026-11-23, owner, after moonmagic.com's birth-chart bar) =====
-   Under the product price (snippets/cj-free-delivery.liquid): a greige box, square corners as the rest of the site,
-   a small parcel icon and one line („Остават ви €X до безплатна доставка“), then a thin bar filling from espresso to
-   gold. Way back: delete this block and the render in sections/main-product.liquid. ===== */
+   Under the product price (snippets/cj-free-delivery.liquid). Owner: "change the color that will look good and we
+   make the eye see it": the site's ruby #D62246 (hero button, homepage trust row) on the trust row's ruby wash.
+   A ruby badge with a parcel (a check from €500), „Остават ви €X до безплатна доставка“ with the amount in ruby, the
+   carriers on a second line, then a 6px bar in ruby with „€500“ at its end; a soft shine runs along the fill.
+   Way back: git history of this block (espresso-to-gold on greige before), or delete it and the render in
+   sections/main-product.liquid. ===== */
 html body .cj-free-delivery {
   display: block;
-  margin: 1.2rem 0 0.4rem;
-  padding: 1.1rem 1.4rem 1.3rem;
-  background: #f5f3ef;
-  border: 1px solid #e8e1da;
+  margin: 1.4rem 0 0.6rem;
+  padding: 1.3rem 1.5rem 1.2rem;
+  background: linear-gradient(135deg, #fdf3f4 0%, #f8e1e5 100%);
+  border: 1px solid #f0c9d1;
   color: #2a1e1a;
 }
 
 html body .cj-free-delivery__row {
   display: flex;
   align-items: center;
-  gap: 0.9rem;
+  gap: 1.1rem;
 }
 
-html body .cj-free-delivery__icon {
+html body .cj-free-delivery__badge {
   flex: 0 0 auto;
-  color: #8c6a2e;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: 50%;
+  background: #d62246;
+  color: #ffffff;
+}
+
+html body .cj-free-delivery__icon--check,
+html body .cj-free-delivery.is-free .cj-free-delivery__icon--parcel {
+  display: none;
+}
+
+html body .cj-free-delivery.is-free .cj-free-delivery__icon--check {
+  display: block;
+}
+
+html body .cj-free-delivery__copy {
+  min-width: 0;
 }
 
 html body .cj-free-delivery__text {
   margin: 0;
-  font-size: 1.35rem;
-  line-height: 1.4;
+  font-size: 1.45rem;
+  line-height: 1.35;
   letter-spacing: 0.01em;
+  color: #2a1e1a;
 }
 
 html body .cj-free-delivery__text strong {
   font-weight: 600;
-  color: #000000;
+  color: #c41d3f;
+}
+
+html body .cj-free-delivery__note {
+  margin: 0.2rem 0 0;
+  font-size: 1.2rem;
+  line-height: 1.35;
+  color: rgba(42, 30, 26, 0.72);
 }
 
 html body .cj-free-delivery__track {
-  height: 0.4rem;
-  margin-top: 1rem;
-  background: #e5ddd6;
-  overflow: hidden;
+  position: relative;
+  height: 0.6rem;
+  margin: 1.2rem 3.8rem 0 0;
+  background: #f1c9d1;
 }
 
 html body .cj-free-delivery__fill {
+  position: relative;
   display: block;
   height: 100%;
   width: 0;
-  background: linear-gradient(90deg, #2a1e1a 0%, #8c6a2e 100%);
-  transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  overflow: hidden;
+  background: linear-gradient(90deg, #b51c3b 0%, #d62246 100%);
+  transition: width 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html body .cj-free-delivery__fill::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.55) 50%, transparent 100%);
+  transform: translateX(-100%);
+  animation: cj-fd-shine 2.8s ease-in-out 0.6s infinite;
+}
+
+@keyframes cj-fd-shine {
+  0% { transform: translateX(-100%); }
+  55%, 100% { transform: translateX(100%); }
+}
+
+html body .cj-free-delivery__goal {
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  margin-left: 0.8rem;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1;
+  color: #c41d3f;
+  font-variant-numeric: tabular-nums;
 }
 
 @media (prefers-reduced-motion: reduce) {
   html body .cj-free-delivery__fill {
     transition: none;
+  }
+  html body .cj-free-delivery__fill::after {
+    animation: none;
+    display: none;
   }
 }

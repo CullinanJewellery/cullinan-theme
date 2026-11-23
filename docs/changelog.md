@@ -8,6 +8,13 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-23 — Free delivery bar in ruby **(owner)**
+- Owner: "change the color that will look good and we make the eye see it also if you think you can make that thing
+  better than moomagic design make it happen". The bar takes the site's ruby #D62246 (hero button, trust row) on the
+  trust row's ruby wash; amount in ruby #C41D3F. Beyond moonmagic: a round ruby badge whose parcel turns into a check
+  at €500, a second line „С Еконт или Спиди до офис или адрес“ (a stated fact), „€500“ written at the end of the bar,
+  a soft shine along the fill (off under reduced motion). Way back: git history of the crown.css block and the snippet.
+
 ## 2026-11-23 — Free delivery bar counts only the cart **(owner)**
 - Owner, with an empty cart: "it should be zero there why is there money i don't have anything in the shoping car".
   The bar no longer adds the piece on screen (moonmagic's way); it shows only the cart: empty cart = empty bar,
