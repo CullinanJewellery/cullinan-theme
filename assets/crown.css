@@ -9687,23 +9687,26 @@ html body .collection-hero.cj-hero--image .collection-hero__description li::befo
    balanced lines (no single word left on the last line), the qualities 11px in one row that never wraps (the
    longest set, Постоянство · Спокойствие · Вярност, measured 307px at 375; tighter letters under 360px).
    Stone collections are unchanged. Way back: delete this block and the class in the section. ===== */
-html body .collection-hero.cj-hero--zodiac .collection-hero__description p {
+html body .collection-hero .collection-hero__description p {
   text-wrap: pretty;
 }
 
-html body .collection-hero.cj-hero--zodiac .collection-hero__description ul {
+html body .collection-hero .collection-hero__description ul {
   flex-wrap: nowrap;
   gap: 0 2.8rem;
 }
 
-html body .collection-hero.cj-hero--zodiac .collection-hero__description li {
+html body .collection-hero .collection-hero__description li {
   white-space: nowrap;
 }
 
 /* 2026-11-23, later (owner: "if the position of the text is not good fix that and look how it looks on phone"):
    the phone layout above, first made for the zodiacs, now holds for every collection heading (stones, categories,
    sets, the text under a heading picture): centred, 15px text with balanced lines, qualities in one centred row.
-   Way back: put `.cj-hero--zodiac` back after `.collection-hero` in the two phone blocks below. */
+   Way back: put `.cj-hero--zodiac` back after `.collection-hero` in the two phone blocks below.
+   Later the same day (owner: „the three points in one row“): also on computers every collection with qualities
+   (stones, faith, red thread, „с перли“ / „с циркони“) shows them in one row under the text, as the zodiacs, instead
+   of two columns beside it; the base and 990px rules here lost `.cj-hero--zodiac` too. Way back: put it back. */
 @media screen and (max-width: 749px) {
   html body .collection-hero .collection-hero__text-wrapper {
     text-align: center;
@@ -9751,12 +9754,12 @@ html body .collection-hero.cj-hero--zodiac .collection-hero__description li {
 }
 
 @media screen and (min-width: 990px) {
-  html body .collection-hero.cj-hero--zodiac .collection-hero__title + .collection-hero__description:has(ul) {
+  html body .collection-hero .collection-hero__title + .collection-hero__description:has(ul) {
     display: block;
     max-width: 66rem;
   }
 
-  html body .collection-hero.cj-hero--zodiac .collection-hero__description:has(ul) > ul {
+  html body .collection-hero .collection-hero__description:has(ul) > ul {
     display: flex;
     gap: 0 3.2rem;
     margin: 1.6rem 0 0;
