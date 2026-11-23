@@ -302,6 +302,16 @@
               >
                 {% assign skip_card_product_styles = false %}
                 {%- assign cj_seen = ',' -%}
+                {%- comment -%}
+                  Collection extras (owner, 2026-11-23, after moonmagic): the light tile after the 4th piece, the
+                  dark one after the 10th, on the first page only; snippets/cj-collection-extras.liquid.
+                {%- endcomment -%}
+                {%- assign cj_n = 0 -%}
+                {%- assign cj_total = collection.products.size -%}
+                {%- assign cj_extras = false -%}
+                {%- if paginate.current_page == 1 -%}
+                  {%- assign cj_extras = true -%}
+                {%- endif -%}
                 {%- for product in collection.products -%}
                   {%- if cj_sets_page -%}
                     {%- assign cj_set = product.metafields.custom.komplekt.value -%}
@@ -320,6 +330,14 @@
                       >
                         {%- render 'cj-set-card', set: cj_set -%}
                       </li>
+                      {%- assign cj_n = cj_n | plus: 1 -%}
+                      {%- if cj_extras -%}
+                        {%- if cj_n == 4 and cj_total > 4 -%}
+                          {%- render 'cj-collection-extras', part: 'trust' -%}
+                        {%- elsif cj_n == 10 and cj_total > 10 -%}
+                          {%- render 'cj-collection-extras', part: 'quality' -%}
+                        {%- endif -%}
+                      {%- endif -%}
                       {%- continue -%}
                     {%- endif -%}
                   {%- endif -%}
@@ -349,12 +367,30 @@
                     %}
                   </li>
                   {%- assign skip_card_product_styles = true -%}
+                  {%- assign cj_n = cj_n | plus: 1 -%}
+                  {%- if cj_extras -%}
+                    {%- if cj_n == 4 and cj_total > 4 -%}
+                      {%- render 'cj-collection-extras', part: 'trust' -%}
+                    {%- elsif cj_n == 10 and cj_total > 10 -%}
+                      {%- render 'cj-collection-extras', part: 'quality' -%}
+                    {%- endif -%}
+                  {%- endif -%}
                 {%- endfor -%}
+                {%- if cj_extras and cj_n > 0 and cj_n <= 4 -%}
+                  {%- comment -%} a small collection: the light tile closes the last row {%- endcomment -%}
+                  {%- render 'cj-collection-extras', part: 'trust' -%}
+                {%- endif -%}
               </ul>
 
               {%- if paginate.pages > 1 -%}
                 {% render 'pagination', paginate: paginate, anchor: '' %}
               {%- endif -%}
+              {%- if paginate.next == blank -%}
+                {%- render 'cj-collection-extras', part: 'end' -%}
+              {%- endif -%}
+            </div>
+            <div class="page-width cj-coll-strip-wrap">
+              {%- render 'cj-collection-extras', part: 'strip' -%}
             </div>
           {%- endif -%}
         </div>
