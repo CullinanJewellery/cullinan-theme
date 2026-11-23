@@ -787,8 +787,9 @@ cart-drawer cart-drawer-items {
   min-width: 0;
   margin: 0 -2.4rem;
   padding: 1.8rem 0 2.4rem;
-  background: #faf8f5;
-  border-top: 0.1rem solid rgba(var(--color-foreground), 0.12);
+  /* a soft, whitened lilac pink (owner, 2026-11-23: "purplepink but whiter and soft"); #FAF8F5 before */
+  background: #f7eff5;
+  border-top: 0.1rem solid #eadbe6;
 }
 
 .cj-cart-recs[hidden] {
@@ -837,7 +838,7 @@ cart-drawer cart-drawer-items {
   display: block;
   aspect-ratio: 1 / 1;
   overflow: hidden;
-  background: rgb(240 232 226);
+  background: #fcfbfc;
 }
 
 .cj-cart-recs__media img {

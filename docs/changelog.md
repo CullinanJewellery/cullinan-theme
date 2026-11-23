@@ -8,6 +8,11 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-23 — „Може да харесате също“ on soft lilac pink **(owner)**
+- Owner: the strip's background "purplepink but whiter and soft or choose a cooler that would fit better": #F7EFF5
+  (was #FAF8F5), hairline #EADBE6; the empty picture square is the photos' own #FCFBFC so photos sit cleanly on it.
+  Name 10.9:1, labels 7:1 on it. Way back: the two colours in `assets/cullinan-cart.css` „.cj-cart-recs“.
+
 ## 2026-11-23 — „Към плащане“ placed like moonmagic's CHECKOUT **(owner)**
 - Owner: "към плащане now is to much at the end and make it like moonmagic (just where it is placed)". Measured live:
   moonmagic's bag ends total → CHECKOUT → payment logos, the button's foot about 85px above the screen's foot. Ours:
