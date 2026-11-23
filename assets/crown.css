@@ -9679,6 +9679,84 @@ html body .collection-hero.cj-hero--image .collection-hero__description li::befo
   }
 }
 
+/* ===== Zodiac collections: heading (2026-11-23, owner) =====
+   Owner: the three qualities of a sign (СМЕЛОСТ · ЕНЕРГИЯ · НАЧАЛО) in one row everywhere, and the phone text was
+   too big and badly placed. For the twelve signs and „Зодии“ (class cj-hero--zodiac, sections/main-collection-banner
+   .liquid) the stone layout above is replaced: computers keep the name and text on the left with the qualities in
+   one row under the text (not two columns beside it); phones centre name, text and qualities, the text 15px with
+   balanced lines (no single word left on the last line), the qualities 11px in one row that never wraps (the
+   longest set, Постоянство · Спокойствие · Вярност, measured 307px at 375; tighter letters under 360px).
+   Stone collections are unchanged. Way back: delete this block and the class in the section. ===== */
+html body .collection-hero.cj-hero--zodiac .collection-hero__description p {
+  text-wrap: pretty;
+}
+
+html body .collection-hero.cj-hero--zodiac .collection-hero__description ul {
+  flex-wrap: nowrap;
+  gap: 0 2.8rem;
+}
+
+html body .collection-hero.cj-hero--zodiac .collection-hero__description li {
+  white-space: nowrap;
+}
+
+@media screen and (max-width: 749px) {
+  html body .collection-hero.cj-hero--zodiac .collection-hero__text-wrapper {
+    text-align: center;
+  }
+
+  html body .collection-hero.cj-hero--zodiac .collection-hero__title + .collection-hero__description {
+    margin: 1rem auto 0;
+    font-size: 1.5rem;
+    line-height: 1.6;
+  }
+
+  html body .collection-hero.cj-hero--zodiac .collection-hero__description p {
+    text-wrap: balance;
+  }
+
+  html body .collection-hero.cj-hero--zodiac .collection-hero__description ul {
+    justify-content: center;
+    gap: 0 1.8rem;
+    margin-top: 1.4rem;
+  }
+
+  html body .collection-hero.cj-hero--zodiac .collection-hero__description li {
+    gap: 0.6rem;
+    font-size: 1.1rem;
+    letter-spacing: 0.08em;
+  }
+
+  html body .collection-hero.cj-hero--zodiac .collection-hero__description li::before {
+    width: 0.5rem;
+    height: 0.5rem;
+  }
+}
+
+@media screen and (max-width: 359px) {
+  html body .collection-hero.cj-hero--zodiac .collection-hero__description ul {
+    gap: 0 1.2rem;
+  }
+
+  html body .collection-hero.cj-hero--zodiac .collection-hero__description li {
+    gap: 0.5rem;
+    letter-spacing: 0.04em;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  html body .collection-hero.cj-hero--zodiac .collection-hero__title + .collection-hero__description:has(ul) {
+    display: block;
+    max-width: 66rem;
+  }
+
+  html body .collection-hero.cj-hero--zodiac .collection-hero__description:has(ul) > ul {
+    display: flex;
+    gap: 0 3.2rem;
+    margin: 1.6rem 0 0;
+  }
+}
+
 /* ===== Headings in Jost capitals, as moonmagic.com (2026-10-21, owner) =====
    The owner chose „moonmagic Jost“ (option В of the font comparison: Jost 500 in capitals, 0.06em tracking) for
    every heading and name: section titles, collection titles (Рубин), zodiac names, the workshop steps (Наш

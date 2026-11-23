@@ -37,9 +37,18 @@
     endif
   endif
   assign cj_hero_focal = 'object-position: ' | append: cj_hero_image.presentation.focal_point
+  comment
+    2026-11-23 (owner): the twelve zodiac collections and „Зодии“ get their own heading layout
+    (crown.css „Zodiac collections: heading“): the three qualities always in one row, centred on phones.
+  endcomment
+  assign cj_zodiac_handles = 'зодии,овен,телец,близнаци,рак,лъв,дева,везни,скорпион,стрелец,козирог,водолей,риби' | split: ','
+  assign cj_is_zodiac = false
+  if cj_zodiac_handles contains collection.handle
+    assign cj_is_zodiac = true
+  endif
 -%}
 {%- capture cj_stone_colour -%}{%- render 'cj-menu-stone', handle: collection.handle, part: 'colour' -%}{%- endcapture -%}
-<div{% if cj_stone_colour != blank %} style="--cj-stone-colour: {{ cj_stone_colour }};"{% endif %} class="collection-hero{% if section.settings.show_collection_image and collection.image %} collection-hero--with-image{% endif %}{% if cj_hero_image != blank %} cj-hero--image{% endif %} color-{{ section.settings.color_scheme }} gradient">
+<div{% if cj_stone_colour != blank %} style="--cj-stone-colour: {{ cj_stone_colour }};"{% endif %} class="collection-hero{% if section.settings.show_collection_image and collection.image %} collection-hero--with-image{% endif %}{% if cj_hero_image != blank %} cj-hero--image{% endif %}{% if cj_is_zodiac %} cj-hero--zodiac{% endif %} color-{{ section.settings.color_scheme }} gradient">
   {%- if cj_hero_image != blank -%}
     {{
       cj_hero_image
