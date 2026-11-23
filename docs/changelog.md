@@ -8,6 +8,12 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-23 — Checkout delivery: free from €500 **(owner)**
+- Owner: "Checkout still has the old rate: fix that". Admin → Markets → Bulgaria → Shipping → „Стандартна“: prices
+  switched from BGN to the store currency EUR; price лв.8.99 → €4.60 (the same amount at 1.95583, since the owner has
+  given no price below €500); free shipping minimum лв.70 → €500. 3–5 business days unchanged. Checkout now matches
+  the free delivery bar. Way back: the same screen, „Set prices in“ BGN, 8.99 and 70.
+
 ## 2026-11-23 — Free delivery bar in ruby **(owner)**
 - Owner: "change the color that will look good and we make the eye see it also if you think you can make that thing
   better than moomagic design make it happen". The bar takes the site's ruby #D62246 (hero button, trust row) on the

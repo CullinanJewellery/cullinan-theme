@@ -12,7 +12,7 @@ Read in the owner's signed-in admin at the owner's request. Order = what blocks 
 | # | Area | Found | Needed (owner decides; checkout/payments only with the owner's OK) |
 |---|---|---|---|
 | 1 | Payments | Shopify Payments "Complete setup"; PayPal "Setup incomplete"; **Manual payment methods empty: no cash on delivery** | No order can be paid. Add COD (Manual → Cash on delivery) and/or finish Shopify Payments with the company (ЕООД registered 12.11.2026); then a test order |
-| 2 | Shipping | One rate „Стандартна“ **лв.8.99, free from лв.70**, 3–5 business days (leva, old) | Rates in EUR; free over €500 (site says so); a price below €500 (owner to give); maybe office vs address and made-to-order time |
+| 2 | Shipping | One rate „Стандартна“ **€4.60, free from €500**, 3–5 business days (2026-11-23, owner: "fix that"; €4.60 = the old лв.8.99 at 1.95583, prices now set in EUR) | A real price below €500 (owner to give); maybe office vs address and made-to-order time (10–15 days) |
 | 3 | Checkout | Shipping phone **optional**; company/VAT fields off | Phone required (Econt/Speedy call the customer) |
 | 4 | Store details | "Add business details" open; entity "My Store - entity"; address without вх./ет./ап. | Company „Кулинан Джулари“ ЕООД, ЕИК 208990435, full seat address |
 | 5 | Policies | All six **published**, texts are our drafts (refund dated 16.11.2026) | Accountant's check still not confirmed |
@@ -111,7 +111,7 @@ payment-provider or checkout setting is to be changed from here.**
 | Decision | Why it matters | Where it would go |
 |---|---|---|
 | **Returns policy**, especially for made-to-order pieces | The site must not promise returns it cannot honour | Trust band, product lines, FAQ, delivery tab, cart line |
-| ~~Free delivery~~ answered 2026-11-11: free over €500. **Owner: set Admin → Shipping rates to free over €500** (checkout, owner's action) | Trust band, FAQ and delivery tab now say it | Done on the site |
+| ~~Free delivery~~ answered 2026-11-11: free over €500. Admin → Shipping set to free from €500 on 2026-11-23 (owner's request) | Trust band, FAQ and delivery tab now say it | Done on the site |
 | Delivery price | Delivery tab, cart | |
 | Engraving price, character limit, extra time | Engraving claim exists without terms | Product page, FAQ |
 | ~~Packaging~~ answered 2026-11-11: every piece arrives in a box (in the FAQ). A photograph of the box still wanted | Photograph | Product page |
