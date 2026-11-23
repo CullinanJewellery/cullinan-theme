@@ -8,6 +8,13 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-23 — Qualities in one row on every collection **(owner)**
+- Owner: the three qualities in one row wherever they are. Computers showed them in two columns beside the text on
+  stone, faith and red-thread collections (the 2026-10-21 moonmagic layout); now every collection uses the zodiac
+  layout, one row under the text (`assets/crown.css`, „Zodiac collections: heading“ lost `.cj-hero--zodiac` in its
+  base and 990px rules; commit 7d927de4). Checked on the draft theme at 1440 and 375 (Кръстове, Перли, Циркони,
+  Богородици, Червен конец с кръст, Пръстени с циркони): one row, no sideways scroll. Way back: revert 7d927de4.
+
 ## 2026-11-23 — Collection descriptions rewritten like the zodiacs; Пръстени without its picture **(owner)**
 - Owner on the first set: should read like the zodiacs, built on the collection's own title; no 3D model or Veliko
   Tarnovo (kept „Дамски пръстени“ minus the 3D sentence); evocative and for women, as moonmagic.com writes its
