@@ -8,6 +8,22 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-23 — „Вяра и закрила“ menu: Богородици and Гривни с червен конец; Висулки order **(owner)**
+- Owner asked for crosses, Богородици and the red-thread bracelets under „Вяра и закрила“, asked whether the tree of
+  life belongs there, and whether crosses and zodiac signs should leave „Висулки“; my advice was accepted („do all of it“).
+- Two new automated collections (admin data, not theme code): **Богородици** (title contains „Богородица“, 4 pieces) and
+  **Гривни с червен конец** (title contains „Червен“, 14 pieces; the admin's condition field splits on a space, so one
+  word; no other title has it). New pieces with those words join on their own.
+- Main menu, „Вяра и закрила“: „Всичко във Вяра и закрила“ (was „Всичко в вяра и закрила“), Кръстове, Богородици,
+  Гривни с червен конец. Also „Дамкси“ → „Дамски“ under Пръстени.
+- Not changed, on purpose: the three „Дърво“ pendants stay out of „Вяра и закрила“ (tree of life = life and family,
+  not faith); Ангел stays only under „Всичко“; crosses, Богородици and zodiac signs **stay in „Висулки“** (a shopper
+  who opens Висулки expects every pendant). Instead „Висулки“ is now sorted **manually**: zircon pendants first, then
+  Дърво, Пчела, Колибри, Детелина, Богородици, Ангел, crosses, zodiac signs last (crosses moved from after the zodiac
+  signs to positions 20–26). Zodiac signs keep their old order (Риби → Овен).
+- Verified on the real preview: menu links, 4 and 14 products, Висулки order; Богородици page at 375 px (no overflow).
+- Way back: delete the two collections and their menu items in admin; Висулки sort back to „Most relevant“.
+
 ## 2026-11-23 — Item numbers from the old site; missing weights **(owner)**
 - Owner: find each piece's number on studio-cullinan.com by its picture, put it in Shopify's field for an item number
   or the description; add weights (and stone sizes) only where ours are missing, never change the ones we have.
