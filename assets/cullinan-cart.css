@@ -31,7 +31,8 @@
    where both references use an icon; the count in the title; a calm empty bag.
 
    What is deliberately not here, because no policy or data stands behind it:
-   payment-method logos, a free-shipping bar, an upsell row, a gift offer.
+   payment-method logos, a free-shipping bar, an upsell row, a gift offer. (2026-11-23: the owner asked for
+   „Може да харесате също“; see the block at the end. The free delivery bar stays on the product page only.)
 
    Everything is scoped to #CartDrawer. Dawn's drawer rules are two classes deep
    (`.cart-drawer .cart-item`) and component-cart-items.css loads asynchronously,
@@ -696,7 +697,8 @@ cart-drawer cart-drawer-items {
 }
 
 #CartDrawer cart-drawer-items {
-  flex: 0 1 auto;
+  /* 2026-11-23 (owner): the footer back at the foot of the panel; see „Footer at the foot“ at the end */
+  flex: 1 1 auto;
   min-height: 0;
 }
 
@@ -708,4 +710,173 @@ cart-drawer cart-drawer-items {
   font-size: 1.2rem;
   letter-spacing: 0.02em;
   line-height: 1.5;
+}
+
+/* ===========================================================================
+   Footer at the foot, compact, and „Може да харесате също“ (2026-11-23, owner: "move at end of the вашата
+   количка the button към плащане with the things that are with him also we can add you may also like ... the
+   place there is small so make everything fit good"). Reverses 2026-10-05's footer right under the pieces.
+   - The list of pieces (with the recommendations under it) fills the panel and scrolls; the reassurances, the
+     total and „Към плащане“ are pinned at the bottom (cart-drawer-items flex: 1 above).
+   - The pinned block is tighter (about 240px instead of 334px): smaller paddings, the tax note on one quiet line.
+   - The recommendations: a sideways strip of 12rem cards (11rem on a phone) that snap, the next card peeking so
+     the strip reads as scrollable. Way back: flex 0 1 auto above, delete this block and the render in
+     snippets/cart-drawer.liquid.
+   =========================================================================== */
+#CartDrawer .drawer__footer {
+  flex: none;
+  box-shadow: 0 -0.1rem 0 rgba(var(--color-foreground), 0.12);
+}
+
+#CartDrawer .cart-drawer__trust {
+  gap: 0.5rem;
+  padding: 1.1rem 2.4rem;
+}
+
+#CartDrawer .cart-drawer__trust-item {
+  gap: 0.8rem;
+  font-size: 1.2rem;
+  line-height: 1.35;
+}
+
+#CartDrawer .cart-drawer__trust-icon {
+  width: 1.4rem;
+  height: 1.4rem;
+}
+
+#CartDrawer .cart-drawer__footer {
+  padding: 1.4rem 2.4rem 0;
+}
+
+#CartDrawer .totals__total-value {
+  font-size: 2rem;
+}
+
+#CartDrawer .tax-note {
+  margin-top: 0.3rem;
+  font-size: 1.1rem;
+  line-height: 1.4;
+}
+
+#CartDrawer .cart__ctas {
+  padding: 1.2rem 2.4rem calc(1.6rem + env(safe-area-inset-bottom, 0px));
+}
+
+#CartDrawer .cart__checkout-button.button {
+  min-height: 5.2rem;
+}
+
+/* the last piece needs no line under it when the strip follows */
+#CartDrawer .cart-item:last-child {
+  border-bottom: 0;
+}
+
+.cj-cart-recs {
+  display: block;
+  margin: 0 -2.4rem;
+  padding: 1.8rem 0 2.4rem;
+  background: #faf8f5;
+  border-top: 0.1rem solid rgba(var(--color-foreground), 0.12);
+}
+
+.cj-cart-recs[hidden] {
+  display: none;
+}
+
+.cj-cart-recs__heading {
+  margin: 0 2.4rem 1.2rem;
+  font-family: var(--font-body-family);
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  line-height: 1.3;
+  text-transform: uppercase;
+  color: rgba(var(--color-foreground), 0.75);
+}
+
+.cj-cart-recs__list {
+  display: flex;
+  gap: 1.2rem;
+  margin: 0;
+  padding: 0 2.4rem 0.4rem;
+  list-style: none;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: 2.4rem;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(var(--color-foreground), 0.25) transparent;
+}
+
+.cj-cart-recs__item {
+  flex: 0 0 12rem;
+  scroll-snap-align: start;
+}
+
+.cj-cart-recs__card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  color: rgb(var(--color-foreground));
+  text-decoration: none;
+}
+
+.cj-cart-recs__media {
+  display: block;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: rgb(240 232 226);
+}
+
+.cj-cart-recs__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.cj-cart-recs__card:hover .cj-cart-recs__media img {
+  transform: scale(1.04);
+}
+
+.cj-cart-recs__name {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-family: var(--font-heading-family);
+  font-weight: var(--font-heading-weight);
+  font-size: 1.3rem;
+  line-height: 1.35;
+}
+
+.cj-cart-recs__card:hover .cj-cart-recs__name {
+  text-decoration: underline;
+  text-underline-offset: 0.3rem;
+  text-decoration-thickness: 0.1rem;
+}
+
+.cj-cart-recs__price {
+  margin-top: -0.2rem;
+  font-size: 1.3rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.cj-cart-recs__card:focus-visible {
+  outline: 0.2rem solid rgb(var(--color-foreground));
+  outline-offset: 0.3rem;
+}
+
+@media screen and (max-width: 749px) {
+  .cj-cart-recs__item {
+    flex-basis: 11rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cj-cart-recs__media img {
+    transition: none;
+  }
 }
