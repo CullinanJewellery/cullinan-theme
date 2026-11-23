@@ -2379,3 +2379,13 @@ layered above the bar on computers and moved only by its own height). It now mov
   9 credits. New: `tile-shadow-even.cjs` (background one colour, whole shadow kept), `metals-from-yellow.cjs` (all metals of a
   new piece). The neck and ear photos wait for the measurements from the owner.
 - The photos' claw tips are rounder and the stone brighter than the real piece; the owner saw this and approved them.
+
+## 2026-11-23 — Collection filters (admin, Search & Discovery)
+
+Owner: "we don't have any" filters; approved installing Shopify Search & Discovery; "look at another websites of the
+big brands and add for our things". Set up in the app (admin settings, no theme code): Вид бижу (Product type),
+Метал (option „Jewelry material“), Камък (product metafield: Перла, Циркон, Червен циркон), Размер на пръстена
+(option „Ring size“, 53–60), Цена, Наличност. On the draft /collections/all Вид бижу, Метал, Камък and Цена show;
+the saved order and the ring size filter had not yet appeared minutes later (to recheck). Limits: one product names
+its metal option „Материал“, ring sizes sit under three option names, few products have a stone value. Way back:
+remove the filters in Search & Discovery → Filters.
