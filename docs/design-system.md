@@ -166,7 +166,7 @@ rules in `crown.css`. Way back: the values in the "Now" column. Known side effec
 |---|---|---|---|
 | Words over a photograph | Hero (computers, and phones since 2026-10-13); Контакти banner and footer social block; newsletter; silver banner (hidden) | Owner's explicit choices (2026-09-06 to 09-21) | Current |
 | Bright ruby button `#D62246` | Hero only; the trust row under it takes the same ruby | Owner wants the main button to stand out (2026-09-21, 10-04; kept as the exception to the black buttons, 10-06) | Current |
-| Pure black text | Buy box, footer, stones lines, homepage social heading, header shop name (2026-10-13) | Owner asked for "the blackest" text by name | Current |
+| Pure black text | Buy box, footer, stones lines, homepage social heading, header shop name (2026-10-13); „злато“ / „сребро“ in bold wherever a text names the metals (2026-11-23, `snippets/cj-metals.liquid`) | Owner asked for "the blackest" text by name; metals "in black, just be seen better" | Current |
 | Black `#000` band | Top bar (announcements and За нас / Контакти); dim layer behind the desktop menu (50%) | Owner 2026-10-13 ("change the color of the background to black"; black dim as on swarovski.com); the rule above keeps black off other bands | Current |
 | Facebook blue / Instagram magenta buttons | Homepage "Вижте работата ни" | Owner's request (2026-09-20); 3.1:1 and 3.7:1 on the clay footer copy | Current, **flagged** (contrast, palette) |
 | Pink hover `#E6BAB9` | Add to cart, cart checkout, header icons | Kept from earlier design | Current |

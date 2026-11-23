@@ -348,7 +348,7 @@
                           </button>
                         </div>
                         <div class="cj-drawer__body rte" id="ProductAccordion-{{ block.id }}-{{ section.id }}">
-                          {{ block.settings.content }}
+                          {%- render 'cj-metals', text: block.settings.content -%}
                           {{ block.settings.page.content }}
                         </div>
                       </dialog>
@@ -725,7 +725,7 @@
                               {%- endif -%}
                             </div>
                           {%- endif -%}
-                          {{ block.settings.content }}
+                          {%- render 'cj-metals', text: block.settings.content -%}
                           {{ block.settings.page.content }}
                         </div>
                     </dialog>

@@ -160,7 +160,7 @@
             assign cj_desc = cj_intro | append: '<ul>' | append: cj_items | append: '</ul>'
           endif
         -%}
-        <div class="collection-hero__description rte">{{ cj_desc }}</div>
+        <div class="collection-hero__description rte">{%- render 'cj-metals', text: cj_desc -%}</div>
       {%- endif -%}
     </div>
 

@@ -8,6 +8,16 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-23 — „Злато“ and „сребро“ in bold black **(owner)**
+- Owner: wherever a text says the pieces are made in gold or silver, those words bold and black, "just be seen
+  better".
+- `snippets/cj-metals.liquid` wraps „злато/златото/сребро/среброто“ (also capitalised) in `strong.cj-metal`;
+  `assets/crown.css` „Metals in bold black“ (600, #000, above the collection colour). Rendered in: collection
+  descriptions (main-collection-banner), homepage category intro (category-mosaic), workshop facts (atelier), gift and
+  faith bands (cj-gift-guide), about page lead and text (split-story), product page drop-downs (main-product, e.g.
+  „Истинско злато ли е?“). Not in: product titles, option values, the material card, menus, prices, meta text.
+  Design system §8 lists it with the other pure-black places. Way back: delete the CSS block and the renders.
+
 ## 2026-11-23 — Collection colour for the dots and the bold words **(owner)**
 - Owner: dot colours linked with each collection (zodiacs too), and the bold words of the description in the same
   colour, still bold.

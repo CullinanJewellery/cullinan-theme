@@ -73,7 +73,7 @@
         </h2>
       {%- endif -%}
       {%- if section.settings.text != blank -%}
-        <div class="gift-guide__text">{{ section.settings.text }}</div>
+        <div class="gift-guide__text">{%- render 'cj-metals', text: section.settings.text -%}</div>
       {%- endif -%}
       {%- liquid
         comment

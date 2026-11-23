@@ -9766,6 +9766,18 @@ html body .collection-hero .collection-hero__description li {
   }
 }
 
+/* ===== Metals in bold black (2026-11-23, owner) =====
+   Owner: wherever a text says the pieces are made in gold or silver, „злато“ / „сребро“ bold and black so they are
+   seen better (snippets/cj-metals.liquid wraps them: collection descriptions, the homepage category intro and
+   workshop facts, the gift and faith bands, the about page's lead and text, the product page's drop-downs). Black is
+   one of the named pure-black places (docs/design-system.md §8); the collection colour of bold words does not apply.
+   Way back: delete this block and the renders of cj-metals. ===== */
+html body .cj-metal,
+html body .collection-hero .collection-hero__description strong.cj-metal {
+  font-weight: 600;
+  color: #000000;
+}
+
 /* ===== Collection colour: dots and bold words (2026-11-23, owner) =====
    Owner: the quality dots in a colour linked with each collection, and the bold words of the description in the same
    colour, still bold. The colour is --cj-stone-colour on the heading (sections/main-collection-banner.liquid; stones

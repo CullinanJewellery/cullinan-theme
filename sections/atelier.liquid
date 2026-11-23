@@ -178,7 +178,8 @@
                   <dt class="atelier__fact-value">{{ fact_value | escape }}</dt>
                 {%- endif -%}
                 {%- if fact_label != blank -%}
-                  <dd class="atelier__fact-label">{{ fact_label | escape }}</dd>
+                  {%- assign cj_fact_label = fact_label | escape -%}
+                  <dd class="atelier__fact-label">{%- render 'cj-metals', text: cj_fact_label -%}</dd>
                 {%- endif -%}
               </div>
             {%- endif -%}
