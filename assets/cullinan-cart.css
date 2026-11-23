@@ -892,3 +892,9 @@ cart-drawer cart-drawer-items {
     transition: none;
   }
 }
+
+/* Judge.me adds its cart widget under the pieces; with no reviews it is an empty 90px box that only wastes the
+   drawer's little space (2026-11-23). Hidden while empty; it shows again by itself once it has content. */
+#CartDrawer #jdgm-cart-drawer-widget:not(:has(.jm-cart-mode-body > *)) {
+  display: none;
+}
