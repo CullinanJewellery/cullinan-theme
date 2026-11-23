@@ -23,6 +23,12 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
   signs to positions 20–26). Zodiac signs keep their old order (Риби → Овен).
 - Verified on the real preview: menu links, 4 and 14 products, Висулки order; Богородици page at 375 px (no overflow).
 - Way back: delete the two collections and their menu items in admin; Висулки sort back to „Most relevant“.
+- **Same day, owner: only the red-thread bracelets with a cross belong in „Вяра и закрила“.** The red-thread collection
+  got a second condition (all conditions: title contains „Червен“ **and** „кръст“) → 7 bracelets; renamed „Червен
+  конец с кръст“ (collection and menu label; handle still `гривни-с-червен-конец`) so the name says what is inside.
+  The manual „Вяра и закрила“ collection lost the other 7 (цвете, стъпки, безкрайност, сърце, плочка, дърво на
+  живота, две сърца): 26 → 19 pieces. All 14 stay in „Гривни“ (15 with Дантела). Verified on the preview. Way back:
+  remove the „кръст“ condition and rename; add the 7 back to „Вяра и закрила“ in admin.
 
 ## 2026-11-23 — Item numbers from the old site; missing weights **(owner)**
 - Owner: find each piece's number on studio-cullinan.com by its picture, put it in Shopify's field for an item number
