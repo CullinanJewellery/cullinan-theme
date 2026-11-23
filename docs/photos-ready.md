@@ -31,12 +31,12 @@ folder: `01 основна снимка` (main), then `02 …` (another angle) a
 | 11 Пръстен с камък в средата | 1 ring | 01, 03 hand | |
 | 12 Зодии | 12 openwork (ажурен) + 11 coins (монета) | 01, 03 neck (Рак coin: 01 only) | no Везни or Водолей coin; openwork 01 photos remade 2026-11-21 from the AI originals, the frames' channels open (neck photos not changed) |
 | 13 Нови висулки | Ангел, Богородица ажурна, Богородица голям медальон, Богородица малък медальон, Богородица с ореол, Дърво с бели листа, Дърво с възел, Дърво със сърца, Пчела | 01, 03 neck | |
-| 13 Нови висулки | Детелина, Колибри | 01 only | real sizes not known yet; no neck photo |
+| 13 Нови висулки | Детелина, Колибри | 01; 03 on the neck in every metal (2026-11-23) | real sizes not known yet |
 | 14 Комплект с перла | pendant, earrings, ring | pendant 01, 02 front, 03 neck; earrings and ring 01 | |
-| 15 Комплект с червен камък | pendant, earrings, ring | pendant 01, 02 side; earrings and ring 01 | worn photos exist (owner, 2026-11-21), not in these folders |
-| 16 Комплект с листа | pendant, earrings, ring | 01 (ring also 02 from above) | worn photos exist (owner, 2026-11-21), not in these folders |
-| 17 Комплект с венчелистче | pendant, earrings, ring | 01 | worn photos exist (owner, 2026-11-21), not in these folders |
-| 18 Комплект с камък в обков | pendant, earrings, ring | 01 | worn photos exist (owner, 2026-11-21), not in these folders; the ring's stone is paler (owner accepted) |
+| 15 Комплект с червен камък | pendant, earrings, ring | pendant 01, 02 side; earrings and ring 01; 03 worn in every metal, the ring's 03 in yellow only (2026-11-23) | the ring's white and rose 03 not made yet |
+| 16 Комплект с листа | pendant, earrings, ring | 01 (ring also 02 from above); 03 worn in every metal (2026-11-23) | |
+| 17 Комплект с венчелистче | pendant, earrings, ring | 01; 03 worn in every metal (2026-11-23) | |
+| 18 Комплект с камък в обков | pendant, earrings, ring | 01; 03 worn in every metal, the ring's 03 in yellow only (2026-11-23) | the ring's white and rose 03 not made yet; the ring's stone is paler (owner accepted) |
 | 19 Гривни с червен конец | 14 bracelets | 01, 03 wrist; yellow, white, rose | no silver photos (made in gold only); dust specks cleaned 2026-11-21, the cord untouched |
 | 20 Ажурна гривна | 1 bangle | 01, 02 from above; yellow also 03 wrist | |
 | 23 Нови кръстове | Кръст с шарка, Православен кръст, Разпятие | 01 (Православен and Разпятие also 02 back) | Православен кръст silver added 2026-11-21 (copy of white gold) |

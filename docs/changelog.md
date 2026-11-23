@@ -8,6 +8,11 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-23 — Worn photos of sets 15–18, Детелина, Колибри in every metal **(owner)**
+- Owner approved the 14 worn drafts: "all of these are good for use make the colors". Yellow promoted to the metal
+  folders; white, rose and silver (= white) made free from them. The rings of sets 15 (red stone) and 18 (stone in a
+  bezel) are yellow only for now: their gold is the same colour as the finger, so the free method cannot separate it.
+
 ## 2026-11-23 — Cart drawer lighter, new „Може да харесате също“, smaller delivery bar, description „Прочетете повече“ **(owner)**
 - Owner: remove the note under „Към плащане“ and move the button "a little bit down"; remove the three lines above
   „Общо“; more space between the pieces and „Може да харесате също“ ("don't over do it"); "i don't think i like
