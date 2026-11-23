@@ -8,6 +8,23 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-23 — A description for every collection; zodiac dots in each sign's colour **(owner)**
+- Owner: descriptions for all collections, existing ones kept; fix the text position and check phones; the three
+  quality dots a different colour for every zodiac sign.
+- Admin (not in git): 29 collections with products and no description got one (texts in the scratchpad file
+  `coldesc.json` of this session; each only from the facts in CLAUDE.md and the pieces actually in the collection).
+  The 14 with a description (12 signs, Перли, Циркони) and the empty stone collections were not touched; `frontpage`
+  (internal) and „Най-продавани“ (one piece, the shop has no sales yet) left without one. Way back: empty the
+  Description in admin.
+- `sections/main-collection-banner.liquid`: zodiac dot colours via `--cj-stone-colour` (only the dots use it on a
+  sign): Овен #b3362f, Телец #4f7f4b, Близнаци #c9a227, Рак #8fa1b5, Лъв #d97b29, Дева #8a7f3a, Везни #d08ea0,
+  Скорпион #6e1f3c, Стрелец #6b4194, Козирог #6a5444, Водолей #2f86b0, Риби #3f9488 (the colours usually linked
+  with each sign, toned to the palette). Way back: delete the `case` block.
+- `assets/crown.css`: the zodiacs' phone layout (centred, 15px text with balanced lines, qualities in one centred
+  row) now holds for every collection heading. Checked on the draft theme at 375 (Висулки, Пръстени, Циркони,
+  Скорпион) and on a computer (Висулки, Риби): no sideways scroll, qualities in one row. Way back: in commit
+  75bc8713.
+
 ## 2026-11-23 — Collection heading on warm greige down to the filters **(owner)**
 - Owner asked whether the title and description should have a background reaching exactly to the filters; I proposed
   the stones band's warm greige `#F5F3EF` (not blush: the footer is blush); owner: "use the thing you wrote".
