@@ -8,6 +8,17 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-23 — Collection heading on warm greige down to the filters **(owner)**
+- Owner asked whether the title and description should have a background reaching exactly to the filters; I proposed
+  the stones band's warm greige `#F5F3EF` (not blush: the footer is blush); owner: "use the thing you wrote".
+- `assets/crown.css` „Collection heading on warm greige“: every collection without a heading picture (zodiacs,
+  stones, Висулки, Обеци, Всички бижута …) has the greige behind title, description and qualities, edge to edge,
+  ending on the filter bar's top line; the grid's top gap (24px / 18px phones) is now inside the band (bottom padding
+  3.2rem computers, 2.4rem phones). Пръстени (heading picture) unchanged.
+- Checked on the draft theme: computer (Овен) and phone 375 (Овен, Рубини, Пръстени, all): band bottom = filter bar
+  top, no sideways scroll. The lightest stone word colour (#8f7a5e) is 3.7:1 on greige (4.1:1 on white).
+- Way back: delete that block (commit 8a5a3ddf).
+
 ## 2026-11-23 — Zodiac headings in one row; „зодия“ instead of „знак“ **(owner)**
 - Owner: on every zodiac collection the three qualities (e.g. Смелост · Енергия · Начало) in one row, also on phones;
   the phone heading text was too big and badly placed; „знакът“ wording replaced with „зодия“ everywhere; the
