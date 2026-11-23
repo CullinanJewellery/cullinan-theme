@@ -9766,6 +9766,16 @@ html body .collection-hero .collection-hero__description li {
   }
 }
 
+/* ===== Collection colour: dots and bold words (2026-11-23, owner) =====
+   Owner: the quality dots in a colour linked with each collection, and the bold words of the description in the same
+   colour, still bold. The colour is --cj-stone-colour on the heading (sections/main-collection-banner.liquid; stones
+   from snippets/cj-menu-stone.liquid); only descriptions that have qualities take it, so plain categories keep the
+   ink. Way back: delete this block. ===== */
+html body .collection-hero:not(.cj-hero--image) .collection-hero__description:has(ul) strong,
+html body .collection-hero:not(.cj-hero--image) .collection-hero__description:has(ul) b {
+  color: var(--cj-stone-colour, inherit);
+}
+
 /* ===== Collection heading on warm greige (2026-11-23, owner: "use the thing you wrote") =====
    A collection without a heading picture gets the stones band's warm greige (#F5F3EF, scheme-6) behind its title,
    description and qualities, edge to edge, from under the header down to the filter bar's top line with no white

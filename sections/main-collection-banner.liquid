@@ -49,25 +49,28 @@
 -%}
 {%- capture cj_stone_colour -%}{%- render 'cj-menu-stone', handle: collection.handle, part: 'colour' -%}{%- endcapture -%}
 {%- comment -%}
-  2026-11-23 (owner): each zodiac sign's three qualities get dots in the sign's own colour (the colour usually linked
-  with the sign, toned to the palette). Only the dots use it: a sign has no coloured meaning beside its name.
+  2026-11-23 (owner): the quality dots and the bold words of the description take a colour linked with the collection
+  (crown.css „Collection colour: dots and bold words“). Zodiac signs: the colour usually linked with the sign; faith
+  collections: Marian blue, icon gold, Orthodox crimson, the thread's red; „с перли“ / „с циркони“: the stone's colour
+  (snippets/cj-menu-stone.liquid). Every colour is dark enough to read as text on the heading's greige (at least
+  4.5:1 on #F5F3EF): the light sign colours (yellow, silver, orange, pink …) are their hue made darker.
 {%- endcomment -%}
 {%- liquid
   case collection.handle
     when 'овен'
       assign cj_stone_colour = '#b3362f'
     when 'телец'
-      assign cj_stone_colour = '#4f7f4b'
+      assign cj_stone_colour = '#4a7747'
     when 'близнаци'
-      assign cj_stone_colour = '#c9a227'
+      assign cj_stone_colour = '#856b1a'
     when 'рак'
-      assign cj_stone_colour = '#8fa1b5'
+      assign cj_stone_colour = '#616d7b'
     when 'лъв'
-      assign cj_stone_colour = '#d97b29'
+      assign cj_stone_colour = '#a15b1e'
     when 'дева'
-      assign cj_stone_colour = '#8a7f3a'
+      assign cj_stone_colour = '#776d32'
     when 'везни'
-      assign cj_stone_colour = '#d08ea0'
+      assign cj_stone_colour = '#8d616d'
     when 'скорпион'
       assign cj_stone_colour = '#6e1f3c'
     when 'стрелец'
@@ -75,9 +78,21 @@
     when 'козирог'
       assign cj_stone_colour = '#6a5444'
     when 'водолей'
-      assign cj_stone_colour = '#2f86b0'
+      assign cj_stone_colour = '#287397'
     when 'риби'
-      assign cj_stone_colour = '#3f9488'
+      assign cj_stone_colour = '#347970'
+    when 'богородици'
+      assign cj_stone_colour = '#2f4f8a'
+    when 'вяра-и-закрила'
+      assign cj_stone_colour = '#88692d'
+    when 'кръстове'
+      assign cj_stone_colour = '#7d2a35'
+    when 'гривни-с-червен-конец'
+      assign cj_stone_colour = '#b0242f'
+    when 'висулки-с-перли', 'обеци-с-перли', 'пръстени-с-перли', 'комплекти-с-перли'
+      assign cj_stone_colour = '#7e6b53'
+    when 'висулки-с-циркони', 'обеци-с-циркони', 'пръстени-с-циркони', 'комплекти-с-циркони', 'гривни-с-циркони'
+      assign cj_stone_colour = '#596f81'
   endcase
 -%}
 <div{% if cj_stone_colour != blank %} style="--cj-stone-colour: {{ cj_stone_colour }};"{% endif %} class="collection-hero{% if section.settings.show_collection_image and collection.image %} collection-hero--with-image{% endif %}{% if cj_hero_image != blank %} cj-hero--image{% endif %}{% if cj_is_zodiac %} cj-hero--zodiac{% endif %} color-{{ section.settings.color_scheme }} gradient">
