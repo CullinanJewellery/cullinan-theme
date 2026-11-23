@@ -9773,7 +9773,7 @@ html body .collection-hero .collection-hero__description li {
    one of the named pure-black places (docs/design-system.md §8); the collection colour of bold words does not apply.
    Way back: delete this block and the renders of cj-metals. ===== */
 html body .cj-metal,
-html body .collection-hero .collection-hero__description strong.cj-metal {
+html body .collection-hero:not(.cj-hero--image) .collection-hero__description:has(ul) strong.cj-metal {
   font-weight: 600;
   color: #000000;
 }
