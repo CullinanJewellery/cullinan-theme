@@ -484,6 +484,15 @@
                 </table>
               </div>
             {%- endif -%}
+            {%- comment -%}
+              „Може да харесате също“ (owner, 2026-11-23). Rendered outside the `if` so its script runs on
+              page load even with an empty bag; the drawer's later re-renders only swap the HTML.
+            {%- endcomment -%}
+            {%- liquid
+              assign cj_cart_ids = cart.items | map: 'product_id' | join: ','
+              assign cj_recs_from = cart.items.first.product_id
+            -%}
+            {%- render 'cj-cart-recs', product_id: cj_recs_from, exclude: cj_cart_ids -%}
             <p id="CartDrawer-LiveRegionText" class="visually-hidden" role="status"></p>
             <p id="CartDrawer-LineItemStatus" class="visually-hidden" aria-hidden="true" role="status">
               {{ 'accessibility.loading' | t }}

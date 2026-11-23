@@ -8,6 +8,12 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-23 — Ангел pendant: clean openwork **(owner)**
+- Owner: the spots in the openings were too big; "do the thing that we did on the zodiac signs ажурни". The three 01
+  photos were remade free from the AI original as the zodiacs were (gold standard F with --keep-sat, soft background,
+  the approved photo's exact frame), and the rhodium angel's lilac cast in yellow and rose made neutral. Way back: the
+  old files in `Ангел/чернови/преди чистите отвори 2026-11-23/`.
+
 ## 2026-11-23 — Checkout delivery: free from €500 **(owner)**
 - Owner: "Checkout still has the old rate: fix that". Admin → Markets → Bulgaria → Shipping → „Стандартна“: prices
   switched from BGN to the store currency EUR; price лв.8.99 → €4.60 (the same amount at 1.95583, since the owner has
