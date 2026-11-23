@@ -502,7 +502,8 @@
                               assign cj_opt_index = cj_opt.position | minus: 1
                               assign cj_sel = spec_variant.options[cj_opt_index]
                               for cj_v in cj_opt.values
-                                if cj_v == cj_sel
+                                assign cj_vname = cj_v.name | default: cj_v
+                                if cj_vname == cj_sel
                                   assign cj_part = cj_parts[forloop.index0] | strip
                                   assign cj_last = cj_parts.last | strip
                                   unless cj_part contains ' '
