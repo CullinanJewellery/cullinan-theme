@@ -2438,3 +2438,7 @@ Same day, seventh step (owner: "check if everything is good ... if a picture loo
 the draft. Computer: per-photo crops so every piece sits above the name (Пръстени 45%, Висулки 85%, Комплекти 75%,
 Аксесоари 58%, the rest 30%). Phone: the photos had made the menu 626px wide on a 375px phone (the grid column grew to
 the tile row); fixed with min-width 0 on .menu-drawer__navigation. Way back: delete those two crown.css blocks.
+Same day, eighth step (owner: Аксесоари "a little bit up" so the rose's leaf is at the edge and the bullet shows;
+Комплекти "in the middle", all pieces seen, zoomed close to the edges; "everything else is good"): Аксесоари at 61%;
+Комплекти drawn at 120.3% of the card, moved 12.8% left and 27.1% up (measured on the original). Way back: delete the
+„owner's corrections“ block in crown.css.
