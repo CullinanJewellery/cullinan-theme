@@ -11143,3 +11143,10 @@ html body .cj-dmenu__promo[href$="/комплекти"] .cj-dmenu__promo-image {
 html body .cj-dmenu__promo[href$="/аксесоари"] .cj-dmenu__promo-image {
   object-position: 50% 58%;
 }
+
+/* Phone menu wider than the screen, fixed 2026-11-24: since the menu blocks have photos, the swiped row of picture
+   tiles stretched the menu's grid column to its content (626px on a 375px phone), so the whole menu scrolled
+   sideways. The column may now shrink; the row scrolls inside it, the next tile peeking in. */
+html body .menu-drawer__navigation {
+  min-width: 0;
+}

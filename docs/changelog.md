@@ -2434,3 +2434,7 @@ menu picture became an editorial card after Tiffany's and Van Cleef & Arpels' me
 the collection's name in white spaced capitals with a thin arrow on a soft dark fade at the photo's foot, no grey line
 above, a slow 4% zoom and the arrow moving on hover, a fade-in when a category opens (none with reduced motion).
 crown.css „Menu picture, editorial card“. Way back: delete that block (the small square with the underlined label returns).
+Same day, seventh step (owner: "check if everything is good ... if a picture looks bad try fixing it"): checked on
+the draft. Computer: per-photo crops so every piece sits above the name (Пръстени 45%, Висулки 85%, Комплекти 75%,
+Аксесоари 58%, the rest 30%). Phone: the photos had made the menu 626px wide on a 375px phone (the grid column grew to
+the tile row); fixed with min-width 0 on .menu-drawer__navigation. Way back: delete those two crown.css blocks.
