@@ -42,7 +42,7 @@ folder: `01 основна снимка` (main), then `02 …` (another angle) a
 | 23 Нови кръстове | Кръст с шарка, Православен кръст, Разпятие | 01 (Православен and Разпятие also 02 back) | Православен кръст silver added 2026-11-21 (copy of white gold) |
 | 24 Брошки | Панделка с камък, Роза | 01, 03 worn | |
 | 25 Комплект цвете | pendant and earrings, each with white, green or red stone | 01 | |
-| 26 Игла за вратовръзка | 1 tie pin | 01 | |
+| 26 Щипка за вратовръзка | 1 tie clip | 01 | |
 | 21 Комплект с кръгове | pendant, earrings, ring (white; yellow and white; rose and white) | 01 and 03 in every metal (ring on the hand, earring on the ear, pendant on the neck) | worn photos approved 2026-11-21; white and rose-and-white 03 made from them 2026-11-22 (only the gold parts recoloured) |
 | 22 Пръстен с шест зъба | 1 ring (white, green, red stone) | 01 | owner, 2026-11-21: the right ring |
 | 27 Висулка куршум | 1 pendant | 01 | owner, 2026-11-21: no white beads; the current photos are right |

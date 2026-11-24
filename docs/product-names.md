@@ -30,11 +30,11 @@ Handles (web addresses) keep their old words. Replaces the 2026-10-28 virtue nam
 | 17 | petal set | Цвят – … |
 | 18 | stone in a bezel | Капка – … |
 | 21 | circles | Орбита – … |
-| 25 | eight-petal flower | Розетка – висулка / обеци |
+| 25 | eight-petal flower, a star at Christmas | Коледна звезда – висулка / обеци (Розетка until 2026-11-24) |
 | 19 | red cord bracelets | Червен конец – <the charm> (две сърца, малък кръст …) |
 | 20 | openwork bangle | Дантела |
 | 24 | brooches | Панделка, Роза |
-| 26 | tie pin | Игла за вратовръзка |
+| 26 | tie clip | Щипка за вратовръзка (Игла until 2026-11-24) |
 | 27 | bullet pendant | Куршум |
 
 ## Earlier names (owner, 2026-10-28; kept for finding pieces)

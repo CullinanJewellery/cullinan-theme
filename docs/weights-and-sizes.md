@@ -104,7 +104,7 @@ Pearls: ring about 6–7 mm, pendant about 7–8 mm (estimated from the photos, 
 | 20 | Ажурна гривна | 12.00 g | band about 8–9 mm wide (estimated); inner size — |
 | 24 | Брошка Панделка с камък | 2.80 g | about 5 cm |
 | 24 | Брошка Роза | 3.00 g | about 5 cm |
-| 26 | Игла за вратовръзка | — | — |
+| 26 | Щипка за вратовръзка | — | — |
 
 ## Still to ask the owner
 

@@ -2484,3 +2484,18 @@ Same day, second step (owner: Монети/Ажур "not that hard to look"; emp
   originals (manual, with descriptions, same 17 and 3 pieces) stay and are what the menu links to. Note: being manual,
   they do not take new set pieces by themselves; a new set's pieces must be added to them by hand.
 Way back: drag the two zodiac links back down; delete the two crown.css blocks and the cj-soon branch.
+
+## 2026-11-24 — Щипка за вратовръзка and Коледна звезда (owner, admin only)
+
+Owner: "this is щипка за вратовръзка it is not a needle"; "this is not розетка, it is a flower and for christmas is a
+star"; chose „Коледна звезда“ (the poinsettia's Bulgarian name).
+- Product 26: title „Щипка за вратовръзка“, type „Щипка за вратовръзка“, handle shtipka-za-vratovrazka, new first
+  sentence of the description. Collection „Щипки за вратовръзка“ (rule type is Щипка за вратовръзка), handle
+  щипки-за-вратовръзка; the Аксесоари menu label is renamed to match.
+- Product 25: „Коледна звезда – обеци“ / „Коледна звезда – висулка“, handles koledna-zvezda-obetsi / -visulka.
+  The descriptions' first sentence now says the flowers look like stars at Christmas; the pendant's line about
+  „шевица и резба“ is removed (it described a rosette). Set collection „Комплект Коледна звезда“, handle
+  комплект-коледна-звезда, rule title contains „Коледна звезда –“, description „Комплектът Коледна звезда е …“.
+- Every old handle has a Shopify URL redirect (checked: all five old addresses lead to the new pages). The photo
+  folder on disk keeps the name „26 Игла за вратовръзка“.
+Way back: rename in admin and set the old handles (delete the redirects first in Navigation → URL redirects).
