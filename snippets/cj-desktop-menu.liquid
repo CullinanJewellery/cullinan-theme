@@ -185,9 +185,26 @@
                   assign cj_has_promo = true
                 endif
                 assign cj_parent_index = forloop.index
+
+                comment
+                  2026-11-24 (owner): in a column with the Монети / Ажур panels the twelve sign links are left
+                  out on computers ("they can open them through монети or ажур"). Phones keep them.
+                endcomment
+                assign cj_signs = 'Овен,Телец,Близнаци,Рак,Лъв,Дева,Везни,Скорпион,Стрелец,Козирог,Водолей,Риби' | split: ','
+                assign cj_column_flies = false
+                for childlink in link.links
+                  if childlink.type == 'collection_link' and childlink.links == blank
+                    assign cj_fly_handle = childlink.object.handle | default: ''
+                    if cj_fly_handle contains 'зодии-' and childlink.object.products_count > 0
+                      assign cj_column_flies = true
+                    endif
+                  endif
+                endfor
               -%}
               <ul class="cj-dmenu__sublist list-unstyled" role="list">
                 {%- for childlink in link.links -%}
+                  {%- assign cj_child_title = childlink.title | strip -%}
+                  {%- if cj_column_flies and cj_signs contains cj_child_title -%}{%- continue -%}{%- endif -%}
                   {%- if cj_has_promo and childlink.links == blank -%}
                     {%- liquid
                       assign cj_child_url = childlink.url | url_decode | downcase | remove: 'https://' | split: '?' | first

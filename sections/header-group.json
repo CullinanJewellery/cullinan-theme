@@ -108,6 +108,15 @@
             "label": "Всичко във Вяра и закрила",
             "link": "/collections/вяра-и-закрила"
           }
+        },
+        "mega-promo-zodiac": {
+          "type": "mega_menu_promo",
+          "settings": {
+            "image": "shopify://shop_images/home-zodiac-band-phone_db606f76-c0c1-431b-8646-0b453afbaa4c.jpg",
+            "menu_item": "Зодии",
+            "label": "Всички зодии",
+            "link": "/collections/зодии"
+          }
         }
       },
       "block_order": [
@@ -117,7 +126,8 @@
         "mega-promo-pendants",
         "mega-promo-sets",
         "mega-promo-accessories",
-        "mega-promo-faith"
+        "mega-promo-faith",
+        "mega-promo-zodiac"
       ],
       "settings": {
         "logo_position": "middle-center",

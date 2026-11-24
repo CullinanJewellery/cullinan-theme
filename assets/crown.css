@@ -11321,86 +11321,96 @@ html body .cj-dmenu__fly-all:focus-visible {
   html body .cj-dmenu__fly:not([hidden]) { animation: none; }
 }
 
-/* ===== Footer: the shop — address to Google Maps, opening hours as a table (2026-11-24, owner) =====
-   Owner: the hours back under the address, "or something else connected to that with better design", and the
-   shop link to the owner's Google Maps place. The address is a link with the menu's map pin; the hours sit in two
-   aligned columns (days, times) in tabular figures. sections/footer.liquid (note + map_link). Way back: delete
-   this block, the map_link setting and the shop part of footer.liquid; the note becomes plain lines again. ===== */
+/* ===== Footer: the shop, second version (2026-11-24, owner: "make new text and design … your own") =====
+   A quiet block of its own under the column's links: a small spaced „МАГАЗИН“ label, the address in the footer's
+   black, the hours a step quieter, then „Как да стигнете“ with a thin drawn arrow that moves on hover (the owner's
+   Google Maps place, new tab). No pin, no table. sections/footer.liquid (note + map_link). Way back: delete this
+   block and the shop part of footer.liquid; the note becomes plain lines again. ===== */
 html body .footer .footer-shop {
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
-  max-width: 26rem;
-}
-
-html body .footer .footer-shop__address {
-  display: inline-flex;
   align-items: flex-start;
-  gap: 0.8rem;
-  color: rgb(0 0 0);
+  gap: 0.6rem;
+  max-width: 24rem;
+}
+
+html body .footer .footer-shop__label {
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.55);
+}
+
+html body .footer .footer-shop__lines {
+  margin: 0;
   font-size: 1.3rem;
-  line-height: 1.5;
-  text-decoration: none;
-}
-
-html body .footer a.footer-shop__address span:last-child {
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.3em;
-  text-decoration-color: rgba(0, 0, 0, 0.35);
-  transition: text-decoration-color 0.2s ease, color 0.2s ease;
-}
-
-html body .footer a.footer-shop__address:hover span:last-child {
-  color: #b76e79;
-  text-decoration-color: #b76e79;
-}
-
-html body .footer .footer-shop__pin {
-  display: inline-flex;
-  flex: none;
-  width: 1.6rem;
-  height: 1.6rem;
-  margin-top: 0.1rem;
-}
-
-html body .footer .footer-shop__pin svg {
-  width: 100%;
-  height: 100%;
-  fill: currentColor;
-}
-
-html body .footer .footer-shop__hours {
-  display: grid;
-  gap: 0.2rem;
-  margin: 0;
-  padding-left: 2.4rem;
-}
-
-html body .footer .footer-shop__row {
-  display: flex;
-  justify-content: space-between;
-  gap: 1.6rem;
-}
-
-html body .footer .footer-shop__row dt,
-html body .footer .footer-shop__row dd {
-  margin: 0;
-  font-size: 1.2rem;
-  line-height: 1.7;
-}
-
-html body .footer .footer-shop__row dt {
-  color: rgba(0, 0, 0, 0.7);
-}
-
-html body .footer .footer-shop__row dd {
+  line-height: 1.65;
+  letter-spacing: 0.02em;
   color: rgb(0 0 0);
   font-variant-numeric: tabular-nums;
-  white-space: nowrap;
 }
 
-html body .footer a.footer-shop__address:focus-visible {
+html body .footer .footer-shop__lines--quiet {
+  color: rgba(0, 0, 0, 0.68);
+}
+
+html body .footer .footer-shop__map {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin-top: 0.4rem;
+  padding-bottom: 0.2rem;
+  border-bottom: 0.1rem solid rgba(0, 0, 0, 0.45);
+  color: rgb(0 0 0);
+  font-size: 1.2rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+html body .footer .footer-shop__arrow {
+  position: relative;
+  width: 1.6rem;
+  height: 0.1rem;
+  background: currentColor;
+  transition: transform 0.25s ease;
+}
+
+html body .footer .footer-shop__arrow::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-top: 0.1rem solid currentColor;
+  border-right: 0.1rem solid currentColor;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+html body .footer .footer-shop__map:hover {
+  color: #b76e79;
+  border-color: #b76e79;
+}
+
+html body .footer .footer-shop__map:hover .footer-shop__arrow {
+  transform: translateX(0.4rem);
+}
+
+html body .footer .footer-shop__map:focus-visible {
   outline: 0.2rem solid rgb(0 0 0);
   outline-offset: 0.3rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html body .footer .footer-shop__arrow { transition: none; }
+}
+
+/* Computer menu card for Зодии (2026-11-24, owner: a picture "like the others with Всички зодии inside"): the
+   homepage zodiac photo (portrait); the three pendants sit in its top half, so the crop starts near the top and the
+   name falls on the dark sand. */
+html body .cj-dmenu__promo[href$="/зодии"] .cj-dmenu__promo-image {
+  object-position: 50% 15%;
 }
