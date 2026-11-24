@@ -8,6 +8,13 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-24 — Red-thread bracelets: zoomed to the edge **(owner)**
+
+Owner: zoom the red bracelets close to the edge, every part seen, nothing cut. All 14 pieces' 01 main photos, in yellow,
+white and rose, re-cropped from the current files: the whole bracelet now fills 95% of the width (2.5% margin left and
+right, was about 8%), centred, one crop per piece for all three metals. No credits. Wrist photos unchanged. Way back:
+`<piece>/чернови/преди увеличението 2026-11-24/`. The owner uploads the new 01 photos in Shopify.
+
 ## 2026-11-24 — Дърво с възел: clean openings **(owner)**
 - Owner's phone note „Оправяне на жълтите петна“: yellow and lilac blotches between the branches. The 01 photo in
   every metal was remade free from the AI original, as the Ангел and the openwork zodiacs were. Way back:
