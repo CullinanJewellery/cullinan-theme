@@ -11124,3 +11124,22 @@ html body .cj-dmenu__promo-image--empty + .cj-dmenu__promo-label {
 html body .cj-dmenu__promo-image {
   object-position: 50% 30%;
 }
+
+/* The editorial card's crop per photo (2026-11-24, owner: "if a picture looks bad try fixing it so it can be good in
+   the box"), measured on each original so every piece sits above the name: Аксесоари showed a dark empty top with the
+   brooch under the name; Висулки had the bee under the name; Комплекти had the pendant at the name's line. */
+html body .cj-dmenu__promo[href$="/пръстени"] .cj-dmenu__promo-image {
+  object-position: 50% 45%;
+}
+
+html body .cj-dmenu__promo[href$="/висулки"] .cj-dmenu__promo-image {
+  object-position: 50% 85%;
+}
+
+html body .cj-dmenu__promo[href$="/комплекти"] .cj-dmenu__promo-image {
+  object-position: 50% 75%;
+}
+
+html body .cj-dmenu__promo[href$="/аксесоари"] .cj-dmenu__promo-image {
+  object-position: 50% 58%;
+}
