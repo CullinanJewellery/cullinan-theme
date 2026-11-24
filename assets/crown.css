@@ -11150,3 +11150,27 @@ html body .cj-dmenu__promo[href$="/аксесоари"] .cj-dmenu__promo-image {
 html body .menu-drawer__navigation {
   min-width: 0;
 }
+
+/* Menu card, owner's corrections 2026-11-24:
+   - Аксесоари a little higher, the rose's top leaf at the top edge and more of the bullet seen: 61% (was 58%).
+   - Комплекти: every piece seen and in the middle, zoomed so they come close to the edges. Measured on the 1600px
+     square original: the pieces span x 220-1450, y 500-1040; the card shows x 170-1500, y 270-1270 (1330 x 1000,
+     4:3), so the photo is drawn at 1600/1330 = 120.3% of the card's width, moved 12.8% left and 27.1% up. */
+html body .cj-dmenu__promo[href$="/аксесоари"] .cj-dmenu__promo-image {
+  object-position: 50% 61%;
+}
+
+html body .cj-dmenu__promo[href$="/комплекти"] {
+  aspect-ratio: 4 / 3;
+}
+
+html body .cj-dmenu__promo[href$="/комплекти"] .cj-dmenu__promo-image {
+  position: absolute;
+  left: -12.8%;
+  top: -27.1%;
+  width: 120.3%;
+  max-width: none;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-position: 50% 50%;
+}
