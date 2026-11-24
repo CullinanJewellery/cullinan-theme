@@ -8,6 +8,15 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-24 — Rings Жар and Капка: white and rose on the hand, made locally **(owner)**
+
+The two set rings (15 red stone, 18 stone in a bezel) had their hand photo only in yellow: the gold is the colour of
+the skin, so the automatic mask failed. Now made locally, no credits: the ring outlined with GrabCut from a hand-drawn
+area round it (plus hand-marked band ends), stone left out; brightness moved 35% towards the ring's own white / rose
+01 metal (quantile match), colour from those photos (white one neutral colour at every brightness). Silver = white.
+New files `03 на ръка - {бяло злато,розово злато,сребро}.png`; nothing overwritten. Owner stopped a Higgsfield try
+for the same (two 3-credit jobs were already submitted): colour versions are always made locally.
+
 ## 2026-11-24 — Small pieces and worn photos enlarged for the phone **(owner: "you choose")**
 
 Owner: the knot tree at 65%; for the other small pendants and the worn photos I choose what to enlarge so the pieces
