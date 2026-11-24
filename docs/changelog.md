@@ -8,6 +8,11 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-24 — Дърво с възел: clean openings **(owner)**
+- Owner's phone note „Оправяне на жълтите петна“: yellow and lilac blotches between the branches. The 01 photo in
+  every metal was remade free from the AI original, as the Ангел and the openwork zodiacs were. Way back:
+  `Дърво с възел/чернови/преди чистите отвори 2026-11-24/`.
+
 ## 2026-11-24 — Cart without „С включени данъци“; two junk collections deleted **(owner)**
 - The company is not VAT-registered, so the cart note no longer starts with „С включени данъци.“ (`taxes_included_shipping_at_checkout_*` in `locales/bg.json` and `en.default.json`). Way back: put the prefix back in both keys.
 - Admin: deleted the test collection „asdasdasdas“ and the empty duplicate „Kомплекти с диаманти“ (Latin K, id 728171217236, 0 products, not in any menu). The real Cyrillic „Комплекти с диаманти“ stays. Way back: recreate them in Products → Collections (nothing linked to them).
