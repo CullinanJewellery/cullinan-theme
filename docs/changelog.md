@@ -8,6 +8,21 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-24 — Small pieces and worn photos enlarged for the phone **(owner: "you choose")**
+
+Owner: the knot tree at 65%; for the other small pendants and the worn photos I choose what to enlarge so the pieces
+can be seen. Free, crop and Lanczos resize of the current files, same crop in every metal (silver included).
+- **01 main photos under 60% raised to 65%** of the larger side (the knot tree's size): Богородица малък медальон (37%),
+  the ten zodiac coins (40%; earlier deliberately smaller, owner 2026-10-27, now 65%: still smaller than the 76% pieces,
+  so the small/big difference stays), Пчела (42%), Дърво със сърца (43%), Детелина (50%), Дърво с възел (52%),
+  Колибри (55%). Openwork zodiacs (62%) and every piece at 66% or more unchanged.
+- **Worn photos zoomed ×1.5 round the piece** (brooches ×1.4): all neck photos of crosses, zodiacs, new pendants and
+  set pendants, the set earrings on the ear, the two brooches (47 photos per metal). Centre found where the white
+  photo differs from the yellow; 26 (Скорпион ажурен) and 43 (pearl pendant) centred by hand.
+- **Not zoomed:** rings on the hand (owner 2026-10-16: the whole hand with all five nails shows) and the bracelets on
+  the wrist (the bracelet already reads clearly).
+Way back: `<piece>/чернови/преди увеличението 2026-11-24/<metal>/`. The owner uploads the new photos in Shopify.
+
 ## 2026-11-24 — Two sizes for Вяра and Дантела; new item numbers **(owner)**
 - Owner (screenshots with numbers): Вяра 3214 малък / 3216 голям; Дантела 3072 малка / 3070 голяма, 3070 also in silver; Заедно 2161, Капка – обеци 2612 (was 1884R), Корона 3377, Куршум 1574, Листопад – обеци 2591, Роза 15126р. "the weight change so the price too": a choice of size with its own price.
 - Admin: a third option **„Големина“** (Малък / Голям on Вяра, Малка / Голяма on Дантела), not „Размер“, because the theme switches on the ring-size table and the ring-size FAQ for any „размер“ option. New variants got their metal's photo. SKUs set on every variant (bulk editor). Дантела got one silver variant (925 сребро / сребро / Голяма, SKU 3070, white-gold photo like other silver pieces, **price €0: silver price not given**).
