@@ -12,7 +12,8 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 - Owner's phone note „Оправяне на жълтите петна“: yellow and lilac blotches between the branches. The 01 photo in
   every metal was remade free from the AI original, as the Ангел and the openwork zodiacs were. Way back:
   `Дърво с възел/чернови/преди чистите отвори 2026-11-24/`. Owner: "make the spots disappear more": the openings
-  between the branches are now the plain paper (outline found by BiRefNet; metal untouched).
+  between the branches were made plain paper, then (owner: that removed the shadow) a smooth grey of their own shading:
+  the soft shadow stays, the blotches and the gold glow are gone (outline found by BiRefNet; metal untouched).
 
 ## 2026-11-24 — Червен конец – две сърца: version D **(owner)**
 - Owner chose D of the saved versions ("D is the perfect one do the colors"): bigger plain hearts, four equal beads.
