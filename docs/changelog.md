@@ -11,7 +11,13 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 ## 2026-11-24 — Дърво с възел: clean openings **(owner)**
 - Owner's phone note „Оправяне на жълтите петна“: yellow and lilac blotches between the branches. The 01 photo in
   every metal was remade free from the AI original, as the Ангел and the openwork zodiacs were. Way back:
-  `Дърво с възел/чернови/преди чистите отвори 2026-11-24/`.
+  `Дърво с възел/чернови/преди чистите отвори 2026-11-24/`. Owner: "make the spots disappear more": the openings
+  between the branches are now the plain paper (outline found by BiRefNet; metal untouched).
+
+## 2026-11-24 — Червен конец – две сърца: version D **(owner)**
+- Owner chose D of the saved versions ("D is the perfect one do the colors"): bigger plain hearts, four equal beads.
+  Rebuilt free from its AI original (aeff0905) in yellow, white and rose; the wrist photo already shows this design.
+  Way back: `01 Две сърца/чернови/преди версия D 2026-11-24/`.
 
 ## 2026-11-24 — Cart without „С включени данъци“; two junk collections deleted **(owner)**
 - The company is not VAT-registered, so the cart note no longer starts with „С включени данъци.“ (`taxes_included_shipping_at_checkout_*` in `locales/bg.json` and `en.default.json`). Way back: put the prefix back in both keys.
