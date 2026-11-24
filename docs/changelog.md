@@ -2389,3 +2389,14 @@ big brands and add for our things". Set up in the app (admin settings, no theme 
 the saved order and the ring size filter had not yet appeared minutes later (to recheck). Limits: one product names
 its metal option „Материал“, ring sizes sit under three option names, few products have a stone value. Way back:
 remove the filters in Search & Discovery → Filters.
+
+## 2026-11-24 — Collection extras, fourth round (owner)
+
+Owner: the tick circle at the end of a collection "like moonmagic"; on a phone the tiles „Купувайте спокойно“ and
+„Качество във всеки детайл“ placed like moonmagic's; the phone strip of three "too rough".
+- Tick: moonmagic's measured circle (34px, 1.25px black ring, bold black check, 10px above the words; button 20px below).
+- Phone tiles: one product's place in the two-column grid (moonmagic's promo box, title 12px on a phone); before, the
+  whole row. Smaller words and icons, one column of four.
+- Phone strip: three rows under each other, icon left, small spaced heading and the line under it in normal letters,
+  hairlines between. A space added after each heading so the words don't run together when copied or read aloud.
+Way back: delete the "fourth pass" block at the end of assets/crown.css.

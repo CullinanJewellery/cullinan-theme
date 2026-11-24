@@ -10855,3 +10855,119 @@ html body .cj-coll-strip__item + .cj-coll-strip__item {
     padding-bottom: 3.6rem;
   }
 }
+
+/* collection extras, fourth pass (2026-11-24, owner: "the circle with the tick inside make it like moonmagic"; on a
+   phone the two tiles placed like moonmagic's; the strip on a phone looked "too rough").
+   - Tick: moonmagic's, measured: a 34px circle, 1.25px black ring, a bold black check, 10px above the words.
+   - Phone tiles: one product's place in the two-column grid, as moonmagic's promo box (its phone title is 12px);
+     before, the whole row. Words, icons and spacing made small to fit half the width.
+   - Phone strip: three quiet rows under each other (icon, a small spaced heading, the line under it in normal
+     letters), hairlines between, instead of three cramped capital columns.
+   Way back: delete this block. */
+html body .cj-coll-end {
+  gap: 0;
+}
+
+html body .cj-coll-end__tick {
+  width: 3.4rem;
+  height: 3.4rem;
+  margin-bottom: 1rem;
+  border: 0.125rem solid #000000;
+  color: #000000;
+}
+
+html body .cj-coll-end__tick svg {
+  width: 1.6rem;
+  height: 1.6rem;
+  stroke-width: 2.4;
+}
+
+html body .cj-coll-end__button {
+  margin-top: 2rem;
+}
+
+@media screen and (max-width: 749px) {
+  html body .product-grid .cj-tile {
+    width: calc(50% - var(--grid-mobile-horizontal-spacing) / 2);
+    max-width: calc(50% - var(--grid-mobile-horizontal-spacing) / 2);
+  }
+
+  html body .cj-tile__inner {
+    gap: 1.2rem;
+    padding: 2.2rem 1.2rem;
+  }
+
+  html body .cj-tile__inner::before {
+    inset: 0.6rem;
+  }
+
+  html body .cj-tile__ornament {
+    width: 0.6rem;
+    height: 0.6rem;
+  }
+
+  html body .cj-tile__title {
+    margin: -0.4rem 0 0;
+    font-size: 1.15rem;
+    letter-spacing: 0.1em;
+    line-height: 1.45;
+  }
+
+  html body .cj-tile__list {
+    grid-template-columns: 1fr;
+    gap: 1.1rem;
+  }
+
+  html body .cj-tile__item {
+    gap: 0.4rem;
+    font-size: 1.05rem;
+    letter-spacing: 0.01em;
+    line-height: 1.35;
+  }
+
+  html body .cj-tile__item svg {
+    width: 1.8rem;
+    height: 1.8rem;
+  }
+
+  html body .cj-coll-strip {
+    grid-template-columns: 1fr;
+    max-width: 36rem;
+    padding: 0.8rem 2.4rem;
+  }
+
+  html body .cj-coll-strip__item {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 1.6rem;
+    padding: 1.6rem 0.4rem;
+    text-align: left;
+  }
+
+  html body .cj-coll-strip__item + .cj-coll-strip__item {
+    border-left: 0;
+    border-top: 0.1rem solid #e4ddd5;
+  }
+
+  html body .cj-coll-strip__item svg {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+
+  html body .cj-coll-strip__item span {
+    gap: 0.2rem;
+    font-size: 1.3rem;
+    letter-spacing: 0.01em;
+    line-height: 1.4;
+    text-transform: none;
+    color: #6b5d57;
+  }
+
+  html body .cj-coll-strip__item strong {
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #2a1e1a;
+  }
+}
