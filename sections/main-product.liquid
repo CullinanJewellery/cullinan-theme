@@ -511,6 +511,14 @@
                           assign cj_label = cj_line | split: ': ' | first
                           assign cj_value = cj_line | remove_first: cj_label | remove_first: ': '
                           comment
+                            2026-11-24: every weight in a description is the 14K gold weight; a silver
+                            variant (Дантела 3070 in silver) is lighter, so its row is left out rather
+                            than show the gold figure.
+                          endcomment
+                          if cj_colour == 'silver' and cj_label == 'Тегло'
+                            continue
+                          endif
+                          comment
                             2026-11-23 (owner, Червен конец – плочка: "make … a size for the plate to choose between
                             the two and weights are different"): a value written as „0,85 / 1,05 г“ or „18,3 мм или
                             21,3 мм“ holds one figure per value of an option with as many values (not metal or
