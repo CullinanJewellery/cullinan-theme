@@ -2421,3 +2421,6 @@ Same day, second step: four more blocks, Обеци, Висулки, Компл�
 -sets, -accessories.
 Same day, third step (owner: "maybe you were right ... it cuts a lot of the picture"): the computer menu's picture
 is square instead of 16:9 (crown.css „Menu picture square“), so the square photos show whole. Way back: delete that rule.
+Same day, fourth step (owner: "add a box for Вяра и закрила too"): block mega-promo-faith with the homepage faith band's
+phone photo (home-faith-band-phone.jpg; the wide computer band would lose the angel or the cross in a square), label
+„Всичко във Вяра и закрила“ as the menu's own first link. Way back: delete that block.

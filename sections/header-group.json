@@ -99,6 +99,15 @@
             "label": "Всички аксесоари",
             "link": "/collections/аксесоари"
           }
+        },
+        "mega-promo-faith": {
+          "type": "mega_menu_promo",
+          "settings": {
+            "image": "shopify://shop_images/home-faith-band-phone.jpg",
+            "menu_item": "Вяра и закрила",
+            "label": "Всичко във Вяра и закрила",
+            "link": "/collections/вяра-и-закрила"
+          }
         }
       },
       "block_order": [
@@ -107,7 +116,8 @@
         "mega-promo-earrings",
         "mega-promo-pendants",
         "mega-promo-sets",
-        "mega-promo-accessories"
+        "mega-promo-accessories",
+        "mega-promo-faith"
       ],
       "settings": {
         "logo_position": "middle-center",
