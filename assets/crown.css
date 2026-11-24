@@ -11118,3 +11118,9 @@ html body .cj-dmenu__promo-image--empty + .cj-dmenu__promo-label {
     transform: none;
   }
 }
+
+/* The editorial card's crop sits a little above the middle (2026-11-24): „Вяра и закрила“ lost the pendants' bails
+   at 50%; the other photos keep their pieces whole. */
+html body .cj-dmenu__promo-image {
+  object-position: 50% 30%;
+}
