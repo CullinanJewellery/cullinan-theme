@@ -2407,3 +2407,11 @@ Owner: "the flag in the black bar i want it to be removed". Both flags in sectio
 (the one before the rotating message on computers, the one inside each message on phones and tablets). The flags in
 the computer menu and the phone menu stay. The crown.css „Top bar flag“ rules are left (they style nothing now).
 Way back: restore the two svgs from commit before this one (2026-10-13 entry).
+
+## 2026-11-24 — Menu pictures (owner)
+
+Owner: the menu's empty picture under „Пръстени“ and „Гривни“ gets the category photos; "use the main ones that
+are not zoomed in ... even if they are cut off they will just be zoomed in". The two „Mega menu image panel“ blocks
+in sections/header-group.json now use the homepage tiles' computer photos (home-tile-rings.jpg,
+home-tile-bracelets.jpg), cropped to the menu's 16:9 by object-fit; the phone menu's tiles use the same blocks.
+Way back: remove the two "image" lines (or clear them in the theme editor, Header → the two blocks).

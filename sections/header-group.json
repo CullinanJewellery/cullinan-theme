@@ -49,6 +49,7 @@
         "mega-promo-rings": {
           "type": "mega_menu_promo",
           "settings": {
+            "image": "shopify://shop_images/home-tile-rings.jpg",
             "menu_item": "Пръстени",
             "label": "Всички пръстени",
             "link": "/collections/пръстени"
@@ -57,6 +58,7 @@
         "mega-promo-bracelets": {
           "type": "mega_menu_promo",
           "settings": {
+            "image": "shopify://shop_images/home-tile-bracelets_265fde56-0954-45f5-b813-271ddaae3c58.jpg",
             "menu_item": "Гривни",
             "label": "Всички гривни",
             "link": "/collections/гривни"
