@@ -349,8 +349,39 @@
                             <span aria-hidden="true"></span>
                           </button>
                         </div>
+                        {%- comment -%}
+                          2026-11-24 (site check): a piece with no size to choose (pendants, earrings,
+                          brooches…) leaves out the ring-size questions of the shared FAQ („Как да разбера
+                          размера си?“ points at a „Таблица с размери“ such a page does not have). Each
+                          question is a „<p><strong>…“ pair, found by its wording, so the text stays
+                          editable in the theme editor.
+                        {%- endcomment -%}
+                        {%- liquid
+                          assign cj_tab_text = block.settings.content
+                          assign cj_has_size = false
+                          for cj_opt in product.options
+                            assign cj_opt_name = cj_opt | downcase
+                            if cj_opt_name contains 'size' or cj_opt_name contains 'размер'
+                              assign cj_has_size = true
+                            endif
+                          endfor
+                          if cj_has_size == false and cj_tab_text contains 'размер'
+                            assign cj_tab_parts = cj_tab_text | split: '<p><strong>'
+                            assign cj_tab_text = ''
+                            for cj_part in cj_tab_parts
+                              if cj_part contains 'размера си?' or cj_part contains 'размерът на пръстена'
+                                continue
+                              endif
+                              if forloop.first
+                                assign cj_tab_text = cj_part
+                              else
+                                assign cj_tab_text = cj_tab_text | append: '<p><strong>' | append: cj_part
+                              endif
+                            endfor
+                          endif
+                        -%}
                         <div class="cj-drawer__body rte" id="ProductAccordion-{{ block.id }}-{{ section.id }}">
-                          {%- render 'cj-metals', text: block.settings.content -%}
+                          {%- render 'cj-metals', text: cj_tab_text -%}
                           {{ block.settings.page.content }}
                         </div>
                       </dialog>
