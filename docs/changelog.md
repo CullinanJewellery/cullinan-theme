@@ -2386,7 +2386,7 @@ Owner: "we don't have any" filters; approved installing Shopify Search & Discove
 big brands and add for our things". Set up in the app (admin settings, no theme code): Вид бижу (Product type),
 Метал (option „Jewelry material“), Камък (product metafield: Перла, Циркон, Червен циркон), Размер на пръстена
 (option „Ring size“, 53–60), Цена, Наличност. On the draft /collections/all Вид бижу, Метал, Камък and Цена show;
-the saved order and the ring size filter had not yet appeared minutes later (to recheck). Limits: one product names
+checked 2026-11-24: the ring size filter shows on ring collections only and „Наличност“ stays hidden, both by the owner's rules of 2026-10-05 in snippets/facets.liquid, which also fixes the order on the page (Цена, Метал, Камък, Размер, then Вид бижу) whatever the order in the app. Limits: one product names
 its metal option „Материал“, ring sizes sit under three option names, few products have a stone value. Way back:
 remove the filters in Search & Discovery → Filters.
 
