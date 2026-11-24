@@ -8,6 +8,13 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-24 — Leaf ring (set 16): main photo rebuilt **(owner)**
+- Owner: the left side looked blurred and cut. Higgsfield's original was clean; a later background clean-up had
+  softened the band's end, the left leaf's edge, and painted white into the plain gold leaf. The 01 photo in every
+  metal was rebuilt free from the AI original (gold standard F, soft background, frame c). A scan of every photo the
+  2026-11-20 clean-up touched found no other photo with this damage. Way back:
+  `Пръстен/чернови/преди размазания ляв край 2026-11-24/`.
+
 ## 2026-11-23 — Collection extras, second round **(owner)**
 - Owner: a line at the end like moonmagic's under „Видяхте всички бижута…“; the strip of three across the whole page
   ("make the size for the hole page like moomagic did it"); „Качество във всеки детайл“ in the centre like the other
