@@ -2472,3 +2472,15 @@ No theme file changed; everything is store data.
 
 Way back: delete the new menu items in Navigation, then the twelve collections (and the two -1 copies); remove the tags
 „С камъни“ and „Природа“ (bulk) and „Циркон“ from the fourteen pieces of the five sets.
+Same day, second step (owner: Монети/Ажур "not that hard to look"; empty collections "write something like
+очаквайте скоро"; "delete the copies"):
+- Main menu: Монети and Ажур moved right under „Всички зодии“ (before the signs). The computer menu shows a sub-list
+  of eleven links or more in two columns (crown.css „long lists in two columns“), so Зодии fits without scrolling.
+- A collection with no pieces at all shows „Очаквайте скоро“, „Бижутата за тази колекция предстоят.“ and a black
+  button „Разгледайте всички бижута“ (sections/main-collection-product-grid.liquid, crown.css „Empty collection“);
+  a collection emptied by filters keeps its old message. Applies today to Мъжки пръстени, Диаманти, Сапфири, Рубини,
+  Изумруди and the empty stone sub-collections.
+- The two copies (Комплекти с циркони / с перли, the automated ones made today) are deleted with the owner's OK; the
+  originals (manual, with descriptions, same 17 and 3 pieces) stay and are what the menu links to. Note: being manual,
+  they do not take new set pieces by themselves; a new set's pieces must be added to them by hand.
+Way back: drag the two zodiac links back down; delete the two crown.css blocks and the cj-soon branch.
