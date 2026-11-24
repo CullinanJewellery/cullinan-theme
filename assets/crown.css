@@ -11174,3 +11174,42 @@ html body .cj-dmenu__promo[href$="/комплекти"] .cj-dmenu__promo-image {
   aspect-ratio: 1 / 1;
   object-position: 50% 50%;
 }
+
+/* ===== Empty collection: „Очаквайте скоро“ (2026-11-24, owner) =====
+   sections/main-collection-product-grid.liquid shows this for a collection with no pieces at all.
+   Way back: delete this block and the cj-soon branch in that section. ===== */
+html body .cj-soon .title-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.6rem;
+  padding: 4.8rem 0 6.4rem;
+}
+html body .cj-soon .cj-soon__title {
+  margin: 0;
+  text-transform: none !important;
+  letter-spacing: 0.02em !important;
+  font-weight: 500;
+}
+html body .cj-soon .cj-soon__text {
+  margin: 0;
+  font-size: 1.6rem;
+  color: rgba(var(--color-foreground), 0.75);
+}
+html body .cj-soon .cj-soon__button {
+  margin-top: 0.8rem;
+}
+
+/* ===== Computer menu: long lists in two columns (2026-11-24, owner) =====
+   Owner: under Зодии the new „Монети“ and „Ажур“ were below the fold („not that hard to look“). A sub-list of eleven
+   links or more (today only Зодии: Всички зодии, Монети, Ажур and the twelve signs) is laid out in two columns, so
+   everything shows without scrolling. Way back: delete this block. ===== */
+@media screen and (min-width: 990px) {
+  html body .cj-dmenu__sublist:has(> li:nth-child(11)) {
+    columns: 2;
+    column-gap: 3.2rem;
+  }
+  html body .cj-dmenu__sublist:has(> li:nth-child(11)) > li {
+    break-inside: avoid;
+  }
+}

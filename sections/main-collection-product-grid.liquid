@@ -266,7 +266,19 @@
               {%- endif -%}
             </div>
           {%- endif -%}
-          {%- if collection.products.size == 0 -%}
+          {%- comment -%}
+            Cullinan (2026-11-24, owner: "write something ... like очаквайте скоро"): a collection with no pieces at
+            all (not one emptied by filters) says „Очаквайте скоро“ and offers all the jewellery instead.
+          {%- endcomment -%}
+          {%- if collection.all_products_count == 0 -%}
+            <div class="collection collection--empty cj-soon page-width" id="product-grid" data-id="{{ section.id }}">
+              <div class="title-wrapper center">
+                <h2 class="title title--primary cj-soon__title">Очаквайте скоро</h2>
+                <p class="cj-soon__text">Бижутата за тази колекция предстоят.</p>
+                <a class="button cj-soon__button" href="{{ routes.all_products_collection_url }}">Разгледайте всички бижута</a>
+              </div>
+            </div>
+          {%- elsif collection.products.size == 0 -%}
             <div class="collection collection--empty page-width" id="product-grid" data-id="{{ section.id }}">
               <div class="loading-overlay gradient"></div>
               <div class="title-wrapper center">
