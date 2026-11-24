@@ -2415,3 +2415,7 @@ are not zoomed in ... even if they are cut off they will just be zoomed in". The
 in sections/header-group.json now use the homepage tiles' computer photos (home-tile-rings.jpg,
 home-tile-bracelets.jpg), cropped to the menu's 16:9 by object-fit; the phone menu's tiles use the same blocks.
 Way back: remove the two "image" lines (or clear them in the theme editor, Header → the two blocks).
+Same day, second step: four more blocks, Обеци, Висулки, Комплекти, Аксесоари, with their homepage tile photos
+(computer versions), so every category that has a homepage photo has it in the menu too; Камъни, Зодии and Вяра и
+закрила have no homepage photo and stay without a picture. Way back: delete blocks mega-promo-earrings, -pendants,
+-sets, -accessories.
