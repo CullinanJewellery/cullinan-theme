@@ -2499,3 +2499,31 @@ star"; chose „Коледна звезда“ (the poinsettia's Bulgarian name)
 - Every old handle has a Shopify URL redirect (checked: all five old addresses lead to the new pages). The photo
   folder on disk keeps the name „26 Игла за вратовръзка“.
 Way back: rename in admin and set the old handles (delete the redirects first in Navigation → URL redirects).
+
+## 2026-11-24 — Computer menu: Монети / Ажур panels, no „Всички …“ beside the picture; earring sub-collections; the shop in the footer (owner)
+
+Owner: "when you click on Ажур it opens another white panel where are all the zodiac signs, the same for монети";
+"remove for computer всички пръстени … they are going to use the picture with the text inside … for every
+collection"; "in earrings you did not put any other collections"; the footer had the shop's hours under the address,
+"or do something else … with better design"; „Магазин“ to the owner's Google Maps place.
+- **Монети / Ажур** (snippets/cj-desktop-menu.liquid, assets/cj-desktop-menu.js, crown.css „Монети / Ажур open their
+  own panel“): on computers they are buttons with ›; a click replaces the Зодии column with a white panel: „‹ Зодии“,
+  the title, the signs in zodiac order (two columns), „Вижте всички“ (the collection). Each sign goes to that sign's
+  piece. Built from the collection's pieces (any collection with „зодии-“ in its handle; titles „Овен – …“), so a new
+  piece appears by itself: Монети shows 10 signs today (no coin for Везни and Водолей), Ажур 12. Phones unchanged
+  (Монети / Ажур still open the collection).
+- **„Всички …“ left out on computers** wherever the column ends in the picture with its label: Пръстени, Обеци,
+  Висулки, Комплекти, Гривни, Вяра и закрила, Аксесоари. Links are compared decoded (Всички пръстени was a
+  percent-encoded link). Камъни and Зодии have no picture and keep their „Всички“. Phones keep every link.
+- **Обеци** in Navigation: + С циркони (Обеци с циркони, 6) and С перли (Обеци с перли, 1). Every earring belongs to a
+  set, so „От комплекти“ would repeat all seven and is not added.
+- **Footer shop block** (sections/footer.liquid, new link_column setting map_link; footer-group.json; crown.css
+  „Footer: the shop“): the address with the map pin opens the owner's Google Maps place in a new tab; under it the
+  hours (the owner's of 2026-10-04) in two aligned columns. Note format: first line the address, then „Days: time“.
+  Reverses part of 2026-11-16 („no hours“) on the owner's word; CLAUDE.md facts updated.
+- **„Магазин“** in the computer menu and the phone drawer: the owner's Maps place instead of an address search.
+- A push of footer-group.json with raw line breaks was invalid JSON for about two minutes; fixed and re-sent.
+Checked on the draft (computer): menu lists as above, the Ажур panel opens and goes back, the footer block shows with
+the Maps link. Phone width not checked on screen (the browser window could not be resized).
+Way back: delete the two crown.css blocks; revert cj-desktop-menu.liquid/.js to 287d90d5; note back to the address
+only and map_link empty; remove the two Обеци items in Navigation.

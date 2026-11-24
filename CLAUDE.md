@@ -36,8 +36,10 @@ Only these, unless the owner confirms more. Never invent policies, prices, warra
   its checkout configuration is unverified and no online payment method is set up yet (`docs/tasks.md` A2): never
   claim online payments are ready.
 - The atelier cleans and repairs pieces after a sale (terms unknown).
-- **The shop is not ours (owner, 2026-11-16)**: only its address, бул. Васил Левски 21, Велико Търново, stays in the footer,
-  with no note; no hours, no "visit us", nothing in policies. Phone +359 88 287 4895 is the owner's (call button, never printed).
+- **The shop is not ours (owner, 2026-11-16)**: its address, бул. Васил Левски 21, Велико Търново, stays in the footer;
+  no "visit us", nothing in policies. **Owner, 2026-11-24**: the opening hours are back under the address (Пон – Пет
+  09:30 – 19:00, Събота 10:00 – 18:00, Неделя почивен ден) and the address and the menu's „Магазин“ open the owner's Google
+  Maps place („Бижутерия Кулинан ООД“). Phone +359 88 287 4895 is the owner's (call button, never printed).
 - **Owner, 2026-11-02 (homepage trust row)**: every piece gets an individual certificate; 14 days to return or
   exchange; the parcel can be opened and tried before paying (преглед и тест); every piece has a warranty. Terms
   are in the draft return policy (owner, 2026-11-03, `docs/legal/returns-policy-draft.md`, not yet checked by the
