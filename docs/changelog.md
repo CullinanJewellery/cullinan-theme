@@ -2550,3 +2550,22 @@ inside and remove the text"; the footer shop block "either remove it or make new
   starts the quieter group. footer-group.json needed one re-send (dropped sync).
 Way back: delete mega-promo-zodiac (header-group.json) and its crop rule; remove the cj_column_flies skip; restore
 the first version from git (commit 15310ee2's footer-group.json and the crown.css „Footer: the shop“ block of 48a13c78).
+
+## 2026-11-24 — Site check, computer and phone (owner: "check for bugs … if something is not working how it is written, fix it")
+
+Checked on the draft preview (built-in browser, 375px phone and 1024/1440px computer):
+- All 179 product and collection pages and every link from the home page, menus and footer open (no 404).
+- No page scrolls sideways (home, collection, ring, pendant, cart, contact, about, wishlist, search, policies, withdrawal).
+- Product page: metal switch changes photo and variant; add to cart (right metal in the cart); free-delivery bar counts
+  down (€360 left after €140); Любими saves and the Любими page lists the piece; „Попитайте за това бижу“ and
+  „Напишете отзив“ open; „Прочетете повече“ expands. Phone menu (Зодии sub-list), phone footer accordion, contact
+  page rows (Имейл form, Телефон) work. Anchors #vaprosi, #istoriya, #vdahnovenie, #dizain, #materiali, #zapitvane exist.
+- Fixed: the product FAQ asked „Как да разбера размера си?“ (pointing at a „Таблица с размери“) and „Може ли размерът
+  на пръстена да се промени“ on every piece; pieces without a size option now leave both out (main-product.liquid).
+  Way back: render block.settings.content again instead of cj_tab_text.
+Found, not changed (owner's data or decision):
+- 68 of 87 products are priced €0 in admin (they show €0 and could be ordered for €0), incl. „Най-продавани“ on the home page.
+- Collections „asdasdasdas“ (test) and „Kомплекти с диаманти“ (Latin K, a copy of „Комплекти с диаманти“) are published.
+- Cart says „С включени данъци“ (Shopify text) although the company is not VAT-registered: accountant's call.
+- „Наложен платеж“ is stated on the product page and FAQ; checkout payment set-up is still unverified (tasks A2).
+- Console: only the preview domain's own errors (Shop login, cookie banner), none from the theme.
