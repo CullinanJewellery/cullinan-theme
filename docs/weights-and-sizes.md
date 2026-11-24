@@ -26,7 +26,7 @@ Which photos are ready: `docs/photos-ready.md`.
 |---|---|---|---|
 | 06 | Кръст с кант | 1.07 g (owner not sure it is this cross) | 22.6 mm with the jump ring |
 | 07 | Двустранен кръст | 1.68 g | 25 mm |
-| 08 | Гладък кръст | 1.34 g (owner not sure) | 23.87 mm (2026-11-19; the sheet's 25 mm with the bail is older); a bigger 29 mm version exists |
+| 08 | Гладък кръст (Вяра) | 1.34 g (owner not sure); on the site since 2026-11-24 the old site's 1 g (3214, малък) / 1.4 g (3216, голям) | 23.87 mm (2026-11-19; the sheet's 25 mm with the bail is older); the bigger 3216 is 29 mm |
 | 09 | Малък кръст | 1.09 g (owner not sure) | 21.03 mm (sheet: 21 mm) |
 | 23 | Кръст с шарка | 1.40 g | — |
 | 23 | Православен кръст | 1.66 g | — |
@@ -101,7 +101,7 @@ Pearls: ring about 6–7 mm, pendant about 7–8 mm (estimated from the photos, 
 | 19 | 12 Стъпки | 0.63 g | |
 | 19 | 13 Цвете с камък | 0.71 g | zircon |
 | 19 | 14 Ажурен кръст | 0.60 g | |
-| 20 | Ажурна гривна | 12.00 g | band about 8–9 mm wide (estimated); inner size — |
+| 20 | Ажурна гривна (Дантела) | 12.00 g (малка, 3072); голяма 3070 17.3 g (old site; diameter 6.5 cm, adjustable by about 1 cm); silver 3070 weight — | band about 8–9 mm wide (estimated); inner size — |
 | 24 | Брошка Панделка с камък | 2.80 g | about 5 cm |
 | 24 | Брошка Роза | 3.00 g | about 5 cm |
 | 26 | Щипка за вратовръзка | — | — |
