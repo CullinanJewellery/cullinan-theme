@@ -2424,3 +2424,8 @@ is square instead of 16:9 (crown.css „Menu picture square“), so the square p
 Same day, fourth step (owner: "add a box for Вяра и закрила too"): block mega-promo-faith with the homepage faith band's
 phone photo (home-faith-band-phone.jpg; the wide computer band would lose the angel or the cross in a square), label
 „Всичко във Вяра и закрила“ as the menu's own first link. Way back: delete that block.
+Same day, fifth step (owner: boxes "too big", the label under the picture should lead to the whole collection, for
+every collection): the computer menu picture is 26rem square instead of the column's full width; the label under it
+(„Всички пръстени“, „Всички обеци“ ...) is underlined with an arrow, and the picture and label together link to the
+whole collection. Камъни and Зодии have no picture yet, so nothing is drawn there. Way back: delete crown.css
+„Menu picture smaller“.

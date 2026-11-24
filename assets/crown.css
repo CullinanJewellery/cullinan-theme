@@ -10978,3 +10978,36 @@ html body .cj-coll-end__button {
 html body .cj-dmenu__promo-image {
   aspect-ratio: 1 / 1;
 }
+
+/* Menu picture smaller, 2026-11-24 (owner: "make the boxes smaller ... it is too big"; "всички пръстени under the
+   picture, and when you click it go to all the rings, the same for the other collections"): the square picture is
+   26rem wide (was the column's full width, about 45rem), and the label under it reads as a link to the whole
+   collection: underlined, with an arrow. The whole picture and label are one link (snippets/cj-desktop-menu.liquid).
+   Way back: delete this block. */
+html body .cj-dmenu__promo {
+  width: 100%;
+}
+
+html body .cj-dmenu__promo-image {
+  width: 26rem;
+  max-width: 100%;
+}
+
+html body .cj-dmenu__promo-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: underline;
+  text-decoration-thickness: 0.1rem;
+  text-underline-offset: 0.4rem;
+}
+
+html body .cj-dmenu__promo-label::after {
+  content: '→';
+  text-decoration: none;
+  -webkit-text-stroke: 0;
+}
+
+html body .cj-dmenu__promo:hover .cj-dmenu__promo-label {
+  text-decoration-thickness: 0.2rem;
+}
