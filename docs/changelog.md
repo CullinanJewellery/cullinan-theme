@@ -8,6 +8,10 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-24 — Cart without „С включени данъци“; two junk collections deleted **(owner)**
+- The company is not VAT-registered, so the cart note no longer starts with „С включени данъци.“ (`taxes_included_shipping_at_checkout_*` in `locales/bg.json` and `en.default.json`). Way back: put the prefix back in both keys.
+- Admin: deleted the test collection „asdasdasdas“ and the empty duplicate „Kомплекти с диаманти“ (Latin K, id 728171217236, 0 products, not in any menu). The real Cyrillic „Комплекти с диаманти“ stays. Way back: recreate them in Products → Collections (nothing linked to them).
+
 ## 2026-11-24 — Leaf ring (set 16): main photo rebuilt **(owner)**
 - Owner: the left side looked blurred and cut. Higgsfield's original was clean; a later background clean-up had
   softened the band's end, the left leaf's edge, and painted white into the plain gold leaf. The 01 photo in every
