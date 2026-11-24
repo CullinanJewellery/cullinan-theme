@@ -14,6 +14,91 @@ Photo folders: `Pictures/PicturesForWebFaceInstagram/pictures for the website/<N
 folder: `01 основна снимка` (main), then `02 …` (another angle) and `03 на ръка / на шията / на китката / носена`
 (worn), when they exist. Silver uses its own `сребро` folder (a copy of white gold).
 
+## Replace in Shopify: new photos of 2026-11-23 and 2026-11-24
+
+**318 photos changed after the 2026-11-22 upload.** Take each one from
+`pictures for the website/_за качване/<folder>/<metal>/` (Latin names, ready for Shopify, remade 2026-11-24 with
+`tools/upload-copies.cjs`) and replace the photo of the same name on the product: same file name, same place in the
+gallery, same alt text (the metal). Each row below is one piece; every metal listed is a separate file.
+
+- Our own folders: every changed photo was changed **in place**; the old one is in the piece's `чернови` folder
+  (`преди увеличението 2026-11-24`, `преди версия D 2026-11-24`, `преди чистите отвори 2026-11-23` / `2026-11-24`,
+  `преди размазания ляв край 2026-11-24` for the leaf ring). The 55 old small copies `03 на шията … .1.jpg`
+  (zodiacs, before the zoom) were moved to `чернови/преди увеличението 2026-11-24/`: do not upload them again.
+- New files that did not exist before (nothing to replace, add them): the set 15 and 18 rings' `03` on the hand in
+  white, rose and silver (2026-11-24); the set pendants', earrings' and rings' and Детелина / Колибри `03` in white,
+  rose and silver (2026-11-23).
+
+| Folder in `_за качване` (name without „ - номер предстои“) | Photos (metal folder) | Why |
+|---|---|---|
+| 06 Кръст с кант | 03 worn: бяло, жълто, розово, сребро | 03 zoomed x1.5 |
+| 07 Двустранен кръст | 03 worn: бяло, жълто, розово, сребро | 03 zoomed x1.5 |
+| 08 Гладък кръст | 03 worn: бяло, жълто, розово, сребро | 03 zoomed x1.5 |
+| 09 Малък кръст | 03 worn: бяло, жълто, розово, сребро | 03 zoomed x1.5 |
+| 12 Зодии / Близнаци - ажурен | 03 worn: бяло, жълто, розово, сребро | 03 zoomed x1.5 |
+| 12 Зодии / Близнаци - монета | 01 main: бяло, жълто, розово, сребро; 03 worn: бяло, жълто, розово, сребро | 01 enlarged to 65%; 03 zoomed x1.5 |
+| 12 Зодии / Везни - ажурен | 03 worn: бяло, жълто, розово, сребро | 03 zoomed x1.5 |
+| 12 Зодии / Водолей - ажурен | 03 worn: бяло, жълто, розово, сребро | 03 zoomed x1.5 |
+| 12 Зодии / Дева - ажурен | 03 worn: бяло, жълто, розово, сребро | 03 zoomed x1.5 |
+| 12 Зодии / Дева - монета | 01 main: бяло, жълто, розово, сребро; 03 worn: бяло, жълто, розово, сребро | 01 enlarged to 65%; 03 zoomed x1.5 |
+| 12 Зодии / Козирог - ажурен | 03 worn: бяло, жълто, розово, сребро | 03 zoomed x1.5 |
+| 12 Зодии / Козирог - монета | 01 main: бяло, жълто, розово, сребро; 03 worn: бяло, жълто, розово, сребро | 01 enlarged to 65%; 03 zoomed x1.5 |
+| 12 Зодии / Лъв - ажурен | 03 worn: бяло, жълто, розово, сребро | 03 zoomed x1.5 |
+| 12 Зодии / Лъв - монета | 01 main: бяло, жълто, розово, сребро; 03 worn: бяло, жълто, розово, сребро | 01 enlarged to 65%; 03 zoomed x1.5 |
+| 12 Зодии / Овен - ажурен | 03 worn: бяло, жълто, розово, сребро | 03 zoomed x1.5 |
+| 12 Зодии / Овен - монета | 01 main: бяло, жълто, розово, сребро; 03 worn: бяло, жълто, розово, сребро | 01 enlarged to 65%; 03 zoomed x1.5 |
+| 12 Зодии / Рак - ажурен | 03 worn: бяло, жълто, розово, сребро | 03 zoomed x1.5 |
+| 12 Зодии / Рак - монета | 01 main: бяло, жълто, розово, сребро | 01 enlarged to 65% |
+| 12 Зодии / Риби - ажурен | 03 worn: бяло, жълто, розово, сребро | 03 zoomed x1.5 |
+| 12 Зодии / Риби - монета | 01 main: бяло, жълто, розово, сребро; 03 worn: бяло, жълто, розово, сребро | 01 enlarged to 65%; 03 zoomed x1.5 |
+| 12 Зодии / Скорпион - ажурен | 03 worn: бяло, жълто, розово, сребро | 03 zoomed x1.5 |
+| 12 Зодии / Скорпион - монета | 01 main: бяло, жълто, розово, сребро; 03 worn: бяло, жълто, розово, сребро | 01 enlarged to 65%; 03 zoomed x1.5 |
+| 12 Зодии / Стрелец - ажурен | 03 worn: бяло, жълто, розово, сребро | 03 zoomed x1.5 |
+| 12 Зодии / Стрелец - монета | 01 main: бяло, жълто, розово, сребро; 03 worn: бяло, жълто, розово, сребро | 01 enlarged to 65%; 03 zoomed x1.5 |
+| 12 Зодии / Телец - ажурен | 03 worn: бяло, жълто, розово, сребро | 03 zoomed x1.5 |
+| 12 Зодии / Телец - монета | 01 main: бяло, жълто, розово, сребро; 03 worn: бяло, жълто, розово, сребро | 01 enlarged to 65%; 03 zoomed x1.5 |
+| 13 Нови висулки / Ангел | 01 main: бяло, жълто, розово, сребро; 03 worn: бяло, жълто, розово, сребро | clean openings (23.11); 03 zoomed x1.5 |
+| 13 Нови висулки / Богородица ажурна | 03 worn: бяло, жълто, розово, сребро | 03 zoomed x1.5 |
+| 13 Нови висулки / Богородица голям медальон | 03 worn: бяло, жълто, розово, сребро | 03 zoomed x1.5 |
+| 13 Нови висулки / Богородица малък медальон | 01 main: бяло, жълто, розово, сребро; 03 worn: бяло, жълто, розово, сребро | 01 enlarged to 65%; 03 zoomed x1.5 |
+| 13 Нови висулки / Богородица с ореол | 03 worn: бяло, жълто, розово, сребро | 03 zoomed x1.5 |
+| 13 Нови висулки / Детелина | 01 main: бяло, жълто, розово, сребро; 03 worn: бяло, жълто, розово, сребро | 01 enlarged to 65%; 03 new in every metal (23.11) and zoomed x1.5 |
+| 13 Нови висулки / Дърво с бели листа | 03 worn: бяло, жълто, розово, сребро | 03 zoomed x1.5 |
+| 13 Нови висулки / Дърво с възел | 01 main: бяло, жълто, розово, сребро; 03 worn: бяло, жълто, розово, сребро | clean openings; 65%; 03 zoomed x1.5 |
+| 13 Нови висулки / Дърво със сърца | 01 main: бяло, жълто, розово, сребро; 03 worn: бяло, жълто, розово, сребро | 01 enlarged to 65%; 03 zoomed x1.5 |
+| 13 Нови висулки / Колибри | 01 main: бяло, жълто, розово, сребро; 03 worn: бяло, жълто, розово, сребро | 01 enlarged to 65%; 03 new in every metal (23.11) and zoomed x1.5 |
+| 13 Нови висулки / Пчела | 01 main: бяло, жълто, розово, сребро; 03 worn: бяло, жълто, розово, сребро | 01 enlarged to 65%; 03 zoomed x1.5 |
+| 14 Комплект с перла / Висулка | 03 worn: бяло, жълто, розово, сребро | 03 zoomed x1.5 |
+| 15 Комплект с червен камък / Висулка | 03 worn: бяло, жълто, розово, сребро | 03 new in every metal (23.11) and zoomed x1.5 |
+| 15 Комплект с червен камък / Обеци | 03 worn: бяло, жълто, розово, сребро | 03 new in every metal (23.11) and zoomed x1.5 |
+| 15 Комплект с червен камък / Пръстен | 03 worn: бяло, жълто, розово, сребро | 03 on the hand: yellow new 23.11, white, rose, silver new 24.11 |
+| 16 Комплект с листа / Висулка | 03 worn: бяло, жълто, розово, сребро | 03 new in every metal (23.11) and zoomed x1.5 |
+| 16 Комплект с листа / Обеци | 03 worn: бяло, жълто, розово, сребро | 03 new in every metal (23.11) and zoomed x1.5 |
+| 16 Комплект с листа / Пръстен | 01 main: бяло, жълто, розово, сребро; 03 worn: бяло, жълто, розово, сребро | remade: was blurred and cut on the left; 03 on the hand new in every metal (23.11) |
+| 17 Комплект с венчелистче / Висулка | 03 worn: бяло, жълто, розово, сребро | 03 new in every metal (23.11) and zoomed x1.5 |
+| 17 Комплект с венчелистче / Обеци | 03 worn: бяло, жълто, розово, сребро | 03 new in every metal (23.11) and zoomed x1.5 |
+| 17 Комплект с венчелистче / Пръстен | 03 worn: бяло, жълто, розово, сребро | 03 on the hand new in every metal (23.11) |
+| 18 Комплект с камък в обков / Висулка | 03 worn: бяло, жълто, розово, сребро | 03 new in every metal (23.11) and zoomed x1.5 |
+| 18 Комплект с камък в обков / Обеци | 03 worn: бяло, жълто, розово, сребро | 03 new in every metal (23.11) and zoomed x1.5 |
+| 18 Комплект с камък в обков / Пръстен | 03 worn: бяло, жълто, розово, сребро | 03 on the hand: yellow new 23.11, white, rose, silver new 24.11 |
+| 19 Гривни с червен конец / 01 Две сърца | 01 main: бяло, жълто, розово | version D (owner); zoomed to the edge |
+| 19 Гривни с червен конец / 02 Малък кръст | 01 main: бяло, жълто, розово | zoomed to the edge |
+| 19 Гривни с червен конец / 03 Кръст с мрежа | 01 main: бяло, жълто, розово | zoomed to the edge |
+| 19 Гривни с червен конец / 04 Кръст с камък | 01 main: бяло, жълто, розово | zoomed to the edge |
+| 19 Гривни с червен конец / 05 Дърво на живота | 01 main: бяло, жълто, розово | zoomed to the edge |
+| 19 Гривни с червен конец / 06 Дълъг гладък кръст | 01 main: бяло, жълто, розово | zoomed to the edge |
+| 19 Гривни с червен конец / 07 Кръст с двойна линия | 01 main: бяло, жълто, розово | zoomed to the edge |
+| 19 Гривни с червен конец / 08 Плочка | 01 main: бяло, жълто, розово | zoomed to the edge |
+| 19 Гривни с червен конец / 09 Кръст с широки рамена | 01 main: бяло, жълто, розово | zoomed to the edge |
+| 19 Гривни с червен конец / 10 Сърце | 01 main: бяло, жълто, розово | zoomed to the edge |
+| 19 Гривни с червен конец / 11 Безкрайност | 01 main: бяло, жълто, розово | zoomed to the edge |
+| 19 Гривни с червен конец / 12 Стъпки | 01 main: бяло, жълто, розово | zoomed to the edge |
+| 19 Гривни с червен конец / 13 Цвете с камък | 01 main: бяло, жълто, розово | zoomed to the edge |
+| 19 Гривни с червен конец / 14 Ажурен кръст | 01 main: бяло, жълто, розово | zoomed to the edge |
+| 24 Брошки / Панделка с камък | 03 worn: бяло, жълто, розово, сребро | 03 zoomed x1.5 |
+| 24 Брошки / Роза | 03 worn: бяло, жълто, розово, сребро | 03 zoomed x1.5 |
+
+
 ## Ready
 
 | Folder | Pieces | Photos per metal | Notes |
@@ -33,10 +118,10 @@ folder: `01 основна снимка` (main), then `02 …` (another angle) a
 | 13 Нови висулки | Ангел, Богородица ажурна, Богородица голям медальон, Богородица малък медальон, Богородица с ореол, Дърво с бели листа, Дърво с възел, Дърво със сърца, Пчела | 01, 03 neck | |
 | 13 Нови висулки | Детелина, Колибри | 01; 03 on the neck in every metal (2026-11-23) | real sizes not known yet |
 | 14 Комплект с перла | pendant, earrings, ring | pendant 01, 02 front, 03 neck; earrings and ring 01 | |
-| 15 Комплект с червен камък | pendant, earrings, ring | pendant 01, 02 side; earrings and ring 01; 03 worn in every metal, the ring's 03 in yellow only (2026-11-23) | the ring's white and rose 03 not made yet |
+| 15 Комплект с червен камък | pendant, earrings, ring | pendant 01, 02 side; earrings and ring 01; 03 worn in every metal | the ring's white and rose 03 made 2026-11-24 |
 | 16 Комплект с листа | pendant, earrings, ring | 01 (ring also 02 from above); 03 worn in every metal (2026-11-23) | |
 | 17 Комплект с венчелистче | pendant, earrings, ring | 01; 03 worn in every metal (2026-11-23) | |
-| 18 Комплект с камък в обков | pendant, earrings, ring | 01; 03 worn in every metal, the ring's 03 in yellow only (2026-11-23) | the ring's white and rose 03 not made yet; the ring's stone is paler (owner accepted) |
+| 18 Комплект с камък в обков | pendant, earrings, ring | 01; 03 worn in every metal | the ring's white and rose 03 made 2026-11-24; the ring's stone is paler (owner accepted) |
 | 19 Гривни с червен конец | 14 bracelets | 01, 03 wrist; yellow, white, rose | no silver photos (made in gold only); dust specks cleaned 2026-11-21, the cord untouched |
 | 20 Ажурна гривна | 1 bangle | 01, 02 from above; yellow also 03 wrist | |
 | 23 Нови кръстове | Кръст с шарка, Православен кръст, Разпятие | 01 (Православен and Разпятие also 02 back) | Православен кръст silver added 2026-11-21 (copy of white gold) |
