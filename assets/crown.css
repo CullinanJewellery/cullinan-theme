@@ -10971,3 +10971,10 @@ html body .cj-coll-end__button {
     color: #2a1e1a;
   }
 }
+
+/* Menu picture square, 2026-11-24 (owner: the wide 16:9 "cuts a lot of the picture"): the computer menu's picture is
+   now square, so the square category photos show whole and the tall ones (Пръстени, Аксесоари) lose only top and
+   bottom. Way back: delete this rule (16:9 again, „Desktop menu panel“ above). */
+html body .cj-dmenu__promo-image {
+  aspect-ratio: 1 / 1;
+}

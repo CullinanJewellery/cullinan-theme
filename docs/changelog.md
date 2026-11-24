@@ -2419,3 +2419,5 @@ Same day, second step: four more blocks, Обеци, Висулки, Компл�
 (computer versions), so every category that has a homepage photo has it in the menu too; Камъни, Зодии and Вяра и
 закрила have no homepage photo and stay without a picture. Way back: delete blocks mega-promo-earrings, -pendants,
 -sets, -accessories.
+Same day, third step (owner: "maybe you were right ... it cuts a lot of the picture"): the computer menu's picture
+is square instead of 16:9 (crown.css „Menu picture square“), so the square photos show whole. Way back: delete that rule.
