@@ -2527,3 +2527,19 @@ Checked on the draft (computer): menu lists as above, the Ажур panel opens a
 the Maps link. Phone width not checked on screen (the browser window could not be resized).
 Way back: delete the two crown.css blocks; revert cj-desktop-menu.liquid/.js to 287d90d5; note back to the address
 only and map_link empty; remove the two Обеци items in Navigation.
+
+## 2026-11-24 — Зодии column: Монети and Ажур only, with its picture; footer shop block redone (owner)
+
+Owner: "remove the zodiac signs, they can open them through монети or ажур; add the picture … with Всички зодии
+inside and remove the text"; the footer shop block "either remove it or make new text and design … your own".
+- **Зодии on computers**: the column shows only Монети › and Ажур ›, then a picture card „Всички зодии“ (new header
+  block mega-promo-zodiac, the homepage zodiac photo home-zodiac-band-phone, crop 50% 15% in crown.css). The twelve
+  sign links are left out on computers in any column with the sign panels (cj-desktop-menu.liquid, cj_column_flies);
+  „Всички зодии“ goes because the picture leads there. The phone menu keeps the signs and gains a Зодии tile in its
+  picture row.
+- **Footer shop, second version (my design)**: a small spaced „МАГАЗИН“ label; the address on two lines in black; the
+  hours a step quieter (Пон – Пет: 9:30 – 19:00, Събота: 10:00 – 18:00, Неделя: почивен ден); „КАК ДА СТИГНЕТЕ“ with
+  a thin drawn arrow that moves on hover, to the owner's Maps place. No pin, no table. An empty line in the note
+  starts the quieter group. footer-group.json needed one re-send (dropped sync).
+Way back: delete mega-promo-zodiac (header-group.json) and its crop rule; remove the cj_column_flies skip; restore
+the first version from git (commit 15310ee2's footer-group.json and the crown.css „Footer: the shop“ block of 48a13c78).
