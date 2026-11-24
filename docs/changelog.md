@@ -2400,3 +2400,10 @@ Owner: the tick circle at the end of a collection "like moonmagic"; on a phone t
 - Phone strip: three rows under each other, icon left, small spaced heading and the line under it in normal letters,
   hairlines between. A space added after each heading so the words don't run together when copied or read aloud.
 Way back: delete the "fourth pass" block at the end of assets/crown.css.
+
+## 2026-11-24 — Top bar flag removed (owner)
+
+Owner: "the flag in the black bar i want it to be removed". Both flags in sections/announcement-bar.liquid are gone
+(the one before the rotating message on computers, the one inside each message on phones and tablets). The flags in
+the computer menu and the phone menu stay. The crown.css „Top bar flag“ rules are left (they style nothing now).
+Way back: restore the two svgs from commit before this one (2026-10-13 entry).
