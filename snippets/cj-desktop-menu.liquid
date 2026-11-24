@@ -189,7 +189,15 @@
               <ul class="cj-dmenu__sublist list-unstyled" role="list">
                 {%- for childlink in link.links -%}
                   {%- if cj_has_promo and childlink.links == blank -%}
-                    {%- if childlink.url == link.url or childlink.url == cj_href -%}
+                    {%- liquid
+                      assign cj_child_url = childlink.url | url_decode | downcase | remove: 'https://' | split: '?' | first
+                      assign cj_link_url = link.url | url_decode | downcase | remove: 'https://' | split: '?' | first
+                      assign cj_promo_url = cj_href | url_decode | downcase | remove: 'https://' | split: '?' | first
+                      assign cj_child_tail = cj_child_url | split: '/collections/' | last
+                      assign cj_link_tail = cj_link_url | split: '/collections/' | last
+                      assign cj_promo_tail = cj_promo_url | split: '/collections/' | last
+                    -%}
+                    {%- if cj_child_tail == cj_link_tail or cj_child_tail == cj_promo_tail -%}
                       {%- continue -%}
                     {%- endif -%}
                   {%- endif -%}
