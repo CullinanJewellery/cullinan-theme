@@ -36,6 +36,40 @@
           this.show(item.getAttribute('aria-expanded') === 'true' ? null : item)
         );
       });
+
+      // 2026-11-24 (owner): Монети / Ажур under Зодии open their own panel with the signs, in
+      // place of the column's list; „‹ Зодии“ goes back.
+      this.flyButtons = Array.from(this.panel.querySelectorAll('[data-cj-dmenu-fly]'));
+      this.flyButtons.forEach((button) => {
+        button.addEventListener('click', () => this.fly(button));
+      });
+      this.panel.querySelectorAll('[data-cj-dmenu-back]').forEach((back) => {
+        back.addEventListener('click', () => {
+          const opener = this.flyButtons.find((b) => b.getAttribute('aria-expanded') === 'true');
+          this.unfly();
+          if (opener) opener.focus({ preventScroll: true });
+        });
+      });
+    }
+
+    fly(button) {
+      const fly = document.getElementById(button.dataset.cjDmenuFly);
+      const subpanel = button.closest('.cj-dmenu__subpanel');
+      if (!fly || !subpanel) return;
+      this.unfly();
+      subpanel.classList.add('has-fly');
+      fly.hidden = false;
+      button.setAttribute('aria-expanded', 'true');
+      const sub = this.panel.querySelector('.cj-dmenu__sub');
+      if (sub) sub.scrollTop = 0;
+      const back = fly.querySelector('[data-cj-dmenu-back]');
+      if (back) back.focus({ preventScroll: true });
+    }
+
+    unfly() {
+      (this.flyButtons || []).forEach((b) => b.setAttribute('aria-expanded', 'false'));
+      this.panel.querySelectorAll('.cj-dmenu__fly').forEach((f) => (f.hidden = true));
+      this.panel.querySelectorAll('.has-fly').forEach((s) => s.classList.remove('has-fly'));
     }
 
     get isOpen() {
@@ -47,6 +81,7 @@
       // open; .has-sub slides the second column out (crown.css „third pass“). When the last one
       // closes, its links stay until the column has slid back.
       clearTimeout(this.subTimer);
+      this.unfly();
       this.panel.classList.toggle('has-sub', Boolean(item));
       this.items.forEach((other) => {
         const active = other === item;

@@ -108,7 +108,7 @@
           <li>
             <a
               class="cj-dmenu__extra"
-              href="https://www.google.com/maps/search/?api=1&query=%D0%B1%D1%83%D0%BB.%20%D0%92%D0%B0%D1%81%D0%B8%D0%BB%20%D0%9B%D0%B5%D0%B2%D1%81%D0%BA%D0%B8%2021%2C%20%D0%92%D0%B5%D0%BB%D0%B8%D0%BA%D0%BE%20%D0%A2%D1%8A%D1%80%D0%BD%D0%BE%D0%B2%D0%BE"
+              href="https://www.google.com/maps/place/%D0%91%D0%B8%D0%B6%D1%83%D1%82%D0%B5%D1%80%D0%B8%D1%8F+%D0%9A%D1%83%D0%BB%D0%B8%D0%BD%D0%B0%D0%BD+%D0%9E%D0%9E%D0%94/@43.0795021,25.6292407,17z/data=!4m15!1m8!3m7!1s0x40a926105b74bcf5:0xceafa830e2598aa5!2z0JLQtdC70LjQutC-INCi0YrRgNC90L7QstC-INCm0LXQvdGC0YrRgCwg0LHRg9C7LiDigJ7QktCw0YHQuNC7INCb0LXQstGB0LrQuOKAnCAyMSwgNTAwMCDQktC10LvQuNC60L4g0KLRitGA0L3QvtCy0L4!3b1!8m2!3d43.0795021!4d25.6292407!16s%2Fg%2F11vm15m3sn!3m5!1s0x40a926098b2d349d:0xa7162cf74fd1f7c0!8m2!3d43.0796127!4d25.6294334!16s%2Fg%2F1wb8s5z0"
               target="_blank"
               rel="noopener"
             >
@@ -146,30 +146,10 @@
               {%- comment -%}
                 2026-10-20 (owner): no „Всички …“ line of the theme's own here any more; the owner adds that
                 link in Shopify's Navigation where they want it, and the theme's own copy doubled it.
+                2026-11-24 (owner, "remove for computer всички пръстени"): where the column ends in the
+                picture with its label (the promo below), the Navigation's own link to the same collection
+                is left out on computers; the picture is the way there. Phones keep it (header-drawer).
               {%- endcomment -%}
-              <ul class="cj-dmenu__sublist list-unstyled" role="list">
-                {%- for childlink in link.links -%}
-                  <li>
-                    <a class="cj-dmenu__sublink" href="{{ childlink.url }}">
-                      {%- render 'cj-menu-stone', link: childlink, class: 'cj-menu-stone' -%}
-                      <span class="cj-menu-text"><span class="cj-menu-label">{{ childlink.title | escape }}</span>{%- render 'cj-menu-stone', link: childlink, part: 'meaning' -%}</span>
-                    </a>
-                    {%- if childlink.links != blank -%}
-                      <ul class="cj-dmenu__sub3 list-unstyled" role="list">
-                        {%- for grandchildlink in childlink.links -%}
-                          <li>
-                            <a class="cj-dmenu__sub3-link" href="{{ grandchildlink.url }}">
-                              {%- render 'cj-menu-stone', link: grandchildlink, class: 'cj-menu-stone' -%}
-                              <span class="cj-menu-text"><span class="cj-menu-label">{{ grandchildlink.title | escape }}</span>{%- render 'cj-menu-stone', link: grandchildlink, part: 'meaning' -%}</span>
-                            </a>
-                          </li>
-                        {%- endfor -%}
-                      </ul>
-                    {%- endif -%}
-                  </li>
-                {%- endfor -%}
-              </ul>
-
               {%- liquid
                 assign cj_menu_key = link.title | strip | downcase
                 assign cj_promo = null
@@ -182,8 +162,7 @@
                     endif
                   endif
                 endfor
-              -%}
-              {%- liquid
+
                 assign cj_img = blank
                 if cj_promo and cj_promo.settings.image != blank
                   assign cj_img = cj_promo.settings.image
@@ -201,8 +180,104 @@
                     assign cj_href = cj_promo.settings.link
                   endif
                 endif
+                assign cj_has_promo = false
+                if cj_promo or cj_img != blank
+                  assign cj_has_promo = true
+                endif
+                assign cj_parent_index = forloop.index
               -%}
-              {%- if cj_promo or cj_img != blank -%}
+              <ul class="cj-dmenu__sublist list-unstyled" role="list">
+                {%- for childlink in link.links -%}
+                  {%- if cj_has_promo and childlink.links == blank -%}
+                    {%- if childlink.url == link.url or childlink.url == cj_href -%}
+                      {%- continue -%}
+                    {%- endif -%}
+                  {%- endif -%}
+                  {%- liquid
+                    assign cj_fly = false
+                    if childlink.type == 'collection_link' and childlink.links == blank
+                      assign cj_fly_handle = childlink.object.handle | default: ''
+                      if cj_fly_handle contains 'зодии-' and childlink.object.products_count > 0
+                        assign cj_fly = true
+                      endif
+                    endif
+                  -%}
+                  <li>
+                    {%- if cj_fly -%}
+                      {%- comment -%}
+                        2026-11-24 (owner): Монети and Ажур under Зодии open a panel of their own with every
+                        sign; each sign goes to that sign's piece. Any collection whose handle has „зодии-“
+                        does this, the signs taken from its pieces (title „Овен – …“) in zodiac order.
+                      {%- endcomment -%}
+                      <button
+                        type="button"
+                        class="cj-dmenu__sublink cj-dmenu__sublink--more"
+                        data-cj-dmenu-fly="CjDmenuFly-{{ cj_parent_index }}-{{ forloop.index }}"
+                        aria-controls="CjDmenuFly-{{ cj_parent_index }}-{{ forloop.index }}"
+                        aria-expanded="false"
+                      >
+                        <span class="cj-menu-text"><span class="cj-menu-label">{{ childlink.title | escape }}</span></span>
+                        <span class="cj-dmenu__chevron" aria-hidden="true"></span>
+                      </button>
+                    {%- else -%}
+                    <a class="cj-dmenu__sublink" href="{{ childlink.url }}">
+                      {%- render 'cj-menu-stone', link: childlink, class: 'cj-menu-stone' -%}
+                      <span class="cj-menu-text"><span class="cj-menu-label">{{ childlink.title | escape }}</span>{%- render 'cj-menu-stone', link: childlink, part: 'meaning' -%}</span>
+                    </a>
+                    {%- endif -%}
+                    {%- if childlink.links != blank -%}
+                      <ul class="cj-dmenu__sub3 list-unstyled" role="list">
+                        {%- for grandchildlink in childlink.links -%}
+                          <li>
+                            <a class="cj-dmenu__sub3-link" href="{{ grandchildlink.url }}">
+                              {%- render 'cj-menu-stone', link: grandchildlink, class: 'cj-menu-stone' -%}
+                              <span class="cj-menu-text"><span class="cj-menu-label">{{ grandchildlink.title | escape }}</span>{%- render 'cj-menu-stone', link: grandchildlink, part: 'meaning' -%}</span>
+                            </a>
+                          </li>
+                        {%- endfor -%}
+                      </ul>
+                    {%- endif -%}
+                  </li>
+                {%- endfor -%}
+              </ul>
+
+              {%- for childlink in link.links -%}
+                {%- if childlink.type != 'collection_link' or childlink.links != blank -%}{%- continue -%}{%- endif -%}
+                {%- assign cj_fly_handle = childlink.object.handle | default: '' -%}
+                {%- unless cj_fly_handle contains 'зодии-' and childlink.object.products_count > 0 -%}{%- continue -%}{%- endunless -%}
+                <div
+                  id="CjDmenuFly-{{ cj_parent_index }}-{{ forloop.index }}"
+                  class="cj-dmenu__fly"
+                  role="group"
+                  aria-label="{{ childlink.title | escape }}"
+                  hidden
+                >
+                  <button type="button" class="cj-dmenu__back" data-cj-dmenu-back>
+                    <span class="cj-dmenu__back-arrow" aria-hidden="true"></span>
+                    {{ link.title | escape }}
+                  </button>
+                  <p class="cj-dmenu__fly-title">{{ childlink.title | escape }}</p>
+                  <ul class="cj-dmenu__sublist cj-dmenu__fly-list list-unstyled" role="list">
+                    {%- assign cj_signs = 'Овен,Телец,Близнаци,Рак,Лъв,Дева,Везни,Скорпион,Стрелец,Козирог,Водолей,Риби' | split: ',' -%}
+                    {%- for cj_sign in cj_signs -%}
+                      {%- assign cj_sign_prefix = cj_sign | append: ' –' -%}
+                      {%- for cj_piece in childlink.object.products -%}
+                        {%- if cj_piece.title contains cj_sign_prefix -%}
+                          <li>
+                            <a class="cj-dmenu__sublink" href="{{ cj_piece.url }}">
+                              <span class="cj-menu-text"><span class="cj-menu-label">{{ cj_sign }}</span></span>
+                            </a>
+                          </li>
+                          {%- break -%}
+                        {%- endif -%}
+                      {%- endfor -%}
+                    {%- endfor -%}
+                  </ul>
+                  <a class="cj-dmenu__fly-all" href="{{ childlink.url }}">Вижте всички</a>
+                </div>
+              {%- endfor -%}
+
+              {%- if cj_has_promo -%}
                 <a class="cj-dmenu__promo" href="{{ cj_href }}">
                   {%- if cj_img != blank -%}
                     {{

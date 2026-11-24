@@ -11213,3 +11213,194 @@ html body .cj-soon .cj-soon__button {
     break-inside: avoid;
   }
 }
+
+/* ===== Computer menu: Монети / Ажур open their own panel of signs (2026-11-24, owner) =====
+   „Монети“ and „Ажур“ under Зодии are buttons with ›; a click replaces the column's list with a white panel
+   (back „‹ Зодии“, the title, the signs, „Вижте всички“), sliding in from the right as the columns do.
+   snippets/cj-desktop-menu.liquid, assets/cj-desktop-menu.js. Way back: delete this block and the
+   cj_fly parts of the snippet and the script. ===== */
+html body button.cj-dmenu__sublink {
+  width: 100%;
+  margin: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  justify-content: space-between;
+}
+
+html body .cj-dmenu__sublink--more:hover .cj-dmenu__chevron {
+  color: #b76e79;
+}
+
+html body .cj-dmenu__subpanel.has-fly > .cj-dmenu__sublist,
+html body .cj-dmenu__subpanel.has-fly > .cj-dmenu__promo {
+  display: none;
+}
+
+html body .cj-dmenu__fly:not([hidden]) {
+  display: block;
+  animation: cj-dmenu-fly-in 0.3s ease both;
+}
+
+html body .cj-dmenu__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  min-height: 4.4rem;
+  margin: 0 0 0.8rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: rgba(var(--color-foreground), 0.75);
+  font-family: var(--font-body-family);
+  font-size: 1.5rem;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+}
+
+html body .cj-dmenu__back:hover {
+  color: rgb(var(--color-foreground));
+}
+
+html body .cj-dmenu__back-arrow {
+  width: 0.85rem;
+  height: 0.85rem;
+  border-bottom: 0.15rem solid currentColor;
+  border-left: 0.15rem solid currentColor;
+  transform: rotate(45deg);
+}
+
+html body .cj-dmenu__fly-title {
+  margin: 0 0 1.2rem;
+  padding-bottom: 1.2rem;
+  border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.12);
+  font-family: var(--font-heading-family);
+  font-size: 2rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+html body .cj-dmenu__fly-list {
+  columns: 2;
+  column-gap: 3.2rem;
+}
+
+html body .cj-dmenu__fly-list > li {
+  break-inside: avoid;
+}
+
+html body .cj-dmenu__fly-all {
+  display: inline-block;
+  margin-top: 2rem;
+  color: rgb(var(--color-foreground));
+  font-size: 1.5rem;
+  letter-spacing: 0.02em;
+  text-decoration: underline;
+  text-underline-offset: 0.35em;
+  text-decoration-thickness: 1px;
+}
+
+html body .cj-dmenu__fly-all:hover {
+  color: #b76e79;
+}
+
+html body .cj-dmenu__back:focus-visible,
+html body .cj-dmenu__fly-all:focus-visible {
+  outline: 0.2rem solid rgb(var(--color-foreground));
+  outline-offset: 0.3rem;
+}
+
+@keyframes cj-dmenu-fly-in {
+  from { opacity: 0; transform: translateX(2.4rem); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html body .cj-dmenu__fly:not([hidden]) { animation: none; }
+}
+
+/* ===== Footer: the shop — address to Google Maps, opening hours as a table (2026-11-24, owner) =====
+   Owner: the hours back under the address, "or something else connected to that with better design", and the
+   shop link to the owner's Google Maps place. The address is a link with the menu's map pin; the hours sit in two
+   aligned columns (days, times) in tabular figures. sections/footer.liquid (note + map_link). Way back: delete
+   this block, the map_link setting and the shop part of footer.liquid; the note becomes plain lines again. ===== */
+html body .footer .footer-shop {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  max-width: 26rem;
+}
+
+html body .footer .footer-shop__address {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  color: rgb(0 0 0);
+  font-size: 1.3rem;
+  line-height: 1.5;
+  text-decoration: none;
+}
+
+html body .footer a.footer-shop__address span:last-child {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.3em;
+  text-decoration-color: rgba(0, 0, 0, 0.35);
+  transition: text-decoration-color 0.2s ease, color 0.2s ease;
+}
+
+html body .footer a.footer-shop__address:hover span:last-child {
+  color: #b76e79;
+  text-decoration-color: #b76e79;
+}
+
+html body .footer .footer-shop__pin {
+  display: inline-flex;
+  flex: none;
+  width: 1.6rem;
+  height: 1.6rem;
+  margin-top: 0.1rem;
+}
+
+html body .footer .footer-shop__pin svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+}
+
+html body .footer .footer-shop__hours {
+  display: grid;
+  gap: 0.2rem;
+  margin: 0;
+  padding-left: 2.4rem;
+}
+
+html body .footer .footer-shop__row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.6rem;
+}
+
+html body .footer .footer-shop__row dt,
+html body .footer .footer-shop__row dd {
+  margin: 0;
+  font-size: 1.2rem;
+  line-height: 1.7;
+}
+
+html body .footer .footer-shop__row dt {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+html body .footer .footer-shop__row dd {
+  color: rgb(0 0 0);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+html body .footer a.footer-shop__address:focus-visible {
+  outline: 0.2rem solid rgb(0 0 0);
+  outline-offset: 0.3rem;
+}

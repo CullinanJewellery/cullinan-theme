@@ -392,8 +392,38 @@
                         hours), not a link: a person reading a footer looks there for when the
                         door is open. Each line break is kept.
                       {%- endcomment -%}
+                      {%- comment -%}
+                        2026-11-24 (owner): the shop block — the address with a pin, opening the shop in
+                        Google Maps (map_link), then the opening hours as a small table, days left and
+                        times right. Lines without „: “ stay plain lines.
+                      {%- endcomment -%}
                       {%- if block.settings.note != blank -%}
-                        <li class="footer-links__note">{{ block.settings.note | escape | newline_to_br }}</li>
+                        {%- assign note_lines = block.settings.note | strip | newline_to_br | split: '<br />' -%}
+                        <li class="footer-links__note footer-shop">
+                          {%- for note_line in note_lines -%}
+                            {%- assign note_line = note_line | strip -%}
+                            {%- if note_line == blank -%}{%- continue -%}{%- endif -%}
+                            {%- if forloop.first -%}
+                              {%- if block.settings.map_link != blank -%}
+                                <a class="footer-shop__address" href="{{ block.settings.map_link }}" target="_blank" rel="noopener">
+                                  <span class="footer-shop__pin" aria-hidden="true">{{ 'icon-map-pin.svg' | inline_asset_content }}</span>
+                                  <span>{{ note_line | escape }}</span>
+                                </a>
+                              {%- else -%}
+                                <span class="footer-shop__address">{{ note_line | escape }}</span>
+                              {%- endif -%}
+                              {%- if note_lines.size > 1 -%}<dl class="footer-shop__hours">{%- endif -%}
+                            {%- else -%}
+                              {%- if note_line contains ': ' -%}
+                                {%- assign note_parts = note_line | split: ': ' -%}
+                                <div class="footer-shop__row"><dt>{{ note_parts.first | escape }}</dt><dd>{{ note_parts | slice: 1, 9 | join: ': ' | escape }}</dd></div>
+                              {%- else -%}
+                                <div class="footer-shop__row"><dt>{{ note_line | escape }}</dt></div>
+                              {%- endif -%}
+                            {%- endif -%}
+                            {%- if forloop.last and note_lines.size > 1 -%}</dl>{%- endif -%}
+                          {%- endfor -%}
+                        </li>
                       {%- endif -%}
                     {%- endcapture -%}
                     {%- assign column_links = column_links | strip -%}
@@ -617,7 +647,13 @@
           "type": "textarea",
           "id": "note",
           "label": "Note under the links",
-          "info": "Plain lines, for example an address and opening hours. Each line break is kept. Leave empty for none."
+          "info": "First line: the address. Next lines, for opening hours: „Days: time“, e.g. „Пон – Пет: 09:30 – 19:00“. Leave empty for none."
+        },
+        {
+          "type": "url",
+          "id": "map_link",
+          "label": "Map link for the address",
+          "info": "Optional. The address opens this page (e.g. the shop in Google Maps) in a new tab."
         },
         {
           "type": "link_list",
