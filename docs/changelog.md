@@ -2429,3 +2429,8 @@ every collection): the computer menu picture is 26rem square instead of the colu
 („Всички пръстени“, „Всички обеци“ ...) is underlined with an arrow, and the picture and label together link to the
 whole collection. Камъни and Зодии have no picture yet, so nothing is drawn there. Way back: delete crown.css
 „Menu picture smaller“.
+Same day, sixth step (owner: the smaller picture "looks really bad", "do whatever you think is best"): the computer
+menu picture became an editorial card after Tiffany's and Van Cleef & Arpels' menus: the column's full width at 4:3,
+the collection's name in white spaced capitals with a thin arrow on a soft dark fade at the photo's foot, no grey line
+above, a slow 4% zoom and the arrow moving on hover, a fade-in when a category opens (none with reduced motion).
+crown.css „Menu picture, editorial card“. Way back: delete that block (the small square with the underlined label returns).

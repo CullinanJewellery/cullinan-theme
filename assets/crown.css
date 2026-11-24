@@ -11011,3 +11011,110 @@ html body .cj-dmenu__promo-label::after {
 html body .cj-dmenu__promo:hover .cj-dmenu__promo-label {
   text-decoration-thickness: 0.2rem;
 }
+
+/* Menu picture, editorial card, 2026-11-24 (owner: the smaller picture with the underlined label "looks really bad";
+   "do whatever you think is best"). After the menus of Tiffany & Co. and Van Cleef & Arpels:
+   - the picture fills the column's width (no empty space beside it), 4:3, so it is no taller than the 26rem square;
+   - the collection's name sits on the photo: a soft dark fade at its foot, white Jost capitals spaced 0.16em, a thin
+     arrow; no underline;
+   - no grey line above it, more air instead;
+   - on hover the photo grows 4% over 0.8s and the arrow moves 0.4rem; the picture fades in when a category opens;
+     no movement when the visitor asks for reduced motion.
+   Replaces „Menu picture smaller“ and „Menu picture square“ above. Way back: delete this block. */
+html body .cj-dmenu__promo {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin-top: 3.2rem;
+  padding-top: 0;
+  border-top: 0;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+html body .cj-dmenu__promo-image {
+  width: 100%;
+  max-width: none;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.2, 0.6, 0.2, 1);
+  animation: cj-dmenu-promo-in 0.6s ease both;
+}
+
+html body .cj-dmenu__promo::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 55%;
+  background: linear-gradient(to top, rgba(20, 14, 12, 0.62), rgba(20, 14, 12, 0));
+  pointer-events: none;
+  z-index: 1;
+}
+
+html body .cj-dmenu__promo-label {
+  position: absolute;
+  left: 2rem;
+  right: 2rem;
+  bottom: 1.8rem;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2rem;
+  margin: 0;
+  color: #ffffff;
+  font-size: 1.25rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  text-decoration: none;
+  -webkit-text-stroke: 0;
+  text-shadow: 0 0.1rem 0.6rem rgba(0, 0, 0, 0.25);
+}
+
+html body .cj-dmenu__promo-label::after {
+  content: '';
+  flex: none;
+  width: 2.4rem;
+  height: 0.8rem;
+  background: no-repeat center / contain
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 8' fill='none' stroke='%23ffffff' stroke-width='1'%3E%3Cpath d='M0 4h23M19 .5 23 4l-4 3.5'/%3E%3C/svg%3E");
+  transition: transform 0.4s ease;
+}
+
+html body .cj-dmenu__promo:hover .cj-dmenu__promo-image,
+html body .cj-dmenu__promo:focus-visible .cj-dmenu__promo-image {
+  transform: scale(1.04);
+}
+
+html body .cj-dmenu__promo:hover .cj-dmenu__promo-label::after,
+html body .cj-dmenu__promo:focus-visible .cj-dmenu__promo-label::after {
+  transform: translateX(0.4rem);
+}
+
+html body .cj-dmenu__promo-image--empty + .cj-dmenu__promo-label {
+  color: #2a1e1a;
+  text-shadow: none;
+}
+
+@keyframes cj-dmenu-promo-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html body .cj-dmenu__promo-image,
+  html body .cj-dmenu__promo-label::after {
+    transition: none;
+    animation: none;
+  }
+
+  html body .cj-dmenu__promo:hover .cj-dmenu__promo-image {
+    transform: none;
+  }
+}
