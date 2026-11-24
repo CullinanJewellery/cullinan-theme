@@ -2442,3 +2442,33 @@ Same day, eighth step (owner: Аксесоари "a little bit up" so the rose's
 Комплекти "in the middle", all pieces seen, zoomed close to the edges; "everything else is good"): Аксесоари at 61%;
 Комплекти drawn at 120.3% of the card, moved 12.8% left and 27.1% up (measured on the original). Way back: delete the
 „owner's corrections“ block in crown.css.
+
+## 2026-11-24 — More collections in the menu (owner, admin only)
+
+Owner: "add in the collections more collections like in комплекти ... комплекти с перли комплекти с циркони ...
+add for all the others"; then "in bracelets add твърди гривни, for the pendants remove the second collection the tree
+of life, everything else is good and add the jewelry in each collection that it is supposed to be in". Owner's
+answers: the white stones of Розетка, Орбита, Капка, Цвят and Листопад are zircons; Колибри's flowers are metal.
+No theme file changed; everything is store data.
+
+- **Tags (Products, bulk add):** „Циркон“ on the 14 pieces of those five sets (Циркон now on 27); „С камъни“ on the 32
+  pieces with stones (21 set pieces, Куршум, Корона, Заедно, Вихър, Искра, Роса, Съзвездие, Игла за вратовръзка, Роза,
+  Панделка, Червен конец – цвете, Червен конец – кръст с камък); „Природа“ on six pendants (Дърво – сърца / възел /
+  бели листа, Пчела, Колибри, Детелина; not the red-thread tree bracelet).
+- **New automated collections (all conditions):** Пръстени с камъни (type Пръстен + tag С камъни, 12), Пръстени без
+  камъни (type Пръстен + tag is not С камъни, 2: Зърна, Мъниста), Пръстени от комплекти (type Пръстен + tag Комплекти, 6),
+  Вдъхновени от природата (type Висулка + tag Природа, 6), Висулки с камъни (type Висулка + С камъни, 8), Висулки от
+  комплекти (type Висулка + Комплекти, 7), Зодии – монети (tag Зодии + title contains „монета“, 10), Зодии – ажур (title
+  contains „ажур“, 12), Червен конец (tag Червен конец, 14), Твърди гривни (type Гривна + tag is not Червен конец, 1:
+  Дантела), Брошки (type Брошка, 2), Игли за вратовръзка (type Игла за вратовръзка, 1).
+- **Duplicates by mistake:** Комплекти с циркони (17) and Комплекти с перли (3) already existed; the two made today got
+  the handles комплекти-с-циркони-1 and комплекти-с-перли-1. The menu links to the originals. The two copies wait for
+  the owner's OK to delete.
+- **Main menu (Online Store → Navigation):** Пръстени + С камъни, Без камъни, От комплекти; Висулки + Вдъхновени от
+  природата, С камъни, От комплекти; Комплекти + С циркони, С перли (typed links, percent-encoded, to the originals);
+  Гривни + Червен конец, Твърди гривни; Зодии + Монети, Ажур (after Риби: the admin's drag could not be done from here);
+  Аксесоари + Брошки, Игли за вратовръзка. Обеци unchanged (all seven have stones, so no split). Checked on the draft:
+  every new link reaches a collection with products, in the computer menu and the phone drawer.
+
+Way back: delete the new menu items in Navigation, then the twelve collections (and the two -1 copies); remove the tags
+„С камъни“ and „Природа“ (bulk) and „Циркон“ from the fourteen pieces of the five sets.
