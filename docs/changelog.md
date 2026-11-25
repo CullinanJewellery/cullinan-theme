@@ -8,6 +8,14 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-25 — „Как се ражда едно бижу“, step 1: the 3D model screenshot **(owner)**
+
+Owner's own screenshot of the ring in the CAD program (four views: top, front, right, perspective) is the photo of
+slide 1 „Наш собствен дизайн“. The slide's frame is square (cover), so the 1919×1026 screenshot was cut locally to a
+1026×1026 square from x 178 (the viewports' left edge): all four views with the whole ring stay in, the side panels
+and the program's name are out. Uploaded to Files as `kak-se-razhda-01-3d-model.jpg`; `templates/index.json` slide_1
+`image`. Slides 2–4 unchanged (text-only). **Way back**: remove the `image` line from slide_1.
+
 ## 2026-11-25 — All notification emails in the one-card layout; subject lines in plain Bulgarian **(owner)**
 
 Owner liked the new order confirmation: "do the same for the other emails". Every email Shopify sends is now built by
