@@ -8,6 +8,26 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-25 — All notification emails in the one-card layout; subject lines in plain Bulgarian **(owner)**
+
+Owner liked the new order confirmation: "do the same for the other emails". Every email Shopify sends is now built by
+`tools/email-templates.mjs` (cj-brand v2, one file per email in `docs/email/<slug>.liquid`, pasted whole into the
+template): shipping confirmation, shipping update, out for delivery, delivered, cancelled, refund, order edited,
+account activation, welcome, password reset, newsletter confirmation, contact customer, and the staff new-order
+email; the order confirmation was regenerated from the same script. Same card as the order email: logo, gold line,
+centred title, black button, one list of pieces (no Shopify delivery groups or pickup), totals on the right with
+delivery written once, the blush footer inside the card („Само за екипа на Cullinan“ for staff). Shipping emails say
+the whole order left in one parcel, show the courier's number and a „Проследете пратката“ button when the courier
+gives a link. Refund shows the refunded amount once (Shopify's Bulgarian title said „Поръчката ви е доставена“ for a
+full refund; fixed); Shopify's „up to 10 days“ line was dropped (not a fact we confirmed). Cancelled names only the
+customer's own request, an unavailable piece or a declined payment as a reason, never "staff error". Staff email:
+customer, e-mail, phone, note, each piece with SKU and „Налично / За изработка“, button to the order in admin.
+Shopify refuses to save the activation and contact emails without a plain `{{ custom_message }}`; both have it.
+Subject lines replaced where Shopify's translation was garbled or stiff (e.g. „Доставена е пратка от поръчка #9999 е
+на път“ → „Поръчка #9999 е на път“); order confirmation, staff and contact subjects kept. Every preview checked in
+admin; test shipping email sent to the shop inbox. `tools/email-brand.js` (v1) is superseded.
+**Way back**: per email, „Revert to → Default“ on its preview page (also resets its subject).
+
 ## 2026-11-25 — Order confirmation email rewritten as one card **(owner)**
 
 Owner on the test order email: too many things shown, a pickup/shop delivery that does not exist (only Econt and
