@@ -8,6 +8,19 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-25 — Newsletter emails as drafts in Shopify Messaging **(owner)**
+
+Owner asked for the newsletter emails to be made and uploaded. Four „Code your own“ drafts in Messaging, same card as
+the notifications (logo, gold line, black button, blush footer with a Bulgarian „Отпишете се“; Shopify's required
+English `{{ unsubscribe_link }}` is kept but hidden): „Добре дошли в {{ shop.name }}“ (three collection tiles),
+„Ново от ателието: Луна“ (pendant, earrings, ring), „Идеи за коледен подарък“ (six pieces), „Благодарим ви, че
+избрахте {{ shop.name }}“ (cleaning and repair, two pieces). No prices (most products are €0). Generator
+`tools/newsletter-emails.mjs`, copies in `docs/email/newsletter/`. Nothing sent or scheduled; the sender address is
+still unverified. Not done: the existing **Recover abandoned checkout** automation (Shopify default, Active, English
+„Ready to checkout?“) was left untouched: editing it turns it into a draft first, and the editor's confirmation could
+not be read reliably. Welcome and thank-you are drafts, not automations yet (turning them on is the owner's call).
+**Way back**: delete the four drafts in Messaging → Drafts.
+
 ## 2026-11-25 — „Как се ражда едно бижу“, step 1: the 3D model screenshot **(owner)**
 
 Owner's own screenshot of the ring in the CAD program (four views: top, front, right, perspective) is the photo of
