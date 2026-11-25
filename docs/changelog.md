@@ -16,10 +16,17 @@ English `{{ unsubscribe_link }}` is kept but hidden): „Добре дошли �
 „Ново от ателието: Луна“ (pendant, earrings, ring), „Идеи за коледен подарък“ (six pieces), „Благодарим ви, че
 избрахте {{ shop.name }}“ (cleaning and repair, two pieces). No prices (most products are €0). Generator
 `tools/newsletter-emails.mjs`, copies in `docs/email/newsletter/`. Nothing sent or scheduled; the sender address is
-still unverified. Not done: the existing **Recover abandoned checkout** automation (Shopify default, Active, English
-„Ready to checkout?“) was left untouched: editing it turns it into a draft first, and the editor's confirmation could
-not be read reliably. Welcome and thank-you are drafts, not automations yet (turning them on is the owner's call).
+still unverified. Welcome and thank-you are drafts, not automations yet (turning them on is the owner's call).
 **Way back**: delete the four drafts in Messaging → Drafts.
+
+Then (owner: „can you just go and do all of this“): the **Recover abandoned checkout** email was rewritten in our look
+and Bulgarian (subject „Бижутата ви още ви чакат“, logo header, heading, a line on the handmade piece, box and
+certificate, button „Завършете поръчката“, blush footer, English unsubscribe line hidden). Editing turned it into a
+**draft**, and „Set to active“ is refused: Messaging sends only from a verified sender, and a Gmail address cannot be
+verified (Settings → Notifications: Gmail is shown to customers as store+107185537364@shopifyemail.com). The store has
+no custom domain (only 2fp38p-az.myshopify.com), so no Messaging email (automation or the four newsletters) can be
+sent until the owner buys or connects a domain and authenticates it. Store is private, so nothing is lost meanwhile.
+**Way back**: on the flow page edit the automation and „discard changes“ to return to Shopify's English default.
 
 ## 2026-11-25 — „Как се ражда едно бижу“, step 1: the 3D model screenshot **(owner)**
 
