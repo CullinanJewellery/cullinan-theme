@@ -1,0 +1,88 @@
+{%- comment -%}
+  Free delivery bar under the product price (2026-11-23, owner, after moonmagic.com's „You're €105 away from your
+  Free Birth Chart“). Delivery is free on orders over €500 (owner, 2026-11-11).
+  - The sum is only what is in the cart (owner, 2026-11-23: with an empty cart the bar must be empty; the first
+    version also counted the piece on screen, as moonmagic does).
+  - Under €500: „Остават ви €X до безплатна доставка“ (X rounded up to whole euros); from €500: „Безплатна доставка
+    за вашата поръчка“. A thin bar shows how far along the order is.
+  - Updates after adding to the cart (cart-update, reads /cart.js).
+  - Look (2026-11-23, owner: a colour the eye sees, better than moonmagic): the site's ruby, a badge that turns
+    into a check at €500, the delivery line, the goal written at the end of the bar. crown.css „Free delivery bar“. Shopify admin's free shipping rate must start at €500 too (docs/tasks.md).
+
+  Accepts:
+  - product: {Object}
+  - section_id: {String}
+
+  Usage:
+  {% render 'cj-free-delivery', product: product, section_id: section.id %}
+{%- endcomment -%}
+<cj-free-delivery
+  class="cj-free-delivery"
+  data-threshold="50000"
+  data-cart-total="{{ cart.total_price }}"
+>
+  <div class="cj-free-delivery__row">
+    <span class="cj-free-delivery__badge" aria-hidden="true">
+      <svg class="cj-free-delivery__icon cj-free-delivery__icon--parcel" focusable="false" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round">
+        <path d="M3.5 7.5 12 3l8.5 4.5v9L12 21l-8.5-4.5z"/><path d="M3.5 7.5 12 12l8.5-4.5M12 12v9M7.8 5.2l8.5 4.6"/>
+      </svg>
+      <svg class="cj-free-delivery__icon cj-free-delivery__icon--check" focusable="false" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m5 12.5 4.5 4.5L19 7.5"/>
+      </svg>
+    </span>
+    <div class="cj-free-delivery__copy">
+      <p class="cj-free-delivery__text" aria-live="polite"></p>
+      <p class="cj-free-delivery__note">С Еконт или Спиди до офис или адрес</p>
+    </div>
+  </div>
+  <div class="cj-free-delivery__track" aria-hidden="true">
+    <span class="cj-free-delivery__fill"></span>
+    <span class="cj-free-delivery__goal">€500</span>
+  </div>
+</cj-free-delivery>
+<script>
+  if (!customElements.get('cj-free-delivery')) {
+    customElements.define(
+      'cj-free-delivery',
+      class extends HTMLElement {
+        connectedCallback() {
+          const d = this.dataset;
+          this.threshold = +d.threshold;
+          this.cartTotal = +d.cartTotal;
+          this.render();
+          // The theme's pub/sub scripts are deferred, so they may not exist yet when this runs.
+          if (typeof subscribe === 'function' && typeof PUB_SUB_EVENTS !== 'undefined') this.listen();
+          else window.addEventListener('DOMContentLoaded', () => this.listen(), { once: true });
+        }
+        listen() {
+          if (this.unsubCart || typeof subscribe !== 'function' || typeof PUB_SUB_EVENTS === 'undefined') return;
+          this.unsubCart = subscribe(PUB_SUB_EVENTS.cartUpdate, () => {
+            fetch(window.Shopify && Shopify.routes ? Shopify.routes.root + 'cart.js' : '/cart.js')
+              .then((r) => r.json())
+              .then((c) => {
+                this.cartTotal = c.total_price;
+                this.render();
+              })
+              .catch(() => {});
+          });
+        }
+        disconnectedCallback() {
+          if (this.unsubCart) this.unsubCart();
+        }
+        render() {
+          const sum = this.cartTotal;
+          const left = this.threshold - sum;
+          const text = this.querySelector('.cj-free-delivery__text');
+          if (left > 0) {
+            text.innerHTML = 'Остават ви <strong>€' + Math.ceil(left / 100) + '</strong> до безплатна доставка';
+          } else {
+            text.innerHTML = '<strong>Безплатна доставка</strong> за вашата поръчка';
+          }
+          const pct = Math.max(0, Math.min(100, (sum / this.threshold) * 100));
+          this.querySelector('.cj-free-delivery__fill').style.width = pct + '%';
+          this.classList.toggle('is-free', left <= 0);
+        }
+      }
+    );
+  }
+</script>

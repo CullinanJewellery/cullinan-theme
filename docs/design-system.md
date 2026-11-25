@@ -51,6 +51,7 @@ White label on black button: 21:1. Espresso on white 16.2:1, on greige 14.6:1, o
 | `rgba(24,14,9,.66 → 0)` gradient | Over the hero photograph, from the left, ≥750px | Keeps the light hero words legible |
 | `#D62246` ruby, white label (5.0:1) | Hero button „Разгледайте колекцията“ | **Exception**, see §8 (black for about an hour on 2026-10-06, then restored by the owner) |
 | `#D62246` ruby | Homepage trust row: headings, sentences, icon circles (solid, white icon, since 2026-10-22) and card outlines, on a ruby wash #FDF3F4 → #F8E1E5 (`section-icon-benefits.css`, end) | Owner 2026-10-06: matches the hero button; 5.0:1 on white |
+| `#D62246` ruby, amount `#C41D3F` | Free delivery bar under the product price (`snippets/cj-free-delivery.liquid`, `crown.css` „Free delivery bar“): ruby badge, 6px bar with „€500“ at its end, on the trust row's ruby wash | Owner 2026-11-23: "a color ... we make the eye see it"; amount 4.7:1 on the wash |
 | `#E6BAB9` | Add to cart and cart checkout hover fill (dark label); category slider button hover on phones; header icon hover line; zodiac indicators | Hover behaviour kept from before the black buttons (owner 2026-10-06) |
 | `#B76E79` rose gold | Review stars (theme, review cards, Judge.me); links in the navigation trail (Начало › Пръстени, 2026-10-12, owner: pink, not underlined), hover `#9A5561` | Graphic, 3.6:1 (graphics need 3:1); as 12–13px link text it is below 4.5:1 — the owner chose it over the paler `#E6BAB9` (1.7:1) and the deeper `#A85F6B`; white over a collection heading picture |
 | `rgb(0 0 0)` | Buy-box text, footer text, stones row lines, homepage social heading, header shop name | **Exception**, see §8 |
@@ -166,7 +167,7 @@ rules in `crown.css`. Way back: the values in the "Now" column. Known side effec
 |---|---|---|---|
 | Words over a photograph | Hero (computers, and phones since 2026-10-13); Контакти banner and footer social block; newsletter; silver banner (hidden) | Owner's explicit choices (2026-09-06 to 09-21) | Current |
 | Bright ruby button `#D62246` | Hero only; the trust row under it takes the same ruby | Owner wants the main button to stand out (2026-09-21, 10-04; kept as the exception to the black buttons, 10-06) | Current |
-| Pure black text | Buy box, footer, stones lines, homepage social heading, header shop name (2026-10-13) | Owner asked for "the blackest" text by name | Current |
+| Pure black text | Buy box, footer, stones lines, homepage social heading, header shop name (2026-10-13); „злато“ / „сребро“ in bold wherever a text names the metals (2026-11-23, `snippets/cj-metals.liquid`) | Owner asked for "the blackest" text by name; metals "in black, just be seen better" | Current |
 | Black `#000` band | Top bar (announcements and За нас / Контакти); dim layer behind the desktop menu (50%) | Owner 2026-10-13 ("change the color of the background to black"; black dim as on swarovski.com); the rule above keeps black off other bands | Current |
 | Facebook blue / Instagram magenta buttons | Homepage "Вижте работата ни" | Owner's request (2026-09-20); 3.1:1 and 3.7:1 on the clay footer copy | Current, **flagged** (contrast, palette) |
 | Pink hover `#E6BAB9` | Add to cart, cart checkout, header icons | Kept from earlier design | Current |

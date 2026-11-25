@@ -392,8 +392,36 @@
                         hours), not a link: a person reading a footer looks there for when the
                         door is open. Each line break is kept.
                       {%- endcomment -%}
+                      {%- comment -%}
+                        2026-11-24, second version (owner: "make new text and design … your own"): the shop
+                        as a quiet block of its own — a small „Магазин“ label, then the note's lines in
+                        groups (a blank line in the note starts a new group: address, then hours), and
+                        „Как да стигнете“ with a thin arrow to map_link. No pin, no table.
+                      {%- endcomment -%}
                       {%- if block.settings.note != blank -%}
-                        <li class="footer-links__note">{{ block.settings.note | escape | newline_to_br }}</li>
+                        {%- assign note_lines = block.settings.note | strip | newline_to_br | split: '<br />' -%}
+                        {%- assign cj_need_br = false -%}
+                        <li class="footer-links__note footer-shop">
+                          <span class="footer-shop__label">Магазин</span>
+                          <p class="footer-shop__lines">
+                            {%- for note_line in note_lines -%}
+                              {%- assign note_line = note_line | strip -%}
+                              {%- if note_line == blank -%}
+                                {%- if cj_need_br -%}</p><p class="footer-shop__lines footer-shop__lines--quiet">{%- endif -%}
+                                {%- assign cj_need_br = false -%}
+                                {%- continue -%}
+                              {%- endif -%}
+                              {%- if cj_need_br -%}<br>{%- endif -%}
+                              {{- note_line | escape -}}
+                              {%- assign cj_need_br = true -%}
+                            {%- endfor -%}
+                          </p>
+                          {%- if block.settings.map_link != blank -%}
+                            <a class="footer-shop__map" href="{{ block.settings.map_link }}" target="_blank" rel="noopener">
+                              Как да стигнете<span class="footer-shop__arrow" aria-hidden="true"></span>
+                            </a>
+                          {%- endif -%}
+                        </li>
                       {%- endif -%}
                     {%- endcapture -%}
                     {%- assign column_links = column_links | strip -%}
@@ -617,7 +645,13 @@
           "type": "textarea",
           "id": "note",
           "label": "Note under the links",
-          "info": "Plain lines, for example an address and opening hours. Each line break is kept. Leave empty for none."
+          "info": "Shown under a small „Магазин“ label. Lines as typed; an empty line starts a quieter group (e.g. the address, an empty line, then the hours). Leave empty for none."
+        },
+        {
+          "type": "url",
+          "id": "map_link",
+          "label": "„Как да стигнете“ link",
+          "info": "Optional. Shown under the note; opens this page (e.g. the shop in Google Maps) in a new tab."
         },
         {
           "type": "link_list",

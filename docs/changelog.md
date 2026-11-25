@@ -8,6 +8,582 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-25 — Experiments (Christmas) theme brought level with main **(owner)**
+
+- Owner: "in the christmas theme there we should paste the new things that we did". `main` merged into `fluid-sizes`
+  (152 commits: silver in three kinds, free-delivery bar, menu picture cards, workshop slides, FAQ without ring sizes on
+  pieces with no size, two-tone gold, footer hours and map link, and the rest). Christmas parts kept: the gold star in
+  the top bar (main removed the flag; the star is the Christmas bar's, not the flag), the hero words, emerald colours,
+  gift and last-order lines, the green bar messages. Clashes in `crown.css` kept both sides (main's new blocks, then
+  the Christmas last-order rule).
+- Way back: `git revert -m 1 <merge commit>` on `fluid-sizes`.
+
+## 2026-11-25 — Роза brooch: new main photo uploaded **(owner)**
+
+The owner's new main photo replaced the `01` file of the Роза brooch in yellow, rose and white gold in Shopify Files
+(Replace keeps the name, alt text, product link and gallery position); silver variants use the white photo. The `03`
+worn photos are unchanged. Checked on the storefront: the product serves the three new files in the same order.
+Way back: Replace each file again with the old `01` from `Роза/чернови/преди новата снимка 2026-11-25/`.
+
+## 2026-11-25 — Silver in three kinds; item numbers; sizes for ЧК широки рамена **(owner)**
+
+- Owner: some pieces can be made in silver, „normal“, with white rhodium, or with patina. Added in Admin (one variant
+  at a time with „Add variant“, so no unwanted combinations): „925 сребро“, „925 сребро с родий“, „925 сребро с
+  патина“, colour „сребро“, the piece's item number as SKU, price €0 (owner: until they send prices), image = the
+  white gold main photo (owner: for rhodium; used for plain and patina too until their own photos exist). On:
+  Детелина, Богородица – голям медальон, Вяра (only Голям), Жар висулка, обеци, пръстен (every size 53–60, 24
+  variants), Куршум, София, Спаси и съхрани, ЧК дълъг кръст, ЧК кръст с двойна линия.
+- SKUs: ЧК кръст с камък 2744 (had none); ЧК кръст с широки рамена 3284 (was „3284gg“) and a new option Големина
+  Малък / Голям like Вяра (Голям variants €0, own metal's photo). Dimensions not given.
+- Theme: `main-product.liquid` names the kind in „Метал“ (Сребро / Сребро с родий / Сребро с патина) and in the
+  material sentence (plain silver says only „Сребро 925 проба.“: no finish claimed); `cj-metal-swatch.liquid` draws
+  rhodium a brighter cool white and patina a dark grey gradient, plain keeps its grey.
+- Not done: silver weights (the description's gold weight is already hidden on silver); own photos for plain and
+  patina silver.
+- Way back: delete the variants in Admin (Products → piece → variant → Delete); revert this commit for the theme.
+
+## 2026-11-25 — Роза brooch: the owner's new photo as the main photo, in every metal **(owner)**
+
+- The owner's new photo (yellow rose and leaves, rhodium crescent with small stones) replaces `01` in all four metals;
+  the old `01` files moved to `Роза/чернови/преди новата снимка 2026-11-25/` (not deleted), the new source kept in `чернови`.
+- The photo's paper had a pink cast that `bg-soft.cjs` kept as pink patches round the shadow (sat > 12 counts as the
+  piece): a smooth per-channel gain made the paper neutral first (brightness kept), then gold-standard F (yellow,
+  rose, white, `--keep-sat`), bg-soft, frame `c` (76%), check-photo: all pass. Rose and white take the yellow's
+  background exactly (only the metal mask changes) and its crop (`--like`); the crescent and its stones keep their
+  bytes. Silver = white. Made locally, no credits. `03` worn photos unchanged. Upload copies remade.
+
+## 2026-11-25 — „Как се ражда едно бижу“: photos for slides 2–4 (AI, owner's choice) **(owner)**
+
+Owner sent 20 atelier photos (polishing wheel, bench, resin 3D printer). Picks: slide 2 the printed models in front of
+the printer, slide 3 finishing a ring at the wooden bench, slide 4 the flower ring at the polishing wheel (photo „D“,
+owner's choice, zoomed). Local grade first; owner then asked for AI and the most luxury look possible, explicitly
+accepting that the jewellery, hands and scene may change ("i don't care if the jewelry gets different"). One Nano
+Banana 2 edit each at 2k (6 credits; balance 543): printer without its brand name, warm taupe wall; clean hands, linen
+sleeve, warm bench lamp (the ring came out warmer gold with five stones); steel and charcoal polishing machine instead
+of the blue, cream wheel. Owner: "i like them". Uploaded to Files as `kak-se-razhda-02-3d-print.jpg`,
+`-03-finishing.jpg`, `-04-polish.jpg` (2048 px); `templates/index.json` slides 2–4 `image`. These are atelier scenes,
+not product photos: the product-photo rules (never change the jewellery) do not apply to them by the owner's choice.
+Sources and AI files: `Claude outputs/workshop/`. **Way back**: remove the `image` lines from slides 2–4.
+
+## 2026-11-25 — Newsletter emails as drafts in Shopify Messaging **(owner)**
+
+Owner asked for the newsletter emails to be made and uploaded. Four „Code your own“ drafts in Messaging, same card as
+the notifications (logo, gold line, black button, blush footer with a Bulgarian „Отпишете се“; Shopify's required
+English `{{ unsubscribe_link }}` is kept but hidden): „Добре дошли в {{ shop.name }}“ (three collection tiles),
+„Ново от ателието: Луна“ (pendant, earrings, ring), „Идеи за коледен подарък“ (six pieces), „Благодарим ви, че
+избрахте {{ shop.name }}“ (cleaning and repair, two pieces). No prices (most products are €0). Generator
+`tools/newsletter-emails.mjs`, copies in `docs/email/newsletter/`. Nothing sent or scheduled; the sender address is
+still unverified. Welcome and thank-you are drafts, not automations yet (turning them on is the owner's call).
+**Way back**: delete the four drafts in Messaging → Drafts.
+
+Then (owner: „can you just go and do all of this“): the **Recover abandoned checkout** email was rewritten in our look
+and Bulgarian (subject „Бижутата ви още ви чакат“, logo header, heading, a line on the handmade piece, box and
+certificate, button „Завършете поръчката“, blush footer, English unsubscribe line hidden). Editing turned it into a
+**draft**, and „Set to active“ is refused: Messaging sends only from a verified sender, and a Gmail address cannot be
+verified (Settings → Notifications: Gmail is shown to customers as store+107185537364@shopifyemail.com). The store has
+no custom domain (only 2fp38p-az.myshopify.com), so no Messaging email (automation or the four newsletters) can be
+sent until the owner buys or connects a domain and authenticates it. Store is private, so nothing is lost meanwhile.
+**Way back**: on the flow page edit the automation and „discard changes“ to return to Shopify's English default.
+
+## 2026-11-25 — „Как се ражда едно бижу“, step 1: the 3D model screenshot **(owner)**
+
+Owner's own screenshot of the ring in the CAD program (four views: top, front, right, perspective) is the photo of
+slide 1 „Наш собствен дизайн“. The slide's frame is square (cover), so the 1919×1026 screenshot was cut locally to a
+1026×1026 square from x 178 (the viewports' left edge): all four views with the whole ring stay in, the side panels
+and the program's name are out. Uploaded to Files as `kak-se-razhda-01-3d-model.jpg`; `templates/index.json` slide_1
+`image`. Slides 2–4 unchanged (text-only). **Way back**: remove the `image` line from slide_1.
+
+## 2026-11-25 — All notification emails in the one-card layout; subject lines in plain Bulgarian **(owner)**
+
+Owner liked the new order confirmation: "do the same for the other emails". Every email Shopify sends is now built by
+`tools/email-templates.mjs` (cj-brand v2, one file per email in `docs/email/<slug>.liquid`, pasted whole into the
+template): shipping confirmation, shipping update, out for delivery, delivered, cancelled, refund, order edited,
+account activation, welcome, password reset, newsletter confirmation, contact customer, and the staff new-order
+email; the order confirmation was regenerated from the same script. Same card as the order email: logo, gold line,
+centred title, black button, one list of pieces (no Shopify delivery groups or pickup), totals on the right with
+delivery written once, the blush footer inside the card („Само за екипа на Cullinan“ for staff). Shipping emails say
+the whole order left in one parcel, show the courier's number and a „Проследете пратката“ button when the courier
+gives a link. Refund shows the refunded amount once (Shopify's Bulgarian title said „Поръчката ви е доставена“ for a
+full refund; fixed); Shopify's „up to 10 days“ line was dropped (not a fact we confirmed). Cancelled names only the
+customer's own request, an unavailable piece or a declined payment as a reason, never "staff error". Staff email:
+customer, e-mail, phone, note, each piece with SKU and „Налично / За изработка“, button to the order in admin.
+Shopify refuses to save the activation and contact emails without a plain `{{ custom_message }}`; both have it.
+Subject lines replaced where Shopify's translation was garbled or stiff (e.g. „Доставена е пратка от поръчка #9999 е
+на път“ → „Поръчка #9999 е на път“); order confirmation, staff and contact subjects kept. Every preview checked in
+admin; test shipping email sent to the shop inbox. `tools/email-brand.js` (v1) is superseded.
+**Way back**: per email, „Revert to → Default“ on its preview page (also resets its subject).
+
+## 2026-11-25 — Order confirmation email rewritten as one card **(owner)**
+
+Owner on the test order email: too many things shown, a pickup/shop delivery that does not exist (only Econt and
+Speedy), „Безплатно“ under every item, prices and totals sitting on the left, the pink footer outside the email, and
+pieces must not look as if they come one by one ("they will come in one day when they are all ready"). The template
+(Settings → Notifications → Order confirmation) is now our own Liquid, kept in `docs/email/order-confirmation.liquid`:
+one 560px white card on #F5F3EF, logo and gold line, order label, title, intro, black button; one list „Вашите бижута“
+with photo, name, variant, price right-aligned (no Shopify delivery groups, no pickup sections, no per-item free);
+full-width totals with „Доставка: Безплатна“ written once when shipping is 0, taxes only above 0; a grey note
+„Всички бижута от поръчката пристигат заедно, в една пратка.“, with „Срок за доставка: 3–5 / 10–15 работни дни“ only
+when Shopify tracks stock (10–15 if any piece is made to order); „Доставка до“ and „Опаковка“ side by side, stacked on
+phones; the blush footer inside the card. Inline styles so mail apps keep them. Checked on the admin preview at
+desktop and 375px width; test email sent to the shop inbox. Pickup and local delivery are Off in Shipping settings
+(the pickup lines were Shopify's sample data). Not changed: the other emails still use the v1 look (footer as a full
+band, Shopify's item layout); Shopify's "Automated dates" delivery estimates at checkout (a checkout setting, ask first).
+**Way back**: on the template's preview page „Revert to → Default“, then run `tools/email-brand.js` (v1) again.
+
+## 2026-11-25 — Emails in the Cullinan look; logo with the diamond **(owner)**
+
+Owner: "i want it to look cool and luxury" for customers, and the same for the emails to us. Mockup approved first
+(`docs/email/email-mockup.html`); owner's changes: intro „Получихме поръчката ви. Ще ви пишем отново, когато пратката
+тръгне към вас.“ (not „вече се грижим за нея“), diamond lines thicker, growing inwards only, same outer size.
+- Logo: the owner's PDF wordmark (vector) with an outlined diamond above it, as on Instagram, gold #B08D57
+  (`docs/email/cullinan-logo-gold.svg/.png`, black version too). Uploaded in Settings → Notifications → Customize
+  email templates (`cullinan-email-logo.png`, size 180); accent colour #000000 (was Shopify blue).
+- Customer emails (order confirmation, shipping confirmation, shipping update, out for delivery, delivered, cancelled,
+  refund, order edited, account invite/welcome/reset, contact customer, marketing confirmation): edited with
+  `tools/email-brand.js` (marker `cj-brand v1`): Jost with Helvetica fallback, logo centred, gold hairline, gold
+  spaced label „Поръчка #…“, centred title and intro, square black buttons with spaced capitals, no Shop app button
+  and no „или Посетете нашия магазин“, blush footer band (Ръчна изработка от 1991 · Ателие във Велико Търново ·
+  reply to this email · Instagram / Facebook) in place of Shopify's contact line.
+- Order confirmation only: „Благодарим ви, <име>“; the intro sentence above; „Всяко бижу пристига в кутия, с
+  индивидуален сертификат.“; under each piece „Налично · 3–5 работни дни“ / „Изработва се · 10–15 работни дни“ when
+  Shopify tracks the variant's stock (quantity ≥ 0 after the order = was in stock). **Not yet seen on a real order**
+  (Shopify's sample has no stock data).
+- Shipping emails: the main button is „Проследете пратката“ to the courier's tracking link when there is one, else
+  „Вижте поръчката“; the tracking-number line kept. Whether Shopify follows Econt / Speedy for „out for delivery“ and
+  „delivered“ is not checked.
+- Staff „New order“: our logo, „Нова поръчка · #…“ with the customer and total, black buttons, blush band „Само за
+  екипа на Cullinan“ in place of Shopify's logo and Ottawa address.
+- First try of the shipping email replaced the tracking-number line by mistake (the first `disclaimer__subtext`);
+  reverted to Shopify's default and redone (the script now only touches the footer row).
+- Tests of order confirmation, shipping confirmation and new order sent to the store email.
+- Way back: each template's „Revert to → Default“ in its preview page (Shopify's Bulgarian default); logo „Remove“
+  and accent colour #1990C6 in Customize email templates.
+
+## 2026-11-25 — The zoomed and replaced photos uploaded to Shopify **(owner)**
+
+The owner's finished photos from `_за качване` (list: `docs/photos-ready.md`) are on the store, unedited.
+- 207 replaced through Files → Replace, which keeps the file name, alt text, product references and gallery position
+  (uploading a file with the same name only makes a copy with a code in its name): crosses 06–09 `03`, zodiacs `01`
+  and `03`, the new pendants `01` and `03`, the pearl pendant `03`, the leaf ring `01`, all 42 red-thread bracelet
+  `01`, the brooches `03`.
+- 42 new `03` worn photos (Детелина, Колибри and every piece of sets 15–18, three metals each) uploaded and added at
+  the end of their 14 products' galleries, alt text the metal („14К жълто злато“, „14К бяло злато“, „14К розово
+  злато“, Cyrillic К) so the theme shows each only for its metal.
+- Silver skipped: no silver files exist in Shopify (silver shows the white photo) and the 69 silver copies are
+  byte-identical to white.
+- One stray copy from a first try, `06-krast-s-kant-byalo-03-noseno_<code>`, is in Files, used nowhere; delete only
+  with the owner's OK.
+- Way back: the old photos are in each piece's `чернови` folders; Files → Replace puts any of them back.
+
+## 2026-11-24 — Rings Жар and Капка: white and rose on the hand, made locally **(owner)**
+
+The two set rings (15 red stone, 18 stone in a bezel) had their hand photo only in yellow: the gold is the colour of
+the skin, so the automatic mask failed. Now made locally, no credits: the ring outlined with GrabCut from a hand-drawn
+area round it (plus hand-marked band ends), stone left out; brightness moved 35% towards the ring's own white / rose
+01 metal (quantile match), colour from those photos (white one neutral colour at every brightness). Silver = white.
+New files `03 на ръка - {бяло злато,розово злато,сребро}.png`; nothing overwritten. Owner stopped a Higgsfield try
+for the same (two 3-credit jobs were already submitted): colour versions are always made locally.
+
+## 2026-11-24 — Small pieces and worn photos enlarged for the phone **(owner: "you choose")**
+
+Owner: the knot tree at 65%; for the other small pendants and the worn photos I choose what to enlarge so the pieces
+can be seen. Free, crop and Lanczos resize of the current files, same crop in every metal (silver included).
+- **01 main photos under 60% raised to 65%** of the larger side (the knot tree's size): Богородица малък медальон (37%),
+  the ten zodiac coins (40%; earlier deliberately smaller, owner 2026-10-27, now 65%: still smaller than the 76% pieces,
+  so the small/big difference stays), Пчела (42%), Дърво със сърца (43%), Детелина (50%), Дърво с възел (52%),
+  Колибри (55%). Openwork zodiacs (62%) and every piece at 66% or more unchanged.
+- **Worn photos zoomed ×1.5 round the piece** (brooches ×1.4): all neck photos of crosses, zodiacs, new pendants and
+  set pendants, the set earrings on the ear, the two brooches (47 photos per metal). Centre found where the white
+  photo differs from the yellow; 26 (Скорпион ажурен) and 43 (pearl pendant) centred by hand.
+- **Not zoomed:** rings on the hand (owner 2026-10-16: the whole hand with all five nails shows) and the bracelets on
+  the wrist (the bracelet already reads clearly).
+Way back: `<piece>/чернови/преди увеличението 2026-11-24/<metal>/`. The owner uploads the new photos in Shopify.
+
+## 2026-11-24 — Two sizes for Вяра and Дантела; new item numbers **(owner)**
+- Owner (screenshots with numbers): Вяра 3214 малък / 3216 голям; Дантела 3072 малка / 3070 голяма, 3070 also in silver; Заедно 2161, Капка – обеци 2612 (was 1884R), Корона 3377, Куршум 1574, Листопад – обеци 2591, Роза 15126р. "the weight change so the price too": a choice of size with its own price.
+- Admin: a third option **„Големина“** (Малък / Голям on Вяра, Малка / Голяма on Дантела), not „Размер“, because the theme switches on the ring-size table and the ring-size FAQ for any „размер“ option. New variants got their metal's photo. SKUs set on every variant (bulk editor). Дантела got one silver variant (925 сребро / сребро / Голяма, SKU 3070, white-gold photo like other silver pieces, **price €0: silver price not given**).
+- Prices by the owner's 14K rule (≤1 g × 140, above × 130, rounded up): Вяра €140 / €182 (was €340 for the one size); Дантела €1,560 (12 g, owner's weighing) / €2,249 (17.3 g). Weights: the old site (3214 1 g, 3216 1.4 g, 3070 17.3 g), the owner's 12 g for the small bangle; lengths 23.9 / 29 mm (owner, folder 08). Written into the descriptions' „Детайли“ as „1 / 1,4 г“, „23,9 / 29 мм“, „12 / 17,3 г“, which the theme already splits per option value. Variant metafields „Тегло (г)“ filled too (the small bangle's says 11,9, the old site's figure; the shown 12 comes from the description).
+- Theme: `snippets/product-variant-picker.liquid` prompts „Изберете големина“ for a „големина“ option; `sections/main-product.liquid` leaves the description's „Тегло“ row out for a silver variant (every written weight is 14K gold).
+- Way back: admin, delete the „Големина“ option on both products (keeps the first value's variants), price Вяра €340, SKUs back to the old ones in docs/item-numbers.md history; revert the two theme commits.
+
+## 2026-11-24 — Red-thread bracelets: zoomed to the edge **(owner)**
+
+Owner: zoom the red bracelets close to the edge, every part seen, nothing cut. All 14 pieces' 01 main photos, in yellow,
+white and rose, re-cropped from the current files: the whole bracelet now fills 95% of the width (2.5% margin left and
+right, was about 8%), centred, one crop per piece for all three metals. No credits. Wrist photos unchanged. Way back:
+`<piece>/чернови/преди увеличението 2026-11-24/`. The owner uploads the new 01 photos in Shopify.
+
+## 2026-11-24 — Дърво с възел: clean openings **(owner)**
+- Owner's phone note „Оправяне на жълтите петна“: yellow and lilac blotches between the branches. The 01 photo in
+  every metal was remade free from the AI original, as the Ангел and the openwork zodiacs were. Way back:
+  `Дърво с възел/чернови/преди чистите отвори 2026-11-24/`. Owner: "make the spots disappear more": the openings
+  between the branches were made plain paper, then (owner: that removed the shadow) a smooth grey of their own shading:
+  the soft shadow stays, the blotches and the gold glow are gone (outline found by BiRefNet; metal untouched).
+
+## 2026-11-24 — Червен конец – две сърца: version D **(owner)**
+- Owner chose D of the saved versions ("D is the perfect one do the colors"): bigger plain hearts, four equal beads.
+  Rebuilt free from its AI original (aeff0905) in yellow, white and rose; the wrist photo already shows this design.
+  Way back: `01 Две сърца/чернови/преди версия D 2026-11-24/`.
+
+## 2026-11-24 — Cart without „С включени данъци“; two junk collections deleted **(owner)**
+- The company is not VAT-registered, so the cart note no longer starts with „С включени данъци.“ (`taxes_included_shipping_at_checkout_*` in `locales/bg.json` and `en.default.json`). Way back: put the prefix back in both keys.
+- Admin: deleted the test collection „asdasdasdas“ and the empty duplicate „Kомплекти с диаманти“ (Latin K, id 728171217236, 0 products, not in any menu). The real Cyrillic „Комплекти с диаманти“ stays. Way back: recreate them in Products → Collections (nothing linked to them).
+
+## 2026-11-24 — Leaf ring (set 16): main photo rebuilt **(owner)**
+- Owner: the left side looked blurred and cut. Higgsfield's original was clean; a later background clean-up had
+  softened the band's end, the left leaf's edge, and painted white into the plain gold leaf. The 01 photo in every
+  metal was rebuilt free from the AI original (gold standard F, soft background, frame c). A scan of every photo the
+  2026-11-20 clean-up touched found no other photo with this damage. Way back:
+  `Пръстен/чернови/преди размазания ляв край 2026-11-24/`.
+
+## 2026-11-23 — Collection extras, second round **(owner)**
+- Owner: a line at the end like moonmagic's under „Видяхте всички бижута…“; the strip of three across the whole page
+  ("make the size for the hole page like moomagic did it"); „Качество във всеки детайл“ in the centre like the other
+  tile. Done: a hairline under the end note; the strip moved after the section's padded box, full width on greige,
+  items kept to the page width; the dark tile after the 12th piece (middle column on a computer, a full row on a phone)
+  instead of the 10th. Way back: git history of `sections/main-collection-product-grid.liquid` and `assets/crown.css`.
+
+## 2026-11-23 — Collection extras: two tiles, an end note, a strip of three **(owner)**
+- Owner sent moonmagic's collection grid (a light and a black promise tile among the products, „You've seen all
+  products“ with a button, a band of three) : "can we add things like that ... in every collection make our better if
+  you can make them luxury art and cool".
+- `snippets/cj-collection-extras.liquid`, rendered in `sections/main-collection-product-grid.liquid`:
+  „Купувайте спокойно“ (soft blush: certificate, 14 days return or exchange, look and try before paying, warranty)
+  after the 4th piece, or after the last in a collection of 4 or fewer; „Качество във всеки детайл“ (espresso and
+  gold: gold 14K/18K and silver 925, stones appraised by an HRD-qualified specialist, handmade since 1991, every piece in
+  a box) after the 10th; page 1 only; one product's place on a computer, the full row on a phone (moonmagic's phone
+  version could not be measured: their tiles render late). „Видяхте всички бижута от тази колекция.“ + „Разгледайте
+  всички бижута“ (/collections/all) on the last page; a greige strip of three (free delivery over €500, handmade in our
+  atelier since 1991, a certificate for every piece) at the foot. Only facts from CLAUDE.md. Look: `assets/crown.css`
+  „Collection extras“. Way back: delete the snippet, its renders and the CSS block.
+
+## 2026-11-23 — Worn photos of sets 15–18, Детелина, Колибри in every metal **(owner)**
+- Owner approved the 14 worn drafts: "all of these are good for use make the colors". Yellow promoted to the metal
+  folders; white, rose and silver (= white) made free from them. The rings of sets 15 (red stone) and 18 (stone in a
+  bezel) are yellow only for now: their gold is the same colour as the finger, so the free method cannot separate it.
+
+## 2026-11-23 — Cart drawer lighter, new „Може да харесате също“, smaller delivery bar, description „Прочетете повече“ **(owner)**
+- Owner: remove the note under „Към плащане“ and move the button "a little bit down"; remove the three lines above
+  „Общо“; more space between the pieces and „Може да харесате също“ ("don't over do it"); "i don't think i like
+  design for може да харесате също"; the free delivery bar "to big for both phone and computer"; the description:
+  "the first sentence apear then ... прочете повече"; "make the text for the description smaller".
+- Drawer (`snippets/cart-drawer.liquid`, `assets/cullinan-cart.css`): tax note and the reassurance list no longer
+  rendered (settings cart_trust_1..3 kept); the button's foot 52px above the panel's foot (87px with the note); 20px
+  between the last piece and the strip.
+- `snippets/cj-cart-recs.liquid`, second design after moonmagic's bag: one white framed card at a time (84% wide, the
+  next peeking), picture 84px left, name, price and a small black „Разгледайте“ right, two square arrows beside the
+  heading (disabled at the ends); lilac ground #F7EFF5 kept.
+- Free delivery bar (`assets/crown.css`): text 14.5 → 13px, note 12 → 11px, badge 32 → 26px, bar 6 → 4px, box padding
+  13/15 → 9/12px.
+- Description: first sentence, then „Прочетете повече“ (the polite form the site uses; the owner wrote „прочете“),
+  „Покажи по-малко“ when open (`assets/cj-description-more.js`, `sections/main-product.liquid`); text 14 → 13px.
+- Way back: git history of these files.
+
+## 2026-11-23 — „Може да харесате също“ on soft lilac pink **(owner)**
+- Owner: the strip's background "purplepink but whiter and soft or choose a cooler that would fit better": #F7EFF5
+  (was #FAF8F5), hairline #EADBE6; the empty picture square is the photos' own #FCFBFC so photos sit cleanly on it.
+  Name 10.9:1, labels 7:1 on it. Way back: the two colours in `assets/cullinan-cart.css` „.cj-cart-recs“.
+
+## 2026-11-23 — „Към плащане“ placed like moonmagic's CHECKOUT **(owner)**
+- Owner: "към плащане now is to much at the end and make it like moonmagic (just where it is placed)". Measured live:
+  moonmagic's bag ends total → CHECKOUT → payment logos, the button's foot about 85px above the screen's foot. Ours:
+  total → „Към плащане“ → the tax and delivery note (moved from above the button, centred, 11px), 36px below it, so
+  the button sits about 85px up (46px under the note). No payment logos: no payment method is set up yet. Way back: the note back into
+  `.cart-drawer__footer` in `snippets/cart-drawer.liquid`, delete the last block of `assets/cullinan-cart.css`.
+- Owner: the zodiac pendants are gold only. Checked: none of the 22 has a silver variant and no zodiac text mentions
+  silver; the homepage band („Висулки от злато“) stays.
+
+## 2026-11-23 — Cart drawer: total and button at the foot, „Може да харесате също“ **(owner)**
+- Owner saw the free delivery bar mocked in the drawer and on /cart: "to big ... don't do it" (it stays on the product
+  page only). Then: "move at end of the вашата количка the button към плащане with the things that are with him also
+  we can add you may also like ... the place there is small so make everything fit good and when we add a product it
+  should be looking good to".
+- **Reverses 2026-10-05** („Checkout reach“: footer right under the pieces): the reassurances, total and „Към плащане“
+  are pinned at the foot again; the pieces and the strip scroll above them. The pinned block is tighter (paddings,
+  12px reassurances, 20px total, 52px button): about 250px instead of 334px.
+- `snippets/cj-cart-recs.liquid`: Shopify's related recommendations for the newest piece in the bag, minus pieces in
+  the bag, at €0 or sold out, at most 8, as a sideways strip of 12rem cards (picture, name, price) on #FAF8F5 under the
+  pieces; hidden when empty; links only (no quick add: most pieces need a metal). Rendered in
+  `snippets/cart-drawer.liquid`; look in `assets/cullinan-cart.css` (end). `.drawer__contents` gets min-width 0 so
+  the strip scrolls on its own.
+- Judge.me's cart widget was an empty 90px box under the pieces (no reviews yet): hidden only while empty (`:has()`),
+  so it returns by itself with content.
+- Checked on the draft: computer and phone (375×667), one and two pieces, no sideways scroll.
+- Way back: `#CartDrawer cart-drawer-items` back to `flex: 0 1 auto`, delete the last blocks of cullinan-cart.css and
+  the render.
+
+## 2026-11-23 — Ангел pendant: clean openwork **(owner)**
+- Owner: the spots in the openings were too big; "do the thing that we did on the zodiac signs ажурни". The three 01
+  photos were remade free from the AI original as the zodiacs were (gold standard F with --keep-sat, soft background,
+  the approved photo's exact frame), and the rhodium angel's lilac cast in yellow and rose made neutral. Way back: the
+  old files in `Ангел/чернови/преди чистите отвори 2026-11-23/`.
+
+## 2026-11-23 — Checkout delivery: free from €500 **(owner)**
+- Owner: "Checkout still has the old rate: fix that". Admin → Markets → Bulgaria → Shipping → „Стандартна“: prices
+  switched from BGN to the store currency EUR; price лв.8.99 → €4.60 (the same amount at 1.95583, since the owner has
+  given no price below €500); free shipping minimum лв.70 → €500. 3–5 business days unchanged. Checkout now matches
+  the free delivery bar. Way back: the same screen, „Set prices in“ BGN, 8.99 and 70.
+
+## 2026-11-23 — Free delivery bar in ruby **(owner)**
+- Owner: "change the color that will look good and we make the eye see it also if you think you can make that thing
+  better than moomagic design make it happen". The bar takes the site's ruby #D62246 (hero button, trust row) on the
+  trust row's ruby wash; amount in ruby #C41D3F. Beyond moonmagic: a round ruby badge whose parcel turns into a check
+  at €500, a second line „С Еконт или Спиди до офис или адрес“ (a stated fact), „€500“ written at the end of the bar,
+  a soft shine along the fill (off under reduced motion). Way back: git history of the crown.css block and the snippet.
+
+## 2026-11-23 — Free delivery bar counts only the cart **(owner)**
+- Owner, with an empty cart: "it should be zero there why is there money i don't have anything in the shoping car".
+  The bar no longer adds the piece on screen (moonmagic's way); it shows only the cart: empty cart = empty bar,
+  „Остават ви €500“; it moves after „Добави в количката“. Way back: git history of `snippets/cj-free-delivery.liquid`.
+
+## 2026-11-23 — Free delivery bar on the product page **(owner)**
+- Owner sent moonmagic.com's „You're €105,05 away from your Free Birth Chart“ bar: the same for free delivery over
+  €500. moonmagic counts the piece on screen as if added (€235,95 − €129,95 = €105,05); ours does the same, plus the
+  cart, the piece counted once if already in the cart.
+- `snippets/cj-free-delivery.liquid` (custom element, updates on variant-change and cart-update), rendered under the
+  price in `sections/main-product.liquid`; look in `assets/crown.css` „Free delivery bar“: greige box, square
+  corners, parcel icon in gold, „Остават ви **€X** до безплатна доставка“ (X rounded up) / „**Безплатна доставка** за
+  вашата поръчка“, a 4px bar from espresso to gold.
+- Reminder: Shopify admin's shipping rate is still leva 8.99, free from 70 leva (docs/tasks.md A2); the owner must set
+  it to free from €500 so checkout matches the bar. Way back: delete the render, the snippet and the CSS block.
+
+## 2026-11-23 — „Злато“ and „сребро“ in bold black **(owner)**
+- Owner: wherever a text says the pieces are made in gold or silver, those words bold and black, "just be seen
+  better".
+- `snippets/cj-metals.liquid` wraps „злато/златото/сребро/среброто“ (also capitalised) in `strong.cj-metal`;
+  `assets/crown.css` „Metals in bold black“ (600, #000, above the collection colour). Rendered in: collection
+  descriptions (main-collection-banner), homepage category intro (category-mosaic), workshop facts (atelier), gift and
+  faith bands (cj-gift-guide), about page lead and text (split-story), product page drop-downs (main-product, e.g.
+  „Истинско злато ли е?“). Not in: product titles, option values, the material card, menus, prices, meta text.
+  Design system §8 lists it with the other pure-black places. Way back: delete the CSS block and the renders.
+
+## 2026-11-23 — Collection colour for the dots and the bold words **(owner)**
+- Owner: dot colours linked with each collection (zodiacs too), and the bold words of the description in the same
+  colour, still bold.
+- `sections/main-collection-banner.liquid` sets `--cj-stone-colour` per collection; `assets/crown.css` „Collection
+  colour: dots and bold words“ colours `strong` in descriptions that have qualities (plain categories keep the ink).
+- Every colour reads as text on the greige (≥4.5:1 on #F5F3EF); the sign colours of the morning that were too light
+  were darkened in their own hue: Телец #4f7f4b→#4a7747, Близнаци #c9a227→#856b1a, Рак #8fa1b5→#616d7b,
+  Лъв #d97b29→#a15b1e, Дева #8a7f3a→#776d32, Везни #d08ea0→#8d616d, Водолей #2f86b0→#287397, Риби #3f9488→#347970
+  (Овен, Скорпион, Стрелец, Козирог unchanged). New: Богородици #2f4f8a (Marian blue), Вяра и закрила #88692d (icon
+  gold), Кръстове #7d2a35 (Orthodox crimson), Червен конец с кръст #b0242f (the thread). Stones
+  (`snippets/cj-menu-stone.liquid`, also the meaning beside a stone's name): Перли #8f7a5e→#7e6b53, Циркони and
+  Диаманти #5f7689→#596f81; the „с перли“ / „с циркони“ collections take their stone's colour.
+- Checked on the draft theme (every handle carries its colour; phone view of Близнаци, Везни, Богородици, Червен
+  конец с кръст). Way back: revert commit 936a48e8.
+
+## 2026-11-23 — Qualities in one row on every collection **(owner)**
+- Owner: the three qualities in one row wherever they are. Computers showed them in two columns beside the text on
+  stone, faith and red-thread collections (the 2026-10-21 moonmagic layout); now every collection uses the zodiac
+  layout, one row under the text (`assets/crown.css`, „Zodiac collections: heading“ lost `.cj-hero--zodiac` in its
+  base and 990px rules; commit 7d927de4). Checked on the draft theme at 1440 and 375 (Кръстове, Перли, Циркони,
+  Богородици, Червен конец с кръст, Пръстени с циркони): one row, no sideways scroll. Way back: revert 7d927de4.
+
+## 2026-11-23 — Collection descriptions rewritten like the zodiacs; Пръстени without its picture **(owner)**
+- Owner on the first set: should read like the zodiacs, built on the collection's own title; no 3D model or Veliko
+  Tarnovo (kept „Дамски пръстени“ minus the 3D sentence); evocative and for women, as moonmagic.com writes its
+  collections („Earrings for Every Mood“), and for men where a piece is for men; I choose where the three qualities
+  go; metal never gold alone, silver too.
+- The 29 texts (Shopify admin, collection Description) are now „[Title] е/са **…**. One sentence.“; three qualities
+  only where the collection has a meaning (Богородици, Вяра и закрила, Кръстове, Червен конец с кръст and the
+  „с перли“ / „с циркони“ collections, using Перли's and Циркони's qualities); categories and sets have none.
+  Аксесоари speaks to her (brooch) and him (tie pin). Every text is kept in `docs/collection-descriptions.json`
+  (collection id → HTML) so it can be restored or reused; the first set of the same day is superseded.
+- Пръстени: its collection image (a pink marble picture, admin thumbnail 8cada0f5da411a64e756606bb036f1ed) removed in
+  admin, so its heading is the greige band like every other collection. Way back: add an image to the collection.
+- Checked on the draft theme, phone 375 (Пръстени, Кръстове, Обеци с перли, Аксесоари) and computer: no
+  sideways scroll, qualities in one row; storefront data: no description mentions 3D or Велико Търново.
+
+## 2026-11-23 — A description for every collection; zodiac dots in each sign's colour **(owner)**
+- Owner: descriptions for all collections, existing ones kept; fix the text position and check phones; the three
+  quality dots a different colour for every zodiac sign.
+- Admin (not in git): 29 collections with products and no description got one (texts in the scratchpad file
+  `coldesc.json` of this session; each only from the facts in CLAUDE.md and the pieces actually in the collection).
+  The 14 with a description (12 signs, Перли, Циркони) and the empty stone collections were not touched; `frontpage`
+  (internal) and „Най-продавани“ (one piece, the shop has no sales yet) left without one. Way back: empty the
+  Description in admin.
+- `sections/main-collection-banner.liquid`: zodiac dot colours via `--cj-stone-colour` (only the dots use it on a
+  sign): Овен #b3362f, Телец #4f7f4b, Близнаци #c9a227, Рак #8fa1b5, Лъв #d97b29, Дева #8a7f3a, Везни #d08ea0,
+  Скорпион #6e1f3c, Стрелец #6b4194, Козирог #6a5444, Водолей #2f86b0, Риби #3f9488 (the colours usually linked
+  with each sign, toned to the palette). Way back: delete the `case` block.
+- `assets/crown.css`: the zodiacs' phone layout (centred, 15px text with balanced lines, qualities in one centred
+  row) now holds for every collection heading. Checked on the draft theme at 375 (Висулки, Пръстени, Циркони,
+  Скорпион) and on a computer (Висулки, Риби): no sideways scroll, qualities in one row. Way back: in commit
+  75bc8713.
+
+## 2026-11-23 — Collection heading on warm greige down to the filters **(owner)**
+- Owner asked whether the title and description should have a background reaching exactly to the filters; I proposed
+  the stones band's warm greige `#F5F3EF` (not blush: the footer is blush); owner: "use the thing you wrote".
+- `assets/crown.css` „Collection heading on warm greige“: every collection without a heading picture (zodiacs,
+  stones, Висулки, Обеци, Всички бижута …) has the greige behind title, description and qualities, edge to edge,
+  ending on the filter bar's top line; the grid's top gap (24px / 18px phones) is now inside the band (bottom padding
+  3.2rem computers, 2.4rem phones). Пръстени (heading picture) unchanged.
+- Checked on the draft theme: computer (Овен) and phone 375 (Овен, Рубини, Пръстени, all): band bottom = filter bar
+  top, no sideways scroll. The lightest stone word colour (#8f7a5e) is 3.7:1 on greige (4.1:1 on white).
+- Way back: delete that block (commit 8a5a3ddf).
+
+## 2026-11-23 — Zodiac headings in one row; „зодия“ instead of „знак“ **(owner)**
+- Owner: on every zodiac collection the three qualities (e.g. Смелост · Енергия · Начало) in one row, also on phones;
+  the phone heading text was too big and badly placed; „знакът“ wording replaced with „зодия“ everywhere; the
+  homepage band „Вашият знак“ → „Вашата зодия“; the sentence „Знакът, под който сте родени, винаги близо до сърцето.“
+  disliked.
+- Theme (commit 8da26612): `sections/main-collection-banner.liquid` adds `cj-hero--zodiac` on „Зодии“ and the twelve
+  sign collections (handles listed there); `assets/crown.css` „Zodiac collections: heading“: qualities never wrap
+  (one row), phones centre the heading, text 1.5rem / 1.6, qualities 1.1rem; under 360px tighter spacing; computers
+  put the row under the text. Stone collections unchanged. Checked on the draft theme at 320, 375 and 1440: one row,
+  no sideways scroll.
+- Homepage band (`templates/index.json`, gift_guide): eyebrow „Вашата зодия“, text „Висулки от злато за всяка от
+  дванайсетте зодии – за вас или за подарък.“
+- Admin (not in git): the twelve sign collections' descriptions say „зодията на …“ (Овен also „Родените в тази
+  зодия“); all 22 zodiac pendants: „със знака на X“ → „със зодия X“, „Знакът на X –“ → „Зодия X –“, „Знакът стои в
+  средата“ → „Символът на зодията стои в средата“, „Личен знак и красив подарък“ → „Лично бижу и красив подарък“.
+  Checked on the storefront: no „знак“ left in those 22 products, the 12 collections or the homepage.
+- Left as they are: „знак“ in non-zodiac pieces (red-thread bracelets, Пчела, Детелина, Дърво, Богородица, Надежда),
+  where it means a sign or symbol, not a zodiac.
+- Way back: remove the class line and the crown.css block; the old homepage texts are „Вашият знак“ and
+  „Знакът, под който сте родени, винаги близо до сърцето.“; the old product wordings are listed above.
+
+## 2026-11-23 — „Вяра и закрила“ menu: Богородици and Гривни с червен конец; Висулки order **(owner)**
+- Owner asked for crosses, Богородици and the red-thread bracelets under „Вяра и закрила“, asked whether the tree of
+  life belongs there, and whether crosses and zodiac signs should leave „Висулки“; my advice was accepted („do all of it“).
+- Two new automated collections (admin data, not theme code): **Богородици** (title contains „Богородица“, 4 pieces) and
+  **Гривни с червен конец** (title contains „Червен“, 14 pieces; the admin's condition field splits on a space, so one
+  word; no other title has it). New pieces with those words join on their own.
+- Main menu, „Вяра и закрила“: „Всичко във Вяра и закрила“ (was „Всичко в вяра и закрила“), Кръстове, Богородици,
+  Гривни с червен конец. Also „Дамкси“ → „Дамски“ under Пръстени.
+- Not changed, on purpose: the three „Дърво“ pendants stay out of „Вяра и закрила“ (tree of life = life and family,
+  not faith); Ангел stays only under „Всичко“; crosses, Богородици and zodiac signs **stay in „Висулки“** (a shopper
+  who opens Висулки expects every pendant). Instead „Висулки“ is now sorted **manually**: zircon pendants first, then
+  Дърво, Пчела, Колибри, Детелина, Богородици, Ангел, crosses, zodiac signs last (crosses moved from after the zodiac
+  signs to positions 20–26). Zodiac signs keep their old order (Риби → Овен).
+- Verified on the real preview: menu links, 4 and 14 products, Висулки order; Богородици page at 375 px (no overflow).
+- Way back: delete the two collections and their menu items in admin; Висулки sort back to „Most relevant“.
+- **Same day, owner: only the red-thread bracelets with a cross belong in „Вяра и закрила“.** The red-thread collection
+  got a second condition (all conditions: title contains „Червен“ **and** „кръст“) → 7 bracelets; renamed „Червен
+  конец с кръст“ (collection and menu label; handle still `гривни-с-червен-конец`) so the name says what is inside.
+  The manual „Вяра и закрила“ collection lost the other 7 (цвете, стъпки, безкрайност, сърце, плочка, дърво на
+  живота, две сърца): 26 → 19 pieces. All 14 stay in „Гривни“ (15 with Дантела). Verified on the preview. Way back:
+  remove the „кръст“ condition and rename; add the 7 back to „Вяра и закрила“ in admin.
+- **Same day, owner: zodiac signs in calendar order** (Овен, Телец, Близнаци, Рак, Лъв, Дева, Везни, Скорпион,
+  Стрелец, Козирог, Водолей, Риби; монета before ажур) in three places: „Висулки“ (positions 27–48), „Зодии“ (switched
+  from „Most relevant“ to manual; it was Риби → Овен) and the twelve sign links under „Зодии“ in the main menu (were
+  in no clear order). Verified on the preview. Admin notes: the collection „Move → To the end“ per sign works from a
+  script; the menu only reorders with keyboard drag (space, Up, space) and needs ~2 s between keys, or presses are
+  lost; one „Зодии“ save left two pieces one place off, fixed with „Move → To position“ and checked after a reload.
+  Way back: „Зодии“ sort back to „Most relevant“; reorder by hand.
+
+## 2026-11-23 — Item numbers from the old site; missing weights **(owner)**
+- Owner: find each piece's number on studio-cullinan.com by its picture, put it in Shopify's field for an item number
+  or the description; add weights (and stone sizes) only where ours are missing, never change the ones we have.
+- All 2,038 old products scraped (code, photo, „Артикулен №“, „Тегло“); our 87 photos matched by eye with side-by-side
+  sheets, every pair checked. 80 pieces matched; list with old names and weights: `docs/item-numbers.md`.
+  Not matched, left blank: Корона, Заедно (closest old rings are other designs), Куршум, Роза (not on the old site),
+  Листопад – обеци (no match), Червен конец – кръст с камък (2469 without the stone), Орбита – обеци (2687 has a
+  lever-back, ours differ). Zodiac pendants: the old site has one code per series (ажур 1919, монета 1870).
+- The code is in every variant's **SKU** (Shopify's item number; it also prints on orders), typed in the bulk editor and
+  checked on the preview (all 513 variants match). `sections/main-product.liquid` shows it as the last row of
+  „Качество и детайли“, „Артикулен номер“, from the selected variant.
+- Weights: the old weights agree with ours within about 0.2 g on the 49 pieces that had both, which confirms the
+  matches. Added „Тегло: … г“ to the description list of the 14 pieces without one (Игла 5,50; Листопад – висулка
+  0,90; Розетка – обеци 1,30; Капка – пръстен 2,75; Богородица – с ореол 1,70; Листопад – пръстен 1,65; Жар – пръстен
+  3,40; Вяра 0,77; Надежда 0,60; Любов 1,05; Искра 1,80; Вихър 1,15; Роса 0,86; Съзвездие 1,40). Not added: zodiac
+  (series weight, not per sign) and Червен конец – плочка (two plate sizes, one old weight). The `weight_g` metafield
+  was not filled for these (the page reads the description list). Stone sizes: the old site gives none.
+- Not yet in `tools/products-csv.py` (a reimport would drop SKUs and these weights; take them from `docs/item-numbers.md`).
+- Way back: clear the SKU column in the bulk editor; delete the „Тегло“ line in those descriptions; remove the
+  `cj_sku_row` capture in `main-product.liquid`.
+- Owner's answers (same day): Орбита – обеци are 2687 (SKU added). Червен конец – кръст с камък is not 2469 (left
+  blank). Zodiac codes 1919/1870: the owner will check. Плочка: its weights were already in the description
+  („0,85 / 1,05 г“, my check missed them); the owner wants the figure to follow the chosen plate, so a details value
+  written „a / b“ or „a или b“ now shows only the selected option's figure (18 мм → 0,85 г and 18,3 мм; 21 мм → 1,05 г
+  and 21,3 мм). Only that piece has such values. Way back: remove the `cj_parts` block in `main-product.liquid`.
+
+## 2026-11-22 — Every piece in its stone and theme collections **(owner)**
+- Owner: "i said twice that i want every jewelry to be in his collection why aren't they in". The kind collections
+  (Пръстени, Обеци, Висулки, Гривни, Комплекти) were full, but the stone and theme ones missed pieces. Added in admin
+  (Products → Add to collection): Обеци с циркони +5 (now 6), Пръстени с циркони +4 (11), Камъни +30 (32, every piece
+  with a stone, pearls included), Вяра и закрила +25 (26: the red-cord bracelets, Богородица, Ангел and the crosses);
+  earlier the same day Циркон (28), Комплекти с циркони (17), Висулки с циркони (7). Zircons only where the owner
+  confirmed them (photo sheets 16–25).
+- Checked on the preview with `/collections/<handle>/products.json`: all 87 products are in at least one collection;
+  the 7 in only one are plain pieces without stones (Дантела, Дърво ×3, Пчела, Колибри, Детелина).
+- Not added: Роза (stone type not known: in Камъни, not Циркон); Розетка's green stone (unknown). Diamond, ruby,
+  sapphire, emerald, opal, onyx, topaz, citrine collections and Мъжки пръстени stay empty: no such pieces yet.
+- Way back: admin → Collections → the collection → remove the product (or Products → select → Remove from collection).
+  Red-cord bracelets in „Вяра и закрила“ were my reading of them as protection talismans; remove them there if not wanted.
+
+## 2026-11-22 — Орбита: metals in the same order as every piece, yellow first **(owner)**
+- Owner: "i want them to be in the same order not to start with the light if there are more product like this make
+  them that way". Checked all 87: only the three Орбита pieces started with white (84 go жълто, бяло, розово; Искра too).
+- Admin, the three Орбита products: metal option now „14К жълто и бяло / 14К бяло / 14К розово и бяло злато“, the
+  hidden Color „жълто / бяло / розово злато“, and the photos yellow-and-white first, so cards, the product page, the
+  set card and the default variant open on yellow-and-white. `tools/products-csv.py` makes them in that order too.
+- Way back: drag the values and photos back in each product's admin page.
+
+## 2026-11-22 — Two-tone gold circles **(owner)**
+- Owner on Орбита's card (three grey circles): "why is this ring only with this colors". „14К жълто и бяло злато“ and
+  „14К розово и бяло злато“ contain „бяло злато“, so `snippets/cj-metal-swatch.liquid` drew them as white gold.
+  First tried a split yellow/white gradient circle; owner: "don't add things like that i want them to be the same as
+  the other colors". Now yellow-and-white uses the yellow gold circle picture and rose-and-white the rose gold one
+  (main and fluid-sizes).
+- Way back: delete the two „и бяло“ branches at the top of the snippet.
+
+## 2026-11-22 — Card colour circles work again; tablet photo size **(owner)**
+- Owner: "most of the pieces can't change the colors and the quality is bad". Since the CSV import the card circles
+  come from the material option, and Shopify's `value.variant` pairs a material with the first Color value, a variant
+  that does not exist: every circle but the first had no variant or photo. `snippets/card-product.liquid` now takes the
+  first variant of that material with a photo (main and fluid-sizes). Checked: all 69 cards on the preview, each circle
+  its own photo; clicking cycles yellow/white/rose. Product pages and set cards were already switching.
+- Quality: the uploaded copies match the originals (2048 px, PSNR above 50 dB) and desktop/phone fetch photos at least
+  the size shown. One fault found: at 750–989 px the gallery's `sizes` said half the page while one photo fills the
+  column, so the browser fetched ~70% of the size shown; `snippets/product-thumbnail.liquid` now says the column width.
+- Way back: remove the "Circles drawn from the material option" block; restore `calc((100vw - 11.5rem) / 2)`.
+
+## 2026-11-22 — Set collections and each set piece's „Комплект“ **(owner)**
+- Owner: "you need to put them in their collection you forgot that". The menu's collections were already filled after
+  the import; what was missing was each set's own collection, which „От същия комплект“ on the product page and the
+  set cards on „Комплекти“ read through the product metafield `custom.komplekt`.
+- Admin only, no theme change: seven automatic collections „Комплект Жар / Капка / Листопад / Луна / Орбита / Розетка /
+  Цвят“ (condition: title contains „<Name> –“), and the 20 set products' „Комплект“ field set in the bulk editor.
+- Checked on the preview: all 20 product pages show „От същия комплект“; „Комплекти“ shows 7 set cards (20 pieces),
+  phone and desktop.
+- Noticed, not changed: there are two diamond-set collections, „Kомплекти с диаманти“ (Latin K) and „Комплекти с диаманти“.
+- Way back: clear the „Комплект“ field in the bulk editor and delete the seven collections.
+
+## 2026-11-22 — „Детайли“ moved into „Качество и детайли“; description with „Покажи повече“ **(owner)**
+- Owner: "детайли ... should be качество и детайли ... i don't want it to be seen there" and "the text in the
+  description should be with show more because it is too much". The description block prints only the text before
+  `<p><strong>Детайли</strong></p>`, cut to three lines with „Покажи повече“ / „Покажи по-малко“
+  (`assets/cj-description-more.js`, button only when the text is longer). The product_specs panel reads that list:
+  "Label: value" lines become rows under Метал and Проба, the others a short list; the gold line is skipped (Метал
+  and Проба say it) except a two-colour one; while the list exists the metafield rows other than metal and proba are
+  not printed. Two-colour gold now reads „Жълто и бяло злато“ / „Розово и бяло злато“ in Метал.
+- The product data is unchanged (the list stays in the description in Admin).
+- Way back: revert this commit.
+
+## 2026-11-22 — All ready products uploaded to Shopify, new names and descriptions **(owner)**
+- Owner: "upload them", "not as drafts, delete the old ones", descriptions "like in moonmagic". The 30 old products were
+  deleted and 87 imported as active from `tools/products-csv.py` (CSV import, photos from Shopify Files by CDN URL,
+  alt text = the material value so the theme's metal photo switching works). Old prices kept; new pieces at €0 until
+  the owner gives prices. Backup of the old products (ids, prices, collection membership):
+  `docs/archive/products-before-2026-11-22.md`.
+- CSV overwrite of an existing product failed silently (and a test showed it would reduce variants to one), so
+  overwrite was not used. Linking "Color" to `shopify.color-pattern` also made the import fail; Color is plain.
+- Only "Пръстени" is an automatic collection (Category = Rings); every other collection is manual and was filled by
+  hand (type, tag and the old picks: Home page, Камъни, Най-продавани, Вяра и закрила). "Пръстени с диаманти" was not
+  given Заедно again: its stones are zircons.
+- Without swatches the Color row came back on every product page. `snippets/product-twin-option.liquid` now also takes
+  an option named Color/Colour/Цвят as the hidden colour when no option has swatches. Way back: remove the
+  `unless hidden_option` block.
+- Way back: delete the imported products and import the old ones again from the backup table (photos are local).
+
+## 2026-11-22 — Product names: one word that pictures the design **(owner)**
+- After comparing Ole Lynggaard, Pomellato and Van Cleef & Arpels: families named by an image, the title adds the kind
+  („Луна – висулка“). Full list in `docs/product-names.md`; rings and zodiacs lose their 2026-10-28 virtue names
+  (way back: that file's „Earlier names“ table). Crosses Вяра/Надежда/Любов/София unchanged.
+- `tools/upload-copies.cjs`: Shopify upload copies of every finished photo (Latin names, ≤2048 px, JPEG 92, colours
+  measured identical) in `pictures for the website/_за качване/`.
+
 ## 2026-11-21 — Promise band: first line „Благородни метали за ежедневно носене.“ **(owner)**
 - Owner's pick from the offered lines. Before: „Само благородни метали, приятни за носене всеки ден.“
 
@@ -24,16 +600,45 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 - Owner: nothing about nickel on the site, and no invitation to ask about allergies ("i am not a doctor"). The answer is now: noble metals (585, 750, 925); every skin is different and can react in its own way; we cannot foresee every skin's reaction and take no responsibility for it.
 
 ## 2026-11-21 — FAQ sensitive skin: ligature without nickel, no responsibility for skin reactions **(owner)**
-- Same as main (templates/product.json FAQ).
+- Owner: the gold is alloyed with a ligature that contains no nickel; and "we don't take responsibility" for a skin's reaction (explicit instruction after being told such a sentence cannot remove legal liability). FAQ answer now says both. Way back: the previous answer is in the entry below.
 
 ## 2026-11-21 — Promise band „A“: espresso and gold; skin wording **(owner)**
-- Same as main: `section-promise-band.css` and `promise-band.js` from main (espresso band, gold icons and lines, columns fade up); band line „Злато 14 и 18 карата и сребро 925.“; FAQ sensitive-skin answer without the nickel line. No "no responsibility" sentence (legal text, waiting).
+- Owner: make the band (home and product page) "more luxury and cool"; chose A of two mockups. `section-promise-band.css`: espresso #2A1E1A band, gold line icons, ivory tracked capitals with a short gold hairline under each, warm-ivory line (9:1), gold dividers between columns, gold swipe line on phones; `promise-band.js` fades the three columns up one after another on first view (not with reduced motion, nothing hidden without JS). Way back: delete the 2026-11-21 block at the end of the CSS and `reveal()` in the JS.
+- Wording (owner: remove the nickel line, say every skin is different): band „Истинско злато и сребро, нежни към кожата.“ → „Злато 14 и 18 карата и сребро 925.“ (a promise about skin was not confirmed); FAQ „Подходящо ли е при чувствителна кожа?“ now says every skin can react in its own way and to ask before ordering. The owner also asked for a "no responsibility" sentence: not added, it is legal text (ask first; under consumer law it cannot remove liability), waiting for the owner/accountant.
 
 ## 2026-11-21 — Side panels: no focus ring on the ✕ when a panel opens **(owner)**
-- Same as main: the panel takes the focus on open (`snippets/cj-side-panel-script.liquid`), `dialog.cj-drawer:focus` has no outline (`crown.css`).
+- Owner (phone): opening „Доставка и връщане“ showed a framed, shadowed ✕ until the next tap. `showModal()` focuses the first button and the phone drew Dawn's focus ring. `snippets/cj-side-panel-script.liquid` now focuses the panel itself (tabindex -1); `crown.css` `dialog.cj-drawer:focus` has no outline. Tab still reaches the ✕ with its ring. Way back: remove the two added lines.
+
+## 2026-11-21 — Shopify admin: payments, checkout, company, fields, Google texts **(owner)**
+- Owner approved the audit plan (tasks N). Done in admin: cash on delivery; phone required at checkout; business details (ЕООД, ЕИК, seat); 7 product + 4 variant metafield definitions matching the keys the specs block reads (no stone weight, no cut); home page title and meta description in the big brands' pattern (name, what we make, craft); share image A (blush, logo lettering, „БИЖУТА ОТ ЗЛАТО И СРЕБРО · ОТ 1991“) made at 1200×630, waiting for upload. Way back: each setting can be changed back in the same admin page.
 
 ## 2026-11-21 — Product page: tax and shipping line removed **(owner)**
-- Same as main: the line „С включени данъци. Доставката се изчислява при плащане.“ removed from the price block of `sections/main-product.liquid`. Way back: restore the `product__tax` div from git history.
+- `sections/main-product.liquid` price block: the line „С включени данъци. Доставката се изчислява при плащане.“ is gone (owner: "i don't want that to be written"; the company is not VAT-registered). The cart drawer's own line and `featured-product.liquid` are unchanged. Way back: restore the `product__tax` div from git history (commit before this one).
+
+## 2026-11-21 — Openwork zodiacs remade from the AI originals; owner's fix list **(owner)**
+- Owner: redo the 12 openwork zodiacs from the original AI photos, "how at the first time", with no colour between the holes. Each sign's original in `чернови` (the one matching the approved model) re-run through `gold-standard.cjs` with the new `--keep-sat`: pixels much less saturated than the metal at the same brightness (the floor of the channels, shadows) keep their own colour, so the floor no longer turns gold. Then `bg-soft.cjs` and framed to the approved photo's exact size and position. Yellow, rose, white; silver = white. Рак: only the inner disc taken from the approved photo (its original was already framed). The rhodium figures' pink-magenta cast neutralised. Copies before: `<sign> - ажурен/чернови/преди отворените канали 2026-11-21/`. The neck photos were not changed.
+- Rings 04 and 05: the cream patches on the white gold (white, silver 01) removed; ring 05 keeps a faint lighter shape (brightness only). Copies: `чернови/преди кремавите петна 2026-11-21/`.
+- Bracelets (19): dust specks on the paper removed from 22 main photos (only small specks away from the piece; the cord untouched). Copies: `чернови/преди праха 2026-11-21/`.
+- Православен кръст: silver folder added (copy of white gold, 01 and 02).
+- Owner answers: the `.1.jpg` files are their Shopify-size copies (keep, upload those); 22 is the right ring; the bullet pendant has no white beads (photos right).
+- Set 21: worn photos made (ring on the bare hand 4223debe, earring on the ear, pendant on the neck; Nano Banana 2.1, 4k), waiting for the owner's OK. Sizes estimated from the photos and weights, not given.
+- `docs/weights-and-sizes.md`: every weight and size given so far, for the Shopify product fields, and what to ask.
+
+## 2026-11-20 — Second spot pass; photos-ready list **(owner)**
+- Owner: "check all of the jewelry again … if we are going to be profesionals", "not over do", but done "corectly … like ring A C, even if i zoom". Second pass on 101 studio shots (`photography/spot-clean-2/`): spots and shadow blotches on the paper; jewellery pixels byte-identical (checked on every file). Copies before it in each piece's `чернови/преди петната 2 2026-11-20`.
+- 12 openwork zodiacs: opening the Greek-key channels (owner chose "Yes, open them") is **not done**. Three local methods were tried (watershed, colour of the pre-F photo, one key unit placed on all 8); each left ragged edges or slivers of the gold-painted floor at 2× zoom, because the AI drew the floor fading softly into the walls. The zodiacs got the ordinary spot pass only. Options for the owner: an AI edit per photo in Higgsfield, or keep them as they are.
+- Пчела: grey smudges beside the legs in the wing openings removed, wing-vein shine kept, body untouched.
+- Not applied to the 14 red-cord bracelets: the pass turned the cord's soft pink shadow into a hard grey edge, so they stay as they were.
+- Seen, not changed (owner to decide): a pinkish tint on the rhodium figures in the yellow and rose zodiac photos; cream patches on the white gold of rings 04 and 05.
+- `docs/photos-ready.md`: which pieces' photos are finished for the Shopify upload session, and which are not (21, 22).
+
+## 2026-11-20 — Spots on the backgrounds removed, every metal **(owner)**
+- Owner: tinted spots on the paper (the bee had big yellow ones) after the gold F recolouring; "the only thing that you are touching is the jewelry", and white and rose spots too. `photography/spot-clean.py` outlines the jewellery from the AI original and neutralises any tint outside the outline (same brightness, paper's grey); no jewellery pixel changes. 389 studio photos checked, 221 fixed in every metal; copies before the fix in each piece's `чернови/преди петната 2026-11-19`.
+- Роза brooch: small gold specks left beside the stem were replaced with the surrounding paper, only outside the metal (about 1,000 px per photo); copies in `чернови/преди точките 2026-11-20`. Dots touching the stem's edge were left, as they are part of its outline.
+- Checked only for faint tint (no usable AI original to outline from): 23 Кръст с шарка, 23 Разпятие 01, 21 Обеци. 13 Дърво с бели листа keeps a thin gold band that may be the leaf's edge.
+
+## 2026-11-19 — Homepage five boxes: emerald words, gold outlines (main) **(owner)**
+- Owner: "make for the main the same thing you made for christmas" for these boxes. Words emerald #1F3D33, outline champagne gold #D9B77E, warm gold lift shadow, on top of the gold circles and no wash. The ruby stays on the buttons and elsewhere. Way back: delete the last block of assets/section-icon-benefits.css.
 
 ## 2026-11-20 — Top bar: every message on one row on phones **(owner)**
 - Owner: no message on two rows on a phone. Measured at 360px: a message has about 246px beside the star (12.25px capitals, about 30 letters). Christmas bar (experiments only): „Поръчки за Коледа до 7 декември“ (was „… – до 7 декември включително“; the product page keeps „включително“) and „Всяко бижу пристига в кутия“ (was „…, готово за подарък“). Main's two messages already fit (158 and 196px); nothing changed there. Rule for new messages: about 30 letters at most.
@@ -63,6 +668,15 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 - Owner: the section should describe the exact piece and change when the metal (or stone) changes, like moonmagic (their panel: the selected metal first, then the piece's stone, size, cut, ct and metal weight, then shared quality text).
 - Metal and proba now come from the selected variant's material option („14К жълто злато“ → „Жълто злато 14 карата“, 585) when no metafield gives them; weight, stones and dimensions still come from the metafields (shown only when filled). Below the list one paragraph for the chosen metal only (14K or 18K line; white = rhodium last; yellow/rose = polished and made to keep the shine; silver = 925 with rhodium), then handmade in the atelier from our own 3D model, hallmark and individual certificate; the HRD Antwerp line only on pieces with stone data. The template's general text (585 or 750, silver, HRD) is emptied, since it named every metal at once.
 - Way back: revert this commit and put the old text back in templates/product.json („specs“ block content).
+
+## 2026-11-19 — The remaining studio photos on gold F, premium stones **(owner)**
+- Owner: "if there is no original just do it on them"; 17/21 "do on the edit ones"; brooches from the AI originals he sent; 15 ring rose and white too; 14 pearl spots again and check the pearl; stones "like I wanted them". All local, no credits.
+- Recoloured from the approved yellow finals (gold-standard.cjs yellow/rose/white from one source, bg-soft, glow-clean; silver = white): set 25 all six parts, 17 and 21 earrings and pendant (rhodium layout kept), 15 ring rose and white (its AI original had tile panels and another stone), both brooches. The owner's brooch AI originals (saved in each brooch's чернови/AI оригинал от собственика 2026-11-19) lack the approved Роза crescent and pin tip, so the finals were used. Панделка's pink shadow made neutral grey.
+- Clear stones on these photos: stone-polish.cjs (mild, oval box inside each stone, once on the source, so every metal matches); stone-look.cjs would need a paid edit. Red and green stones and the Роза crescent's small stones kept their bytes.
+- 14 pearl ring and pendant: glow-clean with the pearl protected, pearl-clean on the pendant's rose and white.
+- Backups: чернови/преди злато F 2026-11-17, or чернови/преди злато F2 2026-11-19 where the first already held the file.
+- Audit of every 01 main photo (354 files): off the standard and not fixed yet — paper 249,249,251 at the top corners of eight red-cord bracelets; gold low in blue on 13 Дърво с бели листа and Пчела (yellow ~103 blue), 19/01 Две сърца (211,169,113), 15 Висулка borderline.
+- Same day, the audit outliers fixed **(owner: "yes fix them too")**: paper of bracelets 03, 04, 05, 10, 12, 13, 14 brought to 251,251,253 with the piece's pixels copied back (cord and metal byte for byte); gold F from the approved finals on 19/01 Две сърца, 15 Висулка, 13 Дърво с бели листа and Пчела. The bee's white came out flat (its dark reflections lifted), so its previous white and silver were put back (the new one is in чернови/не избрана - бяло F 2026-11-19). Ring 11's corner is its shadow, left. check-photo still reads red cord and red stones as metal on 19/01 and 15 Висулка; measured without them they are within tolerance.
 
 ## 2026-11-17 — Yellow gold standard „F“; photos rebuilt from the AI originals **(owner)**
 - Owner: after many stacked edits the gold differed in colour, brightness and polish, and free recolours sometimes coloured the area round the piece. Cause: the old scripts (gold-match.cjs and others) moved only the mean colour, and their weighting reached pixels next to the metal.
@@ -2028,3 +2642,186 @@ layered above the bar on computers and moved only by its own height). It now mov
   9 credits. New: `tile-shadow-even.cjs` (background one colour, whole shadow kept), `metals-from-yellow.cjs` (all metals of a
   new piece). The neck and ear photos wait for the measurements from the owner.
 - The photos' claw tips are rounder and the stone brighter than the real piece; the owner saw this and approved them.
+
+## 2026-11-23 — Collection filters (admin, Search & Discovery)
+
+Owner: "we don't have any" filters; approved installing Shopify Search & Discovery; "look at another websites of the
+big brands and add for our things". Set up in the app (admin settings, no theme code): Вид бижу (Product type),
+Метал (option „Jewelry material“), Камък (product metafield: Перла, Циркон, Червен циркон), Размер на пръстена
+(option „Ring size“, 53–60), Цена, Наличност. On the draft /collections/all Вид бижу, Метал, Камък and Цена show;
+checked 2026-11-24: the ring size filter shows on ring collections only and „Наличност“ stays hidden, both by the owner's rules of 2026-10-05 in snippets/facets.liquid, which also fixes the order on the page (Цена, Метал, Камък, Размер, then Вид бижу) whatever the order in the app. Limits: one product names
+its metal option „Материал“, ring sizes sit under three option names, few products have a stone value. Way back:
+remove the filters in Search & Discovery → Filters.
+
+## 2026-11-24 — Collection extras, fourth round (owner)
+
+Owner: the tick circle at the end of a collection "like moonmagic"; on a phone the tiles „Купувайте спокойно“ and
+„Качество във всеки детайл“ placed like moonmagic's; the phone strip of three "too rough".
+- Tick: moonmagic's measured circle (34px, 1.25px black ring, bold black check, 10px above the words; button 20px below).
+- Phone tiles: one product's place in the two-column grid (moonmagic's promo box, title 12px on a phone); before, the
+  whole row. Smaller words and icons, one column of four.
+- Phone strip: three rows under each other, icon left, small spaced heading and the line under it in normal letters,
+  hairlines between. A space added after each heading so the words don't run together when copied or read aloud.
+Way back: delete the "fourth pass" block at the end of assets/crown.css.
+
+## 2026-11-24 — Top bar flag removed (owner)
+
+Owner: "the flag in the black bar i want it to be removed". Both flags in sections/announcement-bar.liquid are gone
+(the one before the rotating message on computers, the one inside each message on phones and tablets). The flags in
+the computer menu and the phone menu stay. The crown.css „Top bar flag“ rules are left (they style nothing now).
+Way back: restore the two svgs from commit before this one (2026-10-13 entry).
+
+## 2026-11-24 — Menu pictures (owner)
+
+Owner: the menu's empty picture under „Пръстени“ and „Гривни“ gets the category photos; "use the main ones that
+are not zoomed in ... even if they are cut off they will just be zoomed in". The two „Mega menu image panel“ blocks
+in sections/header-group.json now use the homepage tiles' computer photos (home-tile-rings.jpg,
+home-tile-bracelets.jpg), cropped to the menu's 16:9 by object-fit; the phone menu's tiles use the same blocks.
+Way back: remove the two "image" lines (or clear them in the theme editor, Header → the two blocks).
+Same day, second step: four more blocks, Обеци, Висулки, Комплекти, Аксесоари, with their homepage tile photos
+(computer versions), so every category that has a homepage photo has it in the menu too; Камъни, Зодии and Вяра и
+закрила have no homepage photo and stay without a picture. Way back: delete blocks mega-promo-earrings, -pendants,
+-sets, -accessories.
+Same day, third step (owner: "maybe you were right ... it cuts a lot of the picture"): the computer menu's picture
+is square instead of 16:9 (crown.css „Menu picture square“), so the square photos show whole. Way back: delete that rule.
+Same day, fourth step (owner: "add a box for Вяра и закрила too"): block mega-promo-faith with the homepage faith band's
+phone photo (home-faith-band-phone.jpg; the wide computer band would lose the angel or the cross in a square), label
+„Всичко във Вяра и закрила“ as the menu's own first link. Way back: delete that block.
+Same day, fifth step (owner: boxes "too big", the label under the picture should lead to the whole collection, for
+every collection): the computer menu picture is 26rem square instead of the column's full width; the label under it
+(„Всички пръстени“, „Всички обеци“ ...) is underlined with an arrow, and the picture and label together link to the
+whole collection. Камъни and Зодии have no picture yet, so nothing is drawn there. Way back: delete crown.css
+„Menu picture smaller“.
+Same day, sixth step (owner: the smaller picture "looks really bad", "do whatever you think is best"): the computer
+menu picture became an editorial card after Tiffany's and Van Cleef & Arpels' menus: the column's full width at 4:3,
+the collection's name in white spaced capitals with a thin arrow on a soft dark fade at the photo's foot, no grey line
+above, a slow 4% zoom and the arrow moving on hover, a fade-in when a category opens (none with reduced motion).
+crown.css „Menu picture, editorial card“. Way back: delete that block (the small square with the underlined label returns).
+Same day, seventh step (owner: "check if everything is good ... if a picture looks bad try fixing it"): checked on
+the draft. Computer: per-photo crops so every piece sits above the name (Пръстени 45%, Висулки 85%, Комплекти 75%,
+Аксесоари 58%, the rest 30%). Phone: the photos had made the menu 626px wide on a 375px phone (the grid column grew to
+the tile row); fixed with min-width 0 on .menu-drawer__navigation. Way back: delete those two crown.css blocks.
+Same day, eighth step (owner: Аксесоари "a little bit up" so the rose's leaf is at the edge and the bullet shows;
+Комплекти "in the middle", all pieces seen, zoomed close to the edges; "everything else is good"): Аксесоари at 61%;
+Комплекти drawn at 120.3% of the card, moved 12.8% left and 27.1% up (measured on the original). Way back: delete the
+„owner's corrections“ block in crown.css.
+
+## 2026-11-24 — More collections in the menu (owner, admin only)
+
+Owner: "add in the collections more collections like in комплекти ... комплекти с перли комплекти с циркони ...
+add for all the others"; then "in bracelets add твърди гривни, for the pendants remove the second collection the tree
+of life, everything else is good and add the jewelry in each collection that it is supposed to be in". Owner's
+answers: the white stones of Розетка, Орбита, Капка, Цвят and Листопад are zircons; Колибри's flowers are metal.
+No theme file changed; everything is store data.
+
+- **Tags (Products, bulk add):** „Циркон“ on the 14 pieces of those five sets (Циркон now on 27); „С камъни“ on the 32
+  pieces with stones (21 set pieces, Куршум, Корона, Заедно, Вихър, Искра, Роса, Съзвездие, Игла за вратовръзка, Роза,
+  Панделка, Червен конец – цвете, Червен конец – кръст с камък); „Природа“ on six pendants (Дърво – сърца / възел /
+  бели листа, Пчела, Колибри, Детелина; not the red-thread tree bracelet).
+- **New automated collections (all conditions):** Пръстени с камъни (type Пръстен + tag С камъни, 12), Пръстени без
+  камъни (type Пръстен + tag is not С камъни, 2: Зърна, Мъниста), Пръстени от комплекти (type Пръстен + tag Комплекти, 6),
+  Вдъхновени от природата (type Висулка + tag Природа, 6), Висулки с камъни (type Висулка + С камъни, 8), Висулки от
+  комплекти (type Висулка + Комплекти, 7), Зодии – монети (tag Зодии + title contains „монета“, 10), Зодии – ажур (title
+  contains „ажур“, 12), Червен конец (tag Червен конец, 14), Твърди гривни (type Гривна + tag is not Червен конец, 1:
+  Дантела), Брошки (type Брошка, 2), Игли за вратовръзка (type Игла за вратовръзка, 1).
+- **Duplicates by mistake:** Комплекти с циркони (17) and Комплекти с перли (3) already existed; the two made today got
+  the handles комплекти-с-циркони-1 and комплекти-с-перли-1. The menu links to the originals. The two copies wait for
+  the owner's OK to delete.
+- **Main menu (Online Store → Navigation):** Пръстени + С камъни, Без камъни, От комплекти; Висулки + Вдъхновени от
+  природата, С камъни, От комплекти; Комплекти + С циркони, С перли (typed links, percent-encoded, to the originals);
+  Гривни + Червен конец, Твърди гривни; Зодии + Монети, Ажур (after Риби: the admin's drag could not be done from here);
+  Аксесоари + Брошки, Игли за вратовръзка. Обеци unchanged (all seven have stones, so no split). Checked on the draft:
+  every new link reaches a collection with products, in the computer menu and the phone drawer.
+
+Way back: delete the new menu items in Navigation, then the twelve collections (and the two -1 copies); remove the tags
+„С камъни“ and „Природа“ (bulk) and „Циркон“ from the fourteen pieces of the five sets.
+Same day, second step (owner: Монети/Ажур "not that hard to look"; empty collections "write something like
+очаквайте скоро"; "delete the copies"):
+- Main menu: Монети and Ажур moved right under „Всички зодии“ (before the signs). The computer menu shows a sub-list
+  of eleven links or more in two columns (crown.css „long lists in two columns“), so Зодии fits without scrolling.
+- A collection with no pieces at all shows „Очаквайте скоро“, „Бижутата за тази колекция предстоят.“ and a black
+  button „Разгледайте всички бижута“ (sections/main-collection-product-grid.liquid, crown.css „Empty collection“);
+  a collection emptied by filters keeps its old message. Applies today to Мъжки пръстени, Диаманти, Сапфири, Рубини,
+  Изумруди and the empty stone sub-collections.
+- The two copies (Комплекти с циркони / с перли, the automated ones made today) are deleted with the owner's OK; the
+  originals (manual, with descriptions, same 17 and 3 pieces) stay and are what the menu links to. Note: being manual,
+  they do not take new set pieces by themselves; a new set's pieces must be added to them by hand.
+Way back: drag the two zodiac links back down; delete the two crown.css blocks and the cj-soon branch.
+
+## 2026-11-24 — Щипка за вратовръзка and Коледна звезда (owner, admin only)
+
+Owner: "this is щипка за вратовръзка it is not a needle"; "this is not розетка, it is a flower and for christmas is a
+star"; chose „Коледна звезда“ (the poinsettia's Bulgarian name).
+- Product 26: title „Щипка за вратовръзка“, type „Щипка за вратовръзка“, handle shtipka-za-vratovrazka, new first
+  sentence of the description. Collection „Щипки за вратовръзка“ (rule type is Щипка за вратовръзка), handle
+  щипки-за-вратовръзка; the Аксесоари menu label is renamed to match.
+- Product 25: „Коледна звезда – обеци“ / „Коледна звезда – висулка“, handles koledna-zvezda-obetsi / -visulka.
+  The descriptions' first sentence now says the flowers look like stars at Christmas; the pendant's line about
+  „шевица и резба“ is removed (it described a rosette). Set collection „Комплект Коледна звезда“, handle
+  комплект-коледна-звезда, rule title contains „Коледна звезда –“, description „Комплектът Коледна звезда е …“.
+- Every old handle has a Shopify URL redirect (checked: all five old addresses lead to the new pages). The photo
+  folder on disk keeps the name „26 Игла за вратовръзка“.
+Way back: rename in admin and set the old handles (delete the redirects first in Navigation → URL redirects).
+
+## 2026-11-24 — Computer menu: Монети / Ажур panels, no „Всички …“ beside the picture; earring sub-collections; the shop in the footer (owner)
+
+Owner: "when you click on Ажур it opens another white panel where are all the zodiac signs, the same for монети";
+"remove for computer всички пръстени … they are going to use the picture with the text inside … for every
+collection"; "in earrings you did not put any other collections"; the footer had the shop's hours under the address,
+"or do something else … with better design"; „Магазин“ to the owner's Google Maps place.
+- **Монети / Ажур** (snippets/cj-desktop-menu.liquid, assets/cj-desktop-menu.js, crown.css „Монети / Ажур open their
+  own panel“): on computers they are buttons with ›; a click replaces the Зодии column with a white panel: „‹ Зодии“,
+  the title, the signs in zodiac order (two columns), „Вижте всички“ (the collection). Each sign goes to that sign's
+  piece. Built from the collection's pieces (any collection with „зодии-“ in its handle; titles „Овен – …“), so a new
+  piece appears by itself: Монети shows 10 signs today (no coin for Везни and Водолей), Ажур 12. Phones unchanged
+  (Монети / Ажур still open the collection).
+- **„Всички …“ left out on computers** wherever the column ends in the picture with its label: Пръстени, Обеци,
+  Висулки, Комплекти, Гривни, Вяра и закрила, Аксесоари. Links are compared decoded (Всички пръстени was a
+  percent-encoded link). Камъни and Зодии have no picture and keep their „Всички“. Phones keep every link.
+- **Обеци** in Navigation: + С циркони (Обеци с циркони, 6) and С перли (Обеци с перли, 1). Every earring belongs to a
+  set, so „От комплекти“ would repeat all seven and is not added.
+- **Footer shop block** (sections/footer.liquid, new link_column setting map_link; footer-group.json; crown.css
+  „Footer: the shop“): the address with the map pin opens the owner's Google Maps place in a new tab; under it the
+  hours (the owner's of 2026-10-04) in two aligned columns. Note format: first line the address, then „Days: time“.
+  Reverses part of 2026-11-16 („no hours“) on the owner's word; CLAUDE.md facts updated.
+- **„Магазин“** in the computer menu and the phone drawer: the owner's Maps place instead of an address search.
+- A push of footer-group.json with raw line breaks was invalid JSON for about two minutes; fixed and re-sent.
+Checked on the draft (computer): menu lists as above, the Ажур panel opens and goes back, the footer block shows with
+the Maps link. Phone width not checked on screen (the browser window could not be resized).
+Way back: delete the two crown.css blocks; revert cj-desktop-menu.liquid/.js to 287d90d5; note back to the address
+only and map_link empty; remove the two Обеци items in Navigation.
+
+## 2026-11-24 — Зодии column: Монети and Ажур only, with its picture; footer shop block redone (owner)
+
+Owner: "remove the zodiac signs, they can open them through монети or ажур; add the picture … with Всички зодии
+inside and remove the text"; the footer shop block "either remove it or make new text and design … your own".
+- **Зодии on computers**: the column shows only Монети › and Ажур ›, then a picture card „Всички зодии“ (new header
+  block mega-promo-zodiac, the homepage zodiac photo home-zodiac-band-phone, crop 50% 15% in crown.css). The twelve
+  sign links are left out on computers in any column with the sign panels (cj-desktop-menu.liquid, cj_column_flies);
+  „Всички зодии“ goes because the picture leads there. The phone menu keeps the signs and gains a Зодии tile in its
+  picture row.
+- **Footer shop, second version (my design)**: a small spaced „МАГАЗИН“ label; the address on two lines in black; the
+  hours a step quieter (Пон – Пет: 9:30 – 19:00, Събота: 10:00 – 18:00, Неделя: почивен ден); „КАК ДА СТИГНЕТЕ“ with
+  a thin drawn arrow that moves on hover, to the owner's Maps place. No pin, no table. An empty line in the note
+  starts the quieter group. footer-group.json needed one re-send (dropped sync).
+Way back: delete mega-promo-zodiac (header-group.json) and its crop rule; remove the cj_column_flies skip; restore
+the first version from git (commit 15310ee2's footer-group.json and the crown.css „Footer: the shop“ block of 48a13c78).
+
+## 2026-11-24 — Site check, computer and phone (owner: "check for bugs … if something is not working how it is written, fix it")
+
+Checked on the draft preview (built-in browser, 375px phone and 1024/1440px computer):
+- All 179 product and collection pages and every link from the home page, menus and footer open (no 404).
+- No page scrolls sideways (home, collection, ring, pendant, cart, contact, about, wishlist, search, policies, withdrawal).
+- Product page: metal switch changes photo and variant; add to cart (right metal in the cart); free-delivery bar counts
+  down (€360 left after €140); Любими saves and the Любими page lists the piece; „Попитайте за това бижу“ and
+  „Напишете отзив“ open; „Прочетете повече“ expands. Phone menu (Зодии sub-list), phone footer accordion, contact
+  page rows (Имейл form, Телефон) work. Anchors #vaprosi, #istoriya, #vdahnovenie, #dizain, #materiali, #zapitvane exist.
+- Fixed: the product FAQ asked „Как да разбера размера си?“ (pointing at a „Таблица с размери“) and „Може ли размерът
+  на пръстена да се промени“ on every piece; pieces without a size option now leave both out (main-product.liquid).
+  Way back: render block.settings.content again instead of cj_tab_text.
+Found, not changed (owner's data or decision):
+- 68 of 87 products are priced €0 in admin (they show €0 and could be ordered for €0), incl. „Най-продавани“ on the home page.
+- Collections „asdasdasdas“ (test) and „Kомплекти с диаманти“ (Latin K, a copy of „Комплекти с диаманти“) are published.
+- Cart says „С включени данъци“ (Shopify text) although the company is not VAT-registered: accountant's call.
+- „Наложен платеж“ is stated on the product page and FAQ; checkout payment set-up is still unverified (tasks A2).
+- Console: only the preview domain's own errors (Shop login, cookie banner), none from the theme.

@@ -44,7 +44,8 @@
     {%- if section.settings.intro != blank or section.settings.all_label != blank -%}
       <div class="mosaic__intro">
         {%- if section.settings.intro != blank -%}
-          <p class="mosaic__intro-text">{{ section.settings.intro | escape }}</p>
+          {%- assign cj_mosaic_intro = section.settings.intro | escape -%}
+          <p class="mosaic__intro-text">{%- render 'cj-metals', text: cj_mosaic_intro -%}</p>
         {%- endif -%}
         {%- if section.settings.all_label != blank -%}
           <a class="mosaic__all-link" href="{{ routes.all_products_collection_url }}">{{ section.settings.all_label | escape }}</a>

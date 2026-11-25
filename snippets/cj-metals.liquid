@@ -1,0 +1,33 @@
+{%- comment -%}
+  2026-11-23 (owner): wherever a text says the pieces are made in gold or silver, the words „злато“ and „сребро“
+  (and „златото“, „среброто“) are bold and black so they are seen better (crown.css „Metals in bold black“).
+  Longer forms are swapped first through placeholders, so „златото“ never becomes „<b>злато</b>то“.
+
+  Accepts:
+  - text: {String} the text (HTML allowed; escape plain settings before passing them)
+
+  Usage:
+  {% render 'cj-metals', text: collection.description %}
+{%- endcomment -%}
+{%- liquid
+  assign o = '<strong class="cj-metal">'
+  assign c = '</strong>'
+  assign t = text | replace: 'Златото', '~cjZ2~' | replace: 'златото', '~cjz2~' | replace: 'Злато', '~cjZ1~' | replace: 'злато', '~cjz1~' | replace: 'Среброто', '~cjS2~' | replace: 'среброто', '~cjs2~' | replace: 'Сребро', '~cjS1~' | replace: 'сребро', '~cjs1~'
+  assign r = o | append: 'Златото' | append: c
+  assign t = t | replace: '~cjZ2~', r
+  assign r = o | append: 'златото' | append: c
+  assign t = t | replace: '~cjz2~', r
+  assign r = o | append: 'Злато' | append: c
+  assign t = t | replace: '~cjZ1~', r
+  assign r = o | append: 'злато' | append: c
+  assign t = t | replace: '~cjz1~', r
+  assign r = o | append: 'Среброто' | append: c
+  assign t = t | replace: '~cjS2~', r
+  assign r = o | append: 'среброто' | append: c
+  assign t = t | replace: '~cjs2~', r
+  assign r = o | append: 'Сребро' | append: c
+  assign t = t | replace: '~cjS1~', r
+  assign r = o | append: 'сребро' | append: c
+  assign t = t | replace: '~cjs1~', r
+  echo t
+-%}

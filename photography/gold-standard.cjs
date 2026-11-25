@@ -33,6 +33,13 @@
   --keep-red: red stones and red cord (hue under 22° or over 330°) are not metal and keep their bytes (lesson 61).
   --stops: five colours r,g,b separated by "/", replacing F (for trials only; the shop's standard is F).
   --mask file.png: also writes the metal mask (white = changed fully), to check by eye.
+  --keep-sat: openwork (owner, 2026-11-21, the zodiac frames: "they don't have a color between the holes" in the AI
+               original). Each pixel keeps its own colour strength against the gold's: the new colour's distance from
+               grey is scaled by the pixel's saturation over the source metal's typical (75th percentile) saturation
+               at the same brightness (a smooth step: none under half the typical, full from 0.85 of it). The paper and soft warm reflection seen through a cut-out (Leo:
+               saturation 0.23–0.31 where the walls are 0.45–0.95) stay pale instead of being filled with gold, and the
+               change is smooth (no mask, so no ragged edge). Polished metal is about as saturated as its typical
+               value, so it gets F as before.
 
   Usage (needs sharp, NODE_PATH as for check-photo.cjs):
     node gold-standard.cjs <AI original.png> <out.png> [--stone …] [--box …] [--hue lo,hi] [--mask m.png]
@@ -70,6 +77,7 @@ const MASK = take('--mask');
 const ONLY = take('--only');
 const TURN = take('--turn');
 const KEEPRED = args.includes('--keep-red'); if (KEEPRED) args.splice(args.indexOf('--keep-red'), 1);
+const KSAT = args.includes('--keep-sat'); if (KSAT) args.splice(args.indexOf('--keep-sat'), 1);
 const KEEP = args.includes('--keep-light'); if (KEEP) args.splice(args.indexOf('--keep-light'), 1);
 const [inp, out] = args;
 if (!inp || !out) { console.error('usage: node gold-standard.cjs in.png out.png [options]'); process.exit(1); }
@@ -87,7 +95,7 @@ const hue = (r, g, b) => {
   const W = info.width, H = info.height, N = W * H, w = new Float32Array(N);
   const inside = (b, x, y) => x >= b[0] * W && x <= b[2] * W && y >= b[1] * H && y <= b[3] * H;
   const only = ONLY ? await sharp(ONLY).resize(W, H).extractChannel(0).raw().toBuffer() : null;
-  const Ls = [];
+  const Ls = [], LS = [];
   for (let i = 0; i < N; i++) {
     const x = i % W, y = (i / W) | 0;
     if (boxArg && !inside(boxArg, x, y)) continue;
@@ -100,7 +108,7 @@ const hue = (r, g, b) => {
     if (HUEW && wt > 0) { const h = hue(r, g, b); if (h < HUEW[0] || h > HUEW[1]) wt = 0; }
     if (only) wt *= only[i] / 255;
     w[i] = wt;
-    if (wt > 0.9) Ls.push(lum(r, g, b));
+    if (wt > 0.9) { Ls.push(lum(r, g, b)); if (KSAT) LS.push([lum(r, g, b), spread / Math.max(r, g, b)]); }
   }
   // rose and white: the soft rim (a mix of gold and paper, spread 4–18) kept a yellow outline round the piece (ring A,
   // 2026-11-17); within 3 px of full metal a warm pixel changes fully from spread 12. Neutral paper and the grey shadow
@@ -131,6 +139,18 @@ const hue = (r, g, b) => {
   const SL = ST.map((c) => lum(c[0], c[1], c[2]));
   const FL = F.map((c) => lum(c[0], c[1], c[2]));
   const o = Buffer.from(data);
+  // --keep-sat: the source metal's typical saturation by brightness (16 bins, 75th percentile, empty bins filled)
+  const SB = 16, s75 = new Float32Array(SB);
+  if (KSAT) {
+    const bins = Array.from({ length: SB }, () => []);
+    for (const [L, sat] of LS) bins[Math.min(SB - 1, Math.floor((L / 256) * SB))].push(sat);
+    for (let k = 0; k < SB; k++) { const b = bins[k].sort((x, y) => x - y); s75[k] = b.length > 50 ? b[Math.floor(0.75 * (b.length - 1))] : 0; }
+    for (let k = 0; k < SB; k++) if (!s75[k]) { let j = 1; while (!s75[k] && j < SB) { s75[k] = s75[k - j] || s75[k + j] || 0; j++; } }
+    console.log('keep-sat: typical saturation by brightness ' + Array.from(s75, (v) => v.toFixed(2)).join(' '));
+  }
+  const chroma = (c) => { const L = lum(c[0], c[1], c[2]); return c.map((v) => v - L); };
+  const FC = chroma(F[2]), TC = chroma(ST[2]), FMAG = Math.hypot(...FC) || 1, TMAG = Math.hypot(...TC), TDIR = TC.map((v) => v / (TMAG || 1));
+  const typSat = (L) => { const x = Math.max(0, Math.min(SB - 1, (L / 256) * SB - 0.5)), k = Math.floor(x), f = x - k; return s75[k] * (1 - f) + s75[Math.min(SB - 1, k + 1)] * f; };
   for (let i = 0; i < N; i++) {
     if (!w[i]) continue;
     if (TURN) {
@@ -161,8 +181,22 @@ const hue = (r, g, b) => {
       const q = L2 / (lum(c[0], c[1], c[2]) || 1);
       for (let j = 0; j < 3; j++) c[j] = Math.min(255, c[j] * q);
     }
+    if (KSAT) {
+      const r = data[3 * i], g = data[3 * i + 1], b = data[3 * i + 2], mx = Math.max(r, g, b);
+      // ratio to the typical saturation; floor ~0.45, polished walls and faces ~0.9 and up: full F from 0.85, none under 0.5
+      const t = Math.min(1, Math.max(0, (((mx - Math.min(r, g, b)) / (mx || 1)) / (typSat(L) || 1) - 0.5) / 0.35)), q = t * t * (3 - 2 * t);
+      // the pale part keeps its own (AI) colour; the gold takes F; in between a smooth blend. Rose and white: the kept
+      // part's warm tint (a reflection of the gold) is turned into the target metal's tint, at the same strength
+      // relative to the metal's own (white: almost grey)
+      const Lp = lum(r, g, b), keep = [r, g, b];
+      if (METAL !== 'yellow') {
+        const mag = Math.hypot(r - Lp, g - Lp, b - Lp) * (TMAG / FMAG);
+        for (let j = 0; j < 3; j++) keep[j] = Math.max(0, Math.min(255, Lp + TDIR[j] * mag));
+      }
+      for (let j = 0; j < 3; j++) c[j] = keep[j] + (c[j] - keep[j]) * q;
+    }
     for (let j = 0; j < 3; j++) {
-      o[3 * i + j] = Math.round(data[3 * i + j] + (c[j] - data[3 * i + j]) * w[i]);
+      o[3 * i + j] = Math.max(0, Math.min(255, Math.round(data[3 * i + j] + (c[j] - data[3 * i + j]) * w[i])));
     }
   }
   let spill = 0;

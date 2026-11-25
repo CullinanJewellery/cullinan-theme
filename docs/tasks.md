@@ -3,6 +3,29 @@
 Kept current: remove an item when it is done (and add a line to `docs/changelog.md`). Three kinds of work are kept
 apart: theme work we can do now, decisions only the owner can make, and Shopify-admin data.
 
+## N. Shopify admin audit before launch (2026-11-21, read-only; nothing changed)
+
+**Done 2026-11-21 (owner's OK):** 1 cash on delivery active (Manual → Cash on Delivery, with a short Bulgarian note; cards wait for the bank account); 3 shipping phone **required**; 4 business details saved (Private corporation „Кулинан Джулари“ ЕООД, ЕИК, seat address; the owner added the representative themself); 6 product-page tax line removed in the theme (both branches); 7 home page title „Cullinan Jewelry | Бижута от злато и сребро, ръчна изработка“ and meta description saved; sharing image A uploaded by the owner (file: `pictures for the website/Снимка за споделяне/`); 10 product definitions custom.metal, proba, weight_g (text, „3,2“), stone, stone_count (integer), stone_size, dimensions; variant definitions metal, proba, weight_g, dimensions (owner: no stone weight, no cut). Reminder for 6 Dec scheduled (plan €1 → €27). Open: 2 delivery (owner to choose app or two fixed prices), 9 products with the photos, 8 domain later.
+
+Read in the owner's signed-in admin at the owner's request. Order = what blocks a sale first.
+
+| # | Area | Found | Needed (owner decides; checkout/payments only with the owner's OK) |
+|---|---|---|---|
+| 1 | Payments | Shopify Payments "Complete setup"; PayPal "Setup incomplete"; **Manual payment methods empty: no cash on delivery** | No order can be paid. Add COD (Manual → Cash on delivery) and/or finish Shopify Payments with the company (ЕООД registered 12.11.2026); then a test order |
+| 2 | Shipping | One rate „Стандартна“ **€4.60, free from €500**, 3–5 business days (2026-11-23, owner: "fix that"; €4.60 = the old лв.8.99 at 1.95583, prices now set in EUR) | A real price below €500 (owner to give); maybe office vs address and made-to-order time (10–15 days) |
+| 3 | Checkout | Shipping phone **optional**; company/VAT fields off | Phone required (Econt/Speedy call the customer) |
+| 4 | Store details | "Add business details" open; entity "My Store - entity"; address without вх./ет./ап. | Company „Кулинан Джулари“ ЕООД, ЕИК 208990435, full seat address |
+| 5 | Policies | All six **published**, texts are our drafts (refund dated 16.11.2026) | Accountant's check still not confirmed |
+| 6 | Taxes | Not collecting (not VAT-registered) | Product page prints „С включени данъци“: ask the accountant or hide the line |
+| 7 | SEO / sharing | Home page title and meta description empty; Google preview shows 2fp38p-az.myshopify.com; no social sharing image | Title, description, 1200×628 image |
+| 8 | Domain / e-mail | Only 2fp38p-az.myshopify.com; customer e-mails come from store+107185537364@shopifyemail.com (Gmail cannot send) | Buy or connect a domain (e.g. cullinan…bg) and a domain e-mail |
+| 9 | Products | 34 active; **test products active**: dsfsd, sdfsdf, dasd, Пръстен1; vendor mixed „Cullinan Jewelry“/„Jewellery“; odd categories (Водолек-ажур = Body Jewelry, М кръст = Jewelry); inventory mostly not tracked (all show made to order); some €0 | Test products to draft/delete; real prices; categories; stock where pieces are ready |
+| 10 | Custom data | No custom.* product definitions; **no variant metafield definitions** | Create them (see D) before weights/stones can be entered |
+| 11 | Store access | Private mode on (password) | Correct until launch |
+| 12 | Theme | Published theme is Horizon (default); ours is the unpublished draft | Publish ours at launch, only with the owner's OK |
+| 13 | Plan | Basic, €1/month until 7 Dec 2026, then €27/month | Owner aware |
+| 14 | Privacy | Cookie banner automated, privacy policy published | OK |
+
 ## A. Known theme bugs
 
 None open. (Phone hero crop fixed and verified on the preview, 2026-10-04.)
@@ -88,7 +111,7 @@ payment-provider or checkout setting is to be changed from here.**
 | Decision | Why it matters | Where it would go |
 |---|---|---|
 | **Returns policy**, especially for made-to-order pieces | The site must not promise returns it cannot honour | Trust band, product lines, FAQ, delivery tab, cart line |
-| ~~Free delivery~~ answered 2026-11-11: free over €500. **Owner: set Admin → Shipping rates to free over €500** (checkout, owner's action) | Trust band, FAQ and delivery tab now say it | Done on the site |
+| ~~Free delivery~~ answered 2026-11-11: free over €500. Admin → Shipping set to free from €500 on 2026-11-23 (owner's request) | Trust band, FAQ and delivery tab now say it | Done on the site |
 | Delivery price | Delivery tab, cart | |
 | Engraving price, character limit, extra time | Engraving claim exists without terms | Product page, FAQ |
 | ~~Packaging~~ answered 2026-11-11: every piece arrives in a box (in the FAQ). A photograph of the box still wanted | Photograph | Product page |
@@ -135,10 +158,9 @@ No replacement legal text is to be written; the accountant handles legal pages.
 3. Ruby hero button vs restraint: an owner exception, kept.
 4. The old "fourteen rules" (archive) treated small prices and few sections as rules; the owner's brief says they are not
    universal. Prices are currently 18px/15px; revisit only with a reason (readability first).
-5. The „Комплекти“ menu link (owner, 2026-11-05: "it should stay") holds only the owner's first test set since
-   2026-11-09 (test products dsfsd, sdfsdf, dasd, price €0, set collection asdasdasdas). Before launch replace them
-   with real sets: real product names and prices, and a new set collection with a real name (its web address does not
-   follow a later change of title).
+5. ~~The „Комплекти“ menu link holds only the owner's test set~~ Resolved 2026-11-22: it holds the seven real sets
+   (20 pieces, collections „Комплект <Name>“). Left over: the empty test collection „asdasdasdas“ (delete only with the
+   owner's OK); most set pieces are still at €0.
 
 ## G. Workshop slides and proposals awaiting the owner
 

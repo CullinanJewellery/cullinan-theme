@@ -484,6 +484,15 @@
                 </table>
               </div>
             {%- endif -%}
+            {%- comment -%}
+              „Може да харесате също“ (owner, 2026-11-23). Rendered outside the `if` so its script runs on
+              page load even with an empty bag; the drawer's later re-renders only swap the HTML.
+            {%- endcomment -%}
+            {%- liquid
+              assign cj_cart_ids = cart.items | map: 'product_id' | join: ','
+              assign cj_recs_from = cart.items.first.product_id
+            -%}
+            {%- render 'cj-cart-recs', product_id: cj_recs_from, exclude: cj_cart_ids -%}
             <p id="CartDrawer-LiveRegionText" class="visually-hidden" role="status"></p>
             <p id="CartDrawer-LineItemStatus" class="visually-hidden" aria-hidden="true" role="status">
               {{ 'accessibility.loading' | t }}
@@ -546,11 +555,10 @@
             {%- endif -%}
           {%- endfor -%}
         {%- endcapture -%}
-        {%- if trust_items != blank -%}
-          <ul class="cart-drawer__trust color-scheme-6 gradient" role="list">
-            {{ trust_items }}
-          </ul>
-        {%- endif -%}
+        {%- comment -%}
+          2026-11-23 (owner): the three reassurance lines above „Общо“ removed from the drawer ("remove them"). The
+          settings (cart_trust_1..3) stay; way back: render {{ trust_items }} in ul.cart-drawer__trust here again.
+        {%- endcomment -%}
 
         <!-- Start blocks -->
         <!-- Subtotals -->
@@ -575,45 +583,6 @@
             <p class="totals__total-value">{{ cart.total_price | money_without_trailing_zeros }}</p>
           </div>
 
-          <small class="tax-note caption-large rte">
-            {%- if cart.duties_included and cart.taxes_included -%}
-              {%- if shop.shipping_policy.body == blank -%}
-                {{ 'sections.cart.duties_and_taxes_included_shipping_at_checkout_without_policy' | t }}
-              {%- else -%}
-                {{
-                  'sections.cart.duties_and_taxes_included_shipping_at_checkout_with_policy_html'
-                  | t: link: shop.shipping_policy.url
-                }}
-              {%- endif -%}
-            {%- elsif cart.duties_included == false and cart.taxes_included -%}
-              {%- if shop.shipping_policy.body == blank -%}
-                {{ 'sections.cart.taxes_included_shipping_at_checkout_without_policy' | t }}
-              {%- else -%}
-                {{
-                  'sections.cart.taxes_included_shipping_at_checkout_with_policy_html'
-                  | t: link: shop.shipping_policy.url
-                }}
-              {%- endif -%}
-            {%- elsif cart.duties_included and cart.taxes_included == false -%}
-              {%- if shop.shipping_policy.body == blank -%}
-                {{ 'sections.cart.duties_included_taxes_at_checkout_shipping_at_checkout_without_policy' | t }}
-              {%- else -%}
-                {{
-                  'sections.cart.duties_included_taxes_at_checkout_shipping_at_checkout_with_policy_html'
-                  | t: link: shop.shipping_policy.url
-                }}
-              {%- endif -%}
-            {%- elsif cart.duties_included == false and cart.taxes_included == false -%}
-              {%- if shop.shipping_policy.body == blank -%}
-                {{ 'sections.cart.taxes_at_checkout_shipping_at_checkout_without_policy' | t }}
-              {%- else -%}
-                {{
-                  'sections.cart.taxes_at_checkout_shipping_at_checkout_with_policy_html'
-                  | t: link: shop.shipping_policy.url
-                }}
-              {%- endif -%}
-            {%- endif -%}
-          </small>
         </div>
 
         <!-- CTAs -->
@@ -632,6 +601,11 @@
             {{ 'sections.cart.checkout' | t }}
           </button>
         </div>
+
+        {%- comment -%}
+          2026-11-23 (owner): the tax and delivery note under „Към плащане“ removed ("can we remove it"). Way back: git
+          history of this file (Dawn's tax-note block).
+        {%- endcomment -%}
       </div>
     </div>
   </div>

@@ -65,6 +65,7 @@
         "mega-promo-rings": {
           "type": "mega_menu_promo",
           "settings": {
+            "image": "shopify://shop_images/home-tile-rings.jpg",
             "menu_item": "Пръстени",
             "label": "Всички пръстени",
             "link": "/collections/пръстени"
@@ -73,15 +74,76 @@
         "mega-promo-bracelets": {
           "type": "mega_menu_promo",
           "settings": {
+            "image": "shopify://shop_images/home-tile-bracelets_265fde56-0954-45f5-b813-271ddaae3c58.jpg",
             "menu_item": "Гривни",
             "label": "Всички гривни",
             "link": "/collections/гривни"
+          }
+        },
+        "mega-promo-earrings": {
+          "type": "mega_menu_promo",
+          "settings": {
+            "image": "shopify://shop_images/home-tile-earrings_3305754a-7451-40b7-bccf-763e4c790344.jpg",
+            "menu_item": "Обеци",
+            "label": "Всички обеци",
+            "link": "/collections/обеци"
+          }
+        },
+        "mega-promo-pendants": {
+          "type": "mega_menu_promo",
+          "settings": {
+            "image": "shopify://shop_images/home-tile-pendants_1e2d17b8-4a07-45af-9e5c-a368800d6cff.jpg",
+            "menu_item": "Висулки",
+            "label": "Всички висулки",
+            "link": "/collections/висулки"
+          }
+        },
+        "mega-promo-sets": {
+          "type": "mega_menu_promo",
+          "settings": {
+            "image": "shopify://shop_images/home-tile-sets_10ae7d8c-507c-4234-8784-9f90c77adcc0.jpg",
+            "menu_item": "Комплекти",
+            "label": "Всички комплекти",
+            "link": "/collections/комплекти"
+          }
+        },
+        "mega-promo-accessories": {
+          "type": "mega_menu_promo",
+          "settings": {
+            "image": "shopify://shop_images/home-tile-accessories_72246641-3afc-47e4-9f09-dd5d742ab3a2.jpg",
+            "menu_item": "Аксесоари",
+            "label": "Всички аксесоари",
+            "link": "/collections/аксесоари"
+          }
+        },
+        "mega-promo-faith": {
+          "type": "mega_menu_promo",
+          "settings": {
+            "image": "shopify://shop_images/home-faith-band-phone.jpg",
+            "menu_item": "Вяра и закрила",
+            "label": "Всичко във Вяра и закрила",
+            "link": "/collections/вяра-и-закрила"
+          }
+        },
+        "mega-promo-zodiac": {
+          "type": "mega_menu_promo",
+          "settings": {
+            "image": "shopify://shop_images/home-zodiac-band-phone_db606f76-c0c1-431b-8646-0b453afbaa4c.jpg",
+            "menu_item": "Зодии",
+            "label": "Всички зодии",
+            "link": "/collections/зодии"
           }
         }
       },
       "block_order": [
         "mega-promo-rings",
-        "mega-promo-bracelets"
+        "mega-promo-bracelets",
+        "mega-promo-earrings",
+        "mega-promo-pendants",
+        "mega-promo-sets",
+        "mega-promo-accessories",
+        "mega-promo-faith",
+        "mega-promo-zodiac"
       ],
       "settings": {
         "logo_position": "middle-center",

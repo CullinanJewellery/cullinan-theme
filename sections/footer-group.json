@@ -18,7 +18,8 @@
           "type": "link_column",
           "settings": {
             "heading": "Нека ви помогнем",
-            "note": "бул. Васил Левски 21, Велико Търново",
+            "note": "бул. Васил Левски 21\nВелико Търново\n\nПон – Пет: 9:30 – 19:00\nСъбота: 10:00 – 18:00\nНеделя: почивен ден",
+            "map_link": "https://www.google.com/maps/place/%D0%91%D0%B8%D0%B6%D1%83%D1%82%D0%B5%D1%80%D0%B8%D1%8F+%D0%9A%D1%83%D0%BB%D0%B8%D0%BD%D0%B0%D0%BD+%D0%9E%D0%9E%D0%94/@43.0795021,25.6292407,17z/data=!4m15!1m8!3m7!1s0x40a926105b74bcf5:0xceafa830e2598aa5!2z0JLQtdC70LjQutC-INCi0YrRgNC90L7QstC-INCm0LXQvdGC0YrRgCwg0LHRg9C7LiDigJ7QktCw0YHQuNC7INCb0LXQstGB0LrQuOKAnCAyMSwgNTAwMCDQktC10LvQuNC60L4g0KLRitGA0L3QvtCy0L4!3b1!8m2!3d43.0795021!4d25.6292407!16s%2Fg%2F11vm15m3sn!3m5!1s0x40a926098b2d349d:0xa7162cf74fd1f7c0!8m2!3d43.0796127!4d25.6294334!16s%2Fg%2F1wb8s5z0",
             "menu": "",
             "link_1_label": "Контакти",
             "link_1": "/pages/contact",
@@ -134,3 +135,5 @@
     "footer"
   ]
 }
+
+

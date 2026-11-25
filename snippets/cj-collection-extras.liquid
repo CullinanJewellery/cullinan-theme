@@ -1,0 +1,72 @@
+{%- comment -%}
+  Collection extras (2026-11-23, owner, after moonmagic.com's collection grid: "can we add things like that ... in
+  every collection make our better if you can make them luxury art and cool"). Three parts, chosen with `part`:
+
+  - 'trust'  : the light tile „Купувайте спокойно“ inside the grid (one product's place, on a computer and in the phone's two columns
+               as moonmagic, 2026-11-24): certificate, 14 days to return or exchange, look and try before paying, warranty
+               (owner, 2026-11-02, homepage trust row).
+  - 'quality': the dark espresso tile „Качество във всеки детайл“: gold 14K and 18K, silver 925; stones appraised by
+               a specialist qualified at HRD Antwerp; handmade since 1991; every piece arrives in a box (CLAUDE.md facts).
+  - 'end'    : after the last piece, „Видяхте всички бижута от тази колекция.“ and a button to all pieces.
+  - 'strip'  : a greige band of three at the foot of the collection: free delivery over €500, handmade in our atelier
+               since 1991, a certificate for every piece.
+
+  Only facts the owner has given; no prices, no policy terms. Look: assets/crown.css „Collection extras“.
+  Rendered by sections/main-collection-product-grid.liquid.
+
+  Accepts:
+  - part: {String} 'trust' | 'quality' | 'end' | 'strip'
+
+  Usage:
+  {% render 'cj-collection-extras', part: 'trust' %}
+{%- endcomment -%}
+{%- liquid
+  assign cj_i_cert = '<svg viewBox="0 0 32 32" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 4h18v18H7z"/><path d="M11 10h10M11 14h10M11 18h6"/><circle cx="21" cy="23" r="3.4"/><path d="m19 26-.8 4 2.8-1.4 2.8 1.4-.8-4"/></svg>'
+  assign cj_i_return = '<svg viewBox="0 0 32 32" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M8 11h14a6 6 0 0 1 0 12H12"/><path d="m12 6-5 5 5 5"/></svg>'
+  assign cj_i_open = '<svg viewBox="0 0 32 32" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 13h22v14H5z"/><path d="M5 13 9 6h14l4 7M16 6v7"/><path d="M12 20h8"/></svg>'
+  assign cj_i_shield = '<svg viewBox="0 0 32 32" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M16 4 6 8v7c0 6.5 4.2 11 10 13 5.8-2 10-6.5 10-13V8z"/><path d="m11.5 16 3.2 3.2 6-6.4"/></svg>'
+  assign cj_i_gold = '<svg viewBox="0 0 32 32" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 24 8 15h16l4 9z"/><path d="M10 15l3-7h6l3 7"/></svg>'
+  assign cj_i_gem = '<svg viewBox="0 0 32 32" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 6h14l5 7-12 14L4 13z"/><path d="M4 13h24M12 6l-2 7 6 14 6-14-2-7"/></svg>'
+  assign cj_i_hand = '<svg viewBox="0 0 32 32" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 22h6l6 3h6l6-4-1.5-1.5L21 21h-5"/><path d="M10 22v-3l5-1h5a2 2 0 0 1 0 4h-4"/><path d="m19 4 1.2 2.8L23 8l-2.8 1.2L19 12l-1.2-2.8L15 8l2.8-1.2z"/></svg>'
+  assign cj_i_box = '<svg viewBox="0 0 32 32" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h22v14H5z"/><path d="M4 8h24v4H4zM16 8v18"/><path d="M16 8c-2-4-7-4-6-1 .6 1.4 3.6 1 6 1 2.4 0 5.4.4 6-1 1-3-4-3-6 1"/></svg>'
+  assign cj_i_truck = '<svg viewBox="0 0 32 32" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 8h16v14H3zM19 13h6l4 5v4H19"/><circle cx="9" cy="24" r="2.4"/><circle cx="24" cy="24" r="2.4"/></svg>'
+-%}
+{%- case part -%}
+  {%- when 'trust' or 'quality' -%}
+    <li class="grid__item cj-tile cj-tile--{{ part }}">
+      <div class="cj-tile__inner">
+        <span class="cj-tile__ornament" aria-hidden="true"></span>
+        {%- if part == 'trust' -%}
+          <p class="cj-tile__title">Купувайте<br>спокойно</p>
+          <ul class="cj-tile__list" role="list">
+            <li class="cj-tile__item">{{ cj_i_cert }}<span>Сертификат за всяко бижу</span></li>
+            <li class="cj-tile__item">{{ cj_i_return }}<span>14 дни за връщане или замяна</span></li>
+            <li class="cj-tile__item">{{ cj_i_open }}<span>Преглед и тест преди плащане</span></li>
+            <li class="cj-tile__item">{{ cj_i_shield }}<span>Гаранция за всяко бижу</span></li>
+          </ul>
+        {%- else -%}
+          <p class="cj-tile__title">Качество във<br>всеки детайл</p>
+          <ul class="cj-tile__list" role="list">
+            <li class="cj-tile__item">{{ cj_i_gold }}<span>Злато 14K и 18K, сребро 925</span></li>
+            <li class="cj-tile__item">{{ cj_i_gem }}<span>Камъни, оценени от специалист с квалификация от HRD Antwerp</span></li>
+            <li class="cj-tile__item">{{ cj_i_hand }}<span>Ръчна изработка от 1991</span></li>
+            <li class="cj-tile__item">{{ cj_i_box }}<span>Всяко бижу пристига в кутия</span></li>
+          </ul>
+        {%- endif -%}
+      </div>
+    </li>
+  {%- when 'end' -%}
+    <div class="cj-coll-end">
+      <span class="cj-coll-end__tick" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="m6 12.5 4 4L18 8"/></svg>
+      </span>
+      <p class="cj-coll-end__text">Видяхте всички бижута<br>от тази колекция.</p>
+      <a class="cj-coll-end__button" href="{{ routes.all_products_collection_url }}">Разгледайте всички бижута</a>
+    </div>
+  {%- when 'strip' -%}
+    <ul class="cj-coll-strip" role="list">
+      <li class="cj-coll-strip__item">{{ cj_i_truck }}<span><strong>Безплатна доставка</strong> при поръчка над €500</span></li>
+      <li class="cj-coll-strip__item">{{ cj_i_hand }}<span><strong>Ръчна изработка</strong> в нашето ателие от 1991</span></li>
+      <li class="cj-coll-strip__item">{{ cj_i_cert }}<span><strong>Сертификат</strong> за всяко бижу</span></li>
+    </ul>
+{%- endcase -%}

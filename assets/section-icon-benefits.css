@@ -520,10 +520,11 @@
   }
 }
 
-/* Christmas (experiments theme only, 2026-11-19, owner: circles gold, no wash,
-   words green; the rest my call): words in the Christmas emerald #1F3D33 (11:1 on
-   white), the outline a thin champagne gold instead of ruby so red and green do
-   not meet, and the lift's shadow warm gold instead of ruby. Way back: delete. */
+/* Emerald words and gold outlines (2026-11-19, owner: "make for the main the same
+   thing you made for christmas" for these boxes): words emerald #1F3D33 (11:1 on
+   white), outline champagne gold #D9B77E instead of ruby, the lift's shadow warm
+   gold instead of ruby. Same as the experiments theme's Christmas block.
+   Way back: delete this block (ruby outline, words and shadow come back). */
 .benefits-band .benefits__item,
 .benefits-band .benefits__item:nth-child(n) {
   border-color: #d9b77e;

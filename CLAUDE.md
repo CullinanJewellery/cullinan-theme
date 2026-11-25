@@ -22,7 +22,9 @@ figure; the old site, studio-cullinan.com, lists 2,038); a curated ~50 go online
 Only these, unless the owner confirms more. Never invent policies, prices, warranties, reviews or legal text.
 
 - Since 1991; handmade in an atelier in Veliko Tarnovo; every piece starts as the atelier's own 3D model, finished by hand.
-- Gold 14K (585) and 18K (750); silver 925, rhodium plated. Stones appraised by a specialist qualified at HRD Antwerp.
+- Gold 14K (585) and 18K (750); silver 925 in three kinds (owner, 2026-11-25): plain, with white rhodium, or with patina
+  (variants „925 сребро“, „925 сребро с родий“, „925 сребро с патина“; prices €0 until the owner sends them). Stones
+  appraised by a specialist qualified at HRD Antwerp.
 - White gold: polished, then rhodium plated as the last step, which makes it shine more; yellow and rose gold are
   polished (owner, 2026-10-12, from the atelier). Material cards may say each gold is „създадено да запазва
   блясъка си“ (owner's own wording, 2026-10-12).
@@ -36,8 +38,10 @@ Only these, unless the owner confirms more. Never invent policies, prices, warra
   its checkout configuration is unverified and no online payment method is set up yet (`docs/tasks.md` A2): never
   claim online payments are ready.
 - The atelier cleans and repairs pieces after a sale (terms unknown).
-- **The shop is not ours (owner, 2026-11-16)**: only its address, бул. Васил Левски 21, Велико Търново, stays in the footer,
-  with no note; no hours, no "visit us", nothing in policies. Phone +359 88 287 4895 is the owner's (call button, never printed).
+- **The shop is not ours (owner, 2026-11-16)**: its address, бул. Васил Левски 21, Велико Търново, stays in the footer;
+  no "visit us", nothing in policies. **Owner, 2026-11-24**: the opening hours are back under the address (Пон – Пет
+  09:30 – 19:00, Събота 10:00 – 18:00, Неделя почивен ден) and the address and the menu's „Магазин“ open the owner's Google
+  Maps place („Бижутерия Кулинан ООД“). Phone +359 88 287 4895 is the owner's (call button, never printed).
 - **Owner, 2026-11-02 (homepage trust row)**: every piece gets an individual certificate; 14 days to return or
   exchange; the parcel can be opened and tried before paying (преглед и тест); every piece has a warranty. Terms
   are in the draft return policy (owner, 2026-11-03, `docs/legal/returns-policy-draft.md`, not yet checked by the
@@ -49,8 +53,9 @@ Only these, unless the owner confirms more. Never invent policies, prices, warra
 - **Owner, 2026-11-11**: delivery is free on orders over €500; below that the price depends on the order (no figure
   given). Every piece arrives in a box. Rings cannot be resized after they are made (owner, 2026-11-16, replacing 2026-11-11). Stones: some natural, some
   lab-created, depending on the piece (owner not certain; say so per piece only when known). Every piece carries its
-  hallmark (проба). Allergies: owner wanted „не предизвикват алергии“; not confirmed (white gold alloys may contain
-  nickel), so the site says only "noble metals; ask us if allergic" until the atelier confirms nickel-free.
+  hallmark (проба). Allergies (owner, 2026-11-21): the gold's ligature has no nickel, but the
+  site never mentions nickel and never invites allergy questions ("i am not a doctor"). The FAQ says only: noble
+  metals, every skin reacts in its own way, we take no responsibility for a skin's reaction. The promise band keeps „нежни към кожата“ (owner). Never „хипоалергенно“.
 - **The company (registry printout, owner, 2026-11-16)**: „Кулинан Джулари“ ЕООД (CULLINAN JEWELRY Ltd.), ЕИК 208990435,
   registered 12.11.2026; seat: гр. Велико Търново 5000, ул. „Баба Мота“ № 16, вх. А, ет. 3, ап. 9. Not VAT-registered (owner, 2026-11-16). Intended payments: cash on
   delivery and card (owner, 2026-11-16). Used only in the legal texts (docs/legal), never the manager's name.
@@ -90,8 +95,9 @@ Full list in `docs/theme-guide.md` §1. The ones that have cost the most time:
 - Two to three minutes between pushes; re-send a dropped file with a byte changed.
 - Pushed assets can be read at `https://2fp38p-az.myshopify.com/cdn/shop/t/2/assets/<file>?v=<anything>`; Liquid, JSON
   and locales can only be seen on a preview.
-- Preview links expire; only the owner can make one. Current (main, 2026-11-19):
-  https://od3omw4xgcia30iu-107185537364.shopifypreview.com; experiments theme (2026-11-03): https://3f19mwlp8rrjapyg-107185537364.shopifypreview.com
+- Preview links expire; with the owner signed in, copy a new one in admin (Online Store → theme „…“ → Preview →
+  preview bar „…“ → Copy preview link). Current (main, 2026-11-23):
+  https://3cukedh49s043b1z-107185537364.shopifypreview.com; experiments theme (fluid-sizes, 2026-11-21): https://cn9ko3kvyfywmzyc-107185537364.shopifypreview.com
 
 ## How we work
 
@@ -251,6 +257,6 @@ Do not read the whole archive into a session; open the part you need.
 
 ## Waiting on the owner (summary)
 
-Returns policy for made-to-order pieces; delivery price below €500 (Admin shipping rates must match the €500 rule); engraving terms; nickel in the alloys;
+Returns policy for made-to-order pieces; delivery price below €500 (Admin shipping rates must match the €500 rule); engraving terms;
 price range of the first fifty; which payment methods are enabled; product data and photographs. Details and the
 Shopify-admin checklist: `docs/tasks.md`.

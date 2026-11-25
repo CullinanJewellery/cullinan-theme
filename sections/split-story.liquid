@@ -46,10 +46,11 @@
         <h2 class="split-story__heading">{{ section.settings.heading | escape }}</h2>
       {%- endif -%}
       {%- if section.settings.lead != blank -%}
-        <p class="split-story__lead">{{ section.settings.lead | escape }}</p>
+        {%- assign cj_lead = section.settings.lead | escape -%}
+        <p class="split-story__lead">{%- render 'cj-metals', text: cj_lead -%}</p>
       {%- endif -%}
       {%- if section.settings.body != blank -%}
-        <div class="split-story__body">{{ section.settings.body }}</div>
+        <div class="split-story__body">{%- render 'cj-metals', text: section.settings.body -%}</div>
       {%- endif -%}
     </div>
   </div>

@@ -111,6 +111,12 @@
           assign option_label = 'Изберете камък'
         elsif option_name_lower contains 'размер' or option_name_lower contains 'size'
           assign option_label = 'Изберете вашия размер'
+        elsif option_name_lower contains 'големина'
+          comment
+            2026-11-24 (owner): pieces made in two sizes (Вяра 3214 / 3216, Дантела 3072 / 3070)
+            use „Големина“ (Малък / Голям), not „Размер“, so the ring-size table and FAQ stay off.
+          endcomment
+          assign option_label = 'Изберете големина'
         endif
       -%}
       {%- if pass == 1 and is_material == false -%}

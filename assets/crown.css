@@ -4003,7 +4003,8 @@ card-swatches {
 }
 
 .product .product__description {
-  font-size: 1.4rem;
+  /* 13px since 2026-11-23 (owner: "make the text for the description smaller"); 14px before */
+  font-size: 1.3rem;
 }
 /* ---------------------------------------------------------------------------
    Buy box: the words in black, and a tighter top
@@ -9679,6 +9680,135 @@ html body .collection-hero.cj-hero--image .collection-hero__description li::befo
   }
 }
 
+/* ===== Zodiac collections: heading (2026-11-23, owner) =====
+   Owner: the three qualities of a sign (СМЕЛОСТ · ЕНЕРГИЯ · НАЧАЛО) in one row everywhere, and the phone text was
+   too big and badly placed. For the twelve signs and „Зодии“ (class cj-hero--zodiac, sections/main-collection-banner
+   .liquid) the stone layout above is replaced: computers keep the name and text on the left with the qualities in
+   one row under the text (not two columns beside it); phones centre name, text and qualities, the text 15px with
+   balanced lines (no single word left on the last line), the qualities 11px in one row that never wraps (the
+   longest set, Постоянство · Спокойствие · Вярност, measured 307px at 375; tighter letters under 360px).
+   Stone collections are unchanged. Way back: delete this block and the class in the section. ===== */
+html body .collection-hero .collection-hero__description p {
+  text-wrap: pretty;
+}
+
+html body .collection-hero .collection-hero__description ul {
+  flex-wrap: nowrap;
+  gap: 0 2.8rem;
+}
+
+html body .collection-hero .collection-hero__description li {
+  white-space: nowrap;
+}
+
+/* 2026-11-23, later (owner: "if the position of the text is not good fix that and look how it looks on phone"):
+   the phone layout above, first made for the zodiacs, now holds for every collection heading (stones, categories,
+   sets, the text under a heading picture): centred, 15px text with balanced lines, qualities in one centred row.
+   Way back: put `.cj-hero--zodiac` back after `.collection-hero` in the two phone blocks below.
+   Later the same day (owner: „the three points in one row“): also on computers every collection with qualities
+   (stones, faith, red thread, „с перли“ / „с циркони“) shows them in one row under the text, as the zodiacs, instead
+   of two columns beside it; the base and 990px rules here lost `.cj-hero--zodiac` too. Way back: put it back. */
+@media screen and (max-width: 749px) {
+  html body .collection-hero .collection-hero__text-wrapper {
+    text-align: center;
+  }
+
+  html body .collection-hero .collection-hero__title + .collection-hero__description {
+    margin: 1rem auto 0;
+    font-size: 1.5rem;
+    line-height: 1.6;
+  }
+
+  html body .collection-hero .collection-hero__description p {
+    text-wrap: balance;
+  }
+
+  html body .collection-hero .collection-hero__description ul {
+    justify-content: center;
+    flex-wrap: nowrap;
+    gap: 0 1.8rem;
+    margin-top: 1.4rem;
+  }
+
+  html body .collection-hero .collection-hero__description li {
+    gap: 0.6rem;
+    white-space: nowrap;
+    font-size: 1.1rem;
+    letter-spacing: 0.08em;
+  }
+
+  html body .collection-hero .collection-hero__description li::before {
+    width: 0.5rem;
+    height: 0.5rem;
+  }
+}
+
+@media screen and (max-width: 359px) {
+  html body .collection-hero .collection-hero__description ul {
+    gap: 0 1.2rem;
+  }
+
+  html body .collection-hero .collection-hero__description li {
+    gap: 0.5rem;
+    letter-spacing: 0.04em;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  html body .collection-hero .collection-hero__title + .collection-hero__description:has(ul) {
+    display: block;
+    max-width: 66rem;
+  }
+
+  html body .collection-hero .collection-hero__description:has(ul) > ul {
+    display: flex;
+    gap: 0 3.2rem;
+    margin: 1.6rem 0 0;
+  }
+}
+
+/* ===== Metals in bold black (2026-11-23, owner) =====
+   Owner: wherever a text says the pieces are made in gold or silver, „злато“ / „сребро“ bold and black so they are
+   seen better (snippets/cj-metals.liquid wraps them: collection descriptions, the homepage category intro and
+   workshop facts, the gift and faith bands, the about page's lead and text, the product page's drop-downs). Black is
+   one of the named pure-black places (docs/design-system.md §8); the collection colour of bold words does not apply.
+   Way back: delete this block and the renders of cj-metals. ===== */
+html body .cj-metal,
+html body .collection-hero:not(.cj-hero--image) .collection-hero__description:has(ul) strong.cj-metal {
+  font-weight: 600;
+  color: #000000;
+}
+
+/* ===== Collection colour: dots and bold words (2026-11-23, owner) =====
+   Owner: the quality dots in a colour linked with each collection, and the bold words of the description in the same
+   colour, still bold. The colour is --cj-stone-colour on the heading (sections/main-collection-banner.liquid; stones
+   from snippets/cj-menu-stone.liquid); only descriptions that have qualities take it, so plain categories keep the
+   ink. Way back: delete this block. ===== */
+html body .collection-hero:not(.cj-hero--image) .collection-hero__description:has(ul) strong,
+html body .collection-hero:not(.cj-hero--image) .collection-hero__description:has(ul) b {
+  color: var(--cj-stone-colour, inherit);
+}
+
+/* ===== Collection heading on warm greige (2026-11-23, owner: "use the thing you wrote") =====
+   A collection without a heading picture gets the stones band's warm greige (#F5F3EF, scheme-6) behind its title,
+   description and qualities, edge to edge, from under the header down to the filter bar's top line with no white
+   strip between: the grid's own top gap (24px, 18px on phones) moves into the band. Collections with a heading
+   picture keep the picture. Way back: delete this block. ===== */
+html body .collection-hero:not(.cj-hero--image) {
+  background: #f5f3ef;
+  padding-bottom: 2.4rem;
+}
+
+html body [id$='__banner']:has(.collection-hero:not(.cj-hero--image)) + [id$='__product-grid'] [class*='__product-grid-padding'] {
+  padding-top: 0;
+}
+
+@media screen and (min-width: 750px) {
+  html body .collection-hero:not(.cj-hero--image) {
+    padding-bottom: 3.2rem;
+  }
+}
+
 /* ===== Headings in Jost capitals, as moonmagic.com (2026-10-21, owner) =====
    The owner chose „moonmagic Jost“ (option В of the font comparison: Jost 500 in capitals, 0.06em tracking) for
    every heading and name: section titles, collection titles (Рубин), zodiac names, the workshop steps (Наш
@@ -10559,6 +10689,1046 @@ html:has(dialog.cj-drawer[open]) {
 .cj-drawer__body .product-specs__about {
   margin-top: 1.6rem;
   color: rgba(var(--color-foreground), 0.8);
+}
+
+/* ---------------------------------------------------------------------------
+   2026-11-22 (owner): the description's „Детайли“ list lives in „Качество и
+   детайли“. Lines without a label (handmade, box and certificate, no chain)
+   sit under the rows as a quiet list, same 14px as the panel's text.
+   --------------------------------------------------------------------------- */
+.cj-drawer__body .product-specs__notes {
+  margin: 0 0 1.6rem;
+  padding-left: 1.8rem;
+  font-size: 1.4rem;
+  line-height: 1.6;
+  color: rgb(var(--color-foreground));
+}
+
+.cj-drawer__body .product-specs__notes li {
+  margin: 0 0 0.4rem;
+}
+
+/* The description above the price: its first sentence, then „Прочетете повече“, which opens the whole text
+   (owner, 2026-11-23; three lines with „Покажи повече“ from 2026-11-22). assets/cj-description-more.js writes the
+   sentence into .cj-desc-more__lead and hides the full text only when there is more than that sentence. */
+.cj-desc-more__lead {
+  margin: 0;
+}
+
+.cj-desc-more.is-short .cj-desc-more__text {
+  display: none;
+}
+
+.cj-desc-more__text > :last-child {
+  margin-bottom: 0;
+}
+
+.cj-desc-more__toggle {
+  margin: 0.6rem 0 0;
+  padding: 0.4rem 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-size: 1.3rem;
+  letter-spacing: 0.02em;
+  color: rgb(var(--color-foreground));
+  text-decoration: underline;
+  text-underline-offset: 0.3rem;
+  cursor: pointer;
+}
+
+.cj-desc-more__toggle:hover {
+  text-decoration-thickness: 0.2rem;
+}
+
+.cj-desc-more__toggle:focus-visible {
+  outline: 0.2rem solid rgb(var(--color-foreground));
+  outline-offset: 0.3rem;
+}
+
+/* ===== Free delivery bar (2026-11-23, owner, after moonmagic.com's birth-chart bar) =====
+   Under the product price (snippets/cj-free-delivery.liquid). Owner: "change the color that will look good and we
+   make the eye see it": the site's ruby #D62246 (hero button, homepage trust row) on the trust row's ruby wash.
+   A ruby badge with a parcel (a check from €500), „Остават ви €X до безплатна доставка“ with the amount in ruby, the
+   carriers on a second line, then a 6px bar in ruby with „€500“ at its end; a soft shine runs along the fill.
+   Smaller on 2026-11-23 (owner: "to big for both phone and computer"): 13px text, 26px badge, 4px bar, tighter box.
+   Way back: git history of this block (espresso-to-gold on greige before), or delete it and the render in
+   sections/main-product.liquid. ===== */
+html body .cj-free-delivery {
+  display: block;
+  margin: 1rem 0 0.4rem;
+  padding: 0.9rem 1.2rem 1rem;
+  background: linear-gradient(135deg, #fdf3f4 0%, #f8e1e5 100%);
+  border: 1px solid #f0c9d1;
+  color: #2a1e1a;
+}
+
+html body .cj-free-delivery__row {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+html body .cj-free-delivery__badge {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 50%;
+  background: #d62246;
+  color: #ffffff;
+}
+
+html body .cj-free-delivery__icon--check,
+html body .cj-free-delivery.is-free .cj-free-delivery__icon--parcel {
+  display: none;
+}
+
+html body .cj-free-delivery.is-free .cj-free-delivery__icon--check {
+  display: block;
+}
+
+html body .cj-free-delivery__copy {
+  min-width: 0;
+}
+
+html body .cj-free-delivery__text {
+  margin: 0;
+  font-size: 1.3rem;
+  line-height: 1.3;
+  letter-spacing: 0.01em;
+  color: #2a1e1a;
+}
+
+html body .cj-free-delivery__text strong {
+  font-weight: 600;
+  color: #c41d3f;
+}
+
+html body .cj-free-delivery__note {
+  margin: 0.1rem 0 0;
+  font-size: 1.1rem;
+  line-height: 1.35;
+  color: rgba(42, 30, 26, 0.72);
+}
+
+html body .cj-free-delivery__track {
+  position: relative;
+  height: 0.4rem;
+  margin: 0.8rem 3.6rem 0 0;
+  background: #f1c9d1;
+}
+
+html body .cj-free-delivery__fill {
+  position: relative;
+  display: block;
+  height: 100%;
+  width: 0;
+  overflow: hidden;
+  background: linear-gradient(90deg, #b51c3b 0%, #d62246 100%);
+  transition: width 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html body .cj-free-delivery__fill::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.55) 50%, transparent 100%);
+  transform: translateX(-100%);
+  animation: cj-fd-shine 2.8s ease-in-out 0.6s infinite;
+}
+
+@keyframes cj-fd-shine {
+  0% { transform: translateX(-100%); }
+  55%, 100% { transform: translateX(100%); }
+}
+
+html body .cj-free-delivery__goal {
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  margin-left: 0.8rem;
+  transform: translateY(-50%);
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1;
+  color: #c41d3f;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html body .cj-free-delivery__fill {
+    transition: none;
+  }
+  html body .cj-free-delivery__fill::after {
+    animation: none;
+    display: none;
+  }
+}
+
+/* the parcel and the tick inside the smaller badge (2026-11-23) */
+html body .cj-free-delivery__badge svg {
+  width: 1.3rem;
+  height: 1.3rem;
+}
+
+/* ===== Collection extras (2026-11-23, owner, after moonmagic.com's collection grid) =====
+   snippets/cj-collection-extras.liquid. Two tiles in the grid, an end note and a strip of three.
+   - Tiles take one product's place on a computer (the row's full height) and the whole row on a phone, so the words
+     stay readable; a hairline frame inset 10px, a small diamond ornament, Jost capitals spaced 0.14em, thin line icons.
+     Light: soft blush #F2E4DE with espresso, the frame #D9C3B8. Dark: espresso #2A1E1A with gold #C9A25F icons and
+     frame, words #F5EEE8 (14:1).
+   - The end note: a ticked circle, two lines, a black square button (the site's).
+   - The strip: greige #F5F3EF, three items between hairlines, icon left (computer) or on top (phone).
+   Way back: delete this block, the snippet and its renders in sections/main-collection-product-grid.liquid. ===== */
+html body .cj-tile {
+  display: flex;
+  list-style: none;
+}
+
+html body .cj-tile__inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.4rem;
+  width: 100%;
+  min-height: 100%;
+  padding: 4.8rem 2.4rem;
+  text-align: center;
+}
+
+html body .cj-tile__inner::before {
+  content: '';
+  position: absolute;
+  inset: 1rem;
+  border: 0.1rem solid var(--cj-tile-line);
+  pointer-events: none;
+}
+
+html body .cj-tile--trust .cj-tile__inner {
+  --cj-tile-line: #d9c3b8;
+  background: #f2e4de;
+  color: #2a1e1a;
+}
+
+html body .cj-tile--quality .cj-tile__inner {
+  --cj-tile-line: rgba(201, 162, 95, 0.55);
+  background: #2a1e1a;
+  color: #f5eee8;
+}
+
+html body .cj-tile__ornament {
+  display: block;
+  width: 0.8rem;
+  height: 0.8rem;
+  border: 0.1rem solid currentColor;
+  transform: rotate(45deg);
+  opacity: 0.6;
+}
+
+html body .cj-tile--quality .cj-tile__ornament,
+html body .cj-tile--quality .cj-tile__item svg {
+  color: #c9a25f;
+}
+
+html body .cj-tile__title {
+  margin: -0.8rem 0 0;
+  font-family: var(--font-body-family);
+  font-size: 1.7rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  line-height: 1.55;
+  text-transform: uppercase;
+  color: inherit;
+}
+
+html body .cj-tile__list {
+  display: grid;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+html body .cj-tile__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  max-width: 24rem;
+  margin: 0 auto;
+  font-size: 1.35rem;
+  letter-spacing: 0.03em;
+  line-height: 1.4;
+  text-wrap: balance;
+}
+
+html body .cj-tile__item svg {
+  flex: none;
+  width: 2.6rem;
+  height: 2.6rem;
+}
+
+@media screen and (max-width: 749px) {
+  html body .product-grid .cj-tile {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  html body .cj-tile__inner {
+    gap: 1.8rem;
+    padding: 3.2rem 2rem;
+  }
+
+  html body .cj-tile__title {
+    font-size: 1.5rem;
+  }
+
+  html body .cj-tile__list {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.8rem 1.2rem;
+  }
+
+  html body .cj-tile__item {
+    font-size: 1.2rem;
+  }
+
+  html body .cj-tile__item svg {
+    width: 2.2rem;
+    height: 2.2rem;
+  }
+}
+
+html body .cj-coll-end {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  margin: 4.8rem auto 0;
+  padding: 0 1.6rem;
+  text-align: center;
+}
+
+html body .cj-coll-end__tick {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.4rem;
+  height: 3.4rem;
+  border: 0.1rem solid #2a1e1a;
+  border-radius: 50%;
+  color: #2a1e1a;
+}
+
+html body .cj-coll-end__text {
+  margin: 0;
+  font-size: 1.4rem;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: #2a1e1a;
+}
+
+html body .cj-coll-end__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 4.8rem;
+  min-width: min(100%, 36rem);
+  margin-top: 0.4rem;
+  padding: 0 3.2rem;
+  background: #000000;
+  color: #ffffff;
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background-color 0.2s ease;
+}
+
+html body .cj-coll-end__button:hover {
+  background: #2a1e1a;
+}
+
+html body .cj-coll-end__button:focus-visible {
+  outline: 0.2rem solid #000000;
+  outline-offset: 0.3rem;
+}
+
+html body .cj-coll-strip-wrap {
+  margin-top: 5.6rem;
+}
+
+html body .cj-coll-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background: #f5f3ef;
+}
+
+html body .cj-coll-strip__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  gap: 1.4rem;
+  padding: 2.2rem 1.6rem;
+  color: #2a1e1a;
+}
+
+html body .cj-coll-strip__item + .cj-coll-strip__item {
+  border-left: 0.1rem solid #ffffff;
+}
+
+html body .cj-coll-strip__item svg {
+  flex: none;
+  width: 2.6rem;
+  height: 2.6rem;
+  color: #8c6a2e;
+}
+
+html body .cj-coll-strip__item span {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.2rem;
+  letter-spacing: 0.1em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+html body .cj-coll-strip__item strong {
+  font-weight: 600;
+}
+
+@media screen and (max-width: 749px) {
+  html body .cj-coll-strip-wrap {
+    margin-top: 4rem;
+  }
+
+  html body .cj-coll-strip__item {
+    flex-direction: column;
+    gap: 0.8rem;
+    padding: 1.8rem 0.6rem;
+    text-align: center;
+  }
+
+  html body .cj-coll-strip__item span {
+    font-size: 1rem;
+    letter-spacing: 0.06em;
+  }
+
+  html body .cj-coll-strip__item svg {
+    width: 2.2rem;
+    height: 2.2rem;
+  }
+}
+
+/* collection extras, second pass (2026-11-23): the strip runs edge to edge like moonmagic's (no page-width wrapper);
+   the end button keeps its words on one line on a phone */
+html body .cj-coll-strip-wrap {
+  width: 100%;
+}
+
+@media screen and (max-width: 749px) {
+  html body .cj-coll-end__button {
+    padding: 0 1.6rem;
+    font-size: 1.2rem;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+  }
+}
+
+/* collection extras, third pass (2026-11-23, owner): a line under the end note like moonmagic's; the strip across the
+   whole page width (rendered after the section's padded box), its items kept to the page's width inside */
+html body .cj-coll-end {
+  width: 100%;
+  padding-bottom: 4.8rem;
+  border-bottom: 0.1rem solid rgba(42, 30, 26, 0.3);
+}
+
+html body .cj-coll-strip-wrap {
+  margin-top: 0;
+  background: #f5f3ef;
+}
+
+html body .cj-coll-strip {
+  max-width: var(--page-width, 120rem);
+  margin: 0 auto;
+}
+
+html body .cj-coll-strip__item + .cj-coll-strip__item {
+  border-left: 0.1rem solid #e4ddd5;
+}
+
+@media screen and (max-width: 749px) {
+  html body .cj-coll-end {
+    padding-bottom: 3.6rem;
+  }
+}
+
+/* collection extras, fourth pass (2026-11-24, owner: "the circle with the tick inside make it like moonmagic"; on a
+   phone the two tiles placed like moonmagic's; the strip on a phone looked "too rough").
+   - Tick: moonmagic's, measured: a 34px circle, 1.25px black ring, a bold black check, 10px above the words.
+   - Phone tiles: one product's place in the two-column grid, as moonmagic's promo box (its phone title is 12px);
+     before, the whole row. Words, icons and spacing made small to fit half the width.
+   - Phone strip: three quiet rows under each other (icon, a small spaced heading, the line under it in normal
+     letters), hairlines between, instead of three cramped capital columns.
+   Way back: delete this block. */
+html body .cj-coll-end {
+  gap: 0;
+}
+
+html body .cj-coll-end__tick {
+  width: 3.4rem;
+  height: 3.4rem;
+  margin-bottom: 1rem;
+  border: 0.125rem solid #000000;
+  color: #000000;
+}
+
+html body .cj-coll-end__tick svg {
+  width: 1.6rem;
+  height: 1.6rem;
+  stroke-width: 2.4;
+}
+
+html body .cj-coll-end__button {
+  margin-top: 2rem;
+}
+
+@media screen and (max-width: 749px) {
+  html body .product-grid .cj-tile {
+    width: calc(50% - var(--grid-mobile-horizontal-spacing) / 2);
+    max-width: calc(50% - var(--grid-mobile-horizontal-spacing) / 2);
+  }
+
+  html body .cj-tile__inner {
+    gap: 1.2rem;
+    padding: 2.2rem 1.2rem;
+  }
+
+  html body .cj-tile__inner::before {
+    inset: 0.6rem;
+  }
+
+  html body .cj-tile__ornament {
+    width: 0.6rem;
+    height: 0.6rem;
+  }
+
+  html body .cj-tile__title {
+    margin: -0.4rem 0 0;
+    font-size: 1.15rem;
+    letter-spacing: 0.1em;
+    line-height: 1.45;
+  }
+
+  html body .cj-tile__list {
+    grid-template-columns: 1fr;
+    gap: 1.1rem;
+  }
+
+  html body .cj-tile__item {
+    gap: 0.4rem;
+    font-size: 1.05rem;
+    letter-spacing: 0.01em;
+    line-height: 1.35;
+  }
+
+  html body .cj-tile__item svg {
+    width: 1.8rem;
+    height: 1.8rem;
+  }
+
+  html body .cj-coll-strip {
+    grid-template-columns: 1fr;
+    max-width: 36rem;
+    padding: 0.8rem 2.4rem;
+  }
+
+  html body .cj-coll-strip__item {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 1.6rem;
+    padding: 1.6rem 0.4rem;
+    text-align: left;
+  }
+
+  html body .cj-coll-strip__item + .cj-coll-strip__item {
+    border-left: 0;
+    border-top: 0.1rem solid #e4ddd5;
+  }
+
+  html body .cj-coll-strip__item svg {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+
+  html body .cj-coll-strip__item span {
+    gap: 0.2rem;
+    font-size: 1.3rem;
+    letter-spacing: 0.01em;
+    line-height: 1.4;
+    text-transform: none;
+    color: #6b5d57;
+  }
+
+  html body .cj-coll-strip__item strong {
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #2a1e1a;
+  }
+}
+
+/* Menu picture square, 2026-11-24 (owner: the wide 16:9 "cuts a lot of the picture"): the computer menu's picture is
+   now square, so the square category photos show whole and the tall ones (Пръстени, Аксесоари) lose only top and
+   bottom. Way back: delete this rule (16:9 again, „Desktop menu panel“ above). */
+html body .cj-dmenu__promo-image {
+  aspect-ratio: 1 / 1;
+}
+
+/* Menu picture smaller, 2026-11-24 (owner: "make the boxes smaller ... it is too big"; "всички пръстени under the
+   picture, and when you click it go to all the rings, the same for the other collections"): the square picture is
+   26rem wide (was the column's full width, about 45rem), and the label under it reads as a link to the whole
+   collection: underlined, with an arrow. The whole picture and label are one link (snippets/cj-desktop-menu.liquid).
+   Way back: delete this block. */
+html body .cj-dmenu__promo {
+  width: 100%;
+}
+
+html body .cj-dmenu__promo-image {
+  width: 26rem;
+  max-width: 100%;
+}
+
+html body .cj-dmenu__promo-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: underline;
+  text-decoration-thickness: 0.1rem;
+  text-underline-offset: 0.4rem;
+}
+
+html body .cj-dmenu__promo-label::after {
+  content: '→';
+  text-decoration: none;
+  -webkit-text-stroke: 0;
+}
+
+html body .cj-dmenu__promo:hover .cj-dmenu__promo-label {
+  text-decoration-thickness: 0.2rem;
+}
+
+/* Menu picture, editorial card, 2026-11-24 (owner: the smaller picture with the underlined label "looks really bad";
+   "do whatever you think is best"). After the menus of Tiffany & Co. and Van Cleef & Arpels:
+   - the picture fills the column's width (no empty space beside it), 4:3, so it is no taller than the 26rem square;
+   - the collection's name sits on the photo: a soft dark fade at its foot, white Jost capitals spaced 0.16em, a thin
+     arrow; no underline;
+   - no grey line above it, more air instead;
+   - on hover the photo grows 4% over 0.8s and the arrow moves 0.4rem; the picture fades in when a category opens;
+     no movement when the visitor asks for reduced motion.
+   Replaces „Menu picture smaller“ and „Menu picture square“ above. Way back: delete this block. */
+html body .cj-dmenu__promo {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin-top: 3.2rem;
+  padding-top: 0;
+  border-top: 0;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+html body .cj-dmenu__promo-image {
+  width: 100%;
+  max-width: none;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.2, 0.6, 0.2, 1);
+  animation: cj-dmenu-promo-in 0.6s ease both;
+}
+
+html body .cj-dmenu__promo::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 55%;
+  background: linear-gradient(to top, rgba(20, 14, 12, 0.62), rgba(20, 14, 12, 0));
+  pointer-events: none;
+  z-index: 1;
+}
+
+html body .cj-dmenu__promo-label {
+  position: absolute;
+  left: 2rem;
+  right: 2rem;
+  bottom: 1.8rem;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2rem;
+  margin: 0;
+  color: #ffffff;
+  font-size: 1.25rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  text-decoration: none;
+  -webkit-text-stroke: 0;
+  text-shadow: 0 0.1rem 0.6rem rgba(0, 0, 0, 0.25);
+}
+
+html body .cj-dmenu__promo-label::after {
+  content: '';
+  flex: none;
+  width: 2.4rem;
+  height: 0.8rem;
+  background: no-repeat center / contain
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 8' fill='none' stroke='%23ffffff' stroke-width='1'%3E%3Cpath d='M0 4h23M19 .5 23 4l-4 3.5'/%3E%3C/svg%3E");
+  transition: transform 0.4s ease;
+}
+
+html body .cj-dmenu__promo:hover .cj-dmenu__promo-image,
+html body .cj-dmenu__promo:focus-visible .cj-dmenu__promo-image {
+  transform: scale(1.04);
+}
+
+html body .cj-dmenu__promo:hover .cj-dmenu__promo-label::after,
+html body .cj-dmenu__promo:focus-visible .cj-dmenu__promo-label::after {
+  transform: translateX(0.4rem);
+}
+
+html body .cj-dmenu__promo-image--empty + .cj-dmenu__promo-label {
+  color: #2a1e1a;
+  text-shadow: none;
+}
+
+@keyframes cj-dmenu-promo-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html body .cj-dmenu__promo-image,
+  html body .cj-dmenu__promo-label::after {
+    transition: none;
+    animation: none;
+  }
+
+  html body .cj-dmenu__promo:hover .cj-dmenu__promo-image {
+    transform: none;
+  }
+}
+
+/* The editorial card's crop sits a little above the middle (2026-11-24): „Вяра и закрила“ lost the pendants' bails
+   at 50%; the other photos keep their pieces whole. */
+html body .cj-dmenu__promo-image {
+  object-position: 50% 30%;
+}
+
+/* The editorial card's crop per photo (2026-11-24, owner: "if a picture looks bad try fixing it so it can be good in
+   the box"), measured on each original so every piece sits above the name: Аксесоари showed a dark empty top with the
+   brooch under the name; Висулки had the bee under the name; Комплекти had the pendant at the name's line. */
+html body .cj-dmenu__promo[href$="/пръстени"] .cj-dmenu__promo-image {
+  object-position: 50% 45%;
+}
+
+html body .cj-dmenu__promo[href$="/висулки"] .cj-dmenu__promo-image {
+  object-position: 50% 85%;
+}
+
+html body .cj-dmenu__promo[href$="/комплекти"] .cj-dmenu__promo-image {
+  object-position: 50% 75%;
+}
+
+html body .cj-dmenu__promo[href$="/аксесоари"] .cj-dmenu__promo-image {
+  object-position: 50% 58%;
+}
+
+/* Phone menu wider than the screen, fixed 2026-11-24: since the menu blocks have photos, the swiped row of picture
+   tiles stretched the menu's grid column to its content (626px on a 375px phone), so the whole menu scrolled
+   sideways. The column may now shrink; the row scrolls inside it, the next tile peeking in. */
+html body .menu-drawer__navigation {
+  min-width: 0;
+}
+
+/* Menu card, owner's corrections 2026-11-24:
+   - Аксесоари a little higher, the rose's top leaf at the top edge and more of the bullet seen: 61% (was 58%).
+   - Комплекти: every piece seen and in the middle, zoomed so they come close to the edges. Measured on the 1600px
+     square original: the pieces span x 220-1450, y 500-1040; the card shows x 170-1500, y 270-1270 (1330 x 1000,
+     4:3), so the photo is drawn at 1600/1330 = 120.3% of the card's width, moved 12.8% left and 27.1% up. */
+html body .cj-dmenu__promo[href$="/аксесоари"] .cj-dmenu__promo-image {
+  object-position: 50% 61%;
+}
+
+html body .cj-dmenu__promo[href$="/комплекти"] {
+  aspect-ratio: 4 / 3;
+}
+
+html body .cj-dmenu__promo[href$="/комплекти"] .cj-dmenu__promo-image {
+  position: absolute;
+  left: -12.8%;
+  top: -27.1%;
+  width: 120.3%;
+  max-width: none;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-position: 50% 50%;
+}
+
+/* ===== Empty collection: „Очаквайте скоро“ (2026-11-24, owner) =====
+   sections/main-collection-product-grid.liquid shows this for a collection with no pieces at all.
+   Way back: delete this block and the cj-soon branch in that section. ===== */
+html body .cj-soon .title-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.6rem;
+  padding: 4.8rem 0 6.4rem;
+}
+html body .cj-soon .cj-soon__title {
+  margin: 0;
+  text-transform: none !important;
+  letter-spacing: 0.02em !important;
+  font-weight: 500;
+}
+html body .cj-soon .cj-soon__text {
+  margin: 0;
+  font-size: 1.6rem;
+  color: rgba(var(--color-foreground), 0.75);
+}
+html body .cj-soon .cj-soon__button {
+  margin-top: 0.8rem;
+}
+
+/* ===== Computer menu: long lists in two columns (2026-11-24, owner) =====
+   Owner: under Зодии the new „Монети“ and „Ажур“ were below the fold („not that hard to look“). A sub-list of eleven
+   links or more (today only Зодии: Всички зодии, Монети, Ажур and the twelve signs) is laid out in two columns, so
+   everything shows without scrolling. Way back: delete this block. ===== */
+@media screen and (min-width: 990px) {
+  html body .cj-dmenu__sublist:has(> li:nth-child(11)) {
+    columns: 2;
+    column-gap: 3.2rem;
+  }
+  html body .cj-dmenu__sublist:has(> li:nth-child(11)) > li {
+    break-inside: avoid;
+  }
+}
+
+/* ===== Computer menu: Монети / Ажур open their own panel of signs (2026-11-24, owner) =====
+   „Монети“ and „Ажур“ under Зодии are buttons with ›; a click replaces the column's list with a white panel
+   (back „‹ Зодии“, the title, the signs, „Вижте всички“), sliding in from the right as the columns do.
+   snippets/cj-desktop-menu.liquid, assets/cj-desktop-menu.js. Way back: delete this block and the
+   cj_fly parts of the snippet and the script. ===== */
+html body button.cj-dmenu__sublink {
+  width: 100%;
+  margin: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  justify-content: space-between;
+}
+
+html body .cj-dmenu__sublink--more:hover .cj-dmenu__chevron {
+  color: #b76e79;
+}
+
+html body .cj-dmenu__subpanel.has-fly > .cj-dmenu__sublist,
+html body .cj-dmenu__subpanel.has-fly > .cj-dmenu__promo {
+  display: none;
+}
+
+html body .cj-dmenu__fly:not([hidden]) {
+  display: block;
+  animation: cj-dmenu-fly-in 0.3s ease both;
+}
+
+html body .cj-dmenu__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  min-height: 4.4rem;
+  margin: 0 0 0.8rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: rgba(var(--color-foreground), 0.75);
+  font-family: var(--font-body-family);
+  font-size: 1.5rem;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+}
+
+html body .cj-dmenu__back:hover {
+  color: rgb(var(--color-foreground));
+}
+
+html body .cj-dmenu__back-arrow {
+  width: 0.85rem;
+  height: 0.85rem;
+  border-bottom: 0.15rem solid currentColor;
+  border-left: 0.15rem solid currentColor;
+  transform: rotate(45deg);
+}
+
+html body .cj-dmenu__fly-title {
+  margin: 0 0 1.2rem;
+  padding-bottom: 1.2rem;
+  border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.12);
+  font-family: var(--font-heading-family);
+  font-size: 2rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+html body .cj-dmenu__fly-list {
+  columns: 2;
+  column-gap: 3.2rem;
+}
+
+html body .cj-dmenu__fly-list > li {
+  break-inside: avoid;
+}
+
+html body .cj-dmenu__fly-all {
+  display: inline-block;
+  margin-top: 2rem;
+  color: rgb(var(--color-foreground));
+  font-size: 1.5rem;
+  letter-spacing: 0.02em;
+  text-decoration: underline;
+  text-underline-offset: 0.35em;
+  text-decoration-thickness: 1px;
+}
+
+html body .cj-dmenu__fly-all:hover {
+  color: #b76e79;
+}
+
+html body .cj-dmenu__back:focus-visible,
+html body .cj-dmenu__fly-all:focus-visible {
+  outline: 0.2rem solid rgb(var(--color-foreground));
+  outline-offset: 0.3rem;
+}
+
+@keyframes cj-dmenu-fly-in {
+  from { opacity: 0; transform: translateX(2.4rem); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html body .cj-dmenu__fly:not([hidden]) { animation: none; }
+}
+
+/* ===== Footer: the shop, second version (2026-11-24, owner: "make new text and design … your own") =====
+   A quiet block of its own under the column's links: a small spaced „МАГАЗИН“ label, the address in the footer's
+   black, the hours a step quieter, then „Как да стигнете“ with a thin drawn arrow that moves on hover (the owner's
+   Google Maps place, new tab). No pin, no table. sections/footer.liquid (note + map_link). Way back: delete this
+   block and the shop part of footer.liquid; the note becomes plain lines again. ===== */
+html body .footer .footer-shop {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.6rem;
+  max-width: 24rem;
+}
+
+html body .footer .footer-shop__label {
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.55);
+}
+
+html body .footer .footer-shop__lines {
+  margin: 0;
+  font-size: 1.3rem;
+  line-height: 1.65;
+  letter-spacing: 0.02em;
+  color: rgb(0 0 0);
+  font-variant-numeric: tabular-nums;
+}
+
+html body .footer .footer-shop__lines--quiet {
+  color: rgba(0, 0, 0, 0.68);
+}
+
+html body .footer .footer-shop__map {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin-top: 0.4rem;
+  padding-bottom: 0.2rem;
+  border-bottom: 0.1rem solid rgba(0, 0, 0, 0.45);
+  color: rgb(0 0 0);
+  font-size: 1.2rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+html body .footer .footer-shop__arrow {
+  position: relative;
+  width: 1.6rem;
+  height: 0.1rem;
+  background: currentColor;
+  transition: transform 0.25s ease;
+}
+
+html body .footer .footer-shop__arrow::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-top: 0.1rem solid currentColor;
+  border-right: 0.1rem solid currentColor;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+html body .footer .footer-shop__map:hover {
+  color: #b76e79;
+  border-color: #b76e79;
+}
+
+html body .footer .footer-shop__map:hover .footer-shop__arrow {
+  transform: translateX(0.4rem);
+}
+
+html body .footer .footer-shop__map:focus-visible {
+  outline: 0.2rem solid rgb(0 0 0);
+  outline-offset: 0.3rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html body .footer .footer-shop__arrow { transition: none; }
+}
+
+/* Computer menu card for Зодии (2026-11-24, owner: a picture "like the others with Всички зодии inside"): the
+   homepage zodiac photo (portrait); the three pendants sit in its top half, so the crop starts near the top and the
+   name falls on the dark sand. */
+html body .cj-dmenu__promo[href$="/зодии"] .cj-dmenu__promo-image {
+  object-position: 50% 15%;
 }
 
 /* Christmas last-order line on the product page (experiments theme only). */

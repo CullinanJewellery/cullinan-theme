@@ -561,9 +561,9 @@
         "content_side": "left",
         "image": "shopify://shop_images/home-zodiac-band_17556e60-8a92-48ee-86fe-b1b79cbed151.jpg",
         "image_mobile": "shopify://shop_images/home-zodiac-band-phone_db606f76-c0c1-431b-8646-0b453afbaa4c.jpg",
-        "eyebrow": "Вашият знак",
+        "eyebrow": "Вашата зодия",
         "heading": "Бижута по зодия",
-        "text": "<p>Знакът, под който сте родени, винаги близо до сърцето.</p>",
+        "text": "<p>Висулки от злато за всяка от дванайсетте зодии – за вас или за подарък.</p>",
         "button_label": "Намерете своята зодия",
         "button_link": "/collections/зодии"
       }
@@ -664,6 +664,7 @@
         "slide_1": {
           "type": "slide",
           "settings": {
+            "image": "shopify://shop_images/kak-se-razhda-01-3d-model.jpg",
             "heading": "Наш собствен дизайн",
             "text": "Създаваме нашите 3D модели в ателието във Велико Търново. Избраният модел може да бъде изработен с друг камък, метал или размер.",
             "product": "",
@@ -676,6 +677,7 @@
         "slide_2": {
           "type": "slide",
           "settings": {
+            "image": "shopify://shop_images/kak-se-razhda-02-3d-print.jpg",
             "heading": "От модела към формата",
             "text": "Отпечатваме модела на 3D принтер и проверяваме формата и пропорциите му преди изработката в метал.",
             "product": "",
@@ -688,6 +690,7 @@
         "slide_3": {
           "type": "slide",
           "settings": {
+            "image": "shopify://shop_images/kak-se-razhda-03-finishing.jpg",
             "heading": "Завършено на ръка",
             "text": "Всяко бижу се довършва на ръка в нашето ателие. Занаят и внимание към детайла от 1991 година.",
             "product": "",
@@ -700,6 +703,7 @@
         "slide_4": {
           "type": "slide",
           "settings": {
+            "image": "shopify://shop_images/kak-se-razhda-04-polish.jpg",
             "heading": "Готово за носене",
             "text": "От нашето ателие до вас. Открийте бижуто, което искате да носите или подарите.",
             "product": "",

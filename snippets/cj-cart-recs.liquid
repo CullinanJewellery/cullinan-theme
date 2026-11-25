@@ -1,0 +1,135 @@
+{%- comment -%}
+  „Може да харесате също“ in the cart drawer (2026-11-23, owner: "we can add you may also like ... the place there is
+  small so make everything fit good").
+  - One white framed card at a time (picture left; name, price, „Разгледайте“ right), the next one peeking in, two
+    arrows beside the heading (second design, 2026-11-23, owner did not like the row of small squares); under the
+    pieces, inside the scrolling list, so the pinned total and „Към плащане“ never lose space to it.
+  - Products: Shopify's related recommendations for the newest piece in the cart (cart.items.first), read from
+    /recommendations/products.json. Pieces already in the cart, pieces at €0 and sold-out pieces are left out; at
+    most 8. Nothing at all is drawn when none is left.
+  - The drawer is re-rendered after every change, so answers are kept per product in memory and the strip comes
+    back at once without another request.
+  - Each card links to its product page; no quick add, because most pieces need a metal chosen first.
+  - Look: assets/cullinan-cart.css „You may also like“.
+
+  Accepts:
+  - product_id: {Number} the product to recommend from
+  - exclude: {String} product ids already in the cart, comma separated
+
+  Usage:
+  {% render 'cj-cart-recs', product_id: cart.items.first.product_id, exclude: cj_cart_ids %}
+{%- endcomment -%}
+<cj-cart-recs
+  class="cj-cart-recs"
+  data-product="{{ product_id }}"
+  data-exclude=",{{ exclude }},"
+  data-heading="Може да харесате също"
+  hidden
+></cj-cart-recs>
+<script>
+  if (!customElements.get('cj-cart-recs')) {
+    window.cjCartRecsCache = window.cjCartRecsCache || {};
+    customElements.define(
+      'cj-cart-recs',
+      class extends HTMLElement {
+        connectedCallback() {
+          const id = this.dataset.product;
+          if (!id) return;
+          const cache = window.cjCartRecsCache;
+          if (cache[id]) {
+            this.draw(cache[id]);
+            return;
+          }
+          const root = window.Shopify && Shopify.routes ? Shopify.routes.root : '/';
+          fetch(root + 'recommendations/products.json?product_id=' + id + '&limit=10&intent=related')
+            .then((r) => (r.ok ? r.json() : { products: [] }))
+            .then((data) => {
+              cache[id] = data.products || [];
+              if (this.isConnected) this.draw(cache[id]);
+            })
+            .catch(() => {});
+        }
+        money(cents) {
+          return '€' + (cents % 100 === 0 ? cents / 100 : (cents / 100).toFixed(2).replace('.', ','));
+        }
+        esc(s) {
+          const d = document.createElement('div');
+          d.textContent = s == null ? '' : String(s);
+          return d.innerHTML;
+        }
+        draw(products) {
+          const ex = this.dataset.exclude;
+          const list = products
+            .filter((p) => p.available && p.price > 0 && ex.indexOf(',' + p.id + ',') === -1)
+            .slice(0, 8);
+          if (!list.length) {
+            this.hidden = true;
+            return;
+          }
+          const cards = list
+            .map((p) => {
+              let img = p.featured_image || (p.images && p.images[0]) || '';
+              if (img && typeof img === 'object') img = img.src || '';
+              const sized = img ? img + (img.indexOf('?') === -1 ? '?' : '&') + 'width=240' : '';
+              const pic = sized
+                ? '<img src="' + this.esc(sized) + '" alt="" width="120" height="120" loading="lazy">'
+                : '';
+              const from = p.price_varies ? 'от ' : '';
+              return (
+                '<li class="cj-cart-recs__item"><a class="cj-cart-recs__card" href="' +
+                this.esc(p.url) +
+                '"><span class="cj-cart-recs__media">' +
+                pic +
+                '</span><span class="cj-cart-recs__body"><span class="cj-cart-recs__name">' +
+                this.esc(p.title) +
+                '</span><span class="cj-cart-recs__price">' +
+                from +
+                this.money(p.price) +
+                '</span><span class="cj-cart-recs__cta" aria-hidden="true">Разгледайте</span></span></a></li>'
+              );
+            })
+            .join('');
+          const h = this.esc(this.dataset.heading);
+          const arrow = (dir, label, d) =>
+            '<button type="button" class="cj-cart-recs__arrow" data-dir="' + dir + '" aria-label="' + label +
+            '"><svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="' +
+            d + '"/></svg></button>';
+          const arrows =
+            list.length > 1
+              ? '<div class="cj-cart-recs__arrows">' +
+                arrow('-1', 'Предишно', 'M10 3 5 8l5 5') +
+                arrow('1', 'Следващо', 'M6 3l5 5-5 5') +
+                '</div>'
+              : '';
+          this.innerHTML =
+            '<div class="cj-cart-recs__head"><h3 class="cj-cart-recs__heading">' +
+            h +
+            '</h3>' +
+            arrows +
+            '</div><ul class="cj-cart-recs__list" role="list" aria-label="' +
+            h +
+            '">' +
+            cards +
+            '</ul>';
+          const ul = this.querySelector('.cj-cart-recs__list');
+          const btns = this.querySelectorAll('.cj-cart-recs__arrow');
+          const sync = () => {
+            if (!btns.length) return;
+            btns[0].disabled = ul.scrollLeft <= 2;
+            btns[1].disabled = ul.scrollLeft + ul.clientWidth >= ul.scrollWidth - 2;
+          };
+          btns.forEach((b) =>
+            b.addEventListener('click', () => {
+              const item = ul.querySelector('.cj-cart-recs__item');
+              const step = item ? item.getBoundingClientRect().width + 10 : ul.clientWidth;
+              ul.scrollBy({ left: step * Number(b.dataset.dir), behavior: 'smooth' });
+            })
+          );
+          ul.addEventListener('scroll', sync, { passive: true });
+          requestAnimationFrame(sync);
+          this.hidden = false;
+        }
+      }
+    );
+  }
+</script>
