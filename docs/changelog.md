@@ -8,6 +8,22 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-25 — The zoomed and replaced photos uploaded to Shopify **(owner)**
+
+The owner's finished photos from `_за качване` (list: `docs/photos-ready.md`) are on the store, unedited.
+- 207 replaced through Files → Replace, which keeps the file name, alt text, product references and gallery position
+  (uploading a file with the same name only makes a copy with a code in its name): crosses 06–09 `03`, zodiacs `01`
+  and `03`, the new pendants `01` and `03`, the pearl pendant `03`, the leaf ring `01`, all 42 red-thread bracelet
+  `01`, the brooches `03`.
+- 42 new `03` worn photos (Детелина, Колибри and every piece of sets 15–18, three metals each) uploaded and added at
+  the end of their 14 products' galleries, alt text the metal („14К жълто злато“, „14К бяло злато“, „14К розово
+  злато“, Cyrillic К) so the theme shows each only for its metal.
+- Silver skipped: no silver files exist in Shopify (silver shows the white photo) and the 69 silver copies are
+  byte-identical to white.
+- One stray copy from a first try, `06-krast-s-kant-byalo-03-noseno_<code>`, is in Files, used nowhere; delete only
+  with the owner's OK.
+- Way back: the old photos are in each piece's `чернови` folders; Files → Replace puts any of them back.
+
 ## 2026-11-24 — Rings Жар and Капка: white and rose on the hand, made locally **(owner)**
 
 The two set rings (15 red stone, 18 stone in a bezel) had their hand photo only in yellow: the gold is the colour of

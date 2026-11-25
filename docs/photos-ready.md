@@ -16,6 +16,11 @@ folder: `01 основна снимка` (main), then `02 …` (another angle) a
 
 ## Replace in Shopify: new photos of 2026-11-23 and 2026-11-24
 
+**Done 2026-11-25**: uploaded to Shopify (see the changelog entry of that day). 207 photos replaced in place
+(Files → Replace: same name, alt and gallery position), 42 new `03` photos added to their 14 products with the
+metal as alt text; silver skipped (the store uses the white photo for silver, and the silver copies are identical).
+The list below is kept as the record.
+
 **318 photos changed after the 2026-11-22 upload.** Take each one from
 `pictures for the website/_за качване/<folder>/<metal>/` (Latin names, ready for Shopify, remade 2026-11-24 with
 `tools/upload-copies.cjs`) and replace the photo of the same name on the product: same file name, same place in the
