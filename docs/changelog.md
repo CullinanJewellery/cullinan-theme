@@ -8,6 +8,19 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-25 — „Как се ражда едно бижу“: photos for slides 2–4 (AI, owner's choice) **(owner)**
+
+Owner sent 20 atelier photos (polishing wheel, bench, resin 3D printer). Picks: slide 2 the printed models in front of
+the printer, slide 3 finishing a ring at the wooden bench, slide 4 the flower ring at the polishing wheel (photo „D“,
+owner's choice, zoomed). Local grade first; owner then asked for AI and the most luxury look possible, explicitly
+accepting that the jewellery, hands and scene may change ("i don't care if the jewelry gets different"). One Nano
+Banana 2 edit each at 2k (6 credits; balance 543): printer without its brand name, warm taupe wall; clean hands, linen
+sleeve, warm bench lamp (the ring came out warmer gold with five stones); steel and charcoal polishing machine instead
+of the blue, cream wheel. Owner: "i like them". Uploaded to Files as `kak-se-razhda-02-3d-print.jpg`,
+`-03-finishing.jpg`, `-04-polish.jpg` (2048 px); `templates/index.json` slides 2–4 `image`. These are atelier scenes,
+not product photos: the product-photo rules (never change the jewellery) do not apply to them by the owner's choice.
+Sources and AI files: `Claude outputs/workshop/`. **Way back**: remove the `image` lines from slides 2–4.
+
 ## 2026-11-25 — Newsletter emails as drafts in Shopify Messaging **(owner)**
 
 Owner asked for the newsletter emails to be made and uploaded. Four „Code your own“ drafts in Messaging, same card as

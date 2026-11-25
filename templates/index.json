@@ -657,6 +657,7 @@
         "slide_2": {
           "type": "slide",
           "settings": {
+            "image": "shopify://shop_images/kak-se-razhda-02-3d-print.jpg",
             "heading": "От модела към формата",
             "text": "Отпечатваме модела на 3D принтер и проверяваме формата и пропорциите му преди изработката в метал.",
             "product": "",
@@ -669,6 +670,7 @@
         "slide_3": {
           "type": "slide",
           "settings": {
+            "image": "shopify://shop_images/kak-se-razhda-03-finishing.jpg",
             "heading": "Завършено на ръка",
             "text": "Всяко бижу се довършва на ръка в нашето ателие. Занаят и внимание към детайла от 1991 година.",
             "product": "",
@@ -681,6 +683,7 @@
         "slide_4": {
           "type": "slide",
           "settings": {
+            "image": "shopify://shop_images/kak-se-razhda-04-polish.jpg",
             "heading": "Готово за носене",
             "text": "От нашето ателие до вас. Открийте бижуто, което искате да носите или подарите.",
             "product": "",
