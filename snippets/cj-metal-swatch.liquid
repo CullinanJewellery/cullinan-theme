@@ -34,7 +34,17 @@
   elsif cj_metal_down contains 'жълто злато' or cj_metal_down contains 'yellow gold'
     assign cj_metal_file = 'ChatGPT_Image_Sep_26_2026_04_59_35_PM.png'
   elsif cj_metal_down contains 'сребро' or cj_metal_down contains 'silver'
-    assign cj_metal_rgb = 'rgb(201 203 207)'
+    comment
+      2026-11-25 (owner): three kinds of silver. Plain keeps the grey; white rhodium is brighter and cooler;
+      patina is a darkened silver, light at the top and dark below, so the three circles read apart.
+    endcomment
+    if cj_metal_down contains 'патина' or cj_metal_down contains 'patina'
+      assign cj_metal_rgb = 'linear-gradient(160deg, rgb(178 178 180) 0%, rgb(112 112 116) 100%)'
+    elsif cj_metal_down contains 'родий' or cj_metal_down contains 'rhodium'
+      assign cj_metal_rgb = 'rgb(232 234 238)'
+    else
+      assign cj_metal_rgb = 'rgb(201 203 207)'
+    endif
   endif
   assign cj_metal_width = width | default: 160
   if cj_metal_file != ''

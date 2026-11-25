@@ -8,6 +8,23 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-25 — Silver in three kinds; item numbers; sizes for ЧК широки рамена **(owner)**
+
+- Owner: some pieces can be made in silver, „normal“, with white rhodium, or with patina. Added in Admin (one variant
+  at a time with „Add variant“, so no unwanted combinations): „925 сребро“, „925 сребро с родий“, „925 сребро с
+  патина“, colour „сребро“, the piece's item number as SKU, price €0 (owner: until they send prices), image = the
+  white gold main photo (owner: for rhodium; used for plain and patina too until their own photos exist). On:
+  Детелина, Богородица – голям медальон, Вяра (only Голям), Жар висулка, обеци, пръстен (every size 53–60, 24
+  variants), Куршум, София, Спаси и съхрани, ЧК дълъг кръст, ЧК кръст с двойна линия.
+- SKUs: ЧК кръст с камък 2744 (had none); ЧК кръст с широки рамена 3284 (was „3284gg“) and a new option Големина
+  Малък / Голям like Вяра (Голям variants €0, own metal's photo). Dimensions not given.
+- Theme: `main-product.liquid` names the kind in „Метал“ (Сребро / Сребро с родий / Сребро с патина) and in the
+  material sentence (plain silver says only „Сребро 925 проба.“: no finish claimed); `cj-metal-swatch.liquid` draws
+  rhodium a brighter cool white and patina a dark grey gradient, plain keeps its grey.
+- Not done: silver weights (the description's gold weight is already hidden on silver); own photos for plain and
+  patina silver.
+- Way back: delete the variants in Admin (Products → piece → variant → Delete); revert this commit for the theme.
+
 ## 2026-11-25 — Роза brooch: the owner's new photo as the main photo, in every metal **(owner)**
 
 - The owner's new photo (yellow rose and leaves, rhodium crescent with small stones) replaces `01` in all four metals;

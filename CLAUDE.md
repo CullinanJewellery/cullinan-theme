@@ -22,7 +22,9 @@ figure; the old site, studio-cullinan.com, lists 2,038); a curated ~50 go online
 Only these, unless the owner confirms more. Never invent policies, prices, warranties, reviews or legal text.
 
 - Since 1991; handmade in an atelier in Veliko Tarnovo; every piece starts as the atelier's own 3D model, finished by hand.
-- Gold 14K (585) and 18K (750); silver 925, rhodium plated. Stones appraised by a specialist qualified at HRD Antwerp.
+- Gold 14K (585) and 18K (750); silver 925 in three kinds (owner, 2026-11-25): plain, with white rhodium, or with patina
+  (variants „925 сребро“, „925 сребро с родий“, „925 сребро с патина“; prices €0 until the owner sends them). Stones
+  appraised by a specialist qualified at HRD Antwerp.
 - White gold: polished, then rhodium plated as the last step, which makes it shine more; yellow and rose gold are
   polished (owner, 2026-10-12, from the atelier). Material cards may say each gold is „създадено да запазва
   блясъка си“ (owner's own wording, 2026-10-12).

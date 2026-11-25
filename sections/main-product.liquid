@@ -454,7 +454,17 @@
                     if cj_mat contains 'сребро' or cj_mat contains '925'
                       assign cj_colour = 'silver'
                       assign cj_proba = '925'
-                      assign cj_metal_label = 'Сребро'
+                      comment
+                        2026-11-25 (owner): silver comes plain, with white rhodium or with patina
+                        („925 сребро“, „925 сребро с родий“, „925 сребро с патина“).
+                      endcomment
+                      if cj_mat contains 'патина'
+                        assign cj_metal_label = 'Сребро с патина'
+                      elsif cj_mat contains 'родий'
+                        assign cj_metal_label = 'Сребро с родий'
+                      else
+                        assign cj_metal_label = 'Сребро'
+                      endif
                     elsif cj_mat contains 'злато'
                       if cj_mat contains '18'
                         assign cj_karat = '18'
@@ -744,7 +754,13 @@
                                 <div class="product-specs__about">
                                   {%- case cj_colour -%}
                                     {%- when 'silver' -%}
-                                      <p>Сребро 925 проба с родиево покритие, което пази блясъка.</p>
+                                      {%- if cj_mat contains 'патина' -%}
+                                        <p>Сребро 925 проба с патина, която потъмнява вдлъбнатините и подчертава релефа на бижуто.</p>
+                                      {%- elsif cj_mat contains 'родий' -%}
+                                        <p>Сребро 925 проба с бяло родиево покритие, което пази блясъка.</p>
+                                      {%- else -%}
+                                        <p>Сребро 925 проба.</p>
+                                      {%- endif -%}
                                     {%- else -%}
                                       <p>
                                         {%- if cj_karat == '14' -%}
