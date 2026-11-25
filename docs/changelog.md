@@ -8,6 +8,23 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-25 — Order confirmation email rewritten as one card **(owner)**
+
+Owner on the test order email: too many things shown, a pickup/shop delivery that does not exist (only Econt and
+Speedy), „Безплатно“ under every item, prices and totals sitting on the left, the pink footer outside the email, and
+pieces must not look as if they come one by one ("they will come in one day when they are all ready"). The template
+(Settings → Notifications → Order confirmation) is now our own Liquid, kept in `docs/email/order-confirmation.liquid`:
+one 560px white card on #F5F3EF, logo and gold line, order label, title, intro, black button; one list „Вашите бижута“
+with photo, name, variant, price right-aligned (no Shopify delivery groups, no pickup sections, no per-item free);
+full-width totals with „Доставка: Безплатна“ written once when shipping is 0, taxes only above 0; a grey note
+„Всички бижута от поръчката пристигат заедно, в една пратка.“, with „Срок за доставка: 3–5 / 10–15 работни дни“ only
+when Shopify tracks stock (10–15 if any piece is made to order); „Доставка до“ and „Опаковка“ side by side, stacked on
+phones; the blush footer inside the card. Inline styles so mail apps keep them. Checked on the admin preview at
+desktop and 375px width; test email sent to the shop inbox. Pickup and local delivery are Off in Shipping settings
+(the pickup lines were Shopify's sample data). Not changed: the other emails still use the v1 look (footer as a full
+band, Shopify's item layout); Shopify's "Automated dates" delivery estimates at checkout (a checkout setting, ask first).
+**Way back**: on the template's preview page „Revert to → Default“, then run `tools/email-brand.js` (v1) again.
+
 ## 2026-11-25 — Emails in the Cullinan look; logo with the diamond **(owner)**
 
 Owner: "i want it to look cool and luxury" for customers, and the same for the emails to us. Mockup approved first

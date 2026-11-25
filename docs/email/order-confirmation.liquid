@@ -1,0 +1,176 @@
+{%- comment -%}
+  Cullinan order confirmation (Settings -> Notifications -> Order confirmation). Our own layout, 2026-11-25:
+  one centred card, one list of pieces, delivery written once (the whole order travels in one parcel),
+  free delivery shown once in the totals, footer inside the card. Inline styles only, so every mail app shows it.
+  Way back: "Revert to -> Default" on the template's preview page.
+{%- endcomment -%}
+{%- assign F = "font-family:'Jost','Helvetica Neue',Helvetica,Arial,sans-serif;" -%}
+{%- assign ink = '#2A1E1A' -%}{%- assign mute = '#7A6A64' -%}{%- assign line_c = '#EADFD8' -%}{%- assign gold = '#9A7A45' -%}
+
+{%- comment -%} Stock: in stock = Shopify tracks the variant and its quantity after this order is 0 or more. {%- endcomment -%}
+{%- assign cj_tracked_any = false -%}{%- assign cj_made = false -%}
+{%- for line in line_items -%}
+  {%- if line.variant.inventory_management == 'shopify' -%}
+    {%- assign cj_tracked_any = true -%}
+    {%- if line.variant.inventory_quantity < 0 -%}{%- assign cj_made = true -%}{%- endif -%}
+  {%- else -%}
+    {%- assign cj_made = true -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- capture email_title -%}{% if customer.first_name != blank %}Благодарим ви, {{ customer.first_name }}{% else %}Благодарим ви за поръчката{% endif %}{%- endcapture -%}
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <title>{{ email_title }}</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /* cj-brand v2 */
+    body { margin: 0; padding: 0; background: #F5F3EF; }
+    a { color: {{ ink }}; }
+    @media (max-width: 520px) {
+      .cj-pad { padding-left: 22px !important; padding-right: 22px !important; }
+      .cj-col { display: block !important; width: 100% !important; max-width: 100% !important; padding: 0 0 18px !important; }
+      .cj-title { font-size: 23px !important; }
+    }
+  </style>
+</head>
+<body style="margin:0;padding:0;background:#F5F3EF;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#F5F3EF;border-collapse:collapse;">
+<tr><td align="center" style="padding:28px 10px;">
+
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:560px;background:#FFFFFF;border-collapse:collapse;">
+
+  <tr><td align="center" class="cj-pad" style="padding:36px 40px 26px;">
+    {%- if shop.email_logo_url -%}
+      <a href="{{ shop.url }}"><img src="{{ shop.email_logo_url }}" alt="{{ shop.name }}" width="{{ shop.email_logo_width | default: 170 }}" style="display:block;border:0;max-width:100%;height:auto;"></a>
+    {%- else -%}
+      <a href="{{ shop.url }}" style="{{ F }}font-size:26px;color:{{ ink }};text-decoration:none;">{{ shop.name }}</a>
+    {%- endif -%}
+  </td></tr>
+  <tr><td class="cj-pad" style="padding:0 40px;"><div style="height:1px;line-height:1px;font-size:1px;background:#D6C3A1;">&nbsp;</div></td></tr>
+
+  <tr><td align="center" class="cj-pad" style="padding:34px 40px 8px;{{ F }}">
+    <p style="margin:0;font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:{{ gold }};">Поръчка {{ order_name }}</p>
+    <h1 class="cj-title" style="margin:12px 0 0;font-size:26px;line-height:1.25;font-weight:500;color:{{ ink }};{{ F }}">{{ email_title }}</h1>
+    <p style="margin:14px auto 0;max-width:400px;font-size:15px;line-height:1.6;color:#4A3C37;">
+      {%- if has_pending_payment and buyer_action_required -%}
+        Ще получите потвърждение по имейл, когато направите плащането.
+      {%- else -%}
+        Получихме поръчката ви. Ще ви пишем отново, когато пратката тръгне към вас.
+      {%- endif -%}
+    </p>
+    {%- if order_status_url -%}
+    <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center" style="margin:26px auto 6px;border-collapse:collapse;">
+      <tr><td align="center" bgcolor="#000000" style="background:#000000;">
+        <a href="{{ order_status_url }}" style="display:inline-block;padding:15px 34px;{{ F }}font-size:13px;letter-spacing:0.16em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;">Вижте поръчката</a>
+      </td></tr>
+    </table>
+    {%- endif -%}
+  </td></tr>
+
+  <tr><td class="cj-pad" style="padding:26px 40px 0;{{ F }}">
+    <p style="margin:0 0 4px;font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:{{ ink }};">Вашите бижута</p>
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;border-top:1px solid {{ line_c }};">
+    {%- for line in line_items -%}
+      <tr>
+        <td width="74" valign="top" style="padding:14px 0;border-bottom:1px solid {{ line_c }};width:74px;">
+          {%- if line.image -%}
+            <img src="{{ line | img_url: 'compact_cropped' }}" width="64" height="64" alt="" style="display:block;border:1px solid {{ line_c }};background:#FCFBFC;">
+          {%- else -%}
+            <div style="width:64px;height:64px;border:1px solid {{ line_c }};background:#FCFBFC;"></div>
+          {%- endif -%}
+        </td>
+        <td valign="top" style="padding:14px 10px;border-bottom:1px solid {{ line_c }};{{ F }}">
+          <p style="margin:0;font-size:15px;font-weight:500;color:{{ ink }};">{{ line.product.title | default: line.title }}{% if line.quantity > 1 %} × {{ line.quantity }}{% endif %}</p>
+          {%- if line.variant.title != blank and line.variant.title != 'Default Title' -%}
+            <p style="margin:3px 0 0;font-size:13px;line-height:1.45;color:{{ mute }};">{{ line.variant.title }}</p>
+          {%- endif -%}
+          {%- for p in line.properties -%}
+            {%- assign first_char = p.first | slice: 0 -%}
+            {%- unless p.last == blank or first_char == '_' -%}
+              <p style="margin:3px 0 0;font-size:13px;color:{{ mute }};">{{ p.first }}: {{ p.last }}</p>
+            {%- endunless -%}
+          {%- endfor -%}
+          {%- if cj_tracked_any -%}
+            {%- if line.variant.inventory_management == 'shopify' and line.variant.inventory_quantity >= 0 -%}
+              <p style="margin:6px 0 0;font-size:12px;letter-spacing:0.04em;color:{{ gold }};">Налично</p>
+            {%- else -%}
+              <p style="margin:6px 0 0;font-size:12px;letter-spacing:0.04em;color:{{ gold }};">Изработва се за вас</p>
+            {%- endif -%}
+          {%- endif -%}
+        </td>
+        <td valign="top" align="right" style="padding:14px 0;border-bottom:1px solid {{ line_c }};white-space:nowrap;{{ F }}font-size:15px;color:{{ ink }};">
+          {%- if line.original_line_price != line.final_line_price -%}
+            <span style="font-size:13px;color:{{ mute }};text-decoration:line-through;">{{ line.original_line_price | money }}</span><br>
+          {%- endif -%}
+          {{ line.final_line_price | money }}
+        </td>
+      </tr>
+    {%- endfor -%}
+    </table>
+
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;margin-top:14px;{{ F }}">
+      <tr><td style="padding:5px 0;font-size:14px;color:{{ mute }};">Междинна сума</td><td align="right" style="padding:5px 0;font-size:14px;color:{{ ink }};">{{ subtotal_price | money }}</td></tr>
+      {%- for discount_application in discount_applications -%}
+        {%- if discount_application.target_type != 'shipping_line' and discount_application.target_selection == 'all' -%}
+          <tr><td style="padding:5px 0;font-size:14px;color:{{ mute }};">Отстъпка{% if discount_application.title != blank %} · {{ discount_application.title }}{% endif %}</td><td align="right" style="padding:5px 0;font-size:14px;color:{{ ink }};">−{{ discount_application.total_allocated_amount | money }}</td></tr>
+        {%- endif -%}
+      {%- endfor -%}
+      {%- if requires_shipping -%}
+      <tr><td style="padding:5px 0;font-size:14px;color:{{ mute }};">Доставка</td><td align="right" style="padding:5px 0;font-size:14px;color:{{ ink }};">{% if shipping_price == 0 %}Безплатна{% else %}{{ shipping_price | money }}{% endif %}</td></tr>
+      {%- endif -%}
+      {%- if tax_price > 0 -%}
+      <tr><td style="padding:5px 0;font-size:14px;color:{{ mute }};">Данъци</td><td align="right" style="padding:5px 0;font-size:14px;color:{{ ink }};">{{ tax_price | money }}</td></tr>
+      {%- endif -%}
+      <tr><td colspan="2" style="padding:8px 0 0;"><div style="height:1px;line-height:1px;font-size:1px;background:{{ line_c }};">&nbsp;</div></td></tr>
+      <tr><td style="padding:10px 0 4px;font-size:17px;font-weight:500;color:{{ ink }};">Общо</td><td align="right" style="padding:10px 0 4px;font-size:17px;font-weight:500;color:{{ ink }};">{{ total_price | money_with_currency }}</td></tr>
+      {%- assign cj_gateways = transactions | map: 'gateway_display_name' | uniq | join: ', ' -%}
+      {%- if cj_gateways != blank -%}
+      <tr><td style="padding:4px 0;font-size:14px;color:{{ mute }};">Плащане</td><td align="right" style="padding:4px 0;font-size:14px;color:{{ ink }};">{{ cj_gateways }}</td></tr>
+      {%- endif -%}
+    </table>
+  </td></tr>
+
+  {%- if requires_shipping -%}
+  <tr><td class="cj-pad" style="padding:28px 40px 0;{{ F }}">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;background:#F5F3EF;">
+      <tr><td align="center" style="padding:16px 18px;{{ F }}font-size:14px;line-height:1.6;color:#4A3C37;">
+        Всички бижута от поръчката пристигат заедно, в една пратка.
+        {%- if cj_tracked_any -%}<br><span style="color:{{ ink }};">Срок за доставка: {% if cj_made %}10–15{% else %}3–5{% endif %} работни дни</span>{%- endif -%}
+      </td></tr>
+    </table>
+  </td></tr>
+  {%- endif -%}
+
+  <tr><td class="cj-pad" style="padding:26px 40px 34px;{{ F }}">
+    {%- if requires_shipping and shipping_address -%}
+    <div class="cj-col" style="display:inline-block;width:48%;max-width:236px;vertical-align:top;padding-right:10px;">
+      <p style="margin:0;font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:{{ ink }};">Доставка до</p>
+      <div style="margin:8px 0 0;font-size:14px;line-height:1.6;color:#4A3C37;">{{ shipping_address | format_address | replace: "<p>", "" | replace: "</p>", "" }}</div>
+      {%- if shipping_method.title != blank -%}<p style="margin:6px 0 0;font-size:14px;color:{{ mute }};">{{ shipping_method.title }}</p>{%- endif -%}
+    </div>
+    {%- endif -%}
+    <div class="cj-col" style="display:inline-block;width:48%;max-width:236px;vertical-align:top;">
+      <p style="margin:0;font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:{{ ink }};">Опаковка</p>
+      <p style="margin:8px 0 0;font-size:14px;line-height:1.6;color:#4A3C37;">Всяко бижу пристига в кутия, с индивидуален сертификат.</p>
+    </div>
+  </td></tr>
+
+  <tr><td align="center" bgcolor="#E3CAC2" class="cj-pad" style="background:#E3CAC2;padding:26px 40px 28px;{{ F }}color:{{ ink }};">
+    <p style="margin:0;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:{{ ink }};">Ръчна изработка от 1991</p>
+    <p style="margin:8px 0 0;font-size:13px;color:#5A4A44;">Ателие във Велико Търново</p>
+    <p style="margin:14px 0 0;font-size:13px;color:{{ ink }};">Въпроси? Просто отговорете на този имейл.</p>
+    <p style="margin:14px 0 0;font-size:12px;letter-spacing:0.12em;">
+      <a href="https://www.instagram.com/cullinan_jewellery.bg/" style="color:{{ ink }};text-decoration:none;">INSTAGRAM</a>&nbsp;&nbsp;·&nbsp;&nbsp;<a href="https://www.facebook.com/profile.php?id=61573474292352" style="color:{{ ink }};text-decoration:none;">FACEBOOK</a>
+    </p>
+  </td></tr>
+
+</table>
+
+</td></tr>
+</table>
+</body>
+</html>
