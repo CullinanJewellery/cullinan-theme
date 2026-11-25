@@ -8,6 +8,35 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-25 — Emails in the Cullinan look; logo with the diamond **(owner)**
+
+Owner: "i want it to look cool and luxury" for customers, and the same for the emails to us. Mockup approved first
+(`docs/email/email-mockup.html`); owner's changes: intro „Получихме поръчката ви. Ще ви пишем отново, когато пратката
+тръгне към вас.“ (not „вече се грижим за нея“), diamond lines thicker, growing inwards only, same outer size.
+- Logo: the owner's PDF wordmark (vector) with an outlined diamond above it, as on Instagram, gold #B08D57
+  (`docs/email/cullinan-logo-gold.svg/.png`, black version too). Uploaded in Settings → Notifications → Customize
+  email templates (`cullinan-email-logo.png`, size 180); accent colour #000000 (was Shopify blue).
+- Customer emails (order confirmation, shipping confirmation, shipping update, out for delivery, delivered, cancelled,
+  refund, order edited, account invite/welcome/reset, contact customer, marketing confirmation): edited with
+  `tools/email-brand.js` (marker `cj-brand v1`): Jost with Helvetica fallback, logo centred, gold hairline, gold
+  spaced label „Поръчка #…“, centred title and intro, square black buttons with spaced capitals, no Shop app button
+  and no „или Посетете нашия магазин“, blush footer band (Ръчна изработка от 1991 · Ателие във Велико Търново ·
+  reply to this email · Instagram / Facebook) in place of Shopify's contact line.
+- Order confirmation only: „Благодарим ви, <име>“; the intro sentence above; „Всяко бижу пристига в кутия, с
+  индивидуален сертификат.“; under each piece „Налично · 3–5 работни дни“ / „Изработва се · 10–15 работни дни“ when
+  Shopify tracks the variant's stock (quantity ≥ 0 after the order = was in stock). **Not yet seen on a real order**
+  (Shopify's sample has no stock data).
+- Shipping emails: the main button is „Проследете пратката“ to the courier's tracking link when there is one, else
+  „Вижте поръчката“; the tracking-number line kept. Whether Shopify follows Econt / Speedy for „out for delivery“ and
+  „delivered“ is not checked.
+- Staff „New order“: our logo, „Нова поръчка · #…“ with the customer and total, black buttons, blush band „Само за
+  екипа на Cullinan“ in place of Shopify's logo and Ottawa address.
+- First try of the shipping email replaced the tracking-number line by mistake (the first `disclaimer__subtext`);
+  reverted to Shopify's default and redone (the script now only touches the footer row).
+- Tests of order confirmation, shipping confirmation and new order sent to the store email.
+- Way back: each template's „Revert to → Default“ in its preview page (Shopify's Bulgarian default); logo „Remove“
+  and accent colour #1990C6 in Customize email templates.
+
 ## 2026-11-25 — The zoomed and replaced photos uploaded to Shopify **(owner)**
 
 The owner's finished photos from `_за качване` (list: `docs/photos-ready.md`) are on the store, unedited.
