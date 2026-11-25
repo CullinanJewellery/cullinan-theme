@@ -14,6 +14,13 @@ Photo folders: `Pictures/PicturesForWebFaceInstagram/pictures for the website/<N
 folder: `01 основна снимка` (main), then `02 …` (another angle) and `03 на ръка / на шията / на китката / носена`
 (worn), when they exist. Silver uses its own `сребро` folder (a copy of white gold).
 
+## Replace in Shopify: Роза brooch, new main photo (2026-11-25)
+
+The owner sent a new photo of the Роза brooch to replace the old main photo. Replace `01` in every metal on the Роза
+product (same name, place and alt): `_за качване/24 Брошки - номер предстои/Роза/<metal>/24-broshki-roza-<metal>-01.jpg`
+for жълто, бяло, розово and сребро (silver is the same as white). The `03` worn photos stay as they are.
+The old `01` files are in `Роза/чернови/преди новата снимка 2026-11-25/`.
+
 ## Replace in Shopify: new photos of 2026-11-23 and 2026-11-24
 
 **Done 2026-11-25**: uploaded to Shopify (see the changelog entry of that day). 207 photos replaced in place

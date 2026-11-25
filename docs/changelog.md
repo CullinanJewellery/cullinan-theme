@@ -8,6 +8,16 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-25 — Роза brooch: the owner's new photo as the main photo, in every metal **(owner)**
+
+- The owner's new photo (yellow rose and leaves, rhodium crescent with small stones) replaces `01` in all four metals;
+  the old `01` files moved to `Роза/чернови/преди новата снимка 2026-11-25/` (not deleted), the new source kept in `чернови`.
+- The photo's paper had a pink cast that `bg-soft.cjs` kept as pink patches round the shadow (sat > 12 counts as the
+  piece): a smooth per-channel gain made the paper neutral first (brightness kept), then gold-standard F (yellow,
+  rose, white, `--keep-sat`), bg-soft, frame `c` (76%), check-photo: all pass. Rose and white take the yellow's
+  background exactly (only the metal mask changes) and its crop (`--like`); the crescent and its stones keep their
+  bytes. Silver = white. Made locally, no credits. `03` worn photos unchanged. Upload copies remade.
+
 ## 2026-11-25 — „Как се ражда едно бижу“: photos for slides 2–4 (AI, owner's choice) **(owner)**
 
 Owner sent 20 atelier photos (polishing wheel, bench, resin 3D printer). Picks: slide 2 the printed models in front of
