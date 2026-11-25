@@ -8,6 +8,13 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-25 — Роза brooch: new main photo uploaded **(owner)**
+
+The owner's new main photo replaced the `01` file of the Роза brooch in yellow, rose and white gold in Shopify Files
+(Replace keeps the name, alt text, product link and gallery position); silver variants use the white photo. The `03`
+worn photos are unchanged. Checked on the storefront: the product serves the three new files in the same order.
+Way back: Replace each file again with the old `01` from `Роза/чернови/преди новата снимка 2026-11-25/`.
+
 ## 2026-11-25 — Silver in three kinds; item numbers; sizes for ЧК широки рамена **(owner)**
 
 - Owner: some pieces can be made in silver, „normal“, with white rhodium, or with patina. Added in Admin (one variant

@@ -21,6 +21,10 @@ product (same name, place and alt): `_за качване/24 Брошки - но
 for жълто, бяло, розово and сребро (silver is the same as white). The `03` worn photos stay as they are.
 The old `01` files are in `Роза/чернови/преди новата снимка 2026-11-25/`.
 
+**Done 2026-11-25**: жълто, розово and бяло `01` replaced in place in Shopify Files (same name, alt, gallery position,
+one product reference each; new sizes 236.73, 224.72 and 171.8 KB). Silver has no file of its own: its variants show
+the white photo, so it changed with it.
+
 ## Replace in Shopify: new photos of 2026-11-23 and 2026-11-24
 
 **Done 2026-11-25**: uploaded to Shopify (see the changelog entry of that day). 207 photos replaced in place
