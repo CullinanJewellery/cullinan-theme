@@ -11414,3 +11414,17 @@ html body .footer .footer-shop__map:focus-visible {
 html body .cj-dmenu__promo[href$="/зодии"] .cj-dmenu__promo-image {
   object-position: 50% 15%;
 }
+
+/* Silver price on product cards (2026-11-26, owner): shown under the gold price while the white gold circle is picked
+   (snippets/card-product.liquid, assets/card-swatches.js). Smaller and lighter than the price, so the gold price
+   stays the card's price. Way back: delete this block and the line in card-product. */
+html body .card__silver-price {
+  margin: 0.2rem 0 0;
+  font-size: 1.3rem;
+  line-height: 1.4;
+  color: rgb(var(--color-foreground) / 0.75);
+}
+
+html body .card__silver-price[hidden] {
+  display: none;
+}

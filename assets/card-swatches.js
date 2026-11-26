@@ -56,6 +56,10 @@ if (!customElements.get('card-swatches')) {
 
         this.applyImage(button);
         this.applyPrice(button);
+
+        // The silver price shows only while the white gold circle is picked (2026-11-26, owner).
+        const silver = this.querySelector('.card__silver-price');
+        if (silver) silver.hidden = !button.hasAttribute('data-white-gold');
       }
 
       applyImage(button) {

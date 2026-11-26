@@ -4,6 +4,7 @@
   Accepts:
   - product: {Object} Product Liquid object (optional)
   - placeholder: {Boolean} Renders a placeholder price (optional)
+  - variant: {Object} Renders this variant's price (optional, Cullinan)
   - use_variant: {Boolean} Renders selected or first variant price instead of overall product pricing (optional)
   - show_badges: {Boolean} Renders 'Sale' and 'Sold Out' tags if the product matches the condition (optional)
   - price_class: {String} Adds a price class to the price element (optional)
@@ -13,7 +14,12 @@
   {% render 'price', product: product %}
 {% endcomment %}
 {%- liquid
-  if use_variant
+  comment
+    Cullinan (2026-11-26): variant: a given variant's price (product cards show the picked gold circle's price).
+  endcomment
+  if variant
+    assign target = variant
+  elsif use_variant
     assign target = product.selected_or_first_available_variant
   elsif placeholder
     assign target = null

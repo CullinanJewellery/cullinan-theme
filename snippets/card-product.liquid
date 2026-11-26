@@ -386,7 +386,13 @@
                 {%- if option.values.first.swatch != blank or option.position == card_metal_position -%}
                   {%- assign card_pressed_taken = false -%}
                   <ul class="card__swatches" role="list">
-                    {%- for value in option.values limit: 5 -%}
+                    {%- comment -%}
+                      2026-11-26 (owner): the circles show the gold only; silver is not a circle. A product's silver
+                      price shows under the price when the white gold circle is picked (card__silver-price below).
+                    {%- endcomment -%}
+                    {%- for value in option.values limit: 8 -%}
+                      {%- assign card_value_name = value.name | downcase -%}
+                      {%- if card_value_name contains 'сребро' or card_value_name contains 'silver' -%}{%- continue -%}{%- endif -%}
                       {%- if value.swatch != blank or option.position == card_metal_position -%}
                         {%- liquid
                           assign swatch_variant = value.variant
@@ -536,12 +542,28 @@
                             assign swatch_pressed = true
                             assign card_pressed_taken = true
                           endif
+                          assign swatch_white = false
+                          if card_value_name contains 'бяло злато'
+                            assign swatch_white = true
+                            if card_value_name contains ' и '
+                              assign swatch_white = false
+                            endif
+                          endif
+                          if swatch_variant and card_price_variant == null
+                            assign card_price_variant = swatch_variant
+                            assign card_price_white = swatch_white
+                          endif
+                          if swatch_pressed and swatch_variant
+                            assign card_price_variant = swatch_variant
+                            assign card_price_white = swatch_white
+                          endif
                         -%}
                         <li class="card__swatch">
                           <button
                             type="button"
                             aria-pressed="{{ swatch_pressed }}"
                             aria-label="{{ value.name }}"
+                            {%- if swatch_white %} data-white-gold{% endif %}
                             {%- if swatch_variant %}
                               data-variant-id="{{ swatch_variant.id }}"
                               data-price="{{ swatch_money_price }}"
@@ -636,7 +658,33 @@
                 </p>
               {%- endif -%}
 
-              {% render 'price', product: card_product, price_class: '', show_compare_at_price: true %}
+              {%- comment -%}
+                2026-11-26 (owner: silver prices showed as the card's price, „От €26“ on a gold piece): the price is
+                the picked circle's gold variant (the first circle before any pick), never the cheapest variant of all.
+                A product with silver shows its silver price under it while the white gold circle is picked (owner:
+                "when you click ... on the white gold the silver price to apear"); card-swatches.js toggles it.
+              {%- endcomment -%}
+              {%- liquid
+                assign card_silver_variant = null
+                for v in card_product.variants
+                  assign card_v_down = v.title | downcase
+                  if card_v_down contains 'сребро' or card_v_down contains 'silver'
+                    if card_silver_variant == null or v.price < card_silver_variant.price
+                      assign card_silver_variant = v
+                    endif
+                  endif
+                endfor
+              -%}
+              {%- if card_price_variant -%}
+                {% render 'price', product: card_product, variant: card_price_variant, price_class: '', show_compare_at_price: true %}
+              {%- else -%}
+                {% render 'price', product: card_product, price_class: '', show_compare_at_price: true %}
+              {%- endif -%}
+              {%- if card_silver_variant -%}
+                <p class="card__silver-price"{% unless card_price_white %} hidden{% endunless %}>
+                  Сребро: {{ card_silver_variant.price | money_without_trailing_zeros }}
+                </p>
+              {%- endif -%}
               {%- if card_product.quantity_price_breaks_configured? -%}
                 {% if card_product.variants_count == 1 and quick_add == 'bulk' %}
                   {% liquid
