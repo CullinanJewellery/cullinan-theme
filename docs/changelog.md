@@ -8,6 +8,16 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-26 — Silver on the product page: white gold's photos and a rhodium material card **(owner)**
+
+- Owner: on silver the gallery showed one big photo, "not like the others", and no material card for silver with
+  rhodium. Silver has no photos of its own; every extra photo is marked by alt text for one metal, so only the main
+  photo was left. `snippets/cj-metal-photo.liquid`: a silver variant also shows the photos marked for white gold (the
+  silver photo is the white gold one, owner 2026-11-25). `snippets/cj-material-card.liquid`: „925 сребро с родий“ gets
+  a card on the white gold picture, words „Сребро с родий“, „Сребро, проба 925“, „Бяло родиево покритие, което пази
+  блясъка“, „Прецизна изработка“. Plain silver and patina still have no card.
+- Way back: revert this commit.
+
 ## 2026-11-26 — Silver priced on the gold weight **(owner)**
 
 - Owner: "i don't want for the silver the weight ... make the price through the weight of the gold". Silver variants
