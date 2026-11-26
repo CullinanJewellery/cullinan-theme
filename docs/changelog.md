@@ -26,7 +26,12 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
   silver photos found no other match, so no product gained a silver option.
 - No weight anywhere: Корона, Листопад – обеци; silver of Дантела малка, ЧК двойна линия, ЧК дълъг кръст, Куршум,
   Спаси и съхрани, София, Вяра. These keep their price (€0 for those silvers).
-- Way back: prices were €0 on most variants before (Дантела 1560/2249); `preview.csv` of the run lists every old price.
+- **Applied 2026-11-26** (owner's OK; Shopify CLI 5.1.0 installed, owner signed in with read/write products): 583
+  variant prices and 241 missing weights written on 84 products; a second run finds nothing left to change. 357
+  variants already had the owner's weight in Shopify and kept it. Some earlier prices fell to the rule (e.g. zodiac
+  openwork about €250 → €176–210, Вихър €200 → €161, София €300 → €219). A product weight with two numbers
+  (Плочка „0,85 / 1,05“) is not read; its sizes take 0.85 and 1.05 g from weights.csv.
+- Way back: `tools/prices/prices-before-2026-11-26.csv` lists every variant's price before the run (column „цена сега“).
 
 ## 2026-11-25 — Роза brooch: new main photo uploaded **(owner)**
 

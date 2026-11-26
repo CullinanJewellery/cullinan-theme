@@ -86,7 +86,8 @@ function shopify(queryFile, variables, mutate) {
   writeFileSync(varFile, JSON.stringify(variables));
   const args = ['store', 'execute', '--store', STORE, '--query-file', join(HERE, queryFile), '--variable-file', varFile, '--json', '--no-input'];
   if (mutate) args.push('--allow-mutations');
-  const out = execFileSync('shopify', args, { encoding: 'utf8', shell: process.platform === 'win32', maxBuffer: 64 * 1024 * 1024 });
+  const win = process.platform === 'win32';
+  const out = execFileSync('shopify', win ? args.map((a) => (/\s/.test(a) ? `"${a}"` : a)) : args, { encoding: 'utf8', shell: process.platform === 'win32', maxBuffer: 64 * 1024 * 1024 });
   const json = JSON.parse(out.slice(out.indexOf('{')));
   return json.data ?? json;
 }
@@ -117,7 +118,9 @@ for (const p of products) {
     if (!metal) continue;
     const label = v.selectedOptions.map((o) => o.value).join(' / ');
     let grams = null; let source = '';
-    const own = num(v.weight?.value) ?? num(p.weight?.value);
+    // Only a single number counts („0,85 / 1,05“ on a product with two sizes falls through to weights.csv).
+    const single = (x) => (/^\s*\d+(?:[.,]\d+)?\s*(?:г|гр|g)?\.?\s*$/i.test(x || '') ? num(x) : null);
+    const own = single(v.weight?.value) ?? single(p.weight?.value);
     if (metal === 'gold' && own) { grams = own; source = 'Shopify'; }
     if (grams == null) { grams = tableWeight(p, v, metal); source = grams ? 'weights.csv' : ''; }
     if (grams == null) { missing.push(`${p.title} — ${label}`); continue; }
@@ -127,7 +130,7 @@ for (const p of products) {
     rows.push([p.title, label, metal === 'gold' ? '14K злато' : 'сребро', String(grams).replace('.', ','), source, now, price, now === price ? '' : 'да']);
     const u = { id: v.id };
     if (now !== price) u.price = String(price);
-    if (!num(v.weight?.value) && source === 'weights.csv') {
+    if (!v.weight?.value && source === 'weights.csv') {
       u.metafields = [{ namespace: 'custom', key: 'weight_g', type: 'single_line_text_field', value: String(grams).replace('.', ',') }];
     }
     if (u.price || u.metafields) updates.push(u);
