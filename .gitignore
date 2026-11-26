@@ -54,3 +54,4 @@ photography/*
 
 # Claude Code — personal, project-scoped plugin config (not shared with the team)
 .claude/settings.local.json
+tools/prices/preview.csv

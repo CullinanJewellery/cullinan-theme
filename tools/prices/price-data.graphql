@@ -1,0 +1,20 @@
+query PriceData($cursor: String) {
+  products(first: 50, after: $cursor) {
+    pageInfo { hasNextPage endCursor }
+    nodes {
+      id
+      title
+      status
+      weight: metafield(namespace: "custom", key: "weight_g") { value }
+      variants(first: 100) {
+        nodes {
+          id
+          sku
+          price
+          selectedOptions { name value }
+          weight: metafield(namespace: "custom", key: "weight_g") { value }
+        }
+      }
+    }
+  }
+}

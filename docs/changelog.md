@@ -8,6 +8,26 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-26 — Prices by weight; price table and one-command update **(owner)**
+
+- Owner's rates (per gram, rounded up to the whole euro as chosen on 2026-11-18): 14K gold up to and including 1.2 g
+  €140/g, above €130/g (replaces 1.00 g of 2026-11-18); silver under 1.5 g €22/g, 1.5–2 g €15/g, over 2 g €12/g. All
+  14K colours one price; all three silvers one price. 18K is not an option on any product (none had one); the site
+  already says we work in 14K and 18K (About, homepage facts, FAQ, collection tile), so no text changed.
+- `tools/prices/`: `rates.csv` (the bands, owner edits), `weights.csv` (every product's 14K and silver weight with its
+  source), `update-prices.mjs` (shows every change and writes `preview.csv`; `--apply` writes prices and fills only
+  missing `custom.weight_g`). Weights entered in Shopify are 14K gold and are never changed (owner: "if i add the
+  weight of the jewelry it is on gold and don't change that if it is missing add it"). Runs through Shopify CLI
+  (`shopify store auth`, `shopify store execute`), no app or key.
+- Weights: the owner's figures (`docs/weights-and-sizes.md`) first; missing ones from the old site
+  studio-cullinan.com by item number (all 2,038 pages read: „Артикулен №“, „Тегло“). Silver from the old site's
+  „s“ + number: Дантела голяма 15.5, Богородица голям медальон 2.9, Детелина 1.05, Жар 2.9 / 3.5 / 1.1 g. s759 and
+  s1201 are different pieces (checked by picture), not used. A picture comparison of every piece against the 817 old
+  silver photos found no other match, so no product gained a silver option.
+- No weight anywhere: Корона, Листопад – обеци; silver of Дантела малка, ЧК двойна линия, ЧК дълъг кръст, Куршум,
+  Спаси и съхрани, София, Вяра. These keep their price (€0 for those silvers).
+- Way back: prices were €0 on most variants before (Дантела 1560/2249); `preview.csv` of the run lists every old price.
+
 ## 2026-11-25 — Роза brooch: new main photo uploaded **(owner)**
 
 The owner's new main photo replaced the `01` file of the Роза brooch in yellow, rose and white gold in Shopify Files
