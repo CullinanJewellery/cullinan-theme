@@ -12,7 +12,9 @@
 // weight and is never changed (owner, 2026-11-26: "if i add the weight of the jewelry it is on gold and don't change
 // that"). Missing weights come from weights.csv (old site studio-cullinan.com, item number) and, with --apply, are
 // written to the variant's custom.weight_g so the product page shows them ("if it is missing add it").
-// Silver variants use the silver weight from weights.csv. A variant with no known weight keeps its price.
+// Silver variants are priced on the GOLD weight with the silver rates (owner, 2026-11-26: "i don't want for the silver
+// the weight ... make the price through the weight of the gold"); no weight is written to a silver variant.
+// A variant with no known weight keeps its price.
 //
 // Needs Shopify CLI, signed in once with:
 //   shopify store auth --store 2fp38p-az.myshopify.com --scopes read_products,write_products
@@ -68,11 +70,11 @@ function priceFor(metal, grams) {
 }
 
 // ---------- weights.csv ----------
-// columns: бижу;вариант;артикул;злато 14K (г);сребро 925 (г);откъде
+// columns: бижу;вариант;артикул;злато 14K (г);откъде   (14K gold weights only; silver is priced on them)
 const table = readCsv(join(HERE, 'weights.csv'));
 const norm = (s) => String(s || '').toLowerCase().replace(/[‐-―-]/g, '-').replace(/\s+/g, ' ').trim();
-function tableWeight(product, variant, metal) {
-  const col = metal === 'silver' ? 'сребро 925 (г)' : 'злато 14K (г)';
+function tableWeight(product, variant) {
+  const col = 'злато 14K (г)';
   const values = variant.selectedOptions.map((o) => o.value.toLowerCase());
   const rows = table.filter((r) => norm(r['бижу']) === norm(product.title));
   const exact = rows.find((r) => r['вариант'] && values.includes(r['вариант'].toLowerCase()));
@@ -111,18 +113,28 @@ do {
 const rows = [['бижу', 'вариант', 'метал', 'тегло (г)', 'откъде е теглото', 'цена сега', 'нова цена', 'промяна']];
 const missing = [];
 const plan = [];
+const single = (x) => (/^\s*\d+(?:[.,]\d+)?\s*(?:г|гр|g)?\.?\s*$/i.test(x || '') ? num(x) : null);
+// The options that are not the metal (size, stone…), so a silver variant finds the gold variant of the same size.
+const sizeKey = (v) => v.selectedOptions.map((o) => o.value.toLowerCase()).filter((x) => !/злато|сребро|gold|silver/.test(x)).join('|');
 for (const p of products) {
   const updates = [];
-  for (const v of p.variants.nodes) {
+  const goldBySize = new Map();
+  const ordered = [...p.variants.nodes].sort((a, b) => (metalOf(a) === 'gold' ? 0 : 1) - (metalOf(b) === 'gold' ? 0 : 1));
+  for (const v of ordered) {
     const metal = metalOf(v);
     if (!metal) continue;
     const label = v.selectedOptions.map((o) => o.value).join(' / ');
     let grams = null; let source = '';
-    // Only a single number counts („0,85 / 1,05“ on a product with two sizes falls through to weights.csv).
-    const single = (x) => (/^\s*\d+(?:[.,]\d+)?\s*(?:г|гр|g)?\.?\s*$/i.test(x || '') ? num(x) : null);
-    const own = single(v.weight?.value) ?? single(p.weight?.value);
-    if (metal === 'gold' && own) { grams = own; source = 'Shopify'; }
-    if (grams == null) { grams = tableWeight(p, v, metal); source = grams ? 'weights.csv' : ''; }
+    if (metal === 'gold') {
+      // Only a single number counts („0,85 / 1,05“ on a product with two sizes falls through to weights.csv).
+      const own = single(v.weight?.value) ?? single(p.weight?.value);
+      if (own) { grams = own; source = 'Shopify'; }
+      if (grams == null) { grams = tableWeight(p, v, 'gold'); source = grams ? 'weights.csv' : ''; }
+      if (grams != null && !goldBySize.has(sizeKey(v))) goldBySize.set(sizeKey(v), grams);
+    } else {
+      grams = goldBySize.get(sizeKey(v)) ?? tableWeight(p, v, 'gold') ?? [...goldBySize.values()][0] ?? null;
+      source = grams ? 'тегло на златото' : '';
+    }
     if (grams == null) { missing.push(`${p.title} — ${label}`); continue; }
     const price = priceFor(metal, grams);
     if (price == null) { missing.push(`${p.title} — ${label} (no rate for ${grams} g)`); continue; }
@@ -130,7 +142,7 @@ for (const p of products) {
     rows.push([p.title, label, metal === 'gold' ? '14K злато' : 'сребро', String(grams).replace('.', ','), source, now, price, now === price ? '' : 'да']);
     const u = { id: v.id };
     if (now !== price) u.price = String(price);
-    if (!v.weight?.value && source === 'weights.csv') {
+    if (metal === 'gold' && !v.weight?.value && source === 'weights.csv') {
       u.metafields = [{ namespace: 'custom', key: 'weight_g', type: 'single_line_text_field', value: String(grams).replace('.', ',') }];
     }
     if (u.price || u.metafields) updates.push(u);

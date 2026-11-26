@@ -257,6 +257,6 @@ Do not read the whole archive into a session; open the part you need.
 
 ## Waiting on the owner (summary)
 
-Silver weights for Дантела малка, ЧК двойна линия, ЧК дълъг кръст, Куршум, Спаси и съхрани, София, Вяра (their silver is €0; prices by weight: `tools/prices/`, changelog 2026-11-26); returns policy for made-to-order pieces; delivery price below €500 (Admin shipping rates must match the €500 rule); engraving terms;
+Weights for Корона and Листопад – обеци (prices by weight: `tools/prices/`, changelog 2026-11-26); returns policy for made-to-order pieces; delivery price below €500 (Admin shipping rates must match the €500 rule); engraving terms;
 price range of the first fifty; which payment methods are enabled; product data and photographs. Details and the
 Shopify-admin checklist: `docs/tasks.md`.

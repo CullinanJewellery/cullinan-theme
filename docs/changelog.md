@@ -8,6 +8,17 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-26 — Silver priced on the gold weight **(owner)**
+
+- Owner: "i don't want for the silver the weight ... make the price through the weight of the gold". Silver variants
+  now take the 14K weight of the same piece and size, with the silver rates (rates.csv unchanged). `weights.csv` has
+  no silver column; the script writes no weight to a silver variant. The 37 silver weights written earlier the same day
+  (old-site s-numbers on Богородица голям медальон, Детелина, Жар ×3, Дантела голяма) were deleted, so silver variants
+  show no weight. 55 silver prices on 12 products updated, e.g. Спаси и съхрани €70, Куршум €54, Вяра голям €31,
+  Дантела голяма €208; every silver option now has a price. Only Корона and Листопад – обеци have no weight.
+- Way back: `tools/prices/prices-before-2026-11-26.csv` (before both runs); the deleted silver weights are listed in
+  the entry below.
+
 ## 2026-11-26 — Prices by weight; price table and one-command update **(owner)**
 
 - Owner's rates (per gram, rounded up to the whole euro as chosen on 2026-11-18): 14K gold up to and including 1.2 g
