@@ -98,6 +98,8 @@
       class CjPriceSlider extends HTMLElement {
         connectedCallback() {
           this.max = Number(this.dataset.max) || 0;
+          // The low end is the cheapest gold piece (2026-11-27, owner), not 0.
+          this.min = Math.min(Number(this.dataset.min) || 0, this.max);
           this.symbol = this.dataset.currency || '';
           this.lo = this.querySelector('[data-cj-range="lo"]');
           this.hi = this.querySelector('[data-cj-range="hi"]');
@@ -134,7 +136,7 @@
             this.hi.value = hi;
           }
           // An end at its limit means no limit, as when the field is left empty.
-          this.minField.value = lo > 0 ? String(lo) : '';
+          this.minField.value = lo > this.min ? String(lo) : '';
           this.maxField.value = hi < this.max ? String(hi) : '';
           this.minField.dispatchEvent(new Event('change', { bubbles: false }));
           this.maxField.dispatchEvent(new Event('change', { bubbles: false }));
@@ -142,8 +144,8 @@
         }
 
         fromFields() {
-          this.lo.value = Math.max(0, Math.min(this.max, this.number(this.minField, 0)));
-          this.hi.value = Math.max(0, Math.min(this.max, this.number(this.maxField, this.max)));
+          this.lo.value = Math.max(this.min, Math.min(this.max, this.number(this.minField, this.min)));
+          this.hi.value = Math.max(this.min, Math.min(this.max, this.number(this.maxField, this.max)));
           this.draw();
         }
 
@@ -153,8 +155,9 @@
           if (this.loText) this.loText.textContent = this.symbol + lo;
           if (this.hiText) this.hiText.textContent = this.symbol + hi;
           if (this.fill) {
-            this.fill.style.left = (lo / this.max) * 100 + '%';
-            this.fill.style.right = 100 - (hi / this.max) * 100 + '%';
+            const span = this.max - this.min || 1;
+            this.fill.style.left = ((lo - this.min) / span) * 100 + '%';
+            this.fill.style.right = 100 - ((hi - this.min) / span) * 100 + '%';
           }
           if (this.reset) this.reset.hidden = !(this.minField.value || this.maxField.value);
           // The handle that was moved last stays on top where the two meet.

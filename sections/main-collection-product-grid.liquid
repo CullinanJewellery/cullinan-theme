@@ -324,7 +324,47 @@
                 {%- if paginate.current_page == 1 -%}
                   {%- assign cj_extras = true -%}
                 {%- endif -%}
+                {%- liquid
+                  comment
+                    2026-11-27 (owner): with a price chosen, a piece counts by its gold price only. Shopify's filter
+                    matches any variant, so a gold piece came up in a low range for its silver price; such a piece is
+                    left out here. A piece with no gold variant still counts by any price.
+                  endcomment
+                  assign cj_pmin = null
+                  assign cj_pmax = null
+                  for filter in collection.filters
+                    if filter.type == 'price_range'
+                      assign cj_pmin = filter.min_value.value
+                      assign cj_pmax = filter.max_value.value
+                    endif
+                  endfor
+                -%}
                 {%- for product in collection.products -%}
+                  {%- if cj_pmin != null or cj_pmax != null -%}
+                    {%- liquid
+                      assign cj_has_gold = false
+                      assign cj_gold_in = false
+                      for v in product.variants
+                        assign cj_vt = v.title | downcase
+                        if cj_vt contains 'сребро' or cj_vt contains 'silver'
+                          continue
+                        endif
+                        assign cj_has_gold = true
+                        assign cj_ok = true
+                        if cj_pmin != null and v.price < cj_pmin
+                          assign cj_ok = false
+                        endif
+                        if cj_pmax != null and v.price > cj_pmax
+                          assign cj_ok = false
+                        endif
+                        if cj_ok
+                          assign cj_gold_in = true
+                          break
+                        endif
+                      endfor
+                    -%}
+                    {%- if cj_has_gold and cj_gold_in == false -%}{%- continue -%}{%- endif -%}
+                  {%- endif -%}
                   {%- if cj_sets_page -%}
                     {%- assign cj_set = product.metafields.custom.komplekt.value -%}
                     {%- if cj_set != blank and cj_set.products_count > 1 -%}

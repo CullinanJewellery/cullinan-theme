@@ -421,7 +421,16 @@
                         {%- endcomment -%}
                         {%- liquid
                           assign cj_max = filter.range_max | divided_by: 100.0 | ceil
-                          assign cj_lo = 0
+                          comment
+                            2026-11-27 (owner: the price filter should start with the cheapest piece, not €0): the
+                            lowest gold price of this collection (custom.gold_price_min, written by
+                            tools/prices/update-prices.mjs), the shop's on /collections/all; 0 when neither is set.
+                          endcomment
+                          assign cj_min = collection.metafields.custom.gold_price_min.value | default: shop.metafields.custom.gold_price_min.value | default: 0
+                          if cj_min >= cj_max
+                            assign cj_min = 0
+                          endif
+                          assign cj_lo = cj_min
                           if filter.min_value.value != null
                             assign cj_lo = filter.min_value.value | divided_by: 100.0 | floor
                           endif
@@ -439,7 +448,7 @@
                         >
                           <a href="{{ filter.url_to_remove }}">{{ 'products.facets.reset' | t }}</a>
                         </facet-remove>
-                        <cj-price-slider class="cj-price" data-max="{{ cj_max }}" data-currency="{{ cart.currency.symbol }}">
+                        <cj-price-slider class="cj-price" data-min="{{ cj_min }}" data-max="{{ cj_max }}" data-currency="{{ cart.currency.symbol }}">
                           <p class="cj-price__amount" aria-hidden="true">
                             <span data-cj-lo>{{ cart.currency.symbol }}{{ cj_lo }}</span> –
                             <span data-cj-hi>{{ cart.currency.symbol }}{{ cj_hi }}</span>
@@ -448,7 +457,7 @@
                             <span class="cj-price__fill" data-cj-fill></span>
                             <input
                               type="range"
-                              min="0"
+                              min="{{ cj_min }}"
                               max="{{ cj_max }}"
                               step="1"
                               value="{{ cj_lo }}"
@@ -457,7 +466,7 @@
                             >
                             <input
                               type="range"
-                              min="0"
+                              min="{{ cj_min }}"
                               max="{{ cj_max }}"
                               step="1"
                               value="{{ cj_hi }}"

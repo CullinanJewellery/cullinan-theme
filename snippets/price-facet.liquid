@@ -10,7 +10,9 @@
     {%- endif -%}
     type="text"
     inputmode="decimal"
-    placeholder="0"
+    {%- comment -%} 2026-11-27 (owner): from the cheapest gold piece, not 0 (custom.gold_price_min). {%- endcomment -%}
+    {%- assign cj_min = collection.metafields.custom.gold_price_min.value | default: shop.metafields.custom.gold_price_min.value | default: 0 -%}
+    placeholder="{{ cj_min }}"
     data-pattern="\d| |,|\."
     data-min="0"
     data-max="{{ filter.range_max | money_without_currency }}"

@@ -8,6 +8,21 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-27 — Product cards: gold circles and gold price; price filter from the cheapest gold piece **(owner)**
+
+- Owner: remove the silver circles under the card photos, keep the gold ones; silver prices showed as the card price
+  („От €26“ on Детелина); show the silver price when the white gold circle is picked. `snippets/card-product.liquid`:
+  silver values are not circles; the card price is the picked (first) gold circle's variant (`snippets/price.liquid`
+  takes a `variant`); a product with silver has „Сребро: €X“ (its cheapest silver) under the price, shown while white
+  gold is picked (`assets/card-swatches.js`, style in `crown.css`).
+- Price filter (owner chose "Start at the cheapest piece"): the slider starts at the collection's lowest gold price
+  (`custom.gold_price_min` on each collection, the shop's on /collections/all), written by
+  `tools/prices/update-prices.mjs --apply`; `snippets/facets.liquid`, `snippets/price-facet.liquid`,
+  `assets/collection-filters-desktop.js`. With a price chosen, a piece whose gold prices are all outside the range is
+  left out of the grid (`sections/main-collection-product-grid.liquid`), since Shopify matches any variant, silver
+  included. The product count above the grid is still Shopify's (it can count such a piece).
+- Way back: revert the two commits of this entry; the collection metafields can stay (unused).
+
 ## 2026-11-26 — Silver on the product page: white gold's photos and a rhodium material card **(owner)**
 
 - Owner: on silver the gallery showed one big photo, "not like the others", and no material card for silver with

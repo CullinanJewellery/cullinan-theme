@@ -6,7 +6,8 @@
 // the owner edits either file (Excel opens them) and runs this script.
 //
 //   node tools/prices/update-prices.mjs           shows every change, writes tools/prices/preview.csv, changes nothing
-//   node tools/prices/update-prices.mjs --apply   writes the new prices (and any missing weights) to Shopify
+//   node tools/prices/update-prices.mjs --apply   writes the new prices (and any missing weights) to Shopify, and each
+//                                                 collection's lowest gold price (where the price filter starts)
 //
 // Weights: a weight already entered in Shopify (custom.weight_g on the variant, else on the product) is the 14K gold
 // weight and is never changed (owner, 2026-11-26: "if i add the weight of the jewelry it is on gold and don't change
@@ -110,6 +111,7 @@ do {
   cursor = d.products.pageInfo.hasNextPage ? d.products.pageInfo.endCursor : null;
 } while (cursor);
 
+const goldMin = new Map(); // product id -> its lowest gold price after this run
 const rows = [['бижу', 'вариант', 'метал', 'тегло (г)', 'откъде е теглото', 'цена сега', 'нова цена', 'промяна']];
 const missing = [];
 const plan = [];
@@ -135,10 +137,15 @@ for (const p of products) {
       grams = goldBySize.get(sizeKey(v)) ?? tableWeight(p, v, 'gold') ?? [...goldBySize.values()][0] ?? null;
       source = grams ? 'тегло на златото' : '';
     }
-    if (grams == null) { missing.push(`${p.title} — ${label}`); continue; }
+    if (grams == null) {
+      const kept = Math.round(parseFloat(v.price));
+      if (metal === 'gold' && kept > 0) goldMin.set(p.id, Math.min(goldMin.get(p.id) ?? Infinity, kept));
+      missing.push(`${p.title} — ${label}`); continue;
+    }
     const price = priceFor(metal, grams);
     if (price == null) { missing.push(`${p.title} — ${label} (no rate for ${grams} g)`); continue; }
     const now = Math.round(parseFloat(v.price));
+    if (metal === 'gold' && price > 0) goldMin.set(p.id, Math.min(goldMin.get(p.id) ?? Infinity, price));
     rows.push([p.title, label, metal === 'gold' ? '14K злато' : 'сребро', String(grams).replace('.', ','), source, now, price, now === price ? '' : 'да']);
     const u = { id: v.id };
     if (now !== price) u.price = String(price);
@@ -170,4 +177,27 @@ if (!APPLY) {
     if (errs.length) { errors++; console.log(`  ${p.title}: ${errs.map((e) => e.message).join('; ')}`); }
   }
   console.log(errors ? `Done with errors on ${errors} products (see above).` : `Done: ${plan.length} products updated.`);
+
+  // The price filter starts at the cheapest gold piece, not €0 (owner, 2026-11-27): the lowest gold price of each
+  // collection goes to its custom.gold_price_min, and of the whole shop to the shop's (snippets/facets.liquid).
+  const sets = [];
+  let shopId = null; let c = null;
+  do {
+    const d = shopify('collections.graphql', { cursor: c }, false);
+    shopId = d.shop.id;
+    for (const col of d.collections.nodes) {
+      const mins = col.products.nodes.map((n) => goldMin.get(n.id)).filter((x) => x != null);
+      if (mins.length && String(Math.min(...mins)) !== col.goldMin?.value) {
+        sets.push({ ownerId: col.id, namespace: 'custom', key: 'gold_price_min', type: 'number_integer', value: String(Math.min(...mins)) });
+      }
+    }
+    c = d.collections.pageInfo.hasNextPage ? d.collections.pageInfo.endCursor : null;
+  } while (c);
+  if (goldMin.size) sets.push({ ownerId: shopId, namespace: 'custom', key: 'gold_price_min', type: 'number_integer', value: String(Math.min(...goldMin.values())) });
+  for (let i = 0; i < sets.length; i += 25) {
+    const d = shopify('set-gold-min.graphql', { metafields: sets.slice(i, i + 25) }, true);
+    const errs = d.metafieldsSet?.userErrors || [];
+    if (errs.length) console.log('  lowest gold price: ' + errs.map((e) => e.message).join('; '));
+  }
+  console.log(`Lowest gold price written for ${sets.length} collections and the shop (the price filter starts there).`);
 }
