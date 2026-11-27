@@ -8,6 +8,14 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-27 — Material cards for plain silver and silver with patina **(owner)**
+
+- Owner said yes to cards for the other two silvers. `snippets/cj-material-card.liquid`: „Сребро“ (white picture;
+  „Сребро, проба 925“, „С проба на всяко бижу“, „Прецизна изработка“) and „Сребро с патина“ (new
+  `assets/cj-material-patina.jpg`, the white picture with only the metal darkened locally; „Потъмнено с патина, която
+  подчертава формата“); dark grey dot `.cj-material--patina` in `crown.css`. No shine promise for plain silver.
+- Way back: revert this commit.
+
 ## 2026-11-27 — Black bar only at the top of the page; the header always stays **(owner)**
 
 - Owner: the black bar disappears when scrolling down and shows at the start of any page; the menu (white header)

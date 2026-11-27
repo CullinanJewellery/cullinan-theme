@@ -8572,6 +8572,11 @@ html body .collection-hero.cj-hero--image .collection-hero__inner {
   --cj-material-dot: #c88e7d;
 }
 
+/* Silver with patina (2026-11-27): a dark grey dot, like the darkened metal. */
+.cj-material--patina {
+  --cj-material-dot: #5d5a57;
+}
+
 .cj-material__footer {
   margin: auto 0 0;
   font-family: var(--font-body-family);
