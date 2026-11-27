@@ -34,6 +34,13 @@
         assign cj_value = value | append: '' | strip | downcase
         assign cj_selected = cj_selected | append: cj_value | append: '|'
       endfor
+      comment
+        2026-11-26 (owner: silver showed one big photo, "not like the others"): silver has no photos of its own and
+        uses the white gold ones (owner, 2026-11-25), so a silver variant also shows the photos marked for white gold.
+      endcomment
+      if cj_selected contains 'сребро' and cj_alt contains 'бяло злато'
+        assign cj_selected = cj_selected | append: cj_alt | append: '|'
+      endif
       unless cj_selected contains cj_key
         echo 'hide'
       endunless

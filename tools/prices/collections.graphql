@@ -1,0 +1,12 @@
+query CollectionProducts($cursor: String) {
+  shop { id }
+  collections(first: 50, after: $cursor) {
+    pageInfo { hasNextPage endCursor }
+    nodes {
+      id
+      title
+      goldMin: metafield(namespace: "custom", key: "gold_price_min") { value }
+      products(first: 250) { nodes { id } }
+    }
+  }
+}

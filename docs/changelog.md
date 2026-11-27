@@ -8,6 +8,92 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-27 — Experiments (Christmas) theme: this week's main work brought over **(owner)**
+
+- Owner: "yes" to bringing the new work to the Christmas theme. `main` merged into `fluid-sizes`: prices by weight
+  tools, silver on the white gold photos, material cards for all three silvers, product cards with gold circles only
+  and the silver price, the price filter from the cheapest gold piece, the black bar only at the top with the header
+  always shown. Christmas parts kept; the one `crown.css` clash kept both (the Christmas last-order rule, then main's
+  silver price block).
+- Way back: `git revert -m 1 <merge commit>` on `fluid-sizes`.
+
+## 2026-11-27 — Material cards for plain silver and silver with patina **(owner)**
+
+- Owner said yes to cards for the other two silvers. `snippets/cj-material-card.liquid`: „Сребро“ (white picture;
+  „Сребро, проба 925“, „С проба на всяко бижу“, „Прецизна изработка“) and „Сребро с патина“ (new
+  `assets/cj-material-patina.jpg`, the white picture with only the metal darkened locally; „Потъмнено с патина, която
+  подчертава формата“); dark grey dot `.cj-material--patina` in `crown.css`. No shine promise for plain silver.
+- Way back: revert this commit.
+
+## 2026-11-27 — Black bar only at the top of the page; the header always stays **(owner)**
+
+- Owner: the black bar disappears when scrolling down and shows at the start of any page; the menu (white header)
+  must not disappear. `sections/announcement-bar.liquid`: any scroll sets `cj-scroll-up` (bar slides away, header at
+  the very top), back at the top nothing (both show); the header no longer slides away scrolling down. CSS in
+  `crown.css` „Top bar and sticky header“ unchanged. Replaces 2026-11-03 (down: only the bar; up: only the header).
+- Way back: revert this commit.
+
+## 2026-11-27 — Product cards: gold circles and gold price; price filter from the cheapest gold piece **(owner)**
+
+- Owner: remove the silver circles under the card photos, keep the gold ones; silver prices showed as the card price
+  („От €26“ on Детелина); show the silver price when the white gold circle is picked. `snippets/card-product.liquid`:
+  silver values are not circles; the card price is the picked (first) gold circle's variant (`snippets/price.liquid`
+  takes a `variant`); a product with silver has „Сребро: €X“ (its cheapest silver) under the price, shown while white
+  gold is picked (`assets/card-swatches.js`, style in `crown.css`).
+- Price filter (owner chose "Start at the cheapest piece"): the slider starts at the collection's lowest gold price
+  (`custom.gold_price_min` on each collection, the shop's on /collections/all), written by
+  `tools/prices/update-prices.mjs --apply`; `snippets/facets.liquid`, `snippets/price-facet.liquid`,
+  `assets/collection-filters-desktop.js`. With a price chosen, a piece whose gold prices are all outside the range is
+  left out of the grid (`sections/main-collection-product-grid.liquid`), since Shopify matches any variant, silver
+  included. The product count above the grid is still Shopify's (it can count such a piece).
+- Way back: revert the two commits of this entry; the collection metafields can stay (unused).
+
+## 2026-11-26 — Silver on the product page: white gold's photos and a rhodium material card **(owner)**
+
+- Owner: on silver the gallery showed one big photo, "not like the others", and no material card for silver with
+  rhodium. Silver has no photos of its own; every extra photo is marked by alt text for one metal, so only the main
+  photo was left. `snippets/cj-metal-photo.liquid`: a silver variant also shows the photos marked for white gold (the
+  silver photo is the white gold one, owner 2026-11-25). `snippets/cj-material-card.liquid`: „925 сребро с родий“ gets
+  a card on the white gold picture, words „Сребро с родий“, „Сребро, проба 925“, „Бяло родиево покритие, което пази
+  блясъка“, „Прецизна изработка“. Plain silver and patina still have no card.
+- Way back: revert this commit.
+
+## 2026-11-26 — Silver priced on the gold weight **(owner)**
+
+- Owner: "i don't want for the silver the weight ... make the price through the weight of the gold". Silver variants
+  now take the 14K weight of the same piece and size, with the silver rates (rates.csv unchanged). `weights.csv` has
+  no silver column; the script writes no weight to a silver variant. The 37 silver weights written earlier the same day
+  (old-site s-numbers on Богородица голям медальон, Детелина, Жар ×3, Дантела голяма) were deleted, so silver variants
+  show no weight. 55 silver prices on 12 products updated, e.g. Спаси и съхрани €70, Куршум €54, Вяра голям €31,
+  Дантела голяма €208; every silver option now has a price. Only Корона and Листопад – обеци have no weight.
+- Way back: `tools/prices/prices-before-2026-11-26.csv` (before both runs); the deleted silver weights are listed in
+  the entry below.
+
+## 2026-11-26 — Prices by weight; price table and one-command update **(owner)**
+
+- Owner's rates (per gram, rounded up to the whole euro as chosen on 2026-11-18): 14K gold up to and including 1.2 g
+  €140/g, above €130/g (replaces 1.00 g of 2026-11-18); silver under 1.5 g €22/g, 1.5–2 g €15/g, over 2 g €12/g. All
+  14K colours one price; all three silvers one price. 18K is not an option on any product (none had one); the site
+  already says we work in 14K and 18K (About, homepage facts, FAQ, collection tile), so no text changed.
+- `tools/prices/`: `rates.csv` (the bands, owner edits), `weights.csv` (every product's 14K and silver weight with its
+  source), `update-prices.mjs` (shows every change and writes `preview.csv`; `--apply` writes prices and fills only
+  missing `custom.weight_g`). Weights entered in Shopify are 14K gold and are never changed (owner: "if i add the
+  weight of the jewelry it is on gold and don't change that if it is missing add it"). Runs through Shopify CLI
+  (`shopify store auth`, `shopify store execute`), no app or key.
+- Weights: the owner's figures (`docs/weights-and-sizes.md`) first; missing ones from the old site
+  studio-cullinan.com by item number (all 2,038 pages read: „Артикулен №“, „Тегло“). Silver from the old site's
+  „s“ + number: Дантела голяма 15.5, Богородица голям медальон 2.9, Детелина 1.05, Жар 2.9 / 3.5 / 1.1 g. s759 and
+  s1201 are different pieces (checked by picture), not used. A picture comparison of every piece against the 817 old
+  silver photos found no other match, so no product gained a silver option.
+- No weight anywhere: Корона, Листопад – обеци; silver of Дантела малка, ЧК двойна линия, ЧК дълъг кръст, Куршум,
+  Спаси и съхрани, София, Вяра. These keep their price (€0 for those silvers).
+- **Applied 2026-11-26** (owner's OK; Shopify CLI 5.1.0 installed, owner signed in with read/write products): 583
+  variant prices and 241 missing weights written on 84 products; a second run finds nothing left to change. 357
+  variants already had the owner's weight in Shopify and kept it. Some earlier prices fell to the rule (e.g. zodiac
+  openwork about €250 → €176–210, Вихър €200 → €161, София €300 → €219). A product weight with two numbers
+  (Плочка „0,85 / 1,05“) is not read; its sizes take 0.85 and 1.05 g from weights.csv.
+- Way back: `tools/prices/prices-before-2026-11-26.csv` lists every variant's price before the run (column „цена сега“).
+
 ## 2026-11-25 — Experiments (Christmas) theme brought level with main **(owner)**
 
 - Owner: "in the christmas theme there we should paste the new things that we did". `main` merged into `fluid-sizes`

@@ -1,0 +1,6 @@
+mutation SetGoldMin($metafields: [MetafieldsSetInput!]!) {
+  metafieldsSet(metafields: $metafields) {
+    metafields { ownerType key value }
+    userErrors { field message }
+  }
+}

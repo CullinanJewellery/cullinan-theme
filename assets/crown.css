@@ -363,7 +363,9 @@
   top: 0;
 }
 
-/* Since 2026-11-03 (owner: "when i scroll down my navigation [should] stop appearing, i just want the black thing to
+/* 2026-11-27 (owner): the header no longer slides away; the script now sets only cj-scroll-up (any scroll: bar away,
+   header at the very top) or nothing (top of the page: both). The rules below stay as they are.
+   Since 2026-11-03 (owner: "when i scroll down my navigation [should] stop appearing, i just want the black thing to
    appear, and when i go up … the navigation just appears and the black thing disappears"). At the top of the page
    both show, in their places. Scrolling down, the black bar stays at the top and the white header slides away under
    it; scrolling up, the header slides back and the bar slides away. The script at the end of
@@ -8570,6 +8572,11 @@ html body .collection-hero.cj-hero--image .collection-hero__inner {
   --cj-material-dot: #c88e7d;
 }
 
+/* Silver with patina (2026-11-27): a dark grey dot, like the darkened metal. */
+.cj-material--patina {
+  --cj-material-dot: #5d5a57;
+}
+
 .cj-material__footer {
   margin: auto 0 0;
   font-family: var(--font-body-family);
@@ -11735,4 +11742,18 @@ html body .cj-dmenu__promo[href$="/зодии"] .cj-dmenu__promo-image {
 .cj-xmas-gift__date strong {
   font-weight: 600;
   color: #1f3d33;
+}
+
+/* Silver price on product cards (2026-11-26, owner): shown under the gold price while the white gold circle is picked
+   (snippets/card-product.liquid, assets/card-swatches.js). Smaller and lighter than the price, so the gold price
+   stays the card's price. Way back: delete this block and the line in card-product. */
+html body .card__silver-price {
+  margin: 0.2rem 0 0;
+  font-size: 1.3rem;
+  line-height: 1.4;
+  color: rgb(var(--color-foreground) / 0.75);
+}
+
+html body .card__silver-price[hidden] {
+  display: none;
 }

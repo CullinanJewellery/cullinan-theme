@@ -1,5 +1,9 @@
 # Yellow 03 on the hand
 
+**Every worn photo its own hand (owner, 2026-11-27):** from set 32 on, each worn photo uses a different woman's hand
+with a different nail colour, chosen so the piece stands out; the focus stays on the jewellery. The nude-pink manicure
+below is one choice among several, not the rule. Never the owner's own hand from the raw photos.
+
 **New hand (owner, 2026-10-16), for every piece after ring A (rings B, C, D, E and later; ring A keeps its hand):**
 a lot more feminine hand; a longer manicure that is just visible, not too long; the ring a little smaller on the hand,
 small enough to look elegant, not big; zoomed out so the whole hand shows, with all five nails visible (the old

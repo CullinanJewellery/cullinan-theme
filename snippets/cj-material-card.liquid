@@ -40,7 +40,25 @@
   endif
 
   assign cj_key = ''
-  if cj_metal_value contains 'бяло злато'
+  comment
+    Silver with rhodium (2026-11-26, owner: "the picture with the material is not there for the silver with rhodium"):
+    the white gold card's picture (rhodium is the same white finish; silver variants use the white gold photos), with
+    silver's own words. Plain silver and patina (2026-11-27, owner: "yes"): plain silver uses the same white picture;
+    patina has its own, assets/cj-material-patina.jpg, the white picture with only the metal darkened locally.
+  endcomment
+  if cj_metal_value contains 'сребро' and cj_metal_value contains 'родий'
+    assign cj_key = 'silver-rhodium'
+    assign cj_title = 'Сребро с родий'
+    assign cj_first = 'Сребро, проба 925'
+  elsif cj_metal_value contains 'сребро' and cj_metal_value contains 'патина'
+    assign cj_key = 'silver-patina'
+    assign cj_title = 'Сребро с патина'
+    assign cj_first = 'Сребро, проба 925'
+  elsif cj_metal_value contains 'сребро'
+    assign cj_key = 'silver'
+    assign cj_title = 'Сребро'
+    assign cj_first = 'Сребро, проба 925'
+  elsif cj_metal_value contains 'бяло злато'
     assign cj_key = 'white'
     assign cj_title = 'Бяло злато'
     assign cj_first = '14К бяло злато, проба 585'
@@ -55,9 +73,12 @@
   endif
 -%}
 {%- if cj_key != blank -%}
-  {%- assign cj_image = 'cj-material-' | append: cj_key | append: '.jpg' -%}
+  {%- assign cj_look = cj_key -%}
+  {%- if cj_key == 'silver-rhodium' or cj_key == 'silver' -%}{%- assign cj_look = 'white' -%}{%- endif -%}
+  {%- if cj_key == 'silver-patina' -%}{%- assign cj_look = 'patina' -%}{%- endif -%}
+  {%- assign cj_image = 'cj-material-' | append: cj_look | append: '.jpg' -%}
   {%- capture cj_card -%}
-    <div class="cj-material cj-material--{{ cj_key }}">
+    <div class="cj-material cj-material--{{ cj_look }}">
       <img
         class="cj-material__bg"
         src="{{ cj_image | asset_img_url: '1200x' }}"
@@ -75,7 +96,13 @@
           <ul class="cj-material__points" role="list">
             <li>{{ cj_first }}</li>
             {%- comment -%} White gold: the rhodium line in place of „Създадено да запазва блясъка си“ (owner, 2026-10-12). {%- endcomment -%}
-            {%- if cj_key == 'white' -%}
+            {%- if cj_key == 'silver-rhodium' -%}
+              <li>Бяло родиево покритие, което пази блясъка</li>
+            {%- elsif cj_key == 'silver-patina' -%}
+              <li>Потъмнено с патина, която подчертава формата</li>
+            {%- elsif cj_key == 'silver' -%}
+              <li>С проба на всяко бижу</li>
+            {%- elsif cj_key == 'white' -%}
               <li>С родиево покритие за по‑силен блясък</li>
             {%- else -%}
               <li>Създадено да запазва блясъка си</li>
