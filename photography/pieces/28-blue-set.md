@@ -12,9 +12,9 @@ Raw photos (owner, 2026-11-27, in each `сурови снимки`): ring 01–1
 - Metals (owner): **gold only, in every colour** (yellow, white, rose); no silver.
 - Ring: ribbed band; **7 stones** (owner confirmed the count): a blue pear, a clear oval, and round yellow, purple,
   light pink, orange and cognac stones.
-- Earrings: studs, post and butterfly back, a mirrored pair. Each: a blue pear and about 12 small stones (small dark
-  blue, orange, yellow, clear, light pink, purple, cognac). **Count every stone of each earring exactly, with a
-  labelled picture for the owner, before any prompt.**
+- Earrings: studs, post and butterfly back, a mirrored pair. Each: a blue pear and 10 small round stones, **11 in all** (owner confirmed, 2026-11-27,
+  labelled picture `Обеци/чернови/обеци 28 - камъни.jpg`): 2 small dark blue, cognac, 2 clear, purple, light pink,
+  2 yellow, orange.
 - Earrings are sold as a pair; one can be ordered (owner).
 
 ## Shots
@@ -27,4 +27,6 @@ Raw photos (owner, 2026-11-27, in each `сурови снимки`): ring 01–1
 
 ## Status
 
-- 2026-11-27: raw photos filed; questions answered; no credits spent.
+- 2026-11-27: raw photos filed; questions answered.
+- 2026-11-27: two ear photos (6 credits, jobs ed2ea977, 7aebbf3b; log `../log/28-29-nov27.jsonl`), each a different
+  model, saved in `Обеци/жълто злато` as 03 and 04; originals in `чернови`. Waiting for the owner's OK.
