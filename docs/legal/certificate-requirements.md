@@ -4,6 +4,13 @@ Not legal advice: for the accountant to confirm. Design: https://claude.ai/artif
 (4 × 4 cm and 3.5 × 3.5 cm cards for the box, owner 2026-11-27: one page, certificate on the front, QR code on the back
 to a page with the website, Instagram, Facebook and Pinterest).
 
+Logo on the card (owner, 2026-11-27, "i like it how is on the picture"): a Bodoni Moda C with a smaller italic J tucked
+into it, the J's tail below the C. Colours: C black #000000, J rose gold #B76E79 (owner asked for our colours, took my
+recommendation over ruby, all black and espresso + blush). Trademark check (TMview, class 14, BG/EU/WIPO): no BG mark;
+CJ Corporation holds an EU "CJ" mark (EUTM 019130576, filed 13.01.2025, class 14) with a different look (CJ beside
+coloured petals); a trademark attorney should judge the risk before the owner registers the logo at the BPO. Use the
+monogram with the name CULLINAN in main places.
+
 ## Confirmed in the official text
 
 Наредба за условията и реда за вписване в регистъра и за изискванията към дейността на лицата, които осъществяват
