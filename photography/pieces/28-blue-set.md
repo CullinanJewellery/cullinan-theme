@@ -29,4 +29,5 @@ Raw photos (owner, 2026-11-27, in each `сурови снимки`): ring 01–1
 
 - 2026-11-27: raw photos filed; questions answered.
 - 2026-11-27: two ear photos (6 credits, jobs ed2ea977, 7aebbf3b; log `../log/28-29-nov27.jsonl`), each a different
-  model, saved in `Обеци/жълто злато` as 03 and 04; originals in `чернови`. Waiting for the owner's OK.
+  model, saved in `Обеци/жълто злато` as 03 and 04; originals in `чернови`. Owner: the main photo comes first.
+- 2026-11-27: yellow main 01 (job a5ec2be3, an edit of raw 100 keeping its stone colours, owner's wish; 3 credits, plus 3 for a rejected first try). Waiting for the OK before the metals.
