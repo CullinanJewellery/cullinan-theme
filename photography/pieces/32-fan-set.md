@@ -19,6 +19,9 @@ Raw photos (owner, 2026-11-27): earrings 55, 56, 57, 60; pendant 58, 59 (two dup
 ## Questions and answers
 
 - 2026-11-27: ring centre empty on purpose; made to size; one set; every metal; with or without patina.
+- 2026-11-27 (second round): **main photo B, silver with patina**; gold without patina is slightly matte (not
+  mirror-polished); earrings sold as a pair, one on request by message; a chain can be added to the pendant (never
+  say one is included).
 - Worn photos: a feminine model hand (never the owner's), see `../prompts/03-yellow-hand.md` and the 2026-11-27 rule.
 
 ## Status

@@ -10,6 +10,7 @@ owner's hand).
 - The middle strip is fixed, it does not turn (owner, 2026-11-27). For women and men (owner: "both").
 - Metals: like set 32, every metal, with or without patina (owner, 2026-11-27, said for the silver pieces).
 - Stones: none.
+- Owner, 2026-11-27 (second round): **main photo B, silver with patina**; in gold the wavy strip can stay matte.
 
 ## Status
 
