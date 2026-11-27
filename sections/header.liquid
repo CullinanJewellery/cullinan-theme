@@ -205,6 +205,8 @@
             }}
           </div>
         {%- else -%}
+          {%- comment -%} CJ monogram before the name (2026-11-28, owner): assets/cj-logo.png, crown.css „CJ monogram“. {%- endcomment -%}
+          <img class="cj-header-mark" src="{{ 'cj-logo.png' | asset_url }}" alt="" width="199" height="240">
           <span class="h2">{{ shop.name }}</span>
         {%- endif -%}
       </a>
@@ -254,6 +256,8 @@
             }}
           </div>
         {%- else -%}
+          {%- comment -%} CJ monogram before the name (2026-11-28, owner): assets/cj-logo.png, crown.css „CJ monogram“. {%- endcomment -%}
+          <img class="cj-header-mark" src="{{ 'cj-logo.png' | asset_url }}" alt="" width="199" height="240">
           <span class="h2">{{ shop.name }}</span>
         {%- endif -%}
       </a>

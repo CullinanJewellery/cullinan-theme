@@ -1,0 +1,18 @@
+{%- comment -%}
+  CJ monogram with the shop name at the foot of the page (2026-11-28, owner: "in the footer too, not just in the
+  menu"). The picture is assets/cj-logo.png (black C, rose gold J, the certificate's monogram); the name is
+  shop.name, first word large, the rest small under it. Styles: crown.css „CJ monogram“.
+  Way back: delete this file and its render in sections/footer.liquid.
+
+  Usage:
+  {% render 'cj-footer-brand' %}
+{%- endcomment -%}
+{%- assign cj_words = shop.name | split: ' ' -%}
+{%- assign cj_rest = cj_words | slice: 1, 5 | join: ' ' -%}
+<div class="cj-footer-brand-row page-width">
+  <a class="cj-footer-brand" href="{{ routes.root_url }}">
+    <img class="cj-footer-brand__mark" src="{{ 'cj-logo.png' | asset_url }}" alt="" width="199" height="240" loading="lazy">
+    <span class="cj-footer-brand__name">{{ cj_words | first }}</span>
+    {%- if cj_rest != blank -%}<span class="cj-footer-brand__sub">{{ cj_rest }}</span>{%- endif -%}
+  </a>
+</div>

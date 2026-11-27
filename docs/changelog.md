@@ -8,6 +8,17 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-28 — CJ monogram in the header, the footer and the browser tab **(owner)**
+
+- Owner chose the certificate's CJ (Bodoni C with a smaller italic J tucked in) in our colours, black C and rose gold
+  J #B76E79, and asked for it on the website, "in the footer too". New `assets/cj-logo.png` (drawn from Bodoni Moda
+  600 in a browser, transparent, 199 × 240). Header: before the shop name (`sections/header.liquid`, both logo
+  positions); phones: 2.8rem and the name's size gives up the monogram's width so it still never breaks. Footer:
+  monogram over the name, centred, above the bottom row (`snippets/cj-footer-brand.liquid`). Favicon
+  `assets/cj-favicon.png` is now the CJ on white (was a „C“ on blush). Styles: `crown.css` „CJ monogram“.
+- Trademark: TMview check and certificate notes in `docs/legal/certificate-requirements.md`.
+- Way back: revert this commit (the old favicon is in git history).
+
 ## 2026-11-27 — Material cards for plain silver and silver with patina **(owner)**
 
 - Owner said yes to cards for the other two silvers. `snippets/cj-material-card.liquid`: „Сребро“ (white picture;

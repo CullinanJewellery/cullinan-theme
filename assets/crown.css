@@ -11435,3 +11435,83 @@ html body .card__silver-price {
 html body .card__silver-price[hidden] {
   display: none;
 }
+
+/* ---------------------------------------------------------------------------
+   CJ monogram (2026-11-28, owner: the certificate's CJ "in the website", "in the footer too, not just in the menu").
+   assets/cj-logo.png: black C, rose gold J (#B76E79), drawn from Bodoni Moda 600 (the shop name's typeface).
+   Header: before the shop name, the two centred together. Phones: smaller, and the name's room-following size
+   (rule near the top, 12.7vw - 2.985rem) gives up the monogram's width plus the gap (about 30px), so the name still
+   never breaks. Footer: the monogram above the name, centred, before the bottom row (snippets/cj-footer-brand.liquid).
+   Way back: delete this block, the <img> in sections/header.liquid and the render in sections/footer.liquid.
+   --------------------------------------------------------------------------- */
+html body .header__heading-link:has(.cj-header-mark) {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+html body .cj-header-mark {
+  display: block;
+  flex-shrink: 0;
+  width: auto;
+  height: 3.8rem;
+}
+
+@media screen and (max-width: 749px) {
+  html body .header__heading-link:has(.cj-header-mark) {
+    gap: 0.5rem;
+  }
+
+  html body .cj-header-mark {
+    height: 2.8rem;
+  }
+
+  html body .header__heading-link:has(.cj-header-mark) .h2 {
+    font-size: min(2rem, calc(12.7vw - 3.366rem));
+  }
+}
+
+html body .cj-footer-brand-row {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 2.4rem;
+}
+
+html body .cj-footer-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  color: #000;
+  text-decoration: none;
+}
+
+html body .cj-footer-brand__mark {
+  display: block;
+  width: auto;
+  height: 5.6rem;
+}
+
+html body .cj-footer-brand__name {
+  font-family: "Bodoni Moda Theme", Didot, Georgia, "Times New Roman", serif;
+  font-weight: 500;
+  font-size: 2rem;
+  line-height: 1;
+  letter-spacing: 0.18em;
+  padding-left: 0.18em;
+  text-transform: uppercase;
+}
+
+html body .cj-footer-brand__sub {
+  font-size: 1.1rem;
+  line-height: 1;
+  letter-spacing: 0.42em;
+  padding-left: 0.42em;
+  text-transform: uppercase;
+  color: rgb(0 0 0 / 0.7);
+}
+
+html body .cj-footer-brand:focus-visible {
+  outline: 0.2rem solid rgb(0 0 0);
+  outline-offset: 0.4rem;
+}

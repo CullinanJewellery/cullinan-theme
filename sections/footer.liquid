@@ -523,6 +523,8 @@
       data-cascade
     {% endif %}
   >
+    {%- comment -%} CJ monogram with the name (2026-11-28, owner: "in the footer too"); crown.css „CJ monogram“. {%- endcomment -%}
+    {% render 'cj-footer-brand' %}
     <div class="footer__content-bottom-wrapper page-width">
       <div class="footer__column footer__localization isolate">
         {%- if section.settings.enable_country_selector and localization.available_countries.size > 1 -%}
