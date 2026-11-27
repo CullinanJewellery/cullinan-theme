@@ -205,9 +205,12 @@
             }}
           </div>
         {%- else -%}
-          {%- comment -%} CJ monogram before the name (2026-11-28, owner): assets/cj-logo.png, crown.css „CJ monogram“. {%- endcomment -%}
+          {%- comment -%}
+            CJ monogram alone, centred (2026-11-28, owner: "remove the text cullinan jewelry in the menu and make the
+            logo bigger and in the center"); the name stays for screen readers. assets/cj-logo.png, crown.css „CJ monogram“.
+          {%- endcomment -%}
           <img class="cj-header-mark" src="{{ 'cj-logo.png' | asset_url }}" alt="" width="199" height="240">
-          <span class="h2">{{ shop.name }}</span>
+          <span class="visually-hidden">{{ shop.name }}</span>
         {%- endif -%}
       </a>
       {%- if request.page_type == 'index' -%}
@@ -256,9 +259,12 @@
             }}
           </div>
         {%- else -%}
-          {%- comment -%} CJ monogram before the name (2026-11-28, owner): assets/cj-logo.png, crown.css „CJ monogram“. {%- endcomment -%}
+          {%- comment -%}
+            CJ monogram alone, centred (2026-11-28, owner: "remove the text cullinan jewelry in the menu and make the
+            logo bigger and in the center"); the name stays for screen readers. assets/cj-logo.png, crown.css „CJ monogram“.
+          {%- endcomment -%}
           <img class="cj-header-mark" src="{{ 'cj-logo.png' | asset_url }}" alt="" width="199" height="240">
-          <span class="h2">{{ shop.name }}</span>
+          <span class="visually-hidden">{{ shop.name }}</span>
         {%- endif -%}
       </a>
       {%- if request.page_type == 'index' -%}

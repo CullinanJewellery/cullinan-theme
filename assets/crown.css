@@ -11439,35 +11439,30 @@ html body .card__silver-price[hidden] {
 /* ---------------------------------------------------------------------------
    CJ monogram (2026-11-28, owner: the certificate's CJ "in the website", "in the footer too, not just in the menu").
    assets/cj-logo.png: black C, rose gold J (#B76E79), drawn from Bodoni Moda 600 (the shop name's typeface).
-   Header: before the shop name, the two centred together. Phones: smaller, and the name's room-following size
-   (rule near the top, 12.7vw - 2.985rem) gives up the monogram's width plus the gap (about 30px), so the name still
-   never breaks. Footer: the monogram above the name, centred, before the bottom row (snippets/cj-footer-brand.liquid).
-   Way back: delete this block, the <img> in sections/header.liquid and the render in sections/footer.liquid.
+   Header: the monogram alone in the centre, the name only for screen readers (owner, same day: "remove the text
+   cullinan jewelry in the menu and make the logo bigger and in the center"; for an hour it stood before the name at
+   3.8rem). Footer: the monogram above the name, centred, before the bottom row (snippets/cj-footer-brand.liquid).
+   Way back: delete this block, the <img> in sections/header.liquid (and put back <span class="h2">) and the render
+   in sections/footer.liquid.
    --------------------------------------------------------------------------- */
 html body .header__heading-link:has(.cj-header-mark) {
   display: inline-flex;
   align-items: center;
-  gap: 0.9rem;
+  justify-content: center;
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
 }
 
 html body .cj-header-mark {
   display: block;
   flex-shrink: 0;
   width: auto;
-  height: 3.8rem;
+  height: 5.4rem;
 }
 
 @media screen and (max-width: 749px) {
-  html body .header__heading-link:has(.cj-header-mark) {
-    gap: 0.5rem;
-  }
-
   html body .cj-header-mark {
-    height: 2.8rem;
-  }
-
-  html body .header__heading-link:has(.cj-header-mark) .h2 {
-    font-size: min(2rem, calc(12.7vw - 3.366rem));
+    height: 4.4rem;
   }
 }
 

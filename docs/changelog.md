@@ -8,6 +8,13 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-28 — Header: the CJ alone, bigger, in the centre **(owner)**
+
+- Owner: "remove the text cullinan jewelry in the menu and make the logo bigger and in the center". The shop name in
+  the header is now only for screen readers (`visually-hidden`); the CJ is 5.4rem on computers, 4.4rem on phones
+  (was 3.8 / 2.8 beside the name), centred in the bar. The footer keeps the CJ with the name.
+- Way back: revert this commit (the previous one has the CJ beside the name).
+
 ## 2026-11-28 — CJ monogram in the header, the footer and the browser tab **(owner)**
 
 - Owner chose the certificate's CJ (Bodoni C with a smaller italic J tucked in) in our colours, black C and rose gold
