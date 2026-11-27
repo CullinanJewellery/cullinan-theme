@@ -223,29 +223,20 @@
         if (header) watchScroll(header);
       });
 
-      // 2026-11-03 (owner): scrolling down shows only the black bar, scrolling up only the header; both at the top
-      // (crown.css „Top bar and sticky header“). The header stays while a menu in it is open.
+      // 2026-11-27 (owner: "for the black banner i want it to dissapear when you scroll down and apear when you are
+      // at the start of any page and for the menu i don't want it to disapear"): at the top of the page both show;
+      // once the page is scrolled at all, only the header shows (cj-scroll-up: the bar slides away, the header moves
+      // to the very top), scrolling down and up alike, until the page is back at the top. Replaces 2026-11-03
+      // (down showed only the bar, up only the header); way back: git history of this file and crown.css.
       function watchScroll(header) {
-        var last = window.scrollY;
         var set = function (mode) {
           root.classList.toggle('cj-scroll-down', mode === 'down');
           root.classList.toggle('cj-scroll-up', mode === 'up');
         };
         var update = function () {
-          var y = window.scrollY;
-          var moved = Math.abs(y - last) > 6;
-          if (y <= section.offsetHeight + header.offsetHeight) {
-            set('');
-          } else if (
-            header.querySelector('details[open], :focus-visible') ||
-            root.classList.contains('cj-dmenu-open')
-          ) {
-            set('up');
-          } else if (moved) {
-            set(y > last ? 'down' : 'up');
-          }
-          if (moved) last = y;
+          set(window.scrollY > 8 ? 'up' : '');
         };
+        update();
         window.addEventListener('scroll', update, { passive: true });
       }
     })();

@@ -8,6 +8,14 @@ Marks: **(owner)** = the owner's explicit instruction; **(superseded)** = no lon
 
 ---
 
+## 2026-11-27 — Black bar only at the top of the page; the header always stays **(owner)**
+
+- Owner: the black bar disappears when scrolling down and shows at the start of any page; the menu (white header)
+  must not disappear. `sections/announcement-bar.liquid`: any scroll sets `cj-scroll-up` (bar slides away, header at
+  the very top), back at the top nothing (both show); the header no longer slides away scrolling down. CSS in
+  `crown.css` „Top bar and sticky header“ unchanged. Replaces 2026-11-03 (down: only the bar; up: only the header).
+- Way back: revert this commit.
+
 ## 2026-11-27 — Product cards: gold circles and gold price; price filter from the cheapest gold piece **(owner)**
 
 - Owner: remove the silver circles under the card photos, keep the gold ones; silver prices showed as the card price

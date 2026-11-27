@@ -363,7 +363,9 @@
   top: 0;
 }
 
-/* Since 2026-11-03 (owner: "when i scroll down my navigation [should] stop appearing, i just want the black thing to
+/* 2026-11-27 (owner): the header no longer slides away; the script now sets only cj-scroll-up (any scroll: bar away,
+   header at the very top) or nothing (top of the page: both). The rules below stay as they are.
+   Since 2026-11-03 (owner: "when i scroll down my navigation [should] stop appearing, i just want the black thing to
    appear, and when i go up … the navigation just appears and the black thing disappears"). At the top of the page
    both show, in their places. Scrolling down, the black bar stays at the top and the white header slides away under
    it; scrolling up, the header slides back and the bar slides away. The script at the end of
